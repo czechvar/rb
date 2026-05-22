@@ -19,6 +19,7 @@ describe('users collection', () => {
 
   it('defaults role to customer', async () => {
     const payload = await getTestPayload()
+    // @ts-expect-error role is intentionally omitted to verify the collection's defaultValue
     const user = await payload.create({
       collection: 'users',
       data: {
