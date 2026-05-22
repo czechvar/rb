@@ -33,11 +33,18 @@ export default buildConfig({
   sharp,
   plugins: [
     s3Storage({
-      enabled: Boolean(process.env.R2_ACCESS_KEY_ID),
+      // Only enable when the full R2 credential set is present. A partial
+      // set (e.g. key but no endpoint) would silently target real AWS S3.
+      enabled: Boolean(
+        process.env.R2_ACCESS_KEY_ID &&
+          process.env.R2_SECRET_ACCESS_KEY &&
+          process.env.R2_ENDPOINT &&
+          process.env.R2_BUCKET,
+      ),
       collections: { media: true },
       bucket: process.env.R2_BUCKET ?? '',
       config: {
-        endpoint: process.env.R2_ENDPOINT,
+        endpoint: process.env.R2_ENDPOINT ?? '',
         region: 'auto',
         credentials: {
           accessKeyId: process.env.R2_ACCESS_KEY_ID ?? '',

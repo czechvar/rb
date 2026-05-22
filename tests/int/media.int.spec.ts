@@ -22,5 +22,7 @@ describe('media collection', () => {
     })
     expect(media.id).toBeDefined()
     expect(media.alt).toBe('test image')
+    expect(media.filename).toMatch(/^t-\d+\.png$/)
+    expect(media.url).toBeDefined()
   })
 })
