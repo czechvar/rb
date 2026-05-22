@@ -239,10 +239,11 @@ release.
 
 ### Visual design
 
-The rockbusters **Figma** files are the source of truth for the storefront's
-visual design — layout, palette, typography, components. **The Figma files are
-not yet available**; the storefront visual build (Phase 2) depends on their
-delivery.
+The rockbusters **Figma** file is the source of truth for the storefront's
+visual design — layout, palette, typography, components. File: **RB-website-2025**
+— https://www.figma.com/design/ch2aIrEQMWVr6Q1uGorVoV/RB-website-2025
+(fileKey `ch2aIrEQMWVr6Q1uGorVoV`). The storefront visual build (Phase 2)
+consumes it.
 
 snowbusters is a **structural and code reference only** — component
 decomposition, domain-driven page structure, and the patterns worth keeping
@@ -250,9 +251,8 @@ decomposition, domain-driven page structure, and the patterns worth keeping
 cookie consent). Its visual look — including the blue palette — does not carry
 over; the Figma design defines the look.
 
-When the Figma files arrive, they are translated to React + CSS Modules using
-the Figma MCP integration (`get_design_context`, `/figma-use`,
-`/figma-generate-design`).
+The Figma design is translated to React + CSS Modules using the Figma MCP
+integration (`get_design_context`, `/figma-use`, `/figma-generate-design`).
 
 ### Page & URL inventory
 
@@ -291,8 +291,8 @@ The design above is the full architecture. It is built and shipped in phases;
    Users/auth + all content collections (Event, Event Date, Media, Category,
    Difficulty, Type, Guide, Location, Airport, Partner). Admin panel fully
    usable; no storefront.
-2. **Storefront** — public SSR pages built to the Figma designs (CSS Modules),
-   SEO redirect map. **Depends on the Figma files being delivered.**
+2. **Storefront** — public SSR pages built to the Figma design (CSS Modules),
+   SEO redirect map.
 3. **Commerce** — cart, checkout, Order/Order Item/Participant, capacity +
    holds, discount + referral codes.
 4. **Payments** — port the gateways (MuzaPay signing already drafted),
