@@ -21,8 +21,9 @@ customers re-register.
   profile. This is the headline goal.
 - Reuse snowbusters' proven domain logic — payment gateways, course/event
   modelling, referral program — ported to TypeScript.
-- Reuse snowbusters' frontend visual design and component patterns, with the
-  primary colour changed from blue to **red**.
+- Build the storefront UI to the rockbusters **Figma** design files — the
+  visual source of truth (pending delivery). snowbusters is a structural/code
+  reference, not a visual one.
 
 ### Non-goals (this design)
 
@@ -39,7 +40,7 @@ customers re-register.
 | File storage | **Vercel Blob** via a Payload storage adapter (serverless filesystem is ephemeral) |
 | Scheduled work | **Vercel Cron** |
 | Language | **TypeScript** throughout |
-| Storefront styling | **CSS Modules** (faithful port of snowbusters' scoped LESS) |
+| Storefront styling | **CSS Modules** (component-scoped) |
 | Localization | **English only** — no Payload localization |
 
 Payload provides the admin panel, authentication, collections, access control,
@@ -233,10 +234,25 @@ release.
 - Next.js App Router in the same app as Payload.
 - **Public storefront** — Server Components with SSR for SEO.
 - **Admin** — Payload admin at `/admin`, replacing snowbusters' `*-mgmt` modules.
-- **Visual** — port snowbusters' component patterns (header, footer, page
-  layout, featured categories/guides, contact form, maps, cookie consent) from
-  Vue to React; primary colour blue → red. Rich content authored in Payload's
-  Lexical editor (snowbusters used EditorJS).
+- **Visual** — built to the rockbusters Figma designs (see below). Rich content
+  authored in Payload's Lexical editor (snowbusters used EditorJS).
+
+### Visual design
+
+The rockbusters **Figma** files are the source of truth for the storefront's
+visual design — layout, palette, typography, components. **The Figma files are
+not yet available**; the storefront visual build (Phase 2) depends on their
+delivery.
+
+snowbusters is a **structural and code reference only** — component
+decomposition, domain-driven page structure, and the patterns worth keeping
+(header, footer, page layout, featured categories/guides, contact form, maps,
+cookie consent). Its visual look — including the blue palette — does not carry
+over; the Figma design defines the look.
+
+When the Figma files arrive, they are translated to React + CSS Modules using
+the Figma MCP integration (`get_design_context`, `/figma-use`,
+`/figma-generate-design`).
 
 ### Page & URL inventory
 
@@ -275,8 +291,8 @@ The design above is the full architecture. It is built and shipped in phases;
    Users/auth + all content collections (Event, Event Date, Media, Category,
    Difficulty, Type, Guide, Location, Airport, Partner). Admin panel fully
    usable; no storefront.
-2. **Storefront** — public SSR pages, CSS Modules visual port with the red
-   theme, SEO redirect map.
+2. **Storefront** — public SSR pages built to the Figma designs (CSS Modules),
+   SEO redirect map. **Depends on the Figma files being delivered.**
 3. **Commerce** — cart, checkout, Order/Order Item/Participant, capacity +
    holds, discount + referral codes.
 4. **Payments** — port the gateways (MuzaPay signing already drafted),
