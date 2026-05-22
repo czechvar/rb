@@ -17,6 +17,30 @@
 
 ---
 
+## Execution status & post-scaffold conventions
+
+**Tasks 1–3 are COMPLETE** (done by the controller as environment setup): the
+Payload 3.84.1 blank template is scaffolded into the repo, `.env`/`.env.test`
+are configured (Neon dev + Neon test branch), and the Vitest harness is
+isolated onto the test database with a `getTestPayload()` helper.
+
+The scaffold differs from this plan's pre-scaffold assumptions. **Tasks 4–15
+use these conventions** wherever the task text below says otherwise:
+
+| Plan text says | Use instead |
+|---|---|
+| `npm` / `npm install` | `pnpm` / `pnpm add` (`pnpm add -D` for dev deps) |
+| `DATABASE_URI` | `DATABASE_URL` |
+| `npm test -- <file>` | `pnpm test:int <name>` |
+| test files in `tests/collections/` | `tests/int/` (Vitest only includes `tests/int/**/*.int.spec.ts`) |
+| `tests/helpers/payload.ts` import | from a `tests/int/` spec, import `../helpers/payload` |
+| `npm run build` | `pnpm build` |
+
+Stack: Payload 3.84.1, Next 16, React 19. `getTestPayload()` already exists at
+`tests/helpers/payload.ts`.
+
+---
+
 ## File Structure
 
 Created by the scaffold (Task 1), then extended:
