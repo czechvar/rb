@@ -6,7 +6,7 @@
 
 **Architecture:** Payload 3 installs into a Next.js app (single repo, single deploy target: Vercel). Postgres via the Payload Postgres adapter (Neon in production). All domain data lives in Payload collections; the admin panel is generated. This phase delivers the admin/data layer only — no public storefront, no checkout, no payments wiring.
 
-**Tech Stack:** TypeScript, Next.js (App Router), Payload 3, `@payloadcms/db-postgres`, `@payloadcms/richtext-lexical`, `@payloadcms/storage-vercel-blob`, Neon Postgres, Vitest.
+**Tech Stack:** TypeScript, Next.js (App Router), Payload 3, `@payloadcms/db-postgres`, `@payloadcms/richtext-lexical`, `@payloadcms/storage-s3` (Cloudflare R2), Neon Postgres, Vitest.
 
 **Reference:** Design spec `docs/superpowers/specs/2026-05-22-rockbusters-rebuild-design.md` (§2 stack, §3 data model).
 
@@ -381,15 +381,16 @@ git commit -m "feat: add slug, SEO and access-control helpers"
 
 ---
 
-## Task 5: Media collection + Vercel Blob storage
+## Task 5: Media collection + Cloudflare R2 storage
 
 **Files:**
-- Create: `src/collections/Media.ts`, `tests/collections/media.int.spec.ts`
+- Modify (overwrite the scaffold stub): `src/collections/Media.ts`
+- Create: `tests/int/media.int.spec.ts`
 - Modify: `src/payload.config.ts`
 
 - [ ] **Step 1: Write the failing test**
 
-Create `tests/collections/media.int.spec.ts`:
+Create `tests/int/media.int.spec.ts`:
 
 ```ts
 import { describe, expect, it } from 'vitest'
@@ -422,12 +423,12 @@ describe('media collection', () => {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `npm test -- media.int.spec.ts`
-Expected: FAIL — collection `media` is not registered.
+Run: `pnpm test:int media`
+Expected: FAIL until the collection is brought to spec.
 
-- [ ] **Step 3: Create the Media collection**
+- [ ] **Step 3: Replace the Media collection**
 
-Create `src/collections/Media.ts`:
+Overwrite `src/collections/Media.ts`:
 
 ```ts
 import type { CollectionConfig } from 'payload'
@@ -442,43 +443,50 @@ export const Media: CollectionConfig = {
 }
 ```
 
-- [ ] **Step 4: Register the collection and the Vercel Blob plugin**
+- [ ] **Step 4: Install and register the Cloudflare R2 storage plugin**
 
-In `src/payload.config.ts`: import `Media` and add it to the `collections` array; import and add the storage plugin. The plugin is disabled when no token is present, so tests fall back to local disk storage.
+R2 is S3-compatible, so Payload's S3 storage adapter is used. Install:
 
-(The blank template may already ship a `Media` collection and import — if so, Step 3's file overwrites it; ensure `Media` appears in the `collections` array exactly once.)
-
-```ts
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
-import { Media } from './collections/Media'
+```bash
+pnpm add @payloadcms/storage-s3@3.84.1
 ```
 
-Add `Media` to `collections: [...]`, and add to `plugins: [...]`:
+In `src/payload.config.ts`, add the import (`Media` is already imported and in the `collections` array from the scaffold — leave that, ensure it appears exactly once):
 
 ```ts
-vercelBlobStorage({
-  enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+import { s3Storage } from '@payloadcms/storage-s3'
+```
+
+Add to the `plugins` array:
+
+```ts
+s3Storage({
+  enabled: Boolean(process.env.R2_ACCESS_KEY_ID),
   collections: { media: true },
-  token: process.env.BLOB_READ_WRITE_TOKEN,
+  bucket: process.env.R2_BUCKET ?? '',
+  config: {
+    endpoint: process.env.R2_ENDPOINT,
+    region: 'auto',
+    credentials: {
+      accessKeyId: process.env.R2_ACCESS_KEY_ID ?? '',
+      secretAccessKey: process.env.R2_SECRET_ACCESS_KEY ?? '',
+    },
+  },
 }),
 ```
 
-Install the package:
-
-```bash
-npm install @payloadcms/storage-vercel-blob
-```
+The plugin is disabled when `R2_ACCESS_KEY_ID` is absent (the test environment has no R2 credentials), so tests fall back to Payload's local disk storage. R2 env vars are supplied per environment: `R2_BUCKET`, `R2_ENDPOINT` (`https://<account-id>.r2.cloudflarestorage.com`), `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`.
 
 - [ ] **Step 5: Run test to verify it passes**
 
-Run: `npm test -- media.int.spec.ts`
+Run: `pnpm test:int media`
 Expected: PASS.
 
 - [ ] **Step 6: Commit**
 
 ```bash
-git add src/collections/Media.ts src/payload.config.ts tests/collections/media.int.spec.ts package.json package-lock.json
-git commit -m "feat: add Media collection with Vercel Blob storage"
+git add src/collections/Media.ts src/payload.config.ts tests/int/media.int.spec.ts package.json pnpm-lock.yaml
+git commit -m "feat: add Media collection with Cloudflare R2 storage"
 ```
 
 ---
@@ -1337,7 +1345,7 @@ Create `vercel.json`:
 
 - [ ] **Step 5: Document required Vercel environment variables**
 
-Append to `CLAUDE.md` a short "Deployment" note listing the env vars Vercel needs: `DATABASE_URI` (Neon), `PAYLOAD_SECRET`, `BLOB_READ_WRITE_TOKEN` (Vercel Blob).
+Append to `CLAUDE.md` a short "Deployment" note listing the env vars Vercel needs: `DATABASE_URL` (Neon), `PAYLOAD_SECRET`, and the Cloudflare R2 set `R2_BUCKET` / `R2_ENDPOINT` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY`.
 
 - [ ] **Step 6: Commit**
 

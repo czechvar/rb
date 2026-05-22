@@ -37,7 +37,7 @@ customers re-register.
 | Backend + frontend | **Payload 3 + Next.js** as a single app (Payload installs into a Next.js app) |
 | Hosting | **Vercel** |
 | Database | **Neon** (serverless Postgres), via Payload's Postgres adapter |
-| File storage | **Vercel Blob** via a Payload storage adapter (serverless filesystem is ephemeral) |
+| File storage | **Cloudflare R2** via `@payloadcms/storage-s3` (R2 is S3-compatible; zero egress fees — chosen for an image-heavy public site) |
 | Scheduled work | **Vercel Cron** |
 | Language | **TypeScript** throughout |
 | Storefront styling | **CSS Modules** (component-scoped) |
@@ -87,7 +87,7 @@ This merges snowbusters' separate `CourseDate` (dates) and `CoursePrice`
 - `active`
 - Availability = `capacity` − booked participants (see §5 for hold rules).
 
-**Media** — Payload upload collection; files on Vercel Blob; `alt`, auto `sizes`.
+**Media** — Payload upload collection; files on Cloudflare R2; `alt`, auto `sizes`.
 
 ### Taxonomy & people
 
@@ -287,7 +287,7 @@ own `redirects.md`.
 The design above is the full architecture. It is built and shipped in phases;
 **each phase gets its own implementation plan**.
 
-1. **Foundation** — scaffold Payload 3 + Next.js, Neon, Vercel, Vercel Blob.
+1. **Foundation** — scaffold Payload 3 + Next.js, Neon, Vercel, Cloudflare R2.
    Users/auth + all content collections (Event, Event Date, Media, Category,
    Difficulty, Type, Guide, Location, Airport, Partner). Admin panel fully
    usable; no storefront.
