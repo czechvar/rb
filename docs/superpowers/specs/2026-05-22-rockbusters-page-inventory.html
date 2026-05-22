@@ -1,0 +1,71 @@
+<style>
+  .grp { margin-bottom: 18px; }
+  .grp-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: #b3261e; margin-bottom: 8px;
+  }
+  table { width: 100%; border-collapse: collapse; background:#fff;
+          border:1px solid #e2e2e2; border-radius: 8px; overflow:hidden; }
+  td { padding: 6px 11px; font-size: 13px; border-top: 1px solid #f0f0f0; vertical-align: top; }
+  tr:first-child td { border-top: none; }
+  .route { font-family: ui-monospace, monospace; color: #b3261e; font-weight: 600; white-space: nowrap; }
+  .desc { color: #555; }
+  .tag { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px;
+         background: #eee; color: #666; white-space: nowrap; }
+  .ssr { background: #e6f0ff; color: #1d4ed8; }
+  .auth { background: #fdeaea; color: #b3261e; }
+  .sys { background: #ecfdf3; color: #1f6f43; }
+  .note { font-size: 12.5px; color: #555; background:#f6f6f6;
+          border-left: 3px solid #b3261e; padding: 8px 12px; border-radius: 4px; margin-top:6px;}
+</style>
+
+<h2>Page &amp; URL inventory — rockbusters</h2>
+<p class="subtitle">New URL structure. The old rockbusters.net URLs map onto these via 301 redirects (built by crawling the live site).</p>
+
+<div class="grp">
+  <div class="grp-label">Public storefront — SSR</div>
+  <table>
+    <tr><td class="route">/</td><td class="desc">Homepage — featured events, categories, guides</td><td><span class="tag ssr">SSR</span></td></tr>
+    <tr><td class="route">/events</td><td class="desc">Events catalogue — filter by category / difficulty / type</td><td><span class="tag ssr">SSR</span></td></tr>
+    <tr><td class="route">/events/[slug]</td><td class="desc">Event detail — content + list of bookable Event Dates</td><td><span class="tag ssr">SSR</span></td></tr>
+    <tr><td class="route">/categories/[slug]</td><td class="desc">Category landing page</td><td><span class="tag ssr">SSR</span></td></tr>
+    <tr><td class="route">/locations</td><td class="desc">Locations index</td><td><span class="tag ssr">SSR</span></td></tr>
+    <tr><td class="route">/locations/[slug]</td><td class="desc">Location detail + map</td><td><span class="tag ssr">SSR</span></td></tr>
+    <tr><td class="route">/guides</td><td class="desc">Guides / instructors index</td><td><span class="tag ssr">SSR</span></td></tr>
+    <tr><td class="route">/guides/[slug]</td><td class="desc">Guide detail page</td><td><span class="tag ssr">SSR</span></td></tr>
+    <tr><td class="route">/[slug]</td><td class="desc">CMS content pages — about, FAQ, terms, contact (Payload-managed)</td><td><span class="tag ssr">SSR</span></td></tr>
+  </table>
+</div>
+
+<div class="grp">
+  <div class="grp-label">Checkout</div>
+  <table>
+    <tr><td class="route">/cart</td><td class="desc">Cart — review selected Event Dates &amp; participants</td><td><span class="tag">client</span></td></tr>
+    <tr><td class="route">/checkout</td><td class="desc">Checkout — participant details, billing, discount/referral code, payment method</td><td><span class="tag">client</span></td></tr>
+    <tr><td class="route">/payment/return</td><td class="desc">Post-payment return from gateway — shows result</td><td><span class="tag">client</span></td></tr>
+  </table>
+</div>
+
+<div class="grp">
+  <div class="grp-label">Customer account — login required</div>
+  <table>
+    <tr><td class="route">/account</td><td class="desc">Dashboard</td><td><span class="tag auth">auth</span></td></tr>
+    <tr><td class="route">/account/orders</td><td class="desc">Order history</td><td><span class="tag auth">auth</span></td></tr>
+    <tr><td class="route">/account/orders/[id]</td><td class="desc">Order detail — items, participants, payment status</td><td><span class="tag auth">auth</span></td></tr>
+    <tr><td class="route">/account/profile</td><td class="desc">Profile &amp; saved addresses</td><td><span class="tag auth">auth</span></td></tr>
+    <tr><td class="route">/login · /register</td><td class="desc">Sign in / sign up</td><td></td></tr>
+    <tr><td class="route">/forgot-password · /reset-password/[token]</td><td class="desc">Password recovery</td><td></td></tr>
+  </table>
+</div>
+
+<div class="grp">
+  <div class="grp-label">System — not public pages</div>
+  <table>
+    <tr><td class="route">/admin/*</td><td class="desc">Payload admin panel — all collections, backoffice</td><td><span class="tag sys">Payload</span></td></tr>
+    <tr><td class="route">/api/payments/[gateway]/webhook</td><td class="desc">Gateway webhook receivers</td><td><span class="tag sys">route</span></td></tr>
+    <tr><td class="route">/api/payments/poll-status</td><td class="desc">Cron — poll pending transactions</td><td><span class="tag sys">cron</span></td></tr>
+    <tr><td class="route">/api/orders/release-holds</td><td class="desc">Cron — expire unpaid order holds</td><td><span class="tag sys">cron</span></td></tr>
+  </table>
+</div>
+
+<p class="note"><strong>Open question:</strong> snowbusters has public <strong>partner pages</strong> (<code>/partners</code>, <code>/partner/[slug]</code>). Does rockbusters need a public partner directory, or are partners purely internal (BookingReference referral codes only)?</p>

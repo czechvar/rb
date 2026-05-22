@@ -53,7 +53,8 @@ the Payload admin may have minor cold-start latency (acceptable).
 ## 3. Data model
 
 The content layer (Event / Event Date) feeds the commerce layer
-(Order → Order Item → Participant).
+(Order → Order Item → Participant). Diagram:
+[`2026-05-22-rockbusters-data-model.html`](./2026-05-22-rockbusters-data-model.html).
 
 ### Content & catalogue
 
@@ -239,7 +240,8 @@ release.
 
 ### Page & URL inventory
 
-New URL structure.
+New URL structure. Diagram:
+[`2026-05-22-rockbusters-page-inventory.html`](./2026-05-22-rockbusters-page-inventory.html).
 
 **Public storefront (SSR):**
 `/`, `/events`, `/events/[slug]`, `/categories/[slug]`, `/locations`,
