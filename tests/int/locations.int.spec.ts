@@ -4,6 +4,7 @@ import { getTestPayload } from '../helpers/payload'
 describe('locations collection', () => {
   it('creates a location with coordinates', async () => {
     const payload = await getTestPayload()
+    // @ts-expect-error slug is auto-filled by the slugField beforeValidate hook
     const doc = await payload.create({
       collection: 'locations',
       data: {

@@ -4,6 +4,7 @@ import { getTestPayload } from '../helpers/payload'
 describe('partners collection', () => {
   it('creates a partner and auto-fills the slug', async () => {
     const payload = await getTestPayload()
+    // @ts-expect-error slug is auto-filled by the slugField beforeValidate hook
     const doc = await payload.create({
       collection: 'partners',
       data: {
@@ -21,6 +22,7 @@ describe('partners collection', () => {
 
   it('defaults featured and active to false', async () => {
     const payload = await getTestPayload()
+    // @ts-expect-error slug is auto-filled by the slugField beforeValidate hook
     const doc = await payload.create({
       collection: 'partners',
       data: { name: `Default Partner ${Date.now()}` },

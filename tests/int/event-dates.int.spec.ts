@@ -4,6 +4,7 @@ import { getTestPayload } from '../helpers/payload'
 describe('event-dates collection', () => {
   it('creates an event date linked to an event', async () => {
     const payload = await getTestPayload()
+    // @ts-expect-error slug is auto-filled by the slugField beforeValidate hook
     const event = await payload.create({
       collection: 'events',
       data: { title: `Parent Event ${Date.now()}` },

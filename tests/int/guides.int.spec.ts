@@ -4,6 +4,7 @@ import { getTestPayload } from '../helpers/payload'
 describe('guides collection', () => {
   it('creates a guide and auto-fills the slug', async () => {
     const payload = await getTestPayload()
+    // @ts-expect-error slug is auto-filled by the slugField beforeValidate hook
     const doc = await payload.create({
       collection: 'guides',
       data: { name: `Jane Doe ${Date.now()}`, email: 'jane@example.com', active: true },

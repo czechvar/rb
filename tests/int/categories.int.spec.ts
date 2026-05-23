@@ -4,6 +4,7 @@ import { getTestPayload } from '../helpers/payload'
 describe('categories collection', () => {
   it('creates a category and auto-fills the slug', async () => {
     const payload = await getTestPayload()
+    // @ts-expect-error slug is auto-filled by the slugField beforeValidate hook
     const doc = await payload.create({
       collection: 'categories',
       data: { name: `Sport Climbing ${Date.now()}`, active: true },
