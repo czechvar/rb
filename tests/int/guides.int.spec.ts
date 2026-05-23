@@ -11,5 +11,6 @@ describe('guides collection', () => {
     expect(doc.id).toBeDefined()
     expect(doc.slug).toMatch(/^jane-doe-/)
     expect(doc.active).toBe(true)
+    expect(doc.featured).toBe(false)
   })
 })
