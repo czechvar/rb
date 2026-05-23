@@ -24,5 +24,10 @@ describe('event-dates collection', () => {
     expect(doc.id).toBeDefined()
     expect(doc.capacity).toBe(12)
     expect(doc.active).toBe(true)
+    // event relationship round-trips (Payload returns the id at depth 0)
+    const eventRef = typeof doc.event === 'object' ? doc.event.id : doc.event
+    expect(eventRef).toBe(event.id)
+    // minParticipants defaults to 0
+    expect(doc.minParticipants).toBe(0)
   })
 })
