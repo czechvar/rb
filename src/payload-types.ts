@@ -72,6 +72,7 @@ export interface Config {
     difficulties: Difficulty;
     types: Type;
     categories: Category;
+    guides: Guide;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     difficulties: DifficultiesSelect<false> | DifficultiesSelect<true>;
     types: TypesSelect<false> | TypesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    guides: GuidesSelect<false> | GuidesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -216,6 +218,43 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "guides".
+ */
+export interface Guide {
+  id: number;
+  name: string;
+  slug: string;
+  photo?: (number | null) | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  email?: string | null;
+  phone?: string | null;
+  vimeoId?: string | null;
+  featured?: boolean | null;
+  active?: boolean | null;
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -257,6 +296,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'categories';
         value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'guides';
+        value: number | Guide;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -381,6 +424,30 @@ export interface CategoriesSelect<T extends boolean = true> {
   text?: T;
   position?: T;
   active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "guides_select".
+ */
+export interface GuidesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  photo?: T;
+  content?: T;
+  email?: T;
+  phone?: T;
+  vimeoId?: T;
+  featured?: T;
+  active?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        keywords?: T;
+        description?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
