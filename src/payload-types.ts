@@ -77,6 +77,7 @@ export interface Config {
     airports: Airport;
     partners: Partner;
     events: Event;
+    'event-dates': EventDate;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -94,6 +95,7 @@ export interface Config {
     airports: AirportsSelect<false> | AirportsSelect<true>;
     partners: PartnersSelect<false> | PartnersSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
+    'event-dates': EventDatesSelect<false> | EventDatesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -414,6 +416,43 @@ export interface Event {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-dates".
+ */
+export interface EventDate {
+  id: number;
+  event: number | Event;
+  dateFrom: string;
+  dateTo: string;
+  locations?: (number | Location)[] | null;
+  guides?: (number | Guide)[] | null;
+  airportFrom?: (number | null) | Airport;
+  airportTo?: (number | null) | Airport;
+  price: number;
+  vat: number;
+  currency: 'EUR' | 'CZK';
+  capacity: number;
+  minParticipants?: number | null;
+  extraContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -475,6 +514,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'events';
         value: number | Event;
+      } | null)
+    | ({
+        relationTo: 'event-dates';
+        value: number | EventDate;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -710,6 +753,28 @@ export interface EventsSelect<T extends boolean = true> {
         keywords?: T;
         description?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-dates_select".
+ */
+export interface EventDatesSelect<T extends boolean = true> {
+  event?: T;
+  dateFrom?: T;
+  dateTo?: T;
+  locations?: T;
+  guides?: T;
+  airportFrom?: T;
+  airportTo?: T;
+  price?: T;
+  vat?: T;
+  currency?: T;
+  capacity?: T;
+  minParticipants?: T;
+  extraContent?: T;
+  active?: T;
   updatedAt?: T;
   createdAt?: T;
 }
