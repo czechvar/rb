@@ -3,6 +3,7 @@ import { anyone, isAdmin } from '../access'
 
 export const Types: CollectionConfig = {
   slug: 'types',
+  labels: { singular: 'Type', plural: 'Types' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'name', group: 'Taxonomy' },
   fields: [
