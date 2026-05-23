@@ -18,4 +18,14 @@ describe('partners collection', () => {
     expect(doc.featured).toBe(true)
     expect(doc.active).toBe(true)
   })
+
+  it('defaults featured and active to false', async () => {
+    const payload = await getTestPayload()
+    const doc = await payload.create({
+      collection: 'partners',
+      data: { name: `Default Partner ${Date.now()}` },
+    })
+    expect(doc.featured).toBe(false)
+    expect(doc.active).toBe(false)
+  })
 })
