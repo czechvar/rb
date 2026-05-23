@@ -76,6 +76,7 @@ export interface Config {
     locations: Location;
     airports: Airport;
     partners: Partner;
+    events: Event;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +93,7 @@ export interface Config {
     locations: LocationsSelect<false> | LocationsSelect<true>;
     airports: AirportsSelect<false> | AirportsSelect<true>;
     partners: PartnersSelect<false> | PartnersSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -351,6 +353,67 @@ export interface Partner {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  title: string;
+  slug: string;
+  shortDescription?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  additionalInfo?:
+    | {
+        heading: string;
+        body?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  mainPicture?: (number | null) | Media;
+  gallery?: (number | Media)[] | null;
+  vimeoId?: string | null;
+  categories?: (number | Category)[] | null;
+  difficulties?: (number | Difficulty)[] | null;
+  types?: (number | Type)[] | null;
+  featured?: boolean | null;
+  state: 'draft' | 'published';
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -408,6 +471,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'partners';
         value: number | Partner;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: number | Event;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -609,6 +676,40 @@ export interface PartnersSelect<T extends boolean = true> {
   logo?: T;
   featured?: T;
   active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  shortDescription?: T;
+  content?: T;
+  additionalInfo?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+        id?: T;
+      };
+  mainPicture?: T;
+  gallery?: T;
+  vimeoId?: T;
+  categories?: T;
+  difficulties?: T;
+  types?: T;
+  featured?: T;
+  state?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        keywords?: T;
+        description?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
