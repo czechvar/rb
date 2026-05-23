@@ -73,6 +73,7 @@ export interface Config {
     types: Type;
     categories: Category;
     guides: Guide;
+    locations: Location;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     types: TypesSelect<false> | TypesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     guides: GuidesSelect<false> | GuidesSelect<true>;
+    locations: LocationsSelect<false> | LocationsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -255,6 +257,46 @@ export interface Guide {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations".
+ */
+export interface Location {
+  id: number;
+  name: string;
+  slug: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  address?: string | null;
+  city?: string | null;
+  country?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  active?: boolean | null;
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -300,6 +342,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'guides';
         value: number | Guide;
+      } | null)
+    | ({
+        relationTo: 'locations';
+        value: number | Location;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -440,6 +486,29 @@ export interface GuidesSelect<T extends boolean = true> {
   phone?: T;
   vimeoId?: T;
   featured?: T;
+  active?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        keywords?: T;
+        description?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations_select".
+ */
+export interface LocationsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  content?: T;
+  address?: T;
+  city?: T;
+  country?: T;
+  coordinates?: T;
   active?: T;
   seo?:
     | T
