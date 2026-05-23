@@ -10,5 +10,7 @@ describe('categories collection', () => {
     })
     expect(doc.id).toBeDefined()
     expect(doc.slug).toMatch(/^sport-climbing-/)
+    expect(doc.active).toBe(true)
+    expect(doc.position).toBe(0)
   })
 })
