@@ -8,7 +8,7 @@ export const Airports: CollectionConfig = {
   admin: { useAsTitle: 'name', group: 'Taxonomy' },
   fields: [
     { name: 'name', type: 'text', required: true },
-    { name: 'iata', type: 'text', required: true },
+    { name: 'iata', type: 'text', required: true, unique: true, index: true },
     { name: 'country', type: 'text' },
     { name: 'continent', type: 'text' },
     { name: 'coordinates', type: 'point', label: 'Coordinates [lng, lat]' },
