@@ -7,6 +7,7 @@ export const Users: CollectionConfig = {
   admin: { useAsTitle: 'email', group: 'Admin' },
   access: {
     read: isAdminOrSelf,
+    // Self-registration is opened up in Phase 5; Phase 1 keeps create admin-only.
     create: isAdmin,
     update: isAdminOrSelf,
     delete: isAdmin,

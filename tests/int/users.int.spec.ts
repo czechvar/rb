@@ -2,6 +2,10 @@ import { describe, expect, it } from 'vitest'
 import { getTestPayload } from '../helpers/payload'
 
 describe('users collection', () => {
+  // payload.create() via the Local API bypasses access control. These tests
+  // cover field persistence and defaults; access rules are unit-tested in
+  // helpers.int.spec.ts.
+
   it('creates a customer with a role', async () => {
     const payload = await getTestPayload()
     const user = await payload.create({
