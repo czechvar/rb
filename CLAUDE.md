@@ -48,3 +48,15 @@ Snowbusters stack: PHP 8.4 / Nette + Doctrine ORM backend (`api/`), Vue 3 + Type
 - Frontend: **Next.js**
 
 This is a starting direction, not a commitment — revisit before scaffolding. Confirm with the user before locking in stack choices or generating boilerplate.
+
+## Deployment
+
+Hosted on **Vercel**. Required environment variables in the Vercel project settings:
+
+- `DATABASE_URL` — Neon Postgres connection string (production branch)
+- `PAYLOAD_SECRET` — long random string for Payload's auth
+- `R2_BUCKET` — Cloudflare R2 bucket name (e.g. `rockbusters-media`)
+- `R2_ENDPOINT` — `https://<account-id>.r2.cloudflarestorage.com`
+- `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` — R2 S3-API credentials
+
+If any of the four `R2_*` vars is unset, Payload falls back to local-disk storage (useful for tests, broken for production).
