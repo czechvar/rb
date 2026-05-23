@@ -13,6 +13,7 @@ import { Types } from './collections/Types'
 import { Categories } from './collections/Categories'
 import { Guides } from './collections/Guides'
 import { Locations } from './collections/Locations'
+import { Airports } from './collections/Airports'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Difficulties, Types, Categories, Guides, Locations],
+  collections: [Users, Media, Difficulties, Types, Categories, Guides, Locations, Airports],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

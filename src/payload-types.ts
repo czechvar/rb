@@ -74,6 +74,7 @@ export interface Config {
     categories: Category;
     guides: Guide;
     locations: Location;
+    airports: Airport;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +89,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     guides: GuidesSelect<false> | GuidesSelect<true>;
     locations: LocationsSelect<false> | LocationsSelect<true>;
+    airports: AirportsSelect<false> | AirportsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -297,6 +299,26 @@ export interface Location {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "airports".
+ */
+export interface Airport {
+  id: number;
+  name: string;
+  iata: string;
+  country?: string | null;
+  continent?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  size?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -346,6 +368,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'locations';
         value: number | Location;
+      } | null)
+    | ({
+        relationTo: 'airports';
+        value: number | Airport;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -517,6 +543,21 @@ export interface LocationsSelect<T extends boolean = true> {
         keywords?: T;
         description?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "airports_select".
+ */
+export interface AirportsSelect<T extends boolean = true> {
+  name?: T;
+  iata?: T;
+  country?: T;
+  continent?: T;
+  coordinates?: T;
+  size?: T;
+  active?: T;
   updatedAt?: T;
   createdAt?: T;
 }
