@@ -75,6 +75,7 @@ export interface Config {
     guides: Guide;
     locations: Location;
     airports: Airport;
+    partners: Partner;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,6 +91,7 @@ export interface Config {
     guides: GuidesSelect<false> | GuidesSelect<true>;
     locations: LocationsSelect<false> | LocationsSelect<true>;
     airports: AirportsSelect<false> | AirportsSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -319,6 +321,36 @@ export interface Airport {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: number;
+  name: string;
+  slug: string;
+  link?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  logo?: (number | null) | Media;
+  featured?: boolean | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -372,6 +404,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'airports';
         value: number | Airport;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: number | Partner;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -557,6 +593,21 @@ export interface AirportsSelect<T extends boolean = true> {
   continent?: T;
   coordinates?: T;
   size?: T;
+  active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  link?: T;
+  description?: T;
+  logo?: T;
+  featured?: T;
   active?: T;
   updatedAt?: T;
   createdAt?: T;
