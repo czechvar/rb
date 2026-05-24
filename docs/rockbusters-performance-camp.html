@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climbing Camp: Technique & Mind Masterclass (6b–8a) – Rodellar, Spain | Rockbusters</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #f0ece6;
+    color: #1a1a1a;
+  }
+
+  /* NAVIGATION */
+  .nav-wire {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-family: monospace;
+    font-size: 13px;
+  }
+  .nav-wire .logo { font-size: 16px; font-weight: bold; margin-right: auto; letter-spacing: 2px; }
+  .nav-wire a { color: #aaa; text-decoration: none; }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    padding: 12px 60px;
+    font-family: monospace;
+    font-size: 11px;
+    color: #888;
+    background: #e8e2d8;
+    border-bottom: 1px solid #c8bfb0;
+  }
+  .breadcrumb a { color: #888; text-decoration: underline; }
+
+  /* WIREFRAME COMPONENTS */
+  .wire-section {
+    border-left: 4px solid #c8bfb0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  .wire-section + .wire-section {
+    border-top: 1px dashed #c8bfb0;
+  }
+
+  .section-label {
+    position: absolute;
+    left: -4px;
+    top: 16px;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+  .section-label.blue  { background: #2255cc; }
+  .section-label.green { background: #1a7a3a; }
+  .section-label.orange{ background: #b35000; }
+  .section-label.purple{ background: #5a2299; }
+  .section-label.red   { background: #aa2222; }
+  .section-label.rock  { background: #8b5e3c; }
+
+  .section-inner {
+    padding: 40px 60px 40px 60px;
+  }
+
+  /* HERO */
+  .hero-wire {
+    background: #1e1612;
+    color: #fff;
+    min-height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    padding: 60px 60px 50px;
+    position: relative;
+  }
+  .hero-wire .section-label { top: 20px; left: 0; }
+
+  .hero-text h1 {
+    font-size: 29px;
+    font-weight: bold;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .hero-subline {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #d4c5b0;
+    font-style: italic;
+    margin-bottom: 20px;
+    max-width: 680px;
+  }
+  .badge-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .badge {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.20);
+    border-radius: 2px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-family: monospace;
+    color: #ddd;
+    letter-spacing: 0.5px;
+  }
+  .badge.badge-value {
+    background: rgba(179, 100, 40, 0.25);
+    border-color: rgba(230, 150, 80, 0.5);
+    color: #f0c080;
+  }
+
+  .booking-box {
+    background: #fff;
+    color: #1a1a1a;
+    border-radius: 6px;
+    padding: 28px 24px;
+    align-self: start;
+    margin-top: 8px;
+  }
+  .booking-box .price {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  .booking-box .price-alt {
+    font-size: 13px;
+    color: #8b5e3c;
+    font-family: monospace;
+    margin-bottom: 18px;
+    font-weight: bold;
+  }
+  .booking-box .price-note {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 20px;
+    font-family: monospace;
+  }
+  .booking-box .detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid #eee;
+    font-family: monospace;
+  }
+  .booking-box .detail-row .label { color: #888; }
+  .booking-box .detail-row .val { font-weight: bold; }
+  .cta-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 13px;
+    margin-top: 20px;
+    background: #8b3a1a;
+    color: #fff;
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .cta-btn:hover { background: #a04020; }
+  .cta-btn.secondary {
+    background: transparent;
+    color: #1a1a1a;
+    border: 1px solid #ccc;
+    margin-top: 8px;
+    font-size: 11px;
+  }
+  .value-badge {
+    background: #fff8ee;
+    border: 1px solid #e8c080;
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-family: monospace;
+    color: #8b5e00;
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  /* CONTENT SECTIONS */
+  h2.wire-h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1a1a1a;
+  }
+  h3.wire-h3 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: #444;
+  }
+  .wire-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #333;
+    max-width: 720px;
+    margin-bottom: 16px;
+  }
+  .wire-bullets {
+    list-style: none;
+    margin: 12px 0 20px 0;
+    padding: 0;
+    max-width: 720px;
+  }
+  .wire-bullets li {
+    padding: 7px 0 7px 22px;
+    font-size: 13px;
+    color: #333;
+    position: relative;
+    border-bottom: 1px solid #e8e0d4;
+    font-family: monospace;
+  }
+  .wire-bullets li:before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #8b5e3c;
+  }
+
+  /* HIGHLIGHTS GRID */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0 24px;
+  }
+  .highlight-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-size: 12px;
+    font-family: monospace;
+    color: #444;
+    line-height: 1.5;
+  }
+  .highlight-card:before {
+    content: '✓';
+    display: block;
+    color: #8b3a1a;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  /* THREE-COL BLOCKS */
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 16px 0;
+  }
+  .wire-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+  }
+  .wire-box h4 {
+    font-size: 12px;
+    font-family: monospace;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #8b3a1a;
+    color: #8b3a1a;
+    text-transform: uppercase;
+  }
+
+  /* TWO-COL LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 16px 0;
+  }
+  .wire-box-plain {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+  }
+  .wire-box-plain h4 {
+    font-size: 12px;
+    font-family: monospace;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    color: #888;
+    text-transform: uppercase;
+  }
+
+  /* LEVEL CARDS */
+  .level-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .level-card {
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+  }
+  .level-card .level-name {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    padding: 3px 8px;
+    background: #1a1a1a;
+    color: #fff;
+    display: inline-block;
+    border-radius: 2px;
+  }
+  .level-card .level-desc {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  /* DAILY ARC */
+  .day-arc {
+    margin: 16px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .day-arc-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+  }
+  .day-arc-row:last-child { border-bottom: none; }
+  .day-arc-time {
+    padding: 12px 16px;
+    background: #1e1612;
+    color: #d4c5b0;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
+  }
+  .day-arc-item {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  /* WEEKLY ARC */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin: 16px 0;
+  }
+  .week-day {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px 10px;
+    font-size: 11px;
+    font-family: monospace;
+    color: #444;
+    line-height: 1.5;
+  }
+  .week-day .wd-num {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1e1612;
+    margin-bottom: 6px;
+  }
+  .week-day.performance {
+    border-color: #8b3a1a;
+    border-width: 2px;
+  }
+  .week-day.performance .wd-num { color: #8b3a1a; }
+
+  /* COACH CARDS */
+  .coach-row {
+    display: flex;
+    gap: 20px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+  }
+  .coach-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    width: 260px;
+  }
+  .coach-avatar {
+    width: 72px;
+    height: 72px;
+    background: #ddd;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #888;
+    font-family: monospace;
+    text-align: center;
+  }
+  .coach-name { font-weight: bold; font-size: 14px; margin-bottom: 4px; text-align: center; }
+  .coach-role { font-size: 11px; color: #8b5e3c; font-family: monospace; text-align: center; margin-bottom: 12px; }
+  .coach-bio { font-size: 12px; color: #555; line-height: 1.6; }
+
+  /* REVIEWS */
+  .reviews-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .review-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-left: 4px solid #8b3a1a;
+    padding: 16px;
+    border-radius: 0 4px 4px 0;
+  }
+  .review-card .quote {
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 12px;
+  }
+  .review-card .reviewer {
+    font-family: monospace;
+    font-size: 11px;
+    color: #888;
+  }
+
+  /* RESULTS GRID */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 16px 0 24px;
+  }
+  .result-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-left: 3px solid #1a7a3a;
+    border-radius: 0 4px 4px 0;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.55;
+    font-family: monospace;
+  }
+
+  /* FAQ */
+  .faq-list { margin: 16px 0; }
+  .faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 14px 0;
+  }
+  .faq-q {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .faq-q:after { content: '+'; color: #8b5e3c; }
+  .faq-a {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    max-width: 680px;
+  }
+
+  /* HOW TO BOOK */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 16px 0 24px;
+  }
+  .step-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+    text-align: center;
+    font-size: 12px;
+    font-family: monospace;
+    color: #444;
+    line-height: 1.5;
+  }
+  .step-card .step-num {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #8b3a1a;
+    margin-bottom: 8px;
+  }
+
+  /* IMG PLACEHOLDER */
+  .img-placeholder {
+    background: #ddd;
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 11px;
+    color: #999;
+    border-radius: 4px;
+    margin: 12px 0;
+  }
+
+  /* MID CTA */
+  .mid-cta {
+    background: #fff;
+    border: 2px dashed #ccc;
+    padding: 24px 40px;
+    text-align: center;
+    margin: 32px 60px;
+    border-radius: 4px;
+  }
+  .mid-cta p { font-size: 14px; margin-bottom: 12px; color: #555; }
+
+  /* WHY ROCKBUSTERS */
+  .why-band {
+    background: #e8e2d4;
+    padding: 40px 60px;
+    border-top: 2px solid #c8bfb0;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 900px;
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: #1e1612;
+    color: #fff;
+    text-align: center;
+    padding: 40px 60px;
+  }
+  .cta-band h3 { font-size: 22px; margin-bottom: 12px; }
+  .cta-band p { color: #a09080; font-size: 13px; margin-bottom: 24px; }
+  .cta-band .btn-row { display: flex; gap: 12px; justify-content: center; }
+  .cta-band .btn {
+    padding: 13px 36px;
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .cta-band .btn.primary { background: #8b3a1a; color: #fff; }
+  .cta-band .btn.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+
+  /* FOOTER */
+  .footer-wire {
+    background: #111;
+    color: #666;
+    padding: 30px 60px;
+    font-family: monospace;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ANNO */
+  .anno {
+    display: inline-block;
+    background: #fffbe0;
+    border: 1px solid #e0d060;
+    font-family: monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-left: 8px;
+    color: #666;
+    vertical-align: middle;
+  }
+
+  /* INFO NOTE */
+  .info-note {
+    background: #fff8ee;
+    border: 1px solid #e8c080;
+    border-left: 4px solid #e8a020;
+    border-radius: 0 4px 4px 0;
+    padding: 12px 16px;
+    font-family: monospace;
+    font-size: 12px;
+    color: #7a5000;
+    margin: 16px 0;
+    max-width: 720px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-wire">
+  <div class="logo">ROCKBUSTERS</div>
+  <a href="#">Calendar</a>
+  <a href="#">Destinations</a>
+  <a href="#">Team</a>
+  <a href="#">Blog</a>
+  <a href="#">Contact</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="#">Home</a> / <a href="#">Calendar</a> / <a href="#">Sport Climbing Camps</a> / Climbing Camp: Technique &amp; Mind Masterclass – Rodellar, Spain
+</div>
+
+<!-- ===== HERO ===== -->
+<div class="wire-section" style="border-left: none;">
+  <div class="section-label blue">HERO</div>
+  <div class="hero-wire">
+    <div class="hero-text">
+      <h1>Climbing Camp: Technique &amp; Mind Masterclass (6b–8a)<br>Rodellar, Spain</h1>
+      <div class="hero-subline">
+        Break through your climbing plateau with Klemen Bečan in Rodellar – a performance lab blending advanced movement coaching, mental training and tactical strategy to push your onsight, flash and redpoint grades.
+      </div>
+      <div class="badge-row">
+        <span class="badge">📍 RODELLAR, ARAGON, SPAIN</span>
+        <span class="badge">🧗 SPORT CLIMBING</span>
+        <span class="badge">⭐ OUTDOOR LEAD 6b–8a</span>
+        <span class="badge">📅 MAY 2026</span>
+        <span class="badge badge-value">🎁 EVOLV &amp; SINGING ROCK CLIMBING GEAR DEMO</span>
+      </div>
+    </div>
+    <div class="booking-box">
+      <div class="price">€ 950 / 1 week</div>
+      <div class="price-alt">€ 1,650 for 2 weeks</div>
+      <div class="price-note">per person · coaching included</div>
+      <div class="detail-row"><span class="label">Dates</span><span class="val">May 2026/2027 – see below</span></div>
+      <div class="detail-row"><span class="label">Duration</span><span class="val">1 week / 2 weeks</span></div>
+      <div class="detail-row"><span class="label">Location</span><span class="val">Rodellar, Aragon, Spain</span></div>
+      <div class="detail-row"><span class="label">Level</span><span class="val">Outdoor lead 6b–8a</span></div>
+      <div class="detail-row"><span class="label">Coaches</span><span class="val">Klemen Bečan, Jany Novotny, Pablo Ruiz Seco</span></div>
+      <div class="value-badge">🎁 Free demo of Evolv &amp; Singing Rock climbing equipment</div>
+      <button class="cta-btn">BOOK YOUR SPOT →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 1 – TRIP OVERVIEW ===== -->
+<div class="wire-section">
+  <div class="section-label green">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">Peak Performance of Body &amp; Mind</h2>
+    <p class="wire-text">
+      Rockbusters' Performance Camp isn't a climbing holiday. It's a structured programme for ambitious sport climbers who have hit a plateau and want a systematic, analytical way out. Our experienced coaches help you analyse your movement, identify your weaknesses and get stronger in both body and mind – on real routes, in one of Europe's best sport climbing areas.
+    </p>
+    <p class="wire-text" style="margin-top: 10px;">
+      You can join for one week or – if you're serious about real progress – commit to two full weeks. A single week works as a powerful reset and skills tune-up. Two weeks give you enough time to warm up, adapt, rest properly and then push hard into real performance gains.
+    </p>
+
+    <h3 class="wire-h3">Trip Highlights</h3>
+    <div class="highlights-grid">
+      <div class="highlight-card">1 or 2 weeks of sport climbing at Rodellar – one of the world's best tufa crags in the Aragon limestone gorge</div>
+      <div class="highlight-card">Combines movement coaching, mental training and tactical strategy</div>
+      <div class="highlight-card">Coaching by Klemen Bečan – world-class climber and movement geek with decades of elite-level experience</div>
+      <div class="highlight-card">Video analysis, individual feedback and a tailored progression plan for every climber in the group</div>
+      <div class="highlight-card">Typical level: outdoor lead climbers around 6b–8a looking to break through performance plateaus</div>
+      <div class="highlight-card">Free demo of top climbing equipment (Evolv and Singing Rock)</div>
+    </div>
+  </div>
+</div>
+
+<!-- MID CTA -->
+<div class="mid-cta">
+  <p>Limited spots available · Small group format for maximum individual coaching attention</p>
+  <button class="cta-btn" style="display:inline-block; width:auto; padding: 10px 36px; background: #8b3a1a;">BOOK YOUR SPOT →</button>
+</div>
+
+<!-- ===== SECTION 2 – WHO IT'S FOR ===== -->
+<div class="wire-section">
+  <div class="section-label orange">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">Who This Camp Is For</h2>
+    <p class="wire-text">
+      Not for beginners. The Performance Camp is built for dedicated climbers who are ready to get honest feedback (including being filmed) and want to climb at a higher level. It's for those who have reached the point where progress means more than just getting stronger physically.
+    </p>
+
+    <div class="level-grid">
+      <div class="level-card">
+        <div class="level-name">SKILL LEVEL</div>
+        <div class="level-desc">You lead climb outdoors regularly around 6b–8a. You have solid lead belay skills and basic fall practice. You are comfortable on steep limestone and don't need constant supervision on standard routes.</div>
+      </div>
+      <div class="level-card" style="border-color: #8b3a1a;">
+        <div class="level-name" style="background: #8b3a1a;">GOALS ← THIS CAMP</div>
+        <div class="level-desc">You want to push your onsight and flash grade. You're stuck at a plateau and need a structured push. You want to understand your weaknesses, not just climb more volume.</div>
+      </div>
+      <div class="level-card">
+        <div class="level-name">MINDSET</div>
+        <div class="level-desc">You're ready to get filmed and receive honest, analytical feedback on your movement. You're willing to work on weaknesses, not just strengths. You embrace discomfort as a prerequisite for progress.</div>
+      </div>
+    </div>
+
+    <p class="wire-text">We welcome all — solo travellers, couples, smaller groups. Just for reference — 70% of our climbers come alone.</p>
+
+    <div class="info-note">
+      💡 Not sure if this is the right level for you? If you're primarily an indoor climber or newer to outdoor lead, check out our <strong>Sport Climbing Beginner Camp</strong> or <strong>Intro to Outdoor Lead</strong>. These trips are better suited to building solid climbing foundations, while Performance Camp is more about getting to the next level.
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 3 – WHAT YOU'LL WORK ON ===== -->
+<div class="wire-section">
+  <div class="section-label purple">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">What You'll Work On</h2>
+    <p class="wire-text">
+      The Performance Camp splits your development into three deeply interconnected pillars. Each day on the rock addresses all three, but with a rotating primary theme so you build deliberately rather than randomly.
+    </p>
+    <div class="three-col">
+      <div class="wire-box">
+        <h4>🧗 Technique &amp; Movement</h4>
+        <ul class="wire-bullets">
+          <li>Movement efficiency on steep tufa terrain and big holds</li>
+          <li>Footwork precision and smearing on vertical limestone</li>
+          <li>Body positioning, hip rotation and core tension on overhangs</li>
+          <li>Resting positions and recovery on long endurance routes</li>
+          <li>Clipping positions, rhythm and momentum management</li>
+        </ul>
+      </div>
+      <div class="wire-box">
+        <h4>🧠 Mental Performance</h4>
+        <ul class="wire-bullets">
+          <li>Managing fear of falling and pressure on hard redpoint attempts</li>
+          <li>Building a repeatable pre-climb performance routine</li>
+          <li>Dealing with mental fatigue</li>
+          <li>Committing to moves above gear without hesitation</li>
+          <li>Separating identity from performance on a project</li>
+        </ul>
+      </div>
+      <div class="wire-box">
+        <h4>🎯 Strategy &amp; Tactics</h4>
+        <ul class="wire-bullets">
+          <li>Route reading and sequencing on steep, complex routes</li>
+          <li>Redpoint tactics: structuring sessions, managing fatigue, timing attempts</li>
+          <li>Projecting strategy: how to choose, break down and send a project</li>
+          <li>Onsight/flash strategy: information control, pacing, risk management</li>
+          <li>Recognising when to commit vs. when to rest and observe</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 4 – PROGRAM & DAILY FLOW ===== -->
+<div class="wire-section">
+  <div class="section-label rock">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">Program &amp; Daily Flow</h2>
+    <p class="wire-text">
+      This camp doesn't follow a rigid day-by-day schedule. Instead, we run it as a performance lab: every day is adjusted to the weather, conditions, group energy and – most importantly – your personal goals and weaknesses. Together we decide what to focus on so you get the maximum out of your time on rock.
+    </p>
+
+    <h3 class="wire-h3">Key elements we mix and match</h3>
+
+    <div class="wire-box-plain" style="padding: 16px; margin-bottom: 12px;">
+      <strong style="font-size: 14px;">1. On-the-rock coaching sessions</strong>
+      <p class="wire-text" style="margin: 6px 0 8px;">Real climbing, real feedback, real rock.</p>
+      <ul class="wire-bullets">
+        <li>Real climbing on routes chosen for your level, style and goals.</li>
+        <li>Live feedback on movement, tactics and mental approach while you climb.</li>
+        <li>Option to focus more on onsight/flash or projecting, depending on what you need most.</li>
+      </ul>
+    </div>
+
+    <div class="wire-box-plain" style="padding: 16px; margin-bottom: 12px;">
+      <strong style="font-size: 14px;">2. Technique labs</strong>
+      <p class="wire-text" style="margin: 6px 0 8px;">Short, focused work on the specific skills holding you back.</p>
+      <ul class="wire-bullets">
+        <li>Short, focused drills on movement efficiency, footwork, body positioning and resting.</li>
+        <li>Route-specific practice on crux sequences and clipping positions.</li>
+        <li>Individual corrections based on how you move on the wall.</li>
+      </ul>
+    </div>
+
+    <div class="wire-box-plain" style="padding: 16px; margin-bottom: 12px;">
+      <strong style="font-size: 14px;">3. Mental performance work</strong>
+      <p class="wire-text" style="margin: 6px 0 8px;">Tools for the head game that you can reuse on any crag.</p>
+      <ul class="wire-bullets">
+        <li>Guided exposure to falls and commitment in a way that feels challenging but safe.</li>
+        <li>Tools to deal with fear, pressure and negative self-talk before and during hard attempts.</li>
+        <li>Simple mental routines you can reuse on any crag after the camp.</li>
+      </ul>
+    </div>
+
+    <div class="wire-box-plain" style="padding: 16px; margin-bottom: 12px;">
+      <strong style="font-size: 14px;">4. Strategy &amp; planning sessions</strong>
+      <p class="wire-text" style="margin: 6px 0 8px;">How to attack your projects and keep progressing after the camp.</p>
+      <ul class="wire-bullets">
+        <li>Choosing the right projects and building a realistic plan to attack them.</li>
+        <li>Breaking routes into sections, planning rests and key decision points.</li>
+        <li>Learning how to structure climbing days and weeks to keep progressing, not just getting tired.</li>
+      </ul>
+    </div>
+
+    <div class="wire-box-plain" style="padding: 16px; margin-bottom: 12px;">
+      <strong style="font-size: 14px;">5. Video analysis &amp; debriefs</strong>
+      <p class="wire-text" style="margin: 6px 0 8px;">See what really happens on the wall – and fix it.</p>
+      <ul class="wire-bullets">
+        <li>Filming selected attempts to see what really happens on the wall.</li>
+        <li>Joint review with your coach, focused on patterns – not judging.</li>
+        <li>Concrete takeaways and adjustments for your next tries.</li>
+      </ul>
+    </div>
+
+    <h3 class="wire-h3" style="margin-top: 28px;">Tailored to you, every single day</h3>
+    <p class="wire-text">
+      Every climber arrives with a different history, grade, style and headspace. That's why we spend a lot of time talking, watching you climb and adjusting the plan on the go – not just on day one, but every single day.
+    </p>
+    <ul class="wire-bullets">
+      <li>Before and during the camp we clarify your main goals (grade, style, specific routes, mental blocks).</li>
+      <li>Each day we check in on your energy, skin, motivation and fears – and adapt the focus accordingly.</li>
+      <li>If you need more volume, we give you volume. If you need one big hard try with full support, we build the day around it.</li>
+      <li>You always know why we are doing what we are doing – it's a collaboration, not a fixed schedule.</li>
+    </ul>
+
+    <h3 class="wire-h3" style="margin-top: 28px;">Example focus tracks (instead of a fixed week plan)</h3>
+
+    <div class="week-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="wire-box-plain" style="padding: 16px;">
+        <h4 style="border-bottom-color: #8b3a1a; color: #8b3a1a;">Performance breakthrough track</h4>
+        <ul class="wire-bullets">
+          <li>You come with a clear redpoint goal (e.g. first 7c/8a).</li>
+          <li>We build your week around working that route + complementary pitches to support it.</li>
+          <li>Most of the coaching focuses on tactics, efficiency and managing pressure on hard tries.</li>
+        </ul>
+      </div>
+      <div class="wire-box-plain" style="padding: 16px;">
+        <h4 style="border-bottom-color: #1a5a8a; color: #1a5a8a;">Onsight/flash confidence track</h4>
+        <ul class="wire-bullets">
+          <li>You want to push your onsight/flash grade without freezing or overthinking.</li>
+          <li>We pick a range of onsight-appropriate routes and work on decision making, pacing and commitment.</li>
+          <li>A lot of mental work goes into how you approach the unknown and deal with fear of falling.</li>
+        </ul>
+      </div>
+      <div class="wire-box-plain" style="padding: 16px;">
+        <h4 style="border-bottom-color: #1a7a3a; color: #1a7a3a;">Technical rebuild track</h4>
+        <ul class="wire-bullets">
+          <li>You feel your technique holds you back more than your strength.</li>
+          <li>The week focuses on movement drills, repetition on specific styles (steep tufa, slabs, vertical…), and lots of feedback.</li>
+          <li>The goal is to leave with cleaner, more efficient movement that you can apply anywhere.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 4b – ONE WEEK OR TWO? ===== -->
+<div class="wire-section">
+  <div class="section-label rock">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">One week or two?</h2>
+    <p class="wire-text">To make it super clear when you're deciding:</p>
+
+    <div class="week-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 700px; margin-top: 16px;">
+      <div class="wire-box-plain" style="padding: 20px;">
+        <h4 style="border-bottom-color: #1a5a8a; color: #1a5a8a; margin-bottom: 10px;">1-week option – focused reset &amp; tune-up</h4>
+        <ul class="wire-bullets">
+          <li>Great if you can't take more time off but still want structured feedback and new tools.</li>
+          <li>You'll warm up, identify key weaknesses, get specific drills and mental tools, and likely experience a few strong performance days before heading home.</li>
+          <li>Ideal as a powerful maintenance block in your climbing year.</li>
+        </ul>
+      </div>
+      <div class="wire-box-plain" style="padding: 20px;">
+        <h4 style="border-bottom-color: #8b3a1a; color: #8b3a1a; margin-bottom: 10px;">2-week option – deep dive &amp; real breakthrough</h4>
+        <ul class="wire-bullets">
+          <li>Best choice if you truly want to shift your climbing level.</li>
+          <li>Week 1: wake-up, diagnostics, experimentation, first progress and learning.</li>
+          <li>Week 2: your body and head are adapted, so you can spend more days in full performance mode, pushing projects and consolidating new skills.</li>
+          <li>More space for proper rest days and multiple high-quality peak days – not just one.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="wire-text" style="margin-top: 18px; font-style: italic; border-left: 3px solid #8b3a1a; padding-left: 14px;">
+      If you're on the fence, our honest recommendation as performance coaches: go for two weeks if you can. That's where the biggest change usually happens.
+    </p>
+  </div>
+</div>
+
+<!-- ===== SECTION 5 – LOCATION ===== -->
+<div class="wire-section">
+  <div class="section-label blue">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">Climbing Paradise in Rodellar, Spain</h2>
+    <p class="wire-text">
+      Rodellar is a tufa paradise – steep limestone caves carved by the Mascún river gorge in the heart of Aragon, with some of the most sustained and athletic sport climbing in the world. It is the ideal venue for projecting and progression, in spectacular canyon scenery. Spring conditions mean long days on rock with good temperatures and manageable crowds.
+    </p>
+    <div class="img-placeholder">[ MAP – Rodellar, Aragon, Spain · Nearest airports: Zaragoza (ZAZ) · Barcelona (BCN) ]</div>
+    <ul class="wire-bullets">
+      <li>Tufa climbing on steep limestone with big holds, long moves and athletic sequences</li>
+      <li>Grades ranging from 6a to 9a – ideal for projecting and performance work</li>
+      <li>Warm spring climate with excellent conditions in May – long days, dry rock, manageable temperatures</li>
+      <li>One of the world's great sport climbing destinations – a bucket-list crag for any serious climber</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== SECTION 6 – ACCOMMODATION & LOGISTICS ===== -->
+<div class="wire-section">
+  <div class="section-label orange">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">Accommodation &amp; Logistics</h2>
+    <div class="two-col">
+      <div>
+        <div class="wire-box-plain">
+          <h4>Accommodation</h4>
+          <ul class="wire-bullets">
+            <li>Shared accommodation in Rodellar village – strong community vibe, steps from the crag</li>
+            <li>Simple, clean rooms in a climber-oriented guesthouse or camp – evenings are spent on the terrace, not in a hotel lobby</li>
+            <li>Shared spaces for evening video sessions, group discussions and route planning</li>
+            <li>If desired, accommodation upgrade is available for an additional fee</li>
+          </ul>
+        </div>
+        <h3 class="wire-h3">Getting There</h3>
+        <div class="wire-box-plain">
+          <h4>Transport</h4>
+          <ul class="wire-bullets">
+            <li>Fly into Zaragoza (ZAZ) – ~1.5 hrs drive to Rodellar – recommended option</li>
+            <li>Fly into Barcelona (BCN) – ~2.5 hrs – more flight options, slightly longer drive</li>
+            <li>Rental car strongly recommended – gives maximum flexibility for crags and rest days</li>
+            <li>Rockbusters can organise shared transfers and car pooling from the airport on request</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h3 class="wire-h3">What's Included / Not Included</h3>
+        <div class="wire-box-plain">
+          <h4>Included In Our Price ✓</h4>
+          <ul class="wire-bullets">
+            <li>Professional coaching throughout the full camp</li>
+            <li>Mental performance training sessions</li>
+            <li>Video analysis and individualised movement feedback</li>
+            <li>Route selection and climbing guidance daily</li>
+            <li>Local knowledge of all Rodellar sectors and conditions</li>
+            <li>Climbing safety equipment and shared gear</li>
+            <li>Shared accommodation</li>
+            <li>Free demo of Evolv &amp; Singing Rock climbing gear</li>
+          </ul>
+        </div>
+        <div class="wire-box-plain" style="margin-top: 12px;">
+          <h4>Food &amp; Beverages</h4>
+          <ul class="wire-bullets">
+            <li>Each climber takes care of their own nutrition</li>
+            <li>Our accommodation has a shared and fully equipped kitchen</li>
+            <li>A small grocery shop available in the village</li>
+            <li>Local restaurants and bars at your disposition</li>
+          </ul>
+        </div>
+        <div class="wire-box-plain" style="margin-top: 12px;">
+          <h4>Not Included In Our Price ✗</h4>
+          <ul class="wire-bullets">
+            <li>Travel to/from destination (flights, train)</li>
+            <li>Food &amp; drinks</li>
+            <li>Personal climbing equipment (shoes, harness, chalk bag)</li>
+            <li>Climbing and travel insurance (strongly recommended)</li>
+            <li>Accommodation upgrades</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 7 – COACHES ===== -->
+<div class="wire-section">
+  <div class="section-label red">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">Your Coaches</h2>
+    <p class="wire-text">
+      The Performance Camp is led by coaches who don't just teach climbing – they have lived it at the highest levels. Klemen Bečan brings elite-level movement analysis and a deep understanding of the mental game; Jany Novotny brings the vision and methodology that built Rockbusters' reputation as Europe's leading climbing performance community; Pablo Ruiz Seco brings elite Spanish climbing expertise and deep knowledge of Rodellar's routes.
+    </p>
+    <div class="coach-row">
+      <div class="coach-card">
+        <div class="coach-avatar">PHOTO<br>Klemen</div>
+        <div class="coach-name">Klemen Bečan</div>
+        <div class="coach-role">Head Coach · Elite Sport Climber</div>
+        <div class="coach-bio">
+          One of Europe's most respected climbers and coaches, known for multiple 9a+ ascents and a deep, analytical understanding of movement efficiency and route strategy. Klemen's coaching blends precision with real-world climbing insight – helping climbers understand <em>why</em> techniques work, not just how to perform them. His approach to mental performance and fall training is game-changing for climbers at every level.
+        </div>
+        <ul class="wire-bullets" style="margin-top: 12px;">
+          <li>Decades of experience at 9a+ level sport climbing</li>
+          <li>Known for analytical movement breakdown &amp; route strategy</li>
+          <li>Specialises in performance plateaus and mental coaching</li>
+          <li>Experience coaching climbers from 6b to elite level</li>
+        </ul>
+      </div>
+      <div class="coach-card">
+        <div class="coach-avatar">PHOTO<br>Jany</div>
+        <div class="coach-name">Jany Novotny</div>
+        <div class="coach-role">Rockbusters Founder · Performance Coach</div>
+        <div class="coach-bio">
+          Jany founded Rockbusters with a single mission: create the most effective climbing performance programs in Europe. A deeply experienced coach and climber, he designed the Performance Lab methodology and has guided hundreds of climbers through grade breakthroughs. His understanding of how coaches and athletes build trust and progress together is the backbone of everything Rockbusters does.
+        </div>
+        <ul class="wire-bullets" style="margin-top: 12px;">
+          <li>Founder and head guide of Rockbusters</li>
+          <li>Architect of the Performance Camp coaching framework</li>
+          <li>Deep experience in mentoring climbers at intermediate–advanced level</li>
+          <li>Background in competition climbing and route development</li>
+        </ul>
+      </div>
+      <div class="coach-card">
+        <div class="coach-avatar">PHOTO<br>Pablo</div>
+        <div class="coach-name">Pablo Ruiz Seco</div>
+        <div class="coach-role">Resident Coach · Rodellar Specialist</div>
+        <div class="coach-bio">
+          Pablo is one of Spain's most accomplished sport climbers and a true Rodellar local. With an intimate knowledge of the crag – its routes, conditions, sequences and hidden rests – he adds a layer of insider expertise that transforms how quickly climbers unlock the area's potential. Pablo's coaching style is precise and hands-on: he reads movement fast and delivers feedback in the moment, on the route, where it counts.
+        </div>
+        <ul class="wire-bullets" style="margin-top: 12px;">
+          <li>Elite-level Spanish sport climber with extensive high-grade ascents in Aragon</li>
+          <li>Deep familiarity with Rodellar's full route spectrum from 6b to 9a</li>
+          <li>Specialist in tufa technique, body positioning and resting strategy</li>
+          <li>Experience coaching intermediate and advanced climbers on-site at Rodellar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 8 – RESULTS & TESTIMONIALS ===== -->
+<div class="wire-section">
+  <div class="section-label green">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">Results You Can Expect</h2>
+    <div class="results-grid">
+      <div class="result-card">Clear understanding of your specific movement patterns and the 2–3 key weaknesses holding back your grade the most.</div>
+      <div class="result-card">A structured, personalised plan for how to keep progressing after the camp – not just a memory of a great week.</div>
+      <div class="result-card">At least one solid new redpoint or onsight milestone – if conditions and effort align. Most climbers send something meaningful.</div>
+      <div class="result-card">Mental tools you will use every session from now on: a pre-attempt routine, a fall practice framework and an approach to managing pressure on limit climbing.</div>
+    </div>
+
+    <h2 class="wire-h2" style="margin-top: 32px;">What Past Climbers Say</h2>
+    <div class="reviews-row">
+      <div class="review-card">
+        <div class="quote">"Klemen's coaching completely changed how I think about my body on the wall. I didn't just climb harder – I understood for the first time why I was failing on certain moves. The video analysis sessions were genuinely game-changing."</div>
+        <div class="reviewer">— Martin H., Germany · 7a → 7b+ in one week</div>
+      </div>
+      <div class="review-card">
+        <div class="quote">"The mental-oriented attitude of the whole camp was something I'd never experienced. Jany and Klemen pushed my limits in a way that felt supportive, not scary. I came back from Rodellar a different climber."</div>
+        <div class="reviewer">— Sophie R., UK · Advanced Sport Climber</div>
+      </div>
+      <div class="review-card">
+        <div class="quote">"You do get to push your limits here – genuinely. Not just ticking routes, but understanding yourself as a climber. I went home with a real plan and sent my long-term project two weeks later."</div>
+        <div class="reviewer">— Tomáš K., Czech Republic · 7c redpoint goal achieved</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 9 – FAQ & BOOKING ===== -->
+<div class="wire-section">
+  <div class="section-label blue">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">FAQ for This Camp</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Is this camp right for me if I only climb indoors at 6c?</div>
+        <div class="faq-a">Probably not yet. The Performance Lab assumes solid outdoor lead experience and familiarity with bolt-to-bolt climbing on real rock. If you're primarily an indoor climber or haven't yet built confidence on outdoor routes, we'd recommend our Intro to Outdoor Lead or Sport Climbing Beginner Camp first. Come back to the Performance Lab once you have a solid base outdoors.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How scared of falling can I be and still benefit from the camp?</div>
+        <div class="faq-a">A healthy fear of falling is completely normal and you are not disqualified from the camp because of it. Fall practice and fear management are core parts of the Mental Performance pillar – we work on this systematically and at your pace. What matters is that you're willing to engage with it. Climbers who arrive anxious about falls often have the biggest breakthroughs by the end of the week.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I come alone – will I find partners?</div>
+        <div class="faq-a">Absolutely. Around 70% of Performance Lab participants travel solo. The small group format means you'll be climbing with the same people every day, and the intensity of the program builds real bonds fast. Most people leave as firm climbing partners with plans to meet up again.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What gear do I need to bring?</div>
+        <div class="faq-a">Your personal climbing kit: shoes (bring two pairs if possible – one for warming up, one for redpoints), harness, chalk bag, belay device. A light rack of quickdraws (10–12) is useful, though the group shares draws on project routes. Bring sport clothing for warm conditions. Rockbusters provides shared safety equipment. And remember – you'll have a 200€ Singing Rock voucher to spend on gear.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What happens if the weather is bad for several days?</div>
+        <div class="faq-a">Rodellar in May is extremely reliable, but we always have contingency plans. The canyon has sheltered cave sectors that stay dry in light rain. If we genuinely lose climbing days, we use the time for extended video analysis, mental coaching workshops and technique drills on warm-up terrain. We have never run a camp where weather caused significant lost climbing time in May.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I choose between 1 week and 2 weeks?</div>
+        <div class="faq-a">Yes – the camp runs as a 1-week option (May 2–9, €950) or a full 2-week program (May 2–16, €1,650). The 2-week format allows a deeper coaching arc: week one focuses on assessment and technical work, week two shifts entirely to performance and consolidation. For climbers with the time, two weeks produce significantly more measurable progress.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is the 200€ Singing Rock voucher usable before the camp?</div>
+        <div class="faq-a">The voucher is provided at the start of the camp and is valid for Singing Rock's full gear range. We recommend using it at or after the camp once Klemen has given you feedback on your gear setup – he may have specific recommendations based on your movement patterns and goals.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need climbing insurance?</div>
+        <div class="faq-a">Yes – personal climbing and travel insurance with mountain rescue cover is strongly recommended. It is not included in the camp price. We can point you to suitable providers on request.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW TO BOOK -->
+<div class="wire-section">
+  <div class="section-label orange">H2</div>
+  <div class="section-inner">
+    <h2 class="wire-h2">How to Book</h2>
+    <p class="wire-text">Simple and low-friction. Spots fill up fast – the Performance Lab runs with a small group and typically sells out months in advance.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-num">①</span>
+        Pick your format – 1 week (€950) or 2 weeks (€1,650) – and confirm May 2026 is your target
+      </div>
+      <div class="step-card">
+        <span class="step-num">②</span>
+        Send the booking form or contact us directly – we'll confirm availability and answer any questions
+      </div>
+      <div class="step-card">
+        <span class="step-num">③</span>
+        Personal consultation with our team to confirm your level, goals and logistics
+      </div>
+      <div class="step-card">
+        <span class="step-num">④</span>
+        Pay deposit to secure your spot · Pre-trip briefing email with crag info, gear list and travel tips
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY ROCKBUSTERS -->
+<div class="why-band">
+  <h2 class="wire-h2" style="border-color: #b0a890; margin-bottom: 24px;">Why Rockbusters</h2>
+  <div class="why-grid">
+    <div>
+      <p class="wire-text">Rockbusters is Europe's leading climbing performance community – built by climbers who believe the best way to help others improve is to have done it themselves at the highest level. We don't run generic climbing holidays. We run structured performance programs with real coaching, real feedback and real results.</p>
+    </div>
+    <div>
+      <ul class="wire-bullets">
+        <li>Small groups for individual coaching attention every day</li>
+        <li>Elite coaches with competition and high-grade ascent backgrounds</li>
+        <li>Focus on measurable skill development, not just ticking routes</li>
+        <li>Video analysis and personalised progression plans as standard</li>
+        <li>Hand-picked destinations chosen for coaching quality, not just scenery</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="cta-band">
+  <h3>Ready to break through? Your next grade is waiting.</h3>
+  <p>Climbing Technique &amp; Mental Performance Camp · Rodellar, Spain · May 2–9, 2026 · €950 · 200€ Singing Rock voucher included</p>
+  <div class="btn-row">
+    <button class="btn primary">BOOK YOUR SPOT →</button>
+    <button class="btn ghost">ASK A QUESTION</button>
+  </div>
+</div>
+
+<div class="footer-wire">
+  <span>ROCKBUSTERS.NET</span>
+  <span>Klemen Bečan &amp; Jany Novotny · Rodellar, Spain · May 2026 · © 2026</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salzburg Shred Safari – 5-Day Resort-Hopping Adventure in Austria | Snowbusters</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #f0ede8;
+    color: #1a1a1a;
+  }
+
+  /* NAVIGATION */
+  .nav-wire {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-family: monospace;
+    font-size: 13px;
+  }
+  .nav-wire .logo { font-size: 16px; font-weight: bold; margin-right: auto; letter-spacing: 2px; }
+  .nav-wire a { color: #aaa; text-decoration: none; }
+
+  /* PAGE SWITCHER */
+  .switcher {
+    background: #e2ddd6;
+    border-bottom: 2px solid #c5bfb5;
+    display: flex;
+    gap: 0;
+    font-family: monospace;
+    font-size: 12px;
+  }
+  .switcher button {
+    padding: 10px 28px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 12px;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+  }
+  .switcher button.active {
+    background: #f0ede8;
+    color: #1a1a1a;
+    border-bottom: 3px solid #1a1a1a;
+    font-weight: bold;
+  }
+
+  /* PAGE WRAPPER */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* WIREFRAME COMPONENTS */
+  .wire-section {
+    border-left: 4px solid #c5bfb5;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  .wire-section + .wire-section {
+    border-top: 1px dashed #c5bfb5;
+  }
+
+  .section-label {
+    position: absolute;
+    left: -4px;
+    top: 16px;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+  .section-label.blue { background: #2255cc; }
+  .section-label.green { background: #1a7a3a; }
+  .section-label.orange { background: #b35000; }
+  .section-label.purple { background: #5a2299; }
+  .section-label.red { background: #aa2222; }
+
+  .section-inner {
+    padding: 40px 60px 40px 60px;
+  }
+
+  /* HERO */
+  .hero-wire {
+    background: #2a2a2a;
+    color: #fff;
+    min-height: 380px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    padding: 60px 60px 50px;
+    position: relative;
+  }
+  .hero-wire .section-label { top: 20px; left: 0; }
+
+  .hero-text h1 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.25;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  .hero-overview {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #ccc;
+    margin-bottom: 24px;
+  }
+  .badge-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-family: monospace;
+    color: #ddd;
+    letter-spacing: 0.5px;
+  }
+
+  .booking-box {
+    background: #fff;
+    color: #1a1a1a;
+    border-radius: 6px;
+    padding: 28px 24px;
+    align-self: start;
+    margin-top: 8px;
+  }
+  .booking-box .price {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .booking-box .price-note {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 20px;
+    font-family: monospace;
+  }
+  .booking-box .detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid #eee;
+    font-family: monospace;
+  }
+  .booking-box .detail-row .label { color: #888; }
+  .booking-box .detail-row .val { font-weight: bold; }
+  .cta-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 13px;
+    margin-top: 20px;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .cta-btn.secondary {
+    background: transparent;
+    color: #1a1a1a;
+    border: 1px solid #ccc;
+    margin-top: 8px;
+    font-size: 11px;
+  }
+
+  /* CONTENT SECTIONS */
+  h2.wire-h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1a1a1a;
+  }
+  h3.wire-h3 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: #444;
+  }
+
+  .wire-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #333;
+    max-width: 720px;
+    margin-bottom: 16px;
+  }
+
+  .wire-bullets {
+    list-style: none;
+    margin: 12px 0 20px 0;
+    padding: 0;
+    max-width: 720px;
+  }
+  .wire-bullets li {
+    padding: 7px 0 7px 22px;
+    font-size: 13px;
+    color: #333;
+    position: relative;
+    border-bottom: 1px solid #e5e0d8;
+    font-family: monospace;
+  }
+  .wire-bullets li:before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #888;
+  }
+
+  /* HIGHLIGHTS GRID */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0 24px;
+  }
+  .highlight-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-size: 12px;
+    font-family: monospace;
+    color: #444;
+    line-height: 1.5;
+  }
+  .highlight-card:before {
+    content: '✓';
+    display: block;
+    color: #1a7a3a;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  /* RIDER LEVELS */
+  .level-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .level-card {
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+  }
+  .level-card .level-name {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    padding: 3px 8px;
+    background: #1a1a1a;
+    color: #fff;
+    display: inline-block;
+    border-radius: 2px;
+  }
+  .level-card .level-desc {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  /* ITINERARY */
+  .day-list { margin: 16px 0; }
+  .day-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .day-label {
+    padding: 12px 16px;
+    background: #1a1a1a;
+    color: #fff;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-start;
+  }
+  .day-content {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #333;
+    background: #fff;
+    line-height: 1.5;
+  }
+
+  /* TWO-COL LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 16px 0;
+  }
+  .wire-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+  }
+  .wire-box h4 {
+    font-size: 12px;
+    font-family: monospace;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    color: #888;
+    text-transform: uppercase;
+  }
+
+  /* REVIEWS */
+  .reviews-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .review-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-left: 4px solid #1a1a1a;
+    padding: 16px;
+    border-radius: 0 4px 4px 0;
+  }
+  .review-card .quote {
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 12px;
+  }
+  .review-card .reviewer {
+    font-family: monospace;
+    font-size: 11px;
+    color: #888;
+  }
+
+  /* FAQ */
+  .faq-list { margin: 16px 0; }
+  .faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 14px 0;
+  }
+  .faq-q {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+  .faq-q:after { content: '+'; color: #888; }
+  .faq-a {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.65;
+    max-width: 680px;
+  }
+
+  /* COACH CARDS */
+  .coach-row {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+  }
+  .coach-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+    width: 200px;
+    text-align: center;
+  }
+  .coach-avatar {
+    width: 64px;
+    height: 64px;
+    background: #ddd;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #888;
+    font-family: monospace;
+  }
+  .coach-name { font-weight: bold; font-size: 13px; margin-bottom: 4px; }
+  .coach-role { font-size: 11px; color: #888; font-family: monospace; }
+
+  /* CTA BAND */
+  .cta-band {
+    background: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 40px 60px;
+  }
+  .cta-band h3 { font-size: 20px; margin-bottom: 12px; }
+  .cta-band p { color: #aaa; font-size: 13px; margin-bottom: 24px; }
+  .cta-band .btn-row { display: flex; gap: 12px; justify-content: center; }
+  .cta-band .btn {
+    padding: 12px 32px;
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .cta-band .btn.primary { background: #fff; color: #1a1a1a; }
+  .cta-band .btn.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+
+  /* WHY SNOWBUSTERS */
+  .why-band {
+    background: #e8e3d8;
+    padding: 40px 60px;
+    border-top: 2px solid #c5bfb5;
+  }
+  .why-band .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 900px;
+  }
+
+  /* FOOTER */
+  .footer-wire {
+    background: #111;
+    color: #666;
+    padding: 30px 60px;
+    font-family: monospace;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ANNOTATIONS */
+  .anno {
+    display: inline-block;
+    background: #fffbe0;
+    border: 1px solid #e0d060;
+    font-family: monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-left: 8px;
+    color: #666;
+    vertical-align: middle;
+  }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    padding: 12px 60px;
+    font-family: monospace;
+    font-size: 11px;
+    color: #888;
+    background: #e8e3d8;
+    border-bottom: 1px solid #c5bfb5;
+  }
+  .breadcrumb a { color: #888; text-decoration: underline; }
+
+  .section-note {
+    font-family: monospace;
+    font-size: 10px;
+    color: #aaa;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* PARTNER DEMO BLOCK */
+  .partner-block {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 0;
+    border: 2px solid #1a1a1a;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 20px 0 8px;
+  }
+  .partner-body {
+    padding: 32px 36px;
+    background: #fff;
+  }
+  .partner-eyebrow {
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #2255cc;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .partner-eyebrow:before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: #2255cc;
+  }
+  .partner-body h3 {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    color: #1a1a1a;
+  }
+  .partner-body .partner-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+    max-width: 560px;
+  }
+  .partner-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .partner-benefit-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #333;
+  }
+  .partner-benefit-row .pb-icon {
+    width: 22px;
+    height: 22px;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .partner-note {
+    font-family: monospace;
+    font-size: 11px;
+    color: #888;
+    padding: 10px 14px;
+    background: #f0ede8;
+    border-left: 3px solid #c5bfb5;
+    border-radius: 0 3px 3px 0;
+  }
+  .partner-logo-box {
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 28px;
+    gap: 16px;
+  }
+  .partner-logo-placeholder {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #444;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 11px;
+    color: #666;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .partner-logo-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 3px;
+    font-family: monospace;
+  }
+  .partner-logo-sub {
+    font-family: monospace;
+    font-size: 10px;
+    color: #666;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  .partner-badge {
+    display: inline-block;
+    background: #2255cc;
+    color: #fff;
+    font-family: monospace;
+    font-size: 10px;
+    padding: 4px 12px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+  }
+
+  /* Hero badge highlight */
+  .badge.badge-partner {
+    background: rgba(34, 85, 204, 0.15);
+    border-color: rgba(34, 85, 204, 0.4);
+    color: #aac0f8;
+  }
+
+  .equip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 4px 0 20px;
+  }
+  .equip-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .equip-item.equip-mandatory {
+    border-color: #1a1a1a;
+    border-width: 2px;
+  }
+  .equip-icon {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+  .equip-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #1a1a1a;
+    line-height: 1.3;
+  }
+  .equip-note {
+    font-family: monospace;
+    font-size: 10px;
+    color: #888;
+    line-height: 1.4;
+  }
+  .equip-note.equip-required {
+    color: #b35000;
+    font-weight: bold;
+  }
+
+  /* ── DAY-BY-DAY ITINERARY ── */
+  .itin-wrap { margin: 24px 0 8px; }
+
+  .itin-progress {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin-bottom: 0;
+  }
+  .itin-progress-step {
+    padding: 10px 8px;
+    background: #e8e3d8;
+    border: 1px solid #c5bfb5;
+    text-align: center;
+    font-family: monospace;
+    font-size: 11px;
+    color: #888;
+    cursor: pointer;
+    border-bottom: none;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .itin-progress-step.active {
+    background: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+  }
+  .itin-progress-step .step-num {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .itin-progress-step .step-name {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .itin-panels {
+    border: 1px solid #c5bfb5;
+    background: #fff;
+  }
+  .itin-panel { display: none; }
+  .itin-panel.active { display: grid; grid-template-columns: 360px 1fr; min-height: 340px; }
+
+  .itin-panel-img {
+    background: #2a2a2a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 32px 24px;
+    color: #ccc;
+    position: relative;
+    min-height: 340px;
+  }
+  .itin-panel-img .day-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: #fff;
+    color: #1a1a1a;
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 10px;
+    letter-spacing: 1px;
+  }
+  .itin-panel-img .resort-icon { font-size: 40px; margin-bottom: 4px; }
+  .itin-panel-img .resort-name {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .itin-panel-img .resort-meta {
+    font-family: monospace;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .itin-panel-img .img-placeholder-label {
+    position: absolute;
+    bottom: 12px;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: monospace;
+    font-size: 10px;
+    color: #555;
+    letter-spacing: 0.5px;
+  }
+
+  .itin-panel-body {
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .itin-panel-body .day-eyebrow {
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #aaa;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .itin-panel-body h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    line-height: 1.2;
+    color: #1a1a1a;
+  }
+  .itin-panel-body .day-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+    max-width: 560px;
+  }
+  .itin-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .itin-tag {
+    background: #f0ede8;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    font-family: monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    color: #555;
+  }
+  .itin-schedule {
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .itin-schedule-row {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .itin-schedule-time {
+    font-family: monospace;
+    font-size: 10px;
+    color: #aaa;
+    width: 52px;
+    flex-shrink: 0;
+    padding: 6px 0;
+  }
+  .itin-schedule-item {
+    font-size: 12px;
+    color: #555;
+    padding: 6px 0;
+    line-height: 1.4;
+  }
+
+  /* Nav arrows */
+  .itin-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f5f2ed;
+    border-top: 1px solid #e8e3d8;
+  }
+  .itin-nav button {
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 7px 18px;
+    font-family: monospace;
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #555;
+  }
+  .itin-nav button:hover { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .itin-nav button:disabled { opacity: 0.3; cursor: default; }
+  .itin-nav button:disabled:hover { background: transparent; color: #555; border-color: #ccc; }
+  .itin-nav .step-indicator {
+    font-family: monospace;
+    font-size: 11px;
+    color: #888;
+  }
+
+  .img-placeholder {
+    background: #ddd;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 11px;
+    color: #999;
+    border-radius: 4px;
+    margin: 12px 0;
+  }
+
+  .mid-cta {
+    background: #fff;
+    border: 2px dashed #ccc;
+    padding: 24px 40px;
+    text-align: center;
+    margin: 32px 60px;
+    border-radius: 4px;
+  }
+  .mid-cta p { font-size: 14px; margin-bottom: 12px; color: #555; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-wire">
+  <div class="logo">SNOWBUSTERS</div>
+  <a href="#">Trips</a>
+  <a href="#">Locations</a>
+  <a href="#">Coaches</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+</nav>
+
+<!-- PAGE SWITCHER -->
+<div class="switcher">
+  <button class="active" onclick="switchPage('trip', this)">📄 TRIP / COURSE PAGE</button>
+  <button onclick="switchPage('location', this)">📍 LOCATION PAGE</button>
+</div>
+
+<!-- ==================== TRIP PAGE ==================== -->
+<div id="page-trip" class="page active">
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="#">Home</a> / <a href="#">Trips</a> / <a href="#">Austria</a> / Salzburg Shred Safari – 5-Day Resort-Hopping Adventure
+  </div>
+
+  <!-- HERO -->
+  <div class="wire-section" style="border-left: none;">
+    <div class="section-label blue">HERO</div>
+    <div class="hero-wire">
+      <div class="hero-text">
+        <h1>Salzburg Shred Safari – 5-Day Resort-Hopping Adventure in Austria<br>(Winter 2026/27, Intermediate–Advanced)</h1>
+        <div class="hero-overview">
+          Experience the ultimate Austrian resort-hopping adventure – 5 days, 5 legendary resorts across the Salzburgerland. Our expert coaches transform your on-piste technique while you carve through pristine groomers at <strong>Zell am See, Saalbach, Hochkönig, Kitzbühel and the Kitzsteinhorn Glacier</strong>. Perfect for intermediate to advanced riders who want both professional coaching and the thrill of exploring five world-class resorts in one unforgettable trip.
+        </div>
+        <div class="badge-row">
+          <span class="badge">📍 SALZBURG REGION, AUSTRIA</span>
+          <span class="badge">🎿 SKI + SNOWBOARD</span>
+          <span class="badge">⭐ INTERMEDIATE / ADVANCED</span>
+          <span class="badge">❄️ NOV 2026 – APR 2027</span>
+          <span class="badge badge-partner">🎿 DOWN SKIS DEMO INCLUDED</span>
+        </div>
+      </div>
+      <div class="booking-box">
+        <div class="price">€ 3 190</div>
+        <div class="price-note">per person · 5 days</div>
+        <div class="detail-row"><span class="label">Dates</span><span class="val">29/11/2026 – 30/04/2027</span></div>
+        <div class="detail-row"><span class="label">Duration</span><span class="val">5 days</span></div>
+        <div class="detail-row"><span class="label">Group size</span><span class="val">Max 8 riders</span></div>
+        <div class="detail-row"><span class="label">Level</span><span class="val">Intermediate / Advanced</span></div>
+        <div class="detail-row"><span class="label">Category</span><span class="val">Technique Master-Class</span></div>
+        <button class="cta-btn">JOIN US →</button>
+        <button class="cta-btn secondary">ASK A QUESTION</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRIP OVERVIEW -->
+  <div class="wire-section">
+    <div class="section-label green">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">Carve It Up: Epic 5-Day Resort-Hopping Adventure in Austria</h2>
+      <p class="wire-text">
+        Calling all carving enthusiasts and piste perfectionists. Five days of pristine corduroy and perfectly manicured slopes across Salzburgerland's most legendary resorts: Zell am See, Saalbach, Hochkönig, Kitzbühel, and the Kitzsteinhorn Glacier. Whether you're looking to master Euro carves or cruise the groomers with style, our pro instructors will coach you to the next level – no more sketchy turns or speed wobbles, just pure butter-smooth riding that'll have you absolutely slaying the slopes by week's end.
+      </p>
+      <h3 class="wire-h3">Trip Highlights</h3>
+      <div class="highlights-grid">
+        <div class="highlight-card">5 Days, 5 Epic Resorts – resort hop like a pro across the best groomed terrain in the Alps</div>
+        <div class="highlight-card">Professional technique coaching tailored to your level with video analysis</div>
+        <div class="highlight-card">Small group – max 8 riders for maximum progression and personal attention</div>
+        <div class="highlight-card">Glacier riding at Kitzsteinhorn (3,029m) – snow-sure conditions year-round</div>
+        <div class="highlight-card">DOWN SKIS demo included – test the latest freeride and touring equipment</div>
+        <div class="highlight-card">Ride every type of run – from cruisy blues to challenging blacks across 5 world-class resorts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MID CTA -->
+  <div class="mid-cta">
+    <p>Ready to ride? Join the Salzburg Shred Safari – limited to 8 riders per group.</p>
+    <button class="cta-btn" style="display:inline-block; width:auto; padding: 10px 32px;">JOIN US →</button>
+  </div>
+
+  <!-- WHO IS IT FOR -->
+  <div class="wire-section">
+    <div class="section-label orange">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">Who This Trip Is For</h2>
+      <p class="wire-text">
+        This adventure brings together like-minded riders who are genuinely passionate for performance on the piste and want to take their technique to the next level.
+      </p>
+      <div class="level-grid">
+        <div class="level-card" style="border-color: #1a1a1a;">
+          <div class="level-name" style="background: #2255cc;">INTERMEDIATE ← THIS TRIP</div>
+          <div class="level-desc">Comfortable on all red runs and starting to explore black terrain. Ready to refine carving technique and improve consistency at speed.</div>
+        </div>
+        <div class="level-card" style="border-color: #1a1a1a;">
+          <div class="level-name" style="background: #1a1a1a;">ADVANCED ← THIS TRIP</div>
+          <div class="level-desc">Confident on black runs, looking to master tight Euro carves, high-speed control and technical piste riding across varied terrain.</div>
+        </div>
+        <div class="level-card">
+          <div class="level-name">FAMILIES & GROUPS</div>
+          <div class="level-desc">Suitable for all riders 15+ years. Younger riders welcome with parents. Perfect for families, friend groups and solo travelers.</div>
+        </div>
+      </div>
+      <h3 class="wire-h3">Rider type & prerequisites</h3>
+      <ul class="wire-bullets">
+        <li>Comfortable on red / black groomed runs – no beginner level</li>
+        <li>Suitable for skiers and snowboarders alike</li>
+        <li>Riders 15+ years (younger welcome with parents)</li>
+        <li>Solo travelers, families and friend groups all welcome</li>
+        <li>Stoke level: HIGH – be ready to charge hard on the groomers</li>
+      </ul>
+
+      <h3 class="wire-h3">Essential Equipment</h3>
+      <p class="wire-text" style="margin-bottom: 14px;">Everything you need on the mountain. Equipment can be rented locally – we're happy to recommend shops near each resort.</p>
+      <div class="equip-grid">
+        <div class="equip-item">
+          <div class="equip-icon">🎿</div>
+          <div class="equip-name">Skis or Snowboard</div>
+          <div class="equip-note">Rent or bring your own · DOWN DEMO available</div>
+        </div>
+        <div class="equip-item">
+          <div class="equip-icon">👟</div>
+          <div class="equip-name">Boots</div>
+          <div class="equip-note">Properly fitted – critical for performance</div>
+        </div>
+        <div class="equip-item">
+          <div class="equip-icon">🪄</div>
+          <div class="equip-name">Poles</div>
+          <div class="equip-note">For skiers</div>
+        </div>
+        <div class="equip-item equip-mandatory">
+          <div class="equip-icon">⛑️</div>
+          <div class="equip-name">Helmet</div>
+          <div class="equip-note equip-required">Mandatory for all riders</div>
+        </div>
+        <div class="equip-item">
+          <div class="equip-icon">🧥</div>
+          <div class="equip-name">Ski / Snowboard Clothing</div>
+          <div class="equip-note">Waterproof jacket &amp; trousers</div>
+        </div>
+        <div class="equip-item">
+          <div class="equip-icon">🥽</div>
+          <div class="equip-name">Goggles</div>
+          <div class="equip-note">Appropriate lens for conditions</div>
+        </div>
+        <div class="equip-item">
+          <div class="equip-icon">🕶️</div>
+          <div class="equip-name">Sunglasses</div>
+          <div class="equip-note">For sunny alpine days</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT YOU WILL LEARN -->
+  <div class="wire-section">
+    <div class="section-label green">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">What You Will Learn &amp; Achieve</h2>
+      <p class="wire-text">Our coaches focus on real skill development – not just mileage. Every day combines guided exploration of a new resort with structured technique sessions and video analysis, so you can see exactly what to fix and feel the difference immediately on the next run.</p>
+      <div class="two-col">
+        <div class="wire-box">
+          <h4>On-Piste Technique</h4>
+          <ul class="wire-bullets">
+            <li>Euro carving – tight, dynamic turns on groomed slopes</li>
+            <li>High-speed edge control and balance on steeper terrain</li>
+            <li>Short turns on steep black runs with consistency</li>
+            <li>Smooth transitions between turn shapes across varied pitch</li>
+          </ul>
+        </div>
+        <div class="wire-box">
+          <h4>Progression &amp; Mindset</h4>
+          <ul class="wire-bullets">
+            <li>Video analysis – see your riding and fix it fast</li>
+            <li>Personal goals set on Day 1, reviewed throughout the week</li>
+            <li>Reading terrain to choose the best line and speed</li>
+            <li>Building confidence to ride at the next level</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITINERARY -->
+  <div class="wire-section">
+    <div class="section-label purple">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">Day-by-Day Itinerary</h2>
+      <p class="wire-text">
+        Each day takes you to a different legendary resort in the Salzburgerland. The order is designed to build momentum – from warm-up turns to glacier glory. Program may be adjusted based on conditions and group needs.
+      </p>
+
+      <div class="itin-wrap">
+
+        <!-- Progress tabs -->
+        <div class="itin-progress" id="itin-tabs">
+          <div class="itin-progress-step active" onclick="showDay(0)">
+            <span class="step-num">1</span>
+            <span class="step-name">Zell am See</span>
+          </div>
+          <div class="itin-progress-step" onclick="showDay(1)">
+            <span class="step-num">2</span>
+            <span class="step-name">Saalbach</span>
+          </div>
+          <div class="itin-progress-step" onclick="showDay(2)">
+            <span class="step-num">3</span>
+            <span class="step-name">Hochkönig</span>
+          </div>
+          <div class="itin-progress-step" onclick="showDay(3)">
+            <span class="step-num">4</span>
+            <span class="step-name">Kitzbühel</span>
+          </div>
+          <div class="itin-progress-step" onclick="showDay(4)">
+            <span class="step-num">5</span>
+            <span class="step-name">Kitzsteinhorn</span>
+          </div>
+        </div>
+
+        <!-- Day panels -->
+        <div class="itin-panels">
+
+          <!-- DAY 1 -->
+          <div class="itin-panel active" id="itin-day-0">
+            <div class="itin-panel-img">
+              <div class="day-badge">DAY 1</div>
+              <div class="resort-icon">⛷️</div>
+              <div class="resort-name">Zell am See<br>Schmittenhöhe</div>
+              <div class="resort-meta">
+                Salzburger Land, Austria<br>
+                1,670m – 2,000m · 77 km pistes<br>
+                Beside the crystalline Lake Zell
+              </div>
+              <div class="img-placeholder-label">[ PHOTO – Zell am See panorama ]</div>
+            </div>
+            <div class="itin-panel-body">
+              <div class="day-eyebrow">Day 1 · Arrival &amp; First Turns</div>
+              <h3>Zell am See – Alpine Charm Meets World-Class Grooming</h3>
+              <p class="day-desc">
+                Start your Austrian adventure at the picturesque Zell am See, where alpine charm meets world-class skiing. Sitting between the crystalline Lake Zell and the majestic Schmittenhöhe mountain, this stunning resort offers 77 kilometres of diverse pistes across all skill levels. The state-of-the-art lift system ensures minimal waiting, while the charming medieval town centre provides a perfect après-ski atmosphere. Your coaches assess the group's technique and set individual goals for the week ahead.
+              </p>
+              <div class="itin-highlights">
+                <span class="itin-tag">🎿 77 km diverse pistes</span>
+                <span class="itin-tag">📹 First video analysis session</span>
+                <span class="itin-tag">🏔️ Lake Zell panorama views</span>
+                <span class="itin-tag">👥 Group intro &amp; goal setting</span>
+              </div>
+              <div class="itin-schedule">
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">09:00</div>
+                  <div class="itin-schedule-item">Meet coaches at base, equipment check &amp; group intro</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">09:30</div>
+                  <div class="itin-schedule-item">Warm-up runs on Schmittenhöhe – technique baseline assessment</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">12:30</div>
+                  <div class="itin-schedule-item">Lunch at traditional mountain hut with lake views</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">13:30</div>
+                  <div class="itin-schedule-item">Afternoon coaching session – carving fundamentals &amp; personal goals</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">16:30</div>
+                  <div class="itin-schedule-item">Video analysis &amp; feedback, après ski in Zell am See</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DAY 2 -->
+          <div class="itin-panel" id="itin-day-1">
+            <div class="itin-panel-img">
+              <div class="day-badge">DAY 2</div>
+              <div class="resort-icon">🎿</div>
+              <div class="resort-name">Saalbach Hinterglemm<br>Skicircus</div>
+              <div class="resort-meta">
+                Salzburger Land, Austria<br>
+                1,003m – 2,096m · 270 km pistes<br>
+                70 lifts · One of Austria's largest ski areas
+              </div>
+              <div class="img-placeholder-label">[ PHOTO – Saalbach Skicircus ]</div>
+            </div>
+            <div class="itin-panel-body">
+              <div class="day-eyebrow">Day 2 · High-Volume Terrain</div>
+              <h3>Saalbach – One of the Biggest Ski Circuits in the Alps</h3>
+              <p class="day-desc">
+                Experience the expansive Skicircus Saalbach Hinterglemm Leogang Fieberbrunn – one of Austria's largest interconnected ski areas with 270 kilometres of perfectly groomed runs and 70 lifts. Famous for its perfectly groomed runs and exceptional snow reliability, Saalbach is a paradise for intermediate skiers with its abundance of red runs. The resort is equally renowned for its lively après-ski scene with the pedestrianised village centre buzzing with energy.
+              </p>
+              <div class="itin-highlights">
+                <span class="itin-tag">🔵 270 km interconnected pistes</span>
+                <span class="itin-tag">⚫ Steeper black runs available</span>
+                <span class="itin-tag">📹 Mid-trip video review</span>
+                <span class="itin-tag">🍺 Legendary Saalbach après</span>
+              </div>
+              <div class="itin-schedule">
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">08:30</div>
+                  <div class="itin-schedule-item">Breakfast &amp; transfer to Saalbach</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">09:30</div>
+                  <div class="itin-schedule-item">Morning session – speed &amp; edge control on Schattberg runs</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">12:30</div>
+                  <div class="itin-schedule-item">Lunch break – Hinterglemm mid-mountain restaurant</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">13:30</div>
+                  <div class="itin-schedule-item">Afternoon – full circuit lap, coaches ride with group</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">16:30</div>
+                  <div class="itin-schedule-item">Video analysis &amp; daily feedback session</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DAY 3 -->
+          <div class="itin-panel" id="itin-day-2">
+            <div class="itin-panel-img">
+              <div class="day-badge">DAY 3</div>
+              <div class="resort-icon">🏔️</div>
+              <div class="resort-name">Hochkönig<br>Maria Alm · Ski Amadé</div>
+              <div class="resort-meta">
+                Salzburger Land, Austria<br>
+                800m – 1,900m · 120 km pistes<br>
+                Maria Alm · Dienten · Mühlbach
+              </div>
+              <div class="img-placeholder-label">[ PHOTO – Hochkönig massif views ]</div>
+            </div>
+            <div class="itin-panel-body">
+              <div class="day-eyebrow">Day 3 · Austria's Hidden Gem</div>
+              <h3>Hochkönig – The König's Tour &amp; Authentic Alpine Character</h3>
+              <p class="day-desc">
+                Discover the hidden gem of Austria's ski scene at Hochkönig, part of the Ski Amadé network. This resort combines three picturesque villages – Maria Alm, Dienten and Mühlbach – into one remarkable ski experience with 120 kilometres of interconnected slopes. Hochkönig's unique "König's Tour" lets you traverse the entire resort in a single day, with stunning views of the imposing Hochkönig massif. Less crowded than the big names, this is the perfect day for focused coaching work.
+              </p>
+              <div class="itin-highlights">
+                <span class="itin-tag">🏔️ Dramatic Hochkönig backdrop</span>
+                <span class="itin-tag">👥 Uncrowded pistes</span>
+                <span class="itin-tag">🎯 König's Tour circuit</span>
+                <span class="itin-tag">🏚️ Traditional mountain huts</span>
+              </div>
+              <div class="itin-schedule">
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">08:30</div>
+                  <div class="itin-schedule-item">Breakfast &amp; transfer to Maria Alm / Hochkönig</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">09:30</div>
+                  <div class="itin-schedule-item">Morning – technique drills on uncrowded blue/red runs</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">12:30</div>
+                  <div class="itin-schedule-item">Lunch at Arthurhaus mountain lodge with regional specialities</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">13:30</div>
+                  <div class="itin-schedule-item">Afternoon – König's Tour circuit, coaches ride alongside</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">16:30</div>
+                  <div class="itin-schedule-item">Video debrief, trip progress review</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DAY 4 -->
+          <div class="itin-panel" id="itin-day-3">
+            <div class="itin-panel-img">
+              <div class="day-badge">DAY 4</div>
+              <div class="resort-icon">⚫</div>
+              <div class="resort-name">Kitzbühel<br>Hahnenkamm · Streif</div>
+              <div class="resort-meta">
+                Tyrol, Austria<br>
+                762m – 2,000m · 233 km pistes<br>
+                Home of the World Cup Hahnenkamm race
+              </div>
+              <div class="img-placeholder-label">[ PHOTO – Kitzbühel Hahnenkamm ]</div>
+            </div>
+            <div class="itin-panel-body">
+              <div class="day-eyebrow">Day 4 · Legendary Terrain</div>
+              <h3>Kitzbühel – Home of the World's Most Famous Downhill Race</h3>
+              <p class="day-desc">
+                Prepare for an unforgettable day at the legendary Kitzbühel, home to the world's most famous downhill ski race – the Hahnenkamm. With 233 kilometres of meticulously maintained pistes, Kitzbühel's varied terrain offers something for everyone: from gentle nursery slopes to the hair-raising Streif downhill course. Beyond the exceptional skiing, Kitzbühel enchants with its colourful, car-free town centre featuring frescoed buildings, exclusive boutiques and gourmet restaurants.
+              </p>
+              <div class="itin-highlights">
+                <span class="itin-tag">🏆 World Cup Streif terrain</span>
+                <span class="itin-tag">⚫ Steep black run challenge</span>
+                <span class="itin-tag">🎿 High-speed carving focus</span>
+                <span class="itin-tag">🏘️ Historic alpine town centre</span>
+              </div>
+              <div class="itin-schedule">
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">08:00</div>
+                  <div class="itin-schedule-item">Early departure transfer to Kitzbühel</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">09:00</div>
+                  <div class="itin-schedule-item">Morning – Hahnenkamm descent, coach-guided route</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">12:30</div>
+                  <div class="itin-schedule-item">Lunch at Bergrestaurant with iconic Hahnenkamm views</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">13:30</div>
+                  <div class="itin-schedule-item">Afternoon – challenge laps, personal best attempts</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">17:00</div>
+                  <div class="itin-schedule-item">Video analysis &amp; celebration of week progress</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DAY 5 -->
+          <div class="itin-panel" id="itin-day-4">
+            <div class="itin-panel-img">
+              <div class="day-badge">DAY 5</div>
+              <div class="resort-icon">🧊</div>
+              <div class="resort-name">Kitzsteinhorn<br>Glacier Resort</div>
+              <div class="resort-meta">
+                Salzburger Land, Austria<br>
+                911m – 3,029m · Glacier skiing<br>
+                Snow-sure season: Oct – May · 5 snowparks
+              </div>
+              <div class="img-placeholder-label">[ PHOTO – Kitzsteinhorn glacier 3,029m ]</div>
+            </div>
+            <div class="itin-panel-body">
+              <div class="day-eyebrow">Day 5 · Grand Finale</div>
+              <h3>Kitzsteinhorn – Salzburg's Only Glacier &amp; the Perfect Send-Off</h3>
+              <p class="day-desc">
+                Conclude your Austrian ski tour with an ascent to Kitzsteinhorn – Salzburg's only glacier ski resort, offering snow-sure conditions year-round up to an altitude of 3,029 metres. This high-alpine winter playground provides 41 kilometres of pristine slopes with spectacular panoramic views across Austria's highest peaks. The summit station "Gipfelwelt 3000" features the National Park Gallery, Cinema 3000 and breathtaking viewing platforms. Advanced riders will love the five snowparks and natural half-pipes.
+              </p>
+              <div class="itin-highlights">
+                <span class="itin-tag">🧊 3,029m glacier terrain</span>
+                <span class="itin-tag">❄️ Snow-sure Oct–May</span>
+                <span class="itin-tag">🎬 Final video session &amp; highlights reel</span>
+                <span class="itin-tag">🎉 End-of-trip celebration</span>
+              </div>
+              <div class="itin-schedule">
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">08:30</div>
+                  <div class="itin-schedule-item">Transfer to Kaprun / Kitzsteinhorn base station</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">09:30</div>
+                  <div class="itin-schedule-item">Gondola to 3,029m – morning glacier free skiing &amp; coaching</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">12:30</div>
+                  <div class="itin-schedule-item">Lunch at glacier restaurant with Hohe Tauern panorama</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">13:30</div>
+                  <div class="itin-schedule-item">Final coaching session + personal highlight footage</div>
+                </div>
+                <div class="itin-schedule-row">
+                  <div class="itin-schedule-time">17:00</div>
+                  <div class="itin-schedule-item">Final video compilation &amp; group debrief, farewell dinner</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nav -->
+          <div class="itin-nav">
+            <button id="itin-prev" onclick="stepDay(-1)" disabled>← Previous day</button>
+            <span class="step-indicator" id="itin-indicator">Day 1 of 5</span>
+            <button id="itin-next" onclick="stepDay(1)">Next day →</button>
+          </div>
+
+        </div><!-- /itin-panels -->
+      </div><!-- /itin-wrap -->
+    </div>
+  </div>
+
+  <!-- LOCATION -->
+  <div class="wire-section">
+    <div class="section-label blue">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">Location &amp; Snow Conditions</h2>
+      <p class="wire-text">
+        The Salzburg Region is one of the most varied ski landscapes in the Austrian Alps – five connected resorts spanning from lake-level at Zell am See to high-altitude glacier skiing at Kitzsteinhorn (3,029m). With reliable snowpack from November through April and exceptional lift infrastructure, the Salzburgerland consistently delivers both quality and quantity. Fly into Salzburg (SZG) or Munich (MUC) airports.
+      </p>
+      <div class="img-placeholder">[ MAP – Salzburg Region: Zell am See · Saalbach · Hochkönig · Kitzbühel · Kitzsteinhorn ]</div>
+      <ul class="wire-bullets">
+        <li>Region: Salzburgerland &amp; Tyrol, Austrian Alps</li>
+        <li>Elevation range: 762m (Kitzbühel base) – 3,029m (Kitzsteinhorn glacier)</li>
+        <li>Typical conditions: reliable groomed pistes Nov–Apr, glacier snow year-round</li>
+        <li>Combined terrain: 800+ km of pistes across all 5 resorts</li>
+        <li>Nearest airports: Salzburg (SZG) · Munich (MUC) – fly in to either</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ACCOMMODATION & LOGISTICS -->
+  <div class="wire-section">
+    <div class="section-label orange">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">Accommodation &amp; Logistics</h2>
+      <div class="two-col">
+        <div>
+          <h3 class="wire-h3">Accommodation Options</h3>
+          <div class="wire-box">
+            <h4>Where to Stay</h4>
+            <ul class="wire-bullets">
+              <li>We respect that our adventurers might have varying standards when it comes to accommodation. That's why we let you handle that yourself and choose exactly what you need. That said, we're happy to provide tips and contact details to the best offers in the area. We certainly know our way around!</li>
+              <li><strong>Standard Hotels</strong> – convenient lodging with traditional amenities</li>
+              <li><strong>Traditional Gasthäuser</strong> – authentic Austrian hospitality in a charming setting</li>
+              <li><strong>Self-Catering Apartments</strong> – independent living with kitchen facilities for flexible stays</li>
+              <li>Price range from luxury facilities to budget-friendly options</li>
+            </ul>
+          </div>
+          <h3 class="wire-h3">Getting There</h3>
+          <div class="wire-box">
+            <h4>Transport</h4>
+            <ul class="wire-bullets">
+              <li>Depending on where you come from, we'll help you select the best transport option. Respecting your preferences as well as your budget.</li>
+              <li>Flying to your adventure? Select Munich (MUC) or Salzburg (SZG) airport</li>
+              <li>Coming by car? We meet the first day at ….</li>
+              <li>Renting a car? We'll direct you to top car rentals.</li>
+              <li>For selected accommodation options, hotel shuttles are available.</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h3 class="wire-h3">What's Included / Not Included</h3>
+          <div class="wire-box">
+            <h4>Included In Our Price ✓</h4>
+            <ul class="wire-bullets">
+              <li>5 full days of expert piste guiding</li>
+              <li>Professional technique coaching tailored to your level</li>
+              <li>Video analysis sessions (daily)</li>
+              <li>DOWN &amp; Original+ skis demo opportunity</li>
+              <li>Local knowledge &amp; resort insider tips</li>
+              <li>Small group (max 8) for maximum progression</li>
+            </ul>
+          </div>
+          <div class="wire-box" style="margin-top: 12px;">
+            <h4>Not Included In Our Price ✗</h4>
+            <ul class="wire-bullets">
+              <li>5-day ski pass (ski-passes for each resort can be purchased online and we'll tell you exactly what to go for)</li>
+              <li>Accommodation</li>
+              <li>Equipment rental (if needed)</li>
+              <li>Travel to/from resorts &amp; travel insurance</li>
+              <li>Food and beverages</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h3 class="wire-h3">Cuisine Highlights</h3>
+      <div class="wire-box">
+        <h4>Eating in the Salzburgerland</h4>
+        <ul class="wire-bullets">
+          <li>Demanding days on slopes call for proper nutrition! Austria is well-known for its rich &amp; comforting foods and the options are endless. It's up to you — taste authentic Austria on an Alm or get yourself a fine-dining experience at a luxury hotel.</li>
+          <li><strong>Full-Pension Hotels</strong> – all-inclusive meal packages for hassle-free skiing days</li>
+          <li><strong>Self-Catering Apartments</strong> – prepare your own meals on your schedule, ideal for dietary needs</li>
+          <li><strong>Authentic Austrian restaurants</strong> – schnitzel, Käsespätzle and apple strudel at traditional Alpine huts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTNER DEMO -->
+  <div class="wire-section">
+    <div class="section-label blue">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">Try Before You Buy – Exclusive Ski Demo</h2>
+      <div class="partner-block">
+        <div class="partner-body">
+          <div class="partner-eyebrow">Exclusive Partnership · Included in This Trip</div>
+          <h3>Introducing the Ultimate Ski Testing Experience with DOWN SKIS</h3>
+          <p class="partner-desc">
+            Snowbusters is proud to partner with DOWN SKIS to bring you DOWN DEMO – the revolutionary way to find your perfect ski match. Stop guessing which skis will perform for your style and terrain. Experience them firsthand with expert guidance from coaches who know both the mountain and the gear inside out – before making any investment.
+          </p>
+          <div class="partner-benefits">
+            <div class="partner-benefit-row">
+              <div class="pb-icon">✓</div>
+              <span>Test top-of-the-line DOWN SKIS and Original+ models on real terrain across 5 Austrian resorts</span>
+            </div>
+            <div class="partner-benefit-row">
+              <div class="pb-icon">✓</div>
+              <span>Expert guidance from coaches on which ski suits your style, level and objectives</span>
+            </div>
+            <div class="partner-benefit-row">
+              <div class="pb-icon">✓</div>
+              <span>Swap skis during the week – find your perfect match without committing upfront</span>
+            </div>
+            <div class="partner-benefit-row">
+              <div class="pb-icon">✓</div>
+              <span>Included in the trip price – no extra rental fee</span>
+            </div>
+          </div>
+          <div class="partner-note">
+            💡 DOWN DEMO is included as part of this trip package.
+          </div>
+        </div>
+        <div class="partner-logo-box">
+          <div class="partner-logo-placeholder">[ LOGO<br>DOWN SKIS ]</div>
+          <div class="partner-logo-name">DOWN</div>
+          <div class="partner-logo-sub">SKIS · OFFICIAL DEMO PARTNER</div>
+          <div class="partner-badge">DOWN DEMO INCLUDED</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COACHES & SAFETY -->
+  <div class="wire-section">
+    <div class="section-label red">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">Your Coaches</h2>
+      <p class="wire-text">
+        We're not just instructors – we're a community of passionate skiers and snowboarders who live, breathe and dream these mountains. Snowbusters emerged from a simple truth: the best teachers are those who live what they teach. Our team of licensed guides and certified experts share one bond – an unquenchable passion for powder, fresh lines and the joy of carving perfect turns.
+      </p>
+      <div class="coach-row">
+        <div class="coach-card">
+          <div class="coach-avatar">PHOTO</div>
+          <div class="coach-name">Jany Novotny</div>
+          <div class="coach-role">Lead Coach · Snowbusters</div>
+        </div>
+        <div class="coach-card">
+          <div class="coach-avatar">PHOTO</div>
+          <div class="coach-name">Adam Pernikar</div>
+          <div class="coach-role">Coach · Snowbusters</div>
+        </div>
+        <div class="coach-card">
+          <div class="coach-avatar">PHOTO</div>
+          <div class="coach-name">Pablo Ruiz Seco</div>
+          <div class="coach-role">Coach · Snowbusters</div>
+        </div>
+      </div>
+      <ul class="wire-bullets">
+        <li>Maximum 8 riders per group for personalised coaching attention</li>
+        <li>All coaches are licensed and certified guides with competitive backgrounds</li>
+        <li>Daily video analysis and individual technique feedback</li>
+        <li>Multilingual team – fluent in English, Czech, Spanish and more</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="wire-section">
+    <div class="section-label green">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">Reviews from Riders</h2>
+      <div class="reviews-row">
+        <div class="review-card">
+          <div class="quote">"My riding improved more in 5 days than in the previous two seasons combined. The video feedback sessions are genuinely game-changing – I finally understood what my body was doing wrong."</div>
+          <div class="reviewer">— Alex M., UK · Intermediate → Advanced</div>
+        </div>
+        <div class="review-card">
+          <div class="quote">"Came alone and left with five new skiing friends. The group vibe was incredible – serious riders but zero ego. Saalbach and Kitzbühel in the same week? Pinch me."</div>
+          <div class="reviewer">— Sarah L., USA · Advanced</div>
+        </div>
+        <div class="review-card">
+          <div class="quote">"Hochkönig totally blew me away – way better snow than the big-name resorts, zero lift queues, and finishing on the Kitzsteinhorn glacier was the perfect send-off."</div>
+          <div class="reviewer">— Pieter V., Netherlands · Advanced</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="wire-section">
+    <div class="section-label blue">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">FAQ for This Trip</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">What skill level do I need for the Salzburg Shred Safari?</div>
+          <div class="faq-a">This trip is designed for intermediate to advanced riders comfortable on red and black groomed runs. You don't need to be a pro, but be ready to charge hard on the groomers with a high stoke level. See the rider level guide above.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I rent skis or snowboard on site?</div>
+          <div class="faq-a">Yes – equipment rental is available at all five resorts. We can recommend the best shops on request. Plus, the DOWN DEMO is included in your trip so you can test premium DOWN SKIS on the mountain before deciding.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do I need to book accommodation separately?</div>
+          <div class="faq-a">Accommodation is not included in the trip price, but we're happy to help you find the right option – from traditional Gasthäuser to self-catering apartments. Get in touch and we'll point you to the best deals in the area.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is a ski pass included?</div>
+          <div class="faq-a">The 5-day ski pass is not included in the price, but we'll guide you to the best regional pass options covering all five resorts. We know all the insider deals. All can be administered online from the comfort of your accommodation.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is this trip suitable for families or solo travelers?</div>
+          <div class="faq-a">Absolutely – this trip is perfect for families, friend squads, and solo shredders. Riders 15+ are welcome; younger riders can join with parents. Around 70% of our guests travel solo and leave with new riding partners.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What dates can I choose for the trip?</div>
+          <div class="faq-a">The Salzburg Shred Safari runs from 29 November 2026 through 30 April 2027, with multiple departure dates available across the season. Contact us with your preferred dates and we'll confirm availability.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do I travel between the five resorts each day?</div>
+          <div class="faq-a">We recommend renting a car for maximum flexibility – it's the most economical option and lets you explore at your own pace. Some hotels also offer shuttle services. We'll help you plan the logistics before arrival.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO BOOK -->
+  <div class="wire-section">
+    <div class="section-label orange">H2</div>
+    <div class="section-inner">
+      <h2 class="wire-h2">How to Book</h2>
+      <p class="wire-text">Booking is simple and low-friction. Just hit the button below, choose your dates, and we'll take care of the rest.</p>
+      <div class="highlights-grid">
+        <div class="highlight-card" style="text-align:center;">
+          <div style="font-size:20px; margin-bottom:6px;">①</div>
+          Choose your preferred date from the available season windows (Nov 2026 – Apr 2027)
+        </div>
+        <div class="highlight-card" style="text-align:center;">
+          <div style="font-size:20px; margin-bottom:6px;">②</div>
+          Send an inquiry or book directly online via the Join Us button
+        </div>
+        <div class="highlight-card" style="text-align:center;">
+          <div style="font-size:20px; margin-bottom:6px;">③</div>
+          Personal consultation with our team to confirm group, level and logistics
+        </div>
+        <div class="highlight-card" style="text-align:center;">
+          <div style="font-size:20px; margin-bottom:6px;">④</div>
+          Pay deposit to secure your spot – max 8 riders per group
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY SNOWBUSTERS -->
+  <div class="why-band">
+    <div style="padding-left: 0;">
+      <h2 class="wire-h2" style="border-color: #b0a898;">Why Snowbusters</h2>
+      <div class="why-grid">
+        <div>
+          <p class="wire-text">Snowbusters is a community of passionate ski and snowboard guides and coaches, born on the mountain and built around a simple truth: the best teachers are those who live what they teach. We focus on performance, progression and authentic mountain experiences across Europe.</p>
+        </div>
+        <div>
+          <ul class="wire-bullets">
+            <li>Small groups (max 8) for individual attention</li>
+            <li>Passionate coaches with competitive and teaching experience</li>
+            <li>Focus on real skill development, not just mileage</li>
+            <li>Hand-picked destinations and terrain</li>
+            <li>More than coaches – your mountain family</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="cta-band">
+    <h3>Ready to shred? Your best lines are waiting.</h3>
+    <p>Salzburg Shred Safari · 5 Days · 5 Resorts · Max 8 Riders · €3,190 · Nov 2026 – Apr 2027</p>
+    <div class="btn-row">
+      <button class="btn primary">JOIN US →</button>
+      <button class="btn ghost">ASK A QUESTION</button>
+    </div>
+  </div>
+
+  <div class="footer-wire">
+    <span>SNOWBUSTERS.EU</span>
+    <span>info@snowbusters.eu · +420 721 247 725 · © 2026</span>
+  </div>
+</div>
+
+<!-- ==================== LOCATION PAGE (unchanged template) ==================== -->
+<div id="page-location" class="page">
+
+  <div class="breadcrumb">
+    <a href="#">Home</a> / <a href="#">Locations</a> / Salzburg Region, Austria
+  </div>
+
+  <div class="wire-section" style="border-left: none;">
+    <div class="section-label blue">HERO</div>
+    <div class="hero-wire">
+      <div class="hero-text">
+        <h1>Skiing the Salzburgerland – Resort-Hopping &amp; Glacier Skiing in Austria</h1>
+        <div class="hero-overview">
+          <strong>Location page placeholder</strong> – tato záložka je šablona pro Location page. Salzburg Region, Austrian Alps.
+        </div>
+        <div class="badge-row">
+          <span class="badge">📍 SALZBURG REGION, AUSTRIA</span>
+          <span class="badge">🎿 GROOMED + GLACIER</span>
+          <span class="badge">✈️ NEAREST: SALZBURG (SZG)</span>
+          <span class="badge">❄️ BEST: NOV–APR</span>
+        </div>
+      </div>
+      <div class="booking-box">
+        <div style="font-family: monospace; font-size: 11px; color: #888; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Trips in this location</div>
+        <div style="font-size: 15px; font-weight: bold; margin-bottom: 4px;">1 active trip</div>
+        <div class="detail-row"><span class="label">From</span><span class="val">€ 3,190 / 5 days</span></div>
+        <div class="detail-row"><span class="label">Levels</span><span class="val">Intermediate · Advanced</span></div>
+        <div class="detail-row"><span class="label">Season</span><span class="val">Nov 2026 – Apr 2027</span></div>
+        <button class="cta-btn" style="margin-top: 20px;">VIEW ALL TRIPS →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-wire">
+    <span>SNOWBUSTERS.EU</span>
+    <span>© 2026 · Privacy · Terms · Instagram</span>
+  </div>
+</div>
+
+<script>
+  function switchPage(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.switcher button').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  // Itinerary day switcher
+  let currentDay = 0;
+  const totalDays = 5;
+
+  function showDay(index) {
+    if (index < 0) index = 0;
+    if (index >= totalDays) index = totalDays - 1;
+    currentDay = index;
+
+    document.querySelectorAll('.itin-panel').forEach((p, i) => {
+      p.classList.toggle('active', i === currentDay);
+    });
+    document.querySelectorAll('.itin-progress-step').forEach((t, i) => {
+      t.classList.toggle('active', i === currentDay);
+    });
+    document.getElementById('itin-prev').disabled = currentDay === 0;
+    document.getElementById('itin-next').disabled = currentDay === totalDays - 1;
+    document.getElementById('itin-indicator').textContent = `Day ${currentDay + 1} of ${totalDays}`;
+  }
+
+  function stepDay(dir) {
+    showDay(currentDay + dir);
+  }
+</script>
+
+</body>
+</html>
