@@ -39,8 +39,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 - Booking box: facts table (dates · duration · group size · level · category)
 - Booking box: primary "JOIN US" CTA + secondary "ASK A QUESTION" CTA
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -57,8 +57,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 - Framing paragraph
 - "Trip Highlights" grid (6 cards, one short line each)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -79,8 +79,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
   - mandatory items visually flagged (e.g. helmet)
   - intro line mentioning local rental
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -97,8 +97,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 - Themed box 1 (heading + ~4 bullets)
 - Themed box 2 (heading + ~4 bullets)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -133,8 +133,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 
 > Open question for the meeting: how many days does the page support? 5 in the salzburg wireframe — but trips have varying lengths. The structure should probably be N-day-flexible.
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -153,8 +153,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 - Map (placeholder in wireframe)
 - Bullet list (region · elevation · conditions · terrain stats · airports)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -173,8 +173,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 - Not Included In Our Price box (bullets)
 - Cuisine Highlights box (intro + meal-arrangement options)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -196,8 +196,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 - "Included in this trip" callout note
 - Partner logo box (logo · name · sub-label · badge)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -220,8 +220,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
   - *(decision point)* full bio + credentials, or stay minimal?
 - Team-wide bullet list (group size · certifications · video · languages)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -236,11 +236,11 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 
 - 3 review cards (quote + attribution)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
->
+> simmilart to FAQ on trip category page
 
 ---
 
@@ -260,8 +260,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 >
 > Open question for the meeting: **are FAQs per-trip, pulled from a shared FAQ library, or both** (some shared / some trip-specific)?
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -279,8 +279,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 - Intro line
 - 4 numbered step cards (number · short text)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -298,8 +298,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 - Positioning paragraph
 - Differentiators bullets
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -315,8 +315,8 @@ If a sub-element list is shown for a section, mark **Form** for the section as a
 - Final CTA band: headline · summary line · primary CTA · secondary CTA
 - Footer: brand · contact info · copyright
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
