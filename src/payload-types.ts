@@ -208,20 +208,205 @@ export interface Difficulty {
 export interface Type {
   id: number;
   name: string;
+  slug: string;
+  shortDescription?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  mainPicture?: (number | null) | Media;
+  gallery?: (number | Media)[] | null;
+  vimeoId?: string | null;
+  highlights?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  audienceCards?:
+    | {
+        heading: string;
+        body: string;
+        highlighted?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  soloNote?: string | null;
+  redirectCallout?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  curriculumPillars?:
+    | {
+        icon?: string | null;
+        title: string;
+        bullets?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  programFlow?: {
+    framingParagraph?: string | null;
+    mixAndMatchBlocks?:
+      | {
+          title: string;
+          tagline?: string | null;
+          bullets?:
+            | {
+                text: string;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    tailoredToYou?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    focusTracks?:
+      | {
+          title: string;
+          colorTag?: ('red' | 'blue' | 'green') | null;
+          bullets?:
+            | {
+                text: string;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  weekVariants?:
+    | {
+        title: string;
+        bullets?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  weekRecommendation?: string | null;
+  accommodation?: {
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    included?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    foodBeverages?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    notIncluded?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  transport?: {
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    airports?: (number | Airport)[] | null;
+  };
+  coachFramingParagraph?: string | null;
+  coaches?: (number | Guide)[] | null;
+  results?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  featured?: boolean | null;
   active?: boolean | null;
+  state: 'draft' | 'published';
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
+ * via the `definition` "airports".
  */
-export interface Category {
+export interface Airport {
   id: number;
   name: string;
-  slug: string;
-  text?: string | null;
-  position?: number | null;
+  iata: string;
+  country?: string | null;
+  continent?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  size?: number | null;
   active?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -265,6 +450,20 @@ export interface Guide {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  name: string;
+  slug: string;
+  text?: string | null;
+  position?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "locations".
  */
 export interface Location {
@@ -300,26 +499,6 @@ export interface Location {
     keywords?: string | null;
     description?: string | null;
   };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "airports".
- */
-export interface Airport {
-  id: number;
-  name: string;
-  iata: string;
-  country?: string | null;
-  continent?: string | null;
-  /**
-   * @minItems 2
-   * @maxItems 2
-   */
-  coordinates?: [number, number] | null;
-  size?: number | null;
-  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -628,7 +807,138 @@ export interface DifficultiesSelect<T extends boolean = true> {
  */
 export interface TypesSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
+  shortDescription?: T;
+  content?: T;
+  mainPicture?: T;
+  gallery?: T;
+  vimeoId?: T;
+  highlights?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  audienceCards?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+        highlighted?: T;
+        id?: T;
+      };
+  soloNote?: T;
+  redirectCallout?: T;
+  curriculumPillars?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        bullets?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  programFlow?:
+    | T
+    | {
+        framingParagraph?: T;
+        mixAndMatchBlocks?:
+          | T
+          | {
+              title?: T;
+              tagline?: T;
+              bullets?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        tailoredToYou?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        focusTracks?:
+          | T
+          | {
+              title?: T;
+              colorTag?: T;
+              bullets?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  weekVariants?:
+    | T
+    | {
+        title?: T;
+        bullets?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  weekRecommendation?: T;
+  accommodation?:
+    | T
+    | {
+        description?: T;
+        included?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        foodBeverages?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        notIncluded?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  transport?:
+    | T
+    | {
+        description?: T;
+        airports?: T;
+      };
+  coachFramingParagraph?: T;
+  coaches?: T;
+  results?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  featured?: T;
   active?: T;
+  state?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        keywords?: T;
+        description?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

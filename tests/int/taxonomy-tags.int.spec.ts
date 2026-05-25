@@ -17,6 +17,7 @@ describe('difficulty and type collections', () => {
   it('creates a type', async () => {
     const payload = await getTestPayload()
     const name = `Multi-pitch ${Date.now()}`
+    // @ts-expect-error state is intentionally omitted to verify the collection's defaultValue
     const doc = await payload.create({
       collection: 'types',
       data: { name, active: true },
