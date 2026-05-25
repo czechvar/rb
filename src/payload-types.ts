@@ -583,6 +583,163 @@ export interface Event {
   categories?: (number | Category)[] | null;
   difficulties?: (number | Difficulty)[] | null;
   types?: (number | Type)[] | null;
+  locations?: (number | Location)[] | null;
+  highlights?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  audienceCards?:
+    | {
+        heading: string;
+        body: string;
+        highlighted?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  prerequisites?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  equipmentIntro?: string | null;
+  essentialEquipment?:
+    | {
+        icon?: string | null;
+        name: string;
+        note?: string | null;
+        mandatory?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  whatYouLearn?: {
+    intro?: string | null;
+    box1Heading?: string | null;
+    box1Bullets?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    box2Heading?: string | null;
+    box2Bullets?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  itinerary?: {
+    intro?: string | null;
+    days?:
+      | {
+          dayBadge?: string | null;
+          destinationIcon?: string | null;
+          destinationName: string;
+          metaLine?: string | null;
+          eyebrow?: string | null;
+          heading?: string | null;
+          description?: string | null;
+          highlightTags?:
+            | {
+                text: string;
+                id?: string | null;
+              }[]
+            | null;
+          schedule?:
+            | {
+                time: string;
+                activity: string;
+                id?: string | null;
+              }[]
+            | null;
+          image?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  accommodation?: {
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    included?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    notIncluded?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    cuisineHighlights?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  transport?: {
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    airports?: (number | Airport)[] | null;
+  };
+  coachFramingParagraph?: string | null;
+  coaches?: (number | Guide)[] | null;
+  coachTeamBullets?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  partner?: (number | null) | Partner;
+  partnerEyebrow?: string | null;
+  partnerHeadline?: string | null;
+  partnerDescription?: string | null;
+  partnerBenefits?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
   featured?: boolean | null;
   state: 'draft' | 'published';
   seo?: {
@@ -1054,6 +1211,129 @@ export interface EventsSelect<T extends boolean = true> {
   categories?: T;
   difficulties?: T;
   types?: T;
+  locations?: T;
+  highlights?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  audienceCards?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+        highlighted?: T;
+        id?: T;
+      };
+  prerequisites?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  equipmentIntro?: T;
+  essentialEquipment?:
+    | T
+    | {
+        icon?: T;
+        name?: T;
+        note?: T;
+        mandatory?: T;
+        id?: T;
+      };
+  whatYouLearn?:
+    | T
+    | {
+        intro?: T;
+        box1Heading?: T;
+        box1Bullets?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        box2Heading?: T;
+        box2Bullets?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  itinerary?:
+    | T
+    | {
+        intro?: T;
+        days?:
+          | T
+          | {
+              dayBadge?: T;
+              destinationIcon?: T;
+              destinationName?: T;
+              metaLine?: T;
+              eyebrow?: T;
+              heading?: T;
+              description?: T;
+              highlightTags?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              schedule?:
+                | T
+                | {
+                    time?: T;
+                    activity?: T;
+                    id?: T;
+                  };
+              image?: T;
+              id?: T;
+            };
+      };
+  accommodation?:
+    | T
+    | {
+        description?: T;
+        included?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        notIncluded?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        cuisineHighlights?: T;
+      };
+  transport?:
+    | T
+    | {
+        description?: T;
+        airports?: T;
+      };
+  coachFramingParagraph?: T;
+  coaches?: T;
+  coachTeamBullets?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  partner?: T;
+  partnerEyebrow?: T;
+  partnerHeadline?: T;
+  partnerDescription?: T;
+  partnerBenefits?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   featured?: T;
   state?: T;
   seo?:
