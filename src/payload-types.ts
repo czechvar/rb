@@ -78,6 +78,8 @@ export interface Config {
     partners: Partner;
     events: Event;
     'event-dates': EventDate;
+    faqs: Faq;
+    reviews: Review;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -96,6 +98,8 @@ export interface Config {
     partners: PartnersSelect<false> | PartnersSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     'event-dates': EventDatesSelect<false> | EventDatesSelect<true>;
+    faqs: FaqsSelect<false> | FaqsSelect<true>;
+    reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -789,6 +793,52 @@ export interface EventDate {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs".
+ */
+export interface Faq {
+  id: number;
+  question: string;
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  event?: (number | null) | Event;
+  type?: (number | null) | Type;
+  position?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews".
+ */
+export interface Review {
+  id: number;
+  quote: string;
+  reviewerName: string;
+  reviewerLocation?: string | null;
+  resultLine?: string | null;
+  event?: (number | null) | Event;
+  type?: (number | null) | Type;
+  position?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -854,6 +904,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'event-dates';
         value: number | EventDate;
+      } | null)
+    | ({
+        relationTo: 'faqs';
+        value: number | Faq;
+      } | null)
+    | ({
+        relationTo: 'reviews';
+        value: number | Review;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1364,6 +1422,36 @@ export interface EventDatesSelect<T extends boolean = true> {
   capacity?: T;
   minParticipants?: T;
   extraContent?: T;
+  active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs_select".
+ */
+export interface FaqsSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  event?: T;
+  type?: T;
+  position?: T;
+  active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews_select".
+ */
+export interface ReviewsSelect<T extends boolean = true> {
+  quote?: T;
+  reviewerName?: T;
+  reviewerLocation?: T;
+  resultLine?: T;
+  event?: T;
+  type?: T;
+  position?: T;
   active?: T;
   updatedAt?: T;
   createdAt?: T;

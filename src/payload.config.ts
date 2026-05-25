@@ -17,6 +17,8 @@ import { Airports } from './collections/Airports'
 import { Partners } from './collections/Partners'
 import { Events } from './collections/Events'
 import { EventDates } from './collections/EventDates'
+import { FAQs } from './collections/FAQs'
+import { Reviews } from './collections/Reviews'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -28,7 +30,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Difficulties, Types, Categories, Guides, Locations, Airports, Partners, Events, EventDates],
+  collections: [Users, Media, Difficulties, Types, Categories, Guides, Locations, Airports, Partners, Events, EventDates, FAQs, Reviews],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
