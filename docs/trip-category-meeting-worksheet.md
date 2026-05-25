@@ -39,8 +39,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - Booking box: value badge / freebie callout
 - Booking box: primary "BOOK" CTA
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -56,8 +56,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - 1–2 framing paragraphs
 - "Program Highlights" grid (~6 cards, one short line each)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -75,8 +75,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - Solo-travellers reassurance line
 - "Wrong fit? try X instead" redirect callout
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -96,8 +96,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - Pillar 2 card (icon · title · ~5 bullets)
 - Pillar 3 card (icon · title · ~5 bullets)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -115,8 +115,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - "Tailored to you" — 4-bullet subsection
 - "Example focus tracks" — 3 colour-coded track cards
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -134,8 +134,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - 2 comparison cards (1-week · 2-week)
 - Italic recommendation paragraph
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -154,11 +154,11 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - Map (placeholder in wireframe)
 - Specifics bullet list (terrain · grades · climate · positioning)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
->
+>event can have more that one locations
 
 ---
 
@@ -174,8 +174,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - Food & beverages (bulleted list)
 - Not included in price (bulleted list)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -196,8 +196,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
   - Bio paragraph (2–4 sentences)
   - Credentials bullets (3–4 items)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -215,8 +215,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - "Results You Can Expect" — outcome cards grid (~4 cards)
 - "What Past Climbers Say" — review cards (quote + attribution)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -244,7 +244,7 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 **Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
->
+>since we will create FAQ entity (question/answer) - ad the we will pick up FAQ associated with envent and that will be dispalyed on detail page
 
 ---
 
@@ -258,8 +258,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 
 - 4 numbered step cards (number · short text)
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -277,8 +277,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - Positioning paragraph
 - Differentiators bullets
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -294,8 +294,8 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 - Final CTA band: headline · short summary line · BOOK button · ASK button
 - Footer: brand · program identity line · copyright
 
-**Scope:** ☐ Keep · ☐ Trim · ☐ Drop
-**Form:**  ☐ Structured · ☐ Free-form · ☐ Mixed
+**Scope:** x Keep · ☐ Trim · ☐ Drop
+**Form:**  x Structured · ☐ Free-form · ☐ Mixed
 
 **Notes:**
 >
@@ -307,13 +307,20 @@ If a sub-element list is shown for a section, mark the **Form** decision for the
 These don't fit inside any one section, but are worth a few minutes at the end:
 
 - **Section ordering — is it fixed?** Does every Trip Category page render the kept sections in the same order, or can it vary per program?
-- **Date-variant listing.** The hero "see below" hints at a dates-listing section underneath. Where do the bookable EventDate instances appear on this page — under the booking box, before location, at the end?
-- **Mid-page CTAs.** The wireframe inserts a "BOOK YOUR SPOT" CTA mid-page (between Overview and Who-It's-For). Keep, drop, or place differently?
-- **Reusable vs per-page content.** Best candidates for reuse: Section 12 (How to Book), Section 13 (Why Rockbusters), and the FAQ library. Worth a quick yes/no per item.
-- **Coach card shape.** This page uses a *rich* coach card (with bio + credentials). The Trip Detail page uses a *minimal* one. Standardise on one shape, support both, or always link out to a dedicated coach page?
-- **Booking flow trigger.** Where does the BOOK CTA on this page actually go — straight to a generic booking form, or to a date-picker showing the program's available EventDates?
-- **Relationship to Trip Detail pages.** When this program has multiple specific trips (e.g. the May 2-9 run, the May 2-16 run), does the category page link to a Trip Detail page per instance, or is the booking flow integrated here without separate detail pages?
 
+YES ORDER IS FIXED
+- **Date-variant listing.** The hero "see below" hints at a dates-listing section underneath. Where do the bookable EventDate instances appear on this page — under the booking box, before location, at the end?
+TDB
+- **Mid-page CTAs.** The wireframe inserts a "BOOK YOUR SPOT" CTA mid-page (between Overview and Who-It's-For). Keep, drop, or place differently?
+  KEEP we wil get design for that sction
+- **Reusable vs per-page content.** Best candidates for reuse: Section 12 (How to Book), Section 13 (Why Rockbusters), and the FAQ library. Worth a quick yes/no per item.
+correct
+- **Coach card shape.** This page uses a *rich* coach card (with bio + credentials). The Trip Detail page uses a *minimal* one. Standardise on one shape, support both, or always link out to a dedicated coach page?
+  on trip detail -? minimal
+- **Booking flow trigger.** Where does the BOOK CTA on this page actually go — straight to a generic booking form, or to a date-picker showing the program's available EventDates?
+generic booking form for know
+- **Relationship to Trip Detail pages.** When this program has multiple specific trips (e.g. the May 2-9 run, the May 2-16 run), does the category page link to a Trip Detail page per instance, or is the booking flow integrated here without separate detail pages?
+the booking flow integrated here without separate detail pages?
 ---
 
 ## After the meeting
