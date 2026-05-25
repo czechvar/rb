@@ -34,8 +34,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm dev',
+    // Worktree uses :3001 to avoid colliding with another checkout's dev server on :3000.
+    command: 'pnpm dev --port 3001',
     reuseExistingServer: true,
-    url: 'http://localhost:3000',
+    url: 'http://localhost:3001',
   },
 })
