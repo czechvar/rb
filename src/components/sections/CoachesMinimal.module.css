@@ -1,0 +1,85 @@
+.section {
+  padding: 40px 60px;
+  border-bottom: 1px dashed #c8bfb0;
+}
+
+.section h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+.framing {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #333;
+  max-width: 720px;
+  margin: 12px 0 16px 0;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 18px;
+  width: 180px;
+  text-align: center;
+}
+
+.photo,
+.avatarPlaceholder {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: block;
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #888;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  max-width: 720px;
+}
+
+.bullets li {
+  padding: 7px 0 7px 22px;
+  font-size: 13px;
+  color: #333;
+  position: relative;
+  border-bottom: 1px solid #e8e0d4;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #8b5e3c;
+}

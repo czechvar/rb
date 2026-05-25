@@ -1,0 +1,84 @@
+.hero {
+  background: #1e1612;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  padding: 60px;
+  min-height: 360px;
+}
+
+.text h1 {
+  font-size: 29px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin: 0 0 16px 0;
+}
+
+.overview {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d4c5b0;
+  max-width: 680px;
+  margin: 0;
+}
+
+.booking {
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: 6px;
+  padding: 28px 24px;
+  align-self: start;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.priceNote {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 20px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.primaryCta,
+.secondaryCta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 13px;
+  margin-top: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.primaryCta {
+  background: #8b3a1a;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.primaryCta:hover {
+  background: #a04020;
+}
+
+.secondaryCta {
+  background: transparent;
+  color: #1a1a1a;
+  border: 1px solid #ccc;
+  font-size: 11px;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
