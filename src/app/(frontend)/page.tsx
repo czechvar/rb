@@ -1,59 +1,69 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
+import Link from 'next/link'
+import { Header } from '@/components/marketing/Header'
+import { Footer } from '@/components/marketing/Footer'
+import styles from './page.module.css'
 
-import config from '@/payload.config'
-import './styles.css'
-
-export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
-
+export default function HomePage() {
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
+    <>
+      <Header />
+
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <span className={styles.heroEyebrow}>Climb Better, Harder &amp; More</span>
+          <h1>Leading Community of Experienced Rock Climbing Guides &amp; Coaches</h1>
+          <p>
+            We help you reach your individual climbing goals and pursue your climbing dreams.
+            Maximum time on rock, pushing the limits, and 100% fun is the goal here.
+          </p>
+          <div className={styles.heroCtas}>
+            <Link href="/calendar" className={styles.ctaPrimary}>
+              See Calendar
+            </Link>
+            <Link href="/programs" className={styles.ctaGhost}>
+              Explore Programs
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
-      </div>
-    </div>
+      </section>
+
+      <section className={`${styles.section} ${styles.alt}`}>
+        <div className={styles.sectionInner}>
+          <span className="eyebrow">What We Offer</span>
+          <h2>From First Routes to Send-Day Tactics</h2>
+          <p>
+            Climbing camps, technique coaching, private guiding, and expeditions —
+            all run by IFMGA / UIAGM guides and IFSC-level coaches.
+          </p>
+
+          <div className={styles.cardGrid}>
+            <article className={styles.card}>
+              <h3>Climbing Camps</h3>
+              <p>
+                Multi-day, single-destination programs designed around a clear performance
+                goal. Mornings on rock, afternoons drilling technique, evenings reviewing
+                footage.
+              </p>
+            </article>
+            <article className={styles.card}>
+              <h3>Technique Coaching</h3>
+              <p>
+                One-on-one or small-group movement labs for climbers stuck at a grade plateau.
+                Built on tactical movement analysis and structured drills.
+              </p>
+            </article>
+            <article className={styles.card}>
+              <h3>Private Guiding</h3>
+              <p>
+                Pick your dates, your destination, your goals. We organize the logistics,
+                accommodation, and on-rock coaching to match.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
   )
 }
