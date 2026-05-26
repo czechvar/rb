@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.84.1",
+    "@payloadcms/email-resend": "3.84.1",
     "@payloadcms/next": "3.84.1",
     "@payloadcms/richtext-lexical": "3.84.1",
     "@payloadcms/storage-s3": "3.84.1",
@@ -30,7 +31,8 @@
     "payload": "3.84.1",
     "react": "19.2.6",
     "react-dom": "19.2.6",
-    "sharp": "0.34.2"
+    "sharp": "0.34.2",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",
