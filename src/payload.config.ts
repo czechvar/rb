@@ -19,6 +19,7 @@ import { Events } from './collections/Events'
 import { EventDates } from './collections/EventDates'
 import { FAQs } from './collections/FAQs'
 import { Reviews } from './collections/Reviews'
+import { buildEmailAdapter } from './lib/email/adapter'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -33,6 +34,11 @@ export default buildConfig({
   collections: [Users, Media, Difficulties, Types, Categories, Guides, Locations, Airports, Partners, Events, EventDates, FAQs, Reviews],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
+  email: buildEmailAdapter({
+    apiKey: process.env.RESEND_API_KEY ?? '',
+    defaultFromAddress: process.env.EMAIL_FROM_ADDRESS ?? 'noreply@rockbusters.net',
+    defaultFromName: process.env.EMAIL_FROM_NAME ?? 'Rockbusters',
+  }),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
