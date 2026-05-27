@@ -1,0 +1,32 @@
+/* src/components/forms/forms.module.css */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.label { font-weight: 600; font-size: 14px; color: #1a1a1a; }
+.input {
+  border: 1px solid #d0cfcd;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-family: inherit;
+}
+.input:focus { outline: 2px solid #c8102e; outline-offset: 1px; }
+.error { color: #c8102e; font-size: 13px; }
+.banner {
+  padding: 12px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.bannerError { background: #fde9ec; color: #8a0a1d; }
+.bannerSuccess { background: #e6f4ea; color: #1e5631; }
+.submit {
+  width: 100%;
+  background: #c8102e;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+.submit:disabled { opacity: 0.6; cursor: progress; }
