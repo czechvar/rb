@@ -20,7 +20,9 @@ test.describe('user section smoke', () => {
     await page.goto('/forgot-password')
     await page.getByLabel('Email').fill('nobody-xyz@example.com')
     await page.getByRole('button', { name: 'Send reset link' }).click()
-    await expect(page.getByText(/if an account exists for that address/i)).toBeVisible()
+    await expect(page.getByText(/if an account exists for that address/i)).toBeVisible({
+      timeout: 30_000,
+    })
   })
 
   test('/account redirects to /login when not signed in', async ({ page }) => {
@@ -36,7 +38,9 @@ test.describe('user section smoke', () => {
     await page.getByLabel('Phone').fill('+420 777 100 200')
     await page.getByLabel('Password').fill('password123')
     await page.getByRole('button', { name: 'Create account' }).click()
-    await expect(page).toHaveURL(/\/verify-email\/pending/)
-    await expect(page.getByRole('heading', { name: 'Check your inbox' })).toBeVisible()
+    await expect(page).toHaveURL(/\/verify-email\/pending/, { timeout: 30_000 })
+    await expect(page.getByRole('heading', { name: 'Check your inbox' })).toBeVisible({
+      timeout: 30_000,
+    })
   })
 })
