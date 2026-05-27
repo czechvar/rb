@@ -1,0 +1,14 @@
+.list { display: grid; gap: 16px; }
+.card { border: 1px solid #e4e2df; border-radius: 8px; padding: 16px; background: #fff; }
+.cardHeader { display: flex; justify-content: space-between; align-items: baseline; }
+.badge { background: #fde9ec; color: #c8102e; font-size: 12px; padding: 2px 8px; border-radius: 999px; }
+.actions { display: flex; gap: 8px; margin-top: 12px; }
+.action {
+  background: none; border: 1px solid #d0cfcd; border-radius: 6px;
+  padding: 6px 10px; cursor: pointer; font-size: 14px;
+}
+.action:hover { background: #f7f5f3; }
+.danger { color: #c8102e; border-color: #f3c4cb; }
+.empty { padding: 32px; text-align: center; border: 1px dashed #d0cfcd; border-radius: 8px; }
+.toggle { margin: 16px 0 8px; display: flex; gap: 8px; align-items: center; }
+.companyBox { border-top: 1px solid #e4e2df; padding-top: 16px; margin-top: 16px; }
