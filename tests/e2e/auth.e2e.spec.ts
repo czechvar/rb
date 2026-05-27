@@ -11,9 +11,11 @@ test.describe('user section smoke', () => {
   test('/register renders all required fields', async ({ page }) => {
     await page.goto('/register')
     await expect(page.getByRole('heading', { name: 'Create account' })).toBeVisible()
-    for (const label of ['Full name', 'Email', 'Phone', 'Password']) {
+    for (const label of ['Full name', 'Email', 'Phone', 'Confirm password']) {
       await expect(page.getByLabel(label)).toBeVisible()
     }
+    // "Password" matches both Password and Confirm password — pin to exact.
+    await expect(page.getByLabel('Password', { exact: true })).toBeVisible()
   })
 
   test('/forgot-password submit shows the no-enumeration success banner', async ({ page }) => {
@@ -36,7 +38,8 @@ test.describe('user section smoke', () => {
     await page.getByLabel('Full name').fill('E2E User')
     await page.getByLabel('Email').fill(email)
     await page.getByLabel('Phone').fill('+420 777 100 200')
-    await page.getByLabel('Password').fill('password123')
+    await page.getByLabel('Password', { exact: true }).fill('password123')
+    await page.getByLabel('Confirm password').fill('password123')
     await page.getByRole('button', { name: 'Create account' }).click()
     await expect(page).toHaveURL(/\/verify-email\/pending/, { timeout: 30_000 })
     await expect(page.getByRole('heading', { name: 'Check your inbox' })).toBeVisible({
