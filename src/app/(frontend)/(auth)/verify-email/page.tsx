@@ -10,7 +10,12 @@ export default async function VerifyEmailPage({
 }: {
   searchParams: Promise<{ token?: string }>
 }) {
-  const { token } = await searchParams
+  const { token: rawToken } = await searchParams
+  // Tokens are 40-char hex from crypto.randomBytes(20).toString('hex'). Strip
+  // any non-hex characters that may have been appended by terminal/email
+  // hyperlink detectors (e.g. VSCode terminal grabbing the trailing JSON-quote
+  // backslash) before handing to verifyEmail.
+  const token = rawToken?.replace(/[^a-fA-F0-9]/g, '') ?? ''
   if (!token) {
     return (
       <>
@@ -23,7 +28,8 @@ export default async function VerifyEmailPage({
   const payload = await getPayloadClient()
   try {
     await payload.verifyEmail({ collection: 'users', token })
-  } catch {
+  } catch (err) {
+    console.error('[verify-email] failed for token:', token, err)
     return (
       <>
         <h1>This link has expired</h1>

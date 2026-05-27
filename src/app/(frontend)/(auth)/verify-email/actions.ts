@@ -37,24 +37,54 @@ export async function resendVerificationAction(
     where: { email: { equals: email } },
     limit: 1,
     showHiddenFields: true,
+    // overrideAccess defaults to true on Local API, but be explicit so we also
+    // get `_verificationToken` back — that field has access.read = defaultAccess
+    // which denies unauthenticated callers.
+    overrideAccess: true,
   })
-  const user = found.docs[0]
-  if (!user || (user as { _verified?: boolean })._verified) {
+  const user = found.docs[0] as
+    | undefined
+    | {
+        id: number | string
+        name?: string
+        _verified?: boolean
+        _verificationToken?: string | null
+        lastVerifyEmailSentAt?: string
+      }
+  if (!user || user._verified) {
     return { ok: true }
   }
-  const last = (user as { lastVerifyEmailSentAt?: string }).lastVerifyEmailSentAt
-  if (last && Date.now() - Date.parse(last) < RESEND_THROTTLE_MS) {
+  if (
+    user.lastVerifyEmailSentAt &&
+    Date.now() - Date.parse(user.lastVerifyEmailSentAt) < RESEND_THROTTLE_MS
+  ) {
     return { ok: true }
   }
 
-  const token = crypto.randomBytes(20).toString('hex')
+  // Reuse the registration token if present — Payload stores `_verificationToken`
+  // raw and doesn't time-limit it, so the original link from registration is
+  // still valid for an unverified user. Writes to `_verificationToken` are
+  // declined by Payload's base-field access (`update: () => false`) even with
+  // `overrideAccess`, so generating a new token here would email a value that
+  // never reaches the DB and the verify lookup would 403 as "invalid token".
+  let token = user._verificationToken
+  if (!token) {
+    // Edge case: unverified user with no token. Generate and persist via the
+    // base-fields hook channel. If the write is silently rejected the user
+    // will retry — we'd rather fail loudly than email a dead link.
+    token = crypto.randomBytes(20).toString('hex')
+    await payload.update({
+      collection: 'users',
+      id: user.id,
+      data: { _verificationToken: token } as never,
+      overrideAccess: true,
+    })
+  }
+
   await payload.update({
     collection: 'users',
     id: user.id,
-    data: {
-      _verificationToken: token,
-      lastVerifyEmailSentAt: new Date().toISOString(),
-    } as never,
+    data: { lastVerifyEmailSentAt: new Date().toISOString() } as never,
     overrideAccess: true,
   })
   await payload.sendEmail({
@@ -62,7 +92,7 @@ export async function resendVerificationAction(
     subject: 'Welcome to Rockbusters — please verify your email',
     html: verifyEmailTemplate({
       token,
-      name: (user as { name?: string }).name ?? 'there',
+      name: user.name ?? 'there',
     }),
   })
 
