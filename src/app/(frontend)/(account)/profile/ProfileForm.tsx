@@ -5,7 +5,7 @@ import { FormBanner } from '@/components/forms/FormBanner'
 import { SubmitButton } from '@/components/forms/SubmitButton'
 import { INITIAL_ACTION_STATE } from '@/components/forms/action-result'
 import styles from '@/components/forms/forms.module.css'
-import { updateProfileAction } from './actions'
+import { updateProfileAction, cancelPendingEmailChangeAction } from './actions'
 
 interface Props {
   initial: { name: string; phone: string; email: string }
@@ -25,6 +25,23 @@ export function ProfileForm({ initial, pendingEmail }: Props) {
           We sent a confirmation link to <strong>{pendingEmail}</strong>. Until you click it, your
           sign-in email stays as <strong>{initial.email}</strong>.
         </FormBanner>
+      )}
+      {pendingEmail && (
+        <form action={cancelPendingEmailChangeAction} style={{ marginBottom: 16 }}>
+          <button
+            type="submit"
+            style={{
+              background: 'none',
+              border: 0,
+              color: '#c8102e',
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              padding: 0,
+            }}
+          >
+            Cancel pending email change
+          </button>
+        </form>
       )}
       <form action={formAction}>
         <FormField
