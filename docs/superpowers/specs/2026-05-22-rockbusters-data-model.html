@@ -1,0 +1,234 @@
+<style>
+  .lane { margin: 0 0 20px; }
+  .lane-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: #b3261e; margin-bottom: 9px;
+  }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-start; }
+  .entity {
+    background: #fff; border: 1px solid #e2e2e2; border-radius: 10px;
+    min-width: 172px; flex: 1; overflow: hidden; cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .entity.selected { outline: 3px solid #b3261e; }
+  .entity-head {
+    background: #b3261e; color: #fff; padding: 7px 11px;
+    font-weight: 700; font-size: 14px;
+    display: flex; justify-content: space-between; align-items: center; gap: 6px;
+  }
+  .entity.muted .entity-head { background: #475569; }
+  .entity.soft .entity-head { background: #64748b; }
+  .entity.tax .entity-head { background: #1f6f43; }
+  .entity.promo .entity-head { background: #c2710c; }
+  .badge {
+    font-size: 9px; font-weight: 700; background: rgba(255,255,255,.25);
+    padding: 2px 5px; border-radius: 4px; letter-spacing: .04em; white-space: nowrap;
+  }
+  .fields { list-style: none; margin: 0; padding: 5px 0; }
+  .fields li {
+    padding: 2px 11px; font-size: 12px; font-family: ui-monospace, monospace; color: #333;
+  }
+  .fields li.moved { background: #fff4e6; }
+  .fk { color: #b3261e; font-weight: 700; font-size: 9px; }
+  .g { color: #999; }
+  .rel {
+    background: #faf5f5; border-top: 1px solid #eee; padding: 5px 11px;
+    font-size: 10px; color: #777;
+  }
+  .arrow { font-size: 20px; color: #b3261e; align-self: center; }
+  .note { font-size: 12.5px; color: #555; background:#f6f6f6;
+          border-left: 3px solid #b3261e; padding: 7px 12px; border-radius: 4px; margin-top:6px;}
+</style>
+
+<h2>Core data model — rockbusters <span style="font-size:14px;color:#999">v4</span></h2>
+<p class="subtitle">Locations · guides · airports moved to Event Date (highlighted). Click any entity to flag it.</p>
+
+<div class="lane">
+  <div class="lane-label">Content &amp; catalogue</div>
+  <div class="row">
+    <div class="entity" data-choice="event" onclick="toggleSelect(this)">
+      <div class="entity-head">Event <span class="badge">CONTENT</span></div>
+      <ul class="fields">
+        <li>title · slug</li>
+        <li>shortDescription</li>
+        <li>content <span class="g">(rich)</span></li>
+        <li>additionalInfo <span class="g">(blocks)</span></li>
+        <li>mainPicture <span class="fk">→ Media</span></li>
+        <li>gallery <span class="fk">→ Media[]</span></li>
+        <li>vimeoId <span class="g">(video)</span></li>
+        <li>categories <span class="fk">→ Category[]</span></li>
+        <li>difficulties <span class="fk">→ Difficulty[]</span></li>
+        <li>types <span class="fk">→ Type[]</span></li>
+        <li>featured · state <span class="g">draft·published</span></li>
+        <li>seoTitle/Keywords/Description</li>
+      </ul>
+      <div class="rel">concept-level taxonomy · location/guide list derived from its Event Dates</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="entity" data-choice="eventdate" onclick="toggleSelect(this)">
+      <div class="entity-head">Event Date <span class="badge">PURCHASABLE</span></div>
+      <ul class="fields">
+        <li><span class="fk">FK</span> event <span class="fk">→ Event</span></li>
+        <li>dateFrom / dateTo</li>
+        <li class="moved">locations <span class="fk">→ Location[]</span></li>
+        <li class="moved">guides <span class="fk">→ Guide[]</span></li>
+        <li class="moved">airportFrom/To <span class="fk">→ Airport</span></li>
+        <li>price / vat / currency</li>
+        <li>capacity <span class="g">(max spots)</span></li>
+        <li>minParticipants <span class="g">(runs if met)</span></li>
+        <li>extraContent <span class="g">(rich)</span></li>
+        <li>active</li>
+      </ul>
+      <div class="rel">occurrence-specific · availability = capacity − booked participants</div>
+    </div>
+    <div class="entity soft" data-choice="media" onclick="toggleSelect(this)">
+      <div class="entity-head">Media <span class="badge">FILE</span></div>
+      <ul class="fields">
+        <li>file <span class="g">(Cloudflare R2)</span></li>
+        <li>alt · sizes</li>
+      </ul>
+      <div class="rel">Payload upload collection</div>
+    </div>
+  </div>
+</div>
+
+<div class="lane">
+  <div class="lane-label">Taxonomy &amp; people</div>
+  <div class="row">
+    <div class="entity tax" data-choice="category" onclick="toggleSelect(this)">
+      <div class="entity-head">Category <span class="badge">PAGE</span></div>
+      <ul class="fields"><li>name · slug · text</li><li>position · active</li></ul>
+      <div class="rel">→ Event · own landing page</div>
+    </div>
+    <div class="entity tax" data-choice="difficulty" onclick="toggleSelect(this)">
+      <div class="entity-head">Difficulty <span class="badge">TAG</span></div>
+      <ul class="fields"><li>name · active</li></ul>
+      <div class="rel">→ Event</div>
+    </div>
+    <div class="entity tax" data-choice="type" onclick="toggleSelect(this)">
+      <div class="entity-head">Type <span class="badge">TAG</span></div>
+      <ul class="fields"><li>name · active</li></ul>
+      <div class="rel">→ Event</div>
+    </div>
+    <div class="entity tax" data-choice="guide" onclick="toggleSelect(this)">
+      <div class="entity-head">Guide <span class="badge">PAGE</span></div>
+      <ul class="fields">
+        <li>name · slug</li>
+        <li>bio / content <span class="g">(rich)</span></li>
+        <li>photo · vimeoId</li>
+        <li>email · phone · featured · seo×3</li>
+      </ul>
+      <div class="rel">→ Event Date · own page</div>
+    </div>
+    <div class="entity tax" data-choice="location" onclick="toggleSelect(this)">
+      <div class="entity-head">Location <span class="badge">PAGE</span></div>
+      <ul class="fields">
+        <li>name · slug</li>
+        <li>content <span class="g">(rich)</span></li>
+        <li>address · city · country</li>
+        <li>lat / lng <span class="g">(map)</span> · seo×3</li>
+      </ul>
+      <div class="rel">→ Event Date · own page + map</div>
+    </div>
+    <div class="entity tax" data-choice="airport" onclick="toggleSelect(this)">
+      <div class="entity-head">Airport <span class="badge">TRAVEL</span></div>
+      <ul class="fields">
+        <li>name · iata</li>
+        <li>country · continent</li>
+        <li>lat / lon · size</li>
+      </ul>
+      <div class="rel">→ Event Date</div>
+    </div>
+  </div>
+</div>
+
+<div class="lane">
+  <div class="lane-label">Customers &amp; orders</div>
+  <div class="row">
+    <div class="entity muted" data-choice="user" onclick="toggleSelect(this)">
+      <div class="entity-head">User <span class="badge">AUTH</span></div>
+      <ul class="fields">
+        <li><span class="fk">PK</span> email · password</li>
+        <li>name · addresses[]</li>
+        <li>role <span class="g">customer·admin</span></li>
+      </ul>
+      <div class="rel">has many → Orders</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="entity" data-choice="order" onclick="toggleSelect(this)">
+      <div class="entity-head">Order <span class="badge">COMMERCE</span></div>
+      <ul class="fields">
+        <li>orderNumber</li>
+        <li><span class="fk">FK</span> user <span class="fk">→ User</span></li>
+        <li>state <span class="g">created·pending·paid·cancelled</span></li>
+        <li>billingAddress · paymentMethod</li>
+        <li>subtotal / discountTotal / total / totalVat</li>
+        <li><span class="fk">FK</span> discountCode <span class="fk">→ DiscountCode</span></li>
+        <li><span class="fk">FK</span> bookingReference <span class="fk">→ BookingReference</span></li>
+        <li>commissionOwed <span class="g">(snapshot)</span></li>
+        <li><span class="fk">FK</span> transaction <span class="fk">→ Transaction</span></li>
+      </ul>
+      <div class="rel">has many → Items · one → Transaction</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="entity" data-choice="orderitem" onclick="toggleSelect(this)">
+      <div class="entity-head">Order Item <span class="badge">LINE</span></div>
+      <ul class="fields">
+        <li><span class="fk">FK</span> order <span class="fk">→ Order</span></li>
+        <li><span class="fk">FK</span> eventDate <span class="fk">→ Event Date</span></li>
+        <li>quantity <span class="g">(# participants)</span></li>
+        <li>unitPrice / lineTotal <span class="g">(snapshot)</span></li>
+      </ul>
+      <div class="rel">has many → Participants</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="entity" data-choice="participant" onclick="toggleSelect(this)">
+      <div class="entity-head">Participant <span class="badge">SEAT</span></div>
+      <ul class="fields">
+        <li><span class="fk">FK</span> orderItem <span class="fk">→ Order Item</span></li>
+        <li>fullName · note / details</li>
+      </ul>
+      <div class="rel">one row = one booked spot</div>
+    </div>
+  </div>
+</div>
+
+<div class="lane">
+  <div class="lane-label">Promotions, referral &amp; payment</div>
+  <div class="row">
+    <div class="entity promo" data-choice="discountcode" onclick="toggleSelect(this)">
+      <div class="entity-head">DiscountCode <span class="badge">PROMO</span></div>
+      <ul class="fields">
+        <li>title · code</li>
+        <li>discount <span class="g">(amount/%)</span></li>
+        <li>description</li>
+        <li>start / end <span class="g">(validity)</span></li>
+        <li>commissionEmail / commissionValue <span class="g">(optional)</span></li>
+      </ul>
+      <div class="rel">generic promo code</div>
+    </div>
+    <div class="entity promo" data-choice="bookingreference" onclick="toggleSelect(this)">
+      <div class="entity-head">BookingReference <span class="badge">REFERRAL</span></div>
+      <ul class="fields">
+        <li>name <span class="g">(partner)</span></li>
+        <li>code · email</li>
+        <li>discount <span class="g">(customer gets)</span></li>
+        <li>commission <span class="g">(partner earns)</span></li>
+      </ul>
+      <div class="rel">partner referral program</div>
+    </div>
+    <div class="entity muted" data-choice="transaction" onclick="toggleSelect(this)">
+      <div class="entity-head">Transaction <span class="badge">PAYMENT</span></div>
+      <ul class="fields">
+        <li>uuid · <span class="fk">FK</span> order <span class="fk">→ Order</span></li>
+        <li>price / priceWoVat / vat / currency</li>
+        <li>state <span class="g">created·begun·pending·paid·cancelled·failed</span></li>
+        <li>paymentMethod <span class="g">paypal·muzapay·comgate·bank</span></li>
+        <li>payload / callbackPayload</li>
+      </ul>
+      <div class="rel">matches src/payments/gateway.ts</div>
+    </div>
+  </div>
+</div>
+
+<p class="note"><strong>Cart:</strong> client-side while shopping; checkout creates Order + Items + Participants in one transaction. Discount/referral codes validated and snapshotted onto the Order at checkout.</p>

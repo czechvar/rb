@@ -1,0 +1,190 @@
+.section {
+  padding: 40px 60px;
+  border-bottom: 1px dashed #c8bfb0;
+}
+
+.section h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+.intro {
+  font-size: 14px;
+  color: #333;
+  max-width: 720px;
+  margin: 12px 0 18px 0;
+  line-height: 1.6;
+}
+
+.days {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.day {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.imgCol {
+  background: #1e1612;
+  color: #d4c5b0;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 220px;
+  position: relative;
+}
+
+.img,
+.imgPlaceholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: linear-gradient(135deg, #2a1f17, #1e1612);
+}
+
+.dayBadge,
+.destinationName,
+.metaLine {
+  position: relative;
+  z-index: 1;
+}
+
+.dayBadge {
+  display: inline-block;
+  background: #8b3a1a;
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: 6px;
+  align-self: flex-start;
+}
+
+.destinationName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 4px;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 4px 8px;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+
+.metaLine {
+  font-size: 11px;
+  font-family: 'Roboto Mono', monospace;
+  color: #d4c5b0;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 4px 8px;
+  border-radius: 2px;
+  align-self: flex-start;
+  white-space: pre-line;
+}
+
+.body {
+  padding: 20px 24px;
+}
+
+.eyebrow {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  color: #8b5e3c;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.body h3 {
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #1a1a1a;
+}
+
+.description {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #444;
+  margin: 0 0 12px 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 14px 0;
+}
+
+.tag {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  background: #fff8ee;
+  border: 1px solid #e8c080;
+  color: #7a5000;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.schedule {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.schedule th {
+  text-align: left;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  color: #8b5e3c;
+  padding: 6px 12px 6px 0;
+  width: 80px;
+  vertical-align: top;
+}
+
+.schedule td {
+  padding: 6px 0;
+  color: #333;
+  border-bottom: 1px solid #f0e8d8;
+  line-height: 1.5;
+}
+
+.schedule tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 800px) {
+  .day {
+    grid-template-columns: 1fr;
+  }
+  .imgCol {
+    min-height: 180px;
+  }
+}

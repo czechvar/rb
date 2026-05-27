@@ -1,0 +1,310 @@
+/* ===== Design tokens ============================================== */
+/* Ported from snowbusters vars.css, rebranded for rockbusters.
+   Convention: --rem-base: 10px so 1rem = 10px in this stylesheet. */
+
+:root {
+  /* Brand — rockbusters red (sampled from existing rockbusters.net logo "O") */
+  --colPrimary: #e30613;
+  --colPrimaryHover: #b30410;
+  --colPrimaryDark: #8b1e1e;          /* wine red for dark overlays (Figma hero) */
+  --colPrimaryLight: #ff6b6b;
+  --colPrimaryAlpha: rgba(227, 6, 19, 0.85);
+  --colPrimaryInverted: #e30613;
+  --colPrimaryInvertedHover: #f4f4f4;
+  --colPrimaryLighter: #4a4a4a;
+  --colPrimaryLightest: #7b7b7b;
+
+  --colSecondary: #1a1a1a;
+  --colSecondaryHover: #f4f4f4;
+
+  --colTextHeader: #1a1a1a;
+  --colTextSecond: var(--colPrimary);
+
+  /* Neutrals (kept identical to snowbusters) */
+  --colLight: #e8e7e5;
+  --colLighter: #f6f5f5;
+  --colLightest: #ffffff;
+  --colDark: #2d2c2b;
+  --colDarker: #111111;
+  --colGreyLighter: rgb(212, 208, 207);
+  --colGreyLight: rgb(170, 160, 157);
+  --colGrey: rgb(133, 124, 121);
+  --colGreyDark: rgb(95, 90, 88);
+  --colText: #515151;
+  --colTextAlpha: rgba(17, 17, 17, 0.75);
+  --colTextOnPrimary: #ffffff;
+  --colTextOnPrimaryHover: #ffffff;
+  --colDivider: rgba(255, 255, 255, 0.26);
+
+  /* Status */
+  --colInfo: #29b6f6;
+  --colOk: #66bb6a;
+  --colWarning: #ffa726;
+  --colError: #f44336;
+
+  /* Type scale — 1rem = 10px */
+  --rem-base: 10px;
+
+  /* H1 (display) */
+  --h1FontSize: 12rem;
+  --h1LineHeight: 11rem;
+  --h1MarginBottom: 2rem;
+  --h1PaddingTop: 4rem;
+  --h1PaddingBottom: 2rem;
+
+  /* H2 */
+  --h2FontSize: 4.1rem;
+  --h2LineHeight: 4.8rem;
+  --h2MarginBottom: 1.5rem;
+  --h2PaddingTop: 3rem;
+  --h2PaddingBottom: 1.5rem;
+
+  /* H3 */
+  --h3FontSize: 3.6rem;
+  --h3LineHeight: 3.8rem;
+  --h3MarginBottom: 1.5rem;
+  --h3PaddingTop: 2.5rem;
+  --h3PaddingBottom: 1rem;
+
+  /* H4 */
+  --h4FontSize: 2.4rem;
+  --h4LineHeight: 2.6rem;
+  --h4MarginBottom: 1rem;
+
+  /* H5 */
+  --h5FontSize: 2rem;
+  --h5LineHeight: 2rem;
+  --h5MarginBottom: 1rem;
+
+  /* Eyebrow / label */
+  --eyebrowFontSize: 1.6rem;
+  --eyebrowLineHeight: 2.8rem;
+  --eyebrowMarginBottom: 0.5rem;
+  --eyebrowLetterSpacing: 0.8rem;
+
+  /* Body */
+  --pFontSize: 2rem;
+  --textLineHeight: 2.8rem;
+  --smallTextFontSize: 1.4rem;
+  --smallTextLineHeight: 1.8rem;
+
+  /* Header */
+  --headerContactsHeight: 4.5rem;
+  --headerHeight: 4.4rem;
+  --headerTotalHeight: calc(var(--headerContactsHeight) + var(--headerHeight) + 2rem);
+  --headerDividerWidth: 350px;
+  --headerDividerMaxWidth: 65vw;
+  --headerDividerHeight: 2px;
+  --headerBg: rgba(43, 12, 12, 0.55);   /* dark wine red, semi-transparent */
+  --headerBgScrolled: rgba(43, 12, 12, 0.85);
+
+  /* Layout */
+  --contentPadding: 3rem;
+  --contentMaxWidth: 1920px;
+  --contentTextMaxWidth: 1484px;
+  --gap: 1rem;
+
+  /* Motion */
+  --transitionTimeBase: 0.3s;
+
+  /* Breakpoints — for reference; actual breakpoints live in @media queries */
+  --breakpointSmall: 500px;
+  --breakpointMid: 768px;
+  --breakpointLarge: 1200px;
+  --breakpointExtraLarge: 1440px;
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    --h1FontSize: 5rem;
+    --h1LineHeight: 5rem;
+    --h1PaddingTop: 2rem;
+    --h1PaddingBottom: 1rem;
+    --h2FontSize: 3.6rem;
+    --h2LineHeight: 3.8rem;
+    --h3FontSize: 2.4rem;
+    --h3LineHeight: 2.6rem;
+    --h4FontSize: 2rem;
+    --h4LineHeight: 2.2rem;
+    --h5FontSize: 1.8rem;
+    --h5LineHeight: 2rem;
+    --eyebrowFontSize: 1.2rem;
+    --eyebrowLineHeight: 1.2rem;
+    --eyebrowLetterSpacing: 0.4rem;
+    --pFontSize: 1.6rem;
+    --textLineHeight: 2.4rem;
+    --headerDividerWidth: 250px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --contentPadding: 4rem;
+    --gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  :root {
+    --gap: 2rem;
+  }
+}
+
+/* ===== Reset + base ================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 320px;
+  font-size: var(--rem-base);   /* 1rem = 10px */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--colLightest);
+  color: var(--colText);
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body, 'Lato', 'Helvetica Neue', Arial, sans-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: var(--textLineHeight);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-heading, 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif);
+  font-weight: 500;
+  color: var(--colTextHeader);
+}
+
+h1 {
+  margin-bottom: var(--h1MarginBottom);
+  font-size: var(--h1FontSize);
+  line-height: var(--h1LineHeight);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin-bottom: var(--h2MarginBottom);
+  font-size: var(--h2FontSize);
+  line-height: var(--h2LineHeight);
+}
+
+h3 {
+  margin-bottom: var(--h3MarginBottom);
+  font-size: var(--h3FontSize);
+  line-height: var(--h3LineHeight);
+}
+
+h4 {
+  margin-bottom: var(--h4MarginBottom);
+  font-size: var(--h4FontSize);
+  line-height: var(--h4LineHeight);
+}
+
+h5 {
+  margin-bottom: var(--h5MarginBottom);
+  font-size: var(--h5FontSize);
+  line-height: var(--h5LineHeight);
+}
+
+p:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+small {
+  font-size: var(--smallTextFontSize);
+  line-height: var(--smallTextLineHeight);
+  opacity: 0.85;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transitionTimeBase) ease;
+}
+
+a:hover {
+  color: var(--colPrimary);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--colPrimary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ===== Layout helpers ============================================== */
+
+.contentWrap {
+  width: 100%;
+  max-width: var(--contentMaxWidth);
+  margin: 0 auto;
+  padding: 0 var(--contentPadding);
+}
+
+.contentWrapNarrow {
+  width: 100%;
+  max-width: var(--contentTextMaxWidth);
+  margin: 0 auto;
+  padding: 0 var(--contentPadding);
+}
+
+.eyebrow {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: var(--eyebrowFontSize);
+  line-height: var(--eyebrowLineHeight);
+  letter-spacing: var(--eyebrowLetterSpacing);
+  text-transform: uppercase;
+  margin-bottom: var(--eyebrowMarginBottom);
+  font-weight: 400;
+}
+
+.headerDivider {
+  width: var(--headerDividerWidth);
+  max-width: var(--headerDividerMaxWidth);
+  height: var(--headerDividerHeight);
+  background: currentColor;
+  opacity: 0.8;
+}

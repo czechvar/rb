@@ -1,0 +1,73 @@
+.section {
+  padding: 40px 60px;
+  border-bottom: 1px dashed #c8bfb0;
+}
+
+.section h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 720px;
+  margin: 16px 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.card h3 {
+  font-size: 14px;
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 1px;
+  margin: 0 0 10px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #8b3a1a;
+  color: #8b3a1a;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  padding: 7px 0 7px 22px;
+  font-size: 13px;
+  color: #333;
+  position: relative;
+  border-bottom: 1px solid #e8e0d4;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.card li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #8b5e3c;
+}
+
+.recommendation {
+  margin-top: 18px;
+  font-style: italic;
+  border-left: 3px solid #8b3a1a;
+  padding-left: 14px;
+  color: #333;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
