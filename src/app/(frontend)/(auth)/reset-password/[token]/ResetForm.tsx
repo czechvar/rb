@@ -1,5 +1,5 @@
 'use client'
-import React, { useActionState } from 'react'
+import React, { useActionState, useState } from 'react'
 import { FormField } from '@/components/forms/FormField'
 import { FormBanner } from '@/components/forms/FormBanner'
 import { SubmitButton } from '@/components/forms/SubmitButton'
@@ -8,6 +8,13 @@ import { resetPasswordAction } from './actions'
 
 export function ResetForm({ token }: { token: string }) {
   const [state, formAction] = useActionState(resetPasswordAction, INITIAL_ACTION_STATE)
+
+  // Controlled — passwords can't be echoed from the server.
+  const [password, setPassword] = useState('')
+  const [confirm, setConfirm] = useState('')
+
+  const fieldErrors = !state.ok ? state.fieldErrors : undefined
+
   return (
     <>
       {!state.ok && state.formError && (
@@ -24,7 +31,9 @@ export function ResetForm({ token }: { token: string }) {
           required
           autoComplete="new-password"
           helpText="At least 8 characters."
-          error={!state.ok ? state.fieldErrors?.password : undefined}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          error={fieldErrors?.password}
         />
         <FormField
           name="confirm"
@@ -32,7 +41,9 @@ export function ResetForm({ token }: { token: string }) {
           type="password"
           required
           autoComplete="new-password"
-          error={!state.ok ? state.fieldErrors?.confirm : undefined}
+          value={confirm}
+          onChange={(e) => setConfirm(e.target.value)}
+          error={fieldErrors?.confirm}
         />
         <SubmitButton>Set new password</SubmitButton>
       </form>

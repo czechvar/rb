@@ -1,6 +1,6 @@
 // src/app/(frontend)/(auth)/login/LoginForm.tsx
 'use client'
-import React, { useActionState } from 'react'
+import React, { useActionState, useState } from 'react'
 import { FormField } from '@/components/forms/FormField'
 import { FormBanner } from '@/components/forms/FormBanner'
 import { SubmitButton } from '@/components/forms/SubmitButton'
@@ -18,6 +18,13 @@ export function LoginForm({ from, verifiedFlash, passwordResetFlash }: Props) {
   const verifyRequired =
     !state.ok && state.formError?.startsWith('verify_required:')
   const verifyEmail = verifyRequired ? state.formError!.slice('verify_required:'.length) : null
+
+  // Controlled inputs — password can't be echoed from the server, and keeping
+  // email controlled too means a single source of truth across submissions.
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const fieldErrors = !state.ok ? state.fieldErrors : undefined
 
   return (
     <>
@@ -46,7 +53,9 @@ export function LoginForm({ from, verifiedFlash, passwordResetFlash }: Props) {
           type="email"
           autoComplete="email"
           required
-          error={!state.ok ? state.fieldErrors?.email : undefined}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          error={fieldErrors?.email}
         />
         <FormField
           name="password"
@@ -54,7 +63,9 @@ export function LoginForm({ from, verifiedFlash, passwordResetFlash }: Props) {
           type="password"
           autoComplete="current-password"
           required
-          error={!state.ok ? state.fieldErrors?.password : undefined}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          error={fieldErrors?.password}
         />
         <SubmitButton>Sign in</SubmitButton>
       </form>

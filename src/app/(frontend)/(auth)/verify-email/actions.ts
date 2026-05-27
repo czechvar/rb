@@ -14,9 +14,14 @@ export async function resendVerificationAction(
   _p: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  const parsed = resendSchema.safeParse({ email: formData.get('email') })
+  const echo = { email: String(formData.get('email') ?? '') }
+  const parsed = resendSchema.safeParse({ email: echo.email })
   if (!parsed.success) {
-    return { ok: false, fieldErrors: { email: parsed.error.issues[0]?.message ?? 'Invalid email.' } }
+    return {
+      ok: false,
+      values: echo,
+      fieldErrors: { email: parsed.error.issues[0]?.message ?? 'Invalid email.' },
+    }
   }
   const { email } = parsed.data
 

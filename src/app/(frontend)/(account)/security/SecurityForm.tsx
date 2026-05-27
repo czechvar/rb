@@ -1,5 +1,5 @@
 'use client'
-import React, { useActionState } from 'react'
+import React, { useActionState, useEffect, useState } from 'react'
 import { FormField } from '@/components/forms/FormField'
 import { FormBanner } from '@/components/forms/FormBanner'
 import { SubmitButton } from '@/components/forms/SubmitButton'
@@ -8,6 +8,24 @@ import { changePasswordAction } from './actions'
 
 export function SecurityForm() {
   const [state, formAction] = useActionState(changePasswordAction, INITIAL_ACTION_STATE)
+
+  // Controlled — passwords can't be echoed from the server.
+  const [currentPassword, setCurrentPassword] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirm, setConfirm] = useState('')
+
+  // Clear all password fields after a successful change so the next visit
+  // to this page starts clean.
+  useEffect(() => {
+    if (state.ok) {
+      setCurrentPassword('')
+      setPassword('')
+      setConfirm('')
+    }
+  }, [state.ok])
+
+  const fieldErrors = !state.ok ? state.fieldErrors : undefined
+
   return (
     <>
       {state.ok && <FormBanner kind="success">Password updated.</FormBanner>}
@@ -18,7 +36,9 @@ export function SecurityForm() {
           type="password"
           required
           autoComplete="current-password"
-          error={!state.ok ? state.fieldErrors?.currentPassword : undefined}
+          value={currentPassword}
+          onChange={(e) => setCurrentPassword(e.target.value)}
+          error={fieldErrors?.currentPassword}
         />
         <FormField
           name="password"
@@ -27,7 +47,9 @@ export function SecurityForm() {
           required
           autoComplete="new-password"
           helpText="At least 8 characters."
-          error={!state.ok ? state.fieldErrors?.password : undefined}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          error={fieldErrors?.password}
         />
         <FormField
           name="confirm"
@@ -35,7 +57,9 @@ export function SecurityForm() {
           type="password"
           required
           autoComplete="new-password"
-          error={!state.ok ? state.fieldErrors?.confirm : undefined}
+          value={confirm}
+          onChange={(e) => setConfirm(e.target.value)}
+          error={fieldErrors?.confirm}
         />
         <SubmitButton>Change password</SubmitButton>
       </form>
