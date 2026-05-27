@@ -33,6 +33,16 @@ Snowbusters stack: PHP 8.4 / Nette + Doctrine ORM backend (`api/`), Vue 3 + Type
 - **Design** — get inspired by the snowbusters frontend; reuse/adapt rather than copy verbatim.
 - **User handling & orders** — study `api/app/UserMgmtModule/` and `api/app/OrdersModule/` (+ `api/app/model/Order/`, `api/app/schema/order/`) as the functional spec for this rebuild's account area.
 
+## User section
+
+Self-registration with email verification, login (with lockout + verify-required panel), forgot/reset password, account profile (with pessimistic email-change flow), address management with Czech B2B fields (IČO/DIČ), change-password, and an `/account/orders` stub are live.
+
+- Spec: `docs/superpowers/specs/2026-05-26-user-section-design.md`
+- Plan: `docs/superpowers/plans/2026-05-26-user-section.md`
+- Email goes through `@payloadcms/email-resend` with a console-adapter fallback when `RESEND_API_KEY` is unset (mirrors the R2 fallback pattern).
+- Auth pages are under route group `(auth)`; account pages under `(account)` with a shared sidebar layout.
+- All forms submit to Next.js Server Actions that call Payload's local API directly.
+
 ## Code so far
 
 - `src/payments/gateway.ts` — **draft** TypeScript port of the payment gateway abstraction: domain types (`Transaction`, `TransactionState`, `Money`), the `PaymentGateway` contract, and the factory config shape. No concrete gateways yet. Has a "DRAFT — open questions" block at the bottom to resolve before implementation. Unlike the PHP original, gateway methods return result objects instead of mutating the transaction; the (future) PaymentService owns persistence and state transitions.
@@ -58,5 +68,10 @@ Hosted on **Vercel**. Required environment variables in the Vercel project setti
 - `R2_BUCKET` — Cloudflare R2 bucket name (e.g. `rockbusters-media`)
 - `R2_ENDPOINT` — `https://<account-id>.r2.cloudflarestorage.com`
 - `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` — R2 S3-API credentials
+- `NEXT_PUBLIC_SITE_URL` — public base URL used in email templates (e.g. `https://rockbusters.net`)
+- `RESEND_API_KEY` — Resend transactional-email API key. If unset, Payload falls back to its console adapter (logs emails) — same defensive pattern as the R2 fallback.
+- `EMAIL_FROM_ADDRESS` — sender address (e.g. `hello@rockbusters.net` in prod, `onboarding@resend.dev` in dev). Domain must be verified in Resend for prod.
+- `EMAIL_FROM_NAME` — sender display name (e.g. `Rockbusters`).
+- `EMAIL_REPLY_TO` — optional reply-to address.
 
 If any of the four `R2_*` vars is unset, Payload falls back to local-disk storage (useful for tests, broken for production).
