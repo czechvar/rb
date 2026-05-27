@@ -5,6 +5,7 @@ export const testUser = {
   email: 'dev@payloadcms.com',
   password: 'test',
   name: 'Dev Admin',
+  phone: '+420 777 000 001',
 }
 
 /**
@@ -28,6 +29,21 @@ export async function seedTestUser(): Promise<void> {
     collection: 'users',
     data: { ...testUser, role: 'admin' },
   })
+
+  // Mark the admin as verified so e2e login works (verify is on)
+  const admin = await payload.find({
+    collection: 'users',
+    where: { email: { equals: testUser.email } },
+    limit: 1,
+  })
+  if (admin.docs[0]) {
+    await payload.update({
+      collection: 'users',
+      id: admin.docs[0].id,
+      data: { _verified: true } as never,
+      overrideAccess: true,
+    })
+  }
 }
 
 /**

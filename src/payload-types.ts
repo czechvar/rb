@@ -146,16 +146,30 @@ export interface UserAuthOperations {
 export interface User {
   id: number;
   name: string;
+  phone: string;
   role: 'customer' | 'admin';
   addresses?:
     | {
-        street?: string | null;
-        city?: string | null;
-        postalCode?: string | null;
-        country?: string | null;
+        label?: string | null;
+        isDefault?: boolean | null;
+        firstName: string;
+        lastName: string;
+        street: string;
+        city: string;
+        postalCode: string;
+        country: string;
+        company?: {
+          companyName?: string | null;
+          ico?: string | null;
+          dic?: string | null;
+        };
         id?: string | null;
       }[]
     | null;
+  pendingEmail?: string | null;
+  pendingEmailToken?: string | null;
+  pendingEmailExpiresAt?: string | null;
+  lastVerifyEmailSentAt?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -163,6 +177,8 @@ export interface User {
   resetPasswordExpiration?: string | null;
   salt?: string | null;
   hash?: string | null;
+  _verified?: boolean | null;
+  _verificationToken?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
   sessions?:
@@ -961,16 +977,32 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  phone?: T;
   role?: T;
   addresses?:
     | T
     | {
+        label?: T;
+        isDefault?: T;
+        firstName?: T;
+        lastName?: T;
         street?: T;
         city?: T;
         postalCode?: T;
         country?: T;
+        company?:
+          | T
+          | {
+              companyName?: T;
+              ico?: T;
+              dic?: T;
+            };
         id?: T;
       };
+  pendingEmail?: T;
+  pendingEmailToken?: T;
+  pendingEmailExpiresAt?: T;
+  lastVerifyEmailSentAt?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -978,6 +1010,8 @@ export interface UsersSelect<T extends boolean = true> {
   resetPasswordExpiration?: T;
   salt?: T;
   hash?: T;
+  _verified?: T;
+  _verificationToken?: T;
   loginAttempts?: T;
   lockUntil?: T;
   sessions?:
