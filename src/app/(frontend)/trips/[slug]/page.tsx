@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPayloadClient } from '@/lib/payload'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
@@ -109,7 +110,13 @@ export default async function TripPage({ params }: Props) {
         <FAQList items={faqsResult.docs} heading="FAQ for This Trip" />
         <HowToBook />
         <WhyRockbusters />
+        <div style={{ textAlign: 'center', padding: '4rem 2rem 0' }}>
+          <Link href={`/trips/${slug}/faq`}>Read the FAQ for this trip →</Link>
+        </div>
         <EventFinalCTA event={event} firstDate={firstDate} />
+        <div style={{ textAlign: 'center', padding: '2rem' }}>
+          <Link href={`/trips/${slug}/logistics`}>Travel & logistics →</Link>
+        </div>
       </main>
     </MarketingShell>
   )
