@@ -18,6 +18,7 @@ import { PartnerBlock } from '@/components/sections/PartnerBlock'
 import { CoachesMinimal } from '@/components/sections/CoachesMinimal'
 import { DemoLessonBlock } from '@/components/sections/DemoLessonBlock'
 import { ReviewsRow } from '@/components/sections/ReviewsRow'
+import { PhotoGallery } from '@/components/sections/PhotoGallery'
 import { FAQList } from '@/components/sections/FAQList'
 import { HowToBook } from '@/components/sections/HowToBook'
 import { WhyRockbusters } from '@/components/sections/WhyRockbusters'
@@ -104,6 +105,7 @@ export default async function TripPage({ params }: Props) {
         />
         <DemoLessonBlock event={event} />
         <ReviewsRow items={reviewsResult.docs} />
+        <PhotoGallery items={event.gallery} />
         <FAQList items={faqsResult.docs} heading="FAQ for This Trip" />
         <HowToBook />
         <WhyRockbusters />
