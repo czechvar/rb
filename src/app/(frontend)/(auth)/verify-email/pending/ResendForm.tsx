@@ -23,7 +23,7 @@ export function ResendForm({ defaultEmail }: { defaultEmail?: string }) {
           type="email"
           required
           autoComplete="email"
-          defaultValue={defaultEmail}
+          defaultValue={(!state.ok && state.values?.email) || defaultEmail}
           error={!state.ok ? state.fieldErrors?.email : undefined}
         />
         <SubmitButton>Resend verification email</SubmitButton>

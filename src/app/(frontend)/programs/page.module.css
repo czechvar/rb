@@ -1,0 +1,137 @@
+.page {
+  padding: 60px var(--contentPadding) 80px;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--eyebrowFontSize);
+  letter-spacing: var(--eyebrowLetterSpacing);
+  text-transform: uppercase;
+  color: var(--colTextSecond);
+  margin-bottom: 12px;
+}
+
+.header h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.lede {
+  font-size: var(--pFontSize);
+  line-height: var(--textLineHeight);
+  max-width: 60rem;
+  margin: 0 auto;
+  color: #555;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  padding: 60px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: box-shadow var(--transitionTimeBase, 0.18s) ease,
+    transform var(--transitionTimeBase, 0.18s) ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.cardLink {
+  display: block;
+  padding: 22px 24px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cardHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.cardHead h2 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cardLoc {
+  font-size: 12px;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.cardFacts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 14px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.cardFacts dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin-bottom: 2px;
+}
+
+.cardFacts dd {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.cardCta {
+  display: inline-block;
+  color: var(--colPrimary);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 40px 20px 60px;
+  }
+  .cardFacts {
+    grid-template-columns: 1fr 1fr;
+  }
+}

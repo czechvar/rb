@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import type { Event, Guide } from '@/payload-types'
 import { mediaUrl, mediaAlt } from '@/lib/media'
+import { SectionIntro } from './SectionIntro'
 import styles from './CoachesMinimal.module.css'
 
 function isGuide(x: number | Guide): x is Guide {
@@ -20,8 +21,7 @@ export function CoachesMinimal({
   if (!resolved.length && !teamBullets?.length) return null
   return (
     <section className={styles.section}>
-      <h2>Your Coaches</h2>
-      {framing && <p className={styles.framing}>{framing}</p>}
+      <SectionIntro title="Meet your guides" lead={framing ?? undefined} />
       {resolved.length ? (
         <div className={styles.row}>
           {resolved.map(g => {

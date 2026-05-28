@@ -1,47 +1,41 @@
 import type { Event } from '@/payload-types'
+import { Card, CardGrid } from './Card'
+import { SectionIntro } from './SectionIntro'
 import styles from './WhatYouLearn.module.css'
 
 export function WhatYouLearn({ data }: { data?: Event['whatYouLearn'] }) {
   if (!data) return null
-  const { intro, box1Heading, box1Bullets, box2Heading, box2Bullets } = data
-  const hasAnything =
-    intro ||
-    box1Heading ||
-    box1Bullets?.length ||
-    box2Heading ||
-    box2Bullets?.length
-  if (!hasAnything) return null
+  const boxes = [
+    data.box1Heading && {
+      heading: data.box1Heading,
+      bullets: data.box1Bullets ?? [],
+    },
+    data.box2Heading && {
+      heading: data.box2Heading,
+      bullets: data.box2Bullets ?? [],
+    },
+  ].filter(Boolean) as { heading: string; bullets: { text: string }[] }[]
+
+  if (!boxes.length) return null
 
   return (
     <section className={styles.section}>
-      <h2>What You Will Learn &amp; Achieve</h2>
-      {intro && <p className={styles.intro}>{intro}</p>}
-      <div className={styles.grid}>
-        {(box1Heading || box1Bullets?.length) && (
-          <div className={styles.box}>
-            {box1Heading && <h3>{box1Heading}</h3>}
-            {box1Bullets?.length ? (
-              <ul>
-                {box1Bullets.map((b, i) => (
-                  <li key={i}>{b.text}</li>
-                ))}
-              </ul>
-            ) : null}
-          </div>
-        )}
-        {(box2Heading || box2Bullets?.length) && (
-          <div className={styles.box}>
-            {box2Heading && <h3>{box2Heading}</h3>}
-            {box2Bullets?.length ? (
-              <ul>
-                {box2Bullets.map((b, i) => (
-                  <li key={i}>{b.text}</li>
-                ))}
-              </ul>
-            ) : null}
-          </div>
-        )}
-      </div>
+      <SectionIntro
+        title="What you'll learn"
+        lead={data.intro ?? undefined}
+      />
+      <CardGrid>
+        {boxes.map((box, i) => (
+          <Card key={i}>
+            <h3 className={styles.heading}>{box.heading}</h3>
+            <ul className={styles.bullets}>
+              {box.bullets.map((b, j) => (
+                <li key={j}>{b.text}</li>
+              ))}
+            </ul>
+          </Card>
+        ))}
+      </CardGrid>
     </section>
   )
 }

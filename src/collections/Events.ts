@@ -219,6 +219,24 @@ export const Events: CollectionConfig = {
       fields: [{ name: 'text', type: 'text', required: true }],
     },
 
+    // Demo / try-out session (Figma "DOWN DEMO Intro")
+    {
+      name: 'demoEnabled',
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'Show free demo block on detail page',
+    },
+    { name: 'demoHeading', type: 'text' },
+    { name: 'demoBody', type: 'richText' },
+    {
+      name: 'demoCta',
+      type: 'group',
+      fields: [
+        { name: 'label', type: 'text' },
+        { name: 'url', type: 'text' },
+      ],
+    },
+
     // Status / sidebar / SEO
     { name: 'featured', type: 'checkbox', defaultValue: false },
     {

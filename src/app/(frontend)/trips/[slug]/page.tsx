@@ -1,22 +1,24 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPayloadClient } from '@/lib/payload'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { DetailHero } from '@/components/sections/DetailHero'
+import { SectionIntro } from '@/components/sections/SectionIntro'
+import { TripPitchBlock } from '@/components/sections/TripPitchBlock'
 import { HighlightsGrid } from '@/components/sections/HighlightsGrid'
 import { AudienceCards } from '@/components/sections/AudienceCards'
 import { Prerequisites } from '@/components/sections/Prerequisites'
 import { EssentialEquipment } from '@/components/sections/EssentialEquipment'
 import { WhatYouLearn } from '@/components/sections/WhatYouLearn'
+import { BookingCTA } from '@/components/sections/BookingCTA'
 import { DayByDayItinerary } from '@/components/sections/DayByDayItinerary'
-import { LocationBlock } from '@/components/sections/LocationBlock'
-import { EventAccommodationLogistics } from '@/components/sections/EventAccommodationLogistics'
 import { PartnerBlock } from '@/components/sections/PartnerBlock'
 import { CoachesMinimal } from '@/components/sections/CoachesMinimal'
+import { DemoLessonBlock } from '@/components/sections/DemoLessonBlock'
 import { ReviewsRow } from '@/components/sections/ReviewsRow'
-import { FAQList } from '@/components/sections/FAQList'
+import { PhotoGallery } from '@/components/sections/PhotoGallery'
 import { HowToBook } from '@/components/sections/HowToBook'
 import { WhyRockbusters } from '@/components/sections/WhyRockbusters'
-import { EventFinalCTA } from '@/components/sections/EventFinalCTA'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -33,13 +35,7 @@ export default async function TripPage({ params }: Props) {
   const event = eventDocs[0]
   if (!event) notFound()
 
-  const [faqsResult, reviewsResult, datesResult] = await Promise.all([
-    payload.find({
-      collection: 'faqs',
-      where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
-      sort: 'position',
-      limit: 50,
-    }),
+  const [reviewsResult, datesResult] = await Promise.all([
     payload.find({
       collection: 'reviews',
       where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
@@ -50,7 +46,7 @@ export default async function TripPage({ params }: Props) {
       collection: 'event-dates',
       where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
       sort: 'dateFrom',
-      limit: 50,
+      limit: 1,
     }),
   ])
 
@@ -66,6 +62,8 @@ export default async function TripPage({ params }: Props) {
     >
       <main>
         <DetailHero event={event} firstDate={firstDate} />
+        <SectionIntro title={event.title} lead={event.shortDescription ?? undefined} />
+        <TripPitchBlock event={event} />
         <HighlightsGrid items={event.highlights} heading="Trip Highlights" />
         <AudienceCards cards={event.audienceCards} />
         <Prerequisites items={event.prerequisites} />
@@ -73,13 +71,10 @@ export default async function TripPage({ params }: Props) {
           items={event.essentialEquipment}
           intro={event.equipmentIntro}
         />
+        <BookingCTA event={event} heading="Ready to commit?" />
         <WhatYouLearn data={event.whatYouLearn} />
+        <BookingCTA event={event} />
         <DayByDayItinerary data={event.itinerary} />
-        <LocationBlock content={event.content} />
-        <EventAccommodationLogistics
-          accommodation={event.accommodation}
-          transport={event.transport}
-        />
         <PartnerBlock
           partner={event.partner}
           eyebrow={event.partnerEyebrow}
@@ -92,11 +87,17 @@ export default async function TripPage({ params }: Props) {
           framing={event.coachFramingParagraph}
           teamBullets={event.coachTeamBullets}
         />
+        <DemoLessonBlock event={event} />
         <ReviewsRow items={reviewsResult.docs} />
-        <FAQList items={faqsResult.docs} heading="FAQ for This Trip" />
+        <PhotoGallery items={event.gallery} />
         <HowToBook />
         <WhyRockbusters />
-        <EventFinalCTA event={event} firstDate={firstDate} />
+        <div style={{ textAlign: 'center', padding: '4rem 2rem 0' }}>
+          <Link href={`/trips/${slug}/faq`}>Read the FAQ for this trip →</Link>
+        </div>
+        <div style={{ textAlign: 'center', padding: '2rem' }}>
+          <Link href={`/trips/${slug}/logistics`}>Travel & logistics →</Link>
+        </div>
       </main>
     </MarketingShell>
   )

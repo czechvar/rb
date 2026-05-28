@@ -104,6 +104,11 @@
   --contentTextMaxWidth: 1484px;
   --gap: 1rem;
 
+  /* Section rhythm (Figma round 2) — placeholder values, refine against Figma */
+  --sectionGapLg: 12rem;
+  --sectionGapMd: 8rem;
+  --sectionGapSm: 4rem;
+
   /* Motion */
   --transitionTimeBase: 0.3s;
 
@@ -134,6 +139,9 @@
     --pFontSize: 1.6rem;
     --textLineHeight: 2.4rem;
     --headerDividerWidth: 250px;
+    --sectionGapLg: 8rem;
+    --sectionGapMd: 5rem;
+    --sectionGapSm: 3rem;
   }
 }
 

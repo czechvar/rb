@@ -26,6 +26,22 @@ function parseForm(formData: FormData) {
   })
 }
 
+/** Echo of submitted text values so the form can repopulate on validation error. */
+function echoValues(formData: FormData): Record<string, string> {
+  return {
+    label: String(formData.get('label') ?? ''),
+    firstName: String(formData.get('firstName') ?? ''),
+    lastName: String(formData.get('lastName') ?? ''),
+    street: String(formData.get('street') ?? ''),
+    city: String(formData.get('city') ?? ''),
+    postalCode: String(formData.get('postalCode') ?? ''),
+    country: String(formData.get('country') ?? ''),
+    companyName: String(formData.get('companyName') ?? ''),
+    ico: String(formData.get('ico') ?? ''),
+    dic: String(formData.get('dic') ?? ''),
+  }
+}
+
 function toAddressRow(data: ReturnType<typeof addressSchema.parse>): Address {
   const row: Address = {
     label: data.label || undefined,
@@ -61,6 +77,7 @@ export async function addAddressAction(
   if (!parsed.success) {
     return {
       ok: false,
+      values: echoValues(formData),
       fieldErrors: Object.fromEntries(
         parsed.error.issues.map((i) => [String(i.path[0]), i.message]),
       ),
@@ -94,6 +111,7 @@ export async function updateAddressAction(
   if (!parsed.success) {
     return {
       ok: false,
+      values: echoValues(formData),
       fieldErrors: Object.fromEntries(
         parsed.error.issues.map((i) => [String(i.path[0]), i.message]),
       ),
@@ -102,7 +120,7 @@ export async function updateAddressAction(
   const payload = await getPayloadClient()
   const existing = user.addresses ?? []
   if (idx < 0 || idx >= existing.length) {
-    return { ok: false, formError: 'Address not found.' }
+    return { ok: false, values: echoValues(formData), formError: 'Address not found.' }
   }
   const updatedRow = toAddressRow(parsed.data)
   let next: Address[] = existing.map((r, i) =>

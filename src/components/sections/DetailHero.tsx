@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { Event, EventDate } from '@/payload-types'
 import styles from './DetailHero.module.css'
 
@@ -8,32 +9,35 @@ export function DetailHero({
   event: Event
   firstDate?: EventDate
 }) {
+  const mainPic =
+    typeof event.mainPicture === 'object' && event.mainPicture
+      ? event.mainPicture
+      : null
+
   return (
     <section className={styles.hero}>
+      {mainPic?.url && (
+        <Image
+          src={mainPic.url}
+          alt={mainPic.alt || event.title}
+          fill
+          priority
+          className={styles.image}
+          sizes="100vw"
+        />
+      )}
+      <div className={styles.overlay} />
       <div className={styles.text}>
-        <h1>{event.title}</h1>
+        <h1 className={styles.title}>{event.title}</h1>
         {event.shortDescription && (
-          <p className={styles.overview}>{event.shortDescription}</p>
+          <p className={styles.lead}>{event.shortDescription}</p>
+        )}
+        {firstDate && (
+          <p className={styles.meta}>
+            From {firstDate.currency} {firstDate.price.toLocaleString()} · per person
+          </p>
         )}
       </div>
-      <aside className={styles.booking}>
-        {firstDate ? (
-          <>
-            <div className={styles.price}>
-              {firstDate.currency} {firstDate.price.toLocaleString()}
-            </div>
-            <div className={styles.priceNote}>per person</div>
-          </>
-        ) : (
-          <div className={styles.price}>See dates</div>
-        )}
-        <a href="#dates" className={styles.primaryCta}>
-          JOIN US →
-        </a>
-        <a href="/contact" className={styles.secondaryCta}>
-          ASK A QUESTION
-        </a>
-      </aside>
     </section>
   )
 }

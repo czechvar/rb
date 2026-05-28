@@ -1,84 +1,61 @@
 .hero {
-  background: #1e1612;
-  color: #fff;
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 40px;
-  padding: 60px;
-  min-height: 360px;
-}
-
-.text h1 {
-  font-size: 29px;
-  font-weight: bold;
-  line-height: 1.25;
-  margin: 0 0 16px 0;
-}
-
-.overview {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #d4c5b0;
-  max-width: 680px;
-  margin: 0;
-}
-
-.booking {
-  background: #fff;
-  color: #1a1a1a;
-  border-radius: 6px;
-  padding: 28px 24px;
-  align-self: start;
-}
-
-.price {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 2px;
-}
-
-.priceNote {
-  font-size: 11px;
-  color: #888;
-  margin-bottom: 20px;
-  font-family: 'Roboto Mono', monospace;
-}
-
-.primaryCta,
-.secondaryCta {
-  display: block;
+  position: relative;
   width: 100%;
-  text-align: center;
-  padding: 13px;
-  margin-top: 8px;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 13px;
-  letter-spacing: 1px;
-  border: none;
-  cursor: pointer;
-  border-radius: 3px;
-  text-decoration: none;
+  height: 80vh;
+  min-height: 600px;
+  overflow: hidden;
+  color: var(--colTextOnPrimary);
 }
 
-.primaryCta {
-  background: #8b3a1a;
-  color: #fff;
-  margin-top: 20px;
+.image {
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 
-.primaryCta:hover {
-  background: #a04020;
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.55) 100%);
+  z-index: 1;
 }
 
-.secondaryCta {
-  background: transparent;
-  color: #1a1a1a;
-  border: 1px solid #ccc;
-  font-size: 11px;
+.text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--contentPadding) var(--sectionGapMd);
+  max-width: var(--contentMaxWidth);
+  margin: 0 auto;
+  z-index: 2;
 }
 
-@media (max-width: 800px) {
+.title {
+  font-size: var(--h1FontSize);
+  line-height: var(--h1LineHeight);
+  margin-bottom: 1.5rem;
+}
+
+.lead {
+  font-size: var(--pFontSize);
+  line-height: var(--textLineHeight);
+  max-width: 60ch;
+  margin-bottom: 2rem;
+  opacity: 0.92;
+}
+
+.meta {
+  font-size: var(--smallTextFontSize);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 767px) {
   .hero {
-    grid-template-columns: 1fr;
+    height: 70vh;
+    min-height: 480px;
   }
 }

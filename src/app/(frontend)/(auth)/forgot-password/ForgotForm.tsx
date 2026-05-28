@@ -19,6 +19,7 @@ export function ForgotForm() {
     <form action={formAction}>
       {state.formError && <FormBanner kind="error">{state.formError}</FormBanner>}
       <FormField name="email" label="Email" type="email" required autoComplete="email"
+        defaultValue={state.values?.email}
         error={state.fieldErrors?.email} />
       <SubmitButton>Send reset link</SubmitButton>
     </form>

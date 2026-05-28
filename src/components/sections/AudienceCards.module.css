@@ -1,80 +1,65 @@
 .section {
-  padding: 40px 60px;
-  border-bottom: 1px dashed #c8bfb0;
-}
-
-.section h2 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #1a1a1a;
+  padding: var(--sectionGapMd) var(--contentPadding);
 }
 
 .grid {
+  max-width: var(--contentTextMaxWidth);
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin: 16px 0;
+  gap: 3rem;
 }
 
 .card {
-  background: #fff;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  padding: 16px;
+  padding: 4rem 3rem;
+  background: var(--colLightest);
+  border: 1px solid var(--colLight);
+  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.card.highlighted {
-  border-color: #8b3a1a;
+.highlighted {
+  background: var(--colPrimary);
+  color: var(--colTextOnPrimary);
+  border-color: var(--colPrimary);
 }
 
-.card h3 {
-  font-family: 'Roboto Mono', monospace;
-  font-weight: bold;
-  font-size: 12px;
-  letter-spacing: 1px;
-  margin: 0 0 8px 0;
-  padding: 3px 8px;
-  background: #1a1a1a;
-  color: #fff;
-  display: inline-block;
-  border-radius: 2px;
-  text-transform: uppercase;
+.heading {
+  font-size: var(--h4FontSize);
+  line-height: var(--h4LineHeight);
 }
 
-.card.highlighted h3 {
-  background: #8b3a1a;
-}
-
-.card p {
-  font-size: 12px;
-  color: #555;
-  line-height: 1.6;
-  margin: 8px 0 0 0;
+.body {
+  font-size: var(--pFontSize);
+  line-height: var(--textLineHeight);
 }
 
 .soloNote {
-  font-size: 14px;
-  color: #333;
-  margin-top: 16px;
+  max-width: var(--contentTextMaxWidth);
+  margin: 2rem auto 0;
+  font-size: var(--pFontSize);
+  line-height: var(--textLineHeight);
 }
 
 .callout {
-  background: #fff8ee;
-  border: 1px solid #e8c080;
-  border-left: 4px solid #e8a020;
-  border-radius: 0 4px 4px 0;
-  padding: 12px 16px;
-  font-size: 13px;
-  color: #7a5000;
-  margin: 16px 0;
-  max-width: 720px;
-  line-height: 1.6;
+  max-width: var(--contentTextMaxWidth);
+  margin: 2rem auto 0;
+  padding: 1.5rem 2rem;
+  background: var(--colLightest);
+  border: 1px solid var(--colLight);
+  border-radius: 0.4rem;
+  font-size: var(--pFontSize);
+  line-height: var(--textLineHeight);
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .card {
+    padding: 3rem 2.5rem;
   }
 }

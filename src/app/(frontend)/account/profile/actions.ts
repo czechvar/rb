@@ -13,16 +13,22 @@ export async function updateProfileAction(
   formData: FormData,
 ): Promise<ActionResult> {
   const user = await requireUser()
+  const echo: Record<string, string> = {
+    name: String(formData.get('name') ?? ''),
+    phone: String(formData.get('phone') ?? ''),
+    email: String(formData.get('email') ?? ''),
+  }
   const parsed = profileSchema.safeParse({
-    name: formData.get('name'),
-    phone: formData.get('phone'),
-    email: formData.get('email'),
+    name: echo.name,
+    phone: echo.phone,
+    email: echo.email,
     currentEmail: user.email,
     currentPassword: formData.get('currentPassword') ?? undefined,
   })
   if (!parsed.success) {
     return {
       ok: false,
+      values: echo,
       fieldErrors: Object.fromEntries(
         parsed.error.issues.map((i) => [String(i.path[0]), i.message]),
       ),
@@ -53,7 +59,7 @@ export async function updateProfileAction(
       data: { email: user.email, password: currentPassword },
     })
   } catch {
-    return { ok: false, fieldErrors: { currentPassword: 'Incorrect password.' } }
+    return { ok: false, values: echo, fieldErrors: { currentPassword: 'Incorrect password.' } }
   }
 
   // Reject if the new email is already in use by another user.
@@ -63,7 +69,7 @@ export async function updateProfileAction(
     limit: 1,
   })
   if (existing.docs[0] && String(existing.docs[0].id) !== String(user.id)) {
-    return { ok: false, fieldErrors: { email: 'That email is already in use.' } }
+    return { ok: false, values: echo, fieldErrors: { email: 'That email is already in use.' } }
   }
 
   const token = crypto.randomBytes(20).toString('hex')

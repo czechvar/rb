@@ -1,14 +1,17 @@
 import type { Event } from '@/payload-types'
+import { SectionIntro } from './SectionIntro'
 import styles from './Prerequisites.module.css'
 
 export function Prerequisites({ items }: { items?: Event['prerequisites'] }) {
   if (!items?.length) return null
   return (
     <section className={styles.section}>
-      <h2>Rider Type &amp; Prerequisites</h2>
-      <ul className={styles.bullets}>
-        {items.map((b, i) => (
-          <li key={i}>{b.text}</li>
+      <SectionIntro title="Rider type & prerequisites" align="left" />
+      <ul className={styles.list}>
+        {items.map((item, i) => (
+          <li key={i} className={styles.item}>
+            {item.text}
+          </li>
         ))}
       </ul>
     </section>

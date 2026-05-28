@@ -1,0 +1,40 @@
+.pitch {
+  padding: var(--sectionGapMd) var(--contentPadding);
+  background: var(--colLighter);
+}
+
+.inner {
+  max-width: var(--contentTextMaxWidth);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.headline {
+  font-size: var(--h2FontSize);
+  line-height: var(--h2LineHeight);
+  margin-bottom: 2rem;
+}
+
+.lead {
+  font-size: var(--pFontSize);
+  line-height: var(--textLineHeight);
+  margin-bottom: 3rem;
+  color: var(--colText);
+}
+
+.cta {
+  display: inline-block;
+  padding: 1.5rem 3rem;
+  background: var(--colPrimary);
+  color: var(--colTextOnPrimary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  font-size: 1.6rem;
+  transition: background var(--transitionTimeBase) ease;
+}
+
+.cta:hover {
+  background: var(--colPrimaryHover);
+  color: var(--colTextOnPrimaryHover);
+}

@@ -760,6 +760,27 @@ export interface Event {
         id?: string | null;
       }[]
     | null;
+  demoEnabled?: boolean | null;
+  demoHeading?: string | null;
+  demoBody?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  demoCta?: {
+    label?: string | null;
+    url?: string | null;
+  };
   featured?: boolean | null;
   state: 'draft' | 'published';
   seo?: {
@@ -1425,6 +1446,15 @@ export interface EventsSelect<T extends boolean = true> {
     | {
         text?: T;
         id?: T;
+      };
+  demoEnabled?: T;
+  demoHeading?: T;
+  demoBody?: T;
+  demoCta?:
+    | T
+    | {
+        label?: T;
+        url?: T;
       };
   featured?: T;
   state?: T;

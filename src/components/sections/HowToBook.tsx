@@ -1,4 +1,5 @@
 import styles from './HowToBook.module.css'
+import { SectionIntro } from './SectionIntro'
 
 const STEPS = [
   { n: '①', text: 'Choose your preferred date from upcoming dates' },
@@ -10,7 +11,7 @@ const STEPS = [
 export function HowToBook() {
   return (
     <section className={styles.section}>
-      <h2>How to Book</h2>
+      <SectionIntro title="How to Book" />
       <ol className={styles.grid}>
         {STEPS.map((s, i) => (
           <li key={i} className={styles.step}>

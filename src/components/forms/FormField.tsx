@@ -6,7 +6,13 @@ interface Props {
   name: string
   label: string
   type?: string
+  // Uncontrolled mode — initial value, never re-applied across renders.
   defaultValue?: string
+  // Controlled mode — pass value + onChange together. Takes precedence over
+  // defaultValue. Required when the form needs to retain values across action
+  // submissions (since React 19's form action resets uncontrolled inputs).
+  value?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   required?: boolean
   autoComplete?: string
   error?: string
@@ -18,6 +24,8 @@ export function FormField({
   label,
   type = 'text',
   defaultValue,
+  value,
+  onChange,
   required,
   autoComplete,
   error,
@@ -27,6 +35,7 @@ export function FormField({
   const describedBy: string[] = []
   if (helpText) describedBy.push(`${id}-help`)
   if (error) describedBy.push(`${id}-error`)
+  const isControlled = value !== undefined && onChange !== undefined
   return (
     <div className={styles.field}>
       <label className={styles.label} htmlFor={id}>{label}</label>
@@ -34,7 +43,9 @@ export function FormField({
         id={id}
         name={name}
         type={type}
-        defaultValue={defaultValue}
+        {...(isControlled
+          ? { value, onChange }
+          : { defaultValue })}
         required={required}
         autoComplete={autoComplete}
         aria-describedby={describedBy.length ? describedBy.join(' ') : undefined}

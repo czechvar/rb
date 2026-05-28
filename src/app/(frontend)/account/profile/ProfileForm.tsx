@@ -14,7 +14,9 @@ interface Props {
 
 export function ProfileForm({ initial, pendingEmail }: Props) {
   const [state, formAction] = useActionState(updateProfileAction, INITIAL_ACTION_STATE)
-  const [email, setEmail] = useState(initial.email)
+  const echoed = !state.ok ? state.values : undefined
+  const [email, setEmail] = useState(echoed?.email ?? initial.email)
+  const [currentPassword, setCurrentPassword] = useState('')
   const emailDirty = email !== initial.email
   return (
     <>
@@ -47,14 +49,14 @@ export function ProfileForm({ initial, pendingEmail }: Props) {
         <FormField
           name="name"
           label="Name"
-          defaultValue={initial.name}
+          defaultValue={echoed?.name ?? initial.name}
           required
           error={!state.ok ? state.fieldErrors?.name : undefined}
         />
         <FormField
           name="phone"
           label="Phone"
-          defaultValue={initial.phone}
+          defaultValue={echoed?.phone ?? initial.phone}
           required
           error={!state.ok ? state.fieldErrors?.phone : undefined}
         />
@@ -89,6 +91,8 @@ export function ProfileForm({ initial, pendingEmail }: Props) {
             type="password"
             autoComplete="current-password"
             helpText="Required to change your sign-in email."
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
             error={!state.ok ? state.fieldErrors?.currentPassword : undefined}
           />
         )}
