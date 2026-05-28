@@ -1,5 +1,6 @@
 import type { Type } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
+import { SectionIntro } from './SectionIntro'
 import styles from './AudienceCards.module.css'
 
 export function AudienceCards({
@@ -14,12 +15,15 @@ export function AudienceCards({
   if (!cards?.length) return null
   return (
     <section className={styles.section}>
-      <h2>Who This Camp Is For</h2>
+      <SectionIntro title="Who this camp for" />
       <div className={styles.grid}>
         {cards.map((c, i) => (
-          <div key={i} className={`${styles.card} ${c.highlighted ? styles.highlighted : ''}`}>
-            <h3>{c.heading}</h3>
-            <p>{c.body}</p>
+          <div
+            key={i}
+            className={`${styles.card} ${c.highlighted ? styles.highlighted : ''}`}
+          >
+            <h3 className={styles.heading}>{c.heading}</h3>
+            <p className={styles.body}>{c.body}</p>
           </div>
         ))}
       </div>
