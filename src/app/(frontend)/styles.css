@@ -105,9 +105,9 @@
   --gap: 1rem;
 
   /* Section rhythm (Figma round 2) — placeholder values, refine against Figma */
-  --section-gap-lg: 12rem;
-  --section-gap-md: 8rem;
-  --section-gap-sm: 4rem;
+  --sectionGapLg: 12rem;
+  --sectionGapMd: 8rem;
+  --sectionGapSm: 4rem;
 
   /* Motion */
   --transitionTimeBase: 0.3s;
@@ -139,9 +139,9 @@
     --pFontSize: 1.6rem;
     --textLineHeight: 2.4rem;
     --headerDividerWidth: 250px;
-    --section-gap-lg: 8rem;
-    --section-gap-md: 5rem;
-    --section-gap-sm: 3rem;
+    --sectionGapLg: 8rem;
+    --sectionGapMd: 5rem;
+    --sectionGapSm: 3rem;
   }
 }
 

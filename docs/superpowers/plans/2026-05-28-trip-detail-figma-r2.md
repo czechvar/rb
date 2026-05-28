@@ -57,7 +57,7 @@ Key node IDs (collected from `get_metadata` on the parent frame):
 
 # Slice 1 — Foundations & top of page
 
-Lands `--section-gap-*` spacing tokens, `SectionIntro` primitive, `TripPitchBlock`, and restyles `DetailHero` + `AudienceCards`. Lower page still uses old visuals (transient state — fine).
+Lands `--sectionGap*` spacing tokens, `SectionIntro` primitive, `TripPitchBlock`, and restyles `DetailHero` + `AudienceCards`. Lower page still uses old visuals (transient state — fine).
 
 ### Task 1.1: Diff Figma type ramp & add spacing tokens
 
@@ -81,23 +81,23 @@ Read out the H1/H2/H3 font sizes, line heights, letter spacing. Compare to the c
 
 For each H1/H2/H3/body token where the Figma value differs from the current value, update the value in `styles.css`. Also update the matching mobile override block at lines 117–138 if the Figma's mobile/responsive sizes differ. Do NOT touch tokens that already match. Do NOT introduce new typography tokens beyond what the section header pattern uses.
 
-- [ ] **Step 3: Add section-gap spacing tokens**
+- [ ] **Step 3: Add sectionGap spacing tokens**
 
 In the `:root` block (after `--gap: 1rem;` at line 105), add:
 
 ```css
   /* Section rhythm (Figma round 2) */
-  --section-gap-lg: 12rem;
-  --section-gap-md: 8rem;
-  --section-gap-sm: 4rem;
+  --sectionGapLg: 12rem;
+  --sectionGapMd: 8rem;
+  --sectionGapSm: 4rem;
 ```
 
 Mobile override (inside the `@media screen and (max-width: 767px)` block at lines 117–138):
 
 ```css
-    --section-gap-lg: 8rem;
-    --section-gap-md: 5rem;
-    --section-gap-sm: 3rem;
+    --sectionGapLg: 8rem;
+    --sectionGapMd: 5rem;
+    --sectionGapSm: 3rem;
 ```
 
 (Adjust the desktop values to match the Figma's measured vertical gaps between section frames. The above are starting values from the metadata; verify against the Figma's actual gap pixels.)
@@ -110,7 +110,7 @@ Run `pnpm dev`. Visit `/trips/<seeded-slug>`. Confirm nothing visibly regressed 
 
 ```
 git add src/app/(frontend)/styles.css
-git commit -m "feat(tokens): diff Figma R2 type ramp; add section-gap tokens"
+git commit -m "feat(tokens): diff Figma R2 type ramp; add sectionGap tokens"
 ```
 
 ### Task 1.2: `SectionIntro` primitive
@@ -159,7 +159,7 @@ export function SectionIntro({
 
 ```css
 .intro {
-  padding: var(--section-gap-md) var(--contentPadding);
+  padding: var(--sectionGapMd) var(--contentPadding);
 }
 
 .inner {
@@ -198,7 +198,7 @@ export function SectionIntro({
 
 @media screen and (max-width: 767px) {
   .intro {
-    padding: var(--section-gap-sm) var(--contentPadding);
+    padding: var(--sectionGapSm) var(--contentPadding);
   }
 }
 ```
@@ -266,7 +266,7 @@ export function TripPitchBlock({ event }: { event: Event }) {
 
 ```css
 .pitch {
-  padding: var(--section-gap-md) var(--contentPadding);
+  padding: var(--sectionGapMd) var(--contentPadding);
   background: var(--colLighter);
 }
 
@@ -423,7 +423,7 @@ Note: removed `JOIN US →` and `ASK A QUESTION` buttons — booking entry now l
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 var(--contentPadding) var(--section-gap-md);
+  padding: 0 var(--contentPadding) var(--sectionGapMd);
   max-width: var(--contentMaxWidth);
   margin: 0 auto;
   z-index: 2;
@@ -609,7 +609,7 @@ git commit -m "test(trip-detail): slice 1 visual baseline"
 
 # Slice 2 — Middle content
 
-Prerequisite: Slice 1 shipped. `--section-gap-*` tokens + `SectionIntro` are available.
+Prerequisite: Slice 1 shipped. `--sectionGap*` tokens + `SectionIntro` are available.
 
 ### Task 2.1: Shared Card primitive
 
@@ -748,7 +748,7 @@ Note: the props type changed from `Type['highlights']` to `Event['highlights']` 
 
 ```css
 .section {
-  padding: var(--section-gap-md) 0;
+  padding: var(--sectionGapMd) 0;
 }
 
 .icon {
@@ -892,7 +892,7 @@ Note: the CardGrid CSS currently uses `repeat(3, 1fr)`. For a 2-card case, add a
 
 ```css
 .section {
-  padding: var(--section-gap-md) 0;
+  padding: var(--sectionGapMd) 0;
 }
 
 .heading {
@@ -964,7 +964,7 @@ export function BookingCTA({
 
 ```css
 .cta {
-  padding: var(--section-gap-lg) var(--contentPadding);
+  padding: var(--sectionGapLg) var(--contentPadding);
   background: var(--colPrimaryDark);
   color: var(--colTextOnPrimary);
 }
@@ -1218,7 +1218,7 @@ export function DemoLessonBlock({ event }: { event: Event }) {
 
 ```css
 .demo {
-  padding: var(--section-gap-md) var(--contentPadding);
+  padding: var(--sectionGapMd) var(--contentPadding);
   background: var(--colLightest);
 }
 
@@ -1352,7 +1352,7 @@ CSS:
 
 ```css
 .section {
-  padding: var(--section-gap-md) var(--contentPadding);
+  padding: var(--sectionGapMd) var(--contentPadding);
 }
 
 .list {
@@ -1444,7 +1444,7 @@ CSS:
 
 ```css
 .section {
-  padding: var(--section-gap-md) var(--contentPadding);
+  padding: var(--sectionGapMd) var(--contentPadding);
 }
 
 .list {
@@ -1611,7 +1611,7 @@ export function PhotoGallery({ items }: { items?: Event['gallery'] }) {
 
 ```css
 .section {
-  padding: var(--section-gap-md) var(--contentPadding);
+  padding: var(--sectionGapMd) var(--contentPadding);
 }
 
 .grid {
