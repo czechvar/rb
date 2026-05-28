@@ -79,7 +79,7 @@ export const Events: CollectionConfig = {
     {
       name: 'prerequisites',
       type: 'array',
-      label: 'Rider type & prerequisites',
+      label: 'Climber type & prerequisites',
       fields: [{ name: 'text', type: 'text', required: true }],
     },
 

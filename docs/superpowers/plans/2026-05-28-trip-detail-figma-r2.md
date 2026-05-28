@@ -1335,7 +1335,7 @@ export function Prerequisites({ items }: { items?: Event['prerequisites'] }) {
   if (!items?.length) return null
   return (
     <section className={styles.section}>
-      <SectionIntro title="Rider type & prerequisites" align="left" />
+      <SectionIntro title="Climber type & prerequisites" align="left" />
       <ul className={styles.list}>
         {items.map((item, i) => (
           <li key={i} className={styles.item}>

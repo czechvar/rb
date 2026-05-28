@@ -29,11 +29,19 @@ export default async function VerifyEmailPage({
   try {
     await payload.verifyEmail({ collection: 'users', token })
   } catch (err) {
+    // Most common cause: the link has already been used (Payload nulls the
+    // token on first successful verify). Less common: a different account
+    // was just verified, the token is genuinely invalid, or the link is
+    // truncated. We can't tell them apart cheaply without the user's email,
+    // so explain both possibilities and offer both next steps.
     console.error('[verify-email] failed for token:', token, err)
     return (
       <>
-        <h1>This link has expired</h1>
-        <p>Verification links expire after a short time. Request a new one:</p>
+        <h1>This link is no longer valid</h1>
+        <p>
+          Verification links work only once. If you&apos;ve already verified, you can{' '}
+          <a href="/login">sign in</a>. Otherwise request a new email:
+        </p>
         <ResendForm />
       </>
     )
