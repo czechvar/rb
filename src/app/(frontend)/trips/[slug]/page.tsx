@@ -16,6 +16,7 @@ import { LocationBlock } from '@/components/sections/LocationBlock'
 import { EventAccommodationLogistics } from '@/components/sections/EventAccommodationLogistics'
 import { PartnerBlock } from '@/components/sections/PartnerBlock'
 import { CoachesMinimal } from '@/components/sections/CoachesMinimal'
+import { DemoLessonBlock } from '@/components/sections/DemoLessonBlock'
 import { ReviewsRow } from '@/components/sections/ReviewsRow'
 import { FAQList } from '@/components/sections/FAQList'
 import { HowToBook } from '@/components/sections/HowToBook'
@@ -100,6 +101,7 @@ export default async function TripPage({ params }: Props) {
           framing={event.coachFramingParagraph}
           teamBullets={event.coachTeamBullets}
         />
+        <DemoLessonBlock event={event} />
         <ReviewsRow items={reviewsResult.docs} />
         <FAQList items={faqsResult.docs} heading="FAQ for This Trip" />
         <HowToBook />

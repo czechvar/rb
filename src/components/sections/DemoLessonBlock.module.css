@@ -1,0 +1,27 @@
+.demo {
+  padding: var(--sectionGapMd) var(--contentPadding);
+  background: var(--colLightest);
+}
+
+.body {
+  max-width: var(--contentTextMaxWidth);
+  margin: 0 auto;
+  font-size: var(--pFontSize);
+  line-height: var(--textLineHeight);
+}
+
+.ctaWrap {
+  text-align: center;
+}
+
+.cta {
+  display: inline-block;
+  margin: 3rem auto 0;
+  padding: 1.5rem 3rem;
+  background: var(--colPrimary);
+  color: var(--colTextOnPrimary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  font-size: 1.6rem;
+}
