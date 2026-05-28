@@ -10,6 +10,7 @@ import { AudienceCards } from '@/components/sections/AudienceCards'
 import { Prerequisites } from '@/components/sections/Prerequisites'
 import { EssentialEquipment } from '@/components/sections/EssentialEquipment'
 import { WhatYouLearn } from '@/components/sections/WhatYouLearn'
+import { BookingCTA } from '@/components/sections/BookingCTA'
 import { DayByDayItinerary } from '@/components/sections/DayByDayItinerary'
 import { LocationBlock } from '@/components/sections/LocationBlock'
 import { EventAccommodationLogistics } from '@/components/sections/EventAccommodationLogistics'
@@ -80,6 +81,7 @@ export default async function TripPage({ params }: Props) {
           intro={event.equipmentIntro}
         />
         <WhatYouLearn data={event.whatYouLearn} />
+        <BookingCTA event={event} />
         <DayByDayItinerary data={event.itinerary} />
         <LocationBlock content={event.content} />
         <EventAccommodationLogistics
