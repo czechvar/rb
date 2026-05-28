@@ -1,4 +1,5 @@
 import type { Event } from '@/payload-types'
+import { SectionIntro } from './SectionIntro'
 import styles from './EssentialEquipment.module.css'
 
 export function EssentialEquipment({
@@ -6,23 +7,27 @@ export function EssentialEquipment({
   intro,
 }: {
   items?: Event['essentialEquipment']
-  intro?: Event['equipmentIntro']
+  intro?: string | null
 }) {
   if (!items?.length) return null
   return (
     <section className={styles.section}>
-      <h2>Essential Equipment</h2>
-      {intro && <p className={styles.intro}>{intro}</p>}
-      <ul className={styles.grid}>
-        {items.map((eq, i) => (
-          <li
-            key={i}
-            className={`${styles.item} ${eq.mandatory ? styles.mandatory : ''}`}
-          >
-            {eq.icon && <span className={styles.icon}>{eq.icon}</span>}
-            <strong className={styles.name}>{eq.name}</strong>
-            {eq.note && <span className={styles.note}>{eq.note}</span>}
-            {eq.mandatory && <span className={styles.badge}>Mandatory</span>}
+      <SectionIntro
+        title="Essential equipment"
+        lead={intro ?? undefined}
+        align="left"
+      />
+      <ul className={styles.list}>
+        {items.map((item, i) => (
+          <li key={i} className={`${styles.item} ${item.mandatory ? styles.mandatory : ''}`}>
+            {item.icon && <span className={styles.icon}>{item.icon}</span>}
+            <div>
+              <p className={styles.name}>
+                {item.name}
+                {item.mandatory && <span className={styles.required}> *</span>}
+              </p>
+              {item.note && <p className={styles.note}>{item.note}</p>}
+            </div>
           </li>
         ))}
       </ul>
