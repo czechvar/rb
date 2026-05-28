@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import { getPayloadClient } from '@/lib/payload'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { DetailHero } from '@/components/sections/DetailHero'
+import { SectionIntro } from '@/components/sections/SectionIntro'
+import { TripPitchBlock } from '@/components/sections/TripPitchBlock'
 import { EventDatesList } from '@/components/sections/EventDatesList'
 import { HighlightsGrid } from '@/components/sections/HighlightsGrid'
 import { AudienceCards } from '@/components/sections/AudienceCards'
@@ -67,6 +69,8 @@ export default async function TripPage({ params }: Props) {
     >
       <main>
         <DetailHero event={event} firstDate={firstDate} />
+        <SectionIntro title={event.title} lead={event.shortDescription ?? undefined} />
+        <TripPitchBlock event={event} />
         <HighlightsGrid items={event.highlights} heading="Trip Highlights" />
         <EventDatesList items={datesResult.docs} />
         <AudienceCards cards={event.audienceCards} />
