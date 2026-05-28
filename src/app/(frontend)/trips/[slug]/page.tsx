@@ -81,6 +81,7 @@ export default async function TripPage({ params }: Props) {
           items={event.essentialEquipment}
           intro={event.equipmentIntro}
         />
+        <BookingCTA event={event} heading="Ready to commit?" />
         <WhatYouLearn data={event.whatYouLearn} />
         <BookingCTA event={event} />
         <DayByDayItinerary data={event.itinerary} />
