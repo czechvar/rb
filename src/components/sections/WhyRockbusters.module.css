@@ -1,6 +1,6 @@
 .band {
   background: #e8e2d4;
-  padding: 40px 60px;
+  padding: var(--sectionGapMd) 60px;
   border-top: 2px solid #c8bfb0;
 }
 

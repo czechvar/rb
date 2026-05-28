@@ -1,4 +1,5 @@
 import styles from './WhyRockbusters.module.css'
+import { SectionIntro } from './SectionIntro'
 
 const DIFFERENTIATORS = [
   'Small groups for individual coaching attention',
@@ -11,7 +12,7 @@ const DIFFERENTIATORS = [
 export function WhyRockbusters() {
   return (
     <section className={styles.band}>
-      <h2>Why Rockbusters</h2>
+      <SectionIntro title="Why Rockbusters" />
       <div className={styles.grid}>
         <p>
           Rockbusters is Europe&apos;s leading climbing performance community —
