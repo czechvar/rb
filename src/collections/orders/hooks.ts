@@ -38,9 +38,8 @@ export const allocateOrderNumber: CollectionBeforeChangeHook = async ({ data, op
     req,
   })
   const last = recent.docs[0] as { orderNumber?: string } | undefined
-  const nextSeq = last?.orderNumber
-    ? Number(last.orderNumber.slice(prefix.length)) + 1
-    : 1
+  const lastSeq = last?.orderNumber ? Number(last.orderNumber.slice(prefix.length)) : 0
+  const nextSeq = (Number.isFinite(lastSeq) ? lastSeq : 0) + 1
   const orderNumber = `${prefix}${String(nextSeq).padStart(6, '0')}`
   return { ...data, orderNumber }
 }
