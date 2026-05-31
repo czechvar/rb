@@ -12,3 +12,6 @@ export const isAdminOrSelf: Access = ({ req }) => {
   if (req.user.role === 'admin') return true
   return { id: { equals: req.user.id } }
 }
+
+/** Any authenticated user, customer or admin. */
+export const isAuthenticated: Access = ({ req }) => Boolean(req.user)
