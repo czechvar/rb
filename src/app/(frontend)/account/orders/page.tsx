@@ -19,7 +19,7 @@ export default async function OrdersPage() {
   const res = await payload.find({
     collection: 'orders',
     where: { user: { equals: user.id } },
-    sort: '-createdAt', limit: 100, depth: 1, user, overrideAccess: false,
+    sort: '-createdAt', limit: 100, depth: 2, user, overrideAccess: false,
   })
   if (res.docs.length === 0) {
     return (
