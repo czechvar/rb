@@ -5,6 +5,7 @@ import { ORDER_STATES } from './orders/state-machine'
 import { deriveCountsAndTotal, allocateOrderNumber, stampNotes } from './orders/hooks'
 import { capacityCheck } from './orders/capacity-hook'
 import { validateStateTransition } from './orders/state-hook'
+import { dispatchLifecycleEmails } from './orders/emails-hook'
 
 const adminOnlyField: FieldAccess = ({ req }) => req.user?.role === 'admin'
 
@@ -25,6 +26,7 @@ export const Orders: CollectionConfig = {
   hooks: {
     beforeValidate: [deriveCountsAndTotal],
     beforeChange: [validateStateTransition, allocateOrderNumber, capacityCheck, stampNotes],
+    afterChange: [dispatchLifecycleEmails],
   },
   fields: [
     {
