@@ -46,3 +46,81 @@ export function confirmEmailChangeTemplate({ token, name }: TemplateProps): stri
   const body = `<p>Hi ${escapeHtml(name)},</p><p>You requested to change your Rockbusters sign-in email to this address. Click below to confirm. The link expires in 24 hours.</p>`
   return shell('Confirm your new email', body, { label: 'Confirm email', href })
 }
+
+interface BookingCtx {
+  name: string
+  orderNumber: string
+  eventTitle: string
+  eventDate: string
+  participantCount: number
+  totalPrice: number
+  currency: string
+  accountOrderUrl: string
+}
+
+function orderSummary(ctx: BookingCtx): string {
+  return `
+    <p style="margin:16px 0;">
+      <strong>Order:</strong> ${escapeHtml(ctx.orderNumber)}<br/>
+      <strong>Trip:</strong> ${escapeHtml(ctx.eventTitle)}<br/>
+      <strong>Dates:</strong> ${escapeHtml(ctx.eventDate)}<br/>
+      <strong>Participants:</strong> ${ctx.participantCount}<br/>
+      <strong>Total:</strong> ${ctx.totalPrice} ${escapeHtml(ctx.currency)}
+    </p>
+  `
+}
+
+export function bookingReceivedToUserTemplate(ctx: BookingCtx): string {
+  const body = `
+    <p>Hi ${escapeHtml(ctx.name)},</p>
+    <p>We've received your booking request. Our team will review and confirm shortly.</p>
+    ${orderSummary(ctx)}
+  `
+  return shell('Booking received', body, { label: 'View in your account', href: ctx.accountOrderUrl })
+}
+
+interface AdminBookingCtx {
+  orderNumber: string
+  userEmail: string
+  eventTitle: string
+  participantCount: number
+  adminOrderUrl: string
+}
+
+export function bookingReceivedToAdminTemplate(ctx: AdminBookingCtx): string {
+  const body = `
+    <p>New booking <strong>${escapeHtml(ctx.orderNumber)}</strong> from
+    <strong>${escapeHtml(ctx.userEmail)}</strong> for
+    <strong>${escapeHtml(ctx.eventTitle)}</strong>
+    (${ctx.participantCount} participants).</p>
+  `
+  return shell('New booking', body, { label: 'Open in admin', href: ctx.adminOrderUrl })
+}
+
+export function bookingConfirmedToUserTemplate(
+  ctx: BookingCtx & { bankTransferDetails: string },
+): string {
+  const detailsHtml = escapeHtml(ctx.bankTransferDetails).replace(/\n/g, '<br/>')
+  const body = `
+    <p>Hi ${escapeHtml(ctx.name)},</p>
+    <p>Your booking is <strong>confirmed</strong>. To complete the booking, please pay by bank transfer using the details below. Use your order number as the variable symbol.</p>
+    ${orderSummary(ctx)}
+    <p style="background:#f5f1ea;padding:16px;border-radius:6px;font-family:monospace;font-size:13px;line-height:1.6;">
+      ${detailsHtml}<br/>
+      <strong>Variable symbol:</strong> ${escapeHtml(ctx.orderNumber)}
+    </p>
+  `
+  return shell('Booking confirmed — payment instructions', body, {
+    label: 'View order', href: ctx.accountOrderUrl,
+  })
+}
+
+export function bookingCancelledToUserTemplate(ctx: BookingCtx): string {
+  const body = `
+    <p>Hi ${escapeHtml(ctx.name)},</p>
+    <p>Your booking <strong>${escapeHtml(ctx.orderNumber)}</strong> has been cancelled.</p>
+    ${orderSummary(ctx)}
+    <p>If you didn't request this cancellation, please contact us.</p>
+  `
+  return shell('Booking cancelled', body, { label: 'View order', href: ctx.accountOrderUrl })
+}
