@@ -19,6 +19,7 @@ import { Events } from './collections/Events'
 import { EventDates } from './collections/EventDates'
 import { FAQs } from './collections/FAQs'
 import { Reviews } from './collections/Reviews'
+import { Orders } from './collections/Orders'
 import { buildEmailAdapter } from './lib/email/adapter'
 
 const filename = fileURLToPath(import.meta.url)
@@ -31,7 +32,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Difficulties, Types, Categories, Guides, Locations, Airports, Partners, Events, EventDates, FAQs, Reviews],
+  collections: [Users, Media, Difficulties, Types, Categories, Guides, Locations, Airports, Partners, Events, EventDates, FAQs, Reviews, Orders],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   email: buildEmailAdapter({
