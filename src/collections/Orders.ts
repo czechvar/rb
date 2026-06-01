@@ -4,6 +4,7 @@ import { isAdminOrOwner, canUpdateStateField } from './orders/access'
 import { ORDER_STATES } from './orders/state-machine'
 import { deriveCountsAndTotal, allocateOrderNumber, stampNotes } from './orders/hooks'
 import { capacityCheck } from './orders/capacity-hook'
+import { validateStateTransition } from './orders/state-hook'
 
 const adminOnlyField: FieldAccess = ({ req }) => req.user?.role === 'admin'
 
@@ -23,7 +24,7 @@ export const Orders: CollectionConfig = {
   },
   hooks: {
     beforeValidate: [deriveCountsAndTotal],
-    beforeChange: [allocateOrderNumber, capacityCheck, stampNotes],
+    beforeChange: [validateStateTransition, allocateOrderNumber, capacityCheck, stampNotes],
   },
   fields: [
     {
