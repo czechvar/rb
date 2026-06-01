@@ -92,9 +92,18 @@ describe('getRemainingCapacity', () => {
     expect(await getRemainingCapacity(ed)).toBe(10)
   })
   it('clamps at zero (never negative even if oversold by historic data)', async () => {
-    const ed = await makeEventWithDate(2)
+    // Capacity hook prevents creating oversold rows via the normal path, so we
+    // simulate legacy oversold state by reducing capacity AFTER booking.
+    const payload = await getTestPayload()
+    const ed = await makeEventWithDate(10)
     const u = await makeUser()
     await makeOrder(ed, u.id, 5, 'pending')
+    await payload.update({
+      collection: 'event-dates',
+      id: ed,
+      data: { capacity: 2 },
+      overrideAccess: true,
+    })
     expect(await getRemainingCapacity(ed)).toBe(0)
   })
   it('throws when event-date does not exist', async () => {

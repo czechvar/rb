@@ -827,6 +827,11 @@ export interface EventDate {
     [k: string]: unknown;
   } | null;
   active?: boolean | null;
+  /**
+   * Sum of participants in pending+confirmed+paid orders.
+   */
+  bookedSeats?: number | null;
+  remainingSeats?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1546,6 +1551,8 @@ export interface EventDatesSelect<T extends boolean = true> {
   minParticipants?: T;
   extraContent?: T;
   active?: T;
+  bookedSeats?: T;
+  remainingSeats?: T;
   updatedAt?: T;
   createdAt?: T;
 }
