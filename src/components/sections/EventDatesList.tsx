@@ -1,4 +1,5 @@
 import type { EventDate } from '@/payload-types'
+import { DateRowBookButton } from '@/components/trip/DateRowBookButton'
 import styles from './EventDatesList.module.css'
 
 function fmtDate(value: string | null | undefined): string {
@@ -44,9 +45,9 @@ export function EventDatesList({
                   {spots} spot{spots === 1 ? '' : 's'} available
                 </div>
               )}
-              <a href="/contact" className={styles.cta}>
-                Reserve a spot →
-              </a>
+              <div className={styles.cta}>
+                <DateRowBookButton eventDateId={d.id} active={Boolean(d.active)} />
+              </div>
             </li>
           )
         })}
