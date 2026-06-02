@@ -1,0 +1,53 @@
+/* src/components/sections/TagChipStrip.module.css */
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--colLightest);
+  border-radius: 999px;
+  padding: 0.8rem 1.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: var(--colText);
+}
+
+.icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--colPrimary);
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .strip {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 var(--contentPadding);
+  }
+  .strip::-webkit-scrollbar {
+    display: none;
+  }
+  .chip {
+    flex-shrink: 0;
+  }
+}
