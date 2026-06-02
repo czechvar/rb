@@ -35,33 +35,17 @@ export default async function TripPage({ params }: Props) {
   const event = eventDocs[0]
   if (!event) notFound()
 
-  const [reviewsResult, datesResult] = await Promise.all([
-    payload.find({
-      collection: 'reviews',
-      where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
-      sort: 'position',
-      limit: 50,
-    }),
-    payload.find({
-      collection: 'event-dates',
-      where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
-      sort: 'dateFrom',
-      limit: 1,
-    }),
-  ])
-
-  const firstDate = datesResult.docs[0]
+  const reviewsResult = await payload.find({
+    collection: 'reviews',
+    where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
+    sort: 'position',
+    limit: 50,
+  })
 
   return (
-    <MarketingShell
-      crumbs={[
-        { href: '/', label: 'Home' },
-        { href: '/calendar', label: 'Calendar' },
-        { label: event.title },
-      ]}
-    >
+    <MarketingShell crumbs={[]} transparentHeader>
       <main>
-        <DetailHero event={event} firstDate={firstDate} />
+        <DetailHero event={event} />
         <SectionIntro title={event.title} lead={event.shortDescription ?? undefined} />
         <TripPitchBlock event={event} />
         <HighlightsGrid items={event.highlights} heading="Trip Highlights" />

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import type { Event, EventDate } from '@/payload-types'
+import type { Event } from '@/payload-types'
 import { PricingSidebar } from './PricingSidebar'
 import { TagChipStrip, type TagChip } from './TagChipStrip'
 import styles from './DetailHero.module.css'
@@ -29,10 +29,8 @@ const HARDCODED_SIDEBAR = {
 
 export function DetailHero({
   event,
-  firstDate: _firstDate,
 }: {
   event: Event
-  firstDate?: EventDate
 }) {
   const mainPic =
     typeof event.mainPicture === 'object' && event.mainPicture ? event.mainPicture : null
