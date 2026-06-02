@@ -38,7 +38,7 @@ export function DetailHero({
     typeof event.mainPicture === 'object' && event.mainPicture ? event.mainPicture : null
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} aria-labelledby="trip-hero-title">
       {mainPic?.url && (
         <Image
           src={mainPic.url}
@@ -52,7 +52,7 @@ export function DetailHero({
       <div className={styles.overlay} />
       <div className={styles.content}>
         <div className={styles.text}>
-          <h1 className={styles.title}>{event.title}</h1>
+          <h1 id="trip-hero-title" className={styles.title}>{event.title}</h1>
           {event.shortDescription && (
             <p className={styles.lead}>{event.shortDescription}</p>
           )}
