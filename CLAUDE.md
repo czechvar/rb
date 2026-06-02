@@ -42,6 +42,7 @@ Self-registration with email verification, login (with lockout + verify-required
 - Email goes through `@payloadcms/email-resend` with a console-adapter fallback when `RESEND_API_KEY` is unset (mirrors the R2 fallback pattern).
 - Auth pages are under route group `(auth)`; account pages under `(account)` with a shared sidebar layout.
 - All forms submit to Next.js Server Actions that call Payload's local API directly.
+- Booking lives at `/book/[eventDateId]` (logged-in only) → confirmation at `/book/[eventDateId]/confirmation/[orderId]`. Users see their orders at `/account/orders` and detail + cancel-while-pending at `/account/orders/[id]`. Admin manages orders in `/admin/collections/orders` (state transitions enforced by hook; notes are append-only with author + timestamp). Capacity is derived from non-terminal orders and protected by a Postgres advisory lock at create time. Online payment is deferred — confirmed orders show bank-transfer instructions, admin marks paid manually.
 
 ## Code so far
 
@@ -73,6 +74,8 @@ Hosted on **Vercel**. Required environment variables in the Vercel project setti
 - `EMAIL_FROM_ADDRESS` — sender address (e.g. `hello@rockbusters.net` in prod, `onboarding@resend.dev` in dev). Domain must be verified in Resend for prod.
 - `EMAIL_FROM_NAME` — sender display name (e.g. `Rockbusters`).
 - `EMAIL_REPLY_TO` — optional reply-to address.
+- `ADMIN_ORDER_NOTIFICATIONS_EMAIL` — recipient of the "new booking" admin notification email. Falls back to `EMAIL_FROM_ADDRESS` if unset.
+- `BANK_TRANSFER_DETAILS` — multi-line text (IBAN, beneficiary, etc.) injected into the "Booking confirmed" email. The order number is used as the variable symbol.
 
 If any of the four `R2_*` vars is unset, Payload falls back to local-disk storage (useful for tests, broken for production).
 
