@@ -43,7 +43,7 @@ export default async function TripPage({ params }: Props) {
   })
 
   return (
-    <MarketingShell crumbs={[]} transparentHeader>
+    <MarketingShell transparentHeader>
       <main>
         <DetailHero event={event} />
         <SectionIntro title={event.title} lead={event.shortDescription ?? undefined} />

@@ -3,11 +3,11 @@ import { Footer } from './Footer'
 import { Breadcrumb, type Crumb } from './Breadcrumb'
 
 export function MarketingShell({
-  crumbs,
+  crumbs = [],
   children,
   transparentHeader = false,
 }: {
-  crumbs: Crumb[]
+  crumbs?: Crumb[]
   children: React.ReactNode
   transparentHeader?: boolean
 }) {
