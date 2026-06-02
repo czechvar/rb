@@ -27,10 +27,10 @@ export function PricingSidebar({
         {secondaryPrice && <p className={styles.secondaryPrice}>{secondaryPrice}</p>}
         <p className={styles.caption}>{caption}</p>
       </div>
-      <hr className={styles.divider} />
+      <hr className={styles.divider} aria-hidden="true" />
       <dl className={styles.rows}>
-        {rows.map((r) => (
-          <div key={r.label} className={styles.row}>
+        {rows.map((r, i) => (
+          <div key={i} className={styles.row}>
             <dt className={styles.rowLabel}>{r.label}</dt>
             <dd className={styles.rowValue}>{r.value}</dd>
           </div>
