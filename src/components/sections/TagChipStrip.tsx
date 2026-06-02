@@ -40,14 +40,16 @@ function Icon({ name }: { name: ChipIcon }) {
           <path fill="currentColor" d="M20 7h-2.3a3 3 0 0 0-5.7-2 3 3 0 0 0-5.7 2H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h7v9h2v-9h7a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2V6a1 1 0 0 1 1-1Zm-6 0a1 1 0 0 1 1 1v1H8a1 1 0 0 1 0-2Z" />
         </svg>
       )
+    default:
+      return null
   }
 }
 
 export function TagChipStrip({ chips }: { chips: TagChip[] }) {
   return (
     <ul className={styles.strip} aria-label="Trip tags">
-      {chips.map((c) => (
-        <li key={c.label} className={styles.chip}>
+      {chips.map((c, i) => (
+        <li key={i} className={styles.chip}>
           <Icon name={c.icon} />
           <span className={styles.label}>{c.label}</span>
         </li>
