@@ -21,23 +21,25 @@ test.describe('Trip Detail hero (Figma R3)', () => {
 
     // Title and lead render in the hero
     await expect(page.locator('h1')).toContainText(`E2E Hero Trip ${stamp}`)
-    await expect(page.getByText('Hero smoke test event.')).toBeVisible()
+    // Scope to the hero section to avoid matching duplicate text in SectionIntro / TripPitchBlock
+    const hero = page.locator('section[aria-labelledby="trip-hero-title"]')
+    await expect(hero.getByText('Hero smoke test event.')).toBeVisible()
 
     // Sidebar pricing card content (hardcoded)
     await expect(page.getByText('€ 950 / 1 week')).toBeVisible()
     await expect(page.getByText('€ 1,650 for 2 weeks')).toBeVisible()
     await expect(page.getByText('per person · coaching included')).toBeVisible()
-    await expect(page.getByText('Rodellar, Aragon, Spain')).toBeVisible()
-    await expect(page.getByText('Outdoor lead 6b-8a')).toBeVisible()
+    await expect(page.getByText('Rodellar, Aragon, Spain', { exact: true })).toBeVisible()
+    await expect(page.getByText('Outdoor lead 6b-8a', { exact: true })).toBeVisible()
     await expect(page.getByText(/Free demo of Evolv & Singing Rock/)).toBeVisible()
     await expect(page.getByRole('link', { name: /BOOK YOUR SPOT/i })).toBeVisible()
 
     // Tag chip strip
-    await expect(page.getByText('RODELLAR, ARAGON, SPAIN')).toBeVisible()
-    await expect(page.getByText('SPORT CLIMBING')).toBeVisible()
-    await expect(page.getByText('OUTDOOR LEAD 6b-8a')).toBeVisible()
-    await expect(page.getByText('MAY 2026')).toBeVisible()
-    await expect(page.getByText('EVOLV & SINGING ROCK CLIMBING GEAR DEMO')).toBeVisible()
+    await expect(page.getByText('RODELLAR, ARAGON, SPAIN', { exact: true })).toBeVisible()
+    await expect(page.getByText('SPORT CLIMBING', { exact: true })).toBeVisible()
+    await expect(page.getByText('OUTDOOR LEAD 6b-8a', { exact: true })).toBeVisible()
+    await expect(page.getByText('MAY 2026', { exact: true })).toBeVisible()
+    await expect(page.getByText('EVOLV & SINGING ROCK CLIMBING GEAR DEMO', { exact: true })).toBeVisible()
 
     // Breadcrumb is suppressed on this page
     await expect(page.getByRole('navigation', { name: 'Breadcrumb' })).toHaveCount(0)
@@ -48,14 +50,16 @@ test.describe('Trip Detail hero (Figma R3)', () => {
       (el) => getComputedStyle(el).backgroundColor,
     )
     // rgba(...,0) === fully transparent
-    expect(bgAtTop).toMatch(/rgba\(0,\s*0,\s*0,\s*0\)|transparent/)
+    expect(bgAtTop).toMatch(/rgba\(0,\s*0,\s*0,\s*0\)|^transparent$/)
 
     await page.evaluate(() => window.scrollTo(0, window.innerHeight))
-    // small wait for the scroll handler to flip the class
-    await page.waitForTimeout(200)
-    const bgAfterScroll = await header.evaluate(
-      (el) => getComputedStyle(el).backgroundColor,
-    )
-    expect(bgAfterScroll).not.toMatch(/rgba\(0,\s*0,\s*0,\s*0\)|^transparent$/)
+    // Poll until the scroll handler flips the class (no fixed sleep — survives slow CI)
+    await expect
+      .poll(
+        () =>
+          header.evaluate((el) => getComputedStyle(el).backgroundColor),
+        { timeout: 3000 },
+      )
+      .not.toMatch(/rgba\(0,\s*0,\s*0,\s*0\)|^transparent$/)
   })
 })

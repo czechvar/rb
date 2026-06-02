@@ -50,10 +50,12 @@ test.describe('Trip Detail page', () => {
     await expect(page.locator('h1')).toContainText(`E2E Trip ${stamp}`)
     await expect(page.getByRole('heading', { name: 'Trip Highlights' })).toBeVisible()
     await expect(page.getByText('Five resorts')).toBeVisible()
-    await expect(page.getByRole('heading', { name: 'Day-by-Day Itinerary' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Daily flow' })).toBeVisible()
     await expect(page.getByText('Zell am See')).toBeVisible()
-    await expect(page.getByRole('heading', { name: 'Essential Equipment' })).toBeVisible()
-    await expect(page.getByText('Mandatory')).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Essential equipment' })).toBeVisible()
+    // EssentialEquipment marks mandatory items with a CSS class + *, not the word "Mandatory";
+    // verify the mandatory helmet note text as a proxy for mandatory rendering
+    await expect(page.getByText('Required')).toBeVisible()
     await expect(page.getByRole('heading', { name: 'Why Rockbusters' })).toBeVisible()
   })
 
