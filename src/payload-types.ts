@@ -80,6 +80,7 @@ export interface Config {
     'event-dates': EventDate;
     faqs: Faq;
     reviews: Review;
+    orders: Order;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -100,6 +101,7 @@ export interface Config {
     'event-dates': EventDatesSelect<false> | EventDatesSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
+    orders: OrdersSelect<false> | OrdersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -825,6 +827,11 @@ export interface EventDate {
     [k: string]: unknown;
   } | null;
   active?: boolean | null;
+  /**
+   * Sum of participants in pending+confirmed+paid orders.
+   */
+  bookedSeats?: number | null;
+  remainingSeats?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -871,6 +878,59 @@ export interface Review {
   type?: (number | null) | Type;
   position?: number | null;
   active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders".
+ */
+export interface Order {
+  id: number;
+  orderNumber?: string | null;
+  user: number | User;
+  eventDate: number | EventDate;
+  participants: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    id?: string | null;
+  }[];
+  participantCount: number;
+  billingAddress: {
+    firstName: string;
+    lastName: string;
+    street: string;
+    city: string;
+    postalCode: string;
+    country: string;
+    company?: {
+      companyName?: string | null;
+      ico?: string | null;
+      dic?: string | null;
+    };
+  };
+  unitPrice: number;
+  vat: number;
+  currency: 'EUR' | 'CZK';
+  totalPrice: number;
+  state: 'pending' | 'confirmed' | 'paid' | 'completed' | 'cancelled';
+  /**
+   * Optional note from the customer at booking time.
+   */
+  customerNote?: string | null;
+  /**
+   * Admin-only notes. Entries cannot be edited after save.
+   */
+  notes?:
+    | {
+        author: number | User;
+        createdAt: string;
+        body: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -949,6 +1009,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'reviews';
         value: number | Review;
+      } | null)
+    | ({
+        relationTo: 'orders';
+        value: number | Order;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1487,6 +1551,8 @@ export interface EventDatesSelect<T extends boolean = true> {
   minParticipants?: T;
   extraContent?: T;
   active?: T;
+  bookedSeats?: T;
+  remainingSeats?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1517,6 +1583,58 @@ export interface ReviewsSelect<T extends boolean = true> {
   type?: T;
   position?: T;
   active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders_select".
+ */
+export interface OrdersSelect<T extends boolean = true> {
+  orderNumber?: T;
+  user?: T;
+  eventDate?: T;
+  participants?:
+    | T
+    | {
+        firstName?: T;
+        lastName?: T;
+        email?: T;
+        phone?: T;
+        id?: T;
+      };
+  participantCount?: T;
+  billingAddress?:
+    | T
+    | {
+        firstName?: T;
+        lastName?: T;
+        street?: T;
+        city?: T;
+        postalCode?: T;
+        country?: T;
+        company?:
+          | T
+          | {
+              companyName?: T;
+              ico?: T;
+              dic?: T;
+            };
+      };
+  unitPrice?: T;
+  vat?: T;
+  currency?: T;
+  totalPrice?: T;
+  state?: T;
+  customerNote?: T;
+  notes?:
+    | T
+    | {
+        author?: T;
+        createdAt?: T;
+        body?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

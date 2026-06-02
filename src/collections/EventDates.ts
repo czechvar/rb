@@ -52,5 +52,47 @@ export const EventDates: CollectionConfig = {
     { name: 'minParticipants', type: 'number', defaultValue: 0, min: 0 },
     { name: 'extraContent', type: 'richText' },
     { name: 'active', type: 'checkbox', defaultValue: false },
+    {
+      name: 'bookedSeats',
+      type: 'number',
+      virtual: true,
+      admin: { readOnly: true, description: 'Sum of participants in pending+confirmed+paid orders.' },
+      hooks: {
+        afterRead: [
+          async ({ data, req }) => {
+            if (!data?.id) return 0
+            const res = await req.payload.find({
+              collection: 'orders',
+              where: {
+                and: [
+                  { eventDate: { equals: data.id } },
+                  { state: { in: ['pending', 'confirmed', 'paid'] } },
+                ],
+              },
+              limit: 10_000, depth: 0, req,
+            })
+            return res.docs.reduce(
+              (sum, o) => sum + ((o as { participantCount?: number }).participantCount ?? 0),
+              0,
+            )
+          },
+        ],
+      },
+    },
+    {
+      name: 'remainingSeats',
+      type: 'number',
+      virtual: true,
+      admin: { readOnly: true },
+      hooks: {
+        afterRead: [
+          ({ data }) => {
+            const cap = (data as { capacity?: number })?.capacity ?? 0
+            const booked = (data as { bookedSeats?: number })?.bookedSeats ?? 0
+            return Math.max(0, cap - booked)
+          },
+        ],
+      },
+    },
   ],
 }
