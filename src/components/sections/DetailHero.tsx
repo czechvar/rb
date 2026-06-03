@@ -4,6 +4,8 @@ import { PricingSidebar } from './PricingSidebar'
 import { TagChipStrip, type TagChip } from './TagChipStrip'
 import styles from './DetailHero.module.css'
 
+// TODO (data-wiring round): replace with per-event Payload fields.
+// See: docs/superpowers/specs/2026-06-01-trip-detail-figma-r3-hero-design.md (Out of scope).
 const HARDCODED_CHIPS: TagChip[] = [
   { icon: 'pin', label: 'RODELLAR, ARAGON, SPAIN' },
   { icon: 'tag', label: 'SPORT CLIMBING' },
@@ -12,6 +14,8 @@ const HARDCODED_CHIPS: TagChip[] = [
   { icon: 'gift', label: 'EVOLV & SINGING ROCK CLIMBING GEAR DEMO' },
 ]
 
+// TODO (data-wiring round): replace with per-event Payload fields.
+// See: docs/superpowers/specs/2026-06-01-trip-detail-figma-r3-hero-design.md (Out of scope).
 const HARDCODED_SIDEBAR = {
   primaryPrice: '€ 950 / 1 week',
   secondaryPrice: '€ 1,650 for 2 weeks',
@@ -62,7 +66,7 @@ export function DetailHero({
             caption={HARDCODED_SIDEBAR.caption}
             rows={[...HARDCODED_SIDEBAR.rows]}
             callout={HARDCODED_SIDEBAR.callout}
-            ctaHref="#booking"
+            ctaHref="#dates"
             ctaLabel={HARDCODED_SIDEBAR.ctaLabel}
           />
         </div>
