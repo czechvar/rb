@@ -486,6 +486,8 @@ git commit -m "test: point stale shell-visual comment at account-shell coverage"
 
 ## Deviations from the spec (intentional)
 
+- Task 2's "failing test" passed immediately: `src/middleware.ts` (missed during planning) already redirects `payload-token` cookie-holders away from `/login`/`/register`. The page-level `getCurrentUser()` redirect was kept anyway — it validates the token rather than trusting cookie presence, mirroring the existing middleware + `account/layout.tsx` belt-and-braces pattern, and the new e2e test pins the behavior regardless of which layer provides it.
+
 - The spec says "`shell-visual.spec.ts` baseline regenerated". Inspection shows that spec has **no screenshot baselines** (deliberately omitted per its trailing comment) — only DOM assertions. The equivalent work is Task 5's comment fix; no baselines exist to regenerate.
 - The rescued `trip-detail-visual.spec.ts-snapshots/` baseline is already committed on this branch (`f96efbb`) — no further action.
 
