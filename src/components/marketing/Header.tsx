@@ -167,7 +167,7 @@ export function Header({ transparent = false }: { transparent?: boolean } = {}) 
             <Link href="/calendar" className={styles.joinUs}>
               Join Us
             </Link>
-            <Link href={userHref} className={styles.userLink} aria-label={userLabel} title={userLabel}>
+            <Link href={userHref} className={styles.userLink} aria-label={userLabel}>
               <UserIcon />
             </Link>
           </nav>
