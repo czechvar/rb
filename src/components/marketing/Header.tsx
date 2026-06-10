@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import styles from './marketing.module.css'
+import { useMe } from './useMe'
 
 const NAV_LINKS = [
   { href: '/programs', label: 'Programs' },
@@ -42,11 +43,25 @@ function CloseIcon() {
   )
 }
 
+function UserIcon() {
+  return (
+    <svg className={styles.iconLarge} viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z"
+      />
+    </svg>
+  )
+}
+
 export function Header({ transparent = false }: { transparent?: boolean } = {}) {
   const [scrolled, setScrolled] = useState(false)
   const [hideContacts, setHideContacts] = useState(false)
   const [pastHero, setPastHero] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const me = useMe()
+  const userHref = me === 'in' ? '/account' : '/login'
+  const userLabel = me === 'in' ? 'My account' : 'Log in'
 
   useEffect(() => {
     let lastY = 0
@@ -152,6 +167,9 @@ export function Header({ transparent = false }: { transparent?: boolean } = {}) 
             <Link href="/calendar" className={styles.joinUs}>
               Join Us
             </Link>
+            <Link href={userHref} className={styles.userLink} aria-label={userLabel} title={userLabel}>
+              <UserIcon />
+            </Link>
           </nav>
 
           <button
@@ -185,6 +203,9 @@ export function Header({ transparent = false }: { transparent?: boolean } = {}) 
           </Link>
           <Link href="/contact" onClick={() => setDrawerOpen(false)}>
             Contact
+          </Link>
+          <Link href={userHref} onClick={() => setDrawerOpen(false)}>
+            {userLabel}
           </Link>
         </div>
       )}

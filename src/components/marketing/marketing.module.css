@@ -167,6 +167,15 @@
   content: none;
 }
 
+.nav a.userLink {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav a.userLink:hover::after {
+  content: none;
+}
+
 .menuToggle {
   display: none;
   width: 4rem;
