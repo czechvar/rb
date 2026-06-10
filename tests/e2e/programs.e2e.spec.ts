@@ -25,7 +25,7 @@ test.describe('Program (Trip Category) page', () => {
       },
     })
 
-    await page.goto(`http://localhost:3000/programs/${created.slug}`)
+    await page.goto(`/programs/${created.slug}`)
 
     await expect(page.locator('h1')).toContainText(`E2E Program ${stamp}`)
     await expect(page.getByRole('heading', { name: 'Program Highlights' })).toBeVisible()
@@ -45,7 +45,7 @@ test.describe('Program (Trip Category) page', () => {
         state: 'draft',
       },
     })
-    const res = await page.goto(`http://localhost:3000/programs/e2e-draft-program-${stamp}`)
+    const res = await page.goto(`/programs/e2e-draft-program-${stamp}`)
     expect(res?.status()).toBe(404)
   })
 })
