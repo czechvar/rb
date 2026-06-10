@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
@@ -35,7 +36,7 @@ export default async function BookPage({ params }: Props) {
   const eventDateId = Number(rawId)
 
   const user = await getCurrentUser()
-  if (!user) redirect(`/login?next=/book/${rawId}`)
+  if (!user) redirect(`/login?from=${encodeURIComponent(`/book/${rawId}`)}`)
 
   const payload = await getPayloadClient()
   let eventDate
@@ -53,7 +54,7 @@ export default async function BookPage({ params }: Props) {
     return (
       <div style={{ padding: 32 }}>
         <h1>This date is not available</h1>
-        <p><a href="/programs">Back to trips →</a></p>
+        <p><Link href="/programs">Back to trips →</Link></p>
       </div>
     )
   }
@@ -63,7 +64,7 @@ export default async function BookPage({ params }: Props) {
       <div style={{ padding: 32 }}>
         <h1>Sold out</h1>
         <p>This date is fully booked.</p>
-        <p><a href="/programs">Browse other trips →</a></p>
+        <p><Link href="/programs">Browse other trips →</Link></p>
       </div>
     )
   }

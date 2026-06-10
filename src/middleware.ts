@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { sanitizeRedirect } from '@/lib/redirect'
 
 const AUTH_PAGES = ['/login', '/register']
 
@@ -15,10 +16,8 @@ export function middleware(req: NextRequest): NextResponse {
   }
 
   if (token && AUTH_PAGES.includes(pathname)) {
-    const url = req.nextUrl.clone()
-    url.pathname = '/account'
-    url.search = ''
-    return NextResponse.redirect(url)
+    const target = sanitizeRedirect(req.nextUrl.searchParams.get('from')) ?? '/account'
+    return NextResponse.redirect(new URL(target, req.url))
   }
 
   return NextResponse.next()

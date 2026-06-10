@@ -2,6 +2,7 @@
 import React from 'react'
 import { redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
+import { sanitizeRedirect } from '@/lib/redirect'
 import { LoginForm } from './LoginForm'
 
 export const metadata = { title: 'Sign in — Rockbusters' }
@@ -11,10 +12,9 @@ export default async function LoginPage({
 }: {
   searchParams: Promise<{ from?: string; verified?: string; ['password-reset']?: string }>
 }) {
-  const user = await getCurrentUser()
-  if (user) redirect('/account')
-
   const sp = await searchParams
+  const user = await getCurrentUser()
+  if (user) redirect(sanitizeRedirect(sp.from) ?? '/account')
   return (
     <>
       <h1>Sign in</h1>
