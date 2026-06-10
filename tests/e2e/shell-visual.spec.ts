@@ -5,8 +5,9 @@ const BASE = 'http://localhost:3001'
 
 // Public, shell-using pages. The homepage uses <Header /> + <Footer /> directly
 // rather than <MarketingShell />, but the rendered shell is the same. Auth pages
-// (/login, /register, /verify-email, …) and /account/* are intentionally excluded
-// — they don't use the marketing shell and/or require authentication.
+// (/login, /register, /verify-email, …) intentionally keep their bare card layout.
+// /account/* and /book/* DO use the shell but require authentication — they're
+// covered by tests/e2e/account-shell.spec.ts instead.
 const pages = [
   '/',
   '/calendar',
