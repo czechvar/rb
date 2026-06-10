@@ -108,3 +108,13 @@ test.describe('account shell', () => {
     await expect(page.locator('footer').first()).toBeVisible()
   })
 })
+
+test.describe('booking shell', () => {
+  test('/book/[eventDateId] renders header and footer', async ({ page }) => {
+    await login(page)
+    await page.goto(`${BASE}/book/${eventDateId}`)
+    await expect(page.getByText(eventTitle)).toBeVisible()
+    await expect(page.locator('header').first()).toBeVisible()
+    await expect(page.locator('footer').first()).toBeVisible()
+  })
+})
