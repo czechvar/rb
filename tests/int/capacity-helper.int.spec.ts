@@ -4,10 +4,10 @@ import { getRemainingCapacity } from '@/lib/capacity'
 
 async function makeEventWithDate(capacity: number) {
   const payload = await getTestPayload()
+  const unique = `${Date.now()}-${Math.random().toString(36).slice(2)}`
   const event = await payload.create({
     collection: 'events',
-    // @ts-expect-error slug auto-set
-    data: { title: `Cap Event ${Date.now()}-${Math.random()}` },
+    data: { title: `Cap Event ${unique}`, slug: `cap-event-${unique}`, state: 'published' },
   })
   const ed = await payload.create({
     collection: 'event-dates',

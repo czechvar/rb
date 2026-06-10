@@ -33,6 +33,7 @@ export default async function CalendarPage() {
     limit: 500,
   })
 
+  // eslint-disable-next-line react-hooks/purity -- server component, runs once per request; filtering by current time is intended
   const upcoming = dates.filter((d) => new Date(d.dateFrom).getTime() >= Date.now())
 
   const groups = new Map<string, typeof upcoming>()

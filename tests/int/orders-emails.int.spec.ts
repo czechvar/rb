@@ -8,10 +8,10 @@ const baseBilling = {
 
 async function seed() {
   const payload = await getTestPayload()
+  const unique = `${Date.now()}-${Math.random().toString(36).slice(2)}`
   const event = await payload.create({
     collection: 'events',
-    // @ts-expect-error slug auto-set
-    data: { title: `EmailTest ${Date.now()}-${Math.random()}` },
+    data: { title: `EmailTest ${unique}`, slug: `emailtest-${unique}`, state: 'published' },
   })
   const ed = await payload.create({
     collection: 'event-dates',

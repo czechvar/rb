@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
@@ -27,7 +28,7 @@ export default async function OrdersPage() {
         <h1>Your orders</h1>
         <div style={{ padding: 48, textAlign: 'center', border: '1px dashed #d0cfcd', borderRadius: 8, color: '#666' }}>
           <p style={{ fontSize: 18 }}>You haven&apos;t booked any trips yet.</p>
-          <p><a href="/programs">Browse trips →</a></p>
+          <p><Link href="/programs">Browse trips →</Link></p>
         </div>
       </>
     )

@@ -32,6 +32,7 @@ export default async function ConfirmEmailPage({
   }
   const pendingEmail = target.pendingEmail
   const expiresAt = target.pendingEmailExpiresAt
+  // eslint-disable-next-line react-hooks/purity -- server component, runs once per request; current-time expiry check is intended
   if (!pendingEmail || !expiresAt || Date.parse(expiresAt) < Date.now()) {
     return <p>This link has expired.</p>
   }

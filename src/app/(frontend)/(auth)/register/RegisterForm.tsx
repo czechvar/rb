@@ -23,6 +23,9 @@ export function RegisterForm() {
   // adopt the server's version so what the user sees matches what was
   // validated.
   const echoed = !state.ok ? state.values : undefined
+  /* eslint-disable react-hooks/set-state-in-effect -- syncing local state with
+     the action result is the point here; each set is guarded by an inequality
+     check, so it fires at most once per action round-trip. */
   useEffect(() => {
     if (!echoed) return
     if (echoed.name !== undefined && echoed.name !== name) setName(echoed.name)
@@ -30,6 +33,7 @@ export function RegisterForm() {
     if (echoed.phone !== undefined && echoed.phone !== phone) setPhone(echoed.phone)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [echoed])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const fieldErrors = !state.ok ? state.fieldErrors : undefined
 

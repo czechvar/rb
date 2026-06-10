@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
@@ -35,7 +36,7 @@ export default async function BookingConfirmation({ params }: Props) {
   return (
     <div style={{ maxWidth: 640, margin: '0 auto', padding: '48px 16px', textAlign: 'center' }}>
       <h1>Booking received</h1>
-      <p>We've sent a confirmation email to <strong>{user.email}</strong>. Our team will confirm your booking shortly.</p>
+      <p>We&apos;ve sent a confirmation email to <strong>{user.email}</strong>. Our team will confirm your booking shortly.</p>
       <div style={{ background: '#f5f1ea', padding: 24, borderRadius: 8, margin: '24px 0', textAlign: 'left' }}>
         <p><strong>Order:</strong> {o.orderNumber}</p>
         <p><strong>Trip:</strong> {eventTitle}</p>
@@ -46,7 +47,7 @@ export default async function BookingConfirmation({ params }: Props) {
       <p>
         <a href={`/account/orders/${o.id}`}>View in your account →</a>
         {' · '}
-        <a href="/programs">Browse more trips</a>
+        <Link href="/programs">Browse more trips</Link>
       </p>
     </div>
   )

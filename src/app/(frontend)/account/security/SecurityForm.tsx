@@ -16,6 +16,8 @@ export function SecurityForm() {
 
   // Clear all password fields after a successful change so the next visit
   // to this page starts clean.
+  /* eslint-disable react-hooks/set-state-in-effect -- one-shot reset gated on
+     state.ok flipping; fires once per successful action, no render cascade. */
   useEffect(() => {
     if (state.ok) {
       setCurrentPassword('')
@@ -23,6 +25,7 @@ export function SecurityForm() {
       setConfirm('')
     }
   }, [state.ok])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const fieldErrors = !state.ok ? state.fieldErrors : undefined
 

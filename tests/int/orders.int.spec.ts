@@ -3,10 +3,10 @@ import { getTestPayload } from '../helpers/payload'
 
 async function seedEventWithDate(price = 200, capacity = 10) {
   const payload = await getTestPayload()
+  const unique = `${Date.now()}-${Math.random().toString(36).slice(2)}`
   const event = await payload.create({
     collection: 'events',
-    // @ts-expect-error slug auto-set
-    data: { title: `OrderTest ${Date.now()}-${Math.random()}` },
+    data: { title: `OrderTest ${unique}`, slug: `ordertest-${unique}`, state: 'published' },
   })
   const ed = await payload.create({
     collection: 'event-dates',
