@@ -89,3 +89,22 @@ test.describe('login redirect', () => {
     await expect(page).toHaveURL(/\/account$/)
   })
 })
+
+test.describe('account shell', () => {
+  test('/account renders header, breadcrumb, and footer', async ({ page }) => {
+    await login(page)
+    await page.goto(`${BASE}/account`)
+    await expect(page.locator('header').first()).toBeVisible()
+    await expect(
+      page.getByRole('navigation', { name: 'Breadcrumb' }).getByText('My account'),
+    ).toBeVisible()
+    await expect(page.locator('footer').first()).toBeVisible()
+  })
+
+  test('/account/orders renders header and footer', async ({ page }) => {
+    await login(page)
+    await page.goto(`${BASE}/account/orders`)
+    await expect(page.locator('header').first()).toBeVisible()
+    await expect(page.locator('footer').first()).toBeVisible()
+  })
+})
