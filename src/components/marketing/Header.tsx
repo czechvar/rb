@@ -42,9 +42,10 @@ function CloseIcon() {
   )
 }
 
-export function Header() {
+export function Header({ transparent = false }: { transparent?: boolean } = {}) {
   const [scrolled, setScrolled] = useState(false)
   const [hideContacts, setHideContacts] = useState(false)
+  const [pastHero, setPastHero] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   useEffect(() => {
@@ -53,6 +54,7 @@ export function Header() {
       const y = window.scrollY
       setScrolled(y > 0)
       setHideContacts(y > 80 && y > lastY)
+      setPastHero(y > window.innerHeight * 0.8)
       lastY = y
     }
     onScroll()
@@ -67,10 +69,14 @@ export function Header() {
     }
   }, [drawerOpen])
 
+  // In transparent mode, treat "at top of hero" as scrolled-hidden so the contacts bar is gone.
+  const transparentAtTop = transparent && !pastHero
+
   const classes = [
     styles.header,
     scrolled ? styles.headerScrolled : '',
-    hideContacts ? styles.headerScrolledHide : '',
+    hideContacts || transparentAtTop ? styles.headerScrolledHide : '',
+    transparentAtTop ? styles.headerTransparent : '',
   ]
     .filter(Boolean)
     .join(' ')

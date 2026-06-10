@@ -2,9 +2,10 @@
   position: relative;
   width: 100%;
   height: 80vh;
-  min-height: 600px;
-  overflow: hidden;
-  color: var(--colTextOnPrimary);
+  min-height: 60rem;
+  /* overflow visible so .chipStrip can bleed below the hero edge */
+  overflow: visible;
+  color: var(--colLightest);
 }
 
 .image {
@@ -16,46 +17,98 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.55) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.6) 100%);
   z-index: 1;
 }
 
-.text {
+.content {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 var(--contentPadding) var(--sectionGapMd);
+  display: grid;
+  grid-template-columns: 1fr minmax(28rem, 34rem);
+  gap: 4rem;
+  align-items: center;
   max-width: var(--contentMaxWidth);
   margin: 0 auto;
+  padding: var(--headerTotalHeight) var(--contentPadding) 6rem;
   z-index: 2;
 }
 
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
 .title {
-  font-size: var(--h1FontSize);
-  line-height: var(--h1LineHeight);
-  margin-bottom: 1.5rem;
+  font-size: clamp(3.2rem, 6vw, 8rem);
+  line-height: 1.05;
+  font-weight: 700;
+  margin: 0;
+  color: var(--colLightest);
 }
 
 .lead {
   font-size: var(--pFontSize);
   line-height: var(--textLineHeight);
   max-width: 60ch;
-  margin-bottom: 2rem;
   opacity: 0.92;
+  margin: 0;
 }
 
-.meta {
-  font-size: var(--smallTextFontSize);
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-  opacity: 0.85;
+.sidebar {
+  justify-self: end;
+  width: 100%;
+  max-width: 34rem;
+}
+
+.chipStrip {
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+@media screen and (max-width: 1023px) {
+  .content {
+    grid-template-columns: 1fr minmax(24rem, 28rem);
+    gap: 2rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .hero {
-    height: 70vh;
-    min-height: 480px;
+    height: auto;
+    min-height: 0;
+  }
+  .content {
+    position: relative;
+    inset: auto;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: calc(var(--headerTotalHeight) + 4rem);
+    padding-bottom: 4rem;
+  }
+  .text {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
+    margin: 0 calc(-1 * var(--contentPadding));
+    padding: 4rem var(--contentPadding) 4rem;
+  }
+  .image {
+    object-position: center top;
+  }
+  .overlay {
+    display: none;
+  }
+  .sidebar {
+    justify-self: stretch;
+    max-width: none;
+  }
+  .chipStrip {
+    position: relative;
+    bottom: auto;
+    margin-top: 2rem;
   }
 }

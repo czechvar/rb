@@ -47,6 +47,9 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
+    // Disable interactive schema-push during e2e tests (or any non-dev environment)
+    // to prevent blocking on data-loss confirmation prompts for orphaned tables.
+    push: process.env.NODE_ENV !== 'test' && process.env.PAYLOAD_DISABLE_DB_PUSH !== 'true',
   }),
   sharp,
   plugins: [
