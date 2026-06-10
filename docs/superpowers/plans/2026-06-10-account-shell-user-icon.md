@@ -424,7 +424,7 @@ import React from 'react'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 
 // Purely visual — booking pages keep their own auth redirects because they
-// carry ?next= context this layout can't know.
+// carry ?from= context this layout can't know.
 export default function BookLayout({ children }: { children: React.ReactNode }) {
   return (
     <MarketingShell crumbs={[{ href: '/', label: 'Home' }, { label: 'Booking' }]}>
@@ -491,6 +491,6 @@ git commit -m "test: point stale shell-visual comment at account-shell coverage"
 - The spec says "`shell-visual.spec.ts` baseline regenerated". Inspection shows that spec has **no screenshot baselines** (deliberately omitted per its trailing comment) — only DOM assertions. The equivalent work is Task 5's comment fix; no baselines exist to regenerate.
 - The rescued `trip-detail-visual.spec.ts-snapshots/` baseline is already committed on this branch (`f96efbb`) — no further action.
 
-## Known out-of-scope bug (do not fix here)
+## Formerly out-of-scope bug (fixed on this branch after all)
 
-`/book/[eventDateId]/page.tsx` redirects unauthenticated users to `/login?next=...`, but `LoginPage`/`LoginForm` only read a `from` param — the post-login return to the booking page silently doesn't happen. Tracked separately; fixing it would widen this PR.
+`/book/[eventDateId]/page.tsx` used to redirect unauthenticated users to `/login?next=...`, but the login flow only reads a `from` param — the post-login return to the booking page silently didn't happen. Originally deferred to a separate task, but that task's work was adopted onto this branch as commit `8081a78`: everything standardizes on a sanitized `?from=` (via `sanitizeRedirect`), covered by `tests/e2e/login-redirect.e2e.spec.ts`.

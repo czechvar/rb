@@ -25,7 +25,7 @@ So this spec reads standalone:
 | File | Change |
 |---|---|
 | `src/app/(frontend)/account/layout.tsx` | Wrap the existing sidebar grid in `<MarketingShell crumbs={[Home, My account]}>`. Auth guard (`getCurrentUser` → `redirect('/login')`) and `AccountSidebar` untouched. |
-| `src/app/(frontend)/book/layout.tsx` (new) | `<MarketingShell crumbs={[Home, Booking]}>{children}</MarketingShell>`. Purely visual — booking pages keep their own auth redirects (they carry `?next=` context the layout can't). |
+| `src/app/(frontend)/book/layout.tsx` (new) | `<MarketingShell crumbs={[Home, Booking]}>{children}</MarketingShell>`. Purely visual — booking pages keep their own auth redirects (they carry `?from=` context the layout can't). |
 | `src/components/marketing/useMe.ts` (new) | Client hook. State `'out' \| 'in'`, initial `'out'`. One `fetch('/api/users/me', { credentials: 'same-origin' })` in a mount effect; sets `'in'` iff response is OK and contains a non-null `user`. Any non-200 or network error stays `'out'`. |
 | `src/components/marketing/Header.tsx` | Call `useMe()` once; feed both render sites. Desktop: person-silhouette SVG (inline, `currentColor`, same conventions as the existing phone/social icons) in the `menuBar` nav after "Join Us" — `href="/login"` + `aria-label="Log in"` when out, `href="/account"` + `aria-label="My account"` when in. Mobile drawer: text entry "Log in" / "My account", same hrefs, closes the drawer on click. |
 | `src/components/marketing/marketing.module.css` | Minimal icon-link styles (size, alignment, hover) consistent with existing nav links. Must inherit text color so the R3 transparent header mode needs no special casing. |
