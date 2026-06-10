@@ -81,3 +81,11 @@ test.describe('header user icon', () => {
     await expect(icon).toHaveAttribute('href', '/account')
   })
 })
+
+test.describe('login redirect', () => {
+  test('authenticated visit to /login lands on /account', async ({ page }) => {
+    await login(page)
+    await page.goto(`${BASE}/login`)
+    await expect(page).toHaveURL(/\/account$/)
+  })
+})
