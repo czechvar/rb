@@ -57,7 +57,7 @@ test.describe('team pages', () => {
 
   test('/team/[slug] renders the guide profile without leaking contacts', async ({ page }) => {
     await page.goto(`${BASE}/team/${guide.slug}`)
-    await expect(page.getByRole('heading', { name: guide.name })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: guide.name })).toBeVisible()
     await expect(page.getByText(guide.bioLine)).toBeVisible()
     // email/phone exist on the collection but must not be rendered publicly
     await expect(page.locator('body')).not.toContainText(guide.email)
