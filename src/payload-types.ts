@@ -520,6 +520,9 @@ export interface Location {
    * @maxItems 2
    */
   coordinates?: [number, number] | null;
+  mainPicture?: (number | null) | Media;
+  gallery?: (number | Media)[] | null;
+  featured?: boolean | null;
   active?: boolean | null;
   seo?: {
     title?: string | null;
@@ -1332,6 +1335,9 @@ export interface LocationsSelect<T extends boolean = true> {
   city?: T;
   country?: T;
   coordinates?: T;
+  mainPicture?: T;
+  gallery?: T;
+  featured?: T;
   active?: T;
   seo?:
     | T

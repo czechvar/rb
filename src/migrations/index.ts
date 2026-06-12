@@ -4,6 +4,7 @@ import * as migration_20260528_135559_demo_block_fields from './20260528_135559_
 import * as migration_20260531_212859_orders from './20260531_212859_orders';
 import * as migration_20260601_214850_event_dates_virtual_capacity from './20260601_214850_event_dates_virtual_capacity';
 import * as migration_20260612_190144_guide_role_section from './20260612_190144_guide_role_section';
+import * as migration_20260612_192135_location_destination_fields from './20260612_192135_location_destination_fields';
 
 export const migrations = [
   {
@@ -34,6 +35,11 @@ export const migrations = [
   {
     up: migration_20260612_190144_guide_role_section.up,
     down: migration_20260612_190144_guide_role_section.down,
-    name: '20260612_190144_guide_role_section'
+    name: '20260612_190144_guide_role_section',
+  },
+  {
+    up: migration_20260612_192135_location_destination_fields.up,
+    down: migration_20260612_192135_location_destination_fields.down,
+    name: '20260612_192135_location_destination_fields'
   },
 ];
