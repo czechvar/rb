@@ -77,3 +77,18 @@
   flex-direction: column;
   gap: 8px;
 }
+
+.role {
+  font-size: 14px;
+  color: #666;
+}
+
+.roleLine {
+  margin: -8px 0 16px;
+  font-weight: 600;
+  color: #c8102e;
+}
+
+.sectionHeading {
+  margin-top: 48px;
+}

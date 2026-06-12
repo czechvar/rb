@@ -58,6 +58,7 @@ export default async function GuidePage({ params }: Props) {
           ) : null}
           <div>
             <h1>{guide.name}</h1>
+            {guide.role ? <p className={styles.roleLine}>{guide.role}</p> : null}
             <Lexical data={guide.content} />
           </div>
         </div>
