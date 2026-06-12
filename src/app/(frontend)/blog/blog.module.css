@@ -1,0 +1,73 @@
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover .cardTitle {
+  color: #c8102e;
+}
+
+.photo,
+.photoPlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #f1efed;
+}
+
+.cardTitle {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.cardMeta {
+  font-size: 13px;
+  color: #666;
+}
+
+.excerpt {
+  font-size: 14px;
+  color: #444;
+}
+
+.postHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.byline {
+  color: #666;
+  font-size: 14px;
+}
+
+.heroPhoto {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.categoryLink {
+  color: #c8102e;
+  font-weight: 600;
+  text-decoration: none;
+}
