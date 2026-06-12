@@ -567,3 +567,7 @@ git commit -m "feat(redirects): 301 /location/* to /destinations/*; footer links
 - [ ] **Step 2: Full e2e** — Run `pnpm test:e2e`. Expected: ALL pass (52 = 47 + 5 new destination tests). Any non-destination failure = regression; investigate, don't paper over.
 
 - [ ] **Step 3: Report results.** No commit unless fixes were needed.
+
+## Deviations (during execution)
+
+- Task 2: the plan claimed "event ensures relink on second pass" — wrong; `ensure()` is create-only. The three seed events were switched to the pre-existing `upsert()` helper so re-seeds refresh their `locations` relation ids after the slug rename. Reviewed and kept.
