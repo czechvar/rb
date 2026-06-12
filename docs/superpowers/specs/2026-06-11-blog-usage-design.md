@@ -1,7 +1,7 @@
-# Blog — usage proposal & collection design — DRAFT (overnight prep, decisions pending)
+# Blog — usage & collection design
 
 **Date:** 2026-06-11
-**Status:** DRAFT — written autonomously overnight; this one intentionally ships no code. The collection shape and the "how the blog earns its keep" proposal below need Jan's sign-off (and probably the copywriter's) before anything is built.
+**Status:** APPROVED for schema + routes — decisions resolved by Jan 2026-06-12 (see Decisions below); old-post recreation list to follow from Jan/Search Console.
 **Scope:** a `posts` collection, `/blog` index + `/blog/[slug]` + `/blog/category/[slug]` routes, and how blog content plugs into the rest of the site.
 
 ## Ground truth (verified tonight)
@@ -20,8 +20,8 @@
 | `heroImage` | upload → media | index cards + post header |
 | `excerpt` | textarea | card teaser + meta description fallback |
 | `content` | richText (Lexical) | |
-| `category` | select (the 8 old-site categories) | start as select; promote to a collection only if categories need their own content |
-| `author` | relationship → guides | posts are bylined by team members; "Rockbusters" fallback when empty |
+| `category` | relationship → `post-categories` | categories are their own collection (Decision 1) |
+| `author` | text, default "Rockbusters" | plain byline for now (Decision 2) |
 | `publishedAt` | date | index ordering |
 | `state` | select draft/published | mirror the `events.state` pattern + access rule |
 | `seo` | seoFields | existing shared group |
@@ -40,12 +40,12 @@
 4. **Homepage teaser row** (3 newest posts) — later round, after the Figma pass covers it.
 5. **News/promo channel:** the promo category replaces ad-hoc landing pages for announcements (lottery, new courses), giving them stable URLs.
 
-## Open questions for Jan
+## Decisions (Jan, 2026-06-12)
 
-1. Category as `select` (recommended start) vs separate collection?
-2. Author = relation to `guides` (recommended; pro fallback text field?) — or a plain text byline?
-3. Which old posts get recreated vs 301-to-index? (Needs Search Console; suggest deciding with Martin.)
-4. Is the blog in scope before or after the Figma round-2 storefront work? This spec only stakes out URLs + schema so nothing else blocks on it.
+1. **Category is a full collection** (`post-categories`: name, slugField, optional description, SEO), seeded with the 8 old-site categories under their old slugs so `/blog/category/<slug>` survives verbatim. `posts.category` becomes a relationship.
+2. **Author is plain text for now** (default "Rockbusters"); relation to `guides` is a possible later upgrade.
+3. **Old-post recreation list:** Jan provides later (Search Console); until then unmatched `/blog/*` paths 301 to `/blog`.
+4. **Sequencing:** built after destinations; schema + routes only, content enters via the copywriter workflow.
 
 ## Out of scope
 

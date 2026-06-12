@@ -1,7 +1,7 @@
-# Destination pages — DRAFT (overnight prep, decisions pending)
+# Destination pages
 
 **Date:** 2026-06-11
-**Status:** DRAFT — written autonomously overnight; open questions below need Jan's call before implementation.
+**Status:** APPROVED — open questions resolved by Jan 2026-06-12 (see Decisions below).
 **Scope:** `/destinations` index + `/destinations/[slug]` detail pages, fed by the existing `locations` collection; 301 mapping from the old site's `/location/*` URLs.
 
 ## Ground truth (verified tonight)
@@ -30,12 +30,12 @@
 - **Re-align new slugs to the old ones** (`arco`, not `arco-italy`) so the pattern redirect covers everything; fix the 4 seed slugs. Where a venue is never recreated, the pattern 301 will land on the new page's 404 — acceptable, or add a catch-all to `/destinations`.
 - Footer country links: replace `/destinations/<country>` with links to the index (optionally `/destinations#spain` anchors from the country grouping). Header `/destinations` starts working as-is.
 
-## Open questions for Jan
+## Decisions (Jan, 2026-06-12)
 
-1. **Slug policy:** adopt old short slugs (recommended) or keep `-country` suffixes and maintain an explicit redirect map?
-2. **Map rendering:** static image (zero deps), OpenStreetMap embed, or skip maps in v1?
-3. **Content sections:** wait for Martin's destination worksheet before fixing the detail-page section list, or ship name/photo/content/trips as v1 and let the worksheet drive v2? (Recommended: ship the thin v1 — it's all existing data.)
-4. Which of the 56 old venues get recreated in Payload first? (Suggest: the ones with upcoming trips, then top-traffic ones from Search Console.)
+1. **Slug policy:** adopt the old short slugs (`arco`, not `arco-italy`); fix the seeded slugs. One pattern redirect `/location/:slug → /destinations/:slug` preserves all 56 pages.
+2. **Map rendering:** OpenStreetMap embed (iframe, no API key) from the stored coordinates.
+3. **Content sections:** ship the thin v1 (name, photo, intro richText, map, upcoming trips); Martin's destination worksheet drives v2 sections.
+4. **Venue rollout:** recreate venues with upcoming trips first, then top performers per Search Console.
 
 ## Out of scope
 

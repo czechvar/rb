@@ -1,7 +1,7 @@
-# Team / guide pages — DRAFT (overnight prep, scaffolded for review)
+# Team / guide pages
 
 **Date:** 2026-06-11
-**Status:** DRAFT — written autonomously overnight. This is the least ambiguous of the three areas (zero schema changes required to render), so a working scaffold accompanies this spec on the same branch. Review and amend rather than treat as final.
+**Status:** APPROVED — open questions resolved by Jan 2026-06-12 (see Decisions below). A working scaffold of the index/detail pages already accompanies this spec; the decisions below extend it.
 **Scope:** `/team` index + `/team/[slug]` detail pages from the existing `guides` collection; 301 mapping from the old site's `/team-member/*`.
 
 ## Ground truth (verified tonight)
@@ -26,11 +26,11 @@ None required. One optional nice-to-have for parity with the old site: a `role` 
 - New canonical: `/team/<slug>`. 301 `/team-member/:slug → /team/:slug` (single pattern rule in `next.config`).
 - Old suffix-y slugs (`…-pro-climber`) only stay continuous if guides are recreated with those exact slugs. Recommendation: when (re)creating guides in Payload, copy the old slug verbatim — ugly slugs are cheaper than ranking loss. Alternatively a small explicit map for the handful of suffixed ones.
 
-## Open questions for Jan
+## Decisions (Jan, 2026-06-12)
 
-1. Add the `role` field now or later? (Cards look bare with just names; recommended: add at review.)
-2. Pro climbers vs working coaches — one flat grid (scaffolded) or two sections ("Team" / "Friends & ambassadors")? The old site mixes them.
-3. Should `/team` replace the footer's "Rockbusters Team" link target as-is? (Scaffold assumes yes — link starts working with no footer change.)
+1. **Add a `role` text field** to `guides` ("Head coach", "Pro climber", "Physiotherapist") — shown on index cards and the profile header. Schema change ⇒ create the migration with `payload migrate:create` (never hand-written).
+2. **Two sections on `/team`:** a `section` select on `guides` (`team` | `friends`, default `team`), rendered as "Rockbusters Team" and "Friends & Ambassadors" headings.
+3. **Clean slugs + explicit redirect map:** new guides get clean slugs (`daila-ojeda`); the generic `/team-member/:slug → /team/:slug` pattern rule covers matching slugs, plus a small explicit map in `next.config` for the old suffixed ones.
 
 ## Out of scope
 
