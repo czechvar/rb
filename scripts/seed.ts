@@ -366,6 +366,67 @@ async function main() {
     label: 'cavallers',
   })
 
+  console.log('— post categories —')
+
+  const OLD_SITE_CATEGORIES: [string, string][] = [
+    ['Promo', 'promo'],
+    ['Guest Post', 'guest-post'],
+    ['Climbing Destinations', 'climbing-destinations'],
+    ['Trad Climbing', 'trad-climbing'],
+    ['Bouldering', 'bouldering'],
+    ['Sport Climbing', 'sport-climbing'],
+    ['Training', 'training'],
+    ['Multi-pitch Climbing', 'multi-pitch-climbing'],
+  ]
+  const postCategories: Record<string, { id: number }> = {}
+  for (const [name, slug] of OLD_SITE_CATEGORIES) {
+    postCategories[slug] = await ensure(payload, {
+      collection: 'post-categories',
+      where: { slug: { equals: slug } },
+      data: { name, slug },
+      label: slug,
+    })
+  }
+
+  console.log('— posts —')
+
+  await ensure(payload, {
+    collection: 'posts',
+    where: { slug: { equals: 'ticino-switzerland-granite-perfection' } },
+    data: {
+      title: 'Ticino, Switzerland: Granite Perfection',
+      slug: 'ticino-switzerland-granite-perfection',
+      excerpt: 'Why the Ticino valleys hold some of the best granite bouldering and climbing in Europe.',
+      content: richText(
+        'Cresciano, Chironico, Brione — names every boulderer knows. Ticino is granite perfection an easy drive from Milan.',
+        'This guide covers seasons, sectors, and where to base yourself for a week of Swiss granite.',
+      ),
+      category: postCategories['climbing-destinations'].id,
+      author: 'Rockbusters',
+      publishedAt: '2026-05-01T09:00:00.000Z',
+      state: 'published',
+    },
+    label: 'ticino post',
+  })
+  await ensure(payload, {
+    collection: 'posts',
+    where: { slug: { equals: 'the-benefits-of-training-for-your-climbing-trip' } },
+    data: {
+      title: 'The Benefits of Training for Your Climbing Trip',
+      slug: 'the-benefits-of-training-for-your-climbing-trip',
+      excerpt: 'Show up strong: a short primer on preparing your fingers, core, and head for a week on rock.',
+      content: richText(
+        'A climbing trip rewards preparation. Six weeks of structured fingerboard and capacity work changes what you take home from it.',
+        'Here is the minimal plan we recommend to every camp participant.',
+      ),
+      category: postCategories['training'].id,
+      author: 'Rockbusters',
+      publishedAt: '2026-05-15T09:00:00.000Z',
+      state: 'published',
+    },
+    label: 'training post',
+  })
+
   console.log('— airports —')
 
   const airNUE = await ensure(payload, {
