@@ -3,6 +3,7 @@ import * as migration_20260527_125021 from './20260527_125021';
 import * as migration_20260528_135559_demo_block_fields from './20260528_135559_demo_block_fields';
 import * as migration_20260531_212859_orders from './20260531_212859_orders';
 import * as migration_20260601_214850_event_dates_virtual_capacity from './20260601_214850_event_dates_virtual_capacity';
+import * as migration_20260612_190144_guide_role_section from './20260612_190144_guide_role_section';
 
 export const migrations = [
   {
@@ -28,6 +29,11 @@ export const migrations = [
   {
     up: migration_20260601_214850_event_dates_virtual_capacity.up,
     down: migration_20260601_214850_event_dates_virtual_capacity.down,
-    name: '20260601_214850_event_dates_virtual_capacity'
+    name: '20260601_214850_event_dates_virtual_capacity',
+  },
+  {
+    up: migration_20260612_190144_guide_role_section.up,
+    down: migration_20260612_190144_guide_role_section.down,
+    name: '20260612_190144_guide_role_section'
   },
 ];

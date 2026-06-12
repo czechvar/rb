@@ -441,6 +441,11 @@ export interface Guide {
   id: number;
   name: string;
   slug: string;
+  /**
+   * e.g. Head coach, Pro climber, Physiotherapist
+   */
+  role?: string | null;
+  section: 'team' | 'friends';
   photo?: (number | null) | Media;
   content?: {
     root: {
@@ -1296,6 +1301,8 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface GuidesSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
+  role?: T;
+  section?: T;
   photo?: T;
   content?: T;
   email?: T;

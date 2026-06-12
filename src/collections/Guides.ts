@@ -11,6 +11,17 @@ export const Guides: CollectionConfig = {
   fields: [
     { name: 'name', type: 'text', required: true },
     slugField('name'),
+    { name: 'role', type: 'text', admin: { description: 'e.g. Head coach, Pro climber, Physiotherapist' } },
+    {
+      name: 'section',
+      type: 'select',
+      options: [
+        { label: 'Rockbusters Team', value: 'team' },
+        { label: 'Friends & Ambassadors', value: 'friends' },
+      ],
+      defaultValue: 'team',
+      required: true,
+    },
     { name: 'photo', type: 'upload', relationTo: 'media' },
     { name: 'content', type: 'richText' },
     { name: 'email', type: 'email' },
