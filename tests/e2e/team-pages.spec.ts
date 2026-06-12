@@ -102,3 +102,21 @@ test.describe('team pages', () => {
     await expect(page.getByText(guide.role)).toBeVisible()
   })
 })
+
+test.describe('old-site redirects', () => {
+  test('pattern: /team-member/:slug 308s to /team/:slug', async ({ request }) => {
+    const res = await request.get(`${BASE}/team-member/${guide.slug}`, {
+      maxRedirects: 0,
+    })
+    expect(res.status()).toBe(308)
+    expect(res.headers()['location']).toBe(`/team/${guide.slug}`)
+  })
+
+  test('explicit map: suffixed old slug lands on clean slug', async ({ request }) => {
+    const res = await request.get(`${BASE}/team-member/adam-ondra-pro-climber`, {
+      maxRedirects: 0,
+    })
+    expect(res.status()).toBe(308)
+    expect(res.headers()['location']).toBe('/team/adam-ondra')
+  })
+})
