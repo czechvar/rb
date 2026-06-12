@@ -10,10 +10,10 @@ const SERVICES = [
 ]
 
 const DESTINATIONS = [
-  { href: '/destinations/spain', label: 'Spain' },
-  { href: '/destinations/italy', label: 'Italy' },
-  { href: '/destinations/france', label: 'France' },
-  { href: '/destinations/czechia', label: 'Czechia' },
+  { href: '/destinations#spain', label: 'Spain' },
+  { href: '/destinations#italy', label: 'Italy' },
+  { href: '/destinations#france', label: 'France' },
+  { href: '/destinations#czech-republic', label: 'Czechia' },
 ]
 
 const ABOUT = [

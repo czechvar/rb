@@ -78,3 +78,17 @@ test.describe('destination pages', () => {
     expect(res?.status()).toBe(404)
   })
 })
+
+test.describe('old-site redirects + footer', () => {
+  test('/location/:slug 308s to /destinations/:slug', async ({ request }) => {
+    const res = await request.get(`${BASE}/location/${dest.slug}`, { maxRedirects: 0 })
+    expect(res.status()).toBe(308)
+    expect(res.headers()['location']).toBe(`/destinations/${dest.slug}`)
+  })
+
+  test('footer destination links point at the index country anchors', async ({ page }) => {
+    await page.goto(`${BASE}/`)
+    const spain = page.locator('footer').getByRole('link', { name: 'Spain' })
+    await expect(spain).toHaveAttribute('href', '/destinations#spain')
+  })
+})

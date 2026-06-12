@@ -36,6 +36,9 @@ const nextConfig: NextConfig = {
       // Generic rule MUST come after the explicit map.
       { source: '/team-member/:slug', destination: '/team/:slug', permanent: true },
       { source: '/team-member', destination: '/team', permanent: true },
+      // Old-site /location/* redirects to /destinations/*.
+      { source: '/location/:slug', destination: '/destinations/:slug', permanent: true },
+      { source: '/location', destination: '/destinations', permanent: true },
     ]
   },
   webpack: (webpackConfig) => {
