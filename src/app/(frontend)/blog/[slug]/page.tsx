@@ -26,7 +26,7 @@ export default async function PostPage({ params }: Props) {
     depth: 1,
   })
   const post = docs[0]
-  // Old-site posts that were never recreated 301 to the index per the spec —
+  // Old-site posts that were never recreated 308 to the index per the spec —
   // deliberate SEO fallback instead of a 404.
   if (!post) permanentRedirect('/blog')
 

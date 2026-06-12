@@ -27,9 +27,12 @@
 .photoPlaceholder {
   width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
   border-radius: 8px;
   background: #f1efed;
+}
+
+.photo {
+  object-fit: cover;
 }
 
 .cardTitle {
