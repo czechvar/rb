@@ -75,7 +75,15 @@ async function cleanupPrior(payload: Payload) {
     'technique-foundations',
   ]
   const guidesToDrop = ['tomas-coach', 'marek-coach']
-  const locationsToDrop = ['arco-italy', 'kalymnos-greece']
+  const locationsToDrop = [
+    'arco-italy',
+    'kalymnos-greece',
+    'frankenjura-germany',
+    'mallorca-spain',
+    'labske-udoli-czechia',
+    'dolomites-italy',
+    'cavallers-spain',
+  ]
   const airportsToDrop = ['KGS']
 
   // event-dates first: they FK into events.
@@ -274,10 +282,10 @@ async function main() {
 
   const locFrankenjura = await ensure(payload, {
     collection: 'locations',
-    where: { slug: { equals: 'frankenjura-germany' } },
+    where: { slug: { equals: 'frankenjura' } },
     data: {
       name: 'Frankenjura, Germany',
-      slug: 'frankenjura-germany',
+      slug: 'frankenjura',
       content: richText(
         'The Frankenjura in Bavaria is one of the densest sport-climbing areas on the planet — over 10,000 routes across pocketed limestone walls.',
         'Short approaches, family-friendly logistics, and a grade spread that suits beginners through 9a aspirants.',
@@ -287,14 +295,14 @@ async function main() {
       coordinates: [11.41, 49.77],
       active: true,
     },
-    label: 'frankenjura-germany',
+    label: 'frankenjura',
   })
   const locMallorca = await ensure(payload, {
     collection: 'locations',
-    where: { slug: { equals: 'mallorca-spain' } },
+    where: { slug: { equals: 'mallorca' } },
     data: {
       name: 'Mallorca, Spain',
-      slug: 'mallorca-spain',
+      slug: 'mallorca',
       content: richText(
         'Mallorca pairs world-class sport climbing with the original psicobloc — deep-water-solo climbing above the Mediterranean.',
         'Base camps near Porto Cristo and Cala Magraner give us instant access to both single-pitch sport and DWS classics.',
@@ -304,14 +312,14 @@ async function main() {
       coordinates: [3.33, 39.54],
       active: true,
     },
-    label: 'mallorca-spain',
+    label: 'mallorca',
   })
   const locLabske = await ensure(payload, {
     collection: 'locations',
-    where: { slug: { equals: 'labske-udoli-czechia' } },
+    where: { slug: { equals: 'labske-udoli' } },
     data: {
       name: 'Labské Údolí, Czech Republic',
-      slug: 'labske-udoli-czechia',
+      slug: 'labske-udoli',
       content: richText(
         'Sandstone towers of the Elbe valley — the cradle of Czech climbing tradition. Knots-only protection, slings, and a strong on-sight ethic.',
         'Iconic objectives from Schmilka to Dolní Žleb, with a community-built ethic you will not find anywhere else.',
@@ -321,14 +329,14 @@ async function main() {
       coordinates: [14.21, 50.78],
       active: true,
     },
-    label: 'labske-udoli-czechia',
+    label: 'labske-udoli',
   })
   const locDolomites = await ensure(payload, {
     collection: 'locations',
-    where: { slug: { equals: 'dolomites-italy' } },
+    where: { slug: { equals: 'dolomites' } },
     data: {
       name: 'Dolomites, Italy',
-      slug: 'dolomites-italy',
+      slug: 'dolomites',
       content: richText(
         'Multi-pitch sport on impeccable Dolomite limestone — from short cragging days at Erto to full-length routes on Cinque Torri and Tofana.',
         'Pizza, gelato, and a passeggiata between climbs included by default.',
@@ -338,14 +346,14 @@ async function main() {
       coordinates: [12.14, 46.54],
       active: true,
     },
-    label: 'dolomites-italy',
+    label: 'dolomites',
   })
   const locCavallers = await ensure(payload, {
     collection: 'locations',
-    where: { slug: { equals: 'cavallers-spain' } },
+    where: { slug: { equals: 'cavallers' } },
     data: {
       name: 'Cavallers, Spain',
-      slug: 'cavallers-spain',
+      slug: 'cavallers',
       content: richText(
         'Granite slabs and steep walls in the Catalan Pyrenees — a long-time playground for youth performance camps.',
         'Cool summer temps at altitude make it perfect when the rest of Europe is in heat-wave mode.',
@@ -355,7 +363,7 @@ async function main() {
       coordinates: [0.85, 42.59],
       active: true,
     },
-    label: 'cavallers-spain',
+    label: 'cavallers',
   })
 
   console.log('— airports —')
@@ -427,7 +435,7 @@ async function main() {
 
   console.log('— events —')
 
-  const evSport = await ensure(payload, {
+  const evSport = await upsert(payload, {
     collection: 'events',
     where: { slug: { equals: 'sport-climbing-basics' } },
     data: {
@@ -472,7 +480,7 @@ async function main() {
     label: 'sport-climbing-basics',
   })
 
-  const evDeepBlue = await ensure(payload, {
+  const evDeepBlue = await upsert(payload, {
     collection: 'events',
     where: { slug: { equals: 'deep-blue-psicobloc' } },
     data: {
@@ -517,7 +525,7 @@ async function main() {
     label: 'deep-blue-psicobloc',
   })
 
-  const evDolomites = await ensure(payload, {
+  const evDolomites = await upsert(payload, {
     collection: 'events',
     where: { slug: { equals: 'dolomite-dolce-vita' } },
     data: {
