@@ -1,11 +1,14 @@
 import type { CollectionConfig } from 'payload'
 import { anyone, isAdmin } from '../access'
+import { revalidateOnChange } from './hooks/revalidate'
+import { TAGS } from '@/lib/cache'
 
 export const EventDates: CollectionConfig = {
   slug: 'event-dates',
   labels: { singular: 'Event Date', plural: 'Event Dates' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'dateFrom', group: 'Catalogue' },
+  hooks: revalidateOnChange(TAGS.eventDates),
   fields: [
     { name: 'event', type: 'relationship', relationTo: 'events', required: true },
     { name: 'dateFrom', type: 'date', required: true },

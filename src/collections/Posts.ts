@@ -2,12 +2,15 @@ import type { CollectionConfig } from 'payload'
 import { anyone, isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
+import { revalidateOnChange } from './hooks/revalidate'
+import { TAGS } from '@/lib/cache'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
   labels: { singular: 'Post', plural: 'Posts' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'title', group: 'Content', defaultColumns: ['title', 'state', 'publishedAt'] },
+  hooks: revalidateOnChange(TAGS.posts),
   defaultSort: '-publishedAt',
   fields: [
     { name: 'title', type: 'text', required: true },

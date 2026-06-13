@@ -2,12 +2,15 @@ import type { CollectionConfig } from 'payload'
 import { anyone, isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
+import { revalidateOnChange } from './hooks/revalidate'
+import { TAGS } from '@/lib/cache'
 
 export const Events: CollectionConfig = {
   slug: 'events',
   labels: { singular: 'Event', plural: 'Events' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'title', group: 'Catalogue' },
+  hooks: revalidateOnChange(TAGS.events),
   fields: [
     // Identity / hero
     { name: 'title', type: 'text', required: true },
