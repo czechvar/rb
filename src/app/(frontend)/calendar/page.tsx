@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getPayloadClient } from '@/lib/payload'
+import { getActiveEventDates } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import type { Event, Location } from '@/payload-types'
 import styles from './page.module.css'
@@ -23,15 +23,7 @@ function monthKey(value: string): string {
 }
 
 export default async function CalendarPage() {
-  const payload = await getPayloadClient()
-
-  const { docs: dates } = await payload.find({
-    collection: 'event-dates',
-    where: { active: { equals: true } },
-    sort: 'dateFrom',
-    depth: 2,
-    limit: 500,
-  })
+  const dates = await getActiveEventDates()
 
   // eslint-disable-next-line react-hooks/purity -- server component, runs once per request; filtering by current time is intended
   const upcoming = dates.filter((d) => new Date(d.dateFrom).getTime() >= Date.now())

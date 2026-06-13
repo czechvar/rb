@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getPayloadClient } from '@/lib/payload'
+import { getPublishedEventsWithLocations, getActiveEventDatesForEvents } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import type { Event, EventDate, Location } from '@/payload-types'
 import styles from './page.module.css'
@@ -20,29 +20,9 @@ function locationLabel(loc: Event['locations']): string | null {
 }
 
 export default async function ProgramsIndex() {
-  const payload = await getPayloadClient()
-
-  const { docs: events } = await payload.find({
-    collection: 'events',
-    where: { state: { equals: 'published' } },
-    sort: '-featured',
-    depth: 1,
-    limit: 100,
-  })
-
+  const events = await getPublishedEventsWithLocations()
   const eventIds = events.map((e) => e.id)
-  const { docs: dates } =
-    eventIds.length === 0
-      ? { docs: [] as EventDate[] }
-      : await payload.find({
-          collection: 'event-dates',
-          where: {
-            and: [{ event: { in: eventIds } }, { active: { equals: true } }],
-          },
-          sort: 'dateFrom',
-          depth: 0,
-          limit: 500,
-        })
+  const dates = await getActiveEventDatesForEvents(eventIds)
 
   const datesByEvent = new Map<number, EventDate[]>()
   for (const d of dates) {

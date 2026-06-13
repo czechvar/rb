@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getPayloadClient } from '@/lib/payload'
+import { getPublishedEventsForType } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { Hero } from '@/components/sections/Hero'
 import { HighlightsGrid } from '@/components/sections/HighlightsGrid'
@@ -33,19 +34,8 @@ export default async function ProgramPage({ params }: Props) {
   const type = typeDocs[0]
   if (!type) notFound()
 
-  const [eventsResult, faqsResult, reviewsResult] = await Promise.all([
-    payload.find({
-      collection: 'events',
-      where: {
-        and: [
-          { types: { contains: type.id } },
-          { state: { equals: 'published' } },
-        ],
-      },
-      depth: 1,
-      sort: 'title',
-      limit: 50,
-    }),
+  const [events, faqsResult, reviewsResult] = await Promise.all([
+    getPublishedEventsForType(type.id),
     payload.find({
       collection: 'faqs',
       where: { and: [{ type: { equals: type.id } }, { active: { equals: true } }] },
@@ -85,7 +75,7 @@ export default async function ProgramPage({ params }: Props) {
         <ResultsOutcomes items={type.results} />
         <FAQList items={faqsResult.docs} />
         <ReviewsRow items={reviewsResult.docs} />
-        <LinkedEvents events={eventsResult.docs} />
+        <LinkedEvents events={events} />
         <HowToBook />
         <WhyRockbusters />
         <FinalCTA type={type} />
