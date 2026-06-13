@@ -1,5 +1,5 @@
 import { permanentRedirect } from 'next/navigation'
-import { getPayloadClient } from '@/lib/payload'
+import { getPostCategoryBySlug, getPublishedPostsByCategory } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { PostCard } from '../../PostCard'
 import styles from '../../blog.module.css'
@@ -13,23 +13,11 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function BlogCategoryPage({ params }: Props) {
   const { slug } = await params
-  const payload = await getPayloadClient()
 
-  const { docs: cats } = await payload.find({
-    collection: 'post-categories',
-    where: { slug: { equals: slug } },
-    limit: 1,
-  })
-  const category = cats[0]
+  const category = await getPostCategoryBySlug(slug)
   if (!category) permanentRedirect('/blog')
 
-  const { docs } = await payload.find({
-    collection: 'posts',
-    where: { and: [{ category: { equals: category.id } }, { state: { equals: 'published' } }] },
-    sort: '-publishedAt',
-    limit: 50,
-    depth: 1,
-  })
+  const docs = await getPublishedPostsByCategory(category.id)
   return (
     <MarketingShell
       crumbs={[

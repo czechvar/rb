@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { permanentRedirect } from 'next/navigation'
-import { getPayloadClient } from '@/lib/payload'
+import { getPublishedPostBySlug } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
@@ -17,15 +17,8 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params
-  const payload = await getPayloadClient()
 
-  const { docs } = await payload.find({
-    collection: 'posts',
-    where: { and: [{ slug: { equals: slug } }, { state: { equals: 'published' } }] },
-    limit: 1,
-    depth: 1,
-  })
-  const post = docs[0]
+  const post = await getPublishedPostBySlug(slug)
   // Old-site posts that were never recreated 308 to the index per the spec —
   // deliberate SEO fallback instead of a 404.
   if (!post) permanentRedirect('/blog')
