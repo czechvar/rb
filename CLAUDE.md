@@ -64,7 +64,7 @@ This is a starting direction, not a commitment — revisit before scaffolding. C
 
 Hosted on **Vercel**. Required environment variables in the Vercel project settings:
 
-- `DATABASE_URL` — Neon Postgres connection string (production branch)
+- `DATABASE_URL` — Neon Postgres connection string. **In Vercel only** this is the **production branch** (`ep-weathered-pine-alvc3sdj`). See the database-branches warning below — local `.env` must never use this value.
 - `PAYLOAD_SECRET` — long random string for Payload's auth
 - `R2_BUCKET` — Cloudflare R2 bucket name (e.g. `rockbusters-media`)
 - `R2_ENDPOINT` — `https://<account-id>.r2.cloudflarestorage.com`
@@ -78,5 +78,10 @@ Hosted on **Vercel**. Required environment variables in the Vercel project setti
 - `BANK_TRANSFER_DETAILS` — multi-line text (IBAN, beneficiary, etc.) injected into the "Booking confirmed" email. The order number is used as the variable symbol.
 
 If any of the four `R2_*` vars is unset, Payload falls back to local-disk storage (useful for tests, broken for production).
+
+> **⛔ Database branches — local `.env` must NEVER point at the production branch.** The production branch is `ep-weathered-pine-alvc3sdj`; it is set only in the Vercel project settings. On 2026-06-12, local `.env` and the Playwright e2e suite shared that host, leaking 421 test fixtures into production data (purged via `scripts/e2e-fixture-cleanup.ts`). To prevent recurrence:
+> - **Local dev + e2e (`.env`)** → use the Neon **`dev`** branch connection string (a copy of production, so seeded demo data carries over). Never the production host.
+> - **Integration tests (`.env.test`, loaded by `vitest.setup.ts` with `override: true`)** → use the dedicated Neon **`test`** branch. This DB is wiped/reseeded by tests, so it must be isolated from both dev and production.
+> - Before pasting any `DATABASE_URL` into a local env file, check the host: if it is `ep-weathered-pine-alvc3sdj`, **stop** — that is production.
 
 > **Dev gotcha — Resend sandbox sender.** `onboarding@resend.dev` only delivers to the verified email of the Resend account owner. Registering any other address locally makes the auto-fired verify email 403 from Resend, which Payload re-throws as a 403 APIError out of `payload.create` (`[register] payload.create failed: …` in the dev log). For local dev, **leave `RESEND_API_KEY` unset** (or comment it out in `.env`) so the console adapter is used and the verify link prints to stdout. Only re-enable Resend locally once you've verified a real sender domain.
