@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPayloadClient } from '@/lib/payload'
+import { getPublishedEventBySlug } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { DetailHero } from '@/components/sections/DetailHero'
 import { SectionIntro } from '@/components/sections/SectionIntro'
@@ -26,13 +27,7 @@ export default async function TripPage({ params }: Props) {
   const { slug } = await params
   const payload = await getPayloadClient()
 
-  const { docs: eventDocs } = await payload.find({
-    collection: 'events',
-    where: { and: [{ slug: { equals: slug } }, { state: { equals: 'published' } }] },
-    limit: 1,
-    depth: 2,
-  })
-  const event = eventDocs[0]
+  const event = await getPublishedEventBySlug(slug)
   if (!event) notFound()
 
   const reviewsResult = await payload.find({

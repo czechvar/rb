@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getPayloadClient } from '@/lib/payload'
+import { getPublishedEventBySlug, getActiveEventDatesForEvent } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { EventDatesList } from '@/components/sections/EventDatesList'
 
@@ -8,23 +8,11 @@ type Props = { params: Promise<{ slug: string }> }
 
 export default async function TripDatesPage({ params }: Props) {
   const { slug } = await params
-  const payload = await getPayloadClient()
 
-  const { docs: eventDocs } = await payload.find({
-    collection: 'events',
-    where: { and: [{ slug: { equals: slug } }, { state: { equals: 'published' } }] },
-    limit: 1,
-    depth: 2,
-  })
-  const event = eventDocs[0]
+  const event = await getPublishedEventBySlug(slug)
   if (!event) notFound()
 
-  const { docs: dates } = await payload.find({
-    collection: 'event-dates',
-    where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
-    sort: 'dateFrom',
-    limit: 100,
-  })
+  const dates = await getActiveEventDatesForEvent(event.id)
 
   return (
     <MarketingShell
