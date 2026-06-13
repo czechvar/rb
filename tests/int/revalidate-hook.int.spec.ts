@@ -26,7 +26,7 @@ describe('revalidateOnChange', () => {
     const hooks = revalidateOnChange(TAGS.events)
     const doc = { id: 1 }
     const out = hooks.afterChange[0]({ doc } as never)
-    expect(revalidateTag).toHaveBeenCalledWith('events')
+    expect(revalidateTag).toHaveBeenCalledWith('events', 'max')
     expect(out).toBe(doc)
   })
 
@@ -34,7 +34,7 @@ describe('revalidateOnChange', () => {
     vi.stubEnv('NODE_ENV', 'production')
     const hooks = revalidateOnChange(TAGS.posts)
     hooks.afterDelete[0]({ doc: { id: 2 } } as never)
-    expect(revalidateTag).toHaveBeenCalledWith('posts')
+    expect(revalidateTag).toHaveBeenCalledWith('posts', 'max')
   })
 
   it('is a no-op outside production', () => {

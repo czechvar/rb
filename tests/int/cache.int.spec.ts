@@ -28,7 +28,7 @@ describe('safeRevalidateTag', () => {
   it('calls revalidateTag in production', () => {
     vi.stubEnv('NODE_ENV', 'production')
     safeRevalidateTag(TAGS.guides)
-    expect(revalidateTag).toHaveBeenCalledWith('guides')
+    expect(revalidateTag).toHaveBeenCalledWith('guides', 'max')
   })
 
   it('is a no-op outside production', () => {

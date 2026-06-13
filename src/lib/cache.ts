@@ -46,7 +46,10 @@ export function cachedQuery<T>(
 export function safeRevalidateTag(tag: CacheTag): void {
   if (!isProd()) return
   try {
-    revalidateTag(tag)
+    // Next 16 requires a cache-life profile. `'max'` = cache forever, revalidate
+    // only on the next explicit revalidateTag call — exactly the on-demand semantics
+    // we want. Per Next's own deprecation warning when called without a profile.
+    revalidateTag(tag, 'max')
   } catch (err) {
     console.warn(`[revalidate] revalidateTag(${tag}) failed:`, err)
   }
