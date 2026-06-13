@@ -13,6 +13,7 @@ const customer = {
 const eventTitle = `E2E Booking Trip ${runId}`
 
 let eventDateId: number
+let eventId: number
 
 test.beforeAll(async () => {
   const payload = await getPayload({ config })
@@ -21,6 +22,7 @@ test.beforeAll(async () => {
     collection: 'events',
     data: { title: eventTitle } as never,
   })
+  eventId = event.id
   const ed = await payload.create({
     collection: 'event-dates',
     data: {
@@ -46,6 +48,17 @@ test.beforeAll(async () => {
   await payload.update({
     collection: 'users', id: u.id, data: { _verified: true } as never, overrideAccess: true,
   })
+})
+
+// Defense in depth against fixture leakage (see scripts/e2e-fixture-cleanup.ts).
+// This spec books an order, so follow the FK-safe order:
+// orders → event-dates → events → users.
+test.afterAll(async () => {
+  const payload = await getPayload({ config })
+  await payload.delete({ collection: 'orders', where: { 'user.email': { equals: customer.email } } })
+  await payload.delete({ collection: 'event-dates', where: { id: { equals: eventDateId } } })
+  await payload.delete({ collection: 'events', where: { id: { equals: eventId } } })
+  await payload.delete({ collection: 'users', where: { email: { equals: customer.email } } })
 })
 
 test('user can book an event date and see it in /account/orders', async ({ page }) => {

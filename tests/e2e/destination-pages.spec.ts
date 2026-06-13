@@ -55,6 +55,14 @@ test.beforeAll(async () => {
   })
 })
 
+// Defense in depth against fixture leakage (see scripts/e2e-fixture-cleanup.ts).
+// FK-safe order: the event references the location, so delete it first.
+test.afterAll(async () => {
+  const payload = await getPayload({ config })
+  await payload.delete({ collection: 'events', where: { title: { equals: eventTitle } } })
+  await payload.delete({ collection: 'locations', where: { slug: { equals: dest.slug } } })
+})
+
 test.describe('destination pages', () => {
   test('/destinations groups by country and links cards', async ({ page }) => {
     await page.goto(`${BASE}/destinations`)

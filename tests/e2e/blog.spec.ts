@@ -65,6 +65,14 @@ test.beforeAll(async () => {
   })
 })
 
+// Defense in depth against fixture leakage (see scripts/e2e-fixture-cleanup.ts).
+// FK-safe order: posts reference the category, so delete them first.
+test.afterAll(async () => {
+  const payload = await getPayload({ config })
+  await payload.delete({ collection: 'posts', where: { slug: { in: [post.slug, draftSlug] } } })
+  await payload.delete({ collection: 'post-categories', where: { slug: { equals: cat.slug } } })
+})
+
 test.describe('blog', () => {
   test('/blog lists published posts and hides drafts', async ({ page }) => {
     await page.goto(`${BASE}/blog`)

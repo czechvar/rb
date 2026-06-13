@@ -66,6 +66,16 @@ test.beforeAll(async () => {
   })
 })
 
+// Defense in depth against fixture leakage (see scripts/e2e-fixture-cleanup.ts):
+// remove the records this run created. Guides have no FK dependents.
+test.afterAll(async () => {
+  const payload = await getPayload({ config })
+  await payload.delete({
+    collection: 'guides',
+    where: { slug: { in: [guide.slug, friend.slug] } },
+  })
+})
+
 test.describe('team pages', () => {
   test('/team lists active guides with links to detail', async ({ page }) => {
     await page.goto(`${BASE}/team`)
