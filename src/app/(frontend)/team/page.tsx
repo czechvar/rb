@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getPayloadClient } from '@/lib/payload'
+import { getActiveGuides } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import type { Guide } from '@/payload-types'
@@ -43,13 +43,7 @@ function GuideGrid({ guides }: { guides: Guide[] }) {
 }
 
 export default async function TeamPage() {
-  const payload = await getPayloadClient()
-  const { docs } = await payload.find({
-    collection: 'guides',
-    where: { active: { equals: true } },
-    limit: 100,
-    depth: 1,
-  })
+  const docs = await getActiveGuides()
   const team = docs.filter((g) => g.section !== 'friends').sort(byFeaturedThenName)
   const friends = docs.filter((g) => g.section === 'friends').sort(byFeaturedThenName)
   return (

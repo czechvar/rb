@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getPayloadClient } from '@/lib/payload'
+import { getActiveLocations } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import type { Location } from '@/payload-types'
@@ -13,13 +13,7 @@ function countryAnchor(country: string) {
 }
 
 export default async function DestinationsPage() {
-  const payload = await getPayloadClient()
-  const { docs } = await payload.find({
-    collection: 'locations',
-    where: { active: { equals: true } },
-    limit: 200,
-    depth: 1,
-  })
+  const docs = await getActiveLocations()
   const byCountry = new Map<string, Location[]>()
   for (const loc of docs) {
     const key = loc.country ?? 'Elsewhere'

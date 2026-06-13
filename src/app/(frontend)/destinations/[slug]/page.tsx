@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getPayloadClient } from '@/lib/payload'
+import { getLocationBySlug, getPublishedEventsForLocation } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
@@ -21,23 +21,11 @@ function osmEmbedSrc(lng: number, lat: number) {
 
 export default async function DestinationPage({ params }: Props) {
   const { slug } = await params
-  const payload = await getPayloadClient()
 
-  const { docs } = await payload.find({
-    collection: 'locations',
-    where: { and: [{ slug: { equals: slug } }, { active: { equals: true } }] },
-    limit: 1,
-    depth: 1,
-  })
-  const loc = docs[0]
+  const loc = await getLocationBySlug(slug)
   if (!loc) notFound()
 
-  const { docs: events } = await payload.find({
-    collection: 'events',
-    where: { and: [{ locations: { contains: loc.id } }, { state: { equals: 'published' } }] },
-    limit: 20,
-    depth: 0,
-  })
+  const events = await getPublishedEventsForLocation(loc.id)
 
   const hero = mediaUrl(loc.mainPicture)
   const [lng, lat] = loc.coordinates ?? [null, null]

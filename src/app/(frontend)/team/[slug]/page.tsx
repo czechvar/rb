@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getPayloadClient } from '@/lib/payload'
+import { getGuideBySlug, getPublishedEventsForGuide } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
@@ -16,25 +16,13 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function GuidePage({ params }: Props) {
   const { slug } = await params
-  const payload = await getPayloadClient()
 
-  const { docs } = await payload.find({
-    collection: 'guides',
-    where: { and: [{ slug: { equals: slug } }, { active: { equals: true } }] },
-    limit: 1,
-    depth: 1,
-  })
-  const guide = docs[0]
+  const guide = await getGuideBySlug(slug)
   if (!guide) notFound()
 
   // Email/phone exist on the collection but are intentionally not rendered —
   // public team pages must not leak contacts (see team-pages spec).
-  const { docs: events } = await payload.find({
-    collection: 'events',
-    where: { and: [{ coaches: { contains: guide.id } }, { state: { equals: 'published' } }] },
-    limit: 20,
-    depth: 0,
-  })
+  const events = await getPublishedEventsForGuide(guide.id)
 
   const photo = mediaUrl(guide.photo)
   return (
