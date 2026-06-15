@@ -10,6 +10,7 @@ export const DiscountCodes: CollectionConfig = {
     group: 'Sales',
     defaultColumns: ['code', 'title', 'discountPercent', 'validFrom', 'validUntil', 'active'],
   },
+  defaultSort: '-createdAt',
   fields: [
     {
       name: 'code',
