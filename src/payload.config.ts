@@ -20,6 +20,8 @@ import { EventDates } from './collections/EventDates'
 import { FAQs } from './collections/FAQs'
 import { Reviews } from './collections/Reviews'
 import { Orders } from './collections/Orders'
+import { DiscountCodes } from './collections/DiscountCodes'
+import { Referrals } from './collections/Referrals'
 import { PostCategories } from './collections/PostCategories'
 import { Posts } from './collections/Posts'
 import { buildEmailAdapter } from './lib/email/adapter'
@@ -34,7 +36,26 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Difficulties, Types, Categories, Guides, Locations, Airports, Partners, Events, EventDates, FAQs, Reviews, Orders, PostCategories, Posts],
+  collections: [
+    Users,
+    Media,
+    Difficulties,
+    Types,
+    Categories,
+    Guides,
+    Locations,
+    Airports,
+    Partners,
+    Events,
+    EventDates,
+    FAQs,
+    Reviews,
+    Orders,
+    DiscountCodes,
+    Referrals,
+    PostCategories,
+    Posts,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   email: buildEmailAdapter({

@@ -81,6 +81,8 @@ export interface Config {
     faqs: Faq;
     reviews: Review;
     orders: Order;
+    'discount-codes': DiscountCode;
+    referrals: Referral;
     'post-categories': PostCategory;
     posts: Post;
     'payload-kv': PayloadKv;
@@ -104,6 +106,8 @@ export interface Config {
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     orders: OrdersSelect<false> | OrdersSelect<true>;
+    'discount-codes': DiscountCodesSelect<false> | DiscountCodesSelect<true>;
+    referrals: ReferralsSelect<false> | ReferralsSelect<true>;
     'post-categories': PostCategoriesSelect<false> | PostCategoriesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -948,6 +952,51 @@ export interface Order {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "discount-codes".
+ */
+export interface DiscountCode {
+  id: number;
+  code: string;
+  title: string;
+  description?: string | null;
+  /**
+   * Whole-number percent (1–99).
+   */
+  discountPercent: number;
+  validFrom: string;
+  validUntil: string;
+  commissionEmail?: string | null;
+  /**
+   * Commission paid out per redemption, as % of order subtotal.
+   */
+  commissionPercent?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referrals".
+ */
+export interface Referral {
+  id: number;
+  code: string;
+  name: string;
+  email: string;
+  /**
+   * Discount given to the customer using this referral (0 = commission only).
+   */
+  discountPercent: number;
+  /**
+   * Commission paid to the referrer, as % of order subtotal.
+   */
+  commissionPercent: number;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "post-categories".
  */
 export interface PostCategory {
@@ -1079,6 +1128,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'orders';
         value: number | Order;
+      } | null)
+    | ({
+        relationTo: 'discount-codes';
+        value: number | DiscountCode;
+      } | null)
+    | ({
+        relationTo: 'referrals';
+        value: number | Referral;
       } | null)
     | ({
         relationTo: 'post-categories';
@@ -1714,6 +1771,37 @@ export interface OrdersSelect<T extends boolean = true> {
         body?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "discount-codes_select".
+ */
+export interface DiscountCodesSelect<T extends boolean = true> {
+  code?: T;
+  title?: T;
+  description?: T;
+  discountPercent?: T;
+  validFrom?: T;
+  validUntil?: T;
+  commissionEmail?: T;
+  commissionPercent?: T;
+  active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referrals_select".
+ */
+export interface ReferralsSelect<T extends boolean = true> {
+  code?: T;
+  name?: T;
+  email?: T;
+  discountPercent?: T;
+  commissionPercent?: T;
+  active?: T;
   updatedAt?: T;
   createdAt?: T;
 }

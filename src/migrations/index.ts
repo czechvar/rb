@@ -6,6 +6,7 @@ import * as migration_20260601_214850_event_dates_virtual_capacity from './20260
 import * as migration_20260612_190144_guide_role_section from './20260612_190144_guide_role_section';
 import * as migration_20260612_192135_location_destination_fields from './20260612_192135_location_destination_fields';
 import * as migration_20260612_194330_blog_posts from './20260612_194330_blog_posts';
+import * as migration_20260615_201358_add_discount_referral_collections from './20260615_201358_add_discount_referral_collections';
 
 export const migrations = [
   {
@@ -46,6 +47,11 @@ export const migrations = [
   {
     up: migration_20260612_194330_blog_posts.up,
     down: migration_20260612_194330_blog_posts.down,
-    name: '20260612_194330_blog_posts'
+    name: '20260612_194330_blog_posts',
+  },
+  {
+    up: migration_20260615_201358_add_discount_referral_collections.up,
+    down: migration_20260615_201358_add_discount_referral_collections.down,
+    name: '20260615_201358_add_discount_referral_collections'
   },
 ];
