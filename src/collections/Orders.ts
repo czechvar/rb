@@ -105,6 +105,36 @@ export const Orders: CollectionConfig = {
     },
     { name: 'totalPrice', type: 'number', required: true, admin: { readOnly: true } },
     {
+      name: 'discountCode',
+      type: 'relationship',
+      relationTo: 'discount-codes',
+      admin: { readOnly: true, description: 'Discount code applied at booking time (snapshot).' },
+    },
+    {
+      name: 'referral',
+      type: 'relationship',
+      relationTo: 'referrals',
+      admin: { readOnly: true, description: 'Referral source captured from URL at booking time (snapshot).' },
+    },
+    {
+      name: 'discountAmount',
+      type: 'number',
+      defaultValue: 0,
+      admin: { readOnly: true, description: 'How much the order was reduced by the applied discount, in the order currency.' },
+    },
+    {
+      name: 'discountCommission',
+      type: 'number',
+      defaultValue: 0,
+      admin: { readOnly: true, description: 'Commission accrued for the discount-code partner, in the order currency.' },
+    },
+    {
+      name: 'referralCommission',
+      type: 'number',
+      defaultValue: 0,
+      admin: { readOnly: true, description: 'Commission accrued for the referral partner, in the order currency.' },
+    },
+    {
       name: 'state',
       type: 'select',
       required: true,

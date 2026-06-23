@@ -931,6 +931,26 @@ export interface Order {
   vat: number;
   currency: 'EUR' | 'CZK';
   totalPrice: number;
+  /**
+   * Discount code applied at booking time (snapshot).
+   */
+  discountCode?: (number | null) | DiscountCode;
+  /**
+   * Referral source captured from URL at booking time (snapshot).
+   */
+  referral?: (number | null) | Referral;
+  /**
+   * How much the order was reduced by the applied discount, in the order currency.
+   */
+  discountAmount?: number | null;
+  /**
+   * Commission accrued for the discount-code partner, in the order currency.
+   */
+  discountCommission?: number | null;
+  /**
+   * Commission accrued for the referral partner, in the order currency.
+   */
+  referralCommission?: number | null;
   state: 'pending' | 'confirmed' | 'paid' | 'completed' | 'cancelled';
   /**
    * Optional note from the customer at booking time.
@@ -1761,6 +1781,11 @@ export interface OrdersSelect<T extends boolean = true> {
   vat?: T;
   currency?: T;
   totalPrice?: T;
+  discountCode?: T;
+  referral?: T;
+  discountAmount?: T;
+  discountCommission?: T;
+  referralCommission?: T;
   state?: T;
   customerNote?: T;
   notes?:

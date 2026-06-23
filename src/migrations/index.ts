@@ -7,6 +7,7 @@ import * as migration_20260612_190144_guide_role_section from './20260612_190144
 import * as migration_20260612_192135_location_destination_fields from './20260612_192135_location_destination_fields';
 import * as migration_20260612_194330_blog_posts from './20260612_194330_blog_posts';
 import * as migration_20260615_201358_add_discount_referral_collections from './20260615_201358_add_discount_referral_collections';
+import * as migration_20260623_223014_orders_discount_referral_fields from './20260623_223014_orders_discount_referral_fields';
 
 export const migrations = [
   {
@@ -52,6 +53,11 @@ export const migrations = [
   {
     up: migration_20260615_201358_add_discount_referral_collections.up,
     down: migration_20260615_201358_add_discount_referral_collections.down,
-    name: '20260615_201358_add_discount_referral_collections'
+    name: '20260615_201358_add_discount_referral_collections',
+  },
+  {
+    up: migration_20260623_223014_orders_discount_referral_fields.up,
+    down: migration_20260623_223014_orders_discount_referral_fields.down,
+    name: '20260623_223014_orders_discount_referral_fields'
   },
 ];
