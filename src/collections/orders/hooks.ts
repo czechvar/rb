@@ -34,7 +34,7 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
       id: d.discountCode,
       depth: 0,
       req,
-    })) as never
+    })) as { discountPercent: number; commissionPercent?: number | null } | null
   }
 
   let ref: { discountPercent: number; commissionPercent: number } | null = null
@@ -44,7 +44,7 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
       id: d.referral,
       depth: 0,
       req,
-    })) as never
+    })) as { discountPercent: number; commissionPercent: number } | null
   }
 
   // Snowbusters stacking rule: discount-code wins on price; referral commission always tracked.
