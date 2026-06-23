@@ -1,21 +1,70 @@
 import type { CollectionBeforeValidateHook, CollectionBeforeChangeHook } from 'payload'
 
 /**
- * On create only: compute participantCount from participants.length and
- * totalPrice from unitPrice * participantCount. On update we leave both alone
+ * On create only: compute participantCount from participants.length,
+ * apply the snowbusters discount stacking rule, and derive totalPrice,
+ * discountAmount, and commission fields. On update we leave all alone
  * (they're readOnly in admin and immutable by contract).
+ *
+ * Snowbusters stacking rule:
+ * - If discountCode is set, it wins on price (discountPercent takes precedence)
+ *   and records its commission.
+ * - If referral is set (and no discountCode), it applies discount and records commission.
+ * - If both are set, discountCode applies the discount, but referral commission
+ *   is ALSO recorded (both commissions are paid out).
+ * - discountAmount and totalPrice are based on basePrice = unitPrice * participantCount.
  */
-export const deriveCountsAndTotal: CollectionBeforeValidateHook = ({ data, operation }) => {
+export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data, operation, req }) => {
   if (operation !== 'create' || !data) return data
-  const participants = Array.isArray((data as { participants?: unknown[] }).participants)
-    ? ((data as { participants: unknown[] }).participants as unknown[])
-    : []
+  const d = data as {
+    participants?: unknown[]
+    unitPrice?: unknown
+    discountCode?: number | null
+    referral?: number | null
+  }
+  const participants = Array.isArray(d.participants) ? d.participants : []
   const participantCount = participants.length
-  const unitPrice = Number((data as { unitPrice?: unknown }).unitPrice ?? 0)
+  const unitPrice = Number(d.unitPrice ?? 0)
+  const basePrice = unitPrice * participantCount
+
+  let dc: { discountPercent: number; commissionPercent?: number | null } | null = null
+  if (d.discountCode) {
+    dc = (await req.payload.findByID({
+      collection: 'discount-codes',
+      id: d.discountCode,
+      depth: 0,
+      req,
+    })) as never
+  }
+
+  let ref: { discountPercent: number; commissionPercent: number } | null = null
+  if (d.referral) {
+    ref = (await req.payload.findByID({
+      collection: 'referrals',
+      id: d.referral,
+      depth: 0,
+      req,
+    })) as never
+  }
+
+  // Snowbusters stacking rule: discount-code wins on price; referral commission always tracked.
+  const discountPercent = dc ? dc.discountPercent : ref ? ref.discountPercent : 0
+  const discountAmount = Math.round((basePrice * discountPercent) / 100)
+  const totalPrice = basePrice - discountAmount
+  const discountCommission = dc
+    ? Math.round((basePrice * (dc.commissionPercent ?? 0)) / 100)
+    : 0
+  const referralCommission = ref
+    ? Math.round((basePrice * ref.commissionPercent) / 100)
+    : 0
+
   return {
     ...data,
     participantCount,
-    totalPrice: unitPrice * participantCount,
+    totalPrice,
+    discountAmount,
+    discountCommission,
+    referralCommission,
   }
 }
 
