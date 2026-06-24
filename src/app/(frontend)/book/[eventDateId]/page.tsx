@@ -1,9 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import { cookies } from 'next/headers'
 import { getCurrentUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
 import { getRemainingCapacity } from '@/lib/capacity'
+import { REFERRAL_COOKIE_NAME } from '@/lib/referral'
 import { BookingForm } from './BookingForm'
 
 interface Props {
@@ -79,6 +81,27 @@ export default async function BookPage({ params }: Props) {
     lastName: user.name?.split(' ').slice(1).join(' ') ?? '',
     email: user.email, phone: user.phone ?? '',
   }
+
+  const cookieJar = await cookies()
+  const refCode = cookieJar.get(REFERRAL_COOKIE_NAME)?.value
+  let referral: { name: string; discountPercent: number } | null = null
+  if (refCode) {
+    const payloadForRef = await getPayloadClient()
+    const { docs } = await payloadForRef.find({
+      collection: 'referrals',
+      where: {
+        and: [
+          { code: { equals: refCode.trim().toUpperCase() } },
+          { active: { equals: true } },
+        ],
+      },
+      limit: 1,
+      depth: 0,
+    })
+    const ref = docs[0] as { name: string; discountPercent: number } | undefined
+    if (ref) referral = { name: ref.name, discountPercent: ref.discountPercent }
+  }
+
   return (
     <div style={{ maxWidth: 720, margin: '0 auto', padding: '32px 16px' }}>
       <h1>{eventTitle}</h1>
@@ -87,6 +110,7 @@ export default async function BookPage({ params }: Props) {
       <BookingForm
         eventDateId={eventDateId} unitPrice={ed.price} currency={ed.currency} vat={ed.vat}
         remaining={remaining} addresses={addresses} booker={booker}
+        referral={referral}
       />
     </div>
   )

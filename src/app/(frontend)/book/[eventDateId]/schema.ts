@@ -11,6 +11,7 @@ export const bookingSchema = z.object({
   participants: z.array(participantSchema).min(1, 'At least one participant required'),
   addressIndex: z.coerce.number().int().nonnegative('Choose a billing address'),
   customerNote: z.string().max(2000).optional(),
+  discountCodeId: z.coerce.number().int().positive().optional(),
 })
 
 export type BookingInput = z.infer<typeof bookingSchema>

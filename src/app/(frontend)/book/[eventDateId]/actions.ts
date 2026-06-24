@@ -1,10 +1,12 @@
 'use server'
 
 import { redirect } from 'next/navigation'
+import { cookies } from 'next/headers'
 import { requireUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
 import type { ActionResult } from '@/components/forms/action-result'
 import { bookingSchema } from './schema'
+import { REFERRAL_COOKIE_NAME } from '@/lib/referral'
 
 function parseParticipants(formData: FormData) {
   const indices = new Set<number>()
@@ -21,6 +23,45 @@ function parseParticipants(formData: FormData) {
   }))
 }
 
+async function resolveActiveDiscountCode(
+  payload: Awaited<ReturnType<typeof getPayloadClient>>,
+  id: number,
+): Promise<{ id: number } | null> {
+  try {
+    const dc = (await payload.findByID({
+      collection: 'discount-codes',
+      id,
+      depth: 0,
+    })) as {
+      id: number
+      active: boolean
+      validFrom: string
+      validUntil: string
+    }
+    if (!dc.active) return null
+    const today = new Date().toISOString().slice(0, 10)
+    if (today < dc.validFrom.slice(0, 10)) return null
+    if (today > dc.validUntil.slice(0, 10)) return null
+    return { id: dc.id }
+  } catch {
+    return null
+  }
+}
+
+async function resolveActiveReferralByCode(
+  payload: Awaited<ReturnType<typeof getPayloadClient>>,
+  code: string,
+): Promise<{ id: number } | null> {
+  const { docs } = await payload.find({
+    collection: 'referrals',
+    where: { and: [{ code: { equals: code } }, { active: { equals: true } }] },
+    limit: 1,
+    depth: 0,
+  })
+  const ref = docs[0] as { id: number } | undefined
+  return ref ? { id: ref.id } : null
+}
+
 export async function createBookingAction(
   _prev: ActionResult,
   formData: FormData,
@@ -35,6 +76,7 @@ export async function createBookingAction(
     participants: parseParticipants(formData),
     addressIndex: formData.get('addressIndex'),
     customerNote: formData.get('customerNote') || undefined,
+    discountCodeId: formData.get('discountCodeId') || undefined,
   })
   if (!parsed.success) {
     return {
@@ -65,6 +107,28 @@ export async function createBookingAction(
     company: chosen.company,
   }
 
+  // Re-validate the discount code id (don't trust the hidden form field).
+  let discountCodeId: number | null = null
+  if (parsed.data.discountCodeId !== undefined) {
+    const dc = await resolveActiveDiscountCode(payload, parsed.data.discountCodeId)
+    if (!dc) {
+      return {
+        ok: false,
+        fieldErrors: { discountCodeId: 'This code is no longer valid.' },
+      }
+    }
+    discountCodeId = dc.id
+  }
+
+  // Resolve the referral from the cookie (single source of truth — not a hidden form field).
+  const cookieJar = await cookies()
+  const refCode = cookieJar.get(REFERRAL_COOKIE_NAME)?.value
+  let referralId: number | null = null
+  if (refCode) {
+    const ref = await resolveActiveReferralByCode(payload, refCode.trim().toUpperCase())
+    if (ref) referralId = ref.id
+  }
+
   let newOrderId: number | string
   try {
     const order = await payload.create({
@@ -79,6 +143,8 @@ export async function createBookingAction(
         currency: edObj.currency,
         state: 'pending',
         customerNote: parsed.data.customerNote,
+        discountCode: discountCodeId ?? undefined,
+        referral: referralId ?? undefined,
       } as never,
       user,
       overrideAccess: false,
