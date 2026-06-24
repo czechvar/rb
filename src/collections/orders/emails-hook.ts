@@ -17,6 +17,9 @@ interface OrderLike {
   participantCount: number
   user: number | { id: number; email: string; name?: string }
   eventDate: number | { id: number; dateFrom: string; dateTo: string; event?: number | { title?: string } }
+  discountAmount?: number
+  discountCode?: number | { code: string } | null
+  referral?: number | { name: string } | null
 }
 
 function formatDateRange(from: string, to: string): string {
@@ -58,6 +61,31 @@ export const dispatchLifecycleEmails: CollectionAfterChangeHook = async ({
     eventTitle = (ev as { title?: string }).title ?? 'Trip'
   }
 
+  // Resolve discount-code code + referral name for the email template.
+  // Same pattern as the event lookup above — handle both shapes (id | object).
+  let discountCodeCode: string | undefined
+  if (o.discountCode != null) {
+    if (typeof o.discountCode === 'object') {
+      discountCodeCode = o.discountCode.code
+    } else {
+      const dc = await req.payload.findByID({
+        collection: 'discount-codes', id: o.discountCode, depth: 0, req,
+      })
+      discountCodeCode = (dc as { code?: string }).code
+    }
+  }
+  let referralName: string | undefined
+  if (o.referral != null) {
+    if (typeof o.referral === 'object') {
+      referralName = o.referral.name
+    } else {
+      const ref = await req.payload.findByID({
+        collection: 'referrals', id: o.referral, depth: 0, req,
+      })
+      referralName = (ref as { name?: string }).name
+    }
+  }
+
   const baseCtx = {
     name: userName,
     orderNumber: o.orderNumber,
@@ -66,6 +94,9 @@ export const dispatchLifecycleEmails: CollectionAfterChangeHook = async ({
     totalPrice: o.totalPrice,
     currency: o.currency,
     accountOrderUrl: siteUrl(`/account/orders/${o.id}`),
+    discountAmount: o.discountAmount,
+    discountCodeCode,
+    referralName,
   }
   const adminEmail =
     process.env.ADMIN_ORDER_NOTIFICATIONS_EMAIL ??

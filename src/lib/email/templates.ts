@@ -56,15 +56,28 @@ interface BookingCtx {
   totalPrice: number
   currency: string
   accountOrderUrl: string
+  // Discount snapshot (optional — present only when an order had a discount).
+  discountAmount?: number
+  discountCodeCode?: string // e.g. "HOLIDAY10"
+  referralName?: string     // partner name; used when no discount code but a referral applied
 }
 
 function orderSummary(ctx: BookingCtx): string {
+  const hasDiscount = (ctx.discountAmount ?? 0) > 0
+  const subtotal = ctx.totalPrice + (ctx.discountAmount ?? 0)
+  const discountLabel = ctx.discountCodeCode
+    ? `Discount (${escapeHtml(ctx.discountCodeCode)})`
+    : ctx.referralName
+      ? `Discount (${escapeHtml(ctx.referralName)})`
+      : 'Discount'
   return `
     <p style="margin:16px 0;">
       <strong>Order:</strong> ${escapeHtml(ctx.orderNumber)}<br/>
       <strong>Trip:</strong> ${escapeHtml(ctx.eventTitle)}<br/>
       <strong>Dates:</strong> ${escapeHtml(ctx.eventDate)}<br/>
       <strong>Participants:</strong> ${ctx.participantCount}<br/>
+      ${hasDiscount ? `<strong>Subtotal:</strong> ${subtotal} ${escapeHtml(ctx.currency)}<br/>` : ''}
+      ${hasDiscount ? `<strong>${discountLabel}:</strong> −${ctx.discountAmount} ${escapeHtml(ctx.currency)}<br/>` : ''}
       <strong>Total:</strong> ${ctx.totalPrice} ${escapeHtml(ctx.currency)}
     </p>
   `
