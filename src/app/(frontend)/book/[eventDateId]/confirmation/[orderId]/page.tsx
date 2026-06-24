@@ -28,6 +28,9 @@ export default async function BookingConfirmation({ params }: Props) {
     id: number; orderNumber: string; user: number | { id: number }
     totalPrice: number; currency: string; participantCount: number
     eventDate: { dateFrom: string; dateTo: string; event?: { title?: string } | number }
+    discountAmount?: number
+    discountCode?: number | { code: string } | null
+    referral?: number | { name: string } | null
   }
   const ownerId = typeof o.user === 'object' ? o.user.id : o.user
   if (ownerId !== user.id) notFound()
@@ -42,6 +45,19 @@ export default async function BookingConfirmation({ params }: Props) {
         <p><strong>Trip:</strong> {eventTitle}</p>
         <p><strong>Dates:</strong> {new Date(o.eventDate.dateFrom).toLocaleDateString('en-GB')} – {new Date(o.eventDate.dateTo).toLocaleDateString('en-GB')}</p>
         <p><strong>Participants:</strong> {o.participantCount}</p>
+        {(o.discountAmount ?? 0) > 0 && (
+          <>
+            <p><strong>Subtotal:</strong> {o.totalPrice + (o.discountAmount ?? 0)} {o.currency}</p>
+            <p style={{ color: '#206020' }}>
+              <strong>Discount:</strong> −{o.discountAmount} {o.currency}
+              {typeof o.discountCode === 'object' && o.discountCode
+                ? ` (${o.discountCode.code})`
+                : typeof o.referral === 'object' && o.referral
+                  ? ` (${o.referral.name})`
+                  : ''}
+            </p>
+          </>
+        )}
         <p><strong>Total:</strong> {o.totalPrice} {o.currency}</p>
       </div>
       <p>

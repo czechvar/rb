@@ -26,6 +26,11 @@ export default async function OrderDetailPage({ params }: Props) {
     unitPrice: number; totalPrice: number; currency: string; vat: number; participantCount: number
     customerNote?: string
     eventDate: { dateFrom: string; dateTo: string; event?: { title?: string } | number }
+    discountAmount?: number
+    discountCommission?: number
+    referralCommission?: number
+    discountCode?: number | { code: string; title: string } | null
+    referral?: number | { name: string } | null
   }
   const ownerId = typeof o.user === 'object' ? o.user.id : o.user
   if (ownerId !== user.id) notFound()
@@ -59,10 +64,27 @@ export default async function OrderDetailPage({ params }: Props) {
       </address>
 
       <h3>Price</h3>
-      <p>
-        {o.unitPrice} {o.currency} × {o.participantCount} = <strong>{o.totalPrice} {o.currency}</strong>
-        <br /><span style={{ color: '#666', fontSize: 13 }}>VAT {o.vat}% included.</span>
-      </p>
+      {(o.discountAmount ?? 0) > 0 ? (
+        <>
+          <p>
+            Subtotal: {o.unitPrice} {o.currency} × {o.participantCount} = {o.totalPrice + (o.discountAmount ?? 0)} {o.currency}
+          </p>
+          <p style={{ color: '#206020' }}>
+            Discount: −{o.discountAmount} {o.currency}
+            {typeof o.discountCode === 'object' && o.discountCode
+              ? ` (${o.discountCode.code})`
+              : typeof o.referral === 'object' && o.referral
+                ? ` (${o.referral.name})`
+                : ''}
+          </p>
+          <p><strong>Total: {o.totalPrice} {o.currency}</strong></p>
+        </>
+      ) : (
+        <p>
+          {o.unitPrice} {o.currency} × {o.participantCount} = <strong>{o.totalPrice} {o.currency}</strong>
+        </p>
+      )}
+      <p><span style={{ color: '#666', fontSize: 13 }}>VAT {o.vat}% included.</span></p>
 
       {o.customerNote && (
         <>
