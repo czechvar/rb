@@ -5,6 +5,8 @@ import {
   getHomepageReviews,
   getHomepageFAQs,
   getHomepagePartners,
+  getProClimberGuides,
+  getFounderGuide,
 } from '@/lib/queries'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -107,5 +109,47 @@ describe('getHomepagePartners', () => {
     expect(partners.length).toBeGreaterThan(0)
     expect(partners.length).toBeLessThanOrEqual(5)
     expect(partners.every((p) => p.featured === true && p.active === true)).toBe(true)
+  })
+})
+
+describe('getProClimberGuides', () => {
+  it('returns up to 3 featured active friends-section guides sorted by name', async () => {
+    const payload = await getTestPayload()
+    // @ts-expect-error slug auto-filled
+    await payload.create({
+      collection: 'guides',
+      data: {
+        name: `Pro Climber ${Date.now()}`,
+        section: 'friends',
+        featured: true,
+        active: true,
+      },
+    })
+
+    const guides = await getProClimberGuides()
+    expect(guides.length).toBeGreaterThan(0)
+    expect(guides.length).toBeLessThanOrEqual(3)
+    expect(guides.every((g) => g.section === 'friends' && g.featured && g.active)).toBe(true)
+  })
+})
+
+describe('getFounderGuide', () => {
+  it('returns the single isFounder guide when one exists', async () => {
+    const payload = await getTestPayload()
+    // @ts-expect-error slug auto-filled
+    await payload.create({
+      collection: 'guides',
+      data: {
+        name: `Test Founder ${Date.now()}`,
+        section: 'team',
+        active: true,
+        isFounder: true,
+      },
+    })
+
+    const founder = await getFounderGuide()
+    expect(founder).not.toBeNull()
+    expect(founder?.isFounder).toBe(true)
+    expect(founder?.active).toBe(true)
   })
 })

@@ -250,6 +250,43 @@ export function getActiveEventDates() {
 
 // --- Homepage feeds ------------------------------------------------------
 
+export function getProClimberGuides() {
+  return cachedQuery(
+    ['homepage-pro-climbers'],
+    [TAGS.guides],
+    async (): Promise<Guide[]> => {
+      const payload = await getPayloadClient()
+      const { docs } = await payload.find({
+        collection: 'guides',
+        where: {
+          and: [
+            { section: { equals: 'friends' } },
+            { featured: { equals: true } },
+            { active: { equals: true } },
+          ],
+        },
+        sort: 'name',
+        limit: 3,
+      })
+      return docs
+    },
+  )
+}
+
+export function getFounderGuide() {
+  return cachedQuery(['homepage-founder'], [TAGS.guides], async (): Promise<Guide | null> => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'guides',
+      where: {
+        and: [{ isFounder: { equals: true } }, { active: { equals: true } }],
+      },
+      limit: 1,
+    })
+    return docs[0] ?? null
+  })
+}
+
 export function getHomepagePartners() {
   return cachedQuery(['homepage-partners'], [TAGS.events], async (): Promise<Partner[]> => {
     const payload = await getPayloadClient()
