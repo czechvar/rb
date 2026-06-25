@@ -1,6 +1,6 @@
 .section {
   padding: var(--sectionGapLg) var(--contentPadding);
-  background: var(--colLighter);
+  background: #f6f5f5;
 }
 
 .quote {
@@ -19,7 +19,7 @@
 
 .attrib {
   font-size: var(--pFontSize);
-  color: var(--colTextSecond);
+  color: var(--rb-red);
   letter-spacing: 0.1rem;
   text-transform: uppercase;
 }

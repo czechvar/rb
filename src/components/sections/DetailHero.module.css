@@ -5,7 +5,7 @@
   min-height: 60rem;
   /* overflow visible so .chipStrip can bleed below the hero edge */
   overflow: visible;
-  color: var(--colLightest);
+  color: #ffffff;
 }
 
 .image {
@@ -46,7 +46,7 @@
   line-height: 1.05;
   font-weight: 700;
   margin: 0;
-  color: var(--colLightest);
+  color: #ffffff;
 }
 
 .lead {

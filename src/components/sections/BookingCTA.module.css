@@ -1,7 +1,7 @@
 .cta {
   padding: var(--sectionGapLg) var(--contentPadding);
-  background: var(--colPrimaryDark);
-  color: var(--colTextOnPrimary);
+  background: #a0040d;
+  color: var(--rb-white);
 }
 
 .inner {
@@ -26,8 +26,8 @@
 .button {
   display: inline-block;
   padding: 1.8rem 3.6rem;
-  background: var(--colPrimary);
-  color: var(--colTextOnPrimary);
+  background: var(--rb-red);
+  color: var(--rb-white);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
@@ -36,6 +36,6 @@
 }
 
 .button:hover {
-  background: var(--colPrimaryHover);
-  color: var(--colTextOnPrimaryHover);
+  background: var(--rb-red-hover);
+  color: var(--rb-white);
 }

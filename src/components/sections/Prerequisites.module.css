@@ -14,7 +14,7 @@
 
 .item::before {
   content: '✓';
-  color: var(--colPrimary);
+  color: var(--rb-red);
   margin-right: 1rem;
 }
 

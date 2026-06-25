@@ -1,6 +1,6 @@
 .pitch {
   padding: var(--sectionGapMd) var(--contentPadding);
-  background: var(--colLighter);
+  background: #f6f5f5;
 }
 
 .inner {
@@ -19,14 +19,14 @@
   font-size: var(--pFontSize);
   line-height: var(--textLineHeight);
   margin-bottom: 3rem;
-  color: var(--colText);
+  color: #515151;
 }
 
 .cta {
   display: inline-block;
   padding: 1.5rem 3rem;
-  background: var(--colPrimary);
-  color: var(--colTextOnPrimary);
+  background: var(--rb-red);
+  color: var(--rb-white);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
@@ -35,6 +35,6 @@
 }
 
 .cta:hover {
-  background: var(--colPrimaryHover);
-  color: var(--colTextOnPrimaryHover);
+  background: var(--rb-red-hover);
+  color: var(--rb-white);
 }

@@ -12,8 +12,8 @@
 
 .card {
   padding: 4rem 3rem;
-  background: var(--colLightest);
-  border: 1px solid var(--colLight);
+  background: #ffffff;
+  border: 1px solid var(--rb-white-12);
   border-radius: 0.4rem;
   display: flex;
   flex-direction: column;
@@ -21,9 +21,9 @@
 }
 
 .highlighted {
-  background: var(--colPrimary);
-  color: var(--colTextOnPrimary);
-  border-color: var(--colPrimary);
+  background: var(--rb-red);
+  color: var(--rb-white);
+  border-color: var(--rb-red);
 }
 
 .heading {
@@ -47,8 +47,8 @@
   max-width: var(--contentTextMaxWidth);
   margin: 2rem auto 0;
   padding: 1.5rem 2rem;
-  background: var(--colLightest);
-  border: 1px solid var(--colLight);
+  background: #ffffff;
+  border: 1px solid var(--rb-white-12);
   border-radius: 0.4rem;
   font-size: var(--pFontSize);
   line-height: var(--textLineHeight);

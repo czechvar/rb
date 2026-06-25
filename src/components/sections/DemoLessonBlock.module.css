@@ -1,6 +1,6 @@
 .demo {
   padding: var(--sectionGapMd) var(--contentPadding);
-  background: var(--colLightest);
+  background: #ffffff;
 }
 
 .body {
@@ -18,8 +18,8 @@
   display: inline-block;
   margin: 3rem auto 0;
   padding: 1.5rem 3rem;
-  background: var(--colPrimary);
-  color: var(--colTextOnPrimary);
+  background: var(--rb-red);
+  color: var(--rb-white);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15rem;

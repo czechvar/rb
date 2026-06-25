@@ -4,7 +4,7 @@
 
 .icon {
   font-size: 3rem;
-  color: var(--colPrimary);
+  color: var(--rb-red);
   line-height: 1;
 }
 

@@ -8,8 +8,8 @@
 }
 
 .card {
-  background: var(--colLightest);
-  border: 1px solid var(--colLight);
+  background: #ffffff;
+  border: 1px solid var(--rb-white-12);
   border-radius: 0.4rem;
   padding: 4rem 3rem;
   display: flex;
@@ -18,9 +18,9 @@
 }
 
 .highlighted {
-  background: var(--colPrimary);
-  color: var(--colTextOnPrimary);
-  border-color: var(--colPrimary);
+  background: var(--rb-red);
+  color: var(--rb-white);
+  border-color: var(--rb-red);
 }
 
 @media screen and (max-width: 767px) {

@@ -21,7 +21,7 @@
   letter-spacing: var(--eyebrowLetterSpacing);
   text-transform: uppercase;
   margin-bottom: var(--eyebrowMarginBottom);
-  color: var(--colPrimary);
+  color: var(--rb-red);
 }
 
 .title {
@@ -33,7 +33,7 @@
 .lead {
   font-size: var(--pFontSize);
   line-height: var(--textLineHeight);
-  color: var(--colText);
+  color: #515151;
 }
 
 @media screen and (max-width: 767px) {

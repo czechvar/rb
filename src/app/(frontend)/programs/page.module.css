@@ -14,7 +14,7 @@
   font-size: var(--eyebrowFontSize);
   letter-spacing: var(--eyebrowLetterSpacing);
   text-transform: uppercase;
-  color: var(--colTextSecond);
+  color: var(--rb-red);
   margin-bottom: 12px;
 }
 
@@ -121,7 +121,7 @@
 
 .cardCta {
   display: inline-block;
-  color: var(--colPrimary);
+  color: var(--rb-red);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.04em;

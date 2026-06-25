@@ -29,12 +29,12 @@
 
 .note {
   font-size: var(--smallTextFontSize);
-  color: var(--colTextSecond);
+  color: var(--rb-red);
   margin: 0.4rem 0 0;
 }
 
 .required {
-  color: var(--colPrimary);
+  color: var(--rb-red);
 }
 
 @media screen and (max-width: 767px) {

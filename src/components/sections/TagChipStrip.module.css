@@ -13,17 +13,17 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: var(--colLightest);
+  background: #ffffff;
   border-radius: 999px;
   padding: 0.8rem 1.4rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  color: var(--colText);
+  color: #515151;
 }
 
 .icon {
   width: 1.6rem;
   height: 1.6rem;
-  color: var(--colPrimary);
+  color: var(--rb-red);
   flex-shrink: 0;
 }
 
