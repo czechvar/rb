@@ -30,39 +30,6 @@
   --rb-section-pad: 90px 5%;
   --rb-card-pad:    36px 28px;
 
-  /* Brand — rockbusters red (sampled from existing rockbusters.net logo "O") */
-  --colPrimary: #e30613;
-  --colPrimaryHover: #b30410;
-  --colPrimaryDark: #8b1e1e;          /* wine red for dark overlays (Figma hero) */
-  --colPrimaryLight: #ff6b6b;
-  --colPrimaryAlpha: rgba(227, 6, 19, 0.85);
-  --colPrimaryInverted: #e30613;
-  --colPrimaryInvertedHover: #f4f4f4;
-  --colPrimaryLighter: #4a4a4a;
-  --colPrimaryLightest: #7b7b7b;
-
-  --colSecondary: #1a1a1a;
-  --colSecondaryHover: #f4f4f4;
-
-  --colTextHeader: #1a1a1a;
-  --colTextSecond: var(--colPrimary);
-
-  /* Neutrals (kept identical to snowbusters) */
-  --colLight: #e8e7e5;
-  --colLighter: #f6f5f5;
-  --colLightest: #ffffff;
-  --colDark: #2d2c2b;
-  --colDarker: #111111;
-  --colGreyLighter: rgb(212, 208, 207);
-  --colGreyLight: rgb(170, 160, 157);
-  --colGrey: rgb(133, 124, 121);
-  --colGreyDark: rgb(95, 90, 88);
-  --colText: #515151;
-  --colTextAlpha: rgba(17, 17, 17, 0.75);
-  --colTextOnPrimary: #ffffff;
-  --colTextOnPrimaryHover: #ffffff;
-  --colDivider: rgba(255, 255, 255, 0.26);
-
   /* Status */
   --colInfo: #29b6f6;
   --colOk: #66bb6a;
@@ -207,8 +174,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--colLightest);
-  color: var(--colText);
+  background: var(--rb-white);
+  color: #515151;
 }
 
 body,
@@ -229,7 +196,7 @@ h4,
 h5 {
   font-family: var(--font-heading, 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif);
   font-weight: 500;
-  color: var(--colTextHeader);
+  color: var(--rb-black);
 }
 
 h1 {
@@ -281,11 +248,11 @@ a {
 }
 
 a:hover {
-  color: var(--colPrimary);
+  color: var(--rb-red);
 }
 
 a:focus-visible {
-  outline: 2px solid var(--colPrimary);
+  outline: 2px solid var(--rb-red);
   outline-offset: 2px;
   border-radius: 2px;
 }
