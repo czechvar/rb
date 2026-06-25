@@ -31,6 +31,12 @@ export const Guides: CollectionConfig = {
     { name: 'phone', type: 'text' },
     { name: 'vimeoId', type: 'text' },
     { name: 'featured', type: 'checkbox', defaultValue: false },
+    {
+      name: 'isFounder',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { description: 'Mark the founder card on the homepage.' },
+    },
     { name: 'active', type: 'checkbox', defaultValue: false },
     seoFields,
   ],

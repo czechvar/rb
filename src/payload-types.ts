@@ -474,6 +474,10 @@ export interface Guide {
   phone?: string | null;
   vimeoId?: string | null;
   featured?: boolean | null;
+  /**
+   * Mark the founder card on the homepage.
+   */
+  isFounder?: boolean | null;
   active?: boolean | null;
   seo?: {
     title?: string | null;
@@ -1455,6 +1459,7 @@ export interface GuidesSelect<T extends boolean = true> {
   phone?: T;
   vimeoId?: T;
   featured?: T;
+  isFounder?: T;
   active?: T;
   seo?:
     | T
