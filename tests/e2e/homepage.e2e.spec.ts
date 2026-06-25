@@ -84,4 +84,10 @@ test.describe('Homepage', () => {
     await expect(cta).toBeVisible()
     await expect(cta).toHaveAttribute('href', '/programs')
   })
+
+  test('header shows Trips & Clinics + Find Your Trip CTA', async ({ page }) => {
+    await page.goto('/')
+    await expect(page.getByRole('link', { name: 'Trips & Clinics' }).first()).toBeVisible()
+    await expect(page.getByTestId('nav-cta-find-your-trip')).toBeVisible()
+  })
 })

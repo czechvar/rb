@@ -7,10 +7,11 @@ import styles from './marketing.module.css'
 import { useMe } from './useMe'
 
 const NAV_LINKS = [
-  { href: '/programs', label: 'Programs' },
+  { href: '/programs', label: 'Trips & Clinics' },
   { href: '/destinations', label: 'Destinations' },
-  { href: '/team', label: 'Team' },
+  { href: '/team', label: 'The Crew' },
   { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 const PHONE_DISPLAY = '+420 776 805 045'
@@ -164,8 +165,12 @@ export function Header({ transparent = false }: { transparent?: boolean } = {}) 
                 {l.label}
               </Link>
             ))}
-            <Link href="/calendar" className={styles.joinUs}>
-              Join Us
+            <Link
+              href="/programs"
+              className={styles.joinUs}
+              data-testid="nav-cta-find-your-trip"
+            >
+              Find Your Trip
             </Link>
             <Link href={userHref} className={styles.userLink} aria-label={userLabel}>
               <UserIcon />
@@ -198,11 +203,8 @@ export function Header({ transparent = false }: { transparent?: boolean } = {}) 
               {l.label}
             </Link>
           ))}
-          <Link href="/calendar" onClick={() => setDrawerOpen(false)}>
-            Join Us
-          </Link>
-          <Link href="/contact" onClick={() => setDrawerOpen(false)}>
-            Contact
+          <Link href="/programs" onClick={() => setDrawerOpen(false)}>
+            Find Your Trip
           </Link>
           <Link href={userHref} onClick={() => setDrawerOpen(false)}>
             {userLabel}
