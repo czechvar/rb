@@ -58,8 +58,12 @@ test.describe('Homepage', () => {
     if (partners.docs.length === 0) {
       await payload.create({
         collection: 'partners',
-        // @ts-expect-error slug auto-filled
-        data: { name: `E2E Brand ${stamp}`, featured: true, active: true },
+        data: {
+          name: `E2E Brand ${stamp}`,
+          slug: `e2e-brand-${stamp}`,
+          featured: true,
+          active: true,
+        },
       })
     }
   })
