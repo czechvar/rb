@@ -3,7 +3,26 @@ import { getTestPayload } from '../helpers/payload'
 import {
   getFeaturedEventsForHomepage,
   getHomepageReviews,
+  getHomepageFAQs,
 } from '@/lib/queries'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const richText = (text: string): any => ({
+  root: {
+    type: 'root',
+    children: [
+      {
+        type: 'paragraph',
+        version: 1,
+        children: [{ type: 'text', version: 1, text }],
+      },
+    ],
+    direction: null,
+    format: '',
+    indent: 0,
+    version: 1,
+  },
+})
 
 describe('getFeaturedEventsForHomepage', () => {
   it('returns at most 6 published+featured events', async () => {
@@ -46,5 +65,26 @@ describe('getHomepageReviews', () => {
     expect(reviews.length).toBeLessThanOrEqual(3)
     expect(reviews.every((r) => r.active === true)).toBe(true)
     expect(reviews.every((r) => !r.event && !r.type)).toBe(true)
+  })
+})
+
+describe('getHomepageFAQs', () => {
+  it('returns up to 6 active FAQs with no event or type relation, sorted by position', async () => {
+    const payload = await getTestPayload()
+    await payload.create({
+      collection: 'faqs',
+      data: {
+        question: `Where do you climb? ${Date.now()}`,
+        answer: richText('We climb on the best European limestone.'),
+        active: true,
+        position: 5,
+      },
+    })
+
+    const faqs = await getHomepageFAQs()
+    expect(faqs.length).toBeGreaterThan(0)
+    expect(faqs.length).toBeLessThanOrEqual(6)
+    expect(faqs.every((f) => f.active === true)).toBe(true)
+    expect(faqs.every((f) => !f.event && !f.type)).toBe(true)
   })
 })

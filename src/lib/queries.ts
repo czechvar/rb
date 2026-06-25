@@ -250,6 +250,25 @@ export function getActiveEventDates() {
 
 // --- Homepage feeds ------------------------------------------------------
 
+export function getHomepageFAQs() {
+  return cachedQuery(['homepage-faqs'], [TAGS.events], async (): Promise<Faq[]> => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'faqs',
+      where: {
+        and: [
+          { active: { equals: true } },
+          { event: { exists: false } },
+          { type: { exists: false } },
+        ],
+      },
+      sort: 'position',
+      limit: 6,
+    })
+    return docs
+  })
+}
+
 export function getHomepageReviews() {
   return cachedQuery(['homepage-reviews'], [TAGS.events], async (): Promise<Review[]> => {
     const payload = await getPayloadClient()
