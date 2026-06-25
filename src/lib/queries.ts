@@ -250,6 +250,25 @@ export function getActiveEventDates() {
 
 // --- Homepage feeds ------------------------------------------------------
 
+export function getHomepageReviews() {
+  return cachedQuery(['homepage-reviews'], [TAGS.events], async (): Promise<Review[]> => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'reviews',
+      where: {
+        and: [
+          { active: { equals: true } },
+          { event: { exists: false } },
+          { type: { exists: false } },
+        ],
+      },
+      sort: 'position',
+      limit: 3,
+    })
+    return docs
+  })
+}
+
 export function getFeaturedEventsForHomepage() {
   return cachedQuery(
     ['homepage-featured-events'],
