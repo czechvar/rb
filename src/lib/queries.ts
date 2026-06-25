@@ -250,6 +250,30 @@ export function getActiveEventDates() {
 
 // --- Homepage feeds ------------------------------------------------------
 
+const HOMEPAGE_HERO_MEDIA_ID = process.env.HOMEPAGE_HERO_MEDIA_ID
+  ? Number(process.env.HOMEPAGE_HERO_MEDIA_ID)
+  : null
+
+export function getHomepageHeroMedia() {
+  return cachedQuery(
+    ['homepage-hero-media', String(HOMEPAGE_HERO_MEDIA_ID)],
+    [TAGS.events],
+    async (): Promise<Media | null> => {
+      if (!HOMEPAGE_HERO_MEDIA_ID) return null
+      const payload = await getPayloadClient()
+      try {
+        const doc = await payload.findByID({
+          collection: 'media',
+          id: HOMEPAGE_HERO_MEDIA_ID,
+        })
+        return doc as Media
+      } catch {
+        return null
+      }
+    },
+  )
+}
+
 export function getProClimberGuides() {
   return cachedQuery(
     ['homepage-pro-climbers'],

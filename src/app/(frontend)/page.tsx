@@ -1,68 +1,69 @@
-import Link from 'next/link'
 import { Header } from '@/components/marketing/Header'
 import { Footer } from '@/components/marketing/Footer'
-import styles from './page.module.css'
+import { Hero } from '@/components/marketing/homepage/Hero'
+import { StatsBar } from '@/components/marketing/homepage/StatsBar'
+import { WhoWeAre } from '@/components/marketing/homepage/WhoWeAre'
+import { FeaturedTrips } from '@/components/marketing/homepage/FeaturedTrips'
+import { WhyRockbusters } from '@/components/marketing/homepage/WhyRockbusters'
+import { ProClimbers } from '@/components/marketing/homepage/ProClimbers'
+import { PickYourExperience } from '@/components/marketing/homepage/PickYourExperience'
+import { Destinations } from '@/components/marketing/homepage/Destinations'
+import { Testimonials } from '@/components/marketing/homepage/Testimonials'
+import { Team } from '@/components/marketing/homepage/Team'
+import { HomepageFAQ } from '@/components/marketing/homepage/HomepageFAQ'
+import { Partners } from '@/components/marketing/homepage/Partners'
+import { FinalCTA } from '@/components/marketing/homepage/FinalCTA'
+import {
+  getFeaturedEventsForHomepage,
+  getActiveEventDates,
+  getHomepageReviews,
+  getHomepageFAQs,
+  getHomepagePartners,
+  getProClimberGuides,
+  getFounderGuide,
+  getHomepageHeroMedia,
+} from '@/lib/queries'
+import type { EventDate } from '@/payload-types'
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [heroMedia, events, allDates, reviews, faqs, partners, proClimbers, founder] =
+    await Promise.all([
+      getHomepageHeroMedia(),
+      getFeaturedEventsForHomepage(),
+      getActiveEventDates(),
+      getHomepageReviews(),
+      getHomepageFAQs(),
+      getHomepagePartners(),
+      getProClimberGuides(),
+      getFounderGuide(),
+    ])
+
+  const featuredEventIds = new Set(events.map((e) => e.id))
+  const datesByEvent = new Map<number, EventDate[]>()
+  for (const d of allDates) {
+    const eventId = typeof d.event === 'object' ? d.event.id : d.event
+    if (!featuredEventIds.has(eventId)) continue
+    const arr = datesByEvent.get(eventId) ?? []
+    arr.push(d)
+    datesByEvent.set(eventId, arr)
+  }
+
   return (
     <>
       <Header />
-
-      <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <span className={styles.heroEyebrow}>Climb Better, Harder &amp; More</span>
-          <h1>Leading Community of Experienced Rock Climbing Guides &amp; Coaches</h1>
-          <p>
-            We help you reach your individual climbing goals and pursue your climbing dreams.
-            Maximum time on rock, pushing the limits, and 100% fun is the goal here.
-          </p>
-          <div className={styles.heroCtas}>
-            <Link href="/calendar" className={styles.ctaPrimary}>
-              See Calendar
-            </Link>
-            <Link href="/programs" className={styles.ctaGhost}>
-              Explore Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className={`${styles.section} ${styles.alt}`}>
-        <div className={styles.sectionInner}>
-          <span className="eyebrow">What We Offer</span>
-          <h2>From First Routes to Send-Day Tactics</h2>
-          <p>
-            Climbing camps, technique coaching, private guiding, and expeditions —
-            all run by IFMGA / UIAGM guides and IFSC-level coaches.
-          </p>
-
-          <div className={styles.cardGrid}>
-            <article className={styles.card}>
-              <h3>Climbing Camps</h3>
-              <p>
-                Multi-day, single-destination programs designed around a clear performance
-                goal. Mornings on rock, afternoons drilling technique, evenings reviewing
-                footage.
-              </p>
-            </article>
-            <article className={styles.card}>
-              <h3>Technique Coaching</h3>
-              <p>
-                One-on-one or small-group movement labs for climbers stuck at a grade plateau.
-                Built on tactical movement analysis and structured drills.
-              </p>
-            </article>
-            <article className={styles.card}>
-              <h3>Private Guiding</h3>
-              <p>
-                Pick your dates, your destination, your goals. We organize the logistics,
-                accommodation, and on-rock coaching to match.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
+      <Hero backgroundMedia={heroMedia} />
+      <StatsBar />
+      <WhoWeAre />
+      <FeaturedTrips events={events} datesByEvent={datesByEvent} />
+      <WhyRockbusters />
+      <ProClimbers guides={proClimbers} />
+      <PickYourExperience />
+      <Destinations />
+      <Testimonials reviews={reviews} />
+      <Team founder={founder} />
+      <HomepageFAQ faqs={faqs} />
+      <Partners partners={partners} />
+      <FinalCTA />
       <Footer />
     </>
   )
