@@ -7,6 +7,10 @@ import type {
   EventDate,
   Post,
   PostCategory,
+  Review,
+  Faq,
+  Partner,
+  Media,
 } from '@/payload-types'
 
 // --- Guides / team -------------------------------------------------------
@@ -242,4 +246,28 @@ export function getActiveEventDates() {
     })
     return docs
   })
+}
+
+// --- Homepage feeds ------------------------------------------------------
+
+export function getFeaturedEventsForHomepage() {
+  return cachedQuery(
+    ['homepage-featured-events'],
+    [TAGS.events],
+    async (): Promise<Event[]> => {
+      const payload = await getPayloadClient()
+      const { docs } = await payload.find({
+        collection: 'events',
+        where: {
+          and: [
+            { featured: { equals: true } },
+            { state: { equals: 'published' } },
+          ],
+        },
+        limit: 6,
+        depth: 2,
+      })
+      return docs
+    },
+  )
 }
