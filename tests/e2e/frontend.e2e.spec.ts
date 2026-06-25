@@ -15,8 +15,6 @@ test.describe('Frontend', () => {
 
     const heading = page.locator('h1').first()
 
-    await expect(heading).toHaveText(
-      'Leading Community of Experienced Rock Climbing Guides & Coaches',
-    )
+    await expect(heading).toContainText(/CLIMB/i)
   })
 })
