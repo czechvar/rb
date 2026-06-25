@@ -1,32 +1,37 @@
 import { describe, expect, it } from 'vitest'
 import { getTestPayload } from '../helpers/payload'
 
+const uniq = (prefix: string) =>
+  `${prefix}-${Math.random().toString(36).slice(2, 8)}`
+
 describe('referrals collection', () => {
   it('creates a referral with required fields and normalizes the code', async () => {
     const payload = await getTestPayload()
+    const raw = uniq('petra').toLowerCase()
     const ref = await payload.create({
       collection: 'referrals',
       data: {
-        code: 'petra',
+        code: raw,
         name: 'Petra Nováková',
-        email: 'petra@example.com',
+        email: `petra-${Math.random()}@example.com`,
         discountPercent: 10,
         commissionPercent: 15,
       } as never,
       overrideAccess: true,
     })
-    expect(ref.code).toBe('PETRA')
+    expect(ref.code).toBe(raw.toUpperCase())
     expect(ref.active).toBe(true)
   })
 
   it('rejects duplicate codes (case-insensitive)', async () => {
     const payload = await getTestPayload()
+    const dupe = uniq('dupe')
     await payload.create({
       collection: 'referrals',
       data: {
-        code: 'DUPE',
+        code: dupe,
         name: 'First',
-        email: 'first@example.com',
+        email: `first-${Math.random()}@example.com`,
         discountPercent: 0,
         commissionPercent: 5,
       } as never,
@@ -36,9 +41,9 @@ describe('referrals collection', () => {
       payload.create({
         collection: 'referrals',
         data: {
-          code: 'dupe',
+          code: dupe.toLowerCase(),
           name: 'Second',
-          email: 'second@example.com',
+          email: `second-${Math.random()}@example.com`,
           discountPercent: 0,
           commissionPercent: 5,
         } as never,
@@ -52,9 +57,9 @@ describe('referrals collection', () => {
     const ref = await payload.create({
       collection: 'referrals',
       data: {
-        code: 'COMMONLY',
+        code: uniq('commonly'),
         name: 'Only Commission',
-        email: 'only@example.com',
+        email: `only-${Math.random()}@example.com`,
         discountPercent: 0,
         commissionPercent: 20,
       } as never,

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, type Page } from '@playwright/test'
 import { getPayload } from 'payload'
 import config from '../../src/payload.config.js'
 
@@ -86,12 +86,12 @@ test.afterAll(async () => {
   await payload.delete({ collection: 'referrals', where: { id: { equals: referralId } } })
 })
 
-async function login(page) {
+async function login(page: Page) {
   await page.goto(`${BASE}/login`)
   await page.fill('input[name="email"]', customer.email)
   await page.fill('input[name="password"]', customer.password)
   await page.click('button[type="submit"]')
-  await page.waitForURL((url) => !url.pathname.startsWith('/login'))
+  await page.waitForURL((url: URL) => !url.pathname.startsWith('/login'))
 }
 
 test('book with a discount code', async ({ page }) => {
