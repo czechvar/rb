@@ -4,6 +4,7 @@ import {
   getFeaturedEventsForHomepage,
   getHomepageReviews,
   getHomepageFAQs,
+  getHomepagePartners,
 } from '@/lib/queries'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -86,5 +87,25 @@ describe('getHomepageFAQs', () => {
     expect(faqs.length).toBeLessThanOrEqual(6)
     expect(faqs.every((f) => f.active === true)).toBe(true)
     expect(faqs.every((f) => !f.event && !f.type)).toBe(true)
+  })
+})
+
+describe('getHomepagePartners', () => {
+  it('returns up to 5 featured active partners sorted by name', async () => {
+    const payload = await getTestPayload()
+    // @ts-expect-error slug auto-filled
+    await payload.create({
+      collection: 'partners',
+      data: {
+        name: `Aaa Partner ${Date.now()}`,
+        featured: true,
+        active: true,
+      },
+    })
+
+    const partners = await getHomepagePartners()
+    expect(partners.length).toBeGreaterThan(0)
+    expect(partners.length).toBeLessThanOrEqual(5)
+    expect(partners.every((p) => p.featured === true && p.active === true)).toBe(true)
   })
 })

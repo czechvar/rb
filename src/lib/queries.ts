@@ -250,6 +250,21 @@ export function getActiveEventDates() {
 
 // --- Homepage feeds ------------------------------------------------------
 
+export function getHomepagePartners() {
+  return cachedQuery(['homepage-partners'], [TAGS.events], async (): Promise<Partner[]> => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'partners',
+      where: {
+        and: [{ featured: { equals: true } }, { active: { equals: true } }],
+      },
+      sort: 'name',
+      limit: 5,
+    })
+    return docs
+  })
+}
+
 export function getHomepageFAQs() {
   return cachedQuery(['homepage-faqs'], [TAGS.events], async (): Promise<Faq[]> => {
     const payload = await getPayloadClient()
