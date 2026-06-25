@@ -69,6 +69,7 @@ Hosted on **Vercel**. Required environment variables in the Vercel project setti
 - `R2_BUCKET` — Cloudflare R2 bucket name (e.g. `rockbusters-media`)
 - `R2_ENDPOINT` — `https://<account-id>.r2.cloudflarestorage.com`
 - `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` — R2 S3-API credentials
+- `HOMEPAGE_HERO_MEDIA_ID` — Payload Media ID of the homepage hero background image. Optional; if unset, the hero renders without a background image.
 - `NEXT_PUBLIC_SITE_URL` — public base URL used in email templates (e.g. `https://rockbusters.net`)
 - `RESEND_API_KEY` — Resend transactional-email API key. If unset, Payload falls back to its console adapter (logs emails) — same defensive pattern as the R2 fallback.
 - `EMAIL_FROM_ADDRESS` — sender address (e.g. `hello@rockbusters.net` in prod, `onboarding@resend.dev` in dev). Domain must be verified in Resend for prod.
