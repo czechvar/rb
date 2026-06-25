@@ -1,0 +1,133 @@
+.section {
+  padding: var(--rb-section-pad);
+  background: var(--rb-darker);
+}
+
+.labelWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto 48px;
+  flex-wrap: wrap;
+}
+
+.viewAll {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  color: var(--rb-white);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 36px;
+  border: 1px solid var(--rb-white-08);
+}
+
+@media (min-width: 768px) {
+  .cardWide {
+    grid-column: 1 / -1;
+    min-height: 600px;
+  }
+}
+
+.cardBg {
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 1;
+}
+
+.cardTop,
+.cardContent {
+  position: relative;
+  z-index: 2;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-60);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cardLoc {
+  font-weight: 700;
+  color: var(--rb-white);
+}
+
+.cardDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--rb-white-30);
+}
+
+.cardTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--rb-white);
+  margin: 0 0 12px;
+}
+
+.cardHook {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body);
+  color: var(--rb-white-60);
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.cardPriceRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cardPrice {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--rb-white);
+  font-size: var(--fs-body);
+}
+
+.cardCta {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  font-weight: 700;
+}
