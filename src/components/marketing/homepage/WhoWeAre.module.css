@@ -1,0 +1,69 @@
+.section {
+  padding: var(--rb-section-pad);
+  background: var(--rb-black);
+  color: var(--rb-white);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  max-width: 1400px;
+  margin: 0 auto 80px;
+}
+
+@media (max-width: 768px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.body {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body-lg);
+  color: var(--rb-white-60);
+  line-height: 1.75;
+  margin: 0 0 22px;
+}
+
+.body:last-child {
+  margin-bottom: 0;
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pillar {
+  padding: var(--rb-card-pad);
+  border: 1px solid var(--rb-white-12);
+}
+
+.pillarNum {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: var(--rb-red);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.pillarTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--rb-white);
+  margin: 0 0 8px;
+}
+
+.pillarBody {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body);
+  color: var(--rb-white-60);
+  line-height: 1.6;
+  margin: 0;
+}
