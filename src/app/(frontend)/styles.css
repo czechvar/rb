@@ -216,7 +216,7 @@ button,
 input,
 textarea,
 select {
-  font-family: var(--font-body, 'Lato', 'Helvetica Neue', Arial, sans-serif);
+  font-family: var(--font-body), 'Inter', system-ui, sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: var(--textLineHeight);

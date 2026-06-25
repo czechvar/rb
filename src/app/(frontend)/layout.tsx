@@ -1,17 +1,17 @@
-import { Lato, Libre_Franklin } from 'next/font/google'
+import { Bebas_Neue, Inter } from 'next/font/google'
 import React from 'react'
 import './styles.css'
 
-const lato = Lato({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-body',
   display: 'swap',
 })
 
-const libreFranklin = Libre_Franklin({
+const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400'],
   variable: '--font-heading',
   display: 'swap',
 })
@@ -24,7 +24,7 @@ export const metadata = {
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
   return (
-    <html lang="en" className={`${lato.variable} ${libreFranklin.variable}`}>
+    <html lang="en" className={`${inter.variable} ${bebasNeue.variable}`}>
       <body>{children}</body>
     </html>
   )
