@@ -1,0 +1,30 @@
+.section {
+  padding: 96px 5%;
+  background: var(--rb-red);
+  color: var(--rb-white);
+  text-align: center;
+}
+
+.display {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 8vw, 120px);
+  line-height: 0.92;
+  color: var(--rb-white);
+  margin: 0 0 24px;
+}
+
+.body {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body-lg);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ctas {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
