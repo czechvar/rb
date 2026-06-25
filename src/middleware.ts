@@ -62,5 +62,9 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
 }
 
 export const config = {
+  // 'nodejs' runtime so the referral lookup can use the Payload local API
+  // (Edge Runtime can't import @/lib/payload → @/payload.config which pulls in
+  // node:path / node:url). Auth check below is also Node-runtime friendly.
+  runtime: 'nodejs',
   matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 }

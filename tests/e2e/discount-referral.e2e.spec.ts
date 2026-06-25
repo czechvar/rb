@@ -129,6 +129,7 @@ test('book with BOTH — DC wins on price; referral commission still snapshotted
   await expect(page.getByText(/−50 EUR/)).toBeVisible()   // DC's 25%, not referral's 10%
 
   await page.click('button[type="submit"]')
+  await expect(page).toHaveURL(new RegExp(`/book/${eventDateId}/confirmation/\\d+`))
   const urlMatch = page.url().match(/confirmation\/(\d+)/)
   expect(urlMatch).not.toBeNull()
   const orderId = Number(urlMatch![1])
