@@ -28,7 +28,7 @@ afterEach(() => vi.clearAllMocks())
 const cases: Array<[string, () => unknown, string[], string[]]> = [
   ['getActiveGuides', () => q.getActiveGuides(), ['active-guides'], ['guides']],
   ['getGuideBySlug', () => q.getGuideBySlug('s'), ['guide-by-slug', 's'], ['guides']],
-  ['getPublishedEventsForGuide', () => q.getPublishedEventsForGuide(1), ['events-for-guide', '1'], ['events']],
+  ['getPublishedEventsForGuide', () => q.getPublishedEventsForGuide(1), ['events-for-guide', '1'], ['events', 'locations']],
   ['getActiveLocations', () => q.getActiveLocations(), ['active-locations'], ['locations']],
   ['getLocationBySlug', () => q.getLocationBySlug('s'), ['location-by-slug', 's'], ['locations']],
   ['getPublishedEventsForLocation', () => q.getPublishedEventsForLocation(2), ['events-for-location', '2'], ['events']],

@@ -41,15 +41,15 @@ export function getGuideBySlug(slug: string) {
   })
 }
 
-// depth 0 → only title + slug are rendered on /team/[slug], so this depends on events only.
+// depth 1 embeds mainPicture + locations for trip cards on /team/[slug] → tag locations too.
 export function getPublishedEventsForGuide(guideId: number) {
-  return cachedQuery(['events-for-guide', String(guideId)], [TAGS.events], async (): Promise<Event[]> => {
+  return cachedQuery(['events-for-guide', String(guideId)], [TAGS.events, TAGS.locations], async (): Promise<Event[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'events',
       where: { and: [{ coaches: { contains: guideId } }, { state: { equals: 'published' } }] },
       limit: 20,
-      depth: 0,
+      depth: 1,
     })
     return docs
   })
