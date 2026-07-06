@@ -39,7 +39,7 @@
 }
 
 .body {
-  color: rgba(240, 237, 230, 0.72);
+  color: var(--rb-white-60);
   max-width: 560px;
   margin: 0;
   font-size: var(--fs-body-lg);

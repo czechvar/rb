@@ -1,6 +1,6 @@
 .section {
   background: var(--rb-red);
-  padding: 100px 5%;
+  padding: var(--rb-section-pad);
   text-align: center;
 }
 
@@ -9,9 +9,6 @@
   color: rgba(13, 13, 13, 0.5);
 }
 
-.section :global(.section-label)::before {
-  background: rgba(13, 13, 13, 0.5);
-}
 
 .display {
   font-family: 'Bebas Neue', sans-serif;

@@ -8,8 +8,7 @@ const GROUPS: Group[] = [
     label: 'Type',
     links: [
       { label: 'Sport', href: '/programs/sport-climbing-holidays' },
-      { label: 'Trad', href: '/programs/trad-multipitch' },
-      { label: 'Multi-Pitch', href: '/programs/trad-multipitch' },
+      { label: 'Trad & Multi-Pitch', href: '/programs/trad-multipitch' },
       { label: 'Bouldering', href: '/programs/bouldering-camps' },
       { label: 'Big Wall', href: '/programs/road-trips-expeditions' },
       { label: 'Performance Coaching', href: '/programs/performance-technique-camps' },
@@ -76,7 +75,7 @@ export function FindYourTrip() {
         <div className={styles.groups}>
           {GROUPS.map((g) => (
             <div key={g.label} className={styles.group}>
-              <p className={styles.label}>{g.label}</p>
+              <h3 className={styles.label}>{g.label}</h3>
               <ul className={styles.list}>
                 {g.links.map((l) => (
                   <li key={l.href + l.label}>

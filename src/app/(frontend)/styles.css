@@ -357,7 +357,9 @@ ol {
 .btn-ghost    { background: transparent; color: var(--rb-white); border-color: var(--rb-white-30); }
 .btn-ghost:hover { border-color: var(--rb-white); }
 .btn-dark     { background: var(--rb-black); color: var(--rb-white); }
+.btn-dark:hover { background: #000; color: var(--rb-white); }
 .btn-outline-dark { background: transparent; color: var(--rb-black); border-color: var(--rb-black); }
+.btn-outline-dark:hover { background: var(--rb-black); color: var(--rb-white); }
 
 /* ===== Reveal-on-scroll animation (CSS-only, no IO observer) ===== */
 @media (prefers-reduced-motion: no-preference) {

@@ -7,11 +7,11 @@ type StatsStripProps = { backgroundMedia?: Media | null }
 
 export function StatsStrip({ backgroundMedia }: StatsStripProps) {
   return (
-    <div className={styles.band}>
+    <section className={styles.band}>
       {backgroundMedia?.url && (
         <Image
           src={backgroundMedia.url}
-          alt=""
+          alt={backgroundMedia.alt ?? ''}
           fill
           sizes="100vw"
           className={styles.bg}
@@ -28,6 +28,6 @@ export function StatsStrip({ backgroundMedia }: StatsStripProps) {
           View All Coaches &amp; Guides →
         </Link>
       </div>
-    </div>
+    </section>
   )
 }
