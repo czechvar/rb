@@ -29,7 +29,11 @@ export function GuidesGrid({ guides, heading, label, compact = false }: GuidesGr
                       src={url}
                       alt={mediaAlt(g.photo)}
                       fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes={
+                        compact
+                          ? '(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw'
+                          : '(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw'
+                      }
                       className={styles.photo}
                     />
                   ) : (
@@ -37,8 +41,8 @@ export function GuidesGrid({ guides, heading, label, compact = false }: GuidesGr
                   )}
                   <div className={styles.gradient} aria-hidden="true" />
                   <div className={styles.overlay}>
-                    <h3 className={styles.name}>{g.name}</h3>
                     {g.role ? <p className={styles.role}>{g.role}</p> : null}
+                    <h3 className={styles.name}>{g.name}</h3>
                   </div>
                 </div>
                 {!compact && (g.tags?.length || g.tagline) ? (

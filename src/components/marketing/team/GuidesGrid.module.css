@@ -69,14 +69,14 @@
   letter-spacing: 0.04em;
   color: var(--rb-white);
   text-transform: uppercase;
+  margin-top: 6px;
 }
-/* role badge — muted uppercase eyebrow above the name (shown inside overlay) */
+/* role badge — muted uppercase eyebrow rendered BEFORE the name (shown inside overlay) */
 .role {
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--rb-red);
-  margin-top: 6px;
   font-weight: 700;
 }
 
