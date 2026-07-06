@@ -45,6 +45,7 @@ function gradeRange(ev: Event): string | null {
 export function UpcomingTrips({ dates }: UpcomingTripsProps) {
   const now = new Date().toISOString()
   const upcoming = dates
+    // ISO-8601 strings compare lexicographically — safe for Payload's UTC date serialisation
     .filter((d) => d.dateFrom >= now && typeof d.event === 'object')
     .slice(0, 5)
   if (upcoming.length === 0) return null
@@ -112,12 +113,21 @@ export function UpcomingTrips({ dates }: UpcomingTripsProps) {
                         {spots} spots left
                       </span>
                     )}
+                    {spots === 0 && (
+                      <span className={styles.spots}>
+                        <span
+                          className={`${styles.spotsDot} ${styles.spotsDotUrgent}`}
+                          aria-hidden="true"
+                        />
+                        Sold out
+                      </span>
+                    )}
                   </div>
                   <div className={styles.price}>
                     From{' '}
                     <strong>
                       {sym}
-                      {d.price.toLocaleString()}
+                      {d.price.toLocaleString('en-GB')}
                     </strong>
                   </div>
                 </div>
