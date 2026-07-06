@@ -98,7 +98,7 @@ export function UpcomingTrips({ dates }: UpcomingTripsProps) {
                 <div className={styles.overlay} aria-hidden="true" />
                 <div className={styles.content}>
                   <div className={styles.date}>{fmtRange(d.dateFrom, d.dateTo)}</div>
-                  <div className={styles.name}>{ev.title}</div>
+                  <h3 className={styles.name}>{ev.title}</h3>
                   {loc && <div className={styles.dest}>{loc}</div>}
                   {led && <div className={styles.guide}>Led by {led}</div>}
                   <div className={styles.footer}>
