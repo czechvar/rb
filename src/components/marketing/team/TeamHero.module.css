@@ -1,0 +1,104 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 5% 7%;
+  overflow: hidden;
+  background: var(--rb-black);
+  color: var(--rb-white);
+}
+
+/* Background placeholder — page can inject a real image via CSS custom property
+   or a future prop; for now renders the dark base colour */
+.bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 13, 13, 0.15) 0%,
+    rgba(13, 13, 13, 0.1) 30%,
+    rgba(13, 13, 13, 0.6) 65%,
+    rgba(13, 13, 13, 0.92) 100%
+  );
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--rb-red);
+  text-transform: uppercase;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--rb-red);
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: clamp(72px, 11vw, 140px);
+  line-height: 0.88;
+  letter-spacing: 0.03em;
+  color: var(--rb-white);
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.red {
+  color: var(--rb-red);
+}
+
+.sub {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.65;
+  max-width: 560px;
+  color: rgba(240, 237, 230, 0.78);
+  margin-bottom: 44px;
+  font-weight: 400;
+}
+
+.btnGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.caption {
+  position: absolute;
+  bottom: 28px;
+  right: 5%;
+  z-index: 2;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240, 237, 230, 0.28);
+  font-family: 'Inter', sans-serif;
+}
