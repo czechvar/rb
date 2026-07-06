@@ -8,11 +8,18 @@
   background: var(--rb-black);
 }
 
+.bg {
+  object-fit: cover;
+  filter: brightness(0.28);
+  z-index: 0;
+}
+
 /* Dark overlay to simulate the wireframe's brightness(0.28) + rgba(13,13,13,0.5) */
 .overlay {
   position: absolute;
   inset: 0;
   background: rgba(13, 13, 13, 0.72);
+  z-index: 1;
 }
 
 .content {

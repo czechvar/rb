@@ -15,11 +15,14 @@ export function TeamFinalCTA() {
         climbing experience.
       </p>
       <div className={styles.ctas}>
-        <Link href="/calendar" className="btn-primary">
+        <Link href="/calendar" className="btn-dark">
           Find My Course →
         </Link>
-        <Link href="/programs" className="btn-ghost">
+        <Link href="/programs" className="btn-outline-dark">
           View All Trips
+        </Link>
+        <Link href="/contact" className="btn-outline-dark">
+          Get in Touch
         </Link>
       </div>
     </section>
