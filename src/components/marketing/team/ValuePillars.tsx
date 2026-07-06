@@ -34,7 +34,7 @@ export function ValuePillars() {
         {PILLARS.map((p, i) => (
           <div key={p.title} className={`${styles.pillar} reveal`}>
             <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
-            <h4 className={styles.title}>{p.title}</h4>
+            <h3 className={styles.title}>{p.title}</h3>
             <p className={styles.body}>{p.body}</p>
           </div>
         ))}

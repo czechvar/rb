@@ -4,7 +4,7 @@
 }
 
 .grid {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -42,7 +42,7 @@
 
 .body {
   font-size: var(--fs-body-sm);
-  color: rgba(240, 237, 230, 0.52);
+  color: var(--rb-white-52);
   line-height: 1.7;
   margin: 0;
 }

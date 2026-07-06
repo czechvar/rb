@@ -15,7 +15,9 @@
   --rb-dark:       #111111;
   --rb-darker:     #0a0a0a;
   --rb-white:      #f0ede6;
+  --rb-white-80:   rgba(240, 237, 230, 0.80);
   --rb-white-60:   rgba(240, 237, 230, 0.60);
+  --rb-white-52:   rgba(240, 237, 230, 0.52);
   --rb-white-45:   rgba(240, 237, 230, 0.45);
   --rb-white-30:   rgba(240, 237, 230, 0.30);
   --rb-white-12:   rgba(240, 237, 230, 0.12);

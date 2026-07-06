@@ -1,10 +1,23 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import type { Media } from '@/payload-types'
 import styles from './TeamHero.module.css'
 
-export function TeamHero() {
+type TeamHeroProps = { backgroundMedia?: Media | null }
+
+export function TeamHero({ backgroundMedia }: TeamHeroProps) {
   return (
     <section className={styles.hero}>
-      <div className={styles.bg} aria-hidden="true" />
+      {backgroundMedia?.url && (
+        <Image
+          src={backgroundMedia.url}
+          alt={backgroundMedia.alt ?? ''}
+          fill
+          priority
+          className={styles.bg}
+          sizes="100vw"
+        />
+      )}
       <div className={styles.overlay} aria-hidden="true" />
       <div className={styles.content}>
         <span className={styles.eyebrow}>Elite Climbing Guides &amp; Coaching</span>
@@ -28,7 +41,9 @@ export function TeamHero() {
           </Link>
         </div>
       </div>
-      <p className={styles.caption}>Jany · Espolón de las Ranas 7c+</p>
+      {backgroundMedia?.url && (
+        <p className={styles.caption}>Jany · Espolón de las Ranas 7c+</p>
+      )}
     </section>
   )
 }
