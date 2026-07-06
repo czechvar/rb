@@ -453,6 +453,19 @@ export interface Guide {
    * e.g. Head coach, Pro climber, Physiotherapist
    */
   role?: string | null;
+  /**
+   * Punchy one-liner shown on team cards and the profile hero.
+   */
+  tagline?: string | null;
+  /**
+   * Short badges, ~3 max. e.g. "Sport 9b", "Basque", "UIAGM".
+   */
+  tags?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
   section: 'team' | 'friends';
   photo?: (number | null) | Media;
   content?: {
@@ -1452,6 +1465,13 @@ export interface GuidesSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   role?: T;
+  tagline?: T;
+  tags?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   section?: T;
   photo?: T;
   content?: T;

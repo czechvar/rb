@@ -16,6 +16,17 @@ export const Guides: CollectionConfig = {
     slugField('name'),
     { name: 'role', type: 'text', admin: { description: 'e.g. Head coach, Pro climber, Physiotherapist' } },
     {
+      name: 'tagline',
+      type: 'textarea',
+      admin: { description: 'Punchy one-liner shown on team cards and the profile hero.' },
+    },
+    {
+      name: 'tags',
+      type: 'array',
+      admin: { description: 'Short badges, ~3 max. e.g. "Sport 9b", "Basque", "UIAGM".' },
+      fields: [{ name: 'text', type: 'text', required: true }],
+    },
+    {
       name: 'section',
       type: 'select',
       options: [
