@@ -1,62 +1,51 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { getActiveGuides } from '@/lib/queries'
+import { getActiveGuides, getActiveEventDates, getHomepageReviews } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
-import { mediaUrl, mediaAlt } from '@/lib/media'
+import { TeamHero } from '@/components/marketing/team/TeamHero'
+import { BornOnTheRock } from '@/components/marketing/team/BornOnTheRock'
+import { ValuePillars } from '@/components/marketing/team/ValuePillars'
+import { GuidesGrid } from '@/components/marketing/team/GuidesGrid'
+import { StatsStrip } from '@/components/marketing/team/StatsStrip'
+import { UpcomingTrips } from '@/components/marketing/team/UpcomingTrips'
+import { FindYourTrip } from '@/components/marketing/team/FindYourTrip'
+import { TeamFinalCTA } from '@/components/marketing/team/TeamFinalCTA'
+import { Testimonials } from '@/components/marketing/homepage/Testimonials'
 import type { Guide } from '@/payload-types'
-import styles from './team.module.css'
 
-export const metadata = { title: 'Rockbusters Team — Rockbusters' }
+export const metadata = {
+  title: 'Guides & Coaches — Rockbusters',
+  description: 'Elite climbers and UIAGM guides leading every Rockbusters trip.',
+}
 
 function byFeaturedThenName(a: Guide, b: Guide) {
   return (
-    Number(b.featured ?? false) - Number(a.featured ?? false) ||
-    a.name.localeCompare(b.name)
-  )
-}
-
-function GuideGrid({ guides }: { guides: Guide[] }) {
-  return (
-    <div className={styles.grid}>
-      {guides.map((g) => {
-        const url = mediaUrl(g.photo)
-        return (
-          <Link key={g.id} href={`/team/${g.slug}`} className={styles.card}>
-            {url ? (
-              <Image
-                src={url}
-                alt={mediaAlt(g.photo)}
-                width={280}
-                height={280}
-                className={styles.photo}
-              />
-            ) : (
-              <span className={styles.photoPlaceholder} aria-hidden="true" />
-            )}
-            <span className={styles.name}>{g.name}</span>
-            {g.role ? <span className={styles.role}>{g.role}</span> : null}
-          </Link>
-        )
-      })}
-    </div>
+    Number(b.featured ?? false) - Number(a.featured ?? false) || a.name.localeCompare(b.name)
   )
 }
 
 export default async function TeamPage() {
-  const docs = await getActiveGuides()
+  const [docs, dates, reviews] = await Promise.all([
+    getActiveGuides(),
+    getActiveEventDates(),
+    getHomepageReviews(),
+  ])
   const team = docs.filter((g) => g.section !== 'friends').sort(byFeaturedThenName)
   const friends = docs.filter((g) => g.section === 'friends').sort(byFeaturedThenName)
+
   return (
-    <MarketingShell crumbs={[{ href: '/', label: 'Home' }, { label: 'Team' }]}>
-      <main className={styles.wrap}>
-        <h1>Rockbusters Team</h1>
-        <GuideGrid guides={team} />
+    <MarketingShell transparentHeader>
+      <main>
+        <TeamHero />
+        <BornOnTheRock />
+        <ValuePillars />
+        <GuidesGrid guides={team} label="The Team" heading="GUIDES & COACHES" />
+        <StatsStrip />
+        <UpcomingTrips dates={dates} />
+        <FindYourTrip />
         {friends.length ? (
-          <>
-            <h2 className={styles.sectionHeading}>Friends &amp; Ambassadors</h2>
-            <GuideGrid guides={friends} />
-          </>
+          <GuidesGrid guides={friends} heading="Friends & Ambassadors" compact />
         ) : null}
+        <Testimonials reviews={reviews} />
+        <TeamFinalCTA />
       </main>
     </MarketingShell>
   )
