@@ -1,33 +1,115 @@
+/* ── LocationBlock — wireframe block 6 "The Venue" destination showcase */
+
 .section {
-  padding: 40px 60px;
-  border-bottom: 1px dashed #c8bfb0;
+  background: var(--rb-black);
+  color: var(--rb-white);
+  padding: 96px 5%;
 }
 
-.section h2 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #1a1a1a;
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.body {
-  font-size: 14px;
-  line-height: 1.75;
-  color: #333;
-  max-width: 720px;
+/* ── Two-column layout: image left, text right ─────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: stretch;
 }
 
-.mapPlaceholder {
-  background: #ddd;
+/* ── Image column ──────────────────────────────────────────────────── */
+.imgCol {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  background: var(--rb-dark);
+}
+
+.img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 220px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Text column ───────────────────────────────────────────────────── */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── Eyebrow ───────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rb-red);
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 11px;
-  color: #999;
-  border-radius: 4px;
-  margin: 16px 0;
+  gap: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--rb-red);
+  flex-shrink: 0;
+}
+
+/* ── Lexical rich-text prose ───────────────────────────────────────── */
+.prose {
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--rb-white-60);
+}
+
+.prose p {
+  margin-bottom: 1rem;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose strong {
+  color: var(--rb-white);
+  font-weight: 600;
+}
+
+.prose a {
+  color: var(--rb-red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--rb-red-hover);
+}
+
+/* ── Responsive ────────────────────────────────────────────────────── */
+@media screen and (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .imgCol {
+    min-height: 300px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 64px 5%;
+  }
 }
