@@ -1,65 +1,114 @@
+/* ── AudienceCards — wireframe block 3 "Who This Camp Is For" ───────── */
+
 .section {
-  padding: var(--sectionGapMd) var(--contentPadding);
+  background: var(--rb-dark);
+  color: var(--rb-white);
+  padding: 96px 5%;
 }
 
-.grid {
-  max-width: var(--contentTextMaxWidth);
+.inner {
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+/* ── Grid ──────────────────────────────────────────── */
+.grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 1.5px;
+  margin-top: 3rem;
+  background: var(--rb-white-08);
+  border: 1px solid var(--rb-white-08);
 }
 
+/* ── Card ──────────────────────────────────────────── */
 .card {
-  padding: 4rem 3rem;
-  background: #ffffff;
-  border: 1px solid var(--rb-white-12);
-  border-radius: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  background: var(--rb-black);
+  padding: 2rem 1.8rem;
+  transition: background 0.2s;
+}
+
+.card:hover {
+  background: #131313;
 }
 
 .highlighted {
+  border: 1px solid var(--rb-red-border);
+  background: var(--rb-black);
+  position: relative;
+}
+
+.highlighted::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
   background: var(--rb-red);
-  color: var(--rb-white);
-  border-color: var(--rb-red);
 }
 
+/* ── Card num ──────────────────────────────────────── */
+.num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--rb-red);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+/* ── Card heading ──────────────────────────────────── */
 .heading {
-  font-size: var(--h4FontSize);
-  line-height: var(--h4LineHeight);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: var(--rb-white);
+  margin-bottom: 0.6rem;
 }
 
+/* ── Card body ─────────────────────────────────────── */
 .body {
-  font-size: var(--pFontSize);
-  line-height: var(--textLineHeight);
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
+  line-height: 1.6;
+  margin: 0;
 }
 
+/* ── Footer notes ──────────────────────────────────── */
 .soloNote {
-  max-width: var(--contentTextMaxWidth);
-  margin: 2rem auto 0;
-  font-size: var(--pFontSize);
-  line-height: var(--textLineHeight);
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
+  line-height: 1.6;
 }
 
 .callout {
-  max-width: var(--contentTextMaxWidth);
+  max-width: 1200px;
   margin: 2rem auto 0;
   padding: 1.5rem 2rem;
-  background: #ffffff;
+  background: rgba(240, 237, 230, 0.04);
   border: 1px solid var(--rb-white-12);
-  border-radius: 0.4rem;
-  font-size: var(--pFontSize);
-  line-height: var(--textLineHeight);
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-60);
+  line-height: 1.6;
 }
 
-@media screen and (max-width: 767px) {
+/* ── Responsive ────────────────────────────────────── */
+@media screen and (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 64px 5%;
+  }
+
   .grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  .card {
-    padding: 3rem 2.5rem;
   }
 }

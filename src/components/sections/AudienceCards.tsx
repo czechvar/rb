@@ -15,24 +15,27 @@ export function AudienceCards({
   if (!cards?.length) return null
   return (
     <section className={styles.section}>
-      <SectionIntro title="Who this camp for" />
-      <div className={styles.grid}>
-        {cards.map((c, i) => (
-          <div
-            key={i}
-            className={`${styles.card} ${c.highlighted ? styles.highlighted : ''}`}
-          >
-            <h3 className={styles.heading}>{c.heading}</h3>
-            <p className={styles.body}>{c.body}</p>
-          </div>
-        ))}
-      </div>
-      {soloNote && <p className={styles.soloNote}>{soloNote}</p>}
-      {redirectCallout && (
-        <div className={styles.callout}>
-          <Lexical data={redirectCallout} />
+      <div className={styles.inner}>
+        <SectionIntro title="Who this camp is for" align="left" />
+        <div className={styles.grid}>
+          {cards.map((c, i) => (
+            <div
+              key={i}
+              className={`${styles.card} ${c.highlighted ? styles.highlighted : ''}`}
+            >
+              <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
+              <h3 className={styles.heading}>{c.heading}</h3>
+              <p className={styles.body}>{c.body}</p>
+            </div>
+          ))}
         </div>
-      )}
+        {soloNote && <p className={styles.soloNote}>{soloNote}</p>}
+        {redirectCallout && (
+          <div className={styles.callout}>
+            <Lexical data={redirectCallout} />
+          </div>
+        )}
+      </div>
     </section>
   )
 }
