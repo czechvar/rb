@@ -15,6 +15,12 @@
   align-items: start;
 }
 
+/* when no stats are available, collapse to a single centred column */
+.innerSingle {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+}
+
 /* ── Left column ─────────────────────────────── */
 .left {
   display: flex;

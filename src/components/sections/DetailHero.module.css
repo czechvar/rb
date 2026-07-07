@@ -40,6 +40,11 @@
   width: 100%;
 }
 
+/* text column — constrain width per wireframe .hero-text-col */
+.textCol {
+  max-width: 560px;
+}
+
 /* meta row above the h1 */
 .meta {
   display: flex;

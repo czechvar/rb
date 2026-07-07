@@ -1,11 +1,27 @@
 import Link from 'next/link'
-import type { Event } from '@/payload-types'
+import type { Event, Location, Difficulty } from '@/payload-types'
 import styles from './TripPitchBlock.module.css'
 
 export function TripPitchBlock({ event }: { event: Event }) {
+  // Derive location stat from first embedded location object
+  const firstLocation =
+    event.locations?.find((l): l is Location => typeof l === 'object' && l !== null) ?? null
+
+  // Derive grade range stat from embedded difficulty objects
+  const embeddedDifficulties =
+    event.difficulties?.filter((d): d is Difficulty => typeof d === 'object' && d !== null) ?? []
+  const gradeRange =
+    embeddedDifficulties.length > 1
+      ? `${embeddedDifficulties[0].name} → ${embeddedDifficulties[embeddedDifficulties.length - 1].name}`
+      : embeddedDifficulties.length === 1
+        ? embeddedDifficulties[0].name
+        : null
+
+  const hasStats = firstLocation !== null || gradeRange !== null
+
   return (
     <section className={styles.pitch}>
-      <div className={styles.inner}>
+      <div className={`${styles.inner} ${!hasStats ? styles.innerSingle : ''}`}>
         <div className={styles.left}>
           <span className={styles.eyebrow}>About the Trip</span>
           <h2 className={styles.headline}>{event.title}</h2>
@@ -16,31 +32,24 @@ export function TripPitchBlock({ event }: { event: Event }) {
             Book Now
           </Link>
         </div>
-        <div className={styles.right}>
-          {/* stats grid — placeholder cells, wired with real data in a later task */}
-          <div className={styles.statsGrid}>
-            <div className={styles.stat}>
-              <span className={styles.statLabel}>Duration</span>
-              <span className={styles.statValue}>7 or 14 Days</span>
-              <span className={styles.statSub}>Flexible formats</span>
-            </div>
-            <div className={styles.stat}>
-              <span className={styles.statLabel}>Location</span>
-              <span className={styles.statValue}>Rodellar, Spain</span>
-              <span className={styles.statSub}>Limestone canyon</span>
-            </div>
-            <div className={styles.stat}>
-              <span className={styles.statLabel}>Grade Range</span>
-              <span className={styles.statValue}>6b → 8a</span>
-              <span className={styles.statSub}>Sweet spot 7a – 7c+</span>
-            </div>
-            <div className={styles.stat}>
-              <span className={styles.statLabel}>Group Size</span>
-              <span className={styles.statValue}>Max 8 Climbers</span>
-              <span className={styles.statSub}>Personal coaching guaranteed</span>
+        {hasStats && (
+          <div className={styles.right}>
+            <div className={styles.statsGrid}>
+              {firstLocation && (
+                <div className={styles.stat}>
+                  <span className={styles.statLabel}>Destination</span>
+                  <span className={styles.statValue}>{firstLocation.name}</span>
+                </div>
+              )}
+              {gradeRange && (
+                <div className={styles.stat}>
+                  <span className={styles.statLabel}>Grade range</span>
+                  <span className={styles.statValue}>{gradeRange}</span>
+                </div>
+              )}
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   )

@@ -13,6 +13,7 @@ export function SectionIntro({
 }) {
   return (
     <section
+      id="overview"
       className={`${styles.intro} ${align === 'center' ? styles.center : styles.left}`}
     >
       <div className={styles.inner}>
