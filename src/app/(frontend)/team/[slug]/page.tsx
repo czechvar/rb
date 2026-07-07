@@ -43,6 +43,7 @@ export default async function GuidePage({ params }: Props) {
               title={`${guide.name} — video`}
               allow="fullscreen; picture-in-picture"
               allowFullScreen
+              loading="lazy"
             />
           </section>
         ) : null}

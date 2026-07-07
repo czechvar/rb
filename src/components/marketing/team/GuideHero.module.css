@@ -1,4 +1,6 @@
 .hero { background: var(--rb-black); position: relative; overflow: hidden; }
+/* text column — keeps content above the photo fade */
+.text { position: relative; z-index: 1; }
 .inner {
   max-width: 1400px; margin: 0 auto;
   display: grid; grid-template-columns: 55% 45%;
