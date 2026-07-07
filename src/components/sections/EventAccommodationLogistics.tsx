@@ -35,55 +35,43 @@ export function EventAccommodationLogistics({
 
   return (
     <section className={styles.section}>
-      <h2>Accommodation &amp; Logistics</h2>
-      <div className={styles.twoCol}>
-        <div className={styles.col}>
-          {(accommodation?.description ||
-            accommodation?.cuisineHighlights) && (
-            <div className={styles.box}>
-              <h3>Accommodation</h3>
-              {accommodation?.description && (
-                <Lexical data={accommodation.description} />
-              )}
+      <div className={styles.inner}>
+        <h2>Everything Sorted</h2>
+        <div className={styles.twoCol}>
+          {hasAccommodation && (
+            <div className={styles.col}>
+              <div className={styles.box}>
+                <h3>Accommodation</h3>
+                {accommodation?.description && (
+                  <Lexical data={accommodation.description} />
+                )}
+                <BulletList items={accommodation?.included} />
+                <BulletList items={accommodation?.notIncluded} />
+                {accommodation?.cuisineHighlights && (
+                  <Lexical data={accommodation.cuisineHighlights} />
+                )}
+              </div>
             </div>
           )}
           {hasTransport && (
-            <div className={styles.box}>
-              <h3>Getting there</h3>
-              {transport?.description && <Lexical data={transport.description} />}
-              {transport?.airports?.length ? (
-                <ul className={styles.bullets}>
-                  {transport.airports.map((a, i) => {
-                    if (typeof a === 'number') return null
-                    return (
-                      <li key={i}>
-                        {a.name}
-                        {a.iata ? ` (${a.iata})` : ''}
-                      </li>
-                    )
-                  })}
-                </ul>
-              ) : null}
-            </div>
-          )}
-        </div>
-        <div className={styles.col}>
-          {accommodation?.included?.length ? (
-            <div className={styles.box}>
-              <h3>Included in our price ✓</h3>
-              <BulletList items={accommodation.included} />
-            </div>
-          ) : null}
-          {accommodation?.notIncluded?.length ? (
-            <div className={styles.box}>
-              <h3>Not included ✗</h3>
-              <BulletList items={accommodation.notIncluded} />
-            </div>
-          ) : null}
-          {accommodation?.cuisineHighlights && (
-            <div className={styles.box}>
-              <h3>Cuisine highlights</h3>
-              <Lexical data={accommodation.cuisineHighlights} />
+            <div className={styles.col}>
+              <div className={styles.box}>
+                <h3>Getting There</h3>
+                {transport?.description && <Lexical data={transport.description} />}
+                {transport?.airports?.length ? (
+                  <ul className={styles.bullets}>
+                    {transport.airports.map((a, i) => {
+                      if (typeof a === 'number') return null
+                      return (
+                        <li key={i}>
+                          {a.name}
+                          {a.iata ? ` (${a.iata})` : ''}
+                        </li>
+                      )
+                    })}
+                  </ul>
+                ) : null}
+              </div>
             </div>
           )}
         </div>

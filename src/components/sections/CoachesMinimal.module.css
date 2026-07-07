@@ -1,85 +1,159 @@
+/* ── CoachesMinimal — wireframe block 7 "World-Class Coaches" ────────
+ *
+ * Wireframe reference:
+ *   docs/html/TRIP-COURSE/.../block_07_block_7.html (.coaches-section)
+ *
+ * Photo-card language copied from GuidesGrid.module.css
+ * (independent component; CSS is copied, not imported).
+ */
+
 .section {
-  padding: var(--sectionGapMd) 0;
-  border-bottom: 1px dashed #c8bfb0;
+  background: var(--rb-dark);
+  color: var(--rb-white);
+  padding: 96px 5%;
 }
 
-.section h2 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #1a1a1a;
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.framing {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #333;
-  max-width: 720px;
-  margin: 12px 0 16px 0;
-}
-
+/* ── Card grid ─────────────────────────────────────── */
 .row {
-  display: flex;
-  gap: 24px;
-  margin: 16px 0;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
+/* ── Single card ───────────────────────────────────── */
 .card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 18px;
-  width: 180px;
-  text-align: center;
-}
-
-.photo,
-.avatarPlaceholder {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  margin: 0 auto 10px;
+  overflow: hidden;
   display: block;
-  object-fit: cover;
 }
 
-.avatarPlaceholder {
-  background: #ddd;
+/* ── Photo wrap (fill + positioned parent) ─────────── */
+.photoWrap {
+  position: relative;
+  /* wireframe: 360px tall, full-width; aspect-ratio approximates 3/4 */
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--rb-black);
+}
+
+.photo {
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.55s ease;
+}
+
+.card:hover .photo {
+  transform: scale(1.04);
+}
+
+.photoPlaceholder {
+  position: absolute;
+  inset: 0;
+  background: var(--rb-white-08);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
-  color: #888;
-  font-family: 'Roboto Mono', monospace;
+  font-size: var(--fs-eyebrow);
+  color: var(--rb-white-45);
+  letter-spacing: 0.1em;
+}
+
+/* heavier gradient — near-opaque at base, fades at top */
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 13, 0.97) 0%,
+    rgba(13, 13, 13, 0.60) 45%,
+    rgba(13, 13, 13, 0.08) 100%
+  );
+}
+
+/* ── Name + role overlay at bottom of photo ────────── */
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 28px 24px;
+}
+
+.role {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
 }
 
 .name {
-  font-weight: bold;
-  font-size: 14px;
-  color: #1a1a1a;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--rb-white);
+  text-transform: uppercase;
 }
 
+/* ── Bio below photo ────────────────────────────────── */
+.bio {
+  padding: 14px 2px 0;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
+  line-height: 1.65;
+}
+
+/* ── Bullets (teamBullets fallback) ─────────────────── */
 .bullets {
   list-style: none;
   padding: 0;
-  margin: 16px 0;
+  margin: 2.5rem auto 0;
   max-width: 720px;
 }
 
 .bullets li {
-  padding: 7px 0 7px 22px;
-  font-size: 13px;
-  color: #333;
+  padding: 0.6rem 0 0.6rem 1.4rem;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
   position: relative;
-  border-bottom: 1px solid #e8e0d4;
-  font-family: 'Roboto Mono', monospace;
+  border-bottom: 1px solid var(--rb-white-12);
+  line-height: 1.55;
+}
+
+.bullets li:last-child {
+  border-bottom: none;
 }
 
 .bullets li::before {
-  content: '→';
+  content: '—';
   position: absolute;
   left: 0;
-  color: #8b5e3c;
+  color: var(--rb-red);
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media screen and (max-width: 900px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 64px 5%;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
 }
