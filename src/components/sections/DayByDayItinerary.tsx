@@ -8,60 +8,73 @@ export function DayByDayItinerary({ data }: { data?: Event['itinerary'] }) {
   if (!data?.days?.length) return null
   return (
     <section className={styles.section}>
-      <SectionIntro title="Daily flow" lead={data.intro ?? undefined} />
-      <ol className={styles.days}>
-        {data.days.map((day, i) => {
-          const url = mediaUrl(day.image)
-          return (
-            <li key={i} className={styles.day}>
-              <div className={styles.imgCol}>
-                {url ? (
-                  <Image
-                    src={url}
-                    alt={mediaAlt(day.image)}
-                    width={320}
-                    height={220}
-                    className={styles.img}
-                  />
-                ) : (
-                  <div className={styles.imgPlaceholder}>
-                    {day.destinationIcon ?? '📍'}
+      <div className={styles.inner}>
+        <SectionIntro title="Daily flow" lead={data.intro ?? undefined} />
+        <ol className={styles.days}>
+          {data.days.map((day, i) => {
+            const url = mediaUrl(day.image)
+            return (
+              <li key={i} className={styles.day}>
+                <div className={styles.imgCol}>
+                  {url ? (
+                    <Image
+                      src={url}
+                      alt={mediaAlt(day.image)}
+                      fill
+                      className={styles.img}
+                    />
+                  ) : (
+                    <div className={styles.imgPlaceholder}>
+                      {day.destinationIcon ?? '📍'}
+                    </div>
+                  )}
+                  <div className={styles.imgMeta}>
+                    {day.dayBadge && (
+                      <div className={styles.dayBadge}>{day.dayBadge}</div>
+                    )}
+                    <div className={styles.destinationName}>
+                      {day.destinationName}
+                    </div>
+                    {day.metaLine && (
+                      <div className={styles.metaLine}>{day.metaLine}</div>
+                    )}
                   </div>
-                )}
-                {day.dayBadge && <div className={styles.dayBadge}>{day.dayBadge}</div>}
-                <div className={styles.destinationName}>{day.destinationName}</div>
-                {day.metaLine && <div className={styles.metaLine}>{day.metaLine}</div>}
-              </div>
-              <div className={styles.body}>
-                {day.eyebrow && <div className={styles.eyebrow}>{day.eyebrow}</div>}
-                {day.heading && <h3>{day.heading}</h3>}
-                {day.description && <p className={styles.description}>{day.description}</p>}
-                {day.highlightTags?.length ? (
-                  <div className={styles.tags}>
-                    {day.highlightTags.map((t, j) => (
-                      <span key={j} className={styles.tag}>
-                        {t.text}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
-                {day.schedule?.length ? (
-                  <table className={styles.schedule}>
-                    <tbody>
-                      {day.schedule.map((row, j) => (
-                        <tr key={j}>
-                          <th>{row.time}</th>
-                          <td>{row.activity}</td>
-                        </tr>
+                </div>
+                <div className={styles.body}>
+                  {day.eyebrow && (
+                    <div className={styles.eyebrow}>{day.eyebrow}</div>
+                  )}
+                  {day.heading && (
+                    <h3 className={styles.heading}>{day.heading}</h3>
+                  )}
+                  {day.description && (
+                    <p className={styles.description}>{day.description}</p>
+                  )}
+                  {day.highlightTags?.length ? (
+                    <div className={styles.tags}>
+                      {day.highlightTags.map((t, j) => (
+                        <span key={j} className={styles.tag}>
+                          {t.text}
+                        </span>
                       ))}
-                    </tbody>
-                  </table>
-                ) : null}
-              </div>
-            </li>
-          )
-        })}
-      </ol>
+                    </div>
+                  ) : null}
+                  {day.schedule?.length ? (
+                    <div className={styles.schedule}>
+                      {day.schedule.map((row, j) => (
+                        <div key={j} className={styles.timeBlock}>
+                          <span className={styles.time}>{row.time}</span>
+                          <span className={styles.activity}>{row.activity}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              </li>
+            )
+          })}
+        </ol>
+      </div>
     </section>
   )
 }

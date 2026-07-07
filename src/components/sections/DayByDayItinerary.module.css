@@ -1,56 +1,46 @@
+/* ── DayByDayItinerary — wireframe block 5 "A Typical Day" ───────── */
+
 .section {
-  padding: var(--sectionGapMd) 0;
-  border-bottom: 1px dashed #c8bfb0;
+  background: var(--rb-dark);
+  color: var(--rb-white);
+  padding: 96px 5%;
 }
 
-.section h2 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #1a1a1a;
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.intro {
-  font-size: 14px;
-  color: #333;
-  max-width: 720px;
-  margin: 12px 0 18px 0;
-  line-height: 1.6;
-}
-
+/* ── Day list ──────────────────────────────────────────────────────── */
 .days {
   list-style: none;
   padding: 0;
-  margin: 16px 0 0 0;
+  margin: 3.5rem 0 0 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 2.5rem;
 }
 
+/* ── Single day card ───────────────────────────────────────────────── */
 .day {
   display: grid;
   grid-template-columns: 320px 1fr;
-  gap: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--rb-white-12);
   overflow: hidden;
 }
 
+/* ── Image column ──────────────────────────────────────────────────── */
 .imgCol {
-  background: #1e1612;
-  color: #d4c5b0;
-  padding: 18px;
+  position: relative;
+  min-height: 260px;
+  background: var(--rb-black);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 220px;
-  position: relative;
+  padding: 1.4rem;
 }
 
-.img,
-.imgPlaceholder {
+.img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -58,133 +48,186 @@
   object-fit: cover;
 }
 
+/* dark gradient overlay so text sits on top of image */
+.imgCol::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13, 13, 13, 0.9) 0%, rgba(13, 13, 13, 0.35) 55%, rgba(13, 13, 13, 0.1) 100%);
+  pointer-events: none;
+}
+
 .imgPlaceholder {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 48px;
-  background: linear-gradient(135deg, #2a1f17, #1e1612);
+  background: linear-gradient(135deg, #1a1412, var(--rb-black));
 }
 
-.dayBadge,
-.destinationName,
-.metaLine {
+/* meta overlay — above the ::after gradient */
+.imgMeta {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-start;
 }
 
 .dayBadge {
   display: inline-block;
-  background: #8b3a1a;
-  color: #fff;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 1px;
-  padding: 3px 8px;
-  border-radius: 2px;
-  margin-bottom: 6px;
+  background: var(--rb-red);
+  color: var(--rb-white);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
   align-self: flex-start;
 }
 
 .destinationName {
-  font-size: 18px;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 4px;
-  background: rgba(0, 0, 0, 0.45);
-  padding: 4px 8px;
-  border-radius: 2px;
-  align-self: flex-start;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: var(--rb-white);
 }
 
 .metaLine {
-  font-size: 11px;
-  font-family: 'Roboto Mono', monospace;
-  color: #d4c5b0;
-  background: rgba(0, 0, 0, 0.45);
-  padding: 4px 8px;
-  border-radius: 2px;
-  align-self: flex-start;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  color: var(--rb-white-60);
+  letter-spacing: 0.05em;
   white-space: pre-line;
+  line-height: 1.5;
 }
 
+/* ── Body column ───────────────────────────────────────────────────── */
 .body {
-  padding: 20px 24px;
+  padding: 2rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .eyebrow {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 11px;
-  color: #8b5e3c;
-  letter-spacing: 1px;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  color: var(--rb-red);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.body h3 {
-  font-size: 17px;
-  font-weight: bold;
-  margin: 0 0 10px 0;
-  color: #1a1a1a;
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--rb-red);
+  flex-shrink: 0;
+}
+
+.heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: var(--rb-white);
+  margin-bottom: 0.75rem;
 }
 
 .description {
-  font-size: 13px;
-  line-height: 1.65;
-  color: #444;
-  margin: 0 0 12px 0;
+  font-size: var(--fs-body-sm);
+  line-height: 1.7;
+  color: var(--rb-white-52);
+  margin-bottom: 1rem;
 }
 
+/* ── Highlight tags ────────────────────────────────────────────────── */
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin: 8px 0 14px 0;
+  margin-bottom: 1.2rem;
 }
 
 .tag {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 11px;
-  background: #fff8ee;
-  border: 1px solid #e8c080;
-  color: #7a5000;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rb-white-60);
+  border: 1px solid var(--rb-white-12);
   padding: 4px 10px;
-  border-radius: 12px;
 }
 
+/* ── Schedule timeline — wireframe .day-schedule / .time-block ─────── */
 .schedule {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 8px;
-  font-size: 12px;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rb-white-12);
 }
 
-.schedule th {
-  text-align: left;
-  font-family: 'Roboto Mono', monospace;
-  font-weight: bold;
-  color: #8b5e3c;
-  padding: 6px 12px 6px 0;
-  width: 80px;
-  vertical-align: top;
+.timeBlock {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rb-white-12);
 }
 
-.schedule td {
-  padding: 6px 0;
-  color: #333;
-  border-bottom: 1px solid #f0e8d8;
-  line-height: 1.5;
+.timeBlock:first-child {
+  padding-top: 0.7rem;
 }
 
-.schedule tr:last-child td {
+.timeBlock:last-child {
   border-bottom: none;
 }
 
-@media (max-width: 800px) {
+.time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  color: var(--rb-red);
+  min-width: 68px;
+  flex-shrink: 0;
+  padding-top: 2px;
+  letter-spacing: 0.03em;
+}
+
+.activity {
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
+  line-height: 1.5;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────── */
+@media screen and (max-width: 900px) {
   .day {
     grid-template-columns: 1fr;
   }
+
   .imgCol {
-    min-height: 180px;
+    min-height: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 64px 5%;
+  }
+
+  .body {
+    padding: 1.5rem;
   }
 }
