@@ -45,8 +45,18 @@ export function EventAccommodationLogistics({
                 {accommodation?.description && (
                   <Lexical data={accommodation.description} />
                 )}
-                <BulletList items={accommodation?.included} />
-                <BulletList items={accommodation?.notIncluded} />
+                {accommodation?.included?.length ? (
+                  <>
+                    <p className={styles.listLabel}>Included in our price</p>
+                    <BulletList items={accommodation.included} />
+                  </>
+                ) : null}
+                {accommodation?.notIncluded?.length ? (
+                  <>
+                    <p className={styles.listLabel + ' ' + styles.listLabelNot}>Not included</p>
+                    <BulletList items={accommodation.notIncluded} />
+                  </>
+                ) : null}
                 {accommodation?.cuisineHighlights && (
                   <Lexical data={accommodation.cuisineHighlights} />
                 )}

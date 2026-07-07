@@ -6,8 +6,10 @@ export function ReviewsRow({ items }: { items?: Review[] }) {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
+        <p className={styles.eyebrow}>Results</p>
+        <h2 className={styles.title}>What Past Campers Say</h2>
         <div className={styles.grid}>
-          {items.map(review => (
+          {items.slice(0, 3).map(review => (
             <blockquote key={review.id} className={styles.card}>
               <p className={styles.body}>{review.quote}</p>
               <footer className={styles.attrib}>
