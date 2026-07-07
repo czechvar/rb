@@ -32,7 +32,8 @@ test.describe('Trip Detail hero (Figma R3)', () => {
     await expect(page.getByText('Rodellar, Aragon, Spain', { exact: true })).toBeVisible()
     await expect(page.getByText('Outdoor lead 6b-8a', { exact: true })).toBeVisible()
     await expect(page.getByText(/Free demo of Evolv & Singing Rock/)).toBeVisible()
-    await expect(page.getByRole('link', { name: /BOOK YOUR SPOT/i })).toBeVisible()
+    // Two "book" links exist (sidebar CTA + hero button); assert at least one is visible
+    await expect(page.getByRole('link', { name: /BOOK YOUR SPOT/i }).first()).toBeVisible()
 
     // Tag chip strip
     await expect(page.getByText('RODELLAR, ARAGON, SPAIN', { exact: true })).toBeVisible()

@@ -6,7 +6,7 @@ const BASE = 'http://localhost:3001'
 const subPages = [
   { path: 'dates', heading: /dates|upcoming|event dates/i },
   { path: 'faq', heading: /faq|questions/i },
-  { path: 'logistics', heading: /logistics|accommodation|travel|location/i },
+  { path: 'logistics', heading: /logistics|accommodation|travel|location|everything sorted/i },
 ]
 
 for (const sub of subPages) {
