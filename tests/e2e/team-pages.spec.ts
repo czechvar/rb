@@ -108,6 +108,7 @@ test.describe('team pages', () => {
     await page.goto(`${BASE}/team/${guide.slug}`)
     await expect(page.getByRole('heading', { level: 1 })).toContainText(guide.name, { ignoreCase: true })
     await expect(page.getByRole('heading', { name: /trips with/i })).toBeVisible()
+    await expect(page.getByText(guide.bioLine)).toBeVisible()
   })
 
   test('guide contact details never render', async ({ page }) => {
