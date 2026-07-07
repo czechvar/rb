@@ -21,6 +21,7 @@ export function DayByDayItinerary({ data }: { data?: Event['itinerary'] }) {
                       src={url}
                       alt={mediaAlt(day.image)}
                       fill
+                      sizes="(max-width: 900px) 100vw, 320px"
                       className={styles.img}
                     />
                   ) : (
