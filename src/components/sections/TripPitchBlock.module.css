@@ -51,21 +51,35 @@
   flex-shrink: 0;
 }
 
-.headline {
-  font-family: 'Bebas Neue', sans-serif;
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: -0.005em;
-  color: var(--rb-white);
-  font-size: clamp(40px, 6vw, 88px);
-  margin-bottom: 1.5rem;
+/* ── Lexical rich-text prose (dark bg) ──────── */
+.prose {
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: var(--rb-white-60);
+  margin-bottom: 0;
 }
 
-.lead {
-  font-size: var(--fs-body-lg);
-  line-height: 1.7;
-  color: var(--rb-white-80);
+.prose p {
+  margin-bottom: 1rem;
+}
+
+.prose p:last-child {
   margin-bottom: 0;
+}
+
+.prose strong {
+  color: var(--rb-white);
+  font-weight: 600;
+}
+
+.prose a {
+  color: var(--rb-red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--rb-red-hover);
 }
 
 /* ── Right column: stats grid ────────────────── */

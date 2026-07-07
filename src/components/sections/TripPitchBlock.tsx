@@ -1,4 +1,5 @@
 import type { Event, Location, Difficulty } from '@/payload-types'
+import { Lexical } from '@/lib/lexical'
 import styles from './TripPitchBlock.module.css'
 
 export function TripPitchBlock({ event }: { event: Event }) {
@@ -17,15 +18,19 @@ export function TripPitchBlock({ event }: { event: Event }) {
         : null
 
   const hasStats = firstLocation !== null || gradeRange !== null
+  const hasContent = Boolean(event.content)
+
+  if (!hasContent && !hasStats) return null
 
   return (
     <section className={styles.pitch}>
       <div className={`${styles.inner} ${!hasStats ? styles.innerSingle : ''}`}>
         <div className={styles.left}>
           <span className={styles.eyebrow}>About the Trip</span>
-          <h2 className={styles.headline}>{event.title}</h2>
-          {event.shortDescription && (
-            <p className={styles.lead}>{event.shortDescription}</p>
+          {hasContent && (
+            <div className={styles.prose}>
+              <Lexical data={event.content} />
+            </div>
           )}
           <a href="#dates" className="btn-primary" style={{ marginTop: '2rem' }}>
             Book Now
