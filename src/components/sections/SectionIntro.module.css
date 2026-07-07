@@ -1,43 +1,75 @@
+/* ── SectionIntro — wireframe block 2 overview intro ──────────────── */
+
 .intro {
-  padding: var(--sectionGapMd) var(--contentPadding);
+  background: var(--rb-black);
+  color: var(--rb-white);
+  padding: 96px 5%;
 }
 
 .inner {
-  max-width: var(--contentTextMaxWidth);
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+/* left-aligned by default (wireframe overview layout) */
+.left {
+  text-align: left;
 }
 
 .center {
   text-align: center;
 }
 
-.left {
-  text-align: left;
+.center .inner {
+  max-width: 760px;
 }
 
+/* Red eyebrow line per wireframe — "— About the Camp" style */
 .eyebrow {
-  font-size: var(--eyebrowFontSize);
-  line-height: var(--eyebrowLineHeight);
-  letter-spacing: var(--eyebrowLetterSpacing);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-bottom: var(--eyebrowMarginBottom);
   color: var(--rb-red);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--rb-red);
+  flex-shrink: 0;
 }
 
 .title {
-  font-size: var(--h2FontSize);
-  line-height: var(--h2LineHeight);
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.005em;
+  color: var(--rb-white);
+  font-size: clamp(40px, 6vw, 88px);
   margin-bottom: 1.5rem;
 }
 
 .lead {
-  font-size: var(--pFontSize);
-  line-height: var(--textLineHeight);
-  color: #515151;
+  font-size: var(--fs-body-lg);
+  line-height: 1.7;
+  color: var(--rb-white-80);
+  max-width: 640px;
+}
+
+.center .lead {
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 767px) {
   .intro {
-    padding: var(--sectionGapSm) var(--contentPadding);
+    padding: 64px 5%;
   }
 }

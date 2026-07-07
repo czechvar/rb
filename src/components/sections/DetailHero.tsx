@@ -53,11 +53,15 @@ export function DetailHero({
       )}
       <div className={styles.overlay} />
       <div className={styles.content}>
-        <div className={styles.text}>
+        <div className={styles.textCol}>
           <h1 id="trip-hero-title" className={styles.title}>{event.title}</h1>
           {event.shortDescription && (
             <p className={styles.lead}>{event.shortDescription}</p>
           )}
+          <div className={styles.actions}>
+            <a href="#dates" className="btn-primary">Book Your Spot</a>
+            <a href="#overview" className="btn-ghost">Read the Programme</a>
+          </div>
         </div>
         <div className={styles.sidebar}>
           <PricingSidebar

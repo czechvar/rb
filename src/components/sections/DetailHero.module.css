@@ -1,111 +1,130 @@
+/* ── DetailHero — wireframe block 1 dark hero ─────────────────────── */
+
 .hero {
   position: relative;
-  width: 100%;
-  height: 80vh;
-  min-height: 60rem;
-  /* overflow visible so .chipStrip can bleed below the hero edge */
-  overflow: visible;
-  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 5vw 72px;
+  overflow: hidden;
+  background: var(--rb-black);
+  color: var(--rb-white);
 }
 
+/* background image sits at z-index 0, slightly darkened */
 .image {
   object-fit: cover;
-  object-position: center;
+  object-position: center 30%;
   z-index: 0;
+  filter: brightness(0.45);
 }
 
+/* gradient scrim per wireframe: dark bottom → semi-transparent top */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 13, 0.95) 0%,
+    rgba(13, 13, 13, 0.3)  50%,
+    rgba(13, 13, 13, 0.1)  100%
+  );
   z-index: 1;
 }
 
+/* content: text col left, info card right (absolute on desktop) */
 .content {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: 1fr minmax(28rem, 34rem);
-  gap: 4rem;
-  align-items: center;
-  max-width: var(--contentMaxWidth);
-  margin: 0 auto;
-  padding: var(--headerTotalHeight) var(--contentPadding) 6rem;
+  position: relative;
   z-index: 2;
+  width: 100%;
 }
 
-.text {
+/* meta row above the h1 */
+.meta {
   display: flex;
-  flex-direction: column;
   gap: 2rem;
-  min-width: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.metaItem {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rb-white-60);
+  font-weight: 500;
+}
+
+.metaItem strong {
+  color: var(--rb-white);
 }
 
 .title {
-  font-size: clamp(3.2rem, 6vw, 8rem);
-  line-height: 1.05;
-  font-weight: 700;
-  margin: 0;
-  color: #ffffff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 11vw, 140px);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  color: var(--rb-white);
+  margin: 0 0 0.5rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .lead {
-  font-size: var(--pFontSize);
-  line-height: var(--textLineHeight);
-  max-width: 60ch;
-  opacity: 0.92;
-  margin: 0;
+  font-size: 1.1rem;
+  color: var(--rb-white-60);
+  margin: 0 0 2.5rem;
+  max-width: 560px;
+  line-height: 1.5;
 }
 
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+/* info card — absolute bottom-right on desktop */
 .sidebar {
-  justify-self: end;
-  width: 100%;
-  max-width: 34rem;
+  position: absolute;
+  right: 5vw;
+  bottom: 72px; /* matches hero bottom padding */
+  width: 340px;
+  z-index: 3;
 }
 
+/* chip strip anchored below hero */
 .chipStrip {
   position: absolute;
   bottom: -2rem;
   left: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 4;
 }
 
-@media screen and (max-width: 1023px) {
-  .content {
-    grid-template-columns: 1fr minmax(24rem, 28rem);
-    gap: 2rem;
+/* ── Tablet ──────────────────────────────────────────────── */
+@media screen and (min-width: 901px) {
+  .sidebar {
+    width: 390px;
   }
 }
 
-@media screen and (max-width: 767px) {
+/* ── Mobile ──────────────────────────────────────────────── */
+@media screen and (max-width: 900px) {
   .hero {
-    height: auto;
-    min-height: 0;
-  }
-  .content {
-    position: relative;
-    inset: auto;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding-top: calc(var(--headerTotalHeight) + 4rem);
     padding-bottom: 4rem;
   }
-  .text {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
-    margin: 0 calc(-1 * var(--contentPadding));
-    padding: 4rem var(--contentPadding) 4rem;
-  }
-  .image {
-    object-position: center top;
-  }
-  .overlay {
-    display: none;
-  }
+
   .sidebar {
-    justify-self: stretch;
-    max-width: none;
+    position: static;
+    width: 100%;
+    margin-top: 2rem;
   }
+
   .chipStrip {
     position: relative;
     bottom: auto;
