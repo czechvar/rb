@@ -13,13 +13,14 @@ import { EssentialEquipment } from '@/components/sections/EssentialEquipment'
 import { WhatYouLearn } from '@/components/sections/WhatYouLearn'
 import { BookingCTA } from '@/components/sections/BookingCTA'
 import { DayByDayItinerary } from '@/components/sections/DayByDayItinerary'
+import { LocationBlock } from '@/components/sections/LocationBlock'
 import { PartnerBlock } from '@/components/sections/PartnerBlock'
 import { CoachesMinimal } from '@/components/sections/CoachesMinimal'
 import { DemoLessonBlock } from '@/components/sections/DemoLessonBlock'
 import { ReviewsRow } from '@/components/sections/ReviewsRow'
 import { PhotoGallery } from '@/components/sections/PhotoGallery'
-import { HowToBook } from '@/components/sections/HowToBook'
-import { WhyRockbusters } from '@/components/sections/WhyRockbusters'
+import { EventAccommodationLogistics } from '@/components/sections/EventAccommodationLogistics'
+import { InlineFAQ } from '@/components/sections/InlineFAQ'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -30,12 +31,27 @@ export default async function TripPage({ params }: Props) {
   const event = await getPublishedEventBySlug(slug)
   if (!event) notFound()
 
-  const reviewsResult = await payload.find({
-    collection: 'reviews',
-    where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
-    sort: 'position',
-    limit: 50,
-  })
+  const [reviewsResult, faqsResult] = await Promise.all([
+    payload.find({
+      collection: 'reviews',
+      where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
+      sort: 'position',
+      limit: 50,
+    }),
+    payload.find({
+      collection: 'faqs',
+      where: { and: [{ event: { equals: event.id } }, { active: { equals: true } }] },
+      sort: 'position',
+      limit: 100,
+    }),
+  ])
+
+  // Resolve the first embedded Location object for the destination showcase
+  const firstLocation =
+    event.locations?.find((l) => typeof l === 'object') ?? null
+  const location = typeof firstLocation === 'object' && firstLocation !== null
+    ? firstLocation
+    : null
 
   return (
     <MarketingShell transparentHeader>
@@ -45,15 +61,24 @@ export default async function TripPage({ params }: Props) {
         <TripPitchBlock event={event} />
         <HighlightsGrid items={event.highlights} heading="Trip Highlights" />
         <AudienceCards cards={event.audienceCards} />
-        <Prerequisites items={event.prerequisites} />
-        <EssentialEquipment
-          items={event.essentialEquipment}
-          intro={event.equipmentIntro}
-        />
-        <BookingCTA event={event} heading="Ready to commit?" />
         <WhatYouLearn data={event.whatYouLearn} />
-        <BookingCTA event={event} />
+        <Prerequisites items={event.prerequisites} />
+        <BookingCTA event={event} heading="Ready to commit?" />
         <DayByDayItinerary data={event.itinerary} />
+        {/* LocationBlock — destination showcase (wireframe block 6) */}
+        {location?.content && (
+          <LocationBlock
+            heading={location.name}
+            content={location.content}
+            eyebrow="The Destination"
+            image={location.mainPicture}
+          />
+        )}
+        <CoachesMinimal
+          coaches={event.coaches}
+          framing={event.coachFramingParagraph}
+          teamBullets={event.coachTeamBullets}
+        />
         <PartnerBlock
           partner={event.partner}
           eyebrow={event.partnerEyebrow}
@@ -61,21 +86,22 @@ export default async function TripPage({ params }: Props) {
           description={event.partnerDescription}
           benefits={event.partnerBenefits}
         />
-        <CoachesMinimal
-          coaches={event.coaches}
-          framing={event.coachFramingParagraph}
-          teamBullets={event.coachTeamBullets}
-        />
         <DemoLessonBlock event={event} />
         <ReviewsRow items={reviewsResult.docs} />
+        <EventAccommodationLogistics
+          accommodation={event.accommodation}
+          transport={event.transport}
+        />
+        {/* EssentialEquipment intentionally zero top-pad — must follow EventAccommodationLogistics */}
+        <EssentialEquipment
+          items={event.essentialEquipment}
+          intro={event.equipmentIntro}
+        />
         <PhotoGallery items={event.gallery} />
-        <HowToBook />
-        <WhyRockbusters />
-        <div style={{ textAlign: 'center', padding: '4rem 2rem 0' }}>
-          <Link href={`/trips/${slug}/faq`}>Read the FAQ for this trip →</Link>
-        </div>
-        <div style={{ textAlign: 'center', padding: '2rem' }}>
-          <Link href={`/trips/${slug}/logistics`}>Travel & logistics →</Link>
+        <InlineFAQ faqs={faqsResult.docs} slug={slug} />
+        <BookingCTA event={event} />
+        <div style={{ textAlign: 'center', padding: '2rem 2rem 4rem' }}>
+          <Link href={`/trips/${slug}/logistics`}>Travel &amp; logistics →</Link>
         </div>
       </main>
     </MarketingShell>

@@ -11,6 +11,11 @@
   margin: 0 auto;
 }
 
+/* ── Optional display heading (destination name) ───────────────────── */
+.sectionHeading {
+  margin-bottom: 2.5rem;
+}
+
 /* ── Two-column layout: image left, text right ─────────────────────── */
 .grid {
   display: grid;

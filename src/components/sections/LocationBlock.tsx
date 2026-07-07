@@ -1,25 +1,27 @@
 import Image from 'next/image'
-import type { Type } from '@/payload-types'
+import type { Media, Type } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import styles from './LocationBlock.module.css'
 
 export interface LocationBlockProps {
-  /** Lexical rich-text body — the only data currently available from both callers.
-   *  A third consumer (main trip page, wired in a later task) will pass image +
-   *  facts via the optional props below. */
+  /** Lexical rich-text body — the only data currently available from both callers. */
   content?: Type['content']
+  /** Optional Bebas display heading rendered above the eyebrow + prose
+   *  (e.g. a destination name like "Kalymnos"). Only rendered when provided. */
+  heading?: string
   /** Short all-caps label rendered above the content (e.g. "The Venue").
    *  Omitted when not provided. */
   eyebrow?: string
   /** Optional hero image for the left photo column.
-   *  Accepts a resolved Media object or a raw URL string. */
-  image?: Parameters<typeof mediaUrl>[0]
-  /** Alt text override when `image` is a raw URL string. */
+   *  Accepts a resolved Media object, a Payload numeric ID, or null/undefined.
+   *  NOT a raw URL string — pass a resolved Media object for the URL to render. */
+  image?: number | Media | null | undefined
+  /** Alt text override when the resolved `image` has no alt field set. */
   imageAlt?: string
 }
 
-export function LocationBlock({ content, eyebrow, image, imageAlt }: LocationBlockProps) {
+export function LocationBlock({ content, heading, eyebrow, image, imageAlt }: LocationBlockProps) {
   if (!content) return null
 
   const imgUrl = image ? mediaUrl(image) : undefined
@@ -28,6 +30,7 @@ export function LocationBlock({ content, eyebrow, image, imageAlt }: LocationBlo
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
+        {heading && <h2 className={`section-title ${styles.sectionHeading}`}>{heading}</h2>}
         <div className={imgUrl ? styles.grid : undefined}>
           {/* Left: photo column — only rendered when an image is supplied */}
           {imgUrl && (
