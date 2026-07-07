@@ -104,12 +104,16 @@ test.describe('team pages', () => {
     await expect(page.getByText(guide.tagText).first()).toBeVisible()
   })
 
-  test('/team/[slug] renders the guide profile without leaking contacts', async ({ page }) => {
+  test('guide detail renders hero + trips section', async ({ page }) => {
     await page.goto(`${BASE}/team/${guide.slug}`)
-    await expect(page.getByRole('heading', { level: 1, name: guide.name })).toBeVisible()
-    await expect(page.getByText(guide.bioLine)).toBeVisible()
-    // email/phone exist on the collection but must not be rendered publicly
-    await expect(page.locator('body')).not.toContainText(guide.email)
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(guide.name, { ignoreCase: true })
+    await expect(page.getByRole('heading', { name: /trips with/i })).toBeVisible()
+  })
+
+  test('guide contact details never render', async ({ page }) => {
+    await page.goto(`${BASE}/team/${guide.slug}`)
+    const html = await page.content()
+    expect(html).not.toContain(guide.email)
   })
 
   test('unknown guide slug 404s', async ({ page }) => {
@@ -124,9 +128,16 @@ test.describe('team pages', () => {
     await expect(friendCard).toBeVisible()
   })
 
-  test('/team/[slug] shows the role line', async ({ page }) => {
+  test('/team/[slug] shows the role eyebrow', async ({ page }) => {
     await page.goto(`${BASE}/team/${guide.slug}`)
+    // role is rendered in the GuideHero eyebrow <p> above the h1
     await expect(page.getByText(guide.role)).toBeVisible()
+  })
+
+  test('/team/[slug] shows tagline and tag chip', async ({ page }) => {
+    await page.goto(`${BASE}/team/${guide.slug}`)
+    await expect(page.getByText(guide.tagline)).toBeVisible()
+    await expect(page.getByText(guide.tagText)).toBeVisible()
   })
 })
 
