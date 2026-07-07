@@ -1,11 +1,13 @@
 import styles from './SectionIntro.module.css'
 
 export function SectionIntro({
+  id,
   eyebrow,
   title,
   lead,
   align = 'center',
 }: {
+  id?: string
   eyebrow?: string
   title: string
   lead?: string
@@ -13,7 +15,7 @@ export function SectionIntro({
 }) {
   return (
     <section
-      id="overview"
+      id={id}
       className={`${styles.intro} ${align === 'center' ? styles.center : styles.left}`}
     >
       <div className={styles.inner}>

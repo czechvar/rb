@@ -45,27 +45,6 @@
   max-width: 560px;
 }
 
-/* meta row above the h1 */
-.meta {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.metaItem {
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--rb-white-60);
-  font-weight: 500;
-}
-
-.metaItem strong {
-  color: var(--rb-white);
-}
-
 .title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(72px, 11vw, 140px);
@@ -115,6 +94,12 @@
 @media screen and (min-width: 901px) {
   .sidebar {
     width: 390px;
+  }
+
+  /* prevent text column from running under the absolute sidebar
+     (390px sidebar + 50px gap ≈ 440px reserved on the right) */
+  .textCol {
+    max-width: min(560px, calc(100% - 440px));
   }
 }
 

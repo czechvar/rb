@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import type { Event, Location, Difficulty } from '@/payload-types'
 import styles from './TripPitchBlock.module.css'
 
@@ -28,9 +27,9 @@ export function TripPitchBlock({ event }: { event: Event }) {
           {event.shortDescription && (
             <p className={styles.lead}>{event.shortDescription}</p>
           )}
-          <Link href={`#dates`} className="btn-primary" style={{ marginTop: '2rem' }}>
+          <a href="#dates" className="btn-primary" style={{ marginTop: '2rem' }}>
             Book Now
-          </Link>
+          </a>
         </div>
         {hasStats && (
           <div className={styles.right}>

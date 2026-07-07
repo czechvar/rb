@@ -41,7 +41,7 @@ export default async function TripPage({ params }: Props) {
     <MarketingShell transparentHeader>
       <main>
         <DetailHero event={event} />
-        <SectionIntro title={event.title} lead={event.shortDescription ?? undefined} />
+        <SectionIntro id="overview" title={event.title} lead={event.shortDescription ?? undefined} />
         <TripPitchBlock event={event} />
         <HighlightsGrid items={event.highlights} heading="Trip Highlights" />
         <AudienceCards cards={event.audienceCards} />
