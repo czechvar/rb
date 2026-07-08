@@ -94,7 +94,7 @@ describe('types collection — content fields', () => {
     })
     const airport = await payload.create({
       collection: 'airports',
-      data: { name: `Test Airport ${Date.now()}`, iata: `T${Date.now().toString().slice(-2)}`, active: true },
+      data: { name: `Test Airport ${Date.now()}`, iata: `T${Date.now()}`, active: true },
     })
     // @ts-expect-error state defaulted
     const doc = await payload.create({

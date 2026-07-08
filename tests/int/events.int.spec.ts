@@ -145,7 +145,7 @@ describe('events collection', () => {
     const payload = await getTestPayload()
     const airport = await payload.create({
       collection: 'airports',
-      data: { name: `SZG ${Date.now()}`, iata: `S${Date.now().toString().slice(-2)}`, active: true },
+      data: { name: `SZG ${Date.now()}`, iata: `S${Date.now()}`, active: true },
     })
     // @ts-expect-error state defaulted
     const doc = await payload.create({
