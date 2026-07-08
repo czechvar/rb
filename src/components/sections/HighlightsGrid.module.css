@@ -1,15 +1,29 @@
+/* ── HighlightsGrid — trip/program key highlights ────────────────────── */
+
 .section {
-  padding: var(--sectionGapMd) 0;
+  background: var(--rb-dark);
+  color: var(--rb-white);
+  padding: 0 5% 96px;
 }
 
+/* ── Icon checkmark ─────────────────────────────────── */
 .icon {
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--rb-red);
   line-height: 1;
 }
 
+/* ── Item text ──────────────────────────────────────── */
 .text {
-  font-size: var(--pFontSize);
-  line-height: var(--textLineHeight);
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-60);
+  line-height: 1.6;
   margin: 0;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 0 5% 64px;
+  }
 }

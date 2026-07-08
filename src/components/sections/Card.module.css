@@ -1,20 +1,26 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-  max-width: var(--contentTextMaxWidth);
-  margin: 0 auto;
-  padding: 0 var(--contentPadding);
+  gap: 1.5px;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  background: var(--rb-white-08);
+  border: 1px solid var(--rb-white-08);
 }
 
 .card {
-  background: #ffffff;
+  background: var(--rb-black);
   border: 1px solid var(--rb-white-12);
-  border-radius: 0.4rem;
-  padding: 4rem 3rem;
+  border-radius: 0;
+  padding: 2rem 1.8rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: var(--rb-red-border);
 }
 
 .highlighted {
@@ -23,12 +29,17 @@
   border-color: var(--rb-red);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
   .card {
-    padding: 3rem 2.5rem;
+    padding: 2rem 1.5rem;
   }
 }

@@ -1,27 +1,52 @@
+/* ── DemoLessonBlock — "Try before you commit" ──────────────────────── */
+
 .demo {
-  padding: var(--sectionGapMd) var(--contentPadding);
-  background: #ffffff;
+  background: var(--rb-black);
+  color: var(--rb-white);
+  padding: 0 5% 96px;
 }
 
 .body {
-  max-width: var(--contentTextMaxWidth);
+  max-width: 1200px;
   margin: 0 auto;
-  font-size: var(--pFontSize);
-  line-height: var(--textLineHeight);
+  font-size: var(--fs-body);
+  color: var(--rb-white-60);
+  line-height: 1.7;
+}
+
+.body p {
+  margin: 0 0 1rem;
+}
+
+.body p:last-child {
+  margin-bottom: 0;
 }
 
 .ctaWrap {
   text-align: center;
+  margin-top: 3rem;
 }
 
 .cta {
   display: inline-block;
-  margin: 3rem auto 0;
-  padding: 1.5rem 3rem;
+  padding: 1.4rem 3rem;
   background: var(--rb-red);
   color: var(--rb-white);
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
+  font-size: var(--fs-body-sm);
   text-transform: uppercase;
-  letter-spacing: 0.15rem;
-  font-size: 1.6rem;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.cta:hover {
+  background: var(--rb-red-hover);
+}
+
+@media screen and (max-width: 600px) {
+  .demo {
+    padding: 0 5% 64px;
+  }
 }

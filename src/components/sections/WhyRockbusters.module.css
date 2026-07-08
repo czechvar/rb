@@ -1,54 +1,57 @@
-.band {
-  background: #e8e2d4;
-  padding: var(--sectionGapMd) 60px;
-  border-top: 2px solid #c8bfb0;
-}
+/* ── WhyRockbusters — USP band (programs only) ──────────────────────── */
 
-.band h2 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 24px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #b0a890;
+.band {
+  background: var(--rb-black);
+  color: var(--rb-white);
+  padding: 0 5% 96px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 900px;
+  gap: 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .grid p {
-  font-size: 14px;
+  font-size: var(--fs-body-sm);
   line-height: 1.75;
-  color: #333;
+  color: var(--rb-white-60);
+  margin: 0;
 }
 
 .grid ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  border-top: 1px solid var(--rb-white-12);
 }
 
 .grid li {
-  padding: 7px 0 7px 22px;
-  font-size: 13px;
-  color: #333;
+  padding: 0.7rem 0 0.7rem 1.5rem;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-60);
   position: relative;
-  font-family: 'Roboto Mono', monospace;
-  border-bottom: 1px solid #d4cdb6;
+  border-bottom: 1px solid var(--rb-white-08);
+  line-height: 1.55;
 }
 
 .grid li::before {
   content: '→';
   position: absolute;
   left: 0;
-  color: #8b5e3c;
+  color: var(--rb-red);
 }
 
 @media (max-width: 800px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .band {
+    padding: 0 5% 64px;
   }
 }

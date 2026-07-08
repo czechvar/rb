@@ -100,8 +100,8 @@ export default async function TripPage({ params }: Props) {
         <PhotoGallery items={event.gallery} />
         <InlineFAQ faqs={faqsResult.docs} slug={slug} />
         <BookingCTA event={event} />
-        <div style={{ textAlign: 'center', padding: '2rem 2rem 4rem' }}>
-          <Link href={`/trips/${slug}/logistics`}>Travel &amp; logistics →</Link>
+        <div style={{ textAlign: 'center', padding: '2rem 2rem 4rem', background: 'var(--rb-dark)' }}>
+          <Link href={`/trips/${slug}/logistics`} style={{ color: 'var(--rb-white-80)', textDecoration: 'none' }}>Travel &amp; logistics →</Link>
         </div>
       </main>
     </MarketingShell>

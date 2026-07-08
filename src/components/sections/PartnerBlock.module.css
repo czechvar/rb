@@ -1,85 +1,98 @@
+/* ── PartnerBlock — "Try Before You Buy" partner section ────────────── */
+
 .section {
-  padding: 40px 60px;
-  border-bottom: 1px dashed #c8bfb0;
+  background: var(--rb-dark);
+  color: var(--rb-white);
+  padding: 96px 5%;
 }
 
 .section h2 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #1a1a1a;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--rb-white);
+  max-width: 1200px;
+  margin: 0 auto 3rem;
 }
 
 .panel {
   display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 32px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 28px;
-  align-items: center;
+  grid-template-columns: 1fr 260px;
+  gap: 1.5px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--rb-white-08);
+  border: 1px solid var(--rb-white-08);
+  align-items: start;
 }
 
 .body {
+  background: var(--rb-black);
+  padding: 2rem 1.8rem;
   min-width: 0;
 }
 
 .eyebrow {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 11px;
-  color: #8b5e3c;
-  letter-spacing: 1px;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  color: var(--rb-red);
+  margin-bottom: 0.75rem;
 }
 
 .body h3 {
-  font-size: 18px;
-  margin: 0 0 12px 0;
-  color: #1a1a1a;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: var(--rb-white);
+  margin: 0 0 1rem 0;
 }
 
 .desc {
-  font-size: 13px;
+  font-size: var(--fs-body-sm);
   line-height: 1.6;
-  color: #444;
-  margin: 0 0 14px 0;
+  color: var(--rb-white-60);
+  margin: 0 0 1.2rem 0;
 }
 
 .benefits {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  border-top: 1px solid var(--rb-white-12);
 }
 
 .benefits li {
-  font-size: 13px;
-  color: #333;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rb-white-08);
+  line-height: 1.5;
 }
 
 .check {
-  color: #1a7a3a;
-  font-weight: bold;
+  color: var(--rb-red);
+  flex-shrink: 0;
+  line-height: 1.5;
 }
 
 .logoBox {
-  background: #faf6ef;
-  border: 1px solid #e8c080;
-  border-radius: 4px;
-  padding: 18px;
+  background: var(--rb-black);
+  padding: 2rem 1.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0.75rem;
+  border-left: 1px solid var(--rb-white-08);
 }
 
 .logo,
@@ -89,30 +102,41 @@
 }
 
 .logoPlaceholder {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 14px;
-  color: #888;
-  padding: 30px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-45);
+  padding: 2rem 0;
 }
 
 .logoName {
-  font-weight: bold;
-  font-size: 14px;
-  color: #1a1a1a;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--rb-white);
 }
 
 .badge {
-  background: #8b3a1a;
-  color: #fff;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 10px;
-  padding: 3px 10px;
-  border-radius: 2px;
-  letter-spacing: 1px;
+  background: var(--rb-red);
+  color: var(--rb-white);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
 }
 
 @media (max-width: 800px) {
+  .section {
+    padding: 64px 5%;
+  }
+
   .panel {
     grid-template-columns: 1fr;
+  }
+
+  .logoBox {
+    border-left: none;
+    border-top: 1px solid var(--rb-white-08);
   }
 }

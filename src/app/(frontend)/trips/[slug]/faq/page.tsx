@@ -32,8 +32,8 @@ export default async function TripFaqPage({ params }: Props) {
     >
       <main>
         <FAQList items={faqs} heading="FAQ for this trip" />
-        <p style={{ textAlign: 'center', padding: '4rem 2rem' }}>
-          <Link href={`/trips/${slug}`}>← Back to {event.title}</Link>
+        <p style={{ textAlign: 'center', padding: '4rem 2rem', background: 'var(--rb-dark)', color: 'var(--rb-white-60)' }}>
+          <Link href={`/trips/${slug}`} style={{ color: 'var(--rb-white-80)', textDecoration: 'none' }}>← Back to {event.title}</Link>
         </p>
       </main>
     </MarketingShell>
