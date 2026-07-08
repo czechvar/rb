@@ -56,8 +56,9 @@ snapshot required).
    on its own line, red/em), `heroSub`, button group: primary
    "Book a course with {firstname} →" → `#trips` anchor; ghost "Meet the full crew"
    → `/team`. `heroCaption` bottom-left.
-2. **Stats bar** — parameterize `StatsStrip` with a `stats` prop; the `/team` listing
-   keeps its current hardcoded defaults when the prop is absent.
+2. **Stats bar** — new `GuideStatsBar` component (red band, Bebas numbers).
+   Note: the team page's `StatsStrip` turned out to be a CTA band, not a numbers
+   bar, so it is left untouched instead of parameterized.
 3. **About** — two-column `who-grid`: left = section label "The Coach", stacked
    headline, bio from `content` richtext; right = facts card + coach quote block.
 4. **Video** — existing Vimeo embed, kept, slotted after About (not in wireframe but
@@ -75,10 +76,9 @@ snapshot required).
 ## Components
 
 - Restyle: `GuideHero` (+ module CSS).
-- Parameterize: `StatsStrip` (`stats?: { value, label }[]`).
-- New (under `src/components/marketing/team/`): `GuideAbout`, `GuidePillars`,
-  `GuideTrips` (or restyle in-page grid), `GuideAchievements`, `GuideTestimonial`,
-  `GuideFinalCTA` (reuse `TeamFinalCTA` styling with per-guide copy if trivial).
+- New (under `src/components/marketing/team/`): `GuideStatsBar`, `GuideAbout`,
+  `GuidePillars`, `GuideTrips`, `GuideAchievements`, `GuideTestimonial`,
+  `GuideFinalCTA` (reuse `TeamFinalCTA` styling with per-guide copy).
 - All headings use global `.section-title` / `.section-label`; buttons use
   `.btn-primary` / `.btn-ghost` / `.btn-dark` equivalents already in `styles.css`.
 
