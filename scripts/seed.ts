@@ -493,6 +493,89 @@ async function main() {
     },
     label: 'marek-novak',
   })
+  const guideJany = await upsert(payload, {
+    collection: 'guides',
+    where: { slug: { equals: 'jany' } },
+    data: {
+      name: 'Jany Novotný',
+      slug: 'jany',
+      role: 'Founder & Head Coach',
+      section: 'team',
+      active: true,
+      featured: true,
+      isFounder: true,
+      heroSub:
+        '25 years on rock, one relentless mission: help you climb better, harder, and more. Jany founded Rockbusters and still coaches every discipline himself — from first lead to your hardest redpoint.',
+      heroCaption: 'Jany · Pince Sans Rire 7b+',
+      stats: [
+        { value: '25+', label: 'Years Climbing & Coaching' },
+        { value: '8b+', label: 'Personal Redpoint Grade' },
+        { value: '5', label: 'Disciplines Coached' },
+        { value: '1', label: 'Founder & Head Coach' },
+      ],
+      content: richText(
+        'Jany trained in Social Politics and Social Work, but the mountains kept calling louder than any career path could. So he built one out of climbing instead — founding Rockbusters (and its sister project, Snowbusters) to turn two decades of guiding and coaching into a full-time mission.',
+        "He's been coaching climbers and skiers since he was twenty, and the throughline across every course he's run is simple: find your real limit, then help you push past it. His style is direct — not everyone's cup of tea, by his own admission — but it's built countless strong climbers and just as many genuine friendships along the way.",
+        "Whether you're learning to lead for the first time or chasing your next redpoint grade, Jany brings the same technical precision and mental coaching to every session, on rock all across Europe.",
+      ),
+      about: {
+        headline: 'CLIMB\nBETTER,\nHARDER,\n*MORE.*',
+        facts: [
+          { label: 'Residence', value: 'Ústí nad Labem, CZ' },
+          { label: 'Years Climbing', value: '25' },
+          { label: 'Role', value: 'Founder & Head Coach' },
+          { label: 'Best Redpoint', value: '8b+' },
+          { label: 'Coaches', value: 'Sport, Boulder, Multi-Pitch, DWS' },
+        ],
+        quote:
+          'My goal is to find your boundaries and help you smash right through them. It might get tough at times — but with the right technical know-how and mental coaching, no goal is out of reach.',
+        quoteAttribution: '— Jany, on how he coaches',
+      },
+      coaching: {
+        intro:
+          "From first footwork to fear management, Jany's coaching covers the full technical and mental range a climber needs to progress safely and quickly.",
+        pillars: [
+          {
+            title: 'Technique, Basic to Advanced',
+            body: 'Footwork, balance, and handhold use through to sidesteps, drop-knees, flagging, heel/toe hooks, and no-hand rests.',
+          },
+          {
+            title: 'Mental Coaching',
+            body: 'Reaching and overcoming individual limits, plus dedicated fear management for climbers stuck below their real potential.',
+          },
+          {
+            title: 'Climbing Safety',
+            body: 'Belaying and lead belaying, anchor set-up, lead climbing technique, spotting, and reading outdoor climbing risk.',
+          },
+          {
+            title: 'Send Tactics',
+            body: 'Onsight, flash, and redpoint strategy — plus the deep water solo–specific safety, technique, and tricks few coaches teach.',
+          },
+        ],
+      },
+      achievements: {
+        intro: 'A working coach who still climbs at the sharp end — recent redpoints across Spain and France.',
+        items: [
+          { route: 'Botanic', location: 'Rodellar, Spain', grade: '8b+' },
+          { route: 'Spirit Rebel', location: 'Rodellar, Spain', grade: '8b' },
+          { route: 'Mal de Amores', location: 'Rodellar, Spain', grade: '8a+' },
+          { route: 'Montserrat', location: 'Rodellar, Spain', grade: '8a+' },
+          { route: 'Tirali Valent', location: 'Sella, Spain', grade: '8a+' },
+          { route: 'La Forqueta del Diablo', location: 'Sella, Spain', grade: '8a+' },
+          { route: 'Les Ailes du Désir, L1–L2', location: 'Gorges du Tarn, France', grade: '8a' },
+          { route: 'Teuchipa', location: 'Céüse, France', grade: '7c' },
+        ],
+      },
+      testimonial: {
+        quote:
+          "Jany pushed me far beyond what I thought were my limits and made me fall even more in love with climbing. I went from 6C to 7C on that trip — and made friends I'll keep for life along the way.",
+        name: 'Carmen Macgee',
+        tripLine: 'Rockbusters Road Trip Client',
+      },
+    },
+    label: 'jany',
+  })
+  void guideJany
 
   console.log('— events —')
 
