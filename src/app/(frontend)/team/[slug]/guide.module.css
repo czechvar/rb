@@ -1,31 +1,3 @@
 .page { background: var(--rb-black); }
-.bio {
-  max-width: 760px; margin: 0 auto; padding: 80px 5%;
-  color: var(--rb-white-60); font-size: var(--fs-body-lg); line-height: 1.8;
-}
-/* Headings inside Lexical content default to --rb-black; override for dark background */
-.bio :global(h1),
-.bio :global(h2),
-.bio :global(h3),
-.bio :global(h4),
-.bio :global(h5) { color: var(--rb-white); }
-/* Links inside bio inherit the white-60 color; red on hover */
-.bio :global(a) { color: var(--rb-red); }
-.bio :global(a:hover) { color: var(--rb-red-hover, var(--rb-red)); }
-.video { max-width: 960px; margin: 0 auto; padding: 0 5% 80px; }
+.video { max-width: 960px; margin: 0 auto; padding: 80px 5% 0; }
 .video iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
-.trips { max-width: 1400px; margin: 0 auto; padding: 0 5% 80px; }
-.tripGrid { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.tripCard {
-  position: relative; min-height: 200px; display: flex; align-items: flex-end;
-  padding: 24px; text-decoration: none; overflow: hidden; background: var(--rb-dark);
-}
-.tripBg { object-fit: cover; }
-.tripScrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,13,13,.9), transparent 60%); }
-.tripTitle {
-  position: relative; font-family: 'Bebas Neue', sans-serif; font-weight: 400;
-  font-size: 32px; color: var(--rb-white); text-transform: uppercase; line-height: 0.95; margin: 0;
-}
-.empty { color: var(--rb-white-45); margin-top: 24px; }
-.cta { text-align: center; padding: 40px 5% 110px; display: grid; gap: 28px; justify-items: center; }
-@media (max-width: 700px) { .tripGrid { grid-template-columns: 1fr; } }
