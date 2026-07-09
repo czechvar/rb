@@ -486,6 +486,86 @@ export interface Guide {
   email?: string | null;
   phone?: string | null;
   vimeoId?: string | null;
+  /**
+   * Hero subtitle paragraph under the name. Falls back to tagline when empty.
+   */
+  heroSub?: string | null;
+  /**
+   * Photo credit, e.g. "Jany · Pince Sans Rire 7b+".
+   */
+  heroCaption?: string | null;
+  /**
+   * Stats bar under the hero, ~4 items (value "25+", label "Years Climbing & Coaching").
+   */
+  stats?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * About section. Bio paragraphs come from the content richtext field.
+   */
+  about?: {
+    /**
+     * One display line per row; wrap a line in *asterisks* to render it red.
+     */
+    headline?: string | null;
+    /**
+     * Facts card rows. Never put email/phone here — public pages must not leak contacts.
+     */
+    facts?:
+      | {
+          label: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    quote?: string | null;
+    /**
+     * e.g. "— Jany, on how he coaches"
+     */
+    quoteAttribution?: string | null;
+  };
+  /**
+   * "What X coaches" numbered pillars.
+   */
+  coaching?: {
+    intro?: string | null;
+    pillars?:
+      | {
+          title: string;
+          body: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * "On the rock" route list.
+   */
+  achievements?: {
+    intro?: string | null;
+    items?:
+      | {
+          route: string;
+          location?: string | null;
+          grade?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Single client testimonial (always rendered with five stars).
+   */
+  testimonial?: {
+    quote?: string | null;
+    name?: string | null;
+    /**
+     * e.g. "Rockbusters Road Trip Client"
+     */
+    tripLine?: string | null;
+  };
   featured?: boolean | null;
   /**
    * Mark the founder card on the homepage.
@@ -1478,6 +1558,61 @@ export interface GuidesSelect<T extends boolean = true> {
   email?: T;
   phone?: T;
   vimeoId?: T;
+  heroSub?: T;
+  heroCaption?: T;
+  stats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  about?:
+    | T
+    | {
+        headline?: T;
+        facts?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+        quote?: T;
+        quoteAttribution?: T;
+      };
+  coaching?:
+    | T
+    | {
+        intro?: T;
+        pillars?:
+          | T
+          | {
+              title?: T;
+              body?: T;
+              id?: T;
+            };
+      };
+  achievements?:
+    | T
+    | {
+        intro?: T;
+        items?:
+          | T
+          | {
+              route?: T;
+              location?: T;
+              grade?: T;
+              id?: T;
+            };
+      };
+  testimonial?:
+    | T
+    | {
+        quote?: T;
+        name?: T;
+        tripLine?: T;
+      };
   featured?: T;
   isFounder?: T;
   active?: T;

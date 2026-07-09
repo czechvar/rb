@@ -10,6 +10,7 @@ import * as migration_20260615_201358_add_discount_referral_collections from './
 import * as migration_20260623_223014_orders_discount_referral_fields from './20260623_223014_orders_discount_referral_fields';
 import * as migration_20260625_065828_add_guides_is_founder from './20260625_065828_add_guides_is_founder';
 import * as migration_20260706_122432_add_guide_tagline_tags from './20260706_122432_add_guide_tagline_tags';
+import * as migration_20260708_160917_add_guide_detail_fields from './20260708_160917_add_guide_detail_fields';
 
 export const migrations = [
   {
@@ -70,6 +71,11 @@ export const migrations = [
   {
     up: migration_20260706_122432_add_guide_tagline_tags.up,
     down: migration_20260706_122432_add_guide_tagline_tags.down,
-    name: '20260706_122432_add_guide_tagline_tags'
+    name: '20260706_122432_add_guide_tagline_tags',
+  },
+  {
+    up: migration_20260708_160917_add_guide_detail_fields.up,
+    down: migration_20260708_160917_add_guide_detail_fields.down,
+    name: '20260708_160917_add_guide_detail_fields'
   },
 ];

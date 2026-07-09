@@ -41,6 +41,79 @@ export const Guides: CollectionConfig = {
     { name: 'email', type: 'email' },
     { name: 'phone', type: 'text' },
     { name: 'vimeoId', type: 'text' },
+    { name: 'heroSub', type: 'textarea', admin: { description: 'Hero subtitle paragraph under the name. Falls back to tagline when empty.' } },
+    { name: 'heroCaption', type: 'text', admin: { description: 'Photo credit, e.g. "Jany · Pince Sans Rire 7b+".' } },
+    {
+      name: 'stats',
+      type: 'array',
+      admin: { description: 'Stats bar under the hero, ~4 items (value "25+", label "Years Climbing & Coaching").' },
+      fields: [
+        { name: 'value', type: 'text', required: true },
+        { name: 'label', type: 'text', required: true },
+      ],
+    },
+    {
+      name: 'about',
+      type: 'group',
+      admin: { description: 'About section. Bio paragraphs come from the content richtext field.' },
+      fields: [
+        { name: 'headline', type: 'textarea', admin: { description: 'One display line per row; wrap a line in *asterisks* to render it red.' } },
+        {
+          name: 'facts',
+          type: 'array',
+          admin: { description: 'Facts card rows. Never put email/phone here — public pages must not leak contacts.' },
+          fields: [
+            { name: 'label', type: 'text', required: true },
+            { name: 'value', type: 'text', required: true },
+          ],
+        },
+        { name: 'quote', type: 'textarea' },
+        { name: 'quoteAttribution', type: 'text', admin: { description: 'e.g. "— Jany, on how he coaches"' } },
+      ],
+    },
+    {
+      name: 'coaching',
+      type: 'group',
+      admin: { description: '"What X coaches" numbered pillars.' },
+      fields: [
+        { name: 'intro', type: 'textarea' },
+        {
+          name: 'pillars',
+          type: 'array',
+          fields: [
+            { name: 'title', type: 'text', required: true },
+            { name: 'body', type: 'textarea', required: true },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'achievements',
+      type: 'group',
+      admin: { description: '"On the rock" route list.' },
+      fields: [
+        { name: 'intro', type: 'textarea' },
+        {
+          name: 'items',
+          type: 'array',
+          fields: [
+            { name: 'route', type: 'text', required: true },
+            { name: 'location', type: 'text' },
+            { name: 'grade', type: 'text' },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'testimonial',
+      type: 'group',
+      admin: { description: 'Single client testimonial (always rendered with five stars).' },
+      fields: [
+        { name: 'quote', type: 'textarea' },
+        { name: 'name', type: 'text' },
+        { name: 'tripLine', type: 'text', admin: { description: 'e.g. "Rockbusters Road Trip Client"' } },
+      ],
+    },
     { name: 'featured', type: 'checkbox', defaultValue: false },
     {
       name: 'isFounder',
