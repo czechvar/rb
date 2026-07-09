@@ -54,6 +54,16 @@ test.beforeAll(async () => {
       section: 'team',
       tagline: guide.tagline,
       tags: [{ text: guide.tagText }],
+      stats: [{ value: '25+', label: 'Years Climbing' }],
+      about: {
+        headline: 'CLIMB\n*MORE.*',
+        facts: [{ label: 'Residence', value: 'Testville' }],
+        quote: 'Find your boundaries.',
+        quoteAttribution: '— E2E',
+      },
+      coaching: { intro: 'Full range.', pillars: [{ title: 'Mental Coaching', body: 'Fear management.' }] },
+      achievements: { intro: 'Recent sends.', items: [{ route: 'Botanic', location: 'Rodellar', grade: '8b+' }] },
+      testimonial: { quote: 'Pushed me beyond my limits.', name: 'Carmen', tripLine: 'Road Trip Client' },
     } as never,
   })
   await payload.create({
@@ -104,10 +114,21 @@ test.describe('team pages', () => {
     await expect(page.getByText(guide.tagText).first()).toBeVisible()
   })
 
-  test('guide detail renders hero + trips section', async ({ page }) => {
+  test('guide detail renders wireframe sections in order', async ({ page }) => {
     await page.goto(`${BASE}/team/${guide.slug}`)
-    await expect(page.getByRole('heading', { level: 1 })).toContainText(guide.name, { ignoreCase: true })
-    await expect(page.getByRole('heading', { name: /trips with/i })).toBeVisible()
+    // h1 splits name at first space: first word + <br/> + <em>rest</em>, so text nodes
+    // concatenate without a space in Playwright's textContent view. Check each token.
+    const h1 = page.getByRole('heading', { level: 1 })
+    await expect(h1).toContainText(guide.name.split(' ')[0], { ignoreCase: true })
+    await expect(h1).toContainText(guide.name.split(' ').slice(1).join(' '), { ignoreCase: true })
+    await expect(page.getByText('25+')).toBeVisible() // stats bar
+    await expect(page.getByRole('heading', { name: /what .* coaches/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /train with/i })).toBeVisible()
+    // GuideAchievements heading is "On the rock" (exact); GuideFinalCTA is "LET'S GET ON THE ROCK"
+    // — both match /on the rock/i, so use the exact achievements heading text.
+    await expect(page.getByRole('heading', { name: 'On the rock', exact: true })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /coached by/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /let's get/i })).toBeVisible()
     await expect(page.getByText(guide.bioLine)).toBeVisible()
   })
 
@@ -131,8 +152,9 @@ test.describe('team pages', () => {
 
   test('/team/[slug] shows the role eyebrow', async ({ page }) => {
     await page.goto(`${BASE}/team/${guide.slug}`)
-    // role is rendered in the GuideHero eyebrow <p> above the h1
-    await expect(page.getByText(guide.role)).toBeVisible()
+    // role is rendered in the GuideHero eyebrow <p> above the h1;
+    // GuideAbout also renders it in a quote-role span, so scope to the hero section.
+    await expect(page.locator('section').first().getByText(guide.role)).toBeVisible()
   })
 
   test('/team/[slug] shows tagline and tag chip', async ({ page }) => {
