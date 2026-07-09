@@ -36,5 +36,6 @@
   font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
   color: rgba(240, 237, 230, 0.38); margin-top: 16px; display: block;
 }
+.gridSingle { grid-template-columns: 1fr; }
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr; gap: 40px; } }
 @media (max-width: 600px) { .section { padding: 60px 5%; } }

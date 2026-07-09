@@ -10,7 +10,7 @@ function Headline({ text }: { text: string }) {
         if (!line) return null
         const accent = line.length > 2 && line.startsWith('*') && line.endsWith('*')
         return (
-          <span key={i} className={accent ? styles.accent : undefined}>
+          <span key={line || i} className={accent ? styles.accent : undefined}>
             {accent ? line.slice(1, -1) : line}
             <br />
           </span>
@@ -29,7 +29,7 @@ export function GuideAbout({ guide }: { guide: Guide }) {
 
   return (
     <section className={styles.section} id="about">
-      <div className={styles.grid}>
+      <div className={hasLeft && hasRight ? styles.grid : `${styles.grid} ${styles.gridSingle}`}>
         {hasLeft ? (
           <div className="reveal">
             <p className={`section-label ${styles.label}`}>The Coach</p>
