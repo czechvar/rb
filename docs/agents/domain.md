@@ -2,7 +2,7 @@
 
 How the engineering skills should consume this repo's domain documentation when exploring the codebase.
 
-**Layout: single-context.** One `CONTEXT.md` + `docs/adr/` at the repo root. Neither exists yet — proceed silently until `/domain-modeling` creates them.
+**Layout: single-context.** One `CONTEXT.md` + `docs/adr/` at the repo root. `CONTEXT.md` exists; `docs/adr/` exists but is empty — ADRs are added lazily by `/domain-modeling` as decisions get resolved.
 
 ## Before exploring, read these
 
