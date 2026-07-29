@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Rockbusters — Stories From The Rock</title>
+<meta name="description" content="Trip dispatches, coaching notes, gear breakdowns and destination guides from the Rockbusters guiding team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Rockbusters Blog",
+  "url": "https://rockbusters.net/blog",
+  "description": "Trip dispatches, coaching notes, gear breakdowns and destination guides from the Rockbusters guiding team.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Rockbusters",
+    "url": "https://rockbusters.net"
+  }
+}
+</script>
+<style>
+:root{
+  --rb-red:#E30713; --rb-red-hover:#c0050f; --rb-red-dim:rgba(227,7,19,0.08); --rb-red-border:rgba(227,7,19,0.28);
+  --rb-black:#0D0D0D; --rb-dark:#111111; --rb-darker:#0a0a0a; --rb-footer:#080808;
+  --rb-white:#F0EDE6; --rb-white-60:rgba(240,237,230,0.60); --rb-white-45:rgba(240,237,230,0.45);
+  --rb-white-30:rgba(240,237,230,0.30); --rb-white-12:rgba(240,237,230,0.12); --rb-white-08:rgba(240,237,230,0.08);
+  --fs-eyebrow:11px; --fs-body-sm:13px; --fs-body:15px; --fs-body-lg:17px; --fs-card-title:16px;
+  --section-pad:90px 5%; --card-pad:36px 28px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--rb-black); color:var(--rb-white); font-family:'Inter',sans-serif;
+  overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit; text-decoration:none;}
+ul{list-style:none;}
+img,svg{display:block; max-width:100%;}
+button, input{font-family:inherit; border:none; outline:none; background:none;}
+
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .65s ease, transform .65s ease;}
+.reveal.visible{opacity:1; transform:translateY(0);}
+
+/* ---------- CONTOUR TEXTURE (signature visual) ---------- */
+.contour{
+  position:relative; overflow:hidden; background:var(--rb-dark);
+}
+.contour::after{
+  content:""; position:absolute; inset:0;
+  background-image: repeating-radial-gradient(circle at var(--cx,30%) var(--cy,20%),
+    rgba(240,237,230,0.07) 0px, rgba(240,237,230,0.07) 1px, transparent 1px, transparent 15px);
+  opacity:.9;
+}
+.contour::before{
+  content:attr(data-grade); position:absolute; z-index:1; right:-6px; bottom:-30px;
+  font-family:'Bebas Neue'; font-size:130px; color:rgba(240,237,230,0.05);
+  letter-spacing:.02em; line-height:1;
+}
+.contour.tint-red::after{ background-image: repeating-radial-gradient(circle at var(--cx,70%) var(--cy,70%),
+    rgba(227,7,19,0.10) 0px, rgba(227,7,19,0.10) 1px, transparent 1px, transparent 15px); }
+
+/* ---------- BUTTONS ---------- */
+.btn-primary,.btn-ghost,.btn-dark,.btn-outline-dark{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:'Inter',sans-serif; font-weight:700; font-size:13px; letter-spacing:.08em;
+  text-transform:uppercase; border-radius:0; cursor:pointer; transition:all .25s ease; white-space:nowrap;
+}
+.btn-primary{background:var(--rb-red); color:var(--rb-black); padding:17px 36px;}
+.btn-primary:hover{background:var(--rb-red-hover);}
+.btn-ghost{background:transparent; color:var(--rb-white); font-weight:500; padding:16px 36px; border:1px solid var(--rb-white-30);}
+.btn-ghost:hover{border-color:var(--rb-white);}
+.btn-dark{background:var(--rb-black); color:var(--rb-white); padding:17px 36px;}
+.btn-dark:hover{background:#1c1c1c;}
+.btn-outline-dark{background:transparent; color:var(--rb-black); font-weight:500; padding:16px 36px; border:1px solid rgba(13,13,13,0.35);}
+.btn-outline-dark:hover{border-color:var(--rb-black);}
+
+/* ---------- NAV (exact from homepage) ---------- */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 22px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(13,13,13,0.85) 0%, transparent 100%);
+  backdrop-filter: blur(0px);
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+.nav.scrolled {
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(240,237,230,0.08);
+}
+.nav-logo-img { height: 32px; width: auto; display: block; filter: brightness(1); transition: opacity 0.2s; }
+.nav-logo-img:hover { opacity: 0.85; }
+.footer-logo-img { height: 36px; width: auto; display: block; margin-bottom: 16px; filter: brightness(1); }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #F0EDE6; font-weight: 600; transition: color 0.2s; font-family:'Inter',sans-serif; position:relative; padding-bottom:4px; }
+.nav-links a:hover { color: #F0EDE6; }
+.nav-links a.active{ color:var(--rb-red); }
+.nav-links a.active::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:2px; background:var(--rb-red); }
+.nav-cta {
+  background: #E30713; color: #0D0D0D;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 11px 22px; border: none; cursor: pointer;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #e8303d; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #F0EDE6; transition: 0.3s; }
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:64vh; padding:160px 5% 7%; display:flex; align-items:flex-end;
+  background: var(--rb-black);
+  position:relative; overflow:hidden;
+}
+.hero-bg{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center 30%; background-repeat:no-repeat;
+  transform:scale(1.03); transition:transform 8s ease-out;
+}
+.hero-bg.loaded{ transform:scale(1); }
+.hero-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.35) 30%, rgba(13,13,13,0.6) 65%, rgba(13,13,13,0.92) 100%);
+}
+.hero-inner{ position:relative; z-index:2; max-width:760px; }
+.eyebrow{
+  display:flex; align-items:center; gap:10px; font-family:'Inter',sans-serif; font-weight:700;
+  font-size:13px; color:var(--rb-red); letter-spacing:.22em; text-transform:uppercase; margin-bottom:20px;
+}
+.eyebrow::before{ content:""; width:32px; height:1px; background:var(--rb-red); }
+.hero h1{
+  font-family:'Bebas Neue'; font-size:clamp(56px,9vw,108px); color:var(--rb-white);
+  line-height:.9; letter-spacing:.02em; margin-bottom:22px;
+}
+.hero h1 em{ color:var(--rb-red); font-style:normal; }
+.hero p{
+  font-family:'Inter',sans-serif; font-weight:400; font-size:clamp(16px,2vw,19px);
+  color:rgba(240,237,230,0.78); max-width:560px; line-height:1.65;
+}
+
+/* ---------- STATS BAR ---------- */
+.stats-bar{ background:var(--rb-red); padding:30px 5%; display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px; }
+.stat{ text-align:center; }
+.stat-num{ font-family:'Bebas Neue'; font-size:52px; color:var(--rb-black); line-height:1; }
+.stat-label{ font-family:'Inter',sans-serif; font-weight:600; font-size:11px; color:rgba(13,13,13,0.6); letter-spacing:.13em; text-transform:uppercase; margin-top:4px; }
+
+/* ---------- FILTER BAR ---------- */
+.filter-bar{
+  position:fixed; top:68px; left:0; right:0; z-index:90;
+  background:rgba(13,13,13,0.96); backdrop-filter:blur(16px); border-bottom:1px solid var(--rb-white-08);
+  padding:18px 5%; display:flex; align-items:center; justify-content:space-between; gap:24px;
+  transform:translateY(-200%); opacity:0; pointer-events:none;
+  transition:transform .35s ease, opacity .35s ease;
+}
+.filter-bar.show{ transform:translateY(0); opacity:1; pointer-events:all; }
+.filter-pills{ display:flex; gap:10px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px; }
+.filter-pills::-webkit-scrollbar{ display:none; }
+.filter-pill{
+  flex:0 0 auto; font-family:'Inter',sans-serif; font-weight:600; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--rb-white-60); padding:9px 16px; border:1px solid var(--rb-white-12);
+  cursor:pointer; transition:all .2s ease; white-space:nowrap;
+}
+.filter-pill:hover{ color:var(--rb-white); border-color:var(--rb-white-30); }
+.filter-pill.active{ background:var(--rb-red); border-color:var(--rb-red); color:var(--rb-black); }
+.sort-control{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+.sort-control label{ font-family:'Inter',sans-serif; font-weight:700; font-size:9px; color:var(--rb-red); letter-spacing:.18em; text-transform:uppercase; }
+.sort-select{
+  font-family:'Inter',sans-serif; font-weight:500; font-size:12px; color:var(--rb-white);
+  background:rgba(240,237,230,0.06); border:1px solid var(--rb-white-12); padding:9px 12px; cursor:pointer;
+}
+.sort-select option{ background:var(--rb-dark); color:var(--rb-white); }
+
+@media (max-width:480px){
+  .filter-bar{
+    position:static !important; top:auto !important; left:auto !important; right:auto !important;
+    transform:none !important; opacity:1 !important; pointer-events:all !important;
+  }
+}
+
+/* ---------- SECTION LABEL / TITLE ---------- */
+.section{ padding:var(--section-pad); }
+.section-label{
+  display:flex; align-items:center; gap:10px; font-family:'Inter',sans-serif; font-weight:700;
+  font-size:var(--fs-eyebrow); color:var(--rb-red); letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px;
+}
+.section-label::before{ content:""; width:24px; height:1px; background:var(--rb-red); }
+.section-title{
+  font-family:'Bebas Neue'; font-size:clamp(38px,5.5vw,64px); color:var(--rb-white);
+  line-height:.94; letter-spacing:.03em; margin-bottom:24px;
+}
+
+/* ---------- FEATURED POST ---------- */
+.featured{
+  display:grid; grid-template-columns:1.1fr .9fr; gap:2px; background:var(--rb-white-08); margin-top:36px;
+}
+.featured-media{ min-height:340px; position:relative; --cx:65%; --cy:35%; }
+.featured-badge{
+  position:absolute; z-index:2; top:20px; left:20px; background:var(--rb-red); color:var(--rb-black);
+  font-family:'Inter',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  padding:6px 12px;
+}
+.featured-body{ background:var(--rb-dark); padding:44px; display:flex; flex-direction:column; justify-content:center; }
+.featured-meta{ display:flex; align-items:center; gap:14px; margin-bottom:16px; flex-wrap:wrap; }
+.cat-tag{
+  font-family:'Inter',sans-serif; font-weight:700; font-size:9px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--rb-red); border:1px solid var(--rb-red-border); padding:5px 10px;
+}
+.post-date{ font-family:'Inter',sans-serif; font-size:11px; color:var(--rb-white-45); letter-spacing:.06em; }
+.grade-tag{ font-family:'Inter',sans-serif; font-weight:700; font-size:11px; color:var(--rb-white-45); letter-spacing:.04em; }
+.grade-tag::before{ content:"•"; margin-right:14px; color:var(--rb-white-30); }
+.featured-body h3{ font-family:'Bebas Neue'; font-size:clamp(30px,3.6vw,44px); color:var(--rb-white); line-height:1.03; letter-spacing:.02em; margin-bottom:18px; }
+.featured-body p{ font-family:'Inter',sans-serif; font-size:15px; color:var(--rb-white-60); line-height:1.75; margin-bottom:26px; max-width:520px; }
+.featured-foot{ display:flex; align-items:center; justify-content:space-between; }
+.author{ font-family:'Inter',sans-serif; font-weight:600; font-size:12px; color:var(--rb-white-45); }
+.read-link{ font-family:'Inter',sans-serif; font-weight:700; font-size:12px; color:var(--rb-red); letter-spacing:.06em; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+.read-link span{ transition:transform .2s ease; }
+.read-link:hover span{ transform:translateX(4px); }
+
+/* ---------- BLOG GRID ---------- */
+.blog-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--rb-white-08); margin-top:2px;
+}
+.post-card{ background:var(--rb-dark); display:flex; flex-direction:column; transition:background .25s ease; }
+.post-card:hover{ background:#161616; }
+.post-thumb{ height:170px; }
+.post-body{ padding:26px 24px; display:flex; flex-direction:column; gap:12px; flex:1; }
+.post-meta{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.post-card h3{ font-family:'Bebas Neue'; font-size:22px; color:var(--rb-white); line-height:1.08; letter-spacing:.02em; }
+.post-card p{ font-family:'Inter',sans-serif; font-size:13px; color:var(--rb-white-45); line-height:1.6; flex:1; }
+.post-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:6px; }
+.post-foot .author{ font-size:11px; }
+.post-foot .read-link{ font-size:11px; }
+
+.empty-state{ display:none; padding:80px 5%; text-align:center; }
+.empty-state.show{ display:block; }
+.empty-state p{ font-family:'Inter',sans-serif; font-size:15px; color:var(--rb-white-45); }
+
+/* ---------- NEWSLETTER CTA ---------- */
+.final-cta{ background:var(--rb-red); padding:100px 5%; text-align:center; }
+.final-cta h2{ font-family:'Bebas Neue'; font-size:clamp(46px,7vw,92px); color:var(--rb-black); line-height:.9; margin-bottom:20px; }
+.final-cta p{ font-family:'Inter',sans-serif; font-size:17px; color:rgba(13,13,13,0.62); line-height:1.6; max-width:480px; margin:0 auto 36px; }
+.subscribe-form{ display:flex; max-width:440px; margin:0 auto; gap:0; }
+.subscribe-form input{
+  flex:1; font-family:'Inter',sans-serif; font-size:14px; padding:17px 20px; background:var(--rb-black); color:var(--rb-white);
+  border:1px solid transparent;
+}
+.subscribe-form input::placeholder{ color:var(--rb-white-45); }
+.subscribe-form button{
+  font-family:'Inter',sans-serif; font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--rb-black); color:var(--rb-white); padding:17px 30px; cursor:pointer; transition:background .25s ease;
+}
+.subscribe-form button:hover{ background:#1c1c1c; }
+
+/* ---------- FOOTER (exact from homepage) ---------- */
+.footer { background: #080808; padding: 72px 5% 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+.footer-brand-logo { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: #F0EDE6; letter-spacing: 0.1em; display: block; margin-bottom: 16px; }
+.footer-brand p { font-size: 13px; color: rgba(240,237,230,0.36); line-height: 1.75; max-width: 260px; font-family:'Inter',sans-serif; }
+.newsletter { display: flex; margin-top: 24px; }
+.newsletter input { background: rgba(240,237,230,0.05); border: 1px solid rgba(240,237,230,0.1); border-right: none; color: #F0EDE6; padding: 11px 16px; font-family: 'Inter', sans-serif; font-size: 13px; flex: 1; outline: none; }
+.newsletter input::placeholder { color: rgba(240,237,230,0.28); }
+.newsletter button { background: #E30713; border: none; color: #0D0D0D; padding: 11px 18px; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.footer-col h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E30713; font-weight: 700; margin-bottom: 20px; font-family:'Inter',sans-serif; }
+.footer-col a { display: block; font-size: 13px; color: rgba(240,237,230,0.4); margin-bottom: 12px; transition: color 0.2s; font-family:'Inter',sans-serif; }
+.footer-col a:hover { color: #F0EDE6; }
+.footer-bottom { border-top: 1px solid rgba(240,237,230,0.07); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: rgba(240,237,230,0.22); font-family:'Inter',sans-serif; }
+.footer-tagline { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: rgba(240,237,230,0.18); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .blog-grid{ grid-template-columns:repeat(2,1fr); }
+  .featured{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:768px){
+  .nav-links{
+    display:none; position:absolute; top:100%; left:0; right:0;
+    flex-direction:column; gap:0; background:rgba(13,13,13,0.97); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--rb-white-08);
+  }
+  .nav-links.open{ display:flex; }
+  .nav-links a{ padding:16px 5%; border-top:1px solid var(--rb-white-08); }
+  .nav-hamburger{ display:flex; }
+}
+@media (max-width:560px){
+  .blog-grid{ grid-template-columns:1fr; }
+  .filter-bar{ flex-direction:column; align-items:stretch; }
+}
+@media (max-width:500px){
+  .footer-grid{ grid-template-columns:1fr; }
+  .footer-bottom{ flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="mainNav">
+  <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="nav-logo-img">
+  <div class="nav-links" id="navLinks">
+    <a href="#trips">Trips &amp; Clinics</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#team">The Crew</a>
+    <a href="#contact">Contact</a>
+    <a href="#blog" class="active">Blog</a>
+  </div>
+  <button class="nav-cta">Find Your Trip</button>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner reveal">
+    <div class="eyebrow">The Rockbusters Blog</div>
+    <h1>STORIES FROM<br>THE <em>ROCK</em></h1>
+    <p>Trip dispatches, coaching notes, gear breakdowns and destination guides — written by the guides and coaches who actually run the trips.</p>
+  </div>
+</header>
+
+<!-- ================= STATS ================= -->
+<section class="stats-bar" id="statsBar">
+  <div class="stat"><div class="stat-num">24</div><div class="stat-label">Articles</div></div>
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">Categories</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">Contributors</div></div>
+  <div class="stat"><div class="stat-num">52</div><div class="stat-label">New posts / year</div></div>
+</section>
+
+<!-- ================= FILTER BAR ================= -->
+<div class="filter-wrap">
+  <div class="filter-bar" id="filterBar">
+    <div class="filter-pills" id="filterPills">
+      <div class="filter-pill active" data-cat="all">All</div>
+      <div class="filter-pill" data-cat="promo">Promo</div>
+      <div class="filter-pill" data-cat="guest-post">Guest Post</div>
+      <div class="filter-pill" data-cat="collaboration">Collaboration</div>
+      <div class="filter-pill" data-cat="climbing-destinations">Climbing Destinations</div>
+      <div class="filter-pill" data-cat="trad-climbing">Trad Climbing</div>
+      <div class="filter-pill" data-cat="bouldering">Bouldering</div>
+      <div class="filter-pill" data-cat="sport-climbing">Sport Climbing</div>
+      <div class="filter-pill" data-cat="video">Video</div>
+      <div class="filter-pill" data-cat="equipment">Equipment</div>
+      <div class="filter-pill" data-cat="contest">Contest</div>
+      <div class="filter-pill" data-cat="destination">Destination</div>
+      <div class="filter-pill" data-cat="news">Rockbusters NEWS</div>
+      <div class="filter-pill" data-cat="training">Training</div>
+      <div class="filter-pill" data-cat="multi-pitch">Multi-Pitch Climbing</div>
+    </div>
+    <div class="sort-control">
+      <label>Sort</label>
+      <select class="sort-select" id="sortSelect">
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FEATURED ================= -->
+<section class="section" style="padding-bottom:0;">
+  <div class="section-label reveal">Latest Dispatch</div>
+  <div class="section-title reveal">Fresh Off The Rock</div>
+  <div class="featured reveal">
+    <div class="featured-media contour tint-red" data-grade="5B">
+      <div class="featured-badge">Featured</div>
+    </div>
+    <div class="featured-body">
+      <div class="featured-meta">
+        <span class="cat-tag">Climbing Destinations</span>
+        <span class="post-date">Jul 5, 2026</span>
+        <span class="grade-tag">6 min read</span>
+      </div>
+      <h3>Inside The ROCK &amp; ROAD Tour: Week 4 Dispatch From Kalymnos</h3>
+      <p>Four weeks and three countries into the 8-week European Sport Climbing Tour, the group hits the tufa-pocked limestone of Kalymnos. Notes from the road, the rest days, and the routes nobody wanted to get off.</p>
+      <div class="featured-foot">
+        <span class="author">Rockbusters Team</span>
+        <a href="#" class="read-link">Read Article <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BLOG GRID ================= -->
+<section class="section">
+  <div class="blog-grid" id="blogGrid"></div>
+  <div class="empty-state" id="emptyState"><p>No stories in this category yet — check back soon or try another filter.</p></div>
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+<section class="final-cta reveal">
+  <h2>Never Miss<br>A Send</h2>
+  <p>One email a week — new dispatches, trip openings, and the odd bit of gear advice worth reading.</p>
+  <form class="subscribe-form" onsubmit="event.preventDefault();">
+    <input type="email" placeholder="Your email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="footer-logo-img">
+      <p>A community of climbing coaches and guides dedicated to maximum progression on real rock across Europe's greatest crags. Climbers. Coaches. Lifers.</p>
+      <form class="newsletter" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h4>Trips</h4>
+      <a href="#">Road Trips</a>
+      <a href="#">Sport Holidays</a>
+      <a href="#">Bouldering Camps</a>
+      <a href="#">Custom Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Coaching</h4>
+      <a href="#">Performance Camps</a>
+      <a href="#">Private Coaching</a>
+      <a href="#">Pro Clinics</a>
+      <a href="#">Video Analysis</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" id="team">Meet the Team</a>
+      <a href="#">Destinations</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Rockbusters. All rights reserved.</p>
+    <span class="footer-tagline">Climbers. Coaches. Lifers.</span>
+  </div>
+</footer>
+
+<script>
+const CATS = {
+  'promo':'Promo','guest-post':'Guest Post','collaboration':'Collaboration',
+  'climbing-destinations':'Climbing Destinations','trad-climbing':'Trad Climbing',
+  'bouldering':'Bouldering','sport-climbing':'Sport Climbing','video':'Video',
+  'equipment':'Equipment','contest':'Contest','destination':'Destination',
+  'news':'Rockbusters NEWS','training':'Training','multi-pitch':'Multi-Pitch Climbing'
+};
+
+const POSTS = [
+  {cat:'promo', date:'2026-07-01', grade:'4A', read:'3 min read', author:'Rockbusters Team', title:'New For 2027: Costa Blanca Season Dates Just Dropped', excerpt:'Early dates for next year\u2019s signature Sport Climbing Holiday are live, with early-bird pricing for the first two weeks.'},
+  {cat:'news', date:'2026-06-24', grade:'6A', read:'7 min read', author:'Head Coach', title:'Why We Rebuilt Trad & Multi-Pitch As A Course, Not A Trip', excerpt:'The thinking behind reframing our trad program around independence — and why "course" is the more honest word.'},
+  {cat:'equipment', date:'2026-06-18', grade:'5C', read:'5 min read', author:'Performance Coach', title:'Grigri vs. Tuber: What We Actually Clip Into At Oliana', excerpt:'A coach\u2019s honest take on belay devices for high-volume redpoint days, not a gear-shop sales pitch.'},
+  {cat:'guest-post', date:'2026-06-10', grade:'7A', read:'8 min read', author:'Guest Contributor', title:'An IFSC Route-Setter On Reading Modern Boulders', excerpt:'A certified route-setter breaks down how competition-style movement reading translates to outdoor bouldering.'},
+  {cat:'bouldering', date:'2026-06-02', grade:'5A', read:'5 min read', author:'Bouldering Lead', title:'Fontainebleau In July: Heat, Crowds, And When To Actually Go', excerpt:'The forest is glorious most of the year and brutal in midsummer. Here\u2019s the real seasonal breakdown.'},
+  {cat:'video', date:'2026-05-27', grade:'3A', read:'2 min read', author:'Media Team', title:'Watch: 60 Seconds Of Sending At Rocklands', excerpt:'A quick cut from this season\u2019s Bouldering Camp — sandstone, sunset, and a lot of pad-stacking.'},
+  {cat:'destination', date:'2026-05-19', grade:'6B', read:'6 min read', author:'Sport Climbing Lead', title:'Sardinia\u2019s Secret Sector: Cala Gonone Beyond The Guidebook', excerpt:'Away from the popular crags, a quieter side of Sardinian limestone worth the extra walk-in.'},
+  {cat:'collaboration', date:'2026-05-11', grade:'4B', read:'4 min read', author:'Rockbusters Team', title:'Partnering With A Local Gear Maker For 2026 Chalk Bags', excerpt:'Why we teamed up with a small European workshop instead of a big-box brand for this year\u2019s camp merch.'},
+  {cat:'multi-pitch', date:'2026-05-04', grade:'6A', read:'7 min read', author:'Trad Coach', title:'Leading Your First Multi-Pitch: The Three Decisions That Matter', excerpt:'Anchor building, rope management and retreat planning — the three calls that actually decide the day.'},
+  {cat:'sport-climbing', date:'2026-04-27', grade:'5B', read:'6 min read', author:'Learn To Lead Coach', title:'Sport Climbing Basics: What Six Days Outdoors Actually Teaches You', excerpt:'A look inside our 100%-outdoors beginner course, day by day, from first clip to first lead fall.'},
+  {cat:'contest', date:'2026-04-20', grade:'4C', read:'4 min read', author:'Rockbusters Team', title:'The Costa Blanca Boulder Cup: Results And Highlights', excerpt:'Recapping our first in-house comp for camp guests — categories, winners, and why we\u2019re doing it again.'},
+  {cat:'multi-pitch', date:'2026-04-13', grade:'6B', read:'7 min read', author:'Trad Coach', title:'Dolomites Course Recap: Five Climbers, Five Ridgelines', excerpt:'Notes from a week of exposed, classic multi-pitch terrain and the moments that built real confidence.'},
+  {cat:'training', date:'2026-04-06', grade:'5C', read:'6 min read', author:'Performance Coach', title:'What\u2019s In A 1:7 Ratio? Inside Performance Camp Coaching', excerpt:'Why we cap coach-to-climber ratios at Oliana and Margalef, and what it changes about how feedback lands.'},
+  {cat:'guest-post', date:'2026-03-30', grade:'7B', read:'9 min read', author:'Guest Contributor', title:'A World Cup Finalist On Training Power Endurance', excerpt:'Guest notes on structuring power-endurance blocks for redpoint season, from someone who\u2019s lived it.'},
+  {cat:'bouldering', date:'2026-03-23', grade:'5A', read:'5 min read', author:'Bouldering Lead', title:'Albarrac\u00edn\u2019s Sandstone: A Beginner\u2019s Field Guide', excerpt:'Soft rock, weird shapes, forgiving landings — why this is often the first stop for new boulderers.'},
+  {cat:'news', date:'2026-03-16', grade:'3B', read:'3 min read', author:'Rockbusters Team', title:'Rockbusters NEWS: We\u2019re Hiring Two New Coaches For 2027', excerpt:'Growing the coaching team ahead of next season — here\u2019s what the roles look like.'},
+  {cat:'equipment', date:'2026-03-09', grade:'5B', read:'5 min read', author:'Sport Climbing Lead', title:'Rope, Draws, Harness: The Only Rack You Need For Leonidio', excerpt:'A no-nonsense packing list for a week of pocketed limestone, with nothing you won\u2019t use.'},
+  {cat:'video', date:'2026-03-02', grade:'3A', read:'2 min read', author:'Media Team', title:'Watch: Behind The Scenes At The Istria Sport Climbing Camp', excerpt:'A short look at a week on the Croatian coast, from breakfast briefings to headtorch descents.'},
+  {cat:'promo', date:'2026-02-23', grade:'4A', read:'3 min read', author:'Rockbusters Team', title:'Early-Bird Pricing Ends Friday: Fontainebleau Camps', excerpt:'A short window left on early pricing for autumn Bouldering Camps in the forest.'},
+  {cat:'climbing-destinations', date:'2026-02-16', grade:'5B', read:'6 min read', author:'Bouldering Lead', title:'Chironico vs. Magic Wood: Which Bouldering Trip Fits You?', excerpt:'Two Swiss valleys, two very different vibes. A guide to picking between our two signature camps.'},
+  {cat:'collaboration', date:'2026-02-09', grade:'5C', read:'6 min read', author:'Performance Coach', title:'Collaboration Spotlight: Building Routes With Flatanger\u2019s Local Guides', excerpt:'How a season-long partnership with local route developers shaped our Performance Camp itinerary.'},
+  {cat:'trad-climbing', date:'2026-01-26', grade:'5A', read:'5 min read', author:'Trad Coach', title:'Trad Climbing 101: Placing Your First Cam With Confidence', excerpt:'The fundamentals we teach before anyone touches real rock — and the mistakes we see most.'},
+  {cat:'trad-climbing', date:'2026-01-19', grade:'6A', read:'6 min read', author:'Trad Coach', title:'Pembroke Grit: A Trad Climber\u2019s Rite Of Passage', excerpt:'Bold, committing, and unforgiving of hesitation — why this coastline earns its reputation.'},
+  {cat:'climbing-destinations', date:'2026-01-12', grade:'6B', read:'6 min read', author:'Sport Climbing Lead', title:'Provence In Spring: The Quiet Window Before The Crowds', excerpt:'A short season worth planning around, before the region fills up with summer traffic.'}
+];
+
+const grid = document.getElementById('blogGrid');
+const emptyState = document.getElementById('emptyState');
+let currentCat = 'all';
+let currentSort = 'newest';
+
+function thumbAttrs(i){
+  const positions = [['30%','20%'],['70%','30%'],['50%','70%'],['20%','65%']];
+  const p = positions[i % positions.length];
+  const tint = i % 3 === 0 ? 'tint-red' : '';
+  return `style="--cx:${p[0]};--cy:${p[1]}" class="post-thumb contour ${tint}"`;
+}
+
+function render(){
+  let list = POSTS.filter(p => currentCat === 'all' || p.cat === currentCat);
+  list.sort((a,b) => currentSort === 'newest'
+    ? new Date(b.date) - new Date(a.date)
+    : new Date(a.date) - new Date(b.date));
+
+  grid.innerHTML = '';
+  list.forEach((p,i) => {
+    const d = new Date(p.date);
+    const dateStr = d.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+    const card = document.createElement('div');
+    card.className = 'post-card reveal';
+    card.innerHTML = `
+      <div ${thumbAttrs(i)} data-grade="${p.grade}"></div>
+      <div class="post-body">
+        <div class="post-meta">
+          <span class="cat-tag">${CATS[p.cat]}</span>
+          <span class="post-date">${dateStr}</span>
+        </div>
+        <h3>${p.title}</h3>
+        <p>${p.excerpt}</p>
+        <div class="post-foot">
+          <span class="author">${p.author}</span>
+          <a href="#" class="read-link">Read <span>→</span></a>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+
+  emptyState.classList.toggle('show', list.length === 0);
+  document.querySelectorAll('.post-card.reveal').forEach(el => observer.observe(el));
+}
+
+document.getElementById('filterPills').addEventListener('click', e => {
+  const pill = e.target.closest('.filter-pill');
+  if(!pill) return;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+  currentCat = pill.dataset.cat;
+  render();
+});
+
+document.getElementById('sortSelect').addEventListener('change', e => {
+  currentSort = e.target.value;
+  render();
+});
+
+document.querySelectorAll('[data-cat-link]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const cat = link.dataset.catLink;
+    const pill = document.querySelector(`.filter-pill[data-cat="${cat}"]`);
+    if(pill){
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentCat = cat;
+      render();
+      document.getElementById('filterBar').scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  });
+});
+
+/* Nav scroll state */
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('open');
+}
+const nav = document.getElementById('mainNav');
+const statsBar = document.getElementById('statsBar');
+const filterBar = document.getElementById('filterBar');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+
+  /* Sticky filter bar: hidden by default, pops up under the nav once the stats bar scrolls out of view (desktop only; mobile stays static via CSS) */
+  if (window.innerWidth > 480) {
+    const statsBottom = statsBar.getBoundingClientRect().bottom;
+    filterBar.classList.toggle('show', statsBottom < 70);
+  }
+});
+
+/* Reveal animations */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+  });
+}, {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* Hero background photo (Chamonix) */
+(function() {
+  var img = new Image();
+  img.onload = function() {
+    var bg = document.getElementById('heroBg');
+    bg.style.backgroundImage = 'url(' + img.src + ')';
+    setTimeout(function(){ bg.classList.add('loaded'); }, 100);
+  };
+  img.src = '';
+})();
+
+render();
+</script>
+</body>
+</html>

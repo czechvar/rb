@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Checkout — Rockbusters</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rb-red:         #E30713;
+  --rb-red-hover:   #c0050f;
+  --rb-red-dim:     rgba(227,7,19,0.08);
+  --rb-red-border:  rgba(227,7,19,0.28);
+  --rb-black:       #0D0D0D;
+  --rb-dark:        #111111;
+  --rb-darker:      #0a0a0a;
+  --rb-white:       #F0EDE6;
+  --rb-white-60:    rgba(240,237,230,0.60);
+  --rb-white-45:    rgba(240,237,230,0.45);
+  --rb-white-30:    rgba(240,237,230,0.30);
+  --rb-white-12:    rgba(240,237,230,0.12);
+  --rb-white-08:    rgba(240,237,230,0.08);
+  --fs-eyebrow:     11px;
+  --fs-body-sm:     13px;
+  --fs-body:        15px;
+  --fs-body-lg:     17px;
+  --fs-card-title:  16px;
+  --section-pad:    90px 5%;
+  --card-pad:       36px 28px;
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--rb-black);
+  color: var(--rb-white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+img { max-width:100%; display:block; }
+a { color:inherit; text-decoration:none; }
+button { font-family:'Inter', sans-serif; cursor:pointer; border:none; }
+input, select, textarea { font-family:'Inter', sans-serif; }
+
+/* ---------- NAV (matches rockbusters homepage) ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 100;
+  padding: 22px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(13,13,13,0.85) 0%, transparent 100%);
+  backdrop-filter: blur(0px);
+  transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s ease;
+}
+.nav.scrolled {
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(240,237,230,0.08);
+}
+.nav-logo-img { height: 32px; width: auto; display: block; transition: opacity 0.2s; }
+.nav-logo-img:hover { opacity: 0.85; }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font: 600 12px 'Inter', sans-serif; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #F0EDE6; transition: color 0.2s; opacity: 0.85;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-right { display: flex; align-items: center; gap: 22px; }
+.nav-secure {
+  display: flex; align-items: center; gap: 8px;
+  font: 700 11px 'Inter', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rb-white-60);
+}
+.nav-secure svg { width: 14px; height: 14px; fill: var(--rb-red); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #F0EDE6; transition: 0.3s; }
+@media (max-width:768px){
+  .nav-links{ display:none; }
+  .nav-links.open{ display:flex; position:absolute; top:100%; left:0; width:100%; flex-direction:column;
+    gap:0; background:rgba(13,13,13,0.97); backdrop-filter:blur(12px); padding:8px 5% 20px; }
+  .nav-links.open a{ padding:14px 0; border-bottom:1px solid var(--rb-white-08); }
+  .nav-hamburger { display:flex; }
+  .nav-secure span.secure-label { display:none; }
+}
+
+/* ---------- HEADER ---------- */
+.checkout-header {
+  padding: 160px 5% 48px;
+  background: var(--rb-black);
+  border-bottom: 1px solid var(--rb-white-08);
+}
+.eyebrow {
+  font:700 var(--fs-eyebrow) 'Inter'; color:var(--rb-red); letter-spacing:0.2em; text-transform:uppercase;
+  display:flex; align-items:center; gap:10px; margin-bottom:14px;
+}
+.eyebrow::before { content:''; width:24px; height:1px; background:var(--rb-red); }
+.checkout-title { font-family:'Bebas Neue'; font-size:clamp(42px,6vw,72px); line-height:0.92; letter-spacing:0.03em; }
+.checkout-title em { color:var(--rb-red); font-style:normal; }
+
+/* ---------- STEPPER ---------- */
+.stepper { display:flex; gap:28px; margin-top:32px; flex-wrap:wrap; }
+.step { display:flex; align-items:center; gap:10px; font:600 11px 'Inter'; letter-spacing:0.1em; text-transform:uppercase; color:var(--rb-white-45); }
+.step-num { width:22px; height:22px; display:flex; align-items:center; justify-content:center; border:1px solid var(--rb-white-30); font-family:'Bebas Neue'; font-size:13px; color:var(--rb-white-45); }
+.step.active { color:var(--rb-white); }
+.step.active .step-num { background:var(--rb-red); border-color:var(--rb-red); color:var(--rb-black); }
+
+/* ---------- LAYOUT ---------- */
+.checkout-wrap {
+  display:grid; grid-template-columns: 1.15fr 0.85fr; gap:1px; background:var(--rb-white-08);
+  min-height: 60vh;
+}
+.panel { background: var(--rb-black); padding: 48px 5% 48px 5%; }
+.panel-left { padding-right: 48px; }
+.panel-right { background: var(--rb-dark); }
+@media (max-width:900px){
+  .checkout-wrap { grid-template-columns: 1fr; }
+  .panel { padding: 40px 6%; }
+}
+
+/* ---------- SECTION HEAD ---------- */
+.panel-head { font-family:'Bebas Neue'; font-size:28px; letter-spacing:0.03em; margin-bottom:22px; padding-bottom:16px; border-bottom:1px solid var(--rb-white-08); display:flex; justify-content:space-between; align-items:center; }
+.panel-head span.count { font-family:'Inter'; font-size:12px; color:var(--rb-white-45); font-weight:600; }
+
+/* ---------- CART ITEMS ---------- */
+#cart-list { display:flex; flex-direction:column; gap:2px; margin-bottom:24px; }
+.cart-item {
+  background:#111; padding:22px 20px; display:grid; grid-template-columns: 1fr auto auto; gap:16px; align-items:center;
+}
+.ci-cat { font:700 9px 'Inter'; color:var(--rb-red); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:6px; }
+.ci-name { font-family:'Bebas Neue'; font-size:20px; letter-spacing:0.02em; margin-bottom:4px; }
+.ci-meta { font:400 12px 'Inter'; color:var(--rb-white-45); }
+.ci-price { font-family:'Bebas Neue'; font-size:20px; white-space:nowrap; }
+.ci-remove {
+  background:transparent; border:1px solid var(--rb-white-12); color:var(--rb-white-45);
+  width:30px; height:30px; font-size:16px; line-height:1; transition:all 0.2s ease;
+}
+.ci-remove:hover { border-color:var(--rb-red); color:var(--rb-red); }
+.cart-empty { padding:40px 20px; text-align:center; color:var(--rb-white-45); font-size:14px; background:#111; }
+
+/* ---------- ADD ANOTHER TRIP (combine weeks) ---------- */
+.combine-box { background:var(--rb-red-dim); border:1px solid var(--rb-red-border); padding:20px; margin-bottom:32px; }
+.combine-box p { font-size:13px; color:var(--rb-white-60); margin-bottom:14px; line-height:1.6; }
+.combine-row { display:flex; gap:10px; flex-wrap:wrap; }
+.combine-row select {
+  flex:1; min-width:200px; background:var(--rb-black); border:1px solid var(--rb-white-12); color:var(--rb-white);
+  padding:12px 14px; font-size:13px;
+}
+.btn-add {
+  background:var(--rb-black); color:var(--rb-white); border:1px solid var(--rb-white-30);
+  font:700 12px 'Inter'; letter-spacing:0.08em; text-transform:uppercase; padding:12px 22px; transition:all 0.2s ease;
+}
+.btn-add:hover { border-color:var(--rb-red); color:var(--rb-red); }
+
+/* ---------- SUMMARY TOTALS ---------- */
+.totals { border-top:1px solid var(--rb-white-08); padding-top:20px; display:flex; flex-direction:column; gap:10px; }
+.totals-row { display:flex; justify-content:space-between; font-size:14px; color:var(--rb-white-60); }
+.totals-row.grand { font-family:'Bebas Neue'; font-size:28px; color:var(--rb-white); padding-top:14px; border-top:1px solid var(--rb-white-08); }
+.totals-row.grand span:last-child { color:var(--rb-red); }
+
+/* ---------- DEPOSIT TOGGLE ---------- */
+.deposit-toggle { display:flex; gap:2px; margin:24px 0; background:var(--rb-white-08); }
+.deposit-opt { flex:1; padding:16px; text-align:center; background:#111; cursor:pointer; transition:background 0.2s ease; }
+.deposit-opt.active { background:var(--rb-red); }
+.deposit-opt.active .do-label, .deposit-opt.active .do-sub { color:var(--rb-black); }
+.do-label { font:700 12px 'Inter'; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px; }
+.do-sub { font-size:11px; color:var(--rb-white-45); }
+
+/* ---------- FORM ---------- */
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.field { display:flex; flex-direction:column; gap:6px; }
+.field.full { grid-column: 1 / -1; }
+.field label { font:600 11px 'Inter'; letter-spacing:0.08em; text-transform:uppercase; color:var(--rb-white-45); }
+.field input, .field select, .field textarea {
+  background:var(--rb-black); border:1px solid var(--rb-white-12); color:var(--rb-white);
+  padding:13px 14px; font-size:14px; transition:border-color 0.2s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:var(--rb-red); }
+.field textarea { resize:vertical; min-height:80px; }
+@media (max-width:560px){ .form-grid{ grid-template-columns:1fr; } }
+
+.terms { display:flex; gap:10px; align-items:flex-start; margin:20px 0 28px; }
+.terms input { margin-top:3px; accent-color:var(--rb-red); }
+.terms label { font-size:12px; color:var(--rb-white-45); line-height:1.6; }
+.terms a { color:var(--rb-red); text-decoration:underline; }
+
+/* ---------- PAY BUTTON ---------- */
+.btn-pay {
+  width:100%; background:var(--rb-red); color:var(--rb-black); font:700 14px 'Inter';
+  letter-spacing:0.08em; text-transform:uppercase; padding:19px 20px; display:flex; align-items:center; justify-content:center; gap:12px;
+  transition:background 0.2s ease;
+}
+.btn-pay:hover { background:var(--rb-red-hover); }
+.btn-pay:disabled { background:var(--rb-white-12); color:var(--rb-white-45); cursor:not-allowed; }
+.btn-pay svg { width:18px; height:18px; }
+
+.trust-row { display:flex; align-items:center; justify-content:center; gap:18px; margin-top:18px; flex-wrap:wrap; }
+.trust-row span { font:500 10px 'Inter'; color:var(--rb-white-30); letter-spacing:0.1em; text-transform:uppercase; }
+
+.pay-msg { font-size:13px; color:var(--rb-white-45); text-align:center; margin-top:14px; min-height:18px; }
+.pay-msg.error { color:var(--rb-red); }
+
+/* ---------- FOOTER (matches rockbusters homepage) ---------- */
+.footer { background: #080808; padding: 72px 5% 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+@media(max-width:900px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px){ .footer-grid { grid-template-columns: 1fr; } }
+.footer-logo-img { height: 36px; width: auto; display: block; margin-bottom: 16px; }
+.footer-brand p { font-size: 13px; color: rgba(240,237,230,0.36); line-height: 1.75; max-width: 260px; }
+.newsletter { display: flex; margin-top: 24px; }
+.newsletter input { background: rgba(240,237,230,0.05); border: 1px solid rgba(240,237,230,0.1); border-right: none; color: #F0EDE6; padding: 11px 16px; font-family: 'Inter', sans-serif; font-size: 13px; flex: 1; outline: none; }
+.newsletter input::placeholder { color: rgba(240,237,230,0.28); }
+.newsletter button { background: #E30713; border: none; color: #0D0D0D; padding: 11px 18px; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.footer-col h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E30713; font-weight: 700; margin-bottom: 20px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(240,237,230,0.4); margin-bottom: 12px; transition: color 0.2s; }
+.footer-col a:hover { color: #F0EDE6; }
+.footer-bottom { border-top: 1px solid rgba(240,237,230,0.07); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: rgba(240,237,230,0.22); }
+.footer-tagline { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: rgba(240,237,230,0.18); }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="/"><!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="nav-logo-img"></a>
+  <div class="nav-links" id="navLinks">
+    <a href="/trips-clinics">Trips &amp; Clinics</a>
+    <a href="/destinations">Destinations</a>
+    <a href="/crew">The Crew</a>
+    <a href="/contact">Contact</a>
+    <a href="/blog">Blog</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-secure">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg>
+      <span class="secure-label">Secure Checkout</span>
+    </div>
+    <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<header class="checkout-header">
+  <div class="eyebrow">Rockbusters Booking</div>
+  <h1 class="checkout-title">Complete Your <em>Booking</em></h1>
+  <div class="stepper">
+    <div class="step active"><span class="step-num">1</span> Review Trip(s)</div>
+    <div class="step active"><span class="step-num">2</span> Your Details</div>
+    <div class="step"><span class="step-num">3</span> Pay with ComGate</div>
+  </div>
+</header>
+
+<div class="checkout-wrap">
+
+  <!-- LEFT: ORDER SUMMARY / CART -->
+  <div class="panel panel-left">
+    <div class="panel-head">Your Trip<span class="count" id="item-count">0 items</span></div>
+
+    <div id="cart-list"></div>
+
+    <div class="combine-box">
+      <p>Combining a Learn to Lead week with a Trad &amp; Multi-Pitch course, or stacking two camps back to back? Add another trip below and we'll bundle it into one booking and one payment.</p>
+      <div class="combine-row">
+        <select id="combine-select"></select>
+        <button class="btn-add" id="combine-add">+ Add to Booking</button>
+      </div>
+    </div>
+
+    <div class="deposit-toggle" id="deposit-toggle">
+      <div class="deposit-opt active" data-mode="full">
+        <div class="do-label">Pay in Full</div>
+        <div class="do-sub">Settle everything today</div>
+      </div>
+      <div class="deposit-opt" data-mode="deposit">
+        <div class="do-label">Pay 30% Deposit</div>
+        <div class="do-sub">Balance due 8 weeks before departure</div>
+      </div>
+    </div>
+
+    <div class="totals">
+      <div class="totals-row"><span>Subtotal</span><span id="sum-subtotal">€0</span></div>
+      <div class="totals-row" id="deposit-row" style="display:none;"><span>Due today (30% deposit)</span><span id="sum-deposit">€0</span></div>
+      <div class="totals-row grand"><span>Total due now</span><span id="sum-total">€0</span></div>
+    </div>
+  </div>
+
+  <!-- RIGHT: CUSTOMER DETAILS + PAYMENT -->
+  <div class="panel panel-right">
+    <div class="panel-head">Your Details</div>
+
+    <form id="checkout-form">
+      <div class="form-grid">
+        <div class="field"><label>Full Name</label><input type="text" name="fullName" required placeholder="Jan Novák"></div>
+        <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Phone</label><input type="tel" name="phone" required placeholder="+420 000 000 000"></div>
+        <div class="field"><label>Country</label>
+          <select name="country" required>
+            <option value="">Select country</option>
+            <option value="CZ">Czech Republic</option>
+            <option value="SK">Slovakia</option>
+            <option value="DE">Germany</option>
+            <option value="AT">Austria</option>
+            <option value="PL">Poland</option>
+            <option value="GB">United Kingdom</option>
+            <option value="OTHER">Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Climbers in Group</label>
+          <select name="climbers">
+            <option value="1">1 — Just me</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5+">5+</option>
+          </select>
+        </div>
+        <div class="field"><label>Trad Grade / Experience</label>
+          <select name="experience">
+            <option value="">Select level</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="field full"><label>Special Requests (dietary, accommodation, etc.)</label><textarea name="notes" placeholder="Optional"></textarea></div>
+      </div>
+
+      <div class="terms">
+        <input type="checkbox" id="terms-check" required>
+        <label for="terms-check">I agree to the <a href="/terms">Booking Terms</a> and <a href="/cancellation">Cancellation Policy</a>, and confirm all climbers hold valid travel insurance.</label>
+      </div>
+
+      <button type="submit" class="btn-pay" id="pay-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="1"/><path d="M3 10h18"/></svg>
+        Pay Securely with ComGate
+      </button>
+      <div class="pay-msg" id="pay-msg"></div>
+
+      <div class="trust-row">
+        <span>256-bit SSL</span>
+        <span>·</span>
+        <span>PCI-DSS Compliant</span>
+        <span>·</span>
+        <span>Powered by ComGate</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="footer-logo-img">
+      <p>A community of climbing coaches and guides dedicated to maximum progression on real rock across Europe's greatest crags. Climbers. Coaches. Lifers.</p>
+      <form class="newsletter" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h4>Trips</h4>
+      <a href="#">Road Trips</a>
+      <a href="#">Sport Holidays</a>
+      <a href="#">Bouldering Camps</a>
+      <a href="#">Custom Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Coaching</h4>
+      <a href="#">Performance Camps</a>
+      <a href="#">Private Coaching</a>
+      <a href="#">Pro Clinics</a>
+      <a href="#">Video Analysis</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" id="team">Meet the Team</a>
+      <a href="#">Destinations</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Rockbusters. All rights reserved.</p>
+    <span class="footer-tagline">Climbers. Coaches. Lifers.</span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================================
+   TRIP CATALOG
+   -------------------------------------------------------------------------
+   This is a small sample so the "combine another trip" selector and the
+   price-tamper-check both have something to reference. Replace / extend
+   this with the real catalog (ideally the SAME data source your 8 category
+   pages already use — a shared JS/JSON file included on every page) so
+   IDs, names and prices never drift out of sync with the live site.
+
+   IMPORTANT: this client-side price list is for DISPLAY ONLY. The backend
+   in /server-example recomputes the price from ITS OWN copy of this catalog
+   using the trip id — it never trusts a price sent from the browser. Never
+   remove that server-side recheck, or a visitor could edit the page and
+   pay less than the real price.
+========================================================================= */
+const TRIP_CATALOG = [
+  { id: 'road-euro-8wk',     category: 'Road Trip',    name: 'ROCK & ROAD — 8-Week European Sport Tour', price: 3450, dates: 'Jun 6 – Aug 1, 2026' },
+  { id: 'sport-costa-blanca',category: 'Sport Holiday', name: 'Costa Blanca Sport Climbing Week',          price: 990,  dates: 'Sep 12 – 19, 2026' },
+  { id: 'ltl-basics',        category: 'Learn to Lead', name: 'Sport Climbing Basics — 6 Days',            price: 780,  dates: 'Oct 4 – 9, 2026' },
+  { id: 'boulder-font',      category: 'Bouldering',    name: 'Fontainebleau Bouldering Camp',              price: 890,  dates: 'Oct 18 – 24, 2026' },
+  { id: 'perf-oliana',       category: 'Performance',   name: 'Oliana Performance & Technique Camp',        price: 1190, dates: 'Nov 2 – 8, 2026' },
+  { id: 'trad-dolomites',    category: 'Trad Course',   name: 'Dolomites Trad & Multi-Pitch Course',        price: 1050, dates: 'Jul 14 – 20, 2026' },
+];
+
+/* =========================================================================
+   CART STATE
+   Cart persists in localStorage so a visitor can add a trip from one page,
+   browse another category, and have both land in the same checkout.
+========================================================================= */
+const CART_KEY = 'rb_cart';
+
+function loadCart() {
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+  catch (e) { return []; }
+}
+function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+
+function addFromURLParams() {
+  const p = new URLSearchParams(window.location.search);
+  if (!p.has('trip')) return;
+  const cart = loadCart();
+  const item = {
+    id: p.get('id') || p.get('trip').toLowerCase().replace(/\s+/g,'-'),
+    category: p.get('category') || 'Trip',
+    name: p.get('trip'),
+    price: Number(p.get('price')) || 0,
+    dates: p.get('dates') || '',
+    weeks: p.get('weeks') || null
+  };
+  // avoid duplicate add on refresh
+  if (!cart.some(c => c.id === item.id)) cart.push(item);
+  saveCart(cart);
+  // clean the URL so refresh doesn't re-add
+  window.history.replaceState({}, '', window.location.pathname);
+}
+
+function removeItem(id) {
+  saveCart(loadCart().filter(c => c.id !== id));
+  render();
+}
+
+function addCatalogItem(id) {
+  const found = TRIP_CATALOG.find(t => t.id === id);
+  if (!found) return;
+  const cart = loadCart();
+  if (cart.some(c => c.id === found.id)) return;
+  cart.push(found);
+  saveCart(cart);
+  render();
+}
+
+let depositMode = 'full';
+
+function render() {
+  const cart = loadCart();
+  const list = document.getElementById('cart-list');
+  const count = document.getElementById('item-count');
+  count.textContent = cart.length + (cart.length === 1 ? ' item' : ' items');
+
+  if (cart.length === 0) {
+    list.innerHTML = '<div class="cart-empty">No trips in your booking yet. Add one from the selector below, or head back to <a href="/trips-clinics" style="color:var(--rb-red)">Trips &amp; Clinics</a>.</div>';
+  } else {
+    list.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div>
+          <div class="ci-cat">${item.category}</div>
+          <div class="ci-name">${item.name}</div>
+          <div class="ci-meta">${item.dates || ''}</div>
+        </div>
+        <div class="ci-price">€${item.price.toLocaleString()}</div>
+        <button class="ci-remove" data-id="${item.id}" aria-label="Remove">×</button>
+      </div>
+    `).join('');
+    list.querySelectorAll('.ci-remove').forEach(btn => {
+      btn.addEventListener('click', () => removeItem(btn.dataset.id));
+    });
+  }
+
+  // populate combine selector with catalog items not already in cart
+  const select = document.getElementById('combine-select');
+  const remaining = TRIP_CATALOG.filter(t => !cart.some(c => c.id === t.id));
+  select.innerHTML = remaining.length
+    ? remaining.map(t => `<option value="${t.id}">${t.name} — €${t.price}</option>`).join('')
+    : '<option value="">All sample trips added</option>';
+
+  const subtotal = cart.reduce((s, i) => s + Number(i.price), 0);
+  const deposit = Math.round(subtotal * 0.3);
+  const total = depositMode === 'deposit' ? deposit : subtotal;
+
+  document.getElementById('sum-subtotal').textContent = '€' + subtotal.toLocaleString();
+  document.getElementById('sum-deposit').textContent = '€' + deposit.toLocaleString();
+  document.getElementById('sum-total').textContent = '€' + total.toLocaleString();
+  document.getElementById('deposit-row').style.display = depositMode === 'deposit' ? 'flex' : 'none';
+
+  document.getElementById('pay-btn').disabled = cart.length === 0;
+}
+
+document.getElementById('combine-add').addEventListener('click', () => {
+  const id = document.getElementById('combine-select').value;
+  if (id) addCatalogItem(id);
+});
+
+document.getElementById('deposit-toggle').addEventListener('click', (e) => {
+  const opt = e.target.closest('.deposit-opt');
+  if (!opt) return;
+  depositMode = opt.dataset.mode;
+  document.querySelectorAll('.deposit-opt').forEach(o => o.classList.toggle('active', o === opt));
+  render();
+});
+
+/* =========================================================================
+   PAYMENT SUBMIT
+   Sends the cart + customer details to YOUR backend, which creates the
+   ComGate payment server-side (this is required — ComGate's secret key
+   must never be exposed in browser JS) and returns the payment gateway
+   redirect URL. See /server-example for the reference implementation.
+========================================================================= */
+document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const cart = loadCart();
+  if (cart.length === 0) return;
+
+  const btn = document.getElementById('pay-btn');
+  const msg = document.getElementById('pay-msg');
+  btn.disabled = true;
+  btn.textContent = 'Redirecting to ComGate…';
+  msg.textContent = '';
+  msg.classList.remove('error');
+
+  const formData = new FormData(e.target);
+  const customer = Object.fromEntries(formData.entries());
+
+  try {
+    const res = await fetch('/api/checkout/create-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: cart.map(i => ({ id: i.id, quantity: 1 })), // price is re-derived server-side from id
+        depositMode,
+        customer
+      })
+    });
+
+    if (!res.ok) throw new Error('Payment could not be created (' + res.status + ')');
+    const data = await res.json();
+    if (!data.redirectUrl) throw new Error('No redirect URL returned from server');
+
+    // Successful hand-off to ComGate's hosted payment page
+    window.location.href = data.redirectUrl;
+
+  } catch (err) {
+    msg.textContent = 'Something went wrong: ' + err.message + '. Please try again or contact us.';
+    msg.classList.add('error');
+    btn.disabled = false;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="1"/><path d="M3 10h18"/></svg> Pay Securely with ComGate';
+  }
+});
+
+/* ---------- NAV SCROLL STATE ---------- */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ---------- MOBILE NAV TOGGLE ---------- */
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+/* ---------- INIT ---------- */
+addFromURLParams();
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trips &amp; Clinics Calendar — Rockbusters</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   ROCKBUSTERS DESIGN SYSTEM — SINGLE SOURCE OF TRUTH
+   Brand red: #E30713  |  Dark bg: #0D0D0D  |  Off-white: #F0EDE6
+   Display font: Bebas Neue  |  Body font: Inter
+   ============================================================ */
+:root {
+  --rb-red:       #E30713;
+  --rb-red-hover: #c0050f;
+  --rb-red-dim:   rgba(227,7,19,0.08);
+  --rb-red-border:rgba(227,7,19,0.28);
+  --rb-black:     #0D0D0D;
+  --rb-dark:      #111111;
+  --rb-darker:    #0a0a0a;
+  --rb-white:     #F0EDE6;
+  --rb-white-60:  rgba(240,237,230,0.60);
+  --rb-white-45:  rgba(240,237,230,0.45);
+  --rb-white-30:  rgba(240,237,230,0.30);
+  --rb-white-12:  rgba(240,237,230,0.12);
+  --rb-white-08:  rgba(240,237,230,0.08);
+
+  /* Typography scale */
+  --fs-eyebrow:   11px;   /* section labels, badges */
+  --fs-body-sm:   13px;   /* captions, small text */
+  --fs-body:      15px;   /* standard body */
+  --fs-body-lg:   17px;   /* lead paragraphs */
+  --fs-card-title:16px;   /* card headings */
+
+  /* Spacing */
+  --section-pad:  90px 5%;
+  --card-pad:     36px 28px;
+}
+
+/* Enforce unified eyebrow/label style globally */
+.section-label,
+.filter-label,
+.trip-location,
+.sp-q,
+.team-role-badge,
+.testi-who,
+.team-placeholder-label,
+.active-label,
+.partners-label,
+.footer-col h4,
+.solo-text .section-label {
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Unified body text */
+.section-body,
+.pillar p,
+.sp-card p,
+.team-body,
+.team-tagline,
+.testi-body,
+.faq-a,
+.hero-sub,
+.solo-text p,
+.footer-brand p,
+.pros-body,
+.dest-card p,
+.cat-card p,
+.trip-hook {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.75;
+}
+
+/* Unified display headings */
+.section-title,
+.hero h1,
+.solo-h2,
+.final-cta h2,
+.trip-name,
+.team-name,
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* Unified button style */
+.btn-primary,
+.btn-ghost,
+.btn-dark,
+.btn-outline-dark,
+.nav-cta,
+.filter-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 0;
+}
+
+/* Consistent section padding */
+.section,
+.trips-section,
+.pros-section,
+.faq-section,
+.team-section {
+  padding: var(--section-pad);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: #0D0D0D; color: #F0EDE6; overflow-x: hidden; }
+.display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.03em; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 22px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(13,13,13,0.85) 0%, transparent 100%);
+  backdrop-filter: blur(0px);
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+.nav.scrolled {
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(240,237,230,0.08);
+}
+
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  filter: brightness(1);
+  transition: opacity 0.2s;
+}
+.nav-logo-img:hover { opacity: 0.85; }
+.footer-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  margin-bottom: 16px;
+  filter: brightness(1);
+}
+
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: #F0EDE6; letter-spacing: 0.1em; }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #F0EDE6; font-weight: 600; transition: color 0.2s; }
+.nav-links a:hover { color: #F0EDE6; }
+.nav-cta {
+  background: #E30713; color: #0D0D0D;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 11px 22px; border: none; cursor: pointer;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #e8303d; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #F0EDE6; transition: 0.3s; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 160px 5% 7%;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+  transition: transform 8s ease-out;
+}
+.hero-bg.loaded { transform: scale(1); }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13,13,13,0.55) 0%,
+    rgba(13,13,13,0.35) 30%,
+    rgba(13,13,13,0.6) 65%,
+    rgba(13,13,13,0.92) 100%
+  );
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: 13px; letter-spacing: 0.22em; color: #E30713;
+  text-transform: uppercase; margin-bottom: 20px; font-weight: 700;
+  display: flex; align-items: center; gap: 12px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.7), 0 0 24px rgba(0,0,0,0.5);
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block; width: 32px; height: 1px; background: #E30713;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 11vw, 140px);
+  line-height: 0.88;
+  margin-top: 48px;
+  margin-bottom: 30px;
+  color: #F0EDE6;
+}
+.hero h1 em { color: #E30713; font-style: normal; }
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.65;
+  max-width: 560px;
+  color: rgba(240,237,230,0.78);
+  margin-bottom: 44px;
+  font-weight: 400;
+}
+.btn-group { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.btn-primary {
+  background: #E30713; color: #0D0D0D;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 17px 36px; border: none; cursor: pointer; transition: background 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: #e8303d; }
+.btn-ghost {
+  background: transparent; color: #F0EDE6;
+  font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 16px 36px; border: 1.5px solid rgba(240,237,230,0.35); cursor: pointer;
+  transition: border-color 0.2s; display: inline-block;
+}
+.btn-ghost:hover { border-color: #F0EDE6; }
+.trust-strip {
+  margin-top: 40px;
+  display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+}
+.trust-strip span {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(240,237,230,0.42); font-weight: 500;
+}
+.trust-strip strong { color: rgba(240,237,230,0.70); }
+.trust-dot { color: rgba(240,237,230,0.25) !important; }
+
+/* STATS BAR */
+.stats-bar {
+  background: #E30713;
+  display: flex; justify-content: space-around;
+  padding: 30px 5%; gap: 16px; flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: #0D0D0D; line-height: 1; display: block; }
+.stat-label { font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(13,13,13,0.6); font-weight: 600; display: block; margin-top: 4px; }
+
+/* SECTION COMMON */
+.section { padding: 90px 5%; }
+.section-label {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #E30713; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: #E30713; }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 6vw, 80px);
+  line-height: 0.92; color: #F0EDE6; margin-bottom: 24px;
+}
+.section-body {
+  font-size: 16px; line-height: 1.78;
+  color: rgba(240,237,230,0.65); max-width: 580px;
+}
+
+/* WHO WE ARE */
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+@media(max-width:768px){ .who-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+/* PILLARS */
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; margin-top: 72px;
+  background: rgba(240,237,230,0.08);
+  border: 1px solid rgba(240,237,230,0.08);
+}
+@media(max-width:900px){ .pillars-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .pillars-grid { grid-template-columns: 1fr; } }
+.pillar {
+  background: #0D0D0D; padding: 40px 32px;
+  transition: background 0.2s;
+}
+.pillar:hover { background: #131313; }
+.pillar-num {
+  font-family: 'Bebas Neue', sans-serif; font-size: 56px;
+  color: #E30713; line-height: 1; margin-bottom: 14px;
+}
+.pillar h3 { font-size: 15px; font-weight: 700; color: #F0EDE6; margin-bottom: 10px; letter-spacing: 0.02em; }
+.pillar p { font-size: 14px; line-height: 1.7; color: rgba(240,237,230,0.5); }
+
+/* SELLING POINTS */
+.section-light { background: #F0EDE6; padding: 90px 5%; }
+.section-light .section-label { color: #E30713; }
+.section-light .section-label::before { background: #E30713; }
+.section-light .section-title { color: #0D0D0D; }
+
+.sp-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 60px;
+  background: rgba(13,13,13,0.1);
+}
+@media(max-width:900px){ .sp-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .sp-grid { grid-template-columns: 1fr; } }
+.sp-card {
+  background: #F0EDE6; padding: 40px 32px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+.sp-card:hover { border-color: #E30713; background: #fff; }
+.sp-q { font-size: 11px; font-weight: 700; color: rgba(13,13,13,0.38); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+.sp-card h3 { font-size: 17px; font-weight: 700; color: #0D0D0D; margin-bottom: 12px; line-height: 1.3; }
+.sp-card p { font-size: 14px; color: rgba(13,13,13,0.58); line-height: 1.7; }
+
+/* PRO CLIMBERS */
+.pros-section { background: #0a0a0a; padding: 90px 5%; }
+.pro-chips { display: flex; gap: 10px; margin-top: 36px; flex-wrap: wrap; }
+.pro-chip {
+  background: rgba(227,7,19,0.08); border: 1px solid rgba(227,7,19,0.28);
+  color: #F0EDE6; padding: 11px 22px;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+  transition: background 0.2s;
+}
+.pro-chip:hover { background: rgba(227,7,19,0.18); }
+.pros-body {
+  font-size: 17px; line-height: 1.75;
+  color: rgba(240,237,230,0.62); max-width: 620px; margin-top: 24px;
+}
+
+/* PRO CLIMBERS PHOTO GRID */
+.pro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+@media(max-width: 900px){ .pro-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width: 560px){ .pro-grid { grid-template-columns: 1fr; } }
+
+/* CATEGORIES */
+.cat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; margin-top: 60px;
+  background: rgba(240,237,230,0.07);
+}
+@media(max-width:900px){ .cat-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:480px){ .cat-grid { grid-template-columns: 1fr; } }
+.cat-card {
+  background: #0D0D0D; padding: 32px 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  border: 1px solid rgba(240,237,230,0.05);
+  transition: background 0.2s; cursor: pointer;
+}
+.cat-card:hover { background: #161616; }
+.cat-card h3 { font-size: 20px; font-weight: 700; color: #E30713; line-height: 1.3; }
+.cat-card p { font-size: 13px; color: rgba(240,237,230,0.48); line-height: 1.6; }
+.cat-arrow { font-size: 18px; color: #E30713; margin-top: auto; padding-top: 18px; font-weight: 700; }
+
+/* DESTINATIONS */
+.dest-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 2px; margin-top: 60px;
+}
+@media(max-width:900px){ .dest-grid { grid-template-columns: repeat(3,1fr); } }
+@media(max-width:480px){ .dest-grid { grid-template-columns: repeat(2,1fr); } }
+.dest-card {
+  background: #111; padding: 44px 20px;
+  text-align: center; border: 1px solid rgba(240,237,230,0.05);
+  transition: background 0.2s; cursor: pointer;
+}
+.dest-card:hover { background: #191919; }
+.dest-flag { font-size: 52px; margin-bottom: 16px; }
+.dest-card h3 { font-size: 18px; font-weight: 700; color: #E30713; margin-bottom: 8px; }
+.dest-card p { font-size: 13px; color: rgba(240,237,230,0.42); line-height: 1.55; }
+
+/* TESTIMONIALS */
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 60px;
+  background: rgba(240,237,230,0.06);
+}
+@media(max-width:900px){ .testi-grid { grid-template-columns: 1fr; } }
+.testi-card { background: #0D0D0D; padding: 40px 32px; }
+.testi-stars { color: #E30713; font-size: 14px; letter-spacing: 5px; margin-bottom: 18px; }
+.testi-q { font-size: 19px; font-weight: 700; color: #F0EDE6; line-height: 1.38; margin-bottom: 14px; font-style: italic; }
+.testi-body { font-size: 14px; color: rgba(240,237,230,0.52); line-height: 1.72; margin-bottom: 24px; }
+.testi-who { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #E30713; font-weight: 700; }
+
+/* MEET THE TEAM */
+.team-section { background: #111; padding: 90px 5%; }
+.team-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+@media(max-width: 768px){ .team-intro { grid-template-columns: 1fr; gap: 32px; } }
+.team-body { font-size: 16px; line-height: 1.78; color: rgba(240,237,230,0.62); }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-bottom: 48px;
+}
+@media(max-width: 900px){ .team-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width: 480px){ .team-grid { grid-template-columns: 1fr; } }
+
+.team-card {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+.team-card:hover .team-photo { transform: scale(1.04); }
+.team-card.team-founder { min-height: 440px; }
+
+.team-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  transition: transform 0.55s ease;
+}
+.team-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(13,13,13,0.97) 0%,
+    rgba(13,13,13,0.6) 45%,
+    rgba(13,13,13,0.08) 100%);
+}
+.team-info {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 28px 24px;
+}
+.team-role-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #E30713;
+  border: 1px solid rgba(227,7,19,0.35);
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+.team-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  color: #F0EDE6;
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+.team-card.team-founder .team-name { font-size: 32px; }
+.team-tagline {
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(240,237,230,0.52);
+}
+.team-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.team-social a {
+  width: 28px; height: 28px;
+  border: 1px solid rgba(240,237,230,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  color: rgba(240,237,230,0.45);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.team-social a:hover { border-color: #E30713; color: #E30713; }
+
+/* PLACEHOLDER CARDS — guides & local experts */
+.team-card-placeholder {
+  background: #141414;
+  border: 1px dashed rgba(240,237,230,0.1);
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 24px;
+}
+.team-placeholder-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+.team-placeholder-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.3);
+  margin-bottom: 8px;
+}
+.team-placeholder-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: rgba(240,237,230,0.4);
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+.team-placeholder-sub {
+  font-size: 12px;
+  color: rgba(240,237,230,0.25);
+  line-height: 1.55;
+}
+
+.team-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.team-stat-strip {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.team-stat .stat-num { font-size: 36px; }
+.team-stat .stat-label { font-size: 10px; color: rgba(240,237,230,0.4); }
+
+/* SOLO SECTION */
+.solo-section {
+  background: #F0EDE6; padding: 80px 5%;
+  display: flex; gap: 60px; align-items: center; flex-wrap: wrap;
+}
+.solo-text { flex: 1; min-width: 280px; }
+.solo-text .section-label { color: #E30713; }
+.solo-text .section-label::before { background: #E30713; }
+.solo-h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 72px); color: #0D0D0D; line-height: 0.92; margin-bottom: 20px; }
+.solo-text p { font-size: 16px; color: rgba(13,13,13,0.58); line-height: 1.75; }
+.solo-cta { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+.btn-dark { background: #0D0D0D; color: #F0EDE6; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; padding: 17px 36px; border: none; cursor: pointer; transition: background 0.2s; display: inline-block; text-align: center; }
+.btn-dark:hover { background: #222; }
+.btn-outline-dark { background: transparent; color: #0D0D0D; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 36px; border: 1.5px solid rgba(13,13,13,0.3); cursor: pointer; transition: border-color 0.2s; display: inline-block; text-align: center; }
+.btn-outline-dark:hover { border-color: #0D0D0D; }
+
+/* FAQ */
+.faq-section { padding: 90px 5%; background: #0a0a0a; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 60px; background: rgba(240,237,230,0.06); }
+@media(max-width:700px){ .faq-grid { grid-template-columns: 1fr; } }
+.faq-item { background: #0a0a0a; padding: 32px 28px; border-left: 2px solid transparent; transition: border-color 0.2s; }
+.faq-item:hover { border-color: #E30713; }
+.faq-q { font-size: 15px; font-weight: 700; color: #F0EDE6; margin-bottom: 10px; }
+.faq-a { font-size: 14px; color: rgba(240,237,230,0.5); line-height: 1.7; }
+
+/* FAQ on light background */
+.faq-section--light { background: #F0EDE6; }
+.faq-section--light .section-label { color: #E30713; }
+.faq-section--light .section-title { color: #0D0D0D; }
+.faq-section--light .faq-grid { background: rgba(13,13,13,0.07); }
+.faq-section--light .faq-item { background: #F0EDE6; }
+.faq-section--light .faq-q { color: #0D0D0D; }
+.faq-section--light .faq-a { color: rgba(13,13,13,0.55); }
+
+/* FINAL CTA */
+.final-cta { background: #E30713; padding: 100px 5%; text-align: center; }
+.final-cta h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 9vw, 120px); color: #0D0D0D; line-height: 0.87; margin-bottom: 22px; }
+.final-cta p { font-size: 18px; color: rgba(13,13,13,0.62); margin-bottom: 48px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+.final-cta .btn-dark { font-size: 14px; padding: 18px 44px; margin: 6px; }
+.final-cta .btn-outline-dark { font-size: 14px; padding: 17px 44px; margin: 6px; }
+
+/* PARTNERS */
+.partners-section { padding: 60px 5%; border-bottom: 1px solid rgba(240,237,230,0.07); }
+.partners-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,237,230,0.3); text-align: center; margin-bottom: 32px; }
+.partners-row { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; }
+.partner-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: rgba(240,237,230,0.2); letter-spacing: 0.12em; transition: color 0.2s; }
+.partner-name:hover { color: rgba(240,237,230,0.5); }
+
+/* FOOTER */
+.footer { background: #080808; padding: 72px 5% 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+@media(max-width:900px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px){ .footer-grid { grid-template-columns: 1fr; } }
+.footer-brand-logo { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: #F0EDE6; letter-spacing: 0.1em; display: block; margin-bottom: 16px; }
+.footer-brand p { font-size: 13px; color: rgba(240,237,230,0.36); line-height: 1.75; max-width: 260px; }
+.newsletter { display: flex; margin-top: 24px; }
+.newsletter input { background: rgba(240,237,230,0.05); border: 1px solid rgba(240,237,230,0.1); border-right: none; color: #F0EDE6; padding: 11px 16px; font-family: 'Inter', sans-serif; font-size: 13px; flex: 1; outline: none; }
+.newsletter input::placeholder { color: rgba(240,237,230,0.28); }
+.newsletter button { background: #E30713; border: none; color: #0D0D0D; padding: 11px 18px; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.footer-col h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E30713; font-weight: 700; margin-bottom: 20px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(240,237,230,0.4); margin-bottom: 12px; transition: color 0.2s; }
+.footer-col a:hover { color: #F0EDE6; }
+.footer-bottom { border-top: 1px solid rgba(240,237,230,0.07); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: rgba(240,237,230,0.22); }
+.footer-tagline { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: rgba(240,237,230,0.18); }
+
+/* PRO MARQUEE */
+.pro-marquee-wrap {
+  overflow: hidden;
+  margin-top: 28px;
+  border-top: 1px solid rgba(240,237,230,0.08);
+  padding-top: 18px;
+  max-width: 860px;
+}
+.pro-marquee {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: marquee 22s linear infinite;
+  width: max-content;
+}
+.pro-marquee span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.38);
+  padding: 0 4px;
+}
+.pro-marquee .marq-dot {
+  color: #E30713;
+  font-size: 14px;
+  letter-spacing: 0;
+  padding: 0 10px;
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* SOLO PILLS */
+.solo-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.solo-pill {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(240,237,230,0.65);
+  border: 1px solid rgba(240,237,230,0.14);
+  padding: 7px 14px;
+  background: rgba(240,237,230,0.04);
+}
+
+/* TRIP PRICE + URGENCY */
+.trip-price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.trip-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: #F0EDE6;
+  letter-spacing: 0.04em;
+}
+.trip-urgency {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+}
+.trip-urgency-urgent  { background: rgba(227,7,19,0.15);   color: #E30713; border: 1px solid rgba(227,7,19,0.3); }
+.trip-urgency-open    { background: rgba(62,207,178,0.12); color: #3ECFB2; border: 1px solid rgba(62,207,178,0.25); }
+.trip-urgency-lottery { background: rgba(240,237,230,0.07); color: rgba(240,237,230,0.55); border: 1px solid rgba(240,237,230,0.14); }
+
+/* TRIP FILTER — HERO INLINE */
+.hero-filter {
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background: rgba(13,13,13,0.72);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(240,237,230,0.12);
+  max-width: 860px;
+}
+.filter-group {
+  flex: 1;
+  min-width: 160px;
+  border-right: 1px solid rgba(240,237,230,0.1);
+  position: relative;
+}
+.filter-group:last-child { border-right: none; }
+.filter-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #E30713;
+  padding: 20px 18px 0;
+  pointer-events: none;
+}
+.filter-select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #F0EDE6;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 18px 14px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+.filter-select option { background: #1a1a1a; color: #F0EDE6; }
+.filter-select:focus { background: rgba(227,7,19,0.06); }
+.filter-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-2px);
+  color: rgba(240,237,230,0.35);
+  font-size: 10px;
+  pointer-events: none;
+}
+.filter-date-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #F0EDE6;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 18px 14px;
+  cursor: pointer;
+  outline: none;
+  colorscheme: dark;
+}
+.filter-date-input::-webkit-calendar-picker-indicator { filter: invert(0.6); cursor: pointer; }
+.filter-btn {
+  background: #E30713;
+  border: none;
+  color: #0D0D0D;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 28px;
+  cursor: pointer;
+  min-width: 100px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.filter-btn:hover { background: #e8303d; }
+
+/* STICKY FILTER BAR */
+.sticky-filter {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: rgba(13,13,13,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(240,237,230,0.08);
+  padding: 0 5%;
+  display: flex;
+  align-items: stretch;
+  transform: translateY(-200%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  pointer-events: none;
+}
+.sticky-filter.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.sticky-filter .filter-group {
+  background: transparent;
+  border-right: 1px solid rgba(240,237,230,0.07);
+  min-width: 140px;
+}
+.sticky-filter .hero-filter {
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  flex: 1;
+  max-width: none;
+  gap: 0;
+}
+.sticky-filter .filter-btn {
+  margin: 10px 0 10px 16px;
+  padding: 0 24px;
+  font-size: 11px;
+}
+.sticky-filter-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: rgba(240,237,230,0.35);
+  padding: 0 20px 0 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  border-right: 1px solid rgba(240,237,230,0.07);
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+/* MOBILE: hero padding — ensure heading clears the nav */
+@media(max-width: 480px) {
+  .hero {
+    padding-top: 120px;
+    justify-content: flex-end;
+  }
+  .hero h1 {
+    margin-top: 32px;
+  }
+}
+
+/* MOBILE: filter always visible, static, directly below stats bar */
+@media(max-width: 480px) {
+  .sticky-filter {
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: all !important;
+    padding: 0;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(240,237,230,0.08);
+  }
+  .sticky-filter-label {
+    display: none;
+  }
+  .sticky-filter .hero-filter {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .sticky-filter .filter-group {
+    flex: 1 1 50%;
+    min-width: 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(240,237,230,0.07);
+    box-sizing: border-box;
+  }
+  .sticky-filter .filter-group:nth-child(odd) {
+    border-right: 1px solid rgba(240,237,230,0.07);
+  }
+  .sticky-filter .filter-btn {
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+    font-size: 12px;
+  }
+}
+
+/* FILTER ACTIVE TAGS (results strip) */
+.active-filters {
+  display: none;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 5%;
+  background: rgba(227,7,19,0.06);
+  border-bottom: 1px solid rgba(227,7,19,0.15);
+  align-items: center;
+}
+.active-filters.has-filters { display: flex; }
+.filter-tag {
+  background: rgba(227,7,19,0.12);
+  border: 1px solid rgba(227,7,19,0.3);
+  color: #F0EDE6;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.filter-tag-x {
+  color: #E30713;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+.filter-tag-x:hover { color: #fff; }
+.active-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.4);
+  font-weight: 600;
+}
+.clear-all {
+  margin-left: auto;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E30713;
+  cursor: pointer;
+  font-weight: 600;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+}
+.clear-all:hover { color: #e8606a; }
+
+/* ROCKBUSTERS PICKS — FEATURED TRIPS */
+.trips-section { background: #0a0a0a; padding: 90px 5%; }
+.trips-label-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.trips-label-wrap .section-title { margin-bottom: 0; }
+.trips-view-all {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E30713;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(227,7,19,0.4);
+  transition: border-color 0.2s, gap 0.2s;
+}
+.trips-view-all:hover { border-color: #E30713; gap: 14px; }
+
+.trip-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+@media(max-width: 900px){ .trip-cards { grid-template-columns: repeat(2,1fr); } }
+@media(max-width: 560px){ .trip-cards { grid-template-columns: 1fr; } }
+
+.trip-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+}
+.trip-card:hover .trip-img { transform: scale(1.05); }
+.trip-card:hover .trip-overlay { background: linear-gradient(to top, rgba(13,13,13,0.98) 0%, rgba(13,13,13,0.75) 50%, rgba(13,13,13,0.2) 85%, rgba(13,13,13,0.1) 100%); }
+.trip-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+.trip-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.72) 38%, rgba(13,13,13,0.32) 65%, rgba(13,13,13,0.08) 100%);
+  transition: background 0.4s ease;
+}
+.trip-top {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  right: 28px;
+  z-index: 3;
+}
+.trip-content {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 32px 28px;
+}
+.trip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #E30713;
+  color: #0D0D0D;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  margin-bottom: 8px;
+}
+.trip-badge.badge-camp { background: #3ECFB2; color: #0D0D0D; }
+.trip-badge.badge-road { background: #E30713; }
+.trip-badge.badge-expedition { background: rgba(240,237,230,0.18); color: #F0EDE6; }
+.trip-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.trip-location {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.9);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.trip-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(240,237,230,0.4); }
+.trip-dates {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(240,237,230,0.8);
+  letter-spacing: 0.04em;
+}
+.trip-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  line-height: 0.95;
+  color: #F0EDE6;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+.trip-hook {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(240,237,230,0.62);
+  margin-bottom: 20px;
+}
+.trip-cta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #E30713;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s;
+}
+.trip-card:hover .trip-cta { gap: 14px; }
+
+/* LARGE FEATURED CARD (first card spanning 2 cols on desktop) */
+@media(min-width: 901px){
+  .trip-card.trip-featured {
+    grid-column: span 2;
+    min-height: 480px;
+  }
+  .trip-card.trip-featured .trip-name { font-size: 42px; }
+  .trip-card.trip-featured .trip-hook { font-size: 15px; max-width: 440px; }
+}
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* CENTER HELPER */
+.text-center { text-align: center; }
+.mt-40 { margin-top: 40px; }
+.mt-56 { margin-top: 56px; }
+</style>
+<style>
+/* ===== TRIPS & CLINICS CALENDAR — PAGE-SPECIFIC STYLES ===== */
+
+.page-hero {
+  min-height: 56vh;
+  padding: 160px 5% 60px;
+  background: #0D0D0D;
+  display: flex;
+  align-items: flex-end;
+}
+.page-hero-inner { max-width: 900px; }
+.page-hero .hero-eyebrow { margin-bottom: 20px; }
+.page-hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 8vw, 100px);
+  line-height: 0.9;
+  color: #F0EDE6;
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+.page-hero h1 em { color: #E30713; font-style: normal; }
+.page-hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: rgba(240,237,230,0.68);
+  max-width: 560px;
+  line-height: 1.65;
+}
+
+/* Inline (non-sticky) filter bar sitting right below hero */
+.filter-bar-wrap {
+  background: #0a0a0a;
+  border-top: 1px solid rgba(240,237,230,0.08);
+  border-bottom: 1px solid rgba(240,237,230,0.08);
+  padding: 22px 5%;
+}
+.filter-bar-wrap .hero-filter {
+  max-width: none;
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(240,237,230,0.12);
+  backdrop-filter: none;
+}
+
+/* Month sections */
+.month-group { padding: 56px 5% 8px; background: #0D0D0D; }
+.month-group:nth-of-type(even) { background: #111111; }
+.month-heading-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(240,237,230,0.1);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+.month-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  color: #F0EDE6;
+  letter-spacing: 0.03em;
+}
+.month-count {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.4);
+}
+.month-trip-cards { padding-bottom: 34px; }
+.month-group.month-hidden { display: none; }
+.trip-card.trip-hidden { display: none; }
+
+/* Placeholder trip image (brand-styled, no photography asset required) */
+.trip-img-placeholder {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(227,7,19,0.35), transparent 55%),
+    linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.trip-img-placeholder::before {
+  content: attr(data-flag);
+  font-size: 64px;
+  opacity: 0.9;
+  filter: grayscale(0.15);
+  transform: translateY(-10px);
+}
+
+/* No-results state */
+.no-results {
+  display: none;
+  text-align: center;
+  padding: 90px 5%;
+  color: rgba(240,237,230,0.5);
+  font-family: 'Inter', sans-serif;
+}
+.no-results.show { display: block; }
+.no-results h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: #F0EDE6;
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+
+/* Bottom CTA */
+.trips-final-cta { background: #E30713; padding: 90px 5%; text-align: center; }
+.trips-final-cta h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 7vw, 84px);
+  color: #0D0D0D;
+  line-height: 0.9;
+  margin-bottom: 18px;
+}
+.trips-final-cta p {
+  font-family: 'Inter', sans-serif;
+  color: rgba(13,13,13,0.65);
+  max-width: 480px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="nav-logo-img">
+  <div class="nav-links" id="navLinks">
+    <a href="#trips">Trips &amp; Clinics</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#team">The Crew</a>
+    <a href="#contact">Contact</a>
+    <a href="#blog">Blog</a>
+  </div>
+  <button class="nav-cta">Find Your Trip</button>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner reveal">
+    <p class="hero-eyebrow">Every trip, camp & course — one calendar</p>
+    <h1>TRIPS &amp; <em>CLINICS</em></h1>
+    <p class="page-hero-sub">
+      Road trips, sport holidays, bouldering camps, performance coaching, and everything between — run by the guides and coaches who actually climb them. Filter by type, level, destination, or date to find your next trip.
+    </p>
+  </div>
+</section>
+
+<!-- FUNCTIONAL FILTER BAR -->
+<div class="filter-bar-wrap">
+  <div class="hero-filter" id="calendarFilter">
+    <div class="filter-group">
+      <span class="filter-label">Type</span>
+      <select class="filter-select" id="f-type" onchange="syncFilters('type',this.value)">
+        <option value="">All Types</option>
+        <option value="road">Road Trips &amp; Expeditions</option>
+        <option value="sport">Sport Climbing Holidays</option>
+        <option value="learn-lead">Learn to Lead</option>
+        <option value="bouldering">Bouldering Camps</option>
+        <option value="performance">Performance &amp; Technique</option>
+        <option value="trad">Trad &amp; Multi-Pitch</option>
+        <option value="private">Private Coaching</option>
+        <option value="custom">Custom Trips</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Level</span>
+      <select class="filter-select" id="f-level" onchange="syncFilters('level',this.value)">
+        <option value="">All Levels</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+        <option value="expert">Expert</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Destination</span>
+      <select class="filter-select" id="f-dest" onchange="syncFilters('dest',this.value)">
+        <option value="">All Destinations</option>
+        <option value="spain">Spain</option>
+        <option value="france">France</option>
+        <option value="italy">Italy</option>
+        <option value="greece">Greece</option>
+        <option value="other">Other</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Month</span>
+      <input type="month" class="filter-date-input" id="f-date" onchange="syncFilters('date',this.value)">
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Guide / Coach</span>
+      <select class="filter-select" id="f-guide" onchange="syncFilters('guide',this.value)">
+        <option value="">Any Guide</option>
+        <option value="guide">Guide</option>
+        <option value="coach">Coach</option>
+        <option value="guide-coach">Guide + Coach</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group" style="border-right:none;">
+      <span class="filter-label">Duration</span>
+      <select class="filter-select" id="f-duration" onchange="syncFilters('duration',this.value)">
+        <option value="">Any Duration</option>
+        <option value="weekend">Weekend (2–5 days)</option>
+        <option value="week">1 Week</option>
+        <option value="twoweeks">2 Weeks</option>
+        <option value="longer">2+ Weeks</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVE FILTERS STRIP -->
+<div class="active-filters" id="activeFilters">
+  <span class="active-label">Filtered by:</span>
+  <div id="filterTags" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;"></div>
+  <button class="clear-all" onclick="clearAllFilters()">Clear all ✕</button>
+</div>
+
+
+
+<section class="month-group reveal" data-month-group="2026-08">
+  <div class="month-heading-wrap">
+    <h2 class="month-heading">August 2026</h2>
+    <span class="month-count" data-month-count="2026-08"></span>
+  </div>
+  <div class="trip-cards month-trip-cards">
+    <div class="trip-card trip-featured reveal" data-type="bouldering" data-level="intermediate" data-dest="france" data-guide="guide-coach" data-duration="week" data-month="2026-08">
+      <div class="trip-img trip-img-placeholder" data-flag="🇫🇷"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Bouldering Camp</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇫🇷 Fontainebleau, France</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Aug 3 – 10, 2026 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Fontainebleau<br>Bouldering Camp</h3>
+        <p class="trip-hook">Seven days on the most storied sandstone on Earth. Technique-first coaching on the forest's classic circuits, with daily footwork and movement drills built around your grade.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €990</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="sport" data-level="all" data-dest="greece" data-guide="guide" data-duration="week" data-month="2026-08">
+      <div class="trip-img trip-img-placeholder" data-flag="🇬🇷"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-expedition">Sport Climbing Holiday</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇬🇷 Kalymnos, Greece</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Aug 10 – 17, 2026 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Kalymnos<br>Sport Week</h3>
+        <p class="trip-hook">Warm tufas, warmer water, and some of the best pocketed limestone in Europe. A relaxed-pace week for climbers who want big mileage without the burnout.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €890</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="learn-lead" data-level="beginner" data-dest="spain" data-guide="coach" data-duration="weekend" data-month="2026-08">
+      <div class="trip-img trip-img-placeholder" data-flag="🇪🇸"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Learn to Lead</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 El Chorro, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Aug 15 – 19, 2026 · 5 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">El Chorro<br>Learn to Lead</h3>
+        <p class="trip-hook">Lead climbing, demystified. Clipping technique, fall practice, and route reading — everything you need to climb independently outdoors, taught by IFSC-certified coaches.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €650</span>
+          <span class="trip-urgency trip-urgency-urgent">4 spots left</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="month-group reveal" data-month-group="2026-09">
+  <div class="month-heading-wrap">
+    <h2 class="month-heading">September 2026</h2>
+    <span class="month-count" data-month-count="2026-09"></span>
+  </div>
+  <div class="trip-cards month-trip-cards">
+    <div class="trip-card reveal" data-type="trad" data-level="advanced" data-dest="france" data-guide="guide" data-duration="week" data-month="2026-09">
+      <div class="trip-img trip-img-placeholder" data-flag="🇫🇷"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-expedition">Trad & Multi-Pitch</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇫🇷 Chamonix, France</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Sep 5 – 12, 2026 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Chamonix<br>Multi-Pitch Course</h3>
+        <p class="trip-hook">Independent multi-pitch climbing in the shadow of Mont Blanc. Anchor building, rope management, and efficient movement over long alpine granite routes.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,190</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="performance" data-level="advanced" data-dest="spain" data-guide="guide-coach" data-duration="week" data-month="2026-09">
+      <div class="trip-img trip-img-placeholder" data-flag="🇪🇸"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Performance Camp</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 Rodellar, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Sep 12 – 19, 2026 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Rodellar<br>Performance Camp</h3>
+        <p class="trip-hook">Unlock your next grade on Europe's steepest limestone. Intensive coaching, video analysis, and one-on-one sessions on world-class tufa routes.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,290</span>
+          <span class="trip-urgency trip-urgency-urgent">3 spots left</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="road" data-level="intermediate" data-dest="spain" data-guide="guide" data-duration="twoweeks" data-month="2026-09">
+      <div class="trip-img trip-img-placeholder" data-flag="🇪🇸"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-road">Road Trip</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 Costa Blanca → Chulilla, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Sep 20 – Oct 4, 2026 · 14 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Costa Blanca to<br>Chulilla Road Trip</h3>
+        <p class="trip-hook">Two weeks, two of Spain's finest sport climbing regions, one van. We chase the sun and the best conditions between coastal pockets and inland canyon walls.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,690</span>
+          <span class="trip-urgency trip-urgency-lottery">Waitlist</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="month-group reveal" data-month-group="2026-10">
+  <div class="month-heading-wrap">
+    <h2 class="month-heading">October 2026</h2>
+    <span class="month-count" data-month-count="2026-10"></span>
+  </div>
+  <div class="trip-cards month-trip-cards">
+    <div class="trip-card reveal" data-type="sport" data-level="intermediate" data-dest="spain" data-guide="guide" data-duration="week" data-month="2026-10">
+      <div class="trip-img trip-img-placeholder" data-flag="🇪🇸"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-expedition">Sport Climbing Holiday</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 Siurana, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Oct 3 – 10, 2026 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Siurana<br>Sport Week</h3>
+        <p class="trip-hook">Golden stone, endless tufas, and a base camp with views over the Priorat valley. A week built around quality routes and real recovery.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €890</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="bouldering" data-level="advanced" data-dest="other" data-guide="guide-coach" data-duration="week" data-month="2026-10">
+      <div class="trip-img trip-img-placeholder" data-flag="🇨🇭"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Bouldering Camp</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇨🇭 Magic Wood, Switzerland</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Oct 10 – 17, 2026 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Magic Wood<br>Bouldering Camp</h3>
+        <p class="trip-hook">The Alps' most legendary bouldering forest. Strength-focused coaching on steep, technical lines for climbers ready to push into harder grades.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,090</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="private" data-level="all" data-dest="france" data-guide="coach" data-duration="week" data-month="2026-10">
+      <div class="trip-img trip-img-placeholder" data-flag="🇫🇷"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-expedition">Private Coaching</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇫🇷 Céüse, France</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Oct 17 – 24, 2026 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Céüse<br>Private Coaching Week</h3>
+        <p class="trip-hook">One-on-one coaching on one of the world's great sport crags. Fully tailored to your goals — from redpoint tactics to technique overhauls.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,890</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="month-group reveal" data-month-group="2026-11">
+  <div class="month-heading-wrap">
+    <h2 class="month-heading">November 2026</h2>
+    <span class="month-count" data-month-count="2026-11"></span>
+  </div>
+  <div class="trip-cards month-trip-cards">
+    <div class="trip-card reveal" data-type="learn-lead" data-level="beginner" data-dest="italy" data-guide="coach" data-duration="weekend" data-month="2026-11">
+      <div class="trip-img trip-img-placeholder" data-flag="🇮🇹"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Learn to Lead</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇮🇹 Finale Ligure, Italy</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Nov 7 – 11, 2026 · 5 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Finale Ligure<br>Learn to Lead</h3>
+        <p class="trip-hook">Sea-view crags and a gentle learning curve. Build lead confidence on forgiving, well-bolted limestone with small coaching groups.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €650</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="custom" data-level="all" data-dest="other" data-guide="guide-coach" data-duration="longer" data-month="2026-11">
+      <div class="trip-img trip-img-placeholder" data-flag="🌍"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-expedition">Custom Trip</span>
+        <div class="trip-meta">
+          <span class="trip-location">🌍 Destination of Your Choice</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Flexible dates · Built to fit</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Design Your<br>Own Trip</h3>
+        <p class="trip-hook">Your crew, your dates, your goals. We build fully custom itineraries — destination, pace, and coaching level — around exactly what you're after.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">Custom quote</span>
+          <span class="trip-urgency trip-urgency-lottery">On request</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="month-group reveal" data-month-group="2026-12">
+  <div class="month-heading-wrap">
+    <h2 class="month-heading">December 2026</h2>
+    <span class="month-count" data-month-count="2026-12"></span>
+  </div>
+  <div class="trip-cards month-trip-cards">
+    <div class="trip-card reveal" data-type="sport" data-level="intermediate" data-dest="spain" data-guide="guide" data-duration="week" data-month="2026-12">
+      <div class="trip-img trip-img-placeholder" data-flag="🇪🇸"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-expedition">Sport Climbing Holiday</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 Costa Blanca, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Dec 5 – 12, 2026 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Costa Blanca<br>Winter Sun Week</h3>
+        <p class="trip-hook">Escape the cold for a week of Mediterranean sport climbing. Reliable winter conditions, gentle pace, and some of Spain's best pocketed limestone.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €890</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="performance" data-level="expert" data-dest="spain" data-guide="guide-coach" data-duration="week" data-month="2026-12">
+      <div class="trip-img trip-img-placeholder" data-flag="🇪🇸"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Performance Camp</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 Siurana, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Dec 12 – 19, 2026 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Siurana<br>Performance Camp</h3>
+        <p class="trip-hook">Elite-level coaching for climbers chasing their hardest grade yet. Deep technical work, mental game, and route strategy on demanding tufa lines.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,290</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="month-group reveal" data-month-group="2027-01">
+  <div class="month-heading-wrap">
+    <h2 class="month-heading">January 2027</h2>
+    <span class="month-count" data-month-count="2027-01"></span>
+  </div>
+  <div class="trip-cards month-trip-cards">
+    <div class="trip-card reveal" data-type="road" data-level="intermediate" data-dest="other" data-guide="guide" data-duration="twoweeks" data-month="2027-01">
+      <div class="trip-img trip-img-placeholder" data-flag="🇲🇦"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-road">Road Trip & Expedition</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇲🇦 Todra Gorge, Morocco</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Jan 16 – 30, 2027 · 14 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Morocco<br>Todra Gorge Expedition</h3>
+        <p class="trip-hook">Towering limestone canyon walls, desert light, and a genuine sense of adventure. Two weeks of big multi-pitch and sport routes far off the usual circuit.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,790</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="bouldering" data-level="intermediate" data-dest="spain" data-guide="guide-coach" data-duration="week" data-month="2027-01">
+      <div class="trip-img trip-img-placeholder" data-flag="🇪🇸"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Bouldering Camp</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 Albarracín, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Jan 23 – 30, 2027 · 7 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Albarracín<br>Bouldering Camp</h3>
+        <p class="trip-hook">Quiet sandstone forest bouldering away from the crowds, paired with technical coaching built to sharpen your movement over the winter.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €990</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="month-group reveal" data-month-group="2027-02">
+  <div class="month-heading-wrap">
+    <h2 class="month-heading">February 2027</h2>
+    <span class="month-count" data-month-count="2027-02"></span>
+  </div>
+  <div class="trip-cards month-trip-cards">
+    <div class="trip-card reveal" data-type="performance" data-level="advanced" data-dest="spain" data-guide="guide-coach" data-duration="twoweeks" data-month="2027-02">
+      <div class="trip-img trip-img-placeholder" data-flag="🇪🇸"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Performance Camp</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 Rodellar, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Feb 6 – 20, 2027 · 14 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Rodellar<br>Performance Camp</h3>
+        <p class="trip-hook">Our flagship two-week intensive. Video analysis, structured strength blocks, and daily coaching on the steepest tufa terrain in Europe.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €2,190</span>
+          <span class="trip-urgency trip-urgency-urgent">5 spots left</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+    <div class="trip-card reveal" data-type="learn-lead" data-level="beginner" data-dest="spain" data-guide="coach" data-duration="weekend" data-month="2027-02">
+      <div class="trip-img trip-img-placeholder" data-flag="🇪🇸"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Learn to Lead</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 El Chorro, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Feb 13 – 17, 2027 · 5 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">El Chorro<br>Learn to Lead</h3>
+        <p class="trip-hook">Lead climbing, demystified. Clipping technique, fall practice, and route reading — everything you need to climb independently outdoors.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €650</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">View Trip Details →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="no-results" id="noResults">
+  <h3>No trips match those filters</h3>
+  <p>Try clearing a filter or two — or get in touch and we'll help you find the right trip.</p>
+</div>
+
+
+<section class="trips-final-cta reveal">
+  <h2>CAN'T FIND<br>YOUR TRIP?</h2>
+  <p>We run custom itineraries year-round, built around your dates, your crew, and your goals.</p>
+  <div class="btn-group" style="justify-content:center;display:flex;gap:16px;flex-wrap:wrap;">
+    <button class="btn-dark" onclick="window.location.href='contact.html'">Talk to a Coach</button>
+    <button class="btn-outline-dark" onclick="window.location.href='custom-trips.html'">Build a Custom Trip</button>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="footer-logo-img">
+      <p>A community of climbing coaches and guides dedicated to maximum progression on real rock across Europe's greatest crags. Climbers. Coaches. Lifers.</p>
+      <form class="newsletter" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h4>Trips</h4>
+      <a href="#">Road Trips</a>
+      <a href="#">Sport Holidays</a>
+      <a href="#">Bouldering Camps</a>
+      <a href="#">Custom Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Coaching</h4>
+      <a href="#">Performance Camps</a>
+      <a href="#">Private Coaching</a>
+      <a href="#">Pro Clinics</a>
+      <a href="#">Video Analysis</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" id="team">Meet the Team</a>
+      <a href="#">Destinations</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Rockbusters. All rights reserved.</p>
+    <span class="footer-tagline">Climbers. Coaches. Lifers.</span>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  var sticky = document.getElementById('stickyFilter');
+  var hero = document.querySelector('.hero');
+
+  // Nav blur on scroll
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+
+  // Sticky filter: desktop popup after stats bar; skip on mobile (always visible)
+  if (sticky && window.innerWidth > 480) {
+    var statsBar = document.querySelector('.stats-bar');
+    if (statsBar) {
+      var statsBottom = statsBar.getBoundingClientRect().bottom;
+      if (statsBottom < 70) {
+        sticky.classList.add('visible');
+      } else {
+        sticky.classList.remove('visible');
+      }
+    }
+  }
+});
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(function(el) {
+  observer.observe(el);
+});
+
+function toggleMenu() {
+  var links = document.getElementById('navLinks');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+}
+</script>
+
+<script>
+var filters = { type:'', level:'', dest:'', date:'', guide:'', duration:'' };
+
+var filterLabels = {
+  type: { road:'Road Trip', sport:'Sport Climbing', 'learn-lead':'Learn to Lead', bouldering:'Bouldering', performance:'Performance Camp', trad:'Trad & Multi-Pitch', private:'Private Coaching', custom:'Custom Trip' },
+  level: { beginner:'Beginner', intermediate:'Intermediate', advanced:'Advanced', expert:'Expert' },
+  dest: { spain:'Spain', france:'France', italy:'Italy', greece:'Greece', other:'Other Destination' },
+  guide: { guide:'Guide', coach:'Coach', 'guide-coach':'Guide + Coach' },
+  duration: { weekend:'Weekend', week:'1 Week', twoweeks:'2 Weeks', longer:'2+ Weeks' }
+};
+
+function syncFilters(key, value) {
+  filters[key] = value;
+  applyFilters();
+}
+
+function clearAllFilters() {
+  filters = { type:'', level:'', dest:'', date:'', guide:'', duration:'' };
+  ['f-type','f-level','f-dest','f-guide','f-duration'].forEach(function(id){
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('f-date').value = '';
+  applyFilters();
+}
+
+function applyFilters() {
+  var cards = document.querySelectorAll('.trip-card');
+  var anyActive = false;
+
+  cards.forEach(function(card) {
+    var visible = true;
+    if (filters.type && card.dataset.type !== filters.type) visible = false;
+    if (filters.level && card.dataset.level !== filters.level) visible = false;
+    if (filters.dest && card.dataset.dest !== filters.dest) visible = false;
+    if (filters.guide && card.dataset.guide !== filters.guide) visible = false;
+    if (filters.duration && card.dataset.duration !== filters.duration) visible = false;
+    if (filters.date && card.dataset.month !== filters.date) visible = false;
+    card.classList.toggle('trip-hidden', !visible);
+  });
+
+  // Hide month groups with zero visible cards; update per-month count
+  var groups = document.querySelectorAll('.month-group');
+  var totalVisible = 0;
+  groups.forEach(function(group) {
+    var visibleCards = group.querySelectorAll('.trip-card:not(.trip-hidden)').length;
+    group.classList.toggle('month-hidden', visibleCards === 0);
+    totalVisible += visibleCards;
+    var countEl = group.querySelector('.month-count');
+    if (countEl) {
+      countEl.textContent = visibleCards + (visibleCards === 1 ? ' trip' : ' trips');
+    }
+  });
+
+  var noResults = document.getElementById('noResults');
+  if (noResults) noResults.classList.toggle('show', totalVisible === 0);
+
+  // Active filter tags
+  var tagWrap = document.getElementById('filterTags');
+  var activeStrip = document.getElementById('activeFilters');
+  tagWrap.innerHTML = '';
+  var hasAny = false;
+
+  Object.keys(filters).forEach(function(key) {
+    var val = filters[key];
+    if (!val) return;
+    hasAny = true;
+    var label = key === 'date' ? val : (filterLabels[key] && filterLabels[key][val] ? filterLabels[key][val] : val);
+    var tag = document.createElement('span');
+    tag.className = 'filter-tag';
+    tag.innerHTML = label + ' <span class="filter-tag-x" data-key="' + key + '">✕</span>';
+    tagWrap.appendChild(tag);
+  });
+
+  activeStrip.classList.toggle('has-filters', hasAny);
+
+  tagWrap.querySelectorAll('.filter-tag-x').forEach(function(x) {
+    x.addEventListener('click', function() {
+      var key = this.getAttribute('data-key');
+      filters[key] = '';
+      var idMap = { type:'f-type', level:'f-level', dest:'f-dest', date:'f-date', guide:'f-guide', duration:'f-duration' };
+      var el = document.getElementById(idMap[key]);
+      if (el) el.value = '';
+      applyFilters();
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', applyFilters);
+</script>
+
+</body>
+</html>

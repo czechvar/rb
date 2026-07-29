@@ -91,7 +91,7 @@ If any of the four `R2_*` vars is unset, Payload falls back to local-disk storag
 
 ### Issue tracker
 
-Issues are tracked in GitHub Issues (`czechvar/rb`) via the `gh` CLI; external PRs are not a triage surface. See `docs/agents/issue-tracker.md`.
+Specs / PRDs / issues live as local markdown files in `docs/superpowers/specs/` (existing pattern). Do NOT run `gh issue create`. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
