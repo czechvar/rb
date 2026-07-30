@@ -1,7 +1,7 @@
-import type { Type } from '@/payload-types'
+import type { Program } from '@/payload-types'
 import styles from './ResultsOutcomes.module.css'
 
-export function ResultsOutcomes({ items }: { items?: Type['results'] }) {
+export function ResultsOutcomes({ items }: { items?: Program['results'] }) {
   if (!items?.length) return null
   return (
     <section className={styles.section}>

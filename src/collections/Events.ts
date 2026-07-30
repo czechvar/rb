@@ -46,9 +46,9 @@ export const Events: CollectionConfig = {
       filterOptions: () => ({ active: { equals: true } }),
     },
     {
-      name: 'types',
+      name: 'programs',
       type: 'relationship',
-      relationTo: 'types',
+      relationTo: 'programs',
       hasMany: true,
       filterOptions: () => ({ active: { equals: true } }),
     },

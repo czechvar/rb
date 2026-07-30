@@ -39,7 +39,7 @@ const cases: Array<[string, () => unknown, string[], string[]]> = [
   ['getPublishedEventBySlug', () => q.getPublishedEventBySlug('s'), ['event-by-slug', 's'], ['events', 'guides', 'locations']],
   ['getActiveEventDatesForEvent', () => q.getActiveEventDatesForEvent(4), ['event-dates-for-event', '4'], ['event-dates']],
   ['getPublishedEventsWithLocations', () => q.getPublishedEventsWithLocations(), ['published-events-with-locations'], ['events', 'locations']],
-  ['getPublishedEventsForType', () => q.getPublishedEventsForType(5), ['events-for-type', '5'], ['events']],
+  ['getPublishedEventsForProgram', () => q.getPublishedEventsForProgram(5), ['events-for-program', '5'], ['events']],
   ['getActiveEventDates', () => q.getActiveEventDates(), ['active-event-dates'], ['event-dates', 'events', 'locations']],
 ]
 

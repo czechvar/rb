@@ -1,4 +1,4 @@
-import type { Type } from '@/payload-types'
+import type { Program } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
 import styles from './AccommodationLogistics.module.css'
 
@@ -17,8 +17,8 @@ export function AccommodationLogistics({
   accommodation,
   transport,
 }: {
-  accommodation?: Type['accommodation']
-  transport?: Type['transport']
+  accommodation?: Program['accommodation']
+  transport?: Program['transport']
 }) {
   const hasAccommodation =
     accommodation?.description ||

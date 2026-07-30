@@ -1,7 +1,7 @@
-import type { Type } from '@/payload-types'
+import type { Program } from '@/payload-types'
 import styles from './CurriculumPillars.module.css'
 
-export function CurriculumPillars({ pillars }: { pillars?: Type['curriculumPillars'] }) {
+export function CurriculumPillars({ pillars }: { pillars?: Program['curriculumPillars'] }) {
   if (!pillars?.length) return null
   return (
     <section className={styles.section}>

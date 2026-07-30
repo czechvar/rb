@@ -1,12 +1,12 @@
-import type { Type } from '@/payload-types'
+import type { Program } from '@/payload-types'
 import styles from './WeekVariants.module.css'
 
 export function WeekVariants({
   variants,
   recommendation,
 }: {
-  variants?: Type['weekVariants']
-  recommendation?: Type['weekRecommendation']
+  variants?: Program['weekVariants']
+  recommendation?: Program['weekRecommendation']
 }) {
   if (!variants?.length) return null
   return (

@@ -3,12 +3,12 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 
 test.describe('Program (Trip Category) page', () => {
-  test('renders sections for a published Type', async ({ page }) => {
+  test('renders sections for a published Program', async ({ page }) => {
     const payload = await getPayload({ config })
     const stamp = Date.now()
     // @ts-expect-error slug auto-filled by the slugField beforeValidate hook
     const created = await payload.create({
-      collection: 'types',
+      collection: 'programs',
       data: {
         name: `E2E Program ${stamp}`,
         state: 'published',
@@ -34,12 +34,12 @@ test.describe('Program (Trip Category) page', () => {
     await expect(page.getByRole('heading', { name: 'Why Rockbusters' })).toBeVisible()
   })
 
-  test('404s for a draft Type', async ({ page }) => {
+  test('404s for a draft Program', async ({ page }) => {
     const payload = await getPayload({ config })
     const stamp = Date.now()
     // @ts-expect-error slug auto-filled by the slugField beforeValidate hook
     await payload.create({
-      collection: 'types',
+      collection: 'programs',
       data: {
         name: `E2E Draft Program ${stamp}`,
         state: 'draft',

@@ -51,7 +51,7 @@ describe('getFeaturedEventsForHomepage', () => {
 })
 
 describe('getHomepageReviews', () => {
-  it('returns at most 3 active reviews that have no event or type relation', async () => {
+  it('returns at most 3 active reviews that have no event or program relation', async () => {
     const payload = await getTestPayload()
     await payload.create({
       collection: 'reviews',
@@ -67,12 +67,12 @@ describe('getHomepageReviews', () => {
     expect(reviews.length).toBeGreaterThan(0)
     expect(reviews.length).toBeLessThanOrEqual(3)
     expect(reviews.every((r) => r.active === true)).toBe(true)
-    expect(reviews.every((r) => !r.event && !r.type)).toBe(true)
+    expect(reviews.every((r) => !r.event && !r.program)).toBe(true)
   })
 })
 
 describe('getHomepageFAQs', () => {
-  it('returns up to 6 active FAQs with no event or type relation, sorted by position', async () => {
+  it('returns up to 6 active FAQs with no event or program relation, sorted by position', async () => {
     const payload = await getTestPayload()
     await payload.create({
       collection: 'faqs',
@@ -88,7 +88,7 @@ describe('getHomepageFAQs', () => {
     expect(faqs.length).toBeGreaterThan(0)
     expect(faqs.length).toBeLessThanOrEqual(6)
     expect(faqs.every((f) => f.active === true)).toBe(true)
-    expect(faqs.every((f) => !f.event && !f.type)).toBe(true)
+    expect(faqs.every((f) => !f.event && !f.program)).toBe(true)
   })
 })
 

@@ -1,4 +1,4 @@
-import type { Type } from '@/payload-types'
+import type { Program } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
 import { SectionIntro } from './SectionIntro'
 import styles from './AudienceCards.module.css'
@@ -8,9 +8,9 @@ export function AudienceCards({
   soloNote,
   redirectCallout,
 }: {
-  cards?: Type['audienceCards']
-  soloNote?: Type['soloNote']
-  redirectCallout?: Type['redirectCallout']
+  cards?: Program['audienceCards']
+  soloNote?: Program['soloNote']
+  redirectCallout?: Program['redirectCallout']
 }) {
   if (!cards?.length) return null
   return (

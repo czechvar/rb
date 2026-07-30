@@ -16,11 +16,11 @@ export function GuideTrips({ guide, events }: { guide: Guide; events: Event[] })
         {events.length ? (
           <div className={styles.grid}>
             {events.map((e) => {
-              const t = e.types?.[0]
-              const typeName = t && typeof t === 'object' ? t.name : null
+              const t = e.programs?.[0]
+              const programName = t && typeof t === 'object' ? t.name : null
               return (
                 <Link key={e.id} href={`/trips/${e.slug}`} className={`${styles.card} reveal`}>
-                  {typeName ? <span className={styles.kicker}>{typeName}</span> : null}
+                  {programName ? <span className={styles.kicker}>{programName}</span> : null}
                   <span className={styles.name}>{e.title}</span>
                   {e.shortDescription ? <p className={styles.hook}>{e.shortDescription}</p> : null}
                   <span className={styles.link}>See trip →</span>

@@ -217,8 +217,8 @@ async function main() {
     label: 'private-guiding',
   })
 
-  const typeCamps = await upsert(payload, {
-    collection: 'types',
+  const programCamps = await upsert(payload, {
+    collection: 'programs',
     where: { slug: { equals: 'climbing-camps' } },
     data: {
       name: 'Climbing Camps',
@@ -260,7 +260,7 @@ async function main() {
     label: 'climbing-camps',
   })
   await upsert(payload, {
-    collection: 'types',
+    collection: 'programs',
     where: { slug: { equals: 'technique-coaching' } },
     data: {
       name: 'Technique Coaching',
@@ -594,7 +594,7 @@ async function main() {
       state: 'published',
       featured: true,
       categories: [catCamps.id],
-      types: [typeCamps.id],
+      programs: [programCamps.id],
       difficulties: [dBeg.id, dInt.id],
       locations: [locFrankenjura.id],
       coaches: [guideKlemen.id, guideMarek.id],
@@ -639,7 +639,7 @@ async function main() {
       state: 'published',
       featured: true,
       categories: [catCamps.id],
-      types: [typeCamps.id],
+      programs: [programCamps.id],
       difficulties: [dInt.id, dAdv.id],
       locations: [locMallorca.id],
       coaches: [guideKlemen.id],
@@ -683,7 +683,7 @@ async function main() {
       ),
       state: 'published',
       categories: [catCamps.id],
-      types: [typeCamps.id],
+      programs: [programCamps.id],
       difficulties: [dInt.id, dAdv.id],
       locations: [locDolomites.id],
       coaches: [guideKlemen.id, guideMarek.id],
@@ -830,7 +830,7 @@ async function main() {
     reviewerLocation: string
     resultLine: string
     event?: number
-    type?: number
+    program?: number
     position: number
   }> = [
     {
@@ -870,7 +870,7 @@ async function main() {
       reviewerName: 'Andrej M.',
       reviewerLocation: 'Bratislava, SK',
       resultLine: 'Repeat camper since 2023.',
-      type: typeCamps.id,
+      program: programCamps.id,
       position: 2,
     },
   ]
@@ -892,7 +892,7 @@ async function main() {
     question: string
     answer: ReturnType<typeof richText>
     event?: number
-    type?: number
+    program?: number
     position: number
   }> = [
     {

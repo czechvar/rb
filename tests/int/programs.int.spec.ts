@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { getTestPayload } from '../helpers/payload'
 
-describe('types collection — content fields', () => {
-  it('creates a Type with auto-slug, draft state, and defaults', async () => {
+describe('programs collection — content fields', () => {
+  it('creates a Program with auto-slug, draft state, and defaults', async () => {
     const payload = await getTestPayload()
     // @ts-expect-error state/featured/active intentionally omitted to verify defaults
     const doc = await payload.create({
-      collection: 'types',
+      collection: 'programs',
       data: {
         name: `Sport Climbing Camps ${Date.now()}`,
         shortDescription: 'Recurring sport climbing programs.',
@@ -23,7 +23,7 @@ describe('types collection — content fields', () => {
     const payload = await getTestPayload()
     // @ts-expect-error state defaulted
     const doc = await payload.create({
-      collection: 'types',
+      collection: 'programs',
       data: {
         name: `Camp With Marketing ${Date.now()}`,
         highlights: [{ text: 'One' }, { text: 'Two' }, { text: 'Three' }],
@@ -59,10 +59,10 @@ describe('types collection — content fields', () => {
     const payload = await getTestPayload()
     // @ts-expect-error state defaulted
     const doc = await payload.create({
-      collection: 'types',
+      collection: 'programs',
       data: {
         name: `Program Flow Camp ${Date.now()}`,
-        programFlow: {
+        flow: {
           framingParagraph: 'Performance lab, not a fixed schedule.',
           mixAndMatchBlocks: [
             {
@@ -79,10 +79,10 @@ describe('types collection — content fields', () => {
         },
       },
     })
-    expect(doc.programFlow?.framingParagraph).toContain('Performance lab')
-    expect(doc.programFlow?.mixAndMatchBlocks).toHaveLength(1)
-    expect(doc.programFlow?.tailoredToYou).toHaveLength(2)
-    expect(doc.programFlow?.focusTracks?.[0].colorTag).toBe('red')
+    expect(doc.flow?.framingParagraph).toContain('Performance lab')
+    expect(doc.flow?.mixAndMatchBlocks).toHaveLength(1)
+    expect(doc.flow?.tailoredToYou).toHaveLength(2)
+    expect(doc.flow?.focusTracks?.[0].colorTag).toBe('red')
   })
 
   it('stores week variants, accommodation, transport, coaches, and results', async () => {
@@ -98,7 +98,7 @@ describe('types collection — content fields', () => {
     })
     // @ts-expect-error state defaulted
     const doc = await payload.create({
-      collection: 'types',
+      collection: 'programs',
       data: {
         name: `Full Camp ${Date.now()}`,
         weekVariants: [
