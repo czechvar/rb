@@ -282,99 +282,9 @@
   color: #515151;
 }
 
-.footerContactSection {
-  background-image:
-    linear-gradient(rgba(20, 8, 8, 0.65), rgba(20, 8, 8, 0.65)),
-    url('https://rockbusters.net/front/2019/assets/img/homepage/hp-inquiry-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  padding: 8rem var(--contentPadding);
-  margin-top: 6rem;
-  clip-path: polygon(0 0, 100% 5vw, 100% 100%, 0 100%);
-}
-
-.footerContactGrid {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 6rem;
-  align-items: start;
-  width: 100%;
-  max-width: var(--contentTextMaxWidth);
-  margin: 0 auto;
-  padding: 4rem 0;
-}
-
-@media (max-width: 968px) {
-  .footerContactGrid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 2rem 0;
-  }
-}
-
-.footerContactText {
-  color: #ffffff;
-  text-align: center;
-}
-
-.footerContactText h2 {
-  font-size: var(--h2FontSize);
-  line-height: var(--h2LineHeight);
-  color: #ffffff;
-  font-weight: 500;
-  margin-bottom: 0;
-}
-
-.footerContactText .footerEyebrow {
-  display: block;
-  font-size: var(--eyebrowFontSize);
-  line-height: var(--eyebrowLineHeight);
-  letter-spacing: var(--eyebrowLetterSpacing);
-  text-transform: uppercase;
-  margin-bottom: var(--eyebrowMarginBottom);
-  font-weight: 400;
-}
-
-.footerContactText .divider {
-  width: var(--headerDividerWidth);
-  max-width: var(--headerDividerMaxWidth);
-  height: var(--headerDividerHeight);
-  background: currentColor;
-  opacity: 0.8;
-  margin: 3rem auto;
-}
-
-.footerContactText p {
-  font-size: var(--pFontSize);
-  line-height: var(--textLineHeight);
-  opacity: 0.95;
-}
-
-.footerContactForm {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 4px;
-  padding: 3rem;
-  color: #ffffff;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 24rem;
-  text-align: center;
-}
-
-.footerContactFormPlaceholder {
-  max-width: 32rem;
-}
-
 .footerLinks {
-  background: var(--rb-white-12);
-  padding: 6rem var(--contentPadding) 3rem;
+  background: #080808;
+  padding: 7.2rem var(--contentPadding) 4rem;
 }
 
 .footerLinksInner {
@@ -385,19 +295,20 @@
 
 .footerGrid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4.8rem;
+  margin-bottom: 5.6rem;
   align-items: start;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .footerGrid {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .footerGrid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -407,68 +318,87 @@
 .footerBrand img {
   height: 4.4rem;
   width: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
 }
 
-.footerBrand ul {
+.footerBrand p {
+  font-size: 1.3rem;
+  line-height: 1.75;
+  color: rgba(240, 237, 230, 0.36);
+  max-width: 26rem;
+  margin: 0;
+}
+
+.footerNewsletter {
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  margin-top: 2.4rem;
+  max-width: 32rem;
 }
 
-.footerBrand a {
-  color: rgb(95, 90, 88);
-  font-size: 1.6rem;
+.footerNewsletter input {
+  background: rgba(240, 237, 230, 0.05);
+  border: 1px solid rgba(240, 237, 230, 0.1);
+  border-right: none;
+  color: #f0ede6;
+  padding: 1.1rem 1.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3rem;
+  flex: 1;
+  outline: none;
+  min-width: 0;
 }
 
-.footerBrand a:hover {
-  color: var(--rb-red);
+.footerNewsletter input::placeholder {
+  color: rgba(240, 237, 230, 0.28);
+}
+
+.footerNewsletter button {
+  background: #e30713;
+  border: none;
+  color: #0d0d0d;
+  padding: 1.1rem 1.8rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .footerCol h4 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--rb-black);
-  margin: 0 0 1.6rem 0;
-  position: relative;
-  padding-bottom: 0.875rem;
-}
-
-.footerCol h4::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  max-width: 14rem;
-  height: 2px;
-  background: var(--rb-red);
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #e30713;
+  font-weight: 700;
+  margin: 0 0 2rem 0;
 }
 
 .footerCol ul {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1.2rem;
 }
 
 .footerCol a {
-  color: rgb(95, 90, 88);
-  font-size: 1.6rem;
+  color: rgba(240, 237, 230, 0.4);
+  font-size: 1.3rem;
   line-height: 1.5;
+  transition: color 0.2s;
 }
 
 .footerCol a:hover {
-  color: var(--rb-red);
+  color: #f0ede6;
 }
 
 .footerBottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 3rem;
-  margin-top: 3rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 3.2rem;
+  border-top: 1px solid rgba(240, 237, 230, 0.07);
   gap: 2rem;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
@@ -479,8 +409,26 @@
   }
 }
 
-.footerBottom small {
-  color: rgb(95, 90, 88);
+.footerCopy {
   font-size: 1.2rem;
+  color: rgba(240, 237, 230, 0.22);
   line-height: 1.6;
+}
+
+.footerTermsLink {
+  color: rgba(240, 237, 230, 0.4);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.footerTermsLink:hover {
+  color: #f0ede6;
+}
+
+.footerTagline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.14em;
+  color: rgba(240, 237, 230, 0.18);
+  text-transform: uppercase;
 }

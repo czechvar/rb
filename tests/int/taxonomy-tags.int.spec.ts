@@ -14,12 +14,12 @@ describe('difficulty and type collections', () => {
     expect(doc.active).toBe(true)
   })
 
-  it('creates a type', async () => {
+  it('creates a program', async () => {
     const payload = await getTestPayload()
     const name = `Multi-pitch ${Date.now()}`
     // @ts-expect-error state is intentionally omitted to verify the collection's defaultValue
     const doc = await payload.create({
-      collection: 'types',
+      collection: 'programs',
       data: { name, active: true },
     })
     expect(doc.id).toBeDefined()

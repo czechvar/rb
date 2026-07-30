@@ -17,9 +17,9 @@ export const FAQs: CollectionConfig = {
       relationTo: 'events',
     },
     {
-      name: 'type',
+      name: 'program',
       type: 'relationship',
-      relationTo: 'types',
+      relationTo: 'programs',
       filterOptions: () => ({ active: { equals: true } }),
     },
     { name: 'position', type: 'number', defaultValue: 0 },

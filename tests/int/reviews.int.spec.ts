@@ -13,7 +13,7 @@ describe('reviews collection', () => {
     })
     expect(doc.id).toBeDefined()
     expect(doc.event).toBeFalsy()
-    expect(doc.type).toBeFalsy()
+    expect(doc.program).toBeFalsy()
     expect(doc.position).toBe(0)
     expect(doc.active).toBe(false)
   })
@@ -42,22 +42,22 @@ describe('reviews collection', () => {
     expect(doc.resultLine).toContain('7a')
   })
 
-  it('attaches a review to a type (category-level)', async () => {
+  it('attaches a review to a program (category-level)', async () => {
     const payload = await getTestPayload()
     // @ts-expect-error state defaulted
-    const type = await payload.create({
-      collection: 'types',
-      data: { name: `Review Type ${Date.now()}`, active: true },
+    const program = await payload.create({
+      collection: 'programs',
+      data: { name: `Review Program ${Date.now()}`, active: true },
     })
     const doc = await payload.create({
       collection: 'reviews',
       data: {
         quote: `Whole program is a gem. ${Date.now()}`,
         reviewerName: 'Tomáš K.',
-        type: type.id,
+        program: program.id,
       },
     })
-    const typeId = typeof doc.type === 'object' ? doc.type?.id : doc.type
-    expect(typeId).toBe(type.id)
+    const programId = typeof doc.program === 'object' ? doc.program?.id : doc.program
+    expect(programId).toBe(program.id)
   })
 })

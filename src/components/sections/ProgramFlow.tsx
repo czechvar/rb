@@ -1,7 +1,7 @@
-import type { Type } from '@/payload-types'
+import type { Program } from '@/payload-types'
 import styles from './ProgramFlow.module.css'
 
-export function ProgramFlow({ flow }: { flow?: Type['programFlow'] }) {
+export function ProgramFlow({ flow }: { flow?: Program['flow'] }) {
   if (!flow) return null
   const { framingParagraph, mixAndMatchBlocks, tailoredToYou, focusTracks } = flow
   const hasAnything =

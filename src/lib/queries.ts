@@ -215,14 +215,14 @@ export function getActiveEventDatesForEvents(eventIds: number[]) {
   })
 }
 
-// LinkedEvents on /programs/[slug]. The page's primary `types` doc and its
+// LinkedEvents on /programs/[slug]. The page's primary `programs` doc and its
 // faqs/reviews stay as direct (uncached) finds — out of scope.
-export function getPublishedEventsForType(typeId: number) {
-  return cachedQuery(['events-for-type', String(typeId)], [TAGS.events], async (): Promise<Event[]> => {
+export function getPublishedEventsForProgram(programId: number) {
+  return cachedQuery(['events-for-program', String(programId)], [TAGS.events], async (): Promise<Event[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'events',
-      where: { and: [{ types: { contains: typeId } }, { state: { equals: 'published' } }] },
+      where: { and: [{ programs: { contains: programId } }, { state: { equals: 'published' } }] },
       sort: 'title',
       depth: 1,
       limit: 50,
@@ -335,7 +335,7 @@ export function getHomepageFAQs() {
         and: [
           { active: { equals: true } },
           { event: { exists: false } },
-          { type: { exists: false } },
+          { program: { exists: false } },
         ],
       },
       sort: 'position',
@@ -354,7 +354,7 @@ export function getHomepageReviews() {
         and: [
           { active: { equals: true } },
           { event: { exists: false } },
-          { type: { exists: false } },
+          { program: { exists: false } },
         ],
       },
       sort: 'position',

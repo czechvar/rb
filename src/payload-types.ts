@@ -70,7 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     difficulties: Difficulty;
-    types: Type;
+    programs: Program;
     categories: Category;
     guides: Guide;
     locations: Location;
@@ -95,7 +95,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     difficulties: DifficultiesSelect<false> | DifficultiesSelect<true>;
-    types: TypesSelect<false> | TypesSelect<true>;
+    programs: ProgramsSelect<false> | ProgramsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     guides: GuidesSelect<false> | GuidesSelect<true>;
     locations: LocationsSelect<false> | LocationsSelect<true>;
@@ -233,9 +233,9 @@ export interface Difficulty {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "types".
+ * via the `definition` "programs".
  */
-export interface Type {
+export interface Program {
   id: number;
   name: string;
   slug: string;
@@ -301,7 +301,7 @@ export interface Type {
         id?: string | null;
       }[]
     | null;
-  programFlow?: {
+  flow?: {
     framingParagraph?: string | null;
     mixAndMatchBlocks?:
       | {
@@ -717,7 +717,7 @@ export interface Event {
   vimeoId?: string | null;
   categories?: (number | Category)[] | null;
   difficulties?: (number | Difficulty)[] | null;
-  types?: (number | Type)[] | null;
+  programs?: (number | Program)[] | null;
   locations?: (number | Location)[] | null;
   highlights?:
     | {
@@ -971,7 +971,7 @@ export interface Faq {
     [k: string]: unknown;
   };
   event?: (number | null) | Event;
-  type?: (number | null) | Type;
+  program?: (number | null) | Program;
   position?: number | null;
   active?: boolean | null;
   updatedAt: string;
@@ -988,7 +988,7 @@ export interface Review {
   reviewerLocation?: string | null;
   resultLine?: string | null;
   event?: (number | null) | Event;
-  type?: (number | null) | Type;
+  program?: (number | null) | Program;
   position?: number | null;
   active?: boolean | null;
   updatedAt: string;
@@ -1203,8 +1203,8 @@ export interface PayloadLockedDocument {
         value: number | Difficulty;
       } | null)
     | ({
-        relationTo: 'types';
-        value: number | Type;
+        relationTo: 'programs';
+        value: number | Program;
       } | null)
     | ({
         relationTo: 'categories';
@@ -1385,9 +1385,9 @@ export interface DifficultiesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "types_select".
+ * via the `definition` "programs_select".
  */
-export interface TypesSelect<T extends boolean = true> {
+export interface ProgramsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   shortDescription?: T;
@@ -1424,7 +1424,7 @@ export interface TypesSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  programFlow?:
+  flow?:
     | T
     | {
         framingParagraph?: T;
@@ -1703,7 +1703,7 @@ export interface EventsSelect<T extends boolean = true> {
   vimeoId?: T;
   categories?: T;
   difficulties?: T;
-  types?: T;
+  programs?: T;
   locations?: T;
   highlights?:
     | T
@@ -1880,7 +1880,7 @@ export interface FaqsSelect<T extends boolean = true> {
   question?: T;
   answer?: T;
   event?: T;
-  type?: T;
+  program?: T;
   position?: T;
   active?: T;
   updatedAt?: T;
@@ -1896,7 +1896,7 @@ export interface ReviewsSelect<T extends boolean = true> {
   reviewerLocation?: T;
   resultLine?: T;
   event?: T;
-  type?: T;
+  program?: T;
   position?: T;
   active?: T;
   updatedAt?: T;

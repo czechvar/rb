@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
-import type { Type, Guide } from '@/payload-types'
+import type { Program, Guide } from '@/payload-types'
 import styles from './CoachesRich.module.css'
 
 function isGuide(x: number | Guide): x is Guide {
@@ -12,8 +12,8 @@ export function CoachesRich({
   coaches,
   framing,
 }: {
-  coaches?: Type['coaches']
-  framing?: Type['coachFramingParagraph']
+  coaches?: Program['coaches']
+  framing?: Program['coachFramingParagraph']
 }) {
   const resolved = (coaches ?? []).filter(isGuide)
   if (!resolved.length) return null

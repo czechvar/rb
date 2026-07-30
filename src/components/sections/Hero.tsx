@@ -1,12 +1,12 @@
-import type { Type } from '@/payload-types'
+import type { Program } from '@/payload-types'
 import styles from './Hero.module.css'
 
-export function Hero({ type }: { type: Type }) {
+export function Hero({ program }: { program: Program }) {
   return (
     <section className={styles.hero}>
       <div className={styles.text}>
-        <h1>{type.name}</h1>
-        {type.shortDescription && <p className={styles.subline}>{type.shortDescription}</p>}
+        <h1>{program.name}</h1>
+        {program.shortDescription && <p className={styles.subline}>{program.shortDescription}</p>}
       </div>
       <aside className={styles.booking}>
         <div className={styles.price}>See dates below</div>

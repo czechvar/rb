@@ -3,9 +3,9 @@ import { anyone, isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
 
-export const Types: CollectionConfig = {
-  slug: 'types',
-  labels: { singular: 'Type', plural: 'Types' },
+export const Programs: CollectionConfig = {
+  slug: 'programs',
+  labels: { singular: 'Program', plural: 'Programs' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'name', group: 'Taxonomy' },
   fields: [
@@ -56,7 +56,7 @@ export const Types: CollectionConfig = {
 
     // Program & Daily Flow — "performance lab" framing + mix-and-match + focus tracks
     {
-      name: 'programFlow',
+      name: 'flow',
       type: 'group',
       fields: [
         { name: 'framingParagraph', type: 'textarea' },

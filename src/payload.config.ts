@@ -9,7 +9,7 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Difficulties } from './collections/Difficulties'
-import { Types } from './collections/Types'
+import { Programs } from './collections/Programs'
 import { Categories } from './collections/Categories'
 import { Guides } from './collections/Guides'
 import { Locations } from './collections/Locations'
@@ -40,7 +40,7 @@ export default buildConfig({
     Users,
     Media,
     Difficulties,
-    Types,
+    Programs,
     Categories,
     Guides,
     Locations,

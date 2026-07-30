@@ -1,56 +1,32 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './marketing.module.css'
+import { NewsletterForm } from './NewsletterForm'
 
-const SERVICES = [
-  { href: '/programs/climbing-camps', label: 'Climbing Camps' },
-  { href: '/programs/technique-coaching', label: 'Technique Coaching' },
-  { href: '/programs/private-guiding', label: 'Private Guiding' },
-  { href: '/programs/expeditions', label: 'Expeditions' },
+const TRIPS = [
+  { href: '#', label: 'Road Trips' },
+  { href: '#', label: 'Sport Holidays' },
+  { href: '#', label: 'Bouldering Camps' },
+  { href: '#', label: 'Custom Trips' },
 ]
 
-const DESTINATIONS = [
-  { href: '/destinations#spain', label: 'Spain' },
-  { href: '/destinations#italy', label: 'Italy' },
-  { href: '/destinations#france', label: 'France' },
-  { href: '/destinations#czech-republic', label: 'Czechia' },
+const COACHING = [
+  { href: '#', label: 'Performance Camps' },
+  { href: '#', label: 'Private Coaching' },
+  { href: '#', label: 'Pro Clinics' },
+  { href: '#', label: 'Video Analysis' },
 ]
 
-const ABOUT = [
-  { href: '/about', label: 'About Us' },
-  { href: '/team', label: 'Rockbusters Team' },
-  { href: '/partners', label: 'Partners' },
-]
-
-const CONTACT = [
-  { href: 'mailto:info@rockbusters.net', label: 'info@rockbusters.net' },
-  { href: 'tel:00420776805045', label: '+420 776 805 045' },
+const COMPANY = [
+  { href: '/team', label: 'Meet the Team' },
+  { href: '/destinations', label: 'Destinations' },
   { href: '/faq', label: 'FAQ' },
-  { href: '/terms', label: 'Terms & Conditions' },
+  { href: '/contact', label: 'Contact Us' },
 ]
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.footerContactSection}>
-        <div className={styles.footerContactGrid}>
-          <div className={styles.footerContactText}>
-            <span className={styles.footerEyebrow}>Contact Us</span>
-            <h2>Ready to Send Your Project?</h2>
-            <div className={styles.divider} />
-            <p>Tell us your goals, dates, and grade — we&apos;ll come back with a plan.</p>
-          </div>
-          <div className={styles.footerContactForm}>
-            <div className={styles.footerContactFormPlaceholder}>
-              Contact form lands here in the next round.
-              <br />
-              <br />
-              For now: <a href="mailto:info@rockbusters.net">info@rockbusters.net</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className={styles.footerLinks}>
         <div className={styles.footerLinksInner}>
           <div className={styles.footerGrid}>
@@ -61,43 +37,42 @@ export function Footer() {
                 width={240}
                 height={48}
               />
-              <ul>
-                {ABOUT.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href}>{l.label}</Link>
-                  </li>
-                ))}
-              </ul>
+              <p>
+                A community of climbing coaches and guides dedicated to maximum
+                progression on real rock across Europe&apos;s greatest crags.
+                Climbers. Coaches. Lifers.
+              </p>
+              <NewsletterForm />
             </div>
 
             <div className={styles.footerCol}>
-              <h4>Services</h4>
+              <h4>Trips</h4>
               <ul>
-                {SERVICES.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href}>{l.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className={styles.footerCol}>
-              <h4>Destinations</h4>
-              <ul>
-                {DESTINATIONS.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href}>{l.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className={styles.footerCol}>
-              <h4>Contact</h4>
-              <ul>
-                {CONTACT.map((l) => (
-                  <li key={l.href}>
+                {TRIPS.map((l) => (
+                  <li key={l.label}>
                     <a href={l.href}>{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.footerCol}>
+              <h4>Coaching</h4>
+              <ul>
+                {COACHING.map((l) => (
+                  <li key={l.label}>
+                    <a href={l.href}>{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.footerCol}>
+              <h4>Company</h4>
+              <ul>
+                {COMPANY.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href}>{l.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -105,9 +80,17 @@ export function Footer() {
           </div>
 
           <div className={styles.footerBottom}>
-            <small>
-              © {new Date().getFullYear()} Rockbusters. All rights reserved. Proud member of 1% For The Planet.
+            <small className={styles.footerCopy}>
+              © {new Date().getFullYear()} Rockbusters. All rights reserved.
+              Proud member of 1% For The Planet.{' '}
+              <span aria-hidden="true">·</span>{' '}
+              <Link href="/terms" className={styles.footerTermsLink}>
+                Terms &amp; Conditions
+              </Link>
             </small>
+            <span className={styles.footerTagline}>
+              Climbers. Coaches. Lifers.
+            </span>
           </div>
         </div>
       </div>

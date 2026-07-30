@@ -26,7 +26,7 @@ test.describe('Homepage', () => {
     const stamp = Date.now()
     const reviews = await payload.find({
       collection: 'reviews',
-      where: { and: [{ active: { equals: true } }, { event: { exists: false } }, { type: { exists: false } }] },
+      where: { and: [{ active: { equals: true } }, { event: { exists: false } }, { program: { exists: false } }] },
       limit: 1,
     })
     if (reviews.docs.length === 0) {
@@ -37,7 +37,7 @@ test.describe('Homepage', () => {
     }
     const faqs = await payload.find({
       collection: 'faqs',
-      where: { and: [{ active: { equals: true } }, { event: { exists: false } }, { type: { exists: false } }] },
+      where: { and: [{ active: { equals: true } }, { event: { exists: false } }, { program: { exists: false } }] },
       limit: 1,
     })
     if (faqs.docs.length === 0) {

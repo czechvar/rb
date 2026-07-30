@@ -34,7 +34,7 @@ describe('faqs collection', () => {
     })
     expect(doc.id).toBeDefined()
     expect(doc.event).toBeFalsy()
-    expect(doc.type).toBeFalsy()
+    expect(doc.program).toBeFalsy()
     expect(doc.position).toBe(0)
     expect(doc.active).toBe(false)
   })
@@ -60,22 +60,22 @@ describe('faqs collection', () => {
     expect(doc.active).toBe(true)
   })
 
-  it('creates an FAQ tied to a type (category-level)', async () => {
+  it('creates an FAQ tied to a program (category-level)', async () => {
     const payload = await getTestPayload()
     // @ts-expect-error state defaulted
-    const type = await payload.create({
-      collection: 'types',
-      data: { name: `FAQ Type ${Date.now()}`, active: true },
+    const program = await payload.create({
+      collection: 'programs',
+      data: { name: `FAQ Program ${Date.now()}`, active: true },
     })
     const doc = await payload.create({
       collection: 'faqs',
       data: {
         question: `Type Q ${Date.now()}`,
         answer: richText('Answer for this program.'),
-        type: type.id,
+        program: program.id,
       },
     })
-    const typeId = typeof doc.type === 'object' ? doc.type?.id : doc.type
-    expect(typeId).toBe(type.id)
+    const programId = typeof doc.program === 'object' ? doc.program?.id : doc.program
+    expect(programId).toBe(program.id)
   })
 })
