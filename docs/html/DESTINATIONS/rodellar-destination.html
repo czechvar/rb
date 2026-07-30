@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The ultimate guide to sport climbing in Rodellar, Spain — 1,000+ routes on overhanging limestone, sector guides, accommodation, gear lists, travel tips and Rockbusters trips in the Sierra de Guara.">
+<title>Sport Climbing in Rodellar, Spain — The Ultimate Rockbusters Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ROCKBUSTERS DESIGN SYSTEM — Rodellar Destination Guide
+   Brand red: #E30713  |  Dark bg: #0D0D0D  |  Off-white: #F0EDE6
+   Display font: Bebas Neue  |  Body font: Inter
+   ============================================================ */
+:root {
+  --red:       #E30713;
+  --red-hover: #c0050f;
+  --red-dim:   rgba(227,7,19,0.10);
+  --red-border:rgba(227,7,19,0.25);
+  --black:     #0D0D0D;
+  --dark:      #111111;
+  --darker:    #0a0a0a;
+  --card-bg:   #161616;
+  --chalk:     #F0EDE6;
+  --chalk-60:  rgba(240,237,230,0.60);
+  --chalk-45:  rgba(240,237,230,0.45);
+  --chalk-30:  rgba(240,237,230,0.30);
+  --chalk-12:  rgba(240,237,230,0.12);
+  --chalk-08:  rgba(240,237,230,0.08);
+  --chalk-04:  rgba(240,237,230,0.04);
+  --stone:     #8B7355;
+  --steel:     #5B9BD5;
+  --section-pad: 80px 5%;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--chalk);overflow-x:hidden;line-height:1.6;font-size:15px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  padding:20px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:200;
+  background:linear-gradient(to bottom,rgba(13,13,13,0.90) 0%,transparent 100%);
+  backdrop-filter:blur(0px);
+  transition:background 0.3s,backdrop-filter 0.3s;
+}
+.nav.scrolled{
+  background:rgba(13,13,13,0.96);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--chalk-08);
+}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.1em}
+.nav-logo span{color:var(--red)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--chalk-60);font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--chalk)}
+.nav-cta{
+  background:var(--red);color:var(--black);
+  font-family:'Inter',sans-serif;font-weight:700;font-size:11px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:10px 20px;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:#e8303d;color:var(--black)}
+
+/* BREADCRUMB */
+.bc{
+  padding:60px 5% 0;
+  font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--chalk-45);font-family:'Inter',sans-serif;font-weight:500;
+}
+.bc a{color:var(--chalk-45);transition:color 0.15s}
+.bc a:hover{color:var(--red)}
+.bc span{margin:0 8px;color:var(--chalk-30)}
+
+/* HERO — full bleed photography */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 5% 7%;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center 25%;
+  background-repeat:no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(13,13,13,0.05) 0%,
+    rgba(13,13,13,0.05) 25%,
+    rgba(13,13,13,0.55) 60%,
+    rgba(13,13,13,0.95) 100%
+  );
+}
+.hero-content{position:relative;z-index:2;max-width:1300px;margin:0 auto;width:100%}
+.hero-layout{display:flex;align-items:flex-end;gap:3rem;width:100%}
+.hero-text-col{flex:1;min-width:0}
+.hero-eyebrow{
+  font-size:11px;letter-spacing:0.2em;color:var(--red);
+  text-transform:uppercase;margin-bottom:18px;font-weight:600;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--red)}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(72px,12vw,148px);
+  line-height:0.86;
+  margin-bottom:24px;color:var(--chalk);
+  letter-spacing:0.02em;
+}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero-sub{
+  font-size:clamp(14px,1.6vw,17px);
+  line-height:1.68;max-width:520px;
+  color:var(--chalk-60);margin-bottom:32px;
+}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.badge{
+  font-size:10px;letter-spacing:0.08em;text-transform:uppercase;
+  padding:5px 12px;font-weight:600;
+}
+.badge-red{background:var(--red);color:var(--black)}
+.badge-outline{background:transparent;color:var(--chalk-60);border:1px solid var(--chalk-30)}
+.btn-group{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  background:var(--red);color:var(--black);
+  font-family:'Inter',sans-serif;font-weight:700;font-size:12px;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:15px 32px;transition:background 0.2s;display:inline-block;
+}
+.btn-primary:hover{background:#e8303d;color:var(--black)}
+.btn-ghost{
+  background:transparent;color:var(--chalk);
+  font-family:'Inter',sans-serif;font-weight:500;font-size:12px;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:14px 32px;border:1.5px solid var(--chalk-30);
+  transition:border-color 0.2s;display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--chalk)}
+
+/* HERO STAT CARD */
+.hero-card{
+  flex-shrink:0;width:240px;
+  background:rgba(13,13,13,0.85);
+  border:1px solid var(--chalk-12);
+  backdrop-filter:blur(12px);
+  padding:24px 20px;
+}
+.hero-card-stat{display:flex;flex-direction:column;gap:16px}
+.hstat{padding-bottom:16px;border-bottom:1px solid var(--chalk-08)}
+.hstat:last-child{padding-bottom:0;border-bottom:none}
+.hstat-n{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--chalk);letter-spacing:0.04em;display:block;line-height:1}
+.hstat-l{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--chalk-45);margin-top:4px;display:block;font-weight:500}
+
+/* STATS BAR */
+.stats-bar{
+  background:var(--red);
+  display:flex;justify-content:space-around;
+  padding:28px 5%;gap:16px;flex-wrap:wrap;
+}
+.stat-item{text-align:center}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--black);line-height:1;display:block}
+.stat-label{font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(13,13,13,0.55);font-weight:600;display:block;margin-top:4px}
+
+/* TOC NAV */
+.toc{
+  background:rgba(13,13,13,0.96);
+  border-bottom:1px solid var(--chalk-08);
+  position:sticky;top:0;z-index:190;
+  overflow-x:auto;
+  backdrop-filter:blur(14px);
+}
+.toc-inner{
+  max-width:1300px;margin:0 auto;padding:0 5%;
+  display:flex;
+}
+.tl{
+  font-size:10px;letter-spacing:0.07em;text-transform:uppercase;
+  color:var(--chalk-45);padding:14px 16px;
+  white-space:nowrap;border-bottom:2px solid transparent;
+  transition:all 0.15s;font-weight:500;
+}
+.tl:hover{color:var(--red);border-bottom-color:var(--red)}
+
+/* MAIN LAYOUT */
+.pw{max-width:1300px;margin:0 auto;padding:0 5%}
+.cg{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:48px 0}
+
+/* SECTION COMMON */
+.sec{margin-bottom:64px;scroll-margin-top:120px}
+.sec-ey{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:10px;font-weight:600;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-ey::before{content:'';display:inline-block;width:20px;height:1px;background:var(--red)}
+.sec-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(38px,5vw,62px);
+  color:var(--chalk);line-height:0.92;margin-bottom:24px;
+  letter-spacing:0.02em;
+}
+.sec-h span{color:var(--red)}
+.sec-divider{width:100%;height:1px;background:var(--chalk-08);margin-bottom:32px}
+
+/* PROSE */
+.prose p{color:var(--chalk-60);margin-bottom:14px;line-height:1.78;font-size:14px}
+.prose h3{
+  font-family:'Bebas Neue',sans-serif;font-size:24px;
+  letter-spacing:0.04em;color:var(--chalk);margin:28px 0 10px;
+}
+.prose h4{
+  font-size:11px;font-weight:700;color:var(--chalk-45);
+  margin:18px 0 6px;text-transform:uppercase;letter-spacing:0.07em;
+}
+.prose ul{margin:8px 0 14px 20px;color:var(--chalk-60);font-size:14px}
+.prose ul li{margin-bottom:7px;line-height:1.65}
+.prose ol{margin:8px 0 14px 20px;color:var(--chalk-60);font-size:14px}
+.prose ol li{margin-bottom:7px;line-height:1.65}
+.prose strong{color:var(--chalk);font-weight:600}
+.prose a{color:var(--red)}
+.prose a:hover{text-decoration:underline}
+
+/* INFO GRID */
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.sg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0}
+.sc{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:14px 16px;
+}
+.sc-l{font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--chalk-45);margin-bottom:4px;font-weight:600}
+.sc-v{font-size:14px;font-weight:600;color:var(--chalk)}
+.sc-s{font-size:11px;color:var(--chalk-45);margin-top:2px}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tag{
+  background:var(--chalk-04);border:1px solid var(--chalk-08);
+  padding:5px 12px;font-size:12px;color:var(--chalk-60);
+}
+
+/* HIGHLIGHT BOX */
+.highlight-box{
+  background:linear-gradient(135deg,rgba(227,7,19,0.08),rgba(227,7,19,0.03));
+  border:1px solid var(--red-border);padding:22px 24px;margin:20px 0;
+}
+.highlight-box-label{
+  font-size:9px;text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--red);margin-bottom:8px;font-weight:700;
+}
+.highlight-box-text{font-size:14px;color:var(--chalk-60);line-height:1.75}
+.highlight-box-text strong{color:var(--chalk)}
+
+/* SEASON BAR */
+.seas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0}
+.sea{text-align:center}
+.sea-n{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);margin-bottom:8px;font-weight:600}
+.sea-b{height:5px;margin-bottom:8px}
+.s-pk{background:var(--red)}
+.s-gd{background:var(--stone)}
+.s-ok{background:var(--chalk-30)}
+.s-av{background:var(--chalk-08)}
+.sea-l{font-size:11px;font-weight:600}
+.lbl-pk{color:var(--red)}
+.lbl-gd{color:var(--stone)}
+.lbl-ok{color:var(--chalk-45)}
+.lbl-av{color:var(--chalk-30)}
+
+/* MONTH TABLE */
+.month-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.month-table th{
+  font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);
+  padding:10px 12px;border-bottom:1px solid var(--chalk-08);text-align:left;font-weight:600;
+}
+.month-table td{padding:9px 12px;border-bottom:1px solid var(--chalk-04);color:var(--chalk-60)}
+.month-table tr:last-child td{border-bottom:none}
+.month-table tr:hover td{background:var(--chalk-04)}
+.cond-peak{color:var(--red);font-weight:700}
+.cond-excel{color:#4CAF50;font-weight:700}
+.cond-good{color:var(--stone);font-weight:700}
+.cond-warm{color:#FF9800;font-weight:700}
+.cond-cold{color:var(--steel);font-weight:700}
+
+/* GRADE ROWS */
+.grade-row{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:16px 0;border-bottom:1px solid var(--chalk-04);
+}
+.grade-row:last-child{border-bottom:none}
+.grade-pill{
+  font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--black);
+  background:var(--red);padding:4px 14px;flex-shrink:0;
+  letter-spacing:0.04em;white-space:nowrap;
+}
+.grade-content{flex:1}
+.grade-title{font-size:13px;font-weight:700;color:var(--chalk);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.05em}
+.grade-routes{font-size:13px;color:var(--chalk-60);line-height:1.68}
+.grade-routes strong{color:var(--chalk)}
+
+/* SECTOR CARDS */
+.sector-card{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:20px;margin-bottom:12px;
+  transition:border-color 0.2s;
+}
+.sector-card:hover{border-color:var(--chalk-30)}
+.sector-name{
+  font-family:'Bebas Neue',sans-serif;font-size:26px;
+  color:var(--chalk);letter-spacing:0.04em;margin-bottom:8px;
+}
+.sector-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.sector-badge{
+  font-size:9px;text-transform:uppercase;letter-spacing:0.06em;
+  padding:3px 9px;background:var(--chalk-04);color:var(--chalk-45);
+  border:1px solid var(--chalk-08);font-weight:600;
+}
+.sector-desc{font-size:13px;color:var(--chalk-60);line-height:1.65}
+
+/* WHO GRID */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.who-card{background:var(--card-bg);border:1px solid var(--chalk-08);padding:16px}
+.who-icon{font-size:22px;margin-bottom:10px}
+.who-title{font-size:13px;font-weight:700;color:var(--chalk);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.04em}
+.who-desc{font-size:12px;color:var(--chalk-60);line-height:1.55}
+.who-verdict{
+  display:inline-block;margin-top:10px;
+  font-size:9px;text-transform:uppercase;letter-spacing:0.07em;
+  padding:3px 9px;font-weight:700;
+}
+.v-great{background:rgba(227,7,19,0.15);color:var(--red)}
+.v-yes{background:rgba(76,175,80,0.12);color:#4CAF50}
+.v-ok{background:rgba(255,152,0,0.12);color:#FF9800}
+.v-no{background:var(--chalk-04);color:var(--chalk-45)}
+
+/* ACCOMMODATION */
+.accom-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.accom-card{background:var(--card-bg);border:1px solid var(--chalk-08);padding:18px}
+.accom-type{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:6px;font-weight:700}
+.accom-name{font-size:15px;font-weight:700;color:var(--chalk);margin-bottom:5px}
+.accom-desc{font-size:12px;color:var(--chalk-60);line-height:1.58;margin-bottom:12px}
+.accom-link{font-size:11px;font-weight:700;color:var(--red)}
+.accom-link:hover{text-decoration:underline}
+.accom-price{font-size:10px;color:var(--chalk-45);margin-top:8px;font-weight:500}
+
+/* SECRETS / REST DAY GRID */
+.secrets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.secret-card{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:16px;text-align:center;
+}
+.secret-icon{font-size:26px;margin-bottom:10px}
+.secret-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);margin-bottom:4px;font-weight:600}
+.secret-value{font-size:12px;font-weight:600;color:var(--chalk)}
+
+/* TRIP BLOCKS */
+.trip-block{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:22px;margin-bottom:14px;
+  transition:border-color 0.2s;
+}
+.trip-block:hover{border-color:var(--chalk-30)}
+.trip-type{font-size:9px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;font-weight:700}
+.trip-name{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:10px}
+.trip-desc{font-size:13px;color:var(--chalk-60);line-height:1.68;margin-bottom:16px}
+
+/* COST TABLE */
+.cost-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.cost-table th{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);padding:10px 12px;border-bottom:1px solid var(--chalk-08);text-align:left;font-weight:600}
+.cost-table td{padding:9px 12px;border-bottom:1px solid var(--chalk-04);color:var(--chalk-60)}
+.cost-table tr:last-child td{border-bottom:none}
+.cost-table .total{font-weight:700;color:var(--chalk)}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--chalk-08);padding:18px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{
+  font-size:14px;font-weight:600;color:var(--chalk);cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  user-select:none;
+}
+.faq-arrow{font-size:20px;color:var(--red);flex-shrink:0;transition:transform 0.2s}
+.faq-a{font-size:13px;color:var(--chalk-60);line-height:1.73;margin-top:12px;display:none}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+.faq-item.open .faq-a{display:block}
+.faq-a a{color:var(--red)}
+
+/* RELATED DESTINATIONS */
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.rel-card{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:16px;transition:border-color 0.2s;display:block;
+}
+.rel-card:hover{border-color:var(--red)}
+.rel-country{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);margin-bottom:6px;font-weight:600}
+.rel-name{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:5px}
+.rel-type{font-size:12px;color:var(--chalk-60)}
+
+/* SAFETY GRID */
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.safety-card{background:var(--card-bg);border:1px solid var(--chalk-08);padding:16px}
+.safety-icon{font-size:20px;margin-bottom:8px}
+.safety-title{font-size:13px;font-weight:700;color:var(--chalk);margin-bottom:5px}
+.safety-val{font-size:12px;color:var(--chalk-60);line-height:1.55}
+
+/* PARTNER LINKS */
+.prow{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap}
+.pc{
+  flex:1;min-width:140px;border:1px solid var(--chalk-08);
+  background:var(--card-bg);
+  padding:12px 14px;display:flex;align-items:center;gap:10px;
+  transition:border-color 0.2s;
+}
+.pc:hover{border-color:var(--chalk-30)}
+.pi{width:34px;height:34px;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.pn{font-size:13px;font-weight:600;color:var(--chalk)}
+.pu{font-size:10px;color:var(--chalk-45);text-transform:uppercase;letter-spacing:0.05em}
+
+/* SIDEBAR */
+.ctaw{
+  background:linear-gradient(135deg,#1a0303,#0D0D0D);
+  border:1px solid var(--red-border);
+  padding:22px;position:relative;overflow:hidden;margin-bottom:24px;
+}
+.ctaw-ey{font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--red);margin-bottom:8px;font-weight:700}
+.ctaw-h{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:8px;line-height:0.95}
+.ctaw-p{font-size:12px;color:var(--chalk-60);margin-bottom:16px;line-height:1.58}
+.ctaw-btn{
+  display:block;background:var(--red);color:var(--black);text-align:center;
+  padding:11px 16px;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
+  transition:background 0.2s;
+}
+.ctaw-btn:hover{background:var(--red-hover);color:var(--black)}
+.ctaw-btn2{
+  display:block;background:transparent;color:var(--chalk-60);text-align:center;
+  padding:11px 16px;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.08em;
+  border:1px solid var(--chalk-12);transition:border-color 0.2s;
+}
+.ctaw-btn2:hover{border-color:var(--chalk-30);color:var(--chalk)}
+.sw{background:var(--card-bg);border:1px solid var(--chalk-08);padding:18px;margin-bottom:16px}
+.sw-t{
+  font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.06em;
+  color:var(--chalk);margin-bottom:14px;padding-bottom:10px;
+  border-bottom:1px solid var(--chalk-08);
+}
+.sr{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--chalk-04);font-size:12px}
+.sr:last-child{border-bottom:none;padding-bottom:0}
+.sr-l{color:var(--chalk-45);font-size:9px;text-transform:uppercase;letter-spacing:0.07em;flex-shrink:0;margin-right:10px;font-weight:600;padding-top:1px}
+.sr-v{color:var(--chalk);font-weight:500;text-align:right;font-size:12px}
+.sr-v a{color:var(--red)}
+.evl{list-style:none}
+.evl li{padding:8px 0;border-bottom:1px solid var(--chalk-04);font-size:12px;color:var(--chalk-60)}
+.evl li:last-child{border-bottom:none}
+.evl a{color:var(--red)}
+.evl a:hover{text-decoration:underline}
+
+/* FINAL CTA */
+.final-cta{
+  background:var(--red);
+  padding:64px 5%;text-align:center;position:relative;overflow:hidden;
+  margin-top:12px;
+}
+.final-cta-ey{font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(13,13,13,0.55);margin-bottom:12px;font-weight:600}
+.final-cta-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8vw,96px);color:var(--black);letter-spacing:0.02em;line-height:0.92;margin-bottom:16px}
+.final-cta-p{font-size:15px;color:rgba(13,13,13,0.65);margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.65}
+.final-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-dark{background:var(--black);color:var(--chalk);font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;padding:15px 30px;transition:background 0.2s;display:inline-block}
+.btn-dark:hover{background:#1a1a1a;color:var(--chalk)}
+.btn-outline-dark{background:transparent;color:var(--black);font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;padding:14px 30px;border:1.5px solid rgba(13,13,13,0.5);transition:border-color 0.2s;display:inline-block}
+.btn-outline-dark:hover{border-color:var(--black)}
+
+/* PHOTO GALLERY */
+.photo-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin:24px 0;
+}
+.photo-strip-item{
+  aspect-ratio:3/4;overflow:hidden;
+}
+.photo-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.photo-strip-item:hover img{transform:scale(1.04)}
+.photo-strip-item.wide{grid-column:span 2;aspect-ratio:16/9}
+
+/* IMAGE SPLIT */
+.img-split{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:24px 0}
+.img-split img{width:100%;height:340px;object-fit:cover}
+
+/* FOOTER */
+.site-footer{background:var(--darker);border-top:1px solid var(--chalk-08);padding:36px 5%;margin-top:0}
+.fi{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.fb{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--chalk);letter-spacing:0.1em}
+.fb span{color:var(--red)}
+.fl{display:flex;gap:24px;list-style:none}
+.fl a{font-size:10px;text-transform:uppercase;letter-spacing:0.09em;color:var(--chalk-45);transition:color 0.2s;font-weight:500}
+.fl a:hover{color:var(--chalk)}
+.fc{font-size:10px;color:var(--chalk-30);text-transform:uppercase;letter-spacing:0.05em;font-weight:500}
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .cg{grid-template-columns:1fr;}
+  aside{order:2}
+  main{order:1}
+}
+@media(max-width:768px){
+  /* Hard containment — nothing escapes the viewport */
+  html{overflow-x:hidden}
+  body{overflow-x:hidden;width:100%;max-width:100vw}
+  img,video,iframe,table{max-width:100%;box-sizing:border-box}
+
+  /* Nav */
+  .nav{padding:16px 4%}
+  .nav-links,.nav-cta{display:none}
+
+  /* Breadcrumb */
+  .bc{padding:60px 4% 0}
+
+  /* Hero */
+  .hero{padding:0 4% 10%}
+  .hero-content{width:100%;overflow:hidden}
+  .hero-layout{flex-direction:column;gap:1.5rem}
+  .hero-card{width:100%;flex-shrink:1;box-sizing:border-box}
+  .hero h1{font-size:clamp(42px,11vw,72px);word-break:break-word;overflow-wrap:break-word}
+  .hero-sub{font-size:14px;max-width:100%;overflow-wrap:break-word}
+  .hero-eyebrow{font-size:10px}
+  .badges{gap:6px}
+  .badge{font-size:9px;padding:4px 10px}
+  .btn-group{flex-direction:column;align-items:stretch}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;padding:14px 20px;box-sizing:border-box}
+
+  /* Stats bar */
+  .stats-bar{flex-wrap:wrap;padding:0}
+  .stat-item{width:50%;padding:16px 8px;box-sizing:border-box}
+  .stat-num{font-size:30px}
+  .stat-label{font-size:8px}
+
+  /* TOC */
+  .toc-inner{padding:0 2%}
+  .tl{padding:14px 8px;font-size:9px;letter-spacing:0.04em}
+
+  /* Page wrapper & content grid */
+  .pw{padding:0 4%;width:100%;box-sizing:border-box;overflow:hidden}
+  .cg{grid-template-columns:1fr;gap:32px;padding:32px 0;width:100%;box-sizing:border-box}
+  main{width:100%;min-width:0;overflow:hidden}
+
+  /* Sections */
+  .sec{margin-bottom:40px}
+  .sec-h{font-size:clamp(26px,7vw,44px);overflow-wrap:break-word;word-break:break-word}
+  .prose p,.prose li{overflow-wrap:break-word;word-break:break-word;max-width:100%}
+  .prose h3{overflow-wrap:break-word;word-break:break-word;font-size:20px}
+
+  /* Grids → single column */
+  .sg,.sg3,.who-grid,.accom-grid,.related-grid,.secrets-grid,.safety-grid{grid-template-columns:1fr}
+
+  /* Photos */
+  .photo-strip{grid-template-columns:1fr 1fr}
+  .photo-strip-item.wide{grid-column:span 1;aspect-ratio:3/4}
+  .img-split{grid-template-columns:1fr}
+  .img-split img{height:220px;width:100%}
+
+  /* Cards */
+  .who-card,.sector-card,.accom-card,.trip-block,.sc,.secret-card,.rel-card,.safety-card{
+    width:100%;box-sizing:border-box;overflow:hidden;word-break:break-word
+  }
+
+  /* Partner links */
+  .prow{flex-direction:column}
+  .pc{min-width:0;width:100%;box-sizing:border-box}
+
+  /* Sidebar */
+  .ctaw,.sw{padding:16px;box-sizing:border-box}
+
+  /* Final CTA */
+  .final-cta{padding:48px 4%}
+  .final-cta-h{font-size:clamp(38px,10vw,64px)}
+  .final-cta-p{font-size:13px}
+  .final-cta-btns{flex-direction:column;align-items:center;gap:10px}
+  .btn-dark,.btn-outline-dark{width:100%;max-width:320px;text-align:center;padding:14px 20px;box-sizing:border-box}
+}
+@media(max-width:480px){
+  .sg3{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:1fr}
+  .secrets-grid{grid-template-columns:1fr 1fr}
+  .photo-strip{grid-template-columns:1fr 1fr}
+  .stat-num{font-size:26px}
+}
+
+
+
+/* PRINT / accessibility */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a class="nav-logo" href="https://rockbusters.net">ROCK<span>BUSTERS</span></a>
+  <ul class="nav-links">
+    <li><a href="https://rockbusters.net/event-date/">Calendar</a></li>
+    <li><a href="https://rockbusters.net/location/">Destinations</a></li>
+    <li><a href="https://rockbusters.net/team-member/">Team</a></li>
+    <li><a href="https://rockbusters.net/blog/">Blog</a></li>
+    <li><a href="https://rockbusters.net/contact/">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="https://rockbusters.net/event-date/">Book a Trip</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="bc" style="padding:0;margin-bottom:20px">
+      <a href="https://rockbusters.net">Rockbusters</a><span>›</span>
+      <a href="https://rockbusters.net/location/">Destinations</a><span>›</span>
+      <a href="#">Spain</a><span>›</span>Rodellar
+    </div>
+    <div class="hero-layout">
+      <div class="hero-text-col">
+        <div class="hero-eyebrow">Spain · Aragon · Sierra de Guara National Park</div>
+        <h1>Rodell<em>ar</em></h1>
+        <p class="hero-sub">One of the world's great sport climbing destinations — 1,000+ routes on savage overhanging limestone in a wild Sierra de Guara canyon. This is where limits get pushed.</p>
+        <div class="badges">
+          <span class="badge badge-red">Spain</span>
+          <span class="badge badge-outline">Limestone</span>
+          <span class="badge badge-outline">Sport · DWS</span>
+          <span class="badge badge-outline">6a–9b</span>
+          <span class="badge badge-outline">Dog Friendly ✓</span>
+          <span class="badge badge-outline">National Park</span>
+        </div>
+        <div class="btn-group">
+          <a class="btn-primary" href="https://rockbusters.net/event-date/">View Upcoming Trips</a>
+          <a class="btn-ghost" href="#intro">Explore the Destination</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-stat">
+          <div class="hstat">
+            <span class="hstat-n">1,000+</span>
+            <span class="hstat-l">Routes</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">6a–9b</span>
+            <span class="hstat-l">Grade Range</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">20+</span>
+            <span class="hstat-l">Sectors</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">Apr–Oct</span>
+            <span class="hstat-l">Best Season</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">1,000+</span><span class="stat-label">Routes</span></div>
+  <div class="stat-item"><span class="stat-num">20+</span><span class="stat-label">Sectors</span></div>
+  <div class="stat-item"><span class="stat-num">750m</span><span class="stat-label">Altitude</span></div>
+  <div class="stat-item"><span class="stat-num">2h</span><span class="stat-label">From Zaragoza Airport</span></div>
+</div>
+
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a class="tl" href="#intro">Introduction</a>
+    <a class="tl" href="#why">Why Climb Here</a>
+    <a class="tl" href="#rock">Rock &amp; Style</a>
+    <a class="tl" href="#who">Who Is It For</a>
+    <a class="tl" href="#grades">Grades &amp; Sectors</a>
+    <a class="tl" href="#season">Best Season</a>
+    <a class="tl" href="#gear">Gear</a>
+    <a class="tl" href="#transport">Getting There</a>
+    <a class="tl" href="#stay">Stay &amp; Eat</a>
+    <a class="tl" href="#restdays">Rest Days</a>
+    <a class="tl" href="#tips">Tips &amp; Ethics</a>
+    <a class="tl" href="#safety">Safety</a>
+    <a class="tl" href="#costs">Costs</a>
+    <a class="tl" href="#faq">FAQ</a>
+    <a class="tl" href="#trips">Rockbusters Trips</a>
+  </div>
+</nav>
+
+<div class="pw"><div class="cg">
+<main>
+
+<!-- 1. INTRODUCTION -->
+<section class="sec reveal" id="intro">
+  <div class="sec-ey">Overview</div>
+  <h2 class="sec-h">Introduction to <span>Rodellar</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Rodellar is the kind of place that recalibrates what you think sport climbing can be. Buried deep in the Sierra de Guara National Park in Aragon, this tiny ancient stone village perches at the rim of the Mascún river canyon — a labyrinth of turquoise pools, sculpted limestone walls, and horizontal roofs stretching as far as you can see. The routes here are relentlessly steep, the rock is exceptional, and the atmosphere is unlike anywhere else in Spain.</p>
+    <p>This is not a destination you stumble upon. You come to Rodellar with purpose — to climb the most sustained, overhanging sport routes in the country, to push your grade in a community of like-minded athletes from around the world, and to live the no-nonsense climbing lifestyle that the canyon uniquely preserves. Routes run from accessible 6a warm-ups to savage 9b testpieces, with the sweet spot — and where the majority of routes live — firmly in the 6b–8b range.</p>
+  </div>
+  <div class="tags">
+    <span class="tag">✦ 1,000+ routes on premier limestone</span>
+    <span class="tag">✦ World-class overhangs &amp; cave climbing</span>
+    <span class="tag">✦ Sierra de Guara National Park</span>
+    <span class="tag">✦ International climber community</span>
+    <span class="tag">✦ Deep-water soloing in Mascún river pools</span>
+  </div>
+  <div class="sg">
+    <div class="sc"><div class="sc-l">Rock type</div><div class="sc-v">Limestone</div><div class="sc-s">Heavily textured, sculpted</div></div>
+    <div class="sc"><div class="sc-l">Total routes</div><div class="sc-v">1,000+</div><div class="sc-s">Across 20+ sectors</div></div>
+    <div class="sc"><div class="sc-l">Grade range</div><div class="sc-v">6a–9b</div><div class="sc-s">Best density 6b–8b</div></div>
+    <div class="sc"><div class="sc-l">Nearest airport</div><div class="sc-v">Zaragoza (ZAZ)</div><div class="sc-s">~2h drive · Barcelona 2.5h</div></div>
+    <div class="sc"><div class="sc-l">Family friendly</div><div class="sc-v">Moderate</div><div class="sc-s">River pools great for kids</div></div>
+    <div class="sc"><div class="sc-l">Dog friendly</div><div class="sc-v">Yes ✓</div><div class="sc-s">On lead in National Park</div></div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY 1 -->
+<div class="photo-strip reveal">
+  <div class="photo-strip-item wide">
+    <!-- IMG STRIPPED --><img src="" alt="Rodellar village perched above the gorge" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <!-- IMG STRIPPED --><img src="" alt="Climbing at Rodellar" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <!-- IMG STRIPPED --><img src="" alt="Rodellar limestone routes" loading="lazy">
+  </div>
+</div>
+
+<!-- 2. WHY CLIMB HERE -->
+<section class="sec reveal" id="why">
+  <div class="sec-ey">The Case for Rodellar</div>
+  <h2 class="sec-h">Why Climb <span>Here?</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Rodellar should be at the absolute top of every sport climber's bucket list. It is an athletic paradise boasting one of the highest concentrations of world-class, overhanging limestone routes on Earth — and unlike more famous overhanging destinations, the remoteness and canyon setting give it a wild, authentic character that simply cannot be replicated.</p>
+    <p>The scenery is primal. The Mascún river gorge cuts through the Sierra de Guara in great sweeping curves, creating canyon walls of 150m+ of sculpted limestone. The turquoise river pools below provide natural swimming between burns, and the sheer scale of the cave systems — Gran Bóveda alone is one of the largest sport climbing amphitheatres in Europe — creates an atmospheric experience that photographs cannot do justice to.</p>
+    <p>Beyond the rock, Rodellar is defined by its community. The traditional climber lifestyle is preserved here in a way that's increasingly rare: days are spent on steep roofs, evenings are spent sharing beta on Kalandraka's terrace with elite athletes from across Europe and beyond. There are no tourist traps, no crowds from non-climbers. Just limestone, river pools, and people who are here for one reason.</p>
+  </div>
+  <div class="highlight-box">
+    <div class="highlight-box-label">Rockbusters verdict</div>
+    <div class="highlight-box-text">If you climb in the 7a–8b range and haven't been to Rodellar, you are missing one of the defining experiences of European sport climbing. Plan the trip. Make it happen. You will not regret a single metre of approach trail.</div>
+  </div>
+</section>
+
+<!-- 3. ROCK & STYLE -->
+<section class="sec reveal" id="rock">
+  <div class="sec-ey">Rock &amp; Movement</div>
+  <h2 class="sec-h">Rock &amp; <span>Style</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Rodellar's limestone is unlike anything you'll find in Catalonia or the Costa Blanca. The rock has been sculpted by millennia of river action and erosion into a dramatic landscape of horizontal tufas, pocket rails, underclings, and cave systems of extraordinary proportion. The texture is grippy and varied — polished only on the most-trafficked holds of the most classic routes.</p>
+    <h3>Movement Demands</h3>
+    <p>The climbing here is almost exclusively <strong>overhanging to dramatically overhanging</strong>. Slab and vertical climbing are essentially non-existent. The movement demands are highly specific: knee-bar rests are the tactical backbone of almost every long route, allowing climbers to recover on positions that would otherwise be impossible holds. Body tension and power-endurance are king — this is a destination for well-conditioned, technically proficient climbers.</p>
+    <p>The cave sectors (Gran Bóveda especially) push the angles further — routes climb through 45-degree overhangs and roof systems requiring high levels of pulling strength, core tension, and precise footwork on vertical faces below roofs. Many routes feature tufa rails — elongated stalactite formations that provide unique pinching and jamming opportunities unique to this type of limestone formation.</p>
+    <h3>Deep Water Soloing</h3>
+    <p>The Mascún river creates exceptional DWS conditions in spring and early summer when water levels are optimal. River-level sectors offer a completely different climbing experience above the turquoise pools — the commitment is real, the landings are clean, and the combination of athletic climbing with the beauty of the gorge is unmatched.</p>
+  </div>
+  <div class="img-split reveal">
+    <!-- IMG STRIPPED --><img src="" alt="Las Ventanas de Mascún — the famous natural arch" loading="lazy">
+    <!-- IMG STRIPPED --><img src="" alt="Jany on Espolon de las Ranas 7c at Rodellar" loading="lazy">
+  </div>
+</section>
+
+<!-- 4. WHO IS IT FOR -->
+<section class="sec reveal" id="who">
+  <div class="sec-ey">Suitability</div>
+  <h2 class="sec-h">Who Is It <span>For?</span></h2>
+  <div class="sec-divider"></div>
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="who-icon">💪</div>
+      <div class="who-title">Intermediate Sport Climbers (6b–7b)</div>
+      <div class="who-desc">The sweet spot for Rodellar beginners. Sector Standard and El Camino deliver exceptional quality in this grade bracket. A full week of new routes, no repeats required. Expect to learn knee-bars fast — they're non-optional.</div>
+      <span class="who-verdict v-great">Perfect fit</span>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">🎯</div>
+      <div class="who-title">Advanced Climbers (7b+–8b)</div>
+      <div class="who-desc">Where Rodellar truly shines. The Gran Bóveda extensions, Las Ventanas sector, and upper-tier lines across the gorge offer world-class climbing at every grade. Multiple visit destination for this bracket.</div>
+      <span class="who-verdict v-great">Exceptional</span>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">🏆</div>
+      <div class="who-title">Elite / Pro Climbers (8b+–9b)</div>
+      <div class="who-desc">Europe's finest testpieces live here. Gran Bóveda's deep cave routes represent the cutting edge of the grade. If you're projecting at this level, plan multiple weeks and treat Rodellar as a season base.</div>
+      <span class="who-verdict v-yes">World-class</span>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">👨‍👩‍👧</div>
+      <div class="who-title">Families with Climbers</div>
+      <div class="who-desc">The Mascún river pools are genuinely excellent for children — safe, beautiful, and endlessly entertaining. Non-climbing partners have rest day options including canyoning and hiking. Grade-dependent for the climber.</div>
+      <span class="who-verdict v-ok">Works well</span>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">🐕</div>
+      <div class="who-title">Dog Owners</div>
+      <div class="who-desc">Dogs are welcome in the National Park on lead. Many climbers bring dogs to Rodellar — the village and campsite are dog-friendly. Keep dogs cool in summer and hydrated on hot approach walks.</div>
+      <span class="who-verdict v-yes">Dog friendly ✓</span>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">💻</div>
+      <div class="who-title">Digital Nomad Climbers</div>
+      <div class="who-desc">The Aparthotel has reliable WiFi. The lifestyle of morning climbing sessions and afternoon remote work from a canyon terrace is entirely viable. Signal in the gorge is essentially zero — plan ahead.</div>
+      <span class="who-verdict v-ok">Viable</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5 & 6. GRADES & SECTORS -->
+<section class="sec reveal" id="grades">
+  <div class="sec-ey">What to Expect</div>
+  <h2 class="sec-h">Grades &amp; <span>Sectors</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><h3>Grade Breakdown</h3></div>
+  <div class="grade-row">
+    <span class="grade-pill">6a–6c</span>
+    <div class="grade-content">
+      <div class="grade-title">Entry Level / Warm-Ups</div>
+      <div class="grade-routes">El Camino and lower Sector Standard deliver legitimate warm-up routes in this range. <strong>Pepito Chico (6b)</strong> is a perennial favourite — technical without being brutal, great for understanding the movement style. Be warned: Rodellar's 6c climbs like many destinations' 7b once you factor in the sustained angle.</div>
+    </div>
+  </div>
+  <div class="grade-row">
+    <span class="grade-pill">7a–7c</span>
+    <div class="grade-content">
+      <div class="grade-title">The Heart of the Destination</div>
+      <div class="grade-routes"><strong>Pepito Grillo (6c)</strong> at Sector Standard is one of the most celebrated routes in the gorge at any grade. <strong>Gracias Fina (7a+)</strong> at Gran Bóveda tests pure power-endurance on tufa rails. <strong>Los Piratas (7b)</strong> and <strong>Ventanas (7c)</strong> bring you into the iconic canyon positions. This is where the destination truly reveals itself.</div>
+    </div>
+  </div>
+  <div class="grade-row">
+    <span class="grade-pill">8a–8c</span>
+    <div class="grade-content">
+      <div class="grade-title">The Real Projects</div>
+      <div class="grade-routes"><strong>Welcome to Tijuana (8a)</strong> at Sector Las Ventanas — an iconic short savage roof burst requiring explosive power and perfect technique. <strong>Profeta (8b+)</strong> and the upper Gran Bóveda extensions push further into the cave systems. Expect multiple sessions on anything in this range.</div>
+    </div>
+  </div>
+  <div class="grade-row">
+    <span class="grade-pill">9a+</span>
+    <div class="grade-content">
+      <div class="grade-title">The Absolute Limit</div>
+      <div class="grade-routes">Rodellar's elite lines push the boundaries of what can be achieved on overhung limestone. The deep cave routes of Gran Bóveda host some of Spain's hardest sport routes. Routes at this level require weeks or months of project work and a full season commitment.</div>
+    </div>
+  </div>
+
+  <!-- Photo strip 2 -->
+  <div class="photo-strip reveal" style="margin:28px 0">
+    <div class="photo-strip-item">
+      <!-- IMG STRIPPED --><img src="" alt="Rodellar climbing action" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <!-- IMG STRIPPED --><img src="" alt="Steep limestone at Rodellar" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <!-- IMG STRIPPED --><img src="" alt="Overhang climbing Rodellar" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <!-- IMG STRIPPED --><img src="" alt="Cave climbing at Gran Bóveda" loading="lazy">
+    </div>
+  </div>
+
+  <div class="prose" style="margin-top:28px"><h3>Key Sectors</h3></div>
+
+  <div class="sector-card">
+    <div class="sector-name">Gran Bóveda</div>
+    <div class="sector-meta">
+      <span class="sector-badge">🏆 Flagship sector</span>
+      <span class="sector-badge">7a–9b</span>
+      <span class="sector-badge">Afternoon shade</span>
+      <span class="sector-badge">15min approach</span>
+    </div>
+    <div class="sector-desc">The architectural masterpiece of the Rodellar canyon — a massive natural amphitheatre throwing out endless endurance lines on some of the most spectacular overhanging limestone in Europe. Gran Bóveda is where Rodellar's reputation was forged, and where the destination's hardest and most iconic routes live. Heavily shaded from mid-afternoon, ideal in warmer months. If you visit Rodellar, you climb Gran Bóveda. Non-negotiable.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">Las Ventanas de Mascún</div>
+    <div class="sector-meta">
+      <span class="sector-badge">📸 Most photogenic</span>
+      <span class="sector-badge">7c–9a</span>
+      <span class="sector-badge">Morning shade</span>
+      <span class="sector-badge">20min approach</span>
+    </div>
+    <div class="sector-desc">Highly photogenic and technically demanding — Las Ventanas hosts elite lines underneath the famous Ventanas window archways carved through the limestone by the Mascún river. Routes climb through the archways and out the other side, creating exposure and atmosphere genuinely unique in European climbing. Welcome to Tijuana (8a) lives here.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">Sector Standard</div>
+    <div class="sector-meta">
+      <span class="sector-badge">🎯 Intermediate hub</span>
+      <span class="sector-badge">6b–7c</span>
+      <span class="sector-badge">Mixed sun/shade</span>
+      <span class="sector-badge">10min approach</span>
+    </div>
+    <div class="sector-desc">The beating heart of Rodellar for intermediate climbers. Sector Standard delivers the highest concentration of 6b–7c quality routes anywhere in the gorge, with excellent bolting, varied movement, and enough volume to fill a full week without repeating anything. Pepito Grillo (6c) is one of the area's most celebrated routes of any grade. Start every trip here.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">El Camino</div>
+    <div class="sector-meta">
+      <span class="sector-badge">🌱 Entry level</span>
+      <span class="sector-badge">6a–7a</span>
+      <span class="sector-badge">Afternoon sun</span>
+      <span class="sector-badge">5min approach</span>
+    </div>
+    <div class="sector-desc">The gentler entry point into Rodellar — more straightforward vertical terrain, excellent access directly from the village, and a wide spread of accessible grades. Ideal first stop for those new to Rodellar. Best visited in the morning during warmer months due to afternoon sun exposure.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">Ecos del Barranc / River Sectors</div>
+    <div class="sector-meta">
+      <span class="sector-badge">💦 DWS &amp; sport</span>
+      <span class="sector-badge">6c–8a</span>
+      <span class="sector-badge">Natural shade</span>
+      <span class="sector-badge">20–30min approach</span>
+    </div>
+    <div class="sector-desc">Deep-water soloing above the Mascún pools alongside bolted sport routes. The approach through the gorge is an adventure in itself. Best in spring and early summer when water levels are optimal for DWS. The natural cooling effect makes these sectors excellent on hotter days.</div>
+  </div>
+</section>
+
+<!-- 7. BEST SEASON -->
+<section class="sec reveal" id="season">
+  <div class="sec-ey">When to Go</div>
+  <h2 class="sec-h">Best <span>Season</span></h2>
+  <div class="sec-divider"></div>
+  <div class="seas">
+    <div class="sea"><div class="sea-n">Spring</div><div class="sea-b s-pk"></div><div class="sea-l lbl-pk" style="font-size:11px;font-weight:700">Peak</div></div>
+    <div class="sea"><div class="sea-n">Summer</div><div class="sea-b s-ok"></div><div class="sea-l lbl-ok" style="font-size:11px;font-weight:700">OK</div></div>
+    <div class="sea"><div class="sea-n">Autumn</div><div class="sea-b s-pk"></div><div class="sea-l lbl-pk" style="font-size:11px;font-weight:700">Peak</div></div>
+    <div class="sea"><div class="sea-n">Winter</div><div class="sea-b s-av"></div><div class="sea-l lbl-av" style="font-size:11px;font-weight:700">Avoid</div></div>
+  </div>
+  <table class="month-table">
+    <thead><tr><th>Month</th><th>Conditions</th><th>Avg Temp</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>January</td><td class="cond-cold">Cold</td><td>2–9°C</td><td>Cold shadows, high humidity, wet rock. Head elsewhere.</td></tr>
+      <tr><td>February</td><td class="cond-cold">Cold</td><td>3–11°C</td><td>Improving but still cold and damp. Shaded sectors stay cold all day.</td></tr>
+      <tr><td>March</td><td class="cond-excel">Excellent</td><td>8–17°C</td><td>Season opens. Excellent friction, crisp air. Tufas may seep — cave dry-zones remain wide.</td></tr>
+      <tr><td>April</td><td class="cond-peak">Peak</td><td>11–20°C</td><td>Peak spring. Perfect sending temperatures, dry rock, full community arriving.</td></tr>
+      <tr><td>May</td><td class="cond-peak">Peak</td><td>14–24°C</td><td>Excellent conditions. Slightly warmer afternoons — shade chase in Gran Bóveda.</td></tr>
+      <tr><td>June</td><td class="cond-warm">Warm</td><td>19–30°C</td><td>Hot but manageable with shade tactics. Midday river pool dips essential. Early starts.</td></tr>
+      <tr><td>July</td><td class="cond-warm">Hot</td><td>23–35°C</td><td>Dawn and dusk sessions in shade sectors. River pools at best for DWS.</td></tr>
+      <tr><td>August</td><td class="cond-warm">Hot</td><td>22–34°C</td><td>As July. Gran Bóveda's deep cave shade makes it climbable with planning.</td></tr>
+      <tr><td>September</td><td class="cond-peak">Peak</td><td>15–26°C</td><td>Gold standard. Crisp sending temps, completely dry rock, packed global community.</td></tr>
+      <tr><td>October</td><td class="cond-peak">Peak</td><td>10–21°C</td><td>Peak autumn. Ideal temperatures, friction at its best, vibrant community.</td></tr>
+      <tr><td>November</td><td class="cond-excel">Excellent</td><td>7–15°C</td><td>Cooling down but still excellent. Less crowded. Shaded sectors get cold — pick sun-facing walls.</td></tr>
+      <tr><td>December</td><td class="cond-cold">Cold</td><td>3–10°C</td><td>Season wind-down. Cold and humid. Best left for alternative winter hubs.</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <div class="highlight-box-label">Rockbusters verdict</div>
+    <div class="highlight-box-text"><strong>April, May, September, and October</strong> are the four golden months. March and November are excellent if you're prepared for cooler temperatures. Avoid December–February entirely. Summer requires strategic shade chasing — Gran Bóveda's deep caves extend the usable season significantly.</div>
+  </div>
+</section>
+
+<!-- 8. GEAR -->
+<section class="sec reveal" id="gear">
+  <div class="sec-ey">What to Pack</div>
+  <h2 class="sec-h">Gear &amp; <span>Equipment</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Rodellar requires a specific and non-negotiable kit list. The extreme length and steepness of routes here make standard sport climbing gear insufficient — do not compromise on the items marked as mandatory.</p>
+  </div>
+  <div class="tags">
+    <span class="tag">✓ 70m rope — bare minimum</span>
+    <span class="tag">✓ 80m rope — highly recommended</span>
+    <span class="tag">✓ 18–22 quickdraws</span>
+    <span class="tag">✓ Extendable/alpine draws</span>
+    <span class="tag">✓ Kneepads — do not leave without</span>
+    <span class="tag">✓ Stick clip (mandatory)</span>
+    <span class="tag">✓ Aggressive down-turned shoes</span>
+    <span class="tag">✓ Skin repair balm &amp; tape</span>
+    <span class="tag">✓ Helmet</span>
+    <span class="tag">✓ 2L water minimum</span>
+    <span class="tag">✓ Swimwear (Mascún pools)</span>
+    <span class="tag">✓ First aid kit</span>
+  </div>
+  <div class="prose">
+    <h3>Rope — Critical Note</h3>
+    <p>A 70m single rope is the absolute bare minimum, but an <strong>80m rope is highly mandatory for most modern route extensions and full-length pitches</strong>. Many of Rodellar's finest routes simply cannot be safely lowered off with anything less than 80m. Always tie a stopper knot in the tail — falls here are clean but long. This is not optional.</p>
+    <h3>Kneepads — Non-Negotiable</h3>
+    <p>Thick, sticky-rubber kneepads are not a comfort accessory — they are a technical tool that makes crucial rest positions possible on overhanging routes. Knee-bar rests are the tactical backbone of climbing here. Without a good kneepad, you'll fall off routes the residents are resting comfortably on. Buy quality.</p>
+    <h3>Stick Clip</h3>
+    <p>A rigid stick clip is mandatory. Initial bolts are frequently positioned high on overhanging starts — sometimes 4–5m off the ground — because a ground fall from an overhang is far more dangerous than from a slab. Never start a Rodellar route without clipping the first bolt via stick clip.</p>
+  </div>
+</section>
+
+<!-- 9. GETTING THERE -->
+<section class="sec reveal" id="transport">
+  <div class="sec-ey">Transport &amp; Logistics</div>
+  <h2 class="sec-h">Getting <span>There</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <h3>By Air</h3>
+    <p>The two most practical airports are <strong>Zaragoza (ZAZ)</strong> — approximately 2 hours by car, served by Ryanair from several European cities — and <strong>Barcelona El Prat (BCN)</strong> — approximately 2.5 hours by car, with far more extensive international connections.</p>
+    <h3>By Car</h3>
+    <p>A car gives you the most flexibility — essential for reaching outlying sectors and supply runs to Barbastro. From Barcelona, take the A-2 to Zaragoza then the A-22 toward Huesca, exiting at Angüés and following mountain roads through Bierge to Rodellar. The final stretch is a narrow unpaved track descending into the village — take it slowly.</p>
+    <h3>Without a Car — Paco's Shuttle</h3>
+    <ol>
+      <li>Take the long-distance coach from Barcelona to <strong>Barbastro</strong> via <a href="https://www.avanzabus.com" target="_blank">Avanzabus.com</a>.</li>
+      <li>From Barbastro, contact <strong>Paco</strong> — the trusted local climber-shuttle driver: <strong>+34 618 05 54 86</strong>.</li>
+    </ol>
+    <h3>Fuel &amp; Supplies</h3>
+    <p>Make a full supermarket stop in <strong>Barbastro</strong> before driving up. The village has only a tiny shop for basics. Barbastro is also the location of the nearest hospital.</p>
+  </div>
+  <h3 style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.06em;color:var(--chalk);margin:24px 0 12px">Car Rental Partners</h3>
+  <div class="prow">
+    <a class="pc" href="https://carjet.com" target="_blank">
+      <div class="pi">🚗</div>
+      <div><div class="pn">CarJet</div><div class="pu">carjet.com · Best rates ZAZ &amp; BCN</div></div>
+    </a>
+    <a class="pc" href="https://doyouspain.com" target="_blank">
+      <div class="pi">🚗</div>
+      <div><div class="pn">DoYouSpain</div><div class="pu">doyouspain.com · Spain specialist</div></div>
+    </a>
+  </div>
+</section>
+
+<!-- PHOTO STRIP 3 -->
+<div class="photo-strip reveal">
+  <div class="photo-strip-item">
+    <!-- IMG STRIPPED --><img src="" alt="Climbing Rodellar" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <!-- IMG STRIPPED --><img src="" alt="Rodellar limestone" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <!-- IMG STRIPPED --><img src="" alt="Rodellar action" loading="lazy">
+  </div>
+  <div class="photo-strip-item">
+    <!-- IMG STRIPPED --><img src="" alt="Rodellar climbing" loading="lazy">
+  </div>
+</div>
+
+<!-- 10. STAY & EAT -->
+<section class="sec reveal" id="stay">
+  <div class="sec-ey">Where to Sleep &amp; Eat</div>
+  <h2 class="sec-h">Accommodation &amp; <span>Food</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><h3>Premium &amp; Mid-Range</h3></div>
+  <div class="accom-grid">
+    <div class="accom-card">
+      <div class="accom-type">🏠 Aparthotel</div>
+      <div class="accom-name">Aparthotel de Rodellar</div>
+      <div class="accom-desc">The most comfortable accommodation in the village — modern apartment units with fully equipped kitchens, private bathrooms, and reliable WiFi. Ideal for digital nomads, couples, and climbers who want more than dorm living. Book well ahead for peak season.</div>
+      <a class="accom-link" href="https://www.booking.com/searchresults.html?ss=Rodellar+Spain" target="_blank">Search on Booking.com ↗</a>
+      <div class="accom-price">From ~€60–100/night per apartment</div>
+    </div>
+    <div class="accom-card">
+      <div class="accom-type">🧗 Climbers Refugio</div>
+      <div class="accom-name">Refugio Kalandraka</div>
+      <div class="accom-desc">The epicentre of Rodellar's climbing community — perched at the rim of the canyon with shared and private rooms, an amazing bar terrace with canyon views, and a pure rock climbing atmosphere. The legendary terrace serves wood-fired pizzas and Somontano wines until late.</div>
+      <a class="accom-link" href="https://www.airbnb.com/s/Rodellar--Spain" target="_blank">Check availability on Airbnb ↗</a>
+      <div class="accom-price">From ~€20–35/person/night shared · Private from €55</div>
+    </div>
+  </div>
+  <div class="prose"><h3>Camping &amp; Van Life</h3></div>
+  <div class="accom-grid">
+    <div class="accom-card">
+      <div class="accom-type">🏕 Campsite</div>
+      <div class="accom-name">Camping Mascún</div>
+      <div class="accom-desc">The primary campsite serving the Rodellar area — full services, electricity hookups, hot showers, and classic community atmosphere. Very popular with European climber vans in peak season. Communal kitchen areas and a small bar.</div>
+      <a class="accom-link" href="https://www.camping-mascun.com" target="_blank">camping-mascun.com ↗</a>
+      <div class="accom-price">From ~€9/person/night · Van hookups from ~€15</div>
+    </div>
+    <div class="accom-card">
+      <div class="accom-type">🚐 Van Life</div>
+      <div class="accom-name">Camping El Puente</div>
+      <div class="accom-desc">A second campsite positioned near the gorge entrance, with full facilities including hot showers and a small shop. Slightly closer to the lower gorge sectors making it convenient for early morning starts.</div>
+      <a class="accom-link" href="https://park4night.com" target="_blank">Find van spots on park4night.com ↗</a>
+      <div class="accom-price">From ~€8/person/night · Van spots from ~€12</div>
+    </div>
+  </div>
+  <div class="prose">
+    <h3>Food &amp; Restaurants</h3>
+    <ul>
+      <li><strong>Kalandraka terrace</strong> — the social hub. Wood-fired pizzas, local dishes, and Somontano red wines on a canyon-view terrace. Also serves excellent morning espressos.</li>
+      <li><strong>Local village bar</strong> — basic Aragonese daily menus at very affordable prices. Ternasco, stews, and local bread.</li>
+      <li><strong>Self-catering:</strong> Buy groceries in Barbastro and cook — standard approach for longer trips.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 11. REST DAYS -->
+<section class="sec reveal" id="restdays">
+  <div class="sec-ey">Between Climbing Days</div>
+  <h2 class="sec-h">Rest Day <span>Activities</span></h2>
+  <div class="sec-divider"></div>
+  <div class="secrets-grid">
+    <div class="secret-card"><div class="secret-icon">💦</div><div class="secret-label">On site</div><div class="secret-value">Mascún river pools swimming</div></div>
+    <div class="secret-card"><div class="secret-icon">🪂</div><div class="secret-label">Adventure</div><div class="secret-value">Canyoning Sierra de Guara</div></div>
+    <div class="secret-card"><div class="secret-icon">🥾</div><div class="secret-label">Nature</div><div class="secret-value">Gorge hiking trails</div></div>
+    <div class="secret-card"><div class="secret-icon">🦅</div><div class="secret-label">Wildlife</div><div class="secret-value">Griffon vulture spotting</div></div>
+    <div class="secret-card"><div class="secret-icon">🏰</div><div class="secret-label">Day trip 45min</div><div class="secret-value">Alquézar village &amp; castle</div></div>
+    <div class="secret-card"><div class="secret-icon">🍷</div><div class="secret-label">Day trip 1h</div><div class="secret-value">Barbastro Somontano wine</div></div>
+  </div>
+  <div class="prose">
+    <p>The Sierra de Guara is Spain's premier canyoning region. Rest days include swimming in the Mascún's turquoise pools, professional canyoning from Alquézar and Barbastro, medieval village visits, and wine tasting in the Somontano DO. The griffon vultures soaring the canyon thermals are an added spectacle — colony of 2.5m-wingspan birds visible daily from the village.</p>
+  </div>
+</section>
+
+<!-- 12-13. TIPS & ETHICS -->
+<section class="sec reveal" id="tips">
+  <div class="sec-ey">Local Knowledge</div>
+  <h2 class="sec-h">Insider Tips &amp; <span>Ethics</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <h3>Sector Timing</h3>
+    <p>The canyon's opposite walls receive sun and shade at opposite times — learn which sectors face which direction and plan your day accordingly. Gran Bóveda is shaded from the afternoon; Las Ventanas mornings; El Camino mornings in summer. The Rockbusters team knows exactly where to be and when.</p>
+    <h3>The Knee-bar Masterclass</h3>
+    <p>If you arrive at Rodellar without knowing how to knee-bar, plan your first day around learning. Ask other climbers to show you — the community is generous with beta. A proper knee-bar turns routes from desperate pumped-out battles into technical chess matches. Invest the time. It will transform your climbing here.</p>
+    <h3>Guidebook &amp; Crag Fees</h3>
+    <p>Buy the official <strong>Rodellar Climbing Guide</strong> from local shops or the campsite. Profits go directly to local bolt maintenance. Digital: the <a href="https://27crags.com" target="_blank">27Crags app</a> works well with offline topos. Crag access is free.</p>
+    <h3>National Park Ethics</h3>
+    <ul>
+      <li>Stick to marked trails and established paths only — the Sierra de Guara has strict environmental regulations</li>
+      <li>Dogs must be on lead at all times in the National Park</li>
+      <li>No fires outside designated campsite areas — ever</li>
+      <li>Use designated parking only — fines are issued and repeat violations risk community access restrictions</li>
+      <li>Take all litter out — leave the gorge exactly as you found it</li>
+      <li>Respect quiet hours at accommodations and campsites</li>
+    </ul>
+    <h3>First Bolt Protocol</h3>
+    <p>Always use a stick clip on the first bolt. Rodellar's overhanging starts mean ground falls can involve swinging into walls — the first bolt is often deliberately placed high. This is standard practice at Rodellar, not an admission of weakness.</p>
+  </div>
+</section>
+
+<!-- 14. SAFETY -->
+<section class="sec reveal" id="safety">
+  <div class="sec-ey">Stay Safe</div>
+  <h2 class="sec-h">Safety &amp; <span>Emergency</span></h2>
+  <div class="sec-divider"></div>
+  <div class="safety-grid">
+    <div class="safety-card"><div class="safety-icon">🆘</div><div class="safety-title">Emergency Services</div><div class="safety-val">112 — European emergency number. Works throughout Spain. Download maps offline before entering the canyon — signal is minimal.</div></div>
+    <div class="safety-card"><div class="safety-icon">🏥</div><div class="safety-title">Nearest Hospital</div><div class="safety-val">Hospital de Barbastro — +34 974 31 10 00. Approximately 1 hour from Rodellar. Well-equipped regional hospital with A&amp;E.</div></div>
+    <div class="safety-card"><div class="safety-icon">🧗</div><div class="safety-title">Rope Length Critical</div><div class="safety-val">80m minimum for most routes. Always tie a stopper knot in the rope tail. Many anchors are a long way up — do not improvise with insufficient rope.</div></div>
+    <div class="safety-card"><div class="safety-icon">🌡</div><div class="safety-title">Heat Management</div><div class="safety-val">The canyon reflects heat in summer. 2L minimum water per session. Recognise heat exhaustion symptoms — descend immediately if you or your partner are affected.</div></div>
+  </div>
+  <div class="prose">
+    <p>Rodellar's routes are exceptionally safe from a bolting perspective — the community maintains them well and the National Park authority has a positive relationship with the climbing community. Objective hazards are minimal compared to many destinations. The main risks are: dehydration and heat in summer, rope-length mistakes, and falls on overhanging routes where pendulum potential exists. Standard experienced sport climbing precautions apply.</p>
+  </div>
+</section>
+
+<!-- 15. COSTS -->
+<section class="sec reveal" id="costs">
+  <div class="sec-ey">Budget Planning</div>
+  <h2 class="sec-h">Cost <span>Breakdown</span></h2>
+  <div class="sec-divider"></div>
+  <table class="cost-table">
+    <thead><tr><th>Item</th><th>Budget</th><th>Mid-Range</th><th>Comfort</th></tr></thead>
+    <tbody>
+      <tr><td>Accommodation (per night)</td><td>€8–12 (camping)</td><td>€20–35 (Kalandraka)</td><td>€60–100 (Aparthotel)</td></tr>
+      <tr><td>Food (per day, self-catered)</td><td>€8–12</td><td>€15–22</td><td>€25–40 (eating out)</td></tr>
+      <tr><td>Transport (Barcelona)</td><td>€20–35 (bus + shuttle)</td><td>€60–80 (shared car)</td><td>€80–120 (car rental)</td></tr>
+      <tr><td>Crag access</td><td>Free</td><td>Free</td><td>Free</td></tr>
+      <tr><td>Guidebook</td><td>€18–22 (one-off)</td><td>€18–22</td><td>€18–22</td></tr>
+      <tr><td class="total">7-day trip estimate</td><td class="total">~€250–350</td><td class="total">~€400–550</td><td class="total">~€650–900</td></tr>
+    </tbody>
+  </table>
+  <div class="prose">
+    <p>Rodellar remains one of Europe's most cost-effective sport climbing destinations. Crag access is free, the campsite is excellent and affordable, and self-catering from Barbastro supermarkets is practical. The primary costs are transport (a rental car significantly increases cost but adds massive flexibility) and accommodation choice.</p>
+  </div>
+</section>
+
+<!-- 16. FAQ -->
+<section class="sec reveal" id="faq">
+  <div class="sec-ey">Common Questions</div>
+  <h2 class="sec-h">Frequently Asked <span>Questions</span></h2>
+  <div class="sec-divider"></div>
+  <div class="faq-item">
+    <div class="faq-q">Do I need a car to get to Rodellar?<span class="faq-arrow">＋</span></div>
+    <div class="faq-a">Not strictly necessary — the Avanzabus coach to Barbastro plus Paco's shuttle service can get you to the village without a car. But a car gives you huge flexibility: you can reach outlying sectors, make supply runs to Barbastro, and explore the broader Sierra de Guara. Most experienced climbers hire a car and consider it essential.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What grade do I need to enjoy Rodellar?<span class="faq-arrow">＋</span></div>
+    <div class="faq-a">The destination makes most sense from 6b onwards — that's where the route density and quality really begins. Climbers in the 7a–8b range will have the most options and most rewarding experience. Below 6b, El Camino has some options but you'd be better served at Margalef or Costa Blanca. Above 8b, Rodellar is simply exceptional — some of Europe's finest testpieces live here.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is Rodellar suitable for beginners or first-timers outdoors?<span class="faq-arrow">＋</span></div>
+    <div class="faq-a">Not ideal for complete beginners. The style of climbing (extreme overhang, mandatory knee-bars, long routes, mandatory 80m rope) requires a foundation of sport climbing experience. Confident 6a+ outdoor climbers with some experience on overhung routes can manage El Camino and lower Sector Standard. Absolute beginners would struggle to enjoy the destination's character.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is there WiFi available?<span class="faq-arrow">＋</span></div>
+    <div class="faq-a">The Aparthotel de Rodellar has reliable WiFi — the most practical option for digital nomads. Kalandraka has WiFi but it can be slow with multiple users. In the gorge itself there is essentially no signal. Download route guides, topos, and maps before heading down into the canyon each day.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">When is the best time to visit for sending conditions?<span class="faq-arrow">＋</span></div>
+    <div class="faq-a">September and October are the gold standard — crisp temperatures, completely dry rock, and the full international climbing community in residence. April and May are equally excellent for spring sending. If you can only come once, aim for late September to mid-October for the ideal combination of conditions and community atmosphere.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How do I join a Rockbusters trip to Rodellar?<span class="faq-arrow">＋</span></div>
+    <div class="faq-a">Check the upcoming trip calendar at <a href="https://rockbusters.net/event-date/" target="_blank">rockbusters.net/event-date/</a> for group trip dates, or <a href="https://rockbusters.net/contact/" target="_blank">contact us</a> to enquire about private guiding or a custom performance camp. We run targeted Rodellar trips for intermediate through advanced climbers with structured coaching and sector guidance.</div>
+  </div>
+</section>
+
+<!-- 17. ROCKBUSTERS TRIPS -->
+<section class="sec reveal" id="trips">
+  <div class="sec-ey">Guided Experiences</div>
+  <h2 class="sec-h">Rockbusters Trips to <span>Rodellar</span></h2>
+  <div class="sec-divider"></div>
+  <div class="trip-block">
+    <div class="trip-type" style="color:var(--red)">Performance Camps</div>
+    <div class="trip-name">Book a Performance Camp</div>
+    <div class="trip-desc">Rockbusters performance camps at Rodellar are designed for climbers who want structured, coached progression at one of Europe's finest venues. Sessions combine targeted route selection matched to your level, technical coaching on overhang technique and knee-bar mechanics, video analysis, and a structured training framework that maximises the week. Skip the planning entirely — focus on sending your projects.</div>
+    <a href="https://rockbusters.net/event-date/" class="btn-primary" style="display:inline-block">View Performance Camp Dates →</a>
+  </div>
+  <div class="trip-block">
+    <div class="trip-type" style="color:var(--stone)">Private Guiding</div>
+    <div class="trip-name">Hire a Specialist Rodellar Guide</div>
+    <div class="trip-desc">A private Rockbusters guide gives you expert sector knowledge, optimised daily route plans matched to your grade and goals, and technical coaching on the specific movement demands of steep limestone — knee-bars, tufa pinching, body positioning on roofs. Your guide knows every sector, every classic route, and exactly where to be at every time of day for optimal conditions.</div>
+    <a href="https://rockbusters.net/contact/" class="btn-primary" style="display:inline-block;background:var(--stone)">Book Private Guiding →</a>
+  </div>
+  <div class="trip-block">
+    <div class="trip-type" style="color:var(--steel)">Custom &amp; Group Trips</div>
+    <div class="trip-name">Custom Rodellar Experiences</div>
+    <div class="trip-desc">We build custom Rodellar experiences around your group's needs. Options include club and team performance trips, multi-destination Aragon road trips combining Rodellar with Riglos or Albarracín, and corporate retreat programmes. Tell us what you need and we'll make it happen.</div>
+    <a href="https://rockbusters.net/contact/" class="btn-primary" style="display:inline-block;background:var(--steel)">Inquire About Custom Trips →</a>
+  </div>
+</section>
+
+<!-- 18. RELATED DESTINATIONS -->
+<section class="sec reveal" id="related">
+  <div class="sec-ey">Explore More</div>
+  <h2 class="sec-h">Related <span>Destinations</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>Rodellar pairs naturally with Riglos for an Aragon limestone road trip, or combine with Siurana and Margalef for the ultimate Catalan sport climbing week:</p></div>
+  <div class="related-grid">
+    <a class="rel-card" href="https://rockbusters.net/location/margalef/"><div class="rel-country">Spain · Catalonia</div><div class="rel-name">Margalef</div><div class="rel-type">Conglomerate pockets · 400+ routes</div></a>
+    <a class="rel-card" href="https://rockbusters.net/location/siurana/"><div class="rel-country">Spain · Catalonia</div><div class="rel-name">Siurana</div><div class="rel-type">Sport climbing · La Rambla 9a+</div></a>
+    <a class="rel-card" href="https://rockbusters.net/location/riglos/"><div class="rel-country">Spain · Aragon</div><div class="rel-name">Riglos</div><div class="rel-type">Conglomerate towers · Multi-pitch</div></a>
+    <a class="rel-card" href="https://rockbusters.net/location/kalymnos/"><div class="rel-country">Greece</div><div class="rel-name">Kalymnos</div><div class="rel-type">Tufas · 3,000+ routes · Island life</div></a>
+    <a class="rel-card" href="https://rockbusters.net/location/leonidio/"><div class="rel-country">Greece · Peloponnese</div><div class="rel-name">Leonidio</div><div class="rel-type">Sport climbing · Orange limestone · 9b+</div></a>
+    <a class="rel-card" href="https://rockbusters.net/location/oliana/"><div class="rel-country">Spain · Catalonia</div><div class="rel-name">Oliana</div><div class="rel-type">Elite sport · Tufa wall · 9b+</div></a>
+  </div>
+</section>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside>
+  <div style="position:sticky;top:64px">
+    <div class="ctaw">
+      <div class="ctaw-ey">Book a Trip</div>
+      <div class="ctaw-h">Climb Rodellar<br>with Rockbusters</div>
+      <div class="ctaw-p">Performance camps, private guiding &amp; custom trips to one of Europe's finest climbing destinations.</div>
+      <a class="ctaw-btn" href="https://rockbusters.net/event-date/">View Upcoming Trips</a>
+      <a class="ctaw-btn2" href="https://rockbusters.net/contact/">Make Inquiry</a>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Quick Facts</div>
+      <div class="sr"><span class="sr-l">Country</span><span class="sr-v">Spain</span></div>
+      <div class="sr"><span class="sr-l">Region</span><span class="sr-v">Aragon, Huesca</span></div>
+      <div class="sr"><span class="sr-l">Rock</span><span class="sr-v">Limestone</span></div>
+      <div class="sr"><span class="sr-l">Style</span><span class="sr-v">Sport · DWS</span></div>
+      <div class="sr"><span class="sr-l">Routes</span><span class="sr-v">1,000+</span></div>
+      <div class="sr"><span class="sr-l">Grades</span><span class="sr-v">6a–9b</span></div>
+      <div class="sr"><span class="sr-l">Sweet Spot</span><span class="sr-v">6b–8b</span></div>
+      <div class="sr"><span class="sr-l">Best Season</span><span class="sr-v">Spring / Autumn</span></div>
+      <div class="sr"><span class="sr-l">Airport</span><span class="sr-v">Zaragoza (2h)</span></div>
+      <div class="sr"><span class="sr-l">Family</span><span class="sr-v">Moderate</span></div>
+      <div class="sr"><span class="sr-l">Dogs</span><span class="sr-v">Yes (on lead) ✓</span></div>
+      <div class="sr"><span class="sr-l">Camping</span><span class="sr-v">Yes ✓</span></div>
+      <div class="sr"><span class="sr-l">Crag fee</span><span class="sr-v">Free</span></div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Car Rental</div>
+      <a class="pc" href="https://carjet.com" target="_blank" style="margin-bottom:8px;display:flex">
+        <div class="pi">🚗</div>
+        <div style="margin-left:10px"><div class="pn">CarJet</div><div class="pu">carjet.com</div></div>
+      </a>
+      <a class="pc" href="https://doyouspain.com" target="_blank" style="display:flex">
+        <div class="pi">🚗</div>
+        <div style="margin-left:10px"><div class="pn">DoYouSpain</div><div class="pu">doyouspain.com</div></div>
+      </a>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">No Car? Paco's Shuttle</div>
+      <div class="sr"><span class="sr-l">Bus to Barbastro</span><span class="sr-v"><a href="https://www.avanzabus.com" target="_blank">avanzabus.com ↗</a></span></div>
+      <div class="sr"><span class="sr-l">Shuttle Barbastro→Rodellar</span><span class="sr-v">+34 618 05 54 86</span></div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Book Accommodation</div>
+      <ul class="evl">
+        <li><a href="https://www.booking.com/searchresults.html?ss=Rodellar+Spain" target="_blank">Aparthotel on Booking.com ↗</a></li>
+        <li><a href="https://www.airbnb.com/s/Rodellar--Spain" target="_blank">Airbnb — Rodellar ↗</a></li>
+        <li><a href="https://www.camping-mascun.com" target="_blank">Camping Mascún ↗</a></li>
+        <li><a href="https://park4night.com" target="_blank">Park4Night (van life) ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Resources</div>
+      <ul class="evl">
+        <li><a href="https://rockbusters.net/location/rodellar/" target="_blank">Rockbusters Rodellar page ↗</a></li>
+        <li><a href="https://27crags.com" target="_blank">27Crags guide ↗</a></li>
+        <li><a href="https://www.aemet.es" target="_blank">AEMET weather forecast ↗</a></li>
+        <li><a href="https://www.avanzabus.com" target="_blank">Avanzabus (coach to Barbastro) ↗</a></li>
+        <li><a href="https://rockbusters.net/event-date/" target="_blank">Upcoming trips ↗</a></li>
+        <li><a href="https://rockbusters.net/contact/" target="_blank">Make an inquiry ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Emergency Contacts</div>
+      <div class="sr"><span class="sr-l">Emergency</span><span class="sr-v">112</span></div>
+      <div class="sr"><span class="sr-l">Hospital Barbastro</span><span class="sr-v">+34 974 31 10 00</span></div>
+      <div class="sr"><span class="sr-l">Police</span><span class="sr-v">091</span></div>
+    </div>
+  </div>
+</aside>
+
+</div></div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div style="position:relative">
+    <div class="final-cta-ey">Ready to Climb Rodellar?</div>
+    <div class="final-cta-h">Let's Send</div>
+    <p class="final-cta-p">From your first outdoor 6a to projecting your absolute limit — Rockbusters brings the coaching, community spirit, and hard operational beta to turn your Rodellar goals into reality.</p>
+    <div class="final-cta-btns">
+      <a class="btn-dark" href="https://rockbusters.net/event-date/">Join a Trip</a>
+      <a class="btn-outline-dark" href="https://rockbusters.net/contact/">Book a Guide</a>
+      <a class="btn-outline-dark" href="https://rockbusters.net/contact/">Plan a Custom Trip</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="fi">
+    <div class="fb">ROCK<span>BUSTERS</span></div>
+    <ul class="fl">
+      <li><a href="https://rockbusters.net/event-date/">Calendar</a></li>
+      <li><a href="https://rockbusters.net/location/">Destinations</a></li>
+      <li><a href="https://rockbusters.net/contact/">Contact</a></li>
+      <li><a href="https://rockbusters.net/terms-and-conditions/">Terms</a></li>
+    </ul>
+    <div class="fc">© 2026 Rockbusters · info@rockbusters.net · +34 678 243 573</div>
+  </div>
+</footer>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Nav scroll
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Reveal on scroll
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+</script>
+</body>
+</html>

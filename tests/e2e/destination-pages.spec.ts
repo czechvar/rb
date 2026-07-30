@@ -1,0 +1,102 @@
+import { test, expect } from '@playwright/test'
+import { getPayload } from 'payload'
+import config from '../../src/payload.config.js'
+
+const BASE = 'http://localhost:3001'
+const runId = Date.now().toString(36)
+const dest = {
+  name: `E2E Crag ${runId}`,
+  slug: `e2e-crag-${runId}`,
+  country: 'Testland',
+  introLine: `Intro line for e2e crag ${runId} — pockets for days.`,
+}
+const eventTitle = `E2E Dest Trip ${runId}`
+
+function richText(...paragraphs: string[]) {
+  return {
+    root: {
+      type: 'root',
+      format: '',
+      indent: 0,
+      version: 1,
+      direction: 'ltr',
+      children: paragraphs.map((text) => ({
+        type: 'paragraph',
+        format: '',
+        indent: 0,
+        version: 1,
+        direction: 'ltr',
+        children: [{ type: 'text', text, version: 1 }],
+      })),
+    },
+  }
+}
+
+test.beforeAll(async () => {
+  const payload = await getPayload({ config })
+  const loc = await payload.create({
+    collection: 'locations',
+    data: {
+      name: dest.name,
+      slug: dest.slug,
+      country: dest.country,
+      coordinates: [11.41, 49.77],
+      content: richText(dest.introLine),
+      active: true,
+    } as never,
+  })
+  await payload.create({
+    collection: 'events',
+    data: {
+      title: eventTitle,
+      state: 'published',
+      locations: [loc.id],
+    } as never,
+  })
+})
+
+// Defense in depth against fixture leakage (see scripts/e2e-fixture-cleanup.ts).
+// FK-safe order: the event references the location, so delete it first.
+test.afterAll(async () => {
+  const payload = await getPayload({ config })
+  await payload.delete({ collection: 'events', where: { title: { equals: eventTitle } } })
+  await payload.delete({ collection: 'locations', where: { slug: { equals: dest.slug } } })
+})
+
+test.describe('destination pages', () => {
+  test('/destinations groups by country and links cards', async ({ page }) => {
+    await page.goto(`${BASE}/destinations`)
+    await expect(page.getByRole('heading', { level: 1, name: 'Destinations' })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 2, name: dest.country })).toBeVisible()
+    const card = page.getByRole('link', { name: new RegExp(dest.name) })
+    await expect(card).toBeVisible()
+    await expect(card).toHaveAttribute('href', `/destinations/${dest.slug}`)
+  })
+
+  test('/destinations/[slug] renders content, map, and trips', async ({ page }) => {
+    await page.goto(`${BASE}/destinations/${dest.slug}`)
+    await expect(page.getByRole('heading', { level: 1, name: dest.name })).toBeVisible()
+    await expect(page.getByText(dest.introLine)).toBeVisible()
+    await expect(page.locator('iframe[src*="openstreetmap.org"]')).toBeVisible()
+    await expect(page.getByRole('link', { name: eventTitle })).toBeVisible()
+  })
+
+  test('unknown destination slug 404s', async ({ page }) => {
+    const res = await page.goto(`${BASE}/destinations/__does-not-exist__`)
+    expect(res?.status()).toBe(404)
+  })
+})
+
+test.describe('old-site redirects + footer', () => {
+  test('/location/:slug 308s to /destinations/:slug', async ({ request }) => {
+    const res = await request.get(`${BASE}/location/${dest.slug}`, { maxRedirects: 0 })
+    expect(res.status()).toBe(308)
+    expect(res.headers()['location']).toBe(`/destinations/${dest.slug}`)
+  })
+
+  test('footer destination links point at the index country anchors', async ({ page }) => {
+    await page.goto(`${BASE}/`)
+    const spain = page.locator('footer').getByRole('link', { name: 'Spain' })
+    await expect(spain).toHaveAttribute('href', '/destinations#spain')
+  })
+})

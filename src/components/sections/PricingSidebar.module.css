@@ -1,0 +1,104 @@
+.card {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 2.4rem;
+  color: #515151;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+  max-width: 34rem;
+}
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.primaryPrice {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--rb-black);
+}
+
+.secondaryPrice {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--rb-red);
+  margin: 0;
+}
+
+.caption {
+  font-size: 1.3rem;
+  color: rgb(95, 90, 88);
+  margin: 0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--rb-white-12);
+  margin: 0;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(8rem, auto) 1fr;
+  gap: 1.2rem;
+  align-items: baseline;
+}
+
+.rowLabel {
+  font-size: 1.3rem;
+  color: rgb(95, 90, 88);
+  margin: 0;
+}
+
+.rowValue {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #515151;
+  margin: 0;
+  text-align: right;
+}
+
+.callout {
+  border: 1px solid var(--rb-red);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  font-size: 1.3rem;
+  color: var(--rb-red);
+  text-align: center;
+  margin: 0;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2rem;
+  background: var(--rb-red);
+  color: var(--rb-white);
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color var(--transitionTimeBase) ease;
+}
+
+.cta:hover {
+  background: var(--rb-red-hover);
+  color: var(--rb-white);
+}

@@ -1,0 +1,44 @@
+/* ── Prerequisites — "Climber Type & Prerequisites" ─────────────────── */
+
+.section {
+  background: var(--rb-black);
+  color: var(--rb-white);
+  padding: 0 5% 96px;
+}
+
+.list {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--rb-white-12);
+}
+
+.item {
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-60);
+  line-height: 1.6;
+  padding: 1rem 1.2rem 1rem 2rem;
+  border-bottom: 1px solid var(--rb-white-12);
+  position: relative;
+}
+
+.item::before {
+  content: '✓';
+  color: var(--rb-red);
+  position: absolute;
+  left: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+    padding: 0 5% 64px;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+  }
+}

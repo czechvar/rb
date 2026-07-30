@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>All Destinations | ROCKBUSTERS</title>
+<meta name="description" content="Every Rockbusters climbing destination across Europe, organized by country — Spain, France, Italy, Greece and beyond. Guided by climbers, not a travel agency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rb-red:         #E30713;
+    --rb-red-hover:   #c0050f;
+    --rb-red-dim:     rgba(227,7,19,0.08);
+    --rb-red-border:  rgba(227,7,19,0.28);
+    --rb-black:       #0D0D0D;
+    --rb-dark:        #111111;
+    --rb-darker:      #0a0a0a;
+    --rb-footer:      #080808;
+    --rb-white:       #F0EDE6;
+    --rb-white-60:    rgba(240,237,230,0.60);
+    --rb-white-45:    rgba(240,237,230,0.45);
+    --rb-white-30:    rgba(240,237,230,0.30);
+    --rb-white-12:    rgba(240,237,230,0.12);
+    --rb-white-08:    rgba(240,237,230,0.08);
+    --fs-eyebrow:     11px;
+    --fs-body-sm:     13px;
+    --fs-body:        15px;
+    --fs-body-lg:     17px;
+    --fs-card-title:  16px;
+    --section-pad:    90px 5%;
+    --card-pad:       36px 28px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--rb-black);
+    color:var(--rb-white);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+  }
+  a { text-decoration:none; color:inherit; }
+  ul { list-style:none; }
+  img { max-width:100%; display:block; }
+  h1,h2,h3 { font-family:'Bebas Neue', sans-serif; font-weight:400; }
+
+  .btn-primary, .btn-ghost, .btn-dark, .btn-outline-dark {
+    display:inline-block;
+    font-family:'Inter', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-size:13px;
+    font-weight:700;
+    padding:17px 36px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:all 0.25s ease;
+    border-radius:0;
+  }
+  .btn-primary { background:var(--rb-red); color:var(--rb-black); }
+  .btn-primary:hover { background:#e8303d; }
+  .btn-ghost { background:transparent; color:var(--rb-white); border-color:var(--rb-white-30); font-weight:500; padding:16px 36px; }
+  .btn-ghost:hover { border-color:var(--rb-white); }
+  .btn-dark { background:var(--rb-black); color:var(--rb-white); }
+  .btn-dark:hover { background:#1a1a1a; }
+  .btn-outline-dark { background:transparent; color:var(--rb-black); border-color:rgba(13,13,13,0.4); font-weight:500; padding:16px 36px; }
+  .btn-outline-dark:hover { border-color:var(--rb-black); }
+
+  /* ============ NAV (from homepage reference) ============ */
+  /* NAV */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 22px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(13,13,13,0.85) 0%, transparent 100%);
+    backdrop-filter: blur(0px);
+    transition: background 0.3s, backdrop-filter 0.3s;
+  }
+  .nav.scrolled {
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(240,237,230,0.08);
+  }
+
+  .nav-logo-img {
+    height: 32px;
+    width: auto;
+    display: block;
+    filter: brightness(1);
+    transition: opacity 0.2s;
+  }
+  .nav-logo-img:hover { opacity: 0.85; }
+  .footer-logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    margin-bottom: 16px;
+    filter: brightness(1);
+  }
+
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: #F0EDE6; letter-spacing: 0.1em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #F0EDE6; font-weight: 600; transition: color 0.2s; }
+  .nav-links a:hover { color: #F0EDE6; }
+  .nav-cta {
+    background: #E30713; color: #0D0D0D;
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 11px 22px; border: none; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #e8303d; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: #F0EDE6; transition: 0.3s; }
+  @media (max-width:768px){
+    .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; width:100%; background:rgba(13,13,13,0.97); padding:20px 5%; gap:18px; }
+    .nav-cta { display:none; }
+    .nav-hamburger { display:flex; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding:170px 5% 80px;
+    background:
+      linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.35) 40%, rgba(13,13,13,0.75) 100%),
+      radial-gradient(ellipse at top right, rgba(227,7,19,0.12), transparent 55%),
+      var(--rb-black);
+    text-align:left;
+  }
+  .eyebrow {
+    display:flex; align-items:center; gap:10px;
+    font-family:'Inter', sans-serif; font-weight:700; font-size:13px;
+    color:var(--rb-red); letter-spacing:0.22em; text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .eyebrow::before { content:''; width:32px; height:1px; background:var(--rb-red); }
+  .hero h1 {
+    font-size:clamp(52px, 8.5vw, 108px);
+    line-height:0.9;
+    color:var(--rb-white);
+    letter-spacing:0.02em;
+    max-width:900px;
+  }
+  .hero h1 em { color:var(--rb-red); font-style:normal; }
+  .hero-sub {
+    font-family:'Inter', sans-serif; font-weight:400;
+    font-size:clamp(16px, 2vw, 19px);
+    color:var(--rb-white-60);
+    max-width:600px; line-height:1.65;
+    margin:26px 0 40px;
+  }
+  .hero-stats {
+    display:flex; flex-wrap:wrap; gap:40px;
+    padding-top:32px; border-top:1px solid var(--rb-white-08);
+    max-width:760px;
+  }
+  .hero-stat .num { font-family:'Bebas Neue', sans-serif; font-size:38px; color:var(--rb-red); line-height:1; }
+  .hero-stat .lbl { font-family:'Inter', sans-serif; font-size:11px; letter-spacing:0.13em; text-transform:uppercase; color:var(--rb-white-45); margin-top:6px; }
+
+  /* ============ JUMP / FILTER BAR ============ */
+  .jump-bar-wrap { position:relative; height:0; }
+  .jump-bar {
+    position:fixed; top:0; left:0; width:100%; z-index:90;
+    background:rgba(13,13,13,0.94); backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--rb-white-08);
+    padding:16px 5%;
+    display:flex; gap:10px; overflow-x:auto;
+    transform:translateY(-200%); opacity:0; pointer-events:none;
+    transition:transform 0.35s ease, opacity 0.35s ease;
+    scrollbar-width:none;
+  }
+  .jump-bar::-webkit-scrollbar { display:none; }
+  .jump-bar.show { transform:translateY(72px); opacity:1; pointer-events:auto; }
+  .jump-pill {
+    flex:none;
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Inter', sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--rb-white-60);
+    border:1px solid var(--rb-white-12);
+    padding:9px 16px; white-space:nowrap;
+    transition:all 0.2s ease;
+  }
+  .jump-pill:hover, .jump-pill.active { color:var(--rb-black); background:var(--rb-red); border-color:var(--rb-red); }
+  .pill-flag { width:18px; height:13px; object-fit:cover; border:1px solid rgba(255,255,255,0.15); flex:none; }
+
+  @media (max-width:480px){
+    .jump-bar { position:static; transform:none; opacity:1; pointer-events:auto; background:var(--rb-black); }
+    .jump-bar.show { transform:none; }
+  }
+
+  /* ============ COUNTRY SECTIONS ============ */
+  .country-section { padding:70px 5%; border-top:1px solid var(--rb-white-08); }
+  .country-section:nth-of-type(odd) { background:var(--rb-black); }
+  .country-section:nth-of-type(even) { background:var(--rb-darker); }
+
+  .country-head { display:flex; align-items:center; gap:18px; margin-bottom:36px; flex-wrap:wrap; }
+  .country-flag {
+    width:56px; height:40px; object-fit:cover;
+    border:1px solid var(--rb-white-12);
+    box-shadow:0 4px 14px rgba(0,0,0,0.35);
+    flex:none;
+  }
+  .country-title { font-size:clamp(34px, 5vw, 56px); color:var(--rb-white); line-height:0.95; letter-spacing:0.02em; }
+  .country-count {
+    font-family:'Inter', sans-serif; font-size:11px; font-weight:700;
+    color:var(--rb-red); letter-spacing:0.14em; text-transform:uppercase;
+    border:1px solid var(--rb-red-border); padding:5px 12px;
+  }
+
+  .dest-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:2px;
+    background:var(--rb-white-08);
+  }
+  .dest-card {
+    background:var(--rb-dark);
+    padding:36px 22px;
+    text-align:left;
+    display:flex; flex-direction:column; gap:10px;
+    transition:background 0.25s ease;
+  }
+  .dest-card:hover { background:#191919; }
+  .dest-card .flag, .dest-card img.flag {
+    width:34px; height:24px; object-fit:cover;
+    border:1px solid var(--rb-white-12);
+  }
+  .dest-card h3 {
+    font-family:'Inter', sans-serif; font-weight:700; font-size:17px;
+    color:var(--rb-red); letter-spacing:0.01em; text-transform:none;
+    line-height:1.25;
+  }
+  .dest-card p {
+    font-family:'Inter', sans-serif; font-size:13px; line-height:1.6;
+    color:var(--rb-white-45);
+  }
+  .dest-card .go {
+    margin-top:auto; padding-top:8px;
+    font-family:'Inter', sans-serif; font-weight:700; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--rb-red);
+  }
+  a.dest-card { cursor:pointer; }
+  a.dest-card:hover .go { color:#ff4552; }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background:var(--rb-red); padding:100px 5%; text-align:center;
+  }
+  .final-cta h2 { font-size:clamp(52px, 8vw, 104px); color:var(--rb-black); line-height:0.87; }
+  .final-cta p {
+    font-family:'Inter', sans-serif; font-size:18px; color:rgba(13,13,13,0.62);
+    line-height:1.65; max-width:480px; margin:22px auto 40px;
+  }
+  .final-cta .cta-row { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+  /* ============ FOOTER (from homepage reference) ============ */
+  .footer { background: #080808; padding: 72px 5% 40px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+  @media(max-width:900px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width:500px){ .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand-logo { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: #F0EDE6; letter-spacing: 0.1em; display: block; margin-bottom: 16px; }
+  .footer-brand p { font-size: 13px; color: rgba(240,237,230,0.36); line-height: 1.75; max-width: 260px; }
+  .newsletter { display: flex; margin-top: 24px; }
+  .newsletter input { background: rgba(240,237,230,0.05); border: 1px solid rgba(240,237,230,0.1); border-right: none; color: #F0EDE6; padding: 11px 16px; font-family: 'Inter', sans-serif; font-size: 13px; flex: 1; outline: none; }
+  .newsletter input::placeholder { color: rgba(240,237,230,0.28); }
+  .newsletter button { background: #E30713; border: none; color: #0D0D0D; padding: 11px 18px; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+  .footer-col h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E30713; font-weight: 700; margin-bottom: 20px; }
+  .footer-col a { display: block; font-size: 13px; color: rgba(240,237,230,0.4); margin-bottom: 12px; transition: color 0.2s; }
+  .footer-col a:hover { color: #F0EDE6; }
+  .footer-bottom { border-top: 1px solid rgba(240,237,230,0.07); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom p { font-size: 12px; color: rgba(240,237,230,0.22); }
+  .footer-tagline { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: rgba(240,237,230,0.18); }
+
+  /* ============ REVEAL ============ */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="nav-logo-img">
+  <div class="nav-links" id="navLinks">
+    <a href="trips-clinics.html">Trips &amp; Clinics</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="rockbusters_homepage_HEX_E30713.html#team">The Crew</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+  </div>
+  <a class="nav-cta" href="trips-clinics.html">Find Your Trip</a>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="eyebrow">Where We Climb</div>
+  <h1 class="reveal">Every crag we <em>actually</em><br>climb, guide &amp; road-trip</h1>
+  <p class="hero-sub reveal">No stock-photo destination list. Every venue below is somewhere a Rockbusters guide has racked up, roped in, and run a trip — sorted by country so you can find your next objective fast.</p>
+  <div class="hero-stats reveal">
+    <div class="hero-stat"><div class="num">14</div><div class="lbl">Countries</div></div>
+    <div class="hero-stat"><div class="num">50+</div><div class="lbl">Destinations</div></div>
+    <div class="hero-stat"><div class="num">100%</div><div class="lbl">Guided by climbers</div></div>
+  </div>
+</header>
+
+<!-- ============ JUMP BAR ============ -->
+<div class="jump-bar-wrap">
+  <div class="jump-bar" id="jumpBar">
+    <a href="#spain" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/es.png" alt=""> Spain</a>
+    <a href="#france" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/fr.png" alt=""> France</a>
+    <a href="#italy" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/it.png" alt=""> Italy</a>
+    <a href="#greece" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/gr.png" alt=""> Greece</a>
+    <a href="#croatia" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/hr.png" alt=""> Croatia</a>
+    <a href="#austria" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/at.png" alt=""> Austria</a>
+    <a href="#czech" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/cz.png" alt=""> Czech Republic</a>
+    <a href="#switzerland" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/ch.png" alt=""> Switzerland</a>
+    <a href="#germany" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/de.png" alt=""> Germany</a>
+    <a href="#turkey" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/tr.png" alt=""> Turkey</a>
+    <a href="#malta" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/mt.png" alt=""> Malta</a>
+    <a href="#norway" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/no.png" alt=""> Norway</a>
+    <a href="#slovenia" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/si.png" alt=""> Slovenia</a>
+    <a href="#slovakia" class="jump-pill"><img class="pill-flag" src="https://flagcdn.com/w20/sk.png" alt=""> Slovakia</a>
+    <a href="#balkans" class="jump-pill">🗺️ Balkans</a>
+  </div>
+</div>
+
+<!-- ============ SPAIN ============ -->
+<section class="country-section" id="spain">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/es.png" alt="Spain flag">
+    <h2 class="country-title">Spain</h2>
+    <span class="country-count">21 destinations</span>
+  </div>
+  <div class="dest-grid reveal">
+    <a href="albarracin-destination.html" class="dest-card">
+      <img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag">
+      <h3>Albarracín</h3>
+      <p>Sandstone bouldering in a red-rock forest, quiet Aragón campo.</p>
+      <span class="go">View Destination →</span>
+    </a>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Andalucía</h3><p>Sun-baked limestone from El Chorro to the southern coast.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Cavallers</h3><p>Alpine multi-pitch above a Pyrenean reservoir.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Chulilla</h3><p>Deep gorge sport climbing — steep pockets and tufas.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Costa Blanca</h3><p>Year-round sport climbing on the Mediterranean coast.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Cuenca</h3><p>Pocketed limestone bouldering in a quiet river gorge.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>El Chorro</h3><p>Classic limestone sport climbing beside the Caminito del Rey.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Etxauri</h3><p>Basque Country limestone — steep, technical, close to Pamplona.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Gran Canaria</h3><p>Volcanic sport climbing with reliable winter sun.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Mallorca</h3><p>Deep water soloing and coastal limestone crags.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Margalef</h3><p>World-class steep sport climbing on red and grey rock.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Monobloc, Reus</h3><p>Compact bouldering venue in the hills near Tarragona.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Montgrony</h3><p>Remote Pyrenean multi-pitch on solid limestone.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Oliana</h3><p>Steep, technical sport climbing for the strong of finger.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Picos de Europa</h3><p>High alpine limestone in the mountains of northern Spain.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Riglos</h3><p>Iconic conglomerate towers and big multi-pitch lines.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Rodellar</h3><p>Canyon sport climbing draped in tufas and stalactites.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Sella</h3><p>Compact limestone crag close to Alicante.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Siurana</h3><p>Legendary steep limestone above a mountain reservoir.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Terradets</h3><p>Pocketed limestone walls in the Pre-Pyrenees.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag"><h3>Valdegovía</h3><p>Quiet, uncrowded Basque limestone.</p></div>
+  </div>
+</section>
+
+<!-- ============ FRANCE ============ -->
+<section class="country-section" id="france">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/fr.png" alt="France flag">
+    <h2 class="country-title">France</h2>
+    <span class="country-count">9 destinations</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="France flag"><h3>Ardèche</h3><p>Limestone gorges and long, sustained multi-pitch routes.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="France flag"><h3>Céüse</h3><p>World-famous vertical limestone wall — technical, steep, unforgettable.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="France flag"><h3>Chamonix</h3><p>Alpine granite and classic routes under Mont Blanc.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="France flag"><h3>Durance Valley</h3><p>Sunny sport climbing scattered through the Hautes-Alpes.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="France flag"><h3>Fontainebleau</h3><p>The spiritual home of bouldering, just outside Paris.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="France flag"><h3>Gorge de la Jonte</h3><p>Limestone gorge climbing in the Cévennes.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="France flag"><h3>Gorges du Tarn</h3><p>Deep river gorge with varied limestone routes.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="France flag"><h3>Gorges du Verdon</h3><p>Europe's grand canyon — huge, committing multi-pitch walls.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/fr.png" alt="France flag"><h3>Calanques de Marseille</h3><p>Coastal limestone climbing above the Mediterranean.</p></div>
+  </div>
+</section>
+
+<!-- ============ ITALY ============ -->
+<section class="country-section" id="italy">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/it.png" alt="Italy flag">
+    <h2 class="country-title">Italy</h2>
+    <span class="country-count">5 destinations</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/it.png" alt="Italy flag"><h3>Arco</h3><p>Alpine limestone below Lake Garda, home of the climbing festival.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/it.png" alt="Italy flag"><h3>Dolomites</h3><p>Legendary big-wall multi-pitch deep in the Italian Alps.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/it.png" alt="Italy flag"><h3>Finale Ligure</h3><p>Coastal limestone above the Ligurian Sea.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/it.png" alt="Italy flag"><h3>Sardinia</h3><p>Steep pocketed limestone and dramatic sea cliffs.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/it.png" alt="Italy flag"><h3>Val di Mello</h3><p>Granite bouldering in a glacial alpine valley.</p></div>
+  </div>
+</section>
+
+<!-- ============ GREECE ============ -->
+<section class="country-section" id="greece">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/gr.png" alt="Greece flag">
+    <h2 class="country-title">Greece</h2>
+    <span class="country-count">3 destinations</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/gr.png" alt="Greece flag"><h3>Kalymnos</h3><p>Tufa-pulling sport climbing above the Aegean Sea.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/gr.png" alt="Greece flag"><h3>Leonidio</h3><p>Steep stalactite sport climbing in the Peloponnese.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/gr.png" alt="Greece flag"><h3>Kyparissi</h3><p>Quiet coastal limestone, Kalymnos-style rock without the crowds.</p></div>
+  </div>
+</section>
+
+<!-- ============ CROATIA ============ -->
+<section class="country-section" id="croatia">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/hr.png" alt="Croatia flag">
+    <h2 class="country-title">Croatia</h2>
+    <span class="country-count">2 destinations</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/hr.png" alt="Croatia flag"><h3>Hvar</h3><p>Island limestone sport climbing above the Adriatic.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/hr.png" alt="Croatia flag"><h3>Istria</h3><p>Coastal and inland limestone crags on the peninsula.</p></div>
+  </div>
+</section>
+
+<!-- ============ AUSTRIA ============ -->
+<section class="country-section" id="austria">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/at.png" alt="Austria flag">
+    <h2 class="country-title">Austria</h2>
+    <span class="country-count">2 destinations</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/at.png" alt="Austria flag"><h3>Maltatal</h3><p>Alpine granite valley — multi-pitch and bouldering side by side.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/at.png" alt="Austria flag"><h3>Zillertal</h3><p>Alpine granite bouldering and sport climbing.</p></div>
+  </div>
+</section>
+
+<!-- ============ CZECH REPUBLIC ============ -->
+<section class="country-section" id="czech">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/cz.png" alt="Czech Republic flag">
+    <h2 class="country-title">Czech Republic</h2>
+    <span class="country-count">2 destinations</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/cz.png" alt="Czech Republic flag"><h3>Český Ráj</h3><p>Sandstone towers climbed in the traditional Czech style.</p></div>
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/cz.png" alt="Czech Republic flag"><h3>Labské Údolí</h3><p>Sandstone climbing along the Elbe river valley.</p></div>
+  </div>
+</section>
+
+<!-- ============ SWITZERLAND ============ -->
+<section class="country-section" id="switzerland">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/ch.png" alt="Switzerland flag">
+    <h2 class="country-title">Switzerland</h2>
+    <span class="country-count">1 destination</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/ch.png" alt="Switzerland flag"><h3>Ticino</h3><p>Granite bouldering scattered through Alpine valleys.</p></div>
+  </div>
+</section>
+
+<!-- ============ GERMANY ============ -->
+<section class="country-section" id="germany">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/de.png" alt="Germany flag">
+    <h2 class="country-title">Germany</h2>
+    <span class="country-count">1 destination</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/de.png" alt="Germany flag"><h3>Frankenjura</h3><p>World-class limestone sport climbing, endless pockets and flow.</p></div>
+  </div>
+</section>
+
+<!-- ============ TURKEY ============ -->
+<section class="country-section" id="turkey">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/tr.png" alt="Turkey flag">
+    <h2 class="country-title">Turkey</h2>
+    <span class="country-count">1 destination</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/tr.png" alt="Turkey flag"><h3>Antalya</h3><p>Winter sun sport climbing on the Turkish coast.</p></div>
+  </div>
+</section>
+
+<!-- ============ MALTA ============ -->
+<section class="country-section" id="malta">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/mt.png" alt="Malta flag">
+    <h2 class="country-title">Malta</h2>
+    <span class="country-count">1 destination</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/mt.png" alt="Malta flag"><h3>Malta</h3><p>Deep water soloing and limestone sea cliffs.</p></div>
+  </div>
+</section>
+
+<!-- ============ NORWAY ============ -->
+<section class="country-section" id="norway">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/no.png" alt="Norway flag">
+    <h2 class="country-title">Norway</h2>
+    <span class="country-count">1 destination</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/no.png" alt="Norway flag"><h3>Norway</h3><p>Fjord-side granite, big walls and long summer light.</p></div>
+  </div>
+</section>
+
+<!-- ============ SLOVENIA ============ -->
+<section class="country-section" id="slovenia">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/si.png" alt="Slovenia flag">
+    <h2 class="country-title">Slovenia</h2>
+    <span class="country-count">1 destination</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/si.png" alt="Slovenia flag"><h3>Slovenia</h3><p>Alpine limestone in the Julian Alps.</p></div>
+  </div>
+</section>
+
+<!-- ============ SLOVAKIA ============ -->
+<section class="country-section" id="slovakia">
+  <div class="country-head reveal">
+    <img class="country-flag" src="https://flagcdn.com/w80/sk.png" alt="Slovakia flag">
+    <h2 class="country-title">Slovakia</h2>
+    <span class="country-count">1 destination</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><img class="flag" src="https://flagcdn.com/w40/sk.png" alt="Slovakia flag"><h3>Súľov</h3><p>Conglomerate towers and traditional multi-pitch climbing.</p></div>
+  </div>
+</section>
+
+<!-- ============ BALKANS (MULTI-COUNTRY) ============ -->
+<section class="country-section" id="balkans">
+  <div class="country-head reveal">
+    <span class="country-flag">🗺️</span>
+    <h2 class="country-title">Balkans</h2>
+    <span class="country-count">Multi-country route</span>
+  </div>
+  <div class="dest-grid reveal">
+    <div class="dest-card"><span class="flag">🗺️</span><h3>Balkan Road Trip</h3><p>A multi-country crag crawl across the Balkan peninsula.</p></div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <h2 class="reveal">Don't see your<br>dream crag?</h2>
+  <p class="reveal">If it's climbable, we've probably been there — or we'll go find out. Tell us where you want to go and we'll build the trip.</p>
+  <div class="cta-row reveal">
+    <a href="contact.html" class="btn-dark">Request a Custom Trip</a>
+    <a href="trips-clinics.html" class="btn-outline-dark">See Upcoming Trips</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="footer-logo-img">
+      <p>A community of climbing coaches and guides dedicated to maximum progression on real rock across Europe's greatest crags. Climbers. Coaches. Lifers.</p>
+      <form class="newsletter" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h4>Trips</h4>
+      <a href="road-trips-expeditions.html">Road Trips</a>
+      <a href="sport-climbing-holidays.html">Sport Holidays</a>
+      <a href="bouldering-camps.html">Bouldering Camps</a>
+      <a href="custom-trips.html">Custom Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Coaching</h4>
+      <a href="performance-technique-camps.html">Performance Camps</a>
+      <a href="private-coaching.html">Private Coaching</a>
+      <a href="trips-clinics.html">Pro Clinics</a>
+      <a href="private-coaching.html">Video Analysis</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="rockbusters_homepage_HEX_E30713.html#team">Meet the Team</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="rockbusters_homepage_HEX_E30713.html#faq">FAQ</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Rockbusters. All rights reserved.</p>
+    <span class="footer-tagline">Climbers. Coaches. Lifers.</span>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('mainNav');
+  const jumpBar = document.getElementById('jumpBar');
+  const heroEl = document.querySelector('.hero');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+
+    const heroBottom = heroEl.getBoundingClientRect().bottom;
+    if (heroBottom < 70) jumpBar.classList.add('show');
+    else jumpBar.classList.remove('show');
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Active jump pill on click
+  document.querySelectorAll('.jump-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.jump-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+
+  // Mobile nav toggle (matches homepage nav-hamburger behavior)
+  function toggleMenu() {
+    var links = document.getElementById('navLinks');
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
+
+</body>
+</html>

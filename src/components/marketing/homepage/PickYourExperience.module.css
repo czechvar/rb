@@ -1,0 +1,58 @@
+.section {
+  padding: var(--rb-section-pad);
+  background: var(--rb-black);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 56px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  position: relative;
+  padding: 32px;
+  border: 1px solid var(--rb-white-12);
+  color: var(--rb-white);
+  text-decoration: none;
+  transition: border-color 0.18s;
+}
+
+.card:hover {
+  border-color: var(--rb-red);
+}
+
+.cardName {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--rb-white);
+  margin: 0 0 8px;
+  max-width: calc(100% - 36px);
+}
+
+.cardTag {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-60);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cardArrow {
+  position: absolute;
+  right: 28px;
+  top: 32px;
+  color: var(--rb-red);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.ctaWrap {
+  text-align: center;
+  margin-top: 40px;
+}

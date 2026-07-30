@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The ultimate guide to bouldering in Albarracín, Spain — 1,600+ orange sandstone problems, sector guides, accommodation, travel tips and Rockbusters trips.">
+<title>Bouldering in Albarracín, Spain — The Ultimate Rockbusters Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   ROCKBUSTERS DESIGN SYSTEM — Rodellar Destination Guide
+   Brand red: #E30713  |  Dark bg: #0D0D0D  |  Off-white: #F0EDE6
+   Display font: Bebas Neue  |  Body font: Inter
+   ============================================================ */
+:root {
+  --red:       #E30713;
+  --red-hover: #c0050f;
+  --red-dim:   rgba(227,7,19,0.08);
+  --red-border:rgba(227,7,19,0.28);
+  --black:     #0D0D0D;
+  --dark:      #111111;
+  --darker:    #0a0a0a;
+  --card-bg:   #161616;
+  --chalk:     #F0EDE6;
+  --chalk-60:  rgba(240,237,230,0.60);
+  --chalk-45:  rgba(240,237,230,0.45);
+  --chalk-30:  rgba(240,237,230,0.30);
+  --chalk-12:  rgba(240,237,230,0.12);
+  --chalk-08:  rgba(240,237,230,0.08);
+  --chalk-04:  rgba(240,237,230,0.04);
+  --stone:     #8B7355;
+  --steel:     #5B9BD5;
+  --section-pad: 90px 5vw;
+  /* Typography scale */
+  --fs-eyebrow: 11px;
+  --fs-body-sm: 13px;
+  --fs-body:    15px;
+  --fs-body-lg: 17px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--chalk);overflow-x:hidden;line-height:1.6;font-size:15px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  padding:22px 5vw;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:200;
+  background:linear-gradient(to bottom,rgba(13,13,13,0.85) 0%,transparent 100%);
+  backdrop-filter:blur(0px);
+  transition:background 0.3s,backdrop-filter 0.3s;
+}
+.nav.scrolled{
+  background:rgba(13,13,13,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(240,237,230,0.08);
+}
+.nav-logo-img{height:32px;width:auto;display:block;filter:brightness(1);transition:opacity 0.2s;}
+.nav-logo-img:hover{opacity:0.85;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#F0EDE6;font-weight:600;transition:color 0.2s;}
+.nav-links a:hover{color:var(--red);}
+.nav-cta{
+  background:var(--red);color:var(--black);
+  font-family:'Inter',sans-serif;font-weight:700;font-size:12px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:11px 22px;border:none;cursor:pointer;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:#e8303d;}
+
+/* BREADCRUMB */
+.bc{
+  padding:60px 5vw 0;
+  font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--chalk);font-family:'Inter',sans-serif;font-weight:500;
+}
+.bc a{color:var(--chalk);transition:color 0.15s}
+.bc a:hover{color:var(--red)}
+.bc span{margin:0 8px;color:var(--chalk-60)}
+
+/* HERO — full bleed photography */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 0 7%;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center 25%;
+  background-repeat:no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(13,13,13,0.05) 0%,
+    rgba(13,13,13,0.05) 25%,
+    rgba(13,13,13,0.55) 60%,
+    rgba(13,13,13,0.95) 100%
+  );
+}
+.hero-content{position:relative;z-index:2;width:100%;padding:0 5vw}
+.hero-layout{display:flex;align-items:flex-end;gap:3rem;width:100%}
+.hero-text-col{flex:1;min-width:0}
+.hero-eyebrow{
+  font-size:13px;letter-spacing:0.22em;color:var(--red);
+  text-transform:uppercase;margin-bottom:20px;font-weight:700;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--red)}
+.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--red)}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(72px,11vw,140px);
+  line-height:0.88;
+  margin-bottom:24px;color:var(--chalk);
+  letter-spacing:0.02em;
+}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero-sub{
+  font-size:clamp(16px,2vw,19px);
+  line-height:1.68;max-width:520px;
+  color:rgba(240,237,230,0.78);margin-bottom:32px;
+}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.badge{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;font-weight:700;}
+.badge-red{background:var(--red);color:var(--black)}
+.badge-outline{background:transparent;color:var(--chalk-60);border:1px solid var(--chalk-30)}
+.btn-group{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  background:var(--red);color:var(--black);
+  font-family:'Inter',sans-serif;font-weight:700;font-size:13px;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:17px 36px;transition:background 0.2s;display:inline-block;
+}
+.btn-primary:hover{background:#e8303d;color:var(--black)}
+.btn-ghost{
+  background:transparent;color:var(--chalk);
+  font-family:'Inter',sans-serif;font-weight:500;font-size:13px;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:16px 36px;border:1.5px solid rgba(240,237,230,0.35);
+  transition:border-color 0.2s;display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--chalk)}
+
+/* HERO STAT CARD */
+.hero-card{flex-shrink:0;width:240px;background:rgba(13,13,13,0.52);border:1px solid rgba(240,237,230,0.12);backdrop-filter:blur(14px);padding:28px 22px;}
+.hero-card-stat{display:flex;flex-direction:column;gap:16px}
+.hstat{padding-bottom:16px;border-bottom:1px solid var(--chalk-08)}
+.hstat:last-child{padding-bottom:0;border-bottom:none}
+.hstat-n{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--chalk);letter-spacing:0.04em;display:block;line-height:1;}
+.hstat-l{font-size:11px;letter-spacing:0.13em;text-transform:uppercase;color:var(--red);margin-top:4px;display:block;font-weight:600;}
+
+/* STATS BAR */
+.stats-bar{background:var(--red);display:flex;justify-content:space-around;padding:30px 5vw;gap:16px;flex-wrap:wrap;}
+.stat-item{text-align:center}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:#F0EDE6;line-height:1;display:block}
+.stat-label{font-size:11px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(240,237,230,0.7);font-weight:600;display:block;margin-top:4px}
+
+/* TOC NAV */
+.toc{
+  background:rgba(13,13,13,0.96);
+  border-bottom:1px solid var(--chalk-08);
+  position:sticky;top:0;z-index:190;
+  overflow-x:auto;
+  backdrop-filter:blur(14px);
+}
+.toc-inner{
+  width:100%;padding:0 5vw;
+  display:flex;
+}
+.tl{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,237,230,0.55);padding:14px 16px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.15s;font-weight:600;}
+.tl:hover{color:var(--red);border-bottom-color:var(--red)}
+
+/* MAIN LAYOUT */
+.pw{width:100%;padding:0 5vw}
+.cg{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:48px 0}
+
+/* SECTION COMMON */
+.sec{margin-bottom:72px;scroll-margin-top:120px}
+.sec-ey{
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:14px;font-weight:700;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-ey::before{content:'';display:inline-block;width:24px;height:1px;background:var(--red)}
+.sec-ey::before{content:'';display:inline-block;width:20px;height:1px;background:var(--red)}
+.sec-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(42px,6vw,80px);
+  color:var(--chalk);line-height:0.92;margin-bottom:24px;
+  letter-spacing:0.02em;
+}
+.sec-h span{color:var(--red)}
+.sec-divider{width:100%;height:1px;background:rgba(240,237,230,0.08);margin-bottom:32px}
+
+/* PROSE */
+.prose p{color:rgba(240,237,230,0.65);margin-bottom:14px;line-height:1.78;font-size:16px}
+.prose h3{
+  font-family:'Bebas Neue',sans-serif;font-size:24px;
+  letter-spacing:0.04em;color:var(--chalk);margin:28px 0 10px;
+}
+.prose h4{
+  font-size:11px;font-weight:700;color:var(--chalk-45);
+  margin:18px 0 6px;text-transform:uppercase;letter-spacing:0.07em;
+}
+.prose ul{margin:8px 0 14px 20px;color:var(--chalk-60);font-size:14px}
+.prose ul li{margin-bottom:7px;line-height:1.65}
+.prose ol{margin:8px 0 14px 20px;color:var(--chalk-60);font-size:14px}
+.prose ol li{margin-bottom:7px;line-height:1.65}
+.prose strong{color:var(--chalk);font-weight:600}
+.prose a{color:var(--red)}
+.prose a:hover{text-decoration:underline}
+
+/* INFO GRID */
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.sg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0}
+.sc{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:14px 16px;
+}
+.sc-l{font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--chalk-45);margin-bottom:4px;font-weight:600}
+.sc-v{font-size:14px;font-weight:600;color:var(--chalk)}
+.sc-s{font-size:11px;color:var(--chalk-45);margin-top:2px}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tag{
+  background:var(--chalk-04);border:1px solid var(--chalk-08);
+  padding:5px 12px;font-size:12px;color:var(--chalk-60);
+}
+
+/* HIGHLIGHT BOX */
+.highlight-box{
+  background:linear-gradient(135deg,rgba(227,7,19,0.08),rgba(227,7,19,0.03));
+  border:1px solid var(--red-border);padding:22px 24px;margin:20px 0;
+}
+.highlight-box-label{
+  font-size:9px;text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--red);margin-bottom:8px;font-weight:700;
+}
+.highlight-box-text{font-size:14px;color:var(--chalk-60);line-height:1.75}
+.highlight-box-text strong{color:var(--chalk)}
+
+/* SEASON BAR */
+.seas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0}
+.sea{text-align:center}
+.sea-n{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);margin-bottom:8px;font-weight:600}
+.sea-b{height:5px;margin-bottom:8px}
+.s-pk{background:var(--red)}
+.s-gd{background:var(--stone)}
+.s-ok{background:var(--chalk-30)}
+.s-av{background:var(--chalk-08)}
+.sea-l{font-size:11px;font-weight:600}
+.lbl-pk{color:var(--red)}
+.lbl-gd{color:var(--stone)}
+.lbl-ok{color:var(--chalk-45)}
+.lbl-av{color:var(--chalk-30)}
+
+/* MONTH TABLE */
+.month-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.month-table th{
+  font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);
+  padding:10px 12px;border-bottom:1px solid var(--chalk-08);text-align:left;font-weight:600;
+}
+.month-table td{padding:9px 12px;border-bottom:1px solid var(--chalk-04);color:var(--chalk-60)}
+.month-table tr:last-child td{border-bottom:none}
+.month-table tr:hover td{background:var(--chalk-04)}
+.cond-peak{color:var(--red);font-weight:700}
+.cond-excel{color:#4CAF50;font-weight:700}
+.cond-good{color:var(--stone);font-weight:700}
+.cond-warm{color:#FF9800;font-weight:700}
+.cond-cold{color:var(--steel);font-weight:700}
+
+/* GRADE ROWS */
+.grade-row{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:16px 0;border-bottom:1px solid var(--chalk-04);
+}
+.grade-row:last-child{border-bottom:none}
+.grade-pill{
+  font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--black);
+  background:var(--red);padding:4px 14px;flex-shrink:0;
+  letter-spacing:0.04em;white-space:nowrap;
+}
+.grade-content{flex:1}
+.grade-title{font-size:13px;font-weight:700;color:var(--chalk);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.05em}
+.grade-routes{font-size:13px;color:var(--chalk-60);line-height:1.68}
+.grade-routes strong{color:var(--chalk)}
+
+/* SECTOR CARDS */
+.sector-card{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:20px;margin-bottom:12px;
+  transition:border-color 0.2s;
+}
+.sector-card:hover{border-color:var(--chalk-30)}
+.sector-name{
+  font-family:'Bebas Neue',sans-serif;font-size:26px;
+  color:var(--chalk);letter-spacing:0.04em;margin-bottom:8px;
+}
+.sector-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.sector-badge{
+  font-size:9px;text-transform:uppercase;letter-spacing:0.06em;
+  padding:3px 9px;background:var(--chalk-04);color:var(--chalk-45);
+  border:1px solid var(--chalk-08);font-weight:600;
+}
+.sector-desc{font-size:13px;color:var(--chalk-60);line-height:1.65}
+
+/* WHO GRID */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.who-card{background:var(--card-bg);border:1px solid var(--chalk-08);padding:16px}
+
+.who-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:6px;}
+.who-desc{font-size:13px;color:var(--chalk-60);line-height:1.65}
+.who-verdict{
+  display:inline-block;margin-top:10px;
+  font-size:9px;text-transform:uppercase;letter-spacing:0.07em;
+  padding:3px 9px;font-weight:700;
+}
+.v-great{background:rgba(227,7,19,0.15);color:var(--red)}
+.v-yes{background:rgba(76,175,80,0.12);color:#4CAF50}
+.v-ok{background:rgba(255,152,0,0.12);color:#FF9800}
+.v-no{background:var(--chalk-04);color:var(--chalk-45)}
+
+/* ACCOMMODATION */
+.accom-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.accom-card{background:var(--card-bg);border:1px solid var(--chalk-08);padding:18px}
+.accom-type{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:6px;font-weight:600}
+.accom-name{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:5px}
+.accom-desc{font-size:13px;color:var(--chalk-60);line-height:1.65;margin-bottom:12px}
+.accom-link{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.06em;text-transform:uppercase}
+.accom-link:hover{text-decoration:underline}
+.accom-price{font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:var(--chalk-45);margin-top:8px;font-weight:600}
+
+/* SECRETS / REST DAY GRID */
+.secrets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.secret-card{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:16px;text-align:center;
+}
+
+.secret-label{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:6px}
+.secret-value{font-size:13px;color:var(--chalk-60);line-height:1.65}
+
+/* TRIP BLOCKS */
+.trip-block{background:#111;padding:36px 28px;margin-top:24px;border:1px solid rgba(240,237,230,0.06);}
+.trip-block:hover{border-color:var(--chalk-30)}
+.trip-type{font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:8px;font-weight:700}
+.trip-name{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:0.95;color:var(--chalk);margin:10px 0;letter-spacing:0.03em;}
+.trip-desc{font-size:13px;color:var(--chalk-60);line-height:1.65;margin-bottom:16px}
+
+/* COST TABLE */
+.cost-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.cost-table th{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);padding:10px 12px;border-bottom:1px solid var(--chalk-08);text-align:left;font-weight:600}
+.cost-table td{padding:9px 12px;border-bottom:1px solid var(--chalk-04);color:var(--chalk-60)}
+.cost-table tr:last-child td{border-bottom:none}
+.cost-table .total{font-weight:700;color:var(--chalk)}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--chalk-08);padding:18px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:15px;font-weight:700;color:var(--chalk);cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.faq-arrow{font-size:20px;color:var(--red);flex-shrink:0;transition:transform 0.2s}
+.faq-a{font-size:14px;color:rgba(240,237,230,0.5);line-height:1.7;display:none;padding-top:10px;}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+.faq-item.open .faq-a{font-size:14px;color:rgba(240,237,230,0.5);line-height:1.7;display:none;padding-top:10px;}
+.faq-a a{color:var(--red)}
+
+/* RELATED DESTINATIONS */
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.rel-card{background:#111;padding:36px 24px;border:1px solid rgba(240,237,230,0.05);transition:background 0.2s;display:flex;flex-direction:column;gap:6px;}
+.rel-card:hover{border-color:var(--red)}
+.rel-country{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);margin-bottom:6px;font-weight:600}
+.rel-name{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--red);letter-spacing:0.03em;}
+.rel-type{font-size:13px;color:var(--chalk-60)}
+
+/* SAFETY GRID */
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.safety-card{background:var(--card-bg);border:1px solid var(--chalk-08);padding:16px}
+
+.safety-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:6px}
+.safety-val{font-size:13px;color:var(--chalk-60);line-height:1.65}
+
+/* PARTNER LINKS */
+.prow{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap}
+.pc{
+  flex:1;min-width:140px;border:1px solid var(--chalk-08);
+  background:var(--card-bg);
+  padding:12px 14px;display:flex;align-items:center;gap:10px;
+  transition:border-color 0.2s;
+}
+.pc:hover{border-color:var(--chalk-30)}
+.pi{width:34px;height:34px;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.pn{font-size:13px;font-weight:600;color:var(--chalk)}
+.pu{font-size:10px;color:var(--chalk-45);text-transform:uppercase;letter-spacing:0.05em}
+
+/* SIDEBAR */
+.ctaw{
+  background:linear-gradient(135deg,#1a0303,#0D0D0D);
+  border:1px solid var(--red-border);
+  padding:22px;position:relative;overflow:hidden;margin-bottom:24px;
+}
+.ctaw-ey{font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--red);margin-bottom:8px;font-weight:700}
+.ctaw-h{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:8px;line-height:0.95}
+.ctaw-p{font-size:13px;color:var(--chalk-60);margin-bottom:16px;line-height:1.65}
+.ctaw-btn{
+  display:block;background:var(--red);color:var(--black);text-align:center;
+  padding:11px 16px;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
+  transition:background 0.2s;
+}
+.ctaw-btn:hover{background:var(--red-hover);color:var(--black)}
+.ctaw-btn2{
+  display:block;background:transparent;color:var(--chalk-60);text-align:center;
+  padding:11px 16px;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.08em;
+  border:1px solid var(--chalk-12);transition:border-color 0.2s;
+}
+.ctaw-btn2:hover{border-color:var(--chalk-30);color:var(--chalk)}
+.sw{background:var(--card-bg);border:1px solid var(--chalk-08);padding:18px;margin-bottom:16px}
+.sw-t{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px;}
+.sr{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--chalk-04);font-size:13px}
+.sr:last-child{border-bottom:none;padding-bottom:0}
+.sr-l{color:var(--chalk-45);font-size:9px;text-transform:uppercase;letter-spacing:0.07em;flex-shrink:0;margin-right:10px;font-weight:600;padding-top:1px}
+.sr-v{color:var(--chalk);font-weight:500;text-align:right;font-size:13px}
+.sr-v a{color:var(--red)}
+.evl{list-style:none}
+.evl li{padding:8px 0;border-bottom:1px solid var(--chalk-04);font-size:13px;color:var(--chalk-60)}
+.evl li:last-child{border-bottom:none}
+.evl a{color:var(--red)}
+.evl a:hover{text-decoration:underline}
+
+/* FINAL CTA */
+.final-cta{
+  background:var(--red);
+  padding:64px 5%;text-align:center;position:relative;overflow:hidden;
+  margin-top:12px;
+}
+.final-cta-ey{font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(13,13,13,0.55);margin-bottom:12px;font-weight:600}
+.final-cta-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,120px);color:var(--black);line-height:0.87;margin-bottom:22px;}
+.final-cta-p{font-size:15px;color:rgba(13,13,13,0.65);margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.65}
+.final-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
+.btn-dark{background:#0D0D0D;color:#F0EDE6;font-family:'Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;padding:17px 36px;border:none;cursor:pointer;transition:background 0.2s;display:inline-block;text-align:center;}
+.btn-dark:hover{background:#1a1a1a;color:var(--chalk)}
+.btn-outline-dark{background:transparent;color:#0D0D0D;font-family:'Inter',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;padding:16px 36px;border:1.5px solid rgba(13,13,13,0.3);cursor:pointer;transition:border-color 0.2s;display:inline-block;text-align:center;}
+.btn-outline-dark:hover{border-color:var(--black)}
+
+/* PHOTO GALLERY */
+.photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.photo-strip-item{
+  aspect-ratio:3/4;overflow:hidden;
+}
+.photo-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.photo-strip-item:hover img{transform:scale(1.04)}
+.photo-strip-item.wide{grid-column:span 2;aspect-ratio:16/9}
+
+/* IMAGE SPLIT */
+.img-split{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:24px 0}
+.img-split img{width:100%;height:340px;object-fit:cover}
+
+/* FOOTER */
+.footer { background: #080808; padding: 72px 5vw 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+@media(max-width:900px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px){ .footer-grid { grid-template-columns: 1fr; } }
+.footer-logo-img { height: 36px; width: auto; display: block; margin-bottom: 16px; filter: brightness(1); }
+.footer-brand p { font-size: 13px; color: rgba(240,237,230,0.36); line-height: 1.75; max-width: 260px; }
+.newsletter { display: flex; margin-top: 24px; }
+.newsletter input { background: rgba(240,237,230,0.05); border: 1px solid rgba(240,237,230,0.1); border-right: none; color: #F0EDE6; padding: 11px 16px; font-family: 'Inter', sans-serif; font-size: 13px; flex: 1; outline: none; }
+.newsletter input::placeholder { color: rgba(240,237,230,0.28); }
+.newsletter button { background: #E30713; border: none; color: #0D0D0D; padding: 11px 18px; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.footer-col h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E30713; font-weight: 700; margin-bottom: 20px; font-family: 'Inter', sans-serif; }
+.footer-col a { display: block; font-size: 13px; color: rgba(240,237,230,0.4); margin-bottom: 12px; transition: color 0.2s; }
+.footer-col a:hover { color: #F0EDE6; }
+.footer-bottom { border-top: 1px solid rgba(240,237,230,0.07); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: rgba(240,237,230,0.22); }
+.footer-tagline { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: rgba(240,237,230,0.18); }
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .cg{grid-template-columns:1fr;}
+  aside{order:2}
+  main{order:1}
+}
+@media(max-width:768px){
+  .hero-layout{flex-direction:column;gap:2rem}
+  .hero-card{flex-shrink:0;width:240px;background:rgba(13,13,13,0.52);border:1px solid rgba(240,237,230,0.12);backdrop-filter:blur(14px);padding:28px 22px;}
+  .hero h1{font-size:72px}
+  .nav-links,.nav-cta{display:none}
+  .sg,.accom-grid,.who-grid,.related-grid,.secrets-grid,.safety-grid{grid-template-columns:1fr}
+  .sg3{grid-template-columns:1fr 1fr}
+  .photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .photo-strip-item.wide{grid-column:span 1;aspect-ratio:3/4}
+  .img-split{grid-template-columns:1fr}
+  .img-split img{height:240px}
+  .stats-bar{background:var(--red);display:flex;justify-content:space-around;padding:30px 5vw;gap:16px;flex-wrap:wrap;}
+  jpx}
+  .toc-inner{padding:0 4%}
+  .final-cta-p{font-size:13px}
+  .related-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .sg3,.related-grid{grid-template-columns:1fr}
+  .secrets-grid{grid-template-columns:1fr 1fr}
+}
+
+
+
+/* PRINT / accessibility */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="https://rockbusters.net" style="display:flex;align-items:center;"><!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="https://rockbusters.net/event-date/">Trips &amp; Clinics</a></li>
+    <li><a href="https://rockbusters.net/location/">Destinations</a></li>
+    <li><a href="https://rockbusters.net/team-member/">The Crew</a></li>
+    <li><a href="https://rockbusters.net/contact/">Contact</a></li>
+    <li><a href="https://rockbusters.net/blog/">Blog</a></li>
+  </ul>
+  <a class="nav-cta" href="https://rockbusters.net/event-date/">Find Your Trip</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('');background-position:center 40%"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="bc" style="padding:0;margin-bottom:20px">
+      <a href="https://rockbusters.net">Rockbusters</a><span>›</span>
+      <a href="https://rockbusters.net/location/">Destinations</a><span>›</span>
+      <a href="#">Spain</a><span>›</span>Albarracín
+    </div>
+    <div class="hero-layout">
+      <div class="hero-text-col">
+        <div class="hero-eyebrow">Spain · Aragón · Teruel Province</div>
+        <h1>Albarrac<em>ín</em></h1>
+        <p class="hero-sub">Spain's premier bouldering paradise — 1,600+ orange sandstone problems amid ancient pine forests, steps from a medieval UNESCO-listed town. The only guide you need.</p>
+        <div class="badges">
+          <span class="badge badge-red">Spain</span>
+          <span class="badge badge-outline">Sandstone</span>
+          <span class="badge badge-outline">Bouldering</span>
+          <span class="badge badge-outline">Font 3–8B+</span>
+          <span class="badge badge-outline">Family Friendly ✓</span>
+          <span class="badge badge-outline">Dog Friendly ✓</span>
+          <span class="badge badge-outline">Camping ✓</span>
+        </div>
+        <div class="btn-group">
+          <a class="btn-primary" href="https://rockbusters.net/event-date/">View Upcoming Trips</a>
+          <a class="btn-ghost" href="#intro">Explore the Destination</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-stat">
+          <div class="hstat">
+            <span class="hstat-n">1,600+</span>
+            <span class="hstat-l">Problems</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">Font 3–8B+</span>
+            <span class="hstat-l">Grade Range</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">30+</span>
+            <span class="hstat-l">Sectors</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">Oct–Mar</span>
+            <span class="hstat-l">Best Season</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">1,600+</span><span class="stat-label">Problems</span></div>
+  <div class="stat-item"><span class="stat-num">30+</span><span class="stat-label">Sectors</span></div>
+  <div class="stat-item"><span class="stat-num">1,171m</span><span class="stat-label">Altitude</span></div>
+  <div class="stat-item"><span class="stat-num">3h</span><span class="stat-label">From Valencia Airport</span></div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a class="tl" href="#intro">Introduction</a>
+    <a class="tl" href="#history">History</a>
+    <a class="tl" href="#rock">Rock &amp; Style</a>
+    <a class="tl" href="#who">Who Is It For</a>
+    <a class="tl" href="#grades">Grades &amp; Sectors</a>
+    <a class="tl" href="#season">Best Season</a>
+    <a class="tl" href="#gear">Gear</a>
+    <a class="tl" href="#transport">Getting There</a>
+    <a class="tl" href="#stay">Stay &amp; Eat</a>
+    <a class="tl" href="#restdays">Rest Days</a>
+    <a class="tl" href="#tips">Tips &amp; Ethics</a>
+    <a class="tl" href="#safety">Safety</a>
+    <a class="tl" href="#costs">Costs</a>
+    <a class="tl" href="#faq">FAQ</a>
+    <a class="tl" href="#trips">Rockbusters Trips</a>
+  </div>
+</nav>
+
+<!-- PHOTO GALLERY 1 -->
+<div class="photo-strip" style="margin:0">
+  <div class="photo-strip-item"><!-- IMG STRIPPED --><img src="" alt="Bouldering group at Albarracín" loading="lazy"></div>
+  <div class="photo-strip-item"><!-- IMG STRIPPED --><img src="" alt="Medieval town of Albarracín" loading="lazy"></div>
+  <div class="photo-strip-item"><!-- IMG STRIPPED --><img src="" alt="Climbers on sandstone boulders" loading="lazy"></div>
+  <div class="photo-strip-item"><!-- IMG STRIPPED --><img src="" alt="Albarracín castle at dusk" loading="lazy"></div>
+</div>
+
+<div class="pw"><div class="cg">
+<main>
+
+<!-- 1. INTRODUCTION -->
+<section class="sec reveal" id="intro">
+  <div class="sec-ey">Overview</div>
+  <h2 class="sec-h">Introduction to <span>Albarracín</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Albarracín offers a unique bouldering experience on gorgeous orange sandstone packed with character — crimps, slopers, and compression problems on rounded boulders scattered through ancient pine forests. The site sits just outside one of Spain's most beautiful medieval villages, creating a combination of world-class climbing and cultural richness that is hard to find anywhere else in Europe.</p>
+    <p>The boulders are relatively low (most under 5 metres), making Albarracín exceptionally accessible and family-friendly. Problems are spread across dozens of sectors within a compact area, so you can easily walk between multiple zones in a single day. The orange-red sandstone is unique in texture — polished where it's been climbed for decades, but still rough enough to reward technique.</p>
+    <p>The village of Albarracín itself is a UNESCO World Heritage candidate, with its Moorish walls, terracotta buildings, and labyrinthine streets providing one of the most atmospheric rest-day destinations in Spain. Come for the bouldering, stay for everything else.</p>
+  </div>
+  <div class="tags">
+    <span class="tag">1,600+ problems on premier sandstone</span>
+    <span class="tag">Iconic orange rock in ancient pine forest</span>
+    <span class="tag">Steps from a UNESCO medieval village</span>
+    <span class="tag">Family &amp; beginner friendly</span>
+    <span class="tag">Font 3 to 8B+ grade range</span>
+  </div>
+  <div class="sg">
+    <div class="sc"><div class="sc-l">Rock type</div><div class="sc-v">Sandstone</div><div class="sc-s">Triassic, orange-red</div></div>
+    <div class="sc"><div class="sc-l">Total problems</div><div class="sc-v">1,600+</div><div class="sc-s">Across 30+ sectors</div></div>
+    <div class="sc"><div class="sc-l">Grade range</div><div class="sc-v">Font 3–8B+</div><div class="sc-s">Sweet spot Font 5–7b</div></div>
+    <div class="sc"><div class="sc-l">Nearest airport</div><div class="sc-v">Valencia (VLC)</div><div class="sc-s">~2h 45min drive</div></div>
+    <div class="sc"><div class="sc-l">Family friendly</div><div class="sc-v">Yes ✓</div><div class="sc-s">Low boulders, soft landings</div></div>
+    <div class="sc"><div class="sc-l">Dog friendly</div><div class="sc-v">Yes ✓</div><div class="sc-s">On lead near cave art</div></div>
+  </div>
+</section>
+
+<!-- 2. HISTORY -->
+<section class="sec reveal" id="history">
+  <div class="sec-ey">Background</div>
+  <h2 class="sec-h">History of <span>Albarracín</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Albarracín has been a bouldering destination since the early 1990s, when Spanish climbers began exploring the sandstone outcrops surrounding the village. Word spread slowly through the European climbing community, and by the 2000s it had become one of the continent's premier bouldering venues.</p>
+    <p>The area gained international recognition partly through guidebook coverage and partly through visiting professionals who discovered the quality and density of high-grade problems. Today Albarracín receives climbers from across the world, particularly during the October–March prime season.</p>
+    <p>The local climbing community has worked closely with conservation authorities to ensure sustainable access. Bouldering here requires care — many of the best sectors sit within protected natural areas and near ancient Iberian cave paintings, making responsible climbing essential for long-term access.</p>
+  </div>
+</section>
+
+<!-- 3. ROCK & STYLE -->
+<section class="sec reveal" id="rock">
+  <div class="sec-ey">Rock Type</div>
+  <h2 class="sec-h">Rock &amp; <span>Style</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>The rock at Albarracín is Triassic sandstone — orange-red, well-featured, and endlessly varied in texture. It offers crimps, pockets, slopers, sidepulls, and compression problems on boulders that range from vertical slabs to severely overhanging roofs.</p>
+    <p>What makes Albarracín distinctive is the rounded, sculptural quality of its boulders. Unlike spikier limestone venues, here the holds blend into the rock face, demanding excellent footwork and body positioning. The sandstone can be delicate when wet, so it's important to avoid climbing on damp rock to prevent damage to the surface.</p>
+    <h3>Key Characteristics</h3>
+    <ul>
+      <li><strong>Rock type:</strong> Triassic red-orange sandstone</li>
+      <li><strong>Height:</strong> Typically 2–6m, rarely above 7m</li>
+      <li><strong>Style:</strong> Technical slabs, powerful compression, dynamic roof problems</li>
+      <li><strong>Hold types:</strong> Crimps, slopers, pockets, sidepulls, compression</li>
+      <li><strong>Friction:</strong> Excellent in cool, dry conditions — avoid when wet</li>
+    </ul>
+  </div>
+  <div class="sg3">
+    <div class="sc"><div class="sc-l">Rock Type</div><div class="sc-v">Sandstone</div><div class="sc-s">Triassic, orange-red</div></div>
+    <div class="sc"><div class="sc-l">Average Height</div><div class="sc-v">2–5m</div><div class="sc-s">Low, pad-friendly</div></div>
+    <div class="sc"><div class="sc-l">Friction</div><div class="sc-v">Excellent</div><div class="sc-s">In dry, cool conditions</div></div>
+  </div>
+</section>
+
+<!-- 4. WHO IS IT FOR -->
+<section class="sec reveal" id="who">
+  <div class="sec-ey">Suitability</div>
+  <h2 class="sec-h">Who Is It <span>For?</span></h2>
+  <div class="sec-divider"></div>
+  <div class="who-grid">
+    <div class="who-card">
+      
+      <div class="who-title">Beginners (Font 3–5)</div>
+      <div class="who-desc">Lots of easy, well-featured problems. Low heights make it ideal for learning. Perfect introduction to outdoor bouldering.</div>
+      <span class="who-verdict v-yes">Highly Recommended</span>
+    </div>
+    <div class="who-card">
+      
+      <div class="who-title">Intermediate (Font 5–7a)</div>
+      <div class="who-desc">The sweet spot for Albarracín — hundreds of quality problems in this range across all sectors.</div>
+      <span class="who-verdict v-yes">Perfect Match</span>
+    </div>
+    <div class="who-card">
+      
+      <div class="who-title">Advanced (Font 7b+)</div>
+      <div class="who-desc">A strong collection of testpieces up to 8B+. Fewer hard problems than Font, but quality is exceptional.</div>
+      <span class="who-verdict v-great">Great Options</span>
+    </div>
+    <div class="who-card">
+      
+      <div class="who-title">Families</div>
+      <div class="who-desc">Low boulders, soft landings, easy walking between sectors. The medieval village adds enormous non-climbing appeal.</div>
+      <span class="who-verdict v-yes">Ideal Destination</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5 & 6. GRADES & SECTORS -->
+<section class="sec reveal" id="grades">
+  <div class="sec-ey">Problems &amp; Areas</div>
+  <h2 class="sec-h">Grades &amp; <span>Sectors</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Albarracín uses the Fontainebleau grading system. Problems span Font 3 to 8B+, with the majority sitting in the 5–7b range. The grade spread is genuinely good — this isn't a venue skewed to one level.</p>
+  </div>
+
+  <div class="grade-row">
+    <div class="grade-pill">Font 3–5</div>
+    <div class="grade-content">
+      <div class="grade-title">Beginner Problems</div>
+      <div class="grade-routes">Numerous slabs and low-angled faces across all main sectors. Excellent for first-timers and building technique. Found throughout Sector Los Jóvenes, Los Montones and the main valley.</div>
+    </div>
+  </div>
+  <div class="grade-row">
+    <div class="grade-pill">Font 5+–6c</div>
+    <div class="grade-content">
+      <div class="grade-title">Intermediate Range</div>
+      <div class="grade-routes">The richest tier at Albarracín. Hundreds of memorable problems on everything from slabs to powerful overhangs. Sectors El Arrastradero, Los Pajares, and La Cueva offer the best concentration.</div>
+    </div>
+  </div>
+  <div class="grade-row">
+    <div class="grade-pill">Font 7a–7c+</div>
+    <div class="grade-content">
+      <div class="grade-title">Performance Grades</div>
+      <div class="grade-routes">Quality testpieces distributed throughout. Notable problems include El Árbol (7a), El Pulpo (7b), and several classic roof sequences. Requires technique as well as power.</div>
+    </div>
+  </div>
+  <div class="grade-row">
+    <div class="grade-pill">Font 8a+</div>
+    <div class="grade-content">
+      <div class="grade-title">Elite Problems</div>
+      <div class="grade-routes">A handful of world-class lines up to 8B+. Problems in this range often see first ascents from visiting top-level climbers. Conditions are critical — attempt only in perfect cool, dry weather.</div>
+    </div>
+  </div>
+
+  <!-- Photo strip 2 -->
+  <div class="img-split" style="margin:28px 0">
+    <!-- IMG STRIPPED --><img src="" alt="Roof bouldering at Albarracín" loading="lazy" style="object-position:center top">
+    <!-- IMG STRIPPED --><img src="" alt="Low-angle boulder problem at Albarracín" loading="lazy">
+  </div>
+
+  <div class="prose"><h3>Key Sectors</h3></div>
+  <div class="sector-card">
+    <div class="sector-name">El Arrastradero</div>
+    <div class="sector-meta"><span class="sector-badge">Main Sector</span><span class="sector-badge">All Grades</span><span class="sector-badge">Easy Walk-in</span></div>
+    <div class="sector-desc">The most popular and extensive sector, with over 300 problems on a wide variety of angles. A 5-minute walk from the main parking area. Everything from Font 3 slabs to 8a roof projects.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">Los Pajares</div>
+    <div class="sector-meta"><span class="sector-badge">Intermediate Focus</span><span class="sector-badge">Font 5–7b</span><span class="sector-badge">Shade in Afternoon</span></div>
+    <div class="sector-desc">Beautifully sculpted orange boulders in a pine clearing. Best in afternoon shade. Classic problems at every level, with a particularly strong collection in the 6a–7a range.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">La Cueva</div>
+    <div class="sector-meta"><span class="sector-badge">Powerful</span><span class="sector-badge">Font 6b–8B+</span><span class="sector-badge">Roof Problems</span></div>
+    <div class="sector-desc">The cave sector with steep, powerful roof lines. Home to some of Albarracín's hardest and most celebrated problems. Sheltered from rain — one of the few sectors climbable in light drizzle.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">Los Jóvenes</div>
+    <div class="sector-meta"><span class="sector-badge">Beginner-Friendly</span><span class="sector-badge">Font 3–6a</span><span class="sector-badge">Family Area</span></div>
+    <div class="sector-desc">The ideal sector for beginners and families. Low boulders, soft landings, and a high density of fun, accessible problems. Great for coaching sessions and getting children started.</div>
+  </div>
+</section>
+
+<!-- 7. BEST SEASON -->
+<section class="sec reveal" id="season">
+  <div class="sec-ey">Conditions</div>
+  <h2 class="sec-h">Best <span>Season</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Albarracín sits at 1,171m altitude in the Iberian System, giving it a continental climate with cold winters and hot summers. The prime bouldering season runs October through March, with October–November and February–March being the two sweet spots.</p>
+  </div>
+  <div class="seas">
+    <div class="sea"><div class="sea-n">Jan</div><div class="sea-b s-gd"></div><span class="sea-l lbl-gd">Good</span></div>
+    <div class="sea"><div class="sea-n">Feb</div><div class="sea-b s-pk"></div><span class="sea-l lbl-pk">Peak</span></div>
+    <div class="sea"><div class="sea-n">Mar</div><div class="sea-b s-pk"></div><span class="sea-l lbl-pk">Peak</span></div>
+    <div class="sea"><div class="sea-n">Apr</div><div class="sea-b s-gd"></div><span class="sea-l lbl-gd">Good</span></div>
+    <div class="sea"><div class="sea-n">May</div><div class="sea-b s-ok"></div><span class="sea-l lbl-ok">OK</span></div>
+    <div class="sea"><div class="sea-n">Jun</div><div class="sea-b s-av"></div><span class="sea-l lbl-av">Avoid</span></div>
+    <div class="sea"><div class="sea-n">Jul</div><div class="sea-b s-av"></div><span class="sea-l lbl-av">Avoid</span></div>
+    <div class="sea"><div class="sea-n">Aug</div><div class="sea-b s-av"></div><span class="sea-l lbl-av">Avoid</span></div>
+    <div class="sea"><div class="sea-n">Sep</div><div class="sea-b s-ok"></div><span class="sea-l lbl-ok">OK</span></div>
+    <div class="sea"><div class="sea-n">Oct</div><div class="sea-b s-pk"></div><span class="sea-l lbl-pk">Peak</span></div>
+    <div class="sea"><div class="sea-n">Nov</div><div class="sea-b s-pk"></div><span class="sea-l lbl-pk">Peak</span></div>
+    <div class="sea"><div class="sea-n">Dec</div><div class="sea-b s-gd"></div><span class="sea-l lbl-gd">Good</span></div>
+  </div>
+  <table class="month-table">
+    <tr><th>Month</th><th>Temp (°C)</th><th>Conditions</th><th>Notes</th></tr>
+    <tr><td>October</td><td>10–20°C</td><td class="cond-peak">Peak</td><td>Ideal friction, autumn colours</td></tr>
+    <tr><td>November</td><td>4–14°C</td><td class="cond-peak">Peak</td><td>Superb friction, quiet weekdays</td></tr>
+    <tr><td>December</td><td>0–8°C</td><td class="cond-excel">Good</td><td>Cold but excellent; possible frost</td></tr>
+    <tr><td>January</td><td>-2–7°C</td><td class="cond-good">Good</td><td>Cold sunny days can be perfect</td></tr>
+    <tr><td>February</td><td>2–12°C</td><td class="cond-peak">Peak</td><td>Often the best month overall</td></tr>
+    <tr><td>March</td><td>6–16°C</td><td class="cond-peak">Peak</td><td>Warming up, still excellent</td></tr>
+    <tr><td>April</td><td>10–20°C</td><td class="cond-good">Good</td><td>Warming; mornings still good</td></tr>
+    <tr><td>June–Sep</td><td>25–35°C</td><td class="cond-warm">Avoid</td><td>Too hot — friction gone</td></tr>
+  </table>
+</section>
+
+<!-- 8. GEAR -->
+<section class="sec reveal" id="gear">
+  <div class="sec-ey">Equipment</div>
+  <h2 class="sec-h">What <span>Gear</span> to Bring</h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Albarracín is pure bouldering — no ropes, no racks. What you need is simple but worth getting right.</p>
+    <h3>Essential Gear</h3>
+    <ul>
+      <li><strong>Bouldering pads (crashpads):</strong> At least two pads per group. Landings vary — some are soft pine needle, others rocky. More coverage is always better.</li>
+      <li><strong>Bouldering shoes:</strong> Slightly downturned shoes perform best on Albarracín's sloper-heavy problems. Avoid anything too stiff.</li>
+      <li><strong>Chalk &amp; chalk bag:</strong> Essential. A chalk ball is preferable to loose chalk to minimise environmental impact.</li>
+      <li><strong>Brush:</strong> A stiff brush for cleaning holds, softer brush for tick mark removal after each session.</li>
+      <li><strong>Layers:</strong> Temperatures swing significantly between morning and afternoon. Bring a warm layer for early starts and rest periods.</li>
+    </ul>
+    <h3>Nice to Have</h3>
+    <ul>
+      <li>Knee pads for heel-hook problems</li>
+      <li>Fingerless gloves for cold mornings</li>
+      <li>27 Crags or Albarracín topo app downloaded offline</li>
+      <li>Trekking poles for approach if carrying heavy pads</li>
+    </ul>
+  </div>
+  <div class="tags">
+    <span class="tag">2+ Crash Pads</span>
+    <span class="tag">Bouldering Shoes</span>
+    <span class="tag">Chalk Ball</span>
+    <span class="tag">Brush</span>
+    <span class="tag">Warm Layers</span>
+    <span class="tag">Approach Shoes</span>
+    <span class="tag">Sunscreen</span>
+    <span class="tag">Topo App</span>
+  </div>
+</section>
+
+<!-- 9. GETTING THERE -->
+<section class="sec reveal" id="transport">
+  <div class="sec-ey">Travel</div>
+  <h2 class="sec-h">Getting <span>There</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Albarracín is located in Aragón, roughly 200km inland from Valencia and 280km east of Madrid. A car is strongly recommended — public transport to Albarracín is limited and transporting crash pads by bus is impractical.</p>
+    <h3>By Car</h3>
+    <ul>
+      <li><strong>From Valencia:</strong> ~2h 45min via A-3 and N-420</li>
+      <li><strong>From Madrid:</strong> ~3h via A-3 and A-23</li>
+      <li><strong>From Barcelona:</strong> ~4h via A-2 and A-23</li>
+      <li><strong>From Zaragoza:</strong> ~2h via A-23 south</li>
+    </ul>
+    <h3>Flying In</h3>
+    <p>The nearest airports are Valencia (VLC) and Madrid (MAD). Valencia is preferred for most European connections and shorter driving time. Zaragoza (ZAZ) is the closest airport but has fewer international routes.</p>
+    <h3>Parking at the Sectors</h3>
+    <p>There are two main parking areas near the bouldering: one at the entrance to the main bouldering zone on the CV-1533, and roadside parking near individual sectors. Avoid blocking farm access tracks. The village centre has a small car park near the tourist office for day visits.</p>
+  </div>
+
+</section>
+
+<!-- PHOTO STRIP 3 -->
+<div class="photo-strip" style="margin:0 0 48px">
+  <div class="photo-strip-item"><!-- IMG STRIPPED --><img src="" alt="Albarracín church tower" loading="lazy"></div>
+  <div class="photo-strip-item"><!-- IMG STRIPPED --><img src="" alt="Bouldering squeeze at Albarracín" loading="lazy"></div>
+  <div class="photo-strip-item"><!-- IMG STRIPPED --><img src="" alt="Silhouette on the sandstone" loading="lazy"></div>
+  <div class="photo-strip-item"><!-- IMG STRIPPED --><img src="" alt="Castle walls at sunset" loading="lazy"></div>
+</div>
+
+<!-- 10. STAY & EAT -->
+<section class="sec reveal" id="stay">
+  <div class="sec-ey">Accommodation &amp; Food</div>
+  <h2 class="sec-h">Stay &amp; <span>Eat</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>Albarracín has accommodation for every budget — from camping steps from the boulders to charming rural hotels inside the medieval village walls.</p></div>
+  <div class="accom-grid">
+    <div class="accom-card">
+      <div class="accom-type">Camping</div>
+      <div class="accom-name">Camping Albarracín</div>
+      <div class="accom-desc">The most popular base for climbers — right next to the main bouldering zones. Pitches, bungalows and basic facilities. Book ahead in October.</div>
+      <a class="accom-link" href="https://www.campingalbarracin.com" target="_blank" rel="noopener">Book camping →</a>
+      <div class="accom-price">From €10/night (pitch)</div>
+    </div>
+    <div class="accom-card">
+      <div class="accom-type">Rural Hotel</div>
+      <div class="accom-name">Hotel Arabia</div>
+      <div class="accom-desc">Comfortable rooms inside the medieval village. Excellent restaurant, good breakfast. 5-minute drive to the bouldering.</div>
+      <a class="accom-link" href="https://www.booking.com/searchresults.html?ss=albarracin" target="_blank" rel="noopener">Check availability →</a>
+      <div class="accom-price">From €65/night</div>
+    </div>
+    <div class="accom-card">
+      <div class="accom-type">Casa Rural</div>
+      <div class="accom-name">Local Casas Rurales</div>
+      <div class="accom-desc">Traditional stone cottages available throughout the area. Ideal for groups of 4–10. Self-catering with full kitchen.</div>
+      <a class="accom-link" href="https://www.booking.com/searchresults.html?ss=albarracin" target="_blank" rel="noopener">Search casas rurales →</a>
+      <div class="accom-price">From €120/night (whole house)</div>
+    </div>
+    <div class="accom-card">
+      <div class="accom-type">Hotel</div>
+      <div class="accom-name">Hospedería El Zagal</div>
+      <div class="accom-desc">Boutique hotel in a restored medieval building with stone walls and exposed beams. Splurge-worthy for a special trip.</div>
+      <a class="accom-link" href="https://www.booking.com/searchresults.html?ss=albarracin" target="_blank" rel="noopener">Check availability →</a>
+      <div class="accom-price">From €90/night</div>
+    </div>
+  </div>
+  <div class="prose">
+    <h3>Where to Eat</h3>
+    <ul>
+      <li><strong>Restaurante Arabia:</strong> The go-to for a post-climb meal. Aragonese cuisine, hearty portions, great local wine.</li>
+      <li><strong>Bar El Torico (Teruel):</strong> Worth the 30-min drive on a rest day for proper Teruel jamón and local tapas.</li>
+      <li><strong>Camping bar/cafe:</strong> Cheap, quick, reliably good for breakfast before an early start.</li>
+      <li><strong>Supermercado in village:</strong> Small but well-stocked. Stock up on the way in from Valencia for self-catering.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 11. REST DAYS -->
+<section class="sec reveal" id="restdays">
+  <div class="sec-ey">Beyond Climbing</div>
+  <h2 class="sec-h">Rest <span>Days</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Rest days at Albarracín are genuinely enjoyable — the medieval village alone is worth half a day. Walk the walls, explore the Moorish castle, and wander the terracotta streets. The surrounding countryside offers excellent hiking and mountain biking.</p>
+    <h3>Things to Do</h3>
+    <ul>
+      <li><strong>Medieval village walk:</strong> 2–3 hours to explore the historic centre, castle walls and viewpoints. Free entry to the village; small fee for castle interior.</li>
+      <li><strong>Cave paintings:</strong> The Sierra de Albarracín contains Neolithic cave art — some of the most important prehistoric paintings in Spain. Visit the Interpretive Centre for context.</li>
+      <li><strong>Hiking:</strong> The Pinares de Rodeno natural park surrounds the bouldering area. Trails range from 30-minute loops to half-day routes.</li>
+      <li><strong>Teruel day trip:</strong> 30 minutes away, Teruel has outstanding Mudéjar architecture (UNESCO-listed), a remarkable dinosaur museum, and excellent tapas bars.</li>
+      <li><strong>Cuenca:</strong> 1.5 hours away, this dramatic clifftop city with hanging houses is one of Spain's most extraordinary towns.</li>
+    </ul>
+  </div>
+  <div class="secrets-grid">
+    <div class="secret-card"><div class="secret-label">Medieval Village</div><div class="secret-value">UNESCO candidate — Moorish walls, castle &amp; terracotta streets</div></div>
+    <div class="secret-card"><div class="secret-label">Cave Paintings</div><div class="secret-value">Neolithic rock art — some of Spain's most important prehistoric sites</div></div>
+    <div class="secret-card"><div class="secret-label">Teruel</div><div class="secret-value">30 min away — Mudéjar architecture &amp; world-class dinosaur museum</div></div>
+  </div>
+</section>
+
+<!-- 12-13. TIPS & ETHICS -->
+<section class="sec reveal" id="tips">
+  <div class="sec-ey">Responsible Climbing</div>
+  <h2 class="sec-h">Tips &amp; <span>Ethics</span></h2>
+  <div class="sec-divider"></div>
+  <div class="secrets-grid">
+    <div class="secret-card"><div class="secret-label">Wet Rock</div><div class="secret-value">Never climb on wet sandstone — it damages the surface permanently</div></div>
+    <div class="secret-card"><div class="secret-label">Tick Marks</div><div class="secret-value">Always brush off tick marks after your session</div></div>
+    <div class="secret-card"><div class="secret-label">No Litter</div><div class="secret-value">Pack out everything. Bins at parking only — not in the sectors</div></div>
+    <div class="secret-card"><div class="secret-label">Noise</div><div class="secret-value">Keep music off at the sectors — others come for the pine forest quiet</div></div>
+    <div class="secret-card"><div class="secret-label">Dogs</div><div class="secret-value">Welcome but must be on lead near cave painting sites</div></div>
+    <div class="secret-card"><div class="secret-label">Cave Art</div><div class="secret-value">Do not touch or chalk near prehistoric paintings. Fines apply</div></div>
+  </div>
+  <div class="prose">
+    <h3>Early Morning Strategy</h3>
+    <p>In October and November the bouldering area is busiest 10am–2pm. Starting at first light (7:30am in autumn) gives you 2–3 hours of solitude on the best problems before the crowds arrive. Carry a head torch for the walk-in.</p>
+    <h3>Grade Consistency</h3>
+    <p>Albarracín grades are generally honest to slightly soft compared to Font. If you're climbing Font 7a at home, expect to tick Font 7a here in good conditions. Hard moves tend to be on slopers — if sloper-pulling is a weakness, bring a specific training mindset.</p>
+  </div>
+</section>
+
+<!-- 14. SAFETY -->
+<section class="sec reveal" id="safety">
+  <div class="sec-ey">Emergency Information</div>
+  <h2 class="sec-h">Safety &amp; <span>Emergency</span></h2>
+  <div class="sec-divider"></div>
+  <div class="safety-grid">
+    <div class="safety-card"><div class="safety-title">Emergency</div><div class="safety-val">Spain emergency: <strong>112</strong>. English-speaking operators available.</div></div>
+    <div class="safety-card"><div class="safety-title">Nearest Hospital</div><div class="safety-val">Hospital Obispo Polanco, Teruel — 28km, ~30 minutes</div></div>
+    <div class="safety-card"><div class="safety-title">Location Pin</div><div class="safety-val">Save GPS coordinates before leaving WiFi. Sector maps at camping reception.</div></div>
+    <div class="safety-card"><div class="safety-title">Mobile Signal</div><div class="safety-val">Patchy in the sectors. Movistar has best coverage. Download offline maps.</div></div>
+  </div>
+  <div class="prose">
+    <p>Bouldering injuries at Albarracín are typically ankle rolls on landing and finger injuries from crimping. Always use adequate pad coverage, especially on highball problems. Travel insurance covering rock climbing activity is strongly recommended.</p>
+  </div>
+</section>
+
+<!-- 15. COSTS -->
+<section class="sec reveal" id="costs">
+  <div class="sec-ey">Budget Planning</div>
+  <h2 class="sec-h">Costs &amp; <span>Budget</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>Albarracín is one of Europe's best-value bouldering destinations. Accommodation, food and access are all affordable, and there are no guiding or permit fees for independent climbing.</p></div>
+  <table class="cost-table">
+    <tr><th>Item</th><th>Budget Option</th><th>Mid-Range</th></tr>
+    <tr><td>Accommodation (per night)</td><td>€10–15 (camping)</td><td>€65–120 (hotel/casa rural)</td></tr>
+    <tr><td>Food (per day)</td><td>€10–15 (self-catering)</td><td>€25–40 (restaurant)</td></tr>
+    <tr><td>Car hire (per day)</td><td>€30–40</td><td>€50–70</td></tr>
+    <tr><td>Fuel Valencia–Albarracín return</td><td colspan="2">~€35–50</td></tr>
+    <tr><td>Climbing access</td><td colspan="2">Free</td></tr>
+    <tr class="total"><td>Total per day (per person, group of 4)</td><td>€25–35</td><td>€55–85</td></tr>
+  </table>
+</section>
+
+<!-- 16. FAQ -->
+<section class="sec reveal" id="faq">
+  <div class="sec-ey">Questions</div>
+  <h2 class="sec-h">Frequently Asked <span>Questions</span></h2>
+  <div class="sec-divider"></div>
+  <div class="faq-item">
+    <div class="faq-q">Do I need a permit to climb in Albarracín? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">No permit is required for bouldering in the main areas. Some sectors near protected cave paintings have restricted access — follow posted signs carefully and never climb on or near rock art sites.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Can I climb when it's been raining? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">No. Sandstone is extremely fragile when wet. Climbing on damp rock causes irreversible damage to the surface. Wait at least 24–48 hours after rain before climbing. La Cueva sector has some shelter but even there, damp air affects friction.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What's the best time of year to visit? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">October–November and February–March are the prime seasons. October weekends can be very busy — go mid-week if possible. December and January are quieter, slightly colder, but often excellent. Summer (June–September) should be avoided due to heat.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is Albarracín good for beginners? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">Absolutely. There's a large volume of problems in the Font 3–5+ range, boulders are low with forgiving landings, and the atmosphere is relaxed and welcoming. Sectors like Los Jóvenes are specifically great for beginners.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do I need to bring crash pads? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">Yes — there's no pad rental on-site. Bring at least two pads per group. Some campsites may store pads for you between sessions. Check with Camping Albarracín on arrival.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is there WiFi at the camping? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">Basic WiFi is available at the camping reception area. Download your topos and offline maps before arriving. Mobile signal is patchy in the sectors.</div>
+  </div>
+</section>
+
+<!-- 17. ROCKBUSTERS TRIPS -->
+<section class="sec reveal" id="trips">
+  <div class="sec-ey">Guided Trips</div>
+  <h2 class="sec-h">Rockbusters Trips to <span>Albarracín</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Rockbusters runs guided bouldering trips to Albarracín every autumn and spring. Our coaches know every sector and can tailor sessions to your level — from Font 4 introductions to Font 7b+ performance coaching.</p>
+  </div>
+  <div class="trip-block">
+    <div class="trip-type" style="color:var(--red)">— Guided Group Trip</div>
+    <div class="trip-name">ALBARRACÍN AUTUMN CAMP</div>
+    <div class="trip-desc">One week in October or November with full coaching, accommodation and sector guidance included. Perfect for climbers Font 4–7b looking to maximise their time on Albarracín's unique sandstone.</div>
+    <a class="btn-primary" href="https://rockbusters.net/event-date/">View Dates &amp; Book</a>
+  </div>
+  <div class="trip-block">
+    <div class="trip-type" style="color:var(--red)">— Private Coaching</div>
+    <div class="trip-name">PRIVATE GUIDING WEEK</div>
+    <div class="trip-desc">Bespoke 1-2-1 or small group coaching for 3–7 days at Albarracín. Schedule built around your goals, level and available time. Contact us to discuss options.</div>
+    <a class="btn-primary" href="https://rockbusters.net/contact/">Enquire Now</a>
+  </div>
+</section>
+
+<!-- 18. RELATED DESTINATIONS -->
+<section class="sec reveal" id="related">
+  <div class="sec-ey">Other Destinations</div>
+  <h2 class="sec-h">Related <span>Destinations</span></h2>
+  <div class="sec-divider"></div>
+  <div class="related-grid">
+    <a class="rel-card" href="https://rockbusters.net/location/rodellar/"><div class="rel-country">Spain · Aragón</div><div class="rel-name">Rodellar</div><div class="rel-type">Sport Climbing · 6a–9b</div></a>
+    <a class="rel-card" href="https://rockbusters.net/location/"><div class="rel-country">France · Île-de-France</div><div class="rel-name">Fontainebleau</div><div class="rel-type">Bouldering · Font 3–9A</div></a>
+    <a class="rel-card" href="https://rockbusters.net/location/"><div class="rel-country">Spain · Catalonia</div><div class="rel-name">Margalef</div><div class="rel-type">Sport Climbing · 6c–9b</div></a>
+  </div>
+</section>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside>
+  <div style="position:sticky;top:64px">
+    <div class="ctaw">
+      <div class="ctaw-ey">Book a Trip</div>
+      <div class="ctaw-h">Boulder Albarracín<br>with Rockbusters</div>
+      <div class="ctaw-p">Performance camps, private guiding &amp; custom trips to Spain's finest bouldering destination.</div>
+      <a class="ctaw-btn" href="https://rockbusters.net/event-date/">View Upcoming Trips</a>
+      <a class="ctaw-btn2" href="https://rockbusters.net/contact/">Make Inquiry</a>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Quick Facts</div>
+      <div class="sr"><span class="sr-l">Country</span><span class="sr-v">Spain</span></div>
+      <div class="sr"><span class="sr-l">Region</span><span class="sr-v">Aragón, Teruel</span></div>
+      <div class="sr"><span class="sr-l">Rock</span><span class="sr-v">Sandstone</span></div>
+      <div class="sr"><span class="sr-l">Style</span><span class="sr-v">Bouldering</span></div>
+      <div class="sr"><span class="sr-l">Problems</span><span class="sr-v">1,600+</span></div>
+      <div class="sr"><span class="sr-l">Grades</span><span class="sr-v">Font 3–8B+</span></div>
+      <div class="sr"><span class="sr-l">Sweet Spot</span><span class="sr-v">Font 5–7b</span></div>
+      <div class="sr"><span class="sr-l">Best Season</span><span class="sr-v">Oct–Mar</span></div>
+      <div class="sr"><span class="sr-l">Airport</span><span class="sr-v">Valencia (2h 45m)</span></div>
+      <div class="sr"><span class="sr-l">Family</span><span class="sr-v">Yes ✓</span></div>
+      <div class="sr"><span class="sr-l">Dogs</span><span class="sr-v">Yes (on lead) ✓</span></div>
+      <div class="sr"><span class="sr-l">Camping</span><span class="sr-v">Yes ✓</span></div>
+      <div class="sr"><span class="sr-l">Crag fee</span><span class="sr-v">Free</span></div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Book Accommodation</div>
+      <ul class="evl">
+        <li><a href="https://www.campingalbarracin.com" target="_blank" rel="noopener">Camping Albarracín ↗</a></li>
+        <li><a href="https://www.booking.com/searchresults.html?ss=albarracin" target="_blank" rel="noopener">Hotels on Booking.com ↗</a></li>
+        <li><a href="https://www.airbnb.com/s/Albarracin--Spain" target="_blank" rel="noopener">Casas Rurales on Airbnb ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Resources</div>
+      <ul class="evl">
+        <li><a href="https://www.27crags.com/areas/albarracin" target="_blank" rel="noopener">27 Crags Topo App ↗</a></li>
+        <li><a href="https://www.albarracin.es" target="_blank" rel="noopener">Albarracín Tourism ↗</a></li>
+        <li><a href="https://rockbusters.net/event-date/" target="_blank" rel="noopener">Rockbusters Trip Calendar ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Emergency Contacts</div>
+      <div class="sr"><span class="sr-l">Emergency</span><span class="sr-v" style="color:var(--red);font-weight:700">112</span></div>
+      <div class="sr"><span class="sr-l">Hospital</span><span class="sr-v">Teruel (28km)</span></div>
+      <div class="sr"><span class="sr-l">Mountain Rescue</span><span class="sr-v">112</span></div>
+      <div class="sr"><span class="sr-l">Local Police</span><span class="sr-v">978 710 300</span></div>
+    </div>
+  </div>
+</aside>
+
+</div></div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="final-cta-ey">Rockbusters Albarracín</div>
+  <h2 class="final-cta-h">LET'S GO BOULDER</h2>
+  <p class="final-cta-p">Join a guided trip to Albarracín and discover why it's Europe's most loved bouldering destination. Expert coaching, perfect conditions, no logistics stress.</p>
+  <div class="final-cta-btns">
+    <a class="btn-dark" href="https://rockbusters.net/event-date/">View Upcoming Trips</a>
+    <a class="btn-outline-dark" href="https://rockbusters.net/contact/">Get in Touch</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="footer-logo-img">
+      <p>A community of climbing coaches and guides dedicated to maximum progression on real rock across Europe's greatest crags. Climbers. Coaches. Lifers.</p>
+      <form class="newsletter" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h4>Trips</h4>
+      <a href="#">Road Trips</a>
+      <a href="#">Sport Holidays</a>
+      <a href="#">Bouldering Camps</a>
+      <a href="#">Custom Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Coaching</h4>
+      <a href="#">Performance Camps</a>
+      <a href="#">Private Coaching</a>
+      <a href="#">Pro Clinics</a>
+      <a href="#">Video Analysis</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" id="team">Meet the Team</a>
+      <a href="#">Destinations</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Rockbusters. All rights reserved.</p>
+    <span class="footer-tagline">Climbers. Coaches. Lifers.</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll blur
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.08});
+reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>

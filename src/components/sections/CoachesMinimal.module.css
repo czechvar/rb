@@ -1,0 +1,159 @@
+/* ── CoachesMinimal — wireframe block 7 "World-Class Coaches" ────────
+ *
+ * Wireframe reference:
+ *   docs/html/TRIP-COURSE/.../block_07_block_7.html (.coaches-section)
+ *
+ * Photo-card language copied from GuidesGrid.module.css
+ * (independent component; CSS is copied, not imported).
+ */
+
+.section {
+  background: var(--rb-dark);
+  color: var(--rb-white);
+  padding: 96px 5%;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Card grid ─────────────────────────────────────── */
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* ── Single card ───────────────────────────────────── */
+.card {
+  overflow: hidden;
+  display: block;
+}
+
+/* ── Photo wrap (fill + positioned parent) ─────────── */
+.photoWrap {
+  position: relative;
+  /* wireframe: 360px tall, full-width; aspect-ratio approximates 3/4 */
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--rb-black);
+}
+
+.photo {
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.55s ease;
+}
+
+.card:hover .photo {
+  transform: scale(1.04);
+}
+
+.photoPlaceholder {
+  position: absolute;
+  inset: 0;
+  background: var(--rb-white-08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-eyebrow);
+  color: var(--rb-white-45);
+  letter-spacing: 0.1em;
+}
+
+/* heavier gradient — near-opaque at base, fades at top */
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 13, 0.97) 0%,
+    rgba(13, 13, 13, 0.60) 45%,
+    rgba(13, 13, 13, 0.08) 100%
+  );
+}
+
+/* ── Name + role overlay at bottom of photo ────────── */
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 28px 24px;
+}
+
+.role {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--rb-white);
+  text-transform: uppercase;
+}
+
+/* ── Bio below photo ────────────────────────────────── */
+.bio {
+  padding: 14px 2px 0;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
+  line-height: 1.65;
+}
+
+/* ── Bullets (teamBullets fallback) ─────────────────── */
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem auto 0;
+  max-width: 720px;
+}
+
+.bullets li {
+  padding: 0.6rem 0 0.6rem 1.4rem;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
+  position: relative;
+  border-bottom: 1px solid var(--rb-white-12);
+  line-height: 1.55;
+}
+
+.bullets li:last-child {
+  border-bottom: none;
+}
+
+.bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--rb-red);
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media screen and (max-width: 900px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 64px 5%;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

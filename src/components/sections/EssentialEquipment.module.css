@@ -1,0 +1,94 @@
+/* ── EssentialEquipment — wireframe block 8 "Everything Sorted / Gear"
+ *
+ * Wireframe reference:
+ *   docs/html/TRIP-COURSE/.../block_08_block_8.html (.logistics-card, "Gear")
+ *
+ * Same dark band language as EventAccommodationLogistics so the two sections
+ * read as one "Everything Sorted" zone when stacked on the page.
+ * No top padding — relies on EventAccommodationLogistics above providing
+ * visual continuity; if rendered alone, the dark bg still looks intentional.
+ */
+
+.section {
+  background: var(--rb-dark);
+  color: var(--rb-white);
+  padding: 0 5% 96px;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Card grid ───────────────────────────────────────
+ * Cards displayed with the 1.5px gap / rb-white-08 background trick
+ * (same idiom as AudienceCards, wireframe logistics-grid)
+ */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+  background: var(--rb-white-08);
+  border: 1px solid var(--rb-white-08);
+}
+
+/* ── Single equipment card ──────────────────────────── */
+.item {
+  background: var(--rb-black);
+  padding: 2rem 1.8rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+
+/* mandatory highlight: subtle red left border */
+.mandatory {
+  border-left: 2px solid var(--rb-red);
+}
+
+/* ── Icon ────────────────────────────────────────────── */
+.icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── Name ────────────────────────────────────────────── */
+.name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  color: var(--rb-white);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ── Required asterisk ───────────────────────────────── */
+.required {
+  color: var(--rb-red);
+}
+
+/* ── Note ────────────────────────────────────────────── */
+.note {
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
+  margin: 0.3rem 0 0;
+  line-height: 1.55;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media screen and (max-width: 767px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding-bottom: 64px;
+  }
+}

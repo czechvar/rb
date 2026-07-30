@@ -1,0 +1,66 @@
+.hero {
+  background: #1e1612;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  padding: 60px;
+  min-height: 360px;
+}
+
+.text h1 {
+  font-size: 29px;
+  font-weight: bold;
+  line-height: 1.25;
+  margin: 0 0 16px 0;
+}
+
+.subline {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d4c5b0;
+  font-style: italic;
+  max-width: 680px;
+  margin: 0;
+}
+
+.booking {
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: 6px;
+  padding: 28px 24px;
+  align-self: start;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 13px;
+  margin-top: 20px;
+  background: #8b3a1a;
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.cta:hover {
+  background: #a04020;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}

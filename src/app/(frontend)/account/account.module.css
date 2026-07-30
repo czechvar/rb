@@ -1,0 +1,16 @@
+.shell { display: grid; grid-template-columns: 240px 1fr; gap: 32px; padding: 32px 16px; max-width: 1080px; margin: 0 auto; }
+@media (max-width: 900px) { .shell { grid-template-columns: 1fr; } }
+.sidebar { display: flex; flex-direction: column; gap: 4px; }
+.link {
+  padding: 10px 12px; border-radius: 6px; color: #1a1a1a;
+  text-decoration: none; font-weight: 500; font-size: 15px;
+}
+.link:hover { background: #f1efed; }
+.linkActive { background: #fde9ec; color: #c8102e; }
+.divider { height: 1px; background: #e4e2df; margin: 8px 0; }
+.email { padding: 8px 12px; font-size: 13px; color: #666; }
+.signout {
+  background: none; border: 0; padding: 10px 12px;
+  text-align: left; cursor: pointer; color: #c8102e; font-weight: 600; font-size: 15px;
+}
+.content { min-width: 0; }

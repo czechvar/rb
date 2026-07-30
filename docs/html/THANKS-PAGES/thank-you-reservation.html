@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservation Confirmed — Rockbusters</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rb-red:         #E30713;
+  --rb-red-hover:   #c0050f;
+  --rb-red-dim:     rgba(227,7,19,0.08);
+  --rb-red-border:  rgba(227,7,19,0.28);
+  --rb-black:       #0D0D0D;
+  --rb-dark:        #111111;
+  --rb-darker:      #0a0a0a;
+  --rb-white:       #F0EDE6;
+  --rb-white-60:    rgba(240,237,230,0.60);
+  --rb-white-45:    rgba(240,237,230,0.45);
+  --rb-white-30:    rgba(240,237,230,0.30);
+  --rb-white-12:    rgba(240,237,230,0.12);
+  --rb-white-08:    rgba(240,237,230,0.08);
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--rb-black);
+  color: var(--rb-white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+img { max-width:100%; display:block; }
+a { color:inherit; text-decoration:none; }
+button { font-family:'Inter', sans-serif; cursor:pointer; border:none; }
+
+/* ---------- NAV (matches rockbusters homepage) ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 100;
+  padding: 22px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(13,13,13,0.85) 0%, transparent 100%);
+  backdrop-filter: blur(0px);
+  transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s ease;
+}
+.nav.scrolled {
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(240,237,230,0.08);
+}
+.nav-logo-img { height: 32px; width: auto; display: block; transition: opacity 0.2s; }
+.nav-logo-img:hover { opacity: 0.85; }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font: 600 12px 'Inter', sans-serif; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #F0EDE6; transition: color 0.2s; opacity: 0.85;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  background: #E30713; color: #0D0D0D;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 11px 22px; border: none; cursor: pointer;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #e8303d; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #F0EDE6; transition: 0.3s; }
+@media (max-width:768px){
+  .nav-links{ display:none; }
+  .nav-links.open{ display:flex; position:absolute; top:100%; left:0; width:100%; flex-direction:column;
+    gap:0; background:rgba(13,13,13,0.97); backdrop-filter:blur(12px); padding:8px 5% 20px; }
+  .nav-links.open a{ padding:14px 0; border-bottom:1px solid var(--rb-white-08); }
+  .nav-hamburger { display:flex; }
+}
+
+/* ---------- HEADER ---------- */
+.ty-header {
+  padding: 160px 5% 0;
+  background: var(--rb-black);
+  text-align: center;
+}
+.eyebrow {
+  font:700 11px 'Inter'; color:var(--rb-red); letter-spacing:0.2em; text-transform:uppercase;
+  display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:18px;
+}
+.eyebrow::before, .eyebrow::after { content:''; width:24px; height:1px; background:var(--rb-red); }
+.ty-title { font-family:'Bebas Neue'; font-size:clamp(48px,7vw,92px); line-height:0.92; letter-spacing:0.03em; }
+.ty-title em { color:var(--rb-red); font-style:normal; }
+
+/* ---------- CONTENT ---------- */
+.ty-content { max-width: 640px; margin: 0 auto; padding: 44px 5% 100px; text-align:center; }
+.ty-icon {
+  width: 72px; height: 72px; margin: 0 auto 32px; display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--rb-red); border-radius: 50%;
+}
+.ty-icon svg { width: 32px; height: 32px; }
+.ty-lead { font-size: 17px; line-height: 1.7; color: var(--rb-white-60); margin-bottom: 32px; }
+.ty-lead strong { color: var(--rb-white); font-weight: 600; }
+
+.ty-box {
+  background: #111; border: 1px solid var(--rb-white-08); text-align: left;
+  padding: 28px 26px; margin-bottom: 28px;
+}
+.ty-box h3 {
+  font:700 11px 'Inter'; color:var(--rb-red); letter-spacing:0.16em; text-transform:uppercase; margin-bottom:14px;
+}
+.ty-box p { font-size: 14px; line-height: 1.75; color: var(--rb-white-60); margin-bottom: 10px; }
+.ty-box p:last-child { margin-bottom: 0; }
+.ty-box p strong { color: var(--rb-white); font-weight: 600; }
+
+.ty-climbers {
+  display: flex; gap: 16px; align-items: flex-start; text-align: left;
+  background: var(--rb-red-dim); border: 1px solid var(--rb-red-border);
+  padding: 24px 22px; margin-bottom: 28px;
+}
+.ty-climbers svg { width: 26px; height: 26px; flex-shrink: 0; margin-top: 2px; fill: var(--rb-red); }
+.ty-climbers p { font-size: 14px; line-height: 1.7; color: var(--rb-white-60); }
+.ty-climbers p strong { color: var(--rb-white); font-weight: 600; }
+
+.ty-steps { text-align: left; margin-bottom: 40px; }
+.ty-step { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid var(--rb-white-08); }
+.ty-step:last-child { border-bottom: 1px solid var(--rb-white-08); }
+.ty-step-num {
+  width: 26px; height: 26px; flex-shrink: 0; border: 1px solid var(--rb-white-30);
+  display: flex; align-items: center; justify-content: center; font-family:'Bebas Neue'; font-size: 14px; color: var(--rb-white-45);
+}
+.ty-step p { font-size: 14px; line-height: 1.65; color: var(--rb-white-60); padding-top: 3px; }
+.ty-step p strong { color: var(--rb-white); font-weight: 600; }
+
+.ty-actions { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.btn-primary {
+  display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%;
+  background: var(--rb-red); color: var(--rb-black); font:700 13px 'Inter';
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 18px 30px; transition: background 0.2s ease;
+}
+.btn-primary:hover { background: var(--rb-red-hover); }
+.btn-primary svg { width: 16px; height: 16px; }
+.btn-ghost {
+  display:inline-block; width:100%;
+  background: transparent; color: var(--rb-white); font:500 13px 'Inter'; border:1px solid var(--rb-white-12);
+  letter-spacing: 0.08em; text-transform: uppercase; padding: 17px 30px; transition: all 0.2s ease;
+}
+.btn-ghost:hover { border-color: var(--rb-white-30); }
+
+/* ---------- FOOTER (matches rockbusters homepage) ---------- */
+.footer { background: #080808; padding: 72px 5% 40px; margin-top: 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+@media(max-width:900px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px){ .footer-grid { grid-template-columns: 1fr; } }
+.footer-logo-img { height: 36px; width: auto; display: block; margin-bottom: 16px; }
+.footer-brand p { font-size: 13px; color: rgba(240,237,230,0.36); line-height: 1.75; max-width: 260px; }
+.newsletter { display: flex; margin-top: 24px; }
+.newsletter input { background: rgba(240,237,230,0.05); border: 1px solid rgba(240,237,230,0.1); border-right: none; color: #F0EDE6; padding: 11px 16px; font-family: 'Inter', sans-serif; font-size: 13px; flex: 1; outline: none; }
+.newsletter input::placeholder { color: rgba(240,237,230,0.28); }
+.newsletter button { background: #E30713; border: none; color: #0D0D0D; padding: 11px 18px; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.footer-col h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E30713; font-weight: 700; margin-bottom: 20px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(240,237,230,0.4); margin-bottom: 12px; transition: color 0.2s; }
+.footer-col a:hover { color: #F0EDE6; }
+.footer-bottom { border-top: 1px solid rgba(240,237,230,0.07); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: rgba(240,237,230,0.22); }
+.footer-tagline { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: rgba(240,237,230,0.18); }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="/"><!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="nav-logo-img"></a>
+  <div class="nav-links" id="navLinks">
+    <a href="/trips-clinics">Trips &amp; Clinics</a>
+    <a href="/destinations">Destinations</a>
+    <a href="/crew">The Crew</a>
+    <a href="/contact">Contact</a>
+    <a href="/blog">Blog</a>
+  </div>
+  <button class="nav-cta">Find Your Trip</button>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<header class="ty-header">
+  <div class="eyebrow">Reservation Confirmed</div>
+  <h1 class="ty-title">Your Spot Is <em>Reserved</em></h1>
+</header>
+
+<section class="ty-content">
+  <div class="ty-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#E30713" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+
+  <p class="ty-lead">Your <strong>30% deposit</strong> is through and your spot is officially held. The rest of the trip cost isn&rsquo;t due yet.</p>
+
+  <div class="ty-box">
+      <h3>About Your Balance</h3>
+      <p>The remaining balance is due <strong>8 weeks before departure</strong> &mdash; we&rsquo;ll send a reminder and invoice well ahead of that date, no need to track it yourself.</p>
+      <p>If your plans change before then, just reply to your confirmation email and we&rsquo;ll sort it out.</p>
+    </div>
+
+  <div class="ty-climbers">
+    <svg viewBox="0 0 24 24"><path d="M13.5 2c-1.1 0-2 .9-2 2 0 .74.4 1.38 1 1.72V7l-3 3v2.28c-.6.35-1 .98-1 1.72 0 1.1.9 2 2 2s2-.9 2-2c0-.74-.4-1.37-1-1.72V11l2-2 2 2v2.28c-.6.35-1 .98-1 1.72 0 1.1.9 2 2 2s2-.9 2-2c0-.74-.4-1.37-1-1.72V10l-3-3V5.72c.6-.34 1-.98 1-1.72 0-1.1-.9-2-2-2zM4 15c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    <p><strong>Quick heads-up:</strong> Rockbusters is run entirely by climbers and guides — no call center, no script-readers. That also means whoever picks this up next is probably out on real rock right now, chalk on their hands and phone in the bottom of a pack. We'll get back to you the moment we're back at the ground.</p>
+  </div>
+
+  <div class="ty-steps">
+    <div class="ty-step">
+      <div class="ty-step-num">1</div>
+      <p><strong>Check your inbox.</strong> An automatic confirmation email is on its way with the general info you'll need.</p>
+    </div>
+    <div class="ty-step">
+      <div class="ty-step-num">2</div>
+      <p><strong>We'll be in touch within 24 hours</strong> — a real person from the team, not a bot.</p>
+    </div>
+    <div class="ty-step">
+      <div class="ty-step-num">3</div>
+      <p><strong>In the meantime, please fill out our online Booking Form.</strong> It gives us everything we need to get moving on your trip.</p>
+    </div>
+  </div>
+
+  <div class="ty-actions">
+    <a class="btn-primary" href="https://app.gohighlevel.com/v2/preview/4lkCPfZPXNksl8xPvdHS?notrack=true" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Fill Out the Booking Form
+    </a>
+    <a class="btn-ghost" href="/">Back to Rockbusters</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="footer-logo-img">
+      <p>A community of climbing coaches and guides dedicated to maximum progression on real rock across Europe's greatest crags. Climbers. Coaches. Lifers.</p>
+      <form class="newsletter" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h4>Trips</h4>
+      <a href="#">Road Trips</a>
+      <a href="#">Sport Holidays</a>
+      <a href="#">Bouldering Camps</a>
+      <a href="#">Custom Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Coaching</h4>
+      <a href="#">Performance Camps</a>
+      <a href="#">Private Coaching</a>
+      <a href="#">Pro Clinics</a>
+      <a href="#">Video Analysis</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" id="team">Meet the Team</a>
+      <a href="#">Destinations</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Rockbusters. All rights reserved.</p>
+    <span class="footer-tagline">Climbers. Coaches. Lifers.</span>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rockbusters — Elite Climbing Guides & Coaches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ── CSS DESIGN TOKENS (from Rockbusters template) ────────────── */
+:root {
+  --rb-red:         #E30713;
+  --rb-red-hover:   #e8303d;
+  --rb-red-dim:     rgba(227,7,19,0.08);
+  --rb-red-border:  rgba(227,7,19,0.28);
+  --rb-black:       #0D0D0D;
+  --rb-dark:        #111111;
+  --rb-darker:      #0a0a0a;
+  --rb-white:       #F0EDE6;
+  --rb-white-70:    rgba(240,237,230,0.70);
+  --rb-white-62:    rgba(240,237,230,0.62);
+  --rb-white-60:    rgba(240,237,230,0.60);
+  --rb-white-52:    rgba(240,237,230,0.52);
+  --rb-white-45:    rgba(240,237,230,0.45);
+  --rb-white-30:    rgba(240,237,230,0.30);
+  --rb-white-20:    rgba(240,237,230,0.20);
+  --rb-white-12:    rgba(240,237,230,0.12);
+  --rb-white-08:    rgba(240,237,230,0.08);
+  --rb-white-07:    rgba(240,237,230,0.07);
+  --rb-white-05:    rgba(240,237,230,0.05);
+  --section-pad:    90px 5%;
+  --card-pad:       28px 24px;
+}
+
+/* ── RESET ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--rb-white);
+  background: var(--rb-black);
+  overflow-x: hidden;
+}
+img { display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ── DISPLAY (Bebas Neue) ───────────────────────────────────── */
+.display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.03em; }
+
+/* ── SECTION LABEL ──────────────────────────────────────────── */
+.section-label {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 14px;
+  display: block;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--rb-red);
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* ── SECTION TITLE ──────────────────────────────────────────── */
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 6vw, 80px);
+  line-height: 0.92;
+  color: var(--rb-white);
+  margin-bottom: 24px;
+  letter-spacing: 0.03em;
+}
+
+/* ── SECTION BODY ───────────────────────────────────────────── */
+.section-body {
+  font-size: 16px;
+  line-height: 1.78;
+  color: var(--rb-white-62);
+  max-width: 580px;
+}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn-primary, .btn-ghost, .btn-dark, .btn-outline-dark, .nav-cta, .filter-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 0;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 14px 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--rb-red);
+  color: var(--rb-black);
+  border-color: var(--rb-red);
+}
+.btn-primary:hover { background: var(--rb-red-hover); border-color: var(--rb-red-hover); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--rb-white);
+  border-color: rgba(240,237,230,0.35);
+}
+.btn-ghost:hover { border-color: var(--rb-white); }
+
+.btn-dark {
+  background: var(--rb-black);
+  color: var(--rb-white);
+  border-color: var(--rb-black);
+}
+.btn-dark:hover { background: #222; }
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--rb-black);
+  border-color: var(--rb-black);
+}
+.btn-outline-dark:hover { background: rgba(13,13,13,0.06); }
+
+.btn-group { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.btn-sm { font-size: 11px; padding: 11px 20px; }
+
+/* NAV — exact match to Rockbusters homepage template */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 22px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 200;
+  background: linear-gradient(to bottom, rgba(13,13,13,0.85) 0%, transparent 100%);
+  backdrop-filter: blur(0px);
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+.nav.scrolled {
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(240,237,230,0.08);
+}
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  filter: brightness(1);
+  transition: opacity 0.2s;
+}
+.nav-logo-img:hover { opacity: 0.85; }
+.footer-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  margin-bottom: 16px;
+  filter: brightness(1);
+}
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rb-white);
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.nav-links a:hover { color: rgba(240,237,230,0.65); }
+.nav-cta {
+  background: var(--rb-red);
+  color: var(--rb-black);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 11px 22px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 0;
+}
+.nav-cta:hover { background: var(--rb-red-hover); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--rb-white);
+  transition: 0.3s;
+}
+
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 5% 7%;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+  transition: transform 1.2s ease;
+}
+.hero-bg.loaded { transform: scale(1); }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13,13,13,0.15) 0%,
+    rgba(13,13,13,0.1) 30%,
+    rgba(13,13,13,0.6) 65%,
+    rgba(13,13,13,0.92) 100%
+  );
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--rb-red);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--rb-red);
+  flex-shrink: 0;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 11vw, 140px);
+  line-height: 0.88;
+  margin-bottom: 30px;
+  color: var(--rb-white);
+  letter-spacing: 0.03em;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.65;
+  max-width: 560px;
+  color: rgba(240,237,230,0.78);
+  margin-bottom: 44px;
+  font-weight: 400;
+}
+.hero-caption {
+  position: absolute;
+  bottom: 28px; right: 5%;
+  z-index: 2;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.28);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── STATS BAR ──────────────────────────────────────────────── */
+.stats-bar {
+  background: var(--rb-red);
+  display: flex;
+  justify-content: space-around;
+  padding: 30px 5%;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  color: var(--rb-black);
+  line-height: 1;
+  display: block;
+  letter-spacing: 0.03em;
+}
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(13,13,13,0.6);
+  font-weight: 600;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ── SECTIONS ───────────────────────────────────────────────── */
+.section { padding: var(--section-pad); }
+.section-dark { background: var(--rb-darker); padding: var(--section-pad); }
+.section-mid { background: var(--rb-dark); padding: var(--section-pad); }
+.section-light {
+  background: var(--rb-white);
+  padding: var(--section-pad);
+  color: var(--rb-black);
+}
+.section-light .section-title { color: var(--rb-black); }
+.section-light .section-body { color: rgba(13,13,13,0.65); }
+
+/* ── STORY / WHO SECTION ────────────────────────────────────── */
+.who-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.story-quote-block {
+  background: #111;
+  border-left: 3px solid var(--rb-red);
+  padding: 32px 28px;
+  margin-top: 40px;
+}
+.story-founder-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--rb-white);
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+.story-founder-role {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: block;
+}
+blockquote {
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.72;
+  color: rgba(240,237,230,0.82);
+  margin: 0;
+}
+.story-attr {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.38);
+  margin-top: 16px;
+  display: block;
+}
+
+/* ── PILLARS (WHY) ──────────────────────────────────────────── */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 72px;
+  background: var(--rb-white-08);
+  border: 1px solid var(--rb-white-08);
+}
+.pillar {
+  background: var(--rb-black);
+  padding: 40px 32px;
+  transition: background 0.2s;
+}
+.pillar:hover { background: #131313; }
+.pillar-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: var(--rb-red);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.pillar-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rb-white);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.pillar-body {
+  font-size: 13px;
+  color: var(--rb-white-52);
+  line-height: 1.7;
+}
+
+/* ── PROS (PRO CLIMBER STRIP) ───────────────────────────────── */
+.pros-section { background: var(--rb-darker); padding: var(--section-pad); }
+.pro-chips {
+  display: flex; gap: 10px; margin-top: 36px; flex-wrap: wrap;
+}
+.pro-chip {
+  background: var(--rb-red-dim);
+  border: 1px solid var(--rb-red-border);
+  color: var(--rb-white);
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.06em;
+  cursor: default;
+  transition: background 0.2s;
+}
+.pro-chip:hover { background: rgba(227,7,19,0.18); }
+
+/* ── SEARCH SECTION ─────────────────────────────────────────── */
+.search-section { background: var(--rb-darker); padding: var(--section-pad); text-align: center; }
+.search-section .section-title { color: var(--rb-white); }
+.search-bar {
+  display: flex; gap: 0;
+  max-width: 680px; margin: 32px auto 16px;
+  border: 1px solid rgba(240,237,230,0.14);
+}
+.search-input {
+  flex: 1;
+  background: #161616;
+  border: none;
+  color: var(--rb-white);
+  padding: 15px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  outline: none;
+}
+.search-input::placeholder { color: rgba(240,237,230,0.28); }
+.search-submit {
+  background: var(--rb-red);
+  border: none;
+  color: var(--rb-black);
+  padding: 15px 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.18s;
+  display: flex; align-items: center; gap: 8px;
+}
+.search-submit:hover { background: var(--rb-red-hover); }
+.filter-row {
+  display: flex; gap: 2px; flex-wrap: wrap;
+  justify-content: center; max-width: 680px; margin: 0 auto;
+}
+.filter-btn {
+  background: #161616;
+  border: 1px solid var(--rb-white-08);
+  color: var(--rb-white-45);
+  padding: 9px 16px;
+  font-size: 11px;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: rgba(227,7,19,0.1);
+  border-color: var(--rb-red);
+  color: var(--rb-red);
+}
+
+/* ── TEAM SECTION ───────────────────────────────────────────── */
+.team-section { background: var(--rb-dark); padding: var(--section-pad); }
+.team-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 48px;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.team-card {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.team-card:hover .team-photo { transform: scale(1.04); }
+.team-founder { min-height: 440px; }
+.team-photo {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center top;
+  transition: transform 0.55s ease;
+}
+.team-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top,
+    rgba(13,13,13,0.97) 0%,
+    rgba(13,13,13,0.6) 45%,
+    rgba(13,13,13,0.08) 100%);
+}
+.team-info {
+  position: relative; z-index: 2;
+  margin-top: auto;
+  padding: 28px 24px;
+}
+.team-role-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  margin-bottom: 8px;
+}
+.team-role-badge.guide-badge { color: rgba(240,237,230,0.5); }
+.team-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  color: var(--rb-white);
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+.team-tagline {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--rb-white-52);
+  margin-bottom: 14px;
+}
+.team-tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.35);
+  border: 1px solid rgba(240,237,230,0.12);
+  padding: 3px 8px;
+}
+.team-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  margin-top: 14px;
+  cursor: pointer;
+}
+.team-card-more {
+  background: #141414;
+  border: 1px dashed rgba(240,237,230,0.1);
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+  cursor: pointer;
+}
+.team-card-more:hover { background: #1a1a1a; }
+
+/* ── PHOTO BAND ─────────────────────────────────────────────── */
+.photo-band {
+  position: relative; height: 380px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.photo-band-bg {
+  position: absolute; inset: 0;
+}
+.photo-band-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
+  filter: brightness(0.28);
+}
+.photo-band-overlay {
+  position: absolute; inset: 0;
+  background: rgba(13,13,13,0.5);
+}
+.photo-band-content {
+  position: relative; z-index: 2;
+  text-align: center; padding: 0 5%;
+}
+.photo-band-content .section-title {
+  color: var(--rb-white);
+  margin-bottom: 18px;
+}
+.photo-band-content .section-body {
+  color: rgba(240,237,230,0.72);
+  max-width: 560px; margin: 0 auto 32px;
+}
+
+/* ── PHOTO STRIP ────────────────────────────────────────────── */
+.photo-strip {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2px; height: 240px;
+}
+.photo-strip-cell { overflow: hidden; }
+.photo-strip-cell img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.68) saturate(0.85);
+  transition: filter 0.35s, transform 0.35s;
+}
+.photo-strip-cell:hover img { filter: brightness(0.88) saturate(1.05); transform: scale(1.04); }
+
+/* ── TRIPS ──────────────────────────────────────────────────── */
+.trips-section { background: var(--rb-darker); padding: var(--section-pad); }
+.trips-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 2px; margin-top: 60px;
+  background: var(--rb-white-07);
+}
+.trip-card {
+  position: relative; overflow: hidden;
+  cursor: pointer; background: var(--rb-dark);
+  display: flex; flex-direction: column;
+  padding: 28px 24px;
+  border-left: 2px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+  min-height: 220px;
+}
+.trip-card:hover { border-color: var(--rb-red); background: #161616; }
+.trip-date {
+  font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--rb-red); font-weight: 700;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+}
+.trip-date::before {
+  content: '';
+  display: inline-block; width: 16px; height: 1px; background: var(--rb-red);
+}
+.trip-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px; letter-spacing: 0.03em;
+  color: var(--rb-white); margin-bottom: 6px; line-height: 1;
+}
+.trip-dest {
+  font-size: 13px; color: var(--rb-white-45); margin-bottom: 4px;
+  letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+}
+.trip-guide {
+  font-size: 13px; color: var(--rb-white-45); margin-bottom: 16px;
+}
+.trip-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.grade-pill {
+  font-size: 9px; font-weight: 700;
+  padding: 4px 10px;
+  background: rgba(227,7,19,0.1);
+  color: rgba(240,237,230,0.7);
+  border: 1px solid rgba(227,7,19,0.3);
+  letter-spacing: 0.06em;
+}
+.spots {
+  font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--rb-white-45); display: flex; align-items: center; gap: 6px;
+  font-weight: 600;
+}
+.spots-dot { width: 7px; height: 7px; border-radius: 50%; background: #4CAF50; }
+.spots-dot.urgent { background: var(--rb-red); }
+.trip-card-more {
+  background: #0e0e0e;
+  border: 1px dashed rgba(240,237,230,0.08) !important;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; min-height: 220px;
+  border-left-color: transparent !important;
+  cursor: pointer;
+}
+.trip-card-more:hover { background: #141414; }
+
+/* ── TESTIMONIALS ───────────────────────────────────────────── */
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 2px; margin-top: 60px;
+  background: rgba(240,237,230,0.06);
+}
+.testi-card { background: var(--rb-black); padding: 40px 32px; }
+.testi-stars { color: var(--rb-red); font-size: 14px; letter-spacing: 5px; margin-bottom: 18px; }
+.testi-q {
+  font-size: 17px; font-weight: 700; color: var(--rb-white);
+  line-height: 1.38; margin-bottom: 14px; font-style: italic;
+}
+.testi-body { font-size: 14px; color: var(--rb-white-52); line-height: 1.72; margin-bottom: 24px; }
+.testi-who {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--rb-red); font-weight: 700;
+}
+.testi-trip { font-size: 11px; color: var(--rb-white-30); margin-top: 3px; letter-spacing: 0.06em; }
+
+/* ── PARTNERS / TRUSTED ─────────────────────────────────────── */
+.partners-section {
+  padding: 60px 5%;
+  border-bottom: 1px solid var(--rb-white-07);
+}
+.partners-label {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(240,237,230,0.3); text-align: center; margin-bottom: 32px;
+  font-family: 'Inter', sans-serif; font-weight: 600;
+}
+.partners-row {
+  display: flex; justify-content: center; align-items: center;
+  gap: 40px; flex-wrap: wrap;
+}
+.partner-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px; color: rgba(240,237,230,0.18);
+  letter-spacing: 0.12em; transition: color 0.2s; cursor: default;
+}
+.partner-name:hover { color: rgba(240,237,230,0.55); }
+.partner-sep { color: rgba(240,237,230,0.1); font-size: 22px; }
+
+/* ── FINAL CTA ──────────────────────────────────────────────── */
+.final-cta {
+  background: var(--rb-red);
+  padding: 100px 5%;
+  text-align: center;
+}
+.final-cta .section-label { color: rgba(13,13,13,0.5); }
+.final-cta .section-label::before { background: rgba(13,13,13,0.5); }
+.final-cta h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(60px, 9vw, 120px);
+  color: var(--rb-black);
+  line-height: 0.87;
+  margin-bottom: 22px;
+  letter-spacing: 0.03em;
+}
+.final-cta p {
+  font-size: 17px; color: rgba(13,13,13,0.65);
+  max-width: 480px; margin: 0 auto 44px; line-height: 1.65;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+.footer { background: #080808; padding: 72px 5% 40px; }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 56px;
+}
+.footer-logo-img { height: 30px; width: auto; margin-bottom: 16px; opacity: 0.9; }
+.footer-tagline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px; letter-spacing: 0.14em;
+  color: rgba(240,237,230,0.18);
+}
+.footer-brand-desc { font-size: 13px; color: var(--rb-white-30); line-height: 1.7; margin-top: 12px; }
+.footer-col-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--rb-white-45);
+  margin-bottom: 18px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 13px; color: var(--rb-white-30); cursor: pointer;
+  transition: color 0.18s;
+}
+.footer-links a:hover { color: var(--rb-white-60); }
+.footer-bottom {
+  border-top: 1px solid var(--rb-white-07);
+  padding-top: 32px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-copy { font-size: 12px; color: var(--rb-white-30); }
+
+
+
+/* ── TRIP CARD WITH PHOTO BACKGROUND ───────────────────────── */
+.trip-card-photo {
+  background-size: cover;
+  background-position: center;
+  min-height: 320px;
+  padding: 0;
+  border: none !important;
+  border-left: none !important;
+}
+.trip-card-photo:hover {
+  border-color: transparent !important;
+  background: inherit;
+}
+.trip-photo-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13,13,13,0.97) 0%,
+    rgba(13,13,13,0.72) 50%,
+    rgba(13,13,13,0.25) 100%
+  );
+  transition: background 0.3s;
+}
+.trip-card-photo:hover .trip-photo-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(13,13,13,0.98) 0%,
+    rgba(13,13,13,0.80) 50%,
+    rgba(13,13,13,0.35) 100%
+  );
+}
+.trip-photo-content {
+  position: relative; z-index: 2;
+  padding: 28px 24px;
+  display: flex; flex-direction: column;
+  height: 100%; min-height: 320px;
+  justify-content: flex-end;
+}
+.trip-price {
+  margin-top: 14px;
+  font-size: 13px;
+  color: rgba(240,237,230,0.55);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.04em;
+}
+.trip-price strong {
+  color: var(--rb-white);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.06em;
+  margin-left: 4px;
+}
+@media (max-width: 600px) {
+  .trip-card-photo    { min-height: 280px; }
+  .trip-photo-content { min-height: 280px; padding: 20px 18px; }
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+
+/* Tablet: 2-col grids */
+@media (max-width: 900px) {
+  .who-grid          { grid-template-columns: 1fr; gap: 40px; }
+  .team-grid         { grid-template-columns: repeat(2, 1fr); }
+  .trips-grid        { grid-template-columns: repeat(2, 1fr); }
+  .testi-grid        { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid      { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid       { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .photo-strip       { grid-template-columns: repeat(2, 1fr); height: auto; }
+  .photo-strip-cell  { height: 160px; }
+  .team-header       { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+
+/* Mobile: all single column */
+@media (max-width: 600px) {
+  :root { --section-pad: 60px 5%; }
+
+  /* Nav */
+  .nav { padding: 16px 5%; }
+  .nav-links { gap: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-cta { font-size: 10px; padding: 9px 14px; }
+  .nav-logo-img { height: 24px; }
+
+  /* Hero */
+  .hero { padding: 0 5% 14%; }
+  .hero h1 { font-size: clamp(52px, 16vw, 80px); }
+  .hero-sub { font-size: 15px; margin-bottom: 32px; }
+  .btn-group { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .btn-group .btn-primary,
+  .btn-group .btn-ghost { width: 100%; justify-content: center; }
+
+  /* Stats */
+  .stats-bar { padding: 24px 5%; gap: 24px; }
+  .stat-num  { font-size: 40px; }
+
+  /* Section titles */
+  .section-title { font-size: clamp(36px, 10vw, 56px); }
+  .final-cta h2  { font-size: clamp(48px, 13vw, 80px); }
+
+  /* Grids → 1 col */
+  .who-grid     { grid-template-columns: 1fr; gap: 32px; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .team-grid    { grid-template-columns: 1fr; gap: 2px; }
+  .trips-grid   { grid-template-columns: 1fr; gap: 2px; }
+  .testi-grid   { grid-template-columns: 1fr; }
+  .footer-grid  { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Photo strip */
+  .photo-strip { grid-template-columns: repeat(2, 1fr); height: auto; }
+  .photo-strip-cell { height: 120px; }
+
+  /* Team cards — fixed height so text doesn't cramp */
+  .team-card        { min-height: 320px; }
+  .team-founder     { min-height: 360px; }
+  .team-info        { padding: 20px 18px; }
+  .team-name        { font-size: 22px; }
+  .team-tagline     { font-size: 12px; }
+  .team-card-more   { min-height: 160px; }
+
+  /* Trip cards — full width, compact */
+  .trip-card        { min-height: auto; padding: 22px 20px; }
+  .trip-name        { font-size: 22px; }
+  .trip-card-more   { min-height: 100px; }
+
+  /* Testimonials */
+  .testi-card   { padding: 28px 20px; }
+  .testi-q      { font-size: 15px; }
+
+  /* Team header */
+  .team-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .team-header .btn-ghost { width: 100%; justify-content: center; }
+
+  /* Search */
+  .search-bar { flex-direction: column; }
+  .search-input  { padding: 14px 16px; }
+  .search-submit { justify-content: center; padding: 14px 20px; }
+  .filter-row    { gap: 6px; }
+
+  /* Photo band */
+  .photo-band { height: 300px; }
+  .photo-band-content .section-title { font-size: clamp(32px, 9vw, 52px); }
+
+  /* Pros chips */
+  .pro-chips { gap: 8px; }
+  .pro-chip  { padding: 9px 16px; font-size: 13px; }
+
+  /* Final CTA */
+  .final-cta { padding: 72px 5%; }
+  .final-cta .btn-group { flex-direction: column; align-items: center; }
+  .final-cta .btn-group button { width: 100%; max-width: 320px; justify-content: center; }
+
+  /* Footer */
+  .footer { padding: 48px 5% 32px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* ── EXPLORE / FILTER SECTION ───────────────────────────────── */
+.explore-section {
+  padding: var(--section-pad);
+  background: var(--rb-darker);
+}
+.hero-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background: rgba(13,13,13,0.72);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(240,237,230,0.12);
+  max-width: 100%;
+}
+.filter-group {
+  flex: 1;
+  min-width: 160px;
+  border-right: 1px solid rgba(240,237,230,0.1);
+  position: relative;
+}
+.filter-group:last-child { border-right: none; }
+.filter-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  padding: 20px 18px 0;
+  pointer-events: none;
+}
+.filter-select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--rb-white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 18px 14px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+.filter-select option { background: #1a1a1a; color: var(--rb-white); }
+.filter-select:focus { background: var(--rb-red-dim); }
+.filter-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-2px);
+  color: var(--rb-white-35, rgba(240,237,230,0.35));
+  font-size: 10px;
+  pointer-events: none;
+}
+.filter-date-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--rb-white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 18px 14px;
+  cursor: pointer;
+  outline: none;
+  color-scheme: dark;
+}
+.filter-date-input::-webkit-calendar-picker-indicator { filter: invert(0.6); cursor: pointer; }
+.filter-btn {
+  background: var(--rb-red);
+  border: none;
+  color: var(--rb-black);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 28px;
+  cursor: pointer;
+  min-width: 100px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.filter-btn:hover { background: var(--rb-red-hover); }
+.active-filters {
+  display: none;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 0;
+  align-items: center;
+  margin-top: 12px;
+}
+.active-filters.has-filters { display: flex; }
+.filter-tag {
+  background: var(--rb-red-dim);
+  border: 1px solid var(--rb-red-border);
+  color: var(--rb-white);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.filter-tag-remove {
+  cursor: pointer;
+  color: var(--rb-white-52);
+  font-size: 14px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.filter-tag-remove:hover { color: var(--rb-red); }
+.active-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rb-white-45);
+  font-weight: 600;
+}
+.clear-all {
+  margin-left: auto;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  cursor: pointer;
+  font-weight: 600;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+}
+.clear-all:hover { color: var(--rb-red-hover); }
+@media (max-width: 768px) {
+  .hero-filter { flex-wrap: wrap; }
+  .filter-group { flex: 1 1 50%; min-width: 0; border-right: none; border-bottom: 1px solid rgba(240,237,230,0.07); box-sizing: border-box; }
+  .filter-group:nth-child(odd) { border-right: 1px solid rgba(240,237,230,0.07); }
+  .filter-btn { width: 100%; padding: 14px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <img src="../assets/dbf68c866a82.png" alt="Rockbusters" class="nav-logo-img">
+  <div class="nav-links" id="navLinks">
+    <a href="#trips">Trips &amp; Clinics</a>
+    <a href="#search">Destinations</a>
+    <a href="#coaches">The Crew</a>
+    <a href="#contact">Contact</a>
+    <a href="#blog">Blog</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('search').scrollIntoView({behavior:'smooth'})">Find Your Trip</button>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image:url('../assets/41ae2288d80c.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Elite Climbing Guides &amp; Coaching</span>
+    <h1>YOUR ROCK.<br>YOUR LIMIT.<br>BROKEN.</h1>
+    <p class="hero-sub">World-class climbers, UIAGM-certified mountain guides, and professional coaches — one community built on genuine passion for the vertical world.</p>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="document.getElementById('search').scrollIntoView({behavior:'smooth'})">Find Your Course →</button>
+      <button class="btn-ghost" onclick="document.getElementById('coaches').scrollIntoView({behavior:'smooth'})">Meet the Team</button>
+    </div>
+  </div>
+  <p class="hero-caption">Jany · Espol&oacute;n de las Ranas 7c+</p>
+</section>
+
+<!-- STATS BAR (red background — key brand element) -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">18+</span>
+    <span class="stat-label">Pro Guides &amp; Coaches</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">40+</span>
+    <span class="stat-label">Destinations Worldwide</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">20y</span>
+    <span class="stat-label">Community Founded</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">9a+</span>
+    <span class="stat-label">Coaching Pedigree</span>
+  </div>
+</div>
+
+<!-- STORY SECTION -->
+<section class="section" id="about">
+  <div class="who-grid">
+    <div>
+      <span class="section-label">Our Story</span>
+      <h2 class="section-title">BORN ON<br>THE ROCK</h2>
+      <p class="section-body">Rockbusters was born from a simple conviction: the best teachers are the ones still climbing hard. Founded by Jany — a climber, adventurer, and relentless connector of people — the community grew organically from cramped belays and shared rope bags into something the climbing world had never quite seen before.</p>
+      <p class="section-body" style="margin-top:18px">Jany's vision wasn't a climbing school. It was a living ecosystem — bringing together elite athletes who perform at the highest level with guests who want the real thing. No corporate packages. Just genuine progression in beautiful places with people who have dedicated their lives to the vertical world.</p>
+    </div>
+    <div>
+      <div class="story-quote-block">
+        <span class="story-founder-name">Jany</span>
+        <span class="story-founder-role">Founder, Rockbusters</span>
+        <blockquote>"The best route is the one that changes how you see yourself. We don't just guide people up rock — we help them discover what they're actually capable of. That's been the whole point, from day one."</blockquote>
+        <span class="story-attr">— Jany, on why Rockbusters exists</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pillars grid -->
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <h4 class="pillar-title">Elite athletes as your actual guide</h4>
+      <p class="pillar-body">Our coaches have redpointed 9a+, competed at World Cups, and put up first ascents. They're not instructors — they're active elite climbers sharing real knowledge.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <h4 class="pillar-title">UIAGM safety on every trip</h4>
+      <p class="pillar-body">Every guided trip operates under UIAGM-certified leadership. International safety standards, professional risk management, and deep local knowledge on every route.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <h4 class="pillar-title">Small groups, real progress</h4>
+      <p class="pillar-body">We cap groups to give you genuine attention. Your coach will know your movement style by day two — specific feedback that actually changes how you climb.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">04</div>
+      <h4 class="pillar-title">Insider crag knowledge</h4>
+      <p class="pillar-body">From Siurana to Kalymnos to Font — our guides know the secret lines, ideal conditions, and local spots that don't appear on any app.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">05</div>
+      <h4 class="pillar-title">Tailored to your level</h4>
+      <p class="pillar-body">Whether you're projecting 8a or just leading outdoors for the first time, we match you with the right guide, trip, and goals for exactly where you are.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">06</div>
+      <h4 class="pillar-title">Community, not just a course</h4>
+      <p class="pillar-body">Guests who climb with Rockbusters come back. The friendships, shared projects, and WhatsApp groups — built on real shared experience at the crag.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip" role="presentation">
+  <div class="photo-strip-cell"><img src="../assets/0d754657402a.jpg" alt="Climber on overhang" loading="lazy"></div>
+  <div class="photo-strip-cell"><img src="../assets/5ab3c5bddf6a.jpg" alt="Climber on limestone" loading="lazy"></div>
+  <div class="photo-strip-cell"><img src="../assets/9c8f51e89eb4.jpg" alt="Guide on wall" loading="lazy"></div>
+  <div class="photo-strip-cell"><img src="../assets/99bc4502a1e0.jpg" alt="Climber at crag" loading="lazy"></div>
+</div>
+
+<!-- COACHES -->
+<section class="team-section" id="coaches">
+  <div class="team-header">
+    <div>
+      <span class="section-label">The Team</span>
+      <h2 class="section-title">GUIDES &amp;<br>COACHES</h2>
+    </div>
+    <button type="button" class="btn-ghost btn-sm">View All Profiles →</button>
+  </div>
+  <div class="team-grid">
+
+    <div class="team-card team-founder">
+      <div class="team-photo" style="background-image:url('../assets/15b0c7f78c1c.jpg')"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Founder &amp; Pro Climber</span>
+        <div class="team-name">Jany</div>
+        <div class="team-tagline">The heart of Rockbusters. Built this community on the conviction that great coaching comes from people who still climb hard.</div>
+        <div class="team-tag-row"><span class="tag">Sport 7c+</span><span class="tag">Community</span></div>
+        <a class="team-link">View Profile →</a>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-photo" style="background-image:url('../assets/b9a74c78c724.jpg');background-position:center 15%"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Pro Climber · World Champion</span>
+        <div class="team-name">Patxi Usobiaga</div>
+        <div class="team-tagline">Former World Cup champion. Patxi brings competitive precision to every coaching session.</div>
+        <div class="team-tag-row"><span class="tag">Sport 9b</span><span class="tag">Basque</span></div>
+        <a class="team-link">View Profile →</a>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-photo" style="background-image:url('../assets/d23879dd07e2.jpg')"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Pro Climber · World Cup Podium</span>
+        <div class="team-name">Klemen Bečan</div>
+        <div class="team-tagline">Slovenian powerhouse with encyclopedic route knowledge across European crags.</div>
+        <div class="team-tag-row"><span class="tag">Sport 9a+</span><span class="tag">Slovenia</span></div>
+        <a class="team-link">View Profile →</a>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-photo" style="background-image:url('../assets/0d754657402a.jpg')"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Pro Climber · 9a Pioneer</span>
+        <div class="team-name">Alizée Dufraisse</div>
+        <div class="team-tagline">One of the most accomplished female sport climbers in history. Intuitive, empowering, technically razor-sharp.</div>
+        <div class="team-tag-row"><span class="tag">Sport 9a</span><span class="tag">France</span></div>
+        <a class="team-link">View Profile →</a>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-photo" style="background-image:url('../assets/9c8f51e89eb4.jpg')"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge guide-badge">UIAGM Mountain Guide · Spain</span>
+        <div class="team-name">Pablo Ruiz Seco</div>
+        <div class="team-tagline">Certified UIAGM guide across rock, alpine, and mixed. The benchmark for guided rock adventures in Spain and the Pyrenees.</div>
+        <div class="team-tag-row"><span class="tag">UIAGM</span><span class="tag">Multi-Pitch</span></div>
+        <a class="team-link">View Profile →</a>
+      </div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-photo" style="background-image:url('../assets/99bc4502a1e0.jpg')"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge guide-badge">UIAGM Mountain Guide · International</span>
+        <div class="team-name">Roberto Muñoz</div>
+        <div class="team-tagline">Leads Rockbusters expeditions to the most spectacular and remote faces on the planet.</div>
+        <div class="team-tag-row"><span class="tag">UIAGM</span><span class="tag">Big Wall</span></div>
+        <a class="team-link">View Profile →</a>
+      </div>
+    </div>
+
+    <div class="team-card-more">
+      <div>
+        <div style="font-size:26px;color:rgba(240,237,230,0.12);margin-bottom:16px">+</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:rgba(240,237,230,0.35);letter-spacing:0.04em">12 More Guides</div>
+        <div style="font-size:9px;color:rgba(240,237,230,0.22);margin-top:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700">View Full Team →</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHOTO BAND MID-PAGE CTA -->
+<div class="photo-band">
+  <div class="photo-band-bg">
+    <img src="../assets/5ab3c5bddf6a.jpg" alt="" role="presentation" loading="lazy">
+  </div>
+  <div class="photo-band-overlay"></div>
+  <div class="photo-band-content">
+    <h2 class="section-title">THE ROCK DOESN'T LIE</h2>
+    <p class="section-body">18 elite guides and coaches. 40+ destinations. One community built on genuine passion for the vertical world.</p>
+    <button type="button" class="btn-primary">View All Coaches &amp; Guides →</button>
+  </div>
+</div>
+
+<!-- TRIPS -->
+<section class="trips-section" id="trips">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:0">
+    <div>
+      <span class="section-label">Upcoming</span>
+      <h2 class="section-title">TRIPS &amp;<br>COURSES</h2>
+    </div>
+    <button type="button" class="btn-ghost btn-sm" style="margin-bottom:24px">All Upcoming Trips →</button>
+  </div>
+  <div class="trips-grid">
+
+    <div class="trip-card trip-card-photo" style="background-image:url('../assets/9b4e48bd8cfa.jpg')">
+      <div class="trip-photo-overlay"></div>
+      <div class="trip-photo-content">
+        <div class="trip-date">Sept 12–20, 2026</div>
+        <div class="trip-name">Siurana Sport Odyssey</div>
+        <div class="trip-dest">Catalonia, Spain</div>
+        <div class="trip-guide">Led by Patxi Usobiaga</div>
+        <div class="trip-footer">
+          <span class="grade-pill">6b – 8b+</span>
+          <span class="spots"><span class="spots-dot"></span>4 spots left</span>
+        </div>
+        <div class="trip-price">From <strong>€1,490</strong></div>
+      </div>
+    </div>
+
+    <div class="trip-card trip-card-photo" style="background-image:url('../assets/89150c1f8695.jpg')">
+      <div class="trip-photo-overlay"></div>
+      <div class="trip-photo-content">
+        <div class="trip-date">Oct 3–12, 2026</div>
+        <div class="trip-name">Dolomites Multi-Pitch</div>
+        <div class="trip-dest">Dolomites, Italy</div>
+        <div class="trip-guide">Led by Roberto Muñoz</div>
+        <div class="trip-footer">
+          <span class="grade-pill">5c – 7a</span>
+          <span class="spots"><span class="spots-dot"></span>3 spots left</span>
+        </div>
+        <div class="trip-price">From <strong>€1,750</strong></div>
+      </div>
+    </div>
+
+    <div class="trip-card trip-card-photo" style="background-image:url('../assets/f8e99ddbcec8.jpg')">
+      <div class="trip-photo-overlay"></div>
+      <div class="trip-photo-content">
+        <div class="trip-date">Oct 18–25, 2026</div>
+        <div class="trip-name">Fontainebleau Bloc Week</div>
+        <div class="trip-dest">Fontainebleau, France</div>
+        <div class="trip-guide">Led by Alizée Dufraisse</div>
+        <div class="trip-footer">
+          <span class="grade-pill">5 – 8B</span>
+          <span class="spots"><span class="spots-dot urgent"></span>2 spots left</span>
+        </div>
+        <div class="trip-price">From <strong>€990</strong></div>
+      </div>
+    </div>
+
+    <div class="trip-card trip-card-photo" style="background-image:url('../assets/aaba4c26870a.jpg')">
+      <div class="trip-photo-overlay"></div>
+      <div class="trip-photo-content">
+        <div class="trip-date">Nov 1–10, 2026</div>
+        <div class="trip-name">Kalymnos Deep Water</div>
+        <div class="trip-dest">Kalymnos, Greece</div>
+        <div class="trip-guide">Led by Klemen Bečan</div>
+        <div class="trip-footer">
+          <span class="grade-pill">6a – 8a+</span>
+          <span class="spots"><span class="spots-dot"></span>6 spots left</span>
+        </div>
+        <div class="trip-price">From <strong>€1,290</strong></div>
+      </div>
+    </div>
+
+    <div class="trip-card trip-card-photo" style="background-image:url('../assets/8cd38967a8e4.jpg')">
+      <div class="trip-photo-overlay"></div>
+      <div class="trip-photo-content">
+        <div class="trip-date">Nov 14–22, 2026</div>
+        <div class="trip-name">Trad Lead Masterclass</div>
+        <div class="trip-dest">Pyrenees, Spain/France</div>
+        <div class="trip-guide">Led by Pablo Ruiz Seco</div>
+        <div class="trip-footer">
+          <span class="grade-pill">HS – E3</span>
+          <span class="spots"><span class="spots-dot"></span>5 spots left</span>
+        </div>
+        <div class="trip-price">From <strong>€1,190</strong></div>
+      </div>
+    </div>
+
+    <div class="trip-card trip-card-more">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:rgba(240,237,230,0.3);letter-spacing:0.04em">12 More Trips</div>
+        <div style="font-size:9px;color:rgba(240,237,230,0.2);margin-top:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700">View Full Calendar →</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="explore-section" id="search">
+  <span class="section-label">Explore</span>
+  <h2 class="section-title">FIND YOUR COURSE<br>OR TRIP</h2>
+  <p class="section-body" style="margin-bottom:40px">Search by destination, discipline, coach, or grade level</p>
+
+  <div class="hero-filter" id="exploreFilter">
+    <div class="filter-group">
+      <span class="filter-label">Type</span>
+      <select class="filter-select" id="ef-type" onchange="exploreApply()">
+        <option value="">All Types</option>
+        <option value="sport">Sport</option>
+        <option value="trad">Trad</option>
+        <option value="multipitch">Multi-Pitch</option>
+        <option value="bouldering">Bouldering</option>
+        <option value="bigwall">Big Wall</option>
+        <option value="coaching">Performance Coaching</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Level</span>
+      <select class="filter-select" id="ef-level" onchange="exploreApply()">
+        <option value="">All Levels</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+        <option value="expert">Expert</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Destination</span>
+      <select class="filter-select" id="ef-dest" onchange="exploreApply()">
+        <option value="">All Destinations</option>
+        <option value="spain">Spain</option>
+        <option value="france">France</option>
+        <option value="italy">Italy</option>
+        <option value="greece">Greece</option>
+        <option value="slovenia">Slovenia</option>
+        <option value="other">Other</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Dates</span>
+      <input type="month" class="filter-date-input" id="ef-date" onchange="exploreApply()">
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Guide / Coach</span>
+      <select class="filter-select" id="ef-guide" onchange="exploreApply()">
+        <option value="">Any Guide</option>
+        <option value="guide">Guide</option>
+        <option value="coach">Coach</option>
+        <option value="guide-coach">Guide + Coach</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group" style="border-right:none;">
+      <span class="filter-label">Duration</span>
+      <select class="filter-select" id="ef-duration" onchange="exploreApply()">
+        <option value="">Any Duration</option>
+        <option value="weekend">Weekend (2–3 days)</option>
+        <option value="week">1 Week</option>
+        <option value="twoweeks">2 Weeks</option>
+        <option value="longer">2+ Weeks</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <button class="filter-btn" onclick="exploreApply()">Search</button>
+  </div>
+
+  <div class="active-filters" id="exploreActiveFilters">
+    <span class="active-label">Filtered by:</span>
+    <div id="exploreFilterTags" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;"></div>
+    <button class="clear-all" onclick="exploreClear()">Clear all ✕</button>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section-dark">
+  <span class="section-label">From Guests</span>
+  <h2 class="section-title">WHAT PEOPLE SAY</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-q">"Not a course — a transformation."</div>
+      <p class="testi-body">Climbing with Patxi was something I'll carry forever. He watched my footwork for ten minutes and unlocked a problem I'd been fighting for two years.</p>
+      <div class="testi-who">Marcus T. — Germany</div>
+      <div class="testi-trip">Siurana Sport Week · 8a Climber</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-q">"The UIAGM standard is real."</div>
+      <p class="testi-body">Pablo's safety briefings made me feel completely calm on multi-pitch terrain I'd never have dared alone. You feel it in every rope call, every anchor.</p>
+      <div class="testi-who">Siobhán M. — Ireland</div>
+      <div class="testi-trip">Dolomites Multi-Pitch · Intermediate</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-q">"From 7b to 7c+ in one week."</div>
+      <p class="testi-body">Alizée sees exactly what's holding you back and makes it feel achievable. I went from 7b to flashing 7c+ in a single week at Font.</p>
+      <div class="testi-who">Clara B. — France</div>
+      <div class="testi-trip">Fontainebleau Bouldering Week</div>
+    </div>
+    <div class="testi-card" style="grid-column:1/2">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-q">"Impossible to describe how good it is."</div>
+      <p class="testi-body">These aren't guides taking you to the crag — they're climbers who love the rock and want you to love it too. Jany created something genuinely unique.</p>
+      <div class="testi-who">Tom H. — UK</div>
+      <div class="testi-trip">Kalymnos Deep Water · 7a Climber</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <span class="section-label">Ready?</span>
+  <h2>YOUR NEXT ROUTE<br>STARTS HERE</h2>
+  <p>Join a Rockbusters trip, book a coaching session, or contact us to design your perfect climbing experience.</p>
+  <div class="btn-group" style="justify-content:center">
+    <button type="button" class="btn-dark" style="font-size:14px;padding:18px 44px">Find My Course →</button>
+    <button type="button" class="btn-outline-dark" style="font-size:14px;padding:17px 44px">View All Trips</button>
+    <button type="button" class="btn-outline-dark" style="font-size:14px;padding:17px 44px">Get in Touch</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <img class="footer-logo-img" src="../assets/dbf68c866a82.png" alt="Rockbusters">
+      <span class="footer-tagline">ELITE CLIMBING GUIDES &amp; COACHES</span>
+      <p class="footer-brand-desc">A community of world-class climbers, UIAGM-certified guides, and coaches dedicated to taking your climbing further.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Explore</div>
+      <ul class="footer-links">
+        <li><a href="#coaches">Guides &amp; Coaches</a></li>
+        <li><a href="#trips">Trips &amp; Courses</a></li>
+        <li><a>Destinations</a></li>
+        <li><a>Disciplines</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a>Safety Standards</a></li>
+        <li><a>Contact</a></li>
+        <li><a>Press</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Follow</div>
+      <ul class="footer-links">
+        <li><a>Instagram</a></li>
+        <li><a>YouTube</a></li>
+        <li><a>Facebook</a></li>
+        <li><a>Newsletter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Rockbusters. Elite climbing guides &amp; coaches worldwide.</span>
+    <div style="display:flex;gap:24px">
+      <a style="font-size:11px;color:rgba(240,237,230,0.28);letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Privacy</a>
+      <a style="font-size:11px;color:rgba(240,237,230,0.28);letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Terms</a>
+      <a style="font-size:11px;color:rgba(240,237,230,0.28);letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll + hamburger
+var nav = document.getElementById('mainNav');
+window.addEventListener('scroll', function(){
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+function toggleMenu() {
+  var links = document.getElementById('navLinks');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.display = 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '62px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(13,13,13,0.98)';
+    links.style.padding = '20px 5%';
+    links.style.gap = '20px';
+    links.style.borderBottom = '1px solid rgba(240,237,230,0.08)';
+  }
+}
+
+// Hero bg load
+var bg = document.getElementById('heroBg');
+if(bg) setTimeout(function(){ bg.classList.add('loaded'); }, 100);
+
+// Filter pills
+function fc(el) {
+  document.querySelectorAll('.filter-btn').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active');
+}
+
+// Search
+function doSearch() {
+  var v = document.getElementById('searchInput').value.trim();
+  if(v) console.log('Search:', v);
+}
+document.getElementById('searchInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') doSearch();
+});
+
+
+// Explore filter logic
+var exploreState = {};
+var exploreLabels = {
+  type: 'Type', level: 'Level', dest: 'Destination',
+  date: 'Dates', guide: 'Guide', duration: 'Duration'
+};
+
+function exploreApply() {
+  var ids = { type:'ef-type', level:'ef-level', dest:'ef-dest', date:'ef-date', guide:'ef-guide', duration:'ef-duration' };
+  exploreState = {};
+  Object.keys(ids).forEach(function(k) {
+    var el = document.getElementById(ids[k]);
+    if (el && el.value) exploreState[k] = el.value;
+  });
+  renderExploreTags();
+}
+
+function renderExploreTags() {
+  var wrap = document.getElementById('exploreActiveFilters');
+  var tags = document.getElementById('exploreFilterTags');
+  tags.innerHTML = '';
+  var keys = Object.keys(exploreState);
+  if (!keys.length) { wrap.classList.remove('has-filters'); return; }
+  wrap.classList.add('has-filters');
+  keys.forEach(function(k) {
+    var tag = document.createElement('div');
+    tag.className = 'filter-tag';
+    tag.innerHTML = exploreLabels[k] + ': <strong>' + exploreState[k] + '</strong> <span class="filter-tag-remove" onclick="exploreRemove('' + k + '')">✕</span>';
+    tags.appendChild(tag);
+  });
+}
+
+function exploreRemove(key) {
+  var map = { type:'ef-type', level:'ef-level', dest:'ef-dest', date:'ef-date', guide:'ef-guide', duration:'ef-duration' };
+  var el = document.getElementById(map[key]);
+  if (el) el.value = '';
+  delete exploreState[key];
+  renderExploreTags();
+}
+
+function exploreClear() {
+  ['ef-type','ef-level','ef-dest','ef-date','ef-guide','ef-duration'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  exploreState = {};
+  renderExploreTags();
+}
+
+</script>
+
+</body>
+</html>

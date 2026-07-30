@@ -1,0 +1,121 @@
+/* ── ReviewsRow — wireframe block 8 "What Past Campers Say" ──────────
+ *
+ * Wireframe reference:
+ *   docs/html/TRIP-COURSE/.../block_08_block_8.html (.testimonials-grid)
+ *
+ * Also consistent with homepage Testimonials.module.css quote styling.
+ * Props unchanged: { items?: Review[] }
+ */
+
+.section {
+  background: var(--rb-black);
+  color: var(--rb-white);
+  padding: 96px 5%;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Section label (eyebrow) ─────────────────────── */
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--rb-red);
+  flex-shrink: 0;
+}
+
+/* ── Section heading (h2) ────────────────────────── */
+.title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.005em;
+  color: var(--rb-white);
+  font-size: clamp(40px, 6vw, 88px);
+  margin-bottom: 3rem;
+}
+
+/* ── 3-column grid (wireframe .testimonials-grid) ─── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── Single testimonial card ─────────────────────── */
+.card {
+  padding: 2rem;
+  border: 1px solid var(--rb-white-12);
+  position: relative;
+}
+
+/* decorative large opening quote mark */
+.card::before {
+  content: '\201C';
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  color: var(--rb-red);
+  line-height: 0.8;
+  position: absolute;
+  top: 1.2rem;
+  left: 1.5rem;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ── Quote body ──────────────────────────────────── */
+.body {
+  font-size: var(--fs-body);
+  color: var(--rb-white-60);
+  line-height: 1.7;
+  margin: 0 0 1.2rem;
+  padding-top: 2rem; /* clear the large quote mark */
+}
+
+/* ── Attribution line ────────────────────────────── */
+.attrib {
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rb-white);
+  font-weight: 600;
+  display: block;
+}
+
+.result {
+  color: var(--rb-red);
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media screen and (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 64px 5%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

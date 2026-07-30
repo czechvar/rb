@@ -1,0 +1,41 @@
+.section {
+  padding: 64px 5%;
+  background: var(--rb-darker);
+  text-align: center;
+}
+
+.label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rb-white-45);
+  font-weight: 700;
+  margin: 0 0 24px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.name {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--rb-white-60);
+  letter-spacing: 0.06em;
+}
+
+.logo {
+  opacity: 0.7;
+  transition: opacity 0.18s;
+  object-fit: contain;
+  filter: grayscale(1);
+}
+
+.logo:hover {
+  opacity: 1;
+}

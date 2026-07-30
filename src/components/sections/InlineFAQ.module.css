@@ -1,0 +1,140 @@
+/* ── InlineFAQ — wireframe block 9 "Common Questions" ─────────────────
+ *
+ * Wireframe reference:
+ *   docs/html/TRIP-COURSE/.../block_09_block_9.html
+ *     .faq-section  → dark #111 background, 96px vertical padding
+ *     .faq-list     → items stacked, each with a bottom hairline
+ *     .faq-q        → Inter 1rem 600, chalk text, +/− in red on the right
+ *     .faq-a        → 0.9rem chalk-dim text, pb 1.4rem
+ *
+ * Accordion uses native <details>/<summary> — no JS required.
+ * The marker is hidden; the +/− indicator is rendered via ::after on
+ * summary, toggled with details[open] > summary::after.
+ */
+
+/* ── Section shell ───────────────────────────────── */
+.section {
+  background: var(--rb-dark);       /* #111 — matches wireframe .faq-section */
+  color: var(--rb-white);
+  padding: 96px 5%;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Eyebrow ─────────────────────────────────────── */
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--rb-red);
+  flex-shrink: 0;
+}
+
+/* ── Section heading ─────────────────────────────── */
+.title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.005em;
+  color: var(--rb-white);
+  font-size: clamp(40px, 6vw, 88px);
+  margin-bottom: 3rem;
+}
+
+/* ── FAQ list ────────────────────────────────────── */
+.list {
+  /* top hairline for the very first item */
+  border-top: 1px solid var(--rb-white-12);
+}
+
+/* ── Single FAQ item (native <details>) ──────────── */
+.item {
+  border-bottom: 1px solid var(--rb-white-12);
+}
+
+/* Hide the browser's default disclosure triangle */
+.item > summary {
+  list-style: none;
+}
+.item > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ── Question row (<summary>) ────────────────────── */
+.q {
+  padding: 1.4rem 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--rb-white);
+  user-select: none;
+}
+
+/* + indicator (closed state) */
+.q::after {
+  content: '+';
+  color: var(--rb-red);
+  font-size: 1.5rem;
+  font-weight: 300;
+  flex-shrink: 0;
+  margin-left: 1rem;
+  line-height: 1;
+}
+
+/* − indicator (open state) */
+.item[open] > .q::after {
+  content: '\2212'; /* minus sign (−) */
+}
+
+/* ── Answer body (<div> inside <details>) ─────────── */
+.a {
+  font-size: 0.9rem;
+  color: var(--rb-white-60);
+  padding-bottom: 1.4rem;
+  line-height: 1.7;
+}
+
+.a p {
+  margin: 0 0 0.75rem;
+}
+
+.a p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── "All questions →" link row ──────────────────── */
+.footer {
+  margin-top: 2.5rem;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media screen and (max-width: 600px) {
+  .section {
+    padding: 64px 5%;
+  }
+
+  .q {
+    font-size: 0.95rem;
+  }
+}

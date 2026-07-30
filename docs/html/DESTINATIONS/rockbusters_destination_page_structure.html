@@ -1,0 +1,810 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .rb-page {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-primary);
+    max-width: 680px;
+  }
+
+  .rb-hero {
+    background: #1A1F2E;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0;
+    margin-bottom: 24px;
+  }
+
+  .rb-hero-img-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #2a3347 0%, #1A1F2E 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rb-topo-lines {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+  }
+
+  .rb-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(26,31,46,0.97) 0%, rgba(26,31,46,0.6) 70%, transparent 100%);
+  }
+
+  .rb-country-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #C0392B;
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .rb-hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.03em;
+    color: #F2EDE8;
+    line-height: 0.95;
+    margin-bottom: 10px;
+  }
+
+  .rb-hero-subtitle {
+    font-size: 13px;
+    color: rgba(242,237,232,0.65);
+    margin-bottom: 14px;
+    max-width: 400px;
+    line-height: 1.5;
+  }
+
+  .rb-quick-stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .rb-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rb-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: #F2EDE8;
+    letter-spacing: 0.04em;
+  }
+
+  .rb-stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: rgba(242,237,232,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .rb-stat-divider {
+    width: 1px;
+    background: rgba(242,237,232,0.15);
+    align-self: stretch;
+  }
+
+  .rb-breadcrumb {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .rb-breadcrumb span { color: var(--color-text-tertiary); }
+
+  .rb-toc-strip {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .rb-toc-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #C0392B;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  .rb-toc-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    list-style: none;
+  }
+
+  .rb-toc-links li {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .rb-toc-links li:hover { color: #C0392B; }
+
+  .rb-section {
+    margin-bottom: 28px;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    background: var(--color-background-primary);
+  }
+
+  .rb-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-secondary);
+  }
+
+  .rb-section-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--border-radius-md);
+    background: #1A1F2E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rb-section-icon i {
+    font-size: 16px;
+    color: #C0392B;
+  }
+
+  .rb-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    color: var(--color-text-primary);
+    flex: 1;
+  }
+
+  .rb-section-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(192,57,43,0.1);
+    color: #C0392B;
+    border: 0.5px solid rgba(192,57,43,0.25);
+  }
+
+  .rb-section-body {
+    padding: 16px 18px;
+  }
+
+  .rb-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .rb-field {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 10px 12px;
+  }
+
+  .rb-field-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-text-tertiary);
+    margin-bottom: 4px;
+  }
+
+  .rb-field-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .rb-field-note {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    margin-top: 2px;
+  }
+
+  .rb-partner-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .rb-partner-card {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 140px;
+    background: var(--color-background-primary);
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+
+  .rb-partner-card:hover { border-color: var(--color-border-secondary); }
+
+  .rb-partner-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #1A1F2E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rb-partner-dot i { font-size: 14px; color: #5B9BD5; }
+
+  .rb-partner-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .rb-partner-type {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+  }
+
+  .rb-grade-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .rb-grade-pill {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 0.5px solid var(--color-border-secondary);
+    color: var(--color-text-secondary);
+  }
+
+  .rb-grade-pill.beginner { border-color: #3B6D11; color: #3B6D11; background: rgba(59,109,17,0.08); }
+  .rb-grade-pill.intermediate { border-color: #BA7517; color: #BA7517; background: rgba(186,117,23,0.08); }
+  .rb-grade-pill.advanced { border-color: #A32D2D; color: #A32D2D; background: rgba(163,45,45,0.08); }
+
+  .rb-season-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .rb-season-col { text-align: center; }
+
+  .rb-season-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-tertiary);
+    margin-bottom: 4px;
+  }
+
+  .rb-season-bar {
+    height: 6px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+  }
+
+  .rb-season-bar.peak { background: #C0392B; }
+  .rb-season-bar.good { background: #8B7355; }
+  .rb-season-bar.ok { background: var(--color-border-secondary); }
+  .rb-season-bar.avoid { background: var(--color-border-tertiary); }
+
+  .rb-season-rating {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  .rb-desc-block {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin-bottom: 10px;
+  }
+
+  .rb-gear-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .rb-gear-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+    font-size: 12px;
+    color: var(--color-text-secondary);
+  }
+
+  .rb-gear-item i { font-size: 14px; color: var(--color-text-tertiary); }
+
+  .rb-seo-strip {
+    background: #1A1F2E;
+    border-radius: var(--border-radius-lg);
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .rb-seo-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(242,237,232,0.4);
+    white-space: nowrap;
+  }
+
+  .rb-seo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .rb-seo-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 0.5px solid rgba(242,237,232,0.15);
+    color: rgba(242,237,232,0.55);
+    font-family: 'Space Mono', monospace;
+  }
+
+  .rb-cta-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+
+  .rb-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: var(--border-radius-md);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 0.5px solid var(--color-border-secondary);
+    background: var(--color-background-secondary);
+    color: var(--color-text-primary);
+    transition: background 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .rb-cta-btn:hover { background: var(--color-background-tertiary); }
+
+  .rb-cta-btn.primary {
+    background: #C0392B;
+    color: #fff;
+    border-color: #C0392B;
+  }
+
+  .rb-cta-btn.primary:hover { background: #a93226; }
+
+  .rb-cta-btn i { font-size: 14px; }
+
+  .rb-meta-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-top: 0.5px solid var(--color-border-tertiary);
+    margin-top: 8px;
+  }
+
+  .rb-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    font-family: 'Space Mono', monospace;
+  }
+
+  .rb-meta-item i { font-size: 13px; }
+
+  .rb-divider {
+    width: 1px;
+    height: 14px;
+    background: var(--color-border-tertiary);
+  }
+</style>
+
+<div class="rb-page">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Rockbusters destination page structure template</h2>
+
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:0.15em;color:var(--color-text-tertiary);text-transform:uppercase;margin-bottom:10px;">Rockbusters — Destination Page Template</div>
+
+  <!-- BREADCRUMB -->
+  <div class="rb-breadcrumb">
+    Destinations <span>›</span> Europe <span>›</span> Spain <span>›</span> <strong style="color:var(--color-text-primary)">Siurana</strong>
+  </div>
+
+  <!-- HERO -->
+  <div class="rb-hero">
+    <div class="rb-hero-img-placeholder">
+      <svg class="rb-topo-lines" viewBox="0 0 680 200" preserveAspectRatio="none">
+        <polyline points="0,150 80,120 160,140 220,80 320,100 400,60 480,90 580,40 680,70" fill="none" stroke="#F2EDE8" stroke-width="1"/>
+        <polyline points="0,170 90,155 180,165 250,110 350,130 440,90 520,115 620,65 680,95" fill="none" stroke="#F2EDE8" stroke-width="0.8"/>
+        <polyline points="0,190 100,180 200,188 280,140 380,160 460,120 560,145 650,95 680,120" fill="none" stroke="#F2EDE8" stroke-width="0.6"/>
+        <polyline points="50,200 140,185 230,195 310,155 420,170 500,135 590,160 680,130" fill="none" stroke="#F2EDE8" stroke-width="0.4"/>
+      </svg>
+      <i class="ti ti-mountain" style="font-size:64px;color:rgba(242,237,232,0.06);" aria-hidden="true"></i>
+    </div>
+    <div class="rb-hero-content">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div class="rb-country-badge"><i class="ti ti-map-pin" aria-hidden="true"></i> Spain · Catalonia</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(242,237,232,0.35);padding:4px 8px;border:0.5px solid rgba(242,237,232,0.15);border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;">Sport · Trad · Multi-pitch</div>
+      </div>
+      <div class="rb-hero-title">Siurana</div>
+      <div class="rb-hero-subtitle">One sentence hook: the world's hardest sport climbing routes perched above a medieval village on breathtaking limestone.</div>
+      <div class="rb-quick-stats">
+        <div class="rb-stat"><span class="rb-stat-num">300+</span><span class="rb-stat-label">Routes</span></div>
+        <div class="rb-stat-divider"></div>
+        <div class="rb-stat"><span class="rb-stat-num">5a–9b</span><span class="rb-stat-label">Grade range</span></div>
+        <div class="rb-stat-divider"></div>
+        <div class="rb-stat"><span class="rb-stat-num">Mar–Jun</span><span class="rb-stat-label">Best season</span></div>
+        <div class="rb-stat-divider"></div>
+        <div class="rb-stat"><span class="rb-stat-num">1h 30m</span><span class="rb-stat-label">From Barcelona</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="rb-toc-strip">
+    <div class="rb-toc-label"><i class="ti ti-list" aria-hidden="true"></i><br>Jump to</div>
+    <ul class="rb-toc-links">
+      <li>Intro</li><li>Climbing history</li><li>Rock & style</li><li>Grades</li><li>Sectors</li><li>Gear</li><li>Best season</li><li>Getting there</li><li>Car rental</li><li>Accommodation</li><li>Food & drinks</li><li>Local tips</li><li>Reviews</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1: INTRODUCTION -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-info-circle" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Introduction</div>
+      <div class="rb-section-badge">SEO anchor</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">2–3 paragraphs: What makes this destination unique, its global reputation, who it's ideal for. Written for search intent: "Siurana climbing guide", "best sport climbing Spain", etc. Include the destination name, country, rock type, and climbing style naturally in the first 100 words.</p>
+      <div class="rb-fields">
+        <div class="rb-field"><div class="rb-field-label">Region / Country</div><div class="rb-field-value">Catalonia, Spain</div></div>
+        <div class="rb-field"><div class="rb-field-label">Altitude</div><div class="rb-field-value">~750m</div></div>
+        <div class="rb-field"><div class="rb-field-label">Nearest city</div><div class="rb-field-value">Barcelona (1h 30m)</div></div>
+        <div class="rb-field"><div class="rb-field-label">Climbing style</div><div class="rb-field-value">Sport, Trad, Multi</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: CLIMBING HISTORY -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-clock-history" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Climbing history</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">Timeline of first ascents, key developments, notable climbers who shaped the crag. Mention famous routes and the climbers who put them up — great for long-tail search traffic ("who climbed La Rambla first", "Siurana 9b history").</p>
+      <div class="rb-fields">
+        <div class="rb-field"><div class="rb-field-label">First recorded climbs</div><div class="rb-field-value">1970s</div></div>
+        <div class="rb-field"><div class="rb-field-label">Hardest route</div><div class="rb-field-value">La Rambla (9a+)</div></div>
+        <div class="rb-field"><div class="rb-field-label">First ascensionist</div><div class="rb-field-value">Alexander Huber</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: ROCK TYPE & CLIMBING STYLE -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-layers" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Rock type & climbing style</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">Describe the geology, texture, features (pockets, crimps, slopers, tufas), and how it affects movement. Include orientation (north/south-facing, overhung, vertical, slabby). Great for niche search queries.</p>
+      <div class="rb-fields">
+        <div class="rb-field"><div class="rb-field-label">Rock type</div><div class="rb-field-value">Limestone</div><div class="rb-field-note">Compact, featured</div></div>
+        <div class="rb-field"><div class="rb-field-label">Main features</div><div class="rb-field-value">Pockets & tufas</div></div>
+        <div class="rb-field"><div class="rb-field-label">Wall angle</div><div class="rb-field-value">Vertical to 45° overhang</div></div>
+        <div class="rb-field"><div class="rb-field-label">Disciplines</div><div class="rb-field-value">Sport, Trad, Deep-water solo</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: GRADES & SECTORS -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-route" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Grades & sectors</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">Overall grade spread, grade conversion table (French/Yosemite/UIAA), best sectors by grade range, and a note on grading accuracy (soft/stiff). Crucial for search intent: "beginner climbing Siurana", "Siurana 7a routes".</p>
+      <div class="rb-grade-row">
+        <span class="rb-grade-pill beginner">4a–6a Beginner</span>
+        <span class="rb-grade-pill beginner">6a+–7a Intermediate beginner</span>
+        <span class="rb-grade-pill intermediate">7a+–8a Intermediate</span>
+        <span class="rb-grade-pill intermediate">8a+–8c Advanced</span>
+        <span class="rb-grade-pill advanced">8c+–9b Elite</span>
+      </div>
+      <div style="margin-top:14px;">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--color-text-tertiary);margin-bottom:8px;">Top sectors by level</div>
+        <div class="rb-fields">
+          <div class="rb-field"><div class="rb-field-label">Beginners</div><div class="rb-field-value">El Pati sector</div><div class="rb-field-note">sheltered, gentle angles</div></div>
+          <div class="rb-field"><div class="rb-field-label">Intermediate</div><div class="rb-field-value">La Cova sector</div></div>
+          <div class="rb-field"><div class="rb-field-label">Advanced</div><div class="rb-field-value">El Pati, La Rambla Wall</div></div>
+          <div class="rb-field"><div class="rb-field-label">Total routes</div><div class="rb-field-value">300+</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: GEAR & EQUIPMENT -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-tool" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Gear & equipment</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">What to bring, what's available locally, what to rent. Separate sport vs. trad lists. Add affiliate links if applicable (gear partners).</p>
+      <div class="rb-gear-list">
+        <div class="rb-gear-item"><i class="ti ti-circle-check" aria-hidden="true"></i>60m dry rope</div>
+        <div class="rb-gear-item"><i class="ti ti-circle-check" aria-hidden="true"></i>12–16 quickdraws</div>
+        <div class="rb-gear-item"><i class="ti ti-circle-check" aria-hidden="true"></i>Rock shoes</div>
+        <div class="rb-gear-item"><i class="ti ti-circle-check" aria-hidden="true"></i>Harness & belay device</div>
+        <div class="rb-gear-item"><i class="ti ti-circle-check" aria-hidden="true"></i>Helmet (multi-pitch)</div>
+        <div class="rb-gear-item"><i class="ti ti-circle-check" aria-hidden="true"></i>Chalk bag</div>
+        <div class="rb-gear-item"><i class="ti ti-circle-check" aria-hidden="true"></i>Guidebook (local)</div>
+        <div class="rb-gear-item"><i class="ti ti-circle-check" aria-hidden="true"></i>Sun protection</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: BEST SEASON -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-sun" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Best season & weather</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">Monthly breakdown with temperature ranges, rain probability, and sector-specific advice (shady walls in summer, sunny walls in winter). Add a note on climbing in rain.</p>
+      <div class="rb-season-grid">
+        <div class="rb-season-col"><div class="rb-season-name">Spring</div><div class="rb-season-bar peak"></div><div class="rb-season-rating" style="color:#C0392B;">Peak</div></div>
+        <div class="rb-season-col"><div class="rb-season-name">Summer</div><div class="rb-season-bar ok"></div><div class="rb-season-rating">OK (shade)</div></div>
+        <div class="rb-season-col"><div class="rb-season-name">Autumn</div><div class="rb-season-bar peak"></div><div class="rb-season-rating" style="color:#C0392B;">Peak</div></div>
+        <div class="rb-season-col"><div class="rb-season-name">Winter</div><div class="rb-season-bar good"></div><div class="rb-season-rating" style="color:#8B7355;">Good</div></div>
+      </div>
+      <div style="margin-top:12px;" class="rb-fields">
+        <div class="rb-field"><div class="rb-field-label">Avg temp (peak)</div><div class="rb-field-value">14–22 °C</div></div>
+        <div class="rb-field"><div class="rb-field-label">Rainy months</div><div class="rb-field-value">Nov, Apr</div></div>
+        <div class="rb-field"><div class="rb-field-label">Year-round?</div><div class="rb-field-value">Yes (sector dependent)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: GETTING THERE & TRANSPORT -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-plane" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Getting there & transport</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">Nearest airports, train connections, driving directions from major hubs, road conditions, parking at the crag, public transport options and limitations.</p>
+      <div class="rb-fields">
+        <div class="rb-field"><div class="rb-field-label">Nearest airport</div><div class="rb-field-value">Barcelona El Prat (BCN)</div><div class="rb-field-note">~1h 40m by car</div></div>
+        <div class="rb-field"><div class="rb-field-label">Public transport</div><div class="rb-field-value">Train to Reus + taxi</div></div>
+        <div class="rb-field"><div class="rb-field-label">Crag parking</div><div class="rb-field-value">Free, limited spaces</div></div>
+        <div class="rb-field"><div class="rb-field-label">Road type</div><div class="rb-field-value">Narrow mountain road (last 5km)</div></div>
+      </div>
+      <div style="margin-top:14px;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.07em;color:var(--color-text-tertiary);margin-bottom:8px;">Car rental partners</div>
+      <div class="rb-partner-row">
+        <div class="rb-partner-card" onclick="openLink('https://carjet.com')">
+          <div class="rb-partner-dot"><i class="ti ti-car" aria-hidden="true"></i></div>
+          <div>
+            <div class="rb-partner-name">CarJet</div>
+            <div class="rb-partner-type">Car rental · carjet.com</div>
+          </div>
+          <i class="ti ti-arrow-right" style="font-size:13px;color:var(--color-text-tertiary);margin-left:auto;" aria-hidden="true"></i>
+        </div>
+        <div class="rb-partner-card" onclick="openLink('https://doyouspain.com')">
+          <div class="rb-partner-dot"><i class="ti ti-car" aria-hidden="true"></i></div>
+          <div>
+            <div class="rb-partner-name">DoYouSpain</div>
+            <div class="rb-partner-type">Car rental · doyouspain.com</div>
+          </div>
+          <i class="ti ti-arrow-right" style="font-size:13px;color:var(--color-text-tertiary);margin-left:auto;" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: ACCOMMODATION -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-bed" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Accommodation</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">All price categories covered: camping, climber hostels, guesthouses, rural hotels. Include tips on booking in peak season, distance to crag, and facilities (gear storage, drying room, kitchen).</p>
+      <div class="rb-fields">
+        <div class="rb-field"><div class="rb-field-label">Camping</div><div class="rb-field-value">Camping Siurana</div><div class="rb-field-note">€12–18/night · 5min walk</div></div>
+        <div class="rb-field"><div class="rb-field-label">Climber hostel</div><div class="rb-field-value">La Roca Hostel</div><div class="rb-field-note">€25–35 dorm</div></div>
+        <div class="rb-field"><div class="rb-field-label">Guesthouse</div><div class="rb-field-value">Casa Siurana</div><div class="rb-field-note">€70–110/night</div></div>
+        <div class="rb-field"><div class="rb-field-label">Hotel</div><div class="rb-field-value">Cornudella town (8km)</div><div class="rb-field-note">Full range available</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 9: FOOD & DRINKS -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Food & drinks</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">Cafés and restaurants at/near the crag, supermarket access, self-catering tips, local specialities worth trying. Note any limited opening hours in low season.</p>
+      <div class="rb-fields">
+        <div class="rb-field"><div class="rb-field-label">At the crag</div><div class="rb-field-value">Bar El Xiringuito</div><div class="rb-field-note">Open weekends year-round</div></div>
+        <div class="rb-field"><div class="rb-field-label">Nearest supermarket</div><div class="rb-field-value">Cornudella (8km)</div></div>
+        <div class="rb-field"><div class="rb-field-label">Local must-try</div><div class="rb-field-value">Pa amb tomàquet, local wine</div></div>
+        <div class="rb-field"><div class="rb-field-label">Vegetarian/vegan</div><div class="rb-field-value">Limited at crag · better in town</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 10: LOCAL TIPS & ETHICS -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-bulb" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Local tips & climbing ethics</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">Access notes, fixed gear condition, bolting organisation contacts, Leave No Trace, local rules, bird nesting closures, landowner relationships, and etiquette at busy crags.</p>
+      <div class="rb-gear-list">
+        <div class="rb-gear-item"><i class="ti ti-alert-triangle" aria-hidden="true"></i>Seasonal bird closures</div>
+        <div class="rb-gear-item"><i class="ti ti-users" aria-hidden="true"></i>Arrive early on weekends</div>
+        <div class="rb-gear-item"><i class="ti ti-trash" aria-hidden="true"></i>Pack out all waste</div>
+        <div class="rb-gear-item"><i class="ti ti-lock" aria-hidden="true"></i>Check access news</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 11: NEARBY DESTINATIONS -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-map-2" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Nearby destinations</div>
+      <div class="rb-section-badge">Internal links</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">3–5 related destinations within a day's drive, linking to their own destination pages — critical for internal SEO linking and keeping visitors on Rockbusters.</p>
+      <div class="rb-fields">
+        <div class="rb-field" style="cursor:pointer;"><div class="rb-field-label">40km away</div><div class="rb-field-value" style="color:#5B9BD5;">Margalef →</div><div class="rb-field-note">Conglomerate pockets</div></div>
+        <div class="rb-field" style="cursor:pointer;"><div class="rb-field-label">90km away</div><div class="rb-field-value" style="color:#5B9BD5;">Montserrat →</div><div class="rb-field-note">Iconic conglomerate</div></div>
+        <div class="rb-field" style="cursor:pointer;"><div class="rb-field-label">120km away</div><div class="rb-field-value" style="color:#5B9BD5;">Terradets →</div><div class="rb-field-note">Limestone gorge</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 12: TRAVELLER REVIEWS -->
+  <div class="rb-section">
+    <div class="rb-section-header">
+      <div class="rb-section-icon"><i class="ti ti-star" aria-hidden="true"></i></div>
+      <div class="rb-section-title">Traveller reviews</div>
+      <div class="rb-section-badge">UGC · SEO</div>
+    </div>
+    <div class="rb-section-body">
+      <p class="rb-desc-block">User-generated reviews (verified trips), average rating by category (rock quality, access, accommodation, value). Star-schema structured data for Google rich results — major SEO win.</p>
+      <div class="rb-fields">
+        <div class="rb-field"><div class="rb-field-label">Rock quality</div><div class="rb-field-value">★★★★★ 4.9</div></div>
+        <div class="rb-field"><div class="rb-field-label">Access & parking</div><div class="rb-field-value">★★★★☆ 4.2</div></div>
+        <div class="rb-field"><div class="rb-field-label">Accommodation</div><div class="rb-field-value">★★★★☆ 4.0</div></div>
+        <div class="rb-field"><div class="rb-field-label">Overall</div><div class="rb-field-value">★★★★★ 4.7 · 312 reviews</div></div>
+      </div>
+      <div class="rb-cta-row">
+        <button class="rb-cta-btn"><i class="ti ti-edit" aria-hidden="true"></i> Write a review</button>
+        <button class="rb-cta-btn"><i class="ti ti-photo" aria-hidden="true"></i> Submit photos</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO TAGS STRIP -->
+  <div class="rb-seo-strip">
+    <div class="rb-seo-label">SEO tags</div>
+    <div class="rb-seo-tags">
+      <span class="rb-seo-tag">sport climbing spain</span>
+      <span class="rb-seo-tag">siurana climbing guide</span>
+      <span class="rb-seo-tag">best limestone climbing europe</span>
+      <span class="rb-seo-tag">9a routes spain</span>
+      <span class="rb-seo-tag">climbing trip catalonia</span>
+      <span class="rb-seo-tag">beginner climbing spain</span>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:18px 20px;margin-bottom:24px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.05em;margin-bottom:6px;">Ready to climb Siurana?</div>
+    <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:14px;">Plan your trip, book your rental car, and browse accommodation — all in one place.</div>
+    <div class="rb-cta-row">
+      <button class="rb-cta-btn primary" onclick="sendPrompt('Help me plan a climbing trip to Siurana')"><i class="ti ti-mountain" aria-hidden="true"></i> Plan my trip ↗</button>
+      <button class="rb-cta-btn" onclick="openLink('https://carjet.com')"><i class="ti ti-car" aria-hidden="true"></i> Rent a car</button>
+      <button class="rb-cta-btn"><i class="ti ti-download" aria-hidden="true"></i> Download topo PDF</button>
+    </div>
+  </div>
+
+  <!-- META FOOTER -->
+  <div class="rb-meta-footer">
+    <div class="rb-meta-item"><i class="ti ti-edit" aria-hidden="true"></i> Last updated: June 2026</div>
+    <div class="rb-divider"></div>
+    <div class="rb-meta-item"><i class="ti ti-user" aria-hidden="true"></i> By Rockbusters team</div>
+    <div class="rb-divider"></div>
+    <div class="rb-meta-item"><i class="ti ti-eye" aria-hidden="true"></i> 4,821 views this month</div>
+    <div class="rb-divider"></div>
+    <div class="rb-meta-item"><i class="ti ti-share" aria-hidden="true"></i> Share this page</div>
+  </div>
+
+</div>

@@ -1,0 +1,53 @@
+.section {
+  background: var(--rb-red);
+  padding: var(--rb-section-pad);
+  text-align: center;
+}
+
+/* Override section-label color/line for red background */
+.section :global(.section-label) {
+  color: rgba(13, 13, 13, 0.5);
+}
+
+
+.display {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(60px, 9vw, 120px);
+  color: var(--rb-black);
+  line-height: 0.87;
+  margin: 0 0 22px;
+  letter-spacing: 0.03em;
+}
+
+.body {
+  font-size: 17px;
+  color: rgba(13, 13, 13, 0.65);
+  max-width: 480px;
+  margin: 0 auto 44px;
+  line-height: 1.65;
+  font-family: 'Inter', sans-serif;
+}
+
+.ctas {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 72px 5%;
+  }
+
+  .ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ctas > * {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+}

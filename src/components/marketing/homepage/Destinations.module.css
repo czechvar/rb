@@ -1,0 +1,53 @@
+.section {
+  padding: 72px 5%;
+  background: var(--rb-darker);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  padding: 28px;
+  text-align: center;
+  border: 1px solid var(--rb-white-12);
+  color: var(--rb-white);
+  text-decoration: none;
+  transition: border-color 0.18s;
+}
+
+.card:hover {
+  border-color: var(--rb-red);
+}
+
+.flag {
+  font-size: 40px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--rb-white);
+  margin: 0 0 8px;
+}
+
+.crags {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-60);
+  margin: 0;
+}
+
+.ctaWrap {
+  text-align: center;
+  margin-top: 40px;
+}

@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rockbusters — Climb Harder. Climb Smarter.</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   ROCKBUSTERS DESIGN SYSTEM — SINGLE SOURCE OF TRUTH
+   Brand red: #E30713  |  Dark bg: #0D0D0D  |  Off-white: #F0EDE6
+   Display font: Bebas Neue  |  Body font: Inter
+   ============================================================ */
+:root {
+  --rb-red:       #E30713;
+  --rb-red-hover: #c0050f;
+  --rb-red-dim:   rgba(227,7,19,0.08);
+  --rb-red-border:rgba(227,7,19,0.28);
+  --rb-black:     #0D0D0D;
+  --rb-dark:      #111111;
+  --rb-darker:    #0a0a0a;
+  --rb-white:     #F0EDE6;
+  --rb-white-60:  rgba(240,237,230,0.60);
+  --rb-white-45:  rgba(240,237,230,0.45);
+  --rb-white-30:  rgba(240,237,230,0.30);
+  --rb-white-12:  rgba(240,237,230,0.12);
+  --rb-white-08:  rgba(240,237,230,0.08);
+
+  /* Typography scale */
+  --fs-eyebrow:   11px;   /* section labels, badges */
+  --fs-body-sm:   13px;   /* captions, small text */
+  --fs-body:      15px;   /* standard body */
+  --fs-body-lg:   17px;   /* lead paragraphs */
+  --fs-card-title:16px;   /* card headings */
+
+  /* Spacing */
+  --section-pad:  90px 5%;
+  --card-pad:     36px 28px;
+}
+
+/* Enforce unified eyebrow/label style globally */
+.section-label,
+.filter-label,
+.trip-location,
+.sp-q,
+.team-role-badge,
+.testi-who,
+.team-placeholder-label,
+.active-label,
+.partners-label,
+.footer-col h4,
+.solo-text .section-label {
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Unified body text */
+.section-body,
+.pillar p,
+.sp-card p,
+.team-body,
+.team-tagline,
+.testi-body,
+.faq-a,
+.hero-sub,
+.solo-text p,
+.footer-brand p,
+.pros-body,
+.dest-card p,
+.cat-card p,
+.trip-hook {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.75;
+}
+
+/* Unified display headings */
+.section-title,
+.hero h1,
+.solo-h2,
+.final-cta h2,
+.trip-name,
+.team-name,
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* Unified button style */
+.btn-primary,
+.btn-ghost,
+.btn-dark,
+.btn-outline-dark,
+.nav-cta,
+.filter-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 0;
+}
+
+/* Consistent section padding */
+.section,
+.trips-section,
+.pros-section,
+.faq-section,
+.team-section {
+  padding: var(--section-pad);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: #0D0D0D; color: #F0EDE6; overflow-x: hidden; }
+.display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.03em; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 22px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(13,13,13,0.85) 0%, transparent 100%);
+  backdrop-filter: blur(0px);
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+.nav.scrolled {
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(240,237,230,0.08);
+}
+
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  filter: brightness(1);
+  transition: opacity 0.2s;
+}
+.nav-logo-img:hover { opacity: 0.85; }
+.footer-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  margin-bottom: 16px;
+  filter: brightness(1);
+}
+
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: #F0EDE6; letter-spacing: 0.1em; }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #F0EDE6; font-weight: 600; transition: color 0.2s; }
+.nav-links a:hover { color: #F0EDE6; }
+.nav-cta {
+  background: #E30713; color: #0D0D0D;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 11px 22px; border: none; cursor: pointer;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: #e8303d; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #F0EDE6; transition: 0.3s; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 160px 5% 7%;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+  transition: transform 8s ease-out;
+}
+.hero-bg.loaded { transform: scale(1); }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13,13,13,0.55) 0%,
+    rgba(13,13,13,0.35) 30%,
+    rgba(13,13,13,0.6) 65%,
+    rgba(13,13,13,0.92) 100%
+  );
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-eyebrow {
+  font-size: 13px; letter-spacing: 0.22em; color: #E30713;
+  text-transform: uppercase; margin-bottom: 20px; font-weight: 700;
+  display: flex; align-items: center; gap: 12px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.7), 0 0 24px rgba(0,0,0,0.5);
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block; width: 32px; height: 1px; background: #E30713;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 11vw, 140px);
+  line-height: 0.88;
+  margin-top: 48px;
+  margin-bottom: 30px;
+  color: #F0EDE6;
+}
+.hero h1 em { color: #E30713; font-style: normal; }
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.65;
+  max-width: 560px;
+  color: rgba(240,237,230,0.78);
+  margin-bottom: 44px;
+  font-weight: 400;
+}
+.btn-group { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.btn-primary {
+  background: #E30713; color: #0D0D0D;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 17px 36px; border: none; cursor: pointer; transition: background 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: #e8303d; }
+.btn-ghost {
+  background: transparent; color: #F0EDE6;
+  font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 16px 36px; border: 1.5px solid rgba(240,237,230,0.35); cursor: pointer;
+  transition: border-color 0.2s; display: inline-block;
+}
+.btn-ghost:hover { border-color: #F0EDE6; }
+.trust-strip {
+  margin-top: 40px;
+  display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+}
+.trust-strip span {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(240,237,230,0.42); font-weight: 500;
+}
+.trust-strip strong { color: rgba(240,237,230,0.70); }
+.trust-dot { color: rgba(240,237,230,0.25) !important; }
+
+/* STATS BAR */
+.stats-bar {
+  background: #E30713;
+  display: flex; justify-content: space-around;
+  padding: 30px 5%; gap: 16px; flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: #0D0D0D; line-height: 1; display: block; }
+.stat-label { font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(13,13,13,0.6); font-weight: 600; display: block; margin-top: 4px; }
+
+/* SECTION COMMON */
+.section { padding: 90px 5%; }
+.section-label {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #E30713; font-weight: 600; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: #E30713; }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 6vw, 80px);
+  line-height: 0.92; color: #F0EDE6; margin-bottom: 24px;
+}
+.section-body {
+  font-size: 16px; line-height: 1.78;
+  color: rgba(240,237,230,0.65); max-width: 580px;
+}
+
+/* WHO WE ARE */
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+@media(max-width:768px){ .who-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+/* PILLARS */
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; margin-top: 72px;
+  background: rgba(240,237,230,0.08);
+  border: 1px solid rgba(240,237,230,0.08);
+}
+@media(max-width:900px){ .pillars-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .pillars-grid { grid-template-columns: 1fr; } }
+.pillar {
+  background: #0D0D0D; padding: 40px 32px;
+  transition: background 0.2s;
+}
+.pillar:hover { background: #131313; }
+.pillar-num {
+  font-family: 'Bebas Neue', sans-serif; font-size: 56px;
+  color: #E30713; line-height: 1; margin-bottom: 14px;
+}
+.pillar h3 { font-size: 15px; font-weight: 700; color: #F0EDE6; margin-bottom: 10px; letter-spacing: 0.02em; }
+.pillar p { font-size: 14px; line-height: 1.7; color: rgba(240,237,230,0.5); }
+
+/* SELLING POINTS */
+.section-light { background: #F0EDE6; padding: 90px 5%; }
+.section-light .section-label { color: #E30713; }
+.section-light .section-label::before { background: #E30713; }
+.section-light .section-title { color: #0D0D0D; }
+
+.sp-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 60px;
+  background: rgba(13,13,13,0.1);
+}
+@media(max-width:900px){ .sp-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .sp-grid { grid-template-columns: 1fr; } }
+.sp-card {
+  background: #F0EDE6; padding: 40px 32px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+.sp-card:hover { border-color: #E30713; background: #fff; }
+.sp-q { font-size: 11px; font-weight: 700; color: rgba(13,13,13,0.38); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+.sp-card h3 { font-size: 17px; font-weight: 700; color: #0D0D0D; margin-bottom: 12px; line-height: 1.3; }
+.sp-card p { font-size: 14px; color: rgba(13,13,13,0.58); line-height: 1.7; }
+
+/* PRO CLIMBERS */
+.pros-section { background: #0a0a0a; padding: 90px 5%; }
+.pro-chips { display: flex; gap: 10px; margin-top: 36px; flex-wrap: wrap; }
+.pro-chip {
+  background: rgba(227,7,19,0.08); border: 1px solid rgba(227,7,19,0.28);
+  color: #F0EDE6; padding: 11px 22px;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+  transition: background 0.2s;
+}
+.pro-chip:hover { background: rgba(227,7,19,0.18); }
+.pros-body {
+  font-size: 17px; line-height: 1.75;
+  color: rgba(240,237,230,0.62); max-width: 620px; margin-top: 24px;
+}
+
+/* PRO CLIMBERS PHOTO GRID */
+.pro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+@media(max-width: 900px){ .pro-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width: 560px){ .pro-grid { grid-template-columns: 1fr; } }
+
+/* CATEGORIES */
+.cat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; margin-top: 60px;
+  background: rgba(240,237,230,0.07);
+}
+@media(max-width:900px){ .cat-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:480px){ .cat-grid { grid-template-columns: 1fr; } }
+.cat-card {
+  background: #0D0D0D; padding: 32px 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  border: 1px solid rgba(240,237,230,0.05);
+  transition: background 0.2s; cursor: pointer;
+}
+.cat-card:hover { background: #161616; }
+.cat-card h3 { font-size: 20px; font-weight: 700; color: #E30713; line-height: 1.3; }
+.cat-card p { font-size: 13px; color: rgba(240,237,230,0.48); line-height: 1.6; }
+.cat-arrow { font-size: 18px; color: #E30713; margin-top: auto; padding-top: 18px; font-weight: 700; }
+
+/* DESTINATIONS */
+.dest-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 2px; margin-top: 60px;
+}
+@media(max-width:900px){ .dest-grid { grid-template-columns: repeat(3,1fr); } }
+@media(max-width:480px){ .dest-grid { grid-template-columns: repeat(2,1fr); } }
+.dest-card {
+  background: #111; padding: 44px 20px;
+  text-align: center; border: 1px solid rgba(240,237,230,0.05);
+  transition: background 0.2s; cursor: pointer;
+}
+.dest-card:hover { background: #191919; }
+.dest-flag { font-size: 52px; margin-bottom: 16px; }
+.dest-card h3 { font-size: 18px; font-weight: 700; color: #E30713; margin-bottom: 8px; }
+.dest-card p { font-size: 13px; color: rgba(240,237,230,0.42); line-height: 1.55; }
+
+/* TESTIMONIALS */
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 60px;
+  background: rgba(240,237,230,0.06);
+}
+@media(max-width:900px){ .testi-grid { grid-template-columns: 1fr; } }
+.testi-card { background: #0D0D0D; padding: 40px 32px; }
+.testi-stars { color: #E30713; font-size: 14px; letter-spacing: 5px; margin-bottom: 18px; }
+.testi-q { font-size: 19px; font-weight: 700; color: #F0EDE6; line-height: 1.38; margin-bottom: 14px; font-style: italic; }
+.testi-body { font-size: 14px; color: rgba(240,237,230,0.52); line-height: 1.72; margin-bottom: 24px; }
+.testi-who { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #E30713; font-weight: 700; }
+
+/* MEET THE TEAM */
+.team-section { background: #111; padding: 90px 5%; }
+.team-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+@media(max-width: 768px){ .team-intro { grid-template-columns: 1fr; gap: 32px; } }
+.team-body { font-size: 16px; line-height: 1.78; color: rgba(240,237,230,0.62); }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-bottom: 48px;
+}
+@media(max-width: 900px){ .team-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width: 480px){ .team-grid { grid-template-columns: 1fr; } }
+
+.team-card {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+.team-card:hover .team-photo { transform: scale(1.04); }
+.team-card.team-founder { min-height: 440px; }
+
+.team-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  transition: transform 0.55s ease;
+}
+.team-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(13,13,13,0.97) 0%,
+    rgba(13,13,13,0.6) 45%,
+    rgba(13,13,13,0.08) 100%);
+}
+.team-info {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 28px 24px;
+}
+.team-role-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #E30713;
+  border: 1px solid rgba(227,7,19,0.35);
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+.team-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  color: #F0EDE6;
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+.team-card.team-founder .team-name { font-size: 32px; }
+.team-tagline {
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(240,237,230,0.52);
+}
+.team-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.team-social a {
+  width: 28px; height: 28px;
+  border: 1px solid rgba(240,237,230,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  color: rgba(240,237,230,0.45);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.team-social a:hover { border-color: #E30713; color: #E30713; }
+
+/* PLACEHOLDER CARDS — guides & local experts */
+.team-card-placeholder {
+  background: #141414;
+  border: 1px dashed rgba(240,237,230,0.1);
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 24px;
+}
+.team-placeholder-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+.team-placeholder-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.3);
+  margin-bottom: 8px;
+}
+.team-placeholder-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: rgba(240,237,230,0.4);
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+.team-placeholder-sub {
+  font-size: 12px;
+  color: rgba(240,237,230,0.25);
+  line-height: 1.55;
+}
+
+.team-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.team-stat-strip {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.team-stat .stat-num { font-size: 36px; }
+.team-stat .stat-label { font-size: 10px; color: rgba(240,237,230,0.4); }
+
+/* SOLO SECTION */
+.solo-section {
+  background: #F0EDE6; padding: 80px 5%;
+  display: flex; gap: 60px; align-items: center; flex-wrap: wrap;
+}
+.solo-text { flex: 1; min-width: 280px; }
+.solo-text .section-label { color: #E30713; }
+.solo-text .section-label::before { background: #E30713; }
+.solo-h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 72px); color: #0D0D0D; line-height: 0.92; margin-bottom: 20px; }
+.solo-text p { font-size: 16px; color: rgba(13,13,13,0.58); line-height: 1.75; }
+.solo-cta { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+.btn-dark { background: #0D0D0D; color: #F0EDE6; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; padding: 17px 36px; border: none; cursor: pointer; transition: background 0.2s; display: inline-block; text-align: center; }
+.btn-dark:hover { background: #222; }
+.btn-outline-dark { background: transparent; color: #0D0D0D; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 36px; border: 1.5px solid rgba(13,13,13,0.3); cursor: pointer; transition: border-color 0.2s; display: inline-block; text-align: center; }
+.btn-outline-dark:hover { border-color: #0D0D0D; }
+
+/* FAQ */
+.faq-section { padding: 90px 5%; background: #0a0a0a; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 60px; background: rgba(240,237,230,0.06); }
+@media(max-width:700px){ .faq-grid { grid-template-columns: 1fr; } }
+.faq-item { background: #0a0a0a; padding: 32px 28px; border-left: 2px solid transparent; transition: border-color 0.2s; }
+.faq-item:hover { border-color: #E30713; }
+.faq-q { font-size: 15px; font-weight: 700; color: #F0EDE6; margin-bottom: 10px; }
+.faq-a { font-size: 14px; color: rgba(240,237,230,0.5); line-height: 1.7; }
+
+/* FAQ on light background */
+.faq-section--light { background: #F0EDE6; }
+.faq-section--light .section-label { color: #E30713; }
+.faq-section--light .section-title { color: #0D0D0D; }
+.faq-section--light .faq-grid { background: rgba(13,13,13,0.07); }
+.faq-section--light .faq-item { background: #F0EDE6; }
+.faq-section--light .faq-q { color: #0D0D0D; }
+.faq-section--light .faq-a { color: rgba(13,13,13,0.55); }
+
+/* FINAL CTA */
+.final-cta { background: #E30713; padding: 100px 5%; text-align: center; }
+.final-cta h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 9vw, 120px); color: #0D0D0D; line-height: 0.87; margin-bottom: 22px; }
+.final-cta p { font-size: 18px; color: rgba(13,13,13,0.62); margin-bottom: 48px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+.final-cta .btn-dark { font-size: 14px; padding: 18px 44px; margin: 6px; }
+.final-cta .btn-outline-dark { font-size: 14px; padding: 17px 44px; margin: 6px; }
+
+/* PARTNERS */
+.partners-section { padding: 60px 5%; border-bottom: 1px solid rgba(240,237,230,0.07); }
+.partners-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,237,230,0.3); text-align: center; margin-bottom: 32px; }
+.partners-row { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; }
+.partner-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: rgba(240,237,230,0.2); letter-spacing: 0.12em; transition: color 0.2s; }
+.partner-name:hover { color: rgba(240,237,230,0.5); }
+
+/* FOOTER */
+.footer { background: #080808; padding: 72px 5% 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+@media(max-width:900px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px){ .footer-grid { grid-template-columns: 1fr; } }
+.footer-brand-logo { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: #F0EDE6; letter-spacing: 0.1em; display: block; margin-bottom: 16px; }
+.footer-brand p { font-size: 13px; color: rgba(240,237,230,0.36); line-height: 1.75; max-width: 260px; }
+.newsletter { display: flex; margin-top: 24px; }
+.newsletter input { background: rgba(240,237,230,0.05); border: 1px solid rgba(240,237,230,0.1); border-right: none; color: #F0EDE6; padding: 11px 16px; font-family: 'Inter', sans-serif; font-size: 13px; flex: 1; outline: none; }
+.newsletter input::placeholder { color: rgba(240,237,230,0.28); }
+.newsletter button { background: #E30713; border: none; color: #0D0D0D; padding: 11px 18px; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.footer-col h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E30713; font-weight: 700; margin-bottom: 20px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(240,237,230,0.4); margin-bottom: 12px; transition: color 0.2s; }
+.footer-col a:hover { color: #F0EDE6; }
+.footer-bottom { border-top: 1px solid rgba(240,237,230,0.07); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: rgba(240,237,230,0.22); }
+.footer-tagline { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: rgba(240,237,230,0.18); }
+
+/* PRO MARQUEE */
+.pro-marquee-wrap {
+  overflow: hidden;
+  margin-top: 28px;
+  border-top: 1px solid rgba(240,237,230,0.08);
+  padding-top: 18px;
+  max-width: 860px;
+}
+.pro-marquee {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: marquee 22s linear infinite;
+  width: max-content;
+}
+.pro-marquee span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.38);
+  padding: 0 4px;
+}
+.pro-marquee .marq-dot {
+  color: #E30713;
+  font-size: 14px;
+  letter-spacing: 0;
+  padding: 0 10px;
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* SOLO PILLS */
+.solo-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.solo-pill {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(240,237,230,0.65);
+  border: 1px solid rgba(240,237,230,0.14);
+  padding: 7px 14px;
+  background: rgba(240,237,230,0.04);
+}
+
+/* TRIP PRICE + URGENCY */
+.trip-price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.trip-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: #F0EDE6;
+  letter-spacing: 0.04em;
+}
+.trip-urgency {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+}
+.trip-urgency-urgent  { background: rgba(227,7,19,0.15);   color: #E30713; border: 1px solid rgba(227,7,19,0.3); }
+.trip-urgency-open    { background: rgba(62,207,178,0.12); color: #3ECFB2; border: 1px solid rgba(62,207,178,0.25); }
+.trip-urgency-lottery { background: rgba(240,237,230,0.07); color: rgba(240,237,230,0.55); border: 1px solid rgba(240,237,230,0.14); }
+
+/* TRIP FILTER — HERO INLINE */
+.hero-filter {
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  background: rgba(13,13,13,0.72);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(240,237,230,0.12);
+  max-width: 860px;
+}
+.filter-group {
+  flex: 1;
+  min-width: 160px;
+  border-right: 1px solid rgba(240,237,230,0.1);
+  position: relative;
+}
+.filter-group:last-child { border-right: none; }
+.filter-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #E30713;
+  padding: 20px 18px 0;
+  pointer-events: none;
+}
+.filter-select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #F0EDE6;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 18px 14px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+.filter-select option { background: #1a1a1a; color: #F0EDE6; }
+.filter-select:focus { background: rgba(227,7,19,0.06); }
+.filter-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-2px);
+  color: rgba(240,237,230,0.35);
+  font-size: 10px;
+  pointer-events: none;
+}
+.filter-date-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #F0EDE6;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 18px 14px;
+  cursor: pointer;
+  outline: none;
+  colorscheme: dark;
+}
+.filter-date-input::-webkit-calendar-picker-indicator { filter: invert(0.6); cursor: pointer; }
+.filter-btn {
+  background: #E30713;
+  border: none;
+  color: #0D0D0D;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 28px;
+  cursor: pointer;
+  min-width: 100px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.filter-btn:hover { background: #e8303d; }
+.filter-custom-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 1px solid rgba(240,237,230,0.12);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F0EDE6;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.filter-custom-link:hover { color: #E30713; }
+.filter-custom-link::after { content: "→"; color: #E30713; }
+
+/* STICKY FILTER BAR */
+.sticky-filter {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: rgba(13,13,13,0.96);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(240,237,230,0.08);
+  padding: 0 5%;
+  display: flex;
+  align-items: stretch;
+  transform: translateY(-200%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  pointer-events: none;
+}
+.sticky-filter.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.sticky-filter .filter-group {
+  background: transparent;
+  border-right: 1px solid rgba(240,237,230,0.07);
+  min-width: 140px;
+}
+.sticky-filter .hero-filter {
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  flex: 1;
+  max-width: none;
+  gap: 0;
+}
+.sticky-filter .filter-btn {
+  margin: 10px 0 10px 16px;
+  padding: 0 24px;
+  font-size: 11px;
+}
+.sticky-filter-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: rgba(240,237,230,0.35);
+  padding: 0 20px 0 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  border-right: 1px solid rgba(240,237,230,0.07);
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+/* MOBILE: hero padding — ensure heading clears the nav */
+@media(max-width: 480px) {
+  .hero {
+    padding-top: 120px;
+    justify-content: flex-end;
+  }
+  .hero h1 {
+    margin-top: 32px;
+  }
+}
+
+/* MOBILE: filter always visible, static, directly below stats bar */
+@media(max-width: 480px) {
+  .sticky-filter {
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: all !important;
+    padding: 0;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(240,237,230,0.08);
+  }
+  .sticky-filter-label {
+    display: none;
+  }
+  .sticky-filter .hero-filter {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .sticky-filter .filter-group {
+    flex: 1 1 50%;
+    min-width: 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(240,237,230,0.07);
+    box-sizing: border-box;
+  }
+  .sticky-filter .filter-group:nth-child(odd) {
+    border-right: 1px solid rgba(240,237,230,0.07);
+  }
+  .sticky-filter .filter-btn {
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+    font-size: 12px;
+  }
+  .filter-custom-link {
+    width: 100%;
+    margin: 0;
+    padding: 12px 14px;
+    border-left: none;
+    border-top: 1px solid rgba(240,237,230,0.07);
+    justify-content: center;
+  }
+}
+
+/* FILTER ACTIVE TAGS (results strip) */
+.active-filters {
+  display: none;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 5%;
+  background: rgba(227,7,19,0.06);
+  border-bottom: 1px solid rgba(227,7,19,0.15);
+  align-items: center;
+}
+.active-filters.has-filters { display: flex; }
+.filter-tag {
+  background: rgba(227,7,19,0.12);
+  border: 1px solid rgba(227,7,19,0.3);
+  color: #F0EDE6;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.filter-tag-x {
+  color: #E30713;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+.filter-tag-x:hover { color: #fff; }
+.active-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.4);
+  font-weight: 600;
+}
+.clear-all {
+  margin-left: auto;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E30713;
+  cursor: pointer;
+  font-weight: 600;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+}
+.clear-all:hover { color: #e8606a; }
+
+/* ROCKBUSTERS PICKS — FEATURED TRIPS */
+.trips-section { background: #0a0a0a; padding: 90px 5%; }
+.trips-label-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.trips-label-wrap .section-title { margin-bottom: 0; }
+.trips-view-all {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E30713;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(227,7,19,0.4);
+  transition: border-color 0.2s, gap 0.2s;
+}
+.trips-view-all:hover { border-color: #E30713; gap: 14px; }
+
+.trip-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+@media(max-width: 900px){ .trip-cards { grid-template-columns: repeat(2,1fr); } }
+@media(max-width: 560px){ .trip-cards { grid-template-columns: 1fr; } }
+
+.trip-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+}
+.trip-card:hover .trip-img { transform: scale(1.05); }
+.trip-card:hover .trip-overlay { background: linear-gradient(to top, rgba(13,13,13,0.98) 0%, rgba(13,13,13,0.75) 50%, rgba(13,13,13,0.2) 85%, rgba(13,13,13,0.1) 100%); }
+.trip-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+.trip-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.72) 38%, rgba(13,13,13,0.32) 65%, rgba(13,13,13,0.08) 100%);
+  transition: background 0.4s ease;
+}
+.trip-top {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  right: 28px;
+  z-index: 3;
+}
+.trip-content {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 32px 28px;
+}
+.trip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #E30713;
+  color: #0D0D0D;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  margin-bottom: 8px;
+}
+.trip-badge.badge-camp { background: #3ECFB2; color: #0D0D0D; }
+.trip-badge.badge-road { background: #E30713; }
+.trip-badge.badge-expedition { background: rgba(240,237,230,0.18); color: #F0EDE6; }
+.trip-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.trip-location {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.9);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.trip-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(240,237,230,0.4); }
+.trip-dates {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(240,237,230,0.8);
+  letter-spacing: 0.04em;
+}
+.trip-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  line-height: 0.95;
+  color: #F0EDE6;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+.trip-hook {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(240,237,230,0.62);
+  margin-bottom: 20px;
+}
+.trip-cta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #E30713;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s;
+}
+.trip-card:hover .trip-cta { gap: 14px; }
+
+/* LARGE FEATURED CARD (first card spanning 2 cols on desktop) */
+@media(min-width: 901px){
+  .trip-card.trip-featured {
+    grid-column: span 2;
+    min-height: 480px;
+  }
+  .trip-card.trip-featured .trip-name { font-size: 42px; }
+  .trip-card.trip-featured .trip-hook { font-size: 15px; max-width: 440px; }
+}
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* CENTER HELPER */
+.text-center { text-align: center; }
+.mt-40 { margin-top: 40px; }
+.mt-56 { margin-top: 56px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="nav-logo-img">
+  <div class="nav-links" id="navLinks">
+    <a href="#trips">Trips &amp; Clinics</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#team">The Crew</a>
+    <a href="#contact">Contact</a>
+    <a href="#blog">Blog</a>
+  </div>
+  <button class="nav-cta">Find Your Trip</button>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Climbers for climbers — Europe's finest crags</p>
+    <h1 class="display">
+      CLIMB<br>
+      <em>HARDER.</em><br>
+      CLIMB<br>
+      SMARTER.
+    </h1>
+    <p class="hero-sub">
+      We're not a travel company. We're a community of rock climbing guides, coaches, and lifers — obsessed with getting you stronger, sharper, and further than you thought possible.
+    </p>
+
+    <div class="btn-group">
+      <button class="btn-primary">Explore Trips & Courses</button>
+      <button class="btn-ghost">Find Your Level →</button>
+    </div>
+    <div class="trust-strip">
+      <span>★ <strong>Trusted</strong> by climbers in 40+ countries</span>
+      <span class="trust-dot">·</span>
+      <span>Elite coaches. Real progression. Zero fluff.</span>
+      <span class="trust-dot">·</span>
+      <span>Adam Ondra · Daila Ojeda · Hazel Findlay · Dave Graham</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">15+</span>
+    <span class="stat-label">Years on the rock</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3000+</span>
+    <span class="stat-label">Climbers coached</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">8</span>
+    <span class="stat-label">Countries & destinations</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">Pure climbing focus</span>
+  </div>
+</div>
+
+<!-- STICKY FILTER BAR -->
+<div class="sticky-filter" id="stickyFilter">
+  <span class="sticky-filter-label">Filter Trips</span>
+  <div class="hero-filter" style="max-width:none;border:none;background:transparent;backdrop-filter:none;">
+    <div class="filter-group">
+      <span class="filter-label">Type</span>
+      <select class="filter-select" id="sf-type" onchange="syncFilters('type',this.value)">
+        <option value="">All Types</option>
+        <option value="sport">Sport</option>
+        <option value="trad">Trad</option>
+        <option value="multipitch">Multi-Pitch</option>
+        <option value="bouldering">Bouldering</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Level</span>
+      <select class="filter-select" id="sf-level" onchange="syncFilters('level',this.value)">
+        <option value="">All Levels</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+        <option value="expert">Expert</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Destination</span>
+      <select class="filter-select" id="sf-dest" onchange="syncFilters('dest',this.value)">
+        <option value="">All Destinations</option>
+        <option value="spain">Spain</option>
+        <option value="france">France</option>
+        <option value="italy">Italy</option>
+        <option value="greece">Greece</option>
+        <option value="slovenia">Slovenia</option>
+        <option value="other">Other</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Dates</span>
+      <input type="month" class="filter-date-input" id="sf-date" onchange="syncFilters('date',this.value)">
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Guide / Coach</span>
+      <select class="filter-select" id="sf-guide" onchange="syncFilters('guide',this.value)">
+        <option value="">Any Guide</option>
+        <option value="guide">Guide</option>
+        <option value="coach">Coach</option>
+        <option value="guide-coach">Guide + Coach</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+    <div class="filter-group" style="border-right:none;">
+      <span class="filter-label">Duration</span>
+      <select class="filter-select" id="sf-duration" onchange="syncFilters('duration',this.value)">
+        <option value="">Any Duration</option>
+        <option value="weekend">Weekend (2–3 days)</option>
+        <option value="week">1 Week</option>
+        <option value="twoweeks">2 Weeks</option>
+        <option value="longer">2+ Weeks</option>
+      </select>
+      <span class="filter-arrow">▾</span>
+    </div>
+  </div>
+  <button class="filter-btn" onclick="applyFilters()">Search</button>
+  <a href="contact.html#custom-private-inquiry" class="filter-custom-link">Go Custom + Private</a>
+</div>
+
+<!-- ACTIVE FILTERS STRIP -->
+<div class="active-filters" id="activeFilters">
+  <span class="active-label">Filtered by:</span>
+  <div id="filterTags" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;"></div>
+  <button class="clear-all" onclick="clearAllFilters()">Clear all ✕</button>
+</div>
+
+
+<!-- WHO WE ARE -->
+<section class="section" id="about">
+  <div class="who-grid">
+    <div class="reveal">
+      <p class="section-label">Who we are</p>
+      <h2 class="section-title">NOT A TOUR COMPANY.<br>A CLIMBING COMMUNITY.</h2>
+    </div>
+    <div class="reveal">
+      <p class="section-body" style="margin-bottom:22px;">
+        Rockbusters is a community of guides, coaches, and passionate climbers who have made rock climbing our entire life. We don't guide on the side — this is <em>it</em> for us.
+      </p>
+      <p class="section-body">
+        Every trip and course we run is built around one thing: maximum quality and quantity of climbing. Technical mastery, mental game, movement efficiency — we coach it all, on the same crags where the world's best do their hardest routes.
+      </p>
+    </div>
+  </div>
+
+  <div class="pillars-grid">
+    <div class="pillar reveal">
+      <div class="pillar-num">01</div>
+      <h3>Maximum climbing time</h3>
+      <p>From dawn to dusk. Every day. No dead time, no filler excursions. Just rock, movement, and genuine progress.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">02</div>
+      <h3>Technical & mental coaching</h3>
+      <p>Individual video analysis, route reading, footwork, head game — coaching that actually moves the needle.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">03</div>
+      <h3>World-class coaches</h3>
+      <p>We work alongside some of the strongest climbers alive. Their knowledge is embedded in everything we do.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">04</div>
+      <h3>Ground logistics sorted</h3>
+      <p>Accommodation, guiding, coaching, equipment, beta, and local knowledge included. We connect you with others to share rental cars and handle the whole process — you just focus on climbing.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">05</div>
+      <h3>Insider area knowledge</h3>
+      <p>Secret crags, perfect projecting routes, local beta, local community. You get the real picture, not the tourist route.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">06</div>
+      <h3>Climbing is our lifestyle</h3>
+      <p>We present climbing as it truly is — a culture, an obsession, a way of being. Come live it with us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ROCKBUSTERS PICKS — FEATURED TRIPS -->
+<section class="trips-section" id="featured">
+  <div class="trips-label-wrap reveal">
+    <div>
+      <p class="section-label">Rockbusters Picks</p>
+      <h2 class="section-title">TRIPS &amp; COURSES<br>WORTH CLIMBING FOR</h2>
+    </div>
+    <a href="#trips" class="trips-view-all">View All Trips &amp; Courses →</a>
+  </div>
+
+  <div class="trip-cards">
+
+    <!-- CARD 1 — FEATURED WIDE -->
+    <div class="trip-card trip-featured reveal">
+      <div class="trip-img" style="background-image:url(''); background-position:center 35%; background-size:cover;"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Performance Camp</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 Rodellar, Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Jan 18 – Feb 1, 2025 · 14 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Rodellar<br>Performance Camp</h3>
+        <p class="trip-hook">Unlock your next grade in Europe's steepest limestone paradise. Intensive coaching, video analysis, and one-on-one sessions on world-class tufa routes. If you're ready to stop projecting and start sending — this is it.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,490</span>
+          <span class="trip-urgency trip-urgency-urgent">3 spots left</span>
+        </div>
+        <span class="trip-cta">Book This Trip →</span>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="trip-card reveal">
+      <div class="trip-img" style="background-image:url(''); background-position:center 25%; background-size:cover;"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-road">Road Trip</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇪🇸 Spain</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Dec 1 – Dec 28, 2024 · 4 weeks</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Spain Winter<br>Climbing Road Trip</h3>
+        <p class="trip-hook">4 weeks, multiple crags, pure progression. Siurana, Margalef, Rodellar — coaching ongoing every day.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €2,200</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">Book This Trip →</span>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="trip-card reveal">
+      <div class="trip-img" style="background-image:url(''); background-position:center 30%; background-size:cover;"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-expedition">Expedition</span>
+        <div class="trip-meta">
+          <span class="trip-location">🌍 Multi-Country</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Mar 10 – May 10, 2025 · 2 months</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Europe<br>Rock Trip</h3>
+        <p class="trip-hook">The ultimate 2-month climbing journey. Spain, France, Slovenia, Greece — the best crags, back to back.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €3,800</span>
+          <span class="trip-urgency trip-urgency-lottery">Lottery open</span>
+        </div>
+        <span class="trip-cta">Book This Trip →</span>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="trip-card reveal">
+      <div class="trip-img" style="background-image:url(''); background-position:70% 35%; background-size:cover;"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Technique Camp</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇸🇮 Osp, Slovenia</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Apr 5 – Apr 12, 2025 · 8 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Slovenia Movement<br>&amp; Technique Camp</h3>
+        <p class="trip-hook">Break your footwork plateau. Eight days of deliberate movement practice on Osp and Mišja Peč limestone.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €890</span>
+          <span class="trip-urgency trip-urgency-urgent">5 spots left</span>
+        </div>
+        <span class="trip-cta">Book This Trip →</span>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="trip-card reveal">
+      <div class="trip-img" style="background-image:url(''); background-position:center 30%; background-size:cover;"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-camp">Bouldering Camp</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇬🇷 Leonidio, Greece</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Oct 20 – Oct 30, 2024 · 10 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Greece Bouldering<br>Power Camp</h3>
+        <p class="trip-hook">Maximum power output, perfect conditions, world-class blocs. Coaching from dawn on the finest pockets in Greece.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,100</span>
+          <span class="trip-urgency trip-urgency-urgent">4 spots left</span>
+        </div>
+        <span class="trip-cta">Book This Trip →</span>
+      </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="trip-card reveal">
+      <div class="trip-img" style="background-image:url(''); background-position:center 40%; background-size:cover;"></div>
+      <div class="trip-overlay"></div>
+      <div class="trip-top">
+        <span class="trip-badge badge-road">Sport Holiday</span>
+        <div class="trip-meta">
+          <span class="trip-location">🇫🇷 Céüse, France</span>
+          <span class="trip-dot"></span>
+          <span class="trip-dates">Jul 12 – Jul 26, 2025 · 14 days</span>
+        </div>
+      </div>
+      <div class="trip-content">
+        <h3 class="trip-name">Céüse Summer<br>Climbing Holiday</h3>
+        <p class="trip-hook">France's most iconic sport crag. Perfect mid-summer conditions, professional guiding, and routes to push every level.</p>
+        <div class="trip-price-row">
+          <span class="trip-price">From €1,290</span>
+          <span class="trip-urgency trip-urgency-open">Open</span>
+        </div>
+        <span class="trip-cta">Book This Trip →</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SELLING POINTS -->
+<section class="section-light" id="why">
+  <p class="section-label">Why Rockbusters</p>
+  <h2 class="section-title">EVERY QUESTION<br>YOU'RE PROBABLY ASKING</h2>
+  <div class="sp-grid">
+    <div class="sp-card reveal">
+      <p class="sp-q">The progress problem</p>
+      <h3>Can't find time to improve? Can't stay disciplined?</h3>
+      <p>Total immersion fixes both. Intensive coaching, professional guides by your side all day, every day. Plateaus get smashed.</p>
+    </div>
+    <div class="sp-card reveal">
+      <p class="sp-q">The technique gap</p>
+      <h3>Want real coaching, not just guided mileage?</h3>
+      <p>Video analysis, one-on-one instruction, individual feedback. We coach movement, not just route lists.</p>
+    </div>
+    <div class="sp-card reveal">
+      <p class="sp-q">The habit question</p>
+      <h3>Want to build habits that stick after the trip?</h3>
+      <p>We teach you how to train, how to read routes, how to think like a climber. The gains come home with you.</p>
+    </div>
+    <div class="sp-card reveal">
+      <p class="sp-q">The logistics fear</p>
+      <h3>Seems like a big decision? It really isn't.</h3>
+      <p>Buy your flights. We help with all ground logistics — accommodation, guiding, coaching, equipment, local knowledge, and we connect you with fellow climbers to share rental cars. Simple.</p>
+    </div>
+    <div class="sp-card reveal">
+      <p class="sp-q">The solo traveller</p>
+      <h3>Coming alone? We match you with your climbing tribe.</h3>
+      <p>Our buddy system pairs solo climbers. You arrive alone, you leave with partners for life. Happens every trip.</p>
+    </div>
+    <div class="sp-card reveal">
+      <p class="sp-q">The beta advantage</p>
+      <h3>Want the routes no guidebook will ever show you?</h3>
+      <p>We know these crags obsessively. The hidden sectors, perfect-grade routes, the locals-only classics. That's your experience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRO CLIMBERS -->
+<section class="pros-section" id="pro-clinics">
+  <div class="reveal">
+    <p class="section-label">Pro climber workshops</p>
+    <h2 class="section-title">LEARN FROM THE<br>WORLD'S BEST</h2>
+    <p class="pros-body">
+      We bring elite climbers into our trips and camps — not for photos, but for real coaching. Workshops, sessions on the rock, Q&A, and time actually climbing alongside people operating at the sport's absolute ceiling.
+    </p>
+  </div>
+  <div class="pro-grid reveal">
+
+    <!-- ADAM ONDRA -->
+    <div class="team-card">
+      <div class="team-photo" style="background-image:url(''); background-position:center top; background-size:cover;"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Sport &amp; Trad · Czech</span>
+        <h3 class="team-name">Adam Ondra</h3>
+        <p class="team-tagline">First 9c ascent. 2× World Champion. The benchmark of what's possible on rock.</p>
+        <div class="team-social">
+          <a href="#" title="Instagram">ig</a>
+          <a href="#" title="YouTube">yt</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAILA OJEDA -->
+    <div class="team-card">
+      <div class="team-photo" style="background-image:url(''); background-position:center top; background-size:cover;"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Sport Climbing · Spain</span>
+        <h3 class="team-name">Daila Ojeda</h3>
+        <p class="team-tagline">Multiple 9a+ ascents. Spain's finest technical climber and a master coach on limestone.</p>
+        <div class="team-social">
+          <a href="#" title="Instagram">ig</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HAZEL FINDLAY -->
+    <div class="team-card">
+      <div class="team-photo" style="background-image:url(''); background-position:center top; background-size:cover;"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Trad &amp; Mental Training · UK</span>
+        <h3 class="team-name">Hazel Findlay</h3>
+        <p class="team-tagline">First British woman to climb E9. Mental performance coach and bold trad pioneer.</p>
+        <div class="team-social">
+          <a href="#" title="Instagram">ig</a>
+          <a href="#" title="Website">web</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="mt-40">
+    <button class="btn-primary">See Upcoming Clinics</button>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="section" id="trips">
+  <p class="section-label">Find your climbing path</p>
+  <h2 class="section-title">PICK YOUR<br>EXPERIENCE</h2>
+  <div class="cat-grid" id="courses">
+    <div class="cat-card reveal">
+      <h3>Climbing Road Trips & Expeditions</h3>
+      <p>Multi-week, multi-crag. Live, climb, improve non-stop.</p>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="cat-card reveal">
+      <h3>Sport Climbing Holidays</h3>
+      <p>High performance, sun, great routes, great people.</p>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="cat-card reveal">
+      <h3>Bouldering Camps</h3>
+      <p>Power, movement, problem-solving on world-class blocs.</p>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="cat-card reveal">
+      <h3>Performance & Technique Camps</h3>
+      <p>Break your plateau. Structured coaching and real feedback.</p>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="cat-card reveal">
+      <h3>Sport Climbing Courses</h3>
+      <p>Gym to rock. Lead, project, and perform outdoors.</p>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="cat-card reveal">
+      <h3>Trad & Multi-Pitch</h3>
+      <p>Bigger terrain. Real systems, real safety, real adventure.</p>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="cat-card reveal">
+      <h3>Private Coaching</h3>
+      <p>Fully personalized. Your goals, your timeline, your level.</p>
+      <span class="cat-arrow">→</span>
+    </div>
+    <div class="cat-card reveal">
+      <h3>Custom Trips</h3>
+      <p>Your crew. Your vision. Your ultimate climbing experience.</p>
+      <span class="cat-arrow">→</span>
+    </div>
+  </div>
+  <div class="text-center mt-40">
+    <button class="btn-ghost">Explore All Categories →</button>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="section" style="background:#0a0a0a;padding-top:72px;" id="destinations">
+  <p class="section-label reveal">Where we climb</p>
+  <h2 class="section-title reveal">EUROPE'S FINEST CRAGS.<br>WE KNOW EVERY ONE.</h2>
+  <div class="dest-grid">
+    <div class="dest-card reveal">
+      <div class="dest-flag">🇪🇸</div>
+      <h3>Spain</h3>
+      <p>Rodellar, Siurana, Margalef</p>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-flag">🇫🇷</div>
+      <h3>France</h3>
+      <p>Verdon, Céüse, Buoux</p>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-flag">🇮🇹</div>
+      <h3>Italy</h3>
+      <p>Arco, Finale, Dolomites</p>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-flag">🇬🇷</div>
+      <h3>Greece</h3>
+      <p>Leonidio, Kalymnos, Meteora</p>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-flag">🇸🇮</div>
+      <h3>Slovenia</h3>
+      <p>Osp, Mišja Peč, Istria</p>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-flag">🇩🇪</div>
+      <h3>Germany</h3>
+      <p>Frankenjura, Saxon Switzerland</p>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-flag">🇨🇿</div>
+      <h3>Czechia</h3>
+      <p>Labské Pískovce, Moravský Kras</p>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-flag">🇳🇴</div>
+      <h3>Norway</h3>
+      <p>Flatanger, Åndalsnes, Romsdal</p>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-flag">🇦🇹</div>
+      <h3>Austria</h3>
+      <p>Schleierwasserfall, Innsbruck</p>
+    </div>
+    <div class="dest-card reveal">
+      <div class="dest-flag">🌍</div>
+      <h3>& Beyond</h3>
+      <p>Morocco, Jordan, and more</p>
+    </div>
+  </div>
+  <div class="text-center mt-40">
+    <button class="btn-primary">Explore Destinations</button>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="padding-top:72px;">
+  <p class="section-label reveal">Real climbers. Real progress.</p>
+  <h2 class="section-title reveal">WHAT HAPPENS<br>WHEN YOU COME.</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"I broke into a new grade for the first time in years."</p>
+      <p class="testi-body">The coaching is nothing like anything I've experienced. They watch you climb, break down exactly what's holding you back, and fix it on the wall. Not in a classroom.</p>
+      <span class="testi-who">Marcus T. — Sport climbing camp, Rodellar</span>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"Came alone. Left with climbing partners for life."</p>
+      <p class="testi-body">The buddy matching actually works. The community energy on these trips is unlike anything else. And the volume of quality climbing you get in two weeks is genuinely insane.</p>
+      <span class="testi-who">Sarah K. — Spain road trip</span>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"I had no idea you could improve this much in one trip."</p>
+      <p class="testi-body">The mental game coaching alone was worth the whole thing. Suddenly routes I was afraid to commit to felt completely different. Everything changed after that week.</p>
+      <span class="testi-who">Tom R. — Performance camp, Siurana</span>
+    </div>
+  </div>
+  <div class="text-center mt-40">
+    <button class="btn-ghost">Read More Reviews →</button>
+  </div>
+</section>
+
+<!-- MEET THE TEAM -->
+<section class="team-section" id="team">
+
+  <div class="team-intro">
+    <div class="reveal">
+      <p class="section-label">The People Behind the Progression</p>
+      <h2 class="section-title">CLIMBERS.<br>COACHES.<br>MENTORS.</h2>
+    </div>
+    <div class="reveal">
+      <p class="team-body">Our team isn't just certified — they're active climbers, coaches, and passionate educators dedicated to your progression. We live and breathe this sport. You'll feel the difference on day one.</p>
+    </div>
+  </div>
+
+  <div class="team-grid">
+
+    <!-- JANY — FOUNDER -->
+    <div class="team-card team-founder reveal">
+      <div class="team-photo" style="background-image:url(''); background-position: center 20%;"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Founder &amp; Head Coach</span>
+        <h3 class="team-name">Jany Novotny</h3>
+        <p class="team-tagline">Performance specialist with 20+ years on rock across Europe. Has coached climbers from 5a to 8c+. Built Rockbusters to share what actually works.</p>
+        <div class="team-social">
+          <a href="#">in</a>
+          <a href="#">ig</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELITE INTERNATIONAL GUIDES -->
+    <div class="team-card reveal">
+      <div class="team-photo" style="background-image:url(''); background-position: center 30%;"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">International Guide</span>
+        <h3 class="team-name">Elite International<br>Guides</h3>
+        <p class="team-tagline">IFMGA-certified guides active at 8a+ level. Real climbers who coach the technical and mental game — not just route guides.</p>
+      </div>
+    </div>
+
+    <!-- PRO CLINICS COACHES -->
+    <div class="team-card reveal">
+      <div class="team-photo" style="background-image:url(''); background-position: center 25%;"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Pro Clinic Partners</span>
+        <h3 class="team-name">World-Class<br>Pro Climbers</h3>
+        <p class="team-tagline">Adam Ondra, Daila Ojeda, Hazel Findlay, Dave Graham and more — brought into camps for hands-on workshops and real coaching sessions.</p>
+      </div>
+    </div>
+
+    <!-- LOCAL EXPERTS -->
+    <div class="team-card reveal">
+      <div class="team-photo" style="background-image:url(''); background-position: center 20%;"></div>
+      <div class="team-gradient"></div>
+      <div class="team-info">
+        <span class="team-role-badge">Local Expert</span>
+        <h3 class="team-name">Local Experts at<br>Every Destination</h3>
+        <p class="team-tagline">Insiders at each crag who know the secret sectors, the right conditions, and the local climbing community — so you get the full picture.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STATS + CTA ROW -->
+  <div class="team-cta-row reveal">
+    <button class="btn-primary" style="flex-shrink:0;">Meet the Full Team →</button>
+    <div class="team-stat-strip">
+      <div class="team-stat">
+        <span class="stat-num" style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#F0EDE6;display:block;line-height:1;">12+</span>
+        <span class="stat-label" style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,237,230,0.38);">Active coaches &amp; guides</span>
+      </div>
+      <div class="team-stat">
+        <span class="stat-num" style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#F0EDE6;display:block;line-height:1;">8+</span>
+        <span class="stat-label" style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,237,230,0.38);">Countries represented</span>
+      </div>
+      <div class="team-stat">
+        <span class="stat-num" style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#E30713;display:block;line-height:1;">100%</span>
+        <span class="stat-label" style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,237,230,0.38);">Active climbers themselves</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- FAQ -->
+<section class="faq-section faq-section--light">
+  <p class="section-label reveal">Quick answers</p>
+  <h2 class="section-title reveal">FAQ</h2>
+  <div class="faq-grid">
+    <div class="faq-item reveal">
+      <p class="faq-q">Do I need outdoor climbing experience?</p>
+      <p class="faq-a">Not necessarily. We run trips and courses for all levels, from first-time outdoor climbers to those pushing 8c+. We'll match you to the right experience.</p>
+    </div>
+    <div class="faq-item reveal">
+      <p class="faq-q">What level do I need to be?</p>
+      <p class="faq-a">From complete beginners to advanced sport climbers. Tell us where you are and we build the experience around your current level and goals.</p>
+    </div>
+    <div class="faq-item reveal">
+      <p class="faq-q">What's included in trips?</p>
+      <p class="faq-a">Accommodation, professional guiding and coaching, equipment, area beta, and local knowledge. For local transport we connect you with fellow climbers to share rental cars and help organise the whole process. You cover flights, food, and personal expenses.</p>
+    </div>
+    <div class="faq-item reveal">
+      <p class="faq-q">How big are groups?</p>
+      <p class="faq-a">We keep groups small — typically 6 to 10 people maximum — so every climber gets genuine individual attention and coaching time.</p>
+    </div>
+    <div class="faq-item reveal">
+      <p class="faq-q">Can I come as a solo traveller?</p>
+      <p class="faq-a">Absolutely. Most of our climbers travel solo. We pair you with compatible partners from day one — it's one of the things we're known for.</p>
+    </div>
+    <div class="faq-item reveal">
+      <p class="faq-q">Is coaching included on every trip?</p>
+      <p class="faq-a">Yes. Professional coaching and guiding is ongoing throughout every Rockbusters trip, camp, and course — not just on dedicated coaching days.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners-section">
+  <p class="partners-label">Trusted by the best brands in climbing</p>
+  <div class="partners-row">
+    <span class="partner-name">Singing Rock</span>
+    <span class="partner-name">Evolv</span>
+    <span class="partner-name">Rafiki</span>
+    <span class="partner-name">La Sportiva</span>
+    <span class="partner-name">Black Diamond</span>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2 class="display">YOUR NEXT LEVEL<br>STARTS NOW.</h2>
+  <p>Stop climbing the same way. Stop waiting for the right time. Every week you wait is a week someone else is on the rock getting stronger.</p>
+  <div>
+    <button class="btn-dark">Find Your Trip</button>
+    <button class="btn-outline-dark">Talk to the Team</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <!-- IMG STRIPPED --><img src="" alt="Rockbusters" class="footer-logo-img">
+      <p>A community of climbing coaches and guides dedicated to maximum progression on real rock across Europe's greatest crags. Climbers. Coaches. Lifers.</p>
+      <form class="newsletter" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h4>Trips</h4>
+      <a href="#">Road Trips</a>
+      <a href="#">Sport Holidays</a>
+      <a href="#">Bouldering Camps</a>
+      <a href="#">Custom Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Coaching</h4>
+      <a href="#">Performance Camps</a>
+      <a href="#">Private Coaching</a>
+      <a href="#">Pro Clinics</a>
+      <a href="#">Video Analysis</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" id="team">Meet the Team</a>
+      <a href="#">Destinations</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Rockbusters. All rights reserved.</p>
+    <span class="footer-tagline">Climbers. Coaches. Lifers.</span>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var img = new Image();
+  img.onload = function() {
+    var bg = document.getElementById('heroBg');
+    bg.style.backgroundImage = 'url(' + img.src + ')';
+    setTimeout(function(){ bg.classList.add('loaded'); }, 100);
+  };
+  img.src = '';
+})();
+
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  var sticky = document.getElementById('stickyFilter');
+  var hero = document.querySelector('.hero');
+
+  // Nav blur on scroll
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+
+  // Sticky filter: desktop popup in sync with nav's scrolled state; skip on mobile (always visible)
+  if (window.innerWidth > 480) {
+    if (window.scrollY > 60) {
+      sticky.classList.add('visible');
+    } else {
+      sticky.classList.remove('visible');
+    }
+  }
+});
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(function(el) {
+  observer.observe(el);
+});
+
+function toggleMenu() {
+  var links = document.getElementById('navLinks');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+}
+</script>
+</body>
+</html>

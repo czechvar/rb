@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The ultimate guide to sport climbing in Oltre Finale, Liguria, Italy — 1,200+ bolted limestone routes across six valleys, sector guides, accommodation, travel tips and Rockbusters trips.">
+<title>Sport Climbing in Oltre Finale, Italy — The Ultimate Rockbusters Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   ROCKBUSTERS DESIGN SYSTEM
+   Brand red: #E30713  |  Dark bg: #0D0D0D  |  Off-white: #F0EDE6
+   Display font: Bebas Neue  |  Body font: Inter
+   ============================================================ */
+:root {
+  --red:       #E30713;
+  --red-hover: #c0050f;
+  --red-dim:   rgba(227,7,19,0.08);
+  --red-border:rgba(227,7,19,0.28);
+  --black:     #0D0D0D;
+  --dark:      #111111;
+  --darker:    #0a0a0a;
+  --card-bg:   #161616;
+  --chalk:     #F0EDE6;
+  --chalk-60:  rgba(240,237,230,0.60);
+  --chalk-45:  rgba(240,237,230,0.45);
+  --chalk-30:  rgba(240,237,230,0.30);
+  --chalk-12:  rgba(240,237,230,0.12);
+  --chalk-08:  rgba(240,237,230,0.08);
+  --chalk-04:  rgba(240,237,230,0.04);
+  --stone:     #8B7355;
+  --steel:     #5B9BD5;
+  --section-pad: 90px 5vw;
+  --fs-eyebrow: 11px;
+  --fs-body-sm: 13px;
+  --fs-body:    15px;
+  --fs-body-lg: 17px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--chalk);overflow-x:hidden;line-height:1.6;font-size:15px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  padding:22px 5vw;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:200;
+  background:linear-gradient(to bottom,rgba(13,13,13,0.85) 0%,transparent 100%);
+  backdrop-filter:blur(0px);
+  transition:background 0.3s,backdrop-filter 0.3s;
+}
+.nav.scrolled{
+  background:rgba(13,13,13,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(240,237,230,0.08);
+}
+.nav-logo-img{height:32px;width:auto;display:block;filter:brightness(1);transition:opacity 0.2s;}
+.nav-logo-img:hover{opacity:0.85;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#F0EDE6;font-weight:600;transition:color 0.2s;}
+.nav-links a:hover{color:var(--red);}
+.nav-cta{
+  background:var(--red);color:var(--black);
+  font-family:'Inter',sans-serif;font-weight:700;font-size:12px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:11px 22px;border:none;cursor:pointer;
+  transition:background 0.2s;
+}
+.nav-cta:hover{background:#e8303d;}
+
+/* BREADCRUMB */
+.bc{
+  padding:60px 5vw 0;
+  font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--chalk);font-family:'Inter',sans-serif;font-weight:500;
+}
+.bc a{color:var(--chalk);transition:color 0.15s}
+.bc a:hover{color:var(--red)}
+.bc span{margin:0 8px;color:var(--chalk-60)}
+
+/* HERO — full bleed photography */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 0 7%;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center 25%;
+  background-repeat:no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(13,13,13,0.05) 0%,
+    rgba(13,13,13,0.05) 25%,
+    rgba(13,13,13,0.55) 60%,
+    rgba(13,13,13,0.95) 100%
+  );
+}
+.hero-content{position:relative;z-index:2;width:100%;padding:0 5vw}
+.hero-layout{display:flex;align-items:flex-end;gap:3rem;width:100%}
+.hero-text-col{flex:1;min-width:0}
+.hero-eyebrow{
+  font-size:13px;letter-spacing:0.22em;color:var(--red);
+  text-transform:uppercase;margin-bottom:20px;font-weight:700;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--red)}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(72px,11vw,140px);
+  line-height:0.88;
+  margin-bottom:24px;color:var(--chalk);
+  letter-spacing:0.02em;
+}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero-sub{
+  font-size:clamp(16px,2vw,19px);
+  line-height:1.68;max-width:520px;
+  color:rgba(240,237,230,0.78);margin-bottom:32px;
+}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.badge{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;font-weight:700;}
+.badge-red{background:var(--red);color:var(--black)}
+.badge-outline{background:transparent;color:var(--chalk-60);border:1px solid var(--chalk-30)}
+.btn-group{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  background:var(--red);color:var(--black);
+  font-family:'Inter',sans-serif;font-weight:700;font-size:13px;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:17px 36px;transition:background 0.2s;display:inline-block;
+}
+.btn-primary:hover{background:#e8303d;color:var(--black)}
+.btn-ghost{
+  background:transparent;color:var(--chalk);
+  font-family:'Inter',sans-serif;font-weight:500;font-size:13px;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:16px 36px;border:1.5px solid rgba(240,237,230,0.35);
+  transition:border-color 0.2s;display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--chalk)}
+
+/* HERO STAT CARD */
+.hero-card{flex-shrink:0;width:240px;background:rgba(13,13,13,0.52);border:1px solid rgba(240,237,230,0.12);backdrop-filter:blur(14px);padding:28px 22px;}
+.hero-card-stat{display:flex;flex-direction:column;gap:16px}
+.hstat{padding-bottom:16px;border-bottom:1px solid var(--chalk-08)}
+.hstat:last-child{padding-bottom:0;border-bottom:none}
+.hstat-n{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--chalk);letter-spacing:0.04em;display:block;line-height:1;}
+.hstat-l{font-size:11px;letter-spacing:0.13em;text-transform:uppercase;color:var(--red);margin-top:4px;display:block;font-weight:600;}
+
+/* STATS BAR */
+.stats-bar{background:var(--red);display:flex;justify-content:space-around;padding:30px 5vw;gap:16px;flex-wrap:wrap;}
+.stat-item{text-align:center}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:#F0EDE6;line-height:1;display:block}
+.stat-label{font-size:11px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(240,237,230,0.7);font-weight:600;display:block;margin-top:4px}
+
+/* TOC NAV */
+.toc{
+  background:rgba(13,13,13,0.96);
+  border-bottom:1px solid var(--chalk-08);
+  position:sticky;top:0;z-index:190;
+  overflow-x:auto;
+  backdrop-filter:blur(14px);
+}
+.toc-inner{
+  width:100%;padding:0 5vw;
+  display:flex;
+}
+.tl{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,237,230,0.55);padding:14px 16px;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.15s;font-weight:600;}
+.tl:hover{color:var(--red);border-bottom-color:var(--red)}
+
+/* MAIN LAYOUT */
+.pw{width:100%;padding:0 5vw}
+.cg{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:48px 0}
+
+/* SECTION COMMON */
+.sec{margin-bottom:72px;scroll-margin-top:120px}
+.sec-ey{
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:14px;font-weight:700;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-ey::before{content:'';display:inline-block;width:20px;height:1px;background:var(--red)}
+.sec-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(42px,6vw,80px);
+  color:var(--chalk);line-height:0.92;margin-bottom:24px;
+  letter-spacing:0.02em;
+}
+.sec-h span{color:var(--red)}
+.sec-divider{width:100%;height:1px;background:rgba(240,237,230,0.08);margin-bottom:32px}
+
+/* PROSE */
+.prose p{color:rgba(240,237,230,0.65);margin-bottom:14px;line-height:1.78;font-size:16px}
+.prose h3{
+  font-family:'Bebas Neue',sans-serif;font-size:24px;
+  letter-spacing:0.04em;color:var(--chalk);margin:28px 0 10px;
+}
+.prose h4{
+  font-size:11px;font-weight:700;color:var(--chalk-45);
+  margin:18px 0 6px;text-transform:uppercase;letter-spacing:0.07em;
+}
+.prose ul{margin:8px 0 14px 20px;color:var(--chalk-60);font-size:14px}
+.prose ul li{margin-bottom:7px;line-height:1.65}
+.prose ol{margin:8px 0 14px 20px;color:var(--chalk-60);font-size:14px}
+.prose ol li{margin-bottom:7px;line-height:1.65}
+.prose strong{color:var(--chalk);font-weight:600}
+.prose a{color:var(--red)}
+.prose a:hover{text-decoration:underline}
+
+/* INFO GRID */
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.sg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0}
+.sc{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:14px 16px;
+}
+.sc-l{font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--chalk-45);margin-bottom:4px;font-weight:600}
+.sc-v{font-size:14px;font-weight:600;color:var(--chalk)}
+.sc-s{font-size:11px;color:var(--chalk-45);margin-top:2px}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tag{
+  background:var(--chalk-04);border:1px solid var(--chalk-08);
+  padding:5px 12px;font-size:12px;color:var(--chalk-60);
+}
+
+/* SEASON BAR */
+.seas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0}
+.sea{text-align:center}
+.sea-n{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);margin-bottom:8px;font-weight:600}
+.sea-b{height:5px;margin-bottom:8px}
+.s-pk{background:var(--red)}
+.s-gd{background:var(--stone)}
+.s-ok{background:var(--chalk-30)}
+.s-av{background:var(--chalk-08)}
+.sea-l{font-size:11px;font-weight:600}
+.lbl-pk{color:var(--red)}
+.lbl-gd{color:var(--stone)}
+.lbl-ok{color:var(--chalk-45)}
+.lbl-av{color:var(--chalk-30)}
+
+/* MONTH TABLE */
+.month-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.month-table th{
+  font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);
+  padding:10px 12px;border-bottom:1px solid var(--chalk-08);text-align:left;font-weight:600;
+}
+.month-table td{padding:9px 12px;border-bottom:1px solid var(--chalk-04);color:var(--chalk-60)}
+.month-table tr:last-child td{border-bottom:none}
+.month-table tr:hover td{background:var(--chalk-04)}
+.cond-peak{color:var(--red);font-weight:700}
+.cond-excel{color:#4CAF50;font-weight:700}
+.cond-good{color:var(--stone);font-weight:700}
+.cond-warm{color:#FF9800;font-weight:700}
+.cond-cold{color:var(--steel);font-weight:700}
+
+/* GRADE ROWS */
+.grade-row{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:16px 0;border-bottom:1px solid var(--chalk-04);
+}
+.grade-row:last-child{border-bottom:none}
+.grade-pill{
+  font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--black);
+  background:var(--red);padding:4px 14px;flex-shrink:0;
+  letter-spacing:0.04em;white-space:nowrap;
+}
+.grade-content{flex:1}
+.grade-title{font-size:13px;font-weight:700;color:var(--chalk);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.05em}
+.grade-routes{font-size:13px;color:var(--chalk-60);line-height:1.68}
+.grade-routes strong{color:var(--chalk)}
+
+/* SECTOR CARDS */
+.sector-card{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:20px;margin-bottom:12px;
+  transition:border-color 0.2s;
+}
+.sector-card:hover{border-color:var(--chalk-30)}
+.sector-name{
+  font-family:'Bebas Neue',sans-serif;font-size:26px;
+  color:var(--chalk);letter-spacing:0.04em;margin-bottom:8px;
+}
+.sector-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.sector-badge{
+  font-size:9px;text-transform:uppercase;letter-spacing:0.06em;
+  padding:3px 9px;background:var(--chalk-04);color:var(--chalk-45);
+  border:1px solid var(--chalk-08);font-weight:600;
+}
+.sector-desc{font-size:13px;color:var(--chalk-60);line-height:1.65}
+
+/* WHO GRID */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.who-card{background:var(--card-bg);border:1px solid var(--chalk-08);padding:16px}
+.who-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:6px;}
+.who-desc{font-size:13px;color:var(--chalk-60);line-height:1.65}
+.who-verdict{
+  display:inline-block;margin-top:10px;
+  font-size:9px;text-transform:uppercase;letter-spacing:0.07em;
+  padding:3px 9px;font-weight:700;
+}
+.v-great{background:rgba(227,7,19,0.15);color:var(--red)}
+.v-yes{background:rgba(76,175,80,0.12);color:#4CAF50}
+.v-ok{background:rgba(255,152,0,0.12);color:#FF9800}
+.v-no{background:var(--chalk-04);color:var(--chalk-45)}
+
+/* ACCOMMODATION */
+.accom-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.accom-card{background:var(--card-bg);border:1px solid var(--chalk-08);padding:18px}
+.accom-type{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:6px;font-weight:600}
+.accom-name{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:5px}
+.accom-desc{font-size:13px;color:var(--chalk-60);line-height:1.65;margin-bottom:12px}
+.accom-link{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.06em;text-transform:uppercase}
+.accom-link:hover{text-decoration:underline}
+.accom-price{font-size:9px;text-transform:uppercase;letter-spacing:0.06em;color:var(--chalk-45);margin-top:8px;font-weight:600}
+
+/* SECRETS / REST DAY GRID */
+.secrets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.secret-card{
+  background:var(--card-bg);border:1px solid var(--chalk-08);
+  padding:16px;text-align:center;
+}
+.secret-label{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:6px}
+.secret-value{font-size:13px;color:var(--chalk-60);line-height:1.65}
+
+/* TRIP BLOCKS */
+.trip-block{background:#111;padding:36px 28px;margin-top:24px;border:1px solid rgba(240,237,230,0.06);}
+.trip-block:hover{border-color:var(--chalk-30)}
+.trip-type{font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--red);margin-bottom:8px;font-weight:700}
+.trip-name{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:0.95;color:var(--chalk);margin:10px 0;letter-spacing:0.03em;}
+.trip-desc{font-size:13px;color:var(--chalk-60);line-height:1.65;margin-bottom:16px}
+
+/* COST TABLE */
+.cost-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.cost-table th{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);padding:10px 12px;border-bottom:1px solid var(--chalk-08);text-align:left;font-weight:600}
+.cost-table td{padding:9px 12px;border-bottom:1px solid var(--chalk-04);color:var(--chalk-60)}
+.cost-table tr:last-child td{border-bottom:none}
+.cost-table .total{font-weight:700;color:var(--chalk)}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--chalk-08);padding:18px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:15px;font-weight:700;color:var(--chalk);cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.faq-arrow{font-size:20px;color:var(--red);flex-shrink:0;transition:transform 0.2s}
+.faq-a{font-size:14px;color:rgba(240,237,230,0.5);line-height:1.7;display:none;padding-top:10px;}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+.faq-item.open .faq-a{display:block}
+.faq-a a{color:var(--red)}
+
+/* RELATED DESTINATIONS */
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.rel-card{background:#111;padding:36px 24px;border:1px solid rgba(240,237,230,0.05);transition:background 0.2s;display:flex;flex-direction:column;gap:6px;}
+.rel-card:hover{border-color:var(--red)}
+.rel-country{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--chalk-45);margin-bottom:6px;font-weight:600}
+.rel-name{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--red);letter-spacing:0.03em;}
+.rel-type{font-size:13px;color:var(--chalk-60)}
+
+/* SAFETY GRID */
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.safety-card{background:var(--card-bg);border:1px solid var(--chalk-08);padding:16px}
+.safety-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:6px}
+.safety-val{font-size:13px;color:var(--chalk-60);line-height:1.65}
+
+/* SIDEBAR */
+.ctaw{
+  background:linear-gradient(135deg,#1a0303,#0D0D0D);
+  border:1px solid var(--red-border);
+  padding:22px;position:relative;overflow:hidden;margin-bottom:24px;
+}
+.ctaw-ey{font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--red);margin-bottom:8px;font-weight:700}
+.ctaw-h{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--chalk);letter-spacing:0.04em;margin-bottom:8px;line-height:0.95}
+.ctaw-p{font-size:13px;color:var(--chalk-60);margin-bottom:16px;line-height:1.65}
+.ctaw-btn{
+  display:block;background:var(--red);color:var(--black);text-align:center;
+  padding:11px 16px;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;
+  transition:background 0.2s;
+}
+.ctaw-btn:hover{background:var(--red-hover);color:var(--black)}
+.ctaw-btn2{
+  display:block;background:transparent;color:var(--chalk-60);text-align:center;
+  padding:11px 16px;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.08em;
+  border:1px solid var(--chalk-12);transition:border-color 0.2s;
+}
+.ctaw-btn2:hover{border-color:var(--chalk-30);color:var(--chalk)}
+.sw{background:var(--card-bg);border:1px solid var(--chalk-08);padding:18px;margin-bottom:16px}
+.sw-t{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:20px;}
+.sr{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--chalk-04);font-size:13px}
+.sr:last-child{border-bottom:none;padding-bottom:0}
+.sr-l{color:var(--chalk-45);font-size:9px;text-transform:uppercase;letter-spacing:0.07em;flex-shrink:0;margin-right:10px;font-weight:600;padding-top:1px}
+.sr-v{color:var(--chalk);font-weight:500;text-align:right;font-size:13px}
+.sr-v a{color:var(--red)}
+.evl{list-style:none}
+.evl li{padding:8px 0;border-bottom:1px solid var(--chalk-04);font-size:13px;color:var(--chalk-60)}
+.evl li:last-child{border-bottom:none}
+.evl a{color:var(--red)}
+.evl a:hover{text-decoration:underline}
+
+/* FINAL CTA */
+.final-cta{
+  background:var(--red);
+  padding:64px 5%;text-align:center;position:relative;overflow:hidden;
+  margin-top:12px;
+}
+.final-cta-ey{font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(13,13,13,0.55);margin-bottom:12px;font-weight:600}
+.final-cta-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,9vw,120px);color:var(--black);line-height:0.87;margin-bottom:22px;}
+.final-cta-p{font-size:15px;color:rgba(13,13,13,0.65);margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.65}
+.final-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
+.btn-dark{background:#0D0D0D;color:#F0EDE6;font-family:'Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;padding:17px 36px;border:none;cursor:pointer;transition:background 0.2s;display:inline-block;text-align:center;}
+.btn-dark:hover{background:#1a1a1a;color:var(--chalk)}
+.btn-outline-dark{background:transparent;color:#0D0D0D;font-family:'Inter',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;padding:16px 36px;border:1.5px solid rgba(13,13,13,0.3);cursor:pointer;transition:border-color 0.2s;display:inline-block;text-align:center;}
+.btn-outline-dark:hover{border-color:var(--black)}
+
+/* PHOTO GALLERY */
+.photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.photo-strip-item{aspect-ratio:3/4;overflow:hidden;}
+.photo-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+.photo-strip-item:hover img{transform:scale(1.04)}
+.photo-strip-item.wide{grid-column:span 2;aspect-ratio:16/9}
+
+/* IMAGE SPLIT */
+.img-split{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:24px 0}
+.img-split img{width:100%;height:340px;object-fit:cover}
+
+/* FOOTER */
+.footer { background: #080808; padding: 72px 5vw 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+@media(max-width:900px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px){ .footer-grid { grid-template-columns: 1fr; } }
+.footer-logo-img { height: 36px; width: auto; display: block; margin-bottom: 16px; filter: brightness(1); }
+.footer-brand p { font-size: 13px; color: rgba(240,237,230,0.36); line-height: 1.75; max-width: 260px; }
+.newsletter { display: flex; margin-top: 24px; }
+.newsletter input { background: rgba(240,237,230,0.05); border: 1px solid rgba(240,237,230,0.1); border-right: none; color: #F0EDE6; padding: 11px 16px; font-family: 'Inter', sans-serif; font-size: 13px; flex: 1; outline: none; }
+.newsletter input::placeholder { color: rgba(240,237,230,0.28); }
+.newsletter button { background: #E30713; border: none; color: #0D0D0D; padding: 11px 18px; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.footer-col h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E30713; font-weight: 700; margin-bottom: 20px; font-family: 'Inter', sans-serif; }
+.footer-col a { display: block; font-size: 13px; color: rgba(240,237,230,0.4); margin-bottom: 12px; transition: color 0.2s; }
+.footer-col a:hover { color: #F0EDE6; }
+.footer-bottom { border-top: 1px solid rgba(240,237,230,0.07); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: rgba(240,237,230,0.22); }
+.footer-tagline { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.14em; color: rgba(240,237,230,0.18); }
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .cg{grid-template-columns:1fr;}
+  aside{order:2}
+  main{order:1}
+}
+@media(max-width:768px){
+  .hero-layout{flex-direction:column;gap:2rem}
+  .hero-card{flex-shrink:0;width:240px;background:rgba(13,13,13,0.52);border:1px solid rgba(240,237,230,0.12);backdrop-filter:blur(14px);padding:28px 22px;}
+  .hero h1{font-size:72px}
+  .nav-links,.nav-cta{display:none}
+  .sg,.accom-grid,.who-grid,.related-grid,.secrets-grid,.safety-grid{grid-template-columns:1fr}
+  .sg3{grid-template-columns:1fr 1fr}
+  .photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .photo-strip-item.wide{grid-column:span 1;aspect-ratio:3/4}
+  .img-split{grid-template-columns:1fr}
+  .img-split img{height:240px}
+  .stats-bar{background:var(--red);display:flex;justify-content:space-around;padding:30px 5vw;gap:16px;flex-wrap:wrap;}
+  .toc-inner{padding:0 4%}
+  .final-cta-p{font-size:13px}
+  .related-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .sg3,.related-grid{grid-template-columns:1fr}
+  .secrets-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="https://rockbusters.net" style="display:flex;align-items:center;"><span style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:#F0EDE6;">ROCK<span style="color:var(--red)">BUSTERS</span></span></a>
+  <ul class="nav-links">
+    <li><a href="https://rockbusters.net/event-date/">Trips &amp; Clinics</a></li>
+    <li><a href="https://rockbusters.net/location/">Destinations</a></li>
+    <li><a href="https://rockbusters.net/team-member/">The Crew</a></li>
+    <li><a href="https://rockbusters.net/contact/">Contact</a></li>
+    <li><a href="https://rockbusters.net/blog/">Blog</a></li>
+  </ul>
+  <a class="nav-cta" href="https://rockbusters.net/event-date/">Find Your Trip</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="bc" style="padding:0;margin-bottom:20px">
+      <a href="https://rockbusters.net">Rockbusters</a><span>›</span>
+      <a href="https://rockbusters.net/location/">Destinations</a><span>›</span>
+      <a href="#">Italy</a><span>›</span>Oltre Finale
+    </div>
+    <div class="hero-layout">
+      <div class="hero-text-col">
+        <div class="hero-eyebrow">Italy · Liguria · Savona Province</div>
+        <h1>Oltre Fin<em>ale</em></h1>
+        <p class="hero-sub">Six quiet valleys behind Italy's most famous crag — 1,200+ bolted limestone routes on pockets, crimps and tufas, without the crowds of Finale Ligure itself. The only guide you need.</p>
+        <div class="badges">
+          <span class="badge badge-red">Italy</span>
+          <span class="badge badge-outline">Limestone</span>
+          <span class="badge badge-outline">Sport Climbing</span>
+          <span class="badge badge-outline">4a–8c+</span>
+          <span class="badge badge-outline">Family Friendly ✓</span>
+          <span class="badge badge-outline">Dog Friendly ✓</span>
+          <span class="badge badge-outline">Camping ✓</span>
+        </div>
+        <div class="btn-group">
+          <a class="btn-primary" href="https://rockbusters.net/event-date/">View Upcoming Trips</a>
+          <a class="btn-ghost" href="#intro">Explore the Destination</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-stat">
+          <div class="hstat">
+            <span class="hstat-n">1,200+</span>
+            <span class="hstat-l">Routes</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">4a–8c+</span>
+            <span class="hstat-l">Grade Range</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">80+</span>
+            <span class="hstat-l">Crags</span>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">Sep–May</span>
+            <span class="hstat-l">Best Season</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">1,200+</span><span class="stat-label">Routes</span></div>
+  <div class="stat-item"><span class="stat-num">80+</span><span class="stat-label">Crags</span></div>
+  <div class="stat-item"><span class="stat-num">450m</span><span class="stat-label">Altitude</span></div>
+  <div class="stat-item"><span class="stat-num">1h</span><span class="stat-label">From Genoa Airport</span></div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a class="tl" href="#intro">Introduction</a>
+    <a class="tl" href="#history">History</a>
+    <a class="tl" href="#rock">Rock &amp; Style</a>
+    <a class="tl" href="#who">Who Is It For</a>
+    <a class="tl" href="#grades">Grades &amp; Sectors</a>
+    <a class="tl" href="#season">Best Season</a>
+    <a class="tl" href="#gear">Gear</a>
+    <a class="tl" href="#transport">Getting There</a>
+    <a class="tl" href="#stay">Stay &amp; Eat</a>
+    <a class="tl" href="#restdays">Rest Days</a>
+    <a class="tl" href="#tips">Tips &amp; Ethics</a>
+    <a class="tl" href="#safety">Safety</a>
+    <a class="tl" href="#costs">Costs</a>
+    <a class="tl" href="#faq">FAQ</a>
+    <a class="tl" href="#trips">Rockbusters Trips</a>
+  </div>
+</nav>
+
+<!-- PHOTO GALLERY 1 -->
+<div class="photo-strip" style="margin:0">
+  <div class="photo-strip-item"><img src="https://picsum.photos/seed/oltre-valley1/500/650" loading="lazy" alt="Limestone crag in Val Pennavaire, Oltre Finale"></div>
+  <div class="photo-strip-item"><img src="https://picsum.photos/seed/oltre-climber2/500/650" loading="lazy" alt="Sport climber on a limestone route in Oltre Finale"></div>
+  <div class="photo-strip-item"><img src="https://picsum.photos/seed/oltre-village3/500/650" loading="lazy" alt="Ligurian hill village near Oltre Finale, Italy"></div>
+  <div class="photo-strip-item"><img src="https://picsum.photos/seed/oltre-tufas4/500/650" loading="lazy" alt="Tufa formations on limestone in Val Pennavaire"></div>
+</div>
+
+<div class="pw"><div class="cg">
+<main>
+
+<!-- 1. INTRODUCTION -->
+<section class="sec reveal" id="intro">
+  <div class="sec-ey">Overview</div>
+  <h2 class="sec-h">Introduction to <span>Oltre Finale</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Oltre Finale — literally "beyond Finale" — is the collective name for a string of limestone valleys running inland from the Ligurian coast west of Finale Ligure: Val Pennavaire, Val Varatella, Val Nimbalto, Val Neva, Valle Argentina and Valle Nervia. Where Finale Ligure itself draws crowds to well-polished classics, these valleys were mostly developed in the last twenty-five years and climb with a distinctly modern, technical character — pockets, crimps, and the occasional tufa on compact grey and orange limestone.</p>
+    <p>All climbing here is bolted sport, fully equipped with lower-offs — there's no trad tradition in this corner of Liguria, so a single rope and a rack of quickdraws is all you need. The valleys are quieter and less polished than the old town crags, which suits climbers looking for fresh rock and a bit of solitude without giving up any of the quality.</p>
+    <p>The nearest base is the medieval walled town of Finalborgo, with its climbing shops, cafés and gelato, though many climbers stay closer to the valleys themselves around Albenga and Cisano sul Nevo. Either way, the Mediterranean is never far — a swim after a long day on the rock is entirely normal here.</p>
+  </div>
+  <div class="tags">
+    <span class="tag">1,200+ routes across six valleys</span>
+    <span class="tag">Quiet alternative to Finale Ligure</span>
+    <span class="tag">Fully bolted, modern equipping</span>
+    <span class="tag">Steps from the Ligurian coast</span>
+    <span class="tag">4a to 8c+ grade range</span>
+  </div>
+  <div class="sg">
+    <div class="sc"><div class="sc-l">Rock type</div><div class="sc-v">Limestone</div><div class="sc-s">Compact, pockets &amp; tufas</div></div>
+    <div class="sc"><div class="sc-l">Total routes</div><div class="sc-v">1,200+</div><div class="sc-s">Across 80+ crags</div></div>
+    <div class="sc"><div class="sc-l">Grade range</div><div class="sc-v">4a–8c+</div><div class="sc-s">Sweet spot 6a–7b</div></div>
+    <div class="sc"><div class="sc-l">Nearest airport</div><div class="sc-v">Genoa (GOA)</div><div class="sc-s">~1h drive</div></div>
+    <div class="sc"><div class="sc-l">Family friendly</div><div class="sc-v">Yes ✓</div><div class="sc-s">Easy-angle sectors nearby</div></div>
+    <div class="sc"><div class="sc-l">Dog friendly</div><div class="sc-v">Yes ✓</div><div class="sc-s">On lead near crag bases</div></div>
+  </div>
+</section>
+
+<!-- 2. HISTORY -->
+<section class="sec reveal" id="history">
+  <div class="sec-ey">Background</div>
+  <h2 class="sec-h">History of <span>Oltre Finale</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Finale Ligure has been Italy's sport-climbing capital since the 1980s, but by the 2000s the old town's classic crags were showing their age — decades of ascents had polished many of the most popular lines smooth. Local equippers began pushing further inland, into the wooded valleys west of town, where fresh limestone and steeper, more technical terrain waited.</p>
+    <p>Val Pennavaire led the way and remains the anchor of the area, but development spread quickly into Val Varatella, Val Nimbalto and beyond, eventually reaching Valle Argentina and Valle Nervia near the French border. The name "Oltre Finale" stuck as shorthand for this whole collection of newer valleys, even though some — like Val Pennavaire — are technically distinct areas in their own right with their own guidebooks.</p>
+    <p>Today the region totals well over a thousand routes across roughly eighty crags, equipped to modern standards with closely spaced bolts and proper lower-offs. It remains noticeably quieter than Finale Ligure's old town crags, particularly midweek and outside the busiest spring weekends.</p>
+  </div>
+</section>
+
+<!-- 3. ROCK & STYLE -->
+<section class="sec reveal" id="rock">
+  <div class="sec-ey">Rock Type</div>
+  <h2 class="sec-h">Rock &amp; <span>Style</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>The limestone across Oltre Finale is generally more compact and less polished than Finale Ligure's old town crags, with a mix of pockets, crimps, and the occasional tufa feature on steeper walls. Styles vary noticeably valley to valley — Val Pennavaire tends toward technical, vertical faces, while some of the steeper sectors further west offer powerful, overhanging terrain.</p>
+    <p>Because most of the rock was equipped in the last two decades, bolting is closely spaced and modern by design — this isn't runout, old-school climbing. Expect confidence-inspiring protection even on routes pushing into the upper grades.</p>
+    <h3>Key Characteristics</h3>
+    <ul>
+      <li><strong>Rock type:</strong> Compact grey and orange limestone</li>
+      <li><strong>Height:</strong> Mostly single-pitch, 15–35m</li>
+      <li><strong>Style:</strong> Technical vertical faces, pockets, some tufas and steep terrain</li>
+      <li><strong>Hold types:</strong> Pockets, crimps, edges, occasional tufas</li>
+      <li><strong>Bolting:</strong> Modern, closely spaced, all routes lower-off equipped</li>
+    </ul>
+  </div>
+  <div class="sg3">
+    <div class="sc"><div class="sc-l">Rock Type</div><div class="sc-v">Limestone</div><div class="sc-s">Compact, pocketed</div></div>
+    <div class="sc"><div class="sc-l">Average Height</div><div class="sc-v">15–35m</div><div class="sc-s">Single-pitch sport</div></div>
+    <div class="sc"><div class="sc-l">Bolting</div><div class="sc-v">Modern</div><div class="sc-s">Closely spaced, lower-offs</div></div>
+  </div>
+</section>
+
+<!-- 4. WHO IS IT FOR -->
+<section class="sec reveal" id="who">
+  <div class="sec-ey">Suitability</div>
+  <h2 class="sec-h">Who Is It <span>For?</span></h2>
+  <div class="sec-divider"></div>
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="who-title">Beginners (4a–5c)</div>
+      <div class="who-desc">Plenty of easy, well-bolted routes at sectors like Castelbianco, with short approaches and forgiving grading.</div>
+      <span class="who-verdict v-yes">Highly Recommended</span>
+    </div>
+    <div class="who-card">
+      <div class="who-title">Intermediate (6a–6c+)</div>
+      <div class="who-desc">The sweet spot for the region — hundreds of quality routes across every valley in this range.</div>
+      <span class="who-verdict v-yes">Perfect Match</span>
+    </div>
+    <div class="who-card">
+      <div class="who-title">Advanced (7a+)</div>
+      <div class="who-desc">Strong testpieces up to 8c+, concentrated on the steeper walls of Val Pennavaire and Red Wall.</div>
+      <span class="who-verdict v-great">Great Options</span>
+    </div>
+    <div class="who-card">
+      <div class="who-title">Families</div>
+      <div class="who-desc">Short approaches, easy-angle crags and the nearby coast make for an easy balance of climbing and beach time.</div>
+      <span class="who-verdict v-yes">Ideal Destination</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5 & 6. GRADES & SECTORS -->
+<section class="sec reveal" id="grades">
+  <div class="sec-ey">Routes &amp; Crags</div>
+  <h2 class="sec-h">Grades &amp; <span>Sectors</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Oltre Finale uses the French grading system. Routes span 4a to 8c+, with the majority concentrated in the 6a–7b range — a genuinely broad spread across all six valleys.</p>
+  </div>
+
+  <div class="grade-row">
+    <div class="grade-pill">4a–5c</div>
+    <div class="grade-content">
+      <div class="grade-title">Beginner Routes</div>
+      <div class="grade-routes">Easy-angle slabs and vertical walls at Castelbianco and the lower sectors of Val Varatella — excellent for first outdoor leads.</div>
+    </div>
+  </div>
+  <div class="grade-row">
+    <div class="grade-pill">6a–6c+</div>
+    <div class="grade-content">
+      <div class="grade-title">Intermediate Range</div>
+      <div class="grade-routes">The richest tier across the region. Val Pennavaire's technical faces and the pocketed walls of Terminal offer hundreds of memorable routes.</div>
+    </div>
+  </div>
+  <div class="grade-row">
+    <div class="grade-pill">7a–7c</div>
+    <div class="grade-content">
+      <div class="grade-title">Performance Grades</div>
+      <div class="grade-routes">Sustained, technical testpieces at Court and Euskal, with a handful of steep tufa lines mixed in for variety.</div>
+    </div>
+  </div>
+  <div class="grade-row">
+    <div class="grade-pill">8a–8c+</div>
+    <div class="grade-content">
+      <div class="grade-title">Elite Problems</div>
+      <div class="grade-routes">World-class test-pieces on Red Wall's steepest terrain — powerful, sustained climbing that regularly sees visiting professionals.</div>
+    </div>
+  </div>
+
+  <!-- Photo strip 2 -->
+  <div class="img-split" style="margin:28px 0">
+    <img src="https://picsum.photos/seed/oltre-slab5/700/600" loading="lazy" alt="Climber on a technical limestone slab in Oltre Finale">
+    <img src="https://picsum.photos/seed/oltre-crag6/700/600" loading="lazy" alt="Limestone crag wall in Val Pennavaire, Oltre Finale">
+  </div>
+
+  <div class="prose"><h3>Key Sectors</h3></div>
+  <div class="sector-card">
+    <div class="sector-name">Val Pennavaire</div>
+    <div class="sector-meta"><span class="sector-badge">Main Valley</span><span class="sector-badge">All Grades</span><span class="sector-badge">30min from Finale</span></div>
+    <div class="sector-desc">The anchor of the whole Oltre Finale area, with the highest concentration of crags and routes across every grade band, from easy warm-ups to technical testpieces.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">Castelbianco</div>
+    <div class="sector-meta"><span class="sector-badge">Beginner-Friendly</span><span class="sector-badge">4a–6b</span><span class="sector-badge">Family Area</span></div>
+    <div class="sector-desc">Easy-angle walls with short approaches near the hill village of Castelbianco — a favourite for first outdoor sessions and family days.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">Red Wall</div>
+    <div class="sector-meta"><span class="sector-badge">Steep</span><span class="sector-badge">7a–8c+</span><span class="sector-badge">Performance</span></div>
+    <div class="sector-desc">The region's steepest, most powerful terrain — home to Oltre Finale's hardest confirmed test-pieces and a magnet for visiting strong climbers.</div>
+  </div>
+  <div class="sector-card">
+    <div class="sector-name">Euskal &amp; Court</div>
+    <div class="sector-meta"><span class="sector-badge">Technical</span><span class="sector-badge">6b–7c</span><span class="sector-badge">Shaded</span></div>
+    <div class="sector-desc">Neighbouring technical crags with excellent shade in the afternoon — a strong pairing for a full day of sustained, footwork-heavy climbing.</div>
+  </div>
+</section>
+
+<!-- 7. BEST SEASON -->
+<section class="sec reveal" id="season">
+  <div class="sec-ey">Conditions</div>
+  <h2 class="sec-h">Best <span>Season</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Liguria's mild Mediterranean coastal climate means Oltre Finale climbs well across most of the year — a rarity in Europe. Spring and autumn are the clear peaks, but the higher-altitude Val Pennavaire crags stay climbable through summer, and lower valleys like Val Varatella hold up even in mild winter spells.</p>
+  </div>
+  <div class="seas">
+    <div class="sea"><div class="sea-n">Jan</div><div class="sea-b s-ok"></div><span class="sea-l lbl-ok">OK</span></div>
+    <div class="sea"><div class="sea-n">Feb</div><div class="sea-b s-gd"></div><span class="sea-l lbl-gd">Good</span></div>
+    <div class="sea"><div class="sea-n">Mar</div><div class="sea-b s-pk"></div><span class="sea-l lbl-pk">Peak</span></div>
+    <div class="sea"><div class="sea-n">Apr</div><div class="sea-b s-pk"></div><span class="sea-l lbl-pk">Peak</span></div>
+    <div class="sea"><div class="sea-n">May</div><div class="sea-b s-gd"></div><span class="sea-l lbl-gd">Good</span></div>
+    <div class="sea"><div class="sea-n">Jun</div><div class="sea-b s-ok"></div><span class="sea-l lbl-ok">OK</span></div>
+    <div class="sea"><div class="sea-n">Jul</div><div class="sea-b s-av"></div><span class="sea-l lbl-av">Avoid</span></div>
+    <div class="sea"><div class="sea-n">Aug</div><div class="sea-b s-av"></div><span class="sea-l lbl-av">Avoid</span></div>
+    <div class="sea"><div class="sea-n">Sep</div><div class="sea-b s-pk"></div><span class="sea-l lbl-pk">Peak</span></div>
+    <div class="sea"><div class="sea-n">Oct</div><div class="sea-b s-pk"></div><span class="sea-l lbl-pk">Peak</span></div>
+    <div class="sea"><div class="sea-n">Nov</div><div class="sea-b s-gd"></div><span class="sea-l lbl-gd">Good</span></div>
+    <div class="sea"><div class="sea-n">Dec</div><div class="sea-b s-ok"></div><span class="sea-l lbl-ok">OK</span></div>
+  </div>
+  <table class="month-table">
+    <tr><th>Month</th><th>Temp (°C)</th><th>Conditions</th><th>Notes</th></tr>
+    <tr><td>March</td><td>8–16°C</td><td class="cond-peak">Peak</td><td>Ideal friction, wildflowers out</td></tr>
+    <tr><td>April</td><td>11–18°C</td><td class="cond-peak">Peak</td><td>Prime spring conditions</td></tr>
+    <tr><td>May</td><td>15–22°C</td><td class="cond-good">Good</td><td>Warming, shaded sectors best</td></tr>
+    <tr><td>June</td><td>18–26°C</td><td class="cond-warm">Warm</td><td>Higher, shaded crags only</td></tr>
+    <tr><td>July–Aug</td><td>22–30°C</td><td class="cond-warm">Avoid</td><td>Too hot except early morning</td></tr>
+    <tr><td>September</td><td>18–25°C</td><td class="cond-peak">Peak</td><td>Often the best month overall</td></tr>
+    <tr><td>October</td><td>14–21°C</td><td class="cond-peak">Peak</td><td>Warm days, cool nights, quiet</td></tr>
+    <tr><td>November</td><td>9–15°C</td><td class="cond-good">Good</td><td>Rainier, but mild between fronts</td></tr>
+    <tr><td>Dec–Feb</td><td>4–13°C</td><td class="cond-good">Good</td><td>Sheltered valleys stay climbable</td></tr>
+  </table>
+</section>
+
+<!-- 8. GEAR -->
+<section class="sec reveal" id="gear">
+  <div class="sec-ey">Equipment</div>
+  <h2 class="sec-h">What <span>Gear</span> to Bring</h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Oltre Finale is pure sport climbing — every route is bolted with a lower-off. No trad rack needed anywhere in the region.</p>
+    <h3>Essential Gear</h3>
+    <ul>
+      <li><strong>Rope:</strong> A 70m rope is safer than a 60m — some routes are long and closely bolted to the very top.</li>
+      <li><strong>Quickdraws:</strong> A set of sixteen is comfortably enough for any route in the region.</li>
+      <li><strong>Climbing shoes:</strong> A moderately stiff, all-round shoe suits the mix of technical faces and pockets.</li>
+      <li><strong>Helmet:</strong> Recommended at busier crags with parties climbing above.</li>
+      <li><strong>Rope bag:</strong> Crag bases can be dusty — a bag keeps your rope clean.</li>
+    </ul>
+    <h3>Nice to Have</h3>
+    <ul>
+      <li>Stick clip (rarely essential, but useful on a few routes)</li>
+      <li>Sun hat and reef-safe sunscreen — many crags are sun-exposed</li>
+      <li>The "OltreFinale" guidebook or the Roc Pennavaire topo</li>
+      <li>Swimwear for a post-climb dip on the coast</li>
+    </ul>
+  </div>
+  <div class="tags">
+    <span class="tag">70m Rope</span>
+    <span class="tag">16 Quickdraws</span>
+    <span class="tag">Climbing Shoes</span>
+    <span class="tag">Helmet Recommended</span>
+    <span class="tag">Sun Protection</span>
+    <span class="tag">Topo Guidebook</span>
+  </div>
+</section>
+
+<!-- 9. GETTING THERE -->
+<section class="sec reveal" id="transport">
+  <div class="sec-ey">Travel</div>
+  <h2 class="sec-h">Getting <span>There</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Oltre Finale sits on the Italian Riviera roughly halfway between Genoa and the French border near Monte Carlo. A car is strongly recommended — the valleys are spread out and public transport doesn't reach most crag parking areas.</p>
+    <h3>By Car</h3>
+    <ul>
+      <li><strong>From Genoa:</strong> ~1h via the A10 motorway, Albenga or Feglino exit</li>
+      <li><strong>From Nice:</strong> ~1h 30min via the A10 along the coast</li>
+      <li><strong>From Milan:</strong> ~2h 30min via the A26 and A10</li>
+      <li><strong>From Turin:</strong> ~2h via the A6 and A10</li>
+    </ul>
+    <h3>Flying In</h3>
+    <p>Genoa Airport (GOA) is the closest, about an hour away, with good connections across Italy and Europe. Nice Côte d'Azur (NCE) is a similar distance and often has more international routes, especially from outside Europe.</p>
+    <h3>Parking at the Crags</h3>
+    <p>Most sectors have small roadside or gravel parking areas with short 5–20 minute walk-ins. Val Pennavaire's main lots can fill on spring weekends — arriving before 9am is worthwhile in peak season.</p>
+  </div>
+</section>
+
+<!-- PHOTO STRIP 3 -->
+<div class="photo-strip" style="margin:0 0 48px">
+  <div class="photo-strip-item"><img src="https://picsum.photos/seed/oltre-town7/500/650" loading="lazy" alt="Finalborgo medieval walled town near Oltre Finale"></div>
+  <div class="photo-strip-item"><img src="https://picsum.photos/seed/oltre-coast8/500/650" loading="lazy" alt="Ligurian coastline near Finale Ligure and Oltre Finale"></div>
+  <div class="photo-strip-item"><img src="https://picsum.photos/seed/oltre-beach9/500/650" loading="lazy" alt="Mediterranean beach near Finale Ligure"></div>
+  <div class="photo-strip-item"><img src="https://picsum.photos/seed/oltre-hills10/500/650" loading="lazy" alt="Wooded hills of Val Pennavaire, Oltre Finale"></div>
+</div>
+
+<!-- 10. STAY & EAT -->
+<section class="sec reveal" id="stay">
+  <div class="sec-ey">Accommodation &amp; Food</div>
+  <h2 class="sec-h">Stay &amp; <span>Eat</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>Accommodation for every budget clusters around Albenga, Cisano sul Nevo and the walled town of Finalborgo — pick your base depending on whether you'll spend more time in the valleys or on the coast.</p></div>
+  <div class="accom-grid">
+    <div class="accom-card">
+      <div class="accom-type">Camping</div>
+      <div class="accom-name">Camping Bella Vista</div>
+      <div class="accom-desc">A climbers' favourite, 15 minutes from the first Val Pennavaire crags and 30 minutes from Finale Ligure — the best of both areas.</div>
+      <a class="accom-link" href="https://www.campingbellavista.it" target="_blank" rel="noopener">Book camping →</a>
+      <div class="accom-price">From €12/night (pitch)</div>
+    </div>
+    <div class="accom-card">
+      <div class="accom-type">Guesthouse</div>
+      <div class="accom-name">B&amp;B Cisano sul Nevo</div>
+      <div class="accom-desc">Simple, comfortable rooms in the village right by the region's best-stocked climbing shop. Excellent value.</div>
+      <a class="accom-link" href="https://www.booking.com/searchresults.html?ss=cisano+sul+nevo" target="_blank" rel="noopener">Check availability →</a>
+      <div class="accom-price">From €55/night</div>
+    </div>
+    <div class="accom-card">
+      <div class="accom-type">Casa Rurale</div>
+      <div class="accom-name">Ligurian Farmhouses</div>
+      <div class="accom-desc">Traditional stone farmhouses scattered through the hills, many with olive groves. Ideal for groups of 4–8, self-catering.</div>
+      <a class="accom-link" href="https://www.airbnb.com/s/Albenga--Italy" target="_blank" rel="noopener">Search on Airbnb →</a>
+      <div class="accom-price">From €130/night (whole house)</div>
+    </div>
+    <div class="accom-card">
+      <div class="accom-type">Hotel</div>
+      <div class="accom-name">Hotel in Finalborgo</div>
+      <div class="accom-desc">Boutique rooms inside the medieval walls, steps from the climbing shops, cafés and gelaterias. Splurge-worthy.</div>
+      <a class="accom-link" href="https://www.booking.com/searchresults.html?ss=finalborgo" target="_blank" rel="noopener">Check availability →</a>
+      <div class="accom-price">From €100/night</div>
+    </div>
+  </div>
+  <div class="prose">
+    <h3>Where to Eat</h3>
+    <ul>
+      <li><strong>Bar Centrale (Finalborgo):</strong> The climbers' meeting point — great gelato, espresso and evening drinks.</li>
+      <li><strong>Trattoria in Cisano sul Nevo:</strong> Ligurian classics — trofie al pesto, focaccia, fresh seafood.</li>
+      <li><strong>Panificio in Albenga:</strong> Stock up on focaccia and farinata for a crag-side lunch.</li>
+      <li><strong>Osteria near Val Pennavaire:</strong> Hearty, no-frills pasta after a long day on the rock.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 11. REST DAYS -->
+<section class="sec reveal" id="restdays">
+  <div class="sec-ey">Beyond Climbing</div>
+  <h2 class="sec-h">Rest <span>Days</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Rest days here mean the beach. The Ligurian coast is minutes from every valley, and the medieval town of Finalborgo is genuinely worth wandering — narrow lanes, old fortifications, and no shortage of gelato. Mountain biking is huge in the area too, with trail networks rivalling the climbing for quality.</p>
+    <h3>Things to Do</h3>
+    <ul>
+      <li><strong>Finalborgo old town:</strong> A walled medieval centre with climbing shops, cafés and evening atmosphere.</li>
+      <li><strong>Beach time:</strong> Finale Ligure and Albenga both have easy beach access, a short drive from most crags.</li>
+      <li><strong>Mountain biking:</strong> World-class trail networks throughout the hills above Finale — rentals available in town.</li>
+      <li><strong>Albenga old town:</strong> A well-preserved Roman and medieval centre with a striking bell tower and cathedral.</li>
+      <li><strong>Toirano Caves:</strong> Prehistoric caves with impressive formations, a short drive from Val Pennavaire.</li>
+    </ul>
+  </div>
+  <div class="secrets-grid">
+    <div class="secret-card"><div class="secret-label">Finalborgo</div><div class="secret-value">Medieval walled town with climbing shops, cafés &amp; gelato</div></div>
+    <div class="secret-card"><div class="secret-label">The Coast</div><div class="secret-value">Beaches and swimming minutes from every climbing valley</div></div>
+    <div class="secret-card"><div class="secret-label">Toirano Caves</div><div class="secret-value">Prehistoric caves with striking formations, near Val Pennavaire</div></div>
+  </div>
+</section>
+
+<!-- 12-13. TIPS & ETHICS -->
+<section class="sec reveal" id="tips">
+  <div class="sec-ey">Responsible Climbing</div>
+  <h2 class="sec-h">Tips &amp; <span>Ethics</span></h2>
+  <div class="sec-divider"></div>
+  <div class="secrets-grid">
+    <div class="secret-card"><div class="secret-label">Rebolting Fund</div><div class="secret-value">Consider donating to local rebolting associations — routes need regular maintenance</div></div>
+    <div class="secret-card"><div class="secret-label">Parking</div><div class="secret-value">Park considerately — many crag lots are shared with local farmers</div></div>
+    <div class="secret-card"><div class="secret-label">No Litter</div><div class="secret-value">Pack out everything, including tape and food waste</div></div>
+    <div class="secret-card"><div class="secret-label">Dogs</div><div class="secret-value">Welcome on lead — some crag bases are near grazing livestock</div></div>
+    <div class="secret-card"><div class="secret-label">Wet Rock</div><div class="secret-value">Limestone can stay slick after rain — give routes a day to dry</div></div>
+    <div class="secret-card"><div class="secret-label">Noise</div><div class="secret-value">Many crags sit near homes — keep music and noise low</div></div>
+  </div>
+  <div class="prose">
+    <h3>Beat the Crowds</h3>
+    <p>Val Pennavaire's main sectors can get busy on spring weekends. Climbing midweek, or exploring the lesser-known valleys like Valle Argentina and Valle Nervia, gets you routes to yourself even in peak season.</p>
+    <h3>Grade Consistency</h3>
+    <p>Grading is fairly consistent with French sport climbing norms across the region, though older routes at some crags can feel slightly stiffer than their modern neighbours.</p>
+  </div>
+</section>
+
+<!-- 14. SAFETY -->
+<section class="sec reveal" id="safety">
+  <div class="sec-ey">Emergency Information</div>
+  <h2 class="sec-h">Safety &amp; <span>Emergency</span></h2>
+  <div class="sec-divider"></div>
+  <div class="safety-grid">
+    <div class="safety-card"><div class="safety-title">Emergency</div><div class="safety-val">Italy emergency: <strong>112</strong>. English-speaking operators available.</div></div>
+    <div class="safety-card"><div class="safety-title">Nearest Hospital</div><div class="safety-val">Ospedale Santa Corona, Pietra Ligure — ~25km, ~30 minutes</div></div>
+    <div class="safety-card"><div class="safety-title">Location Pin</div><div class="safety-val">Note your valley and crag name — mobile signal is patchy in some sectors.</div></div>
+    <div class="safety-card"><div class="safety-title">Mobile Signal</div><div class="safety-val">Good near villages, patchy deeper into Val Pennavaire and Valle Argentina.</div></div>
+  </div>
+  <div class="prose">
+    <p>Sport climbing injuries here are typically finger and shoulder strains from technical, sustained routes, plus the occasional twisted ankle on rocky approach trails. Travel insurance covering rock climbing activity is strongly recommended.</p>
+  </div>
+</section>
+
+<!-- 15. COSTS -->
+<section class="sec reveal" id="costs">
+  <div class="sec-ey">Budget Planning</div>
+  <h2 class="sec-h">Costs &amp; <span>Budget</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>Oltre Finale is solid value for a Western European coastal destination — accommodation and food are reasonable, and there are no guiding or permit fees for independent climbing.</p></div>
+  <table class="cost-table">
+    <tr><th>Item</th><th>Budget Option</th><th>Mid-Range</th></tr>
+    <tr><td>Accommodation (per night)</td><td>€12–18 (camping)</td><td>€70–130 (hotel/farmhouse)</td></tr>
+    <tr><td>Food (per day)</td><td>€12–18 (self-catering)</td><td>€30–45 (restaurant)</td></tr>
+    <tr><td>Car hire (per day)</td><td>€30–40</td><td>€55–75</td></tr>
+    <tr><td>Fuel Genoa–Oltre Finale return</td><td colspan="2">~€25–35</td></tr>
+    <tr><td>Climbing access</td><td colspan="2">Free</td></tr>
+    <tr class="total"><td>Total per day (per person, group of 4)</td><td>€28–38</td><td>€65–95</td></tr>
+  </table>
+</section>
+
+<!-- 16. FAQ -->
+<section class="sec reveal" id="faq">
+  <div class="sec-ey">Questions</div>
+  <h2 class="sec-h">Frequently Asked <span>Questions</span></h2>
+  <div class="sec-divider"></div>
+  <div class="faq-item">
+    <div class="faq-q">Do I need a permit to climb in Oltre Finale? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">No permit is required. All crags are freely accessible, though please park considerately and respect any private land near the approach trails.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is Oltre Finale the same as Finale Ligure? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">No — they're distinct but neighbouring areas. Finale Ligure refers to the historic crags right around the old town, while Oltre Finale covers the newer valleys further inland, led by Val Pennavaire, roughly 20–50 minutes further west.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What's the best time of year to visit? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">March–April and September–October are the clear peaks. Winter is often climbable in sheltered valleys, and only the height of summer (July–August) should generally be avoided due to heat.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is Oltre Finale good for beginners? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">Absolutely. Sectors like Castelbianco offer a large volume of well-bolted, easy-angle routes with short approaches, and the whole region is set up for climbers of every level.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do I need trad gear? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">No — every route is bolted sport with a lower-off. A rope and a rack of quickdraws is all you need anywhere in the region.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is there gear rental locally? <span class="faq-arrow">+</span></div>
+    <div class="faq-a">Yes — the RockStore in Finalborgo and CPR in Cisano sul Nevo both stock shoes, quickdraws, ropes and guidebooks, with rental options at some shops.</div>
+  </div>
+</section>
+
+<!-- 17. ROCKBUSTERS TRIPS -->
+<section class="sec reveal" id="trips">
+  <div class="sec-ey">Guided Trips</div>
+  <h2 class="sec-h">Rockbusters Trips to <span>Oltre Finale</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>Rockbusters runs guided sport climbing trips to Oltre Finale every spring and autumn. Our coaches know every valley and can tailor sessions to your level — from 4a introductions to 8a+ performance coaching.</p>
+  </div>
+  <div class="trip-block">
+    <div class="trip-type" style="color:var(--red)">— Guided Group Trip</div>
+    <div class="trip-name">OLTRE FINALE SPRING CAMP</div>
+    <div class="trip-desc">One week in March or April with full coaching, accommodation and sector guidance included. Perfect for climbers 5c–7b looking to maximise their time across the region's valleys.</div>
+    <a class="btn-primary" href="https://rockbusters.net/event-date/">View Dates &amp; Book</a>
+  </div>
+  <div class="trip-block">
+    <div class="trip-type" style="color:var(--red)">— Private Coaching</div>
+    <div class="trip-name">PRIVATE GUIDING WEEK</div>
+    <div class="trip-desc">Bespoke 1-2-1 or small group coaching for 3–7 days across Oltre Finale. Schedule built around your goals, level and available time. Contact us to discuss options.</div>
+    <a class="btn-primary" href="https://rockbusters.net/contact/">Enquire Now</a>
+  </div>
+</section>
+
+<!-- 18. RELATED DESTINATIONS -->
+<section class="sec reveal" id="related">
+  <div class="sec-ey">Other Destinations</div>
+  <h2 class="sec-h">Related <span>Destinations</span></h2>
+  <div class="sec-divider"></div>
+  <div class="related-grid">
+    <a class="rel-card" href="https://rockbusters.net/location/"><div class="rel-country">Italy · Liguria</div><div class="rel-name">Finale Ligure</div><div class="rel-type">Sport Climbing · 4a–8c+</div></a>
+    <a class="rel-card" href="https://rockbusters.net/location/rodellar/"><div class="rel-country">Spain · Aragón</div><div class="rel-name">Rodellar</div><div class="rel-type">Sport Climbing · 6a–9b</div></a>
+    <a class="rel-card" href="https://rockbusters.net/location/"><div class="rel-country">Spain · Catalonia</div><div class="rel-name">Margalef</div><div class="rel-type">Sport Climbing · 6c–9b</div></a>
+  </div>
+</section>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside>
+  <div style="position:sticky;top:64px">
+    <div class="ctaw">
+      <div class="ctaw-ey">Book a Trip</div>
+      <div class="ctaw-h">Climb Oltre Finale<br>with Rockbusters</div>
+      <div class="ctaw-p">Performance camps, private guiding &amp; custom trips to Liguria's quieter limestone valleys.</div>
+      <a class="ctaw-btn" href="https://rockbusters.net/event-date/">View Upcoming Trips</a>
+      <a class="ctaw-btn2" href="https://rockbusters.net/contact/">Make Inquiry</a>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Quick Facts</div>
+      <div class="sr"><span class="sr-l">Country</span><span class="sr-v">Italy</span></div>
+      <div class="sr"><span class="sr-l">Region</span><span class="sr-v">Liguria, Savona</span></div>
+      <div class="sr"><span class="sr-l">Rock</span><span class="sr-v">Limestone</span></div>
+      <div class="sr"><span class="sr-l">Style</span><span class="sr-v">Sport Climbing</span></div>
+      <div class="sr"><span class="sr-l">Routes</span><span class="sr-v">1,200+</span></div>
+      <div class="sr"><span class="sr-l">Grades</span><span class="sr-v">4a–8c+</span></div>
+      <div class="sr"><span class="sr-l">Sweet Spot</span><span class="sr-v">6a–7b</span></div>
+      <div class="sr"><span class="sr-l">Best Season</span><span class="sr-v">Sep–May</span></div>
+      <div class="sr"><span class="sr-l">Airport</span><span class="sr-v">Genoa (1h)</span></div>
+      <div class="sr"><span class="sr-l">Family</span><span class="sr-v">Yes ✓</span></div>
+      <div class="sr"><span class="sr-l">Dogs</span><span class="sr-v">Yes (on lead) ✓</span></div>
+      <div class="sr"><span class="sr-l">Camping</span><span class="sr-v">Yes ✓</span></div>
+      <div class="sr"><span class="sr-l">Crag fee</span><span class="sr-v">Free</span></div>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Book Accommodation</div>
+      <ul class="evl">
+        <li><a href="https://www.campingbellavista.it" target="_blank" rel="noopener">Camping Bella Vista ↗</a></li>
+        <li><a href="https://www.booking.com/searchresults.html?ss=albenga" target="_blank" rel="noopener">Hotels on Booking.com ↗</a></li>
+        <li><a href="https://www.airbnb.com/s/Albenga--Italy" target="_blank" rel="noopener">Farmhouses on Airbnb ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Resources</div>
+      <ul class="evl">
+        <li><a href="https://www.27crags.com/crags/oltrefinale" target="_blank" rel="noopener">27 Crags Topo App ↗</a></li>
+        <li><a href="https://pizbube.ch/en/shop/oltrefinale-rock-climbing-in-west-liguria/" target="_blank" rel="noopener">OltreFinale Guidebook ↗</a></li>
+        <li><a href="https://rockbusters.net/event-date/" target="_blank" rel="noopener">Rockbusters Trip Calendar ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Emergency Contacts</div>
+      <div class="sr"><span class="sr-l">Emergency</span><span class="sr-v" style="color:var(--red);font-weight:700">112</span></div>
+      <div class="sr"><span class="sr-l">Hospital</span><span class="sr-v">Pietra Ligure (25km)</span></div>
+      <div class="sr"><span class="sr-l">Mountain Rescue</span><span class="sr-v">118</span></div>
+      <div class="sr"><span class="sr-l">Local Police</span><span class="sr-v">112</span></div>
+    </div>
+  </div>
+</aside>
+
+</div></div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="final-cta-ey">Rockbusters Oltre Finale</div>
+  <h2 class="final-cta-h">LET'S GO CLIMB</h2>
+  <p class="final-cta-p">Join a guided trip to Oltre Finale and discover Liguria's quieter limestone valleys. Expert coaching, perfect conditions, no logistics stress.</p>
+  <div class="final-cta-btns">
+    <a class="btn-dark" href="https://rockbusters.net/event-date/">View Upcoming Trips</a>
+    <a class="btn-outline-dark" href="https://rockbusters.net/contact/">Get in Touch</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:#F0EDE6;margin-bottom:16px;">ROCK<span style="color:var(--red)">BUSTERS</span></div>
+      <p>A community of climbing coaches and guides dedicated to maximum progression on real rock across Europe's greatest crags. Climbers. Coaches. Lifers.</p>
+      <form class="newsletter" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="footer-col">
+      <h4>Trips</h4>
+      <a href="#">Road Trips</a>
+      <a href="#">Sport Holidays</a>
+      <a href="#">Bouldering Camps</a>
+      <a href="#">Custom Trips</a>
+    </div>
+    <div class="footer-col">
+      <h4>Coaching</h4>
+      <a href="#">Performance Camps</a>
+      <a href="#">Private Coaching</a>
+      <a href="#">Pro Clinics</a>
+      <a href="#">Video Analysis</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" id="team">Meet the Team</a>
+      <a href="#">Destinations</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Rockbusters. All rights reserved.</p>
+    <span class="footer-tagline">Climbers. Coaches. Lifers.</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll blur
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.08});
+reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>

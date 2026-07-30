@@ -1,0 +1,123 @@
+/* ── DetailHero — wireframe block 1 dark hero ─────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 5vw 72px;
+  overflow: hidden;
+  background: var(--rb-black);
+  color: var(--rb-white);
+}
+
+/* background image sits at z-index 0, slightly darkened */
+.image {
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 0;
+  filter: brightness(0.45);
+}
+
+/* gradient scrim per wireframe: dark bottom → semi-transparent top */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 13, 0.95) 0%,
+    rgba(13, 13, 13, 0.3)  50%,
+    rgba(13, 13, 13, 0.1)  100%
+  );
+  z-index: 1;
+}
+
+/* content: text col left, info card right (absolute on desktop) */
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* text column — constrain width per wireframe .hero-text-col */
+.textCol {
+  max-width: 560px;
+}
+
+.title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 11vw, 140px);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  color: var(--rb-white);
+  margin: 0 0 0.5rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--rb-white-60);
+  margin: 0 0 2.5rem;
+  max-width: 560px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+/* info card — absolute bottom-right on desktop */
+.sidebar {
+  position: absolute;
+  right: 5vw;
+  bottom: 72px; /* matches hero bottom padding */
+  width: 340px;
+  z-index: 3;
+}
+
+/* chip strip anchored below hero */
+.chipStrip {
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+}
+
+/* ── Tablet ──────────────────────────────────────────────── */
+@media screen and (min-width: 901px) {
+  .sidebar {
+    width: 390px;
+  }
+
+  /* prevent text column from running under the absolute sidebar
+     (390px sidebar + 50px gap ≈ 440px reserved on the right) */
+  .textCol {
+    max-width: min(560px, calc(100% - 440px));
+  }
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media screen and (max-width: 900px) {
+  .hero {
+    padding-bottom: 4rem;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .chipStrip {
+    position: relative;
+    bottom: auto;
+    margin-top: 2rem;
+  }
+}

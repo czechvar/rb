@@ -1,0 +1,110 @@
+/* GuidesGrid — team / friends-&-ambassadors card grid
+ *
+ * Wireframe reference: docs/html/TEAM/rockbusters_community_guides_coaches.html
+ *
+ * Adjustments from starting CSS (verified against wireframe .team-card styles):
+ *   - gradient darkened to match wireframe: 0.97 → 0.6 → 0.08 (was flat 0.92 → transparent)
+ *   - .name font-size 26px (wireframe) instead of 30px; added letter-spacing: 0.04em
+ *   - .overlay padding matches wireframe .team-info: 28px 24px (was left:20px/bottom:18px)
+ *   - photo hover transition 0.55s (wireframe) instead of 0.4s
+ *   - .role font-size 9px + letter-spacing 0.2em (wireframe .team-role-badge) instead of --fs-eyebrow
+ *   - .tag color/border kept red (red-bordered chips per spec) — wireframe uses muted white
+ *   - .tagline color uses --rb-white-52 (wireframe) instead of --rb-white-45
+ *   - meta sits below the photo (per component spec), not overlaid (wireframe overlays everything)
+ */
+
+.section { background: var(--rb-dark); padding: var(--rb-section-pad); }
+.inner { max-width: 1400px; margin: 0 auto; }
+
+.grid {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.gridCompact {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card { text-decoration: none; display: block; }
+
+/* ── photo ─────────────────────────────────────────────── */
+.photoWrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--rb-black);
+}
+.photo { object-fit: cover; transition: transform 0.55s ease; }
+.card:hover .photo { transform: scale(1.04); }
+.photoPlaceholder { position: absolute; inset: 0; background: var(--rb-white-08); }
+
+/* heavier gradient (wireframe): near-opaque at base, fades to barely-there at top */
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 13, 13, 0.97) 0%,
+    rgba(13, 13, 13, 0.60) 45%,
+    rgba(13, 13, 13, 0.08) 100%
+  );
+}
+
+/* overlay: name + role badge sit at bottom of photo */
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 28px 24px;
+}
+.name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--rb-white);
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+/* role badge — muted uppercase eyebrow rendered BEFORE the name (shown inside overlay) */
+.role {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rb-red);
+  font-weight: 700;
+}
+
+/* ── meta below photo (non-compact only) ────────────────── */
+.meta { padding: 14px 2px 0; }
+.tagRow { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--rb-red);
+  border: 1px solid var(--rb-red-border);
+  padding: 3px 8px;
+}
+.tagline {
+  color: var(--rb-white-52);
+  font-size: var(--fs-body-sm);
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* ── responsive ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid,
+  .gridCompact { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .grid,
+  .gridCompact { grid-template-columns: 1fr; }
+}

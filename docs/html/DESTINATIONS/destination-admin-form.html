@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rockbusters — New Destination Page Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #E30713;
+  --red-dim: rgba(227,7,19,0.10);
+  --red-border: rgba(227,7,19,0.30);
+  --black: #0D0D0D;
+  --dark: #111111;
+  --card: #161616;
+  --card2: #1c1c1c;
+  --chalk: #F0EDE6;
+  --chalk-60: rgba(240,237,230,0.60);
+  --chalk-30: rgba(240,237,230,0.30);
+  --chalk-12: rgba(240,237,230,0.12);
+  --chalk-08: rgba(240,237,230,0.08);
+  --chalk-04: rgba(240,237,230,0.04);
+  --green: #4CAF50;
+  --green-dim: rgba(76,175,80,0.12);
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box }
+html { scroll-behavior:smooth }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: var(--chalk);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* ─── TOP BAR ─── */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,13,13,0.97);
+  border-bottom: 1px solid var(--chalk-08);
+  backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 58px;
+}
+.topbar-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 0.08em;
+  color: var(--chalk);
+}
+.topbar-logo span { color: var(--red); }
+.topbar-badge {
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 700; color: var(--chalk-60);
+  border: 1px solid var(--chalk-12); padding: 4px 10px;
+}
+.topbar-actions { display: flex; gap: 10px; align-items: center; }
+.btn-export {
+  background: var(--red); color: var(--black);
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  border: none; cursor: pointer; padding: 10px 20px;
+  transition: background 0.2s;
+}
+.btn-export:hover { background: #c0050f; }
+.btn-clear {
+  background: transparent; color: var(--chalk-60);
+  font-family: 'Inter', sans-serif; font-weight: 600;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid var(--chalk-12); cursor: pointer; padding: 9px 16px;
+  transition: all 0.2s;
+}
+.btn-clear:hover { border-color: var(--chalk-30); color: var(--chalk); }
+
+/* ─── LAYOUT ─── */
+.shell { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 58px); }
+
+/* ─── SIDEBAR NAV ─── */
+.sidenav {
+  background: var(--dark);
+  border-right: 1px solid var(--chalk-08);
+  padding: 28px 0;
+  position: sticky; top: 58px;
+  height: calc(100vh - 58px);
+  overflow-y: auto;
+}
+.sidenav-section {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--chalk-30);
+  padding: 18px 20px 8px;
+}
+.sidenav-section:first-child { padding-top: 4px; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 20px; cursor: pointer;
+  font-size: 12px; font-weight: 500;
+  color: var(--chalk-60); transition: all 0.15s;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+}
+.nav-item:hover { color: var(--chalk); background: var(--chalk-04); }
+.nav-item.active { color: var(--red); border-left-color: var(--red); background: var(--red-dim); }
+.nav-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--chalk-30); flex-shrink: 0;
+}
+.nav-item.active .nav-dot { background: var(--red); }
+
+/* ─── MAIN CONTENT ─── */
+.main { padding: 40px 48px 80px; max-width: 900px; }
+
+/* ─── FORM SECTIONS ─── */
+.form-section {
+  margin-bottom: 60px;
+  scroll-margin-top: 80px;
+}
+.section-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px; padding-bottom: 18px;
+  border-bottom: 1px solid var(--chalk-08);
+}
+.section-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px; letter-spacing: 0.12em;
+  color: var(--red);
+  background: var(--red-dim); border: 1px solid var(--red-border);
+  padding: 3px 10px; flex-shrink: 0;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; letter-spacing: 0.04em;
+  color: var(--chalk); line-height: 1;
+}
+.section-desc {
+  font-size: 12px; color: var(--chalk-60); line-height: 1.6;
+  margin-top: 6px;
+}
+
+/* ─── FIELD GROUPS ─── */
+.field-group { margin-bottom: 20px; }
+.field-row { display: grid; gap: 16px; margin-bottom: 20px; }
+.field-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.field-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.field-row.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+label {
+  display: block;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--chalk-60);
+  margin-bottom: 7px;
+}
+label .req { color: var(--red); margin-left: 2px; }
+label .hint {
+  font-size: 9px; font-weight: 400; letter-spacing: 0.06em;
+  color: var(--chalk-30); text-transform: none; display: block;
+  margin-top: 2px;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--chalk-12);
+  color: var(--chalk);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  padding: 10px 13px;
+  transition: border-color 0.15s;
+  outline: none;
+  -webkit-appearance: none;
+}
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--red);
+  background: #1a1a1a;
+}
+input::placeholder, textarea::placeholder { color: var(--chalk-30); }
+textarea { resize: vertical; line-height: 1.65; }
+select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F0EDE6' stroke-opacity='.4' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+select option { background: #1c1c1c; }
+
+/* ─── REPEATER BLOCKS ─── */
+.repeater { border: 1px solid var(--chalk-08); margin-bottom: 16px; }
+.repeater-header {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--card2); padding: 10px 16px;
+  border-bottom: 1px solid var(--chalk-08);
+}
+.repeater-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--chalk-60);
+}
+.btn-remove {
+  background: transparent; border: none; cursor: pointer;
+  color: var(--chalk-30); font-size: 18px; line-height: 1;
+  transition: color 0.15s; padding: 0 4px;
+}
+.btn-remove:hover { color: var(--red); }
+.repeater-body { padding: 16px; }
+.btn-add {
+  display: flex; align-items: center; gap: 8px;
+  background: transparent; border: 1px dashed var(--chalk-12);
+  color: var(--chalk-60); cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 11px 16px; width: 100%; transition: all 0.15s;
+  margin-top: 8px;
+}
+.btn-add:hover { border-color: var(--red); color: var(--red); }
+.btn-add-icon { font-size: 16px; line-height: 1; }
+
+/* ─── TOGGLE GROUP ─── */
+.toggle-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.toggle-btn {
+  background: var(--card); border: 1px solid var(--chalk-12);
+  color: var(--chalk-60); cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 11px;
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 7px 14px; transition: all 0.15s;
+}
+.toggle-btn:hover { border-color: var(--chalk-30); color: var(--chalk); }
+.toggle-btn.active { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+
+/* ─── SEASON SELECTOR ─── */
+.season-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-top: 8px; }
+.month-cell {
+  text-align: center; cursor: pointer; padding: 6px 2px;
+  border: 1px solid var(--chalk-08); font-size: 9px;
+  letter-spacing: 0.04em; color: var(--chalk-30);
+  font-weight: 600; transition: all 0.15s;
+  user-select: none;
+}
+.month-cell:hover { border-color: var(--chalk-30); color: var(--chalk); }
+.month-cell.peak { background: var(--red); border-color: var(--red); color: var(--black); }
+.month-cell.good { background: rgba(139,115,85,0.5); border-color: #8B7355; color: var(--chalk); }
+.month-cell.ok { background: var(--chalk-12); border-color: var(--chalk-30); color: var(--chalk-60); }
+
+/* ─── INFO BOX ─── */
+.info-box {
+  background: var(--green-dim); border: 1px solid rgba(76,175,80,0.25);
+  padding: 14px 16px; margin-bottom: 28px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.info-icon { color: var(--green); font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+.info-text { font-size: 12px; color: var(--chalk-60); line-height: 1.65; }
+.info-text strong { color: var(--chalk); }
+
+.tip-box {
+  background: var(--red-dim); border: 1px solid var(--red-border);
+  padding: 12px 16px; margin-bottom: 20px;
+  font-size: 12px; color: var(--chalk-60); line-height: 1.65;
+}
+.tip-box strong { color: var(--chalk); }
+
+/* ─── OUTPUT ─── */
+.output-section {
+  background: var(--card); border: 1px solid var(--chalk-08);
+  padding: 24px; margin-top: 48px;
+}
+.output-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px;
+}
+.output-title {
+  font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+  letter-spacing: 0.06em; color: var(--chalk);
+}
+.btn-copy {
+  background: transparent; border: 1px solid var(--chalk-12);
+  color: var(--chalk-60); font-family: 'Inter', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; cursor: pointer; padding: 8px 14px;
+  transition: all 0.2s;
+}
+.btn-copy:hover { border-color: var(--red); color: var(--red); }
+.btn-copy.copied { border-color: var(--green); color: var(--green); }
+#output-code {
+  background: #0a0a0a; border: 1px solid var(--chalk-08);
+  color: rgba(240,237,230,0.55); font-family: 'Courier New', monospace;
+  font-size: 11px; line-height: 1.7;
+  padding: 20px; overflow-x: auto; white-space: pre;
+  max-height: 400px; overflow-y: auto;
+}
+.progress-bar {
+  height: 2px; background: var(--chalk-08);
+  margin-bottom: 40px; position: relative;
+}
+.progress-fill {
+  height: 100%; background: var(--red);
+  transition: width 0.4s ease;
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 1px; background: var(--chalk-08);
+  margin: 28px 0;
+}
+
+/* ─── CHAR COUNT ─── */
+.field-meta {
+  display: flex; justify-content: flex-end;
+  margin-top: 4px;
+  font-size: 10px; color: var(--chalk-30);
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--chalk-12); }
+::-webkit-scrollbar-thumb:hover { background: var(--chalk-30); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:16px">
+    <div class="topbar-logo">ROCK<span>BUSTERS</span></div>
+    <div class="topbar-badge">Admin · Destination Builder</div>
+  </div>
+  <div class="topbar-actions">
+    <button class="btn-clear" onclick="clearAll()">Clear All</button>
+    <button class="btn-export" onclick="generateAndExport()">⬇ Generate Page HTML</button>
+  </div>
+</div>
+
+<div class="shell">
+
+<!-- SIDEBAR NAV -->
+<nav class="sidenav" id="sidenav">
+  <div class="sidenav-section">Page Setup</div>
+  <a class="nav-item active" href="#meta" onclick="setActive(this)"><span class="nav-dot"></span>Meta &amp; SEO</a>
+  <a class="nav-item" href="#hero" onclick="setActive(this)"><span class="nav-dot"></span>Hero</a>
+  <a class="nav-item" href="#stats-bar" onclick="setActive(this)"><span class="nav-dot"></span>Stats Bar</a>
+
+  <div class="sidenav-section">Content Sections</div>
+  <a class="nav-item" href="#overview" onclick="setActive(this)"><span class="nav-dot"></span>Overview</a>
+  <a class="nav-item" href="#history" onclick="setActive(this)"><span class="nav-dot"></span>History</a>
+  <a class="nav-item" href="#when-to-go" onclick="setActive(this)"><span class="nav-dot"></span>When to Go</a>
+  <a class="nav-item" href="#grades" onclick="setActive(this)"><span class="nav-dot"></span>Grades</a>
+  <a class="nav-item" href="#sectors" onclick="setActive(this)"><span class="nav-dot"></span>Sectors</a>
+  <a class="nav-item" href="#getting-there" onclick="setActive(this)"><span class="nav-dot"></span>Getting There</a>
+  <a class="nav-item" href="#stay-eat" onclick="setActive(this)"><span class="nav-dot"></span>Stay &amp; Eat</a>
+  <a class="nav-item" href="#rest-days" onclick="setActive(this)"><span class="nav-dot"></span>Rest Days</a>
+  <a class="nav-item" href="#ethics" onclick="setActive(this)"><span class="nav-dot"></span>Tips &amp; Ethics</a>
+  <a class="nav-item" href="#safety" onclick="setActive(this)"><span class="nav-dot"></span>Safety</a>
+  <a class="nav-item" href="#costs" onclick="setActive(this)"><span class="nav-dot"></span>Costs</a>
+  <a class="nav-item" href="#faq" onclick="setActive(this)"><span class="nav-dot"></span>FAQ</a>
+
+  <div class="sidenav-section">Rockbusters</div>
+  <a class="nav-item" href="#trips" onclick="setActive(this)"><span class="nav-dot"></span>Trips</a>
+  <a class="nav-item" href="#sidebar" onclick="setActive(this)"><span class="nav-dot"></span>Sidebar &amp; Quick Facts</a>
+  <a class="nav-item" href="#related" onclick="setActive(this)"><span class="nav-dot"></span>Related Destinations</a>
+</nav>
+
+<!-- MAIN FORM -->
+<main class="main">
+
+  <div class="info-box">
+    <span class="info-icon">✦</span>
+    <div class="info-text">
+      <strong>How to use:</strong> Fill in every section below, then click <strong>Generate Page HTML</strong> in the top bar. The output will be a ready-to-use HTML file matching the Albarracín template exactly. Fields marked <span style="color:var(--red)">*</span> are required.
+    </div>
+  </div>
+
+  <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 1. META & SEO -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="meta">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <div><div class="section-title">Meta &amp; SEO</div>
+      <div class="section-desc">Browser tab title and search engine description</div></div>
+    </div>
+    <div class="field-group">
+      <label>Page Title (browser tab) <span class="req">*</span>
+        <span class="hint">e.g. "Bouldering in Fontainebleau — The Ultimate Rockbusters Guide"</span>
+      </label>
+      <input type="text" id="meta-title" placeholder="Climbing in [Destination] — The Ultimate Rockbusters Guide" oninput="updateProgress()">
+    </div>
+    <div class="field-group">
+      <label>Meta Description (SEO) <span class="req">*</span>
+        <span class="hint">150–160 characters. Appears in Google results.</span>
+      </label>
+      <textarea id="meta-desc" rows="3" maxlength="160" placeholder="The ultimate guide to [climbing style] in [Destination] — [key numbers], sector guides, accommodation, travel tips and Rockbusters trips." oninput="updateProgress();countChars(this,'meta-desc-count')"></textarea>
+      <div class="field-meta"><span id="meta-desc-count">0</span> / 160</div>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 2. HERO -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="hero">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <div><div class="section-title">Hero Section</div>
+      <div class="section-desc">The full-screen opener — the first thing visitors see</div></div>
+    </div>
+    <div class="field-row cols-2">
+      <div class="field-group">
+        <label>Destination Name <span class="req">*</span>
+          <span class="hint">Used in large display heading</span>
+        </label>
+        <input type="text" id="hero-name" placeholder="Fontainebleau" oninput="updateProgress()">
+      </div>
+      <div class="field-group">
+        <label>Eyebrow text <span class="req">*</span>
+          <span class="hint">Small label above the title</span>
+        </label>
+        <input type="text" id="hero-eyebrow" placeholder="Font, France · Bouldering" oninput="updateProgress()">
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Hero Sub-headline <span class="req">*</span>
+        <span class="hint">1–2 punchy sentences that sell the destination</span>
+      </label>
+      <textarea id="hero-sub" rows="3" placeholder="Europe's most storied bouldering destination. A forest of ancient sandstone problems that has defined grades and styles for 150 years." oninput="updateProgress()"></textarea>
+    </div>
+    <div class="field-row cols-2">
+      <div class="field-group">
+        <label>Hero Background Image URL
+          <span class="hint">Full URL to a high-res photo (min 2000px wide)</span>
+        </label>
+        <input type="url" id="hero-img" placeholder="https://..." oninput="updateProgress()">
+      </div>
+      <div class="field-group">
+        <label>Hero Image Alt Text</label>
+        <input type="text" id="hero-img-alt" placeholder="Climber on sandstone boulder at sunset">
+      </div>
+    </div>
+    <div class="tip-box">
+      <strong>Tip:</strong> For the hero stat card (the small info card bottom-right of the hero), fill in up to 4 key stats below.
+    </div>
+    <div id="hero-stats-list">
+      <div class="repeater" data-repeater="hero-stat">
+        <div class="repeater-header"><span class="repeater-label">Stat 1</span></div>
+        <div class="repeater-body">
+          <div class="field-row cols-2">
+            <div><label>Number / Value</label><input type="text" class="hs-n" placeholder="1,800+"></div>
+            <div><label>Label</label><input type="text" class="hs-l" placeholder="Problems"></div>
+          </div>
+        </div>
+      </div>
+      <div class="repeater" data-repeater="hero-stat">
+        <div class="repeater-header"><span class="repeater-label">Stat 2</span></div>
+        <div class="repeater-body">
+          <div class="field-row cols-2">
+            <div><label>Number / Value</label><input type="text" class="hs-n" placeholder="Font 1–8C+"></div>
+            <div><label>Label</label><input type="text" class="hs-l" placeholder="Grade Range"></div>
+          </div>
+        </div>
+      </div>
+      <div class="repeater" data-repeater="hero-stat">
+        <div class="repeater-header"><span class="repeater-label">Stat 3</span></div>
+        <div class="repeater-body">
+          <div class="field-row cols-2">
+            <div><label>Number / Value</label><input type="text" class="hs-n" placeholder="Year-round"></div>
+            <div><label>Label</label><input type="text" class="hs-l" placeholder="Season"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="field-row cols-2">
+      <div><label>Badge 1 (red, filled)</label><input type="text" id="badge1" placeholder="Bouldering"></div>
+      <div><label>Badge 2</label><input type="text" id="badge2" placeholder="France"></div>
+    </div>
+    <div class="field-row cols-2">
+      <div><label>Badge 3</label><input type="text" id="badge3" placeholder="Font 1–8C+"></div>
+      <div><label>Badge 4</label><input type="text" id="badge4" placeholder="All Levels"></div>
+    </div>
+    <div class="field-row cols-2">
+      <div>
+        <label>Primary CTA Button Label</label>
+        <input type="text" id="cta-btn-label" placeholder="View Trips to Font">
+      </div>
+      <div>
+        <label>Primary CTA Button URL</label>
+        <input type="url" id="cta-btn-url" placeholder="https://rockbusters.net/event-date/">
+      </div>
+    </div>
+    <div class="field-row cols-2">
+      <div>
+        <label>Secondary CTA Button Label</label>
+        <input type="text" id="cta2-btn-label" placeholder="Download Topo Guide">
+      </div>
+      <div>
+        <label>Secondary CTA Button URL</label>
+        <input type="url" id="cta2-btn-url" placeholder="#">
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 3. STATS BAR -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="stats-bar">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <div><div class="section-title">Stats Bar</div>
+      <div class="section-desc">The full-width red bar with 4 headline numbers</div></div>
+    </div>
+    <div class="field-row cols-4">
+      <div><label>Stat 1 Number</label><input type="text" id="sb1n" placeholder="1,800+"></div>
+      <div><label>Stat 1 Label</label><input type="text" id="sb1l" placeholder="Problems"></div>
+      <div><label>Stat 2 Number</label><input type="text" id="sb2n" placeholder="150+"></div>
+      <div><label>Stat 2 Label</label><input type="text" id="sb2l" placeholder="Years of History"></div>
+    </div>
+    <div class="field-row cols-4">
+      <div><label>Stat 3 Number</label><input type="text" id="sb3n" placeholder="3"></div>
+      <div><label>Stat 3 Label</label><input type="text" id="sb3l" placeholder="Key Seasons"></div>
+      <div><label>Stat 4 Number</label><input type="text" id="sb4n" placeholder="60km"></div>
+      <div><label>Stat 4 Label</label><input type="text" id="sb4l" placeholder="From Paris"></div>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 4. OVERVIEW -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="overview">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <div><div class="section-title">Overview</div>
+      <div class="section-desc">Introduction paragraph + key facts grid</div></div>
+    </div>
+    <div class="field-group">
+      <label>Intro Text <span class="req">*</span>
+        <span class="hint">2–4 sentences overview of the destination</span>
+      </label>
+      <textarea id="overview-text" rows="5" placeholder="Fontainebleau — universally known as 'Font' — is the world's most legendary bouldering destination..." oninput="updateProgress()"></textarea>
+    </div>
+    <div class="divider"></div>
+    <div style="margin-bottom:14px"><label>Key Facts Grid (6 cells)</label></div>
+    <div class="field-row cols-3">
+      <div><label>Fact 1 Label</label><input type="text" class="kf-l" placeholder="Rock Type"></div>
+      <div><label>Fact 1 Value</label><input type="text" class="kf-v" placeholder="Sandstone"></div>
+      <div><label>Fact 1 Sub</label><input type="text" class="kf-s" placeholder="Fine-grained, friction-heavy"></div>
+    </div>
+    <div class="field-row cols-3">
+      <div><label>Fact 2 Label</label><input type="text" class="kf-l" placeholder="Climbing Style"></div>
+      <div><label>Fact 2 Value</label><input type="text" class="kf-v" placeholder="Bouldering"></div>
+      <div><label>Fact 2 Sub</label><input type="text" class="kf-s" placeholder="Slabs, verticles, overhangs"></div>
+    </div>
+    <div class="field-row cols-3">
+      <div><label>Fact 3 Label</label><input type="text" class="kf-l" placeholder="Grade Range"></div>
+      <div><label>Fact 3 Value</label><input type="text" class="kf-v" placeholder="Font 1–8C+"></div>
+      <div><label>Fact 3 Sub</label><input type="text" class="kf-s" placeholder="Sweet spot: 4–7b"></div>
+    </div>
+    <div class="field-row cols-3">
+      <div><label>Fact 4 Label</label><input type="text" class="kf-l" placeholder="Nearest Airport"></div>
+      <div><label>Fact 4 Value</label><input type="text" class="kf-v" placeholder="Paris CDG / ORY"></div>
+      <div><label>Fact 4 Sub</label><input type="text" class="kf-s" placeholder="~60 min by train or car"></div>
+    </div>
+    <div class="field-row cols-3">
+      <div><label>Fact 5 Label</label><input type="text" class="kf-l" placeholder="Family Friendly"></div>
+      <div><label>Fact 5 Value</label><input type="text" class="kf-v" placeholder="Yes ✓"></div>
+      <div><label>Fact 5 Sub</label><input type="text" class="kf-s" placeholder="Gentle problems at every area"></div>
+    </div>
+    <div class="field-row cols-3">
+      <div><label>Fact 6 Label</label><input type="text" class="kf-l" placeholder="Crag Fee"></div>
+      <div><label>Fact 6 Value</label><input type="text" class="kf-v" placeholder="Free (parking fees apply)"></div>
+      <div><label>Fact 6 Sub</label><input type="text" class="kf-s" placeholder="~€5–8/day at main car parks"></div>
+    </div>
+    <div class="divider"></div>
+    <div class="field-group">
+      <label>Style / Highlight Tags
+        <span class="hint">Comma-separated tags shown below the overview grid</span>
+      </label>
+      <input type="text" id="overview-tags" placeholder="Slabs, Friction, Highball, Volume Climbing, All Levels, Dog Friendly">
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 5. HISTORY -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="history">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <div><div class="section-title">History</div>
+      <div class="section-desc">Background narrative section</div></div>
+    </div>
+    <div class="field-group">
+      <label>History / Background Text <span class="req">*</span>
+        <span class="hint">Can use HTML: &lt;p&gt;, &lt;h3&gt;, &lt;ul&gt;&lt;li&gt; etc. wrapped in .prose div</span>
+      </label>
+      <textarea id="history-text" rows="10" placeholder="<p>Fontainebleau's bouldering history stretches back to the 1870s when Parisian alpinists began training on the forest's distinctive sandstone formations...</p>&#10;<h3>The Font Scale</h3>&#10;<p>The Fontainebleau grading system — from 1 to 9A — is now the global standard for bouldering. Originally developed here, it reflects the specific challenge types of sandstone movement...</p>" oninput="updateProgress()"></textarea>
+    </div>
+    <div class="field-group">
+      <label>Highlight Box Label</label>
+      <input type="text" id="history-hl-label" placeholder="Did you know?">
+    </div>
+    <div class="field-group">
+      <label>Highlight Box Text
+        <span class="hint">A notable fact or callout. Supports &lt;strong&gt; tags.</span>
+      </label>
+      <textarea id="history-hl-text" rows="3" placeholder="Font hosts more than &lt;strong&gt;1,800 catalogued problems&lt;/strong&gt; across 200+ circuits, making it the densest concentration of quality bouldering anywhere on Earth."></textarea>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 6. WHEN TO GO -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="when-to-go">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <div><div class="section-title">When to Go</div>
+      <div class="section-desc">Season ratings + monthly conditions table</div></div>
+    </div>
+    <div class="tip-box"><strong>Season grid:</strong> Click months to set their rating — <span style="color:var(--red)">RED = Peak</span> · <span style="color:#8B7355">TAN = Good</span> · <span style="color:var(--chalk-60)">DIM = OK</span> · Unclicked = Avoid</div>
+    <label>Click to set monthly ratings</label>
+    <div class="season-grid" id="season-grid">
+      <div class="month-cell" data-m="0" onclick="cycleMonth(this)">Jan</div>
+      <div class="month-cell" data-m="1" onclick="cycleMonth(this)">Feb</div>
+      <div class="month-cell" data-m="2" onclick="cycleMonth(this)">Mar</div>
+      <div class="month-cell" data-m="3" onclick="cycleMonth(this)">Apr</div>
+      <div class="month-cell" data-m="4" onclick="cycleMonth(this)">May</div>
+      <div class="month-cell" data-m="5" onclick="cycleMonth(this)">Jun</div>
+      <div class="month-cell" data-m="6" onclick="cycleMonth(this)">Jul</div>
+      <div class="month-cell" data-m="7" onclick="cycleMonth(this)">Aug</div>
+      <div class="month-cell" data-m="8" onclick="cycleMonth(this)">Sep</div>
+      <div class="month-cell" data-m="9" onclick="cycleMonth(this)">Oct</div>
+      <div class="month-cell peak" data-m="10" onclick="cycleMonth(this)">Nov</div>
+      <div class="month-cell good" data-m="11" onclick="cycleMonth(this)">Dec</div>
+    </div>
+    <div class="divider"></div>
+    <div class="field-group">
+      <label>Season overview text</label>
+      <textarea id="season-text" rows="4" placeholder="Font's best conditions are autumn (October–November) and spring (March–April). The sandstone grips best in cool, dry weather between 5–15°C. Summer temperatures make friction climbing nearly impossible..."></textarea>
+    </div>
+    <div class="field-group">
+      <label>Monthly conditions table
+        <span class="hint">One row per line: Month | Temp range | Conditions description</span>
+      </label>
+      <textarea id="season-table" rows="13" placeholder="January | 2–8°C | Good — cold but grippy. Main areas dry quickly&#10;February | 3–10°C | Good — often excellent in dry spells&#10;March | 7–14°C | Peak — ideal temps and long days&#10;April | 10–18°C | Peak — spring prime season&#10;May | 14–22°C | Warm — mornings best, avoid afternoons&#10;June | 18–28°C | Warm — early start essential&#10;July | 22–33°C | Hot — very difficult. Rest month&#10;August | 22–33°C | Hot — avoid unless cold snap&#10;September | 16–25°C | Good — improving through the month&#10;October | 10–18°C | Peak — prime season, busy weekends&#10;November | 5–12°C | Peak — best friction, quieter&#10;December | 2–8°C | Good — cold, short days, serene"></textarea>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 7. GRADES -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="grades">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <div><div class="section-title">Grades</div>
+      <div class="section-desc">Grade breakdown rows — what to expect at each level</div></div>
+    </div>
+    <div class="field-group">
+      <label>Grades intro text</label>
+      <textarea id="grades-intro" rows="3" placeholder="Font grading runs from 1 (scramble) to 9A (world-class). Problems are categorised into colour-coded circuits to help you navigate by ability..."></textarea>
+    </div>
+    <div id="grades-list">
+      <div class="repeater" data-repeater="grade">
+        <div class="repeater-header"><span class="repeater-label">Grade Row 1</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+        <div class="repeater-body">
+          <div class="field-row cols-3">
+            <div><label>Grade Pill</label><input type="text" class="gr-pill" placeholder="Font 3–5"></div>
+            <div><label>Title</label><input type="text" class="gr-title" placeholder="Beginner & Intermediate"></div>
+            <div><label>Route count / note</label><input type="text" class="gr-note" placeholder="~600 problems"></div>
+          </div>
+          <div><label>Description</label><textarea class="gr-desc" rows="2" placeholder="The orange and white circuits. Excellent volume at these grades with a wide variety of styles — slabs, jugs and mantle moves that build core Font technique."></textarea></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addGrade()"><span class="btn-add-icon">+</span> Add Grade Row</button>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 8. SECTORS -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="sectors">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <div><div class="section-title">Sectors</div>
+      <div class="section-desc">Key climbing areas / sector cards</div></div>
+    </div>
+    <div class="field-group">
+      <label>Sectors intro text</label>
+      <textarea id="sectors-intro" rows="3" placeholder="Font is divided into dozens of named sectors spread across the Fontainebleau forest. Each has its own character, grade concentration and walk-in time..."></textarea>
+    </div>
+    <div id="sectors-list">
+      <div class="repeater" data-repeater="sector">
+        <div class="repeater-header"><span class="repeater-label">Sector 1</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+        <div class="repeater-body">
+          <div class="field-row cols-2">
+            <div><label>Sector Name</label><input type="text" class="sec-name" placeholder="Cuvier Rempart"></div>
+            <div><label>Grade Range</label><input type="text" class="sec-grade" placeholder="Font 4–8A+"></div>
+          </div>
+          <div class="field-row cols-3">
+            <div><label>Walk-in Time</label><input type="text" class="sec-walk" placeholder="5 min"></div>
+            <div><label>Problems Count</label><input type="text" class="sec-count" placeholder="120+ problems"></div>
+            <div><label>Best For</label><input type="text" class="sec-for" placeholder="All levels"></div>
+          </div>
+          <div><label>Description</label><textarea class="sec-desc" rows="3" placeholder="Font's most famous area. Compact, powerful problems on featured sandstone with a wide grade range. The Fontainebleau Classique circuit starts here."></textarea></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addSector()"><span class="btn-add-icon">+</span> Add Sector</button>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 9. GETTING THERE -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="getting-there">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <div><div class="section-title">Getting There</div>
+      <div class="section-desc">Transport options and driving/parking info</div></div>
+    </div>
+    <div class="field-group">
+      <label>Getting There text <span class="req">*</span>
+        <span class="hint">Supports HTML: &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;&lt;li&gt;</span>
+      </label>
+      <textarea id="transport-text" rows="10" placeholder="<p>Font is one of Europe's most accessible destinations — just 60km from central Paris.</p>&#10;<h3>By Train</h3>&#10;<p>The Transilien R line runs direct from Paris Gare de Lyon to Fontainebleau-Avon (45 min, ~€10 return). From the station, it's a 30-minute walk or quick taxi to the forest.</p>&#10;<h3>By Car</h3>&#10;<p>Take the A6 south from Paris. 50–70 minutes depending on traffic. Car parks at the main sectors cost €5–8/day. Car hire from Paris CDG from ~€35/day.</p>&#10;<h3>Parking</h3>&#10;<p>Park at Bois-le-Roi or the Cuvier/Rempart car park for the main areas. Do not park on the roadside verges — fines are enforced.</p>" oninput="updateProgress()"></textarea>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 10. STAY & EAT -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="stay-eat">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <div><div class="section-title">Stay &amp; Eat</div>
+      <div class="section-desc">Accommodation cards + where-to-eat list</div></div>
+    </div>
+    <div class="field-group">
+      <label>Stay & Eat intro</label>
+      <input type="text" id="stay-intro" placeholder="Font has options from budget hostels to boutique hotels in the charming town of Fontainebleau.">
+    </div>
+    <div id="accom-list">
+      <div class="repeater" data-repeater="accom">
+        <div class="repeater-header"><span class="repeater-label">Accommodation 1</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+        <div class="repeater-body">
+          <div class="field-row cols-2">
+            <div><label>Type</label><input type="text" class="ac-type" placeholder="Camping"></div>
+            <div><label>Name</label><input type="text" class="ac-name" placeholder="Camping La Musardière"></div>
+          </div>
+          <div><label>Description</label><textarea class="ac-desc" rows="2" placeholder="Closest campsite to the main bouldering areas. Pitches and chalets available. Quiet and climber-friendly."></textarea></div>
+          <div class="field-row cols-2">
+            <div><label>Booking URL</label><input type="url" class="ac-url" placeholder="https://..."></div>
+            <div><label>Price From</label><input type="text" class="ac-price" placeholder="From €12/night"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addAccom()"><span class="btn-add-icon">+</span> Add Accommodation</button>
+    <div class="divider"></div>
+    <div class="field-group">
+      <label>Where to Eat
+        <span class="hint">One restaurant per line: Name: Description</span>
+      </label>
+      <textarea id="eat-text" rows="6" placeholder="Le Caveau des Ducs: Best post-climb meal in town. French classics, generous portions, warm atmosphere.&#10;Brasserie du Palais: Reliable terrace spot near the château for lunch.&#10;Supermarché Champion: Stock up on supplies. 5 min from the forest.&#10;Café du Commerce: Morning coffee and croissant before the session."></textarea>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 11. REST DAYS -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="rest-days">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <div><div class="section-title">Rest Days</div>
+      <div class="section-desc">Things to do when not climbing</div></div>
+    </div>
+    <div class="field-group">
+      <label>Rest days intro text</label>
+      <textarea id="restdays-intro" rows="3" placeholder="Rest days at Font are never dull. The town of Fontainebleau alone is worth a full day — wander the Château, explore the market, cycle through the forest..."></textarea>
+    </div>
+    <div class="field-group">
+      <label>Activities List
+        <span class="hint">One activity per line: Activity Name: Description</span>
+      </label>
+      <textarea id="restdays-activities" rows="8" placeholder="Château de Fontainebleau: One of France's finest royal residences. 2–3 hours to explore. €14 entry.&#10;Cycling: 280km of marked trails through the forest. Hire bikes from town for €20/day.&#10;Barbizon Village: 10 min by car. Charming artists' village with galleries and a great brasserie.&#10;Paris day trip: 45 min by train. World-class museums and food a short hop away.&#10;Forest hiking: 25,000 hectares of trails. Maps at the tourist office in town."></textarea>
+    </div>
+    <div class="field-group">
+      <label>Highlight Cards
+        <span class="hint">One per line: Label | Value</span>
+      </label>
+      <textarea id="restdays-cards" rows="4" placeholder="Château de Fontainebleau | Royal palace — one of France's finest. Free on first Sunday of month&#10;Barbizon | 10 min away — birthplace of French landscape painting&#10;Paris | 45 min by train — the Louvre, world-class food &amp; culture"></textarea>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 12. TIPS & ETHICS -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="ethics">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <div><div class="section-title">Tips &amp; Ethics</div>
+      <div class="section-desc">Ethics cards + additional tip text</div></div>
+    </div>
+    <div class="field-group">
+      <label>Ethics Cards
+        <span class="hint">One per line: Label | Description</span>
+      </label>
+      <textarea id="ethics-cards" rows="8" placeholder="Wet Rock | Never climb on damp sandstone — it damages the surface permanently&#10;Tick Marks | Always brush tick marks off after your session&#10;Parking | Only use official car parks. Never park on forest verges — fines apply&#10;Noise | Keep music off in the forest. Many people come for the quiet&#10;Dogs | Welcome but keep on lead around nesting birds (April–July)&#10;Litter | Pack everything out. No bins in the sectors — carry a bag"></textarea>
+    </div>
+    <div class="field-group">
+      <label>Additional tips text
+        <span class="hint">Supports HTML: &lt;h3&gt;, &lt;p&gt;</span>
+      </label>
+      <textarea id="ethics-extra" rows="6" placeholder="<h3>Seasonal Restrictions</h3>&#10;<p>Certain sectors are closed April–July to protect nesting birds of prey. Check the ONF (Office National des Forêts) website before visiting. Closures are strictly enforced and fines apply.</p>&#10;<h3>Sand Condition</h3>&#10;<p>Font sandstone is uniquely moisture-sensitive. Even in good weather, problems facing north can retain moisture. Check conditions the evening before and start the session on south-facing problems.</p>"></textarea>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 13. SAFETY -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="safety">
+    <div class="section-header">
+      <span class="section-num">13</span>
+      <div><div class="section-title">Safety &amp; Emergency</div>
+      <div class="section-desc">Emergency information cards</div></div>
+    </div>
+    <div class="field-row cols-2">
+      <div><label>Emergency Number</label><input type="text" id="safe-emergency" placeholder="112 (EU) / 15 (SAMU France)"></div>
+      <div><label>Nearest Hospital</label><input type="text" id="safe-hospital" placeholder="Hôpital de Fontainebleau — 4km, ~10 min"></div>
+    </div>
+    <div class="field-row cols-2">
+      <div><label>Mobile Signal Note</label><input type="text" id="safe-signal" placeholder="Good coverage throughout the forest (Orange/SFR best)"></div>
+      <div><label>Location / GPS Note</label><input type="text" id="safe-gps" placeholder="Save sector pins from 27 Crags before leaving WiFi"></div>
+    </div>
+    <div class="field-group">
+      <label>Safety general note</label>
+      <textarea id="safe-note" rows="3" placeholder="Font bouldering is generally low-consequence but ankle rolls on landings are common. Use adequate pad coverage, particularly on high problems in Bas Cuvier. Travel insurance covering rock climbing is recommended."></textarea>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 14. COSTS -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="costs">
+    <div class="section-header">
+      <span class="section-num">14</span>
+      <div><div class="section-title">Costs &amp; Budget</div>
+      <div class="section-desc">Budget table</div></div>
+    </div>
+    <div class="field-group">
+      <label>Budget intro text</label>
+      <input type="text" id="costs-intro" placeholder="Font is excellent value for European climbing — free access, good public transport and a range of accommodation options.">
+    </div>
+    <div class="field-group">
+      <label>Cost table rows
+        <span class="hint">One row per line: Item | Budget Option | Mid-Range</span>
+      </label>
+      <textarea id="costs-table" rows="8" placeholder="Accommodation (per night) | €12–20 (camping/hostel) | €70–130 (hotel)&#10;Food (per day) | €10–15 (self-catering) | €25–45 (restaurants)&#10;Train Paris–Font return | €10–15 | €10–15&#10;Car hire (per day) | €35–45 | €55–75&#10;Parking (per day) | €5–8 | €5–8&#10;Climbing access | Free | Free&#10;Total per day (per person, group of 4) | €30–45 | €60–95"></textarea>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 15. FAQ -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="faq">
+    <div class="section-header">
+      <span class="section-num">15</span>
+      <div><div class="section-title">FAQ</div>
+      <div class="section-desc">Accordion questions &amp; answers</div></div>
+    </div>
+    <div id="faq-list">
+      <div class="repeater" data-repeater="faq">
+        <div class="repeater-header"><span class="repeater-label">Question 1</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+        <div class="repeater-body">
+          <div><label>Question</label><input type="text" class="fq-q" placeholder="Do I need a permit to boulder at Font?"></div>
+          <div style="margin-top:12px"><label>Answer</label><textarea class="fq-a" rows="3" placeholder="No permit is required for access to the forest. However, some sectors have seasonal closures for nesting birds (April–July). Always check the ONF website before visiting and respect all closure signs."></textarea></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addFAQ()"><span class="btn-add-icon">+</span> Add FAQ</button>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 16. TRIPS -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="trips">
+    <div class="section-header">
+      <span class="section-num">16</span>
+      <div><div class="section-title">Rockbusters Trips</div>
+      <div class="section-desc">Guided trip blocks shown at the bottom of the page</div></div>
+    </div>
+    <div class="field-group">
+      <label>Trips section intro</label>
+      <textarea id="trips-intro" rows="3" placeholder="Rockbusters runs guided bouldering trips to Fontainebleau year-round. Our coaches know every circuit and can guide total beginners through to Font 7c+ progression blocks."></textarea>
+    </div>
+    <div id="trips-list">
+      <div class="repeater" data-repeater="trip">
+        <div class="repeater-header"><span class="repeater-label">Trip 1</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+        <div class="repeater-body">
+          <div class="field-row cols-2">
+            <div><label>Trip Type Label</label><input type="text" class="tr-type" placeholder="— Guided Group Trip"></div>
+            <div><label>Trip Name</label><input type="text" class="tr-name" placeholder="FONTAINEBLEAU AUTUMN CAMP"></div>
+          </div>
+          <div><label>Description</label><textarea class="tr-desc" rows="3" placeholder="4-day guided trip in October with full coaching, transport from Paris and all sector planning included. Perfect for Font first-timers and progression climbers Font 4–7b."></textarea></div>
+          <div class="field-row cols-2">
+            <div><label>CTA Button Label</label><input type="text" class="tr-btn-l" placeholder="View Dates & Book"></div>
+            <div><label>CTA Button URL</label><input type="url" class="tr-btn-u" placeholder="https://rockbusters.net/event-date/"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addTrip()"><span class="btn-add-icon">+</span> Add Trip Block</button>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 17. SIDEBAR & QUICK FACTS -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="sidebar">
+    <div class="section-header">
+      <span class="section-num">17</span>
+      <div><div class="section-title">Sidebar &amp; Quick Facts</div>
+      <div class="section-desc">Sticky sidebar — CTA widget + Quick Facts table</div></div>
+    </div>
+    <div style="margin-bottom:20px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chalk-60);margin-bottom:14px">Sidebar CTA Widget</div>
+      <div class="field-row cols-2">
+        <div><label>Sidebar headline</label><input type="text" id="sb-headline" placeholder="Boulder Fontainebleau with Rockbusters"></div>
+        <div><label>Sidebar subtext</label><input type="text" id="sb-subtext" placeholder="Guided trips, coaching camps & custom adventures to Europe's legendary forest."></div>
+      </div>
+      <div class="field-row cols-2">
+        <div><label>Primary Button Label</label><input type="text" id="sb-btn1-l" placeholder="View Upcoming Trips"></div>
+        <div><label>Primary Button URL</label><input type="url" id="sb-btn1-u" placeholder="https://rockbusters.net/event-date/"></div>
+      </div>
+      <div class="field-row cols-2">
+        <div><label>Secondary Button Label</label><input type="text" id="sb-btn2-l" placeholder="Make Enquiry"></div>
+        <div><label>Secondary Button URL</label><input type="url" id="sb-btn2-u" placeholder="https://rockbusters.net/contact/"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chalk-60);margin-bottom:14px">Quick Facts (sidebar table)</div>
+    <div class="field-row cols-2">
+      <div><label>Country</label><input type="text" class="qf-v" placeholder="France"></div>
+      <div><label>Region</label><input type="text" class="qf-v" placeholder="Île-de-France, Seine-et-Marne"></div>
+    </div>
+    <div class="field-row cols-2">
+      <div><label>Rock Type</label><input type="text" class="qf-v" placeholder="Sandstone"></div>
+      <div><label>Style</label><input type="text" class="qf-v" placeholder="Bouldering"></div>
+    </div>
+    <div class="field-row cols-2">
+      <div><label>Problems</label><input type="text" class="qf-v" placeholder="1,800+"></div>
+      <div><label>Grade Range</label><input type="text" class="qf-v" placeholder="Font 1–9A"></div>
+    </div>
+    <div class="field-row cols-2">
+      <div><label>Sweet Spot Grades</label><input type="text" class="qf-v" placeholder="Font 4–7b"></div>
+      <div><label>Best Season</label><input type="text" class="qf-v" placeholder="Oct–Nov, Mar–Apr"></div>
+    </div>
+    <div class="field-row cols-2">
+      <div><label>Airport</label><input type="text" class="qf-v" placeholder="Paris CDG / ORY (60 min)"></div>
+      <div><label>Family Friendly</label><input type="text" class="qf-v" placeholder="Yes ✓"></div>
+    </div>
+    <div class="field-row cols-2">
+      <div><label>Dogs</label><input type="text" class="qf-v" placeholder="Yes ✓ (restrictions Apr–Jul)"></div>
+      <div><label>Camping Available</label><input type="text" class="qf-v" placeholder="Yes ✓"></div>
+    </div>
+    <div class="field-row cols-2">
+      <div><label>Crag Fee</label><input type="text" class="qf-v" placeholder="Parking only (~€5–8/day)"></div>
+    </div>
+    <div class="divider"></div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chalk-60);margin-bottom:14px">Resources Links</div>
+    <div id="resources-list">
+      <div class="field-row cols-2">
+        <div><label>Link Label</label><input type="text" class="res-l" placeholder="27 Crags Topo App"></div>
+        <div><label>URL</label><input type="url" class="res-u" placeholder="https://www.27crags.com/areas/fontainebleau"></div>
+      </div>
+      <div class="field-row cols-2">
+        <div><label>Link Label</label><input type="text" class="res-l" placeholder="ONF Forest Info"></div>
+        <div><label>URL</label><input type="url" class="res-u" placeholder="https://www.onf.fr/"></div>
+      </div>
+      <div class="field-row cols-2">
+        <div><label>Link Label</label><input type="text" class="res-l" placeholder="Rockbusters Trip Calendar"></div>
+        <div><label>URL</label><input type="url" class="res-u" placeholder="https://rockbusters.net/event-date/"></div>
+      </div>
+    </div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chalk-60);margin:20px 0 14px">Emergency Contacts (sidebar)</div>
+    <div class="field-row cols-4">
+      <div><label>Emergency</label><input type="text" class="ec-v" placeholder="112"></div>
+      <div><label>Hospital</label><input type="text" class="ec-v" placeholder="Fontainebleau (4km)"></div>
+      <div><label>Mountain Rescue</label><input type="text" class="ec-v" placeholder="112"></div>
+      <div><label>Police</label><input type="text" class="ec-v" placeholder="17"></div>
+    </div>
+  </div>
+
+  <!-- ───────────────────────────────────────── -->
+  <!-- 18. RELATED DESTINATIONS -->
+  <!-- ───────────────────────────────────────── -->
+  <div class="form-section" id="related">
+    <div class="section-header">
+      <span class="section-num">18</span>
+      <div><div class="section-title">Related Destinations</div>
+      <div class="section-desc">3 destination cards shown at the bottom</div></div>
+    </div>
+    <div class="field-row cols-3">
+      <div>
+        <label>Dest 1 Country/Region</label><input type="text" class="rd-cr" placeholder="Spain · Aragón">
+        <label style="margin-top:10px">Name</label><input type="text" class="rd-name" placeholder="Rodellar">
+        <label style="margin-top:10px">Type / Grade</label><input type="text" class="rd-type" placeholder="Sport Climbing · 6a–9b">
+        <label style="margin-top:10px">URL</label><input type="url" class="rd-url" placeholder="https://rockbusters.net/location/rodellar/">
+      </div>
+      <div>
+        <label>Dest 2 Country/Region</label><input type="text" class="rd-cr" placeholder="Spain · Valencia">
+        <label style="margin-top:10px">Name</label><input type="text" class="rd-name" placeholder="Siurana">
+        <label style="margin-top:10px">Type / Grade</label><input type="text" class="rd-type" placeholder="Sport Climbing · 6b–9b">
+        <label style="margin-top:10px">URL</label><input type="url" class="rd-url" placeholder="https://rockbusters.net/location/siurana/">
+      </div>
+      <div>
+        <label>Dest 3 Country/Region</label><input type="text" class="rd-cr" placeholder="Spain · Teruel">
+        <label style="margin-top:10px">Name</label><input type="text" class="rd-name" placeholder="Albarracín">
+        <label style="margin-top:10px">Type / Grade</label><input type="text" class="rd-type" placeholder="Bouldering · Font 3–8B+">
+        <label style="margin-top:10px">URL</label><input type="url" class="rd-url" placeholder="https://rockbusters.net/location/albarracin/">
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-section" id="output-section" style="display:none">
+    <div class="output-header">
+      <div class="output-title">Generated HTML</div>
+      <button class="btn-copy" id="copy-btn" onclick="copyCode()">Copy to clipboard</button>
+    </div>
+    <pre id="output-code"></pre>
+  </div>
+
+</main>
+</div>
+
+<script>
+// ── Nav active state ──────────────────────────
+function setActive(el) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ── Progress bar ──────────────────────────────
+function updateProgress() {
+  const required = ['meta-title','meta-desc','hero-name','hero-eyebrow','hero-sub','overview-text','history-text','transport-text'];
+  const filled = required.filter(id => (document.getElementById(id)||{}).value?.trim()).length;
+  document.getElementById('progress').style.width = Math.round((filled/required.length)*100) + '%';
+}
+
+// ── Char counter ──────────────────────────────
+function countChars(el, countId) {
+  document.getElementById(countId).textContent = el.value.length;
+}
+
+// ── Season picker ─────────────────────────────
+const seasonCycle = ['','ok','good','peak'];
+function cycleMonth(el) {
+  const states = ['','ok','good','peak'];
+  const cur = states.indexOf([...el.classList].find(c => states.includes(c)) || '');
+  el.classList.remove(...states.slice(1));
+  const next = states[(cur + 1) % states.length];
+  if (next) el.classList.add(next);
+}
+function getSeasonData() {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return [...document.querySelectorAll('.month-cell')].map((el,i) => {
+    const cls = [...el.classList].find(c => ['peak','good','ok'].includes(c)) || 'avoid';
+    return { month: months[i], cls };
+  });
+}
+
+// ── Repeater helpers ──────────────────────────
+function removeRepeater(btn) {
+  btn.closest('.repeater').remove();
+  renumberRepeaters();
+}
+function renumberRepeaters() {
+  document.querySelectorAll('.repeater').forEach((r,i) => {
+    const lbl = r.querySelector('.repeater-label');
+    if (lbl) {
+      const type = (r.dataset.repeater||'').replace('-',' ');
+      lbl.textContent = type.charAt(0).toUpperCase()+type.slice(1)+' '+(i+1);
+    }
+  });
+}
+
+function addGrade() {
+  const list = document.getElementById('grades-list');
+  const n = list.querySelectorAll('.repeater').length + 1;
+  list.insertAdjacentHTML('beforeend', `
+    <div class="repeater" data-repeater="grade">
+      <div class="repeater-header"><span class="repeater-label">Grade Row ${n}</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+      <div class="repeater-body">
+        <div class="field-row cols-3">
+          <div><label>Grade Pill</label><input type="text" class="gr-pill" placeholder="Font 7a–7c"></div>
+          <div><label>Title</label><input type="text" class="gr-title" placeholder="Advanced"></div>
+          <div><label>Route count / note</label><input type="text" class="gr-note" placeholder="~300 problems"></div>
+        </div>
+        <div><label>Description</label><textarea class="gr-desc" rows="2" placeholder="Red and black circuits. Technical footwork on friction slabs and sharp crimps on overhanging walls."></textarea></div>
+      </div>
+    </div>`);
+}
+
+function addSector() {
+  const list = document.getElementById('sectors-list');
+  const n = list.querySelectorAll('.repeater').length + 1;
+  list.insertAdjacentHTML('beforeend', `
+    <div class="repeater" data-repeater="sector">
+      <div class="repeater-header"><span class="repeater-label">Sector ${n}</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+      <div class="repeater-body">
+        <div class="field-row cols-2">
+          <div><label>Sector Name</label><input type="text" class="sec-name" placeholder="Sector name"></div>
+          <div><label>Grade Range</label><input type="text" class="sec-grade" placeholder="Font 5–7c"></div>
+        </div>
+        <div class="field-row cols-3">
+          <div><label>Walk-in Time</label><input type="text" class="sec-walk" placeholder="10 min"></div>
+          <div><label>Problems Count</label><input type="text" class="sec-count" placeholder="80+ problems"></div>
+          <div><label>Best For</label><input type="text" class="sec-for" placeholder="Intermediate"></div>
+        </div>
+        <div><label>Description</label><textarea class="sec-desc" rows="3" placeholder="Sector description..."></textarea></div>
+      </div>
+    </div>`);
+}
+
+function addAccom() {
+  const list = document.getElementById('accom-list');
+  const n = list.querySelectorAll('.repeater').length + 1;
+  list.insertAdjacentHTML('beforeend', `
+    <div class="repeater" data-repeater="accom">
+      <div class="repeater-header"><span class="repeater-label">Accommodation ${n}</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+      <div class="repeater-body">
+        <div class="field-row cols-2">
+          <div><label>Type</label><input type="text" class="ac-type" placeholder="Hotel"></div>
+          <div><label>Name</label><input type="text" class="ac-name" placeholder="Hotel name"></div>
+        </div>
+        <div><label>Description</label><textarea class="ac-desc" rows="2" placeholder="Description..."></textarea></div>
+        <div class="field-row cols-2">
+          <div><label>Booking URL</label><input type="url" class="ac-url" placeholder="https://..."></div>
+          <div><label>Price From</label><input type="text" class="ac-price" placeholder="From €80/night"></div>
+        </div>
+      </div>
+    </div>`);
+}
+
+function addFAQ() {
+  const list = document.getElementById('faq-list');
+  const n = list.querySelectorAll('.repeater').length + 1;
+  list.insertAdjacentHTML('beforeend', `
+    <div class="repeater" data-repeater="faq">
+      <div class="repeater-header"><span class="repeater-label">Question ${n}</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+      <div class="repeater-body">
+        <div><label>Question</label><input type="text" class="fq-q" placeholder="Your question here?"></div>
+        <div style="margin-top:12px"><label>Answer</label><textarea class="fq-a" rows="3" placeholder="Your answer here..."></textarea></div>
+      </div>
+    </div>`);
+}
+
+function addTrip() {
+  const list = document.getElementById('trips-list');
+  const n = list.querySelectorAll('.repeater').length + 1;
+  list.insertAdjacentHTML('beforeend', `
+    <div class="repeater" data-repeater="trip">
+      <div class="repeater-header"><span class="repeater-label">Trip ${n}</span><button class="btn-remove" onclick="removeRepeater(this)">×</button></div>
+      <div class="repeater-body">
+        <div class="field-row cols-2">
+          <div><label>Trip Type Label</label><input type="text" class="tr-type" placeholder="— Private Coaching"></div>
+          <div><label>Trip Name</label><input type="text" class="tr-name" placeholder="PRIVATE GUIDING WEEK"></div>
+        </div>
+        <div><label>Description</label><textarea class="tr-desc" rows="3" placeholder="Trip description..."></textarea></div>
+        <div class="field-row cols-2">
+          <div><label>CTA Button Label</label><input type="text" class="tr-btn-l" placeholder="Enquire Now"></div>
+          <div><label>CTA Button URL</label><input type="url" class="tr-btn-u" placeholder="https://rockbusters.net/contact/"></div>
+        </div>
+      </div>
+    </div>`);
+}
+
+// ── Helpers ───────────────────────────────────
+function v(id) { return (document.getElementById(id)||{}).value || ''; }
+function esc(s) { return s.replace(/&(?!amp;|lt;|gt;|quot;)/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+// Allow existing HTML tags through (for textarea HTML inputs)
+function safe(s) { return s || ''; }
+
+// ── Clear all ─────────────────────────────────
+function clearAll() {
+  if (!confirm('Clear all fields? This cannot be undone.')) return;
+  document.querySelectorAll('input,textarea,select').forEach(el => el.value = '');
+  document.querySelectorAll('.month-cell').forEach(el => el.classList.remove('peak','good','ok'));
+  document.getElementById('output-section').style.display = 'none';
+  updateProgress();
+}
+
+// ── Copy code ─────────────────────────────────
+function copyCode() {
+  const code = document.getElementById('output-code').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy to clipboard'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ── GENERATE HTML ─────────────────────────────
+function generateAndExport() {
+  const dest = v('hero-name') || 'Destination';
+
+  // Hero stats
+  const heroStatItems = [...document.querySelectorAll('[data-repeater="hero-stat"]')].map(r => ({
+    n: r.querySelector('.hs-n')?.value || '',
+    l: r.querySelector('.hs-l')?.value || ''
+  })).filter(s => s.n || s.l);
+
+  // Key facts grid
+  const kfLabels = [...document.querySelectorAll('.kf-l')].map(el=>el.value);
+  const kfValues = [...document.querySelectorAll('.kf-v')].map(el=>el.value);
+  const kfSubs   = [...document.querySelectorAll('.kf-s')].map(el=>el.value);
+  const kfCells  = kfLabels.map((l,i)=>`<div class="sc"><div class="sc-l">${esc(l)}</div><div class="sc-v">${esc(kfValues[i])}</div><div class="sc-s">${esc(kfSubs[i])}</div></div>`).join('\n    ');
+
+  // Tags
+  const tags = (v('overview-tags')||'').split(',').map(t=>t.trim()).filter(Boolean)
+    .map(t=>`<div class="tag">${esc(t)}</div>`).join('');
+
+  // Season bar
+  const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const seasonData = getSeasonData();
+  const seaBars = seasonData.map((s,i) => {
+    const cls = s.cls === 'peak' ? 's-pk' : s.cls === 'good' ? 's-gd' : s.cls === 'ok' ? 's-ok' : 's-av';
+    const lcls = s.cls === 'peak' ? 'lbl-pk' : s.cls === 'good' ? 'lbl-gd' : s.cls === 'ok' ? 'lbl-ok' : 'lbl-av';
+    const lbl = s.cls.charAt(0).toUpperCase() + s.cls.slice(1);
+    return `<div class="sea"><div class="sea-n">${monthNames[i]}</div><div class="sea-b ${cls}"></div><span class="sea-l ${lcls}">${s.cls !== 'avoid' ? lbl : '–'}</span></div>`;
+  }).join('\n    ');
+
+  // Monthly table
+  const seasonTableRows = (v('season-table')||'').split('\n').filter(r=>r.trim()).map(row => {
+    const [m,t,c] = row.split('|').map(s=>s.trim());
+    return `<tr><td>${esc(m||'')}</td><td>${esc(t||'')}</td><td>${esc(c||'')}</td></tr>`;
+  }).join('\n    ');
+
+  // Grades
+  const gradeRows = [...document.querySelectorAll('[data-repeater="grade"]')].map(r => `
+  <div class="grade-row">
+    <div class="grade-pill">${esc(r.querySelector('.gr-pill')?.value||'')}</div>
+    <div class="grade-content">
+      <div class="grade-title">${esc(r.querySelector('.gr-title')?.value||'')}</div>
+      <div class="grade-routes">${esc(r.querySelector('.gr-note')?.value||'')} — ${esc(r.querySelector('.gr-desc')?.value||'')}</div>
+    </div>
+  </div>`).join('');
+
+  // Sectors
+  const sectorCards = [...document.querySelectorAll('[data-repeater="sector"]')].map(r => `
+  <div class="sector-card">
+    <div class="sector-name">${esc(r.querySelector('.sec-name')?.value||'')}</div>
+    <div class="sector-grade">${esc(r.querySelector('.sec-grade')?.value||'')}</div>
+    <div class="sector-meta"><span>${esc(r.querySelector('.sec-walk')?.value||'')} walk</span><span>${esc(r.querySelector('.sec-count')?.value||'')}</span><span>Best for: ${esc(r.querySelector('.sec-for')?.value||'')}</span></div>
+    <div class="sector-desc">${esc(r.querySelector('.sec-desc')?.value||'')}</div>
+  </div>`).join('');
+
+  // Accommodation
+  const accomCards = [...document.querySelectorAll('[data-repeater="accom"]')].map(r => `
+    <div class="accom-card">
+      <div class="accom-type">${esc(r.querySelector('.ac-type')?.value||'')}</div>
+      <div class="accom-name">${esc(r.querySelector('.ac-name')?.value||'')}</div>
+      <div class="accom-desc">${esc(r.querySelector('.ac-desc')?.value||'')}</div>
+      <a class="accom-link" href="${r.querySelector('.ac-url')?.value||'#'}" target="_blank" rel="noopener">Book →</a>
+      <div class="accom-price">${esc(r.querySelector('.ac-price')?.value||'')}</div>
+    </div>`).join('');
+
+  // Eat list
+  const eatItems = (v('eat-text')||'').split('\n').filter(r=>r.trim()).map(row => {
+    const [name,...rest] = row.split(':');
+    return `<li><strong>${esc(name.trim())}:</strong>${esc(rest.join(':'))}</li>`;
+  }).join('\n          ');
+
+  // Rest day activity list
+  const actItems = (v('restdays-activities')||'').split('\n').filter(r=>r.trim()).map(row => {
+    const [name,...rest] = row.split(':');
+    return `<li><strong>${esc(name.trim())}:</strong>${esc(rest.join(':'))}</li>`;
+  }).join('\n          ');
+
+  // Rest day cards
+  const rdCards = (v('restdays-cards')||'').split('\n').filter(r=>r.trim()).map(row => {
+    const [label,value] = row.split('|').map(s=>s.trim());
+    return `<div class="secret-card"><div class="secret-label">${esc(label||'')}</div><div class="secret-value">${esc(value||'')}</div></div>`;
+  }).join('\n    ');
+
+  // Ethics cards
+  const ethicsCards = (v('ethics-cards')||'').split('\n').filter(r=>r.trim()).map(row => {
+    const [label,value] = row.split('|').map(s=>s.trim());
+    return `<div class="secret-card"><div class="secret-label">${esc(label||'')}</div><div class="secret-value">${esc(value||'')}</div></div>`;
+  }).join('\n    ');
+
+  // Safety cards
+  const safeCards = [
+    ['Emergency', v('safe-emergency')],
+    ['Nearest Hospital', v('safe-hospital')],
+    ['Mobile Signal', v('safe-signal')],
+    ['Location / GPS', v('safe-gps')]
+  ].filter(([,val])=>val).map(([title,val]) =>
+    `<div class="safety-card"><div class="safety-title">${esc(title)}</div><div class="safety-val">${esc(val)}</div></div>`
+  ).join('\n    ');
+
+  // Cost table
+  const costRows = (v('costs-table')||'').split('\n').filter(r=>r.trim()).map(row => {
+    const [item, budget, mid] = row.split('|').map(s=>s.trim());
+    if (!mid) return `<tr><td>${esc(item||'')}</td><td colspan="2">${esc(budget||'')}</td></tr>`;
+    return `<tr><td>${esc(item||'')}</td><td>${esc(budget||'')}</td><td>${esc(mid||'')}</td></tr>`;
+  }).join('\n    ');
+
+  // FAQ
+  const faqItems = [...document.querySelectorAll('[data-repeater="faq"]')].map(r => `
+  <div class="faq-item">
+    <div class="faq-q">${esc(r.querySelector('.fq-q')?.value||'')} <span class="faq-arrow">+</span></div>
+    <div class="faq-a">${esc(r.querySelector('.fq-a')?.value||'')}</div>
+  </div>`).join('');
+
+  // Trips
+  const tripBlocks = [...document.querySelectorAll('[data-repeater="trip"]')].map(r => `
+  <div class="trip-block">
+    <div class="trip-type" style="color:var(--red)">${esc(r.querySelector('.tr-type')?.value||'')}</div>
+    <div class="trip-name">${esc(r.querySelector('.tr-name')?.value||'')}</div>
+    <div class="trip-desc">${esc(r.querySelector('.tr-desc')?.value||'')}</div>
+    <a class="btn-primary" href="${r.querySelector('.tr-btn-u')?.value||'#'}">${esc(r.querySelector('.tr-btn-l')?.value||'Learn More')}</a>
+  </div>`).join('');
+
+  // Quick facts
+  const qfLabels = ['Country','Region','Rock','Style','Problems','Grades','Sweet Spot','Best Season','Airport','Family','Dogs','Camping','Crag fee'];
+  const qfVals = [...document.querySelectorAll('.qf-v')].map(el=>el.value);
+  const qfRows = qfLabels.map((l,i)=> qfVals[i] ? `<div class="sr"><span class="sr-l">${esc(l)}</span><span class="sr-v">${esc(qfVals[i])}</span></div>` : '').join('\n      ');
+
+  // Resources
+  const resLabels = [...document.querySelectorAll('.res-l')].map(el=>el.value);
+  const resUrls   = [...document.querySelectorAll('.res-u')].map(el=>el.value);
+  const resLinks  = resLabels.map((l,i) => l ? `<li><a href="${resUrls[i]||'#'}" target="_blank" rel="noopener">${esc(l)} ↗</a></li>` : '').join('\n          ');
+
+  // Emergency contacts
+  const ecVals = [...document.querySelectorAll('.ec-v')].map(el=>el.value);
+  const ecLabels = ['Emergency','Hospital','Mountain Rescue','Local Police'];
+  const ecRows = ecLabels.map((l,i) => ecVals[i] ? `<div class="sr"><span class="sr-l">${esc(l)}</span><span class="sr-v" style="${i===0?'color:var(--red);font-weight:700':''}">${esc(ecVals[i])}</span></div>` : '').join('\n      ');
+
+  // Related
+  const rdCrs   = [...document.querySelectorAll('.rd-cr')].map(el=>el.value);
+  const rdNames = [...document.querySelectorAll('.rd-name')].map(el=>el.value);
+  const rdTypes = [...document.querySelectorAll('.rd-type')].map(el=>el.value);
+  const rdUrls  = [...document.querySelectorAll('.rd-url')].map(el=>el.value);
+  const relCards = rdCrs.map((cr,i) => cr||rdNames[i] ? `<a class="rel-card" href="${rdUrls[i]||'#'}"><div class="rel-country">${esc(cr)}</div><div class="rel-name">${esc(rdNames[i])}</div><div class="rel-type">${esc(rdTypes[i])}</div></a>` : '').filter(Boolean).join('\n    ');
+
+  // Stat bar
+  const sbHtml = [
+    [v('sb1n'),v('sb1l')],[v('sb2n'),v('sb2l')],[v('sb3n'),v('sb3l')],[v('sb4n'),v('sb4l')]
+  ].filter(([n])=>n).map(([n,l])=>`<div class="stat-item"><span class="stat-num">${esc(n)}</span><span class="stat-label">${esc(l)}</span></div>`).join('\n  ');
+
+  // Hero stat card
+  const heroStatHtml = heroStatItems.filter(s=>s.n||s.l)
+    .map(s=>`<div class="hstat"><span class="hstat-n">${esc(s.n)}</span><span class="hstat-l">${esc(s.l)}</span></div>`).join('\n        ');
+
+  // Badges
+  const badges = [
+    v('badge1') ? `<div class="badge badge-red">${esc(v('badge1'))}</div>` : '',
+    ...[v('badge2'),v('badge3'),v('badge4')].filter(Boolean).map(b=>`<div class="badge badge-outline">${esc(b)}</div>`)
+  ].join('');
+
+  // ── COMPOSE FULL HTML ──────────────────────────────────────────────────
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="${esc(v('meta-desc'))}">
+<title>${esc(v('meta-title') || `Climbing in ${dest} — The Ultimate Rockbusters Guide`)}</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<!-- ============================================================
+     GENERATED BY ROCKBUSTERS DESTINATION BUILDER
+     Paste the Albarracín CSS here (copy from albarracin-destination.html)
+     ============================================================ -->
+<link rel="stylesheet" href="destination-styles.css">
+</head>
+<body>
+
+<!-- NAV — paste your standard nav component here -->
+<nav class="nav" id="mainNav">
+  <!-- nav content -->
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="bc">
+  <a href="https://rockbusters.net">Home</a>
+  <span>/</span>
+  <a href="https://rockbusters.net/location/">Destinations</a>
+  <span>/</span>
+  ${esc(dest)}
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg" style="background-image:url('${v('hero-img')||''}')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-layout">
+      <div class="hero-text-col">
+        <div class="hero-eyebrow">${esc(v('hero-eyebrow'))}</div>
+        <h1>${esc(dest)}</h1>
+        <p class="hero-sub">${esc(v('hero-sub'))}</p>
+        <div class="badges">${badges}</div>
+        <div class="btn-group">
+          ${v('cta-btn-label') ? `<a class="btn-primary" href="${v('cta-btn-url')||'#'}">${esc(v('cta-btn-label'))}</a>` : ''}
+          ${v('cta2-btn-label') ? `<a class="btn-ghost" href="${v('cta2-btn-url')||'#'}">${esc(v('cta2-btn-label'))}</a>` : ''}
+        </div>
+      </div>
+      ${heroStatHtml ? `<div class="hero-card">
+        <div class="hero-card-stat">
+          ${heroStatHtml}
+        </div>
+      </div>` : ''}
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  ${sbHtml}
+</div>
+
+<!-- TOC NAV -->
+<div class="toc">
+  <div class="toc-inner">
+    <a class="tl" href="#overview">Overview</a>
+    <a class="tl" href="#history">History</a>
+    <a class="tl" href="#when">When to Go</a>
+    <a class="tl" href="#grades">Grades</a>
+    <a class="tl" href="#sectors">Sectors</a>
+    <a class="tl" href="#getting-there">Getting There</a>
+    <a class="tl" href="#stay">Stay &amp; Eat</a>
+    <a class="tl" href="#restdays">Rest Days</a>
+    <a class="tl" href="#tips">Tips</a>
+    <a class="tl" href="#safety">Safety</a>
+    <a class="tl" href="#costs">Costs</a>
+    <a class="tl" href="#faq">FAQ</a>
+    <a class="tl" href="#trips">Trips</a>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="pw">
+<div class="cg">
+<main>
+
+<!-- 1. OVERVIEW -->
+<section class="sec reveal" id="overview">
+  <div class="sec-ey">Introduction</div>
+  <h2 class="sec-h">About <span>${esc(dest)}</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>${esc(v('overview-text'))}</p></div>
+  <div class="sg3">
+    ${kfCells}
+  </div>
+  <div class="tags">
+    ${tags}
+  </div>
+</section>
+
+<!-- 2. HISTORY -->
+<section class="sec reveal" id="history">
+  <div class="sec-ey">Background</div>
+  <h2 class="sec-h">History of <span>${esc(dest)}</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    ${safe(v('history-text'))}
+  </div>
+  ${v('history-hl-label')||v('history-hl-text') ? `<div class="highlight-box">
+    <div class="highlight-box-label">${esc(v('history-hl-label'))}</div>
+    <div class="highlight-box-text">${safe(v('history-hl-text'))}</div>
+  </div>` : ''}
+</section>
+
+<!-- 3. WHEN TO GO -->
+<section class="sec reveal" id="when">
+  <div class="sec-ey">Seasons</div>
+  <h2 class="sec-h">When to <span>Go</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>${esc(v('season-text'))}</p></div>
+  <div class="seas">
+    ${seaBars}
+  </div>
+  ${seasonTableRows ? `<table class="month-table">
+    <tr><th>Month</th><th>Temperature</th><th>Conditions</th></tr>
+    ${seasonTableRows}
+  </table>` : ''}
+</section>
+
+<!-- 4. GRADES -->
+<section class="sec reveal" id="grades">
+  <div class="sec-ey">Difficulty</div>
+  <h2 class="sec-h">Grades at <span>${esc(dest)}</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>${esc(v('grades-intro'))}</p></div>
+  ${gradeRows}
+</section>
+
+<!-- 5. SECTORS -->
+<section class="sec reveal" id="sectors">
+  <div class="sec-ey">Areas</div>
+  <h2 class="sec-h">Key <span>Sectors</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>${esc(v('sectors-intro'))}</p></div>
+  <div class="sector-grid">
+    ${sectorCards}
+  </div>
+</section>
+
+<!-- 6. GETTING THERE -->
+<section class="sec reveal" id="getting-there">
+  <div class="sec-ey">Transport</div>
+  <h2 class="sec-h">Getting <span>There</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    ${safe(v('transport-text'))}
+  </div>
+</section>
+
+<!-- 7. STAY & EAT -->
+<section class="sec reveal" id="stay">
+  <div class="sec-ey">Accommodation &amp; Food</div>
+  <h2 class="sec-h">Stay &amp; <span>Eat</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>${esc(v('stay-intro'))}</p></div>
+  <div class="accom-grid">
+    ${accomCards}
+  </div>
+  <div class="prose">
+    <h3>Where to Eat</h3>
+    <ul>
+      ${eatItems}
+    </ul>
+  </div>
+</section>
+
+<!-- 8. REST DAYS -->
+<section class="sec reveal" id="restdays">
+  <div class="sec-ey">Beyond Climbing</div>
+  <h2 class="sec-h">Rest <span>Days</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose">
+    <p>${esc(v('restdays-intro'))}</p>
+    <h3>Things to Do</h3>
+    <ul>
+      ${actItems}
+    </ul>
+  </div>
+  <div class="secrets-grid">
+    ${rdCards}
+  </div>
+</section>
+
+<!-- 9. TIPS & ETHICS -->
+<section class="sec reveal" id="tips">
+  <div class="sec-ey">Responsible Climbing</div>
+  <h2 class="sec-h">Tips &amp; <span>Ethics</span></h2>
+  <div class="sec-divider"></div>
+  <div class="secrets-grid">
+    ${ethicsCards}
+  </div>
+  <div class="prose">
+    ${safe(v('ethics-extra'))}
+  </div>
+</section>
+
+<!-- 10. SAFETY -->
+<section class="sec reveal" id="safety">
+  <div class="sec-ey">Emergency Information</div>
+  <h2 class="sec-h">Safety &amp; <span>Emergency</span></h2>
+  <div class="sec-divider"></div>
+  <div class="safety-grid">
+    ${safeCards}
+  </div>
+  <div class="prose"><p>${esc(v('safe-note'))}</p></div>
+</section>
+
+<!-- 11. COSTS -->
+<section class="sec reveal" id="costs">
+  <div class="sec-ey">Budget Planning</div>
+  <h2 class="sec-h">Costs &amp; <span>Budget</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>${esc(v('costs-intro'))}</p></div>
+  <table class="cost-table">
+    <tr><th>Item</th><th>Budget Option</th><th>Mid-Range</th></tr>
+    ${costRows}
+  </table>
+</section>
+
+<!-- 12. FAQ -->
+<section class="sec reveal" id="faq">
+  <div class="sec-ey">Questions</div>
+  <h2 class="sec-h">Frequently Asked <span>Questions</span></h2>
+  <div class="sec-divider"></div>
+  ${faqItems}
+</section>
+
+<!-- 13. TRIPS -->
+<section class="sec reveal" id="trips">
+  <div class="sec-ey">Guided Trips</div>
+  <h2 class="sec-h">Rockbusters Trips to <span>${esc(dest)}</span></h2>
+  <div class="sec-divider"></div>
+  <div class="prose"><p>${esc(v('trips-intro'))}</p></div>
+  ${tripBlocks}
+</section>
+
+<!-- 14. RELATED -->
+<section class="sec reveal" id="related">
+  <div class="sec-ey">Other Destinations</div>
+  <h2 class="sec-h">Related <span>Destinations</span></h2>
+  <div class="sec-divider"></div>
+  <div class="related-grid">
+    ${relCards}
+  </div>
+</section>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside>
+  <div style="position:sticky;top:64px">
+    <div class="ctaw">
+      <div class="ctaw-ey">Book a Trip</div>
+      <div class="ctaw-h">${esc(v('sb-headline'))}</div>
+      <div class="ctaw-p">${esc(v('sb-subtext'))}</div>
+      <a class="ctaw-btn" href="${v('sb-btn1-u')||'#'}">${esc(v('sb-btn1-l')||'View Upcoming Trips')}</a>
+      <a class="ctaw-btn2" href="${v('sb-btn2-u')||'#'}">${esc(v('sb-btn2-l')||'Make Enquiry')}</a>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Quick Facts</div>
+      ${qfRows}
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Book Accommodation</div>
+      <ul class="evl">
+        ${accomCards ? [...document.querySelectorAll('[data-repeater="accom"]')].map(r=>`<li><a href="${r.querySelector('.ac-url')?.value||'#'}" target="_blank" rel="noopener">${esc(r.querySelector('.ac-name')?.value||'')} ↗</a></li>`).join('\n        ') : ''}
+      </ul>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Resources</div>
+      <ul class="evl">
+        ${resLinks}
+      </ul>
+    </div>
+
+    <div class="sw">
+      <div class="sw-t">Emergency Contacts</div>
+      ${ecRows}
+    </div>
+  </div>
+</aside>
+
+</div>
+</div>
+
+<!-- FOOTER — paste your standard footer here -->
+<footer class="site-footer">
+  <!-- footer content -->
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('mainNav');
+if (nav) window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.08});
+reveals.forEach(r => observer.observe(r));
+<\/script>
+</body>
+</html>`;
+
+  const outputSection = document.getElementById('output-section');
+  document.getElementById('output-code').textContent = html;
+  outputSection.style.display = 'block';
+  outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── Init ──────────────────────────────────────
+updateProgress();
+
+// Scroll spy for sidebar
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('.nav-item').forEach(n => {
+        n.classList.toggle('active', n.getAttribute('href') === '#'+id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-100px 0px -60% 0px' });
+
+document.querySelectorAll('.form-section[id]').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

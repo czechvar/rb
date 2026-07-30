@@ -1,0 +1,54 @@
+.section {
+  background: var(--rb-black);
+  padding: var(--rb-section-pad);
+}
+
+.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rb-white-08);
+  border: 1px solid var(--rb-white-08);
+}
+
+.pillar {
+  background: var(--rb-black);
+  padding: 40px 32px;
+  transition: background 0.2s;
+}
+
+.pillar:hover {
+  background: #131313;
+}
+
+.num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: var(--rb-red);
+  line-height: 1;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rb-white);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.body {
+  font-size: var(--fs-body-sm);
+  color: var(--rb-white-52);
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
