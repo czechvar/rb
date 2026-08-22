@@ -44,6 +44,29 @@ const GENERIC_OG_TITLE = 'rock climbing guiding & coaching | rockbusters'
 const postSpecific = (value: string | null, genericPrefix: string): string | null =>
   value && !value.trim().toLowerCase().startsWith(genericPrefix) ? value : null
 
+/**
+ * EpicTV shut its embed player behind a Cloudflare wall (dead iframes). Every
+ * clip below was re-published on EpicTV's own YouTube channel, so these are
+ * the identical videos, not stand-ins — verified by matching the EpicTV media
+ * id and title. Keyed by the dead embed URL exactly as it appears in the
+ * scraped `embeds`/`deadEmbeds`; a dead embed with no entry here is dropped.
+ *   epictv 606999 → Adam Ondra Teaches Matt To Sport Climb | Climbing Daily Ep.1150
+ *   epictv 606966 → It's All About Balance: Training With Pablo | Climbing Daily Ep.1142
+ *   epictv 274745 → La Pedriza… | Europe's Best Crags, Ep. 9
+ *   epictv 275795 → Is This the Most Beautiful Bouldering Spot… | Europe's Best Crags, Ep. 11
+ * 273139 (Albarracín, Europe's Best Crags Ep. 7) has no confirmed YouTube id yet.
+ */
+const EMBED_REPLACEMENTS: Record<string, string> = {
+  'https://www.epictv.com/player/embed-player/606999?title&seriestitle':
+    'https://www.youtube.com/embed/pyq-_9bwj-M',
+  'https://www.epictv.com/player/embed-player/606966?title&seriestitle':
+    'https://www.youtube.com/embed/99BqlxKqSG0',
+  'https://www.epictv.com/player/embed-player/274745?title&seriestitle':
+    'https://www.youtube.com/embed/FW1JlemlNZ4',
+  'https://www.epictv.com/player/embed-player/275795?title&seriestitle':
+    'https://www.youtube.com/embed/OSR5nBloMXM',
+}
+
 type LexicalState = ReturnType<typeof convertHTMLToLexical>
 type LexicalNode = LexicalState['root']['children'][number]
 
@@ -202,8 +225,9 @@ function nodeHasContent(node: { type: string; text?: string; children?: unknown[
 function replaceMarkers(
   state: LexicalState,
   deadEmbeds: ReadonlySet<string>,
-): { state: LexicalState; droppedEmbeds: string[] } {
+): { state: LexicalState; droppedEmbeds: string[]; recoveredEmbeds: string[] } {
   const droppedEmbeds: string[] = []
+  const recoveredEmbeds: string[] = []
   const children = state.root.children
     .map((node) => {
       if (node.type !== 'paragraph') return node
@@ -216,17 +240,23 @@ function replaceMarkers(
       if (upload) return uploadNode(Number(upload[1]))
       const embed = text.match(/^%%EMBED:(.+)%%$/)
       if (embed) {
-        if (deadEmbeds.has(embed[1])) {
-          droppedEmbeds.push(embed[1])
+        const src = embed[1]
+        const replacement = EMBED_REPLACEMENTS[src]
+        if (replacement) {
+          recoveredEmbeds.push(src)
+          return videoEmbedNode(replacement)
+        }
+        if (deadEmbeds.has(src)) {
+          droppedEmbeds.push(src)
           return null
         }
-        return videoEmbedNode(embed[1])
+        return videoEmbedNode(src)
       }
       if (!inline.some(nodeHasContent)) return null
       return node
     })
     .filter((node): node is LexicalNode => node !== null)
-  return { state: { ...state, root: { ...state.root, children } }, droppedEmbeds }
+  return { state: { ...state, root: { ...state.root, children } }, droppedEmbeds, recoveredEmbeds }
 }
 
 async function main() {
@@ -281,10 +311,12 @@ async function main() {
       }
 
       const html = preprocessHtml(post.contentHtml, imageIdByFile)
-      const { state: content, droppedEmbeds } = replaceMarkers(
+      const { state: content, droppedEmbeds, recoveredEmbeds } = replaceMarkers(
         convertHTMLToLexical({ editorConfig, html, JSDOM }),
         new Set(post.deadEmbeds ?? []),
       )
+      for (const src of recoveredEmbeds)
+        console.log(`  ↻ recovered embed ${src} → ${EMBED_REPLACEMENTS[src]}`)
       for (const src of droppedEmbeds) console.log(`  · dropped dead embed ${src}`)
 
       const category = post.categories.length ? (categoryIds[post.categories[0]] ?? null) : null
