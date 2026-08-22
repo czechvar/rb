@@ -8,7 +8,13 @@ type Props = { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
-  return { title: `${slug.replace(/-/g, ' ')} — Rockbusters Blog` }
+  const category = await getPostCategoryBySlug(slug) // cached — the page body reuses this
+  if (!category) return { title: `${slug.replace(/-/g, ' ')} — Rockbusters Blog` }
+  const description = category.seo?.description || category.description
+  return {
+    title: `${category.seo?.title || category.name} — Rockbusters Blog`,
+    ...(description ? { description } : {}),
+  }
 }
 
 export default async function BlogCategoryPage({ params }: Props) {

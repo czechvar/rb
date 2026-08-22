@@ -17,6 +17,8 @@ const bebasNeue = Bebas_Neue({
 })
 
 export const metadata = {
+  // Absolutizes relative og:image URLs (e.g. /api/media/file/…) in child metadata.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://rockbusters.net'),
   description: 'Rockbusters — leading community of experienced rock climbing guides & coaches.',
   title: 'Rockbusters',
 }
