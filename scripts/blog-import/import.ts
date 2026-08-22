@@ -178,22 +178,55 @@ function preprocessHtml(contentHtml: string, imageIdByFile: Map<string, number>)
   return body.innerHTML
 }
 
-/** Replaces marker paragraphs with real upload / videoEmbed nodes. */
-function replaceMarkers(state: LexicalState): LexicalState {
-  const children = state.root.children.map((node) => {
-    if (node.type !== 'paragraph') return node
-    const inline = 'children' in node ? (node.children as { type: string; text?: string }[]) : []
-    const text = inline
-      .map((c) => (c.type === 'text' ? (c.text ?? '') : ''))
-      .join('')
-      .trim()
-    const upload = text.match(/^%%UPLOAD:(\d+)%%$/)
-    if (upload) return uploadNode(Number(upload[1]))
-    const embed = text.match(/^%%EMBED:(.+)%%$/)
-    if (embed) return videoEmbedNode(embed[1])
-    return node
-  })
-  return { ...state, root: { ...state.root, children } }
+/**
+ * True when the node contributes visible content. Text counts when non-blank,
+ * linebreaks never do, element nodes (link, list, …) recurse into children,
+ * and childless decorator leaves (upload, block, …) always count.
+ */
+function nodeHasContent(node: { type: string; text?: string; children?: unknown[] }): boolean {
+  if (node.type === 'text') return Boolean(node.text?.trim())
+  if (node.type === 'linebreak' || node.type === 'tab') return false
+  if (Array.isArray(node.children)) {
+    return (node.children as { type: string }[]).some(nodeHasContent)
+  }
+  return true
+}
+
+/**
+ * Replaces marker paragraphs with real upload / videoEmbed nodes. Embeds whose
+ * provider is gone (per the scraper's liveness check) are dropped entirely —
+ * a dead iframe renders as a permanent blank 16:9 box. Paragraphs left with
+ * no visible content (conversion artifacts of empty styled spans/anchors)
+ * are dropped too, so pages don't render blank <p> spacers.
+ */
+function replaceMarkers(
+  state: LexicalState,
+  deadEmbeds: ReadonlySet<string>,
+): { state: LexicalState; droppedEmbeds: string[] } {
+  const droppedEmbeds: string[] = []
+  const children = state.root.children
+    .map((node) => {
+      if (node.type !== 'paragraph') return node
+      const inline = 'children' in node ? (node.children as { type: string; text?: string }[]) : []
+      const text = inline
+        .map((c) => (c.type === 'text' ? (c.text ?? '') : ''))
+        .join('')
+        .trim()
+      const upload = text.match(/^%%UPLOAD:(\d+)%%$/)
+      if (upload) return uploadNode(Number(upload[1]))
+      const embed = text.match(/^%%EMBED:(.+)%%$/)
+      if (embed) {
+        if (deadEmbeds.has(embed[1])) {
+          droppedEmbeds.push(embed[1])
+          return null
+        }
+        return videoEmbedNode(embed[1])
+      }
+      if (!inline.some(nodeHasContent)) return null
+      return node
+    })
+    .filter((node): node is LexicalNode => node !== null)
+  return { state: { ...state, root: { ...state.root, children } }, droppedEmbeds }
 }
 
 async function main() {
@@ -248,7 +281,11 @@ async function main() {
       }
 
       const html = preprocessHtml(post.contentHtml, imageIdByFile)
-      const content = replaceMarkers(convertHTMLToLexical({ editorConfig, html, JSDOM }))
+      const { state: content, droppedEmbeds } = replaceMarkers(
+        convertHTMLToLexical({ editorConfig, html, JSDOM }),
+        new Set(post.deadEmbeds ?? []),
+      )
+      for (const src of droppedEmbeds) console.log(`  · dropped dead embed ${src}`)
 
       const category = post.categories.length ? (categoryIds[post.categories[0]] ?? null) : null
       const seoTitle = postSpecific(post.seoTitle, GENERIC_OG_TITLE)

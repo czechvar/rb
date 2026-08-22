@@ -52,8 +52,14 @@ export type ScrapedPost = {
    * data/images/; everything else is kept verbatim (iframes included).
    */
   contentHtml: string
-  /** iframe srcs present in the body (YouTube embeds). */
+  /** iframe srcs present in the body (YouTube/Vimeo/EpicTV/Facebook embeds). */
   embeds: string[]
+  /**
+   * Subset of `embeds` whose provider no longer serves the video (dead
+   * player, Cloudflare wall, removed content). The importer skips these —
+   * a dead iframe renders as a permanent blank 16:9 box.
+   */
+  deadEmbeds: string[]
 }
 
 export type ScrapedCategory = { slug: string; name: string }
@@ -171,6 +177,39 @@ async function saveDataUriImage(src: string): Promise<string | null> {
   return saveImageBytes(`inline-${hash}.${extForMime(m[1])}`, bytes)
 }
 
+/**
+ * Provider-aware embed liveness. YouTube/Vimeo answer definitively via their
+ * oEmbed APIs (the player URLs themselves bot-block plain HTTP clients);
+ * for the rest, a 2xx that is neither a Cloudflare challenge nor a
+ * "content unavailable" page counts as alive.
+ */
+const embedAliveCache = new Map<string, boolean>()
+async function isEmbedAlive(src: string): Promise<boolean> {
+  const cached = embedAliveCache.get(src)
+  if (cached !== undefined) return cached
+  let alive = false
+  try {
+    const yt = src.match(/youtube\.com\/embed\/([\w-]+)/)
+    const vimeo = src.match(/player\.vimeo\.com\/video\/(\d+)/)
+    if (yt) {
+      const watch = encodeURIComponent(`https://www.youtube.com/watch?v=${yt[1]}`)
+      alive = (await fetch(`https://www.youtube.com/oembed?url=${watch}&format=json`)).ok
+    } else if (vimeo) {
+      const url = encodeURIComponent(`https://vimeo.com/${vimeo[1]}`)
+      alive = (await fetch(`https://vimeo.com/api/oembed.json?url=${url}`)).ok
+    } else {
+      const res = await fetch(src, {
+        headers: { 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' },
+      })
+      alive = res.ok && !/Just a moment|content isn'?t available|no está disponible/i.test(await res.text())
+    }
+  } catch {
+    alive = false
+  }
+  embedAliveCache.set(src, alive)
+  return alive
+}
+
 async function scrapePost(slug: string, listedIn: readonly string[]): Promise<ScrapedPost | null> {
   const sourceUrl = `${BASE}/blog/${slug}/`
   const html = await fetchText(sourceUrl)
@@ -232,6 +271,10 @@ async function scrapePost(slug: string, listedIn: readonly string[]): Promise<Sc
   const embeds = [...cell.querySelectorAll('iframe')]
     .map((f) => f.getAttribute('src') ?? '')
     .filter(Boolean)
+  const deadEmbeds: string[] = []
+  for (const src of embeds) {
+    if (!(await isEmbedAlive(src))) deadEmbeds.push(src)
+  }
 
   return {
     slug,
@@ -246,6 +289,7 @@ async function scrapePost(slug: string, listedIn: readonly string[]): Promise<Sc
     seoDescription,
     contentHtml: cell.innerHTML.trim(),
     embeds,
+    deadEmbeds,
   }
 }
 
@@ -294,6 +338,7 @@ async function main() {
         post.publishedAt ? '' : 'no-date',
         post.heroFile ? '' : 'no-hero',
         post.embeds.length ? `${post.embeds.length} embed(s)` : '',
+        post.deadEmbeds.length ? `${post.deadEmbeds.length} DEAD embed(s)` : '',
       ]
         .filter(Boolean)
         .join(', ')
