@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload'
+import { BlocksFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { anyone, isAdmin } from '../access'
+import { videoEmbedBlock } from '../blocks/video-embed'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
 import { revalidateOnChange } from './hooks/revalidate'
@@ -17,7 +19,16 @@ export const Posts: CollectionConfig = {
     slugField('title'),
     { name: 'heroImage', type: 'upload', relationTo: 'media' },
     { name: 'excerpt', type: 'textarea' },
-    { name: 'content', type: 'richText' },
+    {
+      name: 'content',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          BlocksFeature({ blocks: [videoEmbedBlock] }),
+        ],
+      }),
+    },
     {
       name: 'category',
       type: 'relationship',
