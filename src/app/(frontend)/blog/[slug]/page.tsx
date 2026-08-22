@@ -12,7 +12,23 @@ type Props = { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
-  return { title: `${slug.replace(/-/g, ' ')} — Rockbusters Blog` }
+  const post = await getPublishedPostBySlug(slug) // cached — the page body reuses this
+  if (!post) return { title: `${slug.replace(/-/g, ' ')} — Rockbusters Blog` }
+  const title = post.seo?.title || post.title
+  const description = post.seo?.description || post.excerpt
+  const hero = mediaUrl(post.heroImage)
+  // Omit absent fields entirely so the site-wide defaults from the root
+  // layout inherit (an explicit `undefined` would remove the tag instead).
+  return {
+    title: `${title} — Rockbusters Blog`,
+    ...(description ? { description } : {}),
+    openGraph: {
+      title,
+      type: 'article',
+      ...(description ? { description } : {}),
+      ...(hero ? { images: [hero] } : {}),
+    },
+  }
 }
 
 export default async function PostPage({ params }: Props) {

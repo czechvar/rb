@@ -23,6 +23,9 @@
 .DS_Store
 *.pem
 
+# scraped old-site blog content (regenerate with `pnpm blog:scrape`)
+/scripts/blog-import/data/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

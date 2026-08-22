@@ -30,5 +30,5 @@ await count('users (e2e/booking/shell/login-redirect fixtures)', 'users', {
     { email: { like: 'login-redirect-e2e-' } },
   ],
 })
-await count('orders by e2e users', 'orders', { 'customer.email': { like: 'e2e-' } })
+await count('orders by e2e users', 'orders', { 'user.email': { like: 'e2e-' } })
 process.exit(0)
