@@ -87,6 +87,10 @@ If any of the four `R2_*` vars is unset, Payload falls back to local-disk storag
 
 > **Dev gotcha — Resend sandbox sender.** `onboarding@resend.dev` only delivers to the verified email of the Resend account owner. Registering any other address locally makes the auto-fired verify email 403 from Resend, which Payload re-throws as a 403 APIError out of `payload.create` (`[register] payload.create failed: …` in the dev log). For local dev, **leave `RESEND_API_KEY` unset** (or comment it out in `.env`) so the console adapter is used and the verify link prints to stdout. Only re-enable Resend locally once you've verified a real sender domain.
 
+## Scripts
+
+Maintenance and one-off scripts live in `scripts/` and run through `tsx` against whatever `DATABASE_URL` points at. See `scripts/README.md` for the full list, the blog-import (`pnpm blog:scrape` → `pnpm blog:import`) and e2e-fixture-cleanup workflows, and the DB-safety / `PAYLOAD_DISABLE_DB_PUSH` notes.
+
 ## Agent skills
 
 ### Issue tracker
