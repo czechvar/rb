@@ -741,6 +741,40 @@ async function main() {
       locations: [locMallorca.id],
       coaches: [guideKlemen.id],
       transport: { airports: [airPMI.id] },
+      layout: [
+        { blockType: 'tripHero' },
+        { blockType: 'tripPitch' },
+        {
+          blockType: 'tripHighlights',
+          heading: 'Why this trip works',
+        },
+        {
+          blockType: 'tripDates',
+          heading: 'Available weeks',
+        },
+        {
+          blockType: 'faq',
+          eyebrow: 'Trip details',
+          heading: 'Questions for this trip',
+          source: 'byEvent',
+          limit: 6,
+          variant: 'singleColumn',
+        },
+        {
+          blockType: 'reviewGrid',
+          eyebrow: 'Climber results',
+          heading: 'What guests say',
+          source: 'byEvent',
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'tripBookingCTA',
+          eyebrow: 'Ready for deep water',
+          heading: 'Book the Mallorca camp',
+          body: 'This call-to-action is a reusable trip block bound to the current Event.',
+        },
+      ],
       highlights: [
         { text: 'DWS classics on Cala Magraner / Cova del Diablo' },
         { text: 'Backup sport days at S’Estret' },

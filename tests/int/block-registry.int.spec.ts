@@ -3,9 +3,11 @@ import {
   catalogueBlocks,
   contentBlocks,
   conversionBlocks,
+  eventLayoutBlocks,
   mediaBlocks,
   pageBlocks,
   socialProofBlocks,
+  tripDetailBlocks,
 } from '@/blocks'
 
 describe('block registry groups', () => {
@@ -33,6 +35,14 @@ describe('block registry groups', () => {
       'guideProfile',
       'guideTrips',
     ])
+    expect(tripDetailBlocks.map((block) => block.slug)).toEqual([
+      'tripHero',
+      'tripPitch',
+      'tripHighlights',
+      'tripDates',
+      'tripBookingCTA',
+      'tripLogistics',
+    ])
 
     expect(pageBlocks.map((block) => block.slug)).toEqual([
       'hero',
@@ -55,10 +65,30 @@ describe('block registry groups', () => {
       'guideProfile',
       'guideTrips',
     ])
+    expect(eventLayoutBlocks.map((block) => block.slug)).toEqual([
+      'tripHero',
+      'tripPitch',
+      'tripHighlights',
+      'tripDates',
+      'tripBookingCTA',
+      'tripLogistics',
+      'calendar',
+      'gallery',
+      'video',
+      'faq',
+      'reviewGrid',
+      'partnerStrip',
+      'guideProfile',
+    ])
   })
 
   it('does not register duplicate page block slugs', () => {
     const slugs = pageBlocks.map((block) => block.slug)
+    expect(new Set(slugs).size).toBe(slugs.length)
+  })
+
+  it('does not register duplicate event layout block slugs', () => {
+    const slugs = eventLayoutBlocks.map((block) => block.slug)
     expect(new Set(slugs).size).toBe(slugs.length)
   })
 })

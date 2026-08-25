@@ -1,13 +1,20 @@
 import type { Page } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
 import { resolveFAQs } from '@/lib/block-resolvers/faq'
+import type { BlockRenderContext } from './RenderBlocks'
 import styles from './blocks.module.css'
 
 type FAQBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'faq' }>
 
-export async function FAQBlock(block: FAQBlockProps) {
+export async function FAQBlock(block: FAQBlockProps, context: BlockRenderContext = {}) {
   const inlineItems = block.source === 'inline' ? block.items ?? [] : []
-  const collectionItems = block.source === 'inline' ? [] : await resolveFAQs(block)
+  const collectionItems = block.source === 'inline'
+    ? []
+    : await resolveFAQs({
+      ...block,
+      event: block.event ?? context.event,
+      program: block.program ?? context.program,
+    })
   const items = block.source === 'inline' ? inlineItems : collectionItems
   if (items.length === 0) return null
 

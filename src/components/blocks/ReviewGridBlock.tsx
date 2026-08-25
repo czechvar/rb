@@ -1,5 +1,6 @@
 import type { Page, Review } from '@/payload-types'
 import { resolveReviewGridReviews } from '@/lib/block-resolvers/domain-grids'
+import type { BlockRenderContext } from './RenderBlocks'
 import styles from './blocks.module.css'
 
 type ReviewGridBlockProps = Extract<
@@ -17,8 +18,14 @@ export async function ReviewGridBlock({
   reviews,
   source,
   variant,
-}: ReviewGridBlockProps) {
-  const items = await resolveReviewGridReviews({ source, reviews, event, program, limit })
+}: ReviewGridBlockProps, context: BlockRenderContext = {}) {
+  const items = await resolveReviewGridReviews({
+    source,
+    reviews,
+    event: event ?? context.event,
+    program: program ?? context.program,
+    limit,
+  })
   if (!items.length) return null
 
   return (

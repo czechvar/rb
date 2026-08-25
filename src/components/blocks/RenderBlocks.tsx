@@ -19,6 +19,12 @@ import { ReviewGridBlock } from './ReviewGridBlock'
 import { PartnerStripBlock } from './PartnerStripBlock'
 import { GuideProfileBlock } from './GuideProfileBlock'
 import { GuideTripsBlock } from './GuideTripsBlock'
+import { TripHeroBlock } from './TripHeroBlock'
+import { TripPitchContextBlock } from './TripPitchContextBlock'
+import { TripHighlightsBlock } from './TripHighlightsBlock'
+import { TripDatesBlock } from './TripDatesBlock'
+import { TripBookingCTABlock } from './TripBookingCTABlock'
+import { TripLogisticsBlock } from './TripLogisticsBlock'
 
 type PageBlock = NonNullable<Page['layout']>[number]
 type RenderableBlock = PageBlock | {
@@ -57,19 +63,26 @@ const blockRenderers: Record<string, BlockRenderer> = {
     LocationGridBlock(block as Extract<PageBlock, { blockType: 'locationGrid' }>),
   guideGrid: (block) => GuideGridBlock(block as Extract<PageBlock, { blockType: 'guideGrid' }>),
   postGrid: (block) => PostGridBlock(block as Extract<PageBlock, { blockType: 'postGrid' }>),
-  calendar: (block) => CalendarBlock(block as Extract<PageBlock, { blockType: 'calendar' }>),
+  calendar: (block, context) =>
+    CalendarBlock(block as Extract<PageBlock, { blockType: 'calendar' }>, context),
   mediaBlock: (block) => <MediaBlock {...(block as Extract<PageBlock, { blockType: 'mediaBlock' }>)} />,
   gallery: (block) => <GalleryBlock {...(block as Extract<PageBlock, { blockType: 'gallery' }>)} />,
   video: (block) => <VideoBlock {...(block as Extract<PageBlock, { blockType: 'video' }>)} />,
-  faq: (block) => FAQBlock(block as Extract<PageBlock, { blockType: 'faq' }>),
-  reviewGrid: (block) =>
-    ReviewGridBlock(block as Extract<PageBlock, { blockType: 'reviewGrid' }>),
+  faq: (block, context) => FAQBlock(block as Extract<PageBlock, { blockType: 'faq' }>, context),
+  reviewGrid: (block, context) =>
+    ReviewGridBlock(block as Extract<PageBlock, { blockType: 'reviewGrid' }>, context),
   partnerStrip: (block) =>
     PartnerStripBlock(block as Extract<PageBlock, { blockType: 'partnerStrip' }>),
   guideProfile: (block, context) =>
     GuideProfileBlock(block as Extract<PageBlock, { blockType: 'guideProfile' }>, context),
   guideTrips: (block, context) =>
     GuideTripsBlock(block as Extract<PageBlock, { blockType: 'guideTrips' }>, context),
+  tripHero: (_block, context) => <TripHeroBlock {...context} />,
+  tripPitch: (_block, context) => <TripPitchContextBlock {...context} />,
+  tripHighlights: (block, context) => TripHighlightsBlock(block, context),
+  tripDates: (block, context) => TripDatesBlock(block, context),
+  tripBookingCTA: (block, context) => TripBookingCTABlock(block, context),
+  tripLogistics: (block, context) => TripLogisticsBlock(block, context),
 }
 
 async function renderBlock(block: RenderableBlock, index: number, context: BlockRenderContext) {

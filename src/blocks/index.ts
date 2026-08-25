@@ -17,6 +17,12 @@ import { ReviewGridBlockConfig } from './ReviewGrid/config'
 import { PartnerStripBlockConfig } from './PartnerStrip/config'
 import { GuideProfileBlockConfig } from './GuideProfile/config'
 import { GuideTripsBlockConfig } from './GuideTrips/config'
+import { TripHeroBlockConfig } from './TripHero/config'
+import { TripPitchBlockConfig } from './TripPitch/config'
+import { TripHighlightsBlockConfig } from './TripHighlights/config'
+import { TripDatesBlockConfig } from './TripDates/config'
+import { TripBookingCTABlockConfig } from './TripBookingCTA/config'
+import { TripLogisticsBlockConfig } from './TripLogistics/config'
 
 export const contentBlocks = [
   HeroBlockConfig,
@@ -41,6 +47,14 @@ export const socialProofBlocks = [
   GuideProfileBlockConfig,
   GuideTripsBlockConfig,
 ]
+export const tripDetailBlocks = [
+  TripHeroBlockConfig,
+  TripPitchBlockConfig,
+  TripHighlightsBlockConfig,
+  TripDatesBlockConfig,
+  TripBookingCTABlockConfig,
+  TripLogisticsBlockConfig,
+]
 
 export const pageBlocks = [
   ...contentBlocks,
@@ -48,4 +62,15 @@ export const pageBlocks = [
   ...catalogueBlocks,
   ...mediaBlocks,
   ...socialProofBlocks,
+]
+
+export const eventLayoutBlocks = [
+  ...tripDetailBlocks,
+  CalendarBlockConfig,
+  GalleryBlockConfig,
+  VideoBlockConfig,
+  FAQBlockConfig,
+  ReviewGridBlockConfig,
+  PartnerStripBlockConfig,
+  GuideProfileBlockConfig,
 ]

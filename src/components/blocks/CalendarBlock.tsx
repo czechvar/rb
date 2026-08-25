@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Event, EventDate, Page } from '@/payload-types'
 import { resolveCalendarEventDates } from '@/lib/block-resolvers/content-discovery'
+import type { BlockRenderContext } from './RenderBlocks'
 import styles from './blocks.module.css'
 
 type CalendarBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'calendar' }>
@@ -14,8 +15,13 @@ export async function CalendarBlock({
   event,
   limit,
   variant,
-}: CalendarBlockProps) {
-  const items = await resolveCalendarEventDates({ source, eventDates, event, limit })
+}: CalendarBlockProps, context: BlockRenderContext = {}) {
+  const items = await resolveCalendarEventDates({
+    source,
+    eventDates,
+    event: event ?? context.event,
+    limit,
+  })
   if (!items.length) return null
 
   return (
