@@ -1068,6 +1068,173 @@ export interface Location {
   coordinates?: [number, number] | null;
   mainPicture?: (number | null) | Media;
   gallery?: (number | Media)[] | null;
+  /**
+   * Optional block-driven layout for this public destination page. Empty uses the current default layout.
+   */
+  layout?:
+    | (
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationHero';
+          }
+        | {
+            heading?: string | null;
+            eyebrow?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationContent';
+          }
+        | {
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationMap';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationTrips';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            partners?: (number | Partner)[] | null;
+            limit?: number | null;
+            variant: 'logos' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'partnerStrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+      )[]
+    | null;
   featured?: boolean | null;
   active?: boolean | null;
   seo?: {
@@ -1075,6 +1242,52 @@ export interface Location {
     keywords?: string | null;
     description?: string | null;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs".
+ */
+export interface Faq {
+  id: number;
+  question: string;
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  event?: (number | null) | Event;
+  program?: (number | null) | Program;
+  position?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews".
+ */
+export interface Review {
+  id: number;
+  quote: string;
+  reviewerName: string;
+  reviewerLocation?: string | null;
+  resultLine?: string | null;
+  event?: (number | null) | Event;
+  program?: (number | null) | Program;
+  position?: number | null;
+  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1219,72 +1432,6 @@ export interface Guide {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "airports".
- */
-export interface Airport {
-  id: number;
-  name: string;
-  iata: string;
-  country?: string | null;
-  continent?: string | null;
-  /**
-   * @minItems 2
-   * @maxItems 2
-   */
-  coordinates?: [number, number] | null;
-  size?: number | null;
-  active?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "faqs".
- */
-export interface Faq {
-  id: number;
-  question: string;
-  answer: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  event?: (number | null) | Event;
-  program?: (number | null) | Program;
-  position?: number | null;
-  active?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "reviews".
- */
-export interface Review {
-  id: number;
-  quote: string;
-  reviewerName: string;
-  reviewerLocation?: string | null;
-  resultLine?: string | null;
-  event?: (number | null) | Event;
-  program?: (number | null) | Program;
-  position?: number | null;
-  active?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "partners".
  */
 export interface Partner {
@@ -1309,6 +1456,26 @@ export interface Partner {
   } | null;
   logo?: (number | null) | Media;
   featured?: boolean | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "airports".
+ */
+export interface Airport {
+  id: number;
+  name: string;
+  iata: string;
+  country?: string | null;
+  continent?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  size?: number | null;
   active?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -2446,6 +2613,173 @@ export interface LocationsSelect<T extends boolean = true> {
   coordinates?: T;
   mainPicture?: T;
   gallery?: T;
+  layout?:
+    | T
+    | {
+        locationHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        locationContent?:
+          | T
+          | {
+              heading?: T;
+              eyebrow?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationMap?:
+          | T
+          | {
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationTrips?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnerStrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              partners?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
   featured?: T;
   active?: T;
   seo?:

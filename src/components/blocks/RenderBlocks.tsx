@@ -38,6 +38,12 @@ import {
   ProgramTripsBlock,
   ProgramWeeksBlock,
 } from './ProgramContextBlocks'
+import {
+  LocationContentBlock,
+  LocationHeroBlock,
+  LocationMapBlock,
+  LocationTripsBlock,
+} from './LocationContextBlocks'
 
 type PageBlock = NonNullable<Page['layout']>[number]
 type RenderableBlock = PageBlock | {
@@ -108,6 +114,10 @@ const blockRenderers: Record<string, BlockRenderer> = {
   programResults: (block, context) => ProgramResultsBlock(block, context),
   programTrips: (block, context) => ProgramTripsBlock(block, context),
   programCTA: (block, context) => ProgramCTABlock(block, context),
+  locationHero: (block, context) => LocationHeroBlock(block, context),
+  locationContent: (block, context) => LocationContentBlock(block, context),
+  locationMap: (block, context) => LocationMapBlock(block, context),
+  locationTrips: (block, context) => LocationTripsBlock(block, context),
 }
 
 async function renderBlock(block: RenderableBlock, index: number, context: BlockRenderContext) {

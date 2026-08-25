@@ -479,7 +479,7 @@ async function main() {
     },
     label: 'frankenjura',
   })
-  const locMallorca = await ensure(payload, {
+  const locMallorca = await upsert(payload, {
     collection: 'locations',
     where: { slug: { equals: 'mallorca' } },
     data: {
@@ -492,6 +492,53 @@ async function main() {
       city: 'Porto Cristo',
       country: 'Spain',
       coordinates: [3.33, 39.54],
+      layout: [
+        { blockType: 'locationHero' },
+        {
+          blockType: 'locationContent',
+          eyebrow: 'Destination',
+          heading: 'Climbing on Mallorca',
+        },
+        {
+          blockType: 'tripGrid',
+          eyebrow: 'Trips here',
+          heading: 'Mallorca trips',
+          intro:
+            'This grid resolves published Event records through the current Location context.',
+          source: 'byLocation',
+          limit: 6,
+          variant: 'cards',
+        },
+        {
+          blockType: 'locationMap',
+          heading: 'Where we base the camp',
+        },
+        {
+          blockType: 'faq',
+          eyebrow: 'Destination notes',
+          heading: 'Mallorca planning notes',
+          source: 'inline',
+          items: [
+            {
+              question: 'Why does Mallorca work for mixed climbing weeks?',
+              answer: richText(
+                'The island gives us both psicobloc and bolted sport climbing, so we can adapt the plan to sea conditions, wind, and group goals.',
+              ),
+            },
+          ],
+          limit: 3,
+          variant: 'singleColumn',
+        },
+        {
+          blockType: 'cta',
+          eyebrow: 'Ready for the island',
+          heading: 'Find the next Mallorca trip',
+          body: 'Use the destination page as a reusable entry point into the trip catalogue.',
+          variant: 'dark',
+          primaryAction: { label: 'View calendar', href: '/calendar' },
+          secondaryAction: { label: 'Ask a question', href: '/contact' },
+        },
+      ],
       active: true,
     },
     label: 'mallorca',

@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import type { Media, Program } from '@/payload-types'
+import type { Location, Media, Program } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import styles from './LocationBlock.module.css'
 
 export interface LocationBlockProps {
   /** Lexical rich-text body — the only data currently available from both callers. */
-  content?: Program['content']
+  content?: Program['content'] | Location['content']
   /** Optional Bebas display heading rendered above the eyebrow + prose
    *  (e.g. a destination name like "Kalymnos"). Only rendered when provided. */
   heading?: string

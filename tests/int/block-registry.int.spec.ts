@@ -5,6 +5,8 @@ import {
   conversionBlocks,
   eventLayoutBlocks,
   mediaBlocks,
+  locationDetailBlocks,
+  locationLayoutBlocks,
   pageBlocks,
   programDetailBlocks,
   programLayoutBlocks,
@@ -57,6 +59,12 @@ describe('block registry groups', () => {
       'programResults',
       'programTrips',
       'programCTA',
+    ])
+    expect(locationDetailBlocks.map((block) => block.slug)).toEqual([
+      'locationHero',
+      'locationContent',
+      'locationMap',
+      'locationTrips',
     ])
 
     expect(pageBlocks.map((block) => block.slug)).toEqual([
@@ -115,6 +123,21 @@ describe('block registry groups', () => {
       'reviewGrid',
       'guideGrid',
     ])
+    expect(locationLayoutBlocks.map((block) => block.slug)).toEqual([
+      'locationHero',
+      'locationContent',
+      'locationMap',
+      'locationTrips',
+      'tripGrid',
+      'calendar',
+      'gallery',
+      'video',
+      'faq',
+      'reviewGrid',
+      'guideGrid',
+      'partnerStrip',
+      'cta',
+    ])
   })
 
   it('does not register duplicate page block slugs', () => {
@@ -129,6 +152,11 @@ describe('block registry groups', () => {
 
   it('does not register duplicate program layout block slugs', () => {
     const slugs = programLayoutBlocks.map((block) => block.slug)
+    expect(new Set(slugs).size).toBe(slugs.length)
+  })
+
+  it('does not register duplicate location layout block slugs', () => {
+    const slugs = locationLayoutBlocks.map((block) => block.slug)
     expect(new Set(slugs).size).toBe(slugs.length)
   })
 })

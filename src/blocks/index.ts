@@ -34,6 +34,10 @@ import { ProgramCoachesBlockConfig } from './ProgramCoaches/config'
 import { ProgramResultsBlockConfig } from './ProgramResults/config'
 import { ProgramTripsBlockConfig } from './ProgramTrips/config'
 import { ProgramCTABlockConfig } from './ProgramCTA/config'
+import { LocationHeroBlockConfig } from './LocationHero/config'
+import { LocationContentBlockConfig } from './LocationContent/config'
+import { LocationMapBlockConfig } from './LocationMap/config'
+import { LocationTripsBlockConfig } from './LocationTrips/config'
 
 export const contentBlocks = [
   HeroBlockConfig,
@@ -79,6 +83,12 @@ export const programDetailBlocks = [
   ProgramTripsBlockConfig,
   ProgramCTABlockConfig,
 ]
+export const locationDetailBlocks = [
+  LocationHeroBlockConfig,
+  LocationContentBlockConfig,
+  LocationMapBlockConfig,
+  LocationTripsBlockConfig,
+]
 
 export const pageBlocks = [
   ...contentBlocks,
@@ -108,4 +118,17 @@ export const programLayoutBlocks = [
   FAQBlockConfig,
   ReviewGridBlockConfig,
   GuideGridBlockConfig,
+]
+
+export const locationLayoutBlocks = [
+  ...locationDetailBlocks,
+  TripGridBlockConfig,
+  CalendarBlockConfig,
+  GalleryBlockConfig,
+  VideoBlockConfig,
+  FAQBlockConfig,
+  ReviewGridBlockConfig,
+  GuideGridBlockConfig,
+  PartnerStripBlockConfig,
+  CTABlockConfig,
 ]
