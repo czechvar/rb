@@ -135,6 +135,24 @@ Read these before non-trivial work:
 4. Relevant specs/plans under `docs/superpowers/`
 5. Relevant collection, route, hook, and test files
 
+## Agent Skills
+
+### Issue tracker
+
+Workstreams.ai is the board-level task tracker. Repo-local specs and plans live
+as markdown under `docs/superpowers/`. GitLab is for code and merge requests,
+not the canonical agent issue tracker. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Canonical defaults: `needs-triage`, `needs-info`, `ready-for-agent`,
+`ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: one `CONTEXT.md` plus accepted/proposed ADRs in `docs/adr/` at
+the repo root. See `docs/agents/domain.md`.
+
 ## Superpowers And Skill Routing
 
 This repository uses the local `docs/superpowers/` convention for specs and plans. Existing plans were written for the older Superpowers-style workflow and commonly say:

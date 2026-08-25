@@ -1,18 +1,27 @@
-# Issue tracker: Local Markdown
+# Issue Tracker: Workstreams + Local Markdown
 
-Issues, specs, and PRDs for this repo live as **local markdown files** — not GitHub Issues. The repo has a GitHub remote (`czechvar/rb`) but that's for code only; agent workflows around specs and triage stay local.
+Board-level tasks for this repo live in **Workstreams.ai**. Repo-local specs,
+PRDs, implementation plans, ADRs, and wayfinding artifacts live as markdown in
+this repository. The Git remote is GitLab
+(`git@gitlab.com:roman_roznovsky/xbusters.git`) and is used for code branches,
+commits, and merge requests, not as the canonical agent issue tracker.
 
 ## Conventions
 
 - **Specs / PRDs** → `docs/superpowers/specs/YYYY-MM-DD-<slug>-design.md` (16+ existing specs follow this pattern; use today's date and a kebab-case slug).
 - **Plans** → `docs/superpowers/plans/YYYY-MM-DD-<slug>.md`.
+- **Board tasks / delivery status** → Workstreams.ai Xbusters board.
 - **Ad-hoc wayfinding / grilling artefacts** → `.scratch/<effort>/` (create if needed; not checked in unless explicitly staged).
 - **Triage state** → a `Status:` line near the top of each file (see `triage-labels.md` for the role strings).
 - **Comments and conversation history** → append to the bottom of the file under a `## Comments` heading.
 
 ## When a skill says "publish to the issue tracker"
 
-Create a new markdown file under `docs/superpowers/specs/` (for specs/PRDs) or `docs/superpowers/plans/` (for plans). Do **not** run `gh issue create`.
+For repo-local engineering work, create or update markdown under
+`docs/superpowers/specs/` or `docs/superpowers/plans/`. For board-visible work,
+create or update the corresponding Workstreams.ai task. Do not run
+`gh issue create`, and do not use GitLab Issues unless the user explicitly asks
+for a GitLab issue mirror.
 
 ## When a skill says "fetch the relevant ticket"
 
@@ -29,7 +38,9 @@ Used by `/wayfinder`. The **map** is a file with one **child** file per ticket, 
 - **Claim**: set `Status: claimed` and save before any work.
 - **Resolve**: append the answer under an `## Answer` heading, set `Status: resolved`, then append a context pointer to the map's Decisions-so-far in `map.md`.
 
-## GitHub is still used for code
+## GitLab Is Still Used For Code
 
-- Pull requests, code review, branch management → `gh pr` / `git` as usual.
-- Issues on the GitHub side are **not** the source of truth; if one exists there, treat it as a mirror or a note from a contributor, not the working document.
+- Branch management and commits use `git`.
+- Merge requests and code review may use `glab mr` when needed.
+- GitLab Issues are not the source of truth; if one exists there, treat it as a
+  mirror or a note from a contributor, not the working document.

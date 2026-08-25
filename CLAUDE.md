@@ -91,7 +91,7 @@ If any of the four `R2_*` vars is unset, Payload falls back to local-disk storag
 
 ### Issue tracker
 
-Specs / PRDs / issues live as local markdown files in `docs/superpowers/specs/` (existing pattern). Do NOT run `gh issue create`. See `docs/agents/issue-tracker.md`.
+Workstreams.ai is the board-level task tracker. Repo-local specs and plans live as markdown under `docs/superpowers/`. GitLab is for code and merge requests, not the canonical agent issue tracker. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
@@ -99,4 +99,4 @@ Canonical defaults: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-
 
 ### Domain docs
 
-Single-context: one `CONTEXT.md` + `docs/adr/` at the repo root (created lazily by /domain-modeling). See `docs/agents/domain.md`.
+Single-context: one `CONTEXT.md` plus accepted/proposed ADRs in `docs/adr/` at the repo root. See `docs/agents/domain.md`.
