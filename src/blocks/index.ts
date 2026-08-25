@@ -51,19 +51,6 @@ import { PostHeroBlockConfig } from './PostHero/config'
 import { PostBodyBlockConfig } from './PostBody/config'
 import { RelatedPostsBlockConfig } from './RelatedPosts/config'
 import { PostCTABlockConfig } from './PostCTA/config'
-import { HomeHeroBlockConfig } from './HomeHero/config'
-import { HomeStatsBlockConfig } from './HomeStats/config'
-import { HomeWhoWeAreBlockConfig } from './HomeWhoWeAre/config'
-import { HomeFeaturedTripsBlockConfig } from './HomeFeaturedTrips/config'
-import { HomeWhyRockbustersBlockConfig } from './HomeWhyRockbusters/config'
-import { HomeProClimbersBlockConfig } from './HomeProClimbers/config'
-import { HomePickYourExperienceBlockConfig } from './HomePickYourExperience/config'
-import { HomeDestinationsBlockConfig } from './HomeDestinations/config'
-import { HomeTestimonialsBlockConfig } from './HomeTestimonials/config'
-import { HomeTeamBlockConfig } from './HomeTeam/config'
-import { HomeFAQBlockConfig } from './HomeFAQ/config'
-import { HomePartnersBlockConfig } from './HomePartners/config'
-import { HomeFinalCTABlockConfig } from './HomeFinalCTA/config'
 
 export const contentBlocks = [
   HeroBlockConfig,
@@ -132,21 +119,6 @@ export const postDetailBlocks = [
   RelatedPostsBlockConfig,
   PostCTABlockConfig,
 ]
-export const homepageBlocks = [
-  HomeHeroBlockConfig,
-  HomeStatsBlockConfig,
-  HomeWhoWeAreBlockConfig,
-  HomeFeaturedTripsBlockConfig,
-  HomeWhyRockbustersBlockConfig,
-  HomeProClimbersBlockConfig,
-  HomePickYourExperienceBlockConfig,
-  HomeDestinationsBlockConfig,
-  HomeTestimonialsBlockConfig,
-  HomeTeamBlockConfig,
-  HomeFAQBlockConfig,
-  HomePartnersBlockConfig,
-  HomeFinalCTABlockConfig,
-]
 
 export const pageBlocks = [
   ...contentBlocks,
@@ -154,7 +126,6 @@ export const pageBlocks = [
   ...catalogueBlocks,
   ...mediaBlocks,
   ...socialProofBlocks,
-  ...homepageBlocks,
 ]
 
 export const eventLayoutBlocks = [

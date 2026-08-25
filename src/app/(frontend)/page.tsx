@@ -2,10 +2,17 @@ import { Header } from '@/components/marketing/Header'
 import { Footer } from '@/components/marketing/Footer'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import {
-  datesByEvent,
-  getHomepageBlockData,
-} from '@/components/blocks/HomepageContextBlocks'
-import { getPublishedPageBySlug } from '@/lib/queries'
+  getActiveEventDates,
+  getFeaturedEventsForHomepage,
+  getFounderGuide,
+  getHomepageFAQs,
+  getHomepageHeroMedia,
+  getHomepagePartners,
+  getHomepageReviews,
+  getProClimberGuides,
+  getPublishedPageBySlug,
+} from '@/lib/queries'
+import type { Event, EventDate, Faq, Guide, Media, Partner, Review } from '@/payload-types'
 import { Hero } from '@/components/marketing/homepage/Hero'
 import { StatsBar } from '@/components/marketing/homepage/StatsBar'
 import { WhoWeAre } from '@/components/marketing/homepage/WhoWeAre'
@@ -20,17 +27,28 @@ import { HomepageFAQ } from '@/components/marketing/homepage/HomepageFAQ'
 import { Partners } from '@/components/marketing/homepage/Partners'
 import { FinalCTA } from '@/components/marketing/homepage/FinalCTA'
 
+type HomepageData = {
+  heroMedia: Media | null
+  events: Event[]
+  allDates: EventDate[]
+  reviews: Review[]
+  faqs: Faq[]
+  partners: Partner[]
+  proClimbers: Guide[]
+  founder: Guide | null
+}
+
 export default async function HomePage() {
   const [homePage, homepage] = await Promise.all([
     getPublishedPageBySlug('home'),
-    getHomepageBlockData(),
+    getHomepageData(),
   ])
 
   return (
     <>
       <Header />
       {homePage?.layout?.length ? (
-        <RenderBlocks blocks={homePage.layout} context={{ page: homePage, homepage }} />
+        <RenderBlocks blocks={homePage.layout} context={{ page: homePage }} />
       ) : (
         <>
           <Hero backgroundMedia={homepage.heroMedia} />
@@ -51,4 +69,35 @@ export default async function HomePage() {
       <Footer />
     </>
   )
+}
+
+async function getHomepageData(): Promise<HomepageData> {
+  const [heroMedia, events, allDates, reviews, faqs, partners, proClimbers, founder] =
+    await Promise.all([
+      getHomepageHeroMedia(),
+      getFeaturedEventsForHomepage(),
+      getActiveEventDates(),
+      getHomepageReviews(),
+      getHomepageFAQs(),
+      getHomepagePartners(),
+      getProClimberGuides(),
+      getFounderGuide(),
+    ])
+
+  return { heroMedia, events, allDates, reviews, faqs, partners, proClimbers, founder }
+}
+
+function datesByEvent(homepage: Pick<HomepageData, 'events' | 'allDates'>) {
+  const featuredEventIds = new Set(homepage.events.map((event) => event.id))
+  const map = new Map<number, EventDate[]>()
+
+  for (const date of homepage.allDates) {
+    const eventId = typeof date.event === 'object' ? date.event.id : date.event
+    if (!featuredEventIds.has(eventId)) continue
+    const dates = map.get(eventId) ?? []
+    dates.push(date)
+    map.set(eventId, dates)
+  }
+
+  return map
 }
