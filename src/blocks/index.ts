@@ -38,6 +38,15 @@ import { LocationHeroBlockConfig } from './LocationHero/config'
 import { LocationContentBlockConfig } from './LocationContent/config'
 import { LocationMapBlockConfig } from './LocationMap/config'
 import { LocationTripsBlockConfig } from './LocationTrips/config'
+import { GuideHeroBlockConfig } from './GuideHero/config'
+import { GuideStatsBlockConfig } from './GuideStats/config'
+import { GuideAboutBlockConfig } from './GuideAbout/config'
+import { GuideVideoBlockConfig } from './GuideVideo/config'
+import { GuidePillarsBlockConfig } from './GuidePillars/config'
+import { GuideTripsSectionBlockConfig } from './GuideTripsSection/config'
+import { GuideAchievementsBlockConfig } from './GuideAchievements/config'
+import { GuideTestimonialBlockConfig } from './GuideTestimonial/config'
+import { GuideCTABlockConfig } from './GuideCTA/config'
 
 export const contentBlocks = [
   HeroBlockConfig,
@@ -89,6 +98,17 @@ export const locationDetailBlocks = [
   LocationMapBlockConfig,
   LocationTripsBlockConfig,
 ]
+export const guideDetailBlocks = [
+  GuideHeroBlockConfig,
+  GuideStatsBlockConfig,
+  GuideAboutBlockConfig,
+  GuideVideoBlockConfig,
+  GuidePillarsBlockConfig,
+  GuideTripsSectionBlockConfig,
+  GuideAchievementsBlockConfig,
+  GuideTestimonialBlockConfig,
+  GuideCTABlockConfig,
+]
 
 export const pageBlocks = [
   ...contentBlocks,
@@ -130,5 +150,17 @@ export const locationLayoutBlocks = [
   ReviewGridBlockConfig,
   GuideGridBlockConfig,
   PartnerStripBlockConfig,
+  CTABlockConfig,
+]
+
+export const guideLayoutBlocks = [
+  ...guideDetailBlocks,
+  GuideTripsBlockConfig,
+  TripGridBlockConfig,
+  CalendarBlockConfig,
+  GalleryBlockConfig,
+  VideoBlockConfig,
+  FAQBlockConfig,
+  ReviewGridBlockConfig,
   CTABlockConfig,
 ]

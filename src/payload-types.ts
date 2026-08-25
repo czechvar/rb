@@ -1333,6 +1333,184 @@ export interface Guide {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Optional block-driven layout for this public guide page. Empty uses the current default layout.
+   */
+  layout?:
+    | (
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideHero';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideStats';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideAbout';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideVideo';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guidePillars';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTripsSection';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideAchievements';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTestimonial';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideCTA';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'byGuide' | 'currentGuide' | 'manual';
+            guide?: (number | null) | Guide;
+            events?: (number | Event)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTrips';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+      )[]
+    | null;
   email?: string | null;
   phone?: string | null;
   vimeoId?: string | null;
@@ -2528,6 +2706,188 @@ export interface GuidesSelect<T extends boolean = true> {
   section?: T;
   photo?: T;
   content?: T;
+  layout?:
+    | T
+    | {
+        guideHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideStats?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideAbout?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideVideo?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guidePillars?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideTripsSection?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideAchievements?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideTestimonial?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideCTA?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideTrips?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              events?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
   email?: T;
   phone?: T;
   vimeoId?: T;

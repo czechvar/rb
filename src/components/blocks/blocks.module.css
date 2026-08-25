@@ -270,6 +270,20 @@
   opacity: 0.74;
 }
 
+.guideVideoSection {
+  padding: var(--rb-section-pad);
+  background: var(--rb-darker);
+}
+
+.guideVideoSection iframe {
+  display: block;
+  width: min(1180px, calc(100% - 40px));
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  border: 0;
+  background: #000000;
+}
+
 .sectionIntroCenter .sectionHeader {
   max-width: 860px;
   margin-right: auto;

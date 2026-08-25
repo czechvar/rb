@@ -44,6 +44,17 @@ import {
   LocationMapBlock,
   LocationTripsBlock,
 } from './LocationContextBlocks'
+import {
+  GuideAboutBlock,
+  GuideAchievementsBlock,
+  GuideCTABlock,
+  GuideHeroBlock,
+  GuidePillarsBlock,
+  GuideStatsBlock,
+  GuideTestimonialBlock,
+  GuideTripsSectionBlock,
+  GuideVideoBlock,
+} from './GuideContextBlocks'
 
 type PageBlock = NonNullable<Page['layout']>[number]
 type RenderableBlock = PageBlock | {
@@ -118,6 +129,15 @@ const blockRenderers: Record<string, BlockRenderer> = {
   locationContent: (block, context) => LocationContentBlock(block, context),
   locationMap: (block, context) => LocationMapBlock(block, context),
   locationTrips: (block, context) => LocationTripsBlock(block, context),
+  guideHero: (block, context) => GuideHeroBlock(block, context),
+  guideStats: (block, context) => GuideStatsBlock(block, context),
+  guideAbout: (block, context) => GuideAboutBlock(block, context),
+  guideVideo: (block, context) => GuideVideoBlock(block, context),
+  guidePillars: (block, context) => GuidePillarsBlock(block, context),
+  guideTripsSection: (block, context) => GuideTripsSectionBlock(block, context),
+  guideAchievements: (block, context) => GuideAchievementsBlock(block, context),
+  guideTestimonial: (block, context) => GuideTestimonialBlock(block, context),
+  guideCTA: (block, context) => GuideCTABlock(block, context),
 }
 
 async function renderBlock(block: RenderableBlock, index: number, context: BlockRenderContext) {

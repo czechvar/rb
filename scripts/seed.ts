@@ -737,6 +737,16 @@ async function main() {
       heroSub:
         '25 years on rock, one relentless mission: help you climb better, harder, and more. Jany founded Rockbusters and still coaches every discipline himself — from first lead to your hardest redpoint.',
       heroCaption: 'Jany · Pince Sans Rire 7b+',
+      layout: [
+        { blockType: 'guideHero' },
+        { blockType: 'guideStats' },
+        { blockType: 'guideAbout' },
+        { blockType: 'guidePillars' },
+        { blockType: 'guideTripsSection' },
+        { blockType: 'guideAchievements' },
+        { blockType: 'guideTestimonial' },
+        { blockType: 'guideCTA' },
+      ],
       stats: [
         { value: '25+', label: 'Years Climbing & Coaching' },
         { value: '8b+', label: 'Personal Redpoint Grade' },
