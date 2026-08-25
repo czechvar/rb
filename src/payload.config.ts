@@ -24,6 +24,7 @@ import { DiscountCodes } from './collections/DiscountCodes'
 import { Referrals } from './collections/Referrals'
 import { PostCategories } from './collections/PostCategories'
 import { Posts } from './collections/Posts'
+import { Pages } from './collections/Pages'
 import { buildEmailAdapter } from './lib/email/adapter'
 
 const filename = fileURLToPath(import.meta.url)
@@ -55,6 +56,7 @@ export default buildConfig({
     Referrals,
     PostCategories,
     Posts,
+    Pages,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

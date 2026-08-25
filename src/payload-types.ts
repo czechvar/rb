@@ -85,6 +85,7 @@ export interface Config {
     referrals: Referral;
     'post-categories': PostCategory;
     posts: Post;
+    pages: Page;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -110,6 +111,7 @@ export interface Config {
     referrals: ReferralsSelect<false> | ReferralsSelect<true>;
     'post-categories': PostCategoriesSelect<false> | PostCategoriesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -1168,6 +1170,119 @@ export interface Post {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  slug: string;
+  status: 'draft' | 'published';
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  layout?:
+    | (
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            backgroundMedia?: (number | null) | Media;
+            variant: 'overlay' | 'editorial' | 'simple';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            source: 'upload' | 'externalVideo';
+            media?: (number | null) | Media;
+            videoUrl?: string | null;
+            caption?: string | null;
+            variant: 'wide' | 'contained' | 'split';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mediaBlock';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1261,6 +1376,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -2028,6 +2147,117 @@ export interface PostsSelect<T extends boolean = true> {
         title?: T;
         keywords?: T;
         description?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  status?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        keywords?: T;
+        description?: T;
+      };
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              backgroundMedia?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              source?: T;
+              media?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

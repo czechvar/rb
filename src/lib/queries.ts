@@ -11,7 +11,23 @@ import type {
   Faq,
   Partner,
   Media,
+  Page,
 } from '@/payload-types'
+
+// --- CMS pages ----------------------------------------------------------
+
+export function getPublishedPageBySlug(slug: string) {
+  return cachedQuery(['page-by-slug', slug], [TAGS.pages], async (): Promise<Page | null> => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'pages',
+      where: { and: [{ slug: { equals: slug } }, { status: { equals: 'published' } }] },
+      limit: 1,
+      depth: 2,
+    })
+    return docs[0] ?? null
+  })
+}
 
 // --- Guides / team -------------------------------------------------------
 

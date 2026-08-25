@@ -12,9 +12,27 @@
  */
 import 'dotenv/config'
 import { getPayload, type Payload, type CollectionSlug, type Where } from 'payload'
+import sharp from 'sharp'
 import config from '../src/payload.config'
 
 type Ref = { id: number }
+
+const demoMediaSvg = `
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#0d0d0d"/>
+  <path d="M0 0h1600v900H0z" fill="#111"/>
+  <circle cx="1280" cy="190" r="220" fill="#e30713" opacity=".18"/>
+  <circle cx="280" cy="760" r="260" fill="#e30713" opacity=".12"/>
+  <path d="M160 660 420 330l180 220 130-170 210 280H160Z" fill="#f0ede6" opacity=".9"/>
+  <path d="M610 660 780 430l110 150 80-105 140 185H610Z" fill="#f0ede6" opacity=".55"/>
+  <text x="160" y="170" fill="#e30713" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="8">CMS PAGE BUILDER</text>
+  <text x="160" y="250" fill="#f0ede6" font-family="Arial Black, Impact, sans-serif" font-size="86" font-weight="900">ROCKBUSTERS</text>
+  <text x="160" y="320" fill="#f0ede6" font-family="Arial, sans-serif" font-size="34" opacity=".76">Reusable React blocks with safe Payload data bindings</text>
+</svg>`
+
+async function demoPng() {
+  return sharp(Buffer.from(demoMediaSvg)).png().toBuffer()
+}
 
 async function ensure(
   payload: Payload,
@@ -61,6 +79,51 @@ async function upsert(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const created = await payload.create({ collection, data: data as any })
   console.log(`  ✓ create ${collection.padEnd(13)} ${label}`)
+  return created as Ref
+}
+
+async function ensureMedia(
+  payload: Payload,
+  args: {
+    filename: string
+    alt: string
+    label: string
+  },
+): Promise<Ref> {
+  const png = await demoPng()
+  const existing = await payload.find({
+    collection: 'media',
+    where: { filename: { equals: args.filename } },
+    limit: 1,
+    depth: 0,
+  })
+  if (existing.docs[0]) {
+    const updated = await payload.update({
+      collection: 'media',
+      id: existing.docs[0].id,
+      data: { alt: args.alt },
+      file: {
+        data: png,
+        mimetype: 'image/png',
+        name: args.filename,
+        size: png.length,
+      },
+    })
+    console.log(`  ✎ update ${'media'.padEnd(13)} ${args.label}`)
+    return updated as Ref
+  }
+
+  const created = await payload.create({
+    collection: 'media',
+    data: { alt: args.alt },
+    file: {
+      data: png,
+      mimetype: 'image/png',
+      name: args.filename,
+      size: png.length,
+    },
+  })
+  console.log(`  ✓ create ${'media'.padEnd(13)} ${args.label}`)
   return created as Ref
 }
 
@@ -957,6 +1020,90 @@ async function main() {
       label: tag,
     })
   }
+
+  console.log('— cms pages —')
+
+  const demoMedia = await ensureMedia(payload, {
+    filename: 'cms-page-builder-poc-visual.png',
+    alt: 'Climber on a Rockbusters course',
+    label: 'cms-page-builder-poc',
+  })
+
+  await upsert(payload, {
+    collection: 'pages',
+    where: { slug: { equals: 'cms-page-builder-poc' } },
+    data: {
+      title: 'CMS Page Builder POC',
+      slug: 'cms-page-builder-poc',
+      status: 'published',
+      seo: {
+        title: 'CMS Page Builder POC - Rockbusters',
+        description:
+          'A Payload CMS composed page proving reusable React blocks and safe data bindings.',
+      },
+      layout: [
+        {
+          blockType: 'hero',
+          eyebrow: 'Payload CMS page builder',
+          heading: 'Build campaign pages from approved blocks',
+          body:
+            'This page is seeded from Payload and rendered by reusable React blocks, not hardcoded route composition.',
+          variant: 'simple',
+          primaryAction: {
+            label: 'View trips',
+            href: '/programs',
+          },
+        },
+        {
+          blockType: 'tripGrid',
+          eyebrow: 'Data-bound trips',
+          heading: 'Manually curated trips resolved from Events',
+          intro:
+            'Editors choose approved Event relationships; the app resolves published Events and active Event Dates.',
+          source: 'manual',
+          events: [evSport.id, evDeepBlue.id, evDolomites.id],
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'mediaBlock',
+          eyebrow: 'Media relationship',
+          heading: 'Payload media drives the visual block',
+          body:
+            'The block stores a relationship to the Media collection while React owns sizing, alt text, and responsive rendering.',
+          source: 'upload',
+          media: demoMedia.id,
+          caption: 'Seeded media fixture for the CMS page-builder proof of concept.',
+          variant: 'contained',
+        },
+        {
+          blockType: 'faq',
+          eyebrow: 'Reusable answers',
+          heading: 'Global FAQs from the FAQ collection',
+          source: 'global',
+          limit: 3,
+          variant: 'twoColumn',
+        },
+        {
+          blockType: 'cta',
+          eyebrow: 'Editor-managed CTA',
+          heading: 'One reusable call to action, many pages',
+          body:
+            'The CMS controls copy and links; the design system controls layout, accessibility, and visual consistency.',
+          variant: 'red',
+          primaryAction: {
+            label: 'Open admin',
+            href: '/admin/collections/pages',
+          },
+          secondaryAction: {
+            label: 'See homepage',
+            href: '/',
+          },
+        },
+      ],
+    },
+    label: 'cms-page-builder-poc',
+  })
 
   console.log('\nseed complete.')
 }

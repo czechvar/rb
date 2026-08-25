@@ -16,6 +16,7 @@ vi.mock('@/lib/cache', () => ({
     eventDates: 'event-dates',
     posts: 'posts',
     postCategories: 'post-categories',
+    pages: 'pages',
   },
 }))
 // Stub the Payload client so importing queries never touches the DB.
@@ -36,6 +37,7 @@ const cases: Array<[string, () => unknown, string[], string[]]> = [
   ['getPublishedPostBySlug', () => q.getPublishedPostBySlug('s'), ['post-by-slug', 's'], ['posts', 'post-categories']],
   ['getPostCategoryBySlug', () => q.getPostCategoryBySlug('s'), ['post-category-by-slug', 's'], ['post-categories']],
   ['getPublishedPostsByCategory', () => q.getPublishedPostsByCategory(3), ['posts-by-category', '3'], ['posts', 'post-categories']],
+  ['getPublishedPageBySlug', () => q.getPublishedPageBySlug('landing'), ['page-by-slug', 'landing'], ['pages']],
   ['getPublishedEventBySlug', () => q.getPublishedEventBySlug('s'), ['event-by-slug', 's'], ['events', 'guides', 'locations']],
   ['getActiveEventDatesForEvent', () => q.getActiveEventDatesForEvent(4), ['event-dates-for-event', '4'], ['event-dates']],
   ['getPublishedEventsWithLocations', () => q.getPublishedEventsWithLocations(), ['published-events-with-locations'], ['events', 'locations']],
