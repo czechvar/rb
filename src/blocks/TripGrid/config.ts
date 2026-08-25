@@ -1,25 +1,21 @@
 import type { Block } from 'payload'
+import { headingFields, selectField } from '../fields'
 
-export const TripGridBlock: Block = {
+export const TripGridBlockConfig: Block = {
   slug: 'tripGrid',
   labels: { singular: 'Trip Grid', plural: 'Trip Grids' },
   fields: [
-    { name: 'eyebrow', type: 'text', defaultValue: 'Trips' },
-    { name: 'heading', type: 'text', required: true },
-    { name: 'intro', type: 'textarea' },
-    {
-      name: 'source',
-      type: 'select',
+    ...headingFields({ headingRequired: true, eyebrowDefault: 'Trips', bodyName: 'intro' }),
+    selectField('source', {
       defaultValue: 'featured',
-      required: true,
-      options: [
+      values: [
         { label: 'Featured trips', value: 'featured' },
         { label: 'Upcoming trips', value: 'upcoming' },
         { label: 'Manual selection', value: 'manual' },
         { label: 'By program', value: 'byProgram' },
         { label: 'By location', value: 'byLocation' },
       ],
-    },
+    }),
     {
       name: 'events',
       type: 'relationship',
@@ -55,16 +51,15 @@ export const TripGridBlock: Block = {
       defaultValue: 6,
       required: true,
     },
-    {
-      name: 'variant',
-      type: 'select',
+    selectField('variant', {
       defaultValue: 'cards',
-      required: true,
-      options: [
+      values: [
         { label: 'Cards', value: 'cards' },
         { label: 'Compact', value: 'compact' },
         { label: 'Editorial lead', value: 'editorial' },
       ],
-    },
+    }),
   ],
 }
+
+export const TripGridBlock = TripGridBlockConfig

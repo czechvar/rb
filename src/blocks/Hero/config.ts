@@ -1,35 +1,22 @@
 import type { Block } from 'payload'
+import { actionField, headingFields, mediaUploadField, selectField } from '../fields'
 
-export const HeroBlock: Block = {
+export const HeroBlockConfig: Block = {
   slug: 'hero',
   labels: { singular: 'Hero', plural: 'Heroes' },
   fields: [
-    { name: 'eyebrow', type: 'text' },
-    { name: 'heading', type: 'text', required: true },
-    { name: 'body', type: 'textarea' },
-    {
-      name: 'backgroundMedia',
-      type: 'upload',
-      relationTo: 'media',
-    },
-    {
-      name: 'variant',
-      type: 'select',
+    ...headingFields({ headingRequired: true }),
+    mediaUploadField('backgroundMedia'),
+    selectField('variant', {
       defaultValue: 'overlay',
-      required: true,
-      options: [
+      values: [
         { label: 'Image overlay', value: 'overlay' },
         { label: 'Editorial', value: 'editorial' },
         { label: 'Simple', value: 'simple' },
       ],
-    },
-    {
-      name: 'primaryAction',
-      type: 'group',
-      fields: [
-        { name: 'label', type: 'text' },
-        { name: 'href', type: 'text' },
-      ],
-    },
+    }),
+    actionField('primaryAction'),
   ],
 }
+
+export const HeroBlock = HeroBlockConfig

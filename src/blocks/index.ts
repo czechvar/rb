@@ -1,13 +1,19 @@
-import { HeroBlock } from './Hero/config'
-import { CTABlock } from './CTA/config'
-import { TripGridBlock } from './TripGrid/config'
-import { MediaBlock } from './Media/config'
-import { FAQBlock } from './FAQ/config'
+import { HeroBlockConfig } from './Hero/config'
+import { CTABlockConfig } from './CTA/config'
+import { TripGridBlockConfig } from './TripGrid/config'
+import { MediaBlockConfig } from './Media/config'
+import { FAQBlockConfig } from './FAQ/config'
+
+export const contentBlocks = [HeroBlockConfig]
+export const conversionBlocks = [CTABlockConfig]
+export const catalogueBlocks = [TripGridBlockConfig]
+export const mediaBlocks = [MediaBlockConfig]
+export const socialProofBlocks = [FAQBlockConfig]
 
 export const pageBlocks = [
-  HeroBlock,
-  CTABlock,
-  TripGridBlock,
-  MediaBlock,
-  FAQBlock,
+  ...contentBlocks,
+  ...conversionBlocks,
+  ...catalogueBlocks,
+  ...mediaBlocks,
+  ...socialProofBlocks,
 ]

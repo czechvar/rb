@@ -1,22 +1,18 @@
 import type { Block } from 'payload'
+import { headingFields, selectField, textareaField } from '../fields'
 
-export const MediaBlock: Block = {
+export const MediaBlockConfig: Block = {
   slug: 'mediaBlock',
   labels: { singular: 'Media', plural: 'Media blocks' },
   fields: [
-    { name: 'eyebrow', type: 'text' },
-    { name: 'heading', type: 'text' },
-    { name: 'body', type: 'textarea' },
-    {
-      name: 'source',
-      type: 'select',
+    ...headingFields(),
+    selectField('source', {
       defaultValue: 'upload',
-      required: true,
-      options: [
+      values: [
         { label: 'Payload upload', value: 'upload' },
         { label: 'External video URL', value: 'externalVideo' },
       ],
-    },
+    }),
     {
       name: 'media',
       type: 'upload',
@@ -32,17 +28,16 @@ export const MediaBlock: Block = {
         condition: (_, siblingData) => siblingData.source === 'externalVideo',
       },
     },
-    { name: 'caption', type: 'textarea' },
-    {
-      name: 'variant',
-      type: 'select',
+    textareaField('caption'),
+    selectField('variant', {
       defaultValue: 'wide',
-      required: true,
-      options: [
+      values: [
         { label: 'Wide', value: 'wide' },
         { label: 'Contained', value: 'contained' },
         { label: 'Split text/media', value: 'split' },
       ],
-    },
+    }),
   ],
 }
+
+export const MediaBlock = MediaBlockConfig

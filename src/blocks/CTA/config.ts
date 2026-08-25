@@ -1,38 +1,22 @@
 import type { Block } from 'payload'
+import { actionField, headingFields, selectField } from '../fields'
 
-export const CTABlock: Block = {
+export const CTABlockConfig: Block = {
   slug: 'cta',
   labels: { singular: 'CTA', plural: 'CTAs' },
   fields: [
-    { name: 'eyebrow', type: 'text' },
-    { name: 'heading', type: 'text', required: true },
-    { name: 'body', type: 'textarea' },
-    {
-      name: 'variant',
-      type: 'select',
+    ...headingFields({ headingRequired: true }),
+    selectField('variant', {
       defaultValue: 'dark',
-      required: true,
-      options: [
+      values: [
         { label: 'Dark', value: 'dark' },
         { label: 'Light', value: 'light' },
         { label: 'Red', value: 'red' },
       ],
-    },
-    {
-      name: 'primaryAction',
-      type: 'group',
-      fields: [
-        { name: 'label', type: 'text' },
-        { name: 'href', type: 'text' },
-      ],
-    },
-    {
-      name: 'secondaryAction',
-      type: 'group',
-      fields: [
-        { name: 'label', type: 'text' },
-        { name: 'href', type: 'text' },
-      ],
-    },
+    }),
+    actionField('primaryAction'),
+    actionField('secondaryAction'),
   ],
 }
+
+export const CTABlock = CTABlockConfig

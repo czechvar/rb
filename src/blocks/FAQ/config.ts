@@ -1,24 +1,27 @@
 import type { Block } from 'payload'
+import { headingFields, selectField } from '../fields'
 
-export const FAQBlock: Block = {
+export const FAQBlockConfig: Block = {
   slug: 'faq',
   labels: { singular: 'FAQ', plural: 'FAQ blocks' },
   fields: [
-    { name: 'eyebrow', type: 'text', defaultValue: 'Quick answers' },
-    { name: 'heading', type: 'text', defaultValue: 'FAQ', required: true },
-    {
-      name: 'source',
-      type: 'select',
+    ...headingFields({
+      headingRequired: true,
+      headingDefault: 'FAQ',
+      eyebrowDefault: 'Quick answers',
+    }).filter(
+      (field) => 'name' in field && field.name !== 'body',
+    ),
+    selectField('source', {
       defaultValue: 'global',
-      required: true,
-      options: [
+      values: [
         { label: 'Global active FAQs', value: 'global' },
         { label: 'Manual FAQ selection', value: 'manual' },
         { label: 'Inline manual entries', value: 'inline' },
         { label: 'By event', value: 'byEvent' },
         { label: 'By program', value: 'byProgram' },
       ],
-    },
+    }),
     {
       name: 'faqs',
       type: 'relationship',
@@ -65,15 +68,14 @@ export const FAQBlock: Block = {
       defaultValue: 6,
       required: true,
     },
-    {
-      name: 'variant',
-      type: 'select',
+    selectField('variant', {
       defaultValue: 'twoColumn',
-      required: true,
-      options: [
+      values: [
         { label: 'Two column', value: 'twoColumn' },
         { label: 'Single column', value: 'singleColumn' },
       ],
-    },
+    }),
   ],
 }
+
+export const FAQBlock = FAQBlockConfig

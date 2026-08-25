@@ -14,6 +14,11 @@ import 'dotenv/config'
 import { getPayload, type Payload, type CollectionSlug, type Where } from 'payload'
 import sharp from 'sharp'
 import config from '../src/payload.config'
+import {
+  BLOCK_DEMO_MEDIA_FILENAME,
+  BLOCK_DEMO_PAGE_SLUG,
+  BLOCK_DEMO_MARKER,
+} from '../src/lib/block-demo'
 
 type Ref = { id: number }
 
@@ -1024,17 +1029,17 @@ async function main() {
   console.log('— cms pages —')
 
   const demoMedia = await ensureMedia(payload, {
-    filename: 'cms-page-builder-poc-visual.png',
+    filename: BLOCK_DEMO_MEDIA_FILENAME,
     alt: 'Climber on a Rockbusters course',
-    label: 'cms-page-builder-poc',
+    label: BLOCK_DEMO_MARKER,
   })
 
   await upsert(payload, {
     collection: 'pages',
-    where: { slug: { equals: 'cms-page-builder-poc' } },
+    where: { slug: { equals: BLOCK_DEMO_PAGE_SLUG } },
     data: {
       title: 'CMS Page Builder POC',
-      slug: 'cms-page-builder-poc',
+      slug: BLOCK_DEMO_PAGE_SLUG,
       status: 'published',
       seo: {
         title: 'CMS Page Builder POC - Rockbusters',
@@ -1102,7 +1107,7 @@ async function main() {
         },
       ],
     },
-    label: 'cms-page-builder-poc',
+    label: BLOCK_DEMO_MARKER,
   })
 
   console.log('\nseed complete.')
