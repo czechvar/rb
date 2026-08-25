@@ -61,6 +61,22 @@ import {
   PostHeroBlock,
   RelatedPostsBlock,
 } from './PostContextBlocks'
+import {
+  type HomepageBlockData,
+  HomeDestinationsBlock,
+  HomeFAQBlock,
+  HomeFeaturedTripsBlock,
+  HomeFinalCTABlock,
+  HomeHeroBlock,
+  HomePartnersBlock,
+  HomePickYourExperienceBlock,
+  HomeProClimbersBlock,
+  HomeStatsBlock,
+  HomeTeamBlock,
+  HomeTestimonialsBlock,
+  HomeWhoWeAreBlock,
+  HomeWhyRockbustersBlock,
+} from './HomepageContextBlocks'
 
 type PageBlock = NonNullable<Page['layout']>[number]
 type RenderableBlock = PageBlock | {
@@ -76,6 +92,7 @@ export type BlockRenderContext = {
   location?: Location | null
   guide?: Guide | null
   post?: Post | null
+  homepage?: HomepageBlockData | null
 }
 
 type BlockRenderer = (
@@ -149,6 +166,19 @@ const blockRenderers: Record<string, BlockRenderer> = {
   postBody: (block, context) => PostBodyBlock(block, context),
   relatedPosts: (block, context) => RelatedPostsBlock(block, context),
   postCTA: (block, context) => PostCTABlock(block, context),
+  homeHero: (block, context) => HomeHeroBlock(block, context),
+  homeStats: (block, context) => HomeStatsBlock(block, context),
+  homeWhoWeAre: (block, context) => HomeWhoWeAreBlock(block, context),
+  homeFeaturedTrips: (block, context) => HomeFeaturedTripsBlock(block, context),
+  homeWhyRockbusters: (block, context) => HomeWhyRockbustersBlock(block, context),
+  homeProClimbers: (block, context) => HomeProClimbersBlock(block, context),
+  homePickYourExperience: (block, context) => HomePickYourExperienceBlock(block, context),
+  homeDestinations: (block, context) => HomeDestinationsBlock(block, context),
+  homeTestimonials: (block, context) => HomeTestimonialsBlock(block, context),
+  homeTeam: (block, context) => HomeTeamBlock(block, context),
+  homeFAQ: (block, context) => HomeFAQBlock(block, context),
+  homePartners: (block, context) => HomePartnersBlock(block, context),
+  homeFinalCTA: (block, context) => HomeFinalCTABlock(block, context),
 }
 
 async function renderBlock(block: RenderableBlock, index: number, context: BlockRenderContext) {

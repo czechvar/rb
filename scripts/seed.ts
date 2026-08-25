@@ -1535,6 +1535,31 @@ async function main() {
     },
     label: BLOCK_DEMO_MARKER,
   })
+  await upsert(payload, {
+    collection: 'pages',
+    where: { slug: { equals: 'home' } },
+    data: {
+      title: 'Home',
+      slug: 'home',
+      status: 'published',
+      layout: [
+        { blockType: 'homeHero' },
+        { blockType: 'homeStats' },
+        { blockType: 'homeWhoWeAre' },
+        { blockType: 'homeFeaturedTrips' },
+        { blockType: 'homeWhyRockbusters' },
+        { blockType: 'homeProClimbers' },
+        { blockType: 'homePickYourExperience' },
+        { blockType: 'homeDestinations' },
+        { blockType: 'homeTestimonials' },
+        { blockType: 'homeTeam' },
+        { blockType: 'homeFAQ' },
+        { blockType: 'homePartners' },
+        { blockType: 'homeFinalCTA' },
+      ],
+    },
+    label: 'home page layout',
+  })
 
   console.log('\nseed complete.')
 }

@@ -10,6 +10,7 @@ import {
   pageBlocks,
   guideDetailBlocks,
   guideLayoutBlocks,
+  homepageBlocks,
   postDetailBlocks,
   postLayoutBlocks,
   programDetailBlocks,
@@ -81,6 +82,21 @@ describe('block registry groups', () => {
       'guideTestimonial',
       'guideCTA',
     ])
+    expect(homepageBlocks.map((block) => block.slug)).toEqual([
+      'homeHero',
+      'homeStats',
+      'homeWhoWeAre',
+      'homeFeaturedTrips',
+      'homeWhyRockbusters',
+      'homeProClimbers',
+      'homePickYourExperience',
+      'homeDestinations',
+      'homeTestimonials',
+      'homeTeam',
+      'homeFAQ',
+      'homePartners',
+      'homeFinalCTA',
+    ])
     expect(postDetailBlocks.map((block) => block.slug)).toEqual([
       'postHero',
       'postBody',
@@ -108,6 +124,19 @@ describe('block registry groups', () => {
       'partnerStrip',
       'guideProfile',
       'guideTrips',
+      'homeHero',
+      'homeStats',
+      'homeWhoWeAre',
+      'homeFeaturedTrips',
+      'homeWhyRockbusters',
+      'homeProClimbers',
+      'homePickYourExperience',
+      'homeDestinations',
+      'homeTestimonials',
+      'homeTeam',
+      'homeFAQ',
+      'homePartners',
+      'homeFinalCTA',
     ])
     expect(eventLayoutBlocks.map((block) => block.slug)).toEqual([
       'tripHero',
@@ -219,6 +248,11 @@ describe('block registry groups', () => {
 
   it('does not register duplicate guide layout block slugs', () => {
     const slugs = guideLayoutBlocks.map((block) => block.slug)
+    expect(new Set(slugs).size).toBe(slugs.length)
+  })
+
+  it('does not register duplicate homepage block slugs', () => {
+    const slugs = homepageBlocks.map((block) => block.slug)
     expect(new Set(slugs).size).toBe(slugs.length)
   })
 
