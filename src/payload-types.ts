@@ -1318,6 +1318,32 @@ export interface Page {
         | {
             eyebrow?: string | null;
             heading?: string | null;
+            intro?: string | null;
+            source: 'latest' | 'byCategory' | 'manual';
+            category?: (number | null) | PostCategory;
+            posts?: (number | Post)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
             body?: string | null;
             source: 'upload' | 'externalVideo';
             media?: (number | null) | Media;
@@ -1396,6 +1422,42 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            partners?: (number | Partner)[] | null;
+            limit?: number | null;
+            variant: 'logos' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'partnerStrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentGuide';
+            guide?: (number | null) | Guide;
+            variant: 'feature' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideProfile';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'byGuide' | 'currentGuide' | 'manual';
+            guide?: (number | null) | Guide;
+            events?: (number | Event)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTrips';
           }
       )[]
     | null;
@@ -2422,6 +2484,34 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        postGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              category?: T;
+              posts?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         mediaBlock?:
           | T
           | {
@@ -2490,6 +2580,45 @@ export interface PagesSelect<T extends boolean = true> {
               event?: T;
               program?: T;
               reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnerStrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              partners?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideProfile?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideTrips?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              events?: T;
               limit?: T;
               variant?: T;
               id?: T;

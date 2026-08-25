@@ -154,4 +154,101 @@ describe('RenderBlocks', () => {
     expect(markup).toContain('Best week on rock.')
     expect(markup).toContain('Lucie K.')
   })
+
+  it('renders discovery and guide companion blocks', async () => {
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'postGrid',
+          source: 'manual',
+          heading: 'Latest stories',
+          posts: [
+            {
+              id: 50,
+              title: 'Training for limestone',
+              slug: 'training-for-limestone',
+              excerpt: 'A practical prep note.',
+              state: 'published',
+              publishedAt: '2026-05-15T09:00:00.000Z',
+            },
+          ],
+        },
+        {
+          blockType: 'calendar',
+          source: 'manual',
+          heading: 'Upcoming dates',
+          eventDates: [
+            {
+              id: 60,
+              dateFrom: '2026-09-12T00:00:00.000Z',
+              dateTo: '2026-09-19T00:00:00.000Z',
+              price: 1290,
+              currency: 'EUR',
+              capacity: 8,
+              active: true,
+              event: {
+                id: 61,
+                title: 'Deep Blue Psicobloc Camp',
+                slug: 'deep-blue-psicobloc',
+                state: 'published',
+              },
+            },
+          ],
+        },
+        {
+          blockType: 'partnerStrip',
+          source: 'manual',
+          heading: 'Trusted partners',
+          partners: [
+            {
+              id: 70,
+              name: 'YY Vertical',
+              slug: 'yy-vertical',
+              link: 'https://yyvertical.com',
+              active: true,
+              featured: true,
+            },
+          ],
+        },
+        {
+          blockType: 'guideProfile',
+          source: 'manual',
+          heading: 'Coach profile',
+          guide: {
+            id: 80,
+            name: 'Jany Novotny',
+            slug: 'jany',
+            role: 'Founder & Head Coach',
+            tagline: 'Direct technical coaching.',
+            active: true,
+          },
+        },
+        {
+          blockType: 'guideTrips',
+          source: 'manual',
+          heading: 'Trips with Jany',
+          events: [
+            {
+              id: 90,
+              title: 'Sport Climbing Basics',
+              slug: 'sport-climbing-basics',
+              shortDescription: 'Outdoor lead climbing week.',
+              state: 'published',
+            },
+          ],
+        },
+      ] as RenderBlocksInput['blocks'],
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).toContain('Training for limestone')
+    expect(markup).toContain('/blog/training-for-limestone')
+    expect(markup).toContain('Deep Blue Psicobloc Camp')
+    expect(markup).toContain('/trips/deep-blue-psicobloc')
+    expect(markup).toContain('YY Vertical')
+    expect(markup).toContain('https://yyvertical.com')
+    expect(markup).toContain('Jany Novotny')
+    expect(markup).toContain('/team/jany')
+    expect(markup).toContain('Sport Climbing Basics')
+  })
 })

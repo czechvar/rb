@@ -15,6 +15,7 @@ import * as migration_20260730_060650_rename_types_to_programs from './20260730_
 import * as migration_20260824_220848_add_pages_collection from './20260824_220848_add_pages_collection';
 import * as migration_20260825_115412_add_generic_page_blocks from './20260825_115412_add_generic_page_blocks';
 import * as migration_20260825_125431_add_domain_page_blocks from './20260825_125431_add_domain_page_blocks';
+import * as migration_20260825_133259_add_discovery_companion_page_blocks from './20260825_133259_add_discovery_companion_page_blocks';
 
 export const migrations = [
   {
@@ -101,5 +102,10 @@ export const migrations = [
     up: migration_20260825_125431_add_domain_page_blocks.up,
     down: migration_20260825_125431_add_domain_page_blocks.down,
     name: '20260825_125431_add_domain_page_blocks',
+  },
+  {
+    up: migration_20260825_133259_add_discovery_companion_page_blocks.up,
+    down: migration_20260825_133259_add_discovery_companion_page_blocks.down,
+    name: '20260825_133259_add_discovery_companion_page_blocks',
   },
 ];

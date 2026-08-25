@@ -458,7 +458,7 @@ async function main() {
 
   console.log('— posts —')
 
-  await ensure(payload, {
+  const postTicino = await ensure(payload, {
     collection: 'posts',
     where: { slug: { equals: 'ticino-switzerland-granite-perfection' } },
     data: {
@@ -476,7 +476,7 @@ async function main() {
     },
     label: 'ticino post',
   })
-  await ensure(payload, {
+  const postTraining = await ensure(payload, {
     collection: 'posts',
     where: { slug: { equals: 'the-benefits-of-training-for-your-climbing-trip' } },
     data: {
@@ -644,6 +644,36 @@ async function main() {
     },
     label: 'jany',
   })
+
+  console.log('— partners —')
+
+  const partnerYY = await ensure(payload, {
+    collection: 'partners',
+    where: { slug: { equals: 'yy-vertical' } },
+    data: {
+      name: 'YY Vertical',
+      slug: 'yy-vertical',
+      link: 'https://www.yyvertical.com',
+      description: richText('Training gear and belay glasses used by Rockbusters coaches.'),
+      active: true,
+      featured: true,
+    },
+    label: 'yy-vertical',
+  })
+  const partnerOcun = await ensure(payload, {
+    collection: 'partners',
+    where: { slug: { equals: 'ocun' } },
+    data: {
+      name: 'Ocún',
+      slug: 'ocun',
+      link: 'https://www.ocun.com',
+      description: richText('Czech climbing hardware and apparel partner.'),
+      active: true,
+      featured: true,
+    },
+    label: 'ocun',
+  })
+
   console.log('— events —')
 
   const evSport = await upsert(payload, {
@@ -1129,6 +1159,59 @@ async function main() {
             'Guide data is reused directly from the People collection, keeping names, roles, and profile links consistent.',
           source: 'manual',
           guides: [guideKlemen.id, guideMarek.id, guideJany.id],
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'postGrid',
+          eyebrow: 'Post binding',
+          heading: 'Latest stories from the blog',
+          intro:
+            'Post blocks can show manual picks, latest published writing, or one post category without duplicating editorial text.',
+          source: 'manual',
+          posts: [postTicino.id, postTraining.id],
+          limit: 2,
+          variant: 'cards',
+        },
+        {
+          blockType: 'calendar',
+          eyebrow: 'Calendar binding',
+          heading: 'Upcoming scheduled trip dates',
+          intro:
+            'Calendar blocks read active Event Date records and only render dates whose Event is published.',
+          source: 'upcoming',
+          limit: 4,
+          variant: 'compact',
+        },
+        {
+          blockType: 'partnerStrip',
+          eyebrow: 'Partner binding',
+          heading: 'Partner records without custom markup',
+          intro:
+            'Partner strips reuse active Partner records, with the CMS selecting featured or manual partner sets.',
+          source: 'manual',
+          partners: [partnerYY.id, partnerOcun.id],
+          limit: 4,
+          variant: 'logos',
+        },
+        {
+          blockType: 'guideProfile',
+          eyebrow: 'Guide profile binding',
+          heading: 'Single guide profile from the People collection',
+          intro:
+            'Guide profile blocks make coach profile promos reusable across campaign and future guide pages.',
+          source: 'manual',
+          guide: guideJany.id,
+          variant: 'feature',
+        },
+        {
+          blockType: 'guideTrips',
+          eyebrow: 'Guide trips binding',
+          heading: 'Trips connected to a selected Guide',
+          intro:
+            'GuideTrips resolves published Events where the selected Guide is assigned as part of the delivery team.',
+          source: 'byGuide',
+          guide: guideKlemen.id,
           limit: 3,
           variant: 'cards',
         },

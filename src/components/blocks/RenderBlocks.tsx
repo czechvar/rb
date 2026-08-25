@@ -9,11 +9,16 @@ import { TripGridBlock } from './TripGridBlock'
 import { ProgramGridBlock } from './ProgramGridBlock'
 import { LocationGridBlock } from './LocationGridBlock'
 import { GuideGridBlock } from './GuideGridBlock'
+import { PostGridBlock } from './PostGridBlock'
+import { CalendarBlock } from './CalendarBlock'
 import { MediaBlock } from './MediaBlock'
 import { GalleryBlock } from './GalleryBlock'
 import { VideoBlock } from './VideoBlock'
 import { FAQBlock } from './FAQBlock'
 import { ReviewGridBlock } from './ReviewGridBlock'
+import { PartnerStripBlock } from './PartnerStripBlock'
+import { GuideProfileBlock } from './GuideProfileBlock'
+import { GuideTripsBlock } from './GuideTripsBlock'
 
 type PageBlock = NonNullable<Page['layout']>[number]
 type RenderableBlock = PageBlock | {
@@ -51,12 +56,20 @@ const blockRenderers: Record<string, BlockRenderer> = {
   locationGrid: (block) =>
     LocationGridBlock(block as Extract<PageBlock, { blockType: 'locationGrid' }>),
   guideGrid: (block) => GuideGridBlock(block as Extract<PageBlock, { blockType: 'guideGrid' }>),
+  postGrid: (block) => PostGridBlock(block as Extract<PageBlock, { blockType: 'postGrid' }>),
+  calendar: (block) => CalendarBlock(block as Extract<PageBlock, { blockType: 'calendar' }>),
   mediaBlock: (block) => <MediaBlock {...(block as Extract<PageBlock, { blockType: 'mediaBlock' }>)} />,
   gallery: (block) => <GalleryBlock {...(block as Extract<PageBlock, { blockType: 'gallery' }>)} />,
   video: (block) => <VideoBlock {...(block as Extract<PageBlock, { blockType: 'video' }>)} />,
   faq: (block) => FAQBlock(block as Extract<PageBlock, { blockType: 'faq' }>),
   reviewGrid: (block) =>
     ReviewGridBlock(block as Extract<PageBlock, { blockType: 'reviewGrid' }>),
+  partnerStrip: (block) =>
+    PartnerStripBlock(block as Extract<PageBlock, { blockType: 'partnerStrip' }>),
+  guideProfile: (block, context) =>
+    GuideProfileBlock(block as Extract<PageBlock, { blockType: 'guideProfile' }>, context),
+  guideTrips: (block, context) =>
+    GuideTripsBlock(block as Extract<PageBlock, { blockType: 'guideTrips' }>, context),
 }
 
 async function renderBlock(block: RenderableBlock, index: number, context: BlockRenderContext) {

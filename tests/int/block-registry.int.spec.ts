@@ -22,9 +22,17 @@ describe('block registry groups', () => {
       'programGrid',
       'locationGrid',
       'guideGrid',
+      'postGrid',
+      'calendar',
     ])
     expect(mediaBlocks.map((block) => block.slug)).toEqual(['mediaBlock', 'gallery', 'video'])
-    expect(socialProofBlocks.map((block) => block.slug)).toEqual(['faq', 'reviewGrid'])
+    expect(socialProofBlocks.map((block) => block.slug)).toEqual([
+      'faq',
+      'reviewGrid',
+      'partnerStrip',
+      'guideProfile',
+      'guideTrips',
+    ])
 
     expect(pageBlocks.map((block) => block.slug)).toEqual([
       'hero',
@@ -36,11 +44,16 @@ describe('block registry groups', () => {
       'programGrid',
       'locationGrid',
       'guideGrid',
+      'postGrid',
+      'calendar',
       'mediaBlock',
       'gallery',
       'video',
       'faq',
       'reviewGrid',
+      'partnerStrip',
+      'guideProfile',
+      'guideTrips',
     ])
   })
 
