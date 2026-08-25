@@ -260,6 +260,178 @@ export interface Program {
   mainPicture?: (number | null) | Media;
   gallery?: (number | Media)[] | null;
   vimeoId?: string | null;
+  /**
+   * Optional block-driven layout for this public program page. Empty uses the current default layout.
+   */
+  layout?:
+    | (
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programHero';
+          }
+        | {
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programHighlights';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programAudience';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programCurriculum';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programFlow';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programWeeks';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programLogistics';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programCoaches';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programResults';
+          }
+        | {
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programTrips';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programCTA';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+      )[]
+    | null;
   highlights?:
     | {
         text: string;
@@ -420,252 +592,6 @@ export interface Program {
     keywords?: string | null;
     description?: string | null;
   };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "airports".
- */
-export interface Airport {
-  id: number;
-  name: string;
-  iata: string;
-  country?: string | null;
-  continent?: string | null;
-  /**
-   * @minItems 2
-   * @maxItems 2
-   */
-  coordinates?: [number, number] | null;
-  size?: number | null;
-  active?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "guides".
- */
-export interface Guide {
-  id: number;
-  name: string;
-  slug: string;
-  /**
-   * e.g. Head coach, Pro climber, Physiotherapist
-   */
-  role?: string | null;
-  /**
-   * Punchy one-liner shown on team cards and the profile hero.
-   */
-  tagline?: string | null;
-  /**
-   * Short badges, ~3 max. e.g. "Sport 9b", "Basque", "UIAGM".
-   */
-  tags?:
-    | {
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
-  section: 'team' | 'friends';
-  photo?: (number | null) | Media;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  email?: string | null;
-  phone?: string | null;
-  vimeoId?: string | null;
-  /**
-   * Hero subtitle paragraph under the name. Falls back to tagline when empty.
-   */
-  heroSub?: string | null;
-  /**
-   * Photo credit, e.g. "Jany · Pince Sans Rire 7b+".
-   */
-  heroCaption?: string | null;
-  /**
-   * Stats bar under the hero, ~4 items (value "25+", label "Years Climbing & Coaching").
-   */
-  stats?:
-    | {
-        value: string;
-        label: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * About section. Bio paragraphs come from the content richtext field.
-   */
-  about?: {
-    /**
-     * One display line per row; wrap a line in *asterisks* to render it red.
-     */
-    headline?: string | null;
-    /**
-     * Facts card rows. Never put email/phone here — public pages must not leak contacts.
-     */
-    facts?:
-      | {
-          label: string;
-          value: string;
-          id?: string | null;
-        }[]
-      | null;
-    quote?: string | null;
-    /**
-     * e.g. "— Jany, on how he coaches"
-     */
-    quoteAttribution?: string | null;
-  };
-  /**
-   * "What X coaches" numbered pillars.
-   */
-  coaching?: {
-    intro?: string | null;
-    pillars?:
-      | {
-          title: string;
-          body: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  /**
-   * "On the rock" route list.
-   */
-  achievements?: {
-    intro?: string | null;
-    items?:
-      | {
-          route: string;
-          location?: string | null;
-          grade?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  /**
-   * Single client testimonial (always rendered with five stars).
-   */
-  testimonial?: {
-    quote?: string | null;
-    name?: string | null;
-    /**
-     * e.g. "Rockbusters Road Trip Client"
-     */
-    tripLine?: string | null;
-  };
-  featured?: boolean | null;
-  /**
-   * Mark the founder card on the homepage.
-   */
-  isFounder?: boolean | null;
-  active?: boolean | null;
-  seo?: {
-    title?: string | null;
-    keywords?: string | null;
-    description?: string | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: number;
-  name: string;
-  slug: string;
-  text?: string | null;
-  position?: number | null;
-  active?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "locations".
- */
-export interface Location {
-  id: number;
-  name: string;
-  slug: string;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  address?: string | null;
-  city?: string | null;
-  country?: string | null;
-  /**
-   * @minItems 2
-   * @maxItems 2
-   */
-  coordinates?: [number, number] | null;
-  mainPicture?: (number | null) | Media;
-  gallery?: (number | Media)[] | null;
-  featured?: boolean | null;
-  active?: boolean | null;
-  seo?: {
-    title?: string | null;
-    keywords?: string | null;
-    description?: string | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "partners".
- */
-export interface Partner {
-  id: number;
-  name: string;
-  slug: string;
-  link?: string | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  logo?: (number | null) | Media;
-  featured?: boolean | null;
-  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1111,6 +1037,208 @@ export interface EventDate {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations".
+ */
+export interface Location {
+  id: number;
+  name: string;
+  slug: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  address?: string | null;
+  city?: string | null;
+  country?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  mainPicture?: (number | null) | Media;
+  gallery?: (number | Media)[] | null;
+  featured?: boolean | null;
+  active?: boolean | null;
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "guides".
+ */
+export interface Guide {
+  id: number;
+  name: string;
+  slug: string;
+  /**
+   * e.g. Head coach, Pro climber, Physiotherapist
+   */
+  role?: string | null;
+  /**
+   * Punchy one-liner shown on team cards and the profile hero.
+   */
+  tagline?: string | null;
+  /**
+   * Short badges, ~3 max. e.g. "Sport 9b", "Basque", "UIAGM".
+   */
+  tags?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  section: 'team' | 'friends';
+  photo?: (number | null) | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  email?: string | null;
+  phone?: string | null;
+  vimeoId?: string | null;
+  /**
+   * Hero subtitle paragraph under the name. Falls back to tagline when empty.
+   */
+  heroSub?: string | null;
+  /**
+   * Photo credit, e.g. "Jany · Pince Sans Rire 7b+".
+   */
+  heroCaption?: string | null;
+  /**
+   * Stats bar under the hero, ~4 items (value "25+", label "Years Climbing & Coaching").
+   */
+  stats?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * About section. Bio paragraphs come from the content richtext field.
+   */
+  about?: {
+    /**
+     * One display line per row; wrap a line in *asterisks* to render it red.
+     */
+    headline?: string | null;
+    /**
+     * Facts card rows. Never put email/phone here — public pages must not leak contacts.
+     */
+    facts?:
+      | {
+          label: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    quote?: string | null;
+    /**
+     * e.g. "— Jany, on how he coaches"
+     */
+    quoteAttribution?: string | null;
+  };
+  /**
+   * "What X coaches" numbered pillars.
+   */
+  coaching?: {
+    intro?: string | null;
+    pillars?:
+      | {
+          title: string;
+          body: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * "On the rock" route list.
+   */
+  achievements?: {
+    intro?: string | null;
+    items?:
+      | {
+          route: string;
+          location?: string | null;
+          grade?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Single client testimonial (always rendered with five stars).
+   */
+  testimonial?: {
+    quote?: string | null;
+    name?: string | null;
+    /**
+     * e.g. "Rockbusters Road Trip Client"
+     */
+    tripLine?: string | null;
+  };
+  featured?: boolean | null;
+  /**
+   * Mark the founder card on the homepage.
+   */
+  isFounder?: boolean | null;
+  active?: boolean | null;
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "airports".
+ */
+export interface Airport {
+  id: number;
+  name: string;
+  iata: string;
+  country?: string | null;
+  continent?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  size?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faqs".
  */
 export interface Faq {
@@ -1150,6 +1278,50 @@ export interface Review {
   resultLine?: string | null;
   event?: (number | null) | Event;
   program?: (number | null) | Program;
+  position?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: number;
+  name: string;
+  slug: string;
+  link?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  logo?: (number | null) | Media;
+  featured?: boolean | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  name: string;
+  slug: string;
+  text?: string | null;
   position?: number | null;
   active?: boolean | null;
   updatedAt: string;
@@ -1856,6 +2028,179 @@ export interface ProgramsSelect<T extends boolean = true> {
   mainPicture?: T;
   gallery?: T;
   vimeoId?: T;
+  layout?:
+    | T
+    | {
+        programHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programHighlights?:
+          | T
+          | {
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programAudience?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programCurriculum?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programFlow?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programWeeks?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programLogistics?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programCoaches?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programResults?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programTrips?:
+          | T
+          | {
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programCTA?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
   highlights?:
     | T
     | {

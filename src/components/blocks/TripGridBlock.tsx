@@ -4,6 +4,7 @@ import type { Event, EventDate, Location, Media, Page } from '@/payload-types'
 import { getActiveEventDatesForEvents } from '@/lib/queries'
 import { mediaAlt, mediaUrl } from '@/lib/media'
 import { resolveTripGridEvents } from '@/lib/block-resolvers/trip-grid'
+import type { BlockRenderContext } from './RenderBlocks'
 import styles from './blocks.module.css'
 
 type TripGridBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'tripGrid' }>
@@ -25,8 +26,12 @@ function formatPrice(date: EventDate | null): string | null {
   return `From ${date.currency} ${date.price.toLocaleString()}`
 }
 
-export async function TripGridBlock(block: TripGridBlockProps) {
-  const events = await resolveTripGridEvents(block)
+export async function TripGridBlock(block: TripGridBlockProps, context: BlockRenderContext = {}) {
+  const events = await resolveTripGridEvents({
+    ...block,
+    program: block.program ?? context.program,
+    location: block.location ?? context.location,
+  })
   if (events.length === 0) return null
 
   const dates = await getActiveEventDatesForEvents(events.map((event) => event.id))

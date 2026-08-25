@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { anyone, isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
+import { programLayoutBlocks } from '../blocks'
 
 export const Programs: CollectionConfig = {
   slug: 'programs',
@@ -18,6 +19,16 @@ export const Programs: CollectionConfig = {
     { name: 'mainPicture', type: 'upload', relationTo: 'media' },
     { name: 'gallery', type: 'upload', relationTo: 'media', hasMany: true },
     { name: 'vimeoId', type: 'text' },
+    {
+      name: 'layout',
+      type: 'blocks',
+      label: 'Program page layout',
+      blocks: programLayoutBlocks,
+      admin: {
+        description: 'Optional block-driven layout for this public program page. Empty uses the current default layout.',
+        initCollapsed: true,
+      },
+    },
 
     // Trip Highlights grid
     {

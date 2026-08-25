@@ -107,7 +107,7 @@ describe('domain grid block resolvers', () => {
     expect(locations.every((location) => location.country === 'Spain')).toBe(true)
   })
 
-  it('resolves guides by section and filters inactive records', async () => {
+  it('resolves manually selected guides and filters inactive records', async () => {
     const payload = await getTestPayload()
     const stamp = Date.now()
     const guide = await payload.create({
@@ -132,12 +132,12 @@ describe('domain grid block resolvers', () => {
     track('guides', inactive.id)
 
     const guides = await resolveGuideGridGuides({
-      source: 'team',
+      source: 'manual',
+      guides: [guide.id, inactive.id],
       limit: 10,
     })
 
-    expect(guides.map((item) => item.id)).toContain(guide.id)
-    expect(guides.every((item) => item.active === true && item.section === 'team')).toBe(true)
+    expect(guides.map((item) => item.id)).toEqual([guide.id])
   })
 
   it('resolves reviews by program and filters inactive records', async () => {
@@ -369,7 +369,7 @@ describe('domain grid block resolvers', () => {
     expect(dates.map((date) => date.id)).toEqual([firstPublishedDate.id, secondPublishedDate.id])
   })
 
-  it('resolves featured partners and filters inactive records', async () => {
+  it('resolves manually selected partners and filters inactive records', async () => {
     const payload = await getTestPayload()
     const stamp = Date.now()
     const partner = await payload.create({
@@ -394,12 +394,12 @@ describe('domain grid block resolvers', () => {
     track('partners', inactive.id)
 
     const partners = await resolvePartnerStripPartners({
-      source: 'featured',
+      source: 'manual',
+      partners: [partner.id, inactive.id],
       limit: 10,
     })
 
-    expect(partners.map((item) => item.id)).toContain(partner.id)
-    expect(partners.every((item) => item.active === true && item.featured === true)).toBe(true)
+    expect(partners.map((item) => item.id)).toEqual([partner.id])
   })
 
   it('resolves a manual guide profile only when active', async () => {

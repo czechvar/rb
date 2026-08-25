@@ -25,6 +25,19 @@ import { TripHighlightsBlock } from './TripHighlightsBlock'
 import { TripDatesBlock } from './TripDatesBlock'
 import { TripBookingCTABlock } from './TripBookingCTABlock'
 import { TripLogisticsBlock } from './TripLogisticsBlock'
+import {
+  ProgramAudienceBlock,
+  ProgramCoachesBlock,
+  ProgramCTABlock,
+  ProgramCurriculumBlock,
+  ProgramFlowBlock,
+  ProgramHeroBlock,
+  ProgramHighlightsBlock,
+  ProgramLogisticsBlock,
+  ProgramResultsBlock,
+  ProgramTripsBlock,
+  ProgramWeeksBlock,
+} from './ProgramContextBlocks'
 
 type PageBlock = NonNullable<Page['layout']>[number]
 type RenderableBlock = PageBlock | {
@@ -56,7 +69,8 @@ const blockRenderers: Record<string, BlockRenderer> = {
   ),
   stats: (block) => <StatsBlock {...(block as Extract<PageBlock, { blockType: 'stats' }>)} />,
   cta: (block) => <CTABlock {...(block as Extract<PageBlock, { blockType: 'cta' }>)} />,
-  tripGrid: (block) => TripGridBlock(block as Extract<PageBlock, { blockType: 'tripGrid' }>),
+  tripGrid: (block, context) =>
+    TripGridBlock(block as Extract<PageBlock, { blockType: 'tripGrid' }>, context),
   programGrid: (block) =>
     ProgramGridBlock(block as Extract<PageBlock, { blockType: 'programGrid' }>),
   locationGrid: (block) =>
@@ -83,6 +97,17 @@ const blockRenderers: Record<string, BlockRenderer> = {
   tripDates: (block, context) => TripDatesBlock(block, context),
   tripBookingCTA: (block, context) => TripBookingCTABlock(block, context),
   tripLogistics: (block, context) => TripLogisticsBlock(block, context),
+  programHero: (block, context) => ProgramHeroBlock(block, context),
+  programHighlights: (block, context) => ProgramHighlightsBlock(block, context),
+  programAudience: (block, context) => ProgramAudienceBlock(block, context),
+  programCurriculum: (block, context) => ProgramCurriculumBlock(block, context),
+  programFlow: (block, context) => ProgramFlowBlock(block, context),
+  programWeeks: (block, context) => ProgramWeeksBlock(block, context),
+  programLogistics: (block, context) => ProgramLogisticsBlock(block, context),
+  programCoaches: (block, context) => ProgramCoachesBlock(block, context),
+  programResults: (block, context) => ProgramResultsBlock(block, context),
+  programTrips: (block, context) => ProgramTripsBlock(block, context),
+  programCTA: (block, context) => ProgramCTABlock(block, context),
 }
 
 async function renderBlock(block: RenderableBlock, index: number, context: BlockRenderContext) {

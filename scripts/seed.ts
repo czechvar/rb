@@ -293,9 +293,53 @@ async function main() {
       slug: 'climbing-camps',
       shortDescription:
         'Maximum time on rock, pushing the limits, 100% fun — run by IFMGA / UIAGM guides and IFSC-level coaches.',
+      content: richText(
+        'Climbing Camps are structured weeks for climbers who want focused coaching, strong logistics, and maximum useful time on real rock.',
+        'Each camp combines movement coaching, tactical feedback, safety refreshers, and enough space for the group to chase individual goals.',
+      ),
       active: true,
       featured: true,
       state: 'published',
+      layout: [
+        { blockType: 'programHero' },
+        {
+          blockType: 'programHighlights',
+          heading: 'Why choose a Rockbusters camp',
+        },
+        { blockType: 'programAudience' },
+        { blockType: 'programCurriculum' },
+        { blockType: 'programFlow' },
+        { blockType: 'programWeeks' },
+        { blockType: 'programLogistics' },
+        { blockType: 'programCoaches' },
+        { blockType: 'programResults' },
+        {
+          blockType: 'tripGrid',
+          eyebrow: 'Trips in this program',
+          heading: 'Choose your camp',
+          intro: 'This trip grid reuses Event records through the current Program context.',
+          source: 'byProgram',
+          limit: 6,
+          variant: 'cards',
+        },
+        {
+          blockType: 'faq',
+          eyebrow: 'Program details',
+          heading: 'Questions about climbing camps',
+          source: 'byProgram',
+          limit: 6,
+          variant: 'singleColumn',
+        },
+        {
+          blockType: 'reviewGrid',
+          eyebrow: 'Program proof',
+          heading: 'What repeat campers say',
+          source: 'byProgram',
+          limit: 3,
+          variant: 'cards',
+        },
+        { blockType: 'programCTA' },
+      ],
       highlights: [
         { text: 'Up to 4 climbers per coach' },
         { text: 'Daily video movement analysis' },
@@ -324,6 +368,76 @@ async function main() {
         { text: 'Lead-climbing confidence and safety' },
         { text: 'A take-home training plan' },
       ],
+      curriculumPillars: [
+        {
+          icon: '↗',
+          title: 'Movement',
+          bullets: [
+            { text: 'Footwork, body position, and pacing on real rock' },
+            { text: 'Video-backed feedback from the coaching team' },
+          ],
+        },
+        {
+          icon: '✓',
+          title: 'Safety',
+          bullets: [
+            { text: 'Lead belay refreshers and outdoor systems' },
+            { text: 'Risk checks for routes, anchors, and partners' },
+          ],
+        },
+        {
+          icon: '★',
+          title: 'Performance',
+          bullets: [
+            { text: 'Tactics for onsight, flash, and redpoint attempts' },
+            { text: 'One clear goal for the week and a plan afterwards' },
+          ],
+        },
+      ],
+      flow: {
+        framingParagraph:
+          'Every day has a coaching focus, but the exact plan adapts to weather, skin, fatigue, and what the group needs most.',
+        mixAndMatchBlocks: [
+          {
+            title: 'Morning movement session',
+            tagline: 'Warm up with drills that carry directly into the day.',
+            bullets: [{ text: 'Footwork ladders' }, { text: 'Route-reading exercises' }],
+          },
+          {
+            title: 'Project tactics',
+            tagline: 'Apply the coaching on routes that are hard enough to teach something.',
+            bullets: [{ text: 'Clip positions' }, { text: 'Resting and pacing decisions' }],
+          },
+        ],
+        tailoredToYou: [
+          { text: 'Volume adjusted to the group and weather' },
+          { text: 'Individual feedback every climbing day' },
+        ],
+        focusTracks: [
+          {
+            title: 'First outdoor leads',
+            colorTag: 'green',
+            bullets: [{ text: 'Clean falls, anchors, and route choice' }],
+          },
+          {
+            title: 'Break the plateau',
+            colorTag: 'red',
+            bullets: [{ text: 'Technique limiters and tactical misses' }],
+          },
+        ],
+      },
+      weekVariants: [
+        {
+          title: 'One week',
+          bullets: [{ text: 'Focused coaching sprint' }, { text: 'Ideal for one clear goal' }],
+        },
+        {
+          title: 'Two weeks',
+          bullets: [{ text: 'More climbing mileage' }, { text: 'Space for rest and consolidation' }],
+        },
+      ],
+      weekRecommendation:
+        'Choose one week for a focused reset; choose two when you want a deeper progression block.',
     },
     label: 'climbing-camps',
   })
@@ -1049,6 +1163,15 @@ async function main() {
         'Yes. Most of our camps are full of solo climbers. Coaches handle pairings and rotate partners so you get coached, not babysat.',
       ),
       position: 3,
+    },
+    {
+      tag: 'program-camps-format',
+      question: 'How are the climbing camps structured?',
+      answer: richText(
+        'Each camp has a daily coaching focus, but the exact routes and volume are adapted to conditions, fatigue, and the group goals.',
+      ),
+      program: programCamps.id,
+      position: 1,
     },
     {
       tag: 'sport-basics-prereq',

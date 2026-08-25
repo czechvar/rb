@@ -6,6 +6,8 @@ import {
   eventLayoutBlocks,
   mediaBlocks,
   pageBlocks,
+  programDetailBlocks,
+  programLayoutBlocks,
   socialProofBlocks,
   tripDetailBlocks,
 } from '@/blocks'
@@ -42,6 +44,19 @@ describe('block registry groups', () => {
       'tripDates',
       'tripBookingCTA',
       'tripLogistics',
+    ])
+    expect(programDetailBlocks.map((block) => block.slug)).toEqual([
+      'programHero',
+      'programHighlights',
+      'programAudience',
+      'programCurriculum',
+      'programFlow',
+      'programWeeks',
+      'programLogistics',
+      'programCoaches',
+      'programResults',
+      'programTrips',
+      'programCTA',
     ])
 
     expect(pageBlocks.map((block) => block.slug)).toEqual([
@@ -80,6 +95,26 @@ describe('block registry groups', () => {
       'partnerStrip',
       'guideProfile',
     ])
+    expect(programLayoutBlocks.map((block) => block.slug)).toEqual([
+      'programHero',
+      'programHighlights',
+      'programAudience',
+      'programCurriculum',
+      'programFlow',
+      'programWeeks',
+      'programLogistics',
+      'programCoaches',
+      'programResults',
+      'programTrips',
+      'programCTA',
+      'tripGrid',
+      'calendar',
+      'gallery',
+      'video',
+      'faq',
+      'reviewGrid',
+      'guideGrid',
+    ])
   })
 
   it('does not register duplicate page block slugs', () => {
@@ -89,6 +124,11 @@ describe('block registry groups', () => {
 
   it('does not register duplicate event layout block slugs', () => {
     const slugs = eventLayoutBlocks.map((block) => block.slug)
+    expect(new Set(slugs).size).toBe(slugs.length)
+  })
+
+  it('does not register duplicate program layout block slugs', () => {
+    const slugs = programLayoutBlocks.map((block) => block.slug)
     expect(new Set(slugs).size).toBe(slugs.length)
   })
 })

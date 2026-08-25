@@ -23,6 +23,17 @@ import { TripHighlightsBlockConfig } from './TripHighlights/config'
 import { TripDatesBlockConfig } from './TripDates/config'
 import { TripBookingCTABlockConfig } from './TripBookingCTA/config'
 import { TripLogisticsBlockConfig } from './TripLogistics/config'
+import { ProgramHeroBlockConfig } from './ProgramHero/config'
+import { ProgramHighlightsBlockConfig } from './ProgramHighlights/config'
+import { ProgramAudienceBlockConfig } from './ProgramAudience/config'
+import { ProgramCurriculumBlockConfig } from './ProgramCurriculum/config'
+import { ProgramFlowBlockConfig } from './ProgramFlow/config'
+import { ProgramWeeksBlockConfig } from './ProgramWeeks/config'
+import { ProgramLogisticsBlockConfig } from './ProgramLogistics/config'
+import { ProgramCoachesBlockConfig } from './ProgramCoaches/config'
+import { ProgramResultsBlockConfig } from './ProgramResults/config'
+import { ProgramTripsBlockConfig } from './ProgramTrips/config'
+import { ProgramCTABlockConfig } from './ProgramCTA/config'
 
 export const contentBlocks = [
   HeroBlockConfig,
@@ -55,6 +66,19 @@ export const tripDetailBlocks = [
   TripBookingCTABlockConfig,
   TripLogisticsBlockConfig,
 ]
+export const programDetailBlocks = [
+  ProgramHeroBlockConfig,
+  ProgramHighlightsBlockConfig,
+  ProgramAudienceBlockConfig,
+  ProgramCurriculumBlockConfig,
+  ProgramFlowBlockConfig,
+  ProgramWeeksBlockConfig,
+  ProgramLogisticsBlockConfig,
+  ProgramCoachesBlockConfig,
+  ProgramResultsBlockConfig,
+  ProgramTripsBlockConfig,
+  ProgramCTABlockConfig,
+]
 
 export const pageBlocks = [
   ...contentBlocks,
@@ -73,4 +97,15 @@ export const eventLayoutBlocks = [
   ReviewGridBlockConfig,
   PartnerStripBlockConfig,
   GuideProfileBlockConfig,
+]
+
+export const programLayoutBlocks = [
+  ...programDetailBlocks,
+  TripGridBlockConfig,
+  CalendarBlockConfig,
+  GalleryBlockConfig,
+  VideoBlockConfig,
+  FAQBlockConfig,
+  ReviewGridBlockConfig,
+  GuideGridBlockConfig,
 ]
