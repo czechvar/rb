@@ -4,10 +4,14 @@ import { RichTextBlockConfig } from './RichText/config'
 import { StatsBlockConfig } from './Stats/config'
 import { CTABlockConfig } from './CTA/config'
 import { TripGridBlockConfig } from './TripGrid/config'
+import { ProgramGridBlockConfig } from './ProgramGrid/config'
+import { LocationGridBlockConfig } from './LocationGrid/config'
+import { GuideGridBlockConfig } from './GuideGrid/config'
 import { MediaBlockConfig } from './Media/config'
 import { GalleryBlockConfig } from './Gallery/config'
 import { VideoBlockConfig } from './Video/config'
 import { FAQBlockConfig } from './FAQ/config'
+import { ReviewGridBlockConfig } from './ReviewGrid/config'
 
 export const contentBlocks = [
   HeroBlockConfig,
@@ -16,9 +20,14 @@ export const contentBlocks = [
   StatsBlockConfig,
 ]
 export const conversionBlocks = [CTABlockConfig]
-export const catalogueBlocks = [TripGridBlockConfig]
+export const catalogueBlocks = [
+  TripGridBlockConfig,
+  ProgramGridBlockConfig,
+  LocationGridBlockConfig,
+  GuideGridBlockConfig,
+]
 export const mediaBlocks = [MediaBlockConfig, GalleryBlockConfig, VideoBlockConfig]
-export const socialProofBlocks = [FAQBlockConfig]
+export const socialProofBlocks = [FAQBlockConfig, ReviewGridBlockConfig]
 
 export const pageBlocks = [
   ...contentBlocks,

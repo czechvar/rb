@@ -17,9 +17,14 @@ describe('block registry groups', () => {
       'stats',
     ])
     expect(conversionBlocks.map((block) => block.slug)).toEqual(['cta'])
-    expect(catalogueBlocks.map((block) => block.slug)).toEqual(['tripGrid'])
+    expect(catalogueBlocks.map((block) => block.slug)).toEqual([
+      'tripGrid',
+      'programGrid',
+      'locationGrid',
+      'guideGrid',
+    ])
     expect(mediaBlocks.map((block) => block.slug)).toEqual(['mediaBlock', 'gallery', 'video'])
-    expect(socialProofBlocks.map((block) => block.slug)).toEqual(['faq'])
+    expect(socialProofBlocks.map((block) => block.slug)).toEqual(['faq', 'reviewGrid'])
 
     expect(pageBlocks.map((block) => block.slug)).toEqual([
       'hero',
@@ -28,10 +33,14 @@ describe('block registry groups', () => {
       'stats',
       'cta',
       'tripGrid',
+      'programGrid',
+      'locationGrid',
+      'guideGrid',
       'mediaBlock',
       'gallery',
       'video',
       'faq',
+      'reviewGrid',
     ])
   })
 

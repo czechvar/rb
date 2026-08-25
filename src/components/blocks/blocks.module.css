@@ -173,6 +173,7 @@
 .richTextSection,
 .sectionIntro,
 .statsSection,
+.domainGridSection,
 .gallerySection,
 .videoSection,
 .faqSection {
@@ -263,6 +264,94 @@
   font-size: var(--fs-body-sm);
   line-height: 1.55;
   opacity: 0.72;
+}
+
+.domainGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.domainGridCompact {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.domainCard,
+.reviewCard {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  padding: 26px;
+  border: 1px solid rgba(13, 13, 13, 0.1);
+  background: #ffffff;
+  color: var(--rb-black);
+  text-decoration: none;
+}
+
+.domainCard h3,
+.reviewCard p {
+  margin: 0;
+  color: inherit;
+}
+
+.domainCard h3 {
+  font-size: 34px;
+  line-height: 0.96;
+}
+
+.domainCard p:not(.cardMeta),
+.reviewCard footer {
+  margin: 18px 0 0;
+  color: inherit;
+  font-size: var(--fs-body-sm);
+  line-height: 1.6;
+  opacity: 0.72;
+}
+
+.cardLinkText {
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--rb-red);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.reviewGridSection {
+  background: var(--rb-darker);
+  color: var(--rb-white);
+}
+
+.reviewGridSection .domainGrid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.reviewCard {
+  min-height: 220px;
+  border-color: var(--rb-white-08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--rb-white);
+}
+
+.reviewCard p {
+  font-size: var(--fs-body-lg);
+  line-height: 1.55;
+}
+
+.reviewCard footer {
+  margin-top: auto;
+  padding-top: 26px;
+  opacity: 1;
+}
+
+.reviewCard footer span {
+  display: block;
+  margin-top: 8px;
+  color: var(--rb-red);
+  font-weight: 800;
+  opacity: 1;
 }
 
 .tripGridCompact {

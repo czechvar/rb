@@ -644,8 +644,6 @@ async function main() {
     },
     label: 'jany',
   })
-  void guideJany
-
   console.log('— events —')
 
   const evSport = await upsert(payload, {
@@ -1102,6 +1100,39 @@ async function main() {
           variant: 'cards',
         },
         {
+          blockType: 'programGrid',
+          eyebrow: 'Program binding',
+          heading: 'Programs selected from the CMS catalogue',
+          intro:
+            'Editors can promote active published Programs without copying their descriptions into page content.',
+          source: 'manual',
+          programs: [programCamps.id],
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'locationGrid',
+          eyebrow: 'Location binding',
+          heading: 'Locations power destination sections',
+          intro:
+            'Locations stay canonical records; the page block chooses whether to show manual picks, featured crags, or one country.',
+          source: 'manual',
+          locations: [locFrankenjura.id, locMallorca.id, locDolomites.id],
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'guideGrid',
+          eyebrow: 'Guide binding',
+          heading: 'Team cards from Guide records',
+          intro:
+            'Guide data is reused directly from the People collection, keeping names, roles, and profile links consistent.',
+          source: 'manual',
+          guides: [guideKlemen.id, guideMarek.id, guideJany.id],
+          limit: 3,
+          variant: 'cards',
+        },
+        {
           blockType: 'mediaBlock',
           eyebrow: 'Media relationship',
           heading: 'Payload media drives the visual block',
@@ -1130,6 +1161,17 @@ async function main() {
           videoUrl: 'https://vimeo.com/123456',
           caption: 'External video fixture for CMS block rendering.',
           variant: 'contained',
+        },
+        {
+          blockType: 'reviewGrid',
+          eyebrow: 'Review binding',
+          heading: 'Social proof from Review records',
+          intro:
+            'Review blocks can use global reviews or bind testimonials to a specific Event or Program.',
+          source: 'byProgram',
+          program: programCamps.id,
+          limit: 3,
+          variant: 'cards',
         },
         {
           blockType: 'faq',

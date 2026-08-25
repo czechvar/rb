@@ -1281,6 +1281,43 @@ export interface Page {
         | {
             eyebrow?: string | null;
             heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            programs?: (number | Program)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'byCountry' | 'manual';
+            country?: string | null;
+            locations?: (number | Location)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
             body?: string | null;
             source: 'upload' | 'externalVideo';
             media?: (number | null) | Media;
@@ -1345,6 +1382,20 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
           }
       )[]
     | null;
@@ -2331,6 +2382,46 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        programGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              programs?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              country?: T;
+              locations?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         mediaBlock?:
           | T
           | {
@@ -2384,6 +2475,21 @@ export interface PagesSelect<T extends boolean = true> {
                     answer?: T;
                     id?: T;
                   };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
               limit?: T;
               variant?: T;
               id?: T;

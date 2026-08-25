@@ -77,4 +77,81 @@ describe('RenderBlocks', () => {
     expect(markup).toContain('https://player.vimeo.com/video/123456')
     expect(markup).toContain('A safe external video.')
   })
+
+  it('renders domain-aware catalogue and social proof blocks', async () => {
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'programGrid',
+          source: 'manual',
+          heading: 'Program cards',
+          programs: [
+            {
+              id: 10,
+              name: 'Performance Camps',
+              slug: 'performance-camps',
+              shortDescription: 'Structured coaching weeks.',
+              active: true,
+              state: 'published',
+            },
+          ],
+        },
+        {
+          blockType: 'locationGrid',
+          source: 'manual',
+          heading: 'Location cards',
+          locations: [
+            {
+              id: 20,
+              name: 'Frankenjura',
+              slug: 'frankenjura',
+              city: 'Pottenstein',
+              country: 'Germany',
+              active: true,
+            },
+          ],
+        },
+        {
+          blockType: 'guideGrid',
+          source: 'manual',
+          heading: 'Guide cards',
+          guides: [
+            {
+              id: 30,
+              name: 'Jany Novotny',
+              slug: 'jany',
+              role: 'Founder & Head Coach',
+              tagline: 'Direct technical coaching.',
+              active: true,
+            },
+          ],
+        },
+        {
+          blockType: 'reviewGrid',
+          source: 'manual',
+          heading: 'Review cards',
+          reviews: [
+            {
+              id: 40,
+              quote: 'Best week on rock.',
+              reviewerName: 'Lucie K.',
+              reviewerLocation: 'Brno',
+              resultLine: 'First 7a.',
+              active: true,
+            },
+          ],
+        },
+      ] as RenderBlocksInput['blocks'],
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).toContain('Performance Camps')
+    expect(markup).toContain('/programs/performance-camps')
+    expect(markup).toContain('Frankenjura')
+    expect(markup).toContain('/destinations/frankenjura')
+    expect(markup).toContain('Jany Novotny')
+    expect(markup).toContain('/team/jany')
+    expect(markup).toContain('Best week on rock.')
+    expect(markup).toContain('Lucie K.')
+  })
 })
