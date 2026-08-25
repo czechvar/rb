@@ -10,17 +10,27 @@ import {
 
 describe('block registry groups', () => {
   it('keeps the current page block contract while exposing grouped registries', () => {
-    expect(contentBlocks.map((block) => block.slug)).toEqual(['hero'])
+    expect(contentBlocks.map((block) => block.slug)).toEqual([
+      'hero',
+      'section-intro',
+      'rich-text',
+      'stats',
+    ])
     expect(conversionBlocks.map((block) => block.slug)).toEqual(['cta'])
     expect(catalogueBlocks.map((block) => block.slug)).toEqual(['tripGrid'])
-    expect(mediaBlocks.map((block) => block.slug)).toEqual(['mediaBlock'])
+    expect(mediaBlocks.map((block) => block.slug)).toEqual(['mediaBlock', 'gallery', 'video'])
     expect(socialProofBlocks.map((block) => block.slug)).toEqual(['faq'])
 
     expect(pageBlocks.map((block) => block.slug)).toEqual([
       'hero',
+      'section-intro',
+      'rich-text',
+      'stats',
       'cta',
       'tripGrid',
       'mediaBlock',
+      'gallery',
+      'video',
       'faq',
     ])
   })

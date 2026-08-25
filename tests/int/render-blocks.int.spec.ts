@@ -41,4 +41,40 @@ describe('RenderBlocks', () => {
     expect(markup).not.toContain('Do not render')
     expect(markup.indexOf('First CTA')).toBeLessThan(markup.indexOf('Second Hero'))
   })
+
+  it('renders generic content and media blocks', async () => {
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'section-intro',
+          eyebrow: 'Generic content',
+          heading: 'Reusable intro',
+          body: 'Short lead copy.',
+          alignment: 'left',
+        },
+        {
+          blockType: 'stats',
+          heading: 'Proof points',
+          items: [
+            { value: '12', label: 'Locations' },
+            { value: '98%', label: 'Would return' },
+          ],
+        },
+        {
+          blockType: 'video',
+          heading: 'Training film',
+          videoUrl: 'https://vimeo.com/123456',
+          caption: 'A safe external video.',
+        },
+      ] as RenderBlocksInput['blocks'],
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).toContain('Reusable intro')
+    expect(markup).toContain('Short lead copy.')
+    expect(markup).toContain('12')
+    expect(markup).toContain('Would return')
+    expect(markup).toContain('https://player.vimeo.com/video/123456')
+    expect(markup).toContain('A safe external video.')
+  })
 })

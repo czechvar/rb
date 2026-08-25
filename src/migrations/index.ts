@@ -13,6 +13,7 @@ import * as migration_20260706_122432_add_guide_tagline_tags from './20260706_12
 import * as migration_20260708_160917_add_guide_detail_fields from './20260708_160917_add_guide_detail_fields';
 import * as migration_20260730_060650_rename_types_to_programs from './20260730_060650_rename_types_to_programs';
 import * as migration_20260824_220848_add_pages_collection from './20260824_220848_add_pages_collection';
+import * as migration_20260825_115412_add_generic_page_blocks from './20260825_115412_add_generic_page_blocks';
 
 export const migrations = [
   {
@@ -88,6 +89,11 @@ export const migrations = [
   {
     up: migration_20260824_220848_add_pages_collection.up,
     down: migration_20260824_220848_add_pages_collection.down,
-    name: '20260824_220848_add_pages_collection'
+    name: '20260824_220848_add_pages_collection',
+  },
+  {
+    up: migration_20260825_115412_add_generic_page_blocks.up,
+    down: migration_20260825_115412_add_generic_page_blocks.down,
+    name: '20260825_115412_add_generic_page_blocks',
   },
 ];

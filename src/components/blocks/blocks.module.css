@@ -170,10 +170,99 @@
 
 .tripGrid,
 .mediaSection,
+.richTextSection,
+.sectionIntro,
+.statsSection,
+.gallerySection,
+.videoSection,
 .faqSection {
   padding: var(--rb-section-pad);
   background: var(--rb-white);
   color: var(--rb-black);
+}
+
+.sectionIntroCenter .sectionHeader {
+  max-width: 860px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.richTextSection {
+  background: #ffffff;
+}
+
+.richTextSection .sectionInner {
+  width: min(900px, calc(100% - 40px));
+}
+
+.richTextWide .sectionInner {
+  width: min(1180px, calc(100% - 40px));
+}
+
+.richTextBody {
+  color: inherit;
+  font-size: var(--fs-body-lg);
+  line-height: 1.75;
+}
+
+.richTextBody :where(p, ul, ol) {
+  margin-top: 0;
+  margin-bottom: 1.1em;
+}
+
+.statsDark {
+  background: var(--rb-darker);
+  color: var(--rb-white);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+  margin: 0;
+}
+
+.statItem {
+  padding: 26px 24px;
+  border: 1px solid rgba(13, 13, 13, 0.1);
+  background: #ffffff;
+}
+
+.statsDark .statItem {
+  border-color: var(--rb-white-08);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.statItem dt {
+  margin: 0 0 8px;
+  color: var(--rb-red);
+  font-family: var(--font-heading), sans-serif;
+  font-size: 58px;
+  line-height: 0.9;
+}
+
+.statItem dd {
+  margin: 0;
+  color: inherit;
+}
+
+.statItem strong,
+.statItem span {
+  display: block;
+}
+
+.statItem strong {
+  font-size: var(--fs-body);
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.statItem span {
+  margin-top: 8px;
+  font-size: var(--fs-body-sm);
+  line-height: 1.55;
+  opacity: 0.72;
 }
 
 .tripGridCompact {
@@ -313,6 +402,32 @@
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
 }
 
+.videoContained .sectionInner {
+  width: min(1040px, calc(100% - 40px));
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.galleryItem {
+  position: relative;
+  min-height: 320px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--rb-darker);
+}
+
+.galleryItem img {
+  object-fit: cover;
+}
+
+.galleryMasonry .galleryItem:nth-child(3n + 2) {
+  min-height: 420px;
+}
+
 .faqList {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -368,7 +483,8 @@
   }
 
   .tripCards,
-  .faqList {
+  .faqList,
+  .galleryGrid {
     grid-template-columns: 1fr;
   }
 

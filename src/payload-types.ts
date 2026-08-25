@@ -1202,6 +1202,55 @@ export interface Page {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
+            alignment: 'left' | 'center';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'section-intro';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            width: 'standard' | 'wide';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'rich-text';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            items?:
+              | {
+                  value: string;
+                  label: string;
+                  body?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            variant: 'light' | 'dark';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stats';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
             variant: 'dark' | 'light' | 'red';
             primaryAction?: {
               label?: string | null;
@@ -1241,6 +1290,27 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'mediaBlock';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
           }
         | {
             eyebrow?: string | null;
@@ -2186,6 +2256,44 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        'section-intro'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              alignment?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'rich-text'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              content?: T;
+              width?: T;
+              id?: T;
+              blockName?: T;
+            };
+        stats?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    body?: T;
+                    id?: T;
+                  };
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         cta?:
           | T
           | {
@@ -2231,6 +2339,29 @@ export interface PagesSelect<T extends boolean = true> {
               body?: T;
               source?: T;
               media?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
               videoUrl?: T;
               caption?: T;
               variant?: T;

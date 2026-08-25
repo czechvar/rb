@@ -1,22 +1,10 @@
 import Image from 'next/image'
 import type { Page } from '@/payload-types'
 import { mediaAlt, mediaUrl } from '@/lib/media'
+import { safeVideoUrl } from '@/lib/video'
 import styles from './blocks.module.css'
 
 type MediaBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'mediaBlock' }>
-
-function safeVideoUrl(value?: string | null): string | null {
-  if (!value) return null
-  try {
-    const url = new URL(value)
-    if (url.protocol !== 'https:') return null
-    if (url.hostname.endsWith('youtube.com') || url.hostname === 'youtu.be') return url.toString()
-    if (url.hostname.endsWith('vimeo.com')) return url.toString()
-    return null
-  } catch {
-    return null
-  }
-}
 
 export function MediaBlock({ body, caption, heading, eyebrow, media, source, variant, videoUrl }: MediaBlockProps) {
   const imageUrl = mediaUrl(media)

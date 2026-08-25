@@ -527,7 +527,8 @@ async function main() {
     data: { name: 'Barcelona El Prat', iata: 'BCN', country: 'Spain', continent: 'Europe', size: 4, active: true },
     label: 'BCN',
   })
-  // keep airBCN around for potential future Cavallers events
+  // keep these references around for potential future seeded events
+  void airPRG
   void airBCN
 
   console.log('— guides —')
@@ -1060,6 +1061,36 @@ async function main() {
           },
         },
         {
+          blockType: 'section-intro',
+          eyebrow: 'Generic content',
+          heading: 'Compose pages from small reusable sections',
+          body:
+            'Editors can mix structured content blocks with data-bound catalogue blocks while React keeps presentation consistent.',
+          alignment: 'center',
+        },
+        {
+          blockType: 'rich-text',
+          eyebrow: 'Editorial copy',
+          heading: 'Long-form CMS content without a custom route',
+          content: richText(
+            'The rich text block covers copy-heavy sections that do not need a bespoke component. It keeps the CMS page-builder useful for campaign, landing, and support pages.',
+            'When a block needs domain data, it should use an explicit relationship or resolver rather than free-form embeds.',
+          ),
+          width: 'standard',
+        },
+        {
+          blockType: 'stats',
+          eyebrow: 'Proof points',
+          heading: 'Reusable metrics for trust-building sections',
+          body: 'Stats stay structured, so they can be restyled or reused without parsing editor copy.',
+          items: [
+            { value: '12', label: 'Core block slots', body: 'Grouped by content, commerce, catalogue, media, and social proof.' },
+            { value: '3', label: 'Bound trips', body: 'Resolved through approved Event relationships.' },
+            { value: '1', label: 'Cleanup marker', body: 'Seeded POC content remains reversible.' },
+          ],
+          variant: 'light',
+        },
+        {
           blockType: 'tripGrid',
           eyebrow: 'Data-bound trips',
           heading: 'Manually curated trips resolved from Events',
@@ -1079,6 +1110,25 @@ async function main() {
           source: 'upload',
           media: demoMedia.id,
           caption: 'Seeded media fixture for the CMS page-builder proof of concept.',
+          variant: 'contained',
+        },
+        {
+          blockType: 'gallery',
+          eyebrow: 'Gallery',
+          heading: 'Reusable image groups',
+          body:
+            'Gallery blocks use Payload Media relationships and let the component decide responsive layout.',
+          images: [demoMedia.id],
+          variant: 'grid',
+        },
+        {
+          blockType: 'video',
+          eyebrow: 'Video',
+          heading: 'Safe external video embeds',
+          body:
+            'Video blocks accept only known HTTPS video hosts before rendering an iframe.',
+          videoUrl: 'https://vimeo.com/123456',
+          caption: 'External video fixture for CMS block rendering.',
           variant: 'contained',
         },
         {
