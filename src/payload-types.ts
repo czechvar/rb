@@ -1832,6 +1832,197 @@ export interface Post {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Optional block-driven layout for this public blog post. Empty uses the current default layout.
+   */
+  layout?:
+    | (
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postHero';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postBody';
+          }
+        | {
+            heading?: string | null;
+            limit: number;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'relatedPosts';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postCTA';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'latest' | 'byCategory' | 'manual';
+            category?: (number | null) | PostCategory;
+            posts?: (number | Post)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            programs?: (number | Program)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'byCountry' | 'manual';
+            country?: string | null;
+            locations?: (number | Location)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            partners?: (number | Partner)[] | null;
+            limit?: number | null;
+            variant: 'logos' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'partnerStrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+      )[]
+    | null;
   category?: (number | null) | PostCategory;
   author?: string | null;
   publishedAt?: string | null;
@@ -3664,6 +3855,199 @@ export interface PostsSelect<T extends boolean = true> {
   heroImage?: T;
   excerpt?: T;
   content?: T;
+  layout?:
+    | T
+    | {
+        postHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        postBody?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        relatedPosts?:
+          | T
+          | {
+              heading?: T;
+              limit?: T;
+              id?: T;
+              blockName?: T;
+            };
+        postCTA?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        postGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              category?: T;
+              posts?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              programs?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              country?: T;
+              locations?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnerStrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              partners?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
   category?: T;
   author?: T;
   publishedAt?: T;

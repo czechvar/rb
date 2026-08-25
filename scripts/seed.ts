@@ -619,7 +619,7 @@ async function main() {
 
   console.log('— posts —')
 
-  const postTicino = await ensure(payload, {
+  const postTicino = await upsert(payload, {
     collection: 'posts',
     where: { slug: { equals: 'ticino-switzerland-granite-perfection' } },
     data: {
@@ -634,8 +634,45 @@ async function main() {
       author: 'Rockbusters',
       publishedAt: '2026-05-01T09:00:00.000Z',
       state: 'published',
+      layout: [
+        { blockType: 'postHero' },
+        { blockType: 'postBody' },
+        {
+          blockType: 'relatedPosts',
+          heading: 'More destination stories',
+          limit: 3,
+        },
+        {
+          blockType: 'tripGrid',
+          eyebrow: 'Trips',
+          heading: 'Turn inspiration into a trip',
+          intro: 'This post layout can reuse catalogue blocks without duplicating trip content.',
+          source: 'featured',
+          limit: 3,
+          variant: 'cards',
+        },
+        { blockType: 'postCTA' },
+      ],
     },
     label: 'ticino post',
+  })
+  await upsert(payload, {
+    collection: 'posts',
+    where: { slug: { equals: 'kalymnos-greece-sport-climbing-season' } },
+    data: {
+      title: 'Kalymnos, Greece: Sport Climbing Season Notes',
+      slug: 'kalymnos-greece-sport-climbing-season',
+      excerpt: 'How to pick the right season, sector, and rest-day rhythm for a Kalymnos climbing week.',
+      content: richText(
+        'Kalymnos is a sport-climbing island with short approaches, steep limestone, and reliable shoulder-season conditions.',
+        'A good week balances shaded sectors, rest days, and routes that match the group instead of chasing only famous walls.',
+      ),
+      category: postCategories['climbing-destinations'].id,
+      author: 'Rockbusters',
+      publishedAt: '2026-04-18T09:00:00.000Z',
+      state: 'published',
+    },
+    label: 'kalymnos post',
   })
   const postTraining = await ensure(payload, {
     collection: 'posts',

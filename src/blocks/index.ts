@@ -47,6 +47,10 @@ import { GuideTripsSectionBlockConfig } from './GuideTripsSection/config'
 import { GuideAchievementsBlockConfig } from './GuideAchievements/config'
 import { GuideTestimonialBlockConfig } from './GuideTestimonial/config'
 import { GuideCTABlockConfig } from './GuideCTA/config'
+import { PostHeroBlockConfig } from './PostHero/config'
+import { PostBodyBlockConfig } from './PostBody/config'
+import { RelatedPostsBlockConfig } from './RelatedPosts/config'
+import { PostCTABlockConfig } from './PostCTA/config'
 
 export const contentBlocks = [
   HeroBlockConfig,
@@ -109,6 +113,12 @@ export const guideDetailBlocks = [
   GuideTestimonialBlockConfig,
   GuideCTABlockConfig,
 ]
+export const postDetailBlocks = [
+  PostHeroBlockConfig,
+  PostBodyBlockConfig,
+  RelatedPostsBlockConfig,
+  PostCTABlockConfig,
+]
 
 export const pageBlocks = [
   ...contentBlocks,
@@ -162,5 +172,20 @@ export const guideLayoutBlocks = [
   VideoBlockConfig,
   FAQBlockConfig,
   ReviewGridBlockConfig,
+  CTABlockConfig,
+]
+
+export const postLayoutBlocks = [
+  ...postDetailBlocks,
+  PostGridBlockConfig,
+  TripGridBlockConfig,
+  ProgramGridBlockConfig,
+  LocationGridBlockConfig,
+  GuideGridBlockConfig,
+  GalleryBlockConfig,
+  VideoBlockConfig,
+  FAQBlockConfig,
+  ReviewGridBlockConfig,
+  PartnerStripBlockConfig,
   CTABlockConfig,
 ]

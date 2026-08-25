@@ -10,6 +10,8 @@ import {
   pageBlocks,
   guideDetailBlocks,
   guideLayoutBlocks,
+  postDetailBlocks,
+  postLayoutBlocks,
   programDetailBlocks,
   programLayoutBlocks,
   socialProofBlocks,
@@ -78,6 +80,12 @@ describe('block registry groups', () => {
       'guideAchievements',
       'guideTestimonial',
       'guideCTA',
+    ])
+    expect(postDetailBlocks.map((block) => block.slug)).toEqual([
+      'postHero',
+      'postBody',
+      'relatedPosts',
+      'postCTA',
     ])
 
     expect(pageBlocks.map((block) => block.slug)).toEqual([
@@ -170,6 +178,23 @@ describe('block registry groups', () => {
       'reviewGrid',
       'cta',
     ])
+    expect(postLayoutBlocks.map((block) => block.slug)).toEqual([
+      'postHero',
+      'postBody',
+      'relatedPosts',
+      'postCTA',
+      'postGrid',
+      'tripGrid',
+      'programGrid',
+      'locationGrid',
+      'guideGrid',
+      'gallery',
+      'video',
+      'faq',
+      'reviewGrid',
+      'partnerStrip',
+      'cta',
+    ])
   })
 
   it('does not register duplicate page block slugs', () => {
@@ -194,6 +219,11 @@ describe('block registry groups', () => {
 
   it('does not register duplicate guide layout block slugs', () => {
     const slugs = guideLayoutBlocks.map((block) => block.slug)
+    expect(new Set(slugs).size).toBe(slugs.length)
+  })
+
+  it('does not register duplicate post layout block slugs', () => {
+    const slugs = postLayoutBlocks.map((block) => block.slug)
     expect(new Set(slugs).size).toBe(slugs.length)
   })
 })

@@ -20,6 +20,7 @@ import * as migration_20260825_151515_add_event_layout_blocks from './20260825_1
 import * as migration_20260825_155940_add_program_layout_blocks from './20260825_155940_add_program_layout_blocks';
 import * as migration_20260825_163334_add_location_layout_blocks from './20260825_163334_add_location_layout_blocks';
 import * as migration_20260825_170114_add_guide_layout_blocks from './20260825_170114_add_guide_layout_blocks';
+import * as migration_20260825_170938_add_post_layout_blocks from './20260825_170938_add_post_layout_blocks';
 
 export const migrations = [
   {
@@ -130,6 +131,11 @@ export const migrations = [
   {
     up: migration_20260825_170114_add_guide_layout_blocks.up,
     down: migration_20260825_170114_add_guide_layout_blocks.down,
-    name: '20260825_170114_add_guide_layout_blocks'
+    name: '20260825_170114_add_guide_layout_blocks',
+  },
+  {
+    up: migration_20260825_170938_add_post_layout_blocks.up,
+    down: migration_20260825_170938_add_post_layout_blocks.down,
+    name: '20260825_170938_add_post_layout_blocks'
   },
 ];

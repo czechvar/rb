@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Event, Guide, Location, Page, Program } from '@/payload-types'
+import type { Event, Guide, Location, Page, Post, Program } from '@/payload-types'
 import { HeroBlock } from './HeroBlock'
 import { SectionIntroBlock } from './SectionIntroBlock'
 import { RichTextBlock } from './RichTextBlock'
@@ -55,6 +55,12 @@ import {
   GuideTripsSectionBlock,
   GuideVideoBlock,
 } from './GuideContextBlocks'
+import {
+  PostBodyBlock,
+  PostCTABlock,
+  PostHeroBlock,
+  RelatedPostsBlock,
+} from './PostContextBlocks'
 
 type PageBlock = NonNullable<Page['layout']>[number]
 type RenderableBlock = PageBlock | {
@@ -69,6 +75,7 @@ export type BlockRenderContext = {
   program?: Program | null
   location?: Location | null
   guide?: Guide | null
+  post?: Post | null
 }
 
 type BlockRenderer = (
@@ -138,6 +145,10 @@ const blockRenderers: Record<string, BlockRenderer> = {
   guideAchievements: (block, context) => GuideAchievementsBlock(block, context),
   guideTestimonial: (block, context) => GuideTestimonialBlock(block, context),
   guideCTA: (block, context) => GuideCTABlock(block, context),
+  postHero: (block, context) => PostHeroBlock(block, context),
+  postBody: (block, context) => PostBodyBlock(block, context),
+  relatedPosts: (block, context) => RelatedPostsBlock(block, context),
+  postCTA: (block, context) => PostCTABlock(block, context),
 }
 
 async function renderBlock(block: RenderableBlock, index: number, context: BlockRenderContext) {
