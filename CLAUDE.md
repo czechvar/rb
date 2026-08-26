@@ -46,6 +46,11 @@ Self-registration with email verification, login (with lockout + verify-required
 
 ## Code so far
 
+- `src/blocks/index.ts` — source of truth for Payload page-builder block
+  availability. It defines `blockCatalogue` metadata, category groups, and
+  `blocksFor(surface)`; blocks are compatible with all surfaces by default and
+  opt out through `notCompatibleWith` when a required data dependency cannot
+  currently be resolved.
 - `src/payments/gateway.ts` — **draft** TypeScript port of the payment gateway abstraction: domain types (`Transaction`, `TransactionState`, `Money`), the `PaymentGateway` contract, and the factory config shape. No concrete gateways yet. Has a "DRAFT — open questions" block at the bottom to resolve before implementation. Unlike the PHP original, gateway methods return result objects instead of mutating the transaction; the (future) PaymentService owns persistence and state transitions.
 - `src/payments/muzapay/` — **draft** port of the MuzaPay signing/auth primitives:
   - `signature-builder.ts` — builds the plaintext (ordered, trimmed, empties skipped) to be signed.

@@ -59,6 +59,14 @@ The domain vocabulary in `CONTEXT.md` is authoritative:
 
 Data fetching for public pages goes through `src/lib/queries.ts` where practical. Production uses Next tag-based caching via `src/lib/cache.ts`; dev and test bypass this cache so fixtures and local edits are visible immediately. Collection revalidation hooks use the same tag constants.
 
+Block availability in Payload admin is catalogue-driven. `src/blocks/index.ts`
+defines `blockCatalogue` metadata, category group exports, and `blocksFor(surface)`.
+Blocks default to `compatibleWith: '*'`; use `notCompatibleWith` only for
+surfaces where a block cannot currently resolve its required data. Collections
+should import the derived surface arrays (`pageBlocks`, `eventLayoutBlocks`,
+`programLayoutBlocks`, `locationLayoutBlocks`, `guideLayoutBlocks`,
+`postLayoutBlocks`) instead of hand-maintaining block allowlists.
+
 Booking is implemented as a logged-in server-action flow under `src/app/(frontend)/book/[eventDateId]`. Orders are created in `pending` state, shown in `/account/orders`, and managed in Payload admin. Order lifecycle behavior lives mostly in `src/collections/orders/*`:
 
 - `state-machine.ts` defines the allowed order states and forward transitions.

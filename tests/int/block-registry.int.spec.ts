@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import {
+  blockCatalogue,
+  blocksFor,
   catalogueBlocks,
   contentBlocks,
   conversionBlocks,
   eventLayoutBlocks,
+  isBlockCompatibleWithSurface,
   mediaBlocks,
   locationDetailBlocks,
   locationLayoutBlocks,
@@ -19,7 +22,29 @@ import {
 } from '@/blocks'
 
 describe('block registry groups', () => {
-  it('keeps the current page block contract while exposing grouped registries', () => {
+  const reusableBlockSlugs = [
+    'hero',
+    'section-intro',
+    'rich-text',
+    'stats',
+    'cta',
+    'tripGrid',
+    'programGrid',
+    'locationGrid',
+    'guideGrid',
+    'postGrid',
+    'calendar',
+    'mediaBlock',
+    'gallery',
+    'video',
+    'faq',
+    'reviewGrid',
+    'partnerStrip',
+    'guideProfile',
+    'guideTrips',
+  ]
+
+  it('exposes categorized block groups from the catalogue', () => {
     expect(contentBlocks.map((block) => block.slug)).toEqual([
       'hero',
       'section-intro',
@@ -87,44 +112,23 @@ describe('block registry groups', () => {
       'relatedPosts',
       'postCTA',
     ])
+  })
 
+  it('builds surface block lists from compatibility metadata', () => {
     expect(pageBlocks.map((block) => block.slug)).toEqual([
-      'hero',
-      'section-intro',
-      'rich-text',
-      'stats',
-      'cta',
-      'tripGrid',
-      'programGrid',
-      'locationGrid',
-      'guideGrid',
-      'postGrid',
-      'calendar',
-      'mediaBlock',
-      'gallery',
-      'video',
-      'faq',
-      'reviewGrid',
-      'partnerStrip',
-      'guideProfile',
-      'guideTrips',
+      ...reusableBlockSlugs,
     ])
     expect(eventLayoutBlocks.map((block) => block.slug)).toEqual([
+      ...reusableBlockSlugs,
       'tripHero',
       'tripPitch',
       'tripHighlights',
       'tripDates',
       'tripBookingCTA',
       'tripLogistics',
-      'calendar',
-      'gallery',
-      'video',
-      'faq',
-      'reviewGrid',
-      'partnerStrip',
-      'guideProfile',
     ])
     expect(programLayoutBlocks.map((block) => block.slug)).toEqual([
+      ...reusableBlockSlugs,
       'programHero',
       'programHighlights',
       'programAudience',
@@ -136,30 +140,16 @@ describe('block registry groups', () => {
       'programResults',
       'programTrips',
       'programCTA',
-      'tripGrid',
-      'calendar',
-      'gallery',
-      'video',
-      'faq',
-      'reviewGrid',
-      'guideGrid',
     ])
     expect(locationLayoutBlocks.map((block) => block.slug)).toEqual([
+      ...reusableBlockSlugs,
       'locationHero',
       'locationContent',
       'locationMap',
       'locationTrips',
-      'tripGrid',
-      'calendar',
-      'gallery',
-      'video',
-      'faq',
-      'reviewGrid',
-      'guideGrid',
-      'partnerStrip',
-      'cta',
     ])
     expect(guideLayoutBlocks.map((block) => block.slug)).toEqual([
+      ...reusableBlockSlugs,
       'guideHero',
       'guideStats',
       'guideAbout',
@@ -169,32 +159,28 @@ describe('block registry groups', () => {
       'guideAchievements',
       'guideTestimonial',
       'guideCTA',
-      'guideTrips',
-      'tripGrid',
-      'calendar',
-      'gallery',
-      'video',
-      'faq',
-      'reviewGrid',
-      'cta',
     ])
     expect(postLayoutBlocks.map((block) => block.slug)).toEqual([
+      ...reusableBlockSlugs,
       'postHero',
       'postBody',
       'relatedPosts',
       'postCTA',
-      'postGrid',
-      'tripGrid',
-      'programGrid',
-      'locationGrid',
-      'guideGrid',
-      'gallery',
-      'video',
-      'faq',
-      'reviewGrid',
-      'partnerStrip',
-      'cta',
     ])
+  })
+
+  it('uses blacklist compatibility by default', () => {
+    const hero = blockCatalogue.find((entry) => entry.config.slug === 'hero')
+    const tripHero = blockCatalogue.find((entry) => entry.config.slug === 'tripHero')
+
+    expect(hero?.compatibleWith).toBeUndefined()
+    expect(hero && isBlockCompatibleWithSurface(hero, 'page')).toBe(true)
+    expect(hero && isBlockCompatibleWithSurface(hero, 'event')).toBe(true)
+    expect(tripHero && isBlockCompatibleWithSurface(tripHero, 'event')).toBe(true)
+    expect(tripHero && isBlockCompatibleWithSurface(tripHero, 'page')).toBe(false)
+    expect(blocksFor('event').map((block) => block.slug)).toEqual(
+      eventLayoutBlocks.map((block) => block.slug),
+    )
   })
 
   it('does not register duplicate page block slugs', () => {

@@ -33,6 +33,12 @@ paths, arbitrary query definitions, class names, or executable code. Data
 bindings stay explicit through resolver-owned source options and relationship
 fields.
 
+Block availability is derived from a central catalogue, not hand-maintained
+per-collection allowlists. Catalogue entries are compatible with all known
+surfaces by default. A block opts out with `notCompatibleWith` only when a
+surface cannot currently provide or manually select the data dependency the
+block needs.
+
 ## Alternatives Considered
 
 - Keep block layouts only at `/cms-pages/[slug]`: safest for routing, but it
@@ -46,6 +52,8 @@ fields.
 
 - Editors can modularly compose canonical detail pages while existing layouts
   remain as fallbacks.
+- New reusable blocks become available across surfaces by default, reducing
+  missed registrations when the block can already resolve its own data.
 - Route components now own the switch between record layout and fallback
   layout, so each route must pass the correct render context.
 - Cache tags for page queries must include every collection that embedded
