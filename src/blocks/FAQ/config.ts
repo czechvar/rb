@@ -73,6 +73,7 @@ export const FAQBlockConfig: Block = {
       values: [
         { label: 'Two column', value: 'twoColumn' },
         { label: 'Single column', value: 'singleColumn' },
+        { label: 'Light editorial', value: 'lightEditorial' },
       ],
     }),
   ],

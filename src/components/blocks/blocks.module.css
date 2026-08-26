@@ -102,6 +102,42 @@
   align-self: center;
 }
 
+.heroBrandEditorial {
+  min-height: 760px;
+  background: #060606;
+}
+
+.heroBrandEditorial .heroOverlay {
+  background:
+    linear-gradient(90deg, rgba(3, 3, 3, 0.92), rgba(3, 3, 3, 0.38)),
+    linear-gradient(180deg, rgba(3, 3, 3, 0.2), rgba(3, 3, 3, 0.9));
+}
+
+.heroBrandEditorial .heroInner {
+  align-self: center;
+  padding-top: 190px;
+  padding-bottom: 120px;
+}
+
+.heroBrandEditorial h1 {
+  max-width: 620px;
+  font-size: clamp(76px, 8vw, 148px);
+  line-height: 0.86;
+}
+
+.heroBrandEditorial h1 span {
+  display: block;
+}
+
+.heroAccentWord {
+  color: var(--rb-red);
+}
+
+.heroBrandEditorial .heroBody {
+  max-width: 760px;
+  margin-top: 28px;
+}
+
 .primaryButton,
 .secondaryButton {
   display: inline-flex;
@@ -151,6 +187,32 @@
   color: var(--rb-white);
 }
 
+.ctaFinalRed {
+  padding: clamp(70px, 9vw, 140px) 0;
+  text-align: center;
+}
+
+.ctaFinalRed .sectionInner {
+  display: block;
+  width: min(960px, calc(100% - 40px));
+}
+
+.ctaFinalRed h2 {
+  margin-inline: auto;
+  max-width: 760px;
+  font-size: clamp(58px, 8vw, 128px);
+  line-height: 0.86;
+}
+
+.ctaFinalRed .lead {
+  margin-inline: auto;
+}
+
+.ctaFinalRed .actionRow {
+  justify-content: center;
+  margin-top: 12px;
+}
+
 .ctaRed .eyebrow {
   color: var(--rb-white);
 }
@@ -160,6 +222,14 @@
   align-items: end;
   justify-content: space-between;
   gap: 40px;
+}
+
+.ctaFinalRed .sectionInner {
+  display: block;
+}
+
+.ctaFinalRed .actionRow {
+  justify-content: center;
 }
 
 .actionRow {
@@ -388,6 +458,54 @@
   color: var(--rb-white);
 }
 
+.statsInlineDark {
+  padding: 44px 0;
+}
+
+.statsInlineDark .sectionHeader {
+  display: none;
+}
+
+.statsInlineDark .statsGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+
+.statsInlineDark .statItem {
+  padding: 18px 26px;
+  border-width: 0 1px 0 0;
+  background: transparent;
+}
+
+.statsInlineDark .statItem:last-child {
+  border-right: 0;
+}
+
+.statsNumberedDark {
+  background: #090909;
+}
+
+.statsNumberedDark .sectionInner {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.6fr);
+  gap: 70px;
+  align-items: start;
+}
+
+.statsNumberedDark .statsGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.statsNumberedDark .statItem {
+  min-height: 220px;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: #101010;
+}
+
+.statsNumberedDark .statItem dt {
+  font-size: 44px;
+}
+
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -447,8 +565,27 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+.domainGridDarkCompact,
+.locationTilesSection,
+.guidePhotoSection {
+  background: var(--rb-darker);
+  color: var(--rb-white);
+}
+
+.domainGridDarkCompact .domainCard {
+  min-height: 190px;
+  border-color: var(--rb-white-08);
+  background: #101010;
+  color: var(--rb-white);
+}
+
+.domainGridDarkCompact .domainCard:hover {
+  border-color: rgba(238, 0, 12, 0.72);
+}
+
 .domainCard,
 .reviewCard {
+  position: relative;
   display: flex;
   min-height: 260px;
   flex-direction: column;
@@ -480,6 +617,8 @@
 }
 
 .cardLinkText {
+  position: relative;
+  z-index: 1;
   margin-top: auto;
   padding-top: 24px;
   color: var(--rb-red);
@@ -488,6 +627,98 @@
   letter-spacing: 0.12em;
   line-height: 1.2;
   text-transform: uppercase;
+}
+
+.locationTileGrid {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.locationTilesSection .sectionHeader,
+.guidePhotoSection .sectionHeader {
+  display: grid;
+  max-width: none;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: end;
+}
+
+.locationTilesSection .lead,
+.guidePhotoSection .lead {
+  margin-top: 0;
+}
+
+.locationTilesSection .domainCard {
+  min-height: 210px;
+  overflow: hidden;
+  border-color: var(--rb-white-08);
+  background: #111111;
+  color: var(--rb-white);
+}
+
+.locationTilesSection .domainCard::after,
+.guidePhotoSection .domainCard::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.88));
+}
+
+.locationTileImage,
+.guideCardImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.locationTileImage img,
+.guideCardImage img {
+  object-fit: cover;
+  filter: saturate(0.8) contrast(1.1);
+}
+
+.locationTilesSection .cardMeta,
+.locationTilesSection h3,
+.locationTilesSection p:not(.cardMeta),
+.guidePhotoSection .cardMeta,
+.guidePhotoSection h3,
+.guidePhotoSection p:not(.cardMeta) {
+  position: relative;
+  z-index: 1;
+}
+
+.locationCountryMark {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  margin-bottom: 16px;
+  padding: 7px 9px;
+  background: var(--rb-red);
+  color: var(--rb-white);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.guidePhotoGrid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.guidePhotoSection .domainCard {
+  min-height: 430px;
+  overflow: hidden;
+  justify-content: flex-end;
+  border-color: var(--rb-white-08);
+  background: #111111;
+  color: var(--rb-white);
+}
+
+.guidePhotoSection .domainCard h3 {
+  font-size: 42px;
+}
+
+.guidePhotoSection .domainCard:hover {
+  border-color: rgba(238, 0, 12, 0.78);
 }
 
 .reviewGridSection {
@@ -599,10 +830,44 @@
   color: var(--rb-white);
 }
 
+.faqLightEditorial {
+  background: var(--rb-white);
+  color: var(--rb-black);
+}
+
+.faqLightEditorial .faqItem {
+  border-color: rgba(13, 13, 13, 0.08);
+  background: #ffffff;
+}
+
+.faqLightEditorial .faqItem dt {
+  color: var(--rb-black);
+}
+
+.faqLightEditorial .faqItem dd {
+  color: rgba(13, 13, 13, 0.72);
+}
+
 .tripCards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
+}
+
+.tripGridFeatureLead .sectionHeader {
+  display: flex;
+  max-width: none;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.tripGridFeatureLead .sectionHeader .lead {
+  max-width: 420px;
+}
+
+.tripGridFeatureLead .tripCards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .tripCard {
@@ -620,6 +885,14 @@
   background: #151515;
   border-color: var(--rb-white-08);
   color: var(--rb-white);
+}
+
+.tripGridFeatureLead .tripCardLead {
+  grid-column: span 2;
+}
+
+.tripGridFeatureLead .tripCardLead .tripMedia {
+  min-height: 380px;
 }
 
 .tripMedia {
@@ -792,9 +1065,36 @@
     min-height: 560px;
   }
 
+  .heroBrandEditorial {
+    min-height: 690px;
+  }
+
+  .heroBrandEditorial h1 {
+    font-size: 72px;
+  }
+
   .heroInner {
     width: min(100% - 28px, 1120px);
     padding: 130px 0 58px;
+  }
+
+  .statsInlineDark .statsGrid,
+  .statsNumberedDark .sectionInner,
+  .statsNumberedDark .statsGrid,
+  .locationTilesSection .sectionHeader,
+  .guidePhotoSection .sectionHeader,
+  .tripGridFeatureLead .tripCards,
+  .tripGridFeatureLead .sectionHeader {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .statsInlineDark .statItem {
+    border-width: 0 0 1px;
+  }
+
+  .tripGridFeatureLead .tripCardLead {
+    grid-column: auto;
   }
 
   .cta .sectionInner,

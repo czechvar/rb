@@ -46,7 +46,8 @@ export async function TripGridBlock(block: TripGridBlockProps, context: BlockRen
   const className = [
     styles.tripGrid,
     block.variant === 'compact' ? styles.tripGridCompact : '',
-    block.variant === 'editorial' ? styles.tripGridEditorial : '',
+    block.variant === 'editorial' || block.variant === 'featureLead' ? styles.tripGridEditorial : '',
+    block.variant === 'featureLead' ? styles.tripGridFeatureLead : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -60,12 +61,19 @@ export async function TripGridBlock(block: TripGridBlockProps, context: BlockRen
           {block.intro ? <p className={styles.lead}>{block.intro}</p> : null}
         </div>
         <div className={styles.tripCards}>
-          {events.map((event) => {
+          {events.map((event, index) => {
             const img = mediaUrl(event.mainPicture)
             const price = formatPrice(lowestPrice(datesByEvent.get(event.id) ?? []))
             const loc = locationLabel(event.locations)
             return (
-              <Link href={`/trips/${event.slug}`} key={event.id} className={styles.tripCard}>
+              <Link
+                href={`/trips/${event.slug}`}
+                key={event.id}
+                className={[
+                  styles.tripCard,
+                  block.variant === 'featureLead' && index === 0 ? styles.tripCardLead : '',
+                ].filter(Boolean).join(' ')}
+              >
                 <div className={styles.tripMedia}>
                   {img ? (
                     <Image

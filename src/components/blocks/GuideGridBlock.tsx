@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Guide, Page } from '@/payload-types'
 import { resolveGuideGridGuides } from '@/lib/block-resolvers/domain-grids'
+import { mediaAlt, mediaUrl } from '@/lib/media'
 import styles from './blocks.module.css'
 
 type GuideGridBlockProps = Extract<
@@ -21,12 +23,12 @@ export async function GuideGridBlock({
   if (!items.length) return null
 
   return (
-    <section className={styles.domainGridSection}>
+    <section className={sectionClassName(variant)}>
       <div className={styles.sectionInner}>
         <BlockHeader eyebrow={eyebrow} heading={heading} intro={intro} />
         <div className={gridClassName(variant)}>
           {items.map((guide) => (
-            <GuideCard key={guide.id} guide={guide} />
+            <GuideCard key={guide.id} guide={guide} variant={variant} />
           ))}
         </div>
       </div>
@@ -34,9 +36,20 @@ export async function GuideGridBlock({
   )
 }
 
-function GuideCard({ guide }: { guide: Guide }) {
+function GuideCard({ guide, variant }: { guide: Guide, variant?: string | null }) {
+  const image = mediaUrl(guide.photo)
   return (
     <Link href={`/team/${guide.slug}`} className={styles.domainCard}>
+      {variant === 'photoOverlay' && image ? (
+        <span className={styles.guideCardImage} aria-hidden="true">
+          <Image
+            src={image}
+            alt={mediaAlt(guide.photo)}
+            fill
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
+        </span>
+      ) : null}
       {guide.role ? <p className={styles.cardMeta}>{guide.role}</p> : null}
       <h3>{guide.name}</h3>
       {guide.tagline ? <p>{guide.tagline}</p> : null}
@@ -65,7 +78,18 @@ function BlockHeader({
 }
 
 function gridClassName(variant?: string | null) {
-  return [styles.domainGrid, variant === 'compact' ? styles.domainGridCompact : '']
+  return [
+    styles.domainGrid,
+    variant === 'compact' ? styles.domainGridCompact : '',
+    variant === 'photoOverlay' ? styles.guidePhotoGrid : '',
+  ]
     .filter(Boolean)
     .join(' ')
+}
+
+function sectionClassName(variant?: string | null) {
+  return [
+    styles.domainGridSection,
+    variant === 'photoOverlay' ? styles.guidePhotoSection : '',
+  ].filter(Boolean).join(' ')
 }

@@ -57,6 +57,7 @@ export const TripGridBlockConfig: Block = {
         { label: 'Cards', value: 'cards' },
         { label: 'Compact', value: 'compact' },
         { label: 'Editorial lead', value: 'editorial' },
+        { label: 'Feature lead', value: 'featureLead' },
       ],
     }),
   ],

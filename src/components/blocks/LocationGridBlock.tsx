@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Location, Page } from '@/payload-types'
 import { resolveLocationGridLocations } from '@/lib/block-resolvers/domain-grids'
+import { mediaUrl } from '@/lib/media'
 import styles from './blocks.module.css'
 
 type LocationGridBlockProps = Extract<
@@ -22,12 +24,12 @@ export async function LocationGridBlock({
   if (!items.length) return null
 
   return (
-    <section className={styles.domainGridSection}>
+    <section className={sectionClassName(variant)}>
       <div className={styles.sectionInner}>
         <BlockHeader eyebrow={eyebrow} heading={heading} intro={intro} />
         <div className={gridClassName(variant)}>
           {items.map((location) => (
-            <LocationCard key={location.id} location={location} />
+            <LocationCard key={location.id} location={location} variant={variant} />
           ))}
         </div>
       </div>
@@ -35,11 +37,25 @@ export async function LocationGridBlock({
   )
 }
 
-function LocationCard({ location }: { location: Location }) {
+function LocationCard({ location, variant }: { location: Location, variant?: string | null }) {
   const place = [location.city, location.country].filter(Boolean).join(', ')
+  const image = mediaUrl(location.mainPicture)
 
   return (
     <Link href={`/destinations/${location.slug}`} className={styles.domainCard}>
+      {variant === 'countryTiles' && image ? (
+        <span className={styles.locationTileImage} aria-hidden="true">
+          <Image
+            src={image}
+            alt=""
+            fill
+            sizes="(max-width: 768px) 100vw, 25vw"
+          />
+        </span>
+      ) : null}
+      {variant === 'countryTiles' && location.country ? (
+        <span className={styles.locationCountryMark}>{countryCode(location.country)}</span>
+      ) : null}
       <p className={styles.cardMeta}>{place || 'Location'}</p>
       <h3>{location.name}</h3>
       {location.country ? <p>{location.country}</p> : null}
@@ -68,7 +84,22 @@ function BlockHeader({
 }
 
 function gridClassName(variant?: string | null) {
-  return [styles.domainGrid, variant === 'compact' ? styles.domainGridCompact : '']
+  return [
+    styles.domainGrid,
+    variant === 'compact' ? styles.domainGridCompact : '',
+    variant === 'countryTiles' ? styles.locationTileGrid : '',
+  ]
     .filter(Boolean)
     .join(' ')
+}
+
+function sectionClassName(variant?: string | null) {
+  return [
+    styles.domainGridSection,
+    variant === 'countryTiles' ? styles.locationTilesSection : '',
+  ].filter(Boolean).join(' ')
+}
+
+function countryCode(country: string) {
+  return country.trim().slice(0, 2).toUpperCase()
 }

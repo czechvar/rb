@@ -21,7 +21,7 @@ export async function ProgramGridBlock({
   if (!items.length) return null
 
   return (
-    <section className={styles.domainGridSection}>
+    <section className={sectionClassName(variant)}>
       <div className={styles.sectionInner}>
         <BlockHeader eyebrow={eyebrow} heading={heading} intro={intro} />
         <div className={gridClassName(variant)}>
@@ -65,7 +65,17 @@ function BlockHeader({
 }
 
 function gridClassName(variant?: string | null) {
-  return [styles.domainGrid, variant === 'compact' ? styles.domainGridCompact : '']
+  return [
+    styles.domainGrid,
+    variant === 'compact' || variant === 'darkCompact' ? styles.domainGridCompact : '',
+  ]
     .filter(Boolean)
     .join(' ')
+}
+
+function sectionClassName(variant?: string | null) {
+  return [
+    styles.domainGridSection,
+    variant === 'darkCompact' ? styles.domainGridDarkCompact : '',
+  ].filter(Boolean).join(' ')
 }

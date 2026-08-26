@@ -30,6 +30,7 @@ export const LocationGridBlockConfig: Block = {
       values: [
         { label: 'Cards', value: 'cards' },
         { label: 'Compact', value: 'compact' },
+        { label: 'Country tiles', value: 'countryTiles' },
       ],
     }),
   ],

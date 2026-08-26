@@ -331,7 +331,7 @@ export interface Program {
             program?: (number | null) | Program;
             location?: (number | null) | Location;
             limit: number;
-            variant: 'cards' | 'compact' | 'editorial';
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'tripGrid';
@@ -399,7 +399,7 @@ export interface Program {
                 }[]
               | null;
             limit: number;
-            variant: 'twoColumn' | 'singleColumn';
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
             id?: string | null;
             blockName?: string | null;
             blockType: 'faq';
@@ -425,7 +425,7 @@ export interface Program {
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'photoOverlay';
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
@@ -758,7 +758,7 @@ export interface Event {
                 }[]
               | null;
             limit: number;
-            variant: 'twoColumn' | 'singleColumn';
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
             id?: string | null;
             blockName?: string | null;
             blockType: 'faq';
@@ -1105,7 +1105,7 @@ export interface Location {
             program?: (number | null) | Program;
             location?: (number | null) | Location;
             limit: number;
-            variant: 'cards' | 'compact' | 'editorial';
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'tripGrid';
@@ -1173,7 +1173,7 @@ export interface Location {
                 }[]
               | null;
             limit: number;
-            variant: 'twoColumn' | 'singleColumn';
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
             id?: string | null;
             blockName?: string | null;
             blockType: 'faq';
@@ -1199,7 +1199,7 @@ export interface Location {
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'photoOverlay';
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
@@ -1220,7 +1220,7 @@ export interface Location {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            variant: 'dark' | 'light' | 'red';
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -1405,7 +1405,7 @@ export interface Guide {
             program?: (number | null) | Program;
             location?: (number | null) | Location;
             limit: number;
-            variant: 'cards' | 'compact' | 'editorial';
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'tripGrid';
@@ -1473,7 +1473,7 @@ export interface Guide {
                 }[]
               | null;
             limit: number;
-            variant: 'twoColumn' | 'singleColumn';
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
             id?: string | null;
             blockName?: string | null;
             blockType: 'faq';
@@ -1496,7 +1496,7 @@ export interface Guide {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            variant: 'dark' | 'light' | 'red';
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -1881,7 +1881,7 @@ export interface Post {
             program?: (number | null) | Program;
             location?: (number | null) | Location;
             limit: number;
-            variant: 'cards' | 'compact' | 'editorial';
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'tripGrid';
@@ -1893,7 +1893,7 @@ export interface Post {
             source: 'featured' | 'all' | 'manual';
             programs?: (number | Program)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'darkCompact';
             id?: string | null;
             blockName?: string | null;
             blockType: 'programGrid';
@@ -1906,7 +1906,7 @@ export interface Post {
             country?: string | null;
             locations?: (number | Location)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'countryTiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'locationGrid';
@@ -1918,7 +1918,7 @@ export interface Post {
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'photoOverlay';
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
@@ -1973,7 +1973,7 @@ export interface Post {
                 }[]
               | null;
             limit: number;
-            variant: 'twoColumn' | 'singleColumn';
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
             id?: string | null;
             blockName?: string | null;
             blockType: 'faq';
@@ -2008,7 +2008,7 @@ export interface Post {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            variant: 'dark' | 'light' | 'red';
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -2056,7 +2056,7 @@ export interface Page {
             heading: string;
             body?: string | null;
             backgroundMedia?: (number | null) | Media;
-            variant: 'overlay' | 'editorial' | 'simple';
+            variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -2109,7 +2109,7 @@ export interface Page {
                   id?: string | null;
                 }[]
               | null;
-            variant: 'light' | 'dark';
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -2118,7 +2118,7 @@ export interface Page {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            variant: 'dark' | 'light' | 'red';
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -2140,7 +2140,7 @@ export interface Page {
             program?: (number | null) | Program;
             location?: (number | null) | Location;
             limit: number;
-            variant: 'cards' | 'compact' | 'editorial';
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'tripGrid';
@@ -2152,7 +2152,7 @@ export interface Page {
             source: 'featured' | 'all' | 'manual';
             programs?: (number | Program)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'darkCompact';
             id?: string | null;
             blockName?: string | null;
             blockType: 'programGrid';
@@ -2165,7 +2165,7 @@ export interface Page {
             country?: string | null;
             locations?: (number | Location)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'countryTiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'locationGrid';
@@ -2177,7 +2177,7 @@ export interface Page {
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'photoOverlay';
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
@@ -2271,7 +2271,7 @@ export interface Page {
                 }[]
               | null;
             limit: number;
-            variant: 'twoColumn' | 'singleColumn';
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
             id?: string | null;
             blockName?: string | null;
             blockType: 'faq';

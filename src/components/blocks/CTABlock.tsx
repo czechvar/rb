@@ -15,7 +15,8 @@ export function CTABlock({
   const className = [
     styles.cta,
     variant === 'light' ? styles.ctaLight : '',
-    variant === 'red' ? styles.ctaRed : '',
+    variant === 'red' || variant === 'finalRed' ? styles.ctaRed : '',
+    variant === 'finalRed' ? styles.ctaFinalRed : '',
   ]
     .filter(Boolean)
     .join(' ')

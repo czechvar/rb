@@ -12,6 +12,7 @@ export const CTABlockConfig: Block = {
         { label: 'Dark', value: 'dark' },
         { label: 'Light', value: 'light' },
         { label: 'Red', value: 'red' },
+        { label: 'Final red', value: 'finalRed' },
       ],
     }),
     actionField('primaryAction'),

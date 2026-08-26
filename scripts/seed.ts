@@ -1549,7 +1549,7 @@ async function main() {
           heading: 'Climb harder. Climb smarter.',
           body:
             "We're a community of rock climbing guides, coaches, and lifers obsessed with getting you stronger, sharper, and further than you thought possible.",
-          variant: 'simple',
+          variant: 'brandEditorial',
           primaryAction: {
             label: 'Explore trips and courses',
             href: '/programs',
@@ -1557,15 +1557,13 @@ async function main() {
         },
         {
           blockType: 'stats',
-          eyebrow: 'Proof points',
-          heading: 'Built around real climbing progression',
           items: [
             { value: '15+', label: 'Years on the rock', body: 'Guiding and coaching across European crags.' },
             { value: '3000+', label: 'Climbers coached', body: 'From first outdoor leads to performance camps.' },
             { value: '8', label: 'Countries', body: 'Destination knowledge across the core climbing regions.' },
             { value: '100%', label: 'Climbing focus', body: 'No filler travel package, just routes and coaching.' },
           ],
-          variant: 'dark',
+          variant: 'inlineDark',
         },
         {
           blockType: 'rich-text',
@@ -1578,13 +1576,29 @@ async function main() {
           width: 'standard',
         },
         {
+          blockType: 'stats',
+          eyebrow: 'Why climb with us',
+          heading: 'Maximum climbing time. Technical and mental coaching. World-class coaches.',
+          body:
+            'Rockbusters trips are built around progression on real rock, with practical local knowledge and focused days outside.',
+          items: [
+            { value: '01', label: 'Maximum climbing time', body: 'Each day is structured around actual climbing volume, not bus transfers.' },
+            { value: '02', label: 'Technical and mental coaching', body: 'Movement, tactics, head game, and practical systems stay part of the trip.' },
+            { value: '03', label: 'World-class coaches', body: 'Experienced climbers teach what works outside, not just indoors.' },
+            { value: '04', label: 'Ground logistics sorted', body: 'Accommodation, airports, local transport, and partner logistics are handled.' },
+            { value: '05', label: 'Insider area knowledge', body: 'Routes and crags are picked from local experience, conditions, and goals.' },
+            { value: '06', label: 'Climbing is our lifestyle', body: 'The culture is built by climbers who live this year round.' },
+          ],
+          variant: 'numberedDark',
+        },
+        {
           blockType: 'tripGrid',
           eyebrow: 'Rockbusters picks',
           heading: 'Trips and courses worth climbing for',
           intro: 'Featured Event records power the homepage trip section without duplicating catalogue content.',
           source: 'featured',
           limit: 6,
-          variant: 'editorial',
+          variant: 'featureLead',
         },
         {
           blockType: 'programGrid',
@@ -1593,7 +1607,7 @@ async function main() {
           intro: 'Programs stay canonical while the homepage controls placement and presentation.',
           source: 'featured',
           limit: 6,
-          variant: 'cards',
+          variant: 'darkCompact',
         },
         {
           blockType: 'locationGrid',
@@ -1603,7 +1617,7 @@ async function main() {
           source: 'manual',
           locations: [locFrankenjura.id, locMallorca.id, locDolomites.id],
           limit: 8,
-          variant: 'cards',
+          variant: 'countryTiles',
         },
         {
           blockType: 'guideGrid',
@@ -1612,7 +1626,7 @@ async function main() {
           intro: 'Guide records keep the homepage team section connected to the People collection.',
           source: 'team',
           limit: 6,
-          variant: 'cards',
+          variant: 'photoOverlay',
         },
         {
           blockType: 'reviewGrid',
@@ -1629,7 +1643,7 @@ async function main() {
           heading: 'FAQ',
           source: 'global',
           limit: 6,
-          variant: 'twoColumn',
+          variant: 'lightEditorial',
         },
         {
           blockType: 'partnerStrip',
@@ -1644,7 +1658,7 @@ async function main() {
           eyebrow: 'Your next level starts now',
           heading: 'Find the trip worth training for.',
           body: 'Start with the right route, the right coach, and enough time on real rock.',
-          variant: 'red',
+          variant: 'finalRed',
           primaryAction: {
             label: 'Find your trip',
             href: '/programs',

@@ -28,6 +28,7 @@ export const ProgramGridBlockConfig: Block = {
       values: [
         { label: 'Cards', value: 'cards' },
         { label: 'Compact', value: 'compact' },
+        { label: 'Dark compact', value: 'darkCompact' },
       ],
     }),
   ],

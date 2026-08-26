@@ -12,6 +12,7 @@ export function HeroBlock({ backgroundMedia, body, eyebrow, heading, primaryActi
     styles.hero,
     variant === 'simple' ? styles.heroSimple : '',
     variant === 'editorial' ? styles.heroEditorial : '',
+    variant === 'brandEditorial' ? styles.heroBrandEditorial : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -31,7 +32,7 @@ export function HeroBlock({ backgroundMedia, body, eyebrow, heading, primaryActi
       <div className={styles.heroOverlay} aria-hidden="true" />
       <div className={styles.heroInner}>
         {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
-        <h1>{heading}</h1>
+        <h1>{formatBrandHeading(heading, variant)}</h1>
         {body ? <p className={styles.heroBody}>{body}</p> : null}
         <BlockAction
           href={primaryAction?.href}
@@ -41,4 +42,21 @@ export function HeroBlock({ backgroundMedia, body, eyebrow, heading, primaryActi
       </div>
     </section>
   )
+}
+
+function formatBrandHeading(heading: string, variant?: string | null) {
+  if (variant !== 'brandEditorial') return heading
+  const parts = heading.split(' ')
+  const emphasizedIndex = parts.findIndex((part) => part.toLowerCase().includes('harder'))
+  if (emphasizedIndex === -1) return heading
+
+  return parts.map((part, index) => (
+    <span
+      key={`${part}-${index}`}
+      className={index === emphasizedIndex ? styles.heroAccentWord : undefined}
+    >
+      {part}
+      {index < parts.length - 1 ? ' ' : ''}
+    </span>
+  ))
 }

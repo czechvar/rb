@@ -19,7 +19,10 @@ export async function FAQBlock(block: FAQBlockProps, context: BlockRenderContext
   if (items.length === 0) return null
 
   return (
-    <section className={styles.faqSection}>
+    <section className={[
+      styles.faqSection,
+      block.variant === 'lightEditorial' ? styles.faqLightEditorial : '',
+    ].filter(Boolean).join(' ')}>
       <div className={styles.sectionInner}>
         <div className={styles.sectionHeader}>
           {block.eyebrow ? <p className={styles.eyebrow}>{block.eyebrow}</p> : null}

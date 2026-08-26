@@ -22,6 +22,8 @@ export const StatsBlockConfig: Block = {
       values: [
         { label: 'Light', value: 'light' },
         { label: 'Dark', value: 'dark' },
+        { label: 'Inline dark', value: 'inlineDark' },
+        { label: 'Numbered dark', value: 'numberedDark' },
       ],
     }),
   ],

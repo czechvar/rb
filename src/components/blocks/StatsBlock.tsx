@@ -11,7 +11,11 @@ export function StatsBlock({ body, eyebrow, heading, items, variant }: StatsBloc
 
   const className = [
     styles.statsSection,
-    variant === 'dark' ? styles.statsDark : '',
+    variant === 'dark' || variant === 'inlineDark' || variant === 'numberedDark'
+      ? styles.statsDark
+      : '',
+    variant === 'inlineDark' ? styles.statsInlineDark : '',
+    variant === 'numberedDark' ? styles.statsNumberedDark : '',
   ].filter(Boolean).join(' ')
 
   return (

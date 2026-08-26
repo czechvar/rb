@@ -13,6 +13,7 @@ export const HeroBlockConfig: Block = {
         { label: 'Image overlay', value: 'overlay' },
         { label: 'Editorial', value: 'editorial' },
         { label: 'Simple', value: 'simple' },
+        { label: 'Brand editorial', value: 'brandEditorial' },
       ],
     }),
     actionField('primaryAction'),
