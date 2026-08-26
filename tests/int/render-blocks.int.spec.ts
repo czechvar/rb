@@ -271,4 +271,111 @@ describe('RenderBlocks', () => {
     expect(markup).toContain('/team/jany')
     expect(markup).toContain('Sport Climbing Basics')
   })
+
+  it('renders featured single-item catalogue blocks', async () => {
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'featuredTrip',
+          source: 'manual',
+          heading: 'Featured trip',
+          event: {
+            id: 101,
+            title: 'Kalymnos Autumn Camp',
+            slug: 'kalymnos-autumn-camp',
+            shortDescription: 'A week of sea-cliff sport climbing.',
+            state: 'published',
+          },
+          variant: 'feature',
+        },
+        {
+          blockType: 'featuredProgram',
+          heading: 'Featured program',
+          program: {
+            id: 102,
+            name: 'Performance Camps',
+            slug: 'performance-camps',
+            shortDescription: 'Structured coaching weeks.',
+            active: true,
+            state: 'published',
+          },
+          variant: 'card',
+        },
+        {
+          blockType: 'featuredLocation',
+          heading: 'Featured location',
+          location: {
+            id: 103,
+            name: 'El Chorro',
+            slug: 'el-chorro',
+            city: 'Malaga',
+            country: 'Spain',
+            active: true,
+          },
+          variant: 'mediaLed',
+        },
+        {
+          blockType: 'featuredGuide',
+          source: 'manual',
+          heading: 'Featured guide',
+          guide: {
+            id: 104,
+            name: 'Jany Novotny',
+            slug: 'jany',
+            role: 'Founder & Head Coach',
+            tagline: 'Direct technical coaching.',
+            active: true,
+          },
+          variant: 'compact',
+        },
+        {
+          blockType: 'featuredPost',
+          heading: 'Featured post',
+          post: {
+            id: 105,
+            title: 'Training for limestone',
+            slug: 'training-for-limestone',
+            excerpt: 'A practical prep note.',
+            state: 'published',
+            publishedAt: '2026-05-15T09:00:00.000Z',
+          },
+          variant: 'card',
+        },
+        {
+          blockType: 'featuredEventDate',
+          heading: 'Featured date',
+          eventDate: {
+            id: 106,
+            dateFrom: '2026-09-12T00:00:00.000Z',
+            dateTo: '2026-09-19T00:00:00.000Z',
+            price: 1290,
+            currency: 'EUR',
+            capacity: 8,
+            active: true,
+            event: {
+              id: 107,
+              title: 'Deep Blue Psicobloc Camp',
+              slug: 'deep-blue-psicobloc',
+              state: 'published',
+            },
+          },
+          variant: 'card',
+        },
+      ] as RenderBlocksInput['blocks'],
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).toContain('Kalymnos Autumn Camp')
+    expect(markup).toContain('/trips/kalymnos-autumn-camp')
+    expect(markup).toContain('Performance Camps')
+    expect(markup).toContain('/programs/performance-camps')
+    expect(markup).toContain('El Chorro')
+    expect(markup).toContain('/destinations/el-chorro')
+    expect(markup).toContain('Jany Novotny')
+    expect(markup).toContain('/team/jany')
+    expect(markup).toContain('Training for limestone')
+    expect(markup).toContain('/blog/training-for-limestone')
+    expect(markup).toContain('Deep Blue Psicobloc Camp')
+    expect(markup).toContain('EUR 1290')
+  })
 })

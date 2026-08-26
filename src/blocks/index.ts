@@ -9,6 +9,14 @@ import { LocationGridBlockConfig } from './LocationGrid/config'
 import { GuideGridBlockConfig } from './GuideGrid/config'
 import { PostGridBlockConfig } from './PostGrid/config'
 import { CalendarBlockConfig } from './Calendar/config'
+import {
+  FeaturedEventDateBlockConfig,
+  FeaturedGuideBlockConfig,
+  FeaturedLocationBlockConfig,
+  FeaturedPostBlockConfig,
+  FeaturedProgramBlockConfig,
+  FeaturedTripBlockConfig,
+} from './featuredCatalogue'
 import { MediaBlockConfig } from './Media/config'
 import { GalleryBlockConfig } from './Gallery/config'
 import { VideoBlockConfig } from './Video/config'
@@ -67,7 +75,7 @@ export type BlockCategory =
   | 'guideDetail'
   | 'postDetail'
 
-export type BlockDataDependency = 'event' | 'program' | 'location' | 'guide' | 'post'
+export type BlockDataDependency = 'event' | 'eventDate' | 'program' | 'location' | 'guide' | 'post'
 export type BlockSourceMode = 'currentContext' | 'manualSelection' | 'configuredContent'
 
 export type BlockCatalogueEntry = {
@@ -105,11 +113,47 @@ const rawBlockCatalogue = [
   { config: StatsBlockConfig, category: 'content' },
   { config: CTABlockConfig, category: 'conversion' },
   { config: TripGridBlockConfig, category: 'catalogue' },
+  {
+    config: FeaturedTripBlockConfig,
+    category: 'catalogue',
+    dataDependencies: ['event'],
+    sourceModes: ['currentContext', 'manualSelection'],
+  },
   { config: ProgramGridBlockConfig, category: 'catalogue' },
+  {
+    config: FeaturedProgramBlockConfig,
+    category: 'catalogue',
+    dataDependencies: ['program'],
+    sourceModes: ['currentContext', 'manualSelection'],
+  },
   { config: LocationGridBlockConfig, category: 'catalogue' },
+  {
+    config: FeaturedLocationBlockConfig,
+    category: 'catalogue',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext', 'manualSelection'],
+  },
   { config: GuideGridBlockConfig, category: 'catalogue' },
+  {
+    config: FeaturedGuideBlockConfig,
+    category: 'catalogue',
+    dataDependencies: ['guide'],
+    sourceModes: ['currentContext', 'manualSelection'],
+  },
   { config: PostGridBlockConfig, category: 'catalogue' },
+  {
+    config: FeaturedPostBlockConfig,
+    category: 'catalogue',
+    dataDependencies: ['post'],
+    sourceModes: ['currentContext', 'manualSelection'],
+  },
   { config: CalendarBlockConfig, category: 'catalogue' },
+  {
+    config: FeaturedEventDateBlockConfig,
+    category: 'catalogue',
+    dataDependencies: ['eventDate'],
+    sourceModes: ['manualSelection'],
+  },
   { config: MediaBlockConfig, category: 'media' },
   { config: GalleryBlockConfig, category: 'media' },
   { config: VideoBlockConfig, category: 'media' },

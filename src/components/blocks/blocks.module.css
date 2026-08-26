@@ -565,6 +565,75 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+.featuredCatalogueWrap {
+  display: grid;
+  grid-template-columns: minmax(0, 560px);
+}
+
+.featuredCatalogueSection .sectionInner {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.featuredCatalogueSection .sectionHeader {
+  margin-bottom: 0;
+}
+
+.featuredCatalogueSection .featuredCatalogueWrap {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.featuredCatalogueMediaLedSection {
+  background: var(--rb-darker);
+  color: var(--rb-white);
+}
+
+.featuredCatalogueCard {
+  composes: domainCard;
+}
+
+.featuredCatalogueFeature {
+  min-height: 360px;
+  padding: 34px;
+}
+
+.featuredCatalogueFeature h3 {
+  max-width: 720px;
+  font-size: clamp(42px, 6vw, 88px);
+  line-height: 0.86;
+}
+
+.featuredCatalogueCompact {
+  min-height: 190px;
+}
+
+.featuredCatalogueMediaLed {
+  min-height: 430px;
+  overflow: hidden;
+  justify-content: flex-end;
+  border-color: var(--rb-white-08);
+  background: #111111;
+  color: var(--rb-white);
+}
+
+.featuredCatalogueMediaLed::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.88));
+}
+
+.featuredCatalogueMediaLed .cardMeta,
+.featuredCatalogueMediaLed h3,
+.featuredCatalogueMediaLed p:not(.cardMeta),
+.featuredCatalogueMediaLed .cardLinkText {
+  position: relative;
+  z-index: 1;
+}
+
 .domainGridDarkCompact,
 .locationTilesSection,
 .guidePhotoSection {

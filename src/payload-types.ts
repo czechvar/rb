@@ -363,6 +363,17 @@ export interface Program {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'featured' | 'all' | 'manual';
             programs?: (number | Program)[] | null;
             limit?: number | null;
@@ -370,6 +381,17 @@ export interface Program {
             id?: string | null;
             blockName?: string | null;
             blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
           }
         | {
             eyebrow?: string | null;
@@ -388,6 +410,17 @@ export interface Program {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
@@ -395,6 +428,17 @@ export interface Program {
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
           }
         | {
             eyebrow?: string | null;
@@ -413,6 +457,17 @@ export interface Program {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'upcoming' | 'byEvent' | 'manual';
             event?: (number | null) | Event;
             eventDates?: (number | EventDate)[] | null;
@@ -421,6 +476,16 @@ export interface Program {
             id?: string | null;
             blockName?: string | null;
             blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
           }
         | {
             eyebrow?: string | null;
@@ -913,6 +978,17 @@ export interface Event {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'featured' | 'all' | 'manual';
             programs?: (number | Program)[] | null;
             limit?: number | null;
@@ -920,6 +996,17 @@ export interface Event {
             id?: string | null;
             blockName?: string | null;
             blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
           }
         | {
             eyebrow?: string | null;
@@ -938,6 +1025,17 @@ export interface Event {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
@@ -945,6 +1043,17 @@ export interface Event {
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
           }
         | {
             eyebrow?: string | null;
@@ -963,6 +1072,17 @@ export interface Event {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'upcoming' | 'byEvent' | 'manual';
             event?: (number | null) | Event;
             eventDates?: (number | EventDate)[] | null;
@@ -971,6 +1091,16 @@ export interface Event {
             id?: string | null;
             blockName?: string | null;
             blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
           }
         | {
             eyebrow?: string | null;
@@ -1466,6 +1596,17 @@ export interface Location {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'featured' | 'all' | 'manual';
             programs?: (number | Program)[] | null;
             limit?: number | null;
@@ -1473,6 +1614,17 @@ export interface Location {
             id?: string | null;
             blockName?: string | null;
             blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
           }
         | {
             eyebrow?: string | null;
@@ -1491,6 +1643,17 @@ export interface Location {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
@@ -1498,6 +1661,17 @@ export interface Location {
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
           }
         | {
             eyebrow?: string | null;
@@ -1516,6 +1690,17 @@ export interface Location {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'upcoming' | 'byEvent' | 'manual';
             event?: (number | null) | Event;
             eventDates?: (number | EventDate)[] | null;
@@ -1524,6 +1709,16 @@ export interface Location {
             id?: string | null;
             blockName?: string | null;
             blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
           }
         | {
             eyebrow?: string | null;
@@ -1823,6 +2018,17 @@ export interface Guide {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'featured' | 'all' | 'manual';
             programs?: (number | Program)[] | null;
             limit?: number | null;
@@ -1830,6 +2036,17 @@ export interface Guide {
             id?: string | null;
             blockName?: string | null;
             blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
           }
         | {
             eyebrow?: string | null;
@@ -1848,6 +2065,17 @@ export interface Guide {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
@@ -1855,6 +2083,17 @@ export interface Guide {
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
           }
         | {
             eyebrow?: string | null;
@@ -1873,6 +2112,17 @@ export interface Guide {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'upcoming' | 'byEvent' | 'manual';
             event?: (number | null) | Event;
             eventDates?: (number | EventDate)[] | null;
@@ -1881,6 +2131,16 @@ export interface Guide {
             id?: string | null;
             blockName?: string | null;
             blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
           }
         | {
             eyebrow?: string | null;
@@ -2289,6 +2549,17 @@ export interface Post {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'featured' | 'all' | 'manual';
             programs?: (number | Program)[] | null;
             limit?: number | null;
@@ -2296,6 +2567,17 @@ export interface Post {
             id?: string | null;
             blockName?: string | null;
             blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
           }
         | {
             eyebrow?: string | null;
@@ -2314,6 +2596,17 @@ export interface Post {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
@@ -2321,6 +2614,17 @@ export interface Post {
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
           }
         | {
             eyebrow?: string | null;
@@ -2339,6 +2643,17 @@ export interface Post {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'upcoming' | 'byEvent' | 'manual';
             event?: (number | null) | Event;
             eventDates?: (number | EventDate)[] | null;
@@ -2347,6 +2662,16 @@ export interface Post {
             id?: string | null;
             blockName?: string | null;
             blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
           }
         | {
             eyebrow?: string | null;
@@ -2886,6 +3211,17 @@ export interface Page {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'featured' | 'all' | 'manual';
             programs?: (number | Program)[] | null;
             limit?: number | null;
@@ -2893,6 +3229,17 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
           }
         | {
             eyebrow?: string | null;
@@ -2911,6 +3258,17 @@ export interface Page {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'team' | 'friends' | 'featured' | 'manual';
             guides?: (number | Guide)[] | null;
             limit?: number | null;
@@ -2918,6 +3276,17 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
           }
         | {
             eyebrow?: string | null;
@@ -2936,6 +3305,17 @@ export interface Page {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
             source: 'upcoming' | 'byEvent' | 'manual';
             event?: (number | null) | Event;
             eventDates?: (number | EventDate)[] | null;
@@ -2944,6 +3324,16 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
           }
         | {
             eyebrow?: string | null;
@@ -3396,6 +3786,18 @@ export interface ProgramsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         programGrid?:
           | T
           | {
@@ -3405,6 +3807,18 @@ export interface ProgramsSelect<T extends boolean = true> {
               source?: T;
               programs?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -3423,6 +3837,18 @@ export interface ProgramsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         guideGrid?:
           | T
           | {
@@ -3432,6 +3858,18 @@ export interface ProgramsSelect<T extends boolean = true> {
               source?: T;
               guides?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -3450,6 +3888,18 @@ export interface ProgramsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         calendar?:
           | T
           | {
@@ -3460,6 +3910,17 @@ export interface ProgramsSelect<T extends boolean = true> {
               event?: T;
               eventDates?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -3900,6 +4361,18 @@ export interface GuidesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         programGrid?:
           | T
           | {
@@ -3909,6 +4382,18 @@ export interface GuidesSelect<T extends boolean = true> {
               source?: T;
               programs?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -3927,6 +4412,18 @@ export interface GuidesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         guideGrid?:
           | T
           | {
@@ -3936,6 +4433,18 @@ export interface GuidesSelect<T extends boolean = true> {
               source?: T;
               guides?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -3954,6 +4463,18 @@ export interface GuidesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         calendar?:
           | T
           | {
@@ -3964,6 +4485,17 @@ export interface GuidesSelect<T extends boolean = true> {
               event?: T;
               eventDates?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -4315,6 +4847,18 @@ export interface LocationsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         programGrid?:
           | T
           | {
@@ -4324,6 +4868,18 @@ export interface LocationsSelect<T extends boolean = true> {
               source?: T;
               programs?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -4342,6 +4898,18 @@ export interface LocationsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         guideGrid?:
           | T
           | {
@@ -4351,6 +4919,18 @@ export interface LocationsSelect<T extends boolean = true> {
               source?: T;
               guides?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -4369,6 +4949,18 @@ export interface LocationsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         calendar?:
           | T
           | {
@@ -4379,6 +4971,17 @@ export interface LocationsSelect<T extends boolean = true> {
               event?: T;
               eventDates?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -4679,6 +5282,18 @@ export interface EventsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         programGrid?:
           | T
           | {
@@ -4688,6 +5303,18 @@ export interface EventsSelect<T extends boolean = true> {
               source?: T;
               programs?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -4706,6 +5333,18 @@ export interface EventsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         guideGrid?:
           | T
           | {
@@ -4715,6 +5354,18 @@ export interface EventsSelect<T extends boolean = true> {
               source?: T;
               guides?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -4733,6 +5384,18 @@ export interface EventsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         calendar?:
           | T
           | {
@@ -4743,6 +5406,17 @@ export interface EventsSelect<T extends boolean = true> {
               event?: T;
               eventDates?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -5316,6 +5990,18 @@ export interface PostsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         programGrid?:
           | T
           | {
@@ -5325,6 +6011,18 @@ export interface PostsSelect<T extends boolean = true> {
               source?: T;
               programs?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -5343,6 +6041,18 @@ export interface PostsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         guideGrid?:
           | T
           | {
@@ -5352,6 +6062,18 @@ export interface PostsSelect<T extends boolean = true> {
               source?: T;
               guides?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -5370,6 +6092,18 @@ export interface PostsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         calendar?:
           | T
           | {
@@ -5380,6 +6114,17 @@ export interface PostsSelect<T extends boolean = true> {
               event?: T;
               eventDates?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -5647,6 +6392,18 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         programGrid?:
           | T
           | {
@@ -5656,6 +6413,18 @@ export interface PagesSelect<T extends boolean = true> {
               source?: T;
               programs?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -5674,6 +6443,18 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         guideGrid?:
           | T
           | {
@@ -5683,6 +6464,18 @@ export interface PagesSelect<T extends boolean = true> {
               source?: T;
               guides?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -5701,6 +6494,18 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         calendar?:
           | T
           | {
@@ -5711,6 +6516,17 @@ export interface PagesSelect<T extends boolean = true> {
               event?: T;
               eventDates?: T;
               limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
               variant?: T;
               id?: T;
               blockName?: T;

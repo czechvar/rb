@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import type { Page, Program } from '@/payload-types'
+import type { Page } from '@/payload-types'
 import { resolveProgramGridPrograms } from '@/lib/block-resolvers/domain-grids'
+import { BlockHeader, ProgramCard } from './CatalogueCards'
 import styles from './blocks.module.css'
 
 type ProgramGridBlockProps = Extract<
@@ -31,36 +31,6 @@ export async function ProgramGridBlock({
         </div>
       </div>
     </section>
-  )
-}
-
-function ProgramCard({ program }: { program: Program }) {
-  return (
-    <Link href={`/programs/${program.slug}`} className={styles.domainCard}>
-      <p className={styles.cardMeta}>Program</p>
-      <h3>{program.name}</h3>
-      {program.shortDescription ? <p>{program.shortDescription}</p> : null}
-      <span className={styles.cardLinkText}>Explore program</span>
-    </Link>
-  )
-}
-
-function BlockHeader({
-  eyebrow,
-  heading,
-  intro,
-}: {
-  eyebrow?: string | null
-  heading?: string | null
-  intro?: string | null
-}) {
-  if (!eyebrow && !heading && !intro) return null
-  return (
-    <div className={styles.sectionHeader}>
-      {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
-      {heading ? <h2>{heading}</h2> : null}
-      {intro ? <p className={styles.lead}>{intro}</p> : null}
-    </div>
   )
 }
 

@@ -1,6 +1,9 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { getTestPayload } from '../helpers/payload'
 import {
+  resolveFeaturedGuide,
+  resolveFeaturedLocation,
+  resolveFeaturedProgram,
   resolveGuideGridGuides,
   resolveLocationGridLocations,
   resolveProgramGridPrograms,
@@ -8,11 +11,14 @@ import {
 } from '@/lib/block-resolvers/domain-grids'
 import {
   resolveCalendarEventDates,
+  resolveFeaturedEventDate,
+  resolveFeaturedPost,
   resolveGuideProfileGuide,
   resolveGuideTripsEvents,
   resolvePartnerStripPartners,
   resolvePostGridPosts,
 } from '@/lib/block-resolvers/content-discovery'
+import { resolveFeaturedTrip } from '@/lib/block-resolvers/trip-grid'
 
 const trackedIds: Record<string, number[]> = {}
 
@@ -72,6 +78,26 @@ describe('domain grid block resolvers', () => {
     expect(programs.map((program) => program.id)).toEqual([published.id])
   })
 
+  it('resolves a featured program from manual selection', async () => {
+    const payload = await getTestPayload()
+    const stamp = Date.now()
+    const program = await payload.create({
+      collection: 'programs',
+      data: {
+        name: `Resolver Featured Program ${stamp}`,
+        slug: `resolver-featured-program-${stamp}`,
+        active: true,
+        state: 'published',
+      },
+    })
+    track('programs', program.id)
+
+    await expect(resolveFeaturedProgram({ program: program.id })).resolves.toMatchObject({
+      id: program.id,
+      name: program.name,
+    })
+  })
+
   it('resolves locations by country and filters inactive records', async () => {
     const payload = await getTestPayload()
     const stamp = Date.now()
@@ -107,6 +133,26 @@ describe('domain grid block resolvers', () => {
     expect(locations.every((location) => location.country === 'Spain')).toBe(true)
   })
 
+  it('resolves a featured location from manual selection', async () => {
+    const payload = await getTestPayload()
+    const stamp = Date.now()
+    const location = await payload.create({
+      collection: 'locations',
+      data: {
+        name: `Resolver Featured Location ${stamp}`,
+        slug: `resolver-featured-location-${stamp}`,
+        country: 'Spain',
+        active: true,
+      },
+    })
+    track('locations', location.id)
+
+    await expect(resolveFeaturedLocation({ location: location.id })).resolves.toMatchObject({
+      id: location.id,
+      name: location.name,
+    })
+  })
+
   it('resolves manually selected guides and filters inactive records', async () => {
     const payload = await getTestPayload()
     const stamp = Date.now()
@@ -138,6 +184,19 @@ describe('domain grid block resolvers', () => {
     })
 
     expect(guides.map((item) => item.id)).toEqual([guide.id])
+  })
+
+  it('resolves a featured guide from current context when selected', async () => {
+    const currentGuide = {
+      id: 12345,
+      name: 'Context Guide',
+      slug: 'context-guide',
+      active: true,
+    }
+
+    await expect(
+      resolveFeaturedGuide({ source: 'currentContext', currentGuide }),
+    ).resolves.toBe(currentGuide)
   })
 
   it('resolves reviews by program and filters inactive records', async () => {
@@ -226,6 +285,26 @@ describe('domain grid block resolvers', () => {
     expect(posts.map((post) => post.id)).toEqual([published.id])
   })
 
+  it('resolves a featured post from manual selection', async () => {
+    const payload = await getTestPayload()
+    const stamp = Date.now()
+    const post = await payload.create({
+      collection: 'posts',
+      data: {
+        title: `Resolver Featured Post ${stamp}`,
+        slug: `resolver-featured-post-${stamp}`,
+        state: 'published',
+        publishedAt: '2026-08-01T09:00:00.000Z',
+      },
+    })
+    track('posts', post.id)
+
+    await expect(resolveFeaturedPost({ post: post.id })).resolves.toMatchObject({
+      id: post.id,
+      title: post.title,
+    })
+  })
+
   it('resolves upcoming calendar dates and filters inactive or unpublished events', async () => {
     const payload = await getTestPayload()
     const stamp = Date.now()
@@ -287,6 +366,40 @@ describe('domain grid block resolvers', () => {
     expect(dates.map((date) => date.id)).toContain(activeDate.id)
     expect(dates.every((date) => date.active === true)).toBe(true)
     expect(dates.every((date) => typeof date.event === 'object' && date.event.state === 'published')).toBe(true)
+  })
+
+  it('resolves a featured event date with its published event', async () => {
+    const payload = await getTestPayload()
+    const stamp = Date.now()
+    const event = await payload.create({
+      collection: 'events',
+      data: {
+        title: `Resolver Featured Event Date Trip ${stamp}`,
+        slug: `resolver-featured-event-date-trip-${stamp}`,
+        state: 'published',
+      },
+    })
+    track('events', event.id)
+    const date = await payload.create({
+      collection: 'event-dates',
+      data: {
+        event: event.id,
+        dateFrom: '2026-09-12T00:00:00.000Z',
+        dateTo: '2026-09-19T00:00:00.000Z',
+        price: 1290,
+        vat: 0,
+        currency: 'EUR',
+        capacity: 8,
+        minParticipants: 2,
+        active: true,
+      },
+    })
+    track('event-dates', date.id)
+
+    const resolved = await resolveFeaturedEventDate({ eventDate: date.id })
+
+    expect(resolved?.id).toBe(date.id)
+    expect(typeof resolved?.event === 'object' && resolved.event.id).toBe(event.id)
   })
 
   it('fills calendar dates even when earlier active dates belong to draft events', async () => {
@@ -465,6 +578,19 @@ describe('domain grid block resolvers', () => {
     })
 
     expect(events.map((item) => item.id)).toEqual([event.id])
+  })
+
+  it('resolves a featured trip from current event context when selected', async () => {
+    const currentEvent = {
+      id: 6789,
+      title: 'Context Trip',
+      slug: 'context-trip',
+      state: 'published',
+    }
+
+    await expect(
+      resolveFeaturedTrip({ source: 'currentContext', currentEvent }),
+    ).resolves.toBe(currentEvent)
   })
 })
 

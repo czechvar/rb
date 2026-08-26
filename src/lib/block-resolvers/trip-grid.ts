@@ -4,6 +4,7 @@ import type { Event } from '@/payload-types'
 import { relationId, relationIds } from './helpers'
 
 export type TripGridSource = 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation'
+export type FeaturedTripSource = 'manual' | 'currentContext'
 
 export type TripGridResolverInput = {
   source?: TripGridSource | null
@@ -11,6 +12,12 @@ export type TripGridResolverInput = {
   program?: number | { id: number } | null
   location?: number | { id: number } | null
   limit?: number | null
+}
+
+export type FeaturedTripResolverInput = {
+  source?: FeaturedTripSource | null
+  event?: number | Event | null
+  currentEvent?: Event | null
 }
 
 export async function resolveTripGridEvents(input: TripGridResolverInput): Promise<Event[]> {
@@ -83,4 +90,20 @@ export async function resolveTripGridEvents(input: TripGridResolverInput): Promi
   })
 
   return docs
+}
+
+export async function resolveFeaturedTrip(input: FeaturedTripResolverInput): Promise<Event | null> {
+  if (input.source === 'currentContext' && input.currentEvent?.state === 'published') {
+    return input.currentEvent
+  }
+
+  const expanded = input.event
+  if (typeof expanded === 'object' && expanded?.state === 'published') return expanded
+
+  const eventId = relationId(input.event)
+  if (!eventId) return null
+
+  const payload = await getPayloadClient()
+  const event = await payload.findByID({ collection: 'events', id: eventId, depth: 2 })
+  return event.state === 'published' ? event : null
 }

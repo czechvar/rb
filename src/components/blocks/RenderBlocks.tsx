@@ -11,6 +11,14 @@ import { LocationGridBlock } from './LocationGridBlock'
 import { GuideGridBlock } from './GuideGridBlock'
 import { PostGridBlock } from './PostGridBlock'
 import { CalendarBlock } from './CalendarBlock'
+import {
+  FeaturedEventDateBlock,
+  FeaturedGuideBlock,
+  FeaturedLocationBlock,
+  FeaturedPostBlock,
+  FeaturedProgramBlock,
+  FeaturedTripBlock,
+} from './FeaturedCatalogueBlocks'
 import { MediaBlock } from './MediaBlock'
 import { GalleryBlock } from './GalleryBlock'
 import { VideoBlock } from './VideoBlock'
@@ -95,14 +103,26 @@ const blockRenderers: Record<string, BlockRenderer> = {
   cta: (block) => <CTABlock {...(block as Extract<PageBlock, { blockType: 'cta' }>)} />,
   tripGrid: (block, context) =>
     TripGridBlock(block as Extract<PageBlock, { blockType: 'tripGrid' }>, context),
+  featuredTrip: (block, context) =>
+    FeaturedTripBlock(block as Extract<PageBlock, { blockType: 'featuredTrip' }>, context),
   programGrid: (block) =>
     ProgramGridBlock(block as Extract<PageBlock, { blockType: 'programGrid' }>),
+  featuredProgram: (block, context) =>
+    FeaturedProgramBlock(block as Extract<PageBlock, { blockType: 'featuredProgram' }>, context),
   locationGrid: (block) =>
     LocationGridBlock(block as Extract<PageBlock, { blockType: 'locationGrid' }>),
+  featuredLocation: (block, context) =>
+    FeaturedLocationBlock(block as Extract<PageBlock, { blockType: 'featuredLocation' }>, context),
   guideGrid: (block) => GuideGridBlock(block as Extract<PageBlock, { blockType: 'guideGrid' }>),
+  featuredGuide: (block, context) =>
+    FeaturedGuideBlock(block as Extract<PageBlock, { blockType: 'featuredGuide' }>, context),
   postGrid: (block) => PostGridBlock(block as Extract<PageBlock, { blockType: 'postGrid' }>),
+  featuredPost: (block, context) =>
+    FeaturedPostBlock(block as Extract<PageBlock, { blockType: 'featuredPost' }>, context),
   calendar: (block, context) =>
     CalendarBlock(block as Extract<PageBlock, { blockType: 'calendar' }>, context),
+  featuredEventDate: (block) =>
+    FeaturedEventDateBlock(block as Extract<PageBlock, { blockType: 'featuredEventDate' }>),
   mediaBlock: (block) => <MediaBlock {...(block as Extract<PageBlock, { blockType: 'mediaBlock' }>)} />,
   gallery: (block) => <GalleryBlock {...(block as Extract<PageBlock, { blockType: 'gallery' }>)} />,
   video: (block) => <VideoBlock {...(block as Extract<PageBlock, { blockType: 'video' }>)} />,

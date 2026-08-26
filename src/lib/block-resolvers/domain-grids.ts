@@ -7,6 +7,7 @@ export type ProgramGridSource = 'featured' | 'all' | 'manual'
 export type LocationGridSource = 'featured' | 'all' | 'byCountry' | 'manual'
 export type GuideGridSource = 'team' | 'friends' | 'featured' | 'manual'
 export type ReviewGridSource = 'global' | 'byEvent' | 'byProgram' | 'manual'
+export type FeaturedCatalogueSource = 'manual' | 'currentContext'
 
 export type ProgramGridResolverInput = {
   source?: ProgramGridSource | null
@@ -33,6 +34,24 @@ export type ReviewGridResolverInput = {
   event?: number | { id: number } | null
   program?: number | { id: number } | null
   limit?: number | null
+}
+
+export type FeaturedProgramResolverInput = {
+  source?: FeaturedCatalogueSource | null
+  program?: number | Program | null
+  currentProgram?: Program | null
+}
+
+export type FeaturedLocationResolverInput = {
+  source?: FeaturedCatalogueSource | null
+  location?: number | Location | null
+  currentLocation?: Location | null
+}
+
+export type FeaturedGuideResolverInput = {
+  source?: FeaturedCatalogueSource | null
+  guide?: number | Guide | null
+  currentGuide?: Guide | null
 }
 
 export async function resolveProgramGridPrograms(input: ProgramGridResolverInput): Promise<Program[]> {
@@ -71,6 +90,28 @@ export async function resolveProgramGridPrograms(input: ProgramGridResolverInput
     limit,
   })
   return docs
+}
+
+export async function resolveFeaturedProgram(input: FeaturedProgramResolverInput): Promise<Program | null> {
+  if (
+    input.source === 'currentContext' &&
+    input.currentProgram?.active === true &&
+    input.currentProgram.state === 'published'
+  ) {
+    return input.currentProgram
+  }
+
+  const expanded = input.program
+  if (typeof expanded === 'object' && expanded?.active === true && expanded.state === 'published') {
+    return expanded
+  }
+
+  const programId = relationId(input.program)
+  if (!programId) return null
+
+  const payload = await getPayloadClient()
+  const program = await payload.findByID({ collection: 'programs', id: programId, depth: 1 })
+  return program.active === true && program.state === 'published' ? program : null
 }
 
 export async function resolveLocationGridLocations(input: LocationGridResolverInput): Promise<Location[]> {
@@ -115,6 +156,22 @@ export async function resolveLocationGridLocations(input: LocationGridResolverIn
   return docs
 }
 
+export async function resolveFeaturedLocation(input: FeaturedLocationResolverInput): Promise<Location | null> {
+  if (input.source === 'currentContext' && input.currentLocation?.active === true) {
+    return input.currentLocation
+  }
+
+  const expanded = input.location
+  if (typeof expanded === 'object' && expanded?.active === true) return expanded
+
+  const locationId = relationId(input.location)
+  if (!locationId) return null
+
+  const payload = await getPayloadClient()
+  const location = await payload.findByID({ collection: 'locations', id: locationId, depth: 1 })
+  return location.active === true ? location : null
+}
+
 export async function resolveGuideGridGuides(input: GuideGridResolverInput): Promise<Guide[]> {
   const payload = await getPayloadClient()
   const limit = boundedLimit(input.limit, 6, 12)
@@ -151,6 +208,22 @@ export async function resolveGuideGridGuides(input: GuideGridResolverInput): Pro
     limit,
   })
   return docs
+}
+
+export async function resolveFeaturedGuide(input: FeaturedGuideResolverInput): Promise<Guide | null> {
+  if (input.source === 'currentContext' && input.currentGuide?.active === true) {
+    return input.currentGuide
+  }
+
+  const expanded = input.guide
+  if (typeof expanded === 'object' && expanded?.active === true) return expanded
+
+  const guideId = relationId(input.guide)
+  if (!guideId) return null
+
+  const payload = await getPayloadClient()
+  const guide = await payload.findByID({ collection: 'guides', id: guideId, depth: 1 })
+  return guide.active === true ? guide : null
 }
 
 export async function resolveReviewGridReviews(input: ReviewGridResolverInput): Promise<Review[]> {

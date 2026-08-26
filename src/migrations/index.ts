@@ -25,6 +25,7 @@ import * as migration_20260825_172039_add_homepage_page_blocks from './20260825_
 import * as migration_20260825_192925_remove_homepage_specific_blocks from './20260825_192925_remove_homepage_specific_blocks';
 import * as migration_20260826_060419_add_brand_block_variants from './20260826_060419_add_brand_block_variants';
 import * as migration_20260826_082151_catalogued_block_availability from './20260826_082151_catalogued_block_availability';
+import * as migration_20260826_091639_add_featured_catalogue_blocks from './20260826_091639_add_featured_catalogue_blocks';
 
 export const migrations = [
   {
@@ -160,6 +161,11 @@ export const migrations = [
   {
     up: migration_20260826_082151_catalogued_block_availability.up,
     down: migration_20260826_082151_catalogued_block_availability.down,
-    name: '20260826_082151_catalogued_block_availability'
+    name: '20260826_082151_catalogued_block_availability',
+  },
+  {
+    up: migration_20260826_091639_add_featured_catalogue_blocks.up,
+    down: migration_20260826_091639_add_featured_catalogue_blocks.down,
+    name: '20260826_091639_add_featured_catalogue_blocks'
   },
 ];

@@ -1160,6 +1160,22 @@ async function main() {
     })
   }
 
+  const featuredEventDate = await payload.find({
+    collection: 'event-dates',
+    where: {
+      and: [
+        { event: { equals: evDeepBlue.id } },
+        { dateFrom: { equals: '2026-09-12' } },
+      ],
+    },
+    limit: 1,
+    depth: 0,
+  })
+  const featuredEventDateRef = featuredEventDate.docs[0] as Ref | undefined
+  if (!featuredEventDateRef) {
+    throw new Error('Expected seeded Deep Blue September event date to exist')
+  }
+
   console.log('— reviews —')
 
   const reviews: Array<{
@@ -1433,6 +1449,65 @@ async function main() {
           source: 'upcoming',
           limit: 4,
           variant: 'compact',
+        },
+        {
+          blockType: 'featuredTrip',
+          eyebrow: 'Single trip card',
+          heading: 'One manually selected trip',
+          intro:
+            'Single-card blocks reuse the same trip card renderer as Trip Grid, but give editors a focused promo slot.',
+          source: 'manual',
+          event: evDeepBlue.id,
+          variant: 'feature',
+        },
+        {
+          blockType: 'featuredProgram',
+          eyebrow: 'Single program card',
+          heading: 'One manually selected program',
+          intro:
+            'Program grids and featured program promos stay visually aligned because they share the same catalogue card renderer.',
+          source: 'manual',
+          program: programCamps.id,
+          variant: 'card',
+        },
+        {
+          blockType: 'featuredLocation',
+          eyebrow: 'Single location card',
+          heading: 'One manually selected destination',
+          intro:
+            'Location cards can be used as a single destination promo without forcing a full grid section.',
+          source: 'manual',
+          location: locMallorca.id,
+          variant: 'mediaLed',
+        },
+        {
+          blockType: 'featuredGuide',
+          eyebrow: 'Single guide card',
+          heading: 'One manually selected guide',
+          intro:
+            'Guide promos can appear in campaign pages while still linking to the canonical guide profile.',
+          source: 'manual',
+          guide: guideKlemen.id,
+          variant: 'compact',
+        },
+        {
+          blockType: 'featuredPost',
+          eyebrow: 'Single post card',
+          heading: 'One manually selected article',
+          intro:
+            'Editorial promos reuse the same post card shape as Post Grid for consistent blog discovery.',
+          source: 'manual',
+          post: postTraining.id,
+          variant: 'card',
+        },
+        {
+          blockType: 'featuredEventDate',
+          eyebrow: 'Single departure card',
+          heading: 'One manually selected event date',
+          intro:
+            'Date-specific offers can point directly at one active Event Date while rendering the linked trip details.',
+          eventDate: featuredEventDateRef.id,
+          variant: 'card',
         },
         {
           blockType: 'partnerStrip',

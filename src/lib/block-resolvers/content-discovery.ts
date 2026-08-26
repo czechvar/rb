@@ -8,6 +8,7 @@ export type CalendarSource = 'upcoming' | 'byEvent' | 'manual'
 export type PartnerStripSource = 'featured' | 'all' | 'manual'
 export type GuideProfileSource = 'manual' | 'currentGuide'
 export type GuideTripsSource = 'byGuide' | 'currentGuide' | 'manual'
+export type FeaturedContentSource = 'manual' | 'currentContext'
 
 export type PostGridResolverInput = {
   source?: PostGridSource | null
@@ -42,6 +43,16 @@ export type GuideTripsResolverInput = {
   currentGuide?: Guide | null
   events?: Array<number | Event> | null
   limit?: number | null
+}
+
+export type FeaturedPostResolverInput = {
+  source?: FeaturedContentSource | null
+  post?: number | Post | null
+  currentPost?: Post | null
+}
+
+export type FeaturedEventDateResolverInput = {
+  eventDate?: number | EventDate | null
 }
 
 export async function resolvePostGridPosts(input: PostGridResolverInput): Promise<Post[]> {
@@ -83,6 +94,22 @@ export async function resolvePostGridPosts(input: PostGridResolverInput): Promis
     limit,
   })
   return docs
+}
+
+export async function resolveFeaturedPost(input: FeaturedPostResolverInput): Promise<Post | null> {
+  if (input.source === 'currentContext' && input.currentPost?.state === 'published') {
+    return input.currentPost
+  }
+
+  const expanded = input.post
+  if (typeof expanded === 'object' && expanded?.state === 'published') return expanded
+
+  const postId = relationId(input.post)
+  if (!postId) return null
+
+  const payload = await getPayloadClient()
+  const post = await payload.findByID({ collection: 'posts', id: postId, depth: 1 })
+  return post.state === 'published' ? post : null
 }
 
 export async function resolveCalendarEventDates(
@@ -138,6 +165,23 @@ export async function resolveCalendarEventDates(
     limit,
   })
   return docs.filter(isRenderableEventDate)
+}
+
+export async function resolveFeaturedEventDate(
+  input: FeaturedEventDateResolverInput,
+): Promise<EventDate | null> {
+  const expanded = input.eventDate
+  if (expanded && typeof expanded === 'object' && isRenderableEventDate(expanded)) return expanded
+
+  const eventDateId = relationId(input.eventDate)
+  if (!eventDateId) return null
+
+  const [date] = await resolveCalendarEventDates({
+    source: 'manual',
+    eventDates: [eventDateId],
+    limit: 1,
+  })
+  return date ?? null
 }
 
 export async function resolvePartnerStripPartners(

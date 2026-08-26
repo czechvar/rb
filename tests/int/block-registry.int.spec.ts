@@ -30,11 +30,17 @@ describe('block registry groups', () => {
     'stats',
     'cta',
     'tripGrid',
+    'featuredTrip',
     'programGrid',
+    'featuredProgram',
     'locationGrid',
+    'featuredLocation',
     'guideGrid',
+    'featuredGuide',
     'postGrid',
+    'featuredPost',
     'calendar',
+    'featuredEventDate',
     'mediaBlock',
     'gallery',
     'video',
@@ -55,11 +61,17 @@ describe('block registry groups', () => {
     expect(conversionBlocks.map((block) => block.slug)).toEqual(['cta'])
     expect(catalogueBlocks.map((block) => block.slug)).toEqual([
       'tripGrid',
+      'featuredTrip',
       'programGrid',
+      'featuredProgram',
       'locationGrid',
+      'featuredLocation',
       'guideGrid',
+      'featuredGuide',
       'postGrid',
+      'featuredPost',
       'calendar',
+      'featuredEventDate',
     ])
     expect(mediaBlocks.map((block) => block.slug)).toEqual(['mediaBlock', 'gallery', 'video'])
     expect(socialProofBlocks.map((block) => block.slug)).toEqual([
