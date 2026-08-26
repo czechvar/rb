@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   blockCatalogue,
+  blockCategoryLabels,
   blocksFor,
   catalogueBlocks,
   contentBlocks,
@@ -181,6 +182,17 @@ describe('block registry groups', () => {
     expect(blocksFor('event').map((block) => block.slug)).toEqual(
       eventLayoutBlocks.map((block) => block.slug),
     )
+  })
+
+  it('adds admin picker groups from block categories', () => {
+    for (const entry of blockCatalogue) {
+      expect(entry.config.admin?.group).toBe(blockCategoryLabels[entry.category])
+      expect(entry.config.admin?.custom?.category).toBe(entry.category)
+    }
+
+    expect(pageBlocks.map((block) => block.admin?.group)).toContain('01 Content')
+    expect(pageBlocks.map((block) => block.admin?.group)).toContain('03 Catalogue & Discovery')
+    expect(eventLayoutBlocks.map((block) => block.admin?.group)).toContain('06 Trip Detail')
   })
 
   it('does not register duplicate page block slugs', () => {

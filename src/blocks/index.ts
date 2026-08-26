@@ -79,13 +79,26 @@ export type BlockCatalogueEntry = {
   notCompatibleWith?: readonly BlockSurface[]
 }
 
+export const blockCategoryLabels = {
+  content: '01 Content',
+  conversion: '02 Conversion',
+  catalogue: '03 Catalogue & Discovery',
+  media: '04 Media',
+  socialProof: '05 Social Proof',
+  tripDetail: '06 Trip Detail',
+  programDetail: '07 Program Detail',
+  locationDetail: '08 Location Detail',
+  guideDetail: '09 Guide Detail',
+  postDetail: '10 Post Detail',
+} satisfies Record<BlockCategory, string>
+
 const allNonEventSurfaces = ['page', 'program', 'location', 'guide', 'post'] as const
 const allNonProgramSurfaces = ['page', 'event', 'location', 'guide', 'post'] as const
 const allNonLocationSurfaces = ['page', 'event', 'program', 'guide', 'post'] as const
 const allNonGuideSurfaces = ['page', 'event', 'program', 'location', 'post'] as const
 const allNonPostSurfaces = ['page', 'event', 'program', 'location', 'guide'] as const
 
-export const blockCatalogue = [
+const rawBlockCatalogue = [
   { config: HeroBlockConfig, category: 'content' },
   { config: SectionIntroBlockConfig, category: 'content' },
   { config: RichTextBlockConfig, category: 'content' },
@@ -349,6 +362,25 @@ export const blockCatalogue = [
     notCompatibleWith: allNonPostSurfaces,
   },
 ] satisfies readonly BlockCatalogueEntry[]
+
+function withCategoryAdmin(config: Block, category: BlockCategory): Block {
+  return {
+    ...config,
+    admin: {
+      ...config.admin,
+      group: blockCategoryLabels[category],
+      custom: {
+        ...config.admin?.custom,
+        category,
+      },
+    },
+  }
+}
+
+export const blockCatalogue = rawBlockCatalogue.map((entry) => ({
+  ...entry,
+  config: withCategoryAdmin(entry.config, entry.category),
+})) satisfies BlockCatalogueEntry[]
 
 export function isBlockCompatibleWithSurface(
   entry: BlockCatalogueEntry,
