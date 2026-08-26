@@ -24,8 +24,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--rb-white);
-  color: #515151;
+  background: var(--theme-color-page-bg);
+  color: var(--theme-color-page-text);
 }
 
 body,
@@ -33,7 +33,7 @@ button,
 input,
 textarea,
 select {
-  font-family: var(--font-body), 'Inter', system-ui, sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 1.6rem;
   font-weight: 400;
   line-height: var(--textLineHeight);
@@ -44,9 +44,9 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: var(--font-heading, 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif);
+  font-family: var(--theme-font-heading);
   font-weight: 500;
-  color: var(--rb-black);
+  color: var(--theme-color-ink);
 }
 
 h1 {
@@ -98,11 +98,11 @@ a {
 }
 
 a:hover {
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
 }
 
 a:focus-visible {
-  outline: 2px solid var(--rb-red);
+  outline: 2px solid var(--theme-color-focus);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -144,7 +144,7 @@ ol {
 }
 
 .eyebrow {
-  font-family: var(--font-body, 'Lato', sans-serif);
+  font-family: var(--theme-font-body);
   font-size: var(--eyebrowFontSize);
   line-height: var(--eyebrowLineHeight);
   letter-spacing: var(--eyebrowLetterSpacing);
@@ -164,7 +164,7 @@ ol {
 /* ===== Wireframe helper classes ============================== */
 
 .section-title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-display);
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.005em;
@@ -174,7 +174,7 @@ ol {
 
 .section-label,
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-eyebrow);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -190,7 +190,7 @@ ol {
   align-items: center;
   gap: 10px;
   padding: 14px 28px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.16em;
@@ -200,14 +200,14 @@ ol {
   text-decoration: none;
   transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
-.btn-primary  { background: var(--rb-red);   color: var(--rb-white); }
-.btn-primary:hover { background: var(--rb-red-hover); }
-.btn-ghost    { background: transparent; color: var(--rb-white); border-color: var(--rb-white-30); }
-.btn-ghost:hover { border-color: var(--rb-white); }
-.btn-dark     { background: var(--rb-black); color: var(--rb-white); }
-.btn-dark:hover { background: #000; color: var(--rb-white); }
-.btn-outline-dark { background: transparent; color: var(--rb-black); border-color: var(--rb-black); }
-.btn-outline-dark:hover { background: var(--rb-black); color: var(--rb-white); }
+.btn-primary  { background: var(--theme-color-primary); color: var(--theme-color-paper); }
+.btn-primary:hover { background: var(--theme-color-primary-hover); }
+.btn-ghost    { background: transparent; color: var(--theme-color-paper); border-color: var(--theme-color-paper-30); }
+.btn-ghost:hover { border-color: var(--theme-color-paper); }
+.btn-dark     { background: var(--theme-color-ink); color: var(--theme-color-paper); }
+.btn-dark:hover { background: #000; color: var(--theme-color-paper); }
+.btn-outline-dark { background: transparent; color: var(--theme-color-ink); border-color: var(--theme-color-ink); }
+.btn-outline-dark:hover { background: var(--theme-color-ink); color: var(--theme-color-paper); }
 
 /* ===== Reveal-on-scroll animation (CSS-only, no IO observer) ===== */
 @media (prefers-reduced-motion: no-preference) {

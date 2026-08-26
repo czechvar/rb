@@ -17,6 +17,8 @@
   --theme-color-text: #f0ede6;
   --theme-color-text-muted: rgba(240, 237, 230, 0.80);
   --theme-color-text-soft: rgba(240, 237, 230, 0.52);
+  --theme-color-page-bg: #f0ede6;
+  --theme-color-page-text: #515151;
   --theme-color-primary: #e30713;
   --theme-color-primary-hover: #c0050f;
   --theme-color-accent: #e30713;
@@ -179,6 +181,8 @@
   --theme-color-text: #f4f7fa;
   --theme-color-text-muted: #b5c0ca;
   --theme-color-text-soft: #8795a3;
+  --theme-color-page-bg: #080b10;
+  --theme-color-page-text: #f4f7fa;
   --theme-color-primary: #147dcc;
   --theme-color-primary-hover: #2590df;
   --theme-color-accent: #72c9df;
