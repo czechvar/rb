@@ -3,12 +3,15 @@ import { anyone, isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
 import { programLayoutBlocks } from '../blocks'
+import { revalidateOnChange } from './hooks/revalidate'
+import { TAGS } from '@/lib/cache'
 
 export const Programs: CollectionConfig = {
   slug: 'programs',
   labels: { singular: 'Program', plural: 'Programs' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'name', group: 'Taxonomy' },
+  hooks: revalidateOnChange(TAGS.programs),
   fields: [
     { name: 'name', type: 'text', required: true },
     slugField('name'),

@@ -39,6 +39,36 @@ describe('pages collection and CMS block bindings', () => {
     expect(page?.layout?.map((block) => block.blockType)).toEqual(['hero', 'cta'])
   })
 
+  it('does not expose draft CMS pages through public collection reads', async () => {
+    const payload = await getTestPayload()
+    const slug = `cms-page-draft-${Date.now()}`
+
+    await payload.create({
+      collection: 'pages',
+      overrideAccess: true,
+      data: {
+        title: 'Draft CMS Page',
+        slug,
+        status: 'draft',
+        layout: [
+          {
+            blockType: 'hero',
+            heading: 'Draft-only content',
+            variant: 'simple',
+          },
+        ],
+      },
+    })
+
+    const { docs } = await payload.find({
+      collection: 'pages',
+      overrideAccess: false,
+      where: { slug: { equals: slug } },
+    })
+
+    expect(docs).toEqual([])
+  })
+
   it('resolves manual trip-grid bindings to published events only', async () => {
     const payload = await getTestPayload()
     const runId = Date.now()

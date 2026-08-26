@@ -1,11 +1,14 @@
 import type { CollectionConfig } from 'payload'
 import { anyone, isAdmin } from '../access'
+import { revalidateOnChange } from './hooks/revalidate'
+import { TAGS } from '@/lib/cache'
 
 export const FAQs: CollectionConfig = {
   slug: 'faqs',
   labels: { singular: 'FAQ', plural: 'FAQs' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'question', group: 'Catalogue' },
+  hooks: revalidateOnChange(TAGS.faqs),
   fields: [
     { name: 'question', type: 'text', required: true },
     { name: 'answer', type: 'richText', required: true },

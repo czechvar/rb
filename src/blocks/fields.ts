@@ -1,4 +1,5 @@
 import type { Field } from 'payload'
+import { isSafeActionHref } from '@/lib/safe-url'
 
 type TextFieldOptions = {
   defaultValue?: string
@@ -8,6 +9,12 @@ type TextFieldOptions = {
 type SelectOption = {
   label: string
   value: string
+}
+
+const validateActionHref = (value: unknown): true | string => {
+  if (value == null || (typeof value === 'string' && value.trim() === '')) return true
+  if (isSafeActionHref(value)) return true
+  return 'Use an internal path starting with / or a full https:// URL.'
 }
 
 export function textField(name: string, options: TextFieldOptions = {}): Field {
@@ -51,7 +58,11 @@ export function actionField(name: string, label?: string): Field {
     type: 'group',
     fields: [
       textField('label'),
-      textField('href'),
+      {
+        name: 'href',
+        type: 'text',
+        validate: validateActionHref,
+      },
     ],
   }
 }

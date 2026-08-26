@@ -78,6 +78,26 @@ describe('RenderBlocks', () => {
     expect(markup).toContain('A safe external video.')
   })
 
+  it('does not render unsafe action hrefs', async () => {
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'cta',
+          heading: 'Unsafe CTA',
+          variant: 'dark',
+          primaryAction: { label: 'Bad link', href: 'javascript:alert(1)' },
+          secondaryAction: { label: 'Good link', href: 'https://example.com' },
+        },
+      ] as RenderBlocksInput['blocks'],
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).not.toContain('javascript:alert')
+    expect(markup).not.toContain('Bad link')
+    expect(markup).toContain('https://example.com')
+    expect(markup).toContain('Good link')
+  })
+
   it('renders domain-aware catalogue and social proof blocks', async () => {
     const element = await RenderBlocks({
       blocks: [

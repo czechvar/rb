@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { normalizeActionHref } from '@/lib/safe-url'
 
 type BlockActionProps = {
   href?: string | null
@@ -8,15 +9,17 @@ type BlockActionProps = {
 
 export function BlockAction({ href, label, className }: BlockActionProps) {
   if (!href || !label) return null
-  if (href.startsWith('/')) {
+  const safeHref = normalizeActionHref(href)
+  if (!safeHref) return null
+  if (safeHref.startsWith('/')) {
     return (
-      <Link href={href} className={className}>
+      <Link href={safeHref} className={className}>
         {label}
       </Link>
     )
   }
   return (
-    <a href={href} className={className} rel="noreferrer" target="_blank">
+    <a href={safeHref} className={className} rel="noreferrer" target="_blank">
       {label}
     </a>
   )

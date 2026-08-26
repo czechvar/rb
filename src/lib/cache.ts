@@ -10,9 +10,14 @@ export const TAGS = {
   locations: 'locations',
   events: 'events',
   eventDates: 'event-dates',
+  faqs: 'faqs',
+  media: 'media',
+  partners: 'partners',
   posts: 'posts',
   postCategories: 'post-categories',
+  programs: 'programs',
   pages: 'pages',
+  reviews: 'reviews',
 } as const
 
 export type CacheTag = (typeof TAGS)[keyof typeof TAGS]

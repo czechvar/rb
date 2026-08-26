@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { anyone, isAdmin } from '../access'
+import { isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
 import { revalidateOnChange } from './hooks/revalidate'
@@ -9,7 +9,15 @@ import { TAGS } from '@/lib/cache'
 export const Pages: CollectionConfig = {
   slug: 'pages',
   labels: { singular: 'Page', plural: 'Pages' },
-  access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
+  access: {
+    read: ({ req }) => {
+      if (req.user?.role === 'admin') return true
+      return { status: { equals: 'published' } }
+    },
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
+  },
   admin: {
     useAsTitle: 'title',
     group: 'Content',
