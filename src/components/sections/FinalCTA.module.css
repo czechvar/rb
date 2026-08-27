@@ -1,6 +1,6 @@
 .band {
   background: #1e1612;
-  color: #fff;
+  color: var(--theme-color-paper);
   text-align: center;
   padding: 40px 60px;
 }
@@ -38,7 +38,7 @@
 
 .primary {
   background: #8b3a1a;
-  color: #fff;
+  color: var(--theme-color-paper);
 }
 
 .primary:hover {
@@ -47,7 +47,7 @@
 
 .secondary {
   background: transparent;
-  color: #fff;
+  color: var(--theme-color-paper);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 

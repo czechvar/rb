@@ -1,15 +1,15 @@
 .section {
   padding: 64px 5%;
-  background: var(--rb-darker);
+  background: var(--theme-color-canvas);
   text-align: center;
 }
 
 .label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--rb-white-45);
+  color: var(--theme-color-paper-45);
   font-weight: 700;
   margin: 0 0 24px;
 }
@@ -23,9 +23,9 @@
 }
 
 .name {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 16px;
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   letter-spacing: 0.06em;
 }
 

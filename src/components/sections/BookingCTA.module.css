@@ -7,8 +7,8 @@
   position: relative;
   overflow: hidden;
   padding: 120px 5vw;
-  background: var(--rb-black);
-  color: var(--rb-white);
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
 }
 
 /* Decorative overlay — slight texture; actual bg-image supplied via
@@ -28,12 +28,12 @@
 }
 
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-eyebrow);
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -45,23 +45,23 @@
   display: inline-block;
   width: 28px;
   height: 1px;
-  background: var(--rb-red);
+  background: var(--theme-color-primary);
   flex-shrink: 0;
 }
 
 .heading {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   line-height: 0.95;
   letter-spacing: 0.02em;
   margin-bottom: 1.2rem;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
 }
 
 .body {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   margin-bottom: 2.5rem;
 }
 
@@ -70,9 +70,9 @@
   align-items: center;
   gap: 8px;
   padding: 14px 28px;
-  background: var(--rb-red);
-  color: var(--rb-white);
-  font-family: 'Inter', sans-serif;
+  background: var(--theme-color-primary);
+  color: var(--theme-color-paper);
+  font-family: var(--theme-font-body);
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.16em;
@@ -83,6 +83,6 @@
 }
 
 .button:hover {
-  background: var(--rb-red-hover);
-  color: var(--rb-white);
+  background: var(--theme-color-primary-hover);
+  color: var(--theme-color-paper);
 }

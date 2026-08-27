@@ -7,6 +7,10 @@ const root = process.cwd()
 const themeFile = 'src/app/(frontend)/theme.css'
 const scanRoots = ['src/app/(frontend)', 'src/components']
 const cssFiles = scanRoots.flatMap((dir) => collectCssFiles(resolve(root, dir)))
+const strictWarnings =
+  process.argv.includes('--strict') ||
+  process.env.THEME_CSS_STRICT === '1' ||
+  process.env.THEME_CSS_STRICT === 'true'
 
 const hardErrors = []
 const migrationWarnings = []
@@ -73,6 +77,16 @@ console.log(
   `Migration backlog: ${migrationWarnings.length} primitive styling lines across ${filesWithWarnings.size} CSS module files.`,
 )
 console.log('Backlog patterns: legacy --rb-* usage, hardcoded colors, rgba(), and hardcoded font families.')
+
+if (strictWarnings && migrationWarnings.length > 0) {
+  console.error('\nTheme CSS strict mode failed:')
+  console.error('Migration warnings are treated as errors in strict mode.\n')
+  for (const warning of migrationWarnings) {
+    console.error(`${warning.file}:${warning.lineNo}`)
+    console.error(`  ${warning.line.trim()}`)
+  }
+  process.exit(1)
+}
 
 function collectCssFiles(dir) {
   const entries = readdirSync(dir, { withFileTypes: true })

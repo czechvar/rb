@@ -13,17 +13,17 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: #ffffff;
+  background: var(--theme-color-paper);
   border-radius: 999px;
   padding: 0.8rem 1.4rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  color: #515151;
+  color: var(--theme-color-page-text);
 }
 
 .icon {
   width: 1.6rem;
   height: 1.6rem;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   flex-shrink: 0;
 }
 

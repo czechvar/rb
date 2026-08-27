@@ -1,5 +1,5 @@
 .bar {
-  background: var(--rb-darker);
+  background: var(--theme-color-canvas);
   padding: 48px 5%;
   display: flex;
   justify-content: space-around;
@@ -16,16 +16,16 @@
 }
 
 .num {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(40px, 5vw, 64px);
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   line-height: 1;
 }
 
 .label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 12px;
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }

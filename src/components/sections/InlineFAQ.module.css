@@ -14,8 +14,8 @@
 
 /* ── Section shell ───────────────────────────────── */
 .section {
-  background: var(--rb-dark);       /* #111 — matches wireframe .faq-section */
-  color: var(--rb-white);
+  background: var(--theme-color-surface-1);       /* #111 — matches wireframe .faq-section */
+  color: var(--theme-color-paper);
   padding: 96px 5%;
 }
 
@@ -26,12 +26,12 @@
 
 /* ── Eyebrow ─────────────────────────────────────── */
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-eyebrow);
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -43,17 +43,17 @@
   display: inline-block;
   width: 28px;
   height: 1px;
-  background: var(--rb-red);
+  background: var(--theme-color-primary);
   flex-shrink: 0;
 }
 
 /* ── Section heading ─────────────────────────────── */
 .title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.005em;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   font-size: clamp(40px, 6vw, 88px);
   margin-bottom: 3rem;
 }
@@ -61,12 +61,12 @@
 /* ── FAQ list ────────────────────────────────────── */
 .list {
   /* top hairline for the very first item */
-  border-top: 1px solid var(--rb-white-12);
+  border-top: 1px solid var(--theme-color-paper-12);
 }
 
 /* ── Single FAQ item (native <details>) ──────────── */
 .item {
-  border-bottom: 1px solid var(--rb-white-12);
+  border-bottom: 1px solid var(--theme-color-paper-12);
 }
 
 /* Hide the browser's default disclosure triangle */
@@ -84,17 +84,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   user-select: none;
 }
 
 /* + indicator (closed state) */
 .q::after {
   content: '+';
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-size: 1.5rem;
   font-weight: 300;
   flex-shrink: 0;
@@ -110,7 +110,7 @@
 /* ── Answer body (<div> inside <details>) ─────────── */
 .a {
   font-size: 0.9rem;
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   padding-bottom: 1.4rem;
   line-height: 1.7;
 }

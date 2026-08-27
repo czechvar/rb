@@ -1,6 +1,6 @@
 .section {
-  background: var(--rb-red);
-  padding: var(--rb-section-pad);
+  background: var(--theme-color-primary);
+  padding: var(--theme-section-pad);
   text-align: center;
 }
 
@@ -11,9 +11,9 @@
 
 
 .display {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(60px, 9vw, 120px);
-  color: var(--rb-black);
+  color: var(--theme-color-ink);
   line-height: 0.87;
   margin: 0 0 22px;
   letter-spacing: 0.03em;
@@ -25,7 +25,7 @@
   max-width: 480px;
   margin: 0 auto 44px;
   line-height: 1.65;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
 }
 
 .ctas {

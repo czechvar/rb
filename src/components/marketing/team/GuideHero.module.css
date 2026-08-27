@@ -1,7 +1,7 @@
 .hero {
   position: relative; min-height: 100vh; overflow: hidden;
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 5% 7%; background: var(--rb-black);
+  padding: 0 5% 7%; background: var(--theme-color-ink);
 }
 .bg { object-fit: cover; object-position: center 30%; }
 .overlay {
@@ -9,18 +9,18 @@
   background: linear-gradient(to bottom, rgba(13,13,13,0.2) 0%, rgba(13,13,13,0.15) 30%, rgba(13,13,13,0.62) 68%, rgba(13,13,13,0.93) 100%);
 }
 .content { position: relative; z-index: 2; max-width: 1400px; width: 100%; margin: 0 auto; }
-.eyebrow { color: var(--rb-red); display: flex; align-items: center; gap: 10px; }
-.eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--rb-red); flex-shrink: 0; }
+.eyebrow { color: var(--theme-color-primary); display: flex; align-items: center; gap: 10px; }
+.eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--theme-color-primary); flex-shrink: 0; }
 .name {
-  font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+  font-family: var(--theme-font-heading); font-weight: 400;
   font-size: clamp(58px, 9vw, 118px); line-height: 0.9; letter-spacing: 0.03em;
-  color: var(--rb-white); text-transform: uppercase; margin: 20px 0 24px;
+  color: var(--theme-color-paper); text-transform: uppercase; margin: 20px 0 24px;
 }
-.name em { color: var(--rb-red); font-style: normal; }
+.name em { color: var(--theme-color-primary); font-style: normal; }
 .tagRow { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
 .tag {
   font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
-  color: var(--rb-red); border: 1px solid var(--rb-red-border); padding: 4px 10px;
+  color: var(--theme-color-primary); border: 1px solid var(--theme-color-primary-border); padding: 4px 10px;
 }
 .sub {
   font-size: clamp(16px, 2vw, 19px); line-height: 1.65; max-width: 580px;

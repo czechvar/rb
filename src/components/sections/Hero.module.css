@@ -1,6 +1,6 @@
 .hero {
   background: #1e1612;
-  color: #fff;
+  color: var(--theme-color-paper);
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 40px;
@@ -25,8 +25,8 @@
 }
 
 .booking {
-  background: #fff;
-  color: #1a1a1a;
+  background: var(--theme-color-paper);
+  color: var(--theme-color-ink);
   border-radius: 6px;
   padding: 28px 24px;
   align-self: start;
@@ -45,7 +45,7 @@
   padding: 13px;
   margin-top: 20px;
   background: #8b3a1a;
-  color: #fff;
+  color: var(--theme-color-paper);
   font-family: 'Roboto Mono', monospace;
   font-size: 13px;
   letter-spacing: 1px;

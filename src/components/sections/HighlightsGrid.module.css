@@ -1,22 +1,22 @@
 /* ── HighlightsGrid — trip/program key highlights ────────────────────── */
 
 .section {
-  background: var(--rb-dark);
-  color: var(--rb-white);
+  background: var(--theme-color-surface-1);
+  color: var(--theme-color-paper);
   padding: 0 5% 96px;
 }
 
 /* ── Icon checkmark ─────────────────────────────────── */
 .icon {
   font-size: 2rem;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   line-height: 1;
 }
 
 /* ── Item text ──────────────────────────────────────── */
 .text {
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.6;
   margin: 0;
 }

@@ -1,6 +1,6 @@
 .section {
   padding: 40px 60px;
-  border-bottom: 1px dashed #c8bfb0;
+  border-bottom: 1px dashed var(--theme-color-border);
 }
 
 .section h2 {
@@ -8,7 +8,7 @@
   font-weight: bold;
   margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #1a1a1a;
+  border-bottom: 2px solid var(--theme-color-ink);
 }
 
 .grid {
@@ -19,8 +19,8 @@
 }
 
 .pillar {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--theme-color-paper);
+  border: 1px solid var(--theme-color-border);
   border-radius: 4px;
   padding: 20px;
 }
@@ -50,9 +50,9 @@
 .pillar li {
   padding: 7px 0 7px 22px;
   font-size: 13px;
-  color: #333;
+  color: var(--theme-color-page-text);
   position: relative;
-  border-bottom: 1px solid #e8e0d4;
+  border-bottom: 1px solid var(--theme-color-border);
   font-family: 'Roboto Mono', monospace;
 }
 
