@@ -1,11 +1,18 @@
 /**
  * Import stage of the old-rockbusters → v3 pipeline.
  *
- * Reads scripts/data-import/data/{locations,guides}.json (produced by
- * `pnpm data-import:extract`) and upserts into Payload via the Local API
- * with skip-if-exists semantics on slug. Never updates, never deletes.
+ * Reads scripts/data-import/seed/{locations,guides}.json (committed baseline,
+ * produced by `pnpm data-import:extract`) and upserts into Payload via the
+ * Local API with skip-if-exists semantics on slug. Never updates, never
+ * deletes.
  *
  *   PAYLOAD_DISABLE_DB_PUSH=true pnpm data-import:import
+ *
+ * Per-entity aliases run just one collection (useful when you want to
+ * re-seed guides after clearing them, without touching locations):
+ *
+ *   pnpm data-import:guides         # equivalent to import --only=guides
+ *   pnpm data-import:locations      # equivalent to import --only=locations
  *
  * Guards:
  *   - Refuses the production Neon host without --allow-production.
@@ -24,8 +31,22 @@ import { getPayload, type Payload } from 'payload'
 import { convertHTMLToLexical, editorConfigFactory } from '@payloadcms/richtext-lexical'
 import config from '../../src/payload.config'
 
-const DATA_DIR = path.resolve(import.meta.dirname, 'data')
+const SEED_DIR = path.resolve(import.meta.dirname, 'seed')
 const PRODUCTION_DB_HOST = 'ep-weathered-pine-alvc3sdj'
+
+type Only = 'guides' | 'locations' | 'all'
+
+/** Parse `--only=guides|locations` (or `--only guides`) from argv. Default: all. */
+function parseOnly(argv: string[]): Only {
+  const flag = argv.find((a) => a === '--only' || a.startsWith('--only='))
+  if (!flag) return 'all'
+  const value = flag.includes('=')
+    ? flag.slice(flag.indexOf('=') + 1)
+    : argv[argv.indexOf(flag) + 1]
+  if (value === 'guides' || value === 'locations') return value
+  console.error(`--only must be 'guides' or 'locations' (got: ${value ?? '<missing>'}).`)
+  process.exit(1)
+}
 
 type EditorConfig = Awaited<ReturnType<typeof editorConfigFactory.default>>
 type LexicalState = ReturnType<typeof convertHTMLToLexical>
@@ -61,12 +82,13 @@ interface GuideRow {
 
 /** Read + parse a data file, or exit with a friendly error. */
 async function readData<Row>(name: string): Promise<ExtractFile<Row>> {
-  const file = path.join(DATA_DIR, `${name}.json`)
+  const file = path.join(SEED_DIR, `${name}.json`)
   try {
     return JSON.parse(await fs.readFile(file, 'utf8')) as ExtractFile<Row>
   } catch {
     console.error(
-      `Missing ${path.relative(process.cwd(), file)}. Run \`pnpm data-import:extract\` first.`,
+      `Missing ${path.relative(process.cwd(), file)}. This file is normally committed; ` +
+        `regenerate with \`pnpm data-import:extract\` if you have OLD_DB_URL configured.`,
     )
     process.exit(1)
   }
@@ -218,6 +240,7 @@ async function importGuides(
 }
 
 async function main() {
+  const only = parseOnly(process.argv.slice(2))
   const dbUrl = process.env.DATABASE_URL ?? ''
   if (dbUrl.includes(PRODUCTION_DB_HOST) && !process.argv.includes('--allow-production')) {
     console.error(
@@ -227,23 +250,26 @@ async function main() {
     process.exit(1)
   }
 
-  const locations = await readData<LocationRow>('locations')
-  const guides = await readData<GuideRow>('guides')
-
   const payload = await getPayload({ config })
   const editorConfig = await editorConfigFactory.default({ config: payload.config })
 
-  console.log('— locations —')
-  const locTotals = await importLocations(payload, editorConfig, locations.rows)
-  console.log(
-    `import (locations): imported=${locTotals.imported} skipped-existing=${locTotals.existed} total=${locations.rows.length} imgs-stripped=${locTotals.imgsStripped}`,
-  )
+  if (only === 'all' || only === 'locations') {
+    const locations = await readData<LocationRow>('locations')
+    console.log('— locations —')
+    const locTotals = await importLocations(payload, editorConfig, locations.rows)
+    console.log(
+      `import (locations): imported=${locTotals.imported} skipped-existing=${locTotals.existed} total=${locations.rows.length} imgs-stripped=${locTotals.imgsStripped}`,
+    )
+  }
 
-  console.log('— guides —')
-  const guideTotals = await importGuides(payload, editorConfig, guides.rows)
-  console.log(
-    `import (guides):    imported=${guideTotals.imported} skipped-existing=${guideTotals.existed} total=${guides.rows.length} imgs-stripped=${guideTotals.imgsStripped}`,
-  )
+  if (only === 'all' || only === 'guides') {
+    const guides = await readData<GuideRow>('guides')
+    console.log('— guides —')
+    const guideTotals = await importGuides(payload, editorConfig, guides.rows)
+    console.log(
+      `import (guides):    imported=${guideTotals.imported} skipped-existing=${guideTotals.existed} total=${guides.rows.length} imgs-stripped=${guideTotals.imgsStripped}`,
+    )
+  }
 }
 
 main()
