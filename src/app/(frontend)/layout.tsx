@@ -25,7 +25,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
   return (
     <html lang="en" className={`${inter.variable} ${bebasNeue.variable}`}>
-      <body>{children}</body>
+      <body data-theme="rockbusters">{children}</body>
     </html>
   )
 }

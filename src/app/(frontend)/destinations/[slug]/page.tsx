@@ -5,6 +5,7 @@ import { getLocationBySlug, getPublishedEventsForLocation } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
+import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import styles from '../destinations.module.css'
 
 type Props = { params: Promise<{ slug: string }> }
@@ -24,6 +25,22 @@ export default async function DestinationPage({ params }: Props) {
 
   const loc = await getLocationBySlug(slug)
   if (!loc) notFound()
+
+  if (loc.layout?.length) {
+    return (
+      <MarketingShell
+        crumbs={[
+          { href: '/', label: 'Home' },
+          { href: '/destinations', label: 'Destinations' },
+          { label: loc.name },
+        ]}
+      >
+        <main>
+          <RenderBlocks blocks={loc.layout} context={{ location: loc }} />
+        </main>
+      </MarketingShell>
+    )
+  }
 
   const events = await getPublishedEventsForLocation(loc.id)
 

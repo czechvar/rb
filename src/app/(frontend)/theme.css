@@ -1,0 +1,290 @@
+/* ===== Semantic theme contract ===================================== */
+/* Brand skins set --theme-* tokens. Existing --rb-* aliases remain so
+   older CSS modules can migrate without a flag day. */
+
+:root,
+[data-theme='rockbusters'],
+.theme-rockbusters {
+  color-scheme: light;
+
+  /* Brand */
+  --theme-color-ink: #0d0d0d;
+  --theme-color-canvas: #0a0a0a;
+  --theme-color-surface-1: #111111;
+  --theme-color-surface-2: #171717;
+  --theme-color-surface-3: #242424;
+  --theme-color-paper: #f0ede6;
+  --theme-color-text: #f0ede6;
+  --theme-color-text-muted: rgba(240, 237, 230, 0.80);
+  --theme-color-text-soft: rgba(240, 237, 230, 0.52);
+  --theme-color-page-bg: #f0ede6;
+  --theme-color-page-text: #515151;
+  --theme-color-primary: #e30713;
+  --theme-color-primary-hover: #c0050f;
+  --theme-color-accent: #e30713;
+  --theme-color-success: #66bb6a;
+  --theme-color-warning: #ffa726;
+  --theme-color-danger: #f44336;
+  --theme-color-info: #29b6f6;
+  --theme-color-border: rgba(240, 237, 230, 0.12);
+  --theme-color-focus: #e30713;
+
+  /* Alpha tokens */
+  --theme-color-primary-soft: rgba(227, 7, 19, 0.08);
+  --theme-color-primary-border: rgba(227, 7, 19, 0.28);
+  --theme-color-paper-80: rgba(240, 237, 230, 0.80);
+  --theme-color-paper-60: rgba(240, 237, 230, 0.60);
+  --theme-color-paper-52: rgba(240, 237, 230, 0.52);
+  --theme-color-paper-45: rgba(240, 237, 230, 0.45);
+  --theme-color-paper-30: rgba(240, 237, 230, 0.30);
+  --theme-color-paper-12: rgba(240, 237, 230, 0.12);
+  --theme-color-paper-08: rgba(240, 237, 230, 0.08);
+
+  /* Typography */
+  --theme-font-display: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --theme-font-heading: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --theme-font-body: var(--font-body), Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --theme-text-xs: 0.75rem;
+  --theme-text-sm: 0.875rem;
+  --theme-text-base: 1rem;
+  --theme-text-lg: 1.125rem;
+  --theme-text-xl: 1.375rem;
+  --theme-text-2xl: clamp(2rem, 4vw, 3rem);
+  --theme-text-3xl: clamp(3rem, 7vw, 5.5rem);
+  --theme-text-hero: clamp(4rem, 10vw, 8rem);
+
+  /* Layout */
+  --theme-rem-base: 10px;
+  --theme-space-1: 0.25rem;
+  --theme-space-2: 0.5rem;
+  --theme-space-3: 0.75rem;
+  --theme-space-4: 1rem;
+  --theme-space-5: 1.5rem;
+  --theme-space-6: 2rem;
+  --theme-space-7: 3rem;
+  --theme-space-8: 4.5rem;
+  --theme-space-9: 7rem;
+  --theme-content: 76rem;
+  --theme-copy: 42rem;
+  --theme-content-padding: 3rem;
+  --theme-content-max: 1920px;
+  --theme-content-text-max: 1484px;
+  --theme-gap: 1rem;
+  --theme-section-pad: 90px 5%;
+  --theme-card-pad: 36px 28px;
+  --theme-section-gap-lg: 12rem;
+  --theme-section-gap-md: 8rem;
+  --theme-section-gap-sm: 4rem;
+
+  /* Shape, elevation, motion */
+  --theme-radius-sm: 0.25rem;
+  --theme-radius-md: 0.5rem;
+  --theme-radius-lg: 0.75rem;
+  --theme-shadow-card: 0 18px 48px rgba(0, 0, 0, 0.24);
+  --theme-motion-fast: 160ms;
+  --theme-motion-base: 240ms;
+
+  /* Legacy type scale aliases used by existing Rockbusters CSS */
+  --fs-eyebrow: 11px;
+  --fs-body-sm: 13px;
+  --fs-body: 15px;
+  --fs-body-lg: 17px;
+  --fs-card-title: 16px;
+  --rem-base: var(--theme-rem-base);
+  --h1FontSize: 12rem;
+  --h1LineHeight: 11rem;
+  --h1MarginBottom: 2rem;
+  --h1PaddingTop: 4rem;
+  --h1PaddingBottom: 2rem;
+  --h2FontSize: 4.1rem;
+  --h2LineHeight: 4.8rem;
+  --h2MarginBottom: 1.5rem;
+  --h2PaddingTop: 3rem;
+  --h2PaddingBottom: 1.5rem;
+  --h3FontSize: 3.6rem;
+  --h3LineHeight: 3.8rem;
+  --h3MarginBottom: 1.5rem;
+  --h3PaddingTop: 2.5rem;
+  --h3PaddingBottom: 1rem;
+  --h4FontSize: 2.4rem;
+  --h4LineHeight: 2.6rem;
+  --h4MarginBottom: 1rem;
+  --h5FontSize: 2rem;
+  --h5LineHeight: 2rem;
+  --h5MarginBottom: 1rem;
+  --eyebrowFontSize: 1.6rem;
+  --eyebrowLineHeight: 2.8rem;
+  --eyebrowMarginBottom: 0.5rem;
+  --eyebrowLetterSpacing: 0.8rem;
+  --pFontSize: 2rem;
+  --textLineHeight: 2.8rem;
+  --smallTextFontSize: 1.4rem;
+  --smallTextLineHeight: 1.8rem;
+
+  /* Header */
+  --headerContactsHeight: 4.5rem;
+  --headerHeight: 4.4rem;
+  --headerTotalHeight: calc(var(--headerContactsHeight) + var(--headerHeight) + 2rem);
+  --headerDividerWidth: 350px;
+  --headerDividerMaxWidth: 65vw;
+  --headerDividerHeight: 2px;
+  --headerBg: rgba(43, 12, 12, 0.55);
+  --headerBgScrolled: rgba(43, 12, 12, 0.85);
+
+  /* Legacy Rockbusters aliases */
+  --rb-red: var(--theme-color-primary);
+  --rb-red-hover: var(--theme-color-primary-hover);
+  --rb-red-dim: var(--theme-color-primary-soft);
+  --rb-red-border: var(--theme-color-primary-border);
+  --rb-black: var(--theme-color-ink);
+  --rb-dark: var(--theme-color-surface-1);
+  --rb-darker: var(--theme-color-canvas);
+  --rb-white: var(--theme-color-paper);
+  --rb-white-80: var(--theme-color-paper-80);
+  --rb-white-60: var(--theme-color-paper-60);
+  --rb-white-52: var(--theme-color-paper-52);
+  --rb-white-45: var(--theme-color-paper-45);
+  --rb-white-30: var(--theme-color-paper-30);
+  --rb-white-12: var(--theme-color-paper-12);
+  --rb-white-08: var(--theme-color-paper-08);
+  --rb-section-pad: var(--theme-section-pad);
+  --rb-card-pad: var(--theme-card-pad);
+  --colInfo: var(--theme-color-info);
+  --colOk: var(--theme-color-success);
+  --colWarning: var(--theme-color-warning);
+  --colError: var(--theme-color-danger);
+  --contentPadding: var(--theme-content-padding);
+  --contentMaxWidth: var(--theme-content-max);
+  --contentTextMaxWidth: var(--theme-content-text-max);
+  --gap: var(--theme-gap);
+  --sectionGapLg: var(--theme-section-gap-lg);
+  --sectionGapMd: var(--theme-section-gap-md);
+  --sectionGapSm: var(--theme-section-gap-sm);
+  --transitionTimeBase: var(--theme-motion-base);
+  --breakpointSmall: 500px;
+  --breakpointMid: 768px;
+  --breakpointLarge: 1200px;
+  --breakpointExtraLarge: 1440px;
+}
+
+[data-theme='snowbusters'],
+.theme-snowbusters {
+  color-scheme: dark;
+
+  /* Brand tokens extracted from snowbusters-design-system.html */
+  --theme-color-ink: #080b10;
+  --theme-color-canvas: #080b10;
+  --theme-color-surface-1: #0f141c;
+  --theme-color-surface-2: #171e29;
+  --theme-color-surface-3: #202a38;
+  --theme-color-paper: #f3f6f8;
+  --theme-color-text: #f4f7fa;
+  --theme-color-text-muted: #b5c0ca;
+  --theme-color-text-soft: #8795a3;
+  --theme-color-page-bg: #080b10;
+  --theme-color-page-text: #f4f7fa;
+  --theme-color-primary: #147dcc;
+  --theme-color-primary-hover: #2590df;
+  --theme-color-accent: #72c9df;
+  --theme-color-success: #4fc18d;
+  --theme-color-warning: #f0b856;
+  --theme-color-danger: #f07178;
+  --theme-color-info: #72c9df;
+  --theme-color-border: #2b3644;
+  --theme-color-focus: #a6e7f6;
+  --theme-color-primary-soft: rgba(20, 125, 204, 0.10);
+  --theme-color-primary-border: rgba(20, 125, 204, 0.36);
+  --theme-color-paper-80: rgba(243, 246, 248, 0.80);
+  --theme-color-paper-60: rgba(243, 246, 248, 0.60);
+  --theme-color-paper-52: rgba(243, 246, 248, 0.52);
+  --theme-color-paper-45: rgba(243, 246, 248, 0.45);
+  --theme-color-paper-30: rgba(243, 246, 248, 0.30);
+  --theme-color-paper-12: rgba(243, 246, 248, 0.12);
+  --theme-color-paper-08: rgba(243, 246, 248, 0.08);
+  --theme-font-display: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --theme-font-heading: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --theme-font-body: var(--font-body), Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --theme-text-xs: 0.75rem;
+  --theme-text-sm: 0.875rem;
+  --theme-text-base: 1rem;
+  --theme-text-lg: 1.125rem;
+  --theme-text-xl: 1.375rem;
+  --theme-text-2xl: clamp(2rem, 4vw, 3rem);
+  --theme-text-3xl: clamp(3rem, 7vw, 5.5rem);
+  --theme-text-hero: clamp(4rem, 10vw, 8rem);
+  --theme-rem-base: 16px;
+  --theme-space-1: 0.25rem;
+  --theme-space-2: 0.5rem;
+  --theme-space-3: 0.75rem;
+  --theme-space-4: 1rem;
+  --theme-space-5: 1.5rem;
+  --theme-space-6: 2rem;
+  --theme-space-7: 3rem;
+  --theme-space-8: 4.5rem;
+  --theme-space-9: 7rem;
+  --theme-content: 76rem;
+  --theme-copy: 42rem;
+  --theme-content-padding: 2rem;
+  --theme-content-max: 76rem;
+  --theme-content-text-max: 42rem;
+  --theme-gap: 1rem;
+  --theme-section-pad: 4.5rem 1rem;
+  --theme-card-pad: 1.25rem;
+  --theme-section-gap-lg: 7rem;
+  --theme-section-gap-md: 4.5rem;
+  --theme-section-gap-sm: 2rem;
+  --theme-radius-sm: 0.25rem;
+  --theme-radius-md: 0.5rem;
+  --theme-radius-lg: 0.75rem;
+  --theme-shadow-card: 0 18px 48px rgba(0, 0, 0, 0.24);
+  --theme-motion-fast: 160ms;
+  --theme-motion-base: 240ms;
+  --headerBg: rgba(8, 11, 16, 0.94);
+  --headerBgScrolled: rgba(8, 11, 16, 0.94);
+}
+
+@media screen and (max-width: 767px) {
+  :root,
+  [data-theme='rockbusters'],
+  .theme-rockbusters {
+    --h1FontSize: 5rem;
+    --h1LineHeight: 5rem;
+    --h1PaddingTop: 2rem;
+    --h1PaddingBottom: 1rem;
+    --h2FontSize: 3.6rem;
+    --h2LineHeight: 3.8rem;
+    --h3FontSize: 2.4rem;
+    --h3LineHeight: 2.6rem;
+    --h4FontSize: 2rem;
+    --h4LineHeight: 2.2rem;
+    --h5FontSize: 1.8rem;
+    --h5LineHeight: 2rem;
+    --eyebrowFontSize: 1.2rem;
+    --eyebrowLineHeight: 1.2rem;
+    --eyebrowLetterSpacing: 0.4rem;
+    --pFontSize: 1.6rem;
+    --textLineHeight: 2.4rem;
+    --headerDividerWidth: 250px;
+    --theme-section-pad: 8rem 5%;
+    --sectionGapLg: 8rem;
+    --sectionGapMd: 5rem;
+    --sectionGapSm: 3rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root,
+  [data-theme='rockbusters'],
+  .theme-rockbusters {
+    --theme-content-padding: 4rem;
+    --theme-gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  :root,
+  [data-theme='rockbusters'],
+  .theme-rockbusters {
+    --theme-gap: 2rem;
+  }
+}

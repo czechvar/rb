@@ -12,6 +12,20 @@ import * as migration_20260625_065828_add_guides_is_founder from './20260625_065
 import * as migration_20260706_122432_add_guide_tagline_tags from './20260706_122432_add_guide_tagline_tags';
 import * as migration_20260708_160917_add_guide_detail_fields from './20260708_160917_add_guide_detail_fields';
 import * as migration_20260730_060650_rename_types_to_programs from './20260730_060650_rename_types_to_programs';
+import * as migration_20260824_220848_add_pages_collection from './20260824_220848_add_pages_collection';
+import * as migration_20260825_115412_add_generic_page_blocks from './20260825_115412_add_generic_page_blocks';
+import * as migration_20260825_125431_add_domain_page_blocks from './20260825_125431_add_domain_page_blocks';
+import * as migration_20260825_133259_add_discovery_companion_page_blocks from './20260825_133259_add_discovery_companion_page_blocks';
+import * as migration_20260825_151515_add_event_layout_blocks from './20260825_151515_add_event_layout_blocks';
+import * as migration_20260825_155940_add_program_layout_blocks from './20260825_155940_add_program_layout_blocks';
+import * as migration_20260825_163334_add_location_layout_blocks from './20260825_163334_add_location_layout_blocks';
+import * as migration_20260825_170114_add_guide_layout_blocks from './20260825_170114_add_guide_layout_blocks';
+import * as migration_20260825_170938_add_post_layout_blocks from './20260825_170938_add_post_layout_blocks';
+import * as migration_20260825_172039_add_homepage_page_blocks from './20260825_172039_add_homepage_page_blocks';
+import * as migration_20260825_192925_remove_homepage_specific_blocks from './20260825_192925_remove_homepage_specific_blocks';
+import * as migration_20260826_060419_add_brand_block_variants from './20260826_060419_add_brand_block_variants';
+import * as migration_20260826_082151_catalogued_block_availability from './20260826_082151_catalogued_block_availability';
+import * as migration_20260826_091639_add_featured_catalogue_blocks from './20260826_091639_add_featured_catalogue_blocks';
 
 export const migrations = [
   {
@@ -82,6 +96,76 @@ export const migrations = [
   {
     up: migration_20260730_060650_rename_types_to_programs.up,
     down: migration_20260730_060650_rename_types_to_programs.down,
-    name: '20260730_060650_rename_types_to_programs'
+    name: '20260730_060650_rename_types_to_programs',
+  },
+  {
+    up: migration_20260824_220848_add_pages_collection.up,
+    down: migration_20260824_220848_add_pages_collection.down,
+    name: '20260824_220848_add_pages_collection',
+  },
+  {
+    up: migration_20260825_115412_add_generic_page_blocks.up,
+    down: migration_20260825_115412_add_generic_page_blocks.down,
+    name: '20260825_115412_add_generic_page_blocks',
+  },
+  {
+    up: migration_20260825_125431_add_domain_page_blocks.up,
+    down: migration_20260825_125431_add_domain_page_blocks.down,
+    name: '20260825_125431_add_domain_page_blocks',
+  },
+  {
+    up: migration_20260825_133259_add_discovery_companion_page_blocks.up,
+    down: migration_20260825_133259_add_discovery_companion_page_blocks.down,
+    name: '20260825_133259_add_discovery_companion_page_blocks',
+  },
+  {
+    up: migration_20260825_151515_add_event_layout_blocks.up,
+    down: migration_20260825_151515_add_event_layout_blocks.down,
+    name: '20260825_151515_add_event_layout_blocks',
+  },
+  {
+    up: migration_20260825_155940_add_program_layout_blocks.up,
+    down: migration_20260825_155940_add_program_layout_blocks.down,
+    name: '20260825_155940_add_program_layout_blocks',
+  },
+  {
+    up: migration_20260825_163334_add_location_layout_blocks.up,
+    down: migration_20260825_163334_add_location_layout_blocks.down,
+    name: '20260825_163334_add_location_layout_blocks',
+  },
+  {
+    up: migration_20260825_170114_add_guide_layout_blocks.up,
+    down: migration_20260825_170114_add_guide_layout_blocks.down,
+    name: '20260825_170114_add_guide_layout_blocks',
+  },
+  {
+    up: migration_20260825_170938_add_post_layout_blocks.up,
+    down: migration_20260825_170938_add_post_layout_blocks.down,
+    name: '20260825_170938_add_post_layout_blocks',
+  },
+  {
+    up: migration_20260825_172039_add_homepage_page_blocks.up,
+    down: migration_20260825_172039_add_homepage_page_blocks.down,
+    name: '20260825_172039_add_homepage_page_blocks',
+  },
+  {
+    up: migration_20260825_192925_remove_homepage_specific_blocks.up,
+    down: migration_20260825_192925_remove_homepage_specific_blocks.down,
+    name: '20260825_192925_remove_homepage_specific_blocks',
+  },
+  {
+    up: migration_20260826_060419_add_brand_block_variants.up,
+    down: migration_20260826_060419_add_brand_block_variants.down,
+    name: '20260826_060419_add_brand_block_variants',
+  },
+  {
+    up: migration_20260826_082151_catalogued_block_availability.up,
+    down: migration_20260826_082151_catalogued_block_availability.down,
+    name: '20260826_082151_catalogued_block_availability',
+  },
+  {
+    up: migration_20260826_091639_add_featured_catalogue_blocks.up,
+    down: migration_20260826_091639_add_featured_catalogue_blocks.down,
+    name: '20260826_091639_add_featured_catalogue_blocks'
   },
 ];

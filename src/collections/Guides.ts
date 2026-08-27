@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { anyone, isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
+import { guideLayoutBlocks } from '../blocks'
 import { revalidateOnChange } from './hooks/revalidate'
 import { TAGS } from '@/lib/cache'
 
@@ -38,6 +39,16 @@ export const Guides: CollectionConfig = {
     },
     { name: 'photo', type: 'upload', relationTo: 'media' },
     { name: 'content', type: 'richText' },
+    {
+      name: 'layout',
+      type: 'blocks',
+      label: 'Guide page layout',
+      blocks: guideLayoutBlocks,
+      admin: {
+        description: 'Optional block-driven layout for this public guide page. Empty uses the current default layout.',
+        initCollapsed: true,
+      },
+    },
     { name: 'email', type: 'email' },
     { name: 'phone', type: 'text' },
     { name: 'vimeoId', type: 'text' },

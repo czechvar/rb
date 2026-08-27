@@ -106,6 +106,8 @@
 /* ── Mobile ──────────────────────────────────────────────── */
 @media screen and (max-width: 900px) {
   .hero {
+    min-height: auto;
+    padding-top: 120px;
     padding-bottom: 4rem;
   }
 

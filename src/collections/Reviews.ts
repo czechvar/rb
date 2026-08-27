@@ -1,11 +1,14 @@
 import type { CollectionConfig } from 'payload'
 import { anyone, isAdmin } from '../access'
+import { revalidateOnChange } from './hooks/revalidate'
+import { TAGS } from '@/lib/cache'
 
 export const Reviews: CollectionConfig = {
   slug: 'reviews',
   labels: { singular: 'Review', plural: 'Reviews' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'reviewerName', group: 'Catalogue' },
+  hooks: revalidateOnChange(TAGS.reviews),
   fields: [
     { name: 'quote', type: 'textarea', required: true },
     { name: 'reviewerName', type: 'text', required: true },

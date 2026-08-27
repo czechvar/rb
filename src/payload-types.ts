@@ -85,6 +85,7 @@ export interface Config {
     referrals: Referral;
     'post-categories': PostCategory;
     posts: Post;
+    pages: Page;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -110,6 +111,7 @@ export interface Config {
     referrals: ReferralsSelect<false> | ReferralsSelect<true>;
     'post-categories': PostCategoriesSelect<false> | PostCategoriesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -258,6 +260,410 @@ export interface Program {
   mainPicture?: (number | null) | Media;
   gallery?: (number | Media)[] | null;
   vimeoId?: string | null;
+  /**
+   * Optional block-driven layout for this public program page. Empty uses the current default layout.
+   */
+  layout?:
+    | (
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            backgroundMedia?: (number | null) | Media;
+            variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            alignment: 'left' | 'center';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'section-intro';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            width: 'standard' | 'wide';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'rich-text';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            items?:
+              | {
+                  value: string;
+                  label: string;
+                  body?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stats';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            programs?: (number | Program)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'darkCompact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'byCountry' | 'manual';
+            country?: string | null;
+            locations?: (number | Location)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'countryTiles';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'photoOverlay';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'latest' | 'byCategory' | 'manual';
+            category?: (number | null) | PostCategory;
+            posts?: (number | Post)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            source: 'upload' | 'externalVideo';
+            media?: (number | null) | Media;
+            videoUrl?: string | null;
+            caption?: string | null;
+            variant: 'wide' | 'contained' | 'split';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mediaBlock';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            partners?: (number | Partner)[] | null;
+            limit?: number | null;
+            variant: 'logos' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'partnerStrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentGuide';
+            guide?: (number | null) | Guide;
+            variant: 'feature' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideProfile';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'byGuide' | 'currentGuide' | 'manual';
+            guide?: (number | null) | Guide;
+            events?: (number | Event)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTrips';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programHero';
+          }
+        | {
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programHighlights';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programAudience';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programCurriculum';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programFlow';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programWeeks';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programLogistics';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programCoaches';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programResults';
+          }
+        | {
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programTrips';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programCTA';
+          }
+      )[]
+    | null;
   highlights?:
     | {
         text: string;
@@ -423,252 +829,6 @@ export interface Program {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "airports".
- */
-export interface Airport {
-  id: number;
-  name: string;
-  iata: string;
-  country?: string | null;
-  continent?: string | null;
-  /**
-   * @minItems 2
-   * @maxItems 2
-   */
-  coordinates?: [number, number] | null;
-  size?: number | null;
-  active?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "guides".
- */
-export interface Guide {
-  id: number;
-  name: string;
-  slug: string;
-  /**
-   * e.g. Head coach, Pro climber, Physiotherapist
-   */
-  role?: string | null;
-  /**
-   * Punchy one-liner shown on team cards and the profile hero.
-   */
-  tagline?: string | null;
-  /**
-   * Short badges, ~3 max. e.g. "Sport 9b", "Basque", "UIAGM".
-   */
-  tags?:
-    | {
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
-  section: 'team' | 'friends';
-  photo?: (number | null) | Media;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  email?: string | null;
-  phone?: string | null;
-  vimeoId?: string | null;
-  /**
-   * Hero subtitle paragraph under the name. Falls back to tagline when empty.
-   */
-  heroSub?: string | null;
-  /**
-   * Photo credit, e.g. "Jany · Pince Sans Rire 7b+".
-   */
-  heroCaption?: string | null;
-  /**
-   * Stats bar under the hero, ~4 items (value "25+", label "Years Climbing & Coaching").
-   */
-  stats?:
-    | {
-        value: string;
-        label: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * About section. Bio paragraphs come from the content richtext field.
-   */
-  about?: {
-    /**
-     * One display line per row; wrap a line in *asterisks* to render it red.
-     */
-    headline?: string | null;
-    /**
-     * Facts card rows. Never put email/phone here — public pages must not leak contacts.
-     */
-    facts?:
-      | {
-          label: string;
-          value: string;
-          id?: string | null;
-        }[]
-      | null;
-    quote?: string | null;
-    /**
-     * e.g. "— Jany, on how he coaches"
-     */
-    quoteAttribution?: string | null;
-  };
-  /**
-   * "What X coaches" numbered pillars.
-   */
-  coaching?: {
-    intro?: string | null;
-    pillars?:
-      | {
-          title: string;
-          body: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  /**
-   * "On the rock" route list.
-   */
-  achievements?: {
-    intro?: string | null;
-    items?:
-      | {
-          route: string;
-          location?: string | null;
-          grade?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  /**
-   * Single client testimonial (always rendered with five stars).
-   */
-  testimonial?: {
-    quote?: string | null;
-    name?: string | null;
-    /**
-     * e.g. "Rockbusters Road Trip Client"
-     */
-    tripLine?: string | null;
-  };
-  featured?: boolean | null;
-  /**
-   * Mark the founder card on the homepage.
-   */
-  isFounder?: boolean | null;
-  active?: boolean | null;
-  seo?: {
-    title?: string | null;
-    keywords?: string | null;
-    description?: string | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: number;
-  name: string;
-  slug: string;
-  text?: string | null;
-  position?: number | null;
-  active?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "locations".
- */
-export interface Location {
-  id: number;
-  name: string;
-  slug: string;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  address?: string | null;
-  city?: string | null;
-  country?: string | null;
-  /**
-   * @minItems 2
-   * @maxItems 2
-   */
-  coordinates?: [number, number] | null;
-  mainPicture?: (number | null) | Media;
-  gallery?: (number | Media)[] | null;
-  featured?: boolean | null;
-  active?: boolean | null;
-  seo?: {
-    title?: string | null;
-    keywords?: string | null;
-    description?: string | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "partners".
- */
-export interface Partner {
-  id: number;
-  name: string;
-  slug: string;
-  link?: string | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  logo?: (number | null) | Media;
-  featured?: boolean | null;
-  active?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "events".
  */
 export interface Event {
@@ -715,6 +875,400 @@ export interface Event {
   mainPicture?: (number | null) | Media;
   gallery?: (number | Media)[] | null;
   vimeoId?: string | null;
+  /**
+   * Optional block-driven layout for this public trip page. Empty uses the current default layout.
+   */
+  layout?:
+    | (
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            backgroundMedia?: (number | null) | Media;
+            variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            alignment: 'left' | 'center';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'section-intro';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            width: 'standard' | 'wide';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'rich-text';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            items?:
+              | {
+                  value: string;
+                  label: string;
+                  body?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stats';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            programs?: (number | Program)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'darkCompact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'byCountry' | 'manual';
+            country?: string | null;
+            locations?: (number | Location)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'countryTiles';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'photoOverlay';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'latest' | 'byCategory' | 'manual';
+            category?: (number | null) | PostCategory;
+            posts?: (number | Post)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            source: 'upload' | 'externalVideo';
+            media?: (number | null) | Media;
+            videoUrl?: string | null;
+            caption?: string | null;
+            variant: 'wide' | 'contained' | 'split';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mediaBlock';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            partners?: (number | Partner)[] | null;
+            limit?: number | null;
+            variant: 'logos' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'partnerStrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentGuide';
+            guide?: (number | null) | Guide;
+            variant: 'feature' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideProfile';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'byGuide' | 'currentGuide' | 'manual';
+            guide?: (number | null) | Guide;
+            events?: (number | Event)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTrips';
+          }
+        | {
+            /**
+             * Optional section anchor for in-page links.
+             */
+            anchor?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripHero';
+          }
+        | {
+            /**
+             * Optional section anchor for in-page links.
+             */
+            anchor?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripPitch';
+          }
+        | {
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripHighlights';
+          }
+        | {
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripDates';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripBookingCTA';
+          }
+        | {
+            /**
+             * Uses the accommodation and transport content from the current Event.
+             */
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripLogistics';
+          }
+      )[]
+    | null;
   categories?: (number | Category)[] | null;
   difficulties?: (number | Difficulty)[] | null;
   programs?: (number | Program)[] | null;
@@ -908,6 +1462,1373 @@ export interface Event {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations".
+ */
+export interface Location {
+  id: number;
+  name: string;
+  slug: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  address?: string | null;
+  city?: string | null;
+  country?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  mainPicture?: (number | null) | Media;
+  gallery?: (number | Media)[] | null;
+  /**
+   * Optional block-driven layout for this public destination page. Empty uses the current default layout.
+   */
+  layout?:
+    | (
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            backgroundMedia?: (number | null) | Media;
+            variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            alignment: 'left' | 'center';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'section-intro';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            width: 'standard' | 'wide';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'rich-text';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            items?:
+              | {
+                  value: string;
+                  label: string;
+                  body?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stats';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            programs?: (number | Program)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'darkCompact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'byCountry' | 'manual';
+            country?: string | null;
+            locations?: (number | Location)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'countryTiles';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'photoOverlay';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'latest' | 'byCategory' | 'manual';
+            category?: (number | null) | PostCategory;
+            posts?: (number | Post)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            source: 'upload' | 'externalVideo';
+            media?: (number | null) | Media;
+            videoUrl?: string | null;
+            caption?: string | null;
+            variant: 'wide' | 'contained' | 'split';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mediaBlock';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            partners?: (number | Partner)[] | null;
+            limit?: number | null;
+            variant: 'logos' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'partnerStrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentGuide';
+            guide?: (number | null) | Guide;
+            variant: 'feature' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideProfile';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'byGuide' | 'currentGuide' | 'manual';
+            guide?: (number | null) | Guide;
+            events?: (number | Event)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTrips';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationHero';
+          }
+        | {
+            heading?: string | null;
+            eyebrow?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationContent';
+          }
+        | {
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationMap';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationTrips';
+          }
+      )[]
+    | null;
+  featured?: boolean | null;
+  active?: boolean | null;
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "guides".
+ */
+export interface Guide {
+  id: number;
+  name: string;
+  slug: string;
+  /**
+   * e.g. Head coach, Pro climber, Physiotherapist
+   */
+  role?: string | null;
+  /**
+   * Punchy one-liner shown on team cards and the profile hero.
+   */
+  tagline?: string | null;
+  /**
+   * Short badges, ~3 max. e.g. "Sport 9b", "Basque", "UIAGM".
+   */
+  tags?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  section: 'team' | 'friends';
+  photo?: (number | null) | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Optional block-driven layout for this public guide page. Empty uses the current default layout.
+   */
+  layout?:
+    | (
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            backgroundMedia?: (number | null) | Media;
+            variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            alignment: 'left' | 'center';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'section-intro';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            width: 'standard' | 'wide';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'rich-text';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            items?:
+              | {
+                  value: string;
+                  label: string;
+                  body?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stats';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            programs?: (number | Program)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'darkCompact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'byCountry' | 'manual';
+            country?: string | null;
+            locations?: (number | Location)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'countryTiles';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'photoOverlay';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'latest' | 'byCategory' | 'manual';
+            category?: (number | null) | PostCategory;
+            posts?: (number | Post)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            source: 'upload' | 'externalVideo';
+            media?: (number | null) | Media;
+            videoUrl?: string | null;
+            caption?: string | null;
+            variant: 'wide' | 'contained' | 'split';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mediaBlock';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            partners?: (number | Partner)[] | null;
+            limit?: number | null;
+            variant: 'logos' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'partnerStrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentGuide';
+            guide?: (number | null) | Guide;
+            variant: 'feature' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideProfile';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'byGuide' | 'currentGuide' | 'manual';
+            guide?: (number | null) | Guide;
+            events?: (number | Event)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTrips';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideHero';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideStats';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideAbout';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideVideo';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guidePillars';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTripsSection';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideAchievements';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTestimonial';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideCTA';
+          }
+      )[]
+    | null;
+  email?: string | null;
+  phone?: string | null;
+  vimeoId?: string | null;
+  /**
+   * Hero subtitle paragraph under the name. Falls back to tagline when empty.
+   */
+  heroSub?: string | null;
+  /**
+   * Photo credit, e.g. "Jany · Pince Sans Rire 7b+".
+   */
+  heroCaption?: string | null;
+  /**
+   * Stats bar under the hero, ~4 items (value "25+", label "Years Climbing & Coaching").
+   */
+  stats?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * About section. Bio paragraphs come from the content richtext field.
+   */
+  about?: {
+    /**
+     * One display line per row; wrap a line in *asterisks* to render it red.
+     */
+    headline?: string | null;
+    /**
+     * Facts card rows. Never put email/phone here — public pages must not leak contacts.
+     */
+    facts?:
+      | {
+          label: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    quote?: string | null;
+    /**
+     * e.g. "— Jany, on how he coaches"
+     */
+    quoteAttribution?: string | null;
+  };
+  /**
+   * "What X coaches" numbered pillars.
+   */
+  coaching?: {
+    intro?: string | null;
+    pillars?:
+      | {
+          title: string;
+          body: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * "On the rock" route list.
+   */
+  achievements?: {
+    intro?: string | null;
+    items?:
+      | {
+          route: string;
+          location?: string | null;
+          grade?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Single client testimonial (always rendered with five stars).
+   */
+  testimonial?: {
+    quote?: string | null;
+    name?: string | null;
+    /**
+     * e.g. "Rockbusters Road Trip Client"
+     */
+    tripLine?: string | null;
+  };
+  featured?: boolean | null;
+  /**
+   * Mark the founder card on the homepage.
+   */
+  isFounder?: boolean | null;
+  active?: boolean | null;
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "post-categories".
+ */
+export interface PostCategory {
+  id: number;
+  name: string;
+  slug: string;
+  description?: string | null;
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title: string;
+  slug: string;
+  heroImage?: (number | null) | Media;
+  excerpt?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Optional block-driven layout for this public blog post. Empty uses the current default layout.
+   */
+  layout?:
+    | (
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            backgroundMedia?: (number | null) | Media;
+            variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            alignment: 'left' | 'center';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'section-intro';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            width: 'standard' | 'wide';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'rich-text';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            items?:
+              | {
+                  value: string;
+                  label: string;
+                  body?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stats';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            programs?: (number | Program)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'darkCompact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'byCountry' | 'manual';
+            country?: string | null;
+            locations?: (number | Location)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'countryTiles';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'photoOverlay';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'latest' | 'byCategory' | 'manual';
+            category?: (number | null) | PostCategory;
+            posts?: (number | Post)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            source: 'upload' | 'externalVideo';
+            media?: (number | null) | Media;
+            videoUrl?: string | null;
+            caption?: string | null;
+            variant: 'wide' | 'contained' | 'split';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mediaBlock';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            partners?: (number | Partner)[] | null;
+            limit?: number | null;
+            variant: 'logos' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'partnerStrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentGuide';
+            guide?: (number | null) | Guide;
+            variant: 'feature' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideProfile';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'byGuide' | 'currentGuide' | 'manual';
+            guide?: (number | null) | Guide;
+            events?: (number | Event)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTrips';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postHero';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postBody';
+          }
+        | {
+            heading?: string | null;
+            limit: number;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'relatedPosts';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postCTA';
+          }
+      )[]
+    | null;
+  category?: (number | null) | PostCategory;
+  author?: string | null;
+  publishedAt?: string | null;
+  state: 'draft' | 'published';
+  seo?: {
+    title?: string | null;
+    keywords?: string | null;
+    description?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "event-dates".
  */
 export interface EventDate {
@@ -945,6 +2866,26 @@ export interface EventDate {
    */
   bookedSeats?: number | null;
   remainingSeats?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "airports".
+ */
+export interface Airport {
+  id: number;
+  name: string;
+  iata: string;
+  country?: string | null;
+  continent?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  size?: number | null;
+  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -989,6 +2930,50 @@ export interface Review {
   resultLine?: string | null;
   event?: (number | null) | Event;
   program?: (number | null) | Program;
+  position?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: number;
+  name: string;
+  slug: string;
+  link?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  logo?: (number | null) | Media;
+  featured?: boolean | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  name: string;
+  slug: string;
+  text?: string | null;
   position?: number | null;
   active?: boolean | null;
   updatedAt: string;
@@ -1114,55 +3099,362 @@ export interface Referral {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "post-categories".
+ * via the `definition` "pages".
  */
-export interface PostCategory {
-  id: number;
-  name: string;
-  slug: string;
-  description?: string | null;
-  seo?: {
-    title?: string | null;
-    keywords?: string | null;
-    description?: string | null;
-  };
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
+export interface Page {
   id: number;
   title: string;
   slug: string;
-  heroImage?: (number | null) | Media;
-  excerpt?: string | null;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  category?: (number | null) | PostCategory;
-  author?: string | null;
-  publishedAt?: string | null;
-  state: 'draft' | 'published';
+  status: 'draft' | 'published';
   seo?: {
     title?: string | null;
     keywords?: string | null;
     description?: string | null;
   };
+  layout?:
+    | (
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            backgroundMedia?: (number | null) | Media;
+            variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            alignment: 'left' | 'center';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'section-intro';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            width: 'standard' | 'wide';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'rich-text';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            items?:
+              | {
+                  value: string;
+                  label: string;
+                  body?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stats';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            variant: 'dark' | 'light' | 'red' | 'finalRed';
+            primaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            secondaryAction?: {
+              label?: string | null;
+              href?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            source: 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation';
+            events?: (number | Event)[] | null;
+            program?: (number | null) | Program;
+            location?: (number | null) | Location;
+            limit: number;
+            variant: 'cards' | 'compact' | 'editorial' | 'featureLead';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            event?: (number | null) | Event;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredTrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            programs?: (number | Program)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'darkCompact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'programGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            program?: (number | null) | Program;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredProgram';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'byCountry' | 'manual';
+            country?: string | null;
+            locations?: (number | Location)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'countryTiles';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            location?: (number | null) | Location;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredLocation';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'team' | 'friends' | 'featured' | 'manual';
+            guides?: (number | Guide)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact' | 'photoOverlay';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            guide?: (number | null) | Guide;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredGuide';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'latest' | 'byCategory' | 'manual';
+            category?: (number | null) | PostCategory;
+            posts?: (number | Post)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'postGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentContext';
+            post?: (number | null) | Post;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredPost';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'upcoming' | 'byEvent' | 'manual';
+            event?: (number | null) | Event;
+            eventDates?: (number | EventDate)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            eventDate?: (number | null) | EventDate;
+            variant: 'card' | 'feature' | 'compact' | 'mediaLed';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featuredEventDate';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            source: 'upload' | 'externalVideo';
+            media?: (number | null) | Media;
+            videoUrl?: string | null;
+            caption?: string | null;
+            variant: 'wide' | 'contained' | 'split';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mediaBlock';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            images: (number | Media)[];
+            variant: 'grid' | 'masonry';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'gallery';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            body?: string | null;
+            videoUrl: string;
+            caption?: string | null;
+            variant: 'wide' | 'contained';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'video';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            source: 'global' | 'manual' | 'inline' | 'byEvent' | 'byProgram';
+            faqs?: (number | Faq)[] | null;
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            items?:
+              | {
+                  question: string;
+                  answer: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: any;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            limit: number;
+            variant: 'twoColumn' | 'singleColumn' | 'lightEditorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'global' | 'byEvent' | 'byProgram' | 'manual';
+            event?: (number | null) | Event;
+            program?: (number | null) | Program;
+            reviews?: (number | Review)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'featured' | 'all' | 'manual';
+            partners?: (number | Partner)[] | null;
+            limit?: number | null;
+            variant: 'logos' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'partnerStrip';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'manual' | 'currentGuide';
+            guide?: (number | null) | Guide;
+            variant: 'feature' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideProfile';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'byGuide' | 'currentGuide' | 'manual';
+            guide?: (number | null) | Guide;
+            events?: (number | Event)[] | null;
+            limit?: number | null;
+            variant: 'cards' | 'compact';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'guideTrips';
+          }
+      )[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1261,6 +3553,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1395,6 +3691,421 @@ export interface ProgramsSelect<T extends boolean = true> {
   mainPicture?: T;
   gallery?: T;
   vimeoId?: T;
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              backgroundMedia?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'section-intro'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              alignment?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'rich-text'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              content?: T;
+              width?: T;
+              id?: T;
+              blockName?: T;
+            };
+        stats?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    body?: T;
+                    id?: T;
+                  };
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              programs?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              country?: T;
+              locations?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        postGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              category?: T;
+              posts?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              source?: T;
+              media?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnerStrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              partners?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideProfile?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideTrips?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              events?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programHighlights?:
+          | T
+          | {
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programAudience?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programCurriculum?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programFlow?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programWeeks?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programLogistics?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programCoaches?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programResults?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        programTrips?:
+          | T
+          | {
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programCTA?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+      };
   highlights?:
     | T
     | {
@@ -1555,6 +4266,407 @@ export interface GuidesSelect<T extends boolean = true> {
   section?: T;
   photo?: T;
   content?: T;
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              backgroundMedia?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'section-intro'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              alignment?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'rich-text'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              content?: T;
+              width?: T;
+              id?: T;
+              blockName?: T;
+            };
+        stats?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    body?: T;
+                    id?: T;
+                  };
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              programs?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              country?: T;
+              locations?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        postGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              category?: T;
+              posts?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              source?: T;
+              media?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnerStrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              partners?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideProfile?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideTrips?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              events?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideStats?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideAbout?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideVideo?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guidePillars?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideTripsSection?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideAchievements?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideTestimonial?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        guideCTA?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+      };
   email?: T;
   phone?: T;
   vimeoId?: T;
@@ -1640,6 +4752,380 @@ export interface LocationsSelect<T extends boolean = true> {
   coordinates?: T;
   mainPicture?: T;
   gallery?: T;
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              backgroundMedia?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'section-intro'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              alignment?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'rich-text'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              content?: T;
+              width?: T;
+              id?: T;
+              blockName?: T;
+            };
+        stats?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    body?: T;
+                    id?: T;
+                  };
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              programs?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              country?: T;
+              locations?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        postGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              category?: T;
+              posts?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              source?: T;
+              media?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnerStrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              partners?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideProfile?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideTrips?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              events?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        locationContent?:
+          | T
+          | {
+              heading?: T;
+              eyebrow?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationMap?:
+          | T
+          | {
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationTrips?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+      };
   featured?: T;
   active?: T;
   seo?:
@@ -1701,6 +5187,397 @@ export interface EventsSelect<T extends boolean = true> {
   mainPicture?: T;
   gallery?: T;
   vimeoId?: T;
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              backgroundMedia?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'section-intro'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              alignment?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'rich-text'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              content?: T;
+              width?: T;
+              id?: T;
+              blockName?: T;
+            };
+        stats?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    body?: T;
+                    id?: T;
+                  };
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              programs?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              country?: T;
+              locations?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        postGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              category?: T;
+              posts?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              source?: T;
+              media?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnerStrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              partners?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideProfile?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideTrips?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              events?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripHero?:
+          | T
+          | {
+              anchor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripPitch?:
+          | T
+          | {
+              anchor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripHighlights?:
+          | T
+          | {
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripDates?:
+          | T
+          | {
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripBookingCTA?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripLogistics?:
+          | T
+          | {
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
   categories?: T;
   difficulties?: T;
   programs?: T;
@@ -2018,6 +5895,379 @@ export interface PostsSelect<T extends boolean = true> {
   heroImage?: T;
   excerpt?: T;
   content?: T;
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              backgroundMedia?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'section-intro'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              alignment?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'rich-text'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              content?: T;
+              width?: T;
+              id?: T;
+              blockName?: T;
+            };
+        stats?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    body?: T;
+                    id?: T;
+                  };
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              programs?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              country?: T;
+              locations?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        postGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              category?: T;
+              posts?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              source?: T;
+              media?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnerStrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              partners?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideProfile?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideTrips?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              events?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        postHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        postBody?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        relatedPosts?:
+          | T
+          | {
+              heading?: T;
+              limit?: T;
+              id?: T;
+              blockName?: T;
+            };
+        postCTA?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+      };
   category?: T;
   author?: T;
   publishedAt?: T;
@@ -2028,6 +6278,371 @@ export interface PostsSelect<T extends boolean = true> {
         title?: T;
         keywords?: T;
         description?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  status?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        keywords?: T;
+        description?: T;
+      };
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              backgroundMedia?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'section-intro'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              alignment?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'rich-text'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              content?: T;
+              width?: T;
+              id?: T;
+              blockName?: T;
+            };
+        stats?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    body?: T;
+                    id?: T;
+                  };
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              variant?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tripGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              events?: T;
+              program?: T;
+              location?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredTrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              programs?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredProgram?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              program?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        locationGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              country?: T;
+              locations?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredLocation?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              location?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guides?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredGuide?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        postGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              category?: T;
+              posts?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredPost?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              post?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        calendar?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              eventDates?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featuredEventDate?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              eventDate?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              source?: T;
+              media?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              images?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        video?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              videoUrl?: T;
+              caption?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              source?: T;
+              faqs?: T;
+              event?: T;
+              program?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              event?: T;
+              program?: T;
+              reviews?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnerStrip?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              partners?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideProfile?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        guideTrips?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              guide?: T;
+              events?: T;
+              limit?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

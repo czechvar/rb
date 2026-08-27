@@ -19,9 +19,11 @@ function BulletList({
 
 export function EventAccommodationLogistics({
   accommodation,
+  heading = 'Everything Sorted',
   transport,
 }: {
   accommodation?: Event['accommodation']
+  heading?: string
   transport?: Event['transport']
 }) {
   const hasAccommodation =
@@ -36,7 +38,7 @@ export function EventAccommodationLogistics({
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <h2>Everything Sorted</h2>
+        <h2>{heading}</h2>
         <div className={styles.twoCol}>
           {hasAccommodation && (
             <div className={styles.col}>

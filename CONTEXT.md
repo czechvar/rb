@@ -32,6 +32,9 @@ clicks "Destinations → Spain", they see every Location whose
 There is no `destinations` collection. There is no Destination record.
 The URL `/destinations` and the site nav label "Destinations" are the
 customer-facing translations of *"browse Locations by country"*.
+Detail URLs under `/destinations/{slug}` may still render a single
+[[Location]] record; that is route/UI language, not evidence of a
+Destination entity.
 
 If in the future a country ever needs a stable ID, hero image, or its
 own copy, that would elevate Destination into its own concept — until

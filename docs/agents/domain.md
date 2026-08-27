@@ -2,14 +2,19 @@
 
 How the engineering skills should consume this repo's domain documentation when exploring the codebase.
 
-**Layout: single-context.** One `CONTEXT.md` + `docs/adr/` at the repo root. `CONTEXT.md` exists; `docs/adr/` exists but is empty — ADRs are added lazily by `/domain-modeling` as decisions get resolved.
+**Layout: single-context.** One `CONTEXT.md` plus `docs/adr/` at the repo root.
+`CONTEXT.md` exists, and ADRs in `docs/adr/` record durable architecture,
+domain, persistence, auth, booking, payment, cache, deployment, and design-system
+decisions.
 
 ## Before exploring, read these
 
 - **`CONTEXT.md`** at the repo root
 - **`docs/adr/`** — read ADRs that touch the area you're about to work in.
 
-If any of these files don't exist, **proceed silently**. Don't flag their absence; don't suggest creating them upfront. The `/domain-modeling` skill (reached via `/grill-with-docs` and `/improve-codebase-architecture`) creates them lazily when terms or decisions actually get resolved.
+If any of these files don't exist, proceed silently. Don't flag their absence or
+suggest creating them upfront. Create or update ADRs only when a durable decision
+is introduced, confirmed, or changed.
 
 ## File structure
 

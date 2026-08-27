@@ -46,6 +46,11 @@ Self-registration with email verification, login (with lockout + verify-required
 
 ## Code so far
 
+- `src/blocks/index.ts` — source of truth for Payload page-builder block
+  availability. It defines `blockCatalogue` metadata, category groups, and
+  `blocksFor(surface)`; blocks are compatible with all surfaces by default and
+  opt out through `notCompatibleWith` when a required data dependency cannot
+  currently be resolved.
 - `src/payments/gateway.ts` — **draft** TypeScript port of the payment gateway abstraction: domain types (`Transaction`, `TransactionState`, `Money`), the `PaymentGateway` contract, and the factory config shape. No concrete gateways yet. Has a "DRAFT — open questions" block at the bottom to resolve before implementation. Unlike the PHP original, gateway methods return result objects instead of mutating the transaction; the (future) PaymentService owns persistence and state transitions.
 - `src/payments/muzapay/` — **draft** port of the MuzaPay signing/auth primitives:
   - `signature-builder.ts` — builds the plaintext (ordered, trimmed, empties skipped) to be signed.
@@ -91,7 +96,7 @@ If any of the four `R2_*` vars is unset, Payload falls back to local-disk storag
 
 ### Issue tracker
 
-Specs / PRDs / issues live as local markdown files in `docs/superpowers/specs/` (existing pattern). Do NOT run `gh issue create`. See `docs/agents/issue-tracker.md`.
+Workstreams.ai is the board-level task tracker. Repo-local specs and plans live as markdown under `docs/superpowers/`. GitLab is for code and merge requests, not the canonical agent issue tracker. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
@@ -99,4 +104,4 @@ Canonical defaults: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-
 
 ### Domain docs
 
-Single-context: one `CONTEXT.md` + `docs/adr/` at the repo root (created lazily by /domain-modeling). See `docs/agents/domain.md`.
+Single-context: one `CONTEXT.md` plus accepted/proposed ADRs in `docs/adr/` at the repo root. See `docs/agents/domain.md`.

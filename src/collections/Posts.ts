@@ -4,6 +4,7 @@ import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
 import { revalidateOnChange } from './hooks/revalidate'
 import { TAGS } from '@/lib/cache'
+import { postLayoutBlocks } from '@/blocks'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -18,6 +19,16 @@ export const Posts: CollectionConfig = {
     { name: 'heroImage', type: 'upload', relationTo: 'media' },
     { name: 'excerpt', type: 'textarea' },
     { name: 'content', type: 'richText' },
+    {
+      name: 'layout',
+      type: 'blocks',
+      label: 'Post page layout',
+      blocks: postLayoutBlocks,
+      admin: {
+        description: 'Optional block-driven layout for this public blog post. Empty uses the current default layout.',
+        initCollapsed: true,
+      },
+    },
     {
       name: 'category',
       type: 'relationship',

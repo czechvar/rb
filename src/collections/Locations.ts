@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { anyone, isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
+import { locationLayoutBlocks } from '../blocks'
 import { revalidateOnChange } from './hooks/revalidate'
 import { TAGS } from '@/lib/cache'
 
@@ -21,6 +22,16 @@ export const Locations: CollectionConfig = {
     { name: 'coordinates', type: 'point', label: 'Coordinates [lng, lat]' },
     { name: 'mainPicture', type: 'upload', relationTo: 'media' },
     { name: 'gallery', type: 'upload', relationTo: 'media', hasMany: true },
+    {
+      name: 'layout',
+      type: 'blocks',
+      label: 'Location page layout',
+      blocks: locationLayoutBlocks,
+      admin: {
+        description: 'Optional block-driven layout for this public destination page. Empty uses the current default layout.',
+        initCollapsed: true,
+      },
+    },
     { name: 'featured', type: 'checkbox', defaultValue: false },
     { name: 'active', type: 'checkbox', defaultValue: false },
     seoFields,

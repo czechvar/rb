@@ -3,6 +3,7 @@ import { anyone, isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
 import { revalidateOnChange } from './hooks/revalidate'
+import { eventLayoutBlocks } from '../blocks'
 import { TAGS } from '@/lib/cache'
 
 export const Events: CollectionConfig = {
@@ -29,6 +30,16 @@ export const Events: CollectionConfig = {
     { name: 'mainPicture', type: 'upload', relationTo: 'media' },
     { name: 'gallery', type: 'upload', relationTo: 'media', hasMany: true },
     { name: 'vimeoId', type: 'text' },
+    {
+      name: 'layout',
+      type: 'blocks',
+      label: 'Trip page layout',
+      blocks: eventLayoutBlocks,
+      admin: {
+        description: 'Optional block-driven layout for this public trip page. Empty uses the current default layout.',
+        initCollapsed: true,
+      },
+    },
 
     // Taxonomies
     {

@@ -18,6 +18,7 @@ import { LinkedEvents } from '@/components/sections/LinkedEvents'
 import { HowToBook } from '@/components/sections/HowToBook'
 import { WhyRockbusters } from '@/components/sections/WhyRockbusters'
 import { FinalCTA } from '@/components/sections/FinalCTA'
+import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -33,6 +34,22 @@ export default async function ProgramPage({ params }: Props) {
   })
   const program = programDocs[0]
   if (!program) notFound()
+
+  if (program.layout?.length) {
+    return (
+      <MarketingShell
+        crumbs={[
+          { href: '/', label: 'Home' },
+          { href: '/programs', label: 'Programs' },
+          { label: program.name },
+        ]}
+      >
+        <main>
+          <RenderBlocks blocks={program.layout} context={{ program }} />
+        </main>
+      </MarketingShell>
+    )
+  }
 
   const [events, faqsResult, reviewsResult] = await Promise.all([
     getPublishedEventsForProgram(program.id),

@@ -1,11 +1,15 @@
 .section {
-  /* Light-background overrides for the global .section-title / .section-label */
-  --rb-section-title-color: var(--rb-black);
-  --rb-eyebrow-color: var(--rb-red);
-
   padding: var(--rb-section-pad);
   background: var(--rb-white);
   color: var(--rb-black);
+}
+
+.section :global(.section-title) {
+  color: var(--theme-color-ink);
+}
+
+.section :global(.section-label) {
+  color: var(--theme-color-primary);
 }
 
 .grid {

@@ -1,158 +1,6 @@
-/* ===== Design tokens ============================================== */
-/* Ported from snowbusters vars.css, rebranded for rockbusters.
-   Convention: --rem-base: 10px so 1rem = 10px in this stylesheet. */
+@import './theme.css';
 
-:root {
-  /* ============================================================
-     ROCKBUSTERS DESIGN SYSTEM — wireframe-driven (2026-06-25)
-     Brand red #E30713 · Off-white #F0EDE6 · Dark #0D0D0D
-     ============================================================ */
-  --rb-red:        #e30713;
-  --rb-red-hover:  #c0050f;
-  --rb-red-dim:    rgba(227, 7, 19, 0.08);
-  --rb-red-border: rgba(227, 7, 19, 0.28);
-  --rb-black:      #0d0d0d;
-  --rb-dark:       #111111;
-  --rb-darker:     #0a0a0a;
-  --rb-white:      #f0ede6;
-  --rb-white-80:   rgba(240, 237, 230, 0.80);
-  --rb-white-60:   rgba(240, 237, 230, 0.60);
-  --rb-white-52:   rgba(240, 237, 230, 0.52);
-  --rb-white-45:   rgba(240, 237, 230, 0.45);
-  --rb-white-30:   rgba(240, 237, 230, 0.30);
-  --rb-white-12:   rgba(240, 237, 230, 0.12);
-  --rb-white-08:   rgba(240, 237, 230, 0.08);
-
-  --fs-eyebrow:    11px;
-  --fs-body-sm:    13px;
-  --fs-body:       15px;
-  --fs-body-lg:    17px;
-  --fs-card-title: 16px;
-
-  --rb-section-pad: 90px 5%;
-  --rb-card-pad:    36px 28px;
-
-  /* Status */
-  --colInfo: #29b6f6;
-  --colOk: #66bb6a;
-  --colWarning: #ffa726;
-  --colError: #f44336;
-
-  /* Type scale — 1rem = 10px */
-  --rem-base: 10px;
-
-  /* H1 (display) */
-  --h1FontSize: 12rem;
-  --h1LineHeight: 11rem;
-  --h1MarginBottom: 2rem;
-  --h1PaddingTop: 4rem;
-  --h1PaddingBottom: 2rem;
-
-  /* H2 */
-  --h2FontSize: 4.1rem;
-  --h2LineHeight: 4.8rem;
-  --h2MarginBottom: 1.5rem;
-  --h2PaddingTop: 3rem;
-  --h2PaddingBottom: 1.5rem;
-
-  /* H3 */
-  --h3FontSize: 3.6rem;
-  --h3LineHeight: 3.8rem;
-  --h3MarginBottom: 1.5rem;
-  --h3PaddingTop: 2.5rem;
-  --h3PaddingBottom: 1rem;
-
-  /* H4 */
-  --h4FontSize: 2.4rem;
-  --h4LineHeight: 2.6rem;
-  --h4MarginBottom: 1rem;
-
-  /* H5 */
-  --h5FontSize: 2rem;
-  --h5LineHeight: 2rem;
-  --h5MarginBottom: 1rem;
-
-  /* Eyebrow / label */
-  --eyebrowFontSize: 1.6rem;
-  --eyebrowLineHeight: 2.8rem;
-  --eyebrowMarginBottom: 0.5rem;
-  --eyebrowLetterSpacing: 0.8rem;
-
-  /* Body */
-  --pFontSize: 2rem;
-  --textLineHeight: 2.8rem;
-  --smallTextFontSize: 1.4rem;
-  --smallTextLineHeight: 1.8rem;
-
-  /* Header */
-  --headerContactsHeight: 4.5rem;
-  --headerHeight: 4.4rem;
-  --headerTotalHeight: calc(var(--headerContactsHeight) + var(--headerHeight) + 2rem);
-  --headerDividerWidth: 350px;
-  --headerDividerMaxWidth: 65vw;
-  --headerDividerHeight: 2px;
-  --headerBg: rgba(43, 12, 12, 0.55);   /* dark wine red, semi-transparent */
-  --headerBgScrolled: rgba(43, 12, 12, 0.85);
-
-  /* Layout */
-  --contentPadding: 3rem;
-  --contentMaxWidth: 1920px;
-  --contentTextMaxWidth: 1484px;
-  --gap: 1rem;
-
-  /* Section rhythm (Figma round 2) — placeholder values, refine against Figma */
-  --sectionGapLg: 12rem;
-  --sectionGapMd: 8rem;
-  --sectionGapSm: 4rem;
-
-  /* Motion */
-  --transitionTimeBase: 0.3s;
-
-  /* Breakpoints — for reference; actual breakpoints live in @media queries */
-  --breakpointSmall: 500px;
-  --breakpointMid: 768px;
-  --breakpointLarge: 1200px;
-  --breakpointExtraLarge: 1440px;
-}
-
-@media screen and (max-width: 767px) {
-  :root {
-    --h1FontSize: 5rem;
-    --h1LineHeight: 5rem;
-    --h1PaddingTop: 2rem;
-    --h1PaddingBottom: 1rem;
-    --h2FontSize: 3.6rem;
-    --h2LineHeight: 3.8rem;
-    --h3FontSize: 2.4rem;
-    --h3LineHeight: 2.6rem;
-    --h4FontSize: 2rem;
-    --h4LineHeight: 2.2rem;
-    --h5FontSize: 1.8rem;
-    --h5LineHeight: 2rem;
-    --eyebrowFontSize: 1.2rem;
-    --eyebrowLineHeight: 1.2rem;
-    --eyebrowLetterSpacing: 0.4rem;
-    --pFontSize: 1.6rem;
-    --textLineHeight: 2.4rem;
-    --headerDividerWidth: 250px;
-    --sectionGapLg: 8rem;
-    --sectionGapMd: 5rem;
-    --sectionGapSm: 3rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  :root {
-    --contentPadding: 4rem;
-    --gap: 1.5rem;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  :root {
-    --gap: 2rem;
-  }
-}
+/* ===== Frontend base =============================================== */
 
 /* ===== Reset + base ================================================ */
 
@@ -176,8 +24,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--rb-white);
-  color: #515151;
+  background: var(--theme-color-page-bg);
+  color: var(--theme-color-page-text);
 }
 
 body,
@@ -185,7 +33,7 @@ button,
 input,
 textarea,
 select {
-  font-family: var(--font-body), 'Inter', system-ui, sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 1.6rem;
   font-weight: 400;
   line-height: var(--textLineHeight);
@@ -196,9 +44,9 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: var(--font-heading, 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif);
+  font-family: var(--theme-font-heading);
   font-weight: 500;
-  color: var(--rb-black);
+  color: var(--theme-color-ink);
 }
 
 h1 {
@@ -250,11 +98,11 @@ a {
 }
 
 a:hover {
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
 }
 
 a:focus-visible {
-  outline: 2px solid var(--rb-red);
+  outline: 2px solid var(--theme-color-focus);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -296,7 +144,7 @@ ol {
 }
 
 .eyebrow {
-  font-family: var(--font-body, 'Lato', sans-serif);
+  font-family: var(--theme-font-body);
   font-size: var(--eyebrowFontSize);
   line-height: var(--eyebrowLineHeight);
   letter-spacing: var(--eyebrowLetterSpacing);
@@ -316,7 +164,7 @@ ol {
 /* ===== Wireframe helper classes ============================== */
 
 .section-title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-display);
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.005em;
@@ -326,7 +174,7 @@ ol {
 
 .section-label,
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-eyebrow);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -342,7 +190,7 @@ ol {
   align-items: center;
   gap: 10px;
   padding: 14px 28px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.16em;
@@ -352,14 +200,14 @@ ol {
   text-decoration: none;
   transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
-.btn-primary  { background: var(--rb-red);   color: var(--rb-white); }
-.btn-primary:hover { background: var(--rb-red-hover); }
-.btn-ghost    { background: transparent; color: var(--rb-white); border-color: var(--rb-white-30); }
-.btn-ghost:hover { border-color: var(--rb-white); }
-.btn-dark     { background: var(--rb-black); color: var(--rb-white); }
-.btn-dark:hover { background: #000; color: var(--rb-white); }
-.btn-outline-dark { background: transparent; color: var(--rb-black); border-color: var(--rb-black); }
-.btn-outline-dark:hover { background: var(--rb-black); color: var(--rb-white); }
+.btn-primary  { background: var(--theme-color-primary); color: var(--theme-color-paper); }
+.btn-primary:hover { background: var(--theme-color-primary-hover); }
+.btn-ghost    { background: transparent; color: var(--theme-color-paper); border-color: var(--theme-color-paper-30); }
+.btn-ghost:hover { border-color: var(--theme-color-paper); }
+.btn-dark     { background: var(--theme-color-ink); color: var(--theme-color-paper); }
+.btn-dark:hover { background: #000; color: var(--theme-color-paper); }
+.btn-outline-dark { background: transparent; color: var(--theme-color-ink); border-color: var(--theme-color-ink); }
+.btn-outline-dark:hover { background: var(--theme-color-ink); color: var(--theme-color-paper); }
 
 /* ===== Reveal-on-scroll animation (CSS-only, no IO observer) ===== */
 @media (prefers-reduced-motion: no-preference) {

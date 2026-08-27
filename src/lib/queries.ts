@@ -11,7 +11,40 @@ import type {
   Faq,
   Partner,
   Media,
+  Page,
 } from '@/payload-types'
+
+// --- CMS pages ----------------------------------------------------------
+
+export function getPublishedPageBySlug(slug: string) {
+  return cachedQuery(
+    ['page-by-slug', slug],
+    [
+      TAGS.pages,
+      TAGS.events,
+      TAGS.eventDates,
+      TAGS.faqs,
+      TAGS.guides,
+      TAGS.locations,
+      TAGS.media,
+      TAGS.partners,
+      TAGS.posts,
+      TAGS.postCategories,
+      TAGS.programs,
+      TAGS.reviews,
+    ],
+    async (): Promise<Page | null> => {
+      const payload = await getPayloadClient()
+      const { docs } = await payload.find({
+        collection: 'pages',
+        where: { and: [{ slug: { equals: slug } }, { status: { equals: 'published' } }] },
+        limit: 1,
+        depth: 2,
+      })
+      return docs[0] ?? null
+    },
+  )
+}
 
 // --- Guides / team -------------------------------------------------------
 
@@ -257,7 +290,7 @@ const HOMEPAGE_HERO_MEDIA_ID = process.env.HOMEPAGE_HERO_MEDIA_ID
 export function getHomepageHeroMedia() {
   return cachedQuery(
     ['homepage-hero-media', String(HOMEPAGE_HERO_MEDIA_ID)],
-    [TAGS.events],
+    [TAGS.media],
     async (): Promise<Media | null> => {
       if (!HOMEPAGE_HERO_MEDIA_ID) return null
       const payload = await getPayloadClient()
@@ -312,7 +345,7 @@ export function getFounderGuide() {
 }
 
 export function getHomepagePartners() {
-  return cachedQuery(['homepage-partners'], [TAGS.events], async (): Promise<Partner[]> => {
+  return cachedQuery(['homepage-partners'], [TAGS.partners], async (): Promise<Partner[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'partners',
@@ -327,7 +360,7 @@ export function getHomepagePartners() {
 }
 
 export function getHomepageFAQs() {
-  return cachedQuery(['homepage-faqs'], [TAGS.events], async (): Promise<Faq[]> => {
+  return cachedQuery(['homepage-faqs'], [TAGS.faqs], async (): Promise<Faq[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'faqs',
@@ -346,7 +379,7 @@ export function getHomepageFAQs() {
 }
 
 export function getHomepageReviews() {
-  return cachedQuery(['homepage-reviews'], [TAGS.events], async (): Promise<Review[]> => {
+  return cachedQuery(['homepage-reviews'], [TAGS.reviews], async (): Promise<Review[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'reviews',

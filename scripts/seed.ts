@@ -12,9 +12,32 @@
  */
 import 'dotenv/config'
 import { getPayload, type Payload, type CollectionSlug, type Where } from 'payload'
+import sharp from 'sharp'
 import config from '../src/payload.config'
+import {
+  BLOCK_DEMO_MEDIA_FILENAME,
+  BLOCK_DEMO_PAGE_SLUG,
+  BLOCK_DEMO_MARKER,
+} from '../src/lib/block-demo'
 
 type Ref = { id: number }
+
+const demoMediaSvg = `
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#0d0d0d"/>
+  <path d="M0 0h1600v900H0z" fill="#111"/>
+  <circle cx="1280" cy="190" r="220" fill="#e30713" opacity=".18"/>
+  <circle cx="280" cy="760" r="260" fill="#e30713" opacity=".12"/>
+  <path d="M160 660 420 330l180 220 130-170 210 280H160Z" fill="#f0ede6" opacity=".9"/>
+  <path d="M610 660 780 430l110 150 80-105 140 185H610Z" fill="#f0ede6" opacity=".55"/>
+  <text x="160" y="170" fill="#e30713" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="8">CMS PAGE BUILDER</text>
+  <text x="160" y="250" fill="#f0ede6" font-family="Arial Black, Impact, sans-serif" font-size="86" font-weight="900">ROCKBUSTERS</text>
+  <text x="160" y="320" fill="#f0ede6" font-family="Arial, sans-serif" font-size="34" opacity=".76">Reusable React blocks with safe Payload data bindings</text>
+</svg>`
+
+async function demoPng() {
+  return sharp(Buffer.from(demoMediaSvg)).png().toBuffer()
+}
 
 async function ensure(
   payload: Payload,
@@ -61,6 +84,51 @@ async function upsert(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const created = await payload.create({ collection, data: data as any })
   console.log(`  ✓ create ${collection.padEnd(13)} ${label}`)
+  return created as Ref
+}
+
+async function ensureMedia(
+  payload: Payload,
+  args: {
+    filename: string
+    alt: string
+    label: string
+  },
+): Promise<Ref> {
+  const png = await demoPng()
+  const existing = await payload.find({
+    collection: 'media',
+    where: { filename: { equals: args.filename } },
+    limit: 1,
+    depth: 0,
+  })
+  if (existing.docs[0]) {
+    const updated = await payload.update({
+      collection: 'media',
+      id: existing.docs[0].id,
+      data: { alt: args.alt },
+      file: {
+        data: png,
+        mimetype: 'image/png',
+        name: args.filename,
+        size: png.length,
+      },
+    })
+    console.log(`  ✎ update ${'media'.padEnd(13)} ${args.label}`)
+    return updated as Ref
+  }
+
+  const created = await payload.create({
+    collection: 'media',
+    data: { alt: args.alt },
+    file: {
+      data: png,
+      mimetype: 'image/png',
+      name: args.filename,
+      size: png.length,
+    },
+  })
+  console.log(`  ✓ create ${'media'.padEnd(13)} ${args.label}`)
   return created as Ref
 }
 
@@ -225,9 +293,53 @@ async function main() {
       slug: 'climbing-camps',
       shortDescription:
         'Maximum time on rock, pushing the limits, 100% fun — run by IFMGA / UIAGM guides and IFSC-level coaches.',
+      content: richText(
+        'Climbing Camps are structured weeks for climbers who want focused coaching, strong logistics, and maximum useful time on real rock.',
+        'Each camp combines movement coaching, tactical feedback, safety refreshers, and enough space for the group to chase individual goals.',
+      ),
       active: true,
       featured: true,
       state: 'published',
+      layout: [
+        { blockType: 'programHero' },
+        {
+          blockType: 'programHighlights',
+          heading: 'Why choose a Rockbusters camp',
+        },
+        { blockType: 'programAudience' },
+        { blockType: 'programCurriculum' },
+        { blockType: 'programFlow' },
+        { blockType: 'programWeeks' },
+        { blockType: 'programLogistics' },
+        { blockType: 'programCoaches' },
+        { blockType: 'programResults' },
+        {
+          blockType: 'tripGrid',
+          eyebrow: 'Trips in this program',
+          heading: 'Choose your camp',
+          intro: 'This trip grid reuses Event records through the current Program context.',
+          source: 'byProgram',
+          limit: 6,
+          variant: 'cards',
+        },
+        {
+          blockType: 'faq',
+          eyebrow: 'Program details',
+          heading: 'Questions about climbing camps',
+          source: 'byProgram',
+          limit: 6,
+          variant: 'singleColumn',
+        },
+        {
+          blockType: 'reviewGrid',
+          eyebrow: 'Program proof',
+          heading: 'What repeat campers say',
+          source: 'byProgram',
+          limit: 3,
+          variant: 'cards',
+        },
+        { blockType: 'programCTA' },
+      ],
       highlights: [
         { text: 'Up to 4 climbers per coach' },
         { text: 'Daily video movement analysis' },
@@ -256,6 +368,76 @@ async function main() {
         { text: 'Lead-climbing confidence and safety' },
         { text: 'A take-home training plan' },
       ],
+      curriculumPillars: [
+        {
+          icon: '↗',
+          title: 'Movement',
+          bullets: [
+            { text: 'Footwork, body position, and pacing on real rock' },
+            { text: 'Video-backed feedback from the coaching team' },
+          ],
+        },
+        {
+          icon: '✓',
+          title: 'Safety',
+          bullets: [
+            { text: 'Lead belay refreshers and outdoor systems' },
+            { text: 'Risk checks for routes, anchors, and partners' },
+          ],
+        },
+        {
+          icon: '★',
+          title: 'Performance',
+          bullets: [
+            { text: 'Tactics for onsight, flash, and redpoint attempts' },
+            { text: 'One clear goal for the week and a plan afterwards' },
+          ],
+        },
+      ],
+      flow: {
+        framingParagraph:
+          'Every day has a coaching focus, but the exact plan adapts to weather, skin, fatigue, and what the group needs most.',
+        mixAndMatchBlocks: [
+          {
+            title: 'Morning movement session',
+            tagline: 'Warm up with drills that carry directly into the day.',
+            bullets: [{ text: 'Footwork ladders' }, { text: 'Route-reading exercises' }],
+          },
+          {
+            title: 'Project tactics',
+            tagline: 'Apply the coaching on routes that are hard enough to teach something.',
+            bullets: [{ text: 'Clip positions' }, { text: 'Resting and pacing decisions' }],
+          },
+        ],
+        tailoredToYou: [
+          { text: 'Volume adjusted to the group and weather' },
+          { text: 'Individual feedback every climbing day' },
+        ],
+        focusTracks: [
+          {
+            title: 'First outdoor leads',
+            colorTag: 'green',
+            bullets: [{ text: 'Clean falls, anchors, and route choice' }],
+          },
+          {
+            title: 'Break the plateau',
+            colorTag: 'red',
+            bullets: [{ text: 'Technique limiters and tactical misses' }],
+          },
+        ],
+      },
+      weekVariants: [
+        {
+          title: 'One week',
+          bullets: [{ text: 'Focused coaching sprint' }, { text: 'Ideal for one clear goal' }],
+        },
+        {
+          title: 'Two weeks',
+          bullets: [{ text: 'More climbing mileage' }, { text: 'Space for rest and consolidation' }],
+        },
+      ],
+      weekRecommendation:
+        'Choose one week for a focused reset; choose two when you want a deeper progression block.',
     },
     label: 'climbing-camps',
   })
@@ -297,7 +479,7 @@ async function main() {
     },
     label: 'frankenjura',
   })
-  const locMallorca = await ensure(payload, {
+  const locMallorca = await upsert(payload, {
     collection: 'locations',
     where: { slug: { equals: 'mallorca' } },
     data: {
@@ -310,6 +492,53 @@ async function main() {
       city: 'Porto Cristo',
       country: 'Spain',
       coordinates: [3.33, 39.54],
+      layout: [
+        { blockType: 'locationHero' },
+        {
+          blockType: 'locationContent',
+          eyebrow: 'Destination',
+          heading: 'Climbing on Mallorca',
+        },
+        {
+          blockType: 'tripGrid',
+          eyebrow: 'Trips here',
+          heading: 'Mallorca trips',
+          intro:
+            'This grid resolves published Event records through the current Location context.',
+          source: 'byLocation',
+          limit: 6,
+          variant: 'cards',
+        },
+        {
+          blockType: 'locationMap',
+          heading: 'Where we base the camp',
+        },
+        {
+          blockType: 'faq',
+          eyebrow: 'Destination notes',
+          heading: 'Mallorca planning notes',
+          source: 'inline',
+          items: [
+            {
+              question: 'Why does Mallorca work for mixed climbing weeks?',
+              answer: richText(
+                'The island gives us both psicobloc and bolted sport climbing, so we can adapt the plan to sea conditions, wind, and group goals.',
+              ),
+            },
+          ],
+          limit: 3,
+          variant: 'singleColumn',
+        },
+        {
+          blockType: 'cta',
+          eyebrow: 'Ready for the island',
+          heading: 'Find the next Mallorca trip',
+          body: 'Use the destination page as a reusable entry point into the trip catalogue.',
+          variant: 'dark',
+          primaryAction: { label: 'View calendar', href: '/calendar' },
+          secondaryAction: { label: 'Ask a question', href: '/contact' },
+        },
+      ],
       active: true,
     },
     label: 'mallorca',
@@ -390,7 +619,7 @@ async function main() {
 
   console.log('— posts —')
 
-  await ensure(payload, {
+  const postTicino = await upsert(payload, {
     collection: 'posts',
     where: { slug: { equals: 'ticino-switzerland-granite-perfection' } },
     data: {
@@ -405,10 +634,47 @@ async function main() {
       author: 'Rockbusters',
       publishedAt: '2026-05-01T09:00:00.000Z',
       state: 'published',
+      layout: [
+        { blockType: 'postHero' },
+        { blockType: 'postBody' },
+        {
+          blockType: 'relatedPosts',
+          heading: 'More destination stories',
+          limit: 3,
+        },
+        {
+          blockType: 'tripGrid',
+          eyebrow: 'Trips',
+          heading: 'Turn inspiration into a trip',
+          intro: 'This post layout can reuse catalogue blocks without duplicating trip content.',
+          source: 'featured',
+          limit: 3,
+          variant: 'cards',
+        },
+        { blockType: 'postCTA' },
+      ],
     },
     label: 'ticino post',
   })
-  await ensure(payload, {
+  await upsert(payload, {
+    collection: 'posts',
+    where: { slug: { equals: 'kalymnos-greece-sport-climbing-season' } },
+    data: {
+      title: 'Kalymnos, Greece: Sport Climbing Season Notes',
+      slug: 'kalymnos-greece-sport-climbing-season',
+      excerpt: 'How to pick the right season, sector, and rest-day rhythm for a Kalymnos climbing week.',
+      content: richText(
+        'Kalymnos is a sport-climbing island with short approaches, steep limestone, and reliable shoulder-season conditions.',
+        'A good week balances shaded sectors, rest days, and routes that match the group instead of chasing only famous walls.',
+      ),
+      category: postCategories['climbing-destinations'].id,
+      author: 'Rockbusters',
+      publishedAt: '2026-04-18T09:00:00.000Z',
+      state: 'published',
+    },
+    label: 'kalymnos post',
+  })
+  const postTraining = await ensure(payload, {
     collection: 'posts',
     where: { slug: { equals: 'the-benefits-of-training-for-your-climbing-trip' } },
     data: {
@@ -459,7 +725,8 @@ async function main() {
     data: { name: 'Barcelona El Prat', iata: 'BCN', country: 'Spain', continent: 'Europe', size: 4, active: true },
     label: 'BCN',
   })
-  // keep airBCN around for potential future Cavallers events
+  // keep these references around for potential future seeded events
+  void airPRG
   void airBCN
 
   console.log('— guides —')
@@ -507,6 +774,16 @@ async function main() {
       heroSub:
         '25 years on rock, one relentless mission: help you climb better, harder, and more. Jany founded Rockbusters and still coaches every discipline himself — from first lead to your hardest redpoint.',
       heroCaption: 'Jany · Pince Sans Rire 7b+',
+      layout: [
+        { blockType: 'guideHero' },
+        { blockType: 'guideStats' },
+        { blockType: 'guideAbout' },
+        { blockType: 'guidePillars' },
+        { blockType: 'guideTripsSection' },
+        { blockType: 'guideAchievements' },
+        { blockType: 'guideTestimonial' },
+        { blockType: 'guideCTA' },
+      ],
       stats: [
         { value: '25+', label: 'Years Climbing & Coaching' },
         { value: '8b+', label: 'Personal Redpoint Grade' },
@@ -575,7 +852,35 @@ async function main() {
     },
     label: 'jany',
   })
-  void guideJany
+
+  console.log('— partners —')
+
+  const partnerYY = await ensure(payload, {
+    collection: 'partners',
+    where: { slug: { equals: 'yy-vertical' } },
+    data: {
+      name: 'YY Vertical',
+      slug: 'yy-vertical',
+      link: 'https://www.yyvertical.com',
+      description: richText('Training gear and belay glasses used by Rockbusters coaches.'),
+      active: true,
+      featured: true,
+    },
+    label: 'yy-vertical',
+  })
+  const partnerOcun = await ensure(payload, {
+    collection: 'partners',
+    where: { slug: { equals: 'ocun' } },
+    data: {
+      name: 'Ocún',
+      slug: 'ocun',
+      link: 'https://www.ocun.com',
+      description: richText('Czech climbing hardware and apparel partner.'),
+      active: true,
+      featured: true,
+    },
+    label: 'ocun',
+  })
 
   console.log('— events —')
 
@@ -644,6 +949,40 @@ async function main() {
       locations: [locMallorca.id],
       coaches: [guideKlemen.id],
       transport: { airports: [airPMI.id] },
+      layout: [
+        { blockType: 'tripHero' },
+        { blockType: 'tripPitch' },
+        {
+          blockType: 'tripHighlights',
+          heading: 'Why this trip works',
+        },
+        {
+          blockType: 'tripDates',
+          heading: 'Available weeks',
+        },
+        {
+          blockType: 'faq',
+          eyebrow: 'Trip details',
+          heading: 'Questions for this trip',
+          source: 'byEvent',
+          limit: 6,
+          variant: 'singleColumn',
+        },
+        {
+          blockType: 'reviewGrid',
+          eyebrow: 'Climber results',
+          heading: 'What guests say',
+          source: 'byEvent',
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'tripBookingCTA',
+          eyebrow: 'Ready for deep water',
+          heading: 'Book the Mallorca camp',
+          body: 'This call-to-action is a reusable trip block bound to the current Event.',
+        },
+      ],
       highlights: [
         { text: 'DWS classics on Cala Magraner / Cova del Diablo' },
         { text: 'Backup sport days at S’Estret' },
@@ -821,6 +1160,22 @@ async function main() {
     })
   }
 
+  const featuredEventDate = await payload.find({
+    collection: 'event-dates',
+    where: {
+      and: [
+        { event: { equals: evDeepBlue.id } },
+        { dateFrom: { equals: '2026-09-12' } },
+      ],
+    },
+    limit: 1,
+    depth: 0,
+  })
+  const featuredEventDateRef = featuredEventDate.docs[0] as Ref | undefined
+  if (!featuredEventDateRef) {
+    throw new Error('Expected seeded Deep Blue September event date to exist')
+  }
+
   console.log('— reviews —')
 
   const reviews: Array<{
@@ -920,6 +1275,15 @@ async function main() {
       position: 3,
     },
     {
+      tag: 'program-camps-format',
+      question: 'How are the climbing camps structured?',
+      answer: richText(
+        'Each camp has a daily coaching focus, but the exact routes and volume are adapted to conditions, fatigue, and the group goals.',
+      ),
+      program: programCamps.id,
+      position: 1,
+    },
+    {
       tag: 'sport-basics-prereq',
       question: 'Is this beginner-friendly if I have only ever climbed indoors?',
       answer: richText(
@@ -957,6 +1321,432 @@ async function main() {
       label: tag,
     })
   }
+
+  console.log('— cms pages —')
+
+  const demoMedia = await ensureMedia(payload, {
+    filename: BLOCK_DEMO_MEDIA_FILENAME,
+    alt: 'Climber on a Rockbusters course',
+    label: BLOCK_DEMO_MARKER,
+  })
+
+  await upsert(payload, {
+    collection: 'pages',
+    where: { slug: { equals: BLOCK_DEMO_PAGE_SLUG } },
+    data: {
+      title: 'CMS Page Builder POC',
+      slug: BLOCK_DEMO_PAGE_SLUG,
+      status: 'published',
+      seo: {
+        title: 'CMS Page Builder POC - Rockbusters',
+        description:
+          'A Payload CMS composed page proving reusable React blocks and safe data bindings.',
+      },
+      layout: [
+        {
+          blockType: 'hero',
+          eyebrow: 'Payload CMS page builder',
+          heading: 'Build campaign pages from approved blocks',
+          body:
+            'This page is seeded from Payload and rendered by reusable React blocks, not hardcoded route composition.',
+          variant: 'simple',
+          primaryAction: {
+            label: 'View trips',
+            href: '/programs',
+          },
+        },
+        {
+          blockType: 'section-intro',
+          eyebrow: 'Generic content',
+          heading: 'Compose pages from small reusable sections',
+          body:
+            'Editors can mix structured content blocks with data-bound catalogue blocks while React keeps presentation consistent.',
+          alignment: 'center',
+        },
+        {
+          blockType: 'rich-text',
+          eyebrow: 'Editorial copy',
+          heading: 'Long-form CMS content without a custom route',
+          content: richText(
+            'The rich text block covers copy-heavy sections that do not need a bespoke component. It keeps the CMS page-builder useful for campaign, landing, and support pages.',
+            'When a block needs domain data, it should use an explicit relationship or resolver rather than free-form embeds.',
+          ),
+          width: 'standard',
+        },
+        {
+          blockType: 'stats',
+          eyebrow: 'Proof points',
+          heading: 'Reusable metrics for trust-building sections',
+          body: 'Stats stay structured, so they can be restyled or reused without parsing editor copy.',
+          items: [
+            { value: '12', label: 'Core block slots', body: 'Grouped by content, commerce, catalogue, media, and social proof.' },
+            { value: '3', label: 'Bound trips', body: 'Resolved through approved Event relationships.' },
+            { value: '1', label: 'Cleanup marker', body: 'Seeded POC content remains reversible.' },
+          ],
+          variant: 'light',
+        },
+        {
+          blockType: 'tripGrid',
+          eyebrow: 'Data-bound trips',
+          heading: 'Manually curated trips resolved from Events',
+          intro:
+            'Editors choose approved Event relationships; the app resolves published Events and active Event Dates.',
+          source: 'manual',
+          events: [evSport.id, evDeepBlue.id, evDolomites.id],
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'programGrid',
+          eyebrow: 'Program binding',
+          heading: 'Programs selected from the CMS catalogue',
+          intro:
+            'Editors can promote active published Programs without copying their descriptions into page content.',
+          source: 'manual',
+          programs: [programCamps.id],
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'locationGrid',
+          eyebrow: 'Location binding',
+          heading: 'Locations power destination sections',
+          intro:
+            'Locations stay canonical records; the page block chooses whether to show manual picks, featured crags, or one country.',
+          source: 'manual',
+          locations: [locFrankenjura.id, locMallorca.id, locDolomites.id],
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'guideGrid',
+          eyebrow: 'Guide binding',
+          heading: 'Team cards from Guide records',
+          intro:
+            'Guide data is reused directly from the People collection, keeping names, roles, and profile links consistent.',
+          source: 'manual',
+          guides: [guideKlemen.id, guideMarek.id, guideJany.id],
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'postGrid',
+          eyebrow: 'Post binding',
+          heading: 'Latest stories from the blog',
+          intro:
+            'Post blocks can show manual picks, latest published writing, or one post category without duplicating editorial text.',
+          source: 'manual',
+          posts: [postTicino.id, postTraining.id],
+          limit: 2,
+          variant: 'cards',
+        },
+        {
+          blockType: 'calendar',
+          eyebrow: 'Calendar binding',
+          heading: 'Upcoming scheduled trip dates',
+          intro:
+            'Calendar blocks read active Event Date records and only render dates whose Event is published.',
+          source: 'upcoming',
+          limit: 4,
+          variant: 'compact',
+        },
+        {
+          blockType: 'featuredTrip',
+          eyebrow: 'Single trip card',
+          heading: 'One manually selected trip',
+          intro:
+            'Single-card blocks reuse the same trip card renderer as Trip Grid, but give editors a focused promo slot.',
+          source: 'manual',
+          event: evDeepBlue.id,
+          variant: 'feature',
+        },
+        {
+          blockType: 'featuredProgram',
+          eyebrow: 'Single program card',
+          heading: 'One manually selected program',
+          intro:
+            'Program grids and featured program promos stay visually aligned because they share the same catalogue card renderer.',
+          source: 'manual',
+          program: programCamps.id,
+          variant: 'card',
+        },
+        {
+          blockType: 'featuredLocation',
+          eyebrow: 'Single location card',
+          heading: 'One manually selected destination',
+          intro:
+            'Location cards can be used as a single destination promo without forcing a full grid section.',
+          source: 'manual',
+          location: locMallorca.id,
+          variant: 'mediaLed',
+        },
+        {
+          blockType: 'featuredGuide',
+          eyebrow: 'Single guide card',
+          heading: 'One manually selected guide',
+          intro:
+            'Guide promos can appear in campaign pages while still linking to the canonical guide profile.',
+          source: 'manual',
+          guide: guideKlemen.id,
+          variant: 'compact',
+        },
+        {
+          blockType: 'featuredPost',
+          eyebrow: 'Single post card',
+          heading: 'One manually selected article',
+          intro:
+            'Editorial promos reuse the same post card shape as Post Grid for consistent blog discovery.',
+          source: 'manual',
+          post: postTraining.id,
+          variant: 'card',
+        },
+        {
+          blockType: 'featuredEventDate',
+          eyebrow: 'Single departure card',
+          heading: 'One manually selected event date',
+          intro:
+            'Date-specific offers can point directly at one active Event Date while rendering the linked trip details.',
+          eventDate: featuredEventDateRef.id,
+          variant: 'card',
+        },
+        {
+          blockType: 'partnerStrip',
+          eyebrow: 'Partner binding',
+          heading: 'Partner records without custom markup',
+          intro:
+            'Partner strips reuse active Partner records, with the CMS selecting featured or manual partner sets.',
+          source: 'manual',
+          partners: [partnerYY.id, partnerOcun.id],
+          limit: 4,
+          variant: 'logos',
+        },
+        {
+          blockType: 'guideProfile',
+          eyebrow: 'Guide profile binding',
+          heading: 'Single guide profile from the People collection',
+          intro:
+            'Guide profile blocks make coach profile promos reusable across campaign and future guide pages.',
+          source: 'manual',
+          guide: guideJany.id,
+          variant: 'feature',
+        },
+        {
+          blockType: 'guideTrips',
+          eyebrow: 'Guide trips binding',
+          heading: 'Trips connected to a selected Guide',
+          intro:
+            'GuideTrips resolves published Events where the selected Guide is assigned as part of the delivery team.',
+          source: 'byGuide',
+          guide: guideKlemen.id,
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'mediaBlock',
+          eyebrow: 'Media relationship',
+          heading: 'Payload media drives the visual block',
+          body:
+            'The block stores a relationship to the Media collection while React owns sizing, alt text, and responsive rendering.',
+          source: 'upload',
+          media: demoMedia.id,
+          caption: 'Seeded media fixture for the CMS page-builder proof of concept.',
+          variant: 'contained',
+        },
+        {
+          blockType: 'gallery',
+          eyebrow: 'Gallery',
+          heading: 'Reusable image groups',
+          body:
+            'Gallery blocks use Payload Media relationships and let the component decide responsive layout.',
+          images: [demoMedia.id],
+          variant: 'grid',
+        },
+        {
+          blockType: 'video',
+          eyebrow: 'Video',
+          heading: 'Safe external video embeds',
+          body:
+            'Video blocks accept only known HTTPS video hosts before rendering an iframe.',
+          videoUrl: 'https://vimeo.com/123456',
+          caption: 'External video fixture for CMS block rendering.',
+          variant: 'contained',
+        },
+        {
+          blockType: 'reviewGrid',
+          eyebrow: 'Review binding',
+          heading: 'Social proof from Review records',
+          intro:
+            'Review blocks can use global reviews or bind testimonials to a specific Event or Program.',
+          source: 'byProgram',
+          program: programCamps.id,
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'faq',
+          eyebrow: 'Reusable answers',
+          heading: 'Global FAQs from the FAQ collection',
+          source: 'global',
+          limit: 3,
+          variant: 'twoColumn',
+        },
+        {
+          blockType: 'cta',
+          eyebrow: 'Editor-managed CTA',
+          heading: 'One reusable call to action, many pages',
+          body:
+            'The CMS controls copy and links; the design system controls layout, accessibility, and visual consistency.',
+          variant: 'red',
+          primaryAction: {
+            label: 'Open admin',
+            href: '/admin/collections/pages',
+          },
+          secondaryAction: {
+            label: 'See homepage',
+            href: '/',
+          },
+        },
+      ],
+    },
+    label: BLOCK_DEMO_MARKER,
+  })
+  await upsert(payload, {
+    collection: 'pages',
+    where: { slug: { equals: 'home' } },
+    data: {
+      title: 'Home',
+      slug: 'home',
+      status: 'published',
+      layout: [
+        {
+          blockType: 'hero',
+          eyebrow: "Climbers for climbers - Europe's finest crags",
+          heading: 'Climb harder. Climb smarter.',
+          body:
+            "We're a community of rock climbing guides, coaches, and lifers obsessed with getting you stronger, sharper, and further than you thought possible.",
+          variant: 'brandEditorial',
+          primaryAction: {
+            label: 'Explore trips and courses',
+            href: '/programs',
+          },
+        },
+        {
+          blockType: 'stats',
+          items: [
+            { value: '15+', label: 'Years on the rock', body: 'Guiding and coaching across European crags.' },
+            { value: '3000+', label: 'Climbers coached', body: 'From first outdoor leads to performance camps.' },
+            { value: '8', label: 'Countries', body: 'Destination knowledge across the core climbing regions.' },
+            { value: '100%', label: 'Climbing focus', body: 'No filler travel package, just routes and coaching.' },
+          ],
+          variant: 'inlineDark',
+        },
+        {
+          blockType: 'rich-text',
+          eyebrow: 'Who we are',
+          heading: 'Not a tour company. A climbing community.',
+          content: richText(
+            "Rockbusters is a community of guides, coaches, and passionate climbers who have made rock climbing our entire life.",
+            'Every trip and course is built around maximum quality and quantity of climbing: movement, tactics, head game, and strong local knowledge.',
+          ),
+          width: 'standard',
+        },
+        {
+          blockType: 'stats',
+          eyebrow: 'Why climb with us',
+          heading: 'Maximum climbing time. Technical and mental coaching. World-class coaches.',
+          body:
+            'Rockbusters trips are built around progression on real rock, with practical local knowledge and focused days outside.',
+          items: [
+            { value: '01', label: 'Maximum climbing time', body: 'Each day is structured around actual climbing volume, not bus transfers.' },
+            { value: '02', label: 'Technical and mental coaching', body: 'Movement, tactics, head game, and practical systems stay part of the trip.' },
+            { value: '03', label: 'World-class coaches', body: 'Experienced climbers teach what works outside, not just indoors.' },
+            { value: '04', label: 'Ground logistics sorted', body: 'Accommodation, airports, local transport, and partner logistics are handled.' },
+            { value: '05', label: 'Insider area knowledge', body: 'Routes and crags are picked from local experience, conditions, and goals.' },
+            { value: '06', label: 'Climbing is our lifestyle', body: 'The culture is built by climbers who live this year round.' },
+          ],
+          variant: 'numberedDark',
+        },
+        {
+          blockType: 'tripGrid',
+          eyebrow: 'Rockbusters picks',
+          heading: 'Trips and courses worth climbing for',
+          intro: 'Featured Event records power the homepage trip section without duplicating catalogue content.',
+          source: 'featured',
+          limit: 6,
+          variant: 'featureLead',
+        },
+        {
+          blockType: 'programGrid',
+          eyebrow: 'Find your climbing path',
+          heading: 'Pick your experience',
+          intro: 'Programs stay canonical while the homepage controls placement and presentation.',
+          source: 'featured',
+          limit: 6,
+          variant: 'darkCompact',
+        },
+        {
+          blockType: 'locationGrid',
+          eyebrow: 'Where we climb',
+          heading: "Europe's finest crags",
+          intro: 'Locations power destination sections from the same source used by destination pages.',
+          source: 'manual',
+          locations: [locFrankenjura.id, locMallorca.id, locDolomites.id],
+          limit: 8,
+          variant: 'countryTiles',
+        },
+        {
+          blockType: 'guideGrid',
+          eyebrow: 'The people behind the progression',
+          heading: 'Climbers. Coaches. Mentors.',
+          intro: 'Guide records keep the homepage team section connected to the People collection.',
+          source: 'team',
+          limit: 6,
+          variant: 'photoOverlay',
+        },
+        {
+          blockType: 'reviewGrid',
+          eyebrow: 'Real climbers. Real progress.',
+          heading: 'What happens when you come',
+          source: 'byProgram',
+          program: programCamps.id,
+          limit: 3,
+          variant: 'cards',
+        },
+        {
+          blockType: 'faq',
+          eyebrow: 'Quick answers',
+          heading: 'FAQ',
+          source: 'global',
+          limit: 6,
+          variant: 'lightEditorial',
+        },
+        {
+          blockType: 'partnerStrip',
+          eyebrow: 'Partners',
+          heading: 'Trusted by the best brands in climbing',
+          source: 'featured',
+          limit: 5,
+          variant: 'logos',
+        },
+        {
+          blockType: 'cta',
+          eyebrow: 'Your next level starts now',
+          heading: 'Find the trip worth training for.',
+          body: 'Start with the right route, the right coach, and enough time on real rock.',
+          variant: 'finalRed',
+          primaryAction: {
+            label: 'Find your trip',
+            href: '/programs',
+          },
+          secondaryAction: {
+            label: 'Talk to the team',
+            href: '/contact',
+          },
+        },
+      ],
+    },
+    label: 'home page layout',
+  })
 
   console.log('\nseed complete.')
 }

@@ -21,6 +21,7 @@ import { ReviewsRow } from '@/components/sections/ReviewsRow'
 import { PhotoGallery } from '@/components/sections/PhotoGallery'
 import { EventAccommodationLogistics } from '@/components/sections/EventAccommodationLogistics'
 import { InlineFAQ } from '@/components/sections/InlineFAQ'
+import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -30,6 +31,16 @@ export default async function TripPage({ params }: Props) {
 
   const event = await getPublishedEventBySlug(slug)
   if (!event) notFound()
+
+  if (event.layout?.length) {
+    return (
+      <MarketingShell transparentHeader>
+        <main>
+          <RenderBlocks blocks={event.layout} context={{ event }} />
+        </main>
+      </MarketingShell>
+    )
+  }
 
   const [reviewsResult, faqsResult] = await Promise.all([
     payload.find({
