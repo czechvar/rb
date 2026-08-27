@@ -47,15 +47,15 @@
 }
 
 .card {
-  background: var(--theme-color-paper);
-  border: 1px solid var(--theme-color-border);
+  background: var(--theme-color-white-paper);
+  border: 1px solid var(--theme-color-white-paper-border);
   border-radius: 4px;
   transition: box-shadow var(--transitionTimeBase, 0.18s) ease,
     transform var(--transitionTimeBase, 0.18s) ease;
 }
 
 .card:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--theme-shadow-card-hover);
   transform: translateY(-2px);
 }
 
@@ -101,8 +101,8 @@
   gap: 8px;
   margin: 0 0 18px;
   padding: 14px 0;
-  border-top: 1px solid var(--theme-color-border);
-  border-bottom: 1px solid var(--theme-color-border);
+  border-top: 1px solid var(--theme-color-white-paper-divider);
+  border-bottom: 1px solid var(--theme-color-white-paper-divider);
 }
 
 .cardFacts dt {

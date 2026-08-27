@@ -25,7 +25,7 @@
 }
 
 .booking {
-  background: var(--theme-color-paper);
+  background: var(--theme-color-white-paper);
   color: var(--theme-color-ink);
   border-radius: 6px;
   padding: 28px 24px;

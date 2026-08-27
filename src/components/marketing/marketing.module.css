@@ -252,8 +252,8 @@
 
 .breadcrumb {
   padding: 1.5rem var(--contentPadding);
-  background: #f6f5f5;
-  border-bottom: 1px solid var(--theme-color-paper-12);
+  background: var(--theme-color-breadcrumb-bg);
+  border-bottom: 1px solid var(--theme-color-breadcrumb-border);
   font-size: 1.3rem;
   color: var(--theme-color-page-text);
   margin-top: var(--headerTotalHeight);
@@ -283,7 +283,7 @@
 }
 
 .footerLinks {
-  background: #080808;
+  background: var(--theme-color-canvas);
   padding: 7.2rem var(--contentPadding) 4rem;
 }
 
@@ -324,7 +324,7 @@
 .footerBrand p {
   font-size: 1.3rem;
   line-height: 1.75;
-  color: rgba(240, 237, 230, 0.36);
+  color: var(--theme-color-paper-45);
   max-width: 26rem;
   margin: 0;
 }
@@ -336,8 +336,8 @@
 }
 
 .footerNewsletter input {
-  background: rgba(240, 237, 230, 0.05);
-  border: 1px solid rgba(240, 237, 230, 0.1);
+  background: var(--theme-color-paper-08);
+  border: 1px solid var(--theme-color-paper-12);
   border-right: none;
   color: var(--theme-color-paper);
   padding: 1.1rem 1.6rem;
@@ -349,7 +349,7 @@
 }
 
 .footerNewsletter input::placeholder {
-  color: rgba(240, 237, 230, 0.28);
+  color: var(--theme-color-paper-30);
 }
 
 .footerNewsletter button {
@@ -381,7 +381,7 @@
 }
 
 .footerCol a {
-  color: rgba(240, 237, 230, 0.4);
+  color: var(--theme-color-paper-45);
   font-size: 1.3rem;
   line-height: 1.5;
   transition: color 0.2s;
@@ -396,7 +396,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 3.2rem;
-  border-top: 1px solid rgba(240, 237, 230, 0.07);
+  border-top: 1px solid var(--theme-color-paper-08);
   gap: 2rem;
   flex-wrap: wrap;
 }
@@ -411,12 +411,12 @@
 
 .footerCopy {
   font-size: 1.2rem;
-  color: rgba(240, 237, 230, 0.22);
+  color: var(--theme-color-paper-30);
   line-height: 1.6;
 }
 
 .footerTermsLink {
-  color: rgba(240, 237, 230, 0.4);
+  color: var(--theme-color-paper-45);
   text-decoration: underline;
   transition: color 0.2s;
 }
@@ -429,6 +429,6 @@
   font-family: var(--theme-font-heading);
   font-size: 1.6rem;
   letter-spacing: 0.14em;
-  color: rgba(240, 237, 230, 0.18);
+  color: var(--theme-color-paper-30);
   text-transform: uppercase;
 }

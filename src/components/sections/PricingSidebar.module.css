@@ -1,9 +1,9 @@
 .card {
-  background: var(--theme-color-paper);
+  background: var(--theme-color-white-paper);
   border-radius: 6px;
   padding: 2.4rem;
   color: var(--theme-color-page-text);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--theme-shadow-panel);
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
@@ -40,7 +40,7 @@
 
 .divider {
   border: none;
-  border-top: 1px solid var(--theme-color-paper-12);
+  border-top: 1px solid var(--theme-color-white-paper-divider);
   margin: 0;
 }
 

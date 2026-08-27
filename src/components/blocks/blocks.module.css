@@ -52,8 +52,8 @@
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(10, 10, 10, 0.86), rgba(10, 10, 10, 0.18)),
-    linear-gradient(180deg, rgba(10, 10, 10, 0.18), rgba(10, 10, 10, 0.72));
+    linear-gradient(90deg, var(--theme-overlay-dark-strong), var(--theme-overlay-dark-soft)),
+    linear-gradient(180deg, var(--theme-overlay-dark-soft), var(--theme-overlay-dark-strong));
 }
 
 .heroInner {
@@ -104,13 +104,13 @@
 
 .heroBrandEditorial {
   min-height: 760px;
-  background: #060606;
+  background: var(--theme-color-canvas);
 }
 
 .heroBrandEditorial .heroOverlay {
   background:
-    linear-gradient(90deg, rgba(3, 3, 3, 0.92), rgba(3, 3, 3, 0.38)),
-    linear-gradient(180deg, rgba(3, 3, 3, 0.2), rgba(3, 3, 3, 0.9));
+    linear-gradient(90deg, var(--theme-overlay-dark-heavy), var(--theme-overlay-dark-medium)),
+    linear-gradient(180deg, var(--theme-overlay-dark-soft), var(--theme-overlay-dark-heavy));
 }
 
 .heroBrandEditorial .heroInner {
@@ -271,8 +271,8 @@
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(10, 10, 10, 0.82), rgba(10, 10, 10, 0.22)),
-    linear-gradient(180deg, rgba(10, 10, 10, 0.1), rgba(10, 10, 10, 0.78));
+    linear-gradient(90deg, var(--theme-overlay-dark-strong), var(--theme-overlay-dark-soft)),
+    linear-gradient(180deg, var(--theme-overlay-dark-faint), var(--theme-overlay-dark-strong));
 }
 
 .locationHeroInner {
@@ -300,7 +300,7 @@
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border: 1px solid rgba(13, 13, 13, 0.1);
+  border: 1px solid var(--theme-color-ink-border-subtle);
   background: var(--theme-color-paper);
 }
 
@@ -372,8 +372,8 @@
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(10, 10, 10, 0.82), rgba(10, 10, 10, 0.2)),
-    linear-gradient(180deg, rgba(10, 10, 10, 0.12), rgba(10, 10, 10, 0.74));
+    linear-gradient(90deg, var(--theme-overlay-dark-strong), var(--theme-overlay-dark-soft)),
+    linear-gradient(180deg, var(--theme-overlay-dark-faint), var(--theme-overlay-dark-strong));
 }
 
 .postHeroInner {
@@ -431,7 +431,7 @@
 }
 
 .richTextSection {
-  background: var(--theme-color-paper);
+  background: var(--theme-color-white-paper);
 }
 
 .richTextSection .sectionInner {
@@ -482,7 +482,7 @@
 }
 
 .statsNumberedDark {
-  background: #090909;
+  background: var(--theme-color-canvas);
 }
 
 .statsNumberedDark .sectionInner {
@@ -498,8 +498,8 @@
 
 .statsNumberedDark .statItem {
   min-height: 220px;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: #101010;
+  border-color: var(--theme-color-paper-12);
+  background: var(--theme-color-surface-1);
 }
 
 .statsNumberedDark .statItem dt {
@@ -515,13 +515,13 @@
 
 .statItem {
   padding: 26px 24px;
-  border: 1px solid rgba(13, 13, 13, 0.1);
-  background: var(--theme-color-paper);
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  background: var(--theme-color-white-paper);
 }
 
 .statsDark .statItem {
   border-color: var(--theme-color-paper-08);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--theme-color-paper-08);
 }
 
 .statItem dt {
@@ -623,7 +623,7 @@
   inset: 0;
   z-index: 0;
   content: "";
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.88));
+  background: linear-gradient(180deg, var(--theme-overlay-dark-faint), var(--theme-overlay-dark-strong));
 }
 
 .featuredCatalogueMediaLed .cardMeta,
@@ -644,12 +644,12 @@
 .domainGridDarkCompact .domainCard {
   min-height: 190px;
   border-color: var(--theme-color-paper-08);
-  background: #101010;
+  background: var(--theme-color-surface-1);
   color: var(--theme-color-paper);
 }
 
 .domainGridDarkCompact .domainCard:hover {
-  border-color: rgba(238, 0, 12, 0.72);
+  border-color: var(--theme-color-primary-strong-border);
 }
 
 .domainCard,
@@ -659,8 +659,8 @@
   min-height: 260px;
   flex-direction: column;
   padding: 26px;
-  border: 1px solid rgba(13, 13, 13, 0.1);
-  background: var(--theme-color-paper);
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  background: var(--theme-color-white-paper);
   color: var(--theme-color-ink);
   text-decoration: none;
 }
@@ -730,7 +730,7 @@
   inset: 0;
   z-index: 0;
   content: "";
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.88));
+  background: linear-gradient(180deg, var(--theme-overlay-dark-faint), var(--theme-overlay-dark-strong));
 }
 
 .locationTileImage,
@@ -787,7 +787,7 @@
 }
 
 .guidePhotoSection .domainCard:hover {
-  border-color: rgba(238, 0, 12, 0.78);
+  border-color: var(--theme-color-primary-strong-border);
 }
 
 .reviewGridSection {
@@ -802,7 +802,7 @@
 .reviewCard {
   min-height: 220px;
   border-color: var(--theme-color-paper-08);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--theme-color-paper-08);
   color: var(--theme-color-paper);
 }
 
@@ -826,7 +826,7 @@
 }
 
 .partnerStripSection {
-  background: var(--theme-color-paper);
+  background: var(--theme-color-white-paper);
 }
 
 .partnerStrip,
@@ -843,8 +843,8 @@
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-  border: 1px solid rgba(13, 13, 13, 0.1);
-  background: #f7f5f0;
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  background: var(--theme-color-white-paper-muted);
   color: var(--theme-color-ink);
   text-decoration: none;
 }
@@ -890,7 +890,7 @@
 }
 
 .tripGridCompact {
-  background: var(--theme-color-paper);
+  background: var(--theme-color-white-paper);
 }
 
 .tripGridEditorial,
@@ -905,8 +905,8 @@
 }
 
 .faqLightEditorial .faqItem {
-  border-color: rgba(13, 13, 13, 0.08);
-  background: var(--theme-color-paper);
+  border-color: var(--theme-color-ink-border-faint);
+  background: var(--theme-color-white-paper);
 }
 
 .faqLightEditorial .faqItem dt {
@@ -914,7 +914,7 @@
 }
 
 .faqLightEditorial .faqItem dd {
-  color: rgba(13, 13, 13, 0.72);
+  color: var(--theme-overlay-dark-strong);
 }
 
 .tripCards {
@@ -944,14 +944,14 @@
   grid-template-rows: 260px 1fr;
   min-height: 100%;
   overflow: hidden;
-  background: var(--theme-color-paper);
-  border: 1px solid rgba(13, 13, 13, 0.1);
+  background: var(--theme-color-white-paper);
+  border: 1px solid var(--theme-color-ink-border-subtle);
   color: var(--theme-color-ink);
   text-decoration: none;
 }
 
 .tripGridEditorial .tripCard {
-  background: #151515;
+  background: var(--theme-color-surface-2);
   border-color: var(--theme-color-paper-08);
   color: var(--theme-color-paper);
 }
@@ -966,7 +966,7 @@
 
 .tripMedia {
   position: relative;
-  background: #222222;
+  background: var(--theme-color-surface-3);
 }
 
 .tripMedia img {
@@ -1021,7 +1021,7 @@
 }
 
 .mediaSection {
-  background: var(--theme-color-paper);
+  background: var(--theme-color-white-paper);
 }
 
 .mediaContained .sectionInner {
@@ -1065,7 +1065,7 @@
   color: var(--theme-color-paper);
   font-size: var(--smallTextFontSize);
   line-height: var(--smallTextLineHeight);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
+  text-shadow: var(--theme-shadow-text-strong);
 }
 
 .videoContained .sectionInner {
@@ -1108,7 +1108,7 @@
 .faqItem {
   padding: 24px;
   border: 1px solid var(--theme-color-paper-08);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--theme-color-paper-08);
 }
 
 .faqItem dt {

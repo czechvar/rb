@@ -20,7 +20,7 @@
 }
 
 .pillar:hover {
-  background: #131313;
+  background: var(--theme-color-surface-1);
 }
 
 .num {

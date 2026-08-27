@@ -35,7 +35,7 @@
 .cardGradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 40%, var(--theme-overlay-dark-strong) 100%);
   z-index: 1;
 }
 

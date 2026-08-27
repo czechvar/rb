@@ -105,17 +105,17 @@
   border: 1px solid var(--theme-color-border);
   border-radius: 4px;
   padding: 16px;
-  border-top: 4px solid #1a5a8a;
+  border-top: 4px solid var(--theme-color-info);
 }
 
 .track.color-red {
   border-top-color: #8b3a1a;
 }
 .track.color-blue {
-  border-top-color: #1a5a8a;
+  border-top-color: var(--theme-color-info);
 }
 .track.color-green {
-  border-top-color: #1a7a3a;
+  border-top-color: var(--theme-color-success);
 }
 
 .track h4 {

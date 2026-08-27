@@ -29,7 +29,7 @@
 }
 
 .card:hover {
-  background: #131313;
+  background: var(--theme-color-surface-1);
 }
 
 .highlighted {
@@ -89,7 +89,7 @@
   max-width: 1200px;
   margin: 2rem auto 0;
   padding: 1.5rem 2rem;
-  background: rgba(240, 237, 230, 0.04);
+  background: var(--theme-color-paper-08);
   border: 1px solid var(--theme-color-paper-12);
   font-size: var(--fs-body-sm);
   color: var(--theme-color-paper-60);

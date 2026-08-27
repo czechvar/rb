@@ -97,7 +97,7 @@
 .stat {
   padding: 1.6rem 1.8rem;
   border: 1px solid var(--theme-color-paper-12);
-  background: rgba(240, 237, 230, 0.03);
+  background: var(--theme-color-paper-08);
 }
 
 .stat:only-child {

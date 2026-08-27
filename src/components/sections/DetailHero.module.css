@@ -26,9 +26,9 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(13, 13, 13, 0.95) 0%,
-    rgba(13, 13, 13, 0.3)  50%,
-    rgba(13, 13, 13, 0.1)  100%
+    var(--theme-overlay-dark-heavy) 0%,
+    var(--theme-overlay-dark-medium)  50%,
+    var(--theme-overlay-dark-faint)  100%
   );
   z-index: 1;
 }
@@ -53,7 +53,7 @@
   font-weight: 400;
   color: var(--theme-color-paper);
   margin: 0 0 0.5rem;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 20px var(--theme-overlay-dark-medium);
 }
 
 .lead {

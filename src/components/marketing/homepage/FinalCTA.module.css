@@ -19,7 +19,7 @@
   font-family: var(--theme-font-body);
   font-size: var(--fs-body-lg);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--theme-color-paper-80);
 }
 
 .ctas {

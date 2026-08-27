@@ -6,7 +6,7 @@
 
 /* Override section-label color/line for red background */
 .section :global(.section-label) {
-  color: rgba(13, 13, 13, 0.5);
+  color: var(--theme-overlay-dark-medium);
 }
 
 
@@ -21,7 +21,7 @@
 
 .body {
   font-size: 17px;
-  color: rgba(13, 13, 13, 0.65);
+  color: var(--theme-overlay-dark-medium);
   max-width: 480px;
   margin: 0 auto 44px;
   line-height: 1.65;
