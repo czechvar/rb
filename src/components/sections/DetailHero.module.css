@@ -8,8 +8,8 @@
   justify-content: flex-end;
   padding: 0 5vw 72px;
   overflow: hidden;
-  background: var(--rb-black);
-  color: var(--rb-white);
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
 }
 
 /* background image sits at z-index 0, slightly darkened */
@@ -46,19 +46,19 @@
 }
 
 .title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(72px, 11vw, 140px);
   line-height: 0.95;
   letter-spacing: 0.01em;
   font-weight: 400;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0 0 0.5rem;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .lead {
   font-size: 1.1rem;
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   margin: 0 0 2.5rem;
   max-width: 560px;
   line-height: 1.5;

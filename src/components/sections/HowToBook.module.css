@@ -1,8 +1,8 @@
 /* ── HowToBook — "How to Book" steps (programs only) ───────────────── */
 
 .section {
-  background: var(--rb-dark);
-  color: var(--rb-white);
+  background: var(--theme-color-surface-1);
+  color: var(--theme-color-paper);
   padding: 0 5% 96px;
 }
 
@@ -14,16 +14,16 @@
   margin: 0 auto;
   list-style: none;
   padding: 0;
-  background: var(--rb-white-08);
-  border: 1px solid var(--rb-white-08);
+  background: var(--theme-color-paper-08);
+  border: 1px solid var(--theme-color-paper-08);
 }
 
 .step {
-  background: var(--rb-black);
+  background: var(--theme-color-ink);
   padding: 2rem 1.5rem;
   text-align: center;
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.5;
   display: flex;
   flex-direction: column;
@@ -33,10 +33,10 @@
 }
 
 .num {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 2.5rem;
   font-weight: 400;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   line-height: 1;
 }
 

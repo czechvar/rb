@@ -1,6 +1,6 @@
 .section {
-  padding: var(--rb-section-pad);
-  background: var(--rb-darker);
+  padding: var(--theme-section-pad);
+  background: var(--theme-color-canvas);
 }
 
 .labelWrap {
@@ -14,11 +14,11 @@
 }
 
 .viewAll {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -35,13 +35,13 @@
   position: relative;
   min-height: 480px;
   overflow: hidden;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 36px;
-  border: 1px solid var(--rb-white-08);
+  border: 1px solid var(--theme-color-paper-08);
 }
 
 @media (min-width: 768px) {
@@ -74,37 +74,37 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .cardLoc {
   font-weight: 700;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
 }
 
 .cardDot {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--rb-white-30);
+  background: var(--theme-color-paper-30);
 }
 
 .cardTitle {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 36px;
   line-height: 1;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0 0 12px;
 }
 
 .cardHook {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.6;
   margin: 0 0 24px;
 }
@@ -117,17 +117,17 @@
 }
 
 .cardPrice {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-weight: 700;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   font-size: var(--fs-body);
 }
 
 .cardCta {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-weight: 700;
 }

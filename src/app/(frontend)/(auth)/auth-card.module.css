@@ -4,10 +4,10 @@
   align-items: flex-start;
   justify-content: center;
   padding: 48px 16px;
-  background: var(--color-surface, #f7f5f3);
+  background: var(--color-surface, var(--theme-color-paper));
 }
 .card {
-  background: #fff;
+  background: var(--theme-color-paper);
   border-radius: 8px;
   padding: 32px;
   width: 100%;

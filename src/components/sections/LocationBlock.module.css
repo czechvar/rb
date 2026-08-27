@@ -1,8 +1,8 @@
 /* ── LocationBlock — wireframe block 6 "The Venue" destination showcase */
 
 .section {
-  background: var(--rb-black);
-  color: var(--rb-white);
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
   padding: 96px 5%;
 }
 
@@ -29,7 +29,7 @@
   position: relative;
   min-height: 480px;
   overflow: hidden;
-  background: var(--rb-dark);
+  background: var(--theme-color-surface-1);
 }
 
 .img {
@@ -50,12 +50,12 @@
 
 /* ── Eyebrow ───────────────────────────────────────────────────────── */
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-eyebrow);
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -67,7 +67,7 @@
   display: inline-block;
   width: 28px;
   height: 1px;
-  background: var(--rb-red);
+  background: var(--theme-color-primary);
   flex-shrink: 0;
 }
 
@@ -75,7 +75,7 @@
 .prose {
   font-size: var(--fs-body);
   line-height: 1.7;
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
 }
 
 .prose p {
@@ -87,18 +87,18 @@
 }
 
 .prose strong {
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   font-weight: 600;
 }
 
 .prose a {
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .prose a:hover {
-  color: var(--rb-red-hover);
+  color: var(--theme-color-primary-hover);
 }
 
 /* ── Responsive ────────────────────────────────────────────────────── */

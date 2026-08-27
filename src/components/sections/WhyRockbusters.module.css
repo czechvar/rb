@@ -1,8 +1,8 @@
 /* ── WhyRockbusters — USP band (programs only) ──────────────────────── */
 
 .band {
-  background: var(--rb-black);
-  color: var(--rb-white);
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
   padding: 0 5% 96px;
 }
 
@@ -17,7 +17,7 @@
 .grid p {
   font-size: var(--fs-body-sm);
   line-height: 1.75;
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   margin: 0;
 }
 
@@ -25,15 +25,15 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  border-top: 1px solid var(--rb-white-12);
+  border-top: 1px solid var(--theme-color-paper-12);
 }
 
 .grid li {
   padding: 0.7rem 0 0.7rem 1.5rem;
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   position: relative;
-  border-bottom: 1px solid var(--rb-white-08);
+  border-bottom: 1px solid var(--theme-color-paper-08);
   line-height: 1.55;
 }
 
@@ -41,7 +41,7 @@
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
 }
 
 @media (max-width: 800px) {

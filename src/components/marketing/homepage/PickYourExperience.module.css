@@ -1,6 +1,6 @@
 .section {
-  padding: var(--rb-section-pad);
-  background: var(--rb-black);
+  padding: var(--theme-section-pad);
+  background: var(--theme-color-ink);
 }
 
 .grid {
@@ -16,29 +16,29 @@
 .card {
   position: relative;
   padding: 32px;
-  border: 1px solid var(--rb-white-12);
-  color: var(--rb-white);
+  border: 1px solid var(--theme-color-paper-12);
+  color: var(--theme-color-paper);
   text-decoration: none;
   transition: border-color 0.18s;
 }
 
 .card:hover {
-  border-color: var(--rb-red);
+  border-color: var(--theme-color-primary);
 }
 
 .cardName {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 20px;
   font-weight: 700;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0 0 8px;
   max-width: calc(100% - 36px);
 }
 
 .cardTag {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   margin: 0;
   line-height: 1.5;
 }
@@ -47,7 +47,7 @@
   position: absolute;
   right: 28px;
   top: 32px;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-size: 24px;
   line-height: 1;
 }

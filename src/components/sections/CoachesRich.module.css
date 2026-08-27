@@ -1,6 +1,6 @@
 .section {
   padding: 40px 60px;
-  border-bottom: 1px dashed #c8bfb0;
+  border-bottom: 1px dashed var(--theme-color-border);
 }
 
 .section h2 {
@@ -8,13 +8,13 @@
   font-weight: bold;
   margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #1a1a1a;
+  border-bottom: 2px solid var(--theme-color-ink);
 }
 
 .framing {
   font-size: 14px;
   line-height: 1.75;
-  color: #333;
+  color: var(--theme-color-page-text);
   max-width: 720px;
 }
 
@@ -26,8 +26,8 @@
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--theme-color-paper);
+  border: 1px solid var(--theme-color-border);
   border-radius: 4px;
   padding: 20px;
   width: 260px;
@@ -44,12 +44,12 @@
 }
 
 .avatarPlaceholder {
-  background: #ddd;
+  background: var(--theme-color-border);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 10px;
-  color: #888;
+  color: var(--theme-color-page-text);
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -62,7 +62,7 @@
 
 .bio {
   font-size: 12px;
-  color: #555;
+  color: var(--theme-color-page-text);
   line-height: 1.6;
   margin-top: 12px;
 }

@@ -2,15 +2,15 @@
 @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } }
 .sidebar { display: flex; flex-direction: column; gap: 4px; }
 .link {
-  padding: 10px 12px; border-radius: 6px; color: #1a1a1a;
+  padding: 10px 12px; border-radius: 6px; color: var(--theme-color-ink);
   text-decoration: none; font-weight: 500; font-size: 15px;
 }
-.link:hover { background: #f1efed; }
-.linkActive { background: #fde9ec; color: #c8102e; }
-.divider { height: 1px; background: #e4e2df; margin: 8px 0; }
-.email { padding: 8px 12px; font-size: 13px; color: #666; }
+.link:hover { background: var(--theme-color-paper); }
+.linkActive { background: var(--theme-color-primary-soft); color: var(--theme-color-primary); }
+.divider { height: 1px; background: var(--theme-color-border); margin: 8px 0; }
+.email { padding: 8px 12px; font-size: 13px; color: var(--theme-color-page-text); }
 .signout {
   background: none; border: 0; padding: 10px 12px;
-  text-align: left; cursor: pointer; color: #c8102e; font-weight: 600; font-size: 15px;
+  text-align: left; cursor: pointer; color: var(--theme-color-primary); font-weight: 600; font-size: 15px;
 }
 .content { min-width: 0; }

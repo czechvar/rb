@@ -1,8 +1,8 @@
 /* ── SectionIntro — wireframe block 2 overview intro ──────────────── */
 
 .intro {
-  background: var(--rb-black);
-  color: var(--rb-white);
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
   padding: 96px 5%;
 }
 
@@ -26,12 +26,12 @@
 
 /* Red eyebrow line per wireframe — "— About the Camp" style */
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-eyebrow);
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -43,16 +43,16 @@
   display: inline-block;
   width: 28px;
   height: 1px;
-  background: var(--rb-red);
+  background: var(--theme-color-primary);
   flex-shrink: 0;
 }
 
 .title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.005em;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   font-size: clamp(40px, 6vw, 88px);
   margin-bottom: 1.5rem;
 }
@@ -60,7 +60,7 @@
 .lead {
   font-size: var(--fs-body-lg);
   line-height: 1.7;
-  color: var(--rb-white-80);
+  color: var(--theme-color-paper-80);
   max-width: 640px;
 }
 

@@ -20,7 +20,7 @@
 }
 
 .card:hover .cardTitle {
-  color: #c8102e;
+  color: var(--theme-color-primary);
 }
 
 .photo,
@@ -28,7 +28,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 8px;
-  background: #f1efed;
+  background: var(--theme-color-paper);
 }
 
 .photo {
@@ -42,12 +42,12 @@
 
 .cardMeta {
   font-size: 13px;
-  color: #666;
+  color: var(--theme-color-page-text);
 }
 
 .excerpt {
   font-size: 14px;
-  color: #444;
+  color: var(--theme-color-page-text);
 }
 
 .postHeader {
@@ -58,7 +58,7 @@
 }
 
 .byline {
-  color: #666;
+  color: var(--theme-color-page-text);
   font-size: 14px;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .categoryLink {
-  color: #c8102e;
+  color: var(--theme-color-primary);
   font-weight: 600;
   text-decoration: none;
 }

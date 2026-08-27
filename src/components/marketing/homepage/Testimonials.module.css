@@ -1,6 +1,6 @@
 .section {
   padding: 72px 5%;
-  background: var(--rb-black);
+  background: var(--theme-color-ink);
 }
 
 .grid {
@@ -14,38 +14,38 @@
 }
 
 .card {
-  padding: var(--rb-card-pad);
-  border: 1px solid var(--rb-white-12);
+  padding: var(--theme-card-pad);
+  border: 1px solid var(--theme-color-paper-12);
 }
 
 .stars {
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-size: 18px;
   margin-bottom: 16px;
 }
 
 .pull {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 24px;
   line-height: 1.2;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0 0 16px;
 }
 
 .body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.6;
   margin: 0 0 20px;
 }
 
 .who {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--rb-white-45);
+  color: var(--theme-color-paper-45);
   font-weight: 700;
 }
 
