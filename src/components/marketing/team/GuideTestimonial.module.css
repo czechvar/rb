@@ -1,4 +1,4 @@
-.section { background: var(--rb-darker, var(--theme-color-canvas)); padding: 90px 5%; text-align: center; }
+.section { background: var(--theme-color-canvas); padding: 90px 5%; text-align: center; }
 .label { color: var(--theme-color-primary); display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
 .label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--theme-color-primary); flex-shrink: 0; }
 .heading { font-size: clamp(42px, 6vw, 80px); margin-bottom: 24px; text-transform: uppercase; }
@@ -9,5 +9,5 @@
 .stars { color: var(--theme-color-primary); font-size: 14px; letter-spacing: 5px; margin-bottom: 18px; }
 .quote { font-size: 18px; font-weight: 700; color: var(--theme-color-paper); line-height: 1.5; margin: 0 0 18px; font-style: italic; }
 .who { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--theme-color-primary); font-weight: 700; display: block; }
-.trip { font-size: 11px; color: rgba(240, 237, 230, 0.3); margin-top: 3px; letter-spacing: 0.06em; display: block; }
+.trip { font-size: 11px; color: var(--theme-color-paper-30); margin-top: 3px; letter-spacing: 0.06em; display: block; }
 @media (max-width: 600px) { .section { padding: 60px 5%; } .card { padding: 32px 22px; } }

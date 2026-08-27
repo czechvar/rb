@@ -17,7 +17,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(13, 13, 13, 0.55);
+  background: var(--theme-overlay-dark-medium);
   pointer-events: none;
 }
 

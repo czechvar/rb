@@ -16,7 +16,7 @@
   background: var(--theme-color-paper);
   border-radius: 999px;
   padding: 0.8rem 1.4rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--theme-shadow-chip);
   color: var(--theme-color-page-text);
 }
 

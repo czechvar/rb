@@ -22,8 +22,8 @@
 
 .card {
   padding: var(--theme-card-pad);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: var(--theme-color-paper);
+  border: 1px solid var(--theme-color-ink-border-faint);
+  background: var(--theme-color-white-paper-soft);
 }
 
 .cardTag {

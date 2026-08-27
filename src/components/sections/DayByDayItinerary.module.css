@@ -53,7 +53,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(13, 13, 13, 0.9) 0%, rgba(13, 13, 13, 0.35) 55%, rgba(13, 13, 13, 0.1) 100%);
+  background: linear-gradient(to top, var(--theme-overlay-dark-heavy) 0%, var(--theme-overlay-dark-medium) 55%, var(--theme-overlay-dark-faint) 100%);
   pointer-events: none;
 }
 

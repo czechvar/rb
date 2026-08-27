@@ -14,6 +14,13 @@
   --theme-color-surface-2: #171717;
   --theme-color-surface-3: #242424;
   --theme-color-paper: #f0ede6;
+  --theme-color-white-paper: #ffffff;
+  --theme-color-white-paper-soft: #fafaf8;
+  --theme-color-white-paper-muted: #f7f5f0;
+  --theme-color-white-paper-border: #dddddd;
+  --theme-color-white-paper-divider: #eeeeee;
+  --theme-color-breadcrumb-bg: #f6f5f5;
+  --theme-color-breadcrumb-border: rgba(13, 13, 13, 0.08);
   --theme-color-text: #f0ede6;
   --theme-color-text-muted: rgba(240, 237, 230, 0.80);
   --theme-color-text-soft: rgba(240, 237, 230, 0.52);
@@ -39,6 +46,9 @@
   --theme-color-paper-30: rgba(240, 237, 230, 0.30);
   --theme-color-paper-12: rgba(240, 237, 230, 0.12);
   --theme-color-paper-08: rgba(240, 237, 230, 0.08);
+  --theme-color-ink-border-faint: rgba(13, 13, 13, 0.08);
+  --theme-color-ink-border-subtle: rgba(13, 13, 13, 0.10);
+  --theme-color-primary-strong-border: rgba(227, 7, 19, 0.72);
 
   /* Typography */
   --theme-font-display: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
@@ -81,6 +91,16 @@
   --theme-radius-md: 0.5rem;
   --theme-radius-lg: 0.75rem;
   --theme-shadow-card: 0 18px 48px rgba(0, 0, 0, 0.24);
+  --theme-shadow-auth-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.06);
+  --theme-shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --theme-shadow-chip: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --theme-shadow-panel: 0 12px 28px rgba(0, 0, 0, 0.25);
+  --theme-shadow-text-strong: 0 1px 8px rgba(0, 0, 0, 0.75);
+  --theme-overlay-dark-faint: rgba(13, 13, 13, 0.10);
+  --theme-overlay-dark-soft: rgba(13, 13, 13, 0.20);
+  --theme-overlay-dark-medium: rgba(13, 13, 13, 0.55);
+  --theme-overlay-dark-strong: rgba(13, 13, 13, 0.78);
+  --theme-overlay-dark-heavy: rgba(13, 13, 13, 0.92);
   --theme-motion-fast: 160ms;
   --theme-motion-base: 240ms;
 
@@ -178,6 +198,13 @@
   --theme-color-surface-2: #171e29;
   --theme-color-surface-3: #202a38;
   --theme-color-paper: #f3f6f8;
+  --theme-color-white-paper: #ffffff;
+  --theme-color-white-paper-soft: #fafaf8;
+  --theme-color-white-paper-muted: #f7f5f0;
+  --theme-color-white-paper-border: #dddddd;
+  --theme-color-white-paper-divider: #eeeeee;
+  --theme-color-breadcrumb-bg: #f6f5f5;
+  --theme-color-breadcrumb-border: rgba(8, 11, 16, 0.08);
   --theme-color-text: #f4f7fa;
   --theme-color-text-muted: #b5c0ca;
   --theme-color-text-soft: #8795a3;
@@ -201,6 +228,9 @@
   --theme-color-paper-30: rgba(243, 246, 248, 0.30);
   --theme-color-paper-12: rgba(243, 246, 248, 0.12);
   --theme-color-paper-08: rgba(243, 246, 248, 0.08);
+  --theme-color-ink-border-faint: rgba(244, 247, 250, 0.08);
+  --theme-color-ink-border-subtle: rgba(244, 247, 250, 0.10);
+  --theme-color-primary-strong-border: rgba(20, 125, 204, 0.72);
   --theme-font-display: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
   --theme-font-heading: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
   --theme-font-body: var(--font-body), Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -237,6 +267,16 @@
   --theme-radius-md: 0.5rem;
   --theme-radius-lg: 0.75rem;
   --theme-shadow-card: 0 18px 48px rgba(0, 0, 0, 0.24);
+  --theme-shadow-auth-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.06);
+  --theme-shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --theme-shadow-chip: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --theme-shadow-panel: 0 12px 28px rgba(0, 0, 0, 0.25);
+  --theme-shadow-text-strong: 0 1px 8px rgba(0, 0, 0, 0.75);
+  --theme-overlay-dark-faint: rgba(8, 11, 16, 0.10);
+  --theme-overlay-dark-soft: rgba(8, 11, 16, 0.20);
+  --theme-overlay-dark-medium: rgba(8, 11, 16, 0.55);
+  --theme-overlay-dark-strong: rgba(8, 11, 16, 0.78);
+  --theme-overlay-dark-heavy: rgba(8, 11, 16, 0.92);
   --theme-motion-fast: 160ms;
   --theme-motion-base: 240ms;
   --headerBg: rgba(8, 11, 16, 0.94);

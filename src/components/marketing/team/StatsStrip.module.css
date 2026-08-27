@@ -14,11 +14,11 @@
   z-index: 0;
 }
 
-/* Dark overlay to simulate the wireframe's brightness(0.28) + rgba(13,13,13,0.5) */
+/* Dark overlay to simulate the wireframe's brightness(0.28) + var(--theme-overlay-dark-medium) */
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(13, 13, 13, 0.72);
+  background: var(--theme-overlay-dark-strong);
   z-index: 1;
 }
 

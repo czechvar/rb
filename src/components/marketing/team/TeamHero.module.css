@@ -24,10 +24,10 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(13, 13, 13, 0.15) 0%,
-    rgba(13, 13, 13, 0.1) 30%,
-    rgba(13, 13, 13, 0.6) 65%,
-    rgba(13, 13, 13, 0.92) 100%
+    var(--theme-overlay-dark-faint) 0%,
+    var(--theme-overlay-dark-faint) 30%,
+    var(--theme-overlay-dark-medium) 65%,
+    var(--theme-overlay-dark-heavy) 100%
   );
   z-index: 1;
 }

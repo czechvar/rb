@@ -9,7 +9,7 @@
 }
 .label {
   font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
-  color: rgba(13, 13, 13, 0.6); font-weight: 600; display: block; margin-top: 2px;
+  color: var(--theme-overlay-dark-medium); font-weight: 600; display: block; margin-top: 2px;
 }
 @media (max-width: 600px) {
   .bar { padding: 24px 5%; gap: 24px; }

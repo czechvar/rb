@@ -6,7 +6,7 @@
 .bg { object-fit: cover; object-position: center 30%; }
 .overlay {
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to bottom, rgba(13,13,13,0.2) 0%, rgba(13,13,13,0.15) 30%, rgba(13,13,13,0.62) 68%, rgba(13,13,13,0.93) 100%);
+  background: linear-gradient(to bottom, var(--theme-overlay-dark-soft) 0%, var(--theme-overlay-dark-faint) 30%, var(--theme-overlay-dark-medium) 68%, var(--theme-overlay-dark-heavy) 100%);
 }
 .content { position: relative; z-index: 2; max-width: 1400px; width: 100%; margin: 0 auto; }
 .eyebrow { color: var(--theme-color-primary); display: flex; align-items: center; gap: 10px; }
@@ -24,13 +24,13 @@
 }
 .sub {
   font-size: clamp(16px, 2vw, 19px); line-height: 1.65; max-width: 580px;
-  color: rgba(240, 237, 230, 0.8); margin-bottom: 40px;
+  color: var(--theme-color-paper-80); margin-bottom: 40px;
 }
 .btnRow { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .caption {
   position: absolute; bottom: 28px; right: 5%; z-index: 2;
   font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(240, 237, 230, 0.28);
+  color: var(--theme-color-paper-30);
 }
 @media (max-width: 600px) {
   .hero { padding-bottom: 14%; }

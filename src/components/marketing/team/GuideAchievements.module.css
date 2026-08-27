@@ -3,10 +3,10 @@
 .label { color: var(--theme-color-primary); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
 .label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--theme-color-primary); flex-shrink: 0; }
 .heading { font-size: clamp(42px, 6vw, 80px); margin-bottom: 24px; text-transform: uppercase; }
-.intro { font-size: 16px; line-height: 1.78; color: rgba(240, 237, 230, 0.62); max-width: 580px; }
+.intro { font-size: 16px; line-height: 1.78; color: var(--theme-color-paper-60); max-width: 580px; }
 .list {
   margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 2px; background: rgba(240, 237, 230, 0.06);
+  gap: 2px; background: var(--theme-color-paper-08);
 }
 .row {
   background: var(--theme-color-ink); padding: 20px 26px;

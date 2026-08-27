@@ -20,11 +20,13 @@ for (const absFile of cssFiles) {
   const lines = readFileSync(absFile, 'utf8').split(/\r?\n/)
   const isThemeFile = file === themeFile
   const isCssModule = file.endsWith('.module.css')
+  let inBlockComment = false
 
   lines.forEach((line, index) => {
     const lineNo = index + 1
+    const scanLine = stripCssCommentsFromLine(line)
 
-    if (!isThemeFile && /^\s*--(?:theme|rb)-[a-zA-Z0-9-]+\s*:/.test(line)) {
+    if (!isThemeFile && /^\s*--(?:theme|rb)-[a-zA-Z0-9-]+\s*:/.test(scanLine)) {
       hardErrors.push({
         file,
         lineNo,
@@ -33,7 +35,7 @@ for (const absFile of cssFiles) {
       })
     }
 
-    if (!isThemeFile && /^\s*--col(?:Info|Ok|Warning|Error)\s*:/.test(line)) {
+    if (!isThemeFile && /^\s*--col(?:Info|Ok|Warning|Error)\s*:/.test(scanLine)) {
       hardErrors.push({
         file,
         lineNo,
@@ -42,7 +44,7 @@ for (const absFile of cssFiles) {
       })
     }
 
-    if (isCssModule && /^\s*(?::root|html\b|body\b|\*)\s*(?:,|\{)/.test(line) && !line.includes(':global(')) {
+    if (isCssModule && /^\s*(?::root|html\b|body\b|\*)\s*(?:,|\{)/.test(scanLine) && !scanLine.includes(':global(')) {
       hardErrors.push({
         file,
         lineNo,
@@ -51,12 +53,40 @@ for (const absFile of cssFiles) {
       })
     }
 
-    if (isCssModule && /var\(--rb-|#[0-9a-fA-F]{3,8}\b|\brgba?\(|font-family:\s*['"][^'"]+['"]/.test(line)) {
+    if (
+      isCssModule &&
+      /var\(--rb-|#[0-9a-fA-F]{3,8}\b|\brgba?\(|font-family:\s*['"][^'"]+['"]/.test(scanLine) &&
+      !/font-family:\s*inherit\b/.test(scanLine)
+    ) {
       migrationWarnings.push({
         file,
         lineNo,
         line,
       })
+    }
+
+    function stripCssCommentsFromLine(value) {
+      let remaining = value
+      let output = ''
+
+      while (remaining.length > 0) {
+        if (inBlockComment) {
+          const close = remaining.indexOf('*/')
+          if (close === -1) return output
+          remaining = remaining.slice(close + 2)
+          inBlockComment = false
+          continue
+        }
+
+        const open = remaining.indexOf('/*')
+        if (open === -1) return output + remaining
+
+        output += remaining.slice(0, open)
+        remaining = remaining.slice(open + 2)
+        inBlockComment = true
+      }
+
+      return output
     }
   })
 }

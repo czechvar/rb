@@ -48,9 +48,9 @@
 .secondary {
   background: transparent;
   color: var(--theme-color-paper);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--theme-color-paper-30);
 }
 
 .secondary:hover {
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: var(--theme-color-paper-60);
 }
