@@ -25,7 +25,7 @@ if (!OLD_DB_URL) {
   process.exit(1)
 }
 
-const DATA_DIR = path.resolve(import.meta.dirname, 'data')
+const SEED_DIR = path.resolve(import.meta.dirname, 'seed')
 const SOURCE = 'old_db/20260827_rb.sql'
 
 interface LocationRow extends RowDataPacket {
@@ -52,8 +52,8 @@ interface GuideRow extends RowDataPacket {
 }
 
 async function writeJson(name: string, rows: unknown[]): Promise<string> {
-  await fs.mkdir(DATA_DIR, { recursive: true })
-  const file = path.join(DATA_DIR, `${name}.json`)
+  await fs.mkdir(SEED_DIR, { recursive: true })
+  const file = path.join(SEED_DIR, `${name}.json`)
   const payload = {
     generatedAt: new Date().toISOString(),
     source: SOURCE,

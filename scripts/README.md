@@ -27,8 +27,10 @@ through Payload's Local API (the same code path the admin uses), not raw SQL.
 | Command | Script | Writes DB? | What it does |
 | --- | --- | --- | --- |
 | `pnpm seed` | `seed.ts` | ✅ upsert | Idempotent dev seed — content, categories, guides, locations, etc. Skips records that already exist; safe to re-run. |
-| `pnpm data-import:extract` | `data-import/extract.ts` | ❌ (writes files) | Reads `OLD_DB_URL`, writes `data-import/data/*.json` from the old rockbusters MySQL dump. |
-| `pnpm data-import:import` | `data-import/import.ts` | ✅ create-if-missing | Loads the extracted JSON into Payload. **Skip-if-exists** on slug — never updates, never deletes. Guarded against production. |
+| `pnpm data-import:extract` | `data-import/extract.ts` | ❌ (writes files) | Refreshes the committed seed at `data-import/seed/*.json` from a local MySQL loaded with the old rockbusters dump. Only needed when the source data changes. |
+| `pnpm data-import:import` | `data-import/import.ts` | ✅ create-if-missing | Loads the committed seed JSON into Payload. **Skip-if-exists** on slug — never updates, never deletes. Guarded against production. |
+| `pnpm data-import:guides` | `data-import/import.ts --only=guides` | ✅ create-if-missing | Same as `data-import:import` but guides only. |
+| `pnpm data-import:locations` | `data-import/import.ts --only=locations` | ✅ create-if-missing | Same as `data-import:import` but locations only. |
 | `pnpm inspect-user <email>` | `inspect-user.ts` | ❌ read-only | Dumps the auth-relevant fields of one user (verification token, timestamps) for debugging signup/verify. |
 | `pnpm e2e-fixtures:inventory` | `e2e-fixture-inventory.ts` | ❌ read-only | Counts e2e test fixtures present in the DB (by the naming patterns the e2e suite uses). |
 | `pnpm e2e-fixtures:list` | `e2e-fixture-list.ts` | ❌ read-only | Dumps exact ids/identifiers of every record `cleanup` would delete, to `e2e-fixture-targets.txt`. |
@@ -36,27 +38,33 @@ through Payload's Local API (the same code path the admin uses), not raw SQL.
 
 ## Data import workflow
 
-Seeds the `guides` and `locations` collections from the old rockbusters MySQL
-dump. Two steps, both idempotent and re-runnable — see the
-[full README](./data-import/README.md) for prerequisites (MAMP / Docker setup)
-and field mappings.
+Seeds the `guides` and `locations` collections from a committed JSON snapshot
+of the old rockbusters MySQL dump. The snapshot lives at
+`scripts/data-import/seed/`, so anyone importing into dev or prod doesn't
+need MAMP — see the [full README](./data-import/README.md) for the field
+mappings and the refresh-from-source workflow.
 
 ```bash
-pnpm data-import:extract                                    # → scripts/data-import/data/
+# import both collections
 PAYLOAD_DISABLE_DB_PUSH=true pnpm data-import:import
+
+# or one at a time
+PAYLOAD_DISABLE_DB_PUSH=true pnpm data-import:guides
+PAYLOAD_DISABLE_DB_PUSH=true pnpm data-import:locations
 ```
 
-- **`data-import:extract`** connects to `OLD_DB_URL` (a locally-loaded copy of
-  `old_db/20260827_rb.sql`) and writes one JSON file per source table under
-  `scripts/data-import/data/` (gitignored).
-- **`data-import:import`** upserts by slug with **skip-if-exists** semantics —
-  never overwrites hand-crafted content like the seeded Jany founder profile.
-  It also strips `<img>` tags from body HTML (photos are re-uploaded through
-  admin) and logs a per-collection stripped-image count.
+- **Skip-if-exists on slug.** Never overwrites hand-crafted content like the
+  seeded Jany founder profile. Safe to re-run.
+- **`<img>` tags are stripped** from body HTML; photos are re-uploaded through
+  admin. A per-collection stripped-image count is logged.
 - Run against production only when intended:
   `pnpm data-import:import --allow-production` — production `DATABASE_URL` plus
   the `R2_*` vars must be set. Almost always the wrong thing to do; import
   against dev, review, only then decide.
+
+Refresh the seed from an updated source dump with `pnpm data-import:extract`
+(requires MAMP + `OLD_DB_URL`). Commit the resulting diff in
+`scripts/data-import/seed/`.
 
 ## e2e fixture cleanup workflow
 
