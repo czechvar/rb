@@ -26,6 +26,7 @@ import * as migration_20260825_192925_remove_homepage_specific_blocks from './20
 import * as migration_20260826_060419_add_brand_block_variants from './20260826_060419_add_brand_block_variants';
 import * as migration_20260826_082151_catalogued_block_availability from './20260826_082151_catalogued_block_availability';
 import * as migration_20260826_091639_add_featured_catalogue_blocks from './20260826_091639_add_featured_catalogue_blocks';
+import * as migration_20260827_145720_payload_mcp_api_keys from './20260827_145720_payload_mcp_api_keys';
 
 export const migrations = [
   {
@@ -166,6 +167,11 @@ export const migrations = [
   {
     up: migration_20260826_091639_add_featured_catalogue_blocks.up,
     down: migration_20260826_091639_add_featured_catalogue_blocks.down,
-    name: '20260826_091639_add_featured_catalogue_blocks'
+    name: '20260826_091639_add_featured_catalogue_blocks',
+  },
+  {
+    up: migration_20260827_145720_payload_mcp_api_keys.up,
+    down: migration_20260827_145720_payload_mcp_api_keys.down,
+    name: '20260827_145720_payload_mcp_api_keys'
   },
 ];

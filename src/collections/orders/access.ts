@@ -1,9 +1,11 @@
 import type { Access, FieldAccess } from 'payload'
+import { isAdminUser } from '../../access'
 
 /** Admin sees all; non-admin sees only own orders (where: user = self). */
 export const isAdminOrOwner: Access = ({ req }) => {
   if (!req.user) return false
-  if (req.user.role === 'admin') return true
+  if (isAdminUser(req.user)) return true
+  if (!('role' in req.user)) return false
   return { user: { equals: req.user.id } }
 }
 
@@ -18,7 +20,8 @@ export const isAdminOrOwner: Access = ({ req }) => {
  */
 export const canUpdateStateField: FieldAccess = ({ req, data, doc }) => {
   if (!req.user) return false
-  if (req.user.role === 'admin') return true
+  if (isAdminUser(req.user)) return true
+  if (!('role' in req.user)) return false
   const newState = (data as { state?: string } | undefined)?.state
   const currentState = (doc as { state?: string } | undefined)?.state
   return newState === 'cancelled' && currentState === 'pending'
