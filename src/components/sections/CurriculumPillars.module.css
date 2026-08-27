@@ -32,12 +32,12 @@
 
 .pillar h3 {
   font-size: 14px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--theme-font-technical);
   letter-spacing: 1px;
   margin: 0 0 12px 0;
   padding-bottom: 8px;
-  border-bottom: 2px solid #8b3a1a;
-  color: #8b3a1a;
+  border-bottom: 2px solid var(--theme-color-warm-action);
+  color: var(--theme-color-warm-action);
   text-transform: uppercase;
 }
 
@@ -53,14 +53,14 @@
   color: var(--theme-color-page-text);
   position: relative;
   border-bottom: 1px solid var(--theme-color-border);
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--theme-font-technical);
 }
 
 .pillar li::before {
   content: '→';
   position: absolute;
   left: 0;
-  color: #8b5e3c;
+  color: var(--theme-color-warm-muted);
 }
 
 @media (max-width: 800px) {

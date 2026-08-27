@@ -29,7 +29,7 @@
   font-size: 13px;
   color: var(--theme-color-page-text);
   line-height: 1.55;
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--theme-font-technical);
 }
 
 @media (max-width: 800px) {

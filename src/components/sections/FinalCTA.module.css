@@ -1,5 +1,5 @@
 .band {
-  background: #1e1612;
+  background: var(--theme-color-warm-canvas);
   color: var(--theme-color-paper);
   text-align: center;
   padding: 40px 60px;
@@ -11,7 +11,7 @@
 }
 
 .band p {
-  color: #a09080;
+  color: var(--theme-color-warm-text-muted);
   font-size: 13px;
   margin-bottom: 24px;
 }
@@ -26,7 +26,7 @@
 .primary,
 .secondary {
   padding: 13px 36px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--theme-font-technical);
   font-size: 13px;
   letter-spacing: 1px;
   border: none;
@@ -37,12 +37,12 @@
 }
 
 .primary {
-  background: #8b3a1a;
+  background: var(--theme-color-warm-action);
   color: var(--theme-color-paper);
 }
 
 .primary:hover {
-  background: #a04020;
+  background: var(--theme-color-warm-action-hover);
 }
 
 .secondary {
