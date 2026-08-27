@@ -29,6 +29,13 @@
   --theme-color-primary: #e30713;
   --theme-color-primary-hover: #c0050f;
   --theme-color-accent: #e30713;
+  --theme-color-warm-canvas: #1e1612;
+  --theme-color-warm-surface: #1a1412;
+  --theme-color-warm-action: #8b3a1a;
+  --theme-color-warm-action-hover: #a04020;
+  --theme-color-warm-muted: #8b5e3c;
+  --theme-color-warm-text: #d4c5b0;
+  --theme-color-warm-text-muted: #a09080;
   --theme-color-success: #66bb6a;
   --theme-color-warning: #ffa726;
   --theme-color-danger: #f44336;
@@ -54,6 +61,7 @@
   --theme-font-display: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
   --theme-font-heading: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
   --theme-font-body: var(--font-body), Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --theme-font-technical: 'Roboto Mono', monospace;
   --theme-text-xs: 0.75rem;
   --theme-text-sm: 0.875rem;
   --theme-text-base: 1rem;
@@ -213,6 +221,13 @@
   --theme-color-primary: #147dcc;
   --theme-color-primary-hover: #2590df;
   --theme-color-accent: #72c9df;
+  --theme-color-warm-canvas: #1e1612;
+  --theme-color-warm-surface: #1a1412;
+  --theme-color-warm-action: #8b3a1a;
+  --theme-color-warm-action-hover: #a04020;
+  --theme-color-warm-muted: #8b5e3c;
+  --theme-color-warm-text: #d4c5b0;
+  --theme-color-warm-text-muted: #a09080;
   --theme-color-success: #4fc18d;
   --theme-color-warning: #f0b856;
   --theme-color-danger: #f07178;
@@ -234,6 +249,7 @@
   --theme-font-display: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
   --theme-font-heading: var(--font-heading), 'Bebas Neue', 'Arial Narrow', sans-serif;
   --theme-font-body: var(--font-body), Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --theme-font-technical: 'Roboto Mono', monospace;
   --theme-text-xs: 0.75rem;
   --theme-text-sm: 0.875rem;
   --theme-text-base: 1rem;

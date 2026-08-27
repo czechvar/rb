@@ -33,7 +33,7 @@
 
 .box h3 {
   font-size: 12px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--theme-font-technical);
   letter-spacing: 1px;
   margin: 0 0 12px 0;
   padding-bottom: 8px;
@@ -54,14 +54,14 @@
   color: var(--theme-color-page-text);
   position: relative;
   border-bottom: 1px solid var(--theme-color-border);
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--theme-font-technical);
 }
 
 .bullets li::before {
   content: '→';
   position: absolute;
   left: 0;
-  color: #8b5e3c;
+  color: var(--theme-color-warm-muted);
 }
 
 @media (max-width: 800px) {
