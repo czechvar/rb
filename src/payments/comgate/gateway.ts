@@ -24,6 +24,19 @@ import { comgatePostForm } from './client'
 
 const API_BASE = 'https://payments.comgate.cz'
 
+/**
+ * Converts a decimal-string amount (e.g. "199.00") to integer minor units
+ * (e.g. 19900) without ever routing the value through float multiplication.
+ * `transaction.money.amount` is a `DecimalString` specifically because
+ * floating point is unsafe for money (see `src/payments/gateway.ts`) — do
+ * not replace this with `Math.round(Number(amount) * 100)`.
+ */
+function toMinorUnits(decimal: string): number {
+  const [whole, fraction = ''] = decimal.split('.')
+  const cents = (fraction + '00').slice(0, 2)
+  return Number(whole) * 100 + Number(cents)
+}
+
 export interface ComgateGatewayConfig {
   merchant: string
   secret: string
@@ -44,7 +57,7 @@ export class ComgateGateway implements PaymentGateway {
     const base = this.config.backendBaseUrl.replace(/\/+$/, '')
     const returnUrl = `${base}/api/payments/comgate/return?refId=${transaction.uuid}`
     const notifyUrl = `${base}/api/payments/comgate/webhook`
-    const minorUnits = Math.round(Number(transaction.money.amount) * 100)
+    const minorUnits = toMinorUnits(transaction.money.amount)
 
     const data = await comgatePostForm(`${API_BASE}/v1.0/create`, {
       merchant: this.config.merchant,
@@ -71,7 +84,7 @@ export class ComgateGateway implements PaymentGateway {
     return {
       redirectUrl: data.redirect,
       gatewayTransactionId: data.transId,
-      payload: { redirectUrl: data.redirect, gatewayTransactionId: data.transId },
+      payload: { ...data, redirectUrl: data.redirect, gatewayTransactionId: data.transId },
     }
   }
 
@@ -115,7 +128,7 @@ export class ComgateGateway implements PaymentGateway {
     const status = get('status')
     const state = status === 'PAID' ? 'paid' : status === 'CANCELLED' ? 'cancelled' : null
     if (!state) {
-      throw new PaymentGatewayError(`Unhandled Comgate status: ${status ?? '(missing)'}`)
+      throw new PaymentGatewayError(`Unhandled Comgate status: ${status || '(missing)'}`)
     }
 
     const callbackPayload: Record<string, unknown> = {}

@@ -70,7 +70,14 @@ describe('ComgateGateway.begin', () => {
     expect(result).toEqual({
       redirectUrl: 'https://payments.comgate.cz/pay/ABCD-1234',
       gatewayTransactionId: 'ABCD-1234',
-      payload: { redirectUrl: 'https://payments.comgate.cz/pay/ABCD-1234', gatewayTransactionId: 'ABCD-1234' },
+      payload: {
+        code: '0',
+        message: 'OK',
+        transId: 'ABCD-1234',
+        redirect: 'https://payments.comgate.cz/pay/ABCD-1234',
+        redirectUrl: 'https://payments.comgate.cz/pay/ABCD-1234',
+        gatewayTransactionId: 'ABCD-1234',
+      },
     })
 
     const sent = new URLSearchParams(capturedBody)
@@ -83,6 +90,29 @@ describe('ComgateGateway.begin', () => {
     expect(sent.get('test')).toBe('true')
     expect(sent.get('returnUrl')).toBe('https://rockbusters.net/api/payments/comgate/return?refId=uuid-1')
     expect(sent.get('notifyUrl')).toBe('https://rockbusters.net/api/payments/comgate/webhook')
+  })
+
+  it('converts the decimal amount to minor units without float drift', async () => {
+    let capturedBody = ''
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (_url: string, init: RequestInit) => {
+        capturedBody = String(init.body)
+        return new Response('code=0&message=OK&transId=ABCD-1234&redirect=https%3A%2F%2Fpayments.comgate.cz%2Fpay%2FABCD-1234', {
+          status: 200,
+        })
+      }),
+    )
+
+    const gateway = makeGateway(makeStore([]))
+    await gateway.begin(
+      makeTransaction({ money: { amount: '19.99', amountWithoutVat: '16.52', currency: 'EUR' } }),
+    )
+
+    const sent = new URLSearchParams(capturedBody)
+    // Number('19.99') * 100 === 1998.9999999999998 in floating point — this
+    // must come out as exactly 1999, not a float-drifted neighbour.
+    expect(sent.get('price')).toBe('1999')
   })
 
   it('rejects a transaction that is not in the created state', async () => {
