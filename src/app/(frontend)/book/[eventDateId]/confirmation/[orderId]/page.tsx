@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
+import { payByCardAction } from './actions'
 
 interface Props {
   params: Promise<{ eventDateId: string; orderId: string }>
@@ -25,7 +26,7 @@ export default async function BookingConfirmation({ params }: Props) {
     notFound()
   }
   const o = order as {
-    id: number; orderNumber: string; user: number | { id: number }
+    id: number; orderNumber: string; state: string; user: number | { id: number }
     totalPrice: number; currency: string; participantCount: number
     eventDate: { dateFrom: string; dateTo: string; event?: { title?: string } | number }
     discountAmount?: number
@@ -60,6 +61,11 @@ export default async function BookingConfirmation({ params }: Props) {
         )}
         <p><strong>Total:</strong> {o.totalPrice} {o.currency}</p>
       </div>
+      {o.state === 'pending' && (
+        <form action={payByCardAction.bind(null, o.id)} style={{ margin: '24px 0' }}>
+          <button type="submit">Pay by card</button>
+        </form>
+      )}
       <p>
         <a href={`/account/orders/${o.id}`}>View in your account →</a>
         {' · '}
