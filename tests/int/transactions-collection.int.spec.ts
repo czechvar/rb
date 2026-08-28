@@ -121,5 +121,18 @@ describe('transactions collection', () => {
         overrideAccess: false,
       }),
     ).rejects.toThrow()
+
+    await expect(
+      payload.update({
+        collection: 'transactions',
+        id: 1,
+        data: { state: 'paid' },
+        overrideAccess: false,
+      }),
+    ).rejects.toThrow()
+
+    await expect(
+      payload.delete({ collection: 'transactions', id: 1, overrideAccess: false }),
+    ).rejects.toThrow()
   })
 })

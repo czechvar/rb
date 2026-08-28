@@ -29,7 +29,9 @@ export const Transactions: CollectionConfig = {
       name: 'amount',
       type: 'number',
       required: true,
-      admin: { description: 'Total amount, VAT inclusive, in whole currency units (e.g. 199 for €199).' },
+      admin: {
+        description: 'Total amount, VAT inclusive, in whole currency units (e.g. 199 for €199).',
+      },
     },
     { name: 'amountWithoutVat', type: 'number', required: true },
     {
@@ -72,7 +74,9 @@ export const Transactions: CollectionConfig = {
     {
       name: 'payload',
       type: 'json',
-      admin: { description: 'Gateway data captured from begin() (e.g. redirectUrl, gatewayTransactionId).' },
+      admin: {
+        description: 'Gateway data captured from begin() (e.g. redirectUrl, gatewayTransactionId).',
+      },
     },
     {
       name: 'callbackPayload',
