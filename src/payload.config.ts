@@ -20,6 +20,7 @@ import { EventDates } from './collections/EventDates'
 import { FAQs } from './collections/FAQs'
 import { Reviews } from './collections/Reviews'
 import { Orders } from './collections/Orders'
+import { Transactions } from './collections/Transactions'
 import { DiscountCodes } from './collections/DiscountCodes'
 import { Referrals } from './collections/Referrals'
 import { PostCategories } from './collections/PostCategories'
@@ -63,6 +64,7 @@ export default buildConfig({
     FAQs,
     Reviews,
     Orders,
+    Transactions,
     DiscountCodes,
     Referrals,
     PostCategories,
