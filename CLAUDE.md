@@ -82,6 +82,9 @@ Hosted on **Vercel**. Required environment variables in the Vercel project setti
 - `EMAIL_REPLY_TO` — optional reply-to address.
 - `ADMIN_ORDER_NOTIFICATIONS_EMAIL` — recipient of the "new booking" admin notification email. Falls back to `EMAIL_FROM_ADDRESS` if unset.
 - `BANK_TRANSFER_DETAILS` — multi-line text (IBAN, beneficiary, etc.) injected into the "Booking confirmed" email. The order number is used as the variable symbol.
+- `COMGATE_MERCHANT` — Comgate merchant ID (from the Comgate merchant portal).
+- `COMGATE_SECRET` — Comgate merchant secret, used both to sign requests and to verify inbound webhooks.
+- `COMGATE_TEST_MODE` — `true` routes through the Comgate sandbox; set to `false` only once the integration is verified against a live Comgate account. Defaults to `true` if unset.
 
 If any of the four `R2_*` vars is unset, Payload falls back to local-disk storage (useful for tests, broken for production).
 
