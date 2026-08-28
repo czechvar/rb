@@ -900,9 +900,9 @@ describe('beginComgatePayment', () => {
 })
 
 describe('applyComgateWebhook', () => {
-  async function beginAndGetUuid(orderId: number, email: string) {
+  async function beginAndGetUuid(orderId: number, user: { id: number; email: string }) {
     stubComgateCreate('code=0&message=OK&transId=TXN-3&redirect=https%3A%2F%2Fpayments.comgate.cz%2Fpay%2FTXN-3')
-    await beginComgatePayment(orderId, { id: 0, email })
+    await beginComgatePayment(orderId, user)
     const payload = await getTestPayload()
     const { docs } = await payload.find({
       collection: 'transactions', where: { order: { equals: orderId } }, overrideAccess: true, sort: '-createdAt', limit: 1,
@@ -921,7 +921,7 @@ describe('applyComgateWebhook', () => {
   it('chains pending -> confirmed -> paid on a PAID webhook', async () => {
     const payload = await getTestPayload()
     const { user, order } = await seedOrder()
-    const uuid = await beginAndGetUuid(order.id, user.email)
+    const uuid = await beginAndGetUuid(order.id, { id: user.id, email: user.email })
 
     const response = await applyComgateWebhook(
       webhookRequest({ merchant: 'M123', secret: 's3cr3t', refId: uuid, status: 'PAID', transId: 'TXN-3' }),
@@ -940,7 +940,7 @@ describe('applyComgateWebhook', () => {
   it('moves the order to cancelled on a CANCELLED webhook', async () => {
     const payload = await getTestPayload()
     const { user, order } = await seedOrder()
-    const uuid = await beginAndGetUuid(order.id, user.email)
+    const uuid = await beginAndGetUuid(order.id, { id: user.id, email: user.email })
 
     await applyComgateWebhook(
       webhookRequest({ merchant: 'M123', secret: 's3cr3t', refId: uuid, status: 'CANCELLED' }),
@@ -952,7 +952,7 @@ describe('applyComgateWebhook', () => {
   it('is idempotent — a duplicate PAID webhook does not re-run the order transition', async () => {
     const payload = await getTestPayload()
     const { user, order } = await seedOrder()
-    const uuid = await beginAndGetUuid(order.id, user.email)
+    const uuid = await beginAndGetUuid(order.id, { id: user.id, email: user.email })
 
     await applyComgateWebhook(webhookRequest({ merchant: 'M123', secret: 's3cr3t', refId: uuid, status: 'PAID' }))
     const secondResponse = await applyComgateWebhook(
