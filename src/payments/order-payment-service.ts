@@ -16,6 +16,11 @@ import type { Transaction as GatewayTransaction, TransactionState, PaymentMethod
 type Currency = 'EUR' | 'CZK'
 type OrderState = 'pending' | 'confirmed' | 'paid' | 'completed' | 'cancelled'
 
+// OrderDoc/TransactionDoc below are hand-narrowed subsets of the generated Payload
+// types, not a verified 1:1 mirror of payload-types.ts — e.g. `orderNumber` is
+// treated as always-present because `allocateOrderNumber` sets it on create, and
+// `payload`/`callbackPayload` are narrowed to object-only because nothing but this
+// file ever writes them.
 interface OrderDoc {
   id: number
   orderNumber: string
@@ -118,6 +123,8 @@ export async function beginComgatePayment(
   }
 
   const amountWithoutVat = order.totalPrice / (1 + order.vat / 100)
+  // If gateway.begin() below throws, this `created`-state row is left behind as
+  // harmless orphaned debris — no cleanup implemented, accepted tradeoff for this MVP.
   const txnDoc = (await cms.create({
     collection: 'transactions',
     data: {
@@ -170,13 +177,11 @@ export async function applyComgateWebhook(request: Request): Promise<Response> {
     return new Response(result.acknowledgement.body, { status: result.acknowledgement.status })
   }
 
-  await cms.update({
-    collection: 'transactions',
-    id: txnDoc.id,
-    data: { state: result.outcome.state, callbackPayload: result.outcome.callbackPayload },
-    overrideAccess: true,
-  })
-
+  // Apply the order-state transition(s) BEFORE marking the transaction terminal
+  // (see below) — if this throws (e.g. the order was independently cancelled
+  // between begin() and this webhook, making the transition invalid), the
+  // transaction stays in `begun`/`pending-payment`, so a webhook retry will not
+  // short-circuit on the idempotency check above and will retry the order chain.
   const orderId = typeof txnDoc.order === 'object' ? txnDoc.order.id : txnDoc.order
   const order = (await cms.findByID({ collection: 'orders', id: orderId, overrideAccess: true })) as OrderDoc
 
@@ -188,6 +193,17 @@ export async function applyComgateWebhook(request: Request): Promise<Response> {
   } else if (result.outcome.state === 'cancelled' && order.state !== 'cancelled') {
     await cms.update({ collection: 'orders', id: orderId, data: { state: 'cancelled' }, overrideAccess: true })
   }
+
+  // Persisted last: if this write fails after the order already transitioned,
+  // that's self-healing too — the order-update above is idempotently skipped as
+  // already-applied on the next webhook attempt, and the transaction gets marked
+  // correctly then.
+  await cms.update({
+    collection: 'transactions',
+    id: txnDoc.id,
+    data: { state: result.outcome.state, callbackPayload: result.outcome.callbackPayload },
+    overrideAccess: true,
+  })
 
   return new Response(result.acknowledgement.body, { status: result.acknowledgement.status })
 }
