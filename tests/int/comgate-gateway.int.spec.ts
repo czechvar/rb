@@ -6,7 +6,12 @@
 // for this file so the webhook parsing is tested against the same
 // fetch/Request implementation Next.js route handlers actually run on.
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { isPaymentResult, PaymentGatewayError, type Transaction, type TransactionStore } from '@/payments/gateway'
+import {
+  isPaymentResult,
+  PaymentGatewayError,
+  type Transaction,
+  type TransactionStore,
+} from '@/payments/gateway'
 import { ComgateGateway } from '@/payments/comgate/gateway'
 
 afterEach(() => {
@@ -58,9 +63,12 @@ describe('ComgateGateway.begin', () => {
       'fetch',
       vi.fn(async (_url: string, init: RequestInit) => {
         capturedBody = String(init.body)
-        return new Response('code=0&message=OK&transId=ABCD-1234&redirect=https%3A%2F%2Fpayments.comgate.cz%2Fpay%2FABCD-1234', {
-          status: 200,
-        })
+        return new Response(
+          'code=0&message=OK&transId=ABCD-1234&redirect=https%3A%2F%2Fpayments.comgate.cz%2Fpay%2FABCD-1234',
+          {
+            status: 200,
+          },
+        )
       }),
     )
 
@@ -88,7 +96,9 @@ describe('ComgateGateway.begin', () => {
     expect(sent.get('refId')).toBe('uuid-1')
     expect(sent.get('prepareOnly')).toBe('true')
     expect(sent.get('test')).toBe('true')
-    expect(sent.get('returnUrl')).toBe('https://rockbusters.net/api/payments/comgate/return?refId=uuid-1')
+    expect(sent.get('returnUrl')).toBe(
+      'https://rockbusters.net/api/payments/comgate/return?refId=uuid-1',
+    )
     expect(sent.get('notifyUrl')).toBe('https://rockbusters.net/api/payments/comgate/webhook')
   })
 
@@ -98,9 +108,12 @@ describe('ComgateGateway.begin', () => {
       'fetch',
       vi.fn(async (_url: string, init: RequestInit) => {
         capturedBody = String(init.body)
-        return new Response('code=0&message=OK&transId=ABCD-1234&redirect=https%3A%2F%2Fpayments.comgate.cz%2Fpay%2FABCD-1234', {
-          status: 200,
-        })
+        return new Response(
+          'code=0&message=OK&transId=ABCD-1234&redirect=https%3A%2F%2Fpayments.comgate.cz%2Fpay%2FABCD-1234',
+          {
+            status: 200,
+          },
+        )
       }),
     )
 
@@ -117,11 +130,16 @@ describe('ComgateGateway.begin', () => {
 
   it('rejects a transaction that is not in the created state', async () => {
     const gateway = makeGateway(makeStore([]))
-    await expect(gateway.begin(makeTransaction({ state: 'begun' }))).rejects.toThrow(PaymentGatewayError)
+    await expect(gateway.begin(makeTransaction({ state: 'begun' }))).rejects.toThrow(
+      PaymentGatewayError,
+    )
   })
 
   it('throws when Comgate returns a non-zero code', async () => {
-    vi.stubGlobal('fetch', vi.fn(async () => new Response('code=1400&message=Invalid merchant', { status: 200 })))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => new Response('code=1400&message=Invalid merchant', { status: 200 })),
+    )
     const gateway = makeGateway(makeStore([]))
     await expect(gateway.begin(makeTransaction())).rejects.toThrow(/Invalid merchant/)
   })
@@ -141,12 +159,28 @@ describe('ComgateGateway.handleWebhook', () => {
     const txn = makeTransaction({ state: 'begun' })
     const gateway = makeGateway(makeStore([txn]))
     const result = await gateway.handleWebhook(
-      webhookRequest({ merchant: 'M123', secret: 's3cr3t', refId: 'uuid-1', status: 'PAID', transId: 'ABCD-1234' }),
+      webhookRequest({
+        merchant: 'M123',
+        secret: 's3cr3t',
+        refId: 'uuid-1',
+        status: 'PAID',
+        transId: 'ABCD-1234',
+      }),
     )
     expect(result.transactionUuid).toBe('uuid-1')
     expect(result.outcome.state).toBe('paid')
     expect(result.outcome.callbackPayload).toMatchObject({ status: 'PAID', transId: 'ABCD-1234' })
     expect(result.acknowledgement).toEqual({ status: 200, body: 'OK' })
+  })
+
+  it('strips merchant/secret from the persisted callbackPayload', async () => {
+    const txn = makeTransaction({ state: 'begun' })
+    const gateway = makeGateway(makeStore([txn]))
+    const result = await gateway.handleWebhook(
+      webhookRequest({ merchant: 'M123', secret: 's3cr3t', refId: 'uuid-1', status: 'PAID' }),
+    )
+    expect(result.outcome.callbackPayload).not.toHaveProperty('merchant')
+    expect(result.outcome.callbackPayload).not.toHaveProperty('secret')
   })
 
   it('maps a CANCELLED webhook to a cancelled outcome', async () => {
@@ -172,21 +206,27 @@ describe('ComgateGateway.handleWebhook', () => {
   it('rejects a merchant/secret mismatch', async () => {
     const gateway = makeGateway(makeStore([makeTransaction({ state: 'begun' })]))
     await expect(
-      gateway.handleWebhook(webhookRequest({ merchant: 'WRONG', secret: 's3cr3t', refId: 'uuid-1', status: 'PAID' })),
+      gateway.handleWebhook(
+        webhookRequest({ merchant: 'WRONG', secret: 's3cr3t', refId: 'uuid-1', status: 'PAID' }),
+      ),
     ).rejects.toThrow(/Merchant mismatch/)
   })
 
   it('rejects an unknown refId', async () => {
     const gateway = makeGateway(makeStore([]))
     await expect(
-      gateway.handleWebhook(webhookRequest({ merchant: 'M123', secret: 's3cr3t', refId: 'nope', status: 'PAID' })),
+      gateway.handleWebhook(
+        webhookRequest({ merchant: 'M123', secret: 's3cr3t', refId: 'nope', status: 'PAID' }),
+      ),
     ).rejects.toThrow(/not found/i)
   })
 
   it('rejects a transaction that has not begun yet', async () => {
     const gateway = makeGateway(makeStore([makeTransaction({ state: 'created' })]))
     await expect(
-      gateway.handleWebhook(webhookRequest({ merchant: 'M123', secret: 's3cr3t', refId: 'uuid-1', status: 'PAID' })),
+      gateway.handleWebhook(
+        webhookRequest({ merchant: 'M123', secret: 's3cr3t', refId: 'uuid-1', status: 'PAID' }),
+      ),
     ).rejects.toThrow(/cannot be handled/i)
   })
 })

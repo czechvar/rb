@@ -11,7 +11,12 @@ import { getPayloadClient } from '@/lib/payload'
 import { siteUrl } from '@/lib/url'
 import { ComgateGateway } from './comgate/gateway'
 import { comgateConfigFromEnv } from './comgate/config'
-import type { Transaction as GatewayTransaction, TransactionState, PaymentMethod, TransactionStore } from './gateway'
+import type {
+  Transaction as GatewayTransaction,
+  TransactionState,
+  PaymentMethod,
+  TransactionStore,
+} from './gateway'
 
 type Currency = 'EUR' | 'CZK'
 type OrderState = 'pending' | 'confirmed' | 'paid' | 'completed' | 'cancelled'
@@ -72,13 +77,18 @@ class PayloadTransactionStore implements TransactionStore {
   async findByUuid(uuid: string): Promise<GatewayTransaction | null> {
     const cms = await getPayloadClient()
     const { docs } = await cms.find({
-      collection: 'transactions', where: { uuid: { equals: uuid } }, limit: 1, overrideAccess: true,
+      collection: 'transactions',
+      where: { uuid: { equals: uuid } },
+      limit: 1,
+      overrideAccess: true,
     })
     const doc = docs[0] as TransactionDoc | undefined
     return doc ? toGatewayTransaction(doc) : null
   }
 
-  async findByGatewayTransactionId(gatewayTransactionId: string): Promise<GatewayTransaction | null> {
+  async findByGatewayTransactionId(
+    gatewayTransactionId: string,
+  ): Promise<GatewayTransaction | null> {
     const cms = await getPayloadClient()
     const { docs } = await cms.find({
       collection: 'transactions',
@@ -111,7 +121,10 @@ export async function beginComgatePayment(
 ): Promise<{ redirectUrl: string }> {
   const cms = await getPayloadClient()
   const order = (await cms.findByID({
-    collection: 'orders', id: orderId, depth: 0, overrideAccess: true,
+    collection: 'orders',
+    id: orderId,
+    depth: 0,
+    overrideAccess: true,
   })) as OrderDoc
 
   const ownerId = typeof order.user === 'object' ? order.user.id : order.user
@@ -122,7 +135,10 @@ export async function beginComgatePayment(
     throw new Error('This order cannot be paid online.')
   }
 
-  const amountWithoutVat = order.totalPrice / (1 + order.vat / 100)
+  // Rounded to 2dp before persisting — this is a stored financial field (shown in
+  // admin, exported for accounting), not just an intermediate value, so it must not
+  // carry raw floating-point noise the way an unrounded division would.
+  const amountWithoutVat = Math.round((order.totalPrice / (1 + order.vat / 100)) * 100) / 100
   // If gateway.begin() below throws, this `created`-state row is left behind as
   // harmless orphaned debris — no cleanup implemented, accepted tradeoff for this MVP.
   const txnDoc = (await cms.create({
@@ -165,7 +181,10 @@ export async function applyComgateWebhook(request: Request): Promise<Response> {
 
   const cms = await getPayloadClient()
   const { docs } = await cms.find({
-    collection: 'transactions', where: { uuid: { equals: result.transactionUuid } }, limit: 1, overrideAccess: true,
+    collection: 'transactions',
+    where: { uuid: { equals: result.transactionUuid } },
+    limit: 1,
+    overrideAccess: true,
   })
   const txnDoc = docs[0] as TransactionDoc | undefined
   if (!txnDoc) {
@@ -183,15 +202,34 @@ export async function applyComgateWebhook(request: Request): Promise<Response> {
   // transaction stays in `begun`/`pending-payment`, so a webhook retry will not
   // short-circuit on the idempotency check above and will retry the order chain.
   const orderId = typeof txnDoc.order === 'object' ? txnDoc.order.id : txnDoc.order
-  const order = (await cms.findByID({ collection: 'orders', id: orderId, overrideAccess: true })) as OrderDoc
+  const order = (await cms.findByID({
+    collection: 'orders',
+    id: orderId,
+    overrideAccess: true,
+  })) as OrderDoc
 
   if (result.outcome.state === 'paid' && order.state !== 'paid') {
     if (order.state === 'pending') {
-      await cms.update({ collection: 'orders', id: orderId, data: { state: 'confirmed' }, overrideAccess: true })
+      await cms.update({
+        collection: 'orders',
+        id: orderId,
+        data: { state: 'confirmed' },
+        overrideAccess: true,
+      })
     }
-    await cms.update({ collection: 'orders', id: orderId, data: { state: 'paid' }, overrideAccess: true })
+    await cms.update({
+      collection: 'orders',
+      id: orderId,
+      data: { state: 'paid' },
+      overrideAccess: true,
+    })
   } else if (result.outcome.state === 'cancelled' && order.state !== 'cancelled') {
-    await cms.update({ collection: 'orders', id: orderId, data: { state: 'cancelled' }, overrideAccess: true })
+    await cms.update({
+      collection: 'orders',
+      id: orderId,
+      data: { state: 'cancelled' },
+      overrideAccess: true,
+    })
   }
 
   // Persisted last: if this write fails after the order already transitioned,

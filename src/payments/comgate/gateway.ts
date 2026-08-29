@@ -131,8 +131,14 @@ export class ComgateGateway implements PaymentGateway {
       throw new PaymentGatewayError(`Unhandled Comgate status: ${status || '(missing)'}`)
     }
 
+    // Comgate's webhook body echoes back `merchant`/`secret` (that's how we just
+    // verified it above) — strip both before persisting so the shared secret never
+    // sits in plaintext in a `transactions` row, DB export, or admin view.
     const callbackPayload: Record<string, unknown> = {}
-    for (const [key, value] of form.entries()) callbackPayload[key] = value
+    for (const [key, value] of form.entries()) {
+      if (key === 'merchant' || key === 'secret') continue
+      callbackPayload[key] = value
+    }
 
     return { transactionUuid: refId, outcome: { state, callbackPayload }, acknowledgement }
   }
