@@ -85,6 +85,55 @@
   opacity: 0.45;
 }
 
+.variantPanel {
+  display: grid;
+  gap: 12px;
+  border: 1px solid var(--theme-color-border);
+  border-radius: var(--theme-radius-md);
+  padding: 12px;
+  background: var(--theme-color-surface-2);
+}
+
+.variantGroup {
+  display: grid;
+  gap: 8px;
+}
+
+.variantGroup > span {
+  color: var(--theme-color-text-soft);
+  font-family: var(--theme-font-technical);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.segmentedControl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--theme-color-border);
+  border-radius: var(--theme-radius-sm);
+  background: var(--theme-color-canvas);
+}
+
+.segmentedControl button {
+  min-height: 34px;
+  border: 0;
+  border-radius: var(--theme-radius-sm);
+  background: transparent;
+  color: var(--theme-color-text-muted);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.segmentedControl button[aria-pressed='true'] {
+  background: var(--theme-color-primary);
+  color: var(--theme-color-white-paper);
+}
+
 .editorNote {
   margin: 0;
   border-left: 3px solid var(--theme-color-primary);
@@ -261,6 +310,67 @@
 
 .preview {
   min-width: 0;
+}
+
+.previewCompact .hero {
+  padding-top: clamp(52px, 7vw, 92px);
+  padding-bottom: 52px;
+}
+
+.previewCompact .content {
+  gap: 42px;
+  width: min(100%, 980px);
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.previewCompact .sectionHeading h2 {
+  font-size: clamp(42px, 4.5vw, 56px);
+}
+
+.previewGallery .hero {
+  min-height: 560px;
+}
+
+.previewGallery .content {
+  width: min(100%, 1480px);
+}
+
+.previewGallery .swatchGrid,
+.previewGallery .componentGrid,
+.previewGallery .catalogueGrid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.previewCanvas {
+  background: var(--theme-color-canvas);
+  color: var(--theme-color-text);
+}
+
+.previewCanvas .content {
+  background: var(--theme-color-canvas);
+}
+
+.previewCanvas .sectionHeading {
+  border-bottom-color: var(--theme-color-border);
+}
+
+.previewCanvas .sectionHeading h2,
+.previewCanvas .sectionHeading p {
+  color: var(--theme-color-text);
+}
+
+.previewPaper {
+  background: var(--theme-color-white-paper);
+  color: var(--theme-color-ink);
+}
+
+.previewPaper .content {
+  background: var(--theme-color-white-paper);
+}
+
+.previewPaper .sectionHeading {
+  border-bottom-color: var(--theme-color-white-paper-divider);
 }
 
 .shell * {

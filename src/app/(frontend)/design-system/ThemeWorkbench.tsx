@@ -20,6 +20,21 @@ type ThemeWorkbenchProps = {
   themeClass: string
 }
 
+type PreviewDensity = 'full' | 'compact' | 'gallery'
+type PreviewSurface = 'page' | 'canvas' | 'paper'
+
+const previewDensities: Array<{ id: PreviewDensity; label: string }> = [
+  { id: 'full', label: 'Full' },
+  { id: 'compact', label: 'Compact' },
+  { id: 'gallery', label: 'Gallery' },
+]
+
+const previewSurfaces: Array<{ id: PreviewSurface; label: string }> = [
+  { id: 'page', label: 'Page' },
+  { id: 'canvas', label: 'Canvas' },
+  { id: 'paper', label: 'Paper' },
+]
+
 function isHexColor(value: string) {
   return /^#[0-9a-f]{6}$/i.test(value.trim())
 }
@@ -36,6 +51,8 @@ export function ThemeWorkbench({ children, theme, themeClass }: ThemeWorkbenchPr
   const previewRef = useRef<HTMLElement | null>(null)
   const [overrides, setOverrides] = useState<Record<string, string>>({})
   const [copied, setCopied] = useState(false)
+  const [density, setDensity] = useState<PreviewDensity>('full')
+  const [surface, setSurface] = useState<PreviewSurface>('page')
   const defaults = themePresets[theme]
 
   useEffect(() => {
@@ -98,6 +115,18 @@ export function ThemeWorkbench({ children, theme, themeClass }: ThemeWorkbenchPr
     setCopied(true)
   }
 
+  const previewClassName = [
+    styles.shell,
+    styles.preview,
+    themeClass,
+    density === 'compact' ? styles.previewCompact : '',
+    density === 'gallery' ? styles.previewGallery : '',
+    surface === 'canvas' ? styles.previewCanvas : '',
+    surface === 'paper' ? styles.previewPaper : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
   return (
     <div className={styles.workbench}>
       <aside className={styles.editor} aria-label="Theme playground controls">
@@ -117,6 +146,39 @@ export function ThemeWorkbench({ children, theme, themeClass }: ThemeWorkbenchPr
             {copied ? 'Copied' : 'Copy CSS'}
           </button>
         </div>
+
+        <section className={styles.variantPanel} aria-label="Preview variants">
+          <div className={styles.variantGroup}>
+            <span>Density</span>
+            <div className={styles.segmentedControl}>
+              {previewDensities.map((option) => (
+                <button
+                  type="button"
+                  key={option.id}
+                  aria-pressed={density === option.id}
+                  onClick={() => setDensity(option.id)}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className={styles.variantGroup}>
+            <span>Surface</span>
+            <div className={styles.segmentedControl}>
+              {previewSurfaces.map((option) => (
+                <button
+                  type="button"
+                  key={option.id}
+                  aria-pressed={surface === option.id}
+                  onClick={() => setSurface(option.id)}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <p className={styles.editorNote}>
           Base theme tokens are editable here. Responsive media-query overrides in theme.css are
@@ -200,7 +262,7 @@ export function ThemeWorkbench({ children, theme, themeClass }: ThemeWorkbenchPr
         </section>
       </aside>
 
-      <main ref={previewRef} className={`${styles.shell} ${styles.preview} ${themeClass}`}>
+      <main ref={previewRef} className={previewClassName}>
         {children}
       </main>
     </div>
