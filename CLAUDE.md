@@ -42,7 +42,7 @@ Self-registration with email verification, login (with lockout + verify-required
 - Email goes through `@payloadcms/email-resend` with a console-adapter fallback when `RESEND_API_KEY` is unset (mirrors the R2 fallback pattern).
 - Auth pages are under route group `(auth)`; account pages under `(account)` with a shared sidebar layout.
 - All forms submit to Next.js Server Actions that call Payload's local API directly.
-- Booking lives at `/book/[eventDateId]` (logged-in only) → confirmation at `/book/[eventDateId]/confirmation/[orderId]`. Users see their orders at `/account/orders` and detail + cancel-while-pending at `/account/orders/[id]`. Admin manages orders in `/admin/collections/orders` (state transitions enforced by hook; notes are append-only with author + timestamp). Capacity is derived from non-terminal orders and protected by a Postgres advisory lock at create time. Online payment is deferred — confirmed orders show bank-transfer instructions, admin marks paid manually.
+- Booking lives at `/book/[eventDateId]` (logged-in only) → confirmation at `/book/[eventDateId]/confirmation/[orderId]`. Users see their orders at `/account/orders` and detail + cancel-while-pending at `/account/orders/[id]`. Admin manages orders in `/admin/collections/orders` (state transitions enforced by hook; notes are append-only with author + timestamp). Capacity is derived from non-terminal orders and protected by a Postgres advisory lock at create time. Online card payment via Comgate is live: a "Pay by card" button on the booking confirmation page (order still `pending`) calls `beginComgatePayment` and redirects to Comgate; its webhook chains the order `pending → confirmed → paid`. See `src/payments/` below and `docs/superpowers/plans/2026-08-28-comgate-payment-gateway.md`. Bank-transfer stays available as a fallback: confirmed orders otherwise show bank-transfer instructions and admin marks paid manually.
 
 ## Code so far
 
@@ -51,7 +51,8 @@ Self-registration with email verification, login (with lockout + verify-required
   `blocksFor(surface)`; blocks are compatible with all surfaces by default and
   opt out through `notCompatibleWith` when a required data dependency cannot
   currently be resolved.
-- `src/payments/gateway.ts` — **draft** TypeScript port of the payment gateway abstraction: domain types (`Transaction`, `TransactionState`, `Money`), the `PaymentGateway` contract, and the factory config shape. No concrete gateways yet. Has a "DRAFT — open questions" block at the bottom to resolve before implementation. Unlike the PHP original, gateway methods return result objects instead of mutating the transaction; the (future) PaymentService owns persistence and state transitions.
+- `src/payments/gateway.ts` — TypeScript port of the payment gateway abstraction: domain types (`Transaction`, `TransactionState`, `Money`), the `PaymentGateway` contract, and the factory config shape. Unlike the PHP original, gateway methods return result objects instead of mutating the transaction; `src/payments/order-payment-service.ts` (the `PaymentService` equivalent) owns persistence and state transitions. Still has a "DRAFT — open questions" block at the bottom covering gateways beyond Comgate (webhook routing per-gateway vs. shared, `checkStatus` scheduling).
+- `src/payments/comgate/` — **implemented** (MVP: `begin()` + webhook only; `checkStatus`/`cancel` are deferred stubs — see the plan doc above): `client.ts` (raw form-urlencoded HTTP transport), `gateway.ts` (`ComgateGateway`), `config.ts` (env var config). Backed by the `transactions` Payload collection (`src/collections/Transactions.ts`) and wired into the booking flow via `src/payments/order-payment-service.ts` and `src/app/api/payments/comgate/{webhook,return}/route.ts`.
 - `src/payments/muzapay/` — **draft** port of the MuzaPay signing/auth primitives:
   - `signature-builder.ts` — builds the plaintext (ordered, trimmed, empties skipped) to be signed.
   - `signer.ts` — RSA-SHA256 (PKCS#1 v1.5) sign → base64 → `rawurlencode`. Header comment pins the byte-exactness details.
@@ -82,10 +83,14 @@ Hosted on **Vercel**. Required environment variables in the Vercel project setti
 - `EMAIL_REPLY_TO` — optional reply-to address.
 - `ADMIN_ORDER_NOTIFICATIONS_EMAIL` — recipient of the "new booking" admin notification email. Falls back to `EMAIL_FROM_ADDRESS` if unset.
 - `BANK_TRANSFER_DETAILS` — multi-line text (IBAN, beneficiary, etc.) injected into the "Booking confirmed" email. The order number is used as the variable symbol.
+- `COMGATE_MERCHANT` — Comgate merchant ID (from the Comgate merchant portal).
+- `COMGATE_SECRET` — Comgate merchant secret, used both to sign requests and to verify inbound webhooks.
+- `COMGATE_TEST_MODE` — `true` routes through the Comgate sandbox; set to `false` only once the integration is verified against a live Comgate account. Defaults to `true` if unset.
 
 If any of the four `R2_*` vars is unset, Payload falls back to local-disk storage (useful for tests, broken for production).
 
 > **⛔ Database branches — local `.env` must NEVER point at the production branch.** The production branch is `ep-weathered-pine-alvc3sdj`; it is set only in the Vercel project settings. On 2026-06-12, local `.env` and the Playwright e2e suite shared that host, leaking 421 test fixtures into production data (purged via `scripts/e2e-fixture-cleanup.ts`). To prevent recurrence:
+>
 > - **Local dev + e2e (`.env`)** → use the Neon **`dev`** branch connection string (a copy of production, so seeded demo data carries over). Never the production host.
 > - **Integration tests (`.env.test`, loaded by `vitest.setup.ts` with `override: true`)** → use the dedicated Neon **`test`** branch. This DB is wiped/reseeded by tests, so it must be isolated from both dev and production.
 > - Before pasting any `DATABASE_URL` into a local env file, check the host: if it is `ep-weathered-pine-alvc3sdj`, **stop** — that is production.
