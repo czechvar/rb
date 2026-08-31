@@ -32,8 +32,8 @@
   letter-spacing: 1px;
   margin: 0 0 10px 0;
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--theme-color-warm-action);
-  color: var(--theme-color-warm-action);
+  border-bottom: 2px solid var(--theme-color-detail-action);
+  color: var(--theme-color-detail-action);
 }
 
 .card ul {
@@ -55,13 +55,13 @@
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--theme-color-warm-muted);
+  color: var(--theme-color-detail-muted);
 }
 
 .recommendation {
   margin-top: 18px;
   font-style: italic;
-  border-left: 3px solid var(--theme-color-warm-action);
+  border-left: 3px solid var(--theme-color-detail-action);
   padding-left: 14px;
   color: var(--theme-color-page-text);
 }

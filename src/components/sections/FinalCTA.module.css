@@ -1,5 +1,5 @@
 .band {
-  background: var(--theme-color-warm-canvas);
+  background: var(--theme-color-detail-canvas);
   color: var(--theme-color-paper);
   text-align: center;
   padding: 40px 60px;
@@ -11,7 +11,7 @@
 }
 
 .band p {
-  color: var(--theme-color-warm-text-muted);
+  color: var(--theme-color-detail-text-muted);
   font-size: 13px;
   margin-bottom: 24px;
 }
@@ -37,12 +37,12 @@
 }
 
 .primary {
-  background: var(--theme-color-warm-action);
+  background: var(--theme-color-detail-action);
   color: var(--theme-color-paper);
 }
 
 .primary:hover {
-  background: var(--theme-color-warm-action-hover);
+  background: var(--theme-color-detail-action-hover);
 }
 
 .secondary {
