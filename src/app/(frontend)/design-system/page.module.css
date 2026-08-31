@@ -821,6 +821,62 @@
   outline-offset: 3px;
 }
 
+.repoComponentStack {
+  display: grid;
+  gap: 28px;
+}
+
+.repoBand {
+  overflow: hidden;
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  border-radius: var(--theme-radius-md);
+  background: var(--theme-color-canvas);
+}
+
+.repoBand > * {
+  margin-top: 0;
+}
+
+.repoComponentGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 34rem);
+  gap: 24px;
+  align-items: start;
+}
+
+.formPrimitivePanel {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--theme-color-white-paper-border);
+  border-radius: var(--theme-radius-md);
+  padding: var(--theme-card-pad);
+  background: var(--theme-color-white-paper);
+  color: var(--theme-color-ink);
+  box-shadow: var(--theme-shadow-auth-card);
+}
+
+.cardKicker {
+  color: var(--theme-color-primary);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-sm);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.catalogueSurface {
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  border-radius: var(--theme-radius-md);
+  padding: var(--theme-card-pad);
+  background: var(--theme-color-white-paper-soft);
+  color: var(--theme-color-ink);
+}
+
+.catalogueGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
 .tokenTable {
   width: 100%;
   border-collapse: collapse;
@@ -856,6 +912,135 @@
   background: var(--sample);
 }
 
+.tokenAtlas {
+  display: grid;
+  gap: 24px;
+}
+
+.tokenAtlasGroup {
+  display: grid;
+  gap: 16px;
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  border-radius: var(--theme-radius-md);
+  padding: 18px;
+  background: var(--theme-color-white-paper-soft);
+  color: var(--theme-color-ink);
+}
+
+.tokenAtlasHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.tokenAtlasHeader h3 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--theme-font-heading);
+  font-size: var(--theme-text-2xl);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tokenAtlasHeader span {
+  min-width: 40px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--theme-color-primary-border);
+  border-radius: var(--theme-radius-sm);
+  background: var(--theme-color-primary-soft);
+  color: var(--theme-color-primary);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-sm);
+  font-weight: 800;
+}
+
+.tokenAtlasGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.tokenAtlasItem {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 64px;
+  border: 1px solid var(--theme-color-white-paper-divider);
+  border-radius: var(--theme-radius-sm);
+  padding: 8px;
+  background: var(--theme-color-white-paper);
+}
+
+.tokenAtlasItem code {
+  overflow-wrap: anywhere;
+  color: var(--theme-color-page-text);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-xs);
+}
+
+.tokenAtlasSample {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--theme-color-white-paper-border);
+  border-radius: var(--theme-radius-sm);
+  background: var(--theme-color-white-paper-muted);
+  color: var(--theme-color-ink);
+}
+
+.tokenSampleColor {
+  background: var(--sample);
+}
+
+.tokenSampleShadow {
+  background: var(--theme-color-white-paper);
+  box-shadow: var(--sample);
+}
+
+.tokenSampleMeasure::before {
+  content: '';
+  display: block;
+  width: min(var(--sample), 100%);
+  height: var(--theme-space-4);
+  border-radius: var(--theme-radius-sm);
+  background: var(--theme-color-primary);
+}
+
+.tokenSampleMotion::before {
+  content: '';
+  width: 28px;
+  height: 28px;
+  border-radius: var(--theme-radius-lg);
+  background: var(--theme-color-primary);
+  transition: transform var(--sample) ease;
+}
+
+.tokenAtlasItem:hover .tokenSampleMotion::before {
+  transform: translateX(var(--theme-space-4));
+}
+
+.tokenSampleFont {
+  font-family: var(--sample);
+  font-size: var(--theme-text-xl);
+}
+
+.tokenSampleRaw::before {
+  content: '';
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--theme-color-primary-border);
+  border-radius: var(--theme-radius-sm);
+  background: var(--theme-color-primary-soft);
+}
+
 @media (max-width: 900px) {
   .workbench {
     grid-template-columns: 1fr;
@@ -871,7 +1056,9 @@
 
   .heroInner,
   .componentGrid,
-  .coverageGrid {
+  .coverageGrid,
+  .repoComponentGrid,
+  .catalogueGrid {
     grid-template-columns: 1fr;
   }
 
