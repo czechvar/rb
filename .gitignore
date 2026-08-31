@@ -58,3 +58,4 @@ node_modules/
 
 # old-site DB dumps (used by data-import scripts, never committed)
 /old_db/
+.env*
