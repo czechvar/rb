@@ -1,5 +1,5 @@
 .hero {
-  background: var(--theme-color-warm-canvas);
+  background: var(--theme-color-detail-canvas);
   color: var(--theme-color-paper);
   display: grid;
   grid-template-columns: 1fr 320px;
@@ -18,7 +18,7 @@
 .subline {
   font-size: 14px;
   line-height: 1.7;
-  color: var(--theme-color-warm-text);
+  color: var(--theme-color-detail-text);
   font-style: italic;
   max-width: 680px;
   margin: 0;
@@ -44,7 +44,7 @@
   text-align: center;
   padding: 13px;
   margin-top: 20px;
-  background: var(--theme-color-warm-action);
+  background: var(--theme-color-detail-action);
   color: var(--theme-color-paper);
   font-family: var(--theme-font-technical);
   font-size: 13px;
@@ -56,7 +56,7 @@
 }
 
 .cta:hover {
-  background: var(--theme-color-warm-action-hover);
+  background: var(--theme-color-detail-action-hover);
 }
 
 @media (max-width: 800px) {
