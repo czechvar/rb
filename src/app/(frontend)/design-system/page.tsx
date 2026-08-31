@@ -1,3 +1,21 @@
+import type { Event, EventDate, Guide, Location, Post, Program } from '@/payload-types'
+import {
+  BlockHeader,
+  EventDateCard,
+  GuideCard,
+  LocationCard,
+  PostCard,
+  ProgramCard,
+  TripCard as CatalogueTripCard,
+  featuredCardClassName,
+} from '@/components/blocks/CatalogueCards'
+import { FormBanner } from '@/components/forms/FormBanner'
+import { FormField } from '@/components/forms/FormField'
+import { Card, CardGrid } from '@/components/sections/Card'
+import { PricingSidebar } from '@/components/sections/PricingSidebar'
+import { SectionIntro } from '@/components/sections/SectionIntro'
+import { TagChipStrip } from '@/components/sections/TagChipStrip'
+import { themeTokenGroups, themeTokens, type ThemeToken } from '@/lib/theme/tokenRegistry'
 import styles from './page.module.css'
 import { ThemeWorkbench } from './ThemeWorkbench'
 
@@ -23,6 +41,65 @@ const detailTokens = [
   ['--theme-color-detail-muted', 'Supporting rule, badge, and metadata color.'],
   ['--theme-color-detail-text', 'Primary text on the detail palette.'],
 ] as const
+
+const sampleLocation = {
+  id: 1,
+  name: 'Kalymnos',
+  slug: 'kalymnos',
+  city: 'Masouri',
+  country: 'Greece',
+} as unknown as Location
+
+const sampleProgram = {
+  id: 1,
+  name: 'Performance Coaching',
+  slug: 'performance-coaching',
+  shortDescription:
+    'Technique, tactics, and movement coaching for climbers building a durable base.',
+} as unknown as Program
+
+const sampleGuide = {
+  id: 1,
+  name: 'Jany',
+  slug: 'jany',
+  role: 'Head guide',
+  tagline: 'Precise coaching for steep limestone and long days outside.',
+} as unknown as Guide
+
+const samplePost = {
+  id: 1,
+  title: 'How to prepare for a climbing week',
+  slug: 'prepare-climbing-week',
+  excerpt: 'A practical checklist for training, packing, and arriving ready to climb.',
+  publishedAt: '2026-09-16T08:00:00.000Z',
+} as unknown as Post
+
+const sampleEvent = {
+  id: 1,
+  title: 'Deep Blue Psicobloc',
+  slug: 'deep-blue-psicobloc',
+  shortDescription: 'A mixed week of coaching, rest-day logistics, and guided climbing by the sea.',
+  locations: [sampleLocation],
+} as unknown as Event
+
+const sampleEventDate = {
+  id: 1,
+  event: sampleEvent,
+  dateFrom: '2026-10-12T00:00:00.000Z',
+  dateTo: '2026-10-19T00:00:00.000Z',
+  currency: 'EUR',
+  price: 1390,
+  capacity: 8,
+} as unknown as EventDate
+
+function tokenSampleClass(token: ThemeToken) {
+  if (token.kind === 'color') return styles.tokenSampleColor
+  if (token.kind === 'shadow') return styles.tokenSampleShadow
+  if (token.kind === 'space' || token.kind === 'size') return styles.tokenSampleMeasure
+  if (token.kind === 'motion') return styles.tokenSampleMotion
+  if (token.kind === 'font') return styles.tokenSampleFont
+  return styles.tokenSampleRaw
+}
 
 export const metadata = {
   title: 'Design System - Rockbusters',
@@ -224,6 +301,108 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
 
         <section className={styles.section}>
           <div className={styles.sectionHeading}>
+            <h2>Repo Components</h2>
+            <p>
+              Existing presentational components rendered with fixture data so theme edits hit real
+              app surfaces.
+            </p>
+          </div>
+          <div className={styles.repoComponentStack}>
+            <div className={styles.repoBand}>
+              <SectionIntro
+                eyebrow="SectionIntro"
+                title="Real Section Rhythm"
+                lead="This is the shared section intro used by trip and program detail blocks."
+              />
+            </div>
+
+            <div className={styles.repoBand}>
+              <CardGrid>
+                <Card>
+                  <span className={styles.cardKicker}>Default Card</span>
+                  <p>Reusable detail cards inherit paper, ink, border, and primary accents.</p>
+                </Card>
+                <Card variant="highlighted">
+                  <span className={styles.cardKicker}>Highlighted Card</span>
+                  <p>The highlighted variant follows the active brand color.</p>
+                </Card>
+                <Card>
+                  <span className={styles.cardKicker}>Hover Border</span>
+                  <p>Border and surface tokens should stay visible across both themes.</p>
+                </Card>
+              </CardGrid>
+            </div>
+
+            <div className={styles.repoBand}>
+              <TagChipStrip
+                chips={[
+                  { icon: 'pin', label: 'Kalymnos' },
+                  { icon: 'mountain', label: 'Sport climbing' },
+                  { icon: 'calendar', label: '7 days' },
+                  { icon: 'gift', label: 'Coaching' },
+                ]}
+              />
+            </div>
+
+            <div className={styles.repoComponentGrid}>
+              <div className={styles.formPrimitivePanel}>
+                <FormBanner kind="success">Your booking profile is ready for checkout.</FormBanner>
+                <FormBanner kind="error">Please choose an available trip date.</FormBanner>
+                <FormField
+                  name="theme-email"
+                  label="Email"
+                  type="email"
+                  defaultValue="alex@example.com"
+                  helpText="Existing form helper text should remain readable."
+                />
+                <FormField
+                  name="theme-passport"
+                  label="Passport name"
+                  defaultValue="Alex Sender"
+                  error="Use the exact name on your travel document."
+                />
+              </div>
+              <PricingSidebar
+                primaryPrice="EUR 1,390"
+                secondaryPrice="Deposit EUR 290"
+                caption="Per climber, shared accommodation included."
+                rows={[
+                  { label: 'Dates', value: '12-19 Oct' },
+                  { label: 'Seats', value: '8 total' },
+                  { label: 'Airport', value: 'Prague' },
+                ]}
+                callout="Early booking discount available"
+                ctaHref="#"
+                ctaLabel="Reserve"
+              />
+            </div>
+
+            <div className={styles.catalogueSurface}>
+              <BlockHeader
+                eyebrow="Catalogue cards"
+                heading="Domain Card Variants"
+                intro="Cards from the block system show how theme values behave across trip, program, location, guide, post, and date surfaces."
+              />
+              <div className={styles.catalogueGrid}>
+                <CatalogueTripCard event={sampleEvent} price="From EUR 1,390" lead />
+                <ProgramCard program={sampleProgram} className={featuredCardClassName('feature')} />
+                <LocationCard
+                  location={sampleLocation}
+                  className={featuredCardClassName('compact')}
+                />
+                <GuideCard guide={sampleGuide} className={featuredCardClassName('mediaLed')} />
+                <PostCard post={samplePost} className={featuredCardClassName('compact')} />
+                <EventDateCard
+                  eventDate={sampleEventDate}
+                  className={featuredCardClassName('feature')}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className={styles.sectionHeading}>
             <h2>Trip Card</h2>
             <p>
               Catalogue cards need to preserve image fade overlays, hierarchy, and CTA contrast.
@@ -288,6 +467,42 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
               ))}
             </tbody>
           </table>
+        </section>
+
+        <section className={styles.section}>
+          <div className={styles.sectionHeading}>
+            <h2>Token Atlas</h2>
+            <p>
+              Every registered editable token group rendered from the same registry as the editor.
+            </p>
+          </div>
+          <div className={styles.tokenAtlas}>
+            {themeTokenGroups.map((group) => {
+              const tokens = themeTokens.filter((token) => token.group === group.id)
+
+              return (
+                <article className={styles.tokenAtlasGroup} key={group.id}>
+                  <div className={styles.tokenAtlasHeader}>
+                    <h3>{group.label}</h3>
+                    <span>{tokens.length}</span>
+                  </div>
+                  <div className={styles.tokenAtlasGrid}>
+                    {tokens.map((token) => (
+                      <div className={styles.tokenAtlasItem} key={token.name}>
+                        <div
+                          className={`${styles.tokenAtlasSample} ${tokenSampleClass(token)}`}
+                          style={{ ['--sample' as string]: `var(${token.name})` }}
+                        >
+                          {token.kind === 'font' ? 'Aa' : null}
+                        </div>
+                        <code>{token.name}</code>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              )
+            })}
+          </div>
         </section>
       </div>
     </ThemeWorkbench>
