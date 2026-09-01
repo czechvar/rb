@@ -31,6 +31,7 @@
 .editorHeader h2,
 .exportPanel h3 {
   margin: 0;
+  color: var(--theme-color-text);
   font-family: var(--theme-font-heading);
   font-size: 34px;
   font-weight: 400;
@@ -325,7 +326,7 @@
 }
 
 .previewCompact .sectionHeading h2 {
-  font-size: clamp(42px, 4.5vw, 56px);
+  font-size: 3.5rem;
 }
 
 .previewGallery .hero {
@@ -399,7 +400,7 @@
 
 .brand strong {
   font-family: var(--theme-font-heading);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: 3rem;
   font-weight: 400;
   line-height: 0.9;
   text-transform: uppercase;
@@ -466,7 +467,7 @@
 .hero h1 {
   color: var(--theme-color-text);
   max-width: 720px;
-  font-size: clamp(72px, 9vw, 128px);
+  font-size: 8rem;
 }
 
 .eyebrow {
@@ -531,10 +532,67 @@
 
 .content {
   display: grid;
-  gap: 72px;
   width: min(100%, 1216px);
   margin: 0 auto;
   padding: 80px clamp(24px, 4vw, 48px);
+}
+
+.tabWorkbench,
+.paneStack {
+  display: grid;
+  gap: 32px;
+}
+
+.tabs {
+  position: sticky;
+  top: 98px;
+  z-index: 9;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--theme-color-border);
+  border-radius: var(--theme-radius-md);
+  background: color-mix(in srgb, var(--theme-color-canvas) 90%, transparent);
+  box-shadow: var(--theme-shadow-panel);
+  backdrop-filter: blur(16px);
+}
+
+.tabs button {
+  min-height: 68px;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  border: 1px solid transparent;
+  border-radius: var(--theme-radius-sm);
+  padding: 9px 12px;
+  background: transparent;
+  color: var(--theme-color-text-muted);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tabs button[aria-selected='true'] {
+  border-color: var(--theme-color-primary-border);
+  background: var(--theme-color-primary);
+  color: var(--theme-color-white-paper);
+}
+
+.tabs span {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.tabs small {
+  font-family: var(--theme-font-technical);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tabPanel[hidden] {
+  display: none;
 }
 
 .section {
@@ -553,7 +611,7 @@
 
 .sectionHeading h2 {
   color: inherit;
-  font-size: clamp(56px, 6vw, 76px);
+  font-size: 4.75rem;
 }
 
 .sectionHeading p {
@@ -690,9 +748,11 @@
   border: 1px solid transparent;
   border-radius: var(--theme-radius-sm);
   padding: 12px 16px;
+  font: inherit;
   font-size: 14px;
   font-weight: 900;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .primaryButton {
@@ -784,7 +844,7 @@
 
 .tripMedia h2 {
   color: var(--theme-color-text);
-  font-size: clamp(56px, 7vw, 92px);
+  font-size: 5.75rem;
 }
 
 .tripBody {
@@ -931,6 +991,169 @@
   outline-offset: 3px;
 }
 
+.typeWorkbench {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.typeScaleCard,
+.typeSpecimenWide,
+.richTextSpecimen,
+.dataTypeCard,
+.formTextCard,
+.specimenRow,
+.patternWide,
+.patternSplit,
+.paperPattern,
+.blockStrategyCard {
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  border-radius: var(--theme-radius-md);
+  padding: var(--theme-card-pad);
+  background: var(--theme-color-white-paper-soft);
+  color: var(--theme-color-ink);
+  box-shadow: var(--theme-shadow-card-hover);
+}
+
+.typeSpecimenWide {
+  grid-row: span 2;
+}
+
+.typeScaleRows {
+  display: grid;
+  gap: 12px;
+}
+
+.typeScaleRows span {
+  font-size: var(--size);
+  line-height: 1.2;
+}
+
+.typeSpecimenWide,
+.richTextSpecimen,
+.dataTypeCard,
+.formTextCard {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+.typeSpecimenWide h2,
+.typeSpecimenWide h3,
+.richTextSpecimen h3,
+.specimenLabel h3,
+.patternHeader h3,
+.blockStrategyCard h3,
+.detailCard h3 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--theme-font-heading);
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.typeSpecimenWide h2 {
+  font-size: 4.75rem;
+}
+
+.typeSpecimenWide h3,
+.richTextSpecimen h3,
+.specimenLabel h3,
+.patternHeader h3,
+.blockStrategyCard h3,
+.detailCard h3 {
+  font-size: var(--theme-text-2xl);
+}
+
+.typeSpecimenWide p,
+.typeSpecimenWide a,
+.richTextSpecimen p,
+.richTextSpecimen li,
+.specimenLabel p,
+.blockStrategyCard p,
+.blockMatrixRow p {
+  margin: 0;
+  color: var(--theme-color-page-text);
+}
+
+.typeSpecimenWide a {
+  color: var(--theme-color-primary);
+  font-weight: 800;
+}
+
+.captionText,
+.helpText {
+  color: var(--theme-color-text-soft);
+  font-size: var(--theme-text-sm);
+}
+
+.richTextSpecimen ul,
+.richTextSpecimen ol {
+  margin: 0;
+  padding-left: 1.3rem;
+}
+
+.dataTypeCard dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.dataTypeCard dl div {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--theme-color-white-paper-divider);
+  border-radius: var(--theme-radius-sm);
+  padding: 12px;
+  background: var(--theme-color-white-paper);
+}
+
+.dataTypeCard dt {
+  color: var(--theme-color-text-soft);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-xs);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.dataTypeCard dd {
+  margin: 0;
+  color: var(--theme-color-ink);
+  font-family: var(--theme-font-heading);
+  font-size: var(--theme-text-2xl);
+  line-height: 1;
+}
+
+.dataTypeCard code {
+  color: var(--theme-color-primary);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-sm);
+}
+
+.formTextCard label {
+  color: var(--theme-color-ink);
+  font-size: var(--theme-text-sm);
+  font-weight: 800;
+}
+
+.formTextCard input {
+  width: 100%;
+  border: 1px solid var(--theme-color-white-paper-border);
+  border-radius: var(--theme-radius-sm);
+  padding: 13px 14px;
+  background: var(--theme-color-white-paper);
+  color: var(--theme-color-ink);
+  font: inherit;
+}
+
+.errorText {
+  color: var(--theme-color-danger);
+  font-size: var(--theme-text-sm);
+  font-weight: 800;
+}
+
 .repoComponentStack {
   display: grid;
   gap: 28px;
@@ -941,10 +1164,15 @@
   border: 1px solid var(--theme-color-ink-border-subtle);
   border-radius: var(--theme-radius-md);
   background: var(--theme-color-canvas);
+  color: var(--theme-color-text);
 }
 
 .repoBand > * {
   margin-top: 0;
+}
+
+.repoBand > :last-child {
+  margin-bottom: 0;
 }
 
 .repoComponentGrid {
@@ -956,7 +1184,7 @@
 
 .formPrimitivePanel {
   display: grid;
-  gap: 8px;
+  gap: 12px;
   border: 1px solid var(--theme-color-white-paper-border);
   border-radius: var(--theme-radius-md);
   padding: var(--theme-card-pad);
@@ -985,6 +1213,157 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+}
+
+.specimenRows {
+  display: grid;
+  gap: 24px;
+}
+
+.specimenRow {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.28fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.specimenLabel {
+  display: grid;
+  gap: 8px;
+  position: sticky;
+  top: 188px;
+}
+
+.bookingSpecimenGrid,
+.patternSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 34rem);
+  gap: 24px;
+  align-items: start;
+}
+
+.contentSectionStack {
+  display: grid;
+  gap: 22px;
+  overflow: hidden;
+  border-radius: var(--theme-radius-md);
+  background: var(--theme-color-canvas);
+  color: var(--theme-color-text);
+}
+
+.contentSectionStack > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.patternGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.patternWide,
+.patternSplit,
+.paperPattern {
+  display: grid;
+  gap: 20px;
+}
+
+.patternWide,
+.patternSplit {
+  grid-column: 1 / -1;
+}
+
+.patternHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.noticeStack,
+.inlineFormPattern {
+  display: grid;
+  gap: 12px;
+}
+
+.inlineFormPattern {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) max-content;
+  align-items: end;
+}
+
+.inlineFormPattern > :first-child {
+  grid-column: 1 / -1;
+}
+
+.paperPattern {
+  background: var(--theme-color-white-paper);
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--theme-color-ink);
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--theme-color-white-paper-divider);
+  text-align: left;
+}
+
+.dataTable th {
+  color: var(--theme-color-text-soft);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-xs);
+  text-transform: uppercase;
+}
+
+.blockStrategyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.blockStrategyCard {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.blockMatrix {
+  display: grid;
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  border-radius: var(--theme-radius-md);
+  overflow: hidden;
+  background: var(--theme-color-white-paper);
+  color: var(--theme-color-ink);
+}
+
+.blockMatrixRow {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(140px, 0.4fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--theme-color-white-paper-divider);
+}
+
+.blockMatrixRow:last-child {
+  border-bottom: 0;
+}
+
+.blockMatrixRow strong {
+  font-weight: 900;
+}
+
+.blockMatrixRow span {
+  color: var(--theme-color-primary);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-sm);
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .tokenTable {
@@ -1168,8 +1547,51 @@
   .componentGrid,
   .coverageGrid,
   .repoComponentGrid,
-  .catalogueGrid {
+  .catalogueGrid,
+  .typeWorkbench,
+  .specimenRow,
+  .bookingSpecimenGrid,
+  .patternGrid,
+  .patternSplit,
+  .blockStrategyGrid,
+  .blockMatrixRow {
     grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    top: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brand strong {
+    font-size: 2.25rem;
+  }
+
+  .hero h1 {
+    font-size: 5rem;
+  }
+
+  .sectionHeading h2,
+  .previewCompact .sectionHeading h2,
+  .typeSpecimenWide h2 {
+    font-size: 3.5rem;
+  }
+
+  .tripMedia h2 {
+    font-size: 4rem;
+  }
+
+  .specimenLabel {
+    position: static;
+  }
+
+  .inlineFormPattern {
+    grid-template-columns: 1fr;
+  }
+
+  .patternWide,
+  .patternSplit {
+    grid-column: auto;
   }
 
   .swatchGrid {
@@ -1191,7 +1613,23 @@
 
   .swatchGrid,
   .statGrid,
-  .tripMeta {
+  .tripMeta,
+  .dataTypeCard dl {
     grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+  }
+
+  .sectionHeading h2,
+  .previewCompact .sectionHeading h2,
+  .typeSpecimenWide h2,
+  .tripMedia h2 {
+    font-size: 3rem;
   }
 }
