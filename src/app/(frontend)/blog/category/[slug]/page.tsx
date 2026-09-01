@@ -1,6 +1,8 @@
 import { permanentRedirect } from 'next/navigation'
 import { getPostCategoryBySlug, getPublishedPostsByCategory } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
+import { JsonLd } from '@/components/JsonLd'
+import { collectionPageGraphJsonLd, postListItems } from '@/lib/jsonld'
 import { PostCard } from '../../PostCard'
 import styles from '../../blog.module.css'
 
@@ -18,6 +20,17 @@ export default async function BlogCategoryPage({ params }: Props) {
   if (!category) permanentRedirect('/blog')
 
   const docs = await getPublishedPostsByCategory(category.id)
+  const jsonLd = collectionPageGraphJsonLd({
+    path: `/blog/category/${category.slug}`,
+    name: category.name,
+    description: category.description,
+    items: postListItems(docs),
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: 'Blog', path: '/blog' },
+      { name: category.name, path: `/blog/category/${category.slug}` },
+    ],
+  })
   return (
     <MarketingShell
       crumbs={[
@@ -26,6 +39,7 @@ export default async function BlogCategoryPage({ params }: Props) {
         { label: category.name },
       ]}
     >
+      <JsonLd data={jsonLd} />
       <main className={styles.wrap}>
         <h1>{category.name}</h1>
         {category.description ? <p>{category.description}</p> : null}

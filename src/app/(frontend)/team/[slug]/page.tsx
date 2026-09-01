@@ -10,6 +10,8 @@ import { GuideAchievements } from '@/components/marketing/team/GuideAchievements
 import { GuideTestimonial } from '@/components/marketing/team/GuideTestimonial'
 import { GuideFinalCTA } from '@/components/marketing/team/GuideFinalCTA'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
+import { JsonLd } from '@/components/JsonLd'
+import { guideDetailGraphJsonLd } from '@/lib/jsonld'
 import styles from './guide.module.css'
 
 type Props = { params: Promise<{ slug: string }> }
@@ -25,9 +27,13 @@ export default async function GuidePage({ params }: Props) {
   const guide = await getGuideBySlug(slug)
   if (!guide) notFound()
 
+  const events = await getPublishedEventsForGuide(guide.id)
+  const jsonLd = guideDetailGraphJsonLd(guide, events)
+
   if (guide.layout?.length) {
     return (
       <MarketingShell transparentHeader>
+        <JsonLd data={jsonLd} />
         <main className={styles.page}>
           <RenderBlocks blocks={guide.layout} context={{ guide }} />
         </main>
@@ -37,10 +43,9 @@ export default async function GuidePage({ params }: Props) {
 
   // Email/phone exist on the collection but are intentionally not rendered —
   // public team pages must not leak contacts (see team-pages spec).
-  const events = await getPublishedEventsForGuide(guide.id)
-
   return (
     <MarketingShell transparentHeader>
+      <JsonLd data={jsonLd} />
       <main className={styles.page}>
         <GuideHero guide={guide} />
         <GuideStatsBar stats={guide.stats} />

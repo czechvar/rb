@@ -4,6 +4,8 @@ import { getPayloadClient } from '@/lib/payload'
 import { getPublishedEventBySlug } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { FAQList } from '@/components/sections/FAQList'
+import { JsonLd } from '@/components/JsonLd'
+import { tripFaqGraphJsonLd } from '@/lib/jsonld'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -20,6 +22,7 @@ export default async function TripFaqPage({ params }: Props) {
     sort: 'position',
     limit: 100,
   })
+  const jsonLd = tripFaqGraphJsonLd(event, faqs)
 
   return (
     <MarketingShell
@@ -30,6 +33,7 @@ export default async function TripFaqPage({ params }: Props) {
         { label: 'FAQ' },
       ]}
     >
+      <JsonLd data={jsonLd} />
       <main>
         <FAQList items={faqs} heading="FAQ for this trip" />
         <p style={{ textAlign: 'center', padding: '4rem 2rem', background: 'var(--rb-dark)', color: 'var(--rb-white-60)' }}>

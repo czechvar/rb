@@ -4,6 +4,8 @@ import { permanentRedirect } from 'next/navigation'
 import { getPublishedPostBySlug } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
+import { JsonLd } from '@/components/JsonLd'
+import { blogPostGraphJsonLd } from '@/lib/jsonld'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import { formatPostDate } from '../PostCard'
@@ -23,6 +25,7 @@ export default async function PostPage({ params }: Props) {
   // Old-site posts that were never recreated 308 to the index per the spec —
   // deliberate SEO fallback instead of a 404.
   if (!post) permanentRedirect('/blog')
+  const jsonLd = blogPostGraphJsonLd(post)
 
   if (post.layout?.length) {
     return (
@@ -33,6 +36,7 @@ export default async function PostPage({ params }: Props) {
           { label: post.title },
         ]}
       >
+        <JsonLd data={jsonLd} />
         <RenderBlocks blocks={post.layout} context={{ post }} />
       </MarketingShell>
     )
@@ -48,6 +52,7 @@ export default async function PostPage({ params }: Props) {
         { label: post.title },
       ]}
     >
+      <JsonLd data={jsonLd} />
       <main className={styles.wrap}>
         <div className={styles.postHeader}>
           <h1>{post.title}</h1>

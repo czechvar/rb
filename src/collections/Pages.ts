@@ -40,6 +40,31 @@ export const Pages: CollectionConfig = {
     },
     seoFields,
     {
+      name: 'structuredData',
+      type: 'group',
+      label: 'Structured data',
+      admin: {
+        description: 'Optional schema.org settings for this CMS page JSON-LD.',
+      },
+      fields: [
+        {
+          name: 'schemaType',
+          type: 'select',
+          defaultValue: 'WebPage',
+          options: [
+            { label: 'Web page', value: 'WebPage' },
+            { label: 'About page', value: 'AboutPage' },
+            { label: 'Contact page', value: 'ContactPage' },
+            { label: 'Collection page', value: 'CollectionPage' },
+            { label: 'FAQ page', value: 'FAQPage' },
+          ],
+          admin: {
+            description: 'Controls the top-level page type emitted for generic CMS page JSON-LD.',
+          },
+        },
+      ],
+    },
+    {
       name: 'layout',
       type: 'blocks',
       blocks: pageBlocks,

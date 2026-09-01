@@ -3179,6 +3179,15 @@ export interface Page {
     keywords?: string | null;
     description?: string | null;
   };
+  /**
+   * Optional schema.org settings for this CMS page JSON-LD.
+   */
+  structuredData?: {
+    /**
+     * Controls the top-level page type emitted for generic CMS page JSON-LD.
+     */
+    schemaType?: ('WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage' | 'FAQPage') | null;
+  };
   layout?:
     | (
         | {
@@ -6638,6 +6647,11 @@ export interface PagesSelect<T extends boolean = true> {
         title?: T;
         keywords?: T;
         description?: T;
+      };
+  structuredData?:
+    | T
+    | {
+        schemaType?: T;
       };
   layout?:
     | T

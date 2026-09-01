@@ -26,6 +26,8 @@ import * as migration_20260825_192925_remove_homepage_specific_blocks from './20
 import * as migration_20260826_060419_add_brand_block_variants from './20260826_060419_add_brand_block_variants';
 import * as migration_20260826_082151_catalogued_block_availability from './20260826_082151_catalogued_block_availability';
 import * as migration_20260826_091639_add_featured_catalogue_blocks from './20260826_091639_add_featured_catalogue_blocks';
+import * as migration_20260827_145720_payload_mcp_api_keys from './20260827_145720_payload_mcp_api_keys';
+import * as migration_20260901_093927_page_structured_data_schema_type from './20260901_093927_page_structured_data_schema_type';
 import * as migration_20260828_122519_add_transactions from './20260828_122519_add_transactions';
 
 
@@ -169,6 +171,16 @@ export const migrations = [
     up: migration_20260826_091639_add_featured_catalogue_blocks.up,
     down: migration_20260826_091639_add_featured_catalogue_blocks.down,
     name: '20260826_091639_add_featured_catalogue_blocks',
+  },
+  {
+    up: migration_20260827_145720_payload_mcp_api_keys.up,
+    down: migration_20260827_145720_payload_mcp_api_keys.down,
+    name: '20260827_145720_payload_mcp_api_keys',
+  },
+  {
+    up: migration_20260901_093927_page_structured_data_schema_type.up,
+    down: migration_20260901_093927_page_structured_data_schema_type.down,
+    name: '20260901_093927_page_structured_data_schema_type'
   },
   {
     up: migration_20260828_122519_add_transactions.up,

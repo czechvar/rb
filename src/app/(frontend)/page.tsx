@@ -26,6 +26,8 @@ import { Team } from '@/components/marketing/homepage/Team'
 import { HomepageFAQ } from '@/components/marketing/homepage/HomepageFAQ'
 import { Partners } from '@/components/marketing/homepage/Partners'
 import { FinalCTA } from '@/components/marketing/homepage/FinalCTA'
+import { JsonLd } from '@/components/JsonLd'
+import { homepageGraphJsonLd } from '@/lib/jsonld'
 
 type HomepageData = {
   heroMedia: Media | null
@@ -43,12 +45,19 @@ export default async function HomePage() {
     getPublishedPageBySlug('home'),
     getHomepageData(),
   ])
+  const usesCmsLayout = Boolean(homePage?.layout?.length)
+  const jsonLd = await homepageGraphJsonLd({
+    page: homePage,
+    heroMedia: usesCmsLayout ? undefined : homepage.heroMedia,
+    featuredEvents: usesCmsLayout ? [] : homepage.events,
+  })
 
   return (
     <>
       <Header />
-      {homePage?.layout?.length ? (
-        <RenderBlocks blocks={homePage.layout} context={{ page: homePage }} />
+      <JsonLd data={jsonLd} />
+      {usesCmsLayout ? (
+        <RenderBlocks blocks={homePage?.layout} context={{ page: homePage }} />
       ) : (
         <>
           <Hero backgroundMedia={homepage.heroMedia} />

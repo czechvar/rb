@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { getActiveEventDates } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
+import { JsonLd } from '@/components/JsonLd'
+import { calendarGraphJsonLd } from '@/lib/jsonld'
 import type { Event, Location } from '@/payload-types'
 import styles from './page.module.css'
 
@@ -27,6 +29,7 @@ export default async function CalendarPage() {
 
   // eslint-disable-next-line react-hooks/purity -- server component, runs once per request; filtering by current time is intended
   const upcoming = dates.filter((d) => new Date(d.dateFrom).getTime() >= Date.now())
+  const jsonLd = calendarGraphJsonLd(upcoming)
 
   const groups = new Map<string, typeof upcoming>()
   for (const d of upcoming) {
@@ -38,6 +41,7 @@ export default async function CalendarPage() {
 
   return (
     <MarketingShell crumbs={[{ href: '/', label: 'Home' }, { label: 'Calendar' }]}>
+      <JsonLd data={jsonLd} />
       <main className={styles.page}>
         <header className={styles.header}>
           <span className={styles.eyebrow}>Upcoming dates</span>

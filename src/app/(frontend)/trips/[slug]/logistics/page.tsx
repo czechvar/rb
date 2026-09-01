@@ -4,6 +4,8 @@ import { getPublishedEventBySlug } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { LocationBlock } from '@/components/sections/LocationBlock'
 import { EventAccommodationLogistics } from '@/components/sections/EventAccommodationLogistics'
+import { JsonLd } from '@/components/JsonLd'
+import { tripLogisticsGraphJsonLd } from '@/lib/jsonld'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -12,6 +14,7 @@ export default async function TripLogisticsPage({ params }: Props) {
 
   const event = await getPublishedEventBySlug(slug)
   if (!event) notFound()
+  const jsonLd = tripLogisticsGraphJsonLd(event)
 
   return (
     <MarketingShell
@@ -22,6 +25,7 @@ export default async function TripLogisticsPage({ params }: Props) {
         { label: 'Logistics' },
       ]}
     >
+      <JsonLd data={jsonLd} />
       <main>
         <LocationBlock content={event.content} />
         <EventAccommodationLogistics

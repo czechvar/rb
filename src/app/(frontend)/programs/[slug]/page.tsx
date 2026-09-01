@@ -19,6 +19,8 @@ import { HowToBook } from '@/components/sections/HowToBook'
 import { WhyRockbusters } from '@/components/sections/WhyRockbusters'
 import { FinalCTA } from '@/components/sections/FinalCTA'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
+import { JsonLd } from '@/components/JsonLd'
+import { programDetailGraphJsonLd } from '@/lib/jsonld'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -35,6 +37,9 @@ export default async function ProgramPage({ params }: Props) {
   const program = programDocs[0]
   if (!program) notFound()
 
+  const events = await getPublishedEventsForProgram(program.id)
+  const jsonLd = programDetailGraphJsonLd(program, events)
+
   if (program.layout?.length) {
     return (
       <MarketingShell
@@ -44,6 +49,7 @@ export default async function ProgramPage({ params }: Props) {
           { label: program.name },
         ]}
       >
+        <JsonLd data={jsonLd} />
         <main>
           <RenderBlocks blocks={program.layout} context={{ program }} />
         </main>
@@ -51,8 +57,7 @@ export default async function ProgramPage({ params }: Props) {
     )
   }
 
-  const [events, faqsResult, reviewsResult] = await Promise.all([
-    getPublishedEventsForProgram(program.id),
+  const [faqsResult, reviewsResult] = await Promise.all([
     payload.find({
       collection: 'faqs',
       where: { and: [{ program: { equals: program.id } }, { active: { equals: true } }] },
@@ -75,6 +80,7 @@ export default async function ProgramPage({ params }: Props) {
         { label: program.name },
       ]}
     >
+      <JsonLd data={jsonLd} />
       <main>
         <Hero program={program} />
         <HighlightsGrid items={program.highlights} heading="Program Highlights" />
