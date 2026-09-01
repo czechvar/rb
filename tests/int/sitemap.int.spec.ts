@@ -124,27 +124,14 @@ describe('buildSitemap', () => {
 })
 
 describe('buildRobots', () => {
-  it('points crawlers at the canonical sitemap and excludes private surfaces', () => {
+  it('points crawlers at the canonical sitemap and disallows all crawling', () => {
     process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
 
     expect(buildRobots()).toEqual({
       rules: [
         {
           userAgent: '*',
-          allow: '/',
-          disallow: [
-            '/admin',
-            '/api',
-            '/account',
-            '/book',
-            '/login',
-            '/register',
-            '/forgot-password',
-            '/reset-password',
-            '/verify-email',
-            '/design-system',
-            '/my-route',
-          ],
+          disallow: '/',
         },
       ],
       sitemap: 'https://rockbusters.net/sitemap.xml',

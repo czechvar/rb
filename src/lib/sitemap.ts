@@ -143,20 +143,7 @@ export function buildRobots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
-        disallow: [
-          '/admin',
-          '/api',
-          '/account',
-          '/book',
-          '/login',
-          '/register',
-          '/forgot-password',
-          '/reset-password',
-          '/verify-email',
-          '/design-system',
-          '/my-route',
-        ],
+        disallow: '/',
       },
     ],
     sitemap: siteUrl('/sitemap.xml'),
