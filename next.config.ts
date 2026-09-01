@@ -16,6 +16,13 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
   },
   async redirects() {
     // Old-site /team-member/* slugs that don't map 1:1 to the new clean slugs.

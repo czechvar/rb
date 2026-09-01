@@ -19,6 +19,7 @@ import {
   TripCard as CatalogueTripCard,
   featuredCardClassName,
 } from '@/components/blocks/CatalogueCards'
+import Image from 'next/image'
 import { FormBanner } from '@/components/forms/FormBanner'
 import { FormField } from '@/components/forms/FormField'
 import { SubmitButton } from '@/components/forms/SubmitButton'
@@ -121,6 +122,21 @@ const samplePartner = {
   id: 1,
   name: 'Rock Kit Lab',
 } as unknown as Partner
+
+const sampleImagery = {
+  hero:
+    'https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=1600&q=80',
+  card:
+    'https://images.unsplash.com/photo-1516592673884-4a382d1124c2?auto=format&fit=crop&w=900&q=80',
+  portrait:
+    'https://images.unsplash.com/photo-1521405924368-64c5b84bec60?auto=format&fit=crop&w=900&q=80',
+  galleryLead:
+    'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80',
+  galleryDetail:
+    'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80',
+  galleryContext:
+    'https://images.unsplash.com/photo-1522163182402-834f871fd851?auto=format&fit=crop&w=900&q=80',
+}
 
 const sampleEvent = {
   id: 1,
@@ -653,9 +669,13 @@ function ImageryPane() {
         <div className={styles.imageryGrid}>
           <article className={`${styles.imageSpecimen} ${styles.imageHeroSpecimen}`}>
             <div className={styles.imageFrame}>
-              <div className={styles.imagePlaceholder}>
-                <span>Hero landscape</span>
-              </div>
+              <Image
+                alt="Climber moving across steep rock with open landscape behind them"
+                className={styles.imageMedia}
+                fill
+                sizes="(min-width: 900px) 100vw, 100vw"
+                src={sampleImagery.hero}
+              />
               <div className={styles.imageOverlay}>
                 <p className={styles.eyebrow}>Trip hero</p>
                 <h3>Route, place, and season should be visible at first glance.</h3>
@@ -683,9 +703,13 @@ function ImageryPane() {
 
           <article className={styles.imageSpecimen}>
             <div className={styles.cardImageFrame}>
-              <div className={styles.imagePlaceholder}>
-                <span>Catalogue card</span>
-              </div>
+              <Image
+                alt="Rock climber on a sunlit outdoor route"
+                className={styles.imageMedia}
+                fill
+                sizes="(min-width: 900px) 50vw, 100vw"
+                src={sampleImagery.card}
+              />
             </div>
             <div className={styles.imageGuidance}>
               <h3>Catalogue Cards</h3>
@@ -709,14 +733,22 @@ function ImageryPane() {
           <article className={styles.imageSpecimen}>
             <div className={styles.portraitRow}>
               <div className={styles.portraitFrame}>
-                <div className={styles.imagePlaceholder}>
-                  <span>Guide</span>
-                </div>
+                <Image
+                  alt="Guide portrait specimen with face-safe crop"
+                  className={styles.imageMedia}
+                  fill
+                  sizes="(min-width: 900px) 35vw, 70vw"
+                  src={sampleImagery.portrait}
+                />
               </div>
               <div className={styles.logoFrame}>
-                <div className={styles.imagePlaceholder}>
-                  <span>Logo</span>
-                </div>
+                <Image
+                  alt="Rockbusters logo specimen"
+                  className={`${styles.imageMedia} ${styles.logoMedia}`}
+                  fill
+                  sizes="(min-width: 900px) 18vw, 30vw"
+                  src="/logo-rockbusters.png"
+                />
               </div>
             </div>
             <div className={styles.imageGuidance}>
@@ -741,13 +773,34 @@ function ImageryPane() {
 
           <article className={`${styles.imageSpecimen} ${styles.gallerySpecimen}`}>
             <div className={styles.galleryFrames}>
-              <div className={styles.imagePlaceholder}>
+              <div>
+                <Image
+                  alt="Wide destination context with mountain terrain"
+                  className={styles.imageMedia}
+                  fill
+                  sizes="(min-width: 900px) 40vw, 100vw"
+                  src={sampleImagery.galleryLead}
+                />
                 <span>Lead</span>
               </div>
-              <div className={styles.imagePlaceholder}>
+              <div>
+                <Image
+                  alt="Close route and water context specimen"
+                  className={styles.imageMedia}
+                  fill
+                  sizes="(min-width: 900px) 30vw, 100vw"
+                  src={sampleImagery.galleryDetail}
+                />
                 <span>Detail</span>
               </div>
-              <div className={styles.imagePlaceholder}>
+              <div>
+                <Image
+                  alt="Climber and rock wall context specimen"
+                  className={styles.imageMedia}
+                  fill
+                  sizes="(min-width: 900px) 30vw, 100vw"
+                  src={sampleImagery.galleryContext}
+                />
                 <span>Context</span>
               </div>
             </div>

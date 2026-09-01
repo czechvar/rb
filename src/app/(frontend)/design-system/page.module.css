@@ -1300,6 +1300,31 @@
   background: var(--theme-color-white-paper);
 }
 
+.imageMedia {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageFrame .imageMedia {
+  object-position: 50% 44%;
+}
+
+.cardImageFrame .imageMedia {
+  object-position: 50% 42%;
+}
+
+.portraitFrame .imageMedia {
+  object-position: 50% 20%;
+}
+
+.logoMedia {
+  padding: 28px;
+  object-fit: contain;
+  background: var(--theme-color-white-paper);
+}
+
 .imagePlaceholder {
   position: absolute;
   inset: 0;
@@ -1408,6 +1433,20 @@
 .galleryFrames > * {
   min-height: 180px;
   aspect-ratio: 4 / 3;
+}
+
+.galleryFrames span {
+  position: absolute;
+  inset: auto 10px 10px auto;
+  border: 1px solid color-mix(in srgb, var(--theme-color-white-paper) 70%, transparent);
+  border-radius: var(--theme-radius-full);
+  padding: 6px 9px;
+  background: var(--theme-color-overlay-strong);
+  color: var(--theme-color-white-paper);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-xs);
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .imageMatrix {
