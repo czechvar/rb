@@ -68,7 +68,11 @@ This is a starting direction, not a commitment — revisit before scaffolding. C
 
 ## Deployment
 
-Hosted on **Vercel**. Required environment variables in the Vercel project settings:
+Hosted on **Vercel**, project `rockbusters`.
+
+**Branch → domain.** `devel` is the Vercel **Production Branch**, not `main`. Every merge into `devel` is a production deployment serving `beta.rockbusters.net` (and the generated `rockbusters.vercel.app`), backed by the production Neon branch. `main` is an ordinary preview branch. The old site still runs on `rockbusters.net` at `198.211.122.117`; that apex is untouched until go-live, at which point the production branch flips to `main` and `SITE_INDEXABLE` is turned on.
+
+Required environment variables in the Vercel project settings:
 
 - `DATABASE_URL` — Neon Postgres connection string. **In Vercel only** this is the **production branch** (`ep-weathered-pine-alvc3sdj`). See the database-branches warning below — local `.env` must never use this value.
 - `PAYLOAD_SECRET` — long random string for Payload's auth
@@ -76,7 +80,8 @@ Hosted on **Vercel**. Required environment variables in the Vercel project setti
 - `R2_ENDPOINT` — `https://<account-id>.r2.cloudflarestorage.com`
 - `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` — R2 S3-API credentials
 - `HOMEPAGE_HERO_MEDIA_ID` — Payload Media ID of the homepage hero background image. Optional; if unset, the hero renders without a background image.
-- `NEXT_PUBLIC_SITE_URL` — public base URL used in email templates (e.g. `https://rockbusters.net`)
+- `NEXT_PUBLIC_SITE_URL` — public base URL used in email templates. Currently `https://beta.rockbusters.net`; becomes `https://rockbusters.net` at go-live.
+- `SITE_INDEXABLE` — set to `true` to allow search-engine indexing. Opt-in and fails safe: anything else serves a disallow-all `robots.txt` plus `X-Robots-Tag: noindex`. Must stay unset while the only public domain is beta, otherwise the beta site becomes duplicate content against the live rockbusters.net.
 - `RESEND_API_KEY` — Resend transactional-email API key. If unset, Payload falls back to its console adapter (logs emails) — same defensive pattern as the R2 fallback.
 - `EMAIL_FROM_ADDRESS` — sender address (e.g. `hello@rockbusters.net` in prod, `onboarding@resend.dev` in dev). Domain must be verified in Resend for prod.
 - `EMAIL_FROM_NAME` — sender display name (e.g. `Rockbusters`).
