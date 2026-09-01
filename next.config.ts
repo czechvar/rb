@@ -17,6 +17,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async headers() {
+    // See src/app/robots.ts: beta.rockbusters.net is a production deployment of
+    // devel, so only an explicit flag can distinguish it from the live site.
+    // Until SITE_INDEXABLE is set, every deployment is duplicate content
+    // competing with rockbusters.net and must stay out of the index.
+    if (process.env.SITE_INDEXABLE === 'true') return []
+
+    return [
+      {
+        source: '/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+    ]
+  },
   async redirects() {
     // Old-site /team-member/* slugs that don't map 1:1 to the new clean slugs.
     // Source of truth: the live-site inventory in

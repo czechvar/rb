@@ -82,6 +82,7 @@ export interface Config {
     faqs: Faq;
     reviews: Review;
     orders: Order;
+    transactions: Transaction;
     'discount-codes': DiscountCode;
     referrals: Referral;
     'post-categories': PostCategory;
@@ -109,6 +110,7 @@ export interface Config {
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     orders: OrdersSelect<false> | OrdersSelect<true>;
+    transactions: TransactionsSelect<false> | TransactionsSelect<true>;
     'discount-codes': DiscountCodesSelect<false> | DiscountCodesSelect<true>;
     referrals: ReferralsSelect<false> | ReferralsSelect<true>;
     'post-categories': PostCategoriesSelect<false> | PostCategoriesSelect<true>;
@@ -3120,6 +3122,51 @@ export interface Referral {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "transactions".
+ */
+export interface Transaction {
+  id: number;
+  uuid: string;
+  order: number | Order;
+  /**
+   * Total amount, VAT inclusive, in whole currency units (e.g. 199 for €199).
+   */
+  amount: number;
+  amountWithoutVat: number;
+  currency: 'EUR' | 'CZK';
+  label: string;
+  email: string;
+  state: 'created' | 'begun' | 'pending-payment' | 'paid' | 'cancelled' | 'failed';
+  paymentMethod: 'paypal' | 'muzapay' | 'comgate-card' | 'comgate-transfer' | 'bank-transfer';
+  /**
+   * Gateway data captured from begin() (e.g. redirectUrl, gatewayTransactionId).
+   */
+  payload?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Raw data from the last gateway webhook/callback.
+   */
+  callbackPayload?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
@@ -3795,6 +3842,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'orders';
         value: number | Order;
+      } | null)
+    | ({
+        relationTo: 'transactions';
+        value: number | Transaction;
       } | null)
     | ({
         relationTo: 'discount-codes';
@@ -6105,6 +6156,25 @@ export interface OrdersSelect<T extends boolean = true> {
         body?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "transactions_select".
+ */
+export interface TransactionsSelect<T extends boolean = true> {
+  uuid?: T;
+  order?: T;
+  amount?: T;
+  amountWithoutVat?: T;
+  currency?: T;
+  label?: T;
+  email?: T;
+  state?: T;
+  paymentMethod?: T;
+  payload?: T;
+  callbackPayload?: T;
   updatedAt?: T;
   createdAt?: T;
 }
