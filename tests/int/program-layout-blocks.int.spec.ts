@@ -3,13 +3,13 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { afterEach, describe, expect, it } from 'vitest'
 import { type BlockRenderContext, RenderBlocks } from '@/components/blocks/RenderBlocks'
 import { getTestPayload } from '../helpers/payload'
-import type { Program } from '@/payload-types'
+import type { Faq, Program } from '@/payload-types'
 
 type RenderBlocksInput = Parameters<typeof RenderBlocks>[0]
 
 const trackedIds: Record<string, number[]> = {}
 
-const richText = (text: string): Record<string, unknown> => ({
+const richText = (text: string): Faq['answer'] => ({
   root: {
     type: 'root',
     children: [

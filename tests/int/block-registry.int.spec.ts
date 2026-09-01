@@ -20,6 +20,7 @@ import {
   programLayoutBlocks,
   socialProofBlocks,
   tripDetailBlocks,
+  type BlockCatalogueEntry,
 } from '@/blocks'
 
 describe('block registry groups', () => {
@@ -183,8 +184,12 @@ describe('block registry groups', () => {
   })
 
   it('uses blacklist compatibility by default', () => {
-    const hero = blockCatalogue.find((entry) => entry.config.slug === 'hero')
-    const tripHero = blockCatalogue.find((entry) => entry.config.slug === 'tripHero')
+    const hero: BlockCatalogueEntry | undefined = blockCatalogue.find(
+      (entry) => entry.config.slug === 'hero',
+    )
+    const tripHero: BlockCatalogueEntry | undefined = blockCatalogue.find(
+      (entry) => entry.config.slug === 'tripHero',
+    )
 
     expect(hero?.compatibleWith).toBeUndefined()
     expect(hero && isBlockCompatibleWithSurface(hero, 'page')).toBe(true)

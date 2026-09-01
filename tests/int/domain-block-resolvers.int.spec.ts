@@ -19,6 +19,7 @@ import {
   resolvePostGridPosts,
 } from '@/lib/block-resolvers/content-discovery'
 import { resolveFeaturedTrip } from '@/lib/block-resolvers/trip-grid'
+import type { Event, Guide } from '@/payload-types'
 
 const trackedIds: Record<string, number[]> = {}
 
@@ -192,7 +193,7 @@ describe('domain grid block resolvers', () => {
       name: 'Context Guide',
       slug: 'context-guide',
       active: true,
-    }
+    } as Guide
 
     await expect(
       resolveFeaturedGuide({ source: 'currentContext', currentGuide }),
@@ -586,7 +587,7 @@ describe('domain grid block resolvers', () => {
       title: 'Context Trip',
       slug: 'context-trip',
       state: 'published',
-    }
+    } as Event
 
     await expect(
       resolveFeaturedTrip({ source: 'currentContext', currentEvent }),
