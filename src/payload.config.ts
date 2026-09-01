@@ -38,6 +38,17 @@ const mcpAuthoringAccess = {
   delete: false,
 } as const
 
+const requireEnv = (name: string): string => {
+  const value = process.env[name]
+  if (!value) {
+    throw new Error(
+      `Missing required environment variable ${name}. ` +
+        `Set it in .env locally, or in the Vercel project settings for the environment being built.`,
+    )
+  }
+  return value
+}
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -78,7 +89,10 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      // Fail loudly on a missing/blank URL. Left empty, pg-connection-string
+      // resolves it to the host "base", surfacing as a baffling
+      // "getaddrinfo ENOTFOUND base" instead of "you forgot the env var".
+      connectionString: requireEnv('DATABASE_URL'),
     },
     // Disable interactive schema-push during e2e tests (or any non-dev environment)
     // to prevent blocking on data-loss confirmation prompts for orphaned tables.
