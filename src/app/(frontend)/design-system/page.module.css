@@ -1242,6 +1242,213 @@
   align-items: start;
 }
 
+.imageryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.imageSpecimen {
+  display: grid;
+  gap: 18px;
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  border-radius: var(--theme-radius-md);
+  padding: var(--theme-card-pad);
+  background: var(--theme-color-white-paper-soft);
+  color: var(--theme-color-ink);
+  box-shadow: var(--theme-shadow-card-hover);
+}
+
+.imageHeroSpecimen,
+.gallerySpecimen {
+  grid-column: 1 / -1;
+}
+
+.imageFrame,
+.cardImageFrame,
+.portraitFrame,
+.logoFrame,
+.galleryFrames > * {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--theme-color-white-paper-divider);
+  border-radius: var(--theme-radius-sm);
+  background: var(--theme-color-canvas);
+}
+
+.imageFrame {
+  min-height: 360px;
+  aspect-ratio: 21 / 9;
+}
+
+.cardImageFrame {
+  aspect-ratio: 4 / 3;
+}
+
+.portraitRow {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(180px, 0.3fr);
+  gap: 14px;
+}
+
+.portraitFrame {
+  aspect-ratio: 4 / 5;
+}
+
+.logoFrame {
+  aspect-ratio: 1 / 1;
+  background: var(--theme-color-white-paper);
+}
+
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--theme-color-primary) 36%, transparent), transparent 42%),
+    radial-gradient(circle at 72% 30%, var(--theme-color-primary-soft), transparent 34%),
+    linear-gradient(160deg, var(--theme-color-surface-1), var(--theme-color-canvas));
+  color: var(--theme-color-text);
+}
+
+.logoFrame .imagePlaceholder {
+  background:
+    linear-gradient(135deg, var(--theme-color-white-paper), var(--theme-color-white-paper-soft)),
+    radial-gradient(circle at 50% 42%, var(--theme-color-primary-soft), transparent 40%);
+  color: var(--theme-color-ink);
+}
+
+.imagePlaceholder span {
+  border: 1px solid currentColor;
+  border-radius: var(--theme-radius-full);
+  padding: 8px 12px;
+  background: color-mix(in srgb, var(--theme-color-canvas) 72%, transparent);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-xs);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.logoFrame .imagePlaceholder span {
+  background: var(--theme-color-white-paper);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: 8px;
+  padding: 28px;
+  background: linear-gradient(180deg, transparent, var(--theme-color-overlay-strong));
+  color: var(--theme-color-white-paper);
+}
+
+.imageOverlay h3,
+.imageGuidance h3 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--theme-font-heading);
+  font-size: var(--theme-text-2xl);
+  font-weight: 400;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.imageOverlay .eyebrow {
+  color: color-mix(in srgb, var(--theme-color-white-paper) 84%, transparent);
+}
+
+.imageGuidance {
+  display: grid;
+  gap: 12px;
+}
+
+.imageGuidance p {
+  margin: 0;
+  color: var(--theme-color-page-text);
+}
+
+.imageGuidance dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.imageGuidance dl div {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--theme-color-white-paper-divider);
+  border-radius: var(--theme-radius-sm);
+  padding: 10px;
+  background: var(--theme-color-white-paper);
+}
+
+.imageGuidance dt {
+  color: var(--theme-color-text-soft);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-xs);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.imageGuidance dd {
+  margin: 0;
+  color: var(--theme-color-ink);
+  font-weight: 800;
+}
+
+.galleryFrames {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 14px;
+}
+
+.galleryFrames > * {
+  min-height: 180px;
+  aspect-ratio: 4 / 3;
+}
+
+.imageMatrix {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--theme-color-ink-border-subtle);
+  border-radius: var(--theme-radius-md);
+  background: var(--theme-color-white-paper);
+  color: var(--theme-color-ink);
+}
+
+.imageMatrixRow {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.36fr) minmax(220px, 0.64fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--theme-color-white-paper-divider);
+}
+
+.imageMatrixRow:last-child {
+  border-bottom: 0;
+}
+
+.imageMatrixRow strong {
+  font-weight: 900;
+}
+
+.imageMatrixRow span {
+  color: var(--theme-color-primary);
+  font-family: var(--theme-font-technical);
+  font-size: var(--theme-text-sm);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.imageMatrixRow p {
+  margin: 0;
+  color: var(--theme-color-page-text);
+}
+
 .contentSectionStack {
   display: grid;
   gap: 22px;
@@ -1551,10 +1758,14 @@
   .typeWorkbench,
   .specimenRow,
   .bookingSpecimenGrid,
+  .imageryGrid,
+  .portraitRow,
+  .galleryFrames,
   .patternGrid,
   .patternSplit,
   .blockStrategyGrid,
-  .blockMatrixRow {
+  .blockMatrixRow,
+  .imageMatrixRow {
     grid-template-columns: 1fr;
   }
 
@@ -1590,8 +1801,15 @@
   }
 
   .patternWide,
-  .patternSplit {
+  .patternSplit,
+  .imageHeroSpecimen,
+  .gallerySpecimen {
     grid-column: auto;
+  }
+
+  .imageFrame {
+    min-height: 260px;
+    aspect-ratio: 4 / 3;
   }
 
   .swatchGrid {

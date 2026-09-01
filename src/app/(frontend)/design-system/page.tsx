@@ -219,6 +219,12 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
       summary: 'Real specimens',
       content: <ComponentsPane />,
     },
+    {
+      id: 'imagery',
+      label: 'Imagery',
+      summary: 'Media rules',
+      content: <ImageryPane />,
+    },
     { id: 'patterns', label: 'Patterns', summary: 'Composed flows', content: <PatternsPane /> },
     { id: 'blocks', label: 'Blocks', summary: 'CMS strategy', content: <BlocksPane /> },
   ]
@@ -259,7 +265,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
           <aside className={styles.statPanel} aria-label="Theme token summary">
             <div className={styles.statGrid}>
               <div className={styles.stat}>
-                <strong>5</strong>
+                <strong>6</strong>
                 <span>Workbench panes</span>
               </div>
               <div className={styles.stat}>
@@ -630,6 +636,146 @@ function ComponentsPane() {
               />
             </div>
           </article>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+function ImageryPane() {
+  return (
+    <div className={styles.paneStack}>
+      <section className={styles.section}>
+        <PaneHeading
+          title="Imagery"
+          body="Catalogue media direction for hero images, cards, galleries, guide portraits, logos, overlays, and empty states."
+        />
+        <div className={styles.imageryGrid}>
+          <article className={`${styles.imageSpecimen} ${styles.imageHeroSpecimen}`}>
+            <div className={styles.imageFrame}>
+              <div className={styles.imagePlaceholder}>
+                <span>Hero landscape</span>
+              </div>
+              <div className={styles.imageOverlay}>
+                <p className={styles.eyebrow}>Trip hero</p>
+                <h3>Route, place, and season should be visible at first glance.</h3>
+              </div>
+            </div>
+            <div className={styles.imageGuidance}>
+              <h3>Hero Images</h3>
+              <p>
+                Use real location or activity photography with enough negative space for headings.
+                Avoid dark, blurred, or purely atmospheric crops when the trip or place needs to be
+                inspected.
+              </p>
+              <dl>
+                <div>
+                  <dt>Ratio</dt>
+                  <dd>16:9 to 21:9</dd>
+                </div>
+                <div>
+                  <dt>Crop</dt>
+                  <dd>Subject left or center-safe</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article className={styles.imageSpecimen}>
+            <div className={styles.cardImageFrame}>
+              <div className={styles.imagePlaceholder}>
+                <span>Catalogue card</span>
+              </div>
+            </div>
+            <div className={styles.imageGuidance}>
+              <h3>Catalogue Cards</h3>
+              <p>
+                Cards should show the actual venue, terrain, guide, or program state. Keep fallback
+                surfaces intentional so missing media does not look broken.
+              </p>
+              <dl>
+                <div>
+                  <dt>Ratio</dt>
+                  <dd>4:3 or 3:2</dd>
+                </div>
+                <div>
+                  <dt>Fallback</dt>
+                  <dd>Tokenized panel</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article className={styles.imageSpecimen}>
+            <div className={styles.portraitRow}>
+              <div className={styles.portraitFrame}>
+                <div className={styles.imagePlaceholder}>
+                  <span>Guide</span>
+                </div>
+              </div>
+              <div className={styles.logoFrame}>
+                <div className={styles.imagePlaceholder}>
+                  <span>Logo</span>
+                </div>
+              </div>
+            </div>
+            <div className={styles.imageGuidance}>
+              <h3>Portraits And Logos</h3>
+              <p>
+                Guide portraits need stable focal points and should not be cropped below the face.
+                Partner logos sit on white-paper or transparent surfaces and need readable fallback
+                text.
+              </p>
+              <dl>
+                <div>
+                  <dt>Portrait</dt>
+                  <dd>1:1 or 4:5</dd>
+                </div>
+                <div>
+                  <dt>Logo</dt>
+                  <dd>Transparent preferred</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article className={`${styles.imageSpecimen} ${styles.gallerySpecimen}`}>
+            <div className={styles.galleryFrames}>
+              <div className={styles.imagePlaceholder}>
+                <span>Lead</span>
+              </div>
+              <div className={styles.imagePlaceholder}>
+                <span>Detail</span>
+              </div>
+              <div className={styles.imagePlaceholder}>
+                <span>Context</span>
+              </div>
+            </div>
+            <div className={styles.imageGuidance}>
+              <h3>Galleries</h3>
+              <p>
+                Mix wide establishing shots with route detail and human-scale context. Repeated
+                near-identical images make catalogue pages harder to scan.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div className={styles.imageMatrix}>
+          {[
+            ['Trip hero', 'Actual climbing, terrain, or destination', 'Use overlay tokens only when text sits on media'],
+            ['Trip card', 'Recognizable venue or route style', 'Preserve object-fit cover and focal point'],
+            ['Program card', 'Learning state or coached activity', 'Avoid abstract stock imagery'],
+            ['Location card', 'Inspectable destination signal', 'Show rock, landscape, or approach context'],
+            ['Guide card', 'Portrait with stable face crop', 'Use real alt text when the portrait carries identity'],
+            ['Partner card', 'Logo or product in use', 'Use white-paper logo fallback if media is missing'],
+          ].map(([surface, imageUse, rule]) => (
+            <div className={styles.imageMatrixRow} key={surface}>
+              <strong>{surface}</strong>
+              <span>{imageUse}</span>
+              <p>{rule}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

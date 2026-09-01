@@ -51,6 +51,9 @@ The `/design-system` preview is organized as a tabbed workbench:
   `SectionIntro`, `Card`/`CardGrid`, `TagChipStrip`, `PricingSidebar`,
   fixture-safe booking CTAs, catalogue-card exports, FAQs, reviews, highlights,
   location, and partner surfaces.
+- Imagery — catalogue media direction for hero images, trip/program/location
+  cards, guide portraits, partner logos, galleries, overlays, fallback states,
+  aspect ratios, crop/focal-point behavior, and alt-text expectations.
 - Patterns — composed product examples such as catalogue grids,
   booking/pricing sidebars, form banner plus fields, section intro plus CTA,
   status/notice stacks, and paper/table surfaces.
@@ -69,12 +72,31 @@ Useful specimen categories:
 
 - Buttons, links, tags, chips, forms, notices, cards, and section intros.
 - Catalogue cards and pricing/booking summaries with fixture data.
+- Image-bearing catalogue surfaces, including real-media slots and tokenized
+  fallback states for missing Payload media.
 - Rich content sections that reveal typography, spacing, surface, border,
   shadow, focus, and status token behavior.
 
 Fixtures must stay inline or imported from static test-like helpers only. The
 playground must not create records, call server actions, fetch Payload data,
 depend on authenticated state, or persist edits outside browser state.
+
+## Imagery Direction
+
+Most catalogue surfaces support imagery. Design-system work should show how
+images behave, not only how cards look without media.
+
+Use inspectable, product-relevant media when real assets are available: actual
+climbing terrain, destination context, route style, guide portraits, partner
+logos, product-in-use shots, or clear program activity. Avoid generic stock,
+pure atmosphere, heavy blur, or dark crops when users need to evaluate the trip,
+place, guide, or object.
+
+When the playground cannot safely use real media, render stable image-shaped
+fixtures that exercise the same constraints: aspect ratio, object-fit behavior,
+overlay gradient, focal-point assumptions, caption/alt-text expectations, and
+tokenized fallback surfaces. Missing media should look intentionally designed,
+not like a broken upload.
 
 Keep the page an actual working specimen, not a landing page explaining the
 design system.
