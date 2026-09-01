@@ -1,13 +1,13 @@
 .section {
-  padding: var(--rb-section-pad);
-  background: var(--rb-black);
+  padding: var(--theme-section-pad);
+  background: var(--theme-color-ink);
 }
 
 .body {
   max-width: 720px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body-lg);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.75;
   margin: 16px 0 0;
 }
@@ -23,8 +23,8 @@
   position: relative;
   min-height: 440px;
   overflow: hidden;
-  color: var(--rb-white);
-  border: 1px solid var(--rb-white-08);
+  color: var(--theme-color-paper);
+  border: 1px solid var(--theme-color-paper-08);
 }
 
 .cardBg {
@@ -35,7 +35,7 @@
 .cardGradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 40%, var(--theme-overlay-dark-strong) 100%);
   z-index: 1;
 }
 
@@ -48,19 +48,19 @@
 }
 
 .cardRole {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-weight: 700;
 }
 
 .cardName {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 36px;
   line-height: 1;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 8px 0 0;
 }
 

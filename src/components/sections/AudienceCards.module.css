@@ -1,8 +1,8 @@
 /* ── AudienceCards — wireframe block 3 "Who This Camp Is For" ───────── */
 
 .section {
-  background: var(--rb-dark);
-  color: var(--rb-white);
+  background: var(--theme-color-surface-1);
+  color: var(--theme-color-paper);
   padding: 96px 5%;
 }
 
@@ -17,24 +17,24 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5px;
   margin-top: 3rem;
-  background: var(--rb-white-08);
-  border: 1px solid var(--rb-white-08);
+  background: var(--theme-color-paper-08);
+  border: 1px solid var(--theme-color-paper-08);
 }
 
 /* ── Card ──────────────────────────────────────────── */
 .card {
-  background: var(--rb-black);
+  background: var(--theme-color-ink);
   padding: 2rem 1.8rem;
   transition: background 0.2s;
 }
 
 .card:hover {
-  background: #131313;
+  background: var(--theme-color-surface-1);
 }
 
 .highlighted {
-  border: 1px solid var(--rb-red-border);
-  background: var(--rb-black);
+  border: 1px solid var(--theme-color-primary-border);
+  background: var(--theme-color-ink);
   position: relative;
 }
 
@@ -45,14 +45,14 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--rb-red);
+  background: var(--theme-color-primary);
 }
 
 /* ── Card num ──────────────────────────────────────── */
 .num {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 3rem;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   line-height: 1;
   margin-bottom: 0.8rem;
   display: block;
@@ -60,18 +60,18 @@
 
 /* ── Card heading ──────────────────────────────────── */
 .heading {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   letter-spacing: 0.02em;
   line-height: 1.05;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin-bottom: 0.6rem;
 }
 
 /* ── Card body ─────────────────────────────────────── */
 .body {
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   line-height: 1.6;
   margin: 0;
 }
@@ -81,7 +81,7 @@
   max-width: 1200px;
   margin: 2.5rem auto 0;
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   line-height: 1.6;
 }
 
@@ -89,10 +89,10 @@
   max-width: 1200px;
   margin: 2rem auto 0;
   padding: 1.5rem 2rem;
-  background: rgba(240, 237, 230, 0.04);
-  border: 1px solid var(--rb-white-12);
+  background: var(--theme-color-paper-08);
+  border: 1px solid var(--theme-color-paper-12);
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.6;
 }
 

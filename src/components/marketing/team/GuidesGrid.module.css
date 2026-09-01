@@ -13,7 +13,7 @@
  *   - meta sits below the photo (per component spec), not overlaid (wireframe overlays everything)
  */
 
-.section { background: var(--rb-dark); padding: var(--rb-section-pad); }
+.section { background: var(--theme-color-surface-1); padding: var(--theme-section-pad); }
 .inner { max-width: 1400px; margin: 0 auto; }
 
 .grid {
@@ -34,11 +34,11 @@
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: var(--rb-black);
+  background: var(--theme-color-ink);
 }
 .photo { object-fit: cover; transition: transform 0.55s ease; }
 .card:hover .photo { transform: scale(1.04); }
-.photoPlaceholder { position: absolute; inset: 0; background: var(--rb-white-08); }
+.photoPlaceholder { position: absolute; inset: 0; background: var(--theme-color-paper-08); }
 
 /* heavier gradient (wireframe): near-opaque at base, fades to barely-there at top */
 .gradient {
@@ -46,9 +46,9 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(13, 13, 13, 0.97) 0%,
-    rgba(13, 13, 13, 0.60) 45%,
-    rgba(13, 13, 13, 0.08) 100%
+    var(--theme-overlay-dark-heavy) 0%,
+    var(--theme-overlay-dark-medium) 45%,
+    var(--theme-overlay-dark-faint) 100%
   );
 }
 
@@ -62,12 +62,12 @@
   padding: 28px 24px;
 }
 .name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-weight: 400;
   font-size: 26px;
   line-height: 1;
   letter-spacing: 0.04em;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   text-transform: uppercase;
   margin-top: 6px;
 }
@@ -76,7 +76,7 @@
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-weight: 700;
 }
 
@@ -88,12 +88,12 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--rb-red);
-  border: 1px solid var(--rb-red-border);
+  color: var(--theme-color-primary);
+  border: 1px solid var(--theme-color-primary-border);
   padding: 3px 8px;
 }
 .tagline {
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   font-size: var(--fs-body-sm);
   line-height: 1.6;
   margin-top: 10px;

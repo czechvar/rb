@@ -1,6 +1,6 @@
 .section {
-  padding: var(--rb-section-pad);
-  background: var(--rb-black);
+  padding: var(--theme-section-pad);
+  background: var(--theme-color-ink);
 }
 
 .intro {
@@ -19,9 +19,9 @@
 }
 
 .body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body-lg);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.75;
   margin: 0;
 }
@@ -39,9 +39,9 @@
   min-height: 380px;
   overflow: hidden;
   padding: 28px;
-  border: 1px solid var(--rb-white-12);
-  color: var(--rb-white);
-  background: var(--rb-darker);
+  border: 1px solid var(--theme-color-paper-12);
+  color: var(--theme-color-paper);
+  background: var(--theme-color-canvas);
 }
 
 @media (min-width: 1024px) {
@@ -59,7 +59,7 @@
 .cardGradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 40%, var(--theme-overlay-dark-strong) 100%);
   z-index: 1;
 }
 
@@ -72,19 +72,19 @@
 }
 
 .cardRole {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-weight: 700;
 }
 
 .cardName {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 32px;
   line-height: 1;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 8px 0 12px;
 }
 
@@ -93,9 +93,9 @@
 }
 
 .cardTagline {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.5;
   margin: 0;
 }
@@ -123,23 +123,23 @@
 
 .statNum,
 .statNumRed {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 36px;
   line-height: 1;
 }
 
 .statNum {
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
 }
 
 .statNumRed {
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
 }
 
 .statLabel {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--rb-white-30);
+  color: var(--theme-color-paper-30);
 }

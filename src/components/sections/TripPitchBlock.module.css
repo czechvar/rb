@@ -1,8 +1,8 @@
 /* ── TripPitchBlock — wireframe block 2 two-column overview ────────── */
 
 .pitch {
-  background: var(--rb-dark);
-  color: var(--rb-white);
+  background: var(--theme-color-surface-1);
+  color: var(--theme-color-paper);
   padding: 96px 5%;
 }
 
@@ -30,12 +30,12 @@
 
 /* red eyebrow with leading line */
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-eyebrow);
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -47,7 +47,7 @@
   display: inline-block;
   width: 28px;
   height: 1px;
-  background: var(--rb-red);
+  background: var(--theme-color-primary);
   flex-shrink: 0;
 }
 
@@ -55,7 +55,7 @@
 .prose {
   font-size: var(--fs-body);
   line-height: 1.7;
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   margin-bottom: 0;
 }
 
@@ -68,18 +68,18 @@
 }
 
 .prose strong {
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   font-weight: 600;
 }
 
 .prose a {
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .prose a:hover {
-  color: var(--rb-red-hover);
+  color: var(--theme-color-primary-hover);
 }
 
 /* ── Right column: stats grid ────────────────── */
@@ -91,13 +91,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5px;
-  border: 1px solid var(--rb-white-12);
+  border: 1px solid var(--theme-color-paper-12);
 }
 
 .stat {
   padding: 1.6rem 1.8rem;
-  border: 1px solid var(--rb-white-12);
-  background: rgba(240, 237, 230, 0.03);
+  border: 1px solid var(--theme-color-paper-12);
+  background: var(--theme-color-paper-08);
 }
 
 .stat:only-child {
@@ -105,21 +105,21 @@
 }
 
 .statLabel {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-eyebrow);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   display: block;
   margin-bottom: 0.5rem;
 }
 
 .statValue {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 1.6rem;
   letter-spacing: 0.04em;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   display: block;
   line-height: 1.1;
   margin-bottom: 0.3rem;

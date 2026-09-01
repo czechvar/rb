@@ -26,6 +26,7 @@ Useful commands:
 pnpm dev
 pnpm build
 pnpm lint
+pnpm check:theme-registry
 pnpm test:int
 pnpm test:e2e
 pnpm test
@@ -142,6 +143,10 @@ Read these before non-trivial work:
 3. Relevant files in `docs/agents/`
 4. Relevant specs/plans under `docs/superpowers/`
 5. Relevant collection, route, hook, and test files
+
+For design-system, theme-token, Snowbusters/Rockbusters variant, or
+`/design-system` playground work, use the repo-local
+`.agents/skills/design-system/SKILL.md` skill before editing.
 
 ## Agent Skills
 

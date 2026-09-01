@@ -10,8 +10,8 @@
  */
 
 .section {
-  background: var(--rb-dark);
-  color: var(--rb-white);
+  background: var(--theme-color-surface-1);
+  color: var(--theme-color-paper);
   padding: 0 5% 96px;
 }
 
@@ -31,13 +31,13 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5px;
-  background: var(--rb-white-08);
-  border: 1px solid var(--rb-white-08);
+  background: var(--theme-color-paper-08);
+  border: 1px solid var(--theme-color-paper-08);
 }
 
 /* ── Single equipment card ──────────────────────────── */
 .item {
-  background: var(--rb-black);
+  background: var(--theme-color-ink);
   padding: 2rem 1.8rem;
   display: flex;
   gap: 1.2rem;
@@ -46,7 +46,7 @@
 
 /* mandatory highlight: subtle red left border */
 .mandatory {
-  border-left: 2px solid var(--rb-red);
+  border-left: 2px solid var(--theme-color-primary);
 }
 
 /* ── Icon ────────────────────────────────────────────── */
@@ -59,23 +59,23 @@
 
 /* ── Name ────────────────────────────────────────────── */
 .name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 1.1rem;
   letter-spacing: 0.03em;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0;
   line-height: 1.2;
 }
 
 /* ── Required asterisk ───────────────────────────────── */
 .required {
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
 }
 
 /* ── Note ────────────────────────────────────────────── */
 .note {
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   margin: 0.3rem 0 0;
   line-height: 1.55;
 }

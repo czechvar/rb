@@ -1,6 +1,6 @@
 .band {
-  background: #1e1612;
-  color: #fff;
+  background: var(--theme-color-detail-canvas);
+  color: var(--theme-color-paper);
   text-align: center;
   padding: 40px 60px;
 }
@@ -11,7 +11,7 @@
 }
 
 .band p {
-  color: #a09080;
+  color: var(--theme-color-detail-text-muted);
   font-size: 13px;
   margin-bottom: 24px;
 }
@@ -26,7 +26,7 @@
 .primary,
 .secondary {
   padding: 13px 36px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--theme-font-technical);
   font-size: 13px;
   letter-spacing: 1px;
   border: none;
@@ -37,20 +37,20 @@
 }
 
 .primary {
-  background: #8b3a1a;
-  color: #fff;
+  background: var(--theme-color-detail-action);
+  color: var(--theme-color-paper);
 }
 
 .primary:hover {
-  background: #a04020;
+  background: var(--theme-color-detail-action-hover);
 }
 
 .secondary {
   background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--theme-color-paper);
+  border: 1px solid var(--theme-color-paper-30);
 }
 
 .secondary:hover {
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: var(--theme-color-paper-60);
 }

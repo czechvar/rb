@@ -9,8 +9,8 @@
  */
 
 .section {
-  background: var(--rb-dark);
-  color: var(--rb-white);
+  background: var(--theme-color-surface-1);
+  color: var(--theme-color-paper);
   padding: 96px 5%;
 }
 
@@ -23,12 +23,12 @@
  * Rendered by the component as a bare <h2>; we style it here.
  */
 .section h2 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin-bottom: 3rem;
 }
 
@@ -38,14 +38,14 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5px;
-  background: var(--rb-white-08);
-  border: 1px solid var(--rb-white-08);
+  background: var(--theme-color-paper-08);
+  border: 1px solid var(--theme-color-paper-08);
   margin-bottom: 3rem;
 }
 
 /* ── Card (wireframe .logistics-card) ──────────────── */
 .col {
-  background: var(--rb-black);
+  background: var(--theme-color-ink);
   padding: 2rem 1.8rem;
   display: flex;
   flex-direction: column;
@@ -61,11 +61,11 @@
 
 /* ── Card heading h3 ────────────────────────────────── */
 .box h3 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 1.3rem;
   letter-spacing: 0.03em;
   line-height: 1.05;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0;
 }
 
@@ -74,7 +74,7 @@
  */
 .box p {
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   line-height: 1.6;
   margin: 0;
 }
@@ -85,12 +85,12 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--rb-white-45);
+  color: var(--theme-color-paper-45);
   margin: 0.5rem 0 0.25rem;
 }
 
 .listLabelNot {
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   opacity: 0.75;
 }
 
@@ -103,10 +103,10 @@
 
 .bullets li {
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   line-height: 1.55;
   padding: 0.45rem 0 0.45rem 1.2rem;
-  border-bottom: 1px solid var(--rb-white-08);
+  border-bottom: 1px solid var(--theme-color-paper-08);
   position: relative;
 }
 
@@ -118,7 +118,7 @@
   content: '—';
   position: absolute;
   left: 0;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
 }
 
 /* ── Responsive ──────────────────────────────────────── */

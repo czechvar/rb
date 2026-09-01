@@ -1,25 +1,25 @@
 /* ── LinkedEvents — upcoming trip dates for a program ───────────────── */
 
 .section {
-  background: var(--rb-black);
-  color: var(--rb-white);
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
   padding: 96px 5%;
 }
 
 .section h2 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   max-width: 1200px;
   margin: 0 auto 3rem;
 }
 
 .empty {
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-45);
+  color: var(--theme-color-paper-45);
   font-style: italic;
   max-width: 1200px;
   margin: 0 auto;
@@ -32,18 +32,18 @@
   margin: 0 auto;
   display: grid;
   gap: 1.5px;
-  background: var(--rb-white-08);
-  border: 1px solid var(--rb-white-08);
+  background: var(--theme-color-paper-08);
+  border: 1px solid var(--theme-color-paper-08);
 }
 
 .item {
-  background: var(--rb-dark);
+  background: var(--theme-color-surface-1);
   padding: 1.5rem 1.8rem;
   transition: background 0.2s;
 }
 
 .item:hover {
-  background: #131313;
+  background: var(--theme-color-surface-1);
 }
 
 .item a {
@@ -53,17 +53,17 @@
 }
 
 .item h3 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   letter-spacing: 0.02em;
   line-height: 1.05;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0 0 0.4rem 0;
 }
 
 .item p {
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   margin: 0;
   line-height: 1.55;
 }

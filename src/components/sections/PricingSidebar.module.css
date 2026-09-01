@@ -1,9 +1,9 @@
 .card {
-  background: #ffffff;
+  background: var(--theme-color-white-paper);
   border-radius: 6px;
   padding: 2.4rem;
-  color: #515151;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  color: var(--theme-color-page-text);
+  box-shadow: var(--theme-shadow-panel);
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
@@ -22,25 +22,25 @@
   font-weight: 700;
   line-height: 1.1;
   margin: 0;
-  color: var(--rb-black);
+  color: var(--theme-color-ink);
 }
 
 .secondaryPrice {
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   margin: 0;
 }
 
 .caption {
   font-size: 1.3rem;
-  color: rgb(95, 90, 88);
+  color: var(--theme-color-page-text);
   margin: 0;
 }
 
 .divider {
   border: none;
-  border-top: 1px solid var(--rb-white-12);
+  border-top: 1px solid var(--theme-color-white-paper-divider);
   margin: 0;
 }
 
@@ -60,24 +60,24 @@
 
 .rowLabel {
   font-size: 1.3rem;
-  color: rgb(95, 90, 88);
+  color: var(--theme-color-page-text);
   margin: 0;
 }
 
 .rowValue {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #515151;
+  color: var(--theme-color-page-text);
   margin: 0;
   text-align: right;
 }
 
 .callout {
-  border: 1px solid var(--rb-red);
+  border: 1px solid var(--theme-color-primary);
   border-radius: 4px;
   padding: 1rem 1.2rem;
   font-size: 1.3rem;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   text-align: center;
   margin: 0;
 }
@@ -87,8 +87,8 @@
   align-items: center;
   justify-content: center;
   padding: 1.2rem 2rem;
-  background: var(--rb-red);
-  color: var(--rb-white);
+  background: var(--theme-color-primary);
+  color: var(--theme-color-paper);
   text-transform: uppercase;
   font-size: 1.3rem;
   font-weight: 600;
@@ -99,6 +99,6 @@
 }
 
 .cta:hover {
-  background: var(--rb-red-hover);
-  color: var(--rb-white);
+  background: var(--theme-color-primary-hover);
+  color: var(--theme-color-paper);
 }

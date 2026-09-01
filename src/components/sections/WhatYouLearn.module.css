@@ -1,8 +1,8 @@
 /* ── WhatYouLearn — wireframe block 4 "Three Pillars of Performance" ── */
 
 .section {
-  background: var(--rb-black);
-  color: var(--rb-white);
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
   padding: 96px 5%;
 }
 
@@ -22,39 +22,39 @@
 /* ── Single pillar ─────────────────────────────────── */
 .pillar {
   padding: 2.5rem 2rem;
-  border: 1px solid var(--rb-white-12);
+  border: 1px solid var(--theme-color-paper-12);
   position: relative;
   transition: border-color 0.2s;
 }
 
 .pillar:hover {
-  border-color: var(--rb-red);
+  border-color: var(--theme-color-primary);
 }
 
 /* red rule at top — wireframe pillar accent */
 .rule {
   width: 48px;
   height: 3px;
-  background: var(--rb-red);
+  background: var(--theme-color-primary);
   margin-bottom: 1.8rem;
 }
 
 /* numbered label above heading */
 .num {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 3rem;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   line-height: 1;
   margin-bottom: 0.5rem;
   display: block;
 }
 
 .heading {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(1.4rem, 2.5vw, 1.8rem);
   letter-spacing: 0.02em;
   line-height: 1.05;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin-bottom: 1rem;
 }
 
@@ -67,9 +67,9 @@
 
 .bullets li {
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   padding: 0.45rem 0;
-  border-bottom: 1px solid var(--rb-white-12);
+  border-bottom: 1px solid var(--theme-color-paper-12);
   line-height: 1.5;
 }
 
@@ -79,7 +79,7 @@
 
 .bullets li::before {
   content: '— ';
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
 }
 
 /* ── Responsive ────────────────────────────────────── */

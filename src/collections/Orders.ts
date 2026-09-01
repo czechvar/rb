@@ -1,5 +1,5 @@
 import type { CollectionConfig, FieldAccess } from 'payload'
-import { isAdmin, isAuthenticated } from '../access'
+import { isAdmin, isAdminUser, isAuthenticated } from '../access'
 import { isAdminOrOwner, canUpdateStateField } from './orders/access'
 import { ORDER_STATES } from './orders/state-machine'
 import { deriveCountsAndTotal, allocateOrderNumber, stampNotes } from './orders/hooks'
@@ -7,7 +7,7 @@ import { capacityCheck } from './orders/capacity-hook'
 import { validateStateTransition } from './orders/state-hook'
 import { dispatchLifecycleEmails } from './orders/emails-hook'
 
-const adminOnlyField: FieldAccess = ({ req }) => req.user?.role === 'admin'
+const adminOnlyField: FieldAccess = ({ req }) => isAdminUser(req.user)
 
 export const Orders: CollectionConfig = {
   slug: 'orders',

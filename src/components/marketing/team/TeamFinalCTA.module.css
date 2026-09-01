@@ -1,19 +1,19 @@
 .section {
-  background: var(--rb-red);
-  padding: var(--rb-section-pad);
+  background: var(--theme-color-primary);
+  padding: var(--theme-section-pad);
   text-align: center;
 }
 
 /* Override section-label color/line for red background */
 .section :global(.section-label) {
-  color: rgba(13, 13, 13, 0.5);
+  color: var(--theme-overlay-dark-medium);
 }
 
 
 .display {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(60px, 9vw, 120px);
-  color: var(--rb-black);
+  color: var(--theme-color-ink);
   line-height: 0.87;
   margin: 0 0 22px;
   letter-spacing: 0.03em;
@@ -21,11 +21,11 @@
 
 .body {
   font-size: 17px;
-  color: rgba(13, 13, 13, 0.65);
+  color: var(--theme-overlay-dark-medium);
   max-width: 480px;
   margin: 0 auto 44px;
   line-height: 1.65;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
 }
 
 .ctas {

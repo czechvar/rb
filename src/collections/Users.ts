@@ -1,11 +1,11 @@
 import type { CollectionConfig, FieldAccess, Validate } from 'payload'
-import { anyone, isAdmin, isAdminOrSelf } from '../access'
+import { anyone, isAdmin, isAdminOrSelf, isAdminUser } from '../access'
 import { verifyEmailTemplate, resetPasswordTemplate } from '../lib/email/templates'
 
 // Field-level access wrapper: admins only. The `Access` (collection-level)
 // signature isn't structurally assignable to `FieldAccess`, so we mirror the
 // rule here against `req.user.role`.
-const isAdminField: FieldAccess = ({ req }) => req.user?.role === 'admin'
+const isAdminField: FieldAccess = ({ req }) => isAdminUser(req.user)
 
 const phoneRegex = /^\+?[\d\s\-()]{6,20}$/
 const icoRegex = /^\d{8}$/

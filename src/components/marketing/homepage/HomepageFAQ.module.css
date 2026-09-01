@@ -1,7 +1,7 @@
 .section {
-  padding: var(--rb-section-pad);
-  background: var(--rb-white);
-  color: var(--rb-black);
+  padding: var(--theme-section-pad);
+  background: var(--theme-color-paper);
+  color: var(--theme-color-ink);
 }
 
 .section :global(.section-title) {
@@ -22,22 +22,22 @@
 
 .item {
   padding: 28px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid var(--theme-color-ink-border-faint);
 }
 
 .question {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 18px;
   font-weight: 700;
-  color: var(--rb-black);
+  color: var(--theme-color-ink);
   margin: 0 0 12px;
   line-height: 1.3;
 }
 
 .answer {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body);
-  color: #4a4a4a;
+  color: var(--theme-color-page-text);
   line-height: 1.7;
 }
 

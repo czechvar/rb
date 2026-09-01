@@ -1,15 +1,15 @@
 .bar {
-  background: var(--rb-red); display: flex; justify-content: space-around;
+  background: var(--theme-color-primary); display: flex; justify-content: space-around;
   padding: 30px 5%; gap: 16px; flex-wrap: wrap;
 }
 .item { text-align: center; }
 .num {
-  font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--rb-black);
+  font-family: var(--theme-font-heading); font-size: 52px; color: var(--theme-color-ink);
   line-height: 1; display: block; letter-spacing: 0.03em;
 }
 .label {
   font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
-  color: rgba(13, 13, 13, 0.6); font-weight: 600; display: block; margin-top: 2px;
+  color: var(--theme-overlay-dark-medium); font-weight: 600; display: block; margin-top: 2px;
 }
 @media (max-width: 600px) {
   .bar { padding: 24px 5%; gap: 24px; }

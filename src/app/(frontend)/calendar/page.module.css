@@ -14,7 +14,7 @@
   font-size: var(--eyebrowFontSize);
   letter-spacing: var(--eyebrowLetterSpacing);
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   margin-bottom: 12px;
 }
 
@@ -28,12 +28,12 @@
   line-height: var(--textLineHeight);
   max-width: 60rem;
   margin: 0 auto;
-  color: #555;
+  color: var(--theme-color-page-text);
 }
 
 .empty {
   text-align: center;
-  color: #777;
+  color: var(--theme-color-page-text);
   padding: 60px 0;
 }
 
@@ -45,10 +45,10 @@
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #888;
+  color: var(--theme-color-page-text);
   margin: 0 0 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--theme-color-border);
 }
 
 .list {
@@ -58,12 +58,12 @@
 }
 
 .row {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--theme-color-border);
   transition: background var(--transitionTimeBase, 0.18s) ease;
 }
 
 .row:hover {
-  background: #fafafa;
+  background: var(--theme-color-paper);
 }
 
 .rowLink {
@@ -84,12 +84,12 @@
 .dateRange {
   font-size: 15px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--theme-color-ink);
 }
 
 .dateDuration {
   font-size: 12px;
-  color: #888;
+  color: var(--theme-color-page-text);
 }
 
 .titleCell {
@@ -100,12 +100,12 @@
 .eventTitle {
   font-size: 15px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--theme-color-ink);
 }
 
 .location {
   font-size: 12px;
-  color: #888;
+  color: var(--theme-color-page-text);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -120,17 +120,17 @@
 .price {
   font-size: 16px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--theme-color-ink);
 }
 
 .capacity {
   font-size: 12px;
-  color: #888;
+  color: var(--theme-color-page-text);
 }
 
 .cta {
   font-size: 18px;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   text-align: right;
 }
 

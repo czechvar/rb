@@ -1,7 +1,7 @@
 .section {
-  padding: var(--rb-section-pad);
-  background: var(--rb-black);
-  color: var(--rb-white);
+  padding: var(--theme-section-pad);
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
 }
 
 .intro {
@@ -20,9 +20,9 @@
 }
 
 .body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body-lg);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.75;
   margin: 0 0 22px;
 }
@@ -40,30 +40,30 @@
 }
 
 .pillar {
-  padding: var(--rb-card-pad);
-  border: 1px solid var(--rb-white-12);
+  padding: var(--theme-card-pad);
+  border: 1px solid var(--theme-color-paper-12);
 }
 
 .pillarNum {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 48px;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   line-height: 1;
   margin-bottom: 16px;
 }
 
 .pillarTitle {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 18px;
   font-weight: 700;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0 0 8px;
 }
 
 .pillarBody {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.6;
   margin: 0;
 }

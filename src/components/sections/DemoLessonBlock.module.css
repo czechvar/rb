@@ -1,8 +1,8 @@
 /* ── DemoLessonBlock — "Try before you commit" ──────────────────────── */
 
 .demo {
-  background: var(--rb-black);
-  color: var(--rb-white);
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
   padding: 0 5% 96px;
 }
 
@@ -10,7 +10,7 @@
   max-width: 1200px;
   margin: 0 auto;
   font-size: var(--fs-body);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   line-height: 1.7;
 }
 
@@ -30,9 +30,9 @@
 .cta {
   display: inline-block;
   padding: 1.4rem 3rem;
-  background: var(--rb-red);
-  color: var(--rb-white);
-  font-family: 'Inter', sans-serif;
+  background: var(--theme-color-primary);
+  color: var(--theme-color-paper);
+  font-family: var(--theme-font-body);
   font-weight: 600;
   font-size: var(--fs-body-sm);
   text-transform: uppercase;
@@ -42,7 +42,7 @@
 }
 
 .cta:hover {
-  background: var(--rb-red-hover);
+  background: var(--theme-color-primary-hover);
 }
 
 @media screen and (max-width: 600px) {

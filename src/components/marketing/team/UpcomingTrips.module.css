@@ -10,8 +10,8 @@
 
 /* ── section ───────────────────────────────────────────────── */
 .section {
-  background: var(--rb-darker);
-  padding: var(--rb-section-pad);
+  background: var(--theme-color-canvas);
+  padding: var(--theme-section-pad);
 }
 
 .inner {
@@ -38,7 +38,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   margin-top: 0;
-  background: var(--rb-white-08);
+  background: var(--theme-color-paper-08);
 }
 
 /* ── card ───────────────────────────────────────────────────── */
@@ -46,7 +46,7 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  background: var(--rb-dark);
+  background: var(--theme-color-surface-1);
   display: flex;
   flex-direction: column;
   /* trip-card-photo overrides */
@@ -56,7 +56,7 @@
   padding: 0;
   border: none;
   text-decoration: none;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   transition: background 0.3s;
 }
 
@@ -72,9 +72,9 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(13, 13, 13, 0.97) 0%,
-    rgba(13, 13, 13, 0.72) 50%,
-    rgba(13, 13, 13, 0.25) 100%
+    var(--theme-overlay-dark-heavy) 0%,
+    var(--theme-overlay-dark-strong) 50%,
+    var(--theme-overlay-dark-soft) 100%
   );
   transition: background 0.3s;
   z-index: 1;
@@ -83,9 +83,9 @@
 .card:hover .overlay {
   background: linear-gradient(
     to top,
-    rgba(13, 13, 13, 0.98) 0%,
-    rgba(13, 13, 13, 0.8) 50%,
-    rgba(13, 13, 13, 0.35) 100%
+    var(--theme-overlay-dark-heavy) 0%,
+    var(--theme-overlay-dark-strong) 50%,
+    var(--theme-overlay-dark-medium) 100%
   );
 }
 
@@ -106,7 +106,7 @@
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-weight: 700;
   margin-bottom: 10px;
   display: flex;
@@ -119,16 +119,16 @@
   display: inline-block;
   width: 16px;
   height: 1px;
-  background: var(--rb-red);
+  background: var(--theme-color-primary);
   flex-shrink: 0;
 }
 
 /* ── trip name ──────────────────────────────────────────────── */
 .name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 26px;
   letter-spacing: 0.03em;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0 0 6px 0;
   line-height: 1;
 }
@@ -136,7 +136,7 @@
 /* ── destination ─────────────────────────────────────────────── */
 .dest {
   font-size: 13px;
-  color: var(--rb-white-45);
+  color: var(--theme-color-paper-45);
   margin-bottom: 4px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -146,7 +146,7 @@
 /* ── guide byline ────────────────────────────────────────────── */
 .guide {
   font-size: 13px;
-  color: var(--rb-white-45);
+  color: var(--theme-color-paper-45);
   margin-bottom: 16px;
 }
 
@@ -163,9 +163,9 @@
   font-size: 9px;
   font-weight: 700;
   padding: 4px 10px;
-  background: rgba(227, 7, 19, 0.1);
-  color: rgba(240, 237, 230, 0.7);
-  border: 1px solid rgba(227, 7, 19, 0.3);
+  background: var(--theme-color-primary-soft);
+  color: var(--theme-color-paper-60);
+  border: 1px solid var(--theme-color-primary-border);
   letter-spacing: 0.06em;
 }
 
@@ -174,7 +174,7 @@
   font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--rb-white-45);
+  color: var(--theme-color-paper-45);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -185,28 +185,28 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #4caf50; /* one-off status green — intentionally outside the --rb-* palette */
+  background: var(--theme-color-success); /* one-off status green — intentionally outside the --rb-* palette */
   flex-shrink: 0;
 }
 
 .spotsDotUrgent {
-  background: var(--rb-red);
+  background: var(--theme-color-primary);
 }
 
 /* ── price ───────────────────────────────────────────────────── */
 .price {
   margin-top: 14px;
   font-size: 13px;
-  color: rgba(240, 237, 230, 0.55);
-  font-family: 'Inter', sans-serif;
+  color: var(--theme-color-paper-60);
+  font-family: var(--theme-font-body);
   letter-spacing: 0.04em;
 }
 
 .price strong {
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   font-size: 13px;
   font-weight: 700;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   letter-spacing: 0.06em;
   margin-left: 4px;
 }

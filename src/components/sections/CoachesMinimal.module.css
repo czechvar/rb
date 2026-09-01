@@ -8,8 +8,8 @@
  */
 
 .section {
-  background: var(--rb-dark);
-  color: var(--rb-white);
+  background: var(--theme-color-surface-1);
+  color: var(--theme-color-paper);
   padding: 96px 5%;
 }
 
@@ -38,7 +38,7 @@
   /* wireframe: 360px tall, full-width; aspect-ratio approximates 3/4 */
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: var(--rb-black);
+  background: var(--theme-color-ink);
 }
 
 .photo {
@@ -54,12 +54,12 @@
 .photoPlaceholder {
   position: absolute;
   inset: 0;
-  background: var(--rb-white-08);
+  background: var(--theme-color-paper-08);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--fs-eyebrow);
-  color: var(--rb-white-45);
+  color: var(--theme-color-paper-45);
   letter-spacing: 0.1em;
 }
 
@@ -69,9 +69,9 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(13, 13, 13, 0.97) 0%,
-    rgba(13, 13, 13, 0.60) 45%,
-    rgba(13, 13, 13, 0.08) 100%
+    var(--theme-overlay-dark-heavy) 0%,
+    var(--theme-overlay-dark-medium) 45%,
+    var(--theme-overlay-dark-faint) 100%
   );
 }
 
@@ -89,19 +89,19 @@
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-weight: 700;
   display: block;
   margin-bottom: 4px;
 }
 
 .name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-weight: 400;
   font-size: 26px;
   line-height: 1;
   letter-spacing: 0.04em;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   text-transform: uppercase;
 }
 
@@ -109,7 +109,7 @@
 .bio {
   padding: 14px 2px 0;
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   line-height: 1.65;
 }
 
@@ -124,9 +124,9 @@
 .bullets li {
   padding: 0.6rem 0 0.6rem 1.4rem;
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-52);
+  color: var(--theme-color-paper-52);
   position: relative;
-  border-bottom: 1px solid var(--rb-white-12);
+  border-bottom: 1px solid var(--theme-color-paper-12);
   line-height: 1.55;
 }
 
@@ -138,7 +138,7 @@
   content: '—';
   position: absolute;
   left: 0;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
 }
 
 /* ── Responsive ─────────────────────────────────────── */

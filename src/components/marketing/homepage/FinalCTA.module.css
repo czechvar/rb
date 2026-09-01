@@ -1,25 +1,25 @@
 .section {
   padding: 96px 5%;
-  background: var(--rb-red);
-  color: var(--rb-white);
+  background: var(--theme-color-primary);
+  color: var(--theme-color-paper);
   text-align: center;
 }
 
 .display {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: clamp(48px, 8vw, 120px);
   line-height: 0.92;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0 0 24px;
 }
 
 .body {
   max-width: 640px;
   margin: 0 auto 40px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body-lg);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--theme-color-paper-80);
 }
 
 .ctas {

@@ -64,6 +64,7 @@ export type SupportedTimezones =
 export interface Config {
   auth: {
     users: UserAuthOperations;
+    'payload-mcp-api-keys': PayloadMcpApiKeyAuthOperations;
   };
   blocks: {};
   collections: {
@@ -87,6 +88,7 @@ export interface Config {
     'post-categories': PostCategory;
     posts: Post;
     pages: Page;
+    'payload-mcp-api-keys': PayloadMcpApiKey;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -114,6 +116,7 @@ export interface Config {
     'post-categories': PostCategoriesSelect<false> | PostCategoriesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    'payload-mcp-api-keys': PayloadMcpApiKeysSelect<false> | PayloadMcpApiKeysSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -129,13 +132,31 @@ export interface Config {
   widgets: {
     collections: CollectionsWidget;
   };
-  user: User;
+  user: User | PayloadMcpApiKey;
   jobs: {
     tasks: unknown;
     workflows: unknown;
   };
 }
 export interface UserAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
+}
+export interface PayloadMcpApiKeyAuthOperations {
   forgotPassword: {
     email: string;
     password: string;
@@ -3506,6 +3527,243 @@ export interface Page {
   createdAt: string;
 }
 /**
+ * API keys control which collections, resources, tools, and prompts MCP clients can access
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-mcp-api-keys".
+ */
+export interface PayloadMcpApiKey {
+  id: number;
+  /**
+   * The user that the API key is associated with.
+   */
+  user: number | User;
+  /**
+   * A useful label for the API key.
+   */
+  label?: string | null;
+  /**
+   * The purpose of the API key.
+   */
+  description?: string | null;
+  pages?: {
+    /**
+     * Allow clients to find pages.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create pages.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update pages.
+     */
+    update?: boolean | null;
+  };
+  media?: {
+    /**
+     * Allow clients to find media.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create media.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update media.
+     */
+    update?: boolean | null;
+  };
+  events?: {
+    /**
+     * Allow clients to find events.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create events.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update events.
+     */
+    update?: boolean | null;
+  };
+  eventDates?: {
+    /**
+     * Allow clients to find event-dates.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create event-dates.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update event-dates.
+     */
+    update?: boolean | null;
+  };
+  programs?: {
+    /**
+     * Allow clients to find programs.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create programs.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update programs.
+     */
+    update?: boolean | null;
+  };
+  locations?: {
+    /**
+     * Allow clients to find locations.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create locations.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update locations.
+     */
+    update?: boolean | null;
+  };
+  guides?: {
+    /**
+     * Allow clients to find guides.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create guides.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update guides.
+     */
+    update?: boolean | null;
+  };
+  airports?: {
+    /**
+     * Allow clients to find airports.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create airports.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update airports.
+     */
+    update?: boolean | null;
+  };
+  categories?: {
+    /**
+     * Allow clients to find categories.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create categories.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update categories.
+     */
+    update?: boolean | null;
+  };
+  difficulties?: {
+    /**
+     * Allow clients to find difficulties.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create difficulties.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update difficulties.
+     */
+    update?: boolean | null;
+  };
+  faqs?: {
+    /**
+     * Allow clients to find faqs.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create faqs.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update faqs.
+     */
+    update?: boolean | null;
+  };
+  reviews?: {
+    /**
+     * Allow clients to find reviews.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create reviews.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update reviews.
+     */
+    update?: boolean | null;
+  };
+  partners?: {
+    /**
+     * Allow clients to find partners.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create partners.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update partners.
+     */
+    update?: boolean | null;
+  };
+  posts?: {
+    /**
+     * Allow clients to find posts.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create posts.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update posts.
+     */
+    update?: boolean | null;
+  };
+  postCategories?: {
+    /**
+     * Allow clients to find post-categories.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create post-categories.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update post-categories.
+     */
+    update?: boolean | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
+  collection: 'payload-mcp-api-keys';
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -3608,12 +3866,21 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'payload-mcp-api-keys';
+        value: number | PayloadMcpApiKey;
       } | null);
   globalSlug?: string | null;
-  user: {
-    relationTo: 'users';
-    value: number | User;
-  };
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'payload-mcp-api-keys';
+        value: number | PayloadMcpApiKey;
+      };
   updatedAt: string;
   createdAt: string;
 }
@@ -3623,10 +3890,15 @@ export interface PayloadLockedDocument {
  */
 export interface PayloadPreference {
   id: number;
-  user: {
-    relationTo: 'users';
-    value: number | User;
-  };
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'payload-mcp-api-keys';
+        value: number | PayloadMcpApiKey;
+      };
   key?: string | null;
   value?:
     | {
@@ -6716,6 +6988,125 @@ export interface PagesSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-mcp-api-keys_select".
+ */
+export interface PayloadMcpApiKeysSelect<T extends boolean = true> {
+  user?: T;
+  label?: T;
+  description?: T;
+  pages?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  media?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  events?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  eventDates?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  programs?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  locations?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  guides?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  airports?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  categories?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  difficulties?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  faqs?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  reviews?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  partners?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  posts?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  postCategories?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

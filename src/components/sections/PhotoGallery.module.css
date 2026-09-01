@@ -1,8 +1,8 @@
 /* ── PhotoGallery — trip/event photo grid ───────────────────────────── */
 
 .section {
-  background: var(--rb-dark);
-  color: var(--rb-white);
+  background: var(--theme-color-surface-1);
+  color: var(--theme-color-paper);
   padding: 0 0 96px;
 }
 
@@ -10,14 +10,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5px;
-  background: var(--rb-white-08);
+  background: var(--theme-color-paper-08);
 }
 
 .tile {
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: var(--rb-black);
+  background: var(--theme-color-ink);
 }
 
 .image {

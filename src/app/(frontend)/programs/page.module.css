@@ -14,7 +14,7 @@
   font-size: var(--eyebrowFontSize);
   letter-spacing: var(--eyebrowLetterSpacing);
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   margin-bottom: 12px;
 }
 
@@ -28,12 +28,12 @@
   line-height: var(--textLineHeight);
   max-width: 60rem;
   margin: 0 auto;
-  color: #555;
+  color: var(--theme-color-page-text);
 }
 
 .empty {
   text-align: center;
-  color: #777;
+  color: var(--theme-color-page-text);
   padding: 60px 0;
 }
 
@@ -47,15 +47,15 @@
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--theme-color-white-paper);
+  border: 1px solid var(--theme-color-white-paper-border);
   border-radius: 4px;
   transition: box-shadow var(--transitionTimeBase, 0.18s) ease,
     transform var(--transitionTimeBase, 0.18s) ease;
 }
 
 .card:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--theme-shadow-card-hover);
   transform: translateY(-2px);
 }
 
@@ -82,7 +82,7 @@
 
 .cardLoc {
   font-size: 12px;
-  color: #777;
+  color: var(--theme-color-page-text);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   white-space: nowrap;
@@ -90,7 +90,7 @@
 
 .cardDesc {
   font-size: 14px;
-  color: #555;
+  color: var(--theme-color-page-text);
   line-height: 1.55;
   margin-bottom: 16px;
 }
@@ -101,27 +101,27 @@
   gap: 8px;
   margin: 0 0 18px;
   padding: 14px 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  border-top: 1px solid var(--theme-color-white-paper-divider);
+  border-bottom: 1px solid var(--theme-color-white-paper-divider);
 }
 
 .cardFacts dt {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #888;
+  color: var(--theme-color-page-text);
   margin-bottom: 2px;
 }
 
 .cardFacts dd {
   font-size: 14px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--theme-color-ink);
 }
 
 .cardCta {
   display: inline-block;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.04em;

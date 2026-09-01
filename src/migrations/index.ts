@@ -28,6 +28,7 @@ import * as migration_20260826_082151_catalogued_block_availability from './2026
 import * as migration_20260826_091639_add_featured_catalogue_blocks from './20260826_091639_add_featured_catalogue_blocks';
 import * as migration_20260828_122519_add_transactions from './20260828_122519_add_transactions';
 
+
 export const migrations = [
   {
     up: migration_20260527_124751.up,

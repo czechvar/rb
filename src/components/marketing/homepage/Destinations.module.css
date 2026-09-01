@@ -1,6 +1,6 @@
 .section {
   padding: 72px 5%;
-  background: var(--rb-darker);
+  background: var(--theme-color-canvas);
 }
 
 .grid {
@@ -16,14 +16,14 @@
 .card {
   padding: 28px;
   text-align: center;
-  border: 1px solid var(--rb-white-12);
-  color: var(--rb-white);
+  border: 1px solid var(--theme-color-paper-12);
+  color: var(--theme-color-paper);
   text-decoration: none;
   transition: border-color 0.18s;
 }
 
 .card:hover {
-  border-color: var(--rb-red);
+  border-color: var(--theme-color-primary);
 }
 
 .flag {
@@ -33,17 +33,17 @@
 }
 
 .name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 28px;
   line-height: 1;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   margin: 0 0 8px;
 }
 
 .crags {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: var(--fs-body-sm);
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   margin: 0;
 }
 

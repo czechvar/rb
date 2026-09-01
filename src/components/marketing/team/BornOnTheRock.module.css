@@ -1,6 +1,6 @@
 .section {
-  background: var(--rb-dark);
-  padding: var(--rb-section-pad);
+  background: var(--theme-color-surface-1);
+  padding: var(--theme-section-pad);
 }
 
 .grid {
@@ -13,7 +13,7 @@
 }
 
 .body {
-  color: var(--rb-white-60);
+  color: var(--theme-color-paper-60);
   font-size: var(--fs-body-lg);
   line-height: 1.78;
   display: grid;
@@ -21,28 +21,28 @@
 }
 
 .quoteBlock {
-  background: var(--rb-black);
-  border-left: 3px solid var(--rb-red);
+  background: var(--theme-color-ink);
+  border-left: 3px solid var(--theme-color-primary);
   padding: 32px 28px;
   margin-top: 20px;
   display: grid;
 }
 
 .founderName {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--theme-font-heading);
   font-size: 28px;
-  color: var(--rb-white);
+  color: var(--theme-color-paper);
   letter-spacing: 0.04em;
   margin-bottom: 2px;
   display: block;
 }
 
 .founderRole {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--rb-red);
+  color: var(--theme-color-primary);
   font-weight: 700;
   margin-bottom: 20px;
   display: block;
@@ -52,16 +52,16 @@
   font-size: 16px;
   font-style: italic;
   line-height: 1.72;
-  color: var(--rb-white-80);
+  color: var(--theme-color-paper-80);
   margin: 0;
 }
 
 .attr {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--theme-font-body);
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--rb-white-45);
+  color: var(--theme-color-paper-45);
   margin-top: 16px;
   display: block;
 }

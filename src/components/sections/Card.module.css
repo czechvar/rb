@@ -4,13 +4,13 @@
   gap: 1.5px;
   max-width: 1200px;
   margin: 3rem auto 0;
-  background: var(--rb-white-08);
-  border: 1px solid var(--rb-white-08);
+  background: var(--theme-color-paper-08);
+  border: 1px solid var(--theme-color-paper-08);
 }
 
 .card {
-  background: var(--rb-black);
-  border: 1px solid var(--rb-white-12);
+  background: var(--theme-color-ink);
+  border: 1px solid var(--theme-color-paper-12);
   border-radius: 0;
   padding: 2rem 1.8rem;
   display: flex;
@@ -20,13 +20,13 @@
 }
 
 .card:hover {
-  border-color: var(--rb-red-border);
+  border-color: var(--theme-color-primary-border);
 }
 
 .highlighted {
-  background: var(--rb-red);
-  color: var(--rb-white);
-  border-color: var(--rb-red);
+  background: var(--theme-color-primary);
+  color: var(--theme-color-paper);
+  border-color: var(--theme-color-primary);
 }
 
 @media screen and (max-width: 900px) {
