@@ -1,0 +1,271 @@
+{
+  "slug": "gorges-du-tarn",
+  "title": "Gorges du Tarn",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Gorges du Tarn native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.planetmountain.com/en/crags/gorges-du-tarn.html",
+      "title": "Gorges du Tarn",
+      "publisher": "PlanetMountain",
+      "accessedAt": "2026-09-01",
+      "notes": "Crag page; used for limestone and route count."
+    }
+  ],
+  "facts": {
+    "locationKind": "sport-climbing-area",
+    "climbingStyles": ["sport"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["overhangs", "pockets", "crimps"],
+    "settingTags": ["gorge-canyon", "forest"],
+    "bestSeasons": ["spring", "autumn"],
+    "avoidSeasons": ["summer", "winter"],
+    "nearestAirports": [],
+    "accommodationTags": ["campsite", "guesthouse-b-and-b"],
+    "transportTags": ["car-recommended"],
+    "gradeRange": "mainly 7th grade on some 50 to 70 m climbs",
+    "routeCount": 400,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "area"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Gorges du Tarn, France",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Gorges du Tarn is a limestone sport climbing gorge in southeast France.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "PlanetMountain supports 400 limestone routes over five sectors; the legacy packet adds pockets, crimps, overhangs, rivers and pine forest.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "legacy",
+      "body": "Legacy evidence points especially to sport climbers comfortable with longer routes and 7th-grade climbing, while still noting a broader grade mix.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "mixed",
+      "body": "Route count is sourced externally; the grade wording is kept as legacy prose rather than a normalized numeric range.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "The legacy packet supports spring and autumn, and warns that summers are too hot and winters too cold.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "The legacy packet places the area about an hour from Millau and supports a car-recommended tag.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "Legacy accommodation includes campsites and small guest houses/gites in nearby villages.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "legacy",
+      "body": "The legacy packet mentions kayaking, rafting and canyoning in the Tarn area.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: sport-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 400.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Gorges du Tarn, France",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Gorges du Tarn is a limestone sport climbing gorge in southeast France.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "PlanetMountain supports 400 limestone routes over five sectors; the legacy packet adds pockets, crimps, overhangs, rivers and pine forest.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Legacy evidence points especially to sport climbers comfortable with longer routes and 7th-grade climbing, while still noting a broader grade mix.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Route count is sourced externally; the grade wording is kept as legacy prose rather than a normalized numeric range.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet supports spring and autumn, and warns that summers are too hot and winters too cold.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet places the area about an hour from Millau and supports a car-recommended tag.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy accommodation includes campsites and small guest houses/gites in nearby villages.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet mentions kayaking, rafting and canyoning in the Tarn area.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

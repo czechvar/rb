@@ -1,0 +1,279 @@
+{
+  "slug": "maltatal",
+  "title": "Maltatal",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Maltatal native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.ocun.com/news/maltatal-bouldering-en",
+      "title": "Maltatal: Alpine valley for crimp lovers of all kinds",
+      "publisher": "OCUN",
+      "accessedAt": "2026-09-01",
+      "notes": "Climbing brand area article; used for sport, multipitch, bouldering, grade and route-count claims."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["bouldering", "sport", "multi-pitch"],
+    "rockTypes": ["granite"],
+    "rockFeatures": ["crimps", "slabs", "cracks"],
+    "settingTags": ["mountain", "valley"],
+    "bestSeasons": ["spring", "summer", "autumn"],
+    "avoidSeasons": [],
+    "nearestAirports": [],
+    "accommodationTags": [],
+    "transportTags": ["car-recommended"],
+    "gradeRange": "5a to 7c for sport routes; boulders up to 8c+ reported by bouldering sources",
+    "routeCount": 420,
+    "problemCount": 300,
+    "sectorCount": null,
+    "destinationScope": "area"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Maltatal, Austria",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "enriched",
+      "body": "Maltatal is an Austrian alpine valley with both granite bouldering and roped climbing.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "enriched",
+      "body": "OCUN reports 25 sport crags, about 350 single-pitch sport routes and 70 multipitch routes; other bouldering sources report granite boulders.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "enriched",
+      "body": "The sport climbing grade band reported by OCUN is concentrated around 5a to 7c, which supports beginner and intermediate roped climbers as well as boulderers.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "The sourced roped-climbing range is 5a to 7c; bouldering grades need a separate guidebook-backed pass before being normalized further.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "enriched",
+      "body": "Spring, summer and autumn are assigned because Maltatal is an alpine valley; altitude and weather should still be checked before travel.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "enriched",
+      "body": "The valley setting makes a car the conservative transport tag for moving between sectors.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced where to stay content found for this pass."]
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: bouldering, sport, multi-pitch.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: granite.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 420.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Problem count: 300.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Maltatal, Austria",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Maltatal is an Austrian alpine valley with both granite bouldering and roped climbing.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "OCUN reports 25 sport crags, about 350 single-pitch sport routes and 70 multipitch routes; other bouldering sources report granite boulders.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The sport climbing grade band reported by OCUN is concentrated around 5a to 7c, which supports beginner and intermediate roped climbers as well as boulderers.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The sourced roped-climbing range is 5a to 7c; bouldering grades need a separate guidebook-backed pass before being normalized further.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Spring, summer and autumn are assigned because Maltatal is an alpine valley; altitude and weather should still be checked before travel.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The valley setting makes a car the conservative transport tag for moving between sectors.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced where to stay content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": [
+      "Empty or placeholder legacy body was not expanded without external support."
+    ]
+  }
+}

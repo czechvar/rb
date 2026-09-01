@@ -1,0 +1,286 @@
+{
+  "slug": "durance-valley-hautes-alps",
+  "title": "Durance Valley, Hautes Alps",
+  "status": "partial",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Durance Valley, Hautes Alps native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/pages/rock-climbing-france-hautes-alps",
+      "title": "Rock Climbing in the Durance Valley, Hautes Alps",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook publisher overview found via search; used for Ailefroide granite and bolted multipitch character."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch", "bouldering"],
+    "rockTypes": ["granite", "limestone"],
+    "rockFeatures": ["slabs", "cracks"],
+    "settingTags": ["mountain", "valley"],
+    "bestSeasons": ["spring", "summer", "autumn"],
+    "avoidSeasons": [],
+    "nearestAirports": [],
+    "accommodationTags": ["campsite", "apartment"],
+    "transportTags": ["car-recommended"],
+    "gradeRange": "F5a to F6c+ for many long bolted Ailefroide routes",
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "region"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Durance Valley, Hautes Alps, France",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "enriched",
+      "body": "The Durance Valley / Hautes-Alpes entry is treated as a mountain-valley climbing region around Briançon and Ailefroide rather than one crag.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "enriched",
+      "body": "The Climb Europe result describes Ailefroide long bolted multi-pitch routes on granite and the broader valley as having extensive bolted climbing.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced who it suits content found for this pass."]
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "The sourced note supports many Ailefroide routes between F5a and F6c+, but not a complete region-wide grade range or route count.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "enriched",
+      "body": "Spring through autumn is assigned for a mountain-valley region; high-altitude or winter climbing conditions need a separate source.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "enriched",
+      "body": "A car is marked recommended because the destination is a spread-out alpine valley rather than a single walkable town crag.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "enriched",
+      "body": "Campsite and apartment tags are conservative for Briançon/Ailefroide-style valley bases, but need a local accommodation source before marketing copy.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, multi-pitch, bouldering.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: granite, limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The Durance Valley / Hautes-Alpes source supports extensive climbing around Briançon and Ailefroide, but this pass did not assign a verified total routeCount.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Durance Valley, Hautes Alps, France",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The Durance Valley / Hautes-Alpes entry is treated as a mountain-valley climbing region around Briançon and Ailefroide rather than one crag.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The Climb Europe result describes Ailefroide long bolted multi-pitch routes on granite and the broader valley as having extensive bolted climbing.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The sourced note supports many Ailefroide routes between F5a and F6c+, but not a complete region-wide grade range.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Spring through autumn is assigned for a mountain-valley region; high-altitude or winter climbing conditions need a separate source.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "A car is marked recommended because the destination is a spread-out alpine valley rather than a single walkable town crag.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Campsite and apartment tags are conservative for Briançon/Ailefroide-style valley bases, but need a local accommodation source before marketing copy.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "stay",
+      "missing": "Verify accommodation tags with a local tourism source before publishing detailed copy.",
+      "priority": "medium"
+    },
+    {
+      "section": "transport",
+      "missing": "Need nearest normalized airport and public transport evidence.",
+      "priority": "medium"
+    },
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced who it suits content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added.",
+      "Removed region routeCount after source URL verification; retained only narrower sourced Durance/Ailefroide facts."
+    ],
+    "unsourcedClaimsRemoved": [
+      "Empty or placeholder legacy body was not expanded without external support."
+    ]
+  }
+}

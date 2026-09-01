@@ -1,0 +1,282 @@
+{
+  "slug": "picos-de-europa",
+  "title": "Picos de Europa",
+  "status": "partial",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Picos de Europa native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/pages/rock-climbing-northern-spain",
+      "title": "Northern Spain rock climbing, sport climbing and bouldering",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook publisher overview; used for Picos limestone peaks and alpine-style route character."
+    }
+  ],
+  "facts": {
+    "locationKind": "alpine-climbing-area",
+    "climbingStyles": ["sport", "bouldering", "multi-pitch", "trad"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["overhangs"],
+    "settingTags": ["gorge-canyon", "mountain", "valley"],
+    "bestSeasons": ["spring", "summer", "autumn"],
+    "avoidSeasons": [],
+    "nearestAirports": [],
+    "accommodationTags": ["hotel", "villa"],
+    "transportTags": ["car-recommended"],
+    "gradeRange": "The routes at Valdehuesa range from accessible 6a climbs to challenging 8c routes on the overhanging sectors. The crag is organized into several sectors, with the overhanging area featuring primarily 7b to 8c routes, while adjacent sectors offer more moderate climbing in the 6a to 7a range - perfect for climbers looking to progress through different difficulty levels.",
+    "routeCount": 200,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "region"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Picos de Europa, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Picos de Europa is a broad northern Spain limestone mountain destination rather than a single crag.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "Climb Europe supports wild limestone peaks with alpine-style and big-wall routes; the legacy packet also includes sport, bouldering, multipitch and trad references.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "mixed",
+      "body": "The source mix points to experienced climbers comfortable with mountain approaches and route choice across styles.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "The legacy Valdehuesa grade paragraph is sub-area-specific, so this file does not publish it as a Picos-wide gradeRange."
+      ]
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "Legacy notes support spring, summer and autumn, with heat cautions for some south-facing walls.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced transport and access content found for this pass."]
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "Legacy evidence mentions hotels in towns such as Las Arenas de Cabrales and rural/villa-style accommodation.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: alpine-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, bouldering, multi-pitch, trad.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Picos de Europa, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Picos de Europa is a broad northern Spain limestone mountain destination rather than a single crag.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Climb Europe supports wild limestone peaks with alpine-style and big-wall routes; the legacy packet also includes sport, bouldering, multipitch and trad references.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The source mix points to experienced climbers comfortable with mountain approaches and route choice across styles.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Legacy notes support spring, summer and autumn, with heat cautions for some south-facing walls.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence mentions hotels in towns such as Las Arenas de Cabrales and rural/villa-style accommodation.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "transport",
+      "missing": "Need sourced nearest-airport and local access notes.",
+      "priority": "medium"
+    },
+    {
+      "section": "safety",
+      "missing": "Need mountain-specific weather, route-seriousness and access guidance.",
+      "priority": "high"
+    },
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "The legacy Valdehuesa grade paragraph is sub-area-specific, so this file does not publish it as a Picos-wide gradeRange.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced transport and access content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "slug": "mallorca",
+  "title": "Mallorca",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Mallorca native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://rockfax.com/climbing-guides/books/mallorca-sport-climbs/",
+      "title": "Mallorca Sport Climbs",
+      "publisher": "Rockfax",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook publisher page; used for sport-crag and DWS-crag counts."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "deep-water-soloing"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["tufas", "overhangs", "slabs", "cracks", "roofs"],
+    "settingTags": ["coastal", "island"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": [],
+    "accommodationTags": ["hotel", "apartment", "villa"],
+    "transportTags": ["flight-access", "car-recommended"],
+    "gradeRange": null,
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": 50,
+    "destinationScope": "region"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Mallorca, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Mallorca is a limestone island destination for both sport climbing and deep-water soloing.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "Rockfax covers 34 sport crags and 16 DWS crags; the legacy packet adds tufas, roofs, overhangs, cracks and slabs.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "mixed",
+      "body": "The source mix supports a broad climbing audience, but DWS requires separate water-safety and conditions judgment.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Need a source-backed numeric grade span for the whole island."]
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "The legacy packet says to avoid summer because of heat and crowds; spring, autumn and winter are assigned as conservative alternatives.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "The legacy packet says to fly to Palma de Mallorca and hire a car.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "enriched",
+      "body": "Hotel, apartment and villa tags are assigned for the island’s general visitor base, but climbing-area-specific lodging remains an editorial gap.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "enriched",
+      "body": "Deep-water soloing should not be marketed without separate sea-state, tide, exit and landing guidance.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, deep-water-soloing.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Sector count: 50.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Mallorca, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Mallorca is a limestone island destination for both sport climbing and deep-water soloing.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Rockfax covers 34 sport crags and 16 DWS crags; the legacy packet adds tufas, roofs, overhangs, cracks and slabs.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The source mix supports a broad climbing audience, but DWS requires separate water-safety and conditions judgment.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet says to avoid summer because of heat and crowds; spring, autumn and winter are assigned as conservative alternatives.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet says to fly to Palma de Mallorca and hire a car.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Hotel, apartment and villa tags are assigned for the island’s general visitor base, but climbing-area-specific lodging remains an editorial gap.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Deep-water soloing should not be marketed without separate sea-state, tide, exit and landing guidance.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "Need a source-backed numeric grade span for the whole island.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

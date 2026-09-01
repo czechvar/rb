@@ -1,0 +1,275 @@
+{
+  "slug": "albarracin",
+  "title": "Albarracin",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Albarracin native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/pages/rock-climbing-spain-albarracin-bouldering",
+      "title": "Albarracin Bouldering in Spain",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook publisher page; used for sandstone bouldering and problem count."
+    }
+  ],
+  "facts": {
+    "locationKind": "bouldering-area",
+    "climbingStyles": ["bouldering"],
+    "rockTypes": ["sandstone"],
+    "rockFeatures": ["overhangs", "slabs", "crimps", "roofs", "pockets"],
+    "settingTags": ["forest"],
+    "bestSeasons": ["spring", "autumn"],
+    "avoidSeasons": ["winter"],
+    "nearestAirports": ["Alicante", "Valencia"],
+    "accommodationTags": ["campsite", "guesthouse-b-and-b", "luxury"],
+    "transportTags": ["car-recommended", "flight-access"],
+    "gradeRange": null,
+    "routeCount": null,
+    "problemCount": 1600,
+    "sectorCount": 15,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Albarracin, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Albarracín is a sandstone bouldering destination in a forested setting near Teruel.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "The source supports sandstone bouldering; the legacy packet adds overhangs, slabs, crimps and roofs across forest sectors.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "legacy",
+      "body": "The legacy packet says there are problems of many difficulties and styles, but it is not precise enough for a numeric gradeRange.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "Climb Europe reports that the Boulder Albarracín guidebook details over 1,600 problems; gradeRange remains null.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "The legacy packet supports late autumn to early spring friction, with spring and autumn as practical best-season tags and winter as a caution because nights can be far below zero.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "The legacy packet identifies Valencia and Alicante airport access and recommends hiring a car.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "Legacy accommodation options include B&Bs, campsites and more comfortable/luxury lodging.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "enriched",
+      "body": "Access rules and wet-rock restrictions should be checked in the latest local guidebook before publishing detailed advice.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: bouldering-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: bouldering.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: sandstone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Problem count: 1600.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Sector count: 15.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Albarracin, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Albarracín is a sandstone bouldering destination in a forested setting near Teruel.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The source supports sandstone bouldering; the legacy packet adds overhangs, slabs, crimps and roofs across forest sectors.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet says there are problems of many difficulties and styles, but it is not precise enough for a numeric gradeRange.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Climb Europe reports that the Boulder Albarracín guidebook details over 1,600 problems; gradeRange remains null.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The legacy packet supports late autumn to early spring friction, with spring and autumn as practical best-season tags and winter as a caution because nights can be far below zero.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet identifies Valencia and Alicante airport access and recommends hiring a car.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy accommodation options include B&Bs, campsites and more comfortable/luxury lodging.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Access rules and wet-rock restrictions should be checked in the latest local guidebook before publishing detailed advice.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

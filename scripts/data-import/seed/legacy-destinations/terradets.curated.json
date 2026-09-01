@@ -1,0 +1,268 @@
+{
+  "slug": "terradets",
+  "title": "Terradets",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Terradets native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/pages/rock-climbing-spain-lleida",
+      "title": "Lleida rock climbing, sport climbing and bouldering",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook publisher overview; used for Terradets limestone gorge and Paret de les Bagasses character."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "bouldering", "multi-pitch"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["tufas", "overhangs", "pockets"],
+    "settingTags": ["gorge-canyon", "mountain"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": [],
+    "nearestAirports": ["Barcelona"],
+    "accommodationTags": ["hotel", "refuge-hut", "villa"],
+    "transportTags": ["car-recommended", "flight-access", "walkable-local-access"],
+    "gradeRange": "hard 7th to lower 8th grade at Paret de les Bruixes; easier and multipitch routes also present",
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Terradets, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Terradets is a Catalan limestone gorge destination north of Lleida.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "Climb Europe supports a limestone gorge with the 500 m Paret de les Bagasses buttress; legacy evidence adds hard sport climbing at Paret de les Bruixes and multipitch routes.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "legacy",
+      "body": "Legacy evidence says Terradets is known for hard sport climbing but also has easier grades and quality multipitch routes.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "legacy",
+      "body": "The gradeRange remains a sourced legacy prose summary because it is sector-specific rather than a full destination distribution.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "Legacy evidence supports late autumn and winter for Les Bruixes, plus autumn and spring for Bruixes Norte and Paret de les Bagasses.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "Legacy evidence says Barcelona is about three hours by car and that the Cellers refuge can work without a car for Paret de les Bruixes.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "Legacy evidence mentions a refuge and hotel in Cellers plus rental places in nearby villages.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, bouldering, multi-pitch.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Terradets, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Terradets is a Catalan limestone gorge destination north of Lleida.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Climb Europe supports a limestone gorge with the 500 m Paret de les Bagasses buttress; legacy evidence adds hard sport climbing at Paret de les Bruixes and multipitch routes.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Legacy evidence says Terradets is known for hard sport climbing but also has easier grades and quality multipitch routes.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The gradeRange remains a sourced legacy prose summary because it is sector-specific rather than a full destination distribution.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence supports late autumn and winter for Les Bruixes, plus autumn and spring for Bruixes Norte and Paret de les Bagasses.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence says Barcelona is about three hours by car and that the Cellers refuge can work without a car for Paret de les Bruixes.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence mentions a refuge and hotel in Cellers plus rental places in nearby villages.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

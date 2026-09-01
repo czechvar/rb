@@ -1,0 +1,282 @@
+{
+  "slug": "andalucia",
+  "title": "Andalucia",
+  "status": "partial",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Andalucia native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/pages/rock-climbing-spain-andalucia",
+      "title": "Andalucia rock climbing and sport climbing",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook publisher overview; used for region-scale sport climbing and route count where available from legacy taxonomy."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch"],
+    "rockTypes": ["limestone", "sandstone"],
+    "rockFeatures": ["overhangs", "slabs"],
+    "settingTags": ["gorge-canyon", "mountain"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": ["Malaga"],
+    "accommodationTags": ["campsite", "guesthouse-b-and-b", "apartment", "hostel", "rural-cottage"],
+    "transportTags": ["car-recommended", "public-transport-possible", "flight-access"],
+    "gradeRange": null,
+    "routeCount": 3600,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "region"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Andalucia, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Andalucía is a large region, so this enrichment keeps the entry partial and treats sub-area facts as aggregated.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "legacy",
+      "body": "Legacy evidence supports limestone and sandstone sport climbing, including well-known areas around Málaga/El Chorro and Granada/Cádiz.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "legacy",
+      "body": "The source mix supports sport and multipitch climbers, but the region should be split for precise buyer-facing recommendations.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "legacy",
+      "body": "Legacy taxonomy reports about 3,600 routes, but no reliable region-wide gradeRange is assigned.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "Legacy evidence supports autumn through spring and warns that summer can be prohibitively hot on south-facing walls.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "Legacy evidence supports Málaga airport, direct train access to El Chorro, and a car for broader exploration.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "Legacy evidence includes climber hostels/campsites in El Chorro plus apartments and rural cottages around Andalucía.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, multi-pitch.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone, sandstone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 3600.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Andalucia, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Andalucía is a large region, so this enrichment keeps the entry partial and treats sub-area facts as aggregated.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Legacy evidence supports limestone and sandstone sport climbing, including well-known areas around Málaga/El Chorro and Granada/Cádiz.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The source mix supports sport and multipitch climbers, but the region should be split for precise buyer-facing recommendations.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy taxonomy reports about 3,600 routes, but no reliable region-wide gradeRange is assigned.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence supports autumn through spring and warns that summer can be prohibitively hot on south-facing walls.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence supports Málaga airport, direct train access to El Chorro, and a car for broader exploration.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence includes climber hostels/campsites in El Chorro plus apartments and rural cottages around Andalucía.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "hero",
+      "missing": "Consider splitting into El Chorro, Granada, Cádiz, or another exact area before publication.",
+      "priority": "high"
+    },
+    {
+      "section": "rock",
+      "missing": "Sub-area aggregation can mislead; precise climbing character needs per-area records.",
+      "priority": "high"
+    },
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

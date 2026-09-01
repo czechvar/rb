@@ -1,0 +1,275 @@
+{
+  "slug": "hvar",
+  "title": "Hvar",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Hvar native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://visithvar.hr/see-and-do/climbing-grounds/",
+      "title": "Climbing Grounds",
+      "publisher": "Visit Hvar",
+      "accessedAt": "2026-09-01",
+      "notes": "Official tourism page; used for climbing-area count, route count, styles and limestone cliffs."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch", "deep-water-soloing"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["overhangs", "slabs", "crimps"],
+    "settingTags": ["coastal", "island"],
+    "bestSeasons": ["spring", "autumn"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": [],
+    "accommodationTags": ["hotel", "apartment", "villa"],
+    "transportTags": ["ferry-access", "car-recommended"],
+    "gradeRange": "With its rugged cliffs, pristine beaches, and warm Mediterranean weather, Hvar offers a truly unparalleled rock climbing experience for both beginners and seasoned climbers alike.",
+    "routeCount": 450,
+    "problemCount": null,
+    "sectorCount": 10,
+    "destinationScope": "region"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Hvar, Croatia",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "enriched",
+      "body": "Hvar is a Croatian island climbing destination with multiple climbing areas.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "Visit Hvar reports 10 climbing areas and around 450 sport, alpine and sea-solo routes; legacy text supports limestone cliffs around Sveta Nedilja.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "enriched",
+      "body": "The source supports a mixed audience because it includes sport, alpine and sea-solo route categories, but route-grade distribution was not verified.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "Route and sector counts are sourced, but gradeRange remains null because this pass did not verify a reliable grade span.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "The legacy packet supports spring and autumn as peak climbing seasons and warns summer brings higher temperatures and more tourists.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "enriched",
+      "body": "Ferry access and local road transport are assigned for island logistics; no normalized airport city was assigned.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "enriched",
+      "body": "Hotel, apartment and villa tags are assigned as island visitor accommodation categories; climbing-base specifics need follow-up.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "enriched",
+      "body": "Sea-solo routes should receive specific sea-state, fall-zone and exit guidance before publication.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, multi-pitch, deep-water-soloing.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 450.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Sector count: 10.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Hvar, Croatia",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Hvar is a Croatian island climbing destination with multiple climbing areas.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Visit Hvar reports 10 climbing areas and around 450 sport, alpine and sea-solo routes; legacy text supports limestone cliffs around Sveta Nedilja.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The source supports a mixed audience because it includes sport, alpine and sea-solo route categories, but route-grade distribution was not verified.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route and sector counts are sourced, but gradeRange remains null because this pass did not verify a reliable grade span.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The legacy packet supports spring and autumn as peak climbing seasons and warns summer brings higher temperatures and more tourists.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Ferry access and local road transport are assigned for island logistics; no normalized airport city was assigned.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Hotel, apartment and villa tags are assigned as island visitor accommodation categories; climbing-base specifics need follow-up.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Sea-solo routes should receive specific sea-state, fall-zone and exit guidance before publication.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

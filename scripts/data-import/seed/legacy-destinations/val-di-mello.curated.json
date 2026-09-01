@@ -1,0 +1,247 @@
+{
+  "slug": "val-di-mello",
+  "title": "Val di Mello",
+  "status": "partial",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Legacy Rockbusters destination packet",
+      "publisher": "Rockbusters",
+      "accessedAt": "2026-09-01",
+      "notes": "Existing native review output; used only for original legacy destination facts."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/products/val-di-mello-rock-climbing-guidebook",
+      "title": "Val di Mello Rock Climbing Guidebook and Topo, Italy",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook page; confirms granite, long multi-pitch styles and wall lengths."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["trad", "multi-pitch", "sport", "bouldering"],
+    "rockTypes": ["granite"],
+    "rockFeatures": ["slabs", "cracks"],
+    "settingTags": ["mountain", "valley"],
+    "bestSeasons": ["summer", "autumn"],
+    "avoidSeasons": [],
+    "nearestAirports": [],
+    "accommodationTags": ["campsite", "refuge-hut", "villa"],
+    "transportTags": ["car-recommended"],
+    "gradeRange": "The rock is of great quality and as it is often weathered into fins and flutings which enables hard looking faces to be climbed also at moderate grades.",
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "area"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Destination Snapshot",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+    },
+    {
+      "key": "intro",
+      "heading": "Overview",
+      "status": "mixed",
+      "body": "Val di Mello is an alpine granite valley in the Val Masino area, with climbing styles ranging from bouldering to long routes.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History And Reputation",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock And Climbing Character",
+      "status": "mixed",
+      "body": "The guidebook page describes towering granite walls, hundreds of long multi-pitch routes and many crack, corner and groove features.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who It Suits",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+    },
+    {
+      "key": "grades",
+      "heading": "Grades And Scale",
+      "status": "mixed",
+      "body": "The source describes hundreds of long routes and wall lengths up to about 800 m.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season",
+      "status": "mixed",
+      "body": "The legacy packet says Val di Mello bouldering is suited to summer and that the best time for mountain lines is July to early autumn.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Gear."]
+    },
+    {
+      "key": "transport",
+      "heading": "Getting There",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Getting There."]
+    },
+    {
+      "key": "stay",
+      "heading": "Where To Stay",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest Days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+    },
+    {
+      "key": "tips",
+      "heading": "Local Tips And Rules",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Safety."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Costs."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for FAQ."]
+    },
+    {
+      "key": "trips",
+      "heading": "Trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related trips intentionally left empty by batch instruction."]
+    },
+    {
+      "key": "related",
+      "heading": "Related Destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related destination enrichment is out of scope for this batch."]
+    }
+  ],
+  "claims": [
+    {
+      "text": "The Val di Mello guidebook page describes solid granite walls with hundreds of long multi-pitch routes and many cracks, corners and grooves.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "hero",
+      "missing": "Needs a reputable source before writing destination snapshot content.",
+      "priority": "medium"
+    },
+    {
+      "section": "history",
+      "missing": "Needs a reputable source before writing history and reputation content.",
+      "priority": "medium"
+    },
+    {
+      "section": "who",
+      "missing": "Needs a reputable source before writing who it suits content.",
+      "priority": "medium"
+    },
+    {
+      "section": "gear",
+      "missing": "Needs a reputable source before writing gear content.",
+      "priority": "medium"
+    },
+    {
+      "section": "transport",
+      "missing": "Needs a reputable source before writing getting there content.",
+      "priority": "high"
+    },
+    {
+      "section": "stay",
+      "missing": "Needs a reputable source before writing where to stay content.",
+      "priority": "medium"
+    },
+    {
+      "section": "restdays",
+      "missing": "Needs a reputable source before writing rest days content.",
+      "priority": "medium"
+    },
+    {
+      "section": "tips",
+      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "priority": "medium"
+    },
+    {
+      "section": "safety",
+      "missing": "Needs a reputable source before writing safety content.",
+      "priority": "high"
+    },
+    {
+      "section": "costs",
+      "missing": "Needs a reputable source before writing costs content.",
+      "priority": "medium"
+    },
+    {
+      "section": "faq",
+      "missing": "Needs a reputable source before writing faq content.",
+      "priority": "medium"
+    }
+  ],
+  "qa": {
+    "notes": [],
+    "unsourcedClaimsRemoved": [
+      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+    ]
+  }
+}

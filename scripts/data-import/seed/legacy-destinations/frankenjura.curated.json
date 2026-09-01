@@ -1,0 +1,277 @@
+{
+  "slug": "frankenjura",
+  "title": "Frankenjura",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Frankenjura native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.ukclimbing.com/articles/destinations/frankenjura_-_limestone_in_the_limelight-2742",
+      "title": "Frankenjura - Limestone in the Limelight",
+      "publisher": "UKClimbing",
+      "accessedAt": "2026-09-01",
+      "notes": "Destination article; used to correct rock type to limestone and support sport-climbing character."
+    }
+  ],
+  "facts": {
+    "locationKind": "sport-climbing-area",
+    "climbingStyles": ["sport", "bouldering"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["pockets", "crimps", "overhangs"],
+    "settingTags": ["forest"],
+    "bestSeasons": ["spring", "autumn", "summer"],
+    "avoidSeasons": [],
+    "nearestAirports": [],
+    "accommodationTags": ["campsite", "guesthouse-b-and-b", "refuge-hut"],
+    "transportTags": ["car-recommended"],
+    "gradeRange": "all grades",
+    "routeCount": 8000,
+    "problemCount": null,
+    "sectorCount": 1000,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Frankenjura, Germany",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Frankenjura is a German limestone sport-climbing region with many small forest crags.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "The external source supports limestone; the legacy packet supports short, powerful, pocketed and crimpy sport routes in forest settings.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "legacy",
+      "body": "The legacy packet says the area has routes from easy to hard, but also emphasizes demanding bouldery climbing.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "legacy",
+      "body": "Legacy evidence gives almost 8,000 climbs in about 1,000 smaller crags and “all grades”; no more precise grade span was assigned.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "The legacy packet supports early spring to late autumn, with shade in summer and shelter considerations in spring/autumn.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "The legacy packet recommends a car for shifting between sectors.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "The legacy packet lists campsites, village B&Bs and shelter choices depending on season.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: sport-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, bouldering.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 8000.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Sector count: 1000.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Frankenjura, Germany",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Frankenjura is a German limestone sport-climbing region with many small forest crags.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The external source supports limestone; the legacy packet supports short, powerful, pocketed and crimpy sport routes in forest settings.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet says the area has routes from easy to hard, but also emphasizes demanding bouldery climbing.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence gives almost 8,000 climbs in about 1,000 smaller crags and “all grades”; no more precise grade span was assigned.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet supports early spring to late autumn, with shade in summer and shelter considerations in spring/autumn.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet recommends a car for shifting between sectors.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet lists campsites, village B&Bs and shelter choices depending on season.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "Corrected legacy-normalized rockTypes from sandstone to limestone using the external source.",
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

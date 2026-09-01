@@ -1,0 +1,268 @@
+{
+  "slug": "costa-blanca-spain",
+  "title": "Costa Blanca, Spain",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Costa Blanca, Spain native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/pages/rock-climbing-spain-costa-blanca",
+      "title": "Costa Blanca Rock Climbing and Sport Climbing in Spain",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook publisher overview; used for limestone, sport/multipitch range and year-round climate."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch", "trad"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["tufas", "overhangs", "slabs"],
+    "settingTags": ["coastal", "mountain"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": ["Alicante", "Valencia"],
+    "accommodationTags": ["hotel", "apartment", "villa"],
+    "transportTags": ["flight-access", "car-recommended"],
+    "gradeRange": "wide range of grades",
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "region"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Costa Blanca, Spain, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Costa Blanca is a Mediterranean limestone climbing region between Alicante and Valencia.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "Climb Europe supports bolted limestone across short single-pitch roadside crags and long multipitch mountain routes; the legacy packet adds tufas, overhangs and slabs.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "mixed",
+      "body": "The source mix supports beginners through experienced sport and multipitch climbers, but exact grade distribution needs a guidebook count.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "Only the sourced phrase “wide range of grades” is used; no numeric grade range was inferred.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "mixed",
+      "body": "The external source supports climbing through most of the year; winter, spring and autumn are assigned while summer is a heat caution.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "The legacy packet recommends a rental car; Alicante and Valencia are the normalized airport cities for this region.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "enriched",
+      "body": "Hotels, apartments and villas are assigned as broad coastal-region accommodation categories; exact base advice remains open.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, multi-pitch, trad.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Costa Blanca, Spain, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Costa Blanca is a Mediterranean limestone climbing region between Alicante and Valencia.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Climb Europe supports bolted limestone across short single-pitch roadside crags and long multipitch mountain routes; the legacy packet adds tufas, overhangs and slabs.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The source mix supports beginners through experienced sport and multipitch climbers, but exact grade distribution needs a guidebook count.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Only the sourced phrase “wide range of grades” is used; no numeric grade range was inferred.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The external source supports climbing through most of the year; winter, spring and autumn are assigned while summer is a heat caution.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet recommends a rental car; Alicante and Valencia are the normalized airport cities for this region.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Hotels, apartments and villas are assigned as broad coastal-region accommodation categories; exact base advice remains open.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

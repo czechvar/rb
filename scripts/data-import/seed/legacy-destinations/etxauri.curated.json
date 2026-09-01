@@ -1,0 +1,272 @@
+{
+  "slug": "etxauri",
+  "title": "Etxauri",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Etxauri native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.planetmountain.com/en/crags/etxauri.html",
+      "title": "Etxauri",
+      "publisher": "PlanetMountain",
+      "accessedAt": "2026-09-01",
+      "notes": "Crag database page; used for limestone, route count and grade range."
+    }
+  ],
+  "facts": {
+    "locationKind": "sport-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["overhangs", "slabs", "crimps"],
+    "settingTags": ["mountain"],
+    "bestSeasons": ["spring", "autumn"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": [],
+    "accommodationTags": ["campsite"],
+    "transportTags": ["car-recommended"],
+    "gradeRange": "4a to 9a",
+    "routeCount": 800,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Etxauri, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Etxauri is a limestone climbing area near Pamplona and one of Navarra’s important crags.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "Legacy notes and PlanetMountain both support limestone climbing with technical walls, slabs, crimps and overhanging faces.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "enriched",
+      "body": "The 4a to 9a range supports a broad sport-climbing audience, but the legacy packet emphasizes technical climbing skill.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "PlanetMountain reports more than 800 routes from 4a to 9a.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "The legacy packet recommends autumn and spring and warns against summertime heat.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "The legacy packet places Etxauri close to Pamplona and says a rented car is more practical than public transport.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "The legacy packet mentions campsites near Pamplona.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: sport-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, multi-pitch.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 800.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Etxauri, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Etxauri is a limestone climbing area near Pamplona and one of Navarra’s important crags.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Legacy notes and PlanetMountain both support limestone climbing with technical walls, slabs, crimps and overhanging faces.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The 4a to 9a range supports a broad sport-climbing audience, but the legacy packet emphasizes technical climbing skill.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "PlanetMountain reports more than 800 routes from 4a to 9a.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The legacy packet recommends autumn and spring and warns against summertime heat.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet places Etxauri close to Pamplona and says a rented car is more practical than public transport.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet mentions campsites near Pamplona.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

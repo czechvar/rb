@@ -1,0 +1,252 @@
+{
+  "slug": "les-calanques-de-marseille",
+  "title": "Les Calanques de Marseille",
+  "status": "partial",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Legacy Rockbusters destination packet",
+      "publisher": "Rockbusters",
+      "accessedAt": "2026-09-01",
+      "notes": "Existing native review output; used only for original legacy destination facts."
+    },
+    {
+      "id": "s1",
+      "url": "https://omegaroc.com/en/climbing-in-the-calanques/",
+      "title": "Rock climbing in the Calanques of Marseille - Digital guidebook",
+      "publisher": "OmegaRoc",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook page; confirms single-pitch, multi-pitch and DWS scale."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch", "deep-water-soloing"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["slabs", "overhangs", "caves"],
+    "settingTags": ["coastal"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": [],
+    "accommodationTags": ["hotel", "apartment", "hostel"],
+    "transportTags": ["public-transport-possible", "flight-access", "car-recommended"],
+    "gradeRange": "In terms of difficulty, again, what you find in Les Calanques is a wide range of grades.",
+    "routeCount": 1090,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "area"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Destination Snapshot",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+    },
+    {
+      "key": "intro",
+      "heading": "Overview",
+      "status": "mixed",
+      "body": "The Calanques between Marseille and Cassis are a coastal national-park climbing area, not a single roadside crag.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History And Reputation",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock And Climbing Character",
+      "status": "mixed",
+      "body": "OmegaRoc describes 190 multi-pitch routes and 900 single-pitches, plus sea-level traverses and deep-water soloing.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who It Suits",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+    },
+    {
+      "key": "grades",
+      "heading": "Grades And Scale",
+      "status": "mixed",
+      "body": "The route count is stored as 1,090 by adding the source-listed 190 multi-pitch and 900 single-pitch routes from the same guidebook page.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Season."]
+    },
+    {
+      "key": "gear",
+      "heading": "Gear",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Gear."]
+    },
+    {
+      "key": "transport",
+      "heading": "Getting There",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Getting There."]
+    },
+    {
+      "key": "stay",
+      "heading": "Where To Stay",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest Days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+    },
+    {
+      "key": "tips",
+      "heading": "Local Tips And Rules",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Safety."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Costs."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for FAQ."]
+    },
+    {
+      "key": "trips",
+      "heading": "Trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related trips intentionally left empty by batch instruction."]
+    },
+    {
+      "key": "related",
+      "heading": "Related Destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related destination enrichment is out of scope for this batch."]
+    }
+  ],
+  "claims": [
+    {
+      "text": "The OmegaRoc Calanques guidebook page lists 190 multi-pitch routes and 900 single-pitches.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "hero",
+      "missing": "Needs a reputable source before writing destination snapshot content.",
+      "priority": "medium"
+    },
+    {
+      "section": "history",
+      "missing": "Needs a reputable source before writing history and reputation content.",
+      "priority": "medium"
+    },
+    {
+      "section": "who",
+      "missing": "Needs a reputable source before writing who it suits content.",
+      "priority": "medium"
+    },
+    {
+      "section": "season",
+      "missing": "Needs a reputable source before writing season content.",
+      "priority": "high"
+    },
+    {
+      "section": "gear",
+      "missing": "Needs a reputable source before writing gear content.",
+      "priority": "medium"
+    },
+    {
+      "section": "transport",
+      "missing": "Needs a reputable source before writing getting there content.",
+      "priority": "high"
+    },
+    {
+      "section": "stay",
+      "missing": "Needs a reputable source before writing where to stay content.",
+      "priority": "medium"
+    },
+    {
+      "section": "restdays",
+      "missing": "Needs a reputable source before writing rest days content.",
+      "priority": "medium"
+    },
+    {
+      "section": "tips",
+      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "priority": "medium"
+    },
+    {
+      "section": "safety",
+      "missing": "Needs a reputable source before writing safety content.",
+      "priority": "high"
+    },
+    {
+      "section": "costs",
+      "missing": "Needs a reputable source before writing costs content.",
+      "priority": "medium"
+    },
+    {
+      "section": "faq",
+      "missing": "Needs a reputable source before writing faq content.",
+      "priority": "medium"
+    }
+  ],
+  "qa": {
+    "notes": [],
+    "unsourcedClaimsRemoved": [
+      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+    ]
+  }
+}

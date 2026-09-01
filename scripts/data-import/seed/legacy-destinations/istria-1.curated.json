@@ -1,0 +1,273 @@
+{
+  "slug": "istria-1",
+  "title": "Istria",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Istria native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://climbistria.com/",
+      "title": "Climbing guides",
+      "publisher": "Climb Istria",
+      "accessedAt": "2026-09-01",
+      "notes": "Local climbing guide site; used for region extent, sport/DWS, season and number of locations."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "deep-water-soloing"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["tufas", "crimps", "overhangs"],
+    "settingTags": ["coastal"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": [],
+    "nearestAirports": [],
+    "accommodationTags": ["campsite", "hotel"],
+    "transportTags": ["car-recommended"],
+    "gradeRange": "With its breathtaking landscapes, diverse climbing routes, and vibrant climbing community, Istria offers an unforgettable experience for both beginners and seasoned climbers alike.",
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": 50,
+    "destinationScope": "region"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Istria, Croatia",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Istria is a cross-border peninsula climbing region with many sport crags and some deep-water soloing.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "The local guide source reports more than 50 climbing locations in Istria; legacy text supports limestone, sport climbing and DWS.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "enriched",
+      "body": "The area suits sport climbers who want multiple nearby crags with different orientations; DWS needs separate conditions judgment.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Need a guidebook-backed grade range and route count for the region."]
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "enriched",
+      "body": "Climb Istria presents the region as year-round because different wall orientations allow seasonal choice; spring, autumn and winter are assigned conservatively.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "enriched",
+      "body": "A car is marked recommended because the source describes many locations spread across the region.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "The legacy packet mentions hotels and campsites as accommodation options.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "enriched",
+      "body": "DWS and coastal crags need specific local condition checks before publication.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, deep-water-soloing.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Sector count: 50.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Istria, Croatia",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Istria is a cross-border peninsula climbing region with many sport crags and some deep-water soloing.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The local guide source reports more than 50 climbing locations in Istria; legacy text supports limestone, sport climbing and DWS.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The area suits sport climbers who want multiple nearby crags with different orientations; DWS needs separate conditions judgment.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climb Istria presents the region as year-round because different wall orientations allow seasonal choice; spring, autumn and winter are assigned conservatively.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "A car is marked recommended because the source describes many locations spread across the region.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The legacy packet mentions hotels and campsites as accommodation options.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "DWS and coastal crags need specific local condition checks before publication.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "Need a guidebook-backed grade range and route count for the region.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "Corrected legacy-normalized settingTags by not treating the Istria peninsula as an island.",
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

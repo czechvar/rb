@@ -1,0 +1,247 @@
+{
+  "slug": "sella",
+  "title": "Sella",
+  "status": "partial",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Legacy Rockbusters destination packet",
+      "publisher": "Rockbusters",
+      "accessedAt": "2026-09-01",
+      "notes": "Existing native review output; used only for original legacy destination facts."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.thecrag.com/en/climbing/spain/sella",
+      "title": "Sella, Sport climbing",
+      "publisher": "theCrag",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook listing; confirms Costa Blanca guidebook coverage including Sella."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch", "trad"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["slabs", "pockets", "crimps"],
+    "settingTags": ["coastal", "valley"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": ["Alicante"],
+    "accommodationTags": ["campsite", "hotel", "apartment", "villa"],
+    "transportTags": ["car-recommended", "flight-access"],
+    "gradeRange": "Easy and mid grade sport routes are found at the most popular main crags in the centre of the valley, whilst mid to harder grade routes are concentrated in steeper sectors like the famous Wild Side.",
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Destination Snapshot",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+    },
+    {
+      "key": "intro",
+      "heading": "Overview",
+      "status": "mixed",
+      "body": "Sella is a major Costa Blanca limestone valley climbing area.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History And Reputation",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock And Climbing Character",
+      "status": "mixed",
+      "body": "The legacy packet and current guidebook listings support a mix of sport, multi-pitch and trad climbing on limestone.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who It Suits",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+    },
+    {
+      "key": "grades",
+      "heading": "Grades And Scale",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Grades And Scale."]
+    },
+    {
+      "key": "season",
+      "heading": "Season",
+      "status": "mixed",
+      "body": "The legacy packet supports September to April as the best period and says summer is generally too hot unless using north-facing crags.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Gear."]
+    },
+    {
+      "key": "transport",
+      "heading": "Getting There",
+      "status": "mixed",
+      "body": "The legacy packet says Sella is about one hour by car from Alicante airport and recommends hiring a car for the wider area.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where To Stay",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest Days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+    },
+    {
+      "key": "tips",
+      "heading": "Local Tips And Rules",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Safety."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Costs."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for FAQ."]
+    },
+    {
+      "key": "trips",
+      "heading": "Trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related trips intentionally left empty by batch instruction."]
+    },
+    {
+      "key": "related",
+      "heading": "Related Destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related destination enrichment is out of scope for this batch."]
+    }
+  ],
+  "claims": [
+    {
+      "text": "Sella is covered within Costa Blanca guidebook material and has limestone sport, multi-pitch and trad climbing in the legacy packet.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "hero",
+      "missing": "Needs a reputable source before writing destination snapshot content.",
+      "priority": "medium"
+    },
+    {
+      "section": "history",
+      "missing": "Needs a reputable source before writing history and reputation content.",
+      "priority": "medium"
+    },
+    {
+      "section": "who",
+      "missing": "Needs a reputable source before writing who it suits content.",
+      "priority": "medium"
+    },
+    {
+      "section": "grades",
+      "missing": "Needs a reputable source before writing grades and scale content.",
+      "priority": "high"
+    },
+    {
+      "section": "gear",
+      "missing": "Needs a reputable source before writing gear content.",
+      "priority": "medium"
+    },
+    {
+      "section": "stay",
+      "missing": "Needs a reputable source before writing where to stay content.",
+      "priority": "medium"
+    },
+    {
+      "section": "restdays",
+      "missing": "Needs a reputable source before writing rest days content.",
+      "priority": "medium"
+    },
+    {
+      "section": "tips",
+      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "priority": "medium"
+    },
+    {
+      "section": "safety",
+      "missing": "Needs a reputable source before writing safety content.",
+      "priority": "high"
+    },
+    {
+      "section": "costs",
+      "missing": "Needs a reputable source before writing costs content.",
+      "priority": "medium"
+    },
+    {
+      "section": "faq",
+      "missing": "Needs a reputable source before writing faq content.",
+      "priority": "medium"
+    }
+  ],
+  "qa": {
+    "notes": [],
+    "unsourcedClaimsRemoved": [
+      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+    ]
+  }
+}

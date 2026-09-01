@@ -1,0 +1,274 @@
+{
+  "slug": "kalymnos",
+  "title": "Kalymnos",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Kalymnos native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/pages/rock-climbing-greece-kalymnos",
+      "title": "Kalymnos Rock Climbing and Sport Climbing in Greece",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook publisher page; used for limestone, route style, multipitch note and route count context."
+    }
+  ],
+  "facts": {
+    "locationKind": "sport-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["tufas", "caves", "slabs", "pockets", "overhangs"],
+    "settingTags": ["coastal", "island"],
+    "bestSeasons": ["spring", "autumn"],
+    "avoidSeasons": ["summer", "winter"],
+    "nearestAirports": ["Kos", "Athens"],
+    "accommodationTags": ["hotel", "apartment", "guesthouse-b-and-b"],
+    "transportTags": ["flight-access", "ferry-access", "walkable-local-access"],
+    "gradeRange": "F3 to F9a",
+    "routeCount": 4200,
+    "problemCount": null,
+    "sectorCount": 64,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Kalymnos, Greece",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Kalymnos is a Greek island sport-climbing destination near Kos with dense limestone climbing around Massouri.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "The source mix supports solid limestone, tufas, caves, slabs, pockets, overhangs and mostly single-pitch bolted routes, with some bolted multipitch lines.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "mixed",
+      "body": "The external route range and legacy text support both lower-grade holiday climbers and climbers seeking steep tufa routes.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "Climb Europe reports about 4,200 routes from F3 slabs to F9a routes; the legacy packet reports about 64 sectors.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "The legacy packet supports April-May and October-November, warns summer is too hot, and says winter rain can leave tufas slow to dry.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "Legacy access is by flight to Kos and ferry, or flight via Athens to Kalymnos airport.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "The legacy packet lists Masouri and Armeos with hotels, budget hotels, B&Bs and apartments.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "legacy",
+      "body": "The legacy packet mentions beaches, bars and island rest-day ambience.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "legacy",
+      "body": "The legacy packet flags wet tufas as slow to dry, which should affect route choice after rain.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: sport-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, multi-pitch.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 4200.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Sector count: 64.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Kalymnos, Greece",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Kalymnos is a Greek island sport-climbing destination near Kos with dense limestone climbing around Massouri.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The source mix supports solid limestone, tufas, caves, slabs, pockets, overhangs and mostly single-pitch bolted routes, with some bolted multipitch lines.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The external route range and legacy text support both lower-grade holiday climbers and climbers seeking steep tufa routes.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Climb Europe reports about 4,200 routes from F3 slabs to F9a routes; the legacy packet reports about 64 sectors.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet supports April-May and October-November, warns summer is too hot, and says winter rain can leave tufas slow to dry.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy access is by flight to Kos and ferry, or flight via Athens to Kalymnos airport.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet lists Masouri and Armeos with hotels, budget hotels, B&Bs and apartments.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet mentions beaches, bars and island rest-day ambience.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet flags wet tufas as slow to dry, which should affect route choice after rain.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

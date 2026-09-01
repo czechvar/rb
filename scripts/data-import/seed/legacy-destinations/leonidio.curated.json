@@ -1,0 +1,274 @@
+{
+  "slug": "leonidio",
+  "title": "Leonidio",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Leonidio native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/pages/rock-climbing-greece-leonidio",
+      "title": "Rock climbing in Leonidio",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook publisher page; used for limestone, sport and multipitch character."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["tufas", "overhangs", "slabs"],
+    "settingTags": ["coastal", "mountain"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": ["Athens"],
+    "accommodationTags": ["hotel", "guesthouse-b-and-b", "apartment"],
+    "transportTags": ["car-recommended", "flight-access"],
+    "gradeRange": "F3 to F9a+",
+    "routeCount": 3000,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "area"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Leonidio, Greece",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "enriched",
+      "body": "Leonidio is a major mainland Greek limestone climbing area around the town of Leonidio.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "enriched",
+      "body": "The crags are red and grey limestone, with well-bolted single-pitch sport routes and fully bolted longer multi-pitch routes.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "enriched",
+      "body": "The sourced grade span supports a wide audience, from low-grade sport climbers to climbers seeking hard routes.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "Climb Europe reports over 3,000 routes across F3 to F9a+.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "enriched",
+      "body": "The source supports Leonidio as a Mediterranean sport destination; spring, autumn and winter are assigned, while summer heat remains an editorial caution.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "enriched",
+      "body": "Athens is the normalized airport city assigned for mainland-Greece access; a car is recommended for practical crag access.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "enriched",
+      "body": "Accommodation tags remain broad because this pass found town-based visitor accommodation but did not verify specific climber lodging names.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, multi-pitch.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 3000.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Leonidio, Greece",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Leonidio is a major mainland Greek limestone climbing area around the town of Leonidio.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The crags are red and grey limestone, with well-bolted single-pitch sport routes and fully bolted longer multi-pitch routes.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The sourced grade span supports a wide audience, from low-grade sport climbers to climbers seeking hard routes.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climb Europe reports over 3,000 routes across F3 to F9a+.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The source supports Leonidio as a Mediterranean sport destination; spring, autumn and winter are assigned, while summer heat remains an editorial caution.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Athens is the normalized airport city assigned for mainland-Greece access; a car is recommended for practical crag access.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Accommodation tags remain broad because this pass found town-based visitor accommodation but did not verify specific climber lodging names.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": [
+      "Empty or placeholder legacy body was not expanded without external support."
+    ]
+  }
+}

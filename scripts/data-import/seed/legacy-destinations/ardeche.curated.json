@@ -1,0 +1,267 @@
+{
+  "slug": "ardeche",
+  "title": "Ardeche",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Ardeche native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.cevennes-ardeche.com/en/activites/activites-en-nature/accroche-a-la-paroi/",
+      "title": "Climbing in the Cévennes d’Ardèche",
+      "publisher": "Cévennes d’Ardèche tourism",
+      "accessedAt": "2026-09-01",
+      "notes": "Regional tourism page; used for limestone cliffs, gorges and long-route character."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch", "bouldering"],
+    "rockTypes": ["limestone", "granite"],
+    "rockFeatures": [],
+    "settingTags": ["gorge-canyon"],
+    "bestSeasons": ["spring", "autumn"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": ["Lyon", "Nimes", "Avignon"],
+    "accommodationTags": ["campsite", "hotel", "guesthouse-b-and-b"],
+    "transportTags": ["car-recommended", "public-transport-possible", "flight-access"],
+    "gradeRange": "all difficulties",
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "region"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Ardeche, France",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Ardèche is a southeast France outdoor region where climbing is tied to limestone cliffs, gorges and river-valley tourism.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "The legacy packet supports sport, multipitch and bouldering on limestone and granite; tourism material supports limestone cliffs and gorges.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "legacy",
+      "body": "The legacy packet presents Ardèche as suitable for family climbing holidays and mixed activity trips.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "legacy",
+      "body": "The only sourced grade wording in this pass is the legacy phrase “all difficulties”, so no numeric grade range was inferred.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "The legacy packet supports spring and autumn and warns that summer is too hot for serious climbing.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "The legacy packet lists Avignon, Nîmes and Lyon as nearby airport cities and recommends a car for local movement.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "The legacy packet lists campsites, guest houses and hotels, with reservations needed in high season.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "mixed",
+      "body": "The legacy packet mentions canyoning and canoeing as non-climbing activities in the area.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, multi-pitch, bouldering.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone, granite.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Ardeche, France",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Ardèche is a southeast France outdoor region where climbing is tied to limestone cliffs, gorges and river-valley tourism.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet supports sport, multipitch and bouldering on limestone and granite; tourism material supports limestone cliffs and gorges.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet presents Ardèche as suitable for family climbing holidays and mixed activity trips.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The only sourced grade wording in this pass is the legacy phrase “all difficulties”, so no numeric grade range was inferred.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet supports spring and autumn and warns that summer is too hot for serious climbing.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet lists Avignon, Nîmes and Lyon as nearby airport cities and recommends a car for local movement.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet lists campsites, guest houses and hotels, with reservations needed in high season.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet mentions canyoning and canoeing as non-climbing activities in the area.",
+      "sourceRefs": ["legacy", "s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

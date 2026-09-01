@@ -1,0 +1,273 @@
+{
+  "slug": "arco",
+  "title": "Arco",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Arco native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.arcomountainguide.com/en/sport/rock-climbing-lake-garda-arco-trentino/",
+      "title": "Outdoor rock climbing in Lake Garda - Arco",
+      "publisher": "Arco Mountain Guide",
+      "accessedAt": "2026-09-01",
+      "notes": "Local guide page; used for limestone, accessibility and year-round climbing climate."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "multi-pitch"],
+    "rockTypes": ["limestone", "dolomite"],
+    "rockFeatures": ["tufas", "overhangs", "pockets"],
+    "settingTags": ["mountain", "valley"],
+    "bestSeasons": ["spring", "autumn"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": [],
+    "accommodationTags": ["campsite", "hotel", "guesthouse-b-and-b", "apartment"],
+    "transportTags": ["car-recommended"],
+    "gradeRange": null,
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": 50,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Arco, Italy",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Arco and the Sarca Valley near Lake Garda are long-established Italian climbing destinations.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "Local guide material supports clean, accessible limestone crags; the legacy packet adds sport crags and multipitch walls around Arco.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "legacy",
+      "body": "The legacy packet says Arco has a wide range of grades, climbing styles and accessible crags.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced grades and difficulty content found for this pass."]
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "mixed",
+      "body": "Spring and autumn are the conservative best-season tags; summer can be better for Lake Garda activities than climbing in full heat.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "The legacy packet treats a car as useful for moving between crags in the Lake Garda area.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "The legacy packet lists campsites, apartments, guesthouses and hotels.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, multi-pitch.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone, dolomite.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Sector count: 50.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Arco, Italy",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Arco and the Sarca Valley near Lake Garda are long-established Italian climbing destinations.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Local guide material supports clean, accessible limestone crags; the legacy packet adds sport crags and multipitch walls around Arco.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet says Arco has a wide range of grades, climbing styles and accessible crags.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Spring and autumn are the conservative best-season tags; summer can be better for Lake Garda activities than climbing in full heat.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet treats a car as useful for moving between crags in the Lake Garda area.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "The legacy packet lists campsites, apartments, guesthouses and hotels.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced grades and difficulty content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

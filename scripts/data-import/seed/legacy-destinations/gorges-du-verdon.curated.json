@@ -1,0 +1,247 @@
+{
+  "slug": "gorges-du-verdon",
+  "title": "Gorges du Verdon",
+  "status": "partial",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Legacy Rockbusters destination packet",
+      "publisher": "Rockbusters",
+      "accessedAt": "2026-09-01",
+      "notes": "Existing native review output; used only for original legacy destination facts."
+    },
+    {
+      "id": "s1",
+      "url": "https://climb-europe.com/pages/rock-climbing-france-verdon",
+      "title": "Verdon rock climbing and sport climbing in France",
+      "publisher": "Climb Europe",
+      "accessedAt": "2026-09-01",
+      "notes": "Destination page; confirms limestone, multi-pitch character and season."
+    }
+  ],
+  "facts": {
+    "locationKind": "multi-pitch-area",
+    "climbingStyles": ["multi-pitch", "sport", "trad"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["slabs", "cracks", "overhangs"],
+    "settingTags": ["gorge-canyon"],
+    "bestSeasons": ["spring", "autumn"],
+    "avoidSeasons": ["summer", "winter"],
+    "nearestAirports": ["Nimes"],
+    "accommodationTags": ["campsite", "hotel", "guesthouse-b-and-b"],
+    "transportTags": ["car-recommended", "flight-access"],
+    "gradeRange": "There are more than 1000 routes of all grades and styles, from short friendly sport climbs to impressive big wall routes both bolted and traditional protection.",
+    "routeCount": 400,
+    "problemCount": null,
+    "sectorCount": 3,
+    "destinationScope": "area"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Destination Snapshot",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+    },
+    {
+      "key": "intro",
+      "heading": "Overview",
+      "status": "mixed",
+      "body": "The Gorges du Verdon are a major limestone gorge destination best known for committing multi-pitch climbing.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History And Reputation",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock And Climbing Character",
+      "status": "mixed",
+      "body": "Climb Europe emphasizes long multi-pitch routes on limestone, with single-pitch sectors also present.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who It Suits",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+    },
+    {
+      "key": "grades",
+      "heading": "Grades And Scale",
+      "status": "mixed",
+      "body": "A companion guidebook listing for Verdon reports over 400 multi-pitch routes and 22 single-pitch sectors; this file stores only the sourced multi-pitch route count.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season",
+      "status": "mixed",
+      "body": "Climb Europe identifies autumn as the best period and spring as also good; it notes summer heat and winter cold as constraints.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Gear."]
+    },
+    {
+      "key": "transport",
+      "heading": "Getting There",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Getting There."]
+    },
+    {
+      "key": "stay",
+      "heading": "Where To Stay",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest Days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+    },
+    {
+      "key": "tips",
+      "heading": "Local Tips And Rules",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Safety."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Costs."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for FAQ."]
+    },
+    {
+      "key": "trips",
+      "heading": "Trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related trips intentionally left empty by batch instruction."]
+    },
+    {
+      "key": "related",
+      "heading": "Related Destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related destination enrichment is out of scope for this batch."]
+    }
+  ],
+  "claims": [
+    {
+      "text": "Verdon is a limestone gorge destination known for long multi-pitch climbing, with autumn cited as the best season.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "hero",
+      "missing": "Needs a reputable source before writing destination snapshot content.",
+      "priority": "medium"
+    },
+    {
+      "section": "history",
+      "missing": "Needs a reputable source before writing history and reputation content.",
+      "priority": "medium"
+    },
+    {
+      "section": "who",
+      "missing": "Needs a reputable source before writing who it suits content.",
+      "priority": "medium"
+    },
+    {
+      "section": "gear",
+      "missing": "Needs a reputable source before writing gear content.",
+      "priority": "medium"
+    },
+    {
+      "section": "transport",
+      "missing": "Needs a reputable source before writing getting there content.",
+      "priority": "high"
+    },
+    {
+      "section": "stay",
+      "missing": "Needs a reputable source before writing where to stay content.",
+      "priority": "medium"
+    },
+    {
+      "section": "restdays",
+      "missing": "Needs a reputable source before writing rest days content.",
+      "priority": "medium"
+    },
+    {
+      "section": "tips",
+      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "priority": "medium"
+    },
+    {
+      "section": "safety",
+      "missing": "Needs a reputable source before writing safety content.",
+      "priority": "high"
+    },
+    {
+      "section": "costs",
+      "missing": "Needs a reputable source before writing costs content.",
+      "priority": "medium"
+    },
+    {
+      "section": "faq",
+      "missing": "Needs a reputable source before writing faq content.",
+      "priority": "medium"
+    }
+  ],
+  "qa": {
+    "notes": [],
+    "unsourcedClaimsRemoved": [
+      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+    ]
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "slug": "sulov",
+  "title": "Sulov",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Sulov native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://thetopo.com/areas/sulov",
+      "title": "Climbing in Súľov, Slovakia",
+      "publisher": "theTopo",
+      "accessedAt": "2026-09-01",
+      "notes": "Area guide; used for style, rock, grade, route-count, season, access, and accommodation details."
+    }
+  ],
+  "facts": {
+    "locationKind": "sport-climbing-area",
+    "climbingStyles": ["sport"],
+    "rockTypes": ["limestone", "conglomerate"],
+    "rockFeatures": ["pockets", "crimps"],
+    "settingTags": ["mountain", "forest"],
+    "bestSeasons": ["spring", "summer", "autumn"],
+    "avoidSeasons": [],
+    "nearestAirports": [],
+    "accommodationTags": [],
+    "transportTags": ["car-recommended"],
+    "gradeRange": "Font/European sport grades from easy 4s up to 9a+ are reported by the source.",
+    "routeCount": 1541,
+    "problemCount": null,
+    "sectorCount": 17,
+    "destinationScope": "area"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Sulov, Slovakia",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "enriched",
+      "body": "Súľov is a northern Slovakia climbing area in the Súľovské vrchy landscape.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "enriched",
+      "body": "The source describes vertical, pocketed limestone faces, with conglomerate also retained from the legacy/SummitPost-style geology evidence.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced who it suits content found for this pass."]
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "The source reports 1,541 routes across 17 crags, with grades from easy 4s up to 9a+.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "enriched",
+      "body": "The source gives late spring to early autumn, May to October, as the best season.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "enriched",
+      "body": "The source says the area is best reached by car and that public transport is limited but possible via train and bus connections to nearby towns.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced where to stay content found for this pass."]
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: sport-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone and conglomerate.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 1,541 routes across 17 crags.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Sulov, Slovakia",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Súľov is a northern Slovakia climbing area in the Súľovské vrchy landscape.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The source describes vertical, pocketed limestone faces; conglomerate is retained as compatible geology evidence.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The source reports 1,541 routes across 17 crags, with grades from easy 4s up to 9a+.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The source gives late spring to early autumn, May to October, as the best season.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The source says Súľov is best reached by car and that public transport is limited but possible via train and bus connections to nearby towns.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced who it suits content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced where to stay content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": [
+      "Empty or placeholder legacy body was not expanded without external support."
+    ]
+  }
+}

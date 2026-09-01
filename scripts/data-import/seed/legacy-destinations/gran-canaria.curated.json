@@ -1,0 +1,283 @@
+{
+  "slug": "gran-canaria",
+  "title": "Gran Canaria",
+  "status": "partial",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Gran Canaria native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.grancanaria.com/turismo/en/nature/mountain-sports/climbing/",
+      "title": "Climbing",
+      "publisher": "The Official Gran Canaria Tourist Website",
+      "accessedAt": "2026-09-01",
+      "notes": "Official tourism page; used for Roque Nublo, basalt-conglomerate wording, and limited route detail."
+    }
+  ],
+  "facts": {
+    "locationKind": "mixed-climbing-area",
+    "climbingStyles": ["sport", "trad"],
+    "rockTypes": ["conglomerate"],
+    "rockFeatures": [],
+    "settingTags": ["island", "mountain"],
+    "bestSeasons": [],
+    "avoidSeasons": [],
+    "nearestAirports": [],
+    "accommodationTags": [],
+    "transportTags": ["flight-access", "car-recommended"],
+    "gradeRange": null,
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "region"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Gran Canaria, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "enriched",
+      "body": "Gran Canaria is an island climbing destination with documented routes around mountain formations such as Roque Nublo.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "enriched",
+      "body": "The official tourism source describes Roque Nublo as basalt conglomerate; only the controlled taxonomy value “conglomerate” was applied.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced who it suits content found for this pass."]
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "enriched",
+      "body": "The official tourism page mentions 12 routes at Roque Nublo but does not provide a destination-wide grade range.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced season and conditions content found for this pass."]
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "enriched",
+      "body": "Island logistics imply flight access and a car for mountain crag access, but no normalized nearest-airport label was assigned from the contract list.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced where to stay content found for this pass."]
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: mixed-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport, trad.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: conglomerate.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Gran Canaria, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Gran Canaria is an island climbing destination with documented routes around mountain formations such as Roque Nublo.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The official tourism source describes Roque Nublo as basalt conglomerate; only the controlled taxonomy value “conglomerate” was applied.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "The official tourism page mentions 12 routes at Roque Nublo but does not provide a destination-wide grade range.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Island logistics imply flight access and a car for mountain crag access, but no normalized nearest-airport label was assigned from the contract list.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "season",
+      "missing": "Need a climbing-specific source for best and avoid seasons on Gran Canaria.",
+      "priority": "medium"
+    },
+    {
+      "section": "stay",
+      "missing": "Need climber-relevant accommodation guidance by climbing area.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced who it suits content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced season and conditions content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced where to stay content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": [
+      "Empty or placeholder legacy body was not expanded without external support."
+    ]
+  }
+}

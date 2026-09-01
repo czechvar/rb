@@ -1,0 +1,273 @@
+{
+  "slug": "montgrony",
+  "title": "Montgrony",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Montgrony native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.mountainproject.com/area/106543669/montgrony",
+      "title": "Rock Climbing in Montgrony",
+      "publisher": "Mountain Project",
+      "accessedAt": "2026-09-01",
+      "notes": "Route database page; used for limestone, tufas, route count and grade range context from search result."
+    }
+  ],
+  "facts": {
+    "locationKind": "sport-climbing-area",
+    "climbingStyles": ["sport"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["tufas", "overhangs"],
+    "settingTags": ["mountain"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": [],
+    "nearestAirports": ["Girona"],
+    "accommodationTags": ["refuge-hut"],
+    "transportTags": ["car-recommended", "flight-access"],
+    "gradeRange": "5.9 to 5.14",
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Montgrony, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Montgrony is a Catalan mountain sport crag near Gombrèn and Girona.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "The source mix supports southwest and west-facing tufa climbing on limestone; the legacy packet emphasizes shorter, bouldery, cruxy routes.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "legacy",
+      "body": "The legacy packet says Montgrony suits sport climbers looking for power-endurance tufa climbing rather than beginners-only mileage.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "mixed",
+      "body": "Legacy evidence says about 300 routes, while the external source reports about 200; routeCount is left null and gradeRange uses the external 5.9 to 5.14 span.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "legacy",
+      "body": "Legacy evidence supports autumn through spring, with south-facing walls and cold sunny winter days.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "legacy",
+      "body": "Legacy evidence says fly to Girona and hire a car or campervan.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "Legacy evidence mentions a small refuge and campervan parking near the crags.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: sport-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Legacy and external sources disagree on approximate route count, so routeCount is left null.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Montgrony, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Montgrony is a Catalan mountain sport crag near Gombrèn and Girona.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The source mix supports southwest and west-facing tufa climbing on limestone; the legacy packet emphasizes shorter, bouldery, cruxy routes.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet says Montgrony suits sport climbers looking for power-endurance tufa climbing rather than beginners-only mileage.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence gives about 300 routes; Mountain Project search output supports approximately 5.9 to 5.14.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Legacy evidence supports autumn through spring, with south-facing walls and cold sunny winter days.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence says fly to Girona and hire a car or campervan.",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Legacy evidence mentions a small refuge and campervan parking near the crags.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added.",
+      "Left routeCount null because legacy and external sources disagree on approximate Montgrony route count."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

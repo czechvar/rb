@@ -1,0 +1,272 @@
+{
+  "slug": "cuenca",
+  "title": "Cuenca",
+  "status": "enriched",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Cuenca native destination review",
+      "publisher": "Rockbusters legacy/native review",
+      "accessedAt": "2026-09-01",
+      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.mountainproject.com/area/107612547/cuenca",
+      "title": "Rock Climbing in Cuenca",
+      "publisher": "Mountain Project",
+      "accessedAt": "2026-09-01",
+      "notes": "Route database page; used for limestone, style, Madrid access and season."
+    }
+  ],
+  "facts": {
+    "locationKind": "sport-climbing-area",
+    "climbingStyles": ["sport"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["overhangs", "pockets", "crimps"],
+    "settingTags": ["gorge-canyon"],
+    "bestSeasons": ["spring", "autumn"],
+    "avoidSeasons": ["summer", "winter"],
+    "nearestAirports": ["Madrid"],
+    "accommodationTags": ["campsite", "hotel", "apartment"],
+    "transportTags": ["car-recommended", "flight-access"],
+    "gradeRange": null,
+    "routeCount": 1492,
+    "problemCount": null,
+    "sectorCount": null,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Hero",
+      "status": "legacy",
+      "body": "Cuenca, Spain",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "intro",
+      "heading": "Introduction",
+      "status": "mixed",
+      "body": "Cuenca is a central Spain sport climbing area about two hours from Madrid.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History and context",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced history and context content found for this pass."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock and climbing character",
+      "status": "mixed",
+      "body": "The climbing is on old limestone, with technical vertical and overhanging routes, crimps, small holds and two-finger pockets.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who it suits",
+      "status": "enriched",
+      "body": "The area is especially relevant for sport climbers who want technical limestone and harder routes, while still having grades across the area.",
+      "sourceRefs": ["s1"],
+      "warnings": []
+    },
+    {
+      "key": "grades",
+      "heading": "Grades and difficulty",
+      "status": "mixed",
+      "body": "theCrag search output listed 1,492 sport routes; this file leaves gradeRange null because the sourced grade span was not verified in a primary page.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season and conditions",
+      "status": "mixed",
+      "body": "Spring and autumn are supported by the legacy packet and Mountain Project; summer heat and cold winter conditions are avoid flags.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear and equipment",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced gear and equipment content found for this pass."]
+    },
+    {
+      "key": "transport",
+      "heading": "Transport and access",
+      "status": "mixed",
+      "body": "Madrid is the normalized airport city and the legacy packet recommends a car to move around the sectors.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "stay",
+      "heading": "Where to stay",
+      "status": "legacy",
+      "body": "The legacy packet says the town has multiple accommodation types and a campsite about 7 km away.",
+      "sourceRefs": ["legacy"],
+      "warnings": []
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced rest days content found for this pass."]
+    },
+    {
+      "key": "tips",
+      "heading": "Practical tips",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced practical tips content found for this pass."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety notes",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced safety notes content found for this pass."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced costs content found for this pass."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sourced faq content found for this pass."]
+    },
+    {
+      "key": "trips",
+      "heading": "Related trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "related",
+      "heading": "Related destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    }
+  ],
+  "claims": [
+    {
+      "text": "Location kind: sport-climbing-area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Climbing styles: sport.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Rock types: limestone.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Route count: 1492.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "Cuenca, Spain",
+      "sourceRefs": ["legacy"]
+    },
+    {
+      "text": "Cuenca is a central Spain sport climbing area about two hours from Madrid.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The climbing is on old limestone, with technical vertical and overhanging routes, crimps, small holds and two-finger pockets.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The area is especially relevant for sport climbers who want technical limestone and harder routes, while still having grades across the area.",
+      "sourceRefs": ["s1"]
+    },
+    {
+      "text": "theCrag search output listed 1,492 sport routes; this file leaves gradeRange null because the sourced grade span was not verified in a primary page.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Spring and autumn are supported by the legacy packet and Mountain Project; summer heat and cold winter conditions are avoid flags.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "Madrid is the normalized airport city and the legacy packet recommends a car to move around the sectors.",
+      "sourceRefs": ["legacy", "s1"]
+    },
+    {
+      "text": "The legacy packet says the town has multiple accommodation types and a campsite about 7 km away.",
+      "sourceRefs": ["legacy"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "",
+      "missing": "No sourced history and context content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced gear and equipment content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced rest days content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced practical tips content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced safety notes content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced costs content found for this pass.",
+      "priority": "low"
+    },
+    {
+      "section": "",
+      "missing": "No sourced faq content found for this pass.",
+      "priority": "low"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
+      "No values outside the location taxonomy contract were added."
+    ],
+    "unsourcedClaimsRemoved": []
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "slug": "siurana",
+  "title": "Siurana",
+  "status": "partial",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Legacy Rockbusters destination packet",
+      "publisher": "Rockbusters",
+      "accessedAt": "2026-09-01",
+      "notes": "Existing native review output; used only for original legacy destination facts."
+    },
+    {
+      "id": "s1",
+      "url": "https://www.southclimb.com/en/post/siurana-climbing-guide-2",
+      "title": "Siurana Climbing Guide",
+      "publisher": "Southclimb",
+      "accessedAt": "2026-09-01",
+      "notes": "Local guide page; confirms route count and grade range."
+    }
+  ],
+  "facts": {
+    "locationKind": "sport-climbing-area",
+    "climbingStyles": ["sport"],
+    "rockTypes": ["limestone"],
+    "rockFeatures": ["crimps", "overhangs"],
+    "settingTags": ["mountain", "valley"],
+    "bestSeasons": ["spring", "autumn", "winter"],
+    "avoidSeasons": ["summer"],
+    "nearestAirports": ["Barcelona"],
+    "accommodationTags": ["campsite", "apartment", "villa", "refuge-hut"],
+    "transportTags": ["car-recommended", "public-transport-possible", "flight-access"],
+    "gradeRange": "5a to 9b+",
+    "routeCount": 1600,
+    "problemCount": null,
+    "sectorCount": 30,
+    "destinationScope": "crag"
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Destination Snapshot",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+    },
+    {
+      "key": "intro",
+      "heading": "Overview",
+      "status": "mixed",
+      "body": "Siurana is a Catalan limestone sport-climbing destination above Cornudella de Montsant.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History And Reputation",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock And Climbing Character",
+      "status": "mixed",
+      "body": "The source describes vertical technical walls and steep endurance routes across many sectors.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "who",
+      "heading": "Who It Suits",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+    },
+    {
+      "key": "grades",
+      "heading": "Grades And Scale",
+      "status": "mixed",
+      "body": "The sourced scale is over 1,600 sport routes, with grades approximately from 5a to 9b+.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "season",
+      "heading": "Season",
+      "status": "mixed",
+      "body": "The source supports spring and autumn as core Siurana seasons; the legacy packet also supports winter as a possible season and summer heat as a concern.",
+      "sourceRefs": ["legacy", "s1"],
+      "warnings": []
+    },
+    {
+      "key": "gear",
+      "heading": "Gear",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Gear."]
+    },
+    {
+      "key": "transport",
+      "heading": "Getting There",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Getting There."]
+    },
+    {
+      "key": "stay",
+      "heading": "Where To Stay",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest Days",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+    },
+    {
+      "key": "tips",
+      "heading": "Local Tips And Rules",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Safety."]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for Costs."]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["No sufficiently specific sourced content for FAQ."]
+    },
+    {
+      "key": "trips",
+      "heading": "Trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related trips intentionally left empty by batch instruction."]
+    },
+    {
+      "key": "related",
+      "heading": "Related Destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": ["Related destination enrichment is out of scope for this batch."]
+    }
+  ],
+  "claims": [
+    {
+      "text": "Siurana has over 1,600 sport routes with grades approximately from 5a to 9b+.",
+      "sourceRefs": ["s1"]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "hero",
+      "missing": "Needs a reputable source before writing destination snapshot content.",
+      "priority": "medium"
+    },
+    {
+      "section": "history",
+      "missing": "Needs a reputable source before writing history and reputation content.",
+      "priority": "medium"
+    },
+    {
+      "section": "who",
+      "missing": "Needs a reputable source before writing who it suits content.",
+      "priority": "medium"
+    },
+    {
+      "section": "gear",
+      "missing": "Needs a reputable source before writing gear content.",
+      "priority": "medium"
+    },
+    {
+      "section": "transport",
+      "missing": "Needs a reputable source before writing getting there content.",
+      "priority": "high"
+    },
+    {
+      "section": "stay",
+      "missing": "Needs a reputable source before writing where to stay content.",
+      "priority": "medium"
+    },
+    {
+      "section": "restdays",
+      "missing": "Needs a reputable source before writing rest days content.",
+      "priority": "medium"
+    },
+    {
+      "section": "tips",
+      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "priority": "medium"
+    },
+    {
+      "section": "safety",
+      "missing": "Needs a reputable source before writing safety content.",
+      "priority": "high"
+    },
+    {
+      "section": "costs",
+      "missing": "Needs a reputable source before writing costs content.",
+      "priority": "medium"
+    },
+    {
+      "section": "faq",
+      "missing": "Needs a reputable source before writing faq content.",
+      "priority": "medium"
+    }
+  ],
+  "qa": {
+    "notes": [],
+    "unsourcedClaimsRemoved": [
+      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+    ]
+  }
+}

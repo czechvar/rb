@@ -10,6 +10,8 @@ Two commands, both idempotent (skip-if-exists on slug):
 - `pnpm data-import:import` — imports both collections.
 - `pnpm data-import:guides` — imports guides only (alias for `--only=guides`).
 - `pnpm data-import:locations` — imports locations only.
+- `pnpm data-import:legacy-destinations` — upserts the curated destination
+  research snapshot into `locations`.
 
 Plus one refresh command:
 
@@ -155,3 +157,33 @@ For each row's `body` HTML, before conversion to Lexical:
   `event_location`, `order`).
 - The 301 redirect map. Slug-verbatim minimizes the surface but doesn't
   produce the map.
+
+## Curated legacy destination import
+
+The enriched destination import reads the committed seed snapshot:
+
+```text
+scripts/data-import/seed/legacy-destinations/*.curated.json
+```
+
+Run it after the location taxonomy migration is applied:
+
+```bash
+PAYLOAD_DISABLE_DB_PUSH=true pnpm data-import:legacy-destinations
+```
+
+It upserts `locations` by slug:
+
+- creates missing records,
+- updates existing records with the curated title, active state, structured
+  taxonomy fields, route/problem/sector facts, planning summaries, source
+  references, and generated rich-text content assembled from sourced sections,
+- keeps omitted CMS-owned fields untouched, including `mainPicture`, `gallery`,
+  and `layout`.
+
+It also reuses the older `seed/locations.json` snapshot for stable basics when
+available: country, coordinates, and SEO keywords/description.
+
+This command is allowed to publish partial records because that product decision
+was accepted for the first migration pass. The `contentCompleteness` field keeps
+those records visible for later editorial review.
