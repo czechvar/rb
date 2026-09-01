@@ -1514,6 +1514,79 @@ export interface Location {
    * @maxItems 2
    */
   coordinates?: [number, number] | null;
+  /**
+   * Primary editor-facing classification, stored as a canonical ID.
+   */
+  locationKind?:
+    | (
+        | 'sport-climbing-area'
+        | 'bouldering-area'
+        | 'multi-pitch-area'
+        | 'mixed-climbing-area'
+        | 'alpine-climbing-area'
+        | 'online'
+      )
+    | null;
+  /**
+   * Scale of the public destination page: crag, area, region, country, indoor, or unknown.
+   */
+  destinationScope?: ('crag' | 'area' | 'region' | 'country' | 'indoor' | 'unknown') | null;
+  /**
+   * Editorial status for imported or manually reviewed destination content.
+   */
+  contentCompleteness?: ('enriched' | 'partial' | 'insufficient-source' | 'manual-review') | null;
+  climbingStyles?: ('sport' | 'bouldering' | 'multi-pitch' | 'trad' | 'deep-water-soloing')[] | null;
+  rockTypes?: ('limestone' | 'sandstone' | 'granite' | 'conglomerate' | 'gneiss' | 'dolomite')[] | null;
+  rockFeatures?: ('tufas' | 'caves' | 'overhangs' | 'slabs' | 'pockets' | 'crimps' | 'cracks' | 'roofs')[] | null;
+  settingTags?: ('coastal' | 'island' | 'gorge-canyon' | 'forest' | 'mountain' | 'valley')[] | null;
+  bestSeasons?: ('spring' | 'summer' | 'autumn' | 'winter' | 'year-round')[] | null;
+  avoidSeasons?: ('spring' | 'summer' | 'autumn' | 'winter' | 'year-round')[] | null;
+  accommodationTags?:
+    | (
+        | 'campsite'
+        | 'hotel'
+        | 'guesthouse-b-and-b'
+        | 'apartment'
+        | 'hostel'
+        | 'refuge-hut'
+        | 'villa'
+        | 'rural-cottage'
+        | 'luxury'
+      )[]
+    | null;
+  transportTags?:
+    | ('car-recommended' | 'public-transport-possible' | 'flight-access' | 'ferry-access' | 'walkable-local-access')[]
+    | null;
+  /**
+   * Normalized airport city labels. Keep as strings until airport-specific filtering needs IATA data.
+   */
+  nearestAirports?:
+    | {
+        name: string;
+        id?: string | null;
+      }[]
+    | null;
+  gradeRange?: string | null;
+  routeCount?: number | null;
+  problemCount?: number | null;
+  sectorCount?: number | null;
+  seasonSummary?: string | null;
+  transportSummary?: string | null;
+  accommodationSummary?: string | null;
+  /**
+   * Traceability for mined or enriched destination facts.
+   */
+  sourceReferences?:
+    | {
+        sourceId?: string | null;
+        title?: string | null;
+        url?: string | null;
+        publisher?: string | null;
+        accessedAt?: string | null;
+        notes?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   mainPicture?: (number | null) | Media;
   gallery?: (number | Media)[] | null;
   /**
@@ -5082,6 +5155,41 @@ export interface LocationsSelect<T extends boolean = true> {
   city?: T;
   country?: T;
   coordinates?: T;
+  locationKind?: T;
+  destinationScope?: T;
+  contentCompleteness?: T;
+  climbingStyles?: T;
+  rockTypes?: T;
+  rockFeatures?: T;
+  settingTags?: T;
+  bestSeasons?: T;
+  avoidSeasons?: T;
+  accommodationTags?: T;
+  transportTags?: T;
+  nearestAirports?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  gradeRange?: T;
+  routeCount?: T;
+  problemCount?: T;
+  sectorCount?: T;
+  seasonSummary?: T;
+  transportSummary?: T;
+  accommodationSummary?: T;
+  sourceReferences?:
+    | T
+    | {
+        sourceId?: T;
+        title?: T;
+        url?: T;
+        publisher?: T;
+        accessedAt?: T;
+        notes?: T;
+        id?: T;
+      };
   mainPicture?: T;
   gallery?: T;
   layout?:
