@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { isAdmin } from '../access'
+import { isAdmin, isAdminUser } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
 import { revalidateOnChange } from './hooks/revalidate'
@@ -11,7 +11,7 @@ export const Pages: CollectionConfig = {
   labels: { singular: 'Page', plural: 'Pages' },
   access: {
     read: ({ req }) => {
-      if (req.user?.role === 'admin') return true
+      if (isAdminUser(req.user)) return true
       return { status: { equals: 'published' } }
     },
     create: isAdmin,
