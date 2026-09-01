@@ -203,12 +203,13 @@ export function getPublishedEventBySlug(slug: string) {
 }
 
 export function getActiveEventDatesForEvent(eventId: number) {
-  return cachedQuery(['event-dates-for-event', String(eventId)], [TAGS.eventDates], async (): Promise<EventDate[]> => {
+  return cachedQuery(['event-dates-for-event', String(eventId)], [TAGS.eventDates, TAGS.guides, TAGS.locations], async (): Promise<EventDate[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'event-dates',
       where: { and: [{ event: { equals: eventId } }, { active: { equals: true } }] },
       sort: 'dateFrom',
+      depth: 2,
       limit: 100,
     })
     return docs

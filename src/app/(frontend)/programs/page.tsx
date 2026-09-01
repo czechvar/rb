@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { getPublishedEventsWithLocations, getActiveEventDatesForEvents } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
+import { JsonLd } from '@/components/JsonLd'
+import { collectionPageGraphJsonLd, tripListItems } from '@/lib/jsonld'
 import type { Event, EventDate, Location } from '@/payload-types'
 import styles from './page.module.css'
 
@@ -21,6 +23,12 @@ function locationLabel(loc: Event['locations']): string | null {
 
 export default async function ProgramsIndex() {
   const events = await getPublishedEventsWithLocations()
+  const jsonLd = collectionPageGraphJsonLd({
+    path: '/programs',
+    name: 'Programs',
+    description: 'Camps, coaching weeks, and guided trips from Rockbusters.',
+    items: tripListItems(events),
+  })
   const eventIds = events.map((e) => e.id)
   const dates = await getActiveEventDatesForEvents(eventIds)
 
@@ -34,6 +42,7 @@ export default async function ProgramsIndex() {
 
   return (
     <MarketingShell crumbs={[{ href: '/', label: 'Home' }, { label: 'Programs' }]}>
+      <JsonLd data={jsonLd} />
       <main className={styles.page}>
         <header className={styles.header}>
           <span className={styles.eyebrow}>What we run</span>

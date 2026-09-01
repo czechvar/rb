@@ -6,6 +6,8 @@ import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
+import { JsonLd } from '@/components/JsonLd'
+import { locationDetailGraphJsonLd } from '@/lib/jsonld'
 import styles from '../destinations.module.css'
 
 type Props = { params: Promise<{ slug: string }> }
@@ -26,6 +28,9 @@ export default async function DestinationPage({ params }: Props) {
   const loc = await getLocationBySlug(slug)
   if (!loc) notFound()
 
+  const events = await getPublishedEventsForLocation(loc.id)
+  const jsonLd = locationDetailGraphJsonLd(loc, events)
+
   if (loc.layout?.length) {
     return (
       <MarketingShell
@@ -35,14 +40,13 @@ export default async function DestinationPage({ params }: Props) {
           { label: loc.name },
         ]}
       >
+        <JsonLd data={jsonLd} />
         <main>
           <RenderBlocks blocks={loc.layout} context={{ location: loc }} />
         </main>
       </MarketingShell>
     )
   }
-
-  const events = await getPublishedEventsForLocation(loc.id)
 
   const hero = mediaUrl(loc.mainPicture)
   const [lng, lat] = loc.coordinates ?? [null, null]
@@ -54,6 +58,7 @@ export default async function DestinationPage({ params }: Props) {
         { label: loc.name },
       ]}
     >
+      <JsonLd data={jsonLd} />
       <main className={styles.wrap}>
         <div className={styles.detailHeader}>
           <h1>{loc.name}</h1>

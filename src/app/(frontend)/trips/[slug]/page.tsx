@@ -22,6 +22,8 @@ import { PhotoGallery } from '@/components/sections/PhotoGallery'
 import { EventAccommodationLogistics } from '@/components/sections/EventAccommodationLogistics'
 import { InlineFAQ } from '@/components/sections/InlineFAQ'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
+import { JsonLd } from '@/components/JsonLd'
+import { eventDetailGraphJsonLd } from '@/lib/jsonld'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -32,9 +34,12 @@ export default async function TripPage({ params }: Props) {
   const event = await getPublishedEventBySlug(slug)
   if (!event) notFound()
 
+  const jsonLd = eventDetailGraphJsonLd(event)
+
   if (event.layout?.length) {
     return (
       <MarketingShell transparentHeader>
+        <JsonLd data={jsonLd} />
         <main>
           <RenderBlocks blocks={event.layout} context={{ event }} />
         </main>
@@ -66,6 +71,7 @@ export default async function TripPage({ params }: Props) {
 
   return (
     <MarketingShell transparentHeader>
+      <JsonLd data={jsonLd} />
       <main>
         <DetailHero event={event} />
         <SectionIntro id="overview" title={event.title} lead={event.shortDescription ?? undefined} />

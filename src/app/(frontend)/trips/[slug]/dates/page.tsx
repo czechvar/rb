@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import { getPublishedEventBySlug, getActiveEventDatesForEvent } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { EventDatesList } from '@/components/sections/EventDatesList'
+import { JsonLd } from '@/components/JsonLd'
+import { eventDatesGraphJsonLd } from '@/lib/jsonld'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -13,6 +15,7 @@ export default async function TripDatesPage({ params }: Props) {
   if (!event) notFound()
 
   const dates = await getActiveEventDatesForEvent(event.id)
+  const jsonLd = eventDatesGraphJsonLd(event, dates)
 
   return (
     <MarketingShell
@@ -23,6 +26,7 @@ export default async function TripDatesPage({ params }: Props) {
         { label: 'Dates' },
       ]}
     >
+      <JsonLd data={jsonLd} />
       <main>
         <EventDatesList items={dates} />
         <p style={{ textAlign: 'center', padding: '4rem 2rem', background: 'var(--rb-dark)', color: 'var(--rb-white-60)' }}>

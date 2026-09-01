@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getActiveLocations } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
+import { JsonLd } from '@/components/JsonLd'
+import { collectionPageGraphJsonLd, locationListItems } from '@/lib/jsonld'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import type { Location } from '@/payload-types'
 import styles from './destinations.module.css'
@@ -14,6 +16,12 @@ function countryAnchor(country: string) {
 
 export default async function DestinationsPage() {
   const docs = await getActiveLocations()
+  const jsonLd = collectionPageGraphJsonLd({
+    path: '/destinations',
+    name: 'Destinations',
+    description: 'Browse Rockbusters climbing destinations by country.',
+    items: locationListItems(docs),
+  })
   const byCountry = new Map<string, Location[]>()
   for (const loc of docs) {
     const key = loc.country ?? 'Elsewhere'
@@ -22,6 +30,7 @@ export default async function DestinationsPage() {
   const countries = [...byCountry.keys()].sort((a, b) => a.localeCompare(b))
   return (
     <MarketingShell crumbs={[{ href: '/', label: 'Home' }, { label: 'Destinations' }]}>
+      <JsonLd data={jsonLd} />
       <main className={styles.wrap}>
         <h1>Destinations</h1>
         {countries.map((country) => (
