@@ -70,7 +70,9 @@ This is a starting direction, not a commitment — revisit before scaffolding. C
 
 Hosted on **Vercel**, project `rockbusters`.
 
-**Branch → domain.** `devel` is the Vercel **Production Branch**, not `main`. Every merge into `devel` is a production deployment serving `beta.rockbusters.net` (and the generated `rockbusters.vercel.app`), backed by the production Neon branch. `main` is an ordinary preview branch. The old site still runs on `rockbusters.net` at `198.211.122.117`; that apex is untouched until go-live, at which point the production branch flips to `main` and `SITE_INDEXABLE` is turned on.
+**Branch → domain.** The `rockbusters` project is the **beta app**, and `devel` is its Vercel **Production Branch** — not `main`. Every merge into `devel` is a production deployment serving `beta.rockbusters.net` (and the generated `rockbusters.vercel.app`), backed by the production Neon branch. This stays true permanently; the branch is never flipped.
+
+`main` gets its **own separate Vercel project** — the live site — created when it is ready. The old site still runs on `rockbusters.net` at `198.211.122.117` until then, so that apex stays untouched. At go-live the new project takes `rockbusters.net` and sets `SITE_INDEXABLE=true`; the beta project leaves it unset forever.
 
 Required environment variables in the Vercel project settings:
 
@@ -81,7 +83,7 @@ Required environment variables in the Vercel project settings:
 - `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` — R2 S3-API credentials
 - `HOMEPAGE_HERO_MEDIA_ID` — Payload Media ID of the homepage hero background image. Optional; if unset, the hero renders without a background image.
 - `NEXT_PUBLIC_SITE_URL` — public base URL used in email templates. Currently `https://beta.rockbusters.net`; becomes `https://rockbusters.net` at go-live.
-- `SITE_INDEXABLE` — set to `true` to allow search-engine indexing. Opt-in and fails safe: anything else serves a disallow-all `robots.txt` plus `X-Robots-Tag: noindex`. Must stay unset while the only public domain is beta, otherwise the beta site becomes duplicate content against the live rockbusters.net.
+- `SITE_INDEXABLE` — set to `true` to allow search-engine indexing. Opt-in and fails safe: anything else serves a disallow-all `robots.txt` plus `X-Robots-Tag: noindex`. Stays unset on this (beta) project permanently — otherwise beta becomes duplicate content against rockbusters.net. Only the future live project for `main` sets it to `true`.
 - `RESEND_API_KEY` — Resend transactional-email API key. If unset, Payload falls back to its console adapter (logs emails) — same defensive pattern as the R2 fallback.
 - `EMAIL_FROM_ADDRESS` — sender address (e.g. `hello@rockbusters.net` in prod, `onboarding@resend.dev` in dev). Domain must be verified in Resend for prod.
 - `EMAIL_FROM_NAME` — sender display name (e.g. `Rockbusters`).
