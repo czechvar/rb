@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-09-02T19:40:21.239Z",
+  "source": "legacy postgres dump in rb-legacy-pg-20260827",
+  "rows": [
+    {
+      "id": 1,
+      "title": "Europe Climbing Trip 2014 / Margalef",
+      "author": "Sam Van Metre",
+      "text": "We had a wonderful time with Rock Busters! For me, it was the perfect atmosphere for a guided trip. All of the other climbers were wonderful, and the locations we went to were beautiful. Our guide Jan gave great instruction and took great care of us, but treated us like adults and not kids at summer camp. The staff were able to accommodate any skill level, and I went from beginner to lead climbing in no time. I highly recommend going on a Rock Busters trip. My climbing improved by leaps and bounds, and now I have climbing friends all over the world!",
+      "slug": "europe-climbing-trip-2014-margalef",
+      "created": "2016-02-27",
+      "updated": "2016-02-27",
+      "display": 1
+    },
+    {
+      "id": 2,
+      "title": "Deep Water Solo 2014 / Mallorca",
+      "author": "Erin Lingle",
+      "text": "Had the most amazing time in Mallorca and Sella with the Rockbuster's team last year, and have plans to meet back up with them in Rodellar this Spring. If you want to climb in Europe and don't want to lug gear onto a plane, stress over finding the best climbing locales, or worry about where you're going to sleep and how you're going to get there, travel with Rockbuster's. I was super nervous about booking a pre-planned climbing trip, but this was exactly what I was looking for: climbing, climbing, and more climbing, followed by tasty meals and beverages at the campsite. There are few things in life better than having friends to climb with all over the world, and after two weeks traveling around with Jan I felt like I became part of one truly awesome extended family.",
+      "slug": "deep-water-solo-2014-mallorca",
+      "created": "2016-02-27",
+      "updated": "2016-02-27",
+      "display": 1
+    },
+    {
+      "id": 3,
+      "title": "Europe Climbing Trip 2014 / Finale Ligure",
+      "author": "Suzana Suzchowdhury",
+      "text": "I had an AMAZING weeklong climbing trip with Rockbusters in September 2014. It was my first climbing trip overseas and Jany and Co did a superb job to make my climbing experience memorable. The entire team is knowledgable, experienced and safe guides who will push your climbing to the next level. By the end of the trip, not only was I a better climber, I made some really cool climbing friends all around the globe. I can't wait to join my Rockbusters friends again for another memorable trip.",
+      "slug": "europe-climbing-trip-2014-finale-ligure",
+      "created": "2016-02-27",
+      "updated": "2016-02-27",
+      "display": 1
+    },
+    {
+      "id": 4,
+      "title": "Europe Climbing Trip 2015",
+      "author": "Andrew Douglas",
+      "text": "Rockbuster's is a fantastic company with a unique product offering. With limited offerings catering for the climber who knows the basics and wants a no frills experience heading to some of Europe's best crags with knowledgable, experienced and safe guides who will push your climbing to the next level and organize a great party after Rockbuster's is the clear winner. I have been on four trips and wracked up 8 weeks of my most memorable climbing. Jan, his company and philosophy generate great experiences for all and I now consider him a great friend as well.",
+      "slug": "europe-climbing-trip-2015",
+      "created": "2016-02-27",
+      "updated": "2016-02-27",
+      "display": 1
+    }
+  ]
+}

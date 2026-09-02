@@ -131,6 +131,7 @@ runPnpmScript('data-import:seed-media', env)
 runPnpmScript('data-import:airports', env)
 runPnpmScript('data-import:import', env)
 runPnpmScript('seed', env)
+runPnpmScript('data-import:legacy-support-content', env)
 runPnpmScript('data-import:legacy-destinations', env)
 runPnpmScript('data-import:legacy-events', env)
 runPnpmScript('data-import:event-catalogue-cards', env)
@@ -138,22 +139,39 @@ runPnpmScript('data-import:homepage', env)
 
 const beforeRerun = psqlValue(
   targetUrl,
-  "select (select count(*) from events) || ',' || (select count(*) from event_dates);",
+  [
+    'select',
+    "(select count(*) from events) || ',' ||",
+    "(select count(*) from event_dates) || ',' ||",
+    "(select count(*) from partners) || ',' ||",
+    "(select count(*) from reviews) || ',' ||",
+    "(select count(*) from post_categories) || ',' ||",
+    "(select count(*) from posts);",
+  ].join(' '),
 )
 
 console.log('\nVerifying idempotent reruns')
 runPnpmScript('data-import:legacy-events', env)
+runPnpmScript('data-import:legacy-support-content', env)
 runPnpmScript('data-import:event-catalogue-cards', env)
 runPnpmScript('data-import:homepage', env)
 
 const afterRerun = psqlValue(
   targetUrl,
-  "select (select count(*) from events) || ',' || (select count(*) from event_dates);",
+  [
+    'select',
+    "(select count(*) from events) || ',' ||",
+    "(select count(*) from event_dates) || ',' ||",
+    "(select count(*) from partners) || ',' ||",
+    "(select count(*) from reviews) || ',' ||",
+    "(select count(*) from post_categories) || ',' ||",
+    "(select count(*) from posts);",
+  ].join(' '),
 )
 if (afterRerun !== beforeRerun) {
   throw new Error(`Idempotency check failed: before=${beforeRerun} after=${afterRerun}`)
 }
-console.log(`Idempotency check passed: events,event_dates=${afterRerun}`)
+console.log(`Idempotency check passed: events,event_dates,partners,reviews,post_categories,posts=${afterRerun}`)
 
 psql(
   targetUrl,
@@ -162,6 +180,10 @@ psql(
     "(select count(*) from events) as events,",
     "(select count(*) from event_dates) as event_dates,",
     "(select count(*) from media) as media,",
+    "(select count(*) from partners) as partners,",
+    "(select count(*) from reviews) as reviews,",
+    "(select count(*) from post_categories) as post_categories,",
+    "(select count(*) from posts) as posts,",
     "(select count(*) from pages where slug = 'home') as home_pages;",
   ].join(' '),
 )

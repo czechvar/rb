@@ -22,6 +22,8 @@ Plus one refresh command:
 - `pnpm data-import:extract-location-media` — regenerates legacy media
   references from the local legacy Postgres container and the live legacy
   location pages.
+- `pnpm data-import:extract-legacy-support-content` — regenerates support
+  content seeds from the local legacy Postgres container.
 
 This slice covers `team_member` → `guides` (38 rows) and `location` → `locations`
 (59 rows). Other entities are follow-up specs.
@@ -76,7 +78,8 @@ pnpm data-import:sandbox
 
 This resets only `rockbusters_import_sandbox` on local Postgres, runs migrations,
 imports media metadata, airports, locations, guides, seed data, curated
-destinations, legacy events, catalogue-card copy, and the homepage snapshot.
+partners, testimonials, blog categories, blog posts, destinations, legacy
+events, catalogue-card copy, and the homepage snapshot.
 It then reruns the FK-heavy imports to prove they are idempotent.
 Target-specific lookup files are written under
 `.scratch/data-import-sandbox-lookups` so committed seed files are not polluted
@@ -306,3 +309,42 @@ The seed importer does not upload files and does not call Payload upload
 processing. It directly inserts missing `media` rows with stable `med_...` IDs
 and skips existing rows by default. Use `--update-existing` only when you
 intentionally want the seed snapshot to overwrite existing media metadata.
+
+## Legacy support content import
+
+Refresh the committed support-content seed snapshots from the local legacy
+Postgres container only when the source dump changes:
+
+```bash
+pnpm data-import:extract-legacy-support-content
+```
+
+This writes:
+
+```text
+scripts/data-import/seed/legacy-partners.json
+scripts/data-import/seed/legacy-testimonials.json
+scripts/data-import/seed/legacy-blog-categories.json
+scripts/data-import/seed/legacy-blog-posts.json
+```
+
+Import them into Payload:
+
+```bash
+PAYLOAD_DISABLE_DB_PUSH=true pnpm data-import:legacy-support-content
+```
+
+The importer upserts by slug:
+
+- `partner` → `partners`, including logo media when the legacy media lookup
+  resolves,
+- `testimonial` → global `reviews`,
+- `blog_category` → `post-categories`,
+- `blog` → `posts`, including hero image, rich-text body, SEO fields, published
+  state, and the first legacy category relation.
+
+Legacy `blog_post_category` can contain multiple categories per post, but the
+current Payload `posts.category` field stores only one relation. The importer
+chooses the first legacy category ID deterministically; the full legacy
+`categoryIds` array remains in `legacy-blog-posts.json` for a future schema
+expansion if needed.
