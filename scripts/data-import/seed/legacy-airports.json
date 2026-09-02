@@ -1,0 +1,414 @@
+{
+  "generatedAt": "2026-09-01T20:20:18.964Z",
+  "source": "rb-legacy-pg-20260827:rockbusters_legacy.airport referenced by event/event_date",
+  "rows": [
+    {
+      "legacyAirportId": 2,
+      "iata": "TJP",
+      "name": "Areopuerto Internacional Michael Gonzalez",
+      "country": "PR",
+      "continent": "NA",
+      "coordinates": [
+        -66.563545,
+        18.010702
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 497,
+      "iata": "MUC",
+      "name": "Munich International Airport",
+      "country": "DE",
+      "continent": "EU",
+      "coordinates": [
+        11.790143,
+        48.353004
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 498,
+      "iata": "NUE",
+      "name": "Nuremberg Airport",
+      "country": "DE",
+      "continent": "EU",
+      "coordinates": [
+        11.077062,
+        49.494167
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1063,
+      "iata": "LPA",
+      "name": "Gran Canaria Airport",
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        -15.389351,
+        27.938944
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1230,
+      "iata": "ALI",
+      "name": "Alice International Airport",
+      "country": "US",
+      "continent": "NA",
+      "coordinates": [
+        -98.066666,
+        27.75
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1633,
+      "iata": "PUY",
+      "name": "Pula Airport",
+      "country": "HR",
+      "continent": "EU",
+      "coordinates": [
+        13.923611,
+        44.891666
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1636,
+      "iata": "SPU",
+      "name": "Split Airport",
+      "country": "HR",
+      "continent": "EU",
+      "coordinates": [
+        16.29946,
+        43.536526
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1640,
+      "iata": "ALC",
+      "name": "Alicante International Airport",
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        -0.557381,
+        38.287098
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1644,
+      "iata": "BIO",
+      "name": "Bilbao Airport",
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        -2.905808,
+        43.305534
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1646,
+      "iata": "BCN",
+      "name": "Barcelona International Airport",
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        2.07593,
+        41.30303
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1655,
+      "iata": "MAD",
+      "name": "Madrid Barajas International Airport",
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        -3.570209,
+        40.46515
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1656,
+      "iata": "AGP",
+      "name": null,
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        -4.489616,
+        36.675182
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1659,
+      "iata": "PMI",
+      "name": "Palma De Mallorca Airport",
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        2.730388,
+        39.547653
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1661,
+      "iata": "REU",
+      "name": "Reus Air Base",
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        1.153319,
+        41.146103
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1666,
+      "iata": "VLC",
+      "name": "Valencia Airport",
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        -0.473475,
+        39.49179
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1671,
+      "iata": "ZAZ",
+      "name": "Zaragoza Air Base",
+      "country": "ES",
+      "continent": "EU",
+      "coordinates": [
+        -1.007466,
+        41.66386
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1738,
+      "iata": "MRS",
+      "name": "Marseille Provence Airport",
+      "country": "FR",
+      "continent": "EU",
+      "coordinates": [
+        5.222137,
+        43.44178
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1739,
+      "iata": "NCE",
+      "name": "Nice",
+      "country": "FR",
+      "continent": "EU",
+      "coordinates": [
+        7.205232,
+        43.66049
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1744,
+      "iata": "MPL",
+      "name": "Montpellier",
+      "country": "FR",
+      "continent": "EU",
+      "coordinates": [
+        3.959174,
+        43.57843
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1808,
+      "iata": "ATH",
+      "name": "Eleftherios Venizelos International Airport",
+      "country": "GR",
+      "continent": "EU",
+      "coordinates": [
+        23.946486,
+        37.93635
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1818,
+      "iata": "KGS",
+      "name": "Kos Airport",
+      "country": "GR",
+      "continent": "EU",
+      "coordinates": [
+        27.095278,
+        36.793056
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1866,
+      "iata": "CAG",
+      "name": "Cagliari / Elmas Airport",
+      "country": "IT",
+      "continent": "EU",
+      "coordinates": [
+        9.060673,
+        39.254333
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1867,
+      "iata": "OLB",
+      "name": "Olbia / Costa Smeralda Airport",
+      "country": "IT",
+      "continent": "EU",
+      "coordinates": [
+        9.514823,
+        40.903145
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1870,
+      "iata": "MXP",
+      "name": "Malpensa International Airport",
+      "country": "IT",
+      "continent": "EU",
+      "coordinates": [
+        8.71237,
+        45.627403
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1872,
+      "iata": "TRN",
+      "name": "Torino / Caselle International Airport",
+      "country": "IT",
+      "continent": "EU",
+      "coordinates": [
+        7.643049,
+        45.191456
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1886,
+      "iata": "TRS",
+      "name": "Trieste / Ronchi Dei Legionari",
+      "country": "IT",
+      "continent": "EU",
+      "coordinates": [
+        13.485678,
+        45.82078
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1892,
+      "iata": "VCE",
+      "name": "Venezia / Tessera -  Marco Polo Airport",
+      "country": "IT",
+      "continent": "EU",
+      "coordinates": [
+        12.337947,
+        45.502285
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1912,
+      "iata": "PRG",
+      "name": "Ruzyne International Airport",
+      "country": "CZ",
+      "continent": "EU",
+      "coordinates": [
+        14.266638,
+        50.10619
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1923,
+      "iata": "MLA",
+      "name": "Luqa Airport",
+      "country": "MT",
+      "continent": "EU",
+      "coordinates": [
+        14.495401,
+        35.849777
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 1925,
+      "iata": "INN",
+      "name": "Innsbruck Airport",
+      "country": "AT",
+      "continent": "EU",
+      "coordinates": [
+        11.351467,
+        47.25745
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1928,
+      "iata": "SZG",
+      "name": "Salzburg Airport",
+      "country": "AT",
+      "continent": "EU",
+      "coordinates": [
+        12.997331,
+        47.791225
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1968,
+      "iata": "SUJ",
+      "name": "Satu Mare Airport",
+      "country": "RO",
+      "continent": "EU",
+      "coordinates": [
+        22.883333,
+        47.7
+      ],
+      "size": 1
+    },
+    {
+      "legacyAirportId": 1973,
+      "iata": "GVA",
+      "name": "Geneva Cointrin International Airport",
+      "country": "CH",
+      "continent": "EU",
+      "coordinates": [
+        6.105774,
+        46.229633
+      ],
+      "size": 2
+    },
+    {
+      "legacyAirportId": 2043,
+      "iata": "BTS",
+      "name": null,
+      "country": "SK",
+      "continent": "EU",
+      "coordinates": [
+        17.199799,
+        48.170017
+      ],
+      "size": 2
+    }
+  ]
+}
