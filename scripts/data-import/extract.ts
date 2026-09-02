@@ -49,6 +49,7 @@ interface GuideRow extends RowDataPacket {
   email: string | null
   phone: string | null
   display: number
+  image_id: number | null
 }
 
 async function writeJson(name: string, rows: unknown[]): Promise<string> {
@@ -78,7 +79,7 @@ async function main() {
     console.log(`extract: locations: ${locationRows.length} rows → ${path.relative(process.cwd(), locFile)}`)
 
     const [guideRows] = await conn.query<GuideRow[]>(
-      `SELECT id, name, slug, body, email, phone, display
+      `SELECT id, name, slug, body, email, phone, display, image_id
        FROM team_member
        ORDER BY id`,
     )

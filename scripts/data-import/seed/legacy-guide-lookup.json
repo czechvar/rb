@@ -1,0 +1,352 @@
+{
+  "generatedAt": "2026-09-01T19:10:41.569Z",
+  "source": "scripts/data-import/seed/guides.json + Payload guides collection",
+  "byLegacyGuideId": {
+    "1": 3,
+    "2": 5,
+    "3": 6,
+    "4": 7,
+    "5": 8,
+    "6": 9,
+    "7": 10,
+    "8": 11,
+    "9": 12,
+    "10": 13,
+    "11": 14,
+    "12": 15,
+    "13": 16,
+    "14": 1,
+    "15": 17,
+    "16": 18,
+    "17": 19,
+    "18": 20,
+    "19": 21,
+    "20": 22,
+    "21": 23,
+    "22": 24,
+    "23": 25,
+    "24": 26,
+    "25": 27,
+    "26": 28,
+    "27": 29,
+    "28": 30,
+    "29": 31,
+    "30": 32,
+    "31": 33,
+    "32": 34,
+    "33": 35,
+    "34": 36,
+    "35": 37,
+    "36": 38,
+    "37": 39,
+    "38": 40
+  },
+  "bySlug": {
+    "jan-novotny": 3,
+    "laszlo-juhasz": 5,
+    "pablo-ruiz-seco": 6,
+    "ritch-mayfield": 7,
+    "petra-pivonkova": 8,
+    "maribel-vara": 9,
+    "daila-ojeda-pro-climber": 10,
+    "adam-ondra-pro-climber": 11,
+    "patxi-usobiaga-pro-climber": 12,
+    "pablo-scorza-fyziotherapist-biomechanica-funcional": 13,
+    "berengere-rapeneau": 14,
+    "hazel-findlay": 15,
+    "will-sim": 16,
+    "klemen-becan": 1,
+    "michelle-o-loughlin": 17,
+    "pavel-ryva": 18,
+    "benjamin-brochard": 19,
+    "linda-synakova": 20,
+    "zbynek-michal": 21,
+    "maja-jonjic": 22,
+    "dave-graham": 23,
+    "alizee-dufraisse": 24,
+    "edu-marin": 25,
+    "andrea-cartas-barrera": 26,
+    "sara-mikolaskova": 27,
+    "marta-palou-carol": 28,
+    "sergi-medina": 29,
+    "roberto-munoz-gonzales": 30,
+    "miha-popovic": 31,
+    "matej-hodousek": 32,
+    "daniela-elber": 33,
+    "lucas-gangloff": 34,
+    "arturo-aparicio": 35,
+    "javier-marin-garcia": 36,
+    "jose-luis-palao-lacalle": 37,
+    "hugo-meir": 38,
+    "pol-palau-serrano": 39,
+    "kostas-grafanaki": 40
+  },
+  "rows": [
+    {
+      "legacyGuideId": 1,
+      "slug": "jan-novotny",
+      "payloadGuideId": 3,
+      "legacyImageId": 1235,
+      "payloadPhotoId": "med_b09e1ad018668657d41affdf"
+    },
+    {
+      "legacyGuideId": 2,
+      "slug": "laszlo-juhasz",
+      "payloadGuideId": 5,
+      "legacyImageId": 1028,
+      "payloadPhotoId": "med_55d4e554c5cc4bd0a1b8f2dd"
+    },
+    {
+      "legacyGuideId": 3,
+      "slug": "pablo-ruiz-seco",
+      "payloadGuideId": 6,
+      "legacyImageId": 1030,
+      "payloadPhotoId": "med_8d227f75a17cae863ea3c563"
+    },
+    {
+      "legacyGuideId": 4,
+      "slug": "ritch-mayfield",
+      "payloadGuideId": 7,
+      "legacyImageId": 1031,
+      "payloadPhotoId": "med_624cfa8345ee86c62593ce91"
+    },
+    {
+      "legacyGuideId": 5,
+      "slug": "petra-pivonkova",
+      "payloadGuideId": 8,
+      "legacyImageId": 1183,
+      "payloadPhotoId": "med_39afd4ad8c4f457e203711f2"
+    },
+    {
+      "legacyGuideId": 6,
+      "slug": "maribel-vara",
+      "payloadGuideId": 9,
+      "legacyImageId": 1033,
+      "payloadPhotoId": "med_2c565f40104f0a24f471f3e8"
+    },
+    {
+      "legacyGuideId": 7,
+      "slug": "daila-ojeda-pro-climber",
+      "payloadGuideId": 10,
+      "legacyImageId": 1034,
+      "payloadPhotoId": "med_4788b6d2c4018e4ded875d74"
+    },
+    {
+      "legacyGuideId": 8,
+      "slug": "adam-ondra-pro-climber",
+      "payloadGuideId": 11,
+      "legacyImageId": 1035,
+      "payloadPhotoId": "med_41ad068619ebd8d1bcdd4d4e"
+    },
+    {
+      "legacyGuideId": 9,
+      "slug": "patxi-usobiaga-pro-climber",
+      "payloadGuideId": 12,
+      "legacyImageId": 1036,
+      "payloadPhotoId": "med_ff582af1bc0e7cead4991f60"
+    },
+    {
+      "legacyGuideId": 10,
+      "slug": "pablo-scorza-fyziotherapist-biomechanica-funcional",
+      "payloadGuideId": 13,
+      "legacyImageId": 1037,
+      "payloadPhotoId": "med_61872eec56d24c4ef620463d"
+    },
+    {
+      "legacyGuideId": 11,
+      "slug": "berengere-rapeneau",
+      "payloadGuideId": 14,
+      "legacyImageId": 1038,
+      "payloadPhotoId": "med_5bd337aff566bc58344cf011"
+    },
+    {
+      "legacyGuideId": 12,
+      "slug": "hazel-findlay",
+      "payloadGuideId": 15,
+      "legacyImageId": 1039,
+      "payloadPhotoId": "med_8708825f8ceb7742fcbd403a"
+    },
+    {
+      "legacyGuideId": 13,
+      "slug": "will-sim",
+      "payloadGuideId": 16,
+      "legacyImageId": 1040,
+      "payloadPhotoId": "med_a978fa8f1ddeaf1e7f7c66c2"
+    },
+    {
+      "legacyGuideId": 14,
+      "slug": "klemen-becan",
+      "payloadGuideId": 1,
+      "legacyImageId": 1041,
+      "payloadPhotoId": "med_e11ae8457a5738cc1cc917eb"
+    },
+    {
+      "legacyGuideId": 15,
+      "slug": "michelle-o-loughlin",
+      "payloadGuideId": 17,
+      "legacyImageId": 1042,
+      "payloadPhotoId": "med_c410142febaac81ff0f94a3e"
+    },
+    {
+      "legacyGuideId": 16,
+      "slug": "pavel-ryva",
+      "payloadGuideId": 18,
+      "legacyImageId": 1043,
+      "payloadPhotoId": "med_1f27bf7ec6feb1ec8a17cdc7"
+    },
+    {
+      "legacyGuideId": 17,
+      "slug": "benjamin-brochard",
+      "payloadGuideId": 19,
+      "legacyImageId": 1044,
+      "payloadPhotoId": "med_eb08f161723732689524fa28"
+    },
+    {
+      "legacyGuideId": 18,
+      "slug": "linda-synakova",
+      "payloadGuideId": 20,
+      "legacyImageId": 1045,
+      "payloadPhotoId": "med_00d24ad9660fbb831f838d59"
+    },
+    {
+      "legacyGuideId": 19,
+      "slug": "zbynek-michal",
+      "payloadGuideId": 21,
+      "legacyImageId": 1048,
+      "payloadPhotoId": "med_5bb5f1c7092867d2179d6849"
+    },
+    {
+      "legacyGuideId": 20,
+      "slug": "maja-jonjic",
+      "payloadGuideId": 22,
+      "legacyImageId": 1046,
+      "payloadPhotoId": "med_5f575a10287231485954a14a"
+    },
+    {
+      "legacyGuideId": 21,
+      "slug": "dave-graham",
+      "payloadGuideId": 23,
+      "legacyImageId": 1172,
+      "payloadPhotoId": "med_6b8a5af07adb43f95f7fa033"
+    },
+    {
+      "legacyGuideId": 22,
+      "slug": "alizee-dufraisse",
+      "payloadGuideId": 24,
+      "legacyImageId": 1173,
+      "payloadPhotoId": "med_14eb9df5365af3e8c1054aee"
+    },
+    {
+      "legacyGuideId": 23,
+      "slug": "edu-marin",
+      "payloadGuideId": 25,
+      "legacyImageId": 1192,
+      "payloadPhotoId": "med_efe2f60cde95758341c11f97"
+    },
+    {
+      "legacyGuideId": 24,
+      "slug": "andrea-cartas-barrera",
+      "payloadGuideId": 26,
+      "legacyImageId": 1213,
+      "payloadPhotoId": "med_9a01e3bb6b32429221032709"
+    },
+    {
+      "legacyGuideId": 25,
+      "slug": "sara-mikolaskova",
+      "payloadGuideId": 27,
+      "legacyImageId": 1297,
+      "payloadPhotoId": "med_e6760d12ebb6e3bc1a0dc939"
+    },
+    {
+      "legacyGuideId": 26,
+      "slug": "marta-palou-carol",
+      "payloadGuideId": 28,
+      "legacyImageId": 1305,
+      "payloadPhotoId": "med_9a011171163831c0c50d72b0"
+    },
+    {
+      "legacyGuideId": 27,
+      "slug": "sergi-medina",
+      "payloadGuideId": 29,
+      "legacyImageId": 1310,
+      "payloadPhotoId": "med_fc5dc7c8c5159069ea0f8bc0"
+    },
+    {
+      "legacyGuideId": 28,
+      "slug": "roberto-munoz-gonzales",
+      "payloadGuideId": 30,
+      "legacyImageId": 1314,
+      "payloadPhotoId": "med_416d935912528aa1a8b6fd15"
+    },
+    {
+      "legacyGuideId": 29,
+      "slug": "miha-popovic",
+      "payloadGuideId": 31,
+      "legacyImageId": 1315,
+      "payloadPhotoId": "med_d58e5f1ed61137bb5669ca85"
+    },
+    {
+      "legacyGuideId": 30,
+      "slug": "matej-hodousek",
+      "payloadGuideId": 32,
+      "legacyImageId": 1324,
+      "payloadPhotoId": "med_76e927340f1c360e7471f3a6"
+    },
+    {
+      "legacyGuideId": 31,
+      "slug": "daniela-elber",
+      "payloadGuideId": 33,
+      "legacyImageId": 1333,
+      "payloadPhotoId": "med_9bc4e9f2d6834bda0c27bb37"
+    },
+    {
+      "legacyGuideId": 32,
+      "slug": "lucas-gangloff",
+      "payloadGuideId": 34,
+      "legacyImageId": 1367,
+      "payloadPhotoId": "med_13dba7556199f91400e42d11"
+    },
+    {
+      "legacyGuideId": 33,
+      "slug": "arturo-aparicio",
+      "payloadGuideId": 35,
+      "legacyImageId": 1370,
+      "payloadPhotoId": "med_509fbe22990cdbf0e51b69f5"
+    },
+    {
+      "legacyGuideId": 34,
+      "slug": "javier-marin-garcia",
+      "payloadGuideId": 36,
+      "legacyImageId": 1378,
+      "payloadPhotoId": "med_fb9445a550636bf651f26c53"
+    },
+    {
+      "legacyGuideId": 35,
+      "slug": "jose-luis-palao-lacalle",
+      "payloadGuideId": 37,
+      "legacyImageId": 1385,
+      "payloadPhotoId": "med_d9edd9747f4d8a476694409c"
+    },
+    {
+      "legacyGuideId": 36,
+      "slug": "hugo-meir",
+      "payloadGuideId": 38,
+      "legacyImageId": 1408,
+      "payloadPhotoId": "med_f1ff69d7feabf84b1df68934"
+    },
+    {
+      "legacyGuideId": 37,
+      "slug": "pol-palau-serrano",
+      "payloadGuideId": 39,
+      "legacyImageId": 1414,
+      "payloadPhotoId": "med_5163d5847fce3d8fb6a6310b"
+    },
+    {
+      "legacyGuideId": 38,
+      "slug": "kostas-grafanaki",
+      "payloadGuideId": 40,
+      "legacyImageId": 1416,
+      "payloadPhotoId": "med_73fcead7f765723a0b23388a"
+    }
+  ]
+}
