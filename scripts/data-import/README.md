@@ -65,6 +65,31 @@ You do NOT need MAMP for this. The seed lives in git.
 That's it. Locations use skip-if-exists, while guides are overwritten from the
 legacy seed. Both are safe to re-run when that behavior is intentional.
 
+## Fresh local sandbox check
+
+Before trusting import changes, run the full pipeline into a disposable local
+database:
+
+```bash
+pnpm data-import:sandbox
+```
+
+This resets only `rockbusters_import_sandbox` on local Postgres, runs migrations,
+imports media metadata, airports, locations, guides, seed data, curated
+destinations, legacy events, catalogue-card copy, and the homepage snapshot.
+It then reruns the FK-heavy imports to prove they are idempotent.
+Target-specific lookup files are written under
+`.scratch/data-import-sandbox-lookups` so committed seed files are not polluted
+with sandbox-local numeric IDs.
+
+Override the database name when needed:
+
+```bash
+pnpm data-import:sandbox -- --database rockbusters_import_sandbox_2
+```
+
+The sandbox runner refuses non-local admin database hosts.
+
 ### Against production
 
 ```bash

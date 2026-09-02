@@ -175,6 +175,39 @@ async function readPayloadMediaLookup() {
   }
 }
 
+async function filterMediaLookupToExistingIds(
+  payload: Payload,
+  mediaLookup: Map<string, string>,
+  records: CuratedDestination[],
+) {
+  const neededLegacyIds = [
+    ...new Set(
+      records
+        .map((record) => record.media?.mainImage?.legacyMediaId)
+        .filter((id): id is number => id !== null && id !== undefined),
+    ),
+  ]
+  const filtered = new Map<string, string>()
+  let missing = 0
+
+  for (const legacyId of neededLegacyIds) {
+    const payloadMediaId = mediaLookup.get(String(legacyId))
+    if (!payloadMediaId) {
+      missing += 1
+      continue
+    }
+
+    try {
+      await payload.findByID({ collection: 'media', id: payloadMediaId, depth: 0 })
+      filtered.set(String(legacyId), payloadMediaId)
+    } catch {
+      missing += 1
+    }
+  }
+
+  return { mediaLookup: filtered, missing }
+}
+
 async function airportIdsByIata(payload: Payload) {
   const airports = await payload.find({
     collection: 'airports',
@@ -343,9 +376,14 @@ async function main() {
 
   const payload = await getPayload({ config })
   const legacyLocations = await readLegacyLocationSeed()
-  const mediaLookup = await readPayloadMediaLookup()
   const airportLookup = await airportIdsByIata(payload)
   const records = await readCuratedDestinations(args.input)
+  const rawMediaLookup = await readPayloadMediaLookup()
+  const { mediaLookup, missing: missingMainPictureMedia } = await filterMediaLookupToExistingIds(
+    payload,
+    rawMediaLookup,
+    records,
+  )
 
   const totals = { created: 0, updated: 0 }
   for (const record of records) {
@@ -357,6 +395,11 @@ async function main() {
   console.log(
     `legacy destinations: created=${totals.created} updated=${totals.updated} total=${records.length}`,
   )
+  if (missingMainPictureMedia) {
+    console.warn(
+      `legacy destinations: skipped missing main-picture media refs=${missingMainPictureMedia}`,
+    )
+  }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

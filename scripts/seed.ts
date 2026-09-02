@@ -245,14 +245,72 @@ async function readHomepageSeed(): Promise<Record<string, unknown> | null> {
   }
 }
 
+async function relationshipExists(
+  payload: Payload,
+  collection: 'media' | 'programs' | 'events',
+  id: unknown,
+): Promise<boolean> {
+  if (typeof id !== 'number' && typeof id !== 'string') return false
+  try {
+    await payload.findByID({ collection, id, depth: 0 })
+    return true
+  } catch {
+    return false
+  }
+}
+
+async function homepageHeroMedia(payload: Payload): Promise<string | null> {
+  const result = await payload.find({
+    collection: 'media',
+    where: { filename: { equals: '2025-05-05 11.05.52.jpg' } },
+    limit: 1,
+    depth: 0,
+  })
+  return result.docs[0]?.id ?? null
+}
+
+async function normalizeHomepageSeed(payload: Payload, row: Record<string, unknown>) {
+  if (!Array.isArray(row.layout)) return row
+
+  const layout = await Promise.all(
+    row.layout.map(async (rawBlock) => {
+      if (!rawBlock || typeof rawBlock !== 'object') return rawBlock
+      const block = rawBlock as Record<string, unknown>
+
+      if (block.blockType === 'hero' && block.backgroundMedia) {
+        if (await relationshipExists(payload, 'media', block.backgroundMedia)) return block
+        return { ...block, backgroundMedia: await homepageHeroMedia(payload) }
+      }
+
+      if (block.blockType !== 'reviewGrid') return block
+
+      if (
+        block.source === 'byProgram' &&
+        !(await relationshipExists(payload, 'programs', block.program))
+      ) {
+        return { ...block, source: 'global', program: null }
+      }
+
+      if (block.source === 'byEvent' && !(await relationshipExists(payload, 'events', block.event))) {
+        return { ...block, source: 'global', event: null }
+      }
+
+      return block
+    }),
+  )
+
+  return { ...row, layout }
+}
+
 async function upsertHomepageSnapshot(payload: Payload) {
   const homepageSeed = await readHomepageSeed()
   if (!homepageSeed) return
+  const normalizedHomepageSeed = await normalizeHomepageSeed(payload, homepageSeed)
 
   await upsert(payload, {
     collection: 'pages',
     where: { slug: { equals: 'home' } },
-    data: homepageSeed,
+    data: normalizedHomepageSeed,
     label: 'home page layout snapshot',
   })
 }

@@ -70,6 +70,7 @@ describe('legacy destination import mapper', () => {
         description: 'Albarracin destination.',
       },
       new Map([['323', 'med_80e4f5c45a4da3e4428f13af']]),
+      new Map([['VLC', 8087]]),
     )
 
     expect(built.slug).toBe('albarracin')
@@ -92,6 +93,7 @@ describe('legacy destination import mapper', () => {
       accommodationTags: ['campsite'],
       transportTags: ['car-recommended'],
       nearestAirports: [{ name: 'Valencia' }],
+      airportRefs: [8087],
       gradeRange: 'Font 3 to 8C',
       problemCount: 1600,
       sectorCount: 15,

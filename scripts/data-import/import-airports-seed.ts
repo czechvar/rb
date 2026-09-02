@@ -13,7 +13,10 @@ import config from '../../src/payload.config'
 
 const SEED_FILE = path.resolve(import.meta.dirname, 'seed/airports.json')
 const LEGACY_AIRPORTS_FILE = path.resolve(import.meta.dirname, 'seed/legacy-airports.json')
-const LEGACY_LOOKUP_FILE = path.resolve(import.meta.dirname, 'seed/legacy-airport-lookup.json')
+const LOOKUP_DIR = process.env.DATA_IMPORT_LOOKUP_DIR
+  ? path.resolve(process.env.DATA_IMPORT_LOOKUP_DIR)
+  : path.resolve(import.meta.dirname, 'seed')
+const LEGACY_LOOKUP_FILE = path.join(LOOKUP_DIR, 'legacy-airport-lookup.json')
 const PRODUCTION_DB_HOST = 'ep-weathered-pine-alvc3sdj'
 
 type Args = {
@@ -173,6 +176,7 @@ async function writeLegacyLookup(payload: Payload) {
     payloadAirportId: byIata.get(row.iata) ?? null,
   }))
 
+  await fs.mkdir(path.dirname(LEGACY_LOOKUP_FILE), { recursive: true })
   await fs.writeFile(
     LEGACY_LOOKUP_FILE,
     `${JSON.stringify(

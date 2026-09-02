@@ -19,10 +19,13 @@ const EVENTS_FILE = path.join(SEED_DIR, 'legacy-events.json')
 const EVENT_DATES_FILE = path.join(SEED_DIR, 'legacy-event-dates.json')
 const TYPE_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-event-date-type-lookup.json')
 const EVENT_CATALOGUE_CARDS_FILE = path.join(SEED_DIR, 'event-catalogue-cards.json')
-const EVENT_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-event-lookup.json')
-const EVENT_DATE_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-event-date-lookup.json')
-const GUIDE_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-guide-lookup.json')
-const AIRPORT_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-airport-lookup.json')
+const LOOKUP_DIR = process.env.DATA_IMPORT_LOOKUP_DIR
+  ? path.resolve(process.env.DATA_IMPORT_LOOKUP_DIR)
+  : SEED_DIR
+const EVENT_LOOKUP_FILE = path.join(LOOKUP_DIR, 'legacy-event-lookup.json')
+const EVENT_DATE_LOOKUP_FILE = path.join(LOOKUP_DIR, 'legacy-event-date-lookup.json')
+const GUIDE_LOOKUP_FILE = path.join(LOOKUP_DIR, 'legacy-guide-lookup.json')
+const AIRPORT_LOOKUP_FILE = path.join(LOOKUP_DIR, 'legacy-airport-lookup.json')
 const DEFAULT_MEDIA_LOOKUP_FILE =
   '/media/czechspekk/ws-backup-data-1/xbusters/rockbusters/media-transfer/payload-media-lookup.json'
 const PRODUCTION_DB_HOST = 'ep-weathered-pine-alvc3sdj'
@@ -42,6 +45,13 @@ type LookupFile<T> = {
   byLegacyAirportId?: Record<string, number>
   byLegacyEventId?: Record<string, number>
   byLegacyEventDateId?: Record<string, number>
+  rows?: Array<{
+    legacyAirportId?: number
+    legacyGuideId?: number
+    iata?: string
+    slug?: string
+    payloadGuideId?: number
+  }>
 }
 
 type TaxonomyProjection = {
@@ -496,18 +506,83 @@ async function collectionLookup(
   collection: 'categories' | 'programs' | 'locations',
   field: 'slug' | 'name' = 'slug',
 ) {
-  const docs = await payload.find({ collection, limit: 10_000, depth: 0 })
+  const docs = await payload.find({
+    collection,
+    where: { active: { equals: true } },
+    limit: 10_000,
+    depth: 0,
+  })
   return new Map(docs.docs.map((doc) => [String(doc[field]), Number(doc.id)]))
 }
 
+async function resolveGuideLookup(payload: Payload, lookupFile: LookupFile<unknown>) {
+  const guides = await payload.find({ collection: 'guides', limit: 10_000, depth: 0 })
+  const byId = new Set(guides.docs.map((doc) => Number(doc.id)))
+  const bySlug = new Map(guides.docs.map((doc) => [String(doc.slug), Number(doc.id)]))
+  const resolved = new Map<string, number>()
+
+  for (const [legacyId, payloadGuideId] of Object.entries(lookupFile.byLegacyGuideId ?? {})) {
+    if (byId.has(Number(payloadGuideId))) resolved.set(legacyId, Number(payloadGuideId))
+  }
+
+  for (const row of lookupFile.rows ?? []) {
+    if (!row.legacyGuideId || !row.slug) continue
+    const currentId = bySlug.get(row.slug)
+    if (currentId) resolved.set(String(row.legacyGuideId), currentId)
+  }
+
+  return resolved
+}
+
+async function resolveAirportLookup(payload: Payload, lookupFile: LookupFile<unknown>) {
+  const airports = await payload.find({
+    collection: 'airports',
+    where: { active: { equals: true } },
+    limit: 10_000,
+    depth: 0,
+  })
+  const byId = new Set(airports.docs.map((doc) => Number(doc.id)))
+  const byIata = new Map(airports.docs.map((doc) => [String(doc.iata), Number(doc.id)]))
+  const resolved = new Map<string, number>()
+
+  for (const [legacyId, payloadAirportId] of Object.entries(lookupFile.byLegacyAirportId ?? {})) {
+    if (byId.has(Number(payloadAirportId))) resolved.set(legacyId, Number(payloadAirportId))
+  }
+
+  for (const row of lookupFile.rows ?? []) {
+    if (!row.legacyAirportId || !row.iata) continue
+    const currentId = byIata.get(row.iata)
+    if (currentId) resolved.set(String(row.legacyAirportId), currentId)
+  }
+
+  return resolved
+}
+
 async function difficultyLookup(payload: Payload) {
-  const docs = await payload.find({ collection: 'difficulties', limit: 10_000, depth: 0 })
+  const docs = await payload.find({
+    collection: 'difficulties',
+    where: { active: { equals: true } },
+    limit: 10_000,
+    depth: 0,
+  })
   const byName = new Map(docs.docs.map((doc) => [doc.name, doc.id]))
   if (!byName.has('Expert')) {
-    const expert = await payload.create({
+    const existingExpert = await payload.find({
       collection: 'difficulties',
-      data: { name: 'Expert', active: true },
+      where: { name: { equals: 'Expert' } },
+      limit: 1,
+      depth: 0,
     })
+    const expert = existingExpert.docs[0]
+      ? await payload.update({
+          collection: 'difficulties',
+          id: existingExpert.docs[0].id,
+          data: { active: true },
+        })
+      : await payload.create({
+          collection: 'difficulties',
+          data: { name: 'Expert', active: true },
+        })
     byName.set('Expert', expert.id)
   }
   return byName
@@ -528,8 +603,8 @@ async function readLookups(payload: Payload): Promise<RelationLookups> {
     programsBySlug: await collectionLookup(payload, 'programs'),
     difficultiesByName: await difficultyLookup(payload),
     locationsBySlug: await collectionLookup(payload, 'locations'),
-    guideByLegacyId: new Map(Object.entries(guideLookup.byLegacyGuideId ?? {})),
-    airportByLegacyId: new Map(Object.entries(airportLookup.byLegacyAirportId ?? {})),
+    guideByLegacyId: await resolveGuideLookup(payload, guideLookup),
+    airportByLegacyId: await resolveAirportLookup(payload, airportLookup),
     mediaByLegacyId: new Map(Object.entries(mediaLookup.byLegacyMediaId ?? {})),
   }
 }
@@ -558,19 +633,38 @@ async function upsertEventDate(
   existingLookup: Map<string, number>,
   usedPayloadEventDateIds: Set<number>,
 ) {
+  async function updateExisting(id: number) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const updated = await payload.update({ collection: 'event-dates', id, data: data as any })
+    usedPayloadEventDateIds.add(updated.id)
+    return { created: false, id: updated.id }
+  }
+
   const lookupId = existingLookup.get(String(row.id))
   if (lookupId) {
     if (!usedPayloadEventDateIds.has(lookupId)) {
       try {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const updated = await payload.update({ collection: 'event-dates', id: lookupId, data: data as any })
-        usedPayloadEventDateIds.add(updated.id)
-        return { created: false, id: updated.id }
+        return await updateExisting(lookupId)
       } catch {
         existingLookup.delete(String(row.id))
       }
     }
   }
+
+  const existingByDate = await payload.find({
+    collection: 'event-dates',
+    where: {
+      and: [
+        { event: { equals: data.event } },
+        { dateFrom: { equals: data.dateFrom } },
+        { dateTo: { equals: data.dateTo } },
+      ],
+    },
+    limit: 20,
+    depth: 0,
+  })
+  const reusable = existingByDate.docs.find((doc) => !usedPayloadEventDateIds.has(doc.id))
+  if (reusable) return await updateExisting(reusable.id)
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const created = await payload.create({ collection: 'event-dates', data: data as any })

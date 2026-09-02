@@ -37,6 +37,7 @@
     "data-import:legacy-media": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-legacy-media.ts",
     "data-import:export-media-seed": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/export-legacy-media-seed.ts",
     "data-import:seed-media": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-legacy-media-seed.ts",
+    "data-import:sandbox": "node scripts/data-import/run-sandbox-import.mjs",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",

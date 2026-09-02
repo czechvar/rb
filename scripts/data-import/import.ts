@@ -31,7 +31,10 @@ import { convertHTMLToLexical, editorConfigFactory } from '@payloadcms/richtext-
 import config from '../../src/payload.config'
 
 const SEED_DIR = path.resolve(import.meta.dirname, 'seed')
-const GUIDE_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-guide-lookup.json')
+const LOOKUP_DIR = process.env.DATA_IMPORT_LOOKUP_DIR
+  ? path.resolve(process.env.DATA_IMPORT_LOOKUP_DIR)
+  : SEED_DIR
+const GUIDE_LOOKUP_FILE = path.join(LOOKUP_DIR, 'legacy-guide-lookup.json')
 const DEFAULT_MEDIA_LOOKUP_FILE =
   '/media/czechspekk/ws-backup-data-1/xbusters/rockbusters/media-transfer/payload-media-lookup.json'
 const PRODUCTION_DB_HOST = 'ep-weathered-pine-alvc3sdj'
