@@ -1,0 +1,444 @@
+{
+  "generatedAt": "2026-09-02T10:52:30.553Z",
+  "source": "scripts/data-import/seed/legacy-events.json + Payload events collection",
+  "byLegacyEventId": {
+    "2": 6,
+    "3": 7,
+    "4": 8,
+    "5": 9,
+    "6": 10,
+    "7": 11,
+    "8": 12,
+    "9": 13,
+    "10": 14,
+    "11": 15,
+    "12": 16,
+    "13": 17,
+    "14": 18,
+    "15": 19,
+    "16": 20,
+    "17": 21,
+    "18": 22,
+    "19": 23,
+    "21": 24,
+    "22": 25,
+    "24": 26,
+    "25": 27,
+    "26": 28,
+    "27": 29,
+    "28": 30,
+    "29": 31,
+    "30": 32,
+    "31": 33,
+    "32": 34,
+    "33": 35,
+    "34": 36,
+    "35": 37,
+    "36": 38,
+    "37": 39,
+    "38": 40,
+    "39": 41,
+    "40": 42,
+    "41": 43,
+    "42": 44,
+    "43": 45,
+    "44": 46,
+    "45": 47,
+    "46": 48,
+    "47": 49,
+    "48": 50,
+    "49": 51,
+    "50": 52,
+    "51": 53,
+    "52": 54,
+    "53": 55,
+    "54": 56,
+    "55": 57,
+    "56": 58,
+    "57": 59,
+    "58": 60,
+    "59": 61,
+    "60": 62,
+    "61": 63,
+    "62": 64,
+    "63": 65,
+    "64": 66,
+    "65": 67
+  },
+  "bySlug": {
+    "beginner-climbing-course": 6,
+    "bouldering-albarracin": 7,
+    "multipitch-climbing-course": 8,
+    "sandstone-climbing": 9,
+    "sport-climbing": 10,
+    "europe-rock-climbing-trip": 11,
+    "climbing-coaching-on-sight-red-point": 12,
+    "climbing-coaching-footwork-balance": 13,
+    "climbing-coaching-overhangs": 14,
+    "climbing-weekends": 15,
+    "christmas-climbing-holiday": 16,
+    "easter-climbing-in-sella": 17,
+    "rockbusters-climbing-express": 18,
+    "climbing-trip-spain": 19,
+    "deep-water-solo-mallorca": 20,
+    "catalunya-climbing": 21,
+    "woman-climbing": 22,
+    "san-fermin-climbing": 23,
+    "rockbusters-private-guiding": 24,
+    "singing-rock-mobile-test-center": 25,
+    "adam-ondra-on-sight-red-point": 26,
+    "patxi-usobiaga-training": 27,
+    "biomechanica-funcional": 28,
+    "pro-climbers-performance-coaching": 29,
+    "adam-ondra-patxi-usobiaga-work-shop": 30,
+    "adam-ondra-patxi-usobiaga-work-shop-extension": 31,
+    "daila-ojeda-climbing-work-shop": 32,
+    "hazel-findlay-mental-coaching": 33,
+    "big-wall-climbing-in-chamonix": 34,
+    "climbing-technique-mental-coaching": 35,
+    "klemen-becan-performance-coaching-privat": 36,
+    "deep-water-solo-sailing-mallorca": 37,
+    "rockbusters-summer-2018": 38,
+    "easter-climbing-camp-in-kalymnos": 39,
+    "andalucia-climbing": 40,
+    "introduction-to-bouldering": 41,
+    "sport-climbing-masterclass": 42,
+    "climbing-coaching": 43,
+    "trad-climbing-course": 44,
+    "multipitch-performance-coaching": 45,
+    "internship": 46,
+    "balkans-rock-climbing": 47,
+    "sport-climbing-private-coaching": 48,
+    "multipitch-climbing-private-guiding-coaching": 49,
+    "trad-climbing-private-coaching": 50,
+    "advanced-sport-climbing-course": 51,
+    "camper-van-rental": 52,
+    "performance-coaching-gear-test": 53,
+    "efficient-technique-injury-prevention-sport-climbing-course": 54,
+    "customized-climbing-rock-trip": 55,
+    "feldenkrais-method-workshop-for-climbers": 56,
+    "climb-work": 57,
+    "climbers-hut-your-base-camp-for-epic-ascents": 58,
+    "fear-management-mental-coaching": 59,
+    "andalucia-rock-trip": 60,
+    "france-rock-trip": 61,
+    "bouldering-and-sport-climbing-in-india": 62,
+    "spain-rock-trip-cuenca-costa-blanca-chulilla-siurana": 63,
+    "knots-stone-czech-climbing-tradition": 64,
+    "bolt-send-sicily-s-virgin-rock": 65,
+    "youth-summer-rock-climbing-bouldering-camp": 66,
+    "bouldering-weekend-with-alizee-dufraisse": 67
+  },
+  "rows": [
+    {
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course",
+      "payloadEventId": 6
+    },
+    {
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin",
+      "payloadEventId": 7
+    },
+    {
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course",
+      "payloadEventId": 8
+    },
+    {
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing",
+      "payloadEventId": 9
+    },
+    {
+      "legacyEventId": 6,
+      "slug": "sport-climbing",
+      "payloadEventId": 10
+    },
+    {
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip",
+      "payloadEventId": 11
+    },
+    {
+      "legacyEventId": 8,
+      "slug": "climbing-coaching-on-sight-red-point",
+      "payloadEventId": 12
+    },
+    {
+      "legacyEventId": 9,
+      "slug": "climbing-coaching-footwork-balance",
+      "payloadEventId": 13
+    },
+    {
+      "legacyEventId": 10,
+      "slug": "climbing-coaching-overhangs",
+      "payloadEventId": 14
+    },
+    {
+      "legacyEventId": 11,
+      "slug": "climbing-weekends",
+      "payloadEventId": 15
+    },
+    {
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday",
+      "payloadEventId": 16
+    },
+    {
+      "legacyEventId": 13,
+      "slug": "easter-climbing-in-sella",
+      "payloadEventId": 17
+    },
+    {
+      "legacyEventId": 14,
+      "slug": "rockbusters-climbing-express",
+      "payloadEventId": 18
+    },
+    {
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain",
+      "payloadEventId": 19
+    },
+    {
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca",
+      "payloadEventId": 20
+    },
+    {
+      "legacyEventId": 17,
+      "slug": "catalunya-climbing",
+      "payloadEventId": 21
+    },
+    {
+      "legacyEventId": 18,
+      "slug": "woman-climbing",
+      "payloadEventId": 22
+    },
+    {
+      "legacyEventId": 19,
+      "slug": "san-fermin-climbing",
+      "payloadEventId": 23
+    },
+    {
+      "legacyEventId": 21,
+      "slug": "rockbusters-private-guiding",
+      "payloadEventId": 24
+    },
+    {
+      "legacyEventId": 22,
+      "slug": "singing-rock-mobile-test-center",
+      "payloadEventId": 25
+    },
+    {
+      "legacyEventId": 24,
+      "slug": "adam-ondra-on-sight-red-point",
+      "payloadEventId": 26
+    },
+    {
+      "legacyEventId": 25,
+      "slug": "patxi-usobiaga-training",
+      "payloadEventId": 27
+    },
+    {
+      "legacyEventId": 26,
+      "slug": "biomechanica-funcional",
+      "payloadEventId": 28
+    },
+    {
+      "legacyEventId": 27,
+      "slug": "pro-climbers-performance-coaching",
+      "payloadEventId": 29
+    },
+    {
+      "legacyEventId": 28,
+      "slug": "adam-ondra-patxi-usobiaga-work-shop",
+      "payloadEventId": 30
+    },
+    {
+      "legacyEventId": 29,
+      "slug": "adam-ondra-patxi-usobiaga-work-shop-extension",
+      "payloadEventId": 31
+    },
+    {
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-climbing-work-shop",
+      "payloadEventId": 32
+    },
+    {
+      "legacyEventId": 31,
+      "slug": "hazel-findlay-mental-coaching",
+      "payloadEventId": 33
+    },
+    {
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix",
+      "payloadEventId": 34
+    },
+    {
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching",
+      "payloadEventId": 35
+    },
+    {
+      "legacyEventId": 34,
+      "slug": "klemen-becan-performance-coaching-privat",
+      "payloadEventId": 36
+    },
+    {
+      "legacyEventId": 35,
+      "slug": "deep-water-solo-sailing-mallorca",
+      "payloadEventId": 37
+    },
+    {
+      "legacyEventId": 36,
+      "slug": "rockbusters-summer-2018",
+      "payloadEventId": 38
+    },
+    {
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos",
+      "payloadEventId": 39
+    },
+    {
+      "legacyEventId": 38,
+      "slug": "andalucia-climbing",
+      "payloadEventId": 40
+    },
+    {
+      "legacyEventId": 39,
+      "slug": "introduction-to-bouldering",
+      "payloadEventId": 41
+    },
+    {
+      "legacyEventId": 40,
+      "slug": "sport-climbing-masterclass",
+      "payloadEventId": 42
+    },
+    {
+      "legacyEventId": 41,
+      "slug": "climbing-coaching",
+      "payloadEventId": 43
+    },
+    {
+      "legacyEventId": 42,
+      "slug": "trad-climbing-course",
+      "payloadEventId": 44
+    },
+    {
+      "legacyEventId": 43,
+      "slug": "multipitch-performance-coaching",
+      "payloadEventId": 45
+    },
+    {
+      "legacyEventId": 44,
+      "slug": "internship",
+      "payloadEventId": 46
+    },
+    {
+      "legacyEventId": 45,
+      "slug": "balkans-rock-climbing",
+      "payloadEventId": 47
+    },
+    {
+      "legacyEventId": 46,
+      "slug": "sport-climbing-private-coaching",
+      "payloadEventId": 48
+    },
+    {
+      "legacyEventId": 47,
+      "slug": "multipitch-climbing-private-guiding-coaching",
+      "payloadEventId": 49
+    },
+    {
+      "legacyEventId": 48,
+      "slug": "trad-climbing-private-coaching",
+      "payloadEventId": 50
+    },
+    {
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course",
+      "payloadEventId": 51
+    },
+    {
+      "legacyEventId": 50,
+      "slug": "camper-van-rental",
+      "payloadEventId": 52
+    },
+    {
+      "legacyEventId": 51,
+      "slug": "performance-coaching-gear-test",
+      "payloadEventId": 53
+    },
+    {
+      "legacyEventId": 52,
+      "slug": "efficient-technique-injury-prevention-sport-climbing-course",
+      "payloadEventId": 54
+    },
+    {
+      "legacyEventId": 53,
+      "slug": "customized-climbing-rock-trip",
+      "payloadEventId": 55
+    },
+    {
+      "legacyEventId": 54,
+      "slug": "feldenkrais-method-workshop-for-climbers",
+      "payloadEventId": 56
+    },
+    {
+      "legacyEventId": 55,
+      "slug": "climb-work",
+      "payloadEventId": 57
+    },
+    {
+      "legacyEventId": 56,
+      "slug": "climbers-hut-your-base-camp-for-epic-ascents",
+      "payloadEventId": 58
+    },
+    {
+      "legacyEventId": 57,
+      "slug": "fear-management-mental-coaching",
+      "payloadEventId": 59
+    },
+    {
+      "legacyEventId": 58,
+      "slug": "andalucia-rock-trip",
+      "payloadEventId": 60
+    },
+    {
+      "legacyEventId": 59,
+      "slug": "france-rock-trip",
+      "payloadEventId": 61
+    },
+    {
+      "legacyEventId": 60,
+      "slug": "bouldering-and-sport-climbing-in-india",
+      "payloadEventId": 62
+    },
+    {
+      "legacyEventId": 61,
+      "slug": "spain-rock-trip-cuenca-costa-blanca-chulilla-siurana",
+      "payloadEventId": 63
+    },
+    {
+      "legacyEventId": 62,
+      "slug": "knots-stone-czech-climbing-tradition",
+      "payloadEventId": 64
+    },
+    {
+      "legacyEventId": 63,
+      "slug": "bolt-send-sicily-s-virgin-rock",
+      "payloadEventId": 65
+    },
+    {
+      "legacyEventId": 64,
+      "slug": "youth-summer-rock-climbing-bouldering-camp",
+      "payloadEventId": 66
+    },
+    {
+      "legacyEventId": 65,
+      "slug": "bouldering-weekend-with-alizee-dufraisse",
+      "payloadEventId": 67
+    }
+  ]
+}

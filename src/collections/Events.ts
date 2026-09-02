@@ -238,7 +238,6 @@ export const Events: CollectionConfig = {
       type: 'relationship',
       relationTo: 'guides',
       hasMany: true,
-      filterOptions: () => ({ active: { equals: true } }),
     },
     {
       name: 'coachTeamBullets',
