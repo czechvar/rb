@@ -1,6 +1,7 @@
 import { getPayloadClient } from '@/lib/payload'
 import type { Where } from 'payload'
 import type { Event, EventDate, Guide, Partner, Post } from '@/payload-types'
+import { isUpcomingEventDate, upcomingEventDateWhere } from '@/lib/event-date-visibility'
 import { relationId, relationIds } from './helpers'
 
 export type PostGridSource = 'latest' | 'byCategory' | 'manual'
@@ -121,7 +122,8 @@ export async function resolveCalendarEventDates(
 
   if (source === 'manual') {
     const expanded = (input.eventDates ?? []).filter(
-      (date): date is EventDate => typeof date === 'object' && isRenderableEventDate(date),
+      (date): date is EventDate =>
+        typeof date === 'object' && isRenderableEventDate(date, input.now),
     )
     if (expanded.length > 0) return expanded.slice(0, limit)
 
@@ -130,17 +132,17 @@ export async function resolveCalendarEventDates(
 
     const { docs } = await payload.find({
       collection: 'event-dates',
-      where: { and: [{ id: { in: ids } }, activeWhere] },
+      where: { and: [{ id: { in: ids } }, activeWhere, upcomingEventDateWhere(input.now)] },
       sort: 'dateFrom',
       depth: 2,
       limit,
     })
-    return docs.filter(isRenderableEventDate)
+    return docs.filter((date) => isRenderableEventDate(date, input.now))
   }
 
   const whereClauses: Where[] = [
     activeWhere,
-    { dateFrom: { greater_than_equal: (input.now ?? new Date()).toISOString() } },
+    upcomingEventDateWhere(input.now),
   ]
   if (source === 'byEvent') {
     const eventId = relationId(input.event)
@@ -164,7 +166,7 @@ export async function resolveCalendarEventDates(
     depth: 2,
     limit,
   })
-  return docs.filter(isRenderableEventDate)
+  return docs.filter((date) => isRenderableEventDate(date, input.now))
 }
 
 export async function resolveFeaturedEventDate(
@@ -286,6 +288,11 @@ function boundedLimit(value: number | null | undefined, fallback: number, max: n
   return Math.min(Math.max(value ?? fallback, 1), max)
 }
 
-function isRenderableEventDate(date: EventDate): boolean {
-  return date.active === true && typeof date.event === 'object' && date.event.state === 'published'
+function isRenderableEventDate(date: EventDate, now = new Date()): boolean {
+  return (
+    date.active === true &&
+    isUpcomingEventDate(date, now) &&
+    typeof date.event === 'object' &&
+    date.event.state === 'published'
+  )
 }

@@ -13,6 +13,7 @@ import type {
   Media,
   Page,
 } from '@/payload-types'
+import { catalogueDateFloor, upcomingEventDateWhere } from '@/lib/event-date-visibility'
 
 // --- CMS pages ----------------------------------------------------------
 
@@ -76,15 +77,16 @@ export function getGuideBySlug(slug: string) {
 
 // depth 1 embeds mainPicture + locations for trip cards on /team/[slug] → tag locations too.
 export function getPublishedEventsForGuide(guideId: number) {
-  return cachedQuery(['events-for-guide', String(guideId)], [TAGS.events, TAGS.locations], async (): Promise<Event[]> => {
+  const dateFloor = catalogueDateFloor()
+  return cachedQuery(['events-for-guide', String(guideId), dateFloor], [TAGS.events, TAGS.eventDates, TAGS.locations], async (): Promise<Event[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'events',
       where: { and: [{ coaches: { contains: guideId } }, { state: { equals: 'published' } }] },
-      limit: 20,
+      limit: 100,
       depth: 1,
     })
-    return docs
+    return (await filterEventsWithUpcomingDates(payload, docs, { guides: { contains: guideId } })).slice(0, 20)
   })
 }
 
@@ -118,15 +120,16 @@ export function getLocationBySlug(slug: string) {
 
 // depth 0 → only title + slug rendered on /destinations/[slug].
 export function getPublishedEventsForLocation(locationId: number) {
-  return cachedQuery(['events-for-location', String(locationId)], [TAGS.events], async (): Promise<Event[]> => {
+  const dateFloor = catalogueDateFloor()
+  return cachedQuery(['events-for-location', String(locationId), dateFloor], [TAGS.events, TAGS.eventDates], async (): Promise<Event[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'events',
       where: { and: [{ locations: { contains: locationId } }, { state: { equals: 'published' } }] },
-      limit: 20,
+      limit: 100,
       depth: 0,
     })
-    return docs
+    return (await filterEventsWithUpcomingDates(payload, docs, { locations: { contains: locationId } })).slice(0, 20)
   })
 }
 
@@ -203,11 +206,12 @@ export function getPublishedEventBySlug(slug: string) {
 }
 
 export function getActiveEventDatesForEvent(eventId: number) {
-  return cachedQuery(['event-dates-for-event', String(eventId)], [TAGS.eventDates, TAGS.guides, TAGS.locations], async (): Promise<EventDate[]> => {
+  const dateFloor = catalogueDateFloor()
+  return cachedQuery(['event-dates-for-event', String(eventId), dateFloor], [TAGS.eventDates, TAGS.guides, TAGS.locations], async (): Promise<EventDate[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'event-dates',
-      where: { and: [{ event: { equals: eventId } }, { active: { equals: true } }] },
+      where: { and: [{ event: { equals: eventId } }, { active: { equals: true } }, upcomingEventDateWhere()] },
       sort: 'dateFrom',
       depth: 2,
       limit: 100,
@@ -220,7 +224,8 @@ export function getActiveEventDatesForEvent(eventId: number) {
 // depth 1 embeds the location (name shown on program cards) → tag locations too.
 
 export function getPublishedEventsWithLocations() {
-  return cachedQuery(['published-events-with-locations'], [TAGS.events, TAGS.locations], async (): Promise<Event[]> => {
+  const dateFloor = catalogueDateFloor()
+  return cachedQuery(['published-events-with-locations', dateFloor], [TAGS.events, TAGS.eventDates, TAGS.locations], async (): Promise<Event[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'events',
@@ -229,18 +234,19 @@ export function getPublishedEventsWithLocations() {
       depth: 1,
       limit: 100,
     })
-    return docs
+    return filterEventsWithUpcomingDates(payload, docs)
   })
 }
 
 // Returns [] for an empty id list without hitting the cache or the DB.
 export function getActiveEventDatesForEvents(eventIds: number[]) {
   if (eventIds.length === 0) return Promise.resolve<EventDate[]>([])
-  return cachedQuery(['event-dates-for-events', eventIds.join(',')], [TAGS.eventDates], async (): Promise<EventDate[]> => {
+  const dateFloor = catalogueDateFloor()
+  return cachedQuery(['event-dates-for-events', eventIds.join(','), dateFloor], [TAGS.eventDates], async (): Promise<EventDate[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'event-dates',
-      where: { and: [{ event: { in: eventIds } }, { active: { equals: true } }] },
+      where: { and: [{ event: { in: eventIds } }, { active: { equals: true } }, upcomingEventDateWhere()] },
       sort: 'dateFrom',
       depth: 0,
       limit: 500,
@@ -252,7 +258,8 @@ export function getActiveEventDatesForEvents(eventIds: number[]) {
 // LinkedEvents on /programs/[slug]. The page's primary `programs` doc and its
 // faqs/reviews stay as direct (uncached) finds — out of scope.
 export function getPublishedEventsForProgram(programId: number) {
-  return cachedQuery(['events-for-program', String(programId)], [TAGS.events], async (): Promise<Event[]> => {
+  const dateFloor = catalogueDateFloor()
+  return cachedQuery(['events-for-program', String(programId), dateFloor], [TAGS.events, TAGS.eventDates], async (): Promise<Event[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'events',
@@ -261,7 +268,7 @@ export function getPublishedEventsForProgram(programId: number) {
       depth: 1,
       limit: 50,
     })
-    return docs
+    return filterEventsWithUpcomingDates(payload, docs)
   })
 }
 
@@ -269,17 +276,44 @@ export function getPublishedEventsForProgram(programId: number) {
 // depth 2 embeds the event and its location (event title + location name shown).
 
 export function getActiveEventDates() {
-  return cachedQuery(['active-event-dates'], [TAGS.eventDates, TAGS.events, TAGS.locations], async (): Promise<EventDate[]> => {
+  const dateFloor = catalogueDateFloor()
+  return cachedQuery(['active-event-dates', dateFloor], [TAGS.eventDates, TAGS.events, TAGS.locations], async (): Promise<EventDate[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'event-dates',
-      where: { active: { equals: true } },
+      where: { and: [{ active: { equals: true } }, upcomingEventDateWhere()] },
       sort: 'dateFrom',
       depth: 2,
       limit: 500,
     })
     return docs
   })
+}
+
+async function filterEventsWithUpcomingDates(
+  payload: Awaited<ReturnType<typeof getPayloadClient>>,
+  events: Event[],
+  eventDateConstraint?: Parameters<typeof payload.find>[0]['where'],
+): Promise<Event[]> {
+  if (!events.length) return events
+
+  const { docs } = await payload.find({
+    collection: 'event-dates',
+    where: {
+      and: [
+        { event: { in: events.map((event) => event.id) } },
+        { active: { equals: true } },
+        upcomingEventDateWhere(),
+        ...(eventDateConstraint ? [eventDateConstraint] : []),
+      ],
+    },
+    depth: 0,
+    limit: 1000,
+  })
+  const eventIdsWithUpcomingDates = new Set(
+    docs.map((date) => (typeof date.event === 'object' ? date.event.id : date.event)),
+  )
+  return events.filter((event) => eventIdsWithUpcomingDates.has(event.id))
 }
 
 // --- Homepage feeds ------------------------------------------------------
@@ -399,9 +433,10 @@ export function getHomepageReviews() {
 }
 
 export function getFeaturedEventsForHomepage() {
+  const dateFloor = catalogueDateFloor()
   return cachedQuery(
-    ['homepage-featured-events'],
-    [TAGS.events],
+    ['homepage-featured-events', dateFloor],
+    [TAGS.events, TAGS.eventDates],
     async (): Promise<Event[]> => {
       const payload = await getPayloadClient()
       const { docs } = await payload.find({
@@ -412,10 +447,10 @@ export function getFeaturedEventsForHomepage() {
             { state: { equals: 'published' } },
           ],
         },
-        limit: 6,
-        depth: 2,
-      })
-      return docs
+      limit: 100,
+      depth: 2,
+    })
+      return (await filterEventsWithUpcomingDates(payload, docs)).slice(0, 6)
     },
   )
 }

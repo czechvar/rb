@@ -25,10 +25,7 @@ function monthKey(value: string): string {
 }
 
 export default async function CalendarPage() {
-  const dates = await getActiveEventDates()
-
-  // eslint-disable-next-line react-hooks/purity -- server component, runs once per request; filtering by current time is intended
-  const upcoming = dates.filter((d) => new Date(d.dateFrom).getTime() >= Date.now())
+  const upcoming = await getActiveEventDates()
   const jsonLd = calendarGraphJsonLd(upcoming)
 
   const groups = new Map<string, typeof upcoming>()

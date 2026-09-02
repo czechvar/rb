@@ -1,6 +1,7 @@
 import { getPayloadClient } from '@/lib/payload'
 import type { Where } from 'payload'
 import type { Event } from '@/payload-types'
+import { upcomingEventDateWhere } from '@/lib/event-date-visibility'
 import { relationId, relationIds } from './helpers'
 
 export type TripGridSource = 'featured' | 'upcoming' | 'manual' | 'byProgram' | 'byLocation'
@@ -29,7 +30,7 @@ export async function resolveTripGridEvents(input: TripGridResolverInput): Promi
     const expanded = (input.events ?? []).filter(
       (event): event is Event => typeof event === 'object' && event.state === 'published',
     )
-    if (expanded.length > 0) return expanded.slice(0, limit)
+    if (expanded.length > 0) return filterEventsWithUpcomingDates(payload, expanded, limit)
 
     const ids = relationIds(input.events)
     if (ids.length === 0) return []
@@ -40,15 +41,15 @@ export async function resolveTripGridEvents(input: TripGridResolverInput): Promi
         and: [{ id: { in: ids } }, { state: { equals: 'published' } }],
       },
       depth: 2,
-      limit,
+      limit: ids.length,
     })
-    return docs
+    return filterEventsWithUpcomingDates(payload, docs, limit)
   }
 
   if (source === 'upcoming') {
     const { docs: dates } = await payload.find({
       collection: 'event-dates',
-      where: { active: { equals: true } },
+      where: { and: [{ active: { equals: true } }, upcomingEventDateWhere()] },
       sort: 'dateFrom',
       depth: 1,
       limit: 50,
@@ -86,10 +87,10 @@ export async function resolveTripGridEvents(input: TripGridResolverInput): Promi
     where: { and: whereClauses },
     sort: source === 'featured' ? '-featured' : 'title',
     depth: 2,
-    limit,
+    limit: 100,
   })
 
-  return docs
+  return filterEventsWithUpcomingDates(payload, docs, limit)
 }
 
 export async function resolveFeaturedTrip(input: FeaturedTripResolverInput): Promise<Event | null> {
@@ -105,5 +106,34 @@ export async function resolveFeaturedTrip(input: FeaturedTripResolverInput): Pro
 
   const payload = await getPayloadClient()
   const event = await payload.findByID({ collection: 'events', id: eventId, depth: 2 })
-  return event.state === 'published' ? event : null
+  if (event.state !== 'published') return null
+
+  const [eventWithUpcomingDate] = await filterEventsWithUpcomingDates(payload, [event], 1)
+  return eventWithUpcomingDate ?? null
+}
+
+async function filterEventsWithUpcomingDates(
+  payload: Awaited<ReturnType<typeof getPayloadClient>>,
+  events: Event[],
+  limit: number,
+): Promise<Event[]> {
+  if (!events.length) return events
+
+  const { docs } = await payload.find({
+    collection: 'event-dates',
+    where: {
+      and: [
+        { event: { in: events.map((event) => event.id) } },
+        { active: { equals: true } },
+        upcomingEventDateWhere(),
+      ],
+    },
+    depth: 0,
+    limit: 1000,
+  })
+  const eventIdsWithUpcomingDates = new Set(
+    docs.map((date) => (typeof date.event === 'object' ? date.event.id : date.event)),
+  )
+
+  return events.filter((event) => eventIdsWithUpcomingDates.has(event.id)).slice(0, limit)
 }
