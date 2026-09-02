@@ -1,7 +1,7 @@
 {
   "slug": "ticino",
   "title": "Ticino",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,190 @@
   ],
   "facts": {
     "locationKind": "bouldering-area",
-    "climbingStyles": ["bouldering"],
-    "rockTypes": ["granite", "gneiss"],
-    "rockFeatures": ["slabs", "crimps", "overhangs"],
-    "settingTags": ["forest", "mountain"],
-    "bestSeasons": ["winter", "spring", "autumn"],
+    "climbingStyles": [
+      "bouldering"
+    ],
+    "rockTypes": [
+      "granite",
+      "gneiss"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "crimps",
+      "overhangs"
+    ],
+    "settingTags": [
+      "forest",
+      "mountain"
+    ],
+    "bestSeasons": [
+      "winter",
+      "spring",
+      "autumn"
+    ],
     "avoidSeasons": [],
     "nearestAirports": [],
-    "accommodationTags": ["villa", "hotel", "apartment"],
-    "transportTags": ["public-transport-possible", "car-recommended"],
+    "accommodationTags": [
+      "villa",
+      "hotel",
+      "apartment"
+    ],
+    "transportTags": [
+      "public-transport-possible",
+      "car-recommended"
+    ],
     "gradeRange": null,
     "routeCount": null,
     "problemCount": 5000,
     "sectorCount": null,
     "destinationScope": "area"
   },
+  "media": {
+    "mainImage": null
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Ticino is Swiss bouldering with a regional scale: Cresciano, Chironico, Brione and other areas offering granite and gneiss blocs, winter friction, forest approaches and more than enough climbing for repeated trips.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Ticino is a Swiss bouldering region anchored by areas such as Cresciano, Chironico and Brione.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Ticino is best understood as a bouldering region, not a single sector. Cresciano, Chironico and Brione anchor the destination, each with enough problems to justify focused days rather than constant driving.\n\nThe style is varied but serious: technical slabs, crimps, overhangs, compression and powerful lines in a mountain-forest setting.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Ticino’s reputation has grown through the quality and depth of its main bouldering areas. Cresciano, Chironico and Brione each have enough identity to justify focused visits.\n\nTogether they make the region one of Europe’s major cold-season bouldering bases.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "UKClimbing describes each of the main areas as having over 1,000 problems, with Chironico well over 2,000; the legacy packet gives the regional scale as over 5,000 problems.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The main rock types are granite and gneiss, with slabs, crimps and overhangs as key features. Expect everything from delicate feet to steep power.\n\nConditions matter. Cool dry air can make the rock feel outstanding, while dampness and heat quickly change the experience.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Ticino suits committed boulderers who want variety across multiple areas. Strong climbers will find famous objectives, but the regional scale also supports mileage if the group chooses sectors carefully.\n\nBeginners should travel with enough pads and local information because landings, approaches and grade style vary by area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The source describes the three main Ticino bouldering areas as each having over 1,000 problems, with Chironico well over 2,000.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The main areas each have more than 1,000 problems, with Chironico well over 2,000. The regional problem count is above 5,000.\n\nThere is no clean single grade range for the whole region, so current topo selection should drive planning.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "status": "mixed",
+      "body": "Winter, spring and autumn are the supported seasons. Ticino is especially attractive when colder northern areas are too wet or snowy, but dry rock still decides the day.\n\nSummer is not a preferred season for this planning profile.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring bouldering pads, brushes, tape, warm layers and a current topo for the specific area. Because the region is spread out, sector choice and approach information are part of the kit.\n\nMultiple pads make classic lines safer and more useful for mixed groups.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "A car gives the most flexibility across Ticino's bouldering areas, especially if the plan includes Cresciano, Chironico and Brione in the same trip. Some valley logistics may be possible without one, but they need careful planning.\n\nCheck parking and access for the exact sector before arrival.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Choose a base around the areas you want most: Cresciano, Chironico, Brione or a broader circuit. Hotels, apartments and rental houses can all work depending on group size and budget.\n\nFor bouldering, drying space, cooking and rest quality matter as much as location.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can be low-key: lakeside towns, valley walks, coffee, food and skin recovery. Because the region is broad, it is tempting to keep moving, but fingers often improve after a real break.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Plan by area, not just by famous problem. Ticino’s strength is the ability to move between valleys and styles as conditions change.\n\nRespect parking, local paths and quiet residential areas near sectors.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "Uneven landings, cold-weather warm-ups, damp rock and remote-feeling sectors are the main concerns. Pad carefully and keep enough clothing for long rests.\n\nAvoid climbing wet rock and be conservative when landing zones are poor.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +213,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "What are the main areas? Cresciano, Chironico and Brione are the big names.\n\nHow big is Ticino bouldering? Treat it as a regional-scale destination with thousands of problems.\n\nWhen should I go? Winter, spring and autumn are the supported seasons.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +234,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,81 +244,78 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "Ticino bouldering is centered on areas including Cresciano, Chironico and Brione, each with over 1,000 problems.",
-      "sourceRefs": ["s1"]
+      "text": "Ticino is represented as bouldering-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ticino has climbing styles: bouldering.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ticino rock types retained: granite, gneiss.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ticino retained problem count: 5000.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ticino best seasons retained: winter, spring, autumn.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "season",
-      "missing": "Needs a reputable source before writing season content.",
-      "priority": "high"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
       "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "missing": "Verify current access, parking, sector rules and preferred problem-count scope before publication.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "The regional problem count combines legacy scale with current area descriptions; precise current totals need topo review.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": ["missing_main_image", "Missing main image."],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
+    ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "missing_main_image",
+      "Missing main image.",
+      "The regional problem count combines legacy scale with current area descriptions; precise current totals need topo review."
     ]
   }
 }

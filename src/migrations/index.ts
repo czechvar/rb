@@ -30,6 +30,8 @@ import * as migration_20260827_145720_payload_mcp_api_keys from './20260827_1457
 import * as migration_20260901_093927_page_structured_data_schema_type from './20260901_093927_page_structured_data_schema_type';
 import * as migration_20260828_122519_add_transactions from './20260828_122519_add_transactions';
 import * as migration_20260901_135340_add_location_destination_taxonomy from './20260901_135340_add_location_destination_taxonomy';
+import * as migration_20260901_150028_media_text_id from './20260901_150028_media_text_id';
+import * as migration_20260901_190820_add_location_content_sections from './20260901_190820_add_location_content_sections';
 
 export const migrations = [
   {
@@ -191,5 +193,15 @@ export const migrations = [
     up: migration_20260901_135340_add_location_destination_taxonomy.up,
     down: migration_20260901_135340_add_location_destination_taxonomy.down,
     name: '20260901_135340_add_location_destination_taxonomy',
+  },
+  {
+    up: migration_20260901_150028_media_text_id.up,
+    down: migration_20260901_150028_media_text_id.down,
+    name: '20260901_150028_media_text_id',
+  },
+  {
+    up: migration_20260901_190820_add_location_content_sections.up,
+    down: migration_20260901_190820_add_location_content_sections.down,
+    name: '20260901_190820_add_location_content_sections',
   },
 ]

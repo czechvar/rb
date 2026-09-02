@@ -22,15 +22,37 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["overhangs", "pockets", "crimps"],
-    "settingTags": ["gorge-canyon", "forest"],
-    "bestSeasons": ["spring", "autumn"],
-    "avoidSeasons": ["summer", "winter"],
+    "climbingStyles": [
+      "sport"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "overhangs",
+      "pockets",
+      "crimps"
+    ],
+    "settingTags": [
+      "gorge-canyon",
+      "forest"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "summer",
+      "winter"
+    ],
     "nearestAirports": [],
-    "accommodationTags": ["campsite", "guesthouse-b-and-b"],
-    "transportTags": ["car-recommended"],
+    "accommodationTags": [
+      "campsite",
+      "guesthouse-b-and-b"
+    ],
+    "transportTags": [
+      "car-recommended"
+    ],
     "gradeRange": "mainly 7th grade on some 50 to 70 m climbs",
     "routeCount": 400,
     "problemCount": null,
@@ -40,193 +62,276 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Gorges du Tarn, France",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Gorges du Tarn is a French limestone sport-climbing gorge with long pitches, steep walls, pockets, flowstone and a proper river-canyon setting.\n\nIt is best for climbers who want quality routes and a quiet base, not a dense roadside venue with every grade in one sector.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Gorges du Tarn is a limestone sport climbing gorge in southeast France.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The Tarn is one of the great French sport-climbing gorges: pine forest, fast water, limestone walls and routes that often feel longer than the guidebook grade suggests.\n\nThe climbing is spread along the canyon rather than stacked in one compact amphitheatre. That gives the area space and atmosphere, but it also means a car, a recent topo and a willingness to walk between sectors make the trip smoother.\n\nCome prepared for endurance. Many of the best lines are long by sport-climbing standards, with sustained sections, pockets, crimps and steep headwalls.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Gorges du Tarn became known as one of the important French sport venues because it combined beautiful canyon setting with a large number of high-quality limestone lines.\n\nThe area still feels less urban and less compressed than many famous sport destinations. That is part of the attraction: climbing days are tied to the river, villages and forest as much as the cliff.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "PlanetMountain supports 400 limestone routes over five sectors; the legacy packet adds pockets, crimps, overhangs, rivers and pine forest.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is limestone, often steep and pocketed, with crimps, overhangs and long walls. Some routes run 50 to 70 metres, so rope length, lowering strategy and endurance matter.\n\nThe style rewards efficient movement. You can find easier routes, but the destination is especially good for climbers who enjoy long sport pitches and do not mind working for the chains.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
-      "status": "legacy",
-      "body": "Legacy evidence points especially to sport climbers comfortable with longer routes and 7th-grade climbing, while still noting a broader grade mix.",
-      "sourceRefs": ["legacy"],
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Gorges du Tarn suits sport climbers with enough stamina for longer routes and enough experience to manage big single pitches. It is not only an expert venue, but it is not the easiest first outdoor sport trip either.\n\nMixed-grade groups should plan sectors carefully. Sun, shade and grade distribution can decide whether everyone gets a good day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
+      "heading": "Grades and Sectors",
       "status": "mixed",
-      "body": "Route count is sourced externally; the grade wording is kept as legacy prose rather than a normalized numeric range.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The structured facts keep the conservative 400-route count and the harder-route emphasis from the prepared material. Other climbing references use broader counts, which is why this copy avoids a precise full inventory claim.\n\nThe strongest public message is practical: many routes are long, plenty are sustained, and rope length matters more than a tidy grade summary.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
+      "heading": "Best Season",
       "status": "legacy",
-      "body": "The legacy packet supports spring and autumn, and warns that summers are too hot and winters too cold.",
-      "sourceRefs": ["legacy"],
+      "body": "Spring and autumn are the best climbing seasons. Conditions are more stable, the gorge is cooler, and the walls are easier to use through a whole day.\n\nSummer can be too hot for serious climbing, especially in the sun. Winter can be cold and unreliable.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Bring a sport rack sized for long pitches, a helmet, and a rope that matches the topo. Many routes are long enough that rope length and knotting the end are not small details.\n\nFor big days, carry water and layers to the crag. Sector changes are possible, but the gorge is spread out, so treat the day as more than a quick roadside session.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
+      "heading": "Getting There",
       "status": "legacy",
-      "body": "The legacy packet places the area about an hour from Millau and supports a car-recommended tag.",
-      "sourceRefs": ["legacy"],
+      "body": "A car is strongly recommended. The gorge sits about an hour from Millau in the prepared material, and the sectors are spread along the canyon.\n\nPublic transport is not the practical tool for moving between villages, parking and crags with climbing gear.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
+      "heading": "Stay and Eat",
       "status": "legacy",
-      "body": "Legacy accommodation includes campsites and small guest houses/gites in nearby villages.",
-      "sourceRefs": ["legacy"],
+      "body": "Campsites and small guesthouses or gites in nearby villages make the most sense. Staying in or near the gorge keeps mornings simple and gives more room to adjust for sun and shade.\n\nBook ahead in busy outdoor seasons, when the Tarn also draws paddlers and summer visitors.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
+      "heading": "Rest Days",
       "status": "legacy",
-      "body": "The legacy packet mentions kayaking, rafting and canyoning in the Tarn area.",
-      "sourceRefs": ["legacy"],
+      "body": "Rest days can stay in the canyon: kayaking, rafting, canyoning and river walks are all natural options.\n\nIf the skin is gone but the weather is good, use the river. The setting is one of the reasons to come here.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Check rope lengths and lowering notes before leaving the ground. Long limestone sport routes leave less margin for casual assumptions.\n\nMove with the sun. The gorge can feel completely different from one side or sector to another.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Tie a knot in the rope end, wear a helmet and know the descent or lower-off plan. Long routes and steep terrain are the main practical risks.\n\nHeat and fatigue matter. If a pitch is 50 metres or more, belayers and climbers both need enough water, shade and attention.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
-      "heading": "Costs",
+      "heading": "Costs and Budget",
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "When should I go? Spring and autumn.\n\nHow many routes are there? The prepared facts keep a conservative count of about 400 routes.\n\nDo I need a long rope? Many routes are long, so check the topo and bring the correct rope.\n\nIs there good rest-day activity? Yes. The Tarn is well known for river activities as well as climbing.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: sport-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 400.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Gorges du Tarn, France",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Gorges du Tarn is a limestone sport climbing gorge in southeast France.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "PlanetMountain supports 400 limestone routes over five sectors; the legacy packet adds pockets, crimps, overhangs, rivers and pine forest.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Legacy evidence points especially to sport climbers comfortable with longer routes and 7th-grade climbing, while still noting a broader grade mix.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Route count is sourced externally; the grade wording is kept as legacy prose rather than a normalized numeric range.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet supports spring and autumn, and warns that summers are too hot and winters too cold.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet places the area about an hour from Millau and supports a car-recommended tag.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy accommodation includes campsites and small guest houses/gites in nearby villages.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet mentions kayaking, rafting and canyoning in the Tarn area.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     }
   ],
   "editorialGaps": [
@@ -262,10 +367,17 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 1193
+    }
   }
 }

@@ -22,141 +22,207 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "overhangs", "pockets", "crimps"],
-    "settingTags": ["gorge-canyon"],
-    "bestSeasons": ["autumn", "winter", "spring"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": ["Valencia"],
-    "accommodationTags": ["apartment", "hostel"],
-    "transportTags": ["car-recommended", "flight-access", "walkable-local-access"],
+    "destinationScope": "area",
+    "climbingStyles": [
+      "sport"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "overhangs",
+      "pockets",
+      "crimps"
+    ],
+    "settingTags": [
+      "gorge-canyon"
+    ],
+    "bestSeasons": [
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Valencia"
+    ],
+    "accommodationTags": [
+      "apartment",
+      "hostel"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access",
+      "walkable-local-access"
+    ],
     "gradeRange": "5 to 8c+",
     "routeCount": null,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "area"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Hero",
-      "status": "legacy",
-      "body": "Chulilla, Spain",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "A long-route limestone canyon above the Turia river, with winter sun, steep orange walls and enough sectors to keep endurance climbers busy for a full trip.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "enriched",
-      "body": "Chulilla is a Valencia-region limestone canyon climbing destination focused on long sport routes.",
-      "sourceRefs": ["s1"],
+      "body": "Chulilla is one of the Valencia region's most useful sport climbing bases: a compact village above a deep limestone canyon, with hundreds of bolted routes spread along both sides of the Turia. The climbing feels bigger than the map suggests because many routes are long, sustained and exposed rather than short roadside burns.\n\nThe main draw is winter mileage. Different wall orientations make it possible to chase sun or shade, and the village has enough climber infrastructure to make a week feel straightforward: a refuge, rental flats, food basics, a small climbing shop and bars where everyone eventually ends up after climbing.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "status": "enriched",
+      "body": "Chulilla has grown quickly into one of Spain's better-known winter sport areas. Its reputation now reaches well beyond Valencia, helped by the canyon setting, the long routes and a steady stream of visiting climbers during the colder months.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock and climbing character",
       "status": "enriched",
-      "body": "The climbing is on orange and grey limestone walls in the Turia river canyon, with sustained sport routes, tufas, pockets and crimpy wall climbing.",
-      "sourceRefs": ["s1"],
+      "body": "Expect orange and grey limestone, generally bolted for sport climbing, with tufas, pockets, crimps and long sections where staying relaxed matters more than pulling one hard move. Some sectors are steep and athletic; others give more technical wall climbing and multi-pitch-style length.\n\nThe canyon has many aspects, so conditions can change sharply from one wall to the next. Popular routes can be polished, especially at friendly grades and in the most obvious sectors.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who it suits",
       "status": "enriched",
-      "body": "The area is useful for sport climbers seeking endurance mileage across moderate to hard grades rather than a single roadside crag experience.",
-      "sourceRefs": ["s1"],
+      "body": "Chulilla suits sport climbers who want volume, endurance and route reading. It is especially good if you are comfortable spending time on long pitches and want grades from approachable fives into the eights.\n\nIt is less ideal as a quiet low-season secret. Around Christmas and Easter the obvious sectors and village beds can fill quickly, so flexible sector choice helps.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
       "heading": "Grades and difficulty",
       "status": "enriched",
-      "body": "Valencia Climb gives the grade span as 5 to 8c+.",
-      "sourceRefs": ["s1"],
+      "body": "The supported grade spread runs from 5 to 8c+. That makes Chulilla broad enough for mixed-ability sport groups, but the destination is best known for sustained routes rather than very short, beginner-style cragging.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season and conditions",
       "status": "enriched",
-      "body": "Winter is a common visiting season; the canyon has varied orientations for sun or shade. Summer heat is an avoid condition rather than a target season.",
-      "sourceRefs": ["s1"],
+      "body": "Winter is the classic Chulilla window. The canyon stays useful on cold days, and the range of aspects lets you choose warmer or cooler walls as conditions shift.\n\nSummer is the weak season for a climbing trip. Many climber services reduce or close, and heat makes shade tactics essential rather than optional.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "status": "enriched",
+      "body": "Bring a normal sport rack with enough quickdraws for long pitches, plus a rope length suitable for the routes you choose from the local topo. A clip stick is useful on polished starts and busy-sector warm-ups.\n\nFor rest-day logistics, basic climbing supplies are available in the village, with a larger sports shop farther away near San Antonio.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
       "heading": "Transport and access",
       "status": "enriched",
-      "body": "Valencia is the nearest normalized airport city. A car is useful for area logistics, although some village-based access is practical once in Chulilla.",
-      "sourceRefs": ["s1"],
+      "body": "Valencia is the natural airport city. Once in Chulilla, some sectors can be handled from the village, but a car makes the trip much easier if you want to move between walls, shop outside town or sleep in a nearby village when Chulilla is full.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
       "heading": "Where to stay",
       "status": "enriched",
-      "body": "The village has a climbers refuge and flats; nearby villages are used when high-season beds fill.",
-      "sourceRefs": ["s1"],
+      "body": "The village has a climbers' refuge and rental flats, which keeps the climbing rhythm simple: walk or drive to the canyon, climb, then come back to a small town built around visiting climbers.\n\nIn peak holiday periods, accommodation can book out fast. Villar del Arzobispo and Sot de Chera are useful overflow bases when the village is full.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "status": "enriched",
+      "body": "Rest days do not need to be dead days. Chulilla has canyon walks, hanging bridges, via ferrata options, lakes and a spa, so tired fingers can get a proper break without leaving the area.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
       "heading": "Practical tips",
       "status": "enriched",
-      "body": "High-season crowding is specifically called out around Christmas and Easter holidays.",
-      "sourceRefs": ["s1"],
+      "body": "Avoid treating the main parking as a campsite. Van sleeping is tolerated only when climbers keep it quiet and clean; tents and open fires are not allowed.\n\nPlan around crowds at Christmas and Easter. Starting early, choosing less obvious sectors and having backup routes will make the trip feel calmer.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety notes",
       "status": "enriched",
-      "body": "Local notes warn that popular routes may be polished; route choice should account for grade, aspect, and crowding.",
-      "sourceRefs": ["s1"],
+      "body": "Polished holds are the main climbing-specific hazard on popular routes. Check descents, knots and lowering plans carefully on long pitches, and match rope length to the route rather than assuming every line is short.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "costs",
       "heading": "Costs",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "status": "enriched",
+      "body": "Accommodation ranges from refuge-style beds to rental flats, with prices varying by season and group size. Exact current prices are not stable enough for this destination copy, so budget planning belongs with the lodging you choose.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "enriched",
+      "body": "Is Chulilla mainly a winter destination? Yes. It is especially useful in winter, with many aspects for managing sun and shade.\n\nDo you need a car? It is not strictly required for every day, but a car makes accommodation, shopping and sector choice much easier.\n\nWhat style should you expect? Long bolted limestone sport routes, often sustained and endurance-based.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -178,55 +244,171 @@
   "claims": [
     {
       "text": "Location kind: sport-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Chulilla, Spain",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Chulilla is a Valencia-region limestone canyon climbing destination focused on long sport routes.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The climbing is on orange and grey limestone walls in the Turia river canyon, with sustained sport routes, tufas, pockets and crimpy wall climbing.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The area is useful for sport climbers seeking endurance mileage across moderate to hard grades rather than a single roadside crag experience.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Valencia Climb gives the grade span as 5 to 8c+.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Winter is a common visiting season; the canyon has varied orientations for sun or shade. Summer heat is an avoid condition rather than a target season.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Valencia is the nearest normalized airport city. A car is useful for area logistics, although some village-based access is practical once in Chulilla.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The village has a climbers refuge and flats; nearby villages are used when high-season beds fill.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "High-season crowding is specifically called out around Christmas and Easter holidays.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Local notes warn that popular routes may be polished; route choice should account for grade, aspect, and crowding.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "A long-route limestone canyon above the Turia river, with winter sun, steep orange walls and enough sectors to keep endurance climbers busy for a full trip.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Chulilla is one of the Valencia region's most useful sport climbing bases: a compact village above a deep limestone canyon, with hundreds of bolted routes spread along both sides of the Turia.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Chulilla has grown quickly into one of Spain's better-known winter sport areas.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Expect orange and grey limestone, generally bolted for sport climbing, with tufas, pockets, crimps and long sections where staying relaxed matters more than pulling one hard move.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Chulilla suits sport climbers who want volume, endurance and route reading.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The supported grade spread runs from 5 to 8c+.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Winter is the classic Chulilla window.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bring a normal sport rack with enough quickdraws for long pitches, plus a rope length suitable for the routes you choose from the local topo.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Valencia is the natural airport city.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The village has a climbers' refuge and rental flats, which keeps the climbing rhythm simple: walk or drive to the canyon, climb, then come back to a small town built around visiting climbers.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Rest days do not need to be dead days.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Avoid treating the main parking as a campsite.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Polished holds are the main climbing-specific hazard on popular routes.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Accommodation ranges from refuge-style beds to rental flats, with prices varying by season and group size.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Is Chulilla mainly a winter destination? Yes.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -259,10 +441,26 @@
   "qa": {
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+      "No values outside the location taxonomy contract were added.",
+      "Added current-source details from Valencia Climb for rest days, gear/shop basics, van/tent restrictions and local services.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
     "unsourcedClaimsRemoved": [
       "Empty or placeholder legacy body was not expanded without external support."
-    ]
+    ],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 41,
+      "legacyMediaId": 1185,
+      "originalName": "Chulilla.jpg",
+      "providerReference": "7fe33acfdfc110c6b0d7a230b6b7fbc1656e76b3.jpeg",
+      "contentType": "image/jpeg",
+      "width": 960,
+      "height": 720,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/02/7fe33acfdfc110c6b0d7a230b6b7fbc1656e76b3.jpeg"
+    }
   }
 }

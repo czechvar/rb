@@ -186,7 +186,7 @@ describe('block registry groups', () => {
     const hero = blockCatalogue.find((entry) => entry.config.slug === 'hero')
     const tripHero = blockCatalogue.find((entry) => entry.config.slug === 'tripHero')
 
-    expect(hero?.compatibleWith).toBeUndefined()
+    expect(hero && 'compatibleWith' in hero).toBe(false)
     expect(hero && isBlockCompatibleWithSurface(hero, 'page')).toBe(true)
     expect(hero && isBlockCompatibleWithSurface(hero, 'event')).toBe(true)
     expect(tripHero && isBlockCompatibleWithSurface(tripHero, 'event')).toBe(true)

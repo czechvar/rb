@@ -1,7 +1,7 @@
 {
   "slug": "magic-wood",
   "title": "Magic Wood",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,190 @@
   ],
   "facts": {
     "locationKind": "bouldering-area",
-    "climbingStyles": ["bouldering"],
-    "rockTypes": ["gneiss"],
-    "rockFeatures": ["overhangs", "slabs", "crimps"],
-    "settingTags": ["forest", "mountain", "valley"],
-    "bestSeasons": ["spring", "summer", "autumn"],
-    "avoidSeasons": ["winter"],
+    "climbingStyles": [
+      "bouldering"
+    ],
+    "rockTypes": [
+      "gneiss"
+    ],
+    "rockFeatures": [
+      "overhangs",
+      "slabs",
+      "crimps"
+    ],
+    "settingTags": [
+      "forest",
+      "mountain",
+      "valley"
+    ],
+    "bestSeasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "winter"
+    ],
     "nearestAirports": [],
-    "accommodationTags": ["campsite", "guesthouse-b-and-b"],
-    "transportTags": ["car-recommended"],
-    "gradeRange": "The source describes Magic Wood as an all-level bouldering destination that is especially known for harder classic problems.",
+    "accommodationTags": [
+      "campsite",
+      "guesthouse-b-and-b"
+    ],
+    "transportTags": [
+      "car-recommended"
+    ],
+    "gradeRange": "All-level bouldering with a strong reputation for harder classics; no precise retained grade span.",
     "routeCount": null,
     "problemCount": 1000,
     "sectorCount": null,
     "destinationScope": "area"
   },
+  "media": {
+    "mainImage": null
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Magic Wood is compact Swiss gneiss bouldering in a steep forest valley: over 1,000 problems, hard classics, short links between sectors and conditions that can feel world class when the air is cool and dry.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Magic Wood is a compact Swiss forest bouldering area.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Magic Wood is small on the map and big in reputation. The boulders sit in forest above the Hinterrhein, giving the area a concentrated feel: you can move between objectives quickly, but the climbing rarely feels easy.\n\nThe destination is best known for hard bouldering, yet there are problems across a wider spread. The trick is choosing problems and conditions intelligently rather than assuming the forest will hand out grades.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Magic Wood became famous because a compact valley produced a remarkable density of quality gneiss problems. It is now one of Europe’s standard references for hard forest bouldering.\n\nThat popularity makes low-impact behaviour important. Stay on paths, respect camping and parking rules, and avoid turning a small valley into a crowded gym.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The source describes more than 1,000 problems within about 1 km2 and Swiss gneiss bouldering with overhangs and crimps.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is Swiss gneiss, with overhangs, crimps, slabs and powerful compression. Many problems are physical, but good footwork still matters.\n\nThe forest can hold moisture. When conditions are dry, the rock feels crisp and positive; when humidity rises, hard problems can turn quickly.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Magic Wood is best for boulderers who already enjoy outdoor problem solving. Strong climbers will recognize many classics, but intermediates can still build a good trip by choosing carefully.\n\nBeginners should come with realistic expectations, enough pads and partners who can manage landings and sector choice.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The source describes more than 1,000 boulder problems in Magic Wood.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Magic Wood has more than 1,000 boulder problems in a compact area of roughly one square kilometre. There is no single clean grade span that captures the area well.\n\nTreat Magic Wood as quality-dense rather than easy-dense. A current topo is essential for finding the right circuits and warm-ups.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "Spring and autumn are best; summer can work in shade and acceptable humidity, while winter is avoided for seepage and wet conditions.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Spring and autumn are the best-supported planning seasons. Summer can work in shade when humidity is acceptable, while winter is usually a poor choice because of seepage and wet conditions.\n\nFor any season, dry rock is the real filter.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring multiple pads, a brush, tape, warm layers and a current topo. Landings vary, and many worthwhile lines climb better with a thoughtful pad stack.\n\nSkin management matters. The gneiss can be sharp enough to end a trip early if you ignore it.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "A car is the practical transport plan for Magic Wood. The valley setting makes arrival, food runs and weather pivots easier with independent transport.\n\nCheck current parking and camping arrangements before arrival, as local rules can change.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Plan around campsite and guesthouse-style bases. Keep the plan flexible and current because Magic Wood's local camping and access setup is an important part of trip logistics.\n\nChoose lodging that lets the group rest properly; the climbing is intense enough without poor recovery.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can be quiet: river walks, valley views, food runs and skin recovery. The area is compact, so leaving the pads behind is sometimes the smartest decision you make all week.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Warm up patiently and save skin. Magic Wood has enough famous hard lines to make climbers rush, but the best days come from building into the conditions.\n\nRespect paths, camping rules and other groups. The area’s compactness is a strength only if everyone keeps impact low.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "Uneven landings, powerful moves and damp rock are the main concerns. Use enough pads, spot actively and avoid climbing when holds are seeping or wet.\n\nMany problems are close together, so stay aware of pads, people and fall zones around busy classics.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +213,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "Is Magic Wood only for strong climbers? No, but its reputation and density are strongest for committed boulderers.\n\nHow many problems are there? More than 1,000.\n\nWhen should I go? Spring and autumn are the safest planning windows.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +234,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,76 +244,84 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "Magic Wood has more than 1,000 boulder problems in a compact area on Swiss gneiss.",
-      "sourceRefs": ["s1"]
+      "text": "Magic Wood is represented as bouldering-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Magic Wood has climbing styles: bouldering.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Magic Wood rock types retained: gneiss.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Magic Wood retained grade range: All-level bouldering with a strong reputation for harder classics; no precise retained grade span..",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Magic Wood retained problem count: 1000.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Magic Wood best seasons retained: spring, summer, autumn.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
       "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "missing": "Verify current camping, parking, access fees and wet-rock rules before adding practical booking copy.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "Problem count and style are supported; current campsite, parking and seasonal access details need checking.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": ["missing_main_image"],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
+    ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "missing_main_image",
+      "Problem count and style are supported; current campsite, parking and seasonal access details need checking."
     ]
   }
 }

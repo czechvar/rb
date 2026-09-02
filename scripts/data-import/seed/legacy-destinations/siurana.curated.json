@@ -1,7 +1,7 @@
 {
   "slug": "siurana",
   "title": "Siurana",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,203 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["crimps", "overhangs"],
-    "settingTags": ["mountain", "valley"],
-    "bestSeasons": ["spring", "autumn", "winter"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": ["Barcelona"],
-    "accommodationTags": ["campsite", "apartment", "villa", "refuge-hut"],
-    "transportTags": ["car-recommended", "public-transport-possible", "flight-access"],
+    "climbingStyles": [
+      "sport"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "crimps",
+      "overhangs"
+    ],
+    "settingTags": [
+      "mountain",
+      "valley"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Barcelona"
+    ],
+    "accommodationTags": [
+      "campsite",
+      "apartment",
+      "villa",
+      "refuge-hut"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "public-transport-possible",
+      "flight-access"
+    ],
     "gradeRange": "5a to 9b+",
     "routeCount": 1600,
     "problemCount": null,
     "sectorCount": 30,
     "destinationScope": "crag"
   },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 3,
+      "legacyMediaId": 597,
+      "originalName": "Brandon2 Siurana 2016 Spain.jpg",
+      "providerReference": "3d1d7d2a69341508b61bb88dff8c14617fbe688a.jpeg",
+      "contentType": "image/jpeg",
+      "width": 4000,
+      "height": 2248,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/01/3d1d7d2a69341508b61bb88dff8c14617fbe688a.jpeg"
+    }
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Siurana is Catalan limestone sport climbing with precision: technical walls, steep endurance sectors, hard classics and a village-on-a-cliff setting above Cornudella de Montsant.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Siurana is a Catalan limestone sport-climbing destination above Cornudella de Montsant.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Siurana is one of Spain’s defining sport-climbing destinations. The setting is compact and dramatic, but the climbing is the real reason people return: crimps, pockets, exact feet and routes that ask for both power and control.\n\nThe area works well for serious sport climbers because the route density is high and the grade range is broad. It is also unforgiving when conditions are wrong, so season and aspect matter.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Siurana’s reputation is tied to modern sport climbing in Catalunya. Its hardest routes are internationally known, but the area’s staying power comes from the quality spread below the headline grades.\n\nThe village and cliffs create a strong sense of place. Good trips balance ambition with respect for a small local setting that sees heavy climbing traffic.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The source describes vertical technical walls and steep endurance routes across many sectors.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is limestone, often vertical to steep, with crimps, pockets and endurance sections. Some sectors are technical and fingery; others lean back and demand resistance.\n\nFootwork is central. Siurana rewards climbers who can stand on small features, move precisely and keep tension when the holds are not generous.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Siurana suits sport climbers who like technical movement and structured projecting. Intermediates get a lot from the 6s and 7s, while advanced climbers have major objectives in the 8s and 9s.\n\nIt can work for newer outdoor leaders if route choices are careful, but it is not a soft-touch venue.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The sourced scale is over 1,600 sport routes, with grades approximately from 5a to 9b+.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Siurana has more than 1,600 sport routes across roughly 30 sectors, with grades from about 5a to 9b+. That gives it one of the strongest grade spreads in this group.\n\nUse a current topo to match sectors to ability, aspect and desired style.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "The source supports spring and autumn as core Siurana seasons; the legacy packet also supports winter as a possible season and summer heat as a concern.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Spring and autumn are the core seasons, with winter also possible and summer a heat concern. Conditions shape performance here.\n\nOn warm days, chase shade and avoid turning technical limestone into a skin-and-friction fight.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring a sport rack, helmet, rope length matched to current topo data, belay glasses if useful and tape for skin. A stick clip can be helpful on selected routes.\n\nBecause sectors vary, check route length and lowering requirements before packing light.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "A car is recommended, with Barcelona the main airport reference for most travelling teams. Daily climbing logistics are simpler by car, especially when moving between sectors or combining Siurana with nearby Catalan crags.\n\nBase planning usually revolves around Cornudella de Montsant and the roads to the sectors.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Campsites, apartments, villas and refuge-style options can all fit a Siurana trip. Keep lodging broad until named options are checked.\n\nChoose a base that makes early starts, cooking and rest straightforward.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can include Cornudella, the Siurana village viewpoint, Montsant walks and slow recovery. Nearby Catalan climbing areas are tempting, but finger skin often benefits from a true day off.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Pick sectors by aspect and grade density. Siurana can feel brilliant in crisp conditions and punishing when hot.\n\nRespect parking, paths and village life. Brush tick marks and keep the crag quieter than the grades might make you feel.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "Check rope length, tie knots and watch crowded bases. Popular limestone can be polished, and technical falls may happen with feet unexpectedly cutting.\n\nHeat, dehydration and overuse are real trip risks on sustained sport days.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +226,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "What style is Siurana? Technical limestone sport climbing, from vertical walls to steep endurance routes.\n\nHow big is it? More than 1,600 routes across about 30 sectors.\n\nWhen should I go? Spring, autumn and suitable winter periods are best supported.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +247,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,76 +257,90 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "Siurana has over 1,600 sport routes with grades approximately from 5a to 9b+.",
-      "sourceRefs": ["s1"]
+      "text": "Siurana is represented as sport-climbing-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Siurana has climbing styles: sport.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Siurana rock types retained: limestone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Siurana retained grade range: 5a to 9b+.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Siurana retained route count: 1600.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Siurana retained sector count: 30.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Siurana best seasons retained: spring, autumn, winter.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
       "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "missing": "Check current sector access, parking pressure and guidebook counts before adding named route lists.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "Scale and grade span are supported by the retained Southclimb source; current access, parking and sector recommendations need local review.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": [],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
+    ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "Scale and grade span are supported by the retained Southclimb source; current access, parking and sector recommendations need local review."
     ]
   }
 }

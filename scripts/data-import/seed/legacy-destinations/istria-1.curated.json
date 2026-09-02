@@ -22,16 +22,36 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "deep-water-soloing"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "crimps", "overhangs"],
-    "settingTags": ["coastal"],
-    "bestSeasons": ["spring", "autumn", "winter"],
+    "climbingStyles": [
+      "sport",
+      "deep-water-soloing"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "crimps",
+      "overhangs"
+    ],
+    "settingTags": [
+      "coastal"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
     "avoidSeasons": [],
     "nearestAirports": [],
-    "accommodationTags": ["campsite", "hotel"],
-    "transportTags": ["car-recommended"],
-    "gradeRange": "With its breathtaking landscapes, diverse climbing routes, and vibrant climbing community, Istria offers an unforgettable experience for both beginners and seasoned climbers alike.",
+    "accommodationTags": [
+      "campsite",
+      "hotel"
+    ],
+    "transportTags": [
+      "car-recommended"
+    ],
+    "gradeRange": null,
     "routeCount": null,
     "problemCount": null,
     "sectorCount": 50,
@@ -40,189 +60,274 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Istria, Croatia",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Istria is a cross-border limestone region with more than 50 climbing locations across Croatia, Slovenia and nearby Italy.\n\nIt is a year-round-style destination in the practical sense: different orientations, coastal weather and shaded crags let you chase conditions rather than one fixed wall.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Istria is a cross-border peninsula climbing region with many sport crags and some deep-water soloing.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Istria is less a single crag than a climbing peninsula. Climb Istria lists more than 50 different climbing locations, with sport climbing, bouldering and deep-water soloing spread across the region.\n\nThat variety is the strength. You can climb shady summer sectors, coastal limestone, inland caves and classic sport walls without changing destination entirely. The tradeoff is that a car and recent local information matter.\n\nThis destination works best as a regional entry. Exact grades and route counts belong to individual venues, not one broad peninsula summary.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Istria has become known through a network of strong crags rather than one destination label. Nearby names such as Osp, Misja Pec and coastal Croatian venues have helped shape the wider region into a serious sport-climbing base.\n\nThe local scene is active, with access notes, rebolting and new first ascents appearing in regional updates. That is useful, but it also means old static information should not drive daily decisions.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The local guide source reports more than 50 climbing locations in Istria; legacy text supports limestone, sport climbing and DWS.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The climbing is mainly limestone, with crimps, tufas, overhangs, caves and coastal features depending on the area. Some venues are shady and steep; others are better in cooler weather or morning sun.\n\nDeep-water soloing and bouldering add variety, but sport climbing is the main reason most travelling climbers come.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
-      "status": "enriched",
-      "body": "The area suits sport climbers who want multiple nearby crags with different orientations; DWS needs separate conditions judgment.",
-      "sourceRefs": ["s1"],
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Istria suits climbers who like moving around and choosing conditions. It is good for sport climbers, mixed groups and repeat visitors who want more than one crag personality in a trip.\n\nIt is less ideal if you want all climbing walkable from one apartment. The region is broad and rewards mobility.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["Need a guidebook-backed grade range and route count for the region."]
+      "heading": "Grades and Sectors",
+      "status": "mixed",
+      "body": "The reliable scale fact is regional, not grade-specific: more than 50 climbing locations. The previous broad grade text has been removed because it did not describe a verifiable grade range.\n\nUse local topos for exact grade spread. The region includes too many different venues for a responsible single grade sentence from the prepared material.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "Need a guidebook-backed grade range and route count for the region."
+      ]
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
+      "heading": "Best Season",
       "status": "enriched",
-      "body": "Climb Istria presents the region as year-round because different wall orientations allow seasonal choice; spring, autumn and winter are assigned conservatively.",
-      "sourceRefs": ["s1"],
+      "body": "Istria can work across much of the year because the walls face different directions and the region has both coastal and inland options.\n\nSummer climbing is selective. Local updates point climbers toward shady crags in the heat, so do not plan a summer trip around exposed walls. Spring, autumn and winter are more straightforward.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Bring normal sport gear, helmet and a recent topo or local app. For deep-water soloing, bring condition judgement; for bouldering, confirm whether recent topos are available because coverage can be thinner.\n\nIf you are moving between countries or areas, keep the kit flexible and avoid planning from one outdated sector description.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
-      "status": "enriched",
-      "body": "A car is marked recommended because the source describes many locations spread across the region.",
-      "sourceRefs": ["s1"],
+      "heading": "Getting There",
+      "status": "mixed",
+      "body": "A car is recommended. More than 50 locations across the peninsula means the practical trip depends on moving between crags, towns and conditions.\n\nPublic transport may connect larger towns, but it will not give efficient daily crag access.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
-      "status": "legacy",
-      "body": "The legacy packet mentions hotels and campsites as accommodation options.",
-      "sourceRefs": ["legacy"],
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Hotels and campsites are supported by the prepared material, and the region also has plenty of general visitor accommodation. Pick a base near the cluster you want most.\n\nFor a first trip, prioritize driving time to crags over postcard distance to the coast. The right base saves energy every day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "mixed",
+      "body": "Rest days can use the coast, old towns, food, national parks and short hikes. Rovinj, Pula and Porec are natural non-climbing anchors on the Croatian side.\n\nBecause the region is broad, a rest day can also be a relocation day if conditions point to a different cluster.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Use recent local access information. Regional updates on access, rebolting and new activity are a sign that the area is active and not static.\n\nIn summer, choose shady crags and start early. In cooler seasons, chase sun and dry rock.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "enriched",
-      "body": "DWS and coastal crags need specific local condition checks before publication.",
-      "sourceRefs": ["s1"],
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Wear a helmet, check fixed gear and pay attention to local access notes. Active rebolting does not mean every route is freshly equipped.\n\nFor deep-water soloing, inspect sea conditions, depth, exits and weather. Coastal limestone can make consequences hard to read from above.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "costs",
-      "heading": "Costs",
+      "heading": "Costs and Budget",
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "What style is Istria? Mainly sport climbing on limestone, with bouldering and deep-water soloing also present.\n\nHow many locations are there? The prepared facts keep more than 50.\n\nDo I need a car? Yes for a normal climbing trip.\n\nWhen should I go? Spring, autumn and winter are simplest; summer requires shade tactics.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, deep-water-soloing.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Sector count: 50.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Istria, Croatia",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Istria is a cross-border peninsula climbing region with many sport crags and some deep-water soloing.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The local guide source reports more than 50 climbing locations in Istria; legacy text supports limestone, sport climbing and DWS.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The area suits sport climbers who want multiple nearby crags with different orientations; DWS needs separate conditions judgment.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climb Istria presents the region as year-round because different wall orientations allow seasonal choice; spring, autumn and winter are assigned conservatively.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "A car is marked recommended because the source describes many locations spread across the region.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet mentions hotels and campsites as accommodation options.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "DWS and coastal crags need specific local condition checks before publication.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -263,11 +368,20 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [
+      "Removed unsupported broad gradeRange text from facts."
+    ],
     "notes": [
       "Corrected legacy-normalized settingTags by not treating the Istria peninsula as an island.",
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 1338
+    }
   }
 }

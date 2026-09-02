@@ -22,15 +22,42 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "bouldering", "multi-pitch"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "overhangs", "pockets"],
-    "settingTags": ["gorge-canyon", "mountain"],
-    "bestSeasons": ["spring", "autumn", "winter"],
+    "climbingStyles": [
+      "sport",
+      "bouldering",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "overhangs",
+      "pockets"
+    ],
+    "settingTags": [
+      "gorge-canyon",
+      "mountain"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
     "avoidSeasons": [],
-    "nearestAirports": ["Barcelona"],
-    "accommodationTags": ["hotel", "refuge-hut", "villa"],
-    "transportTags": ["car-recommended", "flight-access", "walkable-local-access"],
+    "nearestAirports": [
+      "Barcelona"
+    ],
+    "accommodationTags": [
+      "hotel",
+      "refuge-hut",
+      "villa"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access",
+      "walkable-local-access"
+    ],
     "gradeRange": "hard 7th to lower 8th grade at Paret de les Bruixes; easier and multipitch routes also present",
     "routeCount": null,
     "problemCount": null,
@@ -40,185 +67,263 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Terradets, Spain",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Terradets is Catalan limestone in a gorge setting north of Lleida, famous for hard sport climbing at Paret de les Bruixes and long multipitch terrain nearby.\n\nIt is a winter and shoulder-season venue for climbers who like steep stamina, tufas, pockets and technical limestone logistics.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Terradets is a Catalan limestone gorge destination north of Lleida.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Terradets sits in the southern Pyrenean runoffs, in the wider Lleida climbing belt. The name often points first to Paret de les Bruixes, a steep sport sector known for hard seventh- and lower eighth-grade routes, but the area has more than one personality.\n\nParet de les Bagasses brings the bigger wall: a limestone face up to around 500 metres, with multipitch history and a very different day out. Around Cellers, the logistics are compact enough that accommodation, station access and crag movement can line up well.\n\nThe climbing is conditions-sensitive. Shade, fog from the reservoir, polished rock and winter friction all matter. Terradets rewards climbers who are willing to wait for the right hour rather than rushing onto the wall.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Terradets belongs to the classic Lleida sport-climbing landscape, alongside names such as Camarasa and Sant Llorenc de Montgai. Its modern reputation is tied strongly to Les Bruixes and the wave of hard sport development there.\n\nThe older big-wall identity has not disappeared. Paret de les Bagasses keeps Terradets connected to long-route climbing as well as redpoint sport.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "Climb Europe supports a limestone gorge with the 500 m Paret de les Bagasses buttress; legacy evidence adds hard sport climbing at Paret de les Bruixes and multipitch routes.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is limestone, with steep tufas, pockets and overhangs at the sport sectors, plus bigger multipitch walls nearby. Les Bruixes is the power-endurance face: pumpy, polished in places and best when friction is good.\n\nParet de les Bagasses gives a different scale, with long routes on a 500-metre wall. Treat those days with multipitch seriousness, not sport-sector habits.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
+      "heading": "Who Is It For",
       "status": "legacy",
-      "body": "Legacy evidence says Terradets is known for hard sport climbing but also has easier grades and quality multipitch routes.",
-      "sourceRefs": ["legacy"],
+      "body": "Terradets suits strong sport climbers first, especially those comfortable in the hard seventh and lower eighth grades. That is where Les Bruixes has its clearest reputation.\n\nIt can also work for climbers seeking easier routes or multipitch objectives, but they should plan carefully rather than assuming the famous sector will fit everyone.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
-      "status": "legacy",
-      "body": "The gradeRange remains a sourced legacy prose summary because it is sector-specific rather than a full destination distribution.",
-      "sourceRefs": ["legacy"],
+      "heading": "Grades and Sectors",
+      "status": "mixed",
+      "body": "The safest grade statement is sector-specific: Paret de les Bruixes is known for hard seventh- and lower eighth-grade sport climbing, while easier routes and multipitch climbs are also present.\n\nAvoid treating Terradets as one simple grade spread or route-count number; the character changes significantly by sector.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
+      "heading": "Best Season",
       "status": "legacy",
-      "body": "Legacy evidence supports late autumn and winter for Les Bruixes, plus autumn and spring for Bruixes Norte and Paret de les Bagasses.",
-      "sourceRefs": ["legacy"],
+      "body": "Late autumn and winter are strong for Les Bruixes, where shade and polished rock make friction important. Spring and autumn can work well across the wider area.\n\nBecause of the nearby reservoir, sectors can stay foggy or humid until late morning. Do not judge the whole day too early.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "For sport climbing, bring a normal rack, helmet and a rope length checked against the current topo. For Bagasses-style multipitch routes, bring the correct multipitch and descent equipment.\n\nGood shoes and skin management matter on polished limestone. Cold friction can be your best piece of equipment.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
+      "heading": "Getting There",
       "status": "legacy",
-      "body": "Legacy evidence says Barcelona is about three hours by car and that the Cellers refuge can work without a car for Paret de les Bruixes.",
-      "sourceRefs": ["legacy"],
+      "body": "Barcelona is the main airport reference for Terradets, around three hours by car. A car is still the simplest way to use the wider Lleida area.\n\nCellers has a railway station, which makes Terradets more accessible than many Catalan crags, but a car gives much better flexibility between sectors and nearby destinations.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
+      "heading": "Stay and Eat",
       "status": "legacy",
-      "body": "Legacy evidence mentions a refuge and hotel in Cellers plus rental places in nearby villages.",
-      "sourceRefs": ["legacy"],
+      "body": "Cellers is the closest practical base, with refuge and hotel options near the lake, plus rental places in nearby villages. Staying close is useful in winter because conditions can change by the hour.\n\nIf you are combining Terradets with other Lleida crags, a slightly broader base can work, but expect to drive.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "legacy",
+      "body": "Rest days can stay local in Cellers and the surrounding villages, or become short drives through the Lleida climbing region.\n\nUse poor-friction or foggy mornings for slower starts. Terradets does not always reward rushing.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "legacy",
+      "body": "Plan around shade, humidity and friction. Les Bruixes can stay foggy or damp until around midday, and polished sections feel much better in cold conditions.\n\nKeep alternatives ready. Nearby Lleida crags can save a trip when Terradets itself is not in the mood.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Polished limestone, long routes and multipitch descents are the main issues. Wear a helmet and make route-length checks before lowering or committing to a longer line.\n\nOn big-wall routes, bring proper multipitch systems and do not treat the day like a roadside sport session.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
-      "heading": "Costs",
+      "heading": "Costs and Budget",
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "What is Terradets best known for? Hard sport climbing at Paret de les Bruixes.\n\nWhen is best? Late autumn and winter for Les Bruixes, with spring and autumn useful more broadly.\n\nDo I need a car? A car is best, though Cellers has rail access.\n\nIs there multipitch climbing? Yes, especially around Paret de les Bagasses.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, bouldering, multi-pitch.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Terradets, Spain",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Terradets is a Catalan limestone gorge destination north of Lleida.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Climb Europe supports a limestone gorge with the 500 m Paret de les Bagasses buttress; legacy evidence adds hard sport climbing at Paret de les Bruixes and multipitch routes.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Legacy evidence says Terradets is known for hard sport climbing but also has easier grades and quality multipitch routes.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The gradeRange remains a sourced legacy prose summary because it is sector-specific rather than a full destination distribution.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence supports late autumn and winter for Les Bruixes, plus autumn and spring for Bruixes Norte and Paret de les Bagasses.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence says Barcelona is about three hours by car and that the Cellers refuge can work without a car for Paret de les Bruixes.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence mentions a refuge and hotel in Cellers plus rental places in nearby villages.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     }
   ],
   "editorialGaps": [
@@ -259,10 +364,17 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 432
+    }
   }
 }

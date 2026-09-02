@@ -191,7 +191,10 @@ describe('domain grid block resolvers', () => {
       id: 12345,
       name: 'Context Guide',
       slug: 'context-guide',
+      section: 'team' as const,
       active: true,
+      updatedAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
     }
 
     await expect(
@@ -585,7 +588,9 @@ describe('domain grid block resolvers', () => {
       id: 6789,
       title: 'Context Trip',
       slug: 'context-trip',
-      state: 'published',
+      state: 'published' as const,
+      updatedAt: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
     }
 
     await expect(

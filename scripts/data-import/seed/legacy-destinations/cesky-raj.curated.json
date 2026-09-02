@@ -1,7 +1,7 @@
 {
   "slug": "cesky-raj",
   "title": "Český Ráj",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,10 +22,22 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["trad", "sport"],
-    "rockTypes": ["sandstone"],
-    "rockFeatures": ["slabs", "cracks", "overhangs"],
-    "settingTags": ["forest", "valley"],
+    "climbingStyles": [
+      "trad",
+      "sport"
+    ],
+    "rockTypes": [
+      "sandstone"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "cracks",
+      "overhangs"
+    ],
+    "settingTags": [
+      "forest",
+      "valley"
+    ],
     "bestSeasons": [],
     "avoidSeasons": [],
     "nearestAirports": [],
@@ -37,110 +49,160 @@
     "sectorCount": 30,
     "destinationScope": "area"
   },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 14,
+      "legacyMediaId": 430,
+      "originalName": "Prachov, Český ráj, Czech Paradise.JPG",
+      "providerReference": "38828c76145980f148605087e816a015f9de30c8.jpeg",
+      "contentType": "image/jpeg",
+      "width": 504,
+      "height": 480,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/01/38828c76145980f148605087e816a015f9de30c8.jpeg"
+    }
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Cesky Raj is Czech sandstone-tower climbing on a huge scale: more than 30 sectors, thousands of formations and a tradition where movement, restraint and local ethics matter as much as strength.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Cesky Raj is a Czech sandstone-tower region with many separate rock towns rather than one concentrated crag.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Cesky Raj is not one crag. It is a landscape of rock towns, towers and forested sandstone spread across the Bohemian Paradise region.\n\nThe climbing has a different rhythm from modern sport areas. Routes can be adventurous, protection can be specific to the local tradition, and weather has a direct say in what is acceptable to climb. It is a brilliant destination for climbers who want history and atmosphere with their routes.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "The region’s identity is tied to Czech sandstone climbing culture. Towers, summits, strict ethics and local technique give Cesky Raj a heritage that cannot be reduced to a route count.\n\nThat heritage is also the reason to arrive prepared. The right behaviour is part of the climb: know the local rules, keep the rock dry and treat the area as a cultural landscape, not just a training venue.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The cited guide describes more than 30 sectors, 3,000 rock formations and about 18,000 routes within a 40 km range.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is sandstone, often in tower form, with slabs, cracks, walls and occasional steeper features. It rewards footwork, body position and calm route reading.\n\nSandstone here should be treated conservatively. Damp rock is fragile, and protection style can differ sharply from bolt-heavy sport climbing.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Cesky Raj suits experienced outdoor climbers who are curious about traditional sandstone climbing. Sport climbers can find relevant terrain, but the destination is strongest for people who respect local style.\n\nIt is less suitable as a casual first outdoor trip unless guided or paired with someone who knows Czech sandstone practice.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The cited guide describes more than 30 sectors, 3,000 rock formations and about 18,000 routes within a 40 km range.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Cesky Raj spans more than 30 sectors, about 3,000 formations and roughly 18,000 routes within a 40 km range. Those numbers make it a region-scale destination, not a single crag day.\n\nExact grade planning belongs in a current local guide because style, protection and restrictions matter as much as numeric difficulty.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "status": "mixed",
+      "body": "Dry conditions are essential on Cesky Raj sandstone, and the best timing depends on current weather rather than a simple calendar rule.\n\nAvoid climbing after rain or when towers hold moisture. If in doubt, rest or choose an activity that does not damage the rock.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Gear is destination-specific here. Do not assume a standard sport rack is enough, and do not assume every line is protected in a familiar way.\n\nUse a current local topo and local advice for knots, slings, rope length, helmet choice and any sector-specific requirements.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "Cesky Raj is a spread-out sandstone region rather than a single roadside crag. A car is useful for linking sectors and bases.\n\nPublic transport may get climbers into towns, but climbing-day logistics need a current local plan.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
+      "heading": "Stay and Eat",
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Stay and Eat."
+      ]
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days are easy to justify in a region this scenic. Walk the rock towns, visit viewpoints and let the sandstone dry properly after wet weather.\n\nBecause the landscape is part of the appeal, a non-climbing day does not feel like wasted time.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Learn the local sandstone rules before tying in. The area’s climbing quality depends on restraint: dry rock only, accepted protection methods and respect for closures or protected zones.\n\nPick objectives by style and experience, not by grade alone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "The main safety issues are sandstone fragility, unfamiliar protection, tower descents and weather. A route that looks moderate on paper can feel serious if the protection style is new.\n\nClimb with current information, wear a helmet where appropriate and do not push onto damp rock.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +210,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "Is Cesky Raj a sport-climbing destination? It is a mixed sandstone region with sport and traditional climbing, but the local tower tradition is central.\n\nHow big is it? More than 30 sectors, about 3,000 formations and roughly 18,000 routes sit within the wider region.\n\nCan I climb after rain? No. Treat damp sandstone as off limits.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +231,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,84 +241,78 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "The cited Cesky Raj guide reports more than 30 sectors, 3,000 formations and about 18,000 routes.",
-      "sourceRefs": ["s1"]
+      "text": "Český Ráj is represented as mixed-climbing-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Český Ráj has climbing styles: trad, sport.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Český Ráj rock types retained: sandstone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Český Ráj retained route count: 18000.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Český Ráj retained sector count: 30.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "season",
-      "missing": "Needs a reputable source before writing season content.",
-      "priority": "high"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
       "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "missing": "Human review should tighten Czech sandstone ethics, wet-rock closures and protected-area rules before publication.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "Scale is well supported, but current access, protection rules and weather restrictions require local review.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": [
-      "SEO description is empty in the packet.",
-      "Related events are intentionally excluded for this pass; relatedTrips is empty by instruction."
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
     ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "SEO description is empty in the packet.",
+      "Related events are intentionally excluded for this pass; relatedTrips is empty by instruction.",
+      "Scale is well supported, but current access, protection rules and weather restrictions require local review."
     ]
   }
 }

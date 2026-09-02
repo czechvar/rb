@@ -22,15 +22,45 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch"],
-    "rockTypes": ["limestone", "sandstone"],
-    "rockFeatures": ["overhangs", "slabs"],
-    "settingTags": ["gorge-canyon", "mountain"],
-    "bestSeasons": ["spring", "autumn", "winter"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": ["Malaga"],
-    "accommodationTags": ["campsite", "guesthouse-b-and-b", "apartment", "hostel", "rural-cottage"],
-    "transportTags": ["car-recommended", "public-transport-possible", "flight-access"],
+    "climbingStyles": [
+      "sport",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "limestone",
+      "sandstone"
+    ],
+    "rockFeatures": [
+      "overhangs",
+      "slabs"
+    ],
+    "settingTags": [
+      "gorge-canyon",
+      "mountain"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Malaga"
+    ],
+    "accommodationTags": [
+      "campsite",
+      "guesthouse-b-and-b",
+      "apartment",
+      "hostel",
+      "rural-cottage"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "public-transport-possible",
+      "flight-access"
+    ],
     "gradeRange": null,
     "routeCount": 3600,
     "problemCount": null,
@@ -40,189 +70,276 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Andalucia, Spain",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Andalucia is southern Spain climbing at regional scale: El Chorro, Malaga crags, Granada limestone, Cadiz sandstone and winter sun across thousands of routes.\n\nTreat it as a region, not a single crag. The right base and season decide the quality of the trip.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Andalucía is a large region, so this enrichment keeps the entry partial and treats sub-area facts as aggregated.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Andalucia is one of the broadest climbing entries in this batch. El Chorro is the name most climbers know first, but the region also includes Malaga, Granada, Cadiz, Jaen, Cordoba and Sevilla-area crags.\n\nMost climbing is on limestone, with sandstone at San Bartolo and a mix of single-pitch sport, multipitch routes and bigger gorge objectives. Climb Europe reports more than 3,600 routes in the Andalucia sport guidebook, with additional guidebooks for major subregions.\n\nFor a Rockbusters destination page, the honest frame is regional. Pick the base around the trip you actually want: El Chorro without much driving, Granada for broad sport climbing, or a road-trip plan linking several areas.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Andalucia combines climbing history with major cultural history. For climbers, El Chorro and the Caminito del Rey gorge are the most recognizable anchors; for rest days, Malaga, Granada, Seville and Cordoba carry the wider regional pull.\n\nThe reconstruction and popularity of Caminito del Rey also changed how some gorge access is managed, so current local information matters around El Chorro.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
-      "status": "legacy",
-      "body": "Legacy evidence supports limestone and sandstone sport climbing, including well-known areas around Málaga/El Chorro and Granada/Cádiz.",
-      "sourceRefs": ["legacy"],
+      "heading": "Rock and Style",
+      "status": "mixed",
+      "body": "The region is mostly limestone, with the important sandstone exception of San Bartolo. Expect bolted sport routes, some traditional gear requirements, multipitch lines and large gorge walls.\n\nEl Chorro alone has hundreds of routes and multipitch lines up to 10 pitches. Granada adds many crags and high walls; Cadiz and Grazalema add their own style and longer objectives.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
-      "status": "legacy",
-      "body": "The source mix supports sport and multipitch climbers, but the region should be split for precise buyer-facing recommendations.",
-      "sourceRefs": ["legacy"],
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Andalucia suits climbers who want choice. Beginners can find friendly single-pitch venues, intermediate climbers get huge mileage, and experienced teams can add multipitch and harder sport days.\n\nBecause the region is so large, it is less suitable for vague planning. A good trip needs a clear base and a realistic driving radius.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
-      "status": "legacy",
-      "body": "Legacy taxonomy reports about 3,600 routes, but no reliable region-wide gradeRange is assigned.",
-      "sourceRefs": ["legacy"],
+      "heading": "Grades and Sectors",
+      "status": "mixed",
+      "body": "Climb Europe reports more than 3,600 routes in the Andalucia sport guidebook across a wide range of grades. El Chorro alone has more than 650 routes, and the wider Granada area is reported with well over 2,000 routes.\n\nThe v3 facts keep the 3,600-route regional count but avoid a single numeric grade span. The grade range changes too much by subregion to compress responsibly.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
-      "status": "legacy",
-      "body": "Legacy evidence supports autumn through spring and warns that summer can be prohibitively hot on south-facing walls.",
-      "sourceRefs": ["legacy"],
+      "heading": "Best Season",
+      "status": "mixed",
+      "body": "Autumn through spring is the reliable window. Winter is a major draw, with mild conditions in many lowland areas and the possibility of combining climbing with Sierra Nevada snow days.\n\nSummer is often too hot, especially on south-facing walls. Plan around shade and altitude if you travel outside the main season.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Bring sport gear, helmet and a current guidebook for the exact area. Some routes require traditional gear, and multipitch days need proper anchor, descent and rope planning.\n\nDo not use a regional summary as a rack list. El Chorro, San Bartolo, Granada and Grazalema are different enough to require route-specific preparation.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
-      "status": "legacy",
-      "body": "Legacy evidence supports Málaga airport, direct train access to El Chorro, and a car for broader exploration.",
-      "sourceRefs": ["legacy"],
+      "heading": "Getting There",
+      "status": "mixed",
+      "body": "Malaga is the main airport for many Andalucia climbing trips. El Chorro is unusually accessible by train from Malaga, and many crags are walkable from the village.\n\nA car opens the wider region. If the plan includes Granada, Cadiz, Jaen or several Malaga-area crags, driving flexibility becomes much more important.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
-      "status": "legacy",
-      "body": "Legacy evidence includes climber hostels/campsites in El Chorro plus apartments and rural cottages around Andalucía.",
-      "sourceRefs": ["legacy"],
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "El Chorro has climber-friendly hostels, campsites and village accommodation. Elsewhere, apartments, rural cottages and guesthouses make more sense depending on the subregion.\n\nStay close to the main climbing target. Andalucia is large enough that a beautiful base can still be a poor climbing base.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "mixed",
+      "body": "Rest days are a strength: Caminito del Rey, Malaga, Granada, Seville, Cordoba, local food and Sierra Nevada views all fit naturally around climbing.\n\nIf you are moving between subregions, use rest days for travel rather than burning a climbing day on long drives.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Check current access around El Chorro and Caminito del Rey before planning gorge sectors. For El Chorro, use the latest local guidebook and access notes before committing to specific routes.\n\nIn a region this large, do not chase every famous crag. Build a tight plan around one or two bases.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Heat, multipitch descents, older fixed gear and mixed protection are the main concerns. Wear a helmet and read the guidebook notes carefully.\n\nIn El Chorro and other gorge areas, access restrictions and walking-route rules can affect the climbing day. Check before you commit.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
-      "heading": "Costs",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "heading": "Costs and Budget",
+      "status": "enriched",
+      "body": "Budget depends heavily on base and transport. El Chorro can be efficient without a car; a wider Andalucia trip needs car hire, fuel and more accommodation planning.\n\nGuidebooks are also part of the budget because the region is split across several major areas.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "When should I go? Autumn through spring.\n\nIs El Chorro the whole destination? No. It is the best-known area, but Andalucia includes many other crags.\n\nCan I climb without a car? El Chorro is one of Spain's better car-light options. The wider region is not.\n\nHow many routes are covered? The regional sport guidebook includes more than 3,600 routes.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, multi-pitch.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone, sandstone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 3600.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Andalucia, Spain",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Andalucía is a large region, so this enrichment keeps the entry partial and treats sub-area facts as aggregated.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Legacy evidence supports limestone and sandstone sport climbing, including well-known areas around Málaga/El Chorro and Granada/Cádiz.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The source mix supports sport and multipitch climbers, but the region should be split for precise buyer-facing recommendations.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy taxonomy reports about 3,600 routes, but no reliable region-wide gradeRange is assigned.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence supports autumn through spring and warns that summer can be prohibitively hot on south-facing walls.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence supports Málaga airport, direct train access to El Chorro, and a car for broader exploration.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence includes climber hostels/campsites in El Chorro plus apartments and rural cottages around Andalucía.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     }
   ],
   "editorialGaps": [
@@ -273,10 +390,17 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 1393
+    }
   }
 }

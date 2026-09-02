@@ -14,9 +14,9 @@ export interface LocationBlockProps {
    *  Omitted when not provided. */
   eyebrow?: string
   /** Optional hero image for the left photo column.
-   *  Accepts a resolved Media object, a Payload numeric ID, or null/undefined.
+   *  Accepts a resolved Media object, a Payload media ID, or null/undefined.
    *  NOT a raw URL string — pass a resolved Media object for the URL to render. */
-  image?: number | Media | null | undefined
+  image?: string | Media | null | undefined
   /** Alt text override when the resolved `image` has no alt field set. */
   imageAlt?: string
 }

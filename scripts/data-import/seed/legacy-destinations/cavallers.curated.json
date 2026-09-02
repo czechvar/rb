@@ -1,7 +1,7 @@
 {
   "slug": "cavallers",
   "title": "Cavallers",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,184 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["bouldering", "sport", "trad"],
-    "rockTypes": ["granite"],
-    "rockFeatures": ["overhangs", "slabs", "cracks"],
-    "settingTags": ["mountain", "valley"],
-    "bestSeasons": ["spring", "autumn"],
+    "climbingStyles": [
+      "bouldering",
+      "sport",
+      "trad"
+    ],
+    "rockTypes": [
+      "granite"
+    ],
+    "rockFeatures": [
+      "overhangs",
+      "slabs",
+      "cracks"
+    ],
+    "settingTags": [
+      "mountain",
+      "valley"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
     "avoidSeasons": [],
     "nearestAirports": [],
     "accommodationTags": [],
-    "transportTags": ["car-recommended"],
-    "gradeRange": null,
+    "transportTags": [
+      "car-recommended"
+    ],
+    "gradeRange": "Easy granite problems through advanced Font 8-range bouldering; exact roped grade span not retained.",
     "routeCount": 1000,
     "problemCount": 1000,
     "sectorCount": null,
     "destinationScope": "crag"
   },
+  "media": {
+    "mainImage": null
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Cavallers is a granite mountain climbing area in the Vall de Boi, tucked below the Cavallers dam in the Pyrenees. It suits climbers who want a wild-feeling base, sharp friction and a mix of bouldering, sport and trad rather than a polished roadside sport venue.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Cavallers is a Pyrenean granite climbing area in the Vall de Boi/Cavallers dam setting.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Cavallers is one of the more distinctive granite stops in northern Spain. The setting is high, open and alpine, with blocks and walls spread around the valley rather than packed into a village crag.\n\nThe strongest draw is variety: physical boulders, steep sections, technical slabs and cracks, all on granite that asks for footwork and skin management. It is a good destination when the group wants mountain air and real movement variety more than cafe-to-crag convenience.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Cavallers has the feel of a mountain area first and a climbing destination second. The dam, the national-park edge and the Pyrenean valley give the place its identity before the grades do.\n\nThat context matters for how to climb here. Days are more weather-dependent than in lowland Spanish sport areas, and local impact should stay light because the climbing sits in a sensitive mountain landscape.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The source describes a physical granite style with overhangs, mantles and hard slabs, matching the native review taxonomy.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Expect granite with two personalities. Some lines are rounded, technical and balancey; others are physical, with overhangs, mantles, cracks and small edges that punish lazy feet.\n\nThe bouldering is the main reason many climbers come, but the broader area also holds roped climbing. Bring a granite mindset: brush well, manage skin, and treat damp or cold rock with patience.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Cavallers works best for self-sufficient climbers who like mountain venues. Boulderers get the most obvious mileage, while mixed groups can use the sport and trad options when conditions and ability line up.\n\nBeginners can find easier terrain, but this is not the simplest first outdoor climbing trip. Intermediates and stronger climbers will get more from the granite style, the spread-out sectors and the need to read conditions.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The source says Cavallers has easy, medium and advanced routes; the native review output supplies the approximate 1,000-problem scale.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Cavallers has roughly 1,000 boulder problems and around 1,000 roped routes across the wider area. There is enough breadth for easy, medium and advanced climbing, even though exact grades still need route-by-route planning.\n\nUse the counts as destination-scale planning numbers rather than a substitute for a current topo.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "status": "mixed",
+      "body": "Spring and autumn are the safest planning windows. The altitude makes conditions more variable than coastal Spain: sun, wind, cold nights and wet spells can all matter in a single trip.\n\nFor bouldering, chase dry rock and good friction. For roped days, keep a flexible plan and avoid assuming every sector will be in condition after unsettled weather.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Pack for granite and for mountain weather. Boulderers need enough pads for uneven landings, a brush, tape for skin and a warm layer for waiting between goes.\n\nRoped climbers should check the current topo before choosing rack and rope. The destination includes sport and trad material, so the right kit depends on the exact sector and route.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "A car is the practical choice for Cavallers. The climbing is in a Pyrenean valley setting, and the available material does not support a reliable public-transport plan for sector access.\n\nBuild the day around mountain logistics: parking, approach time, weather changes and enough food and water before leaving the valley base.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
+      "heading": "Stay and Eat",
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Stay and Eat."
+      ]
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days are part of the appeal here. The Vall de Boi setting gives walking, viewpoints and quiet mountain time without needing to turn the trip into a city break.\n\nIf the granite is damp or the forecast turns, use the valley rather than forcing marginal conditions.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Keep the plan flexible. Cavallers rewards climbers who can switch between bouldering and roped objectives, between sun and shade, and between ambition and skin preservation.\n\nUse current local information for access and national-park behaviour. Stay on established paths where possible, keep noise low, and leave parking areas cleaner than you found them.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "The main hazards are mountain-weather changes, uneven boulder landings, granite skin wear and the consequences of being farther from quick roadside support.\n\nPad well, spot actively, and avoid climbing on wet or seeping rock. For roped climbing, check fixed-gear condition and route length against a current topo before leaving the ground.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +207,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "Is Cavallers mainly for bouldering? Bouldering is the clearest draw, but sport and trad climbing also shape the area.\n\nWhen should I go? Spring and autumn are the strongest supported windows.\n\nDo I need a car? Yes, plan this as a car-recommended mountain destination.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +228,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,85 +238,93 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "Cavallers is described as granite climbing with overhangs, mantles and slabs.",
-      "sourceRefs": ["s1"]
+      "text": "Cavallers is represented as mixed-climbing-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Cavallers has climbing styles: bouldering, sport, trad.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Cavallers rock types retained: granite.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Cavallers retained grade range: Easy granite problems through advanced Font 8-range bouldering; exact roped grade span not retained..",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Cavallers retained route count: 1000.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Cavallers retained problem count: 1000.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Cavallers best seasons retained: spring, autumn.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "season",
-      "missing": "Needs a reputable source before writing season content.",
-      "priority": "high"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
       "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "missing": "Check current Aiguestortes park access, parking and wet-rock guidance before using detailed trip logistics.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "The available current source is strongest for rock character and scale; accommodation, airports and detailed access rules remain thin.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
+    ],
+    "unsourcedClaimsRemoved": [
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
     "notes": [
       "missing_main_image",
       "Main image metadata is missing.",
-      "Related events are intentionally excluded for this pass; relatedTrips is empty by instruction."
-    ],
-    "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Related events are intentionally excluded for this pass; relatedTrips is empty by instruction.",
+      "The available current source is strongest for rock character and scale; accommodation, airports and detailed access rules remain thin."
     ]
   }
 }

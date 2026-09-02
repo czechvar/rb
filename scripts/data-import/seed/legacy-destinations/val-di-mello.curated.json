@@ -1,7 +1,7 @@
 {
   "slug": "val-di-mello",
   "title": "Val di Mello",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,198 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["trad", "multi-pitch", "sport", "bouldering"],
-    "rockTypes": ["granite"],
-    "rockFeatures": ["slabs", "cracks"],
-    "settingTags": ["mountain", "valley"],
-    "bestSeasons": ["summer", "autumn"],
+    "climbingStyles": [
+      "trad",
+      "multi-pitch",
+      "sport",
+      "bouldering"
+    ],
+    "rockTypes": [
+      "granite"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "cracks"
+    ],
+    "settingTags": [
+      "mountain",
+      "valley"
+    ],
+    "bestSeasons": [
+      "summer",
+      "autumn"
+    ],
     "avoidSeasons": [],
     "nearestAirports": [],
-    "accommodationTags": ["campsite", "refuge-hut", "villa"],
-    "transportTags": ["car-recommended"],
-    "gradeRange": "The rock is of great quality and as it is often weathered into fins and flutings which enables hard looking faces to be climbed also at moderate grades.",
+    "accommodationTags": [
+      "campsite",
+      "refuge-hut",
+      "villa"
+    ],
+    "transportTags": [
+      "car-recommended"
+    ],
+    "gradeRange": null,
     "routeCount": null,
     "problemCount": null,
     "sectorCount": null,
     "destinationScope": "area"
   },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 11,
+      "legacyMediaId": 429,
+      "originalName": "463999.JPG",
+      "providerReference": "fe674f24bd322c307929f1fdc9099a264b8ffbee.jpeg",
+      "contentType": "image/jpeg",
+      "width": 500,
+      "height": 375,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/01/fe674f24bd322c307929f1fdc9099a264b8ffbee.jpeg"
+    }
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Val di Mello is an alpine granite valley in Val Masino, built for climbers who like slabs, cracks, long walls and a mountain setting where bouldering and big routes can live in the same trip.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Val di Mello is an alpine granite valley in the Val Masino area, with climbing styles ranging from bouldering to long routes.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Val di Mello has a clean identity: granite, valley walls and a sense of scale. Expect towering walls, hundreds of long multi-pitch routes and features such as cracks, corners and grooves.\n\nThe destination is broader than one style. Bouldering, sport climbing, traditional routes and long multi-pitches all fit the area, so the best plan starts with a clear objective.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "The valley’s reputation comes from alpine granite climbing and the Val Masino context. It feels more like a mountain climbing landscape than a dense roadside sport area.\n\nThat gives the climbing atmosphere, but it also asks for judgement: weather, route length, descent and local rules matter.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The guidebook page describes towering granite walls, hundreds of long multi-pitch routes and many crack, corner and groove features.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is granite, often shaped into slabs, cracks, corners, grooves, fins and flutings. Walls reach up to about 800 metres, so scale varies from accessible climbing to serious long routes.\n\nExpect footwork, friction and route reading. Granite rewards efficient movement and punishes rushed decisions.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Val di Mello suits climbers who want granite technique and mountain character. Multi-pitch and trad teams get the clearest match, while boulderers and sport climbers can also find relevant objectives in the wider valley.\n\nBeginners should keep plans guided or conservative because the setting can become serious quickly.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The source describes hundreds of long routes and wall lengths up to about 800 m.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Val di Mello is about long granite climbing rather than a single grade headline. Expect hundreds of long routes and wall lengths that can reach major-day scale.\n\nPlan from a current guidebook and pick objectives by length, protection and descent as much as grade.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "The legacy packet says Val di Mello bouldering is suited to summer and that the best time for mountain lines is July to early autumn.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Summer and autumn are the main planning windows, with mountain lines best from July into early autumn. Conditions still depend on altitude, sun and weather patterns.\n\nAfter rain or cold spells, allow the granite and approaches to dry before committing to longer routes.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Gear depends heavily on the objective. Boulderers need pads; long-route teams need helmets, multi-pitch systems and any traditional protection required by the current topo.\n\nPack for mountain days: layers, water, descent information and enough margin for slow climbing.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "A car is recommended. The valley setting makes independent transport useful for bases, parking and weather pivots.\n\nCheck current access and parking rules before arrival because alpine valley management can change.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Val di Mello works best when the accommodation matches the objective. Campsites and valley bases suit cragging and shorter days; huts or simpler mountain bases make more sense when the plan involves longer granite routes.\n\nFor longer routes, early starts and simple recovery are more valuable than extra driving.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can be excellent without leaving the valley: walking, river time when appropriate, village meals and watching weather move across the granite walls.\n\nA true rest day is often the right call before another long route.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Match ambition to weather and descent. Val di Mello rewards climbers who read the whole day, not just the crux pitch.\n\nUse current local information for access, parking and protected-area behaviour.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "Mountain weather, route length, descent errors and protection choices are the main concerns. Wear helmets and keep a conservative time plan.\n\nFor bouldering, pad landings well; for long routes, know retreat options before leaving the ground.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +221,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "What style is Val di Mello? Granite climbing across bouldering, sport, trad and long multi-pitch routes.\n\nWhen is it best? Summer and autumn, with long mountain lines best from July into early autumn.\n\nAre there clear destination-wide grades? No clean grade range captures the whole area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +242,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,76 +252,69 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "The Val di Mello guidebook page describes solid granite walls with hundreds of long multi-pitch routes and many cracks, corners and grooves.",
-      "sourceRefs": ["s1"]
+      "text": "Val di Mello is represented as mixed-climbing-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Val di Mello has climbing styles: trad, multi-pitch, sport, bouldering.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Val di Mello rock types retained: granite.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Val di Mello best seasons retained: summer, autumn.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
       "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "missing": "Verify current access, parking, valley regulations and guidebook grades before adding specific route recommendations.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "The retained source supports granite character and long-route scale, but not route counts, grades or detailed logistics.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": [],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
+    ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "The retained source supports granite character and long-route scale, but not route counts, grades or detailed logistics."
     ]
   }
 }

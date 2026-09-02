@@ -22,125 +22,197 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch"],
-    "rockTypes": ["limestone", "dolomite"],
-    "rockFeatures": ["tufas", "overhangs", "pockets"],
-    "settingTags": ["mountain", "valley"],
-    "bestSeasons": ["spring", "autumn"],
-    "avoidSeasons": ["summer"],
+    "destinationScope": "crag",
+    "climbingStyles": [
+      "sport",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "limestone",
+      "dolomite"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "overhangs",
+      "pockets"
+    ],
+    "settingTags": [
+      "mountain",
+      "valley"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
     "nearestAirports": [],
-    "accommodationTags": ["campsite", "hotel", "guesthouse-b-and-b", "apartment"],
-    "transportTags": ["car-recommended"],
+    "accommodationTags": [
+      "campsite",
+      "hotel",
+      "guesthouse-b-and-b",
+      "apartment"
+    ],
+    "transportTags": [
+      "car-recommended"
+    ],
     "gradeRange": null,
     "routeCount": null,
     "problemCount": null,
-    "sectorCount": 50,
-    "destinationScope": "crag"
+    "sectorCount": 50
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Hero",
-      "status": "legacy",
-      "body": "Arco, Italy",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "A classic Lake Garda and Sarca Valley climbing base, with accessible limestone sport crags, multi-pitch walls and deep Italian climbing infrastructure.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Arco and the Sarca Valley near Lake Garda are long-established Italian climbing destinations.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Arco is one of the most established climbing bases in northern Italy. The town sits by Lake Garda and the Sarca Valley, with sport crags, multi-pitch walls, shops, campsites and apartments all feeding into a very easy climbing-week rhythm.\n\nThe strength of Arco is not one single style. It is the density: accessible crags, longer walls, different grades and enough non-climbing infrastructure to make mixed groups and longer stays straightforward.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "status": "enriched",
+      "body": "Arco has a long climbing reputation around Lake Garda and the Sarca Valley. It is not a new discovery destination; it is a mature European climbing base with guide services, climbing shops and a strong visitor rhythm.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock and climbing character",
       "status": "mixed",
-      "body": "Local guide material supports clean, accessible limestone crags; the legacy packet adds sport crags and multipitch walls around Arco.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The structured rock types are limestone and dolomite. The public climbing picture is clean, accessible limestone crags for sport climbing plus bigger walls for multi-pitch days.\n\nExpect a broad mix rather than one narrow style: pockets, tufas, overhangs and longer wall climbing all sit within the Arco area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who it suits",
       "status": "legacy",
-      "body": "The legacy packet says Arco has a wide range of grades, climbing styles and accessible crags.",
-      "sourceRefs": ["legacy"],
+      "body": "Arco suits a wide range of climbers because the area has many grades, styles and access levels. It can work for sport climbers, multi-pitch teams, families with non-climbing rest days and groups that need reliable accommodation choices.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
       "heading": "Grades and difficulty",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced grades and difficulty content found for this pass."]
+      "status": "enriched",
+      "body": "Arco is too broad for one neat grade sentence. Plan it as a large sport-climbing area with many sectors and a wide spread of styles, from friendly single-pitch limestone to steeper and more serious objectives.\n\nPick sectors by grade, aspect and length rather than assuming the whole destination climbs the same way.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No clean area-wide grade range was available in the processed sources."
+      ]
     },
     {
       "key": "season",
       "heading": "Season and conditions",
       "status": "mixed",
-      "body": "Spring and autumn are the conservative best-season tags; summer can be better for Lake Garda activities than climbing in full heat.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Spring and autumn are the conservative climbing seasons. Summer can be excellent for Lake Garda life, but full heat makes climbing conditions more selective.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "status": "enriched",
+      "body": "Bring normal sport gear for cragging and multi-pitch kit for longer Sarca Valley objectives. Because Arco covers many route lengths and styles, choose rope and rack from the specific topo rather than treating the whole area as one crag.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
       "heading": "Transport and access",
-      "status": "legacy",
-      "body": "The legacy packet treats a car as useful for moving between crags in the Lake Garda area.",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "A car is useful for moving between crags around Lake Garda and the Sarca Valley. The town itself is service-rich, but the climbing is spread across more than one roadside sector.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
       "heading": "Where to stay",
-      "status": "legacy",
-      "body": "The legacy packet lists campsites, apartments, guesthouses and hotels.",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "Arco is easy on logistics: campsites, apartments, guesthouses and hotels all fit the area. That makes it one of the more straightforward destinations in this batch for mixed groups.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "status": "mixed",
+      "body": "Lake Garda is the rest-day engine: swimming, walking, town time and food all work without a big transfer. Summer may be better used for these activities than for hard climbing in the sun.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
       "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "status": "mixed",
+      "body": "Use Arco's infrastructure rather than fighting it. Pick objectives from a current topo, match the day to sun and wind, and keep a longer-route backup plan separate from sport-crag days.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "status": "mixed",
+      "body": "Longer routes and busy popular crags need normal alpine-limestone caution: helmets where appropriate, clear descent information and route choice that matches the group's multi-pitch experience.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +220,22 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "Is Arco mainly sport climbing? Sport climbing is a major part of the area, but multi-pitch climbing is also central.\n\nIs it good for mixed groups? Yes. The accommodation and rest-day infrastructure are unusually strong.\n\nWhen is best? Spring and autumn are the conservative climbing seasons.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -178,47 +257,166 @@
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, multi-pitch.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone, dolomite.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Sector count: 50.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Arco, Italy",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Arco and the Sarca Valley near Lake Garda are long-established Italian climbing destinations.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Local guide material supports clean, accessible limestone crags; the legacy packet adds sport crags and multipitch walls around Arco.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet says Arco has a wide range of grades, climbing styles and accessible crags.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Spring and autumn are the conservative best-season tags; summer can be better for Lake Garda activities than climbing in full heat.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet treats a car as useful for moving between crags in the Lake Garda area.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet lists campsites, apartments, guesthouses and hotels.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "A classic Lake Garda and Sarca Valley climbing base, with accessible limestone sport crags, multi-pitch walls and deep Italian climbing infrastructure.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Arco is one of the most established climbing bases in northern Italy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Arco has a long climbing reputation around Lake Garda and the Sarca Valley.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "The structured rock types are limestone and dolomite.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Arco suits a wide range of climbers because the area has many grades, styles and access levels.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "This batch keeps `gradeRange` null because the source set does not provide one clean area-wide grade span.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Spring and autumn are the conservative climbing seasons.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Bring normal sport gear for cragging and multi-pitch kit for longer Sarca Valley objectives.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "A car is useful for moving between crags around Lake Garda and the Sarca Valley.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Arco is easy on logistics: campsites, apartments, guesthouses and hotels are all supported by the legacy source set.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Lake Garda is the rest-day engine: swimming, walking, town time and food all work without a big transfer.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Use Arco's infrastructure rather than fighting it.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Longer routes and busy popular crags need normal alpine-limestone caution: helmets where appropriate, clear descent information and route choice that matches the group's multi-pitch experience.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Is Arco mainly sport climbing? Sport climbing is a major part of the area, but multi-pitch climbing is also central.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -266,8 +464,23 @@
   "qa": {
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+      "No values outside the location taxonomy contract were added.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
-    "unsourcedClaimsRemoved": []
+    "unsourcedClaimsRemoved": [],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 15,
+      "legacyMediaId": 431,
+      "originalName": "IMG_0601.JPG",
+      "providerReference": "e362f93c1112d804b55e1e23d2cdb64587fec728.jpeg",
+      "contentType": "image/jpeg",
+      "width": 1600,
+      "height": 1200,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/01/e362f93c1112d804b55e1e23d2cdb64587fec728.jpeg"
+    }
   }
 }

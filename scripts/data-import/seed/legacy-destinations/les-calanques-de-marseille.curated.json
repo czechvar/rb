@@ -22,125 +22,209 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch", "deep-water-soloing"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["slabs", "overhangs", "caves"],
-    "settingTags": ["coastal"],
-    "bestSeasons": ["spring", "autumn", "winter"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": [],
-    "accommodationTags": ["hotel", "apartment", "hostel"],
-    "transportTags": ["public-transport-possible", "flight-access", "car-recommended"],
-    "gradeRange": "In terms of difficulty, again, what you find in Les Calanques is a wide range of grades.",
+    "destinationScope": "area",
+    "climbingStyles": [
+      "sport",
+      "multi-pitch",
+      "deep-water-soloing"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "overhangs",
+      "caves"
+    ],
+    "settingTags": [
+      "coastal"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Marseille"
+    ],
+    "accommodationTags": [
+      "hotel",
+      "apartment",
+      "hostel"
+    ],
+    "transportTags": [
+      "public-transport-possible",
+      "flight-access",
+      "car-recommended"
+    ],
+    "gradeRange": null,
     "routeCount": 1090,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "area"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Les Calanques are Marseille limestone above the sea: single-pitch sport, long multi-pitches, deep-water soloing and national-park logistics in one exposed coastal landscape.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "mixed",
-      "body": "The Calanques between Marseille and Cassis are a coastal national-park climbing area, not a single roadside crag.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The Calanques stretch between Marseille and Cassis, so this is an area rather than a single crag. The climbing changes quickly from technical slabs to steep sea cliffs, caves, traverses and long routes above blue water.\n\nIt is one of the great Mediterranean climbing settings, but it is also a managed national-park environment. Access, fire risk, wind and seasonal restrictions matter as much as grade.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "status": "legacy",
+      "body": "The Calanques have long been part of French climbing culture because they combine serious positions with city-edge access. The appeal is not just the route count; it is the mix of limestone, sea and exposure.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "mixed",
-      "body": "OmegaRoc describes 190 multi-pitch routes and 900 single-pitches, plus sea-level traverses and deep-water soloing.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is limestone, but the style changes from sector to sector. Expect slabs, overhangs, caves, seaside cliffs, single-pitch sport routes, long multi-pitches and deep-water soloing.\n\nSome routes reach about 250 m, so a Calanques day can feel like a sea-cliff mountain route even when Marseille is close.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "mixed",
+      "body": "The Calanques suit climbers who can handle exposure, route choice and access planning. Sport climbers, multi-pitch teams and deep-water soloists can all find objectives, but the area rewards preparation.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
-      "status": "mixed",
-      "body": "The route count is stored as 1,090 by adding the source-listed 190 multi-pitch and 900 single-pitch routes from the same guidebook page.",
-      "sourceRefs": ["legacy", "s1"],
+      "status": "enriched",
+      "body": "A current digital guidebook lists 190 multi-pitch routes and 900 single-pitch routes, for 1,090 documented routes. Older route totals can be higher, so use one current guidebook or topo consistently when planning.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "status": "mixed",
+      "body": "Spring is the strongest general season. Winter can work well on south-facing crags sheltered from the Mistral, while summer usually pushes climbers toward deep-water soloing or north-facing shade and may be affected by fire-risk access controls.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Season."
+      ]
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring gear for the chosen style: a sport rack for single-pitch routes, multi-pitch kit for longer lines, and a conservative plan for sea-cliff descents and returns. For deep-water soloing, check sea state and exits before committing.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "Marseille is the natural access city, with Cassis on the eastern side of the massif. Public transport can work for some approaches, but a car adds flexibility when access, weather or sector choice changes.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
     },
     {
       "key": "stay",
       "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "status": "legacy",
+      "body": "Marseille, Cassis and the surrounding coast provide hotels, apartments and hostels. Choose the base by planned sectors and transport rather than by scenery alone.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can stay close to the water: Marseille, Cassis, coastal walks and swimming all fit naturally around the climbing. In hot or windy weather, rest-day planning may be the better safety choice.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "mixed",
+      "body": "Check access before setting off, especially in summer. Fire risk, national-park rules, wind and sea conditions can change the right objective for the day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "The main risks are exposure, sea-cliff access, Mistral wind, summer fire restrictions and committing multi-pitch terrain. Treat deep-water soloing as serious climbing, not swimming with holds.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +232,22 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "Is this near Marseille? Yes, the area stretches from Marseille toward Cassis.\n\nIs it only sport climbing? No. It includes sport, multi-pitch and deep-water soloing.\n\nWhen is best? Spring, with autumn and winter also useful depending on weather and aspect.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -164,7 +255,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -172,13 +265,112 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "The OmegaRoc Calanques guidebook page lists 190 multi-pitch routes and 900 single-pitches.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: hero section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: intro section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: history section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: rock section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: who section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: grades section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: season section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: gear section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: transport section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: stay section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: restdays section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: tips section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: safety section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Les Calanques de Marseille: faq section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [

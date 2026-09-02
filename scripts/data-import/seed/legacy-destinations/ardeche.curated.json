@@ -22,36 +22,67 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch", "bouldering"],
-    "rockTypes": ["limestone", "granite"],
+    "destinationScope": "region",
+    "climbingStyles": [
+      "sport",
+      "multi-pitch",
+      "bouldering"
+    ],
+    "rockTypes": [
+      "limestone",
+      "granite"
+    ],
     "rockFeatures": [],
-    "settingTags": ["gorge-canyon"],
-    "bestSeasons": ["spring", "autumn"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": ["Lyon", "Nimes", "Avignon"],
-    "accommodationTags": ["campsite", "hotel", "guesthouse-b-and-b"],
-    "transportTags": ["car-recommended", "public-transport-possible", "flight-access"],
+    "settingTags": [
+      "gorge-canyon"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Lyon",
+      "Nimes",
+      "Avignon"
+    ],
+    "accommodationTags": [
+      "campsite",
+      "hotel",
+      "guesthouse-b-and-b"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "public-transport-possible",
+      "flight-access"
+    ],
     "gradeRange": "all difficulties",
     "routeCount": null,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "region"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Hero",
-      "status": "legacy",
-      "body": "Ardeche, France",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "A southeast France gorge-and-river destination for limestone and granite climbing, family-friendly outdoor days and spring or autumn conditions.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Ardèche is a southeast France outdoor region where climbing is tied to limestone cliffs, gorges and river-valley tourism.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Ardeche is a regional outdoor destination rather than a single sport crag. The climbing sits in a landscape of cliffs, gorges and river valleys, with the broader trip often mixing climbing with canoeing, canyoning and family-friendly rest days.\n\nFor Rockbusters, the useful angle is a practical French climbing holiday: enough climbing variety for sport, multi-pitch and bouldering, but with the rest of the region carrying as much weight as the crags themselves.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -60,87 +91,120 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock and climbing character",
       "status": "mixed",
-      "body": "The legacy packet supports sport, multipitch and bouldering on limestone and granite; tourism material supports limestone cliffs and gorges.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The structured rock types are limestone and granite. The clearest public climbing character is limestone cliffs and gorge climbing, with the wider region adding a broader mixed-climbing profile.\n\nBecause this is a regional entry, the exact style depends on the chosen valley or crag. Keep the first trip plan broad until individual sectors are chosen from a current topo.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who it suits",
       "status": "legacy",
-      "body": "The legacy packet presents Ardèche as suitable for family climbing holidays and mixed activity trips.",
-      "sourceRefs": ["legacy"],
+      "body": "Ardeche is well suited to family climbing holidays and mixed-activity groups. It works when not everyone wants to climb every day, because canoeing, canyoning and river-valley tourism sit naturally beside the climbing.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
       "heading": "Grades and difficulty",
       "status": "legacy",
-      "body": "The only sourced grade wording in this pass is the legacy phrase “all difficulties”, so no numeric grade range was inferred.",
-      "sourceRefs": ["legacy"],
+      "body": "The only supported grade wording in this batch is all difficulties, so the file does not infer a numeric grade range. Treat that as a broad suitability signal, not a substitute for a current topo.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season and conditions",
-      "status": "legacy",
-      "body": "The legacy packet supports spring and autumn and warns that summer is too hot for serious climbing.",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "Spring and autumn are the supported climbing seasons. Summer is marked as an avoid season for serious climbing because heat can dominate the gorges and cliffs.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "status": "enriched",
+      "body": "Bring standard sport or multi-pitch equipment based on the chosen crag, and keep water and heat management central outside the shoulder seasons. No destination-specific rack rule was verified in this batch.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
       "heading": "Transport and access",
-      "status": "legacy",
-      "body": "The legacy packet lists Avignon, Nîmes and Lyon as nearby airport cities and recommends a car for local movement.",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "Avignon, Nimes and Lyon are the practical airport cities for this region. A car is recommended because the climbing, lodging and rest-day activities are spread out.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
       "heading": "Where to stay",
-      "status": "legacy",
-      "body": "The legacy packet lists campsites, guest houses and hotels, with reservations needed in high season.",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "Campsites, guesthouses and hotels are the supported accommodation picture. In high season, reservations matter because Ardeche is a major outdoor-holiday region, not only a climbing area.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest days",
       "status": "mixed",
-      "body": "The legacy packet mentions canyoning and canoeing as non-climbing activities in the area.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Canoeing and canyoning are the obvious rest-day activities. The river-gorge setting makes it easy to build a trip where climbing days alternate with water, shade and family-friendly outdoor time.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "tips",
       "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "status": "mixed",
+      "body": "Plan Ardeche as a region. Choose the base around the crags and rest-day activities you actually want, then use a car to keep days flexible.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "status": "mixed",
+      "body": "Summer heat is the main planning risk. For gorge and river days, keep water, shade and local activity conditions in the plan rather than treating them as extras.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +212,22 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "Is Ardeche one climbing area? No. It is a regional outdoor destination with multiple climbing and activity bases.\n\nWhat seasons work best? Spring and autumn.\n\nIs it good for families? Yes. The river-gorge setting works well for trips that mix climbing with canoeing, canyoning and rest-day activities.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -178,51 +249,163 @@
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, multi-pitch, bouldering.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone, granite.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Ardeche, France",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Ardèche is a southeast France outdoor region where climbing is tied to limestone cliffs, gorges and river-valley tourism.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet supports sport, multipitch and bouldering on limestone and granite; tourism material supports limestone cliffs and gorges.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet presents Ardèche as suitable for family climbing holidays and mixed activity trips.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The only sourced grade wording in this pass is the legacy phrase “all difficulties”, so no numeric grade range was inferred.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet supports spring and autumn and warns that summer is too hot for serious climbing.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet lists Avignon, Nîmes and Lyon as nearby airport cities and recommends a car for local movement.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet lists campsites, guest houses and hotels, with reservations needed in high season.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet mentions canyoning and canoeing as non-climbing activities in the area.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "A southeast France gorge-and-river destination for limestone and granite climbing, family-friendly outdoor days and spring or autumn conditions.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Ardeche is a regional outdoor destination rather than a single sport crag.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "The structured rock types are limestone and granite.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ardeche is well suited to family climbing holidays and mixed-activity groups.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "The only supported grade wording in this batch is all difficulties, so the file does not infer a numeric grade range.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Spring and autumn are the supported climbing seasons.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Bring standard sport or multi-pitch equipment based on the chosen crag, and keep water and heat management central outside the shoulder seasons.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Avignon, Nimes and Lyon are the airport cities carried in the source set.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Campsites, guesthouses and hotels are the supported accommodation picture.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Canoeing and canyoning are the clearest rest-day activities in the source set.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Plan Ardeche as a region.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Summer heat is the main planning risk in the current source set.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Is Ardeche one climbing area? No.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -260,8 +443,23 @@
   "qa": {
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+      "No values outside the location taxonomy contract were added.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
-    "unsourcedClaimsRemoved": []
+    "unsourcedClaimsRemoved": [],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 16,
+      "legacyMediaId": 1195,
+      "originalName": "ardeche.jpg",
+      "providerReference": "f8ef6d654ef6ad1944e9d640c1e0286db9451325.jpeg",
+      "contentType": "image/jpeg",
+      "width": 960,
+      "height": 720,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/02/f8ef6d654ef6ad1944e9d640c1e0286db9451325.jpeg"
+    }
   }
 }

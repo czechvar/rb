@@ -1,7 +1,7 @@
 {
   "slug": "fontainebleau",
   "title": "Fontainebleau",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,190 @@
   ],
   "facts": {
     "locationKind": "bouldering-area",
-    "climbingStyles": ["bouldering"],
-    "rockTypes": ["sandstone"],
-    "rockFeatures": ["slabs", "crimps", "roofs"],
-    "settingTags": ["forest"],
-    "bestSeasons": ["spring", "autumn"],
-    "avoidSeasons": ["summer"],
+    "climbingStyles": [
+      "bouldering"
+    ],
+    "rockTypes": [
+      "sandstone"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "crimps",
+      "roofs"
+    ],
+    "settingTags": [
+      "forest"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
     "nearestAirports": [],
-    "accommodationTags": ["campsite", "hotel", "guesthouse-b-and-b", "apartment"],
-    "transportTags": ["public-transport-possible", "car-recommended"],
-    "gradeRange": "Unlike anywhere else on Earth, Font offers over 20,000 problems across all difficulty grades, from beginner-friendly slabs to legendary testpieces that have challenged the world's elite.",
+    "accommodationTags": [
+      "campsite",
+      "hotel",
+      "guesthouse-b-and-b",
+      "apartment"
+    ],
+    "transportTags": [
+      "public-transport-possible",
+      "car-recommended"
+    ],
+    "gradeRange": "Font 5 to 6C+ in the retained theCrag Greater Fontainebleau listing; the wider forest covers a broader all-grade circuit culture.",
     "routeCount": null,
     "problemCount": 5286,
     "sectorCount": null,
     "destinationScope": "area"
   },
+  "media": {
+    "mainImage": null
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Fontainebleau is the classic forest bouldering trip: sandstone blocks under trees, circuit-style days, precise feet, rounded top-outs and more movement variety than most climbers can absorb in a lifetime.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Fontainebleau is a forest bouldering destination south of Paris, with sandstone boulders and circuit-style climbing.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Fontainebleau sits south of Paris and still feels like its own climbing world. The boulders are spread through forest sectors, with sandy paths, painted circuits and a style that rewards technique before power.\n\nIt is easy to underestimate Font if you only look at grades. Slabs, aretes, mantles, compression and pure foot trust make many problems feel unlike gym climbing. That is the point: a week here improves how you move.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Fontainebleau is part of bouldering history, not just a modern destination. The circuit tradition, the old training culture and the sheer density of classic problems shaped how European climbers think about bouldering.\n\nThe forest is also busy and fragile. Good style here includes careful pad use, clean brushing, no climbing on damp sandstone and respect for parking and erosion controls.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The cited guidebook listing covers 5,286 straight-up boulder problems in Greater Fontainebleau in the Font 5- to 6c+ range.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is sandstone, usually rounded, technical and skin-conscious. Expect slopers, smears, aretes, slabs, roofs and top-outs that can turn a modest grade into a real lesson.\n\nFriction changes everything. Cool dry days can feel generous; heat and humidity make the same footholds feel vague. If the rock is wet, wait.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Fontainebleau is excellent for mixed-ability bouldering groups because circuits and nearby sectors let people climb different grades without splitting the day completely.\n\nBeginners learn movement and falling basics quickly, intermediates can build huge mileage, and strong climbers have a lifetime of testpieces. The main requirement is patience with a style that can feel technical before it feels hard.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The cited Greater Fontainebleau guidebook listing covers 5,286 straight-up boulder problems in the Font 5- to 6c+ range.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Greater Fontainebleau has 5,286 straight-up boulder problems in the Font 5 to 6C+ range in the current working dataset. That count is useful for understanding scale, but it does not describe the whole forest culture by itself.\n\nFor a trip plan, think in circuits, sectors and conditions rather than just a tick-list count.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "status": "mixed",
+      "body": "Spring and autumn are the most reliable windows. Summer can be hot and low-friction, while winter can be excellent when it is dry but less forgiving for long social days.\n\nThe non-negotiable rule is wet sandstone. Do not climb when the rock is damp or recently soaked.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring bouldering pads, brushes, a doormat or rag for sandy shoes, tape and enough layers to wait between attempts. A guidebook or current digital topo is essential because the forest is broad and sector choice matters.\n\nKeep brushing gentle and avoid wire brushes. Clean shoes before stepping on the rock.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "Fontainebleau is unusually reachable compared with many bouldering areas, but a car still makes sector choice much easier. Public transport can get climbers near the town and some areas, while daily sector hopping is simpler with wheels.\n\nParking discipline matters. Use established parking areas and be ready to change plans if a sector is crowded or restricted.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "The area supports the full spread of practical bases: campsites, hotels, guesthouses and apartments. Choose a base around how you want the trip to feel: easy town evenings, cheap camping, or short drives to preferred sectors.\n\nBecause sectors are spread out, the best lodging is the one that keeps the group rested and flexible rather than closest to a single boulder.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can be simple: walk the forest, visit Fontainebleau town, eat well and let skin recover. Paris is close enough for a bigger day out if the weather shuts climbing down.\n\nFor many climbers, the best rest day is still outside: easy forest walking without pads and without the pressure to perform.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Pick sectors by conditions and group ability, not reputation alone. Shade, sun, wind and sand underfoot can change the quality of the day.\n\nRespect circuits, other groups and the forest. Keep pads off vegetation where possible, brush tick marks away, and do not make damp sandstone worse.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "Most incidents are bouldering incidents: awkward landings, high top-outs, tired spotting and confidence outrunning pad coverage.\n\nUse enough pads, protect uneven landings and downclimb carefully. The rock can be rounded and insecure, so assume the last move still matters.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +213,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "Is Fontainebleau good for beginners? Yes, if they are willing to learn footwork, downclimbing and pad discipline.\n\nWhen is it best? Spring and autumn are the cleanest planning seasons.\n\nCan I go without a car? It is possible for some plans, but a car makes sector choice and bad-weather pivots much easier.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +234,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,84 +244,85 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "The cited Greater Fontainebleau guidebook listing covers 5,286 boulder problems graded Font 5- to 6c+.",
-      "sourceRefs": ["s1"]
+      "text": "Fontainebleau is represented as bouldering-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Fontainebleau has climbing styles: bouldering.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Fontainebleau rock types retained: sandstone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Fontainebleau retained grade range: Font 5 to 6C+ in the retained theCrag Greater Fontainebleau listing; the wider forest covers a broader all-grade circuit culture..",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Fontainebleau retained problem count: 5286.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Fontainebleau best seasons retained: spring, autumn.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "season",
-      "missing": "Needs a reputable source before writing season content.",
-      "priority": "high"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
       "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "missing": "Verify preferred problem counts, parking restrictions and fragile-sandstone guidance against current local access information.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "The retained count comes from one Greater Fontainebleau listing and is narrower than the commonly used whole-forest guidebook scope.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": [
-      "missing_main_image",
-      "Paris is not in the project airport-label contract, so it was removed from nearestAirports during validation cleanup."
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
     ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "missing_main_image",
+      "Paris is not in the project airport-label contract, so it was removed from nearestAirports during validation cleanup.",
+      "The retained count comes from one Greater Fontainebleau listing and is narrower than the commonly used whole-forest guidebook scope."
     ]
   }
 }

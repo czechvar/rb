@@ -22,15 +22,44 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch", "trad"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "overhangs", "slabs"],
-    "settingTags": ["coastal", "mountain"],
-    "bestSeasons": ["spring", "autumn", "winter"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": ["Alicante", "Valencia"],
-    "accommodationTags": ["hotel", "apartment", "villa"],
-    "transportTags": ["flight-access", "car-recommended"],
+    "climbingStyles": [
+      "sport",
+      "multi-pitch",
+      "trad"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "overhangs",
+      "slabs"
+    ],
+    "settingTags": [
+      "coastal",
+      "mountain"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Alicante",
+      "Valencia"
+    ],
+    "accommodationTags": [
+      "hotel",
+      "apartment",
+      "villa"
+    ],
+    "transportTags": [
+      "flight-access",
+      "car-recommended"
+    ],
     "gradeRange": "wide range of grades",
     "routeCount": null,
     "problemCount": null,
@@ -40,185 +69,270 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Costa Blanca, Spain, Spain",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Costa Blanca is a Mediterranean limestone region with sport crags, sea-facing multipitch routes and winter sun between Alicante and Valencia.\n\nIt is one of the easier European choices for a mixed climbing holiday: quick flights, rental-car logistics, many bases and enough rock to change plans when the weather or group needs shift.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Costa Blanca is a Mediterranean limestone climbing region between Alicante and Valencia.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Costa Blanca covers a long strip of eastern Spain rather than one cliff. That is the appeal: short roadside sport, mountain crags, sea-view multipitch routes and enough venues to build a week around sun, shade and ability.\n\nThe region is especially useful in winter. When northern Europe is wet or frozen, Costa Blanca can still offer dry limestone and mild days. Summer is less attractive for serious climbing because heat quickly limits the useful hours.\n\nAlicante is the easiest arrival point for many trips, with Valencia also workable. Rent a car, choose a base near the crags you want most, and keep a recent guidebook open.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Costa Blanca has become a standard winter-climbing name because the logistics are simple and the limestone options are broad. The region is not defined by one famous wall; it is defined by the density of crags across the coast and inland hills.\n\nClassic multipitch venues around Calpe and shorter sport areas nearby give the region a reputation that works for first trips and repeat visits alike.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "Climb Europe supports bolted limestone across short single-pitch roadside crags and long multipitch mountain routes; the legacy packet adds tufas, overhangs and slabs.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The climbing is mainly limestone, from compact sport walls to bigger sea-facing faces. Expect slabs, vertical walls, tufas, overhangs and multipitch terrain, with a generally bolted character but enough variety to require route-by-route judgement.\n\nThe best days come from matching aspect to temperature. In winter, sunny walls can be perfect. In warmer periods, shade and breeze become the plan.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
+      "heading": "Who Is It For",
       "status": "mixed",
-      "body": "The source mix supports beginners through experienced sport and multipitch climbers, but exact grade distribution needs a guidebook count.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Costa Blanca suits a wide group: newer outdoor climbers, sport climbers wanting steady mileage, and multipitch teams looking for manageable Mediterranean objectives.\n\nIt is also a good destination for mixed-ability trips because the region has many crags rather than one mandatory style. The key is choosing a base and daily venue that fit the whole group.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
+      "heading": "Grades and Sectors",
       "status": "enriched",
-      "body": "Only the sourced phrase “wide range of grades” is used; no numeric grade range was inferred.",
-      "sourceRefs": ["s1"],
+      "body": "The available facts support a wide range of grades but not a responsible region-wide numeric span. Keep grade planning tied to the guidebook and the specific area: Calpe, Sella, Toix and inland sport venues do not all climb the same.\n\nFor multipitch, read length, bolting and descent information as carefully as the grade. Sea-view does not make a route less serious.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
+      "heading": "Best Season",
       "status": "mixed",
-      "body": "The external source supports climbing through most of the year; winter, spring and autumn are assigned while summer is a heat caution.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Autumn, winter and spring are the main windows. Winter is a major part of Costa Blanca appeal, with milder temperatures than most northern European venues.\n\nSummer is the season to avoid for most climbing trips. Start times get brutally early, shade becomes mandatory, and the best climbing day may be shorter than the travel effort deserves.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Bring normal sport gear for single-pitch days and the correct multipitch kit for longer routes: helmet, belay device, anchor material, descent setup and enough rope for the line.\n\nUse a recent guidebook. The region is broad, access and descent details matter, and route length varies from quick roadside climbing to big faces.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
-      "status": "legacy",
-      "body": "The legacy packet recommends a rental car; Alicante and Valencia are the normalized airport cities for this region.",
-      "sourceRefs": ["legacy"],
+      "heading": "Getting There",
+      "status": "mixed",
+      "body": "Fly to Alicante or Valencia and rent a car. A car is the practical way to use the region properly, especially if the week mixes sport crags, multipitch objectives and rest days.\n\nPublic transport can help between towns, but it is not a good substitute for daily crag access with ropes, helmets and packs.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
-      "status": "enriched",
-      "body": "Hotels, apartments and villas are assigned as broad coastal-region accommodation categories; exact base advice remains open.",
-      "sourceRefs": ["s1"],
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Apartments, hotels and villas are the normal bases. Self-catering works well because climbing days often start early in warm weather or finish away from resort centres.\n\nPick accommodation around the venues you expect to use most, then allow drive time for alternatives. The region rewards flexible crag choice.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "mixed",
+      "body": "Rest days are simple: beaches, coastal towns, markets, walking and relaxed food are all part of the Costa Blanca rhythm.\n\nIf the forecast is too hot, do not force a poor climbing day. Use the rest day and save skin, energy and patience for a better aspect.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Carry a guidebook and plan descents before leaving the ground. Multipitch logistics are the difference between a smooth Mediterranean day and an avoidable epic.\n\nIn winter, chase sun. In warmer periods, chase shade and breeze. The right crag choice changes the whole trip.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Wear a helmet, especially on multipitch routes and older limestone. Check fixed gear, knots and lower-offs, and do not assume every bolted route is a sport-crag experience.\n\nHeat is a real safety issue outside the main season. Carry water, start early when needed, and avoid long sun-exposed objectives in high temperatures.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
-      "heading": "Costs",
+      "heading": "Costs and Budget",
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "When is best? Autumn through spring, with winter a major draw.\n\nDo I need a car? Yes for a normal climbing trip.\n\nIs it all sport climbing? No. Costa Blanca has sport crags and multipitch routes, with some traditional-style judgement still useful.\n\nWhich airport works best? Alicante is usually simplest; Valencia can also work.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, multi-pitch, trad.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Costa Blanca, Spain, Spain",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Costa Blanca is a Mediterranean limestone climbing region between Alicante and Valencia.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Climb Europe supports bolted limestone across short single-pitch roadside crags and long multipitch mountain routes; the legacy packet adds tufas, overhangs and slabs.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The source mix supports beginners through experienced sport and multipitch climbers, but exact grade distribution needs a guidebook count.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Only the sourced phrase “wide range of grades” is used; no numeric grade range was inferred.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The external source supports climbing through most of the year; winter, spring and autumn are assigned while summer is a heat caution.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet recommends a rental car; Alicante and Valencia are the normalized airport cities for this region.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Hotels, apartments and villas are assigned as broad coastal-region accommodation categories; exact base advice remains open.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -259,10 +373,17 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 276
+    }
   }
 }

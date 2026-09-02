@@ -1,7 +1,7 @@
 {
   "slug": "rodellar",
   "title": "Rodellar",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,205 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "caves", "overhangs", "pockets"],
-    "settingTags": ["gorge-canyon"],
-    "bestSeasons": ["spring", "autumn"],
-    "avoidSeasons": ["winter"],
-    "nearestAirports": ["Barcelona", "Girona", "Zaragoza"],
-    "accommodationTags": ["campsite", "hotel", "apartment", "villa", "refuge-hut"],
-    "transportTags": ["car-recommended", "flight-access"],
+    "climbingStyles": [
+      "sport"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "caves",
+      "overhangs",
+      "pockets"
+    ],
+    "settingTags": [
+      "gorge-canyon"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "winter"
+    ],
+    "nearestAirports": [
+      "Barcelona",
+      "Girona",
+      "Zaragoza"
+    ],
+    "accommodationTags": [
+      "campsite",
+      "hotel",
+      "apartment",
+      "villa",
+      "refuge-hut"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
     "gradeRange": "5 upward, densest around 7a to 8b",
     "routeCount": null,
     "problemCount": null,
     "sectorCount": null,
     "destinationScope": "crag"
   },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 7,
+      "legacyMediaId": 428,
+      "originalName": "IMG_2736.JPG",
+      "providerReference": "1b165b9391a2b00d32a5fa6041217e1c4927c255.jpeg",
+      "contentType": "image/jpeg",
+      "width": 3648,
+      "height": 2048,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/01/1b165b9391a2b00d32a5fa6041217e1c4927c255.jpeg"
+    }
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Rodellar is Spanish limestone endurance climbing at full volume: tufas, caves, pockets, long steep pitches and a Mascun canyon setting that makes the walk-in feel like part of the route.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Rodellar is a Sierra de Guara sport-climbing destination centered on the Mascun canyon.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Rodellar sits in the Sierra de Guara and has a very clear identity. This is sport climbing built around steep limestone, tufas and resistance, with many of the best days spent fighting pump rather than searching for holds.\n\nThe village and canyon create a compact destination rhythm. Walk in, choose shade, climb long pitches, recover slowly, and accept that the style rewards fitness, kneebars and patience.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Rodellar’s modern reputation comes from the rise of steep limestone sport climbing. The canyon walls turned into a reference point for endurance routes, tufas and hard redpointing.\n\nIt remains more than a hard-climber venue, but its character is unmistakable: this is a place to learn how to rest, sequence and climb efficiently on steep stone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The sourced local guide emphasizes tufas, caves and long limestone endurance climbing.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is limestone with tufas, caves, pockets and sustained overhangs. Many routes are long enough that clipping strategy and shake-outs matter.\n\nExpect three-dimensional climbing: knees, heels, drop-knees, compression and body positions that save forearms when the wall keeps leaning.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Rodellar is best for sport climbers who enjoy endurance and steep terrain. The strongest density sits from 7a to 8b, with classics starting from grade 5 upward.\n\nBeginners can find options, but the destination makes most sense for climbers who already lead outside and want to improve on steep limestone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The source says Rodellar is especially dense in the 7a to 8b range, with classics from grade 5 upward.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The grade picture starts with classics from grade 5 upward and is densest around 7a to 8b. There is no reliable total route count in the current working data.\n\nFor a group trip, pick sectors by shade, warm-ups and the day's pump budget rather than grade alone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "The source says the best climbing windows are late April to mid-June and September to November, while mid-summer is too hot and winter is usually wet.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Late April to mid-June and September to November are the best windows. Mid-summer is too hot for most climbing, and winter is usually wet.\n\nShade tactics matter even in good seasons. Start times and canyon aspect can make or break the day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring a sport rack, helmet, rope length matched to current topo information and kneepads if your route choices justify them. Belay glasses and a stick clip are useful for long steep days.\n\nPack enough water for the canyon and enough layers for shaded belays.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "A car is the practical way to reach and use Rodellar. Barcelona, Girona and Zaragoza are the main airport references, but the final choice depends on flights and drive planning.\n\nOnce based locally, approaches are often part of the daily routine rather than a long commute.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Campsites, hotels, apartments, villas and refuge-style lodging all fit the planning picture. Check current status before naming a specific base.\n\nFor climbing, prioritize shade, rest, food access and easy starts over anything decorative.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can stay in the Sierra de Guara: canyon walks, village time, swimming conditions when safe and proper recovery for elbows and fingers.\n\nA full rest day often pays back more than another tired burn on tufas.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Choose routes by endurance profile. A short 7 may feel harder than a longer line with rests, and a good kneebar can change the grade experience completely.\n\nRespect canyon paths, quiet village life and any current nature restrictions.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "The main risks are heat, pump, long lower-offs, polished footholds in popular sectors and canyon weather. Check rope length and tie knots before lowering.\n\nWear a helmet where rockfall or crowded bases make it sensible, and do not underestimate dehydration on shaded but strenuous days.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +228,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "What is Rodellar known for? Steep limestone sport climbing with tufas, caves and long endurance routes.\n\nWhat grades are best represented? 7a to 8b is especially dense, with classics from grade 5 upward.\n\nWhen should I go? Late spring and autumn are the strongest supported windows.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +249,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,76 +259,76 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "Rodellar is especially known for route density in the 7a to 8b range, with classic routes from grade 5 upward.",
-      "sourceRefs": ["s1"]
+      "text": "Rodellar is represented as sport-climbing-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Rodellar has climbing styles: sport.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Rodellar rock types retained: limestone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Rodellar retained grade range: 5 upward, densest around 7a to 8b.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Rodellar best seasons retained: spring, autumn.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
       "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "missing": "Verify current Mascun canyon access, parking, refuge/camping status and any nature restrictions.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "Grade-density and season windows are supported by the retained local source; route count and detailed sector totals were not retained.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": [],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
+    ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "Grade-density and season windows are supported by the retained local source; route count and detailed sector totals were not retained."
     ]
   }
 }

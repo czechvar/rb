@@ -22,15 +22,44 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "bouldering", "deep-water-soloing"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "pockets", "overhangs"],
-    "settingTags": ["coastal", "mountain"],
-    "bestSeasons": ["spring", "autumn", "winter"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": ["Antalya"],
-    "accommodationTags": ["hotel", "hostel", "campsite"],
-    "transportTags": ["flight-access", "car-recommended", "public-transport-possible"],
+    "climbingStyles": [
+      "sport",
+      "bouldering",
+      "deep-water-soloing"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "pockets",
+      "overhangs"
+    ],
+    "settingTags": [
+      "coastal",
+      "mountain"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Antalya"
+    ],
+    "accommodationTags": [
+      "hotel",
+      "hostel",
+      "campsite"
+    ],
+    "transportTags": [
+      "flight-access",
+      "car-recommended",
+      "public-transport-possible"
+    ],
     "gradeRange": "5a to 9a",
     "routeCount": 1600,
     "problemCount": null,
@@ -40,189 +69,277 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Antalya, Turkey",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Antalya is a Turkish Mediterranean climbing hub, linking inland limestone at Geyikbayiri with coastal cliffs, bouldering and deep-water soloing near Olympos.\n\nIt is a strong winter-sun choice: big route numbers, easy airport access and enough variety to shape a full climbing holiday.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "The Antalya climbing area includes inland crags such as Geyikbayırı and coastal crags such as Olympos and Çıralı.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Antalya is best understood as a region, not one crag. Geyikbayiri gives the inland sport-climbing base, while Olympos and the coast add a different mix of sea, travel atmosphere and adventurous options.\n\nThe climbing is mainly limestone, with tufas, pockets and overhangs. The Antalya-area guidebook covers almost 1,600 routes and a grade span from 5a to 9a, which makes the region useful for both mileage and projects.\n\nThe airport is close enough to keep logistics simple. Once there, choose a base around the climbing style you want most and use local transport or a car depending on how widely you want to move.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Antalya has become Turkey's best-known international climbing region because Geyikbayiri developed into a substantial sport-climbing base and the coast added a wider travel draw.\n\nThe destination now works as a winter climbing circuit: inland limestone, climber accommodation, international visitors and rest days on the Mediterranean.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "Climb Europe reports almost 1,600 Antalya-area routes; other local descriptions support limestone sport climbing with tufas, pockets and overhangs.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The main rock is limestone, often steep and featured. Expect tufas, pockets, overhangs and stamina climbing, with enough moderate terrain to avoid making the whole trip about hard routes.\n\nCoastal venues and deep-water soloing days are more condition-sensitive. Treat them separately from the inland sport crags.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
+      "heading": "Who Is It For",
       "status": "enriched",
-      "body": "The 5a to 9a grade span supports a wide sport-climbing audience, with harder steep tufa routes as a major draw.",
-      "sourceRefs": ["s1"],
+      "body": "The 5a to 9a grade span makes Antalya useful for a wide range of sport climbers. Intermediate climbers get plenty of mileage, while stronger climbers can focus on steeper tufas and harder lines.\n\nIt also suits winter travellers who want climbing plus a warmer base, simple food logistics and rest days that do not feel like waiting around.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
+      "heading": "Grades and Sectors",
       "status": "enriched",
-      "body": "The route count is sourced from the Antalya guidebook page; grade span is kept concise as 5a to 9a.",
-      "sourceRefs": ["s1"],
+      "body": "The Antalya-area guidebook covers almost 1,600 routes, with grades from 5a to 9a. That is enough scale for a dedicated trip rather than a short stop.\n\nUse recent local topos because route development, sector access and accommodation links can change faster than regional summaries.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
+      "heading": "Best Season",
       "status": "mixed",
-      "body": "Spring, autumn and winter are assigned for Mediterranean conditions; summer is an avoid flag for heat.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Autumn, winter and spring are the sensible seasons. The Mediterranean climate makes Antalya attractive when many European areas are too cold or wet.\n\nSummer is the season to avoid for most climbing. Heat changes everything: timing, water, shade and the willingness to walk away from a route.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Bring a normal sport rack, helmet and a rope matched to topo lengths. For tufa and steep limestone days, tape and route-reading patience help.\n\nIf deep-water soloing or coastal climbing is on the plan, add sea-condition judgement rather than extra hardware. Check exits, water and weather first.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
+      "heading": "Getting There",
       "status": "mixed",
-      "body": "Antalya is the normalized airport city; local transport can work for some bases, but a car remains useful across the area.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Fly to Antalya. Some bases and sectors can work with local transfers or public transport, but a car gives more freedom if you want to combine Geyikbayiri, Olympos and other areas.\n\nChoose transport around the itinerary. A sport-focused Geyikbayiri week can be simple; a wider Antalya trip needs more mobility.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
+      "heading": "Stay and Eat",
       "status": "legacy",
-      "body": "The legacy packet mentions hostels and hotels, including climber-focused lodging around the Antalya climbing scene.",
-      "sourceRefs": ["legacy"],
+      "body": "The prepared material mentions hostels and hotels, including climber-oriented accommodation. Staying near the main crags keeps the climbing day easy and social.\n\nFor a mixed coast-and-crag trip, split the stay rather than driving long distances every day.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "mixed",
+      "body": "Rest days can mean Antalya city, beaches, ruins, coastal walks or a slower day around the climber base.\n\nIn hot weather, a rest day may be the best performance decision. Save skin and energy for cooler conditions.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Plan the trip around season first, then style. Antalya is excellent in cooler months and much less efficient in high heat.\n\nUse recent local information for sectors and access. A big regional route count is useful, but daily decisions still happen crag by crag.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Heat, steep limestone fatigue and coastal conditions are the main practical hazards. Carry water, wear a helmet and check fixed gear as you would in any busy sport area.\n\nFor deep-water soloing, do not rely on reputation. Check sea state, landings, exits and group confidence every time.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
-      "heading": "Costs",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "heading": "Costs and Budget",
+      "status": "mixed",
+      "body": "Budget for flights to Antalya, transfers or car hire, accommodation, food and topo access. Hostels and climber accommodation can keep the trip relatively efficient.\n\nPrices change by season, so avoid building the trip around old accommodation costs.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "When is best? Autumn, winter and spring.\n\nWhat is the grade range? The prepared facts give 5a to 9a.\n\nDo I need a car? Not always for a simple base, but yes if you want to move widely.\n\nIs it only sport climbing? No. Sport climbing is the core, with bouldering and deep-water soloing coastal options also present.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, bouldering, deep-water-soloing.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 1600.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Antalya, Turkey",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The Antalya climbing area includes inland crags such as Geyikbayırı and coastal crags such as Olympos and Çıralı.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Climb Europe reports almost 1,600 Antalya-area routes; other local descriptions support limestone sport climbing with tufas, pockets and overhangs.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The 5a to 9a grade span supports a wide sport-climbing audience, with harder steep tufa routes as a major draw.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The route count is sourced from the Antalya guidebook page; grade span is kept concise as 5a to 9a.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Spring, autumn and winter are assigned for Mediterranean conditions; summer is an avoid flag for heat.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Antalya is the normalized airport city; local transport can work for some bases, but a car remains useful across the area.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet mentions hostels and hotels, including climber-focused lodging around the Antalya climbing scene.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     }
   ],
   "editorialGaps": [
@@ -263,10 +380,17 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": null
+    }
   }
 }

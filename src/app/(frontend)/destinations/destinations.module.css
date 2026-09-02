@@ -60,6 +60,32 @@
   margin-bottom: 24px;
 }
 
+.structuredSections {
+  display: grid;
+  gap: 32px;
+}
+
+.structuredSection {
+  max-width: 760px;
+}
+
+.structuredSection h2 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 8vw, 48px);
+  line-height: 0.95;
+}
+
+.structuredSection p {
+  margin: 0;
+  color: var(--theme-color-page-text);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.structuredSection p + p {
+  margin-top: 16px;
+}
+
 .map {
   margin-top: 40px;
   aspect-ratio: 16 / 9;

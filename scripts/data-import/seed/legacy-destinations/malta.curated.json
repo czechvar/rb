@@ -22,125 +22,209 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": [],
-    "rockFeatures": [],
-    "settingTags": [],
-    "bestSeasons": [],
-    "avoidSeasons": [],
-    "nearestAirports": [],
-    "accommodationTags": [],
-    "transportTags": [],
-    "gradeRange": null,
+    "destinationScope": "country",
+    "climbingStyles": [
+      "sport",
+      "multi-pitch",
+      "deep-water-soloing",
+      "trad"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "slabs",
+      "pockets",
+      "overhangs",
+      "roofs",
+      "caves"
+    ],
+    "settingTags": [
+      "coastal",
+      "island",
+      "gorge-canyon"
+    ],
+    "bestSeasons": [
+      "autumn",
+      "winter",
+      "spring",
+      "year-round"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Malta International Airport"
+    ],
+    "accommodationTags": [
+      "hostel",
+      "hotel",
+      "apartment",
+      "villa"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access",
+      "ferry-access"
+    ],
+    "gradeRange": "3 to high 8s",
     "routeCount": 550,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "country"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Malta and Gozo are compact island limestone destinations with sport routes, sea cliffs, deep-water soloing and enough local character to make logistics part of the trip.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "mixed",
-      "body": "UKClimbing cites Malta and Gozo guidebook coverage and points readers to Malta climbing organizations for current developments.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Malta is small on the map but varied on the rock. The islands combine limestone sea cliffs, pocketed walls, caves, slabs and roof climbing, with Gozo adding a wilder second-island feel.\n\nThis is not a polished Mediterranean circuit with one obvious base and one obvious crag. The best trips move with shade, wind, ferry plans and the team's appetite for sea-cliff positions.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "status": "enriched",
+      "body": "The islands have a long sea-cliff tradition, and modern sport climbing has grown strongly through local climbers and visiting Europeans. Some of the better-known hard routes are tied to steep caves and sea-cliff lines.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "enriched",
-      "body": "UKClimbing cites the Sport Climbing in Malta & Gozo guidebook as listing more than 550 routes, with local organizations recommended for current developments.",
-      "sourceRefs": ["s1"],
+      "body": "The rock is limestone, with friction slabs, pocketed vertical walls, steep overhangs, tufas, roofs and caves. Many venues are coastal, so exposure, salt air and access style vary sharply from one crag to the next.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "enriched",
+      "body": "Malta suits climbers who want variety and do not mind island logistics. There are easier routes, mid-grade sport climbs and harder cave objectives, but crag choice matters if the team includes newer leaders.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
       "status": "enriched",
-      "body": "UKClimbing cites the Sport Climbing in Malta & Gozo guidebook as listing more than 550 routes.",
-      "sourceRefs": ["s1"],
+      "body": "The 2013 Sport Climbing in Malta & Gozo guidebook lists more than 550 routes, with public destination coverage describing roughly 600 lines from grade 3 to the high 8s. Treat exact counts as moving targets because new routes continue to appear.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "status": "enriched",
+      "body": "Early October through December is the cleanest window. January and February can be rainy, though good breaks are common. Climbing can work year-round, but summer usually means chasing shade and sea breeze.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Season."
+      ]
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "enriched",
+      "body": "For most routes, a 60 m rope and 12 to 15 quickdraws are the starting point. Add slings and carabiners for abseils or bolt belays without lower-offs, and consider a 70 m rope for easier access at some crags.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "enriched",
+      "body": "Fly into Malta International Airport near Gudja. A car or scooter is the practical way to climb efficiently because public transport underserves many crags; Gozo requires the short ferry crossing.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
     },
     {
       "key": "stay",
       "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "status": "enriched",
+      "body": "Accommodation ranges from hostels and hotels on Malta to farmhouses and villas on Gozo. Bugibba and Qawra are practical for Malta crags, while Gozo works better when the trip focus moves to the sister island.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "enriched",
+      "body": "Rest days are easy to fill with swimming, snorkelling, diving, Comino and the Blue Lagoon, or cultural time in Valletta and Victoria. Food is part of the trip: pastizzi, village bars and Maltese restaurants are worth planning around.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "enriched",
+      "body": "Choose crags by wind and shade. A venue that is perfect in winter can be unpleasant in summer, while a breezy cave or sea cliff may save a hot day.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "enriched",
+      "body": "Sea-cliff access, abseils, lower-off hardware and summer heat need attention. Some venues are exposed, and deep-water soloing is only sensible when sea state, exit and fall zone are understood.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +232,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "enriched",
+      "body": "Is Malta only hard climbing? No. The islands have routes from low grades into the high 8s, but the best crag for easier climbing must be chosen carefully.\n\nDo you need a car? For a climbing trip, yes or nearly yes. Public transport is slow for crag access.\n\nShould you visit Gozo? Yes, if time allows. Gozo is a major part of the climbing character.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -164,7 +254,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -172,13 +264,103 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "The Sport Climbing in Malta & Gozo guidebook cited by UKClimbing lists more than 550 routes.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: hero section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: intro section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: history section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: rock section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: who section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: grades section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: season section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: gear section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: transport section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: stay section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: restdays section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: tips section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: safety section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Malta: faq section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -244,7 +426,9 @@
     }
   ],
   "qa": {
-    "notes": ["Nearest-airport taxonomy lacks Malta; no Malta airport city label was added."],
+    "notes": [
+      "Nearest-airport taxonomy lacks Malta; no Malta airport city label was added."
+    ],
     "unsourcedClaimsRemoved": [
       "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
     ]

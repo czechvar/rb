@@ -1,7 +1,7 @@
 {
   "slug": "sella",
   "title": "Sella",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,205 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch", "trad"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["slabs", "pockets", "crimps"],
-    "settingTags": ["coastal", "valley"],
-    "bestSeasons": ["spring", "autumn", "winter"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": ["Alicante"],
-    "accommodationTags": ["campsite", "hotel", "apartment", "villa"],
-    "transportTags": ["car-recommended", "flight-access"],
-    "gradeRange": "Easy and mid grade sport routes are found at the most popular main crags in the centre of the valley, whilst mid to harder grade routes are concentrated in steeper sectors like the famous Wild Side.",
+    "climbingStyles": [
+      "sport",
+      "multi-pitch",
+      "trad"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "pockets",
+      "crimps"
+    ],
+    "settingTags": [
+      "coastal",
+      "valley"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Alicante"
+    ],
+    "accommodationTags": [
+      "campsite",
+      "hotel",
+      "apartment",
+      "villa"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
+    "gradeRange": "Easy and mid-grade sport routes in central valley sectors, with mid-to-hard routes in steeper sectors such as Wild Side.",
     "routeCount": null,
     "problemCount": null,
     "sectorCount": null,
     "destinationScope": "crag"
   },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 2,
+      "legacyMediaId": 302,
+      "originalName": "Rockbusters_Sella.jpg",
+      "providerReference": "75b8f6d233c5613fe8fd9c4e8639e1b3d56383af.jpeg",
+      "contentType": "image/jpeg",
+      "width": 960,
+      "height": 720,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/01/75b8f6d233c5613fe8fd9c4e8639e1b3d56383af.jpeg"
+    }
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Sella is a Costa Blanca limestone valley with sport, multi-pitch and trad climbing, a broad winter-sun feel and enough sector variety to suit both mileage days and harder projects.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Sella is a major Costa Blanca limestone valley climbing area.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Sella sits inland from the Costa Blanca coast and works well as a practical Spanish climbing base. It combines limestone sport climbing with multi-pitch and traditional options.\n\nThe valley shape gives variety. Easier and mid-grade sport routes sit around the popular central crags, while steeper sectors such as Wild Side hold more demanding climbing.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Sella belongs to the older Costa Blanca climbing circuit: a place where winter sun, limestone and accessible logistics made long trips realistic.\n\nIts value is not just one famous route. It is the ability to build a week around different sectors, aspects and levels.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The legacy packet and current guidebook listings support a mix of sport, multi-pitch and trad climbing on limestone.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is limestone, with slabs, pockets, crimps and steeper walls depending on sector. Sport, multi-pitch and trad climbing all sit in the local mix rather than one uniform style.\n\nExpect classic Costa Blanca tactics: choose sun or shade, watch polish on popular lines and check route length.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Sella suits mixed roped-climbing groups better than many hard-specialist crags. Easier and mid-grade sport routes are available in the central valley sectors, while stronger climbers can look toward steeper areas.\n\nIt is a sensible choice for climbers who want winter-sun logistics without giving up multi-pitch options.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Grades And Scale."]
+      "heading": "Grades and Scale",
+      "status": "mixed",
+      "body": "There is no clean total route count or single numeric grade span for Sella. The grade picture is qualitative: easy and mid-grade sport routes at the popular central crags, with mid-to-hard climbing in steeper sectors such as Wild Side.\n\nUse a current Costa Blanca topo for exact grades and sector choice.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "The legacy packet supports September to April as the best period and says summer is generally too hot unless using north-facing crags.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "September to April is the best period, while summer is generally too hot unless the plan is built around north-facing crags.\n\nThat makes Sella a strong shoulder-season and winter option, with aspect choice still important.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring a sport rack, helmet and rope length checked against current topo data. If choosing multi-pitch or trad objectives, pack the extra protection and systems required by those exact routes.\n\nFor sunny limestone, add water, sunscreen and layers for shaded belays.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
       "status": "mixed",
-      "body": "The legacy packet says Sella is about one hour by car from Alicante airport and recommends hiring a car for the wider area.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Sella is about one hour by car from Alicante airport, and hiring a car is the practical plan for sector choice and rest-day movement.\n\nDo not build the week around walking access alone unless the base and sectors are chosen specifically for it.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Campsites, hotels, apartments and villas can all work around Sella and the wider Costa Blanca. The right base depends on whether the group wants village convenience, coastal rest days or the shortest drive to sectors.\n\nKeep named accommodation choices for a later planning step unless their current status has been checked.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can use the wider Costa Blanca: coastal towns, walks, food and recovery in warmer weather than much of Europe. For a climbing-focused trip, a quiet day can be enough before returning to limestone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Choose crags by aspect. Sella can be excellent in cool seasons, but sun and heat still decide the best sector.\n\nCheck current guidebook information for Wild Side and any sector-specific access notes.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "Watch for polish on popular limestone, heat exposure and route-length mistakes. Tie knots and confirm lower-offs before committing.\n\nFor multi-pitch or trad routes, treat the day with the same preparation you would give any longer objective.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +228,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "What style is Sella? Limestone sport, multi-pitch and trad climbing.\n\nWhen is it best? September to April is the main window.\n\nWhich airport works best? Alicante, about one hour by car.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +249,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,76 +259,76 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "Sella is covered within Costa Blanca guidebook material and has limestone sport, multi-pitch and trad climbing in the legacy packet.",
-      "sourceRefs": ["s1"]
+      "text": "Sella is represented as mixed-climbing-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Sella has climbing styles: sport, multi-pitch, trad.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Sella rock types retained: limestone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Sella retained grade range: Easy and mid-grade sport routes in central valley sectors, with mid-to-hard routes in steeper sectors such as Wild Side..",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Sella best seasons retained: spring, autumn, winter.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "grades",
-      "missing": "Needs a reputable source before writing grades and scale content.",
-      "priority": "high"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "section": "transport",
+      "missing": "Verify current guidebook counts, sector access and Wild Side details before publishing route recommendations.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "The retained material supports style, season and transport, but not a clean total route count or numeric grade range.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": [],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
+    ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "The retained material supports style, season and transport, but not a clean total route count or numeric grade range."
     ]
   }
 }

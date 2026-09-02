@@ -5,271 +5,434 @@
   "sources": [
     {
       "id": "legacy",
-      "url": "https://rockbusters.net/",
-      "title": "Albarracin native destination review",
-      "publisher": "Rockbusters legacy/native review",
+      "url": "https://rockbusters.net/location/albarracin",
+      "title": "Legacy DB Albarracin location body",
+      "publisher": "Rockbusters legacy database",
       "accessedAt": "2026-09-01",
-      "notes": "Used only for facts already present in the native review packet or normalized legacy taxonomy."
+      "notes": "Used for original Rockbusters description, logistics, accommodation, rest-day, season and restrictions."
+    },
+    {
+      "id": "live",
+      "url": "https://rockbusters.net/location/albarracin/",
+      "title": "Rock Climbing Albarracin",
+      "publisher": "Rockbusters",
+      "accessedAt": "2026-09-01",
+      "notes": "Used for current Rockbusters positioning, named sectors and climbing-style language."
     },
     {
       "id": "s1",
-      "url": "https://climb-europe.com/pages/rock-climbing-spain-albarracin-bouldering",
-      "title": "Albarracin Bouldering in Spain",
-      "publisher": "Climb Europe",
+      "url": "https://www.valenciaclimb.com/climbing-areas/albarracin/",
+      "title": "Boulder in Albarracin",
+      "publisher": "Valencia Climb",
       "accessedAt": "2026-09-01",
-      "notes": "Guidebook publisher page; used for sandstone bouldering and problem count."
+      "notes": "Local operator source used for season, protected-area rules, accommodation, rest-day and services details."
+    },
+    {
+      "id": "s2",
+      "url": "https://www.climbing-guide.eu/bouldering-guidebook-albarracin-bouldering-11134/",
+      "title": "Bouldering guidebook Albarracin Bouldering",
+      "publisher": "Kletterfuehrer Net",
+      "accessedAt": "2026-09-01",
+      "notes": "Guidebook source used for 2025 guidebook scale: 3,500+ boulders and 34 sectors."
+    },
+    {
+      "id": "s3",
+      "url": "https://stories.27crags.com/index/albarracin-bouldering-destination-guide-topos",
+      "title": "Albarracin Bouldering - Ultimate Destination Guide",
+      "publisher": "27 Crags",
+      "accessedAt": "2026-09-01",
+      "notes": "Topo-provider article used for suitability, compact-sector character, restrictions, rest days and cost notes."
     }
   ],
   "facts": {
     "locationKind": "bouldering-area",
-    "climbingStyles": ["bouldering"],
-    "rockTypes": ["sandstone"],
-    "rockFeatures": ["overhangs", "slabs", "crimps", "roofs", "pockets"],
-    "settingTags": ["forest"],
-    "bestSeasons": ["spring", "autumn"],
-    "avoidSeasons": ["winter"],
-    "nearestAirports": ["Alicante", "Valencia"],
-    "accommodationTags": ["campsite", "guesthouse-b-and-b", "luxury"],
-    "transportTags": ["car-recommended", "flight-access"],
-    "gradeRange": null,
+    "destinationScope": "crag",
+    "climbingStyles": [
+      "bouldering"
+    ],
+    "rockTypes": [
+      "sandstone"
+    ],
+    "rockFeatures": [
+      "overhangs",
+      "slabs",
+      "crimps",
+      "roofs",
+      "pockets"
+    ],
+    "settingTags": [
+      "forest"
+    ],
+    "bestSeasons": [
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Valencia",
+      "Alicante",
+      "Madrid"
+    ],
+    "accommodationTags": [
+      "campsite",
+      "guesthouse-b-and-b",
+      "hotel"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
+    "gradeRange": "Font 3 to 8B+, with the strongest coverage around Font 6A to 7B.",
     "routeCount": null,
-    "problemCount": 1600,
-    "sectorCount": 15,
-    "destinationScope": "crag"
+    "problemCount": 3500,
+    "sectorCount": 34
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 323
+    }
   },
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Albarracin, Spain",
-      "sourceRefs": ["legacy"],
-      "warnings": []
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Albarracin is Spain's sandstone bouldering classic: red-orange blocks in pine forest, a medieval hill town five minutes down the road, and enough variety for a full week of climbing.\n\nCome for steep roofs, pockety starts, rounded mantles, cool-weather friction and the rare feeling that the rest day is part of the destination, not a compromise.",
+      "sourceRefs": [
+        "legacy",
+        "live",
+        "s2",
+        "s3"
+      ],
+      "warnings": [
+        "Legacy source says 15 sectors; 2025 guidebook source says 34 sectors and 3,500+ boulders."
+      ]
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Albarracín is a sandstone bouldering destination in a forested setting near Teruel.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Albarracin gives boulderers the simple version of a great trip: short local logistics, sandstone with character, a huge spread of grades, and a town that is worth the journey even before you touch the rock.\n\nThe boulders sit in the Pinares de Rodeno landscape outside Albarracin, about 30 minutes from Teruel. Days are usually built around moving between forest sectors for shade, sun, friction and skin. Evenings belong to the old town: narrow streets, stone walls, small bars and dinner without a long drive.\n\nFor planning, treat Albarracin as a destination-scale venue. There are well over 1,600 problems, the mapped area is broad, and the sectors are varied enough to fill a proper climbing week rather than a quick stop.",
+      "sourceRefs": [
+        "legacy",
+        "live",
+        "s2",
+        "s3"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Albarracin was not invented by climbing. The town was already one of Spain's most striking medieval places: terracotta houses, defensive walls, steep lanes and the Guadalaviar river wrapped below the old fortress.\n\nBouldering added a second identity. The forest blocks around the town became a meeting point for Spanish climbers first, then for travelling boulderers from across Europe. The reason it stuck is obvious on the first day: quality rock, compact sectors, plenty of moderates, and hard lines close enough to keep a mixed group together.\n\nThat popularity also changed the responsibility. Albarracin sits in a protected landscape, close to sensitive nature and cave art. Good climbing here means good behaviour: use current access information, keep impact low, and leave the place quieter than you found it.",
+      "sourceRefs": [
+        "legacy",
+        "live",
+        "s3"
+      ],
+      "warnings": [
+        "No authoritative source in this pass gives a detailed climbing-development timeline."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The source supports sandstone bouldering; the legacy packet adds overhangs, slabs, crimps and roofs across forest sectors.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "This is red sandstone with personality. Some problems feel friendly and almost indoor in the best way: positive pockets, sculpted holds, obvious movement. Others are sharper and more technical, with crimps, slopers, compression, slabs and top-outs that ask for more than pulling power.\n\nThe famous Albarracin recipe is a pockety or steep start followed by a mantle on rounded sandstone. Techos brings the roof climbing. Arrastradero gives volume and variety. Cabrerizo adds views, approachable problems and classics such as Saltimbanqui.\n\nThe rock is good, but it is still sandstone. Do not climb it wet or damp. If the surface is holding moisture, take a rest day, walk the town, or wait for wind and sun to do their work.",
+      "sourceRefs": [
+        "legacy",
+        "live",
+        "s1",
+        "s2",
+        "s3"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
-      "status": "legacy",
-      "body": "The legacy packet says there are problems of many difficulties and styles, but it is not precise enough for a numeric gradeRange.",
-      "sourceRefs": ["legacy"],
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Albarracin is a strong choice for a first outdoor bouldering trip. The approaches are usually short, many sectors have comfortable bases, and the movement can feel familiar to climbers coming from indoor walls.\n\nIntermediate climbers get the biggest reward. The Font 6A to 7B range is deep, varied and productive, so a group can climb a lot without spending the whole week hunting for the right grade.\n\nAdvanced boulderers still have real projects. The harder lines are more conditions-dependent and sometimes less consistent in grade, but the quality is there: steep roofs, powerful sequences, highball character and enough famous problems to shape a trip around.",
+      "sourceRefs": [
+        "legacy",
+        "live",
+        "s3"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
-      "status": "enriched",
-      "body": "Climb Europe reports that the Boulder Albarracín guidebook details over 1,600 problems; gradeRange remains null.",
-      "sourceRefs": ["s1"],
-      "warnings": []
+      "heading": "Grades and Sectors",
+      "status": "mixed",
+      "body": "Albarracin uses Fontainebleau grades. The full spread runs from very easy circuits into hard eighth-grade projects, with the best density around Font 6A to 7B.\n\nArrastradero is the obvious first sector for many trips: big, popular, varied, and easy to use when a group has mixed levels. Techos is the place to look when roof climbing is the plan. Tierra Media is more of a walk and can feel calmer. Cabrerizo is smaller, scenic and useful for a first taste of the area.\n\nUse a current topo before choosing the day. Sector access changes, some areas are closed, and the difference between a brilliant day and an annoying one is often as simple as picking the right shade, parking and approach.",
+      "sourceRefs": [
+        "legacy",
+        "live",
+        "s2",
+        "s3"
+      ],
+      "warnings": [
+        "Designer template claims a Font 3-8B+ range and named sectors Los Pajares, La Cueva and Los Jovenes; those were not used as facts in this trial because this pass did not verify them from a source."
+      ]
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
-      "status": "legacy",
-      "body": "The legacy packet supports late autumn to early spring friction, with spring and autumn as practical best-season tags and winter as a caution because nights can be far below zero.",
-      "sourceRefs": ["legacy"],
+      "heading": "Best Season",
+      "status": "mixed",
+      "body": "Plan Albarracin around friction. Autumn, winter and spring are the normal windows, with the most reliable bouldering feel coming when the air is cool and dry.\n\nWinter can be brilliant, but it is still inland Spain at around 1,000 to 1,200 metres. Expect cold nights, possible snow and mornings that start slowly. When the rock is dry, the friction can be superb.\n\nSummer is the weak season. Shade and altitude can make selective climbing possible, especially early or late, but it is not the sensible first choice for a dedicated bouldering trip.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "enriched",
+      "body": "Bring more pad than you think you need. Many landings are friendly, but sandstone blocks, tree roots and uneven ground still make proper coverage and spotting important.\n\nGood edging shoes help on slabs and small sandstone features. A softer pair can be useful for steep roofs and smearing. Add brushes, tape for skin, warm layers for winter days, and enough water and food when you head for sectors farther from the parking.\n\nA current topo is not optional here. It is the tool that keeps the day efficient and helps you avoid closed or sensitive areas.",
+      "sourceRefs": [
+        "legacy",
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "warnings": [
+        "The exact local chalk rule should be human-verified before publishing a prescriptive gear checklist."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
+      "heading": "Getting There",
       "status": "legacy",
-      "body": "The legacy packet identifies Valencia and Alicante airport access and recommends hiring a car.",
-      "sourceRefs": ["legacy"],
-      "warnings": []
+      "body": "Albarracin sits inland in Aragon, close to Teruel and roughly between Valencia, Madrid and Barcelona. Valencia is usually the simplest airport choice for a climbing trip; Madrid and Barcelona can also work if the flights are better.\n\nRent a car if you can. The boulders are outside the village, pads are bulky, and the best sector for the day may depend on shade, wind, restrictions or how much walking the group wants.\n\nPublic transport is possible but awkward. Without a car, you lose the easy movement between town, campsite, parking and sectors that makes Albarracin such an efficient bouldering base.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "Designer template adds Madrid, Barcelona and Zaragoza timings; those need verification before use."
+      ]
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
-      "status": "legacy",
-      "body": "Legacy accommodation options include B&Bs, campsites and more comfortable/luxury lodging.",
-      "sourceRefs": ["legacy"],
-      "warnings": []
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Stay close. Albarracin works best when you can move easily between bed, coffee, pads and the forest. The area has campsites, guesthouses, hotels, apartments and rural houses, including climber-oriented options with crash-pad rental.\n\nCamping Ciudad de Albarracin is the obvious campsite base. Sandstone Guesthouse is one of the better-known climber options. Vans need more care: free camping is forbidden in the protected area, and overnight parking should be kept to permitted places.\n\nFood is part of the appeal. The town has small groceries, bars and restaurants; for bigger shopping, Teruel is the practical run. Book dinner on busy weekends, especially with a larger group.",
+      "sourceRefs": [
+        "legacy",
+        "s1",
+        "s3"
+      ],
+      "warnings": [
+        "Accommodation availability, prices and overnight van rules should be checked before publishing transactional links."
+      ]
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "mixed",
+      "body": "The first rest-day plan is Albarracin itself. Walk the old streets, climb the walls without pads, sit down for a long meal, and let your skin catch up with your motivation.\n\nThe forest has hiking and cave-painting walks, which are worth doing even if the weather is too damp for sandstone. Teruel is close enough for groceries, a city wander or a more functional reset day.\n\nIf the forecast is messy, keep the plan flexible. Some roof problems dry faster, but rest days are usually the better call when the sandstone is holding moisture.",
+      "sourceRefs": [
+        "legacy",
+        "s1",
+        "s3"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Access is the serious part of Albarracin. Some sectors are closed permanently, some access has changed over time, and seasonal restrictions may apply. Check current local information before you climb, not after you arrive under the boulder.\n\nDo not climb on wet or damp sandstone. Keep chalk use discreet, brush holds after trying a problem, stay on established paths, respect signs and closures, and avoid climbing near cave art or other protected features.\n\nNo night sessions. No free camping in the protected area. Park without blocking roads or tracks. The area is popular enough already; the job is to make each visit lighter, not louder.",
+      "sourceRefs": [
+        "legacy",
+        "s1",
+        "s3"
+      ],
+      "warnings": [
+        "Do not publish a definitive closure list until checked against current official/local access guidance."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
+      "heading": "Safety",
       "status": "enriched",
-      "body": "Access rules and wet-rock restrictions should be checked in the latest local guidebook before publishing detailed advice.",
-      "sourceRefs": ["s1"],
+      "body": "Albarracin can feel friendly, but it is still bouldering. Spot properly, cover the fall zone, and do not let low-looking blocks make the group careless. Some landings are flat; others hide rocks, roots or awkward slopes.\n\nThe biggest safety and conservation decision is often whether to climb at all. Wet sandstone breaks. If a hold or top-out feels damp, walk away and come back later.\n\nWinter days can swing from freezing shade to warm sun. Summer heat can make movement, skin and hydration the limiting factors. Carry enough water, keep layers in the car, and choose sectors with the whole group in mind.",
+      "sourceRefs": [
+        "legacy",
+        "s1",
+        "s3"
+      ],
       "warnings": []
     },
     {
       "key": "costs",
-      "heading": "Costs",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "heading": "Costs and Budget",
+      "status": "enriched",
+      "body": "Albarracin is manageable, but it is not the cheapest climbing base in Spain. The main costs are car hire, accommodation, food in a tourist town, crash-pad rental if you fly without pads, and current topo access.\n\nCamping keeps the budget down outside the coldest periods. Guesthouses and apartments make more sense for winter trips, longer stays or groups that want easy cooking and recovery.\n\nTreat the topo as part of the budget, not an optional extra. Good access information saves time, avoids closed sectors and makes the climbing day better.",
+      "sourceRefs": [
+        "s2",
+        "s3"
+      ],
+      "warnings": [
+        "Prices are time-sensitive and should be reviewed before publication."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "When should I go? Autumn through spring is the reliable window. Winter can be excellent for friction, but bring warm layers and expect cold nights.\n\nDo I need a car? For a normal climbing trip, yes. You can reach Albarracin without one, but moving between village, accommodation, parking and sectors is much easier with your own transport.\n\nIs Albarracin good for beginners? Yes, if the group chooses suitable sectors and keeps pad use serious. It is one of the smoother outdoor bouldering introductions in Europe.\n\nAre there restrictions? Yes. Use current access information, avoid closed sectors, do not climb at night, do not free camp in the protected area, and never climb wet sandstone.",
+      "sourceRefs": [
+        "legacy",
+        "s1",
+        "s3"
+      ],
+      "warnings": [
+        "FAQ is represented as prose because current Payload contentSections has no nested FAQ schema."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this trial."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "Location kind: bouldering-area.",
-      "sourceRefs": ["s1"]
+      "text": "Albarracin is a sandstone bouldering destination in Spain.",
+      "sourceRefs": [
+        "legacy",
+        "live",
+        "s1",
+        "s2",
+        "s3"
+      ]
     },
     {
-      "text": "Climbing styles: bouldering.",
-      "sourceRefs": ["s1"]
+      "text": "The original Rockbusters database describes 15 sectors.",
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
-      "text": "Rock types: sandstone.",
-      "sourceRefs": ["s1"]
+      "text": "The 2025 guidebook listing describes more than 3,500 boulders in 34 sectors.",
+      "sourceRefs": [
+        "s2"
+      ]
     },
     {
-      "text": "Problem count: 1600.",
-      "sourceRefs": ["s1"]
+      "text": "The area has roofs, overhangs, crimps, pockets and slabs.",
+      "sourceRefs": [
+        "legacy",
+        "live",
+        "s1",
+        "s3"
+      ]
     },
     {
-      "text": "Sector count: 15.",
-      "sourceRefs": ["s1"]
+      "text": "Valencia and Alicante are practical airport options in the legacy Rockbusters text.",
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
-      "text": "Albarracin, Spain",
-      "sourceRefs": ["legacy"]
+      "text": "A car is recommended for moving between town/campsite and the boulders.",
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
-      "text": "Albarracín is a sandstone bouldering destination in a forested setting near Teruel.",
-      "sourceRefs": ["legacy", "s1"]
+      "text": "The high season is late autumn to early spring, with winter cold and possible snow.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
-      "text": "The source supports sandstone bouldering; the legacy packet adds overhangs, slabs, crimps and roofs across forest sectors.",
-      "sourceRefs": ["legacy", "s1"]
+      "text": "Pinares de Rodeno is a protected area with climbing restrictions.",
+      "sourceRefs": [
+        "s1",
+        "s3"
+      ]
     },
     {
-      "text": "The legacy packet says there are problems of many difficulties and styles, but it is not precise enough for a numeric gradeRange.",
-      "sourceRefs": ["legacy"]
+      "text": "Free camping is forbidden.",
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
-      "text": "Climb Europe reports that the Boulder Albarracín guidebook details over 1,600 problems; gradeRange remains null.",
-      "sourceRefs": ["s1"]
+      "text": "Night climbing is forbidden according to 27 Crags.",
+      "sourceRefs": [
+        "s3"
+      ]
     },
     {
-      "text": "The legacy packet supports late autumn to early spring friction, with spring and autumn as practical best-season tags and winter as a caution because nights can be far below zero.",
-      "sourceRefs": ["legacy"]
-    },
-    {
-      "text": "The legacy packet identifies Valencia and Alicante airport access and recommends hiring a car.",
-      "sourceRefs": ["legacy"]
-    },
-    {
-      "text": "Legacy accommodation options include B&Bs, campsites and more comfortable/luxury lodging.",
-      "sourceRefs": ["legacy"]
-    },
-    {
-      "text": "Access rules and wet-rock restrictions should be checked in the latest local guidebook before publishing detailed advice.",
-      "sourceRefs": ["s1"]
+      "text": "Sandstone should not be climbed when wet or damp.",
+      "sourceRefs": [
+        "s1",
+        "s3"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "",
-      "missing": "No sourced history and context content found for this pass.",
+      "section": "grades",
+      "missing": "Verify exact current full grade range from the 2025 guidebook or licensed topo data before publishing a precise range.",
+      "priority": "medium"
+    },
+    {
+      "section": "tips",
+      "missing": "Verify current official closure list and exact chalk wording before publication.",
+      "priority": "high"
+    },
+    {
+      "section": "transport",
+      "missing": "Verify current drive times from Valencia, Alicante and Madrid if exact durations are needed in public copy.",
       "priority": "low"
     },
     {
-      "section": "",
-      "missing": "No sourced gear and equipment content found for this pass.",
-      "priority": "low"
-    },
-    {
-      "section": "",
-      "missing": "No sourced rest days content found for this pass.",
-      "priority": "low"
-    },
-    {
-      "section": "",
-      "missing": "No sourced practical tips content found for this pass.",
-      "priority": "low"
-    },
-    {
-      "section": "",
-      "missing": "No sourced costs content found for this pass.",
-      "priority": "low"
-    },
-    {
-      "section": "",
-      "missing": "No sourced faq content found for this pass.",
-      "priority": "low"
+      "section": "stay",
+      "missing": "Confirm accommodation names, links, prices and overnight-van rules before adding transactional CTAs.",
+      "priority": "medium"
     }
   ],
   "qa": {
-    "notes": [
-      "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+    "sourceConflicts": [
+      "Legacy Rockbusters text says 15 sectors; 2025 guidebook listing says 34 sectors and 3,500+ boulders.",
+      "Designer template says 1,600+ problems and 30+ sectors; this trial prefers the newer guidebook count but flags the difference."
     ],
-    "unsourcedClaimsRemoved": []
+    "unsupportedDesignerClaims": [
+      "Family Friendly / Dog Friendly badge was not used as a hard fact; family suitability is supported by 27 Crags, dog-friendly detail needs current access verification.",
+      "Font 3-8B+ was not used as a fact because this pass did not verify the exact full grade span.",
+      "Monthly temperature table from the designer template was not copied because no weather/source table was provided.",
+      "Named sectors Los Pajares, La Cueva and Los Jovenes were not used because this pass did not verify them from a source."
+    ],
+    "unsourcedClaimsRemoved": [],
+    "notes": [
+      "This trial is intentionally richer than the committed curated JSON and keeps paragraph-level content in schema-compatible sections.",
+      "The output uses the designer HTML as content-shape guidance only, not as a source of truth.",
+      "Cards/tables from the designer-style output were translated into section prose because current Payload contentSections has only body/sourceRefs/warnings."
+    ]
   }
 }

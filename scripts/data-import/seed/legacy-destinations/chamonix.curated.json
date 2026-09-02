@@ -22,15 +22,41 @@
   ],
   "facts": {
     "locationKind": "alpine-climbing-area",
-    "climbingStyles": ["multi-pitch", "trad", "sport", "bouldering"],
-    "rockTypes": ["granite", "gneiss", "limestone"],
-    "rockFeatures": ["slabs", "cracks"],
-    "settingTags": ["mountain", "valley"],
-    "bestSeasons": ["summer", "autumn", "spring"],
+    "climbingStyles": [
+      "multi-pitch",
+      "trad",
+      "sport",
+      "bouldering"
+    ],
+    "rockTypes": [
+      "granite",
+      "gneiss",
+      "limestone"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "cracks"
+    ],
+    "settingTags": [
+      "mountain",
+      "valley"
+    ],
+    "bestSeasons": [
+      "summer",
+      "autumn",
+      "spring"
+    ],
     "avoidSeasons": [],
     "nearestAirports": [],
-    "accommodationTags": ["hotel", "apartment", "refuge-hut"],
-    "transportTags": ["public-transport-possible", "car-recommended"],
+    "accommodationTags": [
+      "hotel",
+      "apartment",
+      "refuge-hut"
+    ],
+    "transportTags": [
+      "public-transport-possible",
+      "car-recommended"
+    ],
     "gradeRange": null,
     "routeCount": null,
     "problemCount": null,
@@ -40,177 +66,257 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Chamonix, France",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Chamonix is a high-alpine climbing base under Mont Blanc, with granite, gneiss, sport crags, bouldering and big mountain routes packed into one valley.\n\nIt is a serious destination, not just a scenic one: weather, altitude, glaciers and route choice shape the trip as much as grade.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Chamonix is an alpine and valley climbing destination in the Mont Blanc range.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Chamonix gives climbers a rare spread of terrain in a compact valley. You can climb lower sport routes, boulder in the valley, walk into Aiguilles Rouges rock, or step into bigger granite days on the Mont Blanc side.\n\nThe appeal is the same thing that makes it demanding. The mountains are close, the lifts are useful, and conditions can change quickly. A good Chamonix week is built around flexible objectives, early starts and honest judgement.\n\nCome for alpine scale, not roadside convenience. Even moderate grades can feel bigger when the approach, descent, snow, glacier travel or afternoon weather are part of the route.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "legacy",
+      "body": "Chamonix has long been one of the central names in European alpinism. The village sits under Mont Blanc and has a reputation that reaches far beyond rock climbing alone.\n\nFor rock climbers, that heritage shows up in the style of the days: granite ridges, long routes, huts, lift-accessed approaches and the need to move efficiently in mountain terrain.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The source mix supports granite climbing in the Chamonix Aiguilles and valley climbing that includes granite, gneiss and limestone crags.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The classic Chamonix feel is granite: cracks, slabs, ridges and long mountain routes. The Aiguilles Rouges add gneiss and more approachable rock days, while lower valley crags give sport climbers and boulderers easier access when the high mountains are not right.\n\nDo not reduce the destination to one rock type or one style. Chamonix is a mixed alpine area, and the useful skill is matching the objective to the forecast, snowline, lift access and the group.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
+      "heading": "Who Is It For",
       "status": "legacy",
-      "body": "The legacy packet treats Chamonix as a mixed area for multipitch, bouldering and sport-valley climbing rather than a single sport crag.",
-      "sourceRefs": ["legacy"],
+      "body": "Chamonix suits climbers with solid outdoor judgement. Classic routes may involve glacier approaches, exposed descents and weather decisions, so normal single-pitch fitness is not enough for the bigger objectives.\n\nThere is still room for less experienced climbers if the plan stays in lower sport crags, bouldering venues or guided progression. The destination rewards ambition, but it punishes casual planning.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced grades and difficulty content found for this pass."]
+      "heading": "Grades and Sectors",
+      "status": "mixed",
+      "body": "There is no useful valley-wide grade range because the entry covers sport climbing, bouldering, traditional routes, multipitch and alpine rock rather than one guidebook-defined crag.\n\nChoose objectives from a recent Chamonix topo and read the approach and descent notes with the same care as the grade. In this valley, the number beside the route is only part of the difficulty.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced grades and difficulty content found for this pass."
+      ]
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
+      "heading": "Best Season",
       "status": "legacy",
-      "body": "The legacy packet supports summer for higher crags, with lower valley options extending into late spring and autumn.",
-      "sourceRefs": ["legacy"],
+      "body": "Summer is the main season for higher rock routes, when longer days and snow-free approaches open more options. Lower valley crags can work earlier or later, and some sport venues stay useful when the bigger mountains are not in condition.\n\nSpring and autumn are more selective. They can be excellent, but the plan needs to follow altitude, aspect and weather rather than a fixed ticklist.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Gear depends entirely on the objective. Sport crags need normal sport equipment. Longer mountain routes may need a multipitch rack, descent kit, helmet, mountain clothing and the competence to handle changing weather.\n\nFor glacier approaches or hut-based routes, bring the correct alpine equipment or hire a qualified guide. Do not let the easy lift access hide the seriousness of the terrain.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced transport and access content found for this pass."]
+      "heading": "Getting There",
+      "status": "mixed",
+      "body": "Chamonix works better than many alpine areas without a car because the valley has public transport and lift infrastructure. A car still helps for early starts, bad-weather alternatives and moving to nearby valleys.\n\nBuild transport around the routes. Lift opening times, last downloads and bus schedules can define the safe shape of a climbing day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced transport and access content found for this pass."
+      ]
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
-      "status": "enriched",
-      "body": "Hotel, apartment and refuge-hut tags are conservative for Chamonix, but exact bases need a local tourism source.",
-      "sourceRefs": ["s1"],
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Accommodation runs from apartments and hotels in the valley to huts for bigger routes. A central base is useful if you want easy access to buses, lifts, food and weather-dependent changes of plan.\n\nFor high routes, hut booking and descent logistics can be as important as the route itself. Sort them before the forecast window arrives.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "legacy",
+      "body": "Rest days are straightforward in Chamonix: valley walks, lift viewpoints, cafes, gear shops and lower-intensity mountain days are all close.\n\nUse bad-weather days properly. Dry kit, check forecasts, adjust objectives and avoid turning a marginal mountain day into a forced one.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Have a short list for different conditions: lower sport, Aiguilles Rouges rock, big granite, bouldering and a true rest option. The best plan in Chamonix is rarely a rigid plan.\n\nStart early on longer routes and take descents seriously. A moderate climb can become a long day if the weather closes in or the descent is underestimated.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Weather, altitude, glacier approaches and descent complexity are the key hazards. Check forecasts often and be ready to change objectives.\n\nOn alpine rock, the route grade does not describe the full seriousness. Approach conditions, loose rock, retreat options, lift times and group speed all belong in the safety decision.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
-      "heading": "Costs",
+      "heading": "Costs and Budget",
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "Is Chamonix only for experts? No, but the bigger objectives require mountain experience. Less experienced climbers should stay on appropriate sport, bouldering or guided routes.\n\nWhen is best? Summer is the main high-rock season; lower crags can extend the season.\n\nCan I manage without a car? Often yes in the valley, but a car adds flexibility.\n\nDo I need alpine gear? For many classic mountain routes, yes. Match equipment to the exact objective.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: alpine-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: multi-pitch, trad, sport, bouldering.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: granite, gneiss, limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Chamonix, France",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Chamonix is an alpine and valley climbing destination in the Mont Blanc range.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The source mix supports granite climbing in the Chamonix Aiguilles and valley climbing that includes granite, gneiss and limestone crags.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet treats Chamonix as a mixed area for multipitch, bouldering and sport-valley climbing rather than a single sport crag.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet supports summer for higher crags, with lower valley options extending into late spring and autumn.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Hotel, apartment and refuge-hut tags are conservative for Chamonix, but exact bases need a local tourism source.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -271,10 +377,17 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 1184
+    }
   }
 }

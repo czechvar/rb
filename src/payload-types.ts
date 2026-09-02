@@ -231,7 +231,7 @@ export interface User {
  * via the `definition` "media".
  */
 export interface Media {
-  id: number;
+  id: string;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -280,8 +280,8 @@ export interface Program {
     };
     [k: string]: unknown;
   } | null;
-  mainPicture?: (number | null) | Media;
-  gallery?: (number | Media)[] | null;
+  mainPicture?: (string | null) | Media;
+  gallery?: (string | Media)[] | null;
   vimeoId?: string | null;
   /**
    * Optional block-driven layout for this public program page. Empty uses the current default layout.
@@ -292,7 +292,7 @@ export interface Program {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            backgroundMedia?: (number | null) | Media;
+            backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
             primaryAction?: {
               label?: string | null;
@@ -515,7 +515,7 @@ export interface Program {
             heading?: string | null;
             body?: string | null;
             source: 'upload' | 'externalVideo';
-            media?: (number | null) | Media;
+            media?: (string | null) | Media;
             videoUrl?: string | null;
             caption?: string | null;
             variant: 'wide' | 'contained' | 'split';
@@ -527,7 +527,7 @@ export interface Program {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (number | Media)[];
+            images: (string | Media)[];
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -895,8 +895,8 @@ export interface Event {
         id?: string | null;
       }[]
     | null;
-  mainPicture?: (number | null) | Media;
-  gallery?: (number | Media)[] | null;
+  mainPicture?: (string | null) | Media;
+  gallery?: (string | Media)[] | null;
   vimeoId?: string | null;
   /**
    * Optional block-driven layout for this public trip page. Empty uses the current default layout.
@@ -907,7 +907,7 @@ export interface Event {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            backgroundMedia?: (number | null) | Media;
+            backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
             primaryAction?: {
               label?: string | null;
@@ -1130,7 +1130,7 @@ export interface Event {
             heading?: string | null;
             body?: string | null;
             source: 'upload' | 'externalVideo';
-            media?: (number | null) | Media;
+            media?: (string | null) | Media;
             videoUrl?: string | null;
             caption?: string | null;
             variant: 'wide' | 'contained' | 'split';
@@ -1142,7 +1142,7 @@ export interface Event {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (number | Media)[];
+            images: (string | Media)[];
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -1367,7 +1367,7 @@ export interface Event {
                 id?: string | null;
               }[]
             | null;
-          image?: (number | null) | Media;
+          image?: (string | null) | Media;
           id?: string | null;
         }[]
       | null;
@@ -1574,6 +1574,36 @@ export interface Location {
   transportSummary?: string | null;
   accommodationSummary?: string | null;
   /**
+   * Structured destination content extracted from legacy data and research. Missing sections are kept for editorial traceability.
+   */
+  contentSections?:
+    | {
+        key: string;
+        heading: string;
+        status: 'enriched' | 'mixed' | 'legacy' | 'missing' | 'not-applicable';
+        body?: string | null;
+        sourceRefs?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        warnings?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * Traceability for mined or enriched destination facts.
    */
   sourceReferences?:
@@ -1587,8 +1617,8 @@ export interface Location {
         id?: string | null;
       }[]
     | null;
-  mainPicture?: (number | null) | Media;
-  gallery?: (number | Media)[] | null;
+  mainPicture?: (string | null) | Media;
+  gallery?: (string | Media)[] | null;
   /**
    * Optional block-driven layout for this public destination page. Empty uses the current default layout.
    */
@@ -1598,7 +1628,7 @@ export interface Location {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            backgroundMedia?: (number | null) | Media;
+            backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
             primaryAction?: {
               label?: string | null;
@@ -1821,7 +1851,7 @@ export interface Location {
             heading?: string | null;
             body?: string | null;
             source: 'upload' | 'externalVideo';
-            media?: (number | null) | Media;
+            media?: (string | null) | Media;
             videoUrl?: string | null;
             caption?: string | null;
             variant: 'wide' | 'contained' | 'split';
@@ -1833,7 +1863,7 @@ export interface Location {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (number | Media)[];
+            images: (string | Media)[];
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -1995,7 +2025,7 @@ export interface Guide {
       }[]
     | null;
   section: 'team' | 'friends';
-  photo?: (number | null) | Media;
+  photo?: (string | null) | Media;
   content?: {
     root: {
       type: string;
@@ -2020,7 +2050,7 @@ export interface Guide {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            backgroundMedia?: (number | null) | Media;
+            backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
             primaryAction?: {
               label?: string | null;
@@ -2243,7 +2273,7 @@ export interface Guide {
             heading?: string | null;
             body?: string | null;
             source: 'upload' | 'externalVideo';
-            media?: (number | null) | Media;
+            media?: (string | null) | Media;
             videoUrl?: string | null;
             caption?: string | null;
             variant: 'wide' | 'contained' | 'split';
@@ -2255,7 +2285,7 @@ export interface Guide {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (number | Media)[];
+            images: (string | Media)[];
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -2525,7 +2555,7 @@ export interface Post {
   id: number;
   title: string;
   slug: string;
-  heroImage?: (number | null) | Media;
+  heroImage?: (string | null) | Media;
   excerpt?: string | null;
   content?: {
     root: {
@@ -2551,7 +2581,7 @@ export interface Post {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            backgroundMedia?: (number | null) | Media;
+            backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
             primaryAction?: {
               label?: string | null;
@@ -2774,7 +2804,7 @@ export interface Post {
             heading?: string | null;
             body?: string | null;
             source: 'upload' | 'externalVideo';
-            media?: (number | null) | Media;
+            media?: (string | null) | Media;
             videoUrl?: string | null;
             caption?: string | null;
             variant: 'wide' | 'contained' | 'split';
@@ -2786,7 +2816,7 @@ export interface Post {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (number | Media)[];
+            images: (string | Media)[];
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -3055,7 +3085,7 @@ export interface Partner {
     };
     [k: string]: unknown;
   } | null;
-  logo?: (number | null) | Media;
+  logo?: (string | null) | Media;
   featured?: boolean | null;
   active?: boolean | null;
   updatedAt: string;
@@ -3267,7 +3297,7 @@ export interface Page {
             eyebrow?: string | null;
             heading: string;
             body?: string | null;
-            backgroundMedia?: (number | null) | Media;
+            backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
             primaryAction?: {
               label?: string | null;
@@ -3490,7 +3520,7 @@ export interface Page {
             heading?: string | null;
             body?: string | null;
             source: 'upload' | 'externalVideo';
-            media?: (number | null) | Media;
+            media?: (string | null) | Media;
             videoUrl?: string | null;
             caption?: string | null;
             variant: 'wide' | 'contained' | 'split';
@@ -3502,7 +3532,7 @@ export interface Page {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (number | Media)[];
+            images: (string | Media)[];
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -3875,7 +3905,7 @@ export interface PayloadLockedDocument {
       } | null)
     | ({
         relationTo: 'media';
-        value: number | Media;
+        value: string | Media;
       } | null)
     | ({
         relationTo: 'difficulties';
@@ -4061,6 +4091,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
+  id?: T;
   alt?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -5179,6 +5210,17 @@ export interface LocationsSelect<T extends boolean = true> {
   seasonSummary?: T;
   transportSummary?: T;
   accommodationSummary?: T;
+  contentSections?:
+    | T
+    | {
+        key?: T;
+        heading?: T;
+        status?: T;
+        body?: T;
+        sourceRefs?: T;
+        warnings?: T;
+        id?: T;
+      };
   sourceReferences?:
     | T
     | {

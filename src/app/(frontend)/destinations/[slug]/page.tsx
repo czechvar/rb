@@ -11,6 +11,7 @@ import { locationDetailGraphJsonLd } from '@/lib/jsonld'
 import styles from '../destinations.module.css'
 
 type Props = { params: Promise<{ slug: string }> }
+type LocationContentSection = NonNullable<NonNullable<Awaited<ReturnType<typeof getLocationBySlug>>>['contentSections']>[number]
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
@@ -73,7 +74,7 @@ export default async function DestinationPage({ params }: Props) {
             className={styles.heroPhoto}
           />
         ) : null}
-        <Lexical data={loc.content} />
+        <DestinationSections sections={loc.contentSections} fallbackContent={loc.content} />
 
         {typeof lng === 'number' && typeof lat === 'number' ? (
           <div className={styles.map}>
@@ -101,5 +102,43 @@ export default async function DestinationPage({ params }: Props) {
         </section>
       </main>
     </MarketingShell>
+  )
+}
+
+function DestinationSections({
+  sections,
+  fallbackContent,
+}: {
+  sections: LocationContentSection[] | null | undefined
+  fallbackContent: unknown
+}) {
+  const publishableSections = (sections ?? []).filter(
+    (section) =>
+      section.body &&
+      section.status !== 'missing' &&
+      section.status !== 'not-applicable' &&
+      section.key !== 'hero',
+  )
+
+  if (!publishableSections.length) return <Lexical data={fallbackContent} />
+
+  return (
+    <div className={styles.structuredSections}>
+      {publishableSections.map((section) => {
+        const paragraphs = String(section.body)
+          .split(/\n{2,}/)
+          .map((paragraph) => paragraph.trim())
+          .filter(Boolean)
+
+        return (
+          <section key={section.id ?? section.key} className={styles.structuredSection}>
+            <h2>{section.heading}</h2>
+            {paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </section>
+        )
+      })}
+    </div>
   )
 }

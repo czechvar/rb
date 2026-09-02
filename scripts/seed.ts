@@ -11,6 +11,7 @@
  * placeholder data — refresh from real copy when ready.
  */
 import 'dotenv/config'
+import { createHash } from 'node:crypto'
 import { getPayload, type Payload, type CollectionSlug, type Where } from 'payload'
 import sharp from 'sharp'
 import config from '../src/payload.config'
@@ -21,6 +22,7 @@ import {
 } from '../src/lib/block-demo'
 
 type Ref = { id: number }
+type MediaRef = { id: string }
 
 const demoMediaSvg = `
 <svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
@@ -37,6 +39,10 @@ const demoMediaSvg = `
 
 async function demoPng() {
   return sharp(Buffer.from(demoMediaSvg)).png().toBuffer()
+}
+
+function mediaSeedId(key: string): string {
+  return `med_${createHash('sha256').update(key).digest('hex').slice(0, 24)}`
 }
 
 async function ensure(
@@ -94,7 +100,7 @@ async function ensureMedia(
     alt: string
     label: string
   },
-): Promise<Ref> {
+): Promise<MediaRef> {
   const png = await demoPng()
   const existing = await payload.find({
     collection: 'media',
@@ -115,12 +121,12 @@ async function ensureMedia(
       },
     })
     console.log(`  ✎ update ${'media'.padEnd(13)} ${args.label}`)
-    return updated as Ref
+    return updated as MediaRef
   }
 
   const created = await payload.create({
     collection: 'media',
-    data: { alt: args.alt },
+    data: { id: mediaSeedId(args.filename), alt: args.alt },
     file: {
       data: png,
       mimetype: 'image/png',
@@ -129,7 +135,7 @@ async function ensureMedia(
     },
   })
   console.log(`  ✓ create ${'media'.padEnd(13)} ${args.label}`)
-  return created as Ref
+  return created as MediaRef
 }
 
 /**

@@ -35,12 +35,17 @@ describe('legacy destination import mapper', () => {
           routeCount: null,
           sectorCount: 15,
         },
+        media: {
+          mainImage: {
+            legacyMediaId: 323,
+          },
+        },
         sections: [
           {
             key: 'season',
             heading: 'Season',
             status: 'legacy',
-            body: 'Spring and autumn are the main windows.',
+            body: 'Spring and autumn are the main windows.\n\nWinter can be good too.',
           },
           {
             key: 'transport',
@@ -64,7 +69,7 @@ describe('legacy destination import mapper', () => {
         keywords: 'albarracin,bouldering',
         description: 'Albarracin destination.',
       },
-      undefined,
+      new Map([['323', 'med_80e4f5c45a4da3e4428f13af']]),
     )
 
     expect(built.slug).toBe('albarracin')
@@ -74,6 +79,7 @@ describe('legacy destination import mapper', () => {
       active: true,
       country: 'Spain',
       coordinates: [-1.44, 40.4],
+      mainPicture: 'med_80e4f5c45a4da3e4428f13af',
       locationKind: 'bouldering-area',
       destinationScope: 'area',
       contentCompleteness: 'enriched',
@@ -89,9 +95,36 @@ describe('legacy destination import mapper', () => {
       gradeRange: 'Font 3 to 8C',
       problemCount: 1600,
       sectorCount: 15,
-      seasonSummary: 'Spring and autumn are the main windows.',
+      seasonSummary: 'Spring and autumn are the main windows.\n\nWinter can be good too.',
       transportSummary: 'A car is normally recommended.',
       accommodationSummary: 'Campsites are available.',
+      content: null,
+      contentSections: [
+        {
+          key: 'season',
+          heading: 'Season',
+          status: 'legacy',
+          body: 'Spring and autumn are the main windows.\n\nWinter can be good too.',
+          sourceRefs: [],
+          warnings: [],
+        },
+        {
+          key: 'transport',
+          heading: 'Getting there',
+          status: 'legacy',
+          body: 'A car is normally recommended.',
+          sourceRefs: [],
+          warnings: [],
+        },
+        {
+          key: 'stay',
+          heading: 'Where to stay',
+          status: 'legacy',
+          body: 'Campsites are available.',
+          sourceRefs: [],
+          warnings: [],
+        },
+      ],
       seo: {
         keywords: 'albarracin,bouldering',
         description: 'Albarracin destination.',
@@ -123,8 +156,29 @@ describe('legacy destination import mapper', () => {
           sections: [],
         },
         undefined,
-        undefined,
       ),
     ).toThrow('Unknown taxonomy value for climbingStyles: aid-climbing')
+  })
+
+  it('leaves mainPicture unset when the legacy media ID has no lookup entry', () => {
+    const built = buildLocationData(
+      {
+        slug: 'andalucia',
+        title: 'Andalucia',
+        status: 'partial',
+        sources: [],
+        facts: {},
+        media: {
+          mainImage: {
+            legacyMediaId: 1393,
+          },
+        },
+        sections: [],
+      },
+      undefined,
+      new Map(),
+    )
+
+    expect(built.data.mainPicture).toBeUndefined()
   })
 })

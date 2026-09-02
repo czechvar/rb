@@ -101,7 +101,8 @@ export function getLocationTaxonomyLabel(
   value: string,
   locale: Locale = 'en',
 ): string {
-  const labels = locationTaxonomy[field][value] as TaxonomyLabel | undefined
+  const values: Record<string, TaxonomyLabel> = locationTaxonomy[field]
+  const labels = values[value]
 
   return labels?.[locale] ?? labels?.en ?? value
 }

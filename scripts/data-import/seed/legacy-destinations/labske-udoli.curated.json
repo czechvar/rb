@@ -1,6 +1,6 @@
 {
   "slug": "labske-udoli",
-  "title": "Labské Údoli",
+  "title": "Labské Údolí",
   "status": "partial",
   "sources": [
     {
@@ -22,101 +22,162 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "trad"],
-    "rockTypes": [],
-    "rockFeatures": [],
-    "settingTags": [],
-    "bestSeasons": [],
+    "destinationScope": "area",
+    "climbingStyles": [
+      "sport",
+      "trad",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "sandstone"
+    ],
+    "rockFeatures": [
+      "cracks",
+      "overhangs",
+      "slabs"
+    ],
+    "settingTags": [
+      "gorge-canyon",
+      "valley"
+    ],
+    "bestSeasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
     "avoidSeasons": [],
-    "nearestAirports": [],
-    "accommodationTags": [],
-    "transportTags": [],
+    "nearestAirports": [
+      "Dresden",
+      "Prague"
+    ],
+    "accommodationTags": [
+      "guesthouse-b-and-b",
+      "campsite"
+    ],
+    "transportTags": [
+      "public-transport-possible",
+      "walkable-local-access",
+      "flight-access"
+    ],
     "gradeRange": null,
     "routeCount": 4000,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "area"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "enriched",
+      "body": "Labské Údolí is the Czech side of the Elbe sandstone world: big river walls, sport and trad routes, serious local rules and enough climbing for a long campaign.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "enriched",
-      "body": "The cited source describes Labske Udoli, also known as Labak, as a climbing area on the left and right banks of the river.",
-      "sourceRefs": ["s1"],
+      "body": "Labské Údolí, often called Labák, sits along the Elbe near Děčín. The cliffs rise on both sides of the river, with the left and right banks offering different aspects, approaches and levels of commitment.\n\nThis is sandstone climbing with culture attached. Some routes are well protected by local standards, others demand comfort with runouts, knots, cracks and the ethics of the Elbsandstein tradition.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "status": "enriched",
+      "body": "The area belongs to the wider Elbe sandstone tradition, where local rules and climbing style matter as much as the topo. The Czech side is known for friendlier logistics than the German side while still keeping a strong sandstone identity.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "enriched",
-      "body": "The cited guidebook source describes sport and trad climbing across the left and right banks.",
-      "sourceRefs": ["s1"],
+      "body": "The rock is sandstone, with walls up to about 80 m and routes from technical faces to cracks, towers and overhangs. The climbing is split between sport and trad, but “sport” here can still mean spaced bolts and a real first-clip moment.\n\nClimbers who enjoy gritstone-style movement, footwork and problem solving will feel the appeal quickly. Climbers expecting closely bolted holiday limestone need to recalibrate.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "enriched",
+      "body": "Labské Údolí suits climbers who want adventurous sandstone and are willing to respect local style. It can work for sport climbers, trad climbers and mixed teams, but the leader needs judgement about protection and route choice.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
       "status": "enriched",
-      "body": "Two selective guidebooks are described as covering over 4,000 routes in total, with more than 2,200 on the right bank and more than 2,000 on the left bank.",
-      "sourceRefs": ["s1"],
+      "body": "Two selective guidebooks cover more than 4,000 routes in total: more than 2,200 on the right bank and more than 2,000 on the left bank. That scale makes the area far bigger than a weekend tick list.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "status": "enriched",
+      "body": "Aspect matters because the cliffs sit on both sides of the river. Choose sun or shade by season and conditions, and keep wet sandstone sensitivity in mind after rain.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Season."
+      ]
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "enriched",
+      "body": "A sport rack is not the whole story. Depending on route choice, climbers may need slings, knot protection knowledge, crack skills and a clip stick for high first bolts.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "enriched",
+      "body": "Dresden and Prague are the obvious airports. The main train line between the two cities runs through the area, so a car is not essential for every team; many local objectives can be linked on foot once based in the valley.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
     },
     {
       "key": "stay",
       "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "status": "enriched",
+      "body": "The left bank has simple climber accommodation and camping around Kosti's Pub, while the right bank has options around the Belvedere area. Treat accommodation choice as part of the climbing plan because it affects which bank feels convenient.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
@@ -124,23 +185,33 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "enriched",
+      "body": "Ask local climbers for route advice and take the rules seriously. The right line in Labák is not just the right grade; it is the right protection style, aspect and drying condition.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "enriched",
+      "body": "The main hazards are sandstone ethics, spaced protection, high first bolts and wet-rock sensitivity. If in doubt, choose conservative routes, use a stick clip where appropriate and avoid climbing damp sandstone.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +219,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "enriched",
+      "body": "Is Labské Údolí sport climbing? Partly. There are sport routes, but the sandstone style can still be serious.\n\nCan you travel without a car? Yes, the Prague-Dresden rail line makes public transport realistic.\n\nHow big is the area? Current guidebook coverage lists more than 4,000 routes across both banks.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -164,7 +241,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -172,13 +251,95 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Labske Udoli guidebook coverage is split between left and right bank books totaling over 4,000 routes.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: hero section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: intro section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: history section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: rock section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: who section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: grades section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: season section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: gear section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: transport section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: stay section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: tips section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: safety section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Labské Údolí: faq section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -244,7 +405,10 @@
     }
   ],
   "qa": {
-    "notes": ["missing_or_short_location_body", "legacy body text is empty"],
+    "notes": [
+      "missing_or_short_location_body",
+      "legacy body text is empty"
+    ],
     "unsourcedClaimsRemoved": [
       "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
     ]

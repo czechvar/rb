@@ -22,15 +22,36 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport", "bouldering"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["pockets", "crimps", "overhangs"],
-    "settingTags": ["forest"],
-    "bestSeasons": ["spring", "autumn", "summer"],
+    "climbingStyles": [
+      "sport",
+      "bouldering"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "pockets",
+      "crimps",
+      "overhangs"
+    ],
+    "settingTags": [
+      "forest"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "summer"
+    ],
     "avoidSeasons": [],
     "nearestAirports": [],
-    "accommodationTags": ["campsite", "guesthouse-b-and-b", "refuge-hut"],
-    "transportTags": ["car-recommended"],
+    "accommodationTags": [
+      "campsite",
+      "guesthouse-b-and-b",
+      "refuge-hut"
+    ],
+    "transportTags": [
+      "car-recommended"
+    ],
     "gradeRange": "all grades",
     "routeCount": 8000,
     "problemCount": null,
@@ -40,193 +61,284 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Frankenjura, Germany",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Frankenjura is German limestone at full intensity: thousands of bolted routes, pockets, short powerful walls, forest shade and a history that still defines sport climbing.\n\nIt is brilliant for a summer or shoulder-season trip if you like moving between many small crags instead of camping under one big cliff.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Frankenjura is a German limestone sport-climbing region with many small forest crags.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Frankenjura is a rural climbing region in northern Bavaria, spread between villages, forests and compact limestone cliffs. The scale is huge, but the individual crags are often small, shady and quick to move between.\n\nThe climbing has a distinct feel: short routes, pockets, finger strength, bouldery cruxes and power endurance. There are easier walls and classic moderates, but the region is famous because hard sport climbing history was made here.\n\nA good trip feels like a circuit. Drive, climb, change aspect, drink coffee in a village, shift again, then finish with local food and beer before the kitchens close.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Frankenjura is tied to the birth and progression of modern sport climbing. Wolfgang Gullich, Kurt Albert and other leading climbers used these short limestone walls to push difficulty and style.\n\nAction Directe remains the headline route, but the history is wider than one climb. The region shaped redpoint tactics, hard pocket climbing and the idea that small crags can carry world-level standards.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The external source supports limestone; the legacy packet supports short, powerful, pocketed and crimpy sport routes in forest settings.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is white and grey limestone, often steep, pocketed and physical. Many routes are under 25 metres, with a few longer lines, so the difficulty is usually compressed rather than gradual.\n\nExpect one- and two-finger pockets, holes, crimps and explosive sequences. Some crags are technical and old-school; others are steep, modern and pumpy. The variety comes from changing massifs rather than one long cliff.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
-      "status": "legacy",
-      "body": "The legacy packet says the area has routes from easy to hard, but also emphasizes demanding bouldery climbing.",
-      "sourceRefs": ["legacy"],
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Frankenjura suits climbers who like hard sport tactics, but it is not only for elite climbers. There are routes of many grades, and the forest setting makes it a good group destination when the right crags are chosen.\n\nLower-grade climbers should pick sectors carefully. Easier older routes can feel more adventurous and less closely bolted, while routes from UIAA 7 upward are generally more consistently protected.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
-      "status": "legacy",
-      "body": "Legacy evidence gives almost 8,000 climbs in about 1,000 smaller crags and “all grades”; no more precise grade span was assigned.",
-      "sourceRefs": ["legacy"],
+      "heading": "Grades and Sectors",
+      "status": "mixed",
+      "body": "The region uses UIAA grades and has thousands of sport routes. The prepared facts keep almost 8,000 climbs on about 1,000 crags, while another current destination article gives more than 7,000 routes on roughly 1,000 crags.\n\nUse the grade conversion only as a rough guide. Older Frankenjura grades can feel stern, especially on pockety or technical classics.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
-      "status": "legacy",
-      "body": "The legacy packet supports early spring to late autumn, with shade in summer and shelter considerations in spring/autumn.",
-      "sourceRefs": ["legacy"],
+      "heading": "Best Season",
+      "status": "mixed",
+      "body": "Early summer and autumn are the cleanest windows. Mid-summer can still work because many walls face north or sit in deep forest, but heat, humidity, mosquitoes and seepage can shape the day.\n\nWinter is possible on selected south-facing or free-standing walls, but it is not the easiest first-visit season. After prolonged rain, some crags seep while others stay dry, so flexibility matters.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Bring a sport rack, helmet, rope and a recent guidebook. For easier routes up to around UIAA 6, a small rack can be useful because some older lines may feel spaced compared with modern sport routes.\n\nFinger skin and tendons matter here. Warm up properly before pulling hard on pockets, and do not make the first day a tour of tiny holds.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
-      "status": "legacy",
-      "body": "The legacy packet recommends a car for shifting between sectors.",
-      "sourceRefs": ["legacy"],
+      "heading": "Getting There",
+      "status": "mixed",
+      "body": "A car is close to essential. The crags are spread through villages and valleys, and the whole point of the area is being able to shift from sunny to shady, dry to steep, hard to easier.\n\nNuremberg is the most convenient airport for many visitors, with Frankfurt and Munich also workable. Once in the area, a local map or recent app helps with the small roads and parking.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
-      "status": "legacy",
-      "body": "The legacy packet lists campsites, village B&Bs and shelter choices depending on season.",
-      "sourceRefs": ["legacy"],
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Campsites, guesthouses and village hotels are the normal bases. In summer, camping can be easy and social; in spring or autumn, a roof is often worth it when the weather turns wet.\n\nFood logistics are part of the trip. Villages have pubs, local beer and simple supplies, but shops close on Sundays and smaller kitchens can stop serving early. Plan dinner before you are starving.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "mixed",
+      "body": "Rest days can stay local: hiking, cycling, kayaking, swimming pools and village food all fit the landscape.\n\nFor wet-weather reset days, Nuremberg and Bamberg are good city options. They also solve the bigger-supermarket problem when the small villages are quiet.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Do not chase one crag in bad conditions. Frankenjura is built for fast changes: aspect, steepness, shade and seepage vary massively between sectors.\n\nBring a recent topo and respect local parking. Many crags sit close to villages, farms and forest tracks, so low-key behaviour is part of access.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Pocket climbing is hard on fingers. Warm up slowly, manage skin, and do not underestimate short routes just because they are not tall.\n\nTicks, mosquitoes, seepage and older protection are practical issues. Wear a helmet, inspect fixed gear, and add protection on easier old routes if the topo and route character call for it.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
-      "heading": "Costs",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "heading": "Costs and Budget",
+      "status": "mixed",
+      "body": "Frankenjura can be a good-value trip if you camp, cook some meals and keep driving distances sensible. Budget for car hire, fuel, accommodation, food, guidebooks and local supplies.\n\nCarry cash for smaller village businesses and do grocery runs before Sunday closures.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "What grades does Frankenjura use? UIAA grades. Use a conversion chart only as a rough comparison.\n\nDo I need a car? Yes for a normal trip. Public transport will not give practical crag-to-crag movement.\n\nIs it only hard climbing? No, but the area is famous for powerful pocket routes and the easier older lines can feel more adventurous.\n\nWhen should I go? Early summer and autumn are ideal, with shaded options in summer.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: sport-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, bouldering.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 8000.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Sector count: 1000.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Frankenjura, Germany",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Frankenjura is a German limestone sport-climbing region with many small forest crags.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The external source supports limestone; the legacy packet supports short, powerful, pocketed and crimpy sport routes in forest settings.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet says the area has routes from easy to hard, but also emphasizes demanding bouldery climbing.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence gives almost 8,000 climbs in about 1,000 smaller crags and “all grades”; no more precise grade span was assigned.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet supports early spring to late autumn, with shade in summer and shelter considerations in spring/autumn.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet recommends a car for shifting between sectors.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet lists campsites, village B&Bs and shelter choices depending on season.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     }
   ],
   "editorialGaps": [
@@ -267,11 +379,18 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "Corrected legacy-normalized rockTypes from sandstone to limestone using the external source.",
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 90
+    }
   }
 }

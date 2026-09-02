@@ -22,15 +22,42 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "deep-water-soloing"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "overhangs", "slabs", "cracks", "roofs"],
-    "settingTags": ["coastal", "island"],
-    "bestSeasons": ["spring", "autumn", "winter"],
-    "avoidSeasons": ["summer"],
+    "climbingStyles": [
+      "sport",
+      "deep-water-soloing"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "overhangs",
+      "slabs",
+      "cracks",
+      "roofs"
+    ],
+    "settingTags": [
+      "coastal",
+      "island"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
     "nearestAirports": [],
-    "accommodationTags": ["hotel", "apartment", "villa"],
-    "transportTags": ["flight-access", "car-recommended"],
+    "accommodationTags": [
+      "hotel",
+      "apartment",
+      "villa"
+    ],
+    "transportTags": [
+      "flight-access",
+      "car-recommended"
+    ],
     "gradeRange": null,
     "routeCount": null,
     "problemCount": null,
@@ -40,189 +67,275 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Mallorca, Spain",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Mallorca is a limestone island trip with two clear personalities: roped sport climbing in the mountains and on coastal cliffs, and deep-water soloing above the Mediterranean.\n\nIt works best outside high summer, when the roads, beaches and crags are quieter and the island gives you room to move between sun, shade and sea.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Mallorca is a limestone island destination for both sport climbing and deep-water soloing.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Mallorca is not just a holiday island with a few climbs attached. The western mountains, the coastal walls and the east-coast deep-water solo venues make it a proper climbing destination with enough variety for a full trip.\n\nSport climbers get limestone walls with tufas, roofs, slabs, cracks and solid everyday mileage. Deep-water soloing gives the island its sharper edge: sea cliffs, clear water, committing movement and days where conditions matter as much as grade.\n\nThe best plan is to choose a base, rent a car, and keep the week flexible. Mallorca is small enough to cross without losing the day, but varied enough that orientation, wind and humidity can make one crag feel perfect while another feels wrong.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "enriched",
+      "body": "Mallorca has a long modern guidebook history. Winter sport climbing on the island came to wider attention in the late 1980s, and the first Rockfax guide appeared in 1995 with 12 sport crags.\n\nThe island scene is now bigger and more mature. Roped sport climbing and deep-water soloing have enough depth to stand as separate styles, which is exactly how many visiting climbers plan the trip.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "Rockfax covers 34 sport crags and 16 DWS crags; the legacy packet adds tufas, roofs, overhangs, cracks and slabs.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Expect Mediterranean limestone with a broad spread of movement. Some walls are steep and athletic, with tufas, roofs and big holds. Others are more technical, with slabs, cracks and vertical faces where footwork matters.\n\nThe sport climbing is concentrated around the western side of the island and the mountain approaches near Palma and Soller, with additional east-coast sport venues. Deep-water soloing is a different day entirely: coastal cliffs, sea-state decisions, exits and a much more serious consequence model.\n\nHumidity can take the snap out of the rock. On damp days, choose orientation carefully and do not expect perfect friction just because the sky is blue.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
+      "heading": "Who Is It For",
       "status": "mixed",
-      "body": "The source mix supports a broad climbing audience, but DWS requires separate water-safety and conditions judgment.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Mallorca suits climbers who like variety more than single-crag routine. A mixed group can combine sport days, easier mileage, harder limestone objectives and rest days without changing destination.\n\nSport climbing is the simpler choice for most visitors. Deep-water soloing is for confident climbers who understand the sea, the fall zone and the need to walk away when conditions are wrong.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["Need a source-backed numeric grade span for the whole island."]
+      "heading": "Grades and Sectors",
+      "status": "enriched",
+      "body": "Mallorca has a broad sport-climbing circuit and a separate deep-water soloing identity. Treat it as a regional destination rather than a single-sector trip.\n\nThe prepared facts keep a conservative sector count and avoid a whole-island grade span. Use a recent topo to choose between easy mileage, tufa routes, slab days and harder objectives.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "Need a source-backed numeric grade span for the whole island."
+      ]
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
-      "status": "legacy",
-      "body": "The legacy packet says to avoid summer because of heat and crowds; spring, autumn and winter are assigned as conservative alternatives.",
-      "sourceRefs": ["legacy"],
+      "heading": "Best Season",
+      "status": "mixed",
+      "body": "Spring, autumn and winter are the best windows. The island is quieter, the temperatures are milder, and sport climbing days are much easier to manage than in peak holiday season.\n\nSummer is the weak season for roped climbing. Heat, crowds and strong sun make many venues unpleasant, and deep-water soloing still depends on sea conditions, safe exits and the group staying fresh enough to make good decisions.\n\nHumidity is the common friction tax. Build in flexibility and move between areas rather than forcing a bad crag choice.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "For sport climbing, bring a normal limestone rack: rope, quickdraws, helmet and enough length for the routes in the topo. Some venues are exposed to sun and wind, so layers, water and shade discipline matter.\n\nFor deep-water soloing, shoes and chalk are only the start. You also need a serious conditions check, a clear exit plan, and a group that is happy to stop if the sea or landing zone is not right.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
+      "heading": "Getting There",
       "status": "legacy",
-      "body": "The legacy packet says to fly to Palma de Mallorca and hire a car.",
-      "sourceRefs": ["legacy"],
+      "body": "Fly into Palma de Mallorca and rent a car. The island has a useful road network, and a car makes it realistic to switch between mountain crags, coastal sectors and rest-day plans.\n\nChoose the base around the style you want most. The west is practical for many sport areas; the east makes more sense if deep-water soloing is the focus.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
-      "status": "enriched",
-      "body": "Hotel, apartment and villa tags are assigned for the island’s general visitor base, but climbing-area-specific lodging remains an editorial gap.",
-      "sourceRefs": ["s1"],
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Hotels, apartments and villas are the normal island options. A self-catering base works well because climbing days can start early, shift with conditions and finish away from resort restaurant hours.\n\nStay close to the crags you expect to use most, but do not over-optimize. Mallorca rewards movement, and a slightly longer drive is often worth it for better shade, wind or friction.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "mixed",
+      "body": "Rest days are easy here. Swim, walk the coast, visit mountain villages, eat properly and let the island do some of the recovery work.\n\nIf humidity or heat makes the climbing poor, use the day rather than fighting it. Mallorca has enough non-climbing value that a rest day does not feel wasted.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Plan by orientation. Sun, humidity and wind are often more important than the shortest drive from the apartment.\n\nFor deep-water soloing, do not copy someone else into the water. Check depth, swell, exits and your own margin. If in doubt, climb sport routes or take the rest day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "enriched",
-      "body": "Deep-water soloing should not be marketed without separate sea-state, tide, exit and landing guidance.",
-      "sourceRefs": ["s1"],
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Limestone, sea cliffs and holiday-mode decision making are the main hazards. Wear a helmet for roped climbing, check lower-offs, and use recent topos for route length and access.\n\nDeep-water soloing is not controlled falling into a swimming pool. Sea state, hidden rocks, changing water levels, awkward exits and fatigue all matter.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "costs",
-      "heading": "Costs",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "heading": "Costs and Budget",
+      "status": "enriched",
+      "body": "Budget for flights to Palma, car hire, accommodation, fuel and topo access. Island prices rise in peak holiday periods, another reason climbing trips usually feel better outside summer.\n\nKeeping the base self-catered and choosing crags efficiently helps more than chasing the cheapest bed far from the climbing.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "When should I go? Spring, autumn and winter are the most reliable climbing windows.\n\nDo I need a car? Yes, for a normal climbing trip. It makes crag choice and rest-day movement much easier.\n\nIs Mallorca only for deep-water soloing? No. The island also has a substantial sport-climbing circuit.\n\nIs summer good? Not for most roped climbing trips. It is hot, busy and less comfortable than the shoulder seasons.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, deep-water-soloing.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Sector count: 50.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Mallorca, Spain",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Mallorca is a limestone island destination for both sport climbing and deep-water soloing.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Rockfax covers 34 sport crags and 16 DWS crags; the legacy packet adds tufas, roofs, overhangs, cracks and slabs.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The source mix supports a broad climbing audience, but DWS requires separate water-safety and conditions judgment.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet says to avoid summer because of heat and crowds; spring, autumn and winter are assigned as conservative alternatives.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet says to fly to Palma de Mallorca and hire a car.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Hotel, apartment and villa tags are assigned for the island’s general visitor base, but climbing-area-specific lodging remains an editorial gap.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Deep-water soloing should not be marketed without separate sea-state, tide, exit and landing guidance.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -263,10 +376,17 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 423
+    }
   }
 }

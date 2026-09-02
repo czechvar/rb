@@ -22,15 +22,46 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "caves", "slabs", "pockets", "overhangs"],
-    "settingTags": ["coastal", "island"],
-    "bestSeasons": ["spring", "autumn"],
-    "avoidSeasons": ["summer", "winter"],
-    "nearestAirports": ["Kos", "Athens"],
-    "accommodationTags": ["hotel", "apartment", "guesthouse-b-and-b"],
-    "transportTags": ["flight-access", "ferry-access", "walkable-local-access"],
+    "climbingStyles": [
+      "sport",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "caves",
+      "slabs",
+      "pockets",
+      "overhangs"
+    ],
+    "settingTags": [
+      "coastal",
+      "island"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "summer",
+      "winter"
+    ],
+    "nearestAirports": [
+      "Kos",
+      "Athens"
+    ],
+    "accommodationTags": [
+      "hotel",
+      "apartment",
+      "guesthouse-b-and-b"
+    ],
+    "transportTags": [
+      "flight-access",
+      "ferry-access",
+      "walkable-local-access"
+    ],
     "gradeRange": "F3 to F9a",
     "routeCount": 4200,
     "problemCount": null,
@@ -40,201 +71,291 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Kalymnos, Greece",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Kalymnos is Greek island sport climbing at high density: limestone caves, tufas, pockets, slabs, sea views and walking access from the main villages.\n\nIt is one of the simplest places in Europe to build a full climbing holiday around routes, food, swimming and short approaches.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Kalymnos is a Greek island sport-climbing destination near Kos with dense limestone climbing around Massouri.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Kalymnos is famous because the climbing is both abundant and easy to use. The main crags sit above Masouri, Armeos and Myrties, many within a manageable walk, with the sea and Telendos behind you all day.\n\nThe limestone gives the island its identity: steep orange caves, tufas, blobs, pockets, grey slabs and enough single-pitch sport routes to keep returning climbers busy. There are also bolted multipitch routes, including lines on Telendos.\n\nThe logistics are part of the quality. Fly to Kos and take the ferry, or route through Athens to Kalymnos, then settle into a rhythm of morning approaches, long lunches, swimming and evening food in the villages.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Kalymnos grew from a quiet Greek island into a benchmark sport-climbing destination because the rock, access and village logistics lined up almost perfectly.\n\nThe area is still developing in places. The existing routes cover only part of the available limestone, and newer sectors have continued to spread the climbing beyond the first classic zones.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The source mix supports solid limestone, tufas, caves, slabs, pockets, overhangs and mostly single-pitch bolted routes, with some bolted multipitch lines.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is solid limestone, sometimes sharp, with a huge range of shapes. The famous style is steep tufa and stalactite climbing, but the island also has vertical pocket walls, pumpy faces and grey slabs with water pockets.\n\nMost routes are single pitch around 20 to 30 metres, while selected bolted multipitch routes add longer days. The best lines often combine several styles in one pitch: steep start, tufa rest, pocket wall, then a technical finish.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
+      "heading": "Who Is It For",
       "status": "mixed",
-      "body": "The external route range and legacy text support both lower-grade holiday climbers and climbers seeking steep tufa routes.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Kalymnos suits almost every sport climber. Lower-grade climbers get friendly mileage and clear logistics; intermediate climbers get endless quality; stronger climbers get caves, tufas and hard stamina routes.\n\nIt is also a strong group destination because non-climbing time is easy. Beaches, food, scooters and short approaches make the island work even when not everyone climbs the same grade.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
+      "heading": "Grades and Sectors",
       "status": "enriched",
-      "body": "Climb Europe reports about 4,200 routes from F3 slabs to F9a routes; the legacy packet reports about 64 sectors.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Climb Europe reports more than 4,200 routes from F3a to F9a across 99 sport crags. The range is broad enough that grade alone is not the planning problem; choosing the right sector for sun, wind and style is.\n\nUse a current topo because route counts, extensions and sector details continue to evolve.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
-      "status": "legacy",
-      "body": "The legacy packet supports April-May and October-November, warns summer is too hot, and says winter rain can leave tufas slow to dry.",
-      "sourceRefs": ["legacy"],
+      "heading": "Best Season",
+      "status": "mixed",
+      "body": "April to May and October to November are the classic windows. Conditions are generally comfortable, the island is open for climbers, and both climbing and rest-day life work well.\n\nSummer is hot, though shaded or east-facing options can keep selective climbing possible. Winter can bring unsettled weather and a quieter island, so it is less predictable for a first trip.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Bring a sport rack, helmet and a rope suitable for the routes in your topo. Many pitches are 20 to 30 metres, but some are longer, so check before you tie in.\n\nTape can be useful for sharp rock and tufa days. For multipitch routes, bring proper anchor and descent kit rather than treating them as extended single-pitch climbs.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
+      "heading": "Getting There",
       "status": "legacy",
-      "body": "Legacy access is by flight to Kos and ferry, or flight via Athens to Kalymnos airport.",
-      "sourceRefs": ["legacy"],
+      "body": "The normal approach is to fly to Kos, then take the ferry to Kalymnos. Flying via Athens to Kalymnos airport is another option when schedules make sense.\n\nOnce based around Masouri, Armeos or Myrties, many sectors are walkable. Scooters are popular for reaching farther areas, while Telendos is a short boat trip from Myrties.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
-      "status": "legacy",
-      "body": "The legacy packet lists Masouri and Armeos with hotels, budget hotels, B&Bs and apartments.",
-      "sourceRefs": ["legacy"],
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Masouri, Armeos and Myrties are the core climbing bases, with hotels, apartments and guesthouses close to food and approaches.\n\nStay where you can walk to the crags if it is your first visit. The simple village-to-crag rhythm is one of the main reasons Kalymnos works so well.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
+      "heading": "Rest Days",
       "status": "legacy",
-      "body": "The legacy packet mentions beaches, bars and island rest-day ambience.",
-      "sourceRefs": ["legacy"],
+      "body": "Rest days are easy: swim, eat, take a boat to Telendos, explore villages or ride north for a slower day.\n\nThe island gives you enough recovery options that you do not need to turn every warm or tired day into another redpoint session.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Plan by sun and wind. West- and south-facing crags can be perfect or brutal depending on the season and time of day.\n\nDo not assume tufas dry quickly after rain. Some steep routes stay climbable, but wet tufas and seepage need patience.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "legacy",
-      "body": "The legacy packet flags wet tufas as slow to dry, which should affect route choice after rain.",
-      "sourceRefs": ["legacy"],
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Wear a helmet, check fixed gear and match rope length to the topo. The island is user-friendly, but it is still limestone sport climbing with variable route lengths.\n\nBe careful with wet tufas. They can take time to dry and are easier to damage or break when damp.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "costs",
-      "heading": "Costs",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "heading": "Costs and Budget",
+      "status": "mixed",
+      "body": "Budget for flights, ferry, accommodation, food, scooter or local transport, guidebook or digital topo access, and rest-day boats if you use them.\n\nStaying in the main climbing villages can cost more than remote bases, but it saves time and keeps the trip simple.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "When is best? April-May and October-November.\n\nDo I need a car? Not usually around Masouri, Armeos and Myrties. Many crags are walkable, and scooters cover farther sectors.\n\nIs it only hard climbing? No. The route range runs from easy slabs to F9a.\n\nHow do I get there? Most climbers fly to Kos and take the ferry.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: sport-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, multi-pitch.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 4200.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Sector count: 64.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Kalymnos, Greece",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Kalymnos is a Greek island sport-climbing destination near Kos with dense limestone climbing around Massouri.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The source mix supports solid limestone, tufas, caves, slabs, pockets, overhangs and mostly single-pitch bolted routes, with some bolted multipitch lines.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The external route range and legacy text support both lower-grade holiday climbers and climbers seeking steep tufa routes.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Climb Europe reports about 4,200 routes from F3 slabs to F9a routes; the legacy packet reports about 64 sectors.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet supports April-May and October-November, warns summer is too hot, and says winter rain can leave tufas slow to dry.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy access is by flight to Kos and ferry, or flight via Athens to Kalymnos airport.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet lists Masouri and Armeos with hotels, budget hotels, B&Bs and apartments.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet mentions beaches, bars and island rest-day ambience.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "The legacy packet flags wet tufas as slow to dry, which should affect route choice after rain.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     }
   ],
   "editorialGaps": [
@@ -265,10 +386,17 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 573
+    }
   }
 }

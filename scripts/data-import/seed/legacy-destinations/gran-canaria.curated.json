@@ -22,36 +22,51 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "trad"],
-    "rockTypes": ["conglomerate"],
+    "destinationScope": "region",
+    "climbingStyles": [
+      "sport",
+      "trad"
+    ],
+    "rockTypes": [
+      "conglomerate"
+    ],
     "rockFeatures": [],
-    "settingTags": ["island", "mountain"],
+    "settingTags": [
+      "island",
+      "mountain"
+    ],
     "bestSeasons": [],
     "avoidSeasons": [],
     "nearestAirports": [],
     "accommodationTags": [],
-    "transportTags": ["flight-access", "car-recommended"],
+    "transportTags": [
+      "flight-access",
+      "car-recommended"
+    ],
     "gradeRange": null,
     "routeCount": null,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "region"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Hero",
-      "status": "legacy",
-      "body": "Gran Canaria, Spain",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "An island climbing destination with mountain crags, volcanic-looking formations and documented routes around Roque Nublo.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "enriched",
-      "body": "Gran Canaria is an island climbing destination with documented routes around mountain formations such as Roque Nublo.",
-      "sourceRefs": ["s1"],
+      "body": "Gran Canaria is best treated as an island climbing destination rather than a single crag. The known climbing sits in mountain terrain, with Roque Nublo standing out as a clear example.\n\nThe island format matters for planning: the climbing is part of a broader mountain and coastal trip, and moving between bases is more important than it would be at a compact village crag.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -60,14 +75,18 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock and climbing character",
       "status": "enriched",
-      "body": "The official tourism source describes Roque Nublo as basalt conglomerate; only the controlled taxonomy value “conglomerate” was applied.",
-      "sourceRefs": ["s1"],
+      "body": "The supported rock evidence for this batch is basalt conglomerate at Roque Nublo. That points to varied holds and mountain-style movement rather than the clean limestone rhythm found at many mainland sport areas.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -76,14 +95,18 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced who it suits content found for this pass."]
+      "warnings": [
+        "No sourced who it suits content found for this pass."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades and difficulty",
       "status": "enriched",
-      "body": "The official tourism page mentions 12 routes at Roque Nublo but does not provide a destination-wide grade range.",
-      "sourceRefs": ["s1"],
+      "body": "Roque Nublo is documented with 12 routes, but that does not make a reliable island-wide grade range. Use a current climbing guide or local topo for full-island grades and route choice.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -92,7 +115,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced season and conditions content found for this pass."]
+      "warnings": [
+        "No sourced season and conditions content found for this pass."
+      ]
     },
     {
       "key": "gear",
@@ -100,14 +125,18 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
       "heading": "Transport and access",
       "status": "enriched",
-      "body": "Island logistics imply flight access and a car for mountain crag access, but no normalized nearest-airport label was assigned from the contract list.",
-      "sourceRefs": ["s1"],
+      "body": "Gran Canaria is a flight-access destination. For climbing, a car is the practical choice because the relevant terrain is inland and mountainous rather than concentrated beside one resort town.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -116,7 +145,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced where to stay content found for this pass."]
+      "warnings": [
+        "No sourced where to stay content found for this pass."
+      ]
     },
     {
       "key": "restdays",
@@ -124,7 +155,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
@@ -132,7 +165,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
@@ -140,7 +175,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +185,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "enriched",
+      "body": "Is Gran Canaria a single climbing area? No. Treat it as an island destination with separated mountain climbing areas.\n\nIs this a full climbing guide? No. Use current climbing-specific information for route counts, grades and season advice before planning the fine details.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -178,35 +221,87 @@
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, trad.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: conglomerate.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Gran Canaria, Spain",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Gran Canaria is an island climbing destination with documented routes around mountain formations such as Roque Nublo.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The official tourism source describes Roque Nublo as basalt conglomerate; only the controlled taxonomy value “conglomerate” was applied.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The official tourism page mentions 12 routes at Roque Nublo but does not provide a destination-wide grade range.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Island logistics imply flight access and a car for mountain crag access, but no normalized nearest-airport label was assigned from the contract list.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "An island climbing destination with mountain crags, volcanic-looking formations and documented routes around Roque Nublo.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Gran Canaria is best treated as an island climbing destination rather than a single crag.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The supported rock evidence for this batch is basalt conglomerate at Roque Nublo.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The current sourced detail mentions 12 routes at Roque Nublo, but not a reliable island-wide grade range.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Gran Canaria is a flight-access destination.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Is Gran Canaria a single climbing area? No.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -274,10 +369,25 @@
   "qa": {
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+      "No values outside the location taxonomy contract were added.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
     "unsourcedClaimsRemoved": [
       "Empty or placeholder legacy body was not expanded without external support."
-    ]
+    ],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 33,
+      "legacyMediaId": 764,
+      "originalName": "team-daila-ojeda-climbing gran canaria.jpg",
+      "providerReference": "6b52e695a16f81760706a985e3738b9be9b33471.jpeg",
+      "contentType": "image/jpeg",
+      "width": 995,
+      "height": 560,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/01/6b52e695a16f81760706a985e3738b9be9b33471.jpeg"
+    }
   }
 }

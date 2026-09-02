@@ -22,36 +22,65 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch", "deep-water-soloing", "trad"],
-    "rockTypes": ["limestone", "granite"],
-    "rockFeatures": ["slabs", "overhangs", "cracks"],
-    "settingTags": ["coastal", "island", "mountain"],
-    "bestSeasons": ["spring", "autumn"],
-    "avoidSeasons": ["summer"],
+    "destinationScope": "region",
+    "climbingStyles": [
+      "sport",
+      "multi-pitch",
+      "deep-water-soloing",
+      "trad"
+    ],
+    "rockTypes": [
+      "limestone",
+      "granite"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "overhangs",
+      "cracks"
+    ],
+    "settingTags": [
+      "coastal",
+      "island",
+      "mountain"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
     "nearestAirports": [],
     "accommodationTags": [],
-    "transportTags": ["flight-access", "ferry-access", "car-recommended"],
+    "transportTags": [
+      "flight-access",
+      "ferry-access",
+      "car-recommended"
+    ],
     "gradeRange": null,
     "routeCount": null,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "region"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Hero",
-      "status": "legacy",
-      "body": "Sardinia, Italy",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "An island-scale mixed climbing destination with coastal limestone, granite, sport crags, multi-pitches, trad-style venues and deep-water soloing.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "enriched",
-      "body": "Sardinia is an island-scale climbing destination with coastal limestone, inland crags and multiple climbing styles.",
-      "sourceRefs": ["s1"],
+      "body": "Sardinia is too broad to read as one crag. Treat it as an island climbing trip: coastal limestone, inland sectors, granite areas and sea-cliff venues spread across a large Mediterranean island.\n\nThat variety is the point. A Sardinia trip can be sport climbing, multi-pitch climbing, deep-water soloing or a road-trip mix between bases, but it needs more planning than a single village destination.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -60,22 +89,28 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock and climbing character",
       "status": "enriched",
-      "body": "Climb Europe describes limestone sport climbing around Osilo and Capo Caccia, sea-cliff climbing and DWS, plus broader Sardinian multipitch venues.",
-      "sourceRefs": ["s1"],
+      "body": "The supported rock types are limestone and granite. The limestone gives sport crags, sea cliffs, steep walls and slabs, while the granite broadens the island beyond the usual Mediterranean limestone picture.\n\nBecause the island is large, style depends heavily on the chosen base. Cala Gonone, Capo Caccia, Osilo and other areas should eventually be handled with more granular local detail.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who it suits",
       "status": "enriched",
-      "body": "The area is better treated as a mixed destination than a single sport crag because the source covers sport, multipitch, DWS and traditional-style venues.",
-      "sourceRefs": ["s1"],
+      "body": "Sardinia suits climbers who want variety and are happy to plan around a large island. It is strong for sport climbers, multi-pitch teams and climbers interested in sea-cliff or deep-water soloing days.\n\nIt is less useful as a plug-and-play beginner page until the destination is split into clear bases with current route and accommodation detail.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -84,14 +119,18 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced grades and difficulty content found for this pass."]
+      "warnings": [
+        "No sourced grades and difficulty content found for this pass."
+      ]
     },
     {
       "key": "season",
       "heading": "Season and conditions",
       "status": "enriched",
-      "body": "Spring and autumn are assigned as conservative Mediterranean climbing seasons; summer heat is marked as an avoid season pending more granular crag orientation data.",
-      "sourceRefs": ["s1"],
+      "body": "Spring and autumn are the conservative climbing seasons. Summer stays marked as an avoid season for serious climbing because heat and sun exposure can dominate unless you are targeting very specific aspects or water-based objectives.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -100,14 +139,18 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
       "heading": "Transport and access",
       "status": "enriched",
-      "body": "Island access supports flight or ferry access, and a car is recommended for moving between widely separated areas.",
-      "sourceRefs": ["s1"],
+      "body": "Sardinia requires flight or ferry access, then a car for the climbing itself. Distances between areas are too large to treat the island as a walkable crag cluster.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -116,15 +159,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced where to stay content found for this pass."]
+      "warnings": [
+        "No sourced where to stay content found for this pass."
+      ]
     },
     {
       "key": "restdays",
       "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "status": "enriched",
+      "body": "Rest days are one of Sardinia's strengths: beaches, coastal towns, hiking and food can all sit naturally between climbing days. The exact options depend on whether the trip is based around the north, east coast or a wider island loop.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
@@ -132,7 +181,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
@@ -140,7 +191,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +201,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "enriched",
+      "body": "Is Sardinia one climbing area? No. It is an island-scale destination with several distinct climbing bases.\n\nWhat styles are supported here? Sport climbing, multi-pitch climbing, deep-water soloing and trad-style venues.\n\nDo you need a car? Yes. A car is the practical default for moving between climbing areas.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -178,39 +237,105 @@
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, multi-pitch, deep-water-soloing, trad.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone, granite.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Sardinia, Italy",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Sardinia is an island-scale climbing destination with coastal limestone, inland crags and multiple climbing styles.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climb Europe describes limestone sport climbing around Osilo and Capo Caccia, sea-cliff climbing and DWS, plus broader Sardinian multipitch venues.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The area is better treated as a mixed destination than a single sport crag because the source covers sport, multipitch, DWS and traditional-style venues.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Spring and autumn are assigned as conservative Mediterranean climbing seasons; summer heat is marked as an avoid season pending more granular crag orientation data.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Island access supports flight or ferry access, and a car is recommended for moving between widely separated areas.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "An island-scale mixed climbing destination with coastal limestone, granite, sport crags, multi-pitches, trad-style venues and deep-water soloing.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Sardinia is too broad to read as one crag.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The supported rock types are limestone and granite.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Sardinia suits climbers who want variety and are happy to plan around a large island.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Spring and autumn are the conservative climbing seasons.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Sardinia requires flight or ferry access, then a car for the climbing itself.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Rest days are one of Sardinia's strengths: beaches, coastal towns, hiking and food can all sit naturally between climbing days.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Is Sardinia one climbing area? No.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -273,10 +398,25 @@
   "qa": {
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+      "No values outside the location taxonomy contract were added.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
     "unsourcedClaimsRemoved": [
       "Empty or placeholder legacy body was not expanded without external support."
-    ]
+    ],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 40,
+      "legacyMediaId": 953,
+      "originalName": "ullassai_panorama_jannovakphotography-2.jpg",
+      "providerReference": "e24ec7fdcddffe157b7feae3ee0113b41b71aed7.jpeg",
+      "contentType": "image/jpeg",
+      "width": 1493,
+      "height": 588,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/01/e24ec7fdcddffe157b7feae3ee0113b41b71aed7.jpeg"
+    }
   }
 }

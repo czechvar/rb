@@ -22,14 +22,40 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "slabs", "crimps", "overhangs"],
-    "settingTags": ["gorge-canyon"],
-    "bestSeasons": ["autumn", "winter", "spring"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": ["Malaga"],
-    "accommodationTags": ["campsite", "hotel", "hostel", "guesthouse-b-and-b"],
+    "destinationScope": "area",
+    "climbingStyles": [
+      "sport",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "slabs",
+      "crimps",
+      "overhangs"
+    ],
+    "settingTags": [
+      "gorge-canyon"
+    ],
+    "bestSeasons": [
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Malaga"
+    ],
+    "accommodationTags": [
+      "campsite",
+      "hotel",
+      "hostel",
+      "guesthouse-b-and-b"
+    ],
     "transportTags": [
       "public-transport-possible",
       "car-recommended",
@@ -37,115 +63,164 @@
       "walkable-local-access"
     ],
     "gradeRange": null,
-    "routeCount": 1000,
+    "routeCount": 1500,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "crag"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "El Chorro is Andalusian limestone with village logistics, gorge walls, winter sun and a deep mix of sport and multi-pitch climbing.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "mixed",
-      "body": "El Chorro is a classic Andalusian limestone climbing village and gorge destination.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "El Chorro is one of the classic winter climbing bases in southern Spain. The village sits inland from Málaga, below Las Frontales and beside the gorge, with many crags close enough to make the place feel built around climbing.\n\nThe climbing ranges from technical slabs and friendly single-pitch walls to tufas, steep sectors and longer multi-pitch routes. It is popular for good reason: access, variety and winter climate line up well.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "status": "legacy",
+      "body": "Sport climbing in El Chorro began developing in the 1980s and became one of Spain's major climbing areas during the early years of European sport climbing. The old gorge routes are part of that history, even though access has changed.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "mixed",
-      "body": "Climb Europe describes more than 1,000 routes across limestone slabs, tufas and steep walls, mostly single-pitch sport with multi-pitch options.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is limestone, with slabs, crimpy faces, tufas and steep walls. Las Frontales gives a large spread of single and multi-pitch routes, while sectors such as Makinodromo are known for steep tufa climbing.\n\nNot every rainy day is lost. Tufa sectors can stay wet, but slabby and crimpy crags often dry or climb better in marginal conditions.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "mixed",
+      "body": "El Chorro suits a wide range of sport climbers, especially teams looking for winter mileage. Newer leaders can find easier slabs and walls, while stronger climbers get steep limestone and harder sectors.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
-      "status": "mixed",
-      "body": "Climb Europe describes over 1,000 routes at El Chorro across a good range of grades.",
-      "sourceRefs": ["legacy", "s1"],
+      "status": "enriched",
+      "body": "The 2024 comprehensive guidebook coverage lists more than 1,500 routes across El Chorro, Desplomilandia and Valle de Abdalajís. The Rockfax coverage lists almost 800 routes at El Chorro itself plus further nearby crags.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "Climb Europe identifies October to the end of April as the ideal climbing window for El Chorro.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "October to the end of April is the main climbing window. Summer is usually too hot for a normal trip, though shade tactics can stretch individual days. Winter rain is possible, so flexible sector choice matters.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring a normal sport rack, helmet and a rope matched to the selected sectors. For multi-pitch routes, add belay kit, descent gear and enough layers for shaded belays in winter.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
       "status": "mixed",
-      "body": "The source notes many crags within walking distance of El Chorro village, while a car helps for remote sectors.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Málaga is the nearest major airport, and El Chorro is about 50 km inland. Many crags can be reached from the village on foot, but a car opens remote sectors and nearby areas such as Desplomilandia.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
       "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "status": "legacy",
+      "body": "The village has climber-oriented accommodation, with hostels, hotels, campsites and guesthouses in the wider area. Staying in or near El Chorro keeps the walking-distance sectors simple.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "legacy",
+      "body": "The gorge, Ardales lakes and the Caminito del Rey landscape make rest days straightforward. Málaga is close enough for a city day if the weather turns.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "enriched",
+      "body": "Do not use the railway tunnels for access; they are illegal and patrolled. Use the alternative approaches described in current guidebook information, and check restrictions around the Caminito del Rey walkway.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "The Lower Gorge has access prohibitions around routes above and below the restored walkway. Tunnels are illegal, multi-pitch descents need planning, and winter rain can leave tufas wet after the rest of the crag dries.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -153,15 +228,22 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "When is best? October through April.\n\nDo you need a car? Not strictly for every day, but a car makes the trip much more flexible.\n\nIs the Lower Gorge fully open to climbing? No. Current access information prohibits climbing routes above and below the Caminito del Rey walkway.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -169,7 +251,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -177,13 +261,110 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "El Chorro has over 1,000 routes, mostly single-pitch sport routes on limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: hero section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: intro section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: history section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "El Chorro: rock section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: who section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: grades section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: season section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: gear section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: transport section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: stay section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "El Chorro: restdays section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "El Chorro: tips section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: safety section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "El Chorro: faq section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [

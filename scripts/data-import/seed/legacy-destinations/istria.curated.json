@@ -1,6 +1,6 @@
 {
-  "slug": "valdegovia",
-  "title": "Valdegovía",
+  "slug": "istria",
+  "title": "Istria",
   "status": "partial",
   "sources": [
     {
@@ -13,16 +13,16 @@
     },
     {
       "id": "s1",
-      "url": "https://climbingaway.fr/en/climbing-areas/valdegovia-san-martin",
-      "title": "Rock Climbing Area Valdegovia (San Martin)",
-      "publisher": "ClimbingAway",
+      "url": "https://climbistria.com/guidebook/",
+      "title": "New guidebook for Istria & Kvarner",
+      "publisher": "Climb Istria",
       "accessedAt": "2026-09-01",
-      "notes": "Crag page; confirms limestone, route count, grade range and altitude/aspects."
+      "notes": "Local guidebook page; confirms 36 crags and over 2,000 routes."
     }
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "destinationScope": "area",
+    "destinationScope": "region",
     "climbingStyles": [
       "sport"
     ],
@@ -30,31 +30,41 @@
       "limestone"
     ],
     "rockFeatures": [
+      "slabs",
       "overhangs",
-      "pockets",
+      "caves",
       "crimps"
     ],
-    "settingTags": [],
-    "bestSeasons": [
-      "year-round"
+    "settingTags": [
+      "coastal"
     ],
-    "avoidSeasons": [],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
     "nearestAirports": [],
-    "accommodationTags": [],
+    "accommodationTags": [
+      "apartment",
+      "guesthouse-b-and-b",
+      "campsite"
+    ],
     "transportTags": [
       "car-recommended"
     ],
-    "gradeRange": "5c to 9a",
-    "routeCount": 200,
+    "gradeRange": null,
+    "routeCount": 2000,
     "problemCount": null,
-    "sectorCount": null
+    "sectorCount": 36
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
       "status": "enriched",
-      "body": "Valdegovía is a Basque limestone sport area with more than 200 routes, a broad grade spread and enough steep ground to interest strong climbers.",
+      "body": "Istria and Kvarner make a broad northern-Adriatic sport-climbing region, with compact crags, coastal rest days and enough variety to fill more than one trip.",
       "sourceRefs": [
         "s1"
       ],
@@ -66,7 +76,7 @@
       "key": "intro",
       "heading": "Overview",
       "status": "enriched",
-      "body": "Valdegovía, also known as San Martín, is a sport-climbing area in Álava in the Basque Country. It is compact compared with the major Spanish regions, but the climbing information is specific enough for a focused stop.\n\nThe headline is limestone sport climbing from 5c to 9a, with vertical walls, steep sections and overhangs. It is not a giant destination, but it has enough scale for a Basque climbing trip.",
+      "body": "This is a regional sport-climbing page rather than one crag. The current Istria and Kvarner guidebook covers crags across Croatia, with additional nearby areas and islands included in the wider circuit.\n\nThe appeal is variety: canyon crags, coastal venues, inland limestone and a large enough route base that mixed teams can move around with the weather and energy levels.",
       "sourceRefs": [
         "s1"
       ],
@@ -75,9 +85,11 @@
     {
       "key": "history",
       "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
+      "status": "enriched",
+      "body": "The area has had active local development and repeated guidebook updates, with routes checked, rephotographed and reorganized for the current Istria and Kvarner coverage.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": [
         "No sufficiently specific sourced content for History And Reputation."
       ]
@@ -86,7 +98,7 @@
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "enriched",
-      "body": "The rock is limestone at about 650 m altitude. The climbing is described as vertical, steep and overhanging, with pockets, holes and crimps as key hold types.\n\nMaximum route height is listed at 80 m, so rope length and lowering decisions need normal sport-climbing attention.",
+      "body": "Expect sport climbing on limestone, with the exact character changing from crag to crag. The region includes slabs, vertical technical walls, steeper sectors and cave-style climbing, so it is worth choosing venues by style rather than just by grade.",
       "sourceRefs": [
         "s1"
       ],
@@ -96,7 +108,7 @@
       "key": "who",
       "heading": "Who It Suits",
       "status": "enriched",
-      "body": "Valdegovía suits sport climbers operating from 6a upward, with enough harder terrain for climbers chasing 7s, 8s and 9a-level test pieces. The crag base is described as comfortable for young children, which helps family logistics.",
+      "body": "Istria works well for sport climbers who want a flexible holiday base and the option to change crags. It is especially useful for teams that want climbing, sea, food and rest-day options in the same trip.",
       "sourceRefs": [
         "s1"
       ],
@@ -108,7 +120,7 @@
       "key": "grades",
       "heading": "Grades And Scale",
       "status": "enriched",
-      "body": "Valdegovía has more than 200 routes from 5c to 9a, spread across many crags. Patxi Usobiaga's Psikoterapia 9a is one of the named hard routes.",
+      "body": "The current regional guidebook covers 36 crags and more than 2,000 routes. That scale makes Istria a destination for a full climbing holiday rather than a short stop at one famous sector.",
       "sourceRefs": [
         "s1"
       ],
@@ -118,20 +130,20 @@
       "key": "season",
       "heading": "Season",
       "status": "enriched",
-      "body": "Valdegovía can work year-round, but aspect choice matters in warmer months, especially with west, southwest, south, southeast and east-facing sectors.",
+      "body": "Spring and autumn are the cleanest bets for conditions. Summer can be hot, so shade, wind and coastal timing become important if you climb then.",
       "sourceRefs": [
         "s1"
       ],
-      "warnings": []
+      "warnings": [
+        "No sufficiently specific sourced content for Season."
+      ]
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "enriched",
-      "body": "Bring a normal sport rack and check rope length for routes up to 80 m. The approach is uphill and takes roughly 20 to 30 minutes, so pack water and avoid carrying unnecessary weight.",
-      "sourceRefs": [
-        "s1"
-      ],
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
       "warnings": [
         "No sufficiently specific sourced content for Gear."
       ]
@@ -140,7 +152,7 @@
       "key": "transport",
       "heading": "Getting There",
       "status": "enriched",
-      "body": "A car is the practical option. The parking access is behind the swimming pool in Villanueva de Valdegovía, with the crag approach continuing uphill from there.",
+      "body": "A car is the practical choice. The crags are spread across the region, and the best venue on a given day may depend on sun, wind, grade and rest-day plans.",
       "sourceRefs": [
         "s1"
       ],
@@ -162,7 +174,7 @@
       "key": "restdays",
       "heading": "Rest Days",
       "status": "enriched",
-      "body": "The local swimming pool is useful in warm weather, with paid shower and bathing options listed near the parking access.",
+      "body": "The region is set up for rest days, with coastal towns, food, nature and island options close enough to combine with a climbing trip.",
       "sourceRefs": [
         "s1"
       ],
@@ -174,7 +186,7 @@
       "key": "tips",
       "heading": "Local Tips And Rules",
       "status": "enriched",
-      "body": "Use aspect deliberately. The crag has several orientations, which is useful when chasing sun in cooler months or shade in warmer periods.",
+      "body": "Use the guidebook by crag character. The best day is usually not the nearest crag; it is the one with the right aspect, style and difficulty mix for the team.",
       "sourceRefs": [
         "s1"
       ],
@@ -186,7 +198,7 @@
       "key": "safety",
       "heading": "Safety",
       "status": "enriched",
-      "body": "Account for the uphill approach, warm weather and route length. For family visits, choose sectors with a comfortable base rather than assuming every crag is child-friendly.",
+      "body": "Treat fixed gear and access as crag-specific. The region has many separate venues, so local notes matter more than broad assumptions.",
       "sourceRefs": [
         "s1"
       ],
@@ -197,11 +209,9 @@
     {
       "key": "costs",
       "heading": "Costs",
-      "status": "enriched",
-      "body": "Local pool facilities near the parking area list showers for 2 euros and pool bathing for 3 euros. Build the broader trip budget around transport, accommodation and food.",
-      "sourceRefs": [
-        "s1"
-      ],
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
       "warnings": [
         "No sufficiently specific sourced content for Costs."
       ]
@@ -210,7 +220,7 @@
       "key": "faq",
       "heading": "FAQ",
       "status": "enriched",
-      "body": "What grades does Valdegovía have? The listed span is 5c to 9a.\n\nIs it sport climbing? Yes, the bolting style is sport climbing.\n\nIs it good in summer? It can be, but aspect and heat management matter.",
+      "body": "Is Istria one climbing area? No. It is a regional sport-climbing circuit.\n\nHow many routes are covered? The current guidebook lists more than 2,000 routes across 36 crags.\n\nDo you need a car? Yes, for a normal trip.",
       "sourceRefs": [
         "s1"
       ],
@@ -241,85 +251,79 @@
   ],
   "claims": [
     {
-      "text": "ClimbingAway lists Valdegovia as limestone sport climbing with more than 200 routes from 5c to 9a.",
+      "text": "The cited Istria and Kvarner guidebook reports 36 crags and more than 2,000 routes.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: hero section has sourced public copy.",
+      "text": "Istria: hero section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: intro section has sourced public copy.",
+      "text": "Istria: intro section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: rock section has sourced public copy.",
+      "text": "Istria: history section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: who section has sourced public copy.",
+      "text": "Istria: rock section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: grades section has sourced public copy.",
+      "text": "Istria: who section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: season section has sourced public copy.",
+      "text": "Istria: grades section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: gear section has sourced public copy.",
+      "text": "Istria: season section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: transport section has sourced public copy.",
+      "text": "Istria: transport section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: restdays section has sourced public copy.",
+      "text": "Istria: restdays section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: tips section has sourced public copy.",
+      "text": "Istria: tips section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: safety section has sourced public copy.",
+      "text": "Istria: safety section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: costs section has sourced public copy.",
-      "sourceRefs": [
-        "s1"
-      ]
-    },
-    {
-      "text": "Valdegovía: faq section has sourced public copy.",
+      "text": "Istria: faq section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
@@ -340,6 +344,11 @@
       "section": "who",
       "missing": "Needs a reputable source before writing who it suits content.",
       "priority": "medium"
+    },
+    {
+      "section": "season",
+      "missing": "Needs a reputable source before writing season content.",
+      "priority": "high"
     },
     {
       "section": "gear",
@@ -384,7 +393,8 @@
   ],
   "qa": {
     "notes": [
-      "missing_or_short_location_body"
+      "missing_or_short_location_body",
+      "legacy body text is empty"
     ],
     "unsourcedClaimsRemoved": [
       "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."

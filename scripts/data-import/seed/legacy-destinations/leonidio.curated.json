@@ -22,125 +22,188 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "overhangs", "slabs"],
-    "settingTags": ["coastal", "mountain"],
-    "bestSeasons": ["spring", "autumn", "winter"],
-    "avoidSeasons": ["summer"],
-    "nearestAirports": ["Athens"],
-    "accommodationTags": ["hotel", "guesthouse-b-and-b", "apartment"],
-    "transportTags": ["car-recommended", "flight-access"],
+    "destinationScope": "area",
+    "climbingStyles": [
+      "sport",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "overhangs",
+      "slabs"
+    ],
+    "settingTags": [
+      "coastal",
+      "mountain"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
+    "nearestAirports": [
+      "Athens"
+    ],
+    "accommodationTags": [
+      "hotel",
+      "guesthouse-b-and-b",
+      "apartment"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
     "gradeRange": "F3 to F9a+",
     "routeCount": 3000,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "area"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Hero",
-      "status": "legacy",
-      "body": "Leonidio, Greece",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "A major mainland Greek limestone base with more than 3,000 routes, red and grey walls, sport crags and bolted multi-pitches above a working town.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "enriched",
-      "body": "Leonidio is a major mainland Greek limestone climbing area around the town of Leonidio.",
-      "sourceRefs": ["s1"],
+      "body": "Leonidio is one of the big modern Greek limestone destinations. The climbing sits around the town, with red and grey walls rising above the valley and enough sectors to make the area feel like a full winter and shoulder-season base rather than a single famous crag.\n\nThe appeal is breadth. You can build a trip around friendly sport mileage, harder tufa lines, steep walls or fully bolted longer routes, then return each day to a real town with visitor accommodation and food close at hand.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "status": "enriched",
+      "body": "Leonidio's reputation has grown around high-volume sport climbing and a strong local climbing scene. It now sits alongside the better-known Greek islands as a serious limestone destination, with the advantage of mainland access and a town directly below the crags.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock and climbing character",
       "status": "enriched",
-      "body": "The crags are red and grey limestone, with well-bolted single-pitch sport routes and fully bolted longer multi-pitch routes.",
-      "sourceRefs": ["s1"],
+      "body": "Expect red and grey limestone, generally well bolted, with single-pitch sport routes and fully bolted multi-pitch lines. The style ranges from slabs and vertical walls to steep tufa climbing, so route choice matters more than chasing one headline sector.\n\nThe limestone can feel very different from wall to wall: technical feet on lower-angle terrain, pumpy sequences on steeper ground and long pitches where resting well is part of the grade.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who it suits",
       "status": "enriched",
-      "body": "The sourced grade span supports a wide audience, from low-grade sport climbers to climbers seeking hard routes.",
-      "sourceRefs": ["s1"],
+      "body": "Leonidio works for a wide span of sport climbers. The supported grade spread starts low enough for mileage days and runs into very hard climbing, so mixed groups can usually build sensible plans if they choose sectors carefully.\n\nIt is especially useful for climbers who want a proper destination rhythm: several climbing days, rest-day options, town logistics and enough route variety to adjust around weather and skin.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
       "heading": "Grades and difficulty",
       "status": "enriched",
-      "body": "Climb Europe reports over 3,000 routes across F3 to F9a+.",
-      "sourceRefs": ["s1"],
+      "body": "The supported scale is over 3,000 routes, with grades from F3 to F9a+. That makes Leonidio one of the broadest entries in this batch and gives the page enough confidence to speak about both accessible and elite-level sport climbing.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season and conditions",
       "status": "enriched",
-      "body": "The source supports Leonidio as a Mediterranean sport destination; spring, autumn and winter are assigned, while summer heat remains an editorial caution.",
-      "sourceRefs": ["s1"],
+      "body": "Spring, autumn and winter are the best planning windows for this file. Summer is left as an avoid season because heat is the obvious limiting factor for Mediterranean limestone, especially on sunny walls.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "status": "enriched",
+      "body": "Bring a sport rack sized for long single pitches, a rope appropriate for the chosen sector and a helmet for busy limestone areas. For multi-pitch days, add the normal personal kit for bolted longer routes rather than assuming every climb is a roadside sport pitch.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
       "heading": "Transport and access",
       "status": "enriched",
-      "body": "Athens is the normalized airport city assigned for mainland-Greece access; a car is recommended for practical crag access.",
-      "sourceRefs": ["s1"],
+      "body": "Athens is the normal airport city for this mainland-Greece entry. A car is strongly recommended because the crags are spread around Leonidio and sector choice is central to managing grades, sun and conditions.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
       "heading": "Where to stay",
       "status": "enriched",
-      "body": "Accommodation tags remain broad because this pass found town-based visitor accommodation but did not verify specific climber lodging names.",
-      "sourceRefs": ["s1"],
+      "body": "Leonidio has the advantage of town-based logistics: hotels, guesthouses and apartments can all work for a climbing week. Keep specific lodging names out of the page until they are checked separately, but the broad accommodation picture is strong enough for trip planning.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "status": "enriched",
+      "body": "Rest days can stay local. The town-and-coast setting gives easy low-effort days between climbing sessions, and the wider Peloponnese makes it possible to turn a climbing trip into a broader Greek travel week.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
       "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "status": "enriched",
+      "body": "Use sector choice as the main tactic. With this many routes and aspects, a good day often comes from matching grade, sun and wind rather than forcing the most famous wall.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "status": "enriched",
+      "body": "Treat Leonidio as a large limestone area: wear a helmet where rockfall or busy routes make it sensible, check lower-offs and knots carefully on long pitches, and use current local information for any sector access changes.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +211,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "enriched",
+      "body": "How big is Leonidio? This batch uses a supported figure of more than 3,000 routes.\n\nIs it only hard climbing? No. The supported grade range runs from F3 to F9a+.\n\nDo you need a car? Yes for practical sector access and weather tactics.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -178,51 +247,159 @@
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, multi-pitch.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 3000.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Leonidio, Greece",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Leonidio is a major mainland Greek limestone climbing area around the town of Leonidio.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The crags are red and grey limestone, with well-bolted single-pitch sport routes and fully bolted longer multi-pitch routes.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The sourced grade span supports a wide audience, from low-grade sport climbers to climbers seeking hard routes.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climb Europe reports over 3,000 routes across F3 to F9a+.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The source supports Leonidio as a Mediterranean sport destination; spring, autumn and winter are assigned, while summer heat remains an editorial caution.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Athens is the normalized airport city assigned for mainland-Greece access; a car is recommended for practical crag access.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Accommodation tags remain broad because this pass found town-based visitor accommodation but did not verify specific climber lodging names.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "A major mainland Greek limestone base with more than 3,000 routes, red and grey walls, sport crags and bolted multi-pitches above a working town.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Leonidio is one of the big modern Greek limestone destinations.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Leonidio's reputation has grown around high-volume sport climbing and a strong local climbing scene.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Expect red and grey limestone, generally well bolted, with single-pitch sport routes and fully bolted multi-pitch lines.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Leonidio works for a wide span of sport climbers.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The supported scale is over 3,000 routes, with grades from F3 to F9a+.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Spring, autumn and winter are the best planning windows for this file.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bring a sport rack sized for long single pitches, a rope appropriate for the chosen sector and a helmet for busy limestone areas.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Athens is the normal airport city for this mainland-Greece entry.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Leonidio has the advantage of town-based logistics: hotels, guesthouses and apartments can all work for a climbing week.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Rest days can stay local.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Use sector choice as the main tactic.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Treat Leonidio as a large limestone area: wear a helmet where rockfall or busy routes make it sensible, check lower-offs and knots carefully on long pitches, and use current local information for any sector access changes.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "How big is Leonidio? This batch uses a supported figure of more than 3,000 routes.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -265,10 +442,25 @@
   "qa": {
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+      "No values outside the location taxonomy contract were added.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
     "unsourcedClaimsRemoved": [
       "Empty or placeholder legacy body was not expanded without external support."
-    ]
+    ],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 38,
+      "legacyMediaId": 1191,
+      "originalName": "leonidio.jpg",
+      "providerReference": "9a17de3efc2dbe67a933ebfcd287d130a4b696dd.jpeg",
+      "contentType": "image/jpeg",
+      "width": 509,
+      "height": 339,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/02/9a17de3efc2dbe67a933ebfcd287d130a4b696dd.jpeg"
+    }
   }
 }

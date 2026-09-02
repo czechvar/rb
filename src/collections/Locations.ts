@@ -7,6 +7,14 @@ import { revalidateOnChange } from './hooks/revalidate'
 import { TAGS } from '@/lib/cache'
 import { locationTaxonomyOptions } from '@/lib/taxonomy/location'
 
+const sectionStatusOptions = [
+  { label: 'Enriched from sources', value: 'enriched' },
+  { label: 'Mixed legacy and sources', value: 'mixed' },
+  { label: 'Legacy only', value: 'legacy' },
+  { label: 'Missing', value: 'missing' },
+  { label: 'Not applicable', value: 'not-applicable' },
+]
+
 export const Locations: CollectionConfig = {
   slug: 'locations',
   labels: { singular: 'Location', plural: 'Locations' },
@@ -123,6 +131,29 @@ export const Locations: CollectionConfig = {
     { name: 'seasonSummary', type: 'textarea', label: 'Season summary' },
     { name: 'transportSummary', type: 'textarea', label: 'Transport summary' },
     { name: 'accommodationSummary', type: 'textarea', label: 'Accommodation summary' },
+    {
+      name: 'contentSections',
+      type: 'array',
+      label: 'Mined content sections',
+      admin: {
+        description:
+          'Structured destination content extracted from legacy data and research. Missing sections are kept for editorial traceability.',
+        initCollapsed: true,
+      },
+      fields: [
+        { name: 'key', type: 'text', required: true },
+        { name: 'heading', type: 'text', required: true },
+        {
+          name: 'status',
+          type: 'select',
+          required: true,
+          options: sectionStatusOptions,
+        },
+        { name: 'body', type: 'textarea' },
+        { name: 'sourceRefs', type: 'json', label: 'Source refs' },
+        { name: 'warnings', type: 'json' },
+      ],
+    },
     {
       name: 'sourceReferences',
       type: 'array',

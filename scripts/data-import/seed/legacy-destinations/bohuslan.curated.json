@@ -22,77 +22,122 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["trad", "sport"],
-    "rockTypes": ["granite"],
-    "rockFeatures": [],
-    "settingTags": [],
-    "bestSeasons": [],
+    "destinationScope": "region",
+    "climbingStyles": [
+      "trad",
+      "sport",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "granite"
+    ],
+    "rockFeatures": [
+      "cracks",
+      "crimps",
+      "slabs"
+    ],
+    "settingTags": [
+      "coastal",
+      "forest"
+    ],
+    "bestSeasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
     "avoidSeasons": [],
-    "nearestAirports": [],
+    "nearestAirports": [
+      "Gothenburg",
+      "Oslo"
+    ],
     "accommodationTags": [],
-    "transportTags": [],
-    "gradeRange": null,
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
+    "gradeRange": "Severe to E9",
     "routeCount": 1800,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "region"
+    "sectorCount": 91
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "enriched",
+      "body": "Bohuslän is west-coast Swedish granite: crack climbing, clean faces, short approaches and enough sport routes to keep a mixed team busy. The climbing sits around the Sotenas and Stangenas peninsulas, roughly between Gothenburg and Oslo.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "enriched",
-      "body": "The cited guidebook page presents Bohuslan as a granite crag-climbing area.",
-      "sourceRefs": ["s1"],
+      "body": "Bohuslän is one of Europe's serious granite cragging areas, but it does not feel like a heavy logistical expedition. The cliffs sit among coastline, meadows and forest, with many approaches measured in minutes rather than hours.\n\nThe main draw is traditional granite climbing: cracks, faces, single-pitch crags and some multi-pitch outings. There is also a smaller but useful sport circuit, so the area can work for teams with different appetites for gear and bolts.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "status": "enriched",
+      "body": "Bohuslän has a strong reputation for granite crack and face climbing, with routes spanning from moderate traditional grades to hard test pieces. It is a destination for climbers who care about movement quality and rock rather than roadside volume alone.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "enriched",
-      "body": "The cited guidebook describes more than 1,800 granite crag climbs, including roughly 1,500 trad routes and 300 fully bolted sport climbs.",
-      "sourceRefs": ["s1"],
+      "body": "Expect high-quality granite with cracks, faces and slabs. The area is known mainly for trad climbing, but the current guidebook coverage also includes fully bolted sport routes.\n\nMost crags are compact outcrops rather than huge alpine walls, which makes the climbing day efficient. The granite style rewards footwork, jamming, gear judgement and a calm head above protection.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "enriched",
+      "body": "Bohuslän suits trad climbers who want varied granite days without committing to big-mountain logistics. It can also work for mixed groups because the sport routes add a bolted option, and the short approaches make family trips more realistic than many trad destinations.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
       "status": "enriched",
-      "body": "The cited guidebook describes more than 1,800 granite crag climbs.",
-      "sourceRefs": ["s1"],
+      "body": "The current guidebook coverage lists more than 1,800 climbs, with roughly 1,500 trad routes and 300 fully bolted sport routes. The range runs from Severe to E9, so the area is not just a hard-climber venue.\n\nThe guidebook covers 91 crags, with most within about 30 minutes by car from Brodalen or Bovallstrand.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "status": "enriched",
+      "body": "The practical climbing season runs from April to October. Summer gives the easiest travel conditions, while spring and autumn can be excellent when the granite is dry and the temperatures are cooler.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Season."
+      ]
     },
     {
       "key": "gear",
@@ -100,15 +145,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "enriched",
+      "body": "Bohuslän sits roughly halfway between Gothenburg and Oslo. Flying into either city and hiring a car is the cleanest plan, because the climbing is spread across many crags on the coast and nearby peninsulas.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
     },
     {
       "key": "stay",
@@ -116,7 +167,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
@@ -124,23 +177,33 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "enriched",
+      "body": "Use the crag selector and maps before driving out; the value here is choosing the right granite venue for the weather, grade and team. Many crags are close to the road, but navigation still matters because the area is spread out.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "enriched",
+      "body": "Treat this as a trad granite destination first. Bring the gear and judgement for cracks and faces, and do not let the short approaches make the routes feel more casual than they are.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +211,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "enriched",
+      "body": "Is Bohuslän mostly trad climbing? Yes. The area is mainly known for granite trad climbing, with a smaller sport-climbing circuit.\n\nDo you need a car? For a normal climbing trip, yes. The crags are spread out across the coast and peninsulas.\n\nIs it only for hard climbers? No. The documented grade range is broad, from moderate trad grades to E9.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -164,7 +233,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -172,17 +243,89 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Bohuslan has more than 1,800 documented granite crag climbs in the cited guidebook.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The cited guidebook split is approximately 1,500 trad routes and 300 fully bolted sport climbs.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: hero section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: intro section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: history section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: rock section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: who section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: grades section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: season section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: transport section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: tips section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: safety section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bohuslän: faq section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [

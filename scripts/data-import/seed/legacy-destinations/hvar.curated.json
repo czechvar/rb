@@ -22,16 +22,41 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch", "deep-water-soloing"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["overhangs", "slabs", "crimps"],
-    "settingTags": ["coastal", "island"],
-    "bestSeasons": ["spring", "autumn"],
-    "avoidSeasons": ["summer"],
+    "climbingStyles": [
+      "sport",
+      "multi-pitch",
+      "deep-water-soloing"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "overhangs",
+      "slabs",
+      "crimps"
+    ],
+    "settingTags": [
+      "coastal",
+      "island"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "summer"
+    ],
     "nearestAirports": [],
-    "accommodationTags": ["hotel", "apartment", "villa"],
-    "transportTags": ["ferry-access", "car-recommended"],
-    "gradeRange": "With its rugged cliffs, pristine beaches, and warm Mediterranean weather, Hvar offers a truly unparalleled rock climbing experience for both beginners and seasoned climbers alike.",
+    "accommodationTags": [
+      "hotel",
+      "apartment",
+      "villa"
+    ],
+    "transportTags": [
+      "ferry-access",
+      "car-recommended"
+    ],
+    "gradeRange": null,
     "routeCount": 450,
     "problemCount": null,
     "sectorCount": 10,
@@ -40,197 +65,280 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Hvar, Croatia",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Hvar is Croatian island limestone with sport routes, multipitch lines and sea-cliff climbing wrapped into one Adriatic setting.\n\nIt is best treated as a climbing holiday destination rather than a pure performance venue: ferry logistics, heat, water and rest-day options all shape the trip.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
-      "status": "enriched",
-      "body": "Hvar is a Croatian island climbing destination with multiple climbing areas.",
-      "sourceRefs": ["s1"],
+      "status": "mixed",
+      "body": "Hvar combines a holiday island with a surprisingly broad climbing base: 10 climbing areas and around 450 sport, alpine and deep-water solo routes, enough for varied days rather than a token crag visit.\n\nThe climbing sits close to the coast and often feels Mediterranean in the direct sense: limestone, sun, sea air, short drives and the need to think about heat. Spring and autumn are the sensible windows for most climbers.\n\nCome with flexible expectations. Some days will be sport climbing, some may be longer or more adventurous, and the sea-cliff options demand condition checks rather than blind enthusiasm.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "enriched",
+      "body": "Hvar is better known internationally as an Adriatic island than as a single famous climbing venue. The current climbing identity is built from multiple smaller areas rather than one historic headline crag.\n\nThat makes it useful for climbers who want variety and island life, but it also means current local information matters when choosing sectors and styles.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "Visit Hvar reports 10 climbing areas and around 450 sport, alpine and sea-solo routes; legacy text supports limestone cliffs around Sveta Nedilja.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The climbing is limestone, with sport routes, multipitch or alpine-style routes and sea-solo terrain. Expect slabs, steeper walls, crimps and coastal rock that changes character with sun, wind and salt air.\n\nWith 10 areas and roughly 450 routes, the island has enough scale for a proper climbing trip. Route choice should still follow a current local topo.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
-      "status": "enriched",
-      "body": "The source supports a mixed audience because it includes sport, alpine and sea-solo route categories, but route-grade distribution was not verified.",
-      "sourceRefs": ["s1"],
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Hvar suits climbers who want a balanced trip: climbing in the morning, swimming or exploring later, and enough variety to keep a small group interested.\n\nIt is less suitable for climbers who need dense hard sport climbing every day. The island rewards teams that enjoy moving between styles and adjusting around weather.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
+      "heading": "Grades and Sectors",
       "status": "enriched",
-      "body": "Route and sector counts are sourced, but gradeRange remains null because this pass did not verify a reliable grade span.",
-      "sourceRefs": ["s1"],
+      "body": "The clearest scale facts are about 450 routes across 10 climbing areas. Use current local topos for exact grades, route lengths and protection style.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
+      "heading": "Best Season",
       "status": "legacy",
-      "body": "The legacy packet supports spring and autumn as peak climbing seasons and warns summer brings higher temperatures and more tourists.",
-      "sourceRefs": ["legacy"],
+      "body": "Spring and autumn are the main climbing seasons. Temperatures are more comfortable, the island is calmer, and it is easier to use the rock through a whole day.\n\nSummer is hot and busy. Climbing may still be possible early, late or in shade, but it should not be the first-choice season for a dedicated trip.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Bring normal sport gear plus a helmet, and adjust for multipitch or sea-cliff days if those are on the plan. Route length and descent details need checking in the topo.\n\nFor any deep-water soloing, bring a conservative mindset as much as shoes and chalk. Sea state, fall zones and exits decide the day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
+      "heading": "Getting There",
       "status": "enriched",
-      "body": "Ferry access and local road transport are assigned for island logistics; no normalized airport city was assigned.",
-      "sourceRefs": ["s1"],
+      "body": "Hvar is an island, so ferry logistics come first. Once there, a car or scooter gives the most freedom between climbing areas, beaches and accommodation.\n\nPlan transfers with daylight and ferry schedules in mind. Arrival and departure days can disappear quickly if the connections are tight.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
-      "status": "enriched",
-      "body": "Hotel, apartment and villa tags are assigned as island visitor accommodation categories; climbing-base specifics need follow-up.",
-      "sourceRefs": ["s1"],
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Hotels, apartments and villas are the normal island accommodation options. A self-catering apartment is practical for climbing starts and rest days.\n\nStay close to the areas you expect to use, but keep enough mobility for weather and shade. Hvar is not a one-crag destination.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "mixed",
+      "body": "Rest days are part of the value: beaches, old towns, boat trips, food and coastal walks all fit naturally into the trip.\n\nIf summer heat or wind makes climbing poor, use the island day instead of forcing a marginal session.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Check local information before choosing sea-cliff or multipitch routes. Island conditions can change the seriousness of an otherwise straightforward grade.\n\nCarry enough water and start earlier than you think in warm weather. Limestone plus Adriatic sun can make short approaches feel longer.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "enriched",
-      "body": "Sea-solo routes should receive specific sea-state, fall-zone and exit guidance before publication.",
-      "sourceRefs": ["s1"],
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Deep-water soloing and sea-cliff routes need specific sea-state, fall-zone and exit checks. Do not climb above water just because the route looks short.\n\nFor roped climbing, wear a helmet, check anchors and be cautious on coastal limestone after storms or long wet periods.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "costs",
-      "heading": "Costs",
+      "heading": "Costs and Budget",
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "When should I go? Spring and autumn.\n\nHow many climbing areas are there? Hvar has 10 documented climbing areas.\n\nIs it only sport climbing? No. Hvar also has multipitch or alpine-style routes and deep-water soloing.\n\nDo I need transport? Yes, a car or scooter makes the island much easier for climbing.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport, multi-pitch, deep-water-soloing.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 450.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Sector count: 10.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Hvar, Croatia",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Hvar is a Croatian island climbing destination with multiple climbing areas.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Visit Hvar reports 10 climbing areas and around 450 sport, alpine and sea-solo routes; legacy text supports limestone cliffs around Sveta Nedilja.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The source supports a mixed audience because it includes sport, alpine and sea-solo route categories, but route-grade distribution was not verified.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route and sector counts are sourced, but gradeRange remains null because this pass did not verify a reliable grade span.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet supports spring and autumn as peak climbing seasons and warns summer brings higher temperatures and more tourists.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Ferry access and local road transport are assigned for island logistics; no normalized airport city was assigned.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Hotel, apartment and villa tags are assigned as island visitor accommodation categories; climbing-base specifics need follow-up.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Sea-solo routes should receive specific sea-state, fall-zone and exit guidance before publication.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -266,10 +374,19 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [
+      "Removed generic gradeRange text from facts because it was not supported as a factual value."
+    ],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 1344
+    }
   }
 }

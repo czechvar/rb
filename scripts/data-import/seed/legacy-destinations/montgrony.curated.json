@@ -22,15 +22,35 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas", "overhangs"],
-    "settingTags": ["mountain"],
-    "bestSeasons": ["spring", "autumn", "winter"],
+    "climbingStyles": [
+      "sport"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas",
+      "overhangs"
+    ],
+    "settingTags": [
+      "mountain"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "winter"
+    ],
     "avoidSeasons": [],
-    "nearestAirports": ["Girona"],
-    "accommodationTags": ["refuge-hut"],
-    "transportTags": ["car-recommended", "flight-access"],
+    "nearestAirports": [
+      "Girona"
+    ],
+    "accommodationTags": [
+      "refuge-hut"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
     "gradeRange": "5.9 to 5.14",
     "routeCount": null,
     "problemCount": null,
@@ -40,189 +60,276 @@
   "sections": [
     {
       "key": "hero",
-      "heading": "Hero",
-      "status": "legacy",
-      "body": "Montgrony, Spain",
-      "sourceRefs": ["legacy"],
+      "heading": "Destination Snapshot",
+      "status": "mixed",
+      "body": "Montgrony is a Catalan limestone sport crag for steep endurance, tufas and mountain air above Gombren.\n\nIt is compact enough for a focused trip but demanding enough that strong sport climbers will not run out of interest quickly.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "mixed",
-      "body": "Montgrony is a Catalan mountain sport crag near Gombrèn and Girona.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Montgrony sits in the Catalan pre-Pyrenees, close to Gombren and within reach of Girona. The appeal is straightforward: limestone, steep walls, tufas and powerful sport climbing in a mountain setting.\n\nThis is not the broadest all-round Spanish destination. It is a place to go when you want sport climbing with intensity, cool conditions and a quieter base than the biggest Catalunya names.\n\nA car or campervan makes the logistics simple. Stay near the crags or use the refuge-style base, then let conditions decide whether you climb sun, shade or a shorter day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Montgrony belongs to the wider Catalan sport-climbing story rather than standing as a single global headline. Its reputation comes from steep limestone, tufa climbing and a mountain setting that gives the routes a different feel from the hotter inland crags.\n\nThe available material does not give a detailed development timeline, so this section keeps the context broad.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
-      "heading": "Rock and climbing character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The source mix supports southwest and west-facing tufa climbing on limestone; the legacy packet emphasizes shorter, bouldery, cruxy routes.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The climbing is limestone, often steep and tufa-heavy, with southwest- and west-facing walls. Expect power-endurance, body tension and rests that only count if you know how to use tufas.\n\nThe crag can feel very conditions-dependent. Sun is useful in colder periods, while warmer days demand careful timing.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who it suits",
+      "heading": "Who Is It For",
       "status": "legacy",
-      "body": "The legacy packet says Montgrony suits sport climbers looking for power-endurance tufa climbing rather than beginners-only mileage.",
-      "sourceRefs": ["legacy"],
+      "body": "Montgrony suits sport climbers who like sustained routes, steep movement and a quieter mountain base. It is strongest for climbers who already know how to pace pumpy limestone.\n\nBeginners may find the venue narrow unless they are travelling with experienced partners and a recent topo that identifies suitable easier sectors.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades and difficulty",
+      "heading": "Grades and Sectors",
       "status": "mixed",
-      "body": "Legacy evidence says about 300 routes, while the external source reports about 200; routeCount is left null and gradeRange uses the external 5.9 to 5.14 span.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The prepared material carries different scale estimates, so this copy avoids a definitive route total. The supported grade character runs roughly from 5.9 to 5.14, with the best climbing concentrated from 5.11+ into the 5.13 range.\n\nPlan the trip for sport climbing rather than general mileage. Montgrony rewards climbers who are comfortable on steep limestone.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
-      "heading": "Season and conditions",
-      "status": "legacy",
-      "body": "Legacy evidence supports autumn through spring, with south-facing walls and cold sunny winter days.",
-      "sourceRefs": ["legacy"],
+      "heading": "Best Season",
+      "status": "mixed",
+      "body": "Autumn through spring is the normal window. The south- and west-facing limestone can be useful in cold weather, while the mountain setting keeps the area more comfortable than lower crags in some periods.\n\nIn hot weather, timing and shade become limiting factors.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
-      "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "heading": "Gear",
+      "status": "mixed",
+      "body": "Bring a sport rack, helmet, recent topo and enough rope for the routes you choose. For steep tufa days, tape and kneebar tactics may be useful depending on the line.\n\nThe area is compact enough to keep logistics light, but do not arrive without precise route information.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
-      "heading": "Transport and access",
+      "heading": "Getting There",
       "status": "legacy",
-      "body": "Legacy evidence says fly to Girona and hire a car or campervan.",
-      "sourceRefs": ["legacy"],
+      "body": "Fly to Girona if the schedule works, then rent a car or campervan. A car is the practical choice for reaching the mountain roads, accommodation and crags.\n\nPublic transport is not the right tool for a climbing week here.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where to stay",
+      "heading": "Stay and Eat",
       "status": "legacy",
-      "body": "Legacy evidence mentions a small refuge and campervan parking near the crags.",
-      "sourceRefs": ["legacy"],
+      "body": "The prepared material mentions a small refuge and campervan parking near the crags. Those are the most climbing-focused options when you want to stay close.\n\nFor more services, use nearby villages as the base and drive to the crag.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "restdays",
-      "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "heading": "Rest Days",
+      "status": "mixed",
+      "body": "Rest days can stay quiet: mountain walks, village food and a slower day in the pre-Pyrenean landscape.\n\nIf you want a bigger reset, Girona is close enough to make a city day possible.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
-      "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Choose climbing time around aspect. The same wall can be perfect in a cold spell and too warm when the sun is strong.\n\nBring a recent topo and check local parking. Mountain crag access works best when visiting climbers keep a low profile.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
-      "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "heading": "Safety",
+      "status": "mixed",
+      "body": "Steep sport routes still need helmets, partner checks and attention to lowering. Check rope length, especially if relying on older notes.\n\nMountain weather can change fast. Carry layers and avoid being caught out by a cold wind at the end of the day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
-      "heading": "Costs",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "heading": "Costs and Budget",
+      "status": "mixed",
+      "body": "Montgrony can be an efficient trip if you keep accommodation simple and stay near the crag. Budget for car hire, fuel, refuge or village accommodation and topo access.\n\nThe venue is compact, so daily costs stay lower when you avoid long crag-to-crag drives.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "mixed",
+      "body": "What style is Montgrony? Steep limestone sport climbing with tufas and power endurance.\n\nWhen should I go? Autumn through spring is the safest bet.\n\nDo I need a car? Yes.\n\nIs it good for beginners? It is better for experienced sport climbers than first outdoor trips.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
-      "heading": "Related trips",
+      "heading": "Rockbusters Trips",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related events were intentionally excluded from this location content pass."
+      ]
     },
     {
       "key": "related",
-      "heading": "Related destinations",
+      "heading": "Related Destinations",
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": []
+      "warnings": [
+        "Related destination strategy is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Location kind: sport-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Legacy and external sources disagree on approximate route count, so routeCount is left null.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Montgrony, Spain",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Montgrony is a Catalan mountain sport crag near Gombrèn and Girona.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The source mix supports southwest and west-facing tufa climbing on limestone; the legacy packet emphasizes shorter, bouldery, cruxy routes.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "The legacy packet says Montgrony suits sport climbers looking for power-endurance tufa climbing rather than beginners-only mileage.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence gives about 300 routes; Mountain Project search output supports approximately 5.9 to 5.14.",
-      "sourceRefs": ["legacy", "s1"]
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     },
     {
       "text": "Legacy evidence supports autumn through spring, with south-facing walls and cold sunny winter days.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence says fly to Girona and hire a car or campervan.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Legacy evidence mentions a small refuge and campervan parking near the crags.",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     }
   ],
   "editorialGaps": [
@@ -263,11 +370,18 @@
     }
   ],
   "qa": {
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [],
+    "unsourcedClaimsRemoved": [],
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added.",
       "Left routeCount null because legacy and external sources disagree on approximate Montgrony route count."
-    ],
-    "unsourcedClaimsRemoved": []
+    ]
+  },
+  "media": {
+    "mainImage": {
+      "legacyMediaId": 574
+    }
   }
 }

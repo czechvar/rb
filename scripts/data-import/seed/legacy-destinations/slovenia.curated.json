@@ -22,36 +22,53 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": [],
-    "rockFeatures": [],
-    "settingTags": [],
+    "destinationScope": "country",
+    "climbingStyles": [
+      "sport"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "overhangs",
+      "crimps"
+    ],
+    "settingTags": [
+      "coastal"
+    ],
     "bestSeasons": [],
     "avoidSeasons": [],
     "nearestAirports": [],
     "accommodationTags": [],
-    "transportTags": [],
+    "transportTags": [
+      "car-recommended"
+    ],
     "gradeRange": null,
     "routeCount": 3100,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "country"
+    "sectorCount": 32
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "enriched",
+      "body": "Slovenia works best as a country-level sport-climbing gateway here, with the strongest practical focus on the southwest and the Osp/Mišja Peč circuit.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "enriched",
-      "body": "The cited guidebook listing covers sport climbing along the Adriatic Coast in southwest Slovenia, including Osp.",
-      "sourceRefs": ["s1"],
+      "body": "Slovenia is too broad to behave like a single destination page. The strongest climbing detail points toward southwest Slovenia and the Adriatic-side sport crags, especially the Osp area and Mišja Peč.\n\nFor climbers, the useful frame is a regional circuit rather than a claim that the whole country has one style, one season or one logistics pattern.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -60,30 +77,40 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "enriched",
-      "body": "The cited guidebook listing covers southwest Slovenia and Osp-area sport climbing, with more than 3,100 routes across 32 areas.",
-      "sourceRefs": ["s1"],
+      "body": "The supported climbing style is sport climbing, with southwest Slovenia and the Osp-area crags as the strongest current focus. Expect limestone sport climbing, including steep and technical routes where the famous venues concentrate the harder climbing.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "enriched",
+      "body": "This entry suits climbers researching a Slovenia sport-climbing trip, but it needs narrowing before it can read like a finished destination guide. Specific crag pages for Osp, Mišja Peč or other areas would serve users better.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
       "status": "enriched",
-      "body": "The cited guidebook listing covers more than 3,100 routes across 32 southwest Slovenia and Osp-area climbing areas.",
-      "sourceRefs": ["s1"],
+      "body": "The southwest Slovenia and Osp-area circuit has more than 3,100 documented routes across 32 areas. That count should not be treated as a single-crag number.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -92,7 +119,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "warnings": [
+        "No sufficiently specific sourced content for Season."
+      ]
     },
     {
       "key": "gear",
@@ -100,15 +129,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "enriched",
+      "body": "A car is the practical default for a country-level Slovenia climbing trip, especially if the plan includes several crags rather than one village base.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
     },
     {
       "key": "stay",
@@ -116,7 +151,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
@@ -124,15 +161,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "enriched",
+      "body": "Do not plan Slovenia from this page alone. Pick the actual crag cluster first, then check aspect, grade spread, access and accommodation around that cluster.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
@@ -140,7 +183,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +193,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "enriched",
+      "body": "Is this one climbing destination? No. It is a country-level entry.\n\nWhat area is best supported here? Southwest Slovenia and the Osp/Mišja Peč sport-climbing circuit.\n\nShould it be split later? Yes. Specific crag pages would be clearer.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -164,7 +215,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -172,13 +225,65 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "The cited guidebook listing for southwest Slovenia and Osp-area climbing covers more than 3,100 routes across 32 areas.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Slovenia: hero section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Slovenia: intro section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Slovenia: rock section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Slovenia: who section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Slovenia: grades section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Slovenia: transport section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Slovenia: tips section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Slovenia: faq section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [

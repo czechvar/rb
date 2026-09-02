@@ -22,125 +22,207 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["sport", "multi-pitch", "bouldering"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["overhangs", "slabs", "pockets", "caves"],
-    "settingTags": ["coastal", "forest"],
-    "bestSeasons": ["spring", "autumn"],
+    "destinationScope": "area",
+    "climbingStyles": [
+      "sport",
+      "multi-pitch",
+      "bouldering"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "overhangs",
+      "slabs",
+      "pockets",
+      "caves"
+    ],
+    "settingTags": [
+      "coastal",
+      "forest"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn"
+    ],
     "avoidSeasons": [],
-    "nearestAirports": ["Genoa"],
-    "accommodationTags": ["hotel", "apartment", "guesthouse-b-and-b"],
-    "transportTags": ["car-recommended", "flight-access"],
-    "gradeRange": null,
+    "nearestAirports": [
+      "Genoa"
+    ],
+    "accommodationTags": [
+      "hotel",
+      "apartment",
+      "guesthouse-b-and-b"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
+    "gradeRange": "4s to 8s",
     "routeCount": 3000,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "crag"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Finale Ligure is Ligurian limestone above the Mediterranean: thousands of sport routes, technical slabs, steep walls, caves and enough sectors to make conditions manageable.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "mixed",
-      "body": "Finale Ligure is a Ligurian coastal climbing destination with limestone crags above the sea and inland valleys.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Finale sits on the Mediterranean coast near Savona, but the climbing spreads inland through a broad limestone landscape. It is a major Italian sport-climbing area with the volume and variety to support a full holiday.\n\nThe setting can feel harsh, green and busy all at once: coastal tourism, forested valleys, motorway noise in some sectors and superb technical limestone in others. The trick is choosing the right crag for the day.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "status": "legacy",
+      "body": "Finale has long been one of Italy's best-known sport-climbing destinations. Its reputation comes from both scale and variety: a dense network of sectors rather than one signature wall.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "mixed",
-      "body": "The source supports Finale as a major rock-climbing and sport-climbing area; the legacy packet supplies the limestone, slab and overhang details used in the taxonomy.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is marine limestone, with smooth slabs, vertical technical walls, pockets, caves and steep overhangs. Most routes are single-pitch, but longer options exist, including Bric Pianarella with routes up to about 250 m.\n\nExpect technical climbing even at moderate grades. Finale often rewards feet, body position and patience more than raw pulling.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "mixed",
+      "body": "Finale suits sport climbers who want a large destination with many styles. It is especially good for climbers in the 6s and lower 7s, while still offering easier routes, harder lines and longer multi-pitch options.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Grades And Scale."]
+      "status": "mixed",
+      "body": "The destination has nearly 3,000 routes over more than 10 square kilometres of crags. Grades run broadly from the 4s to the 8s, with much of the climbing in the 6th and lower 7th grades.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Grades And Scale."
+      ]
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "Climb Europe names autumn and spring as the best seasons, while noting year-round climbing is possible when choosing crags carefully.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Spring and autumn are the best seasons. Year-round climbing is possible with careful sector choice, but heat, crowds and aspect matter.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring a normal sport rack, helmet and a rope appropriate to the sector. Add multi-pitch kit if Bric Pianarella or other longer routes are on the plan.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "Genoa is the nearest major airport in the available trip data. A car is strongly recommended because the sectors are spread across the Finale area and conditions vary by crag.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
     },
     {
       "key": "stay",
       "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "status": "legacy",
+      "body": "Accommodation is plentiful around Finale Ligure and the surrounding towns, from hotels and apartments to guesthouses. Staying near the coast gives easy services; staying inland can shorten drives to some sectors.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "legacy",
+      "body": "The coast, old villages and Ligurian food make rest days easy. Finale is also busy with non-climbing visitors, which is useful for services but can add crowds in peak periods.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "mixed",
+      "body": "Plan by sector, not by the destination name. Some crags are technical and friendly, others steep and demanding, and a few are affected by crowds or motorway proximity.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "Wear a helmet, check route length and do not assume every sector has the same hardware quality or descent pattern. In popular areas, manage rockfall and crowd exposure carefully.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +230,22 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "When is best? Spring and autumn.\n\nHow many routes are there? Around 3,000 in the wider Finale area.\n\nIs it all single-pitch? Mostly, but Finale also has longer routes, including big-wall-style outings at Bric Pianarella.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -164,7 +253,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -172,13 +263,112 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Finale Ligure is best visited for climbing in spring and autumn, with year-round options if crags are chosen carefully.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: hero section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: intro section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: history section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Finale Ligure: rock section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: who section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: grades section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: season section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: gear section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: transport section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: stay section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Finale Ligure: restdays section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Finale Ligure: tips section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: safety section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Finale Ligure: faq section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [

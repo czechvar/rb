@@ -1,6 +1,6 @@
 {
-  "slug": "valdegovia",
-  "title": "Valdegovía",
+  "slug": "monobloc-reus-spain",
+  "title": "Monobloc Reus",
   "status": "partial",
   "sources": [
     {
@@ -13,27 +13,21 @@
     },
     {
       "id": "s1",
-      "url": "https://climbingaway.fr/en/climbing-areas/valdegovia-san-martin",
-      "title": "Rock Climbing Area Valdegovia (San Martin)",
-      "publisher": "ClimbingAway",
+      "url": "https://www.monobloc.es/",
+      "title": "MONOBLOC REUS",
+      "publisher": "Monobloc",
       "accessedAt": "2026-09-01",
-      "notes": "Crag page; confirms limestone, route count, grade range and altitude/aspects."
+      "notes": "Official gym page; address, opening hours and bouldering-gym identity."
     }
   ],
   "facts": {
-    "locationKind": "sport-climbing-area",
-    "destinationScope": "area",
+    "locationKind": "online",
+    "destinationScope": "indoor",
     "climbingStyles": [
-      "sport"
+      "bouldering"
     ],
-    "rockTypes": [
-      "limestone"
-    ],
-    "rockFeatures": [
-      "overhangs",
-      "pockets",
-      "crimps"
-    ],
+    "rockTypes": [],
+    "rockFeatures": [],
     "settingTags": [],
     "bestSeasons": [
       "year-round"
@@ -42,10 +36,10 @@
     "nearestAirports": [],
     "accommodationTags": [],
     "transportTags": [
-      "car-recommended"
+      "public-transport-possible"
     ],
-    "gradeRange": "5c to 9a",
-    "routeCount": 200,
+    "gradeRange": null,
+    "routeCount": null,
     "problemCount": null,
     "sectorCount": null
   },
@@ -54,7 +48,7 @@
       "key": "hero",
       "heading": "Destination Snapshot",
       "status": "enriched",
-      "body": "Valdegovía is a Basque limestone sport area with more than 200 routes, a broad grade spread and enough steep ground to interest strong climbers.",
+      "body": "Monobloc Reus is an indoor climbing centre in Reus, not an outdoor rock destination. It is useful for training days, bad-weather sessions and visitors passing through Catalonia.",
       "sourceRefs": [
         "s1"
       ],
@@ -66,7 +60,7 @@
       "key": "intro",
       "heading": "Overview",
       "status": "enriched",
-      "body": "Valdegovía, also known as San Martín, is a sport-climbing area in Álava in the Basque Country. It is compact compared with the major Spanish regions, but the climbing information is specific enough for a focused stop.\n\nThe headline is limestone sport climbing from 5c to 9a, with vertical walls, steep sections and overhangs. It is not a giant destination, but it has enough scale for a Basque climbing trip.",
+      "body": "Monobloc Reus is a bouldering-focused urban climbing centre at Carrer de Sabadell, 24 in Reus. The Reus centre also has a rope area.\n\nTreat it as an indoor training option rather than a destination guide to natural rock. It is useful for visitors passing through Catalonia, but it is not a crag page.",
       "sourceRefs": [
         "s1"
       ],
@@ -85,18 +79,18 @@
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
-      "status": "enriched",
-      "body": "The rock is limestone at about 650 m altitude. The climbing is described as vertical, steep and overhanging, with pockets, holes and crimps as key hold types.\n\nMaximum route height is listed at 80 m, so rope length and lowering decisions need normal sport-climbing attention.",
-      "sourceRefs": [
-        "s1"
-      ],
-      "warnings": []
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Rock And Climbing Character."
+      ]
     },
     {
       "key": "who",
       "heading": "Who It Suits",
       "status": "enriched",
-      "body": "Valdegovía suits sport climbers operating from 6a upward, with enough harder terrain for climbers chasing 7s, 8s and 9a-level test pieces. The crag base is described as comfortable for young children, which helps family logistics.",
+      "body": "The centre is suitable for indoor bouldering sessions, first visits and training days. Children can climb at Reus from age four, with supervision requirements for minors.",
       "sourceRefs": [
         "s1"
       ],
@@ -107,18 +101,18 @@
     {
       "key": "grades",
       "heading": "Grades And Scale",
-      "status": "enriched",
-      "body": "Valdegovía has more than 200 routes from 5c to 9a, spread across many crags. Patxi Usobiaga's Psikoterapia 9a is one of the named hard routes.",
-      "sourceRefs": [
-        "s1"
-      ],
-      "warnings": []
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Grades And Scale."
+      ]
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "enriched",
-      "body": "Valdegovía can work year-round, but aspect choice matters in warmer months, especially with west, southwest, south, southeast and east-facing sectors.",
+      "body": "As an indoor centre, Monobloc Reus is a year-round climbing option. Opening hours and pricing should be checked directly before a visit.",
       "sourceRefs": [
         "s1"
       ],
@@ -128,7 +122,7 @@
       "key": "gear",
       "heading": "Gear",
       "status": "enriched",
-      "body": "Bring a normal sport rack and check rope length for routes up to 80 m. The approach is uphill and takes roughly 20 to 30 minutes, so pack water and avoid carrying unnecessary weight.",
+      "body": "Bring comfortable sports clothing. Climbing shoes and liquid chalk are required, with rental or shop options available at the centre.",
       "sourceRefs": [
         "s1"
       ],
@@ -140,13 +134,11 @@
       "key": "transport",
       "heading": "Getting There",
       "status": "enriched",
-      "body": "A car is the practical option. The parking access is behind the swimming pool in Villanueva de Valdegovía, with the crag approach continuing uphill from there.",
+      "body": "The address is Carrer de Sabadell, 24, 43204 Reus. Treat transport as urban access rather than crag access.",
       "sourceRefs": [
         "s1"
       ],
-      "warnings": [
-        "No sufficiently specific sourced content for Getting There."
-      ]
+      "warnings": []
     },
     {
       "key": "stay",
@@ -161,11 +153,9 @@
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "enriched",
-      "body": "The local swimming pool is useful in warm weather, with paid shower and bathing options listed near the parking access.",
-      "sourceRefs": [
-        "s1"
-      ],
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
       "warnings": [
         "No sufficiently specific sourced content for Rest Days."
       ]
@@ -173,11 +163,9 @@
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "enriched",
-      "body": "Use aspect deliberately. The crag has several orientations, which is useful when chasing sun in cooler months or shade in warmer periods.",
-      "sourceRefs": [
-        "s1"
-      ],
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
       "warnings": [
         "No sufficiently specific sourced content for Local Tips And Rules."
       ]
@@ -186,7 +174,7 @@
       "key": "safety",
       "heading": "Safety",
       "status": "enriched",
-      "body": "Account for the uphill approach, warm weather and route length. For family visits, choose sectors with a comfortable base rather than assuming every crag is child-friendly.",
+      "body": "Normal indoor bouldering rules apply: use the mats properly, follow the centre rules and complete the required first-visit paperwork. Minors need the appropriate adult authorization and supervision.",
       "sourceRefs": [
         "s1"
       ],
@@ -197,11 +185,9 @@
     {
       "key": "costs",
       "heading": "Costs",
-      "status": "enriched",
-      "body": "Local pool facilities near the parking area list showers for 2 euros and pool bathing for 3 euros. Build the broader trip budget around transport, accommodation and food.",
-      "sourceRefs": [
-        "s1"
-      ],
+      "status": "missing",
+      "body": null,
+      "sourceRefs": [],
       "warnings": [
         "No sufficiently specific sourced content for Costs."
       ]
@@ -210,7 +196,7 @@
       "key": "faq",
       "heading": "FAQ",
       "status": "enriched",
-      "body": "What grades does Valdegovía have? The listed span is 5c to 9a.\n\nIs it sport climbing? Yes, the bolting style is sport climbing.\n\nIs it good in summer? It can be, but aspect and heat management matter.",
+      "body": "Is this an outdoor destination? No. It is an indoor climbing centre.\n\nIs there rope climbing? The Reus centre has a rope area alongside bouldering.\n\nIs it a normal crag page? No. Treat it as an indoor training option.",
       "sourceRefs": [
         "s1"
       ],
@@ -241,85 +227,55 @@
   ],
   "claims": [
     {
-      "text": "ClimbingAway lists Valdegovia as limestone sport climbing with more than 200 routes from 5c to 9a.",
+      "text": "Monobloc Reus is an indoor climbing gym at Carrer de Sabadell, 24, Reus.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: hero section has sourced public copy.",
+      "text": "Monobloc Reus: hero section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: intro section has sourced public copy.",
+      "text": "Monobloc Reus: intro section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: rock section has sourced public copy.",
+      "text": "Monobloc Reus: who section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: who section has sourced public copy.",
+      "text": "Monobloc Reus: season section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: grades section has sourced public copy.",
+      "text": "Monobloc Reus: gear section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: season section has sourced public copy.",
+      "text": "Monobloc Reus: transport section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: gear section has sourced public copy.",
+      "text": "Monobloc Reus: safety section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
     },
     {
-      "text": "Valdegovía: transport section has sourced public copy.",
-      "sourceRefs": [
-        "s1"
-      ]
-    },
-    {
-      "text": "Valdegovía: restdays section has sourced public copy.",
-      "sourceRefs": [
-        "s1"
-      ]
-    },
-    {
-      "text": "Valdegovía: tips section has sourced public copy.",
-      "sourceRefs": [
-        "s1"
-      ]
-    },
-    {
-      "text": "Valdegovía: safety section has sourced public copy.",
-      "sourceRefs": [
-        "s1"
-      ]
-    },
-    {
-      "text": "Valdegovía: costs section has sourced public copy.",
-      "sourceRefs": [
-        "s1"
-      ]
-    },
-    {
-      "text": "Valdegovía: faq section has sourced public copy.",
+      "text": "Monobloc Reus: faq section has sourced public copy.",
       "sourceRefs": [
         "s1"
       ]
@@ -337,19 +293,24 @@
       "priority": "medium"
     },
     {
+      "section": "rock",
+      "missing": "Needs a reputable source before writing rock and climbing character content.",
+      "priority": "high"
+    },
+    {
       "section": "who",
       "missing": "Needs a reputable source before writing who it suits content.",
       "priority": "medium"
     },
     {
+      "section": "grades",
+      "missing": "Needs a reputable source before writing grades and scale content.",
+      "priority": "high"
+    },
+    {
       "section": "gear",
       "missing": "Needs a reputable source before writing gear content.",
       "priority": "medium"
-    },
-    {
-      "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
     },
     {
       "section": "stay",
@@ -384,7 +345,7 @@
   ],
   "qa": {
     "notes": [
-      "missing_or_short_location_body"
+      "Legacy body text is empty (has_legacy_body: false)."
     ],
     "unsourcedClaimsRemoved": [
       "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { Event, EventDate, Guide, Location, Media, Post, Program } from '@/payload-types'
+import type { Event, EventDate, Guide, Location, Post, Program } from '@/payload-types'
 import { mediaAlt, mediaUrl } from '@/lib/media'
 import styles from './blocks.module.css'
 
@@ -64,7 +64,7 @@ export function TripCard({
         {img ? (
           <Image
             src={img}
-            alt={mediaAlt(event.mainPicture as number | Media)}
+            alt={mediaAlt(event.mainPicture)}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
           />

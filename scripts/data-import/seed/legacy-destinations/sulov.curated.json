@@ -22,36 +22,57 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": ["limestone", "conglomerate"],
-    "rockFeatures": ["pockets", "crimps"],
-    "settingTags": ["mountain", "forest"],
-    "bestSeasons": ["spring", "summer", "autumn"],
+    "destinationScope": "area",
+    "climbingStyles": [
+      "sport"
+    ],
+    "rockTypes": [
+      "limestone",
+      "conglomerate"
+    ],
+    "rockFeatures": [
+      "pockets",
+      "crimps"
+    ],
+    "settingTags": [
+      "mountain",
+      "forest"
+    ],
+    "bestSeasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
     "avoidSeasons": [],
     "nearestAirports": [],
     "accommodationTags": [],
-    "transportTags": ["car-recommended"],
+    "transportTags": [
+      "car-recommended"
+    ],
     "gradeRange": "Font/European sport grades from easy 4s up to 9a+ are reported by the source.",
     "routeCount": 1541,
     "problemCount": null,
-    "sectorCount": 17,
-    "destinationScope": "area"
+    "sectorCount": 17
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Hero",
-      "status": "legacy",
-      "body": "Sulov, Slovakia",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "A northern Slovakia sport climbing area in the Sulovske vrchy, with pocketed limestone and conglomerate, forested approaches and more than 1,500 routes.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "enriched",
-      "body": "Súľov is a northern Slovakia climbing area in the Súľovské vrchy landscape.",
-      "sourceRefs": ["s1"],
+      "body": "Sulov is a compact but serious Slovak sport climbing destination in the Sulovske vrchy. The setting is forested and hilly rather than resort-like, and the climbing is spread across a set of crags with enough volume for repeated visits.\n\nThe destination works well when you want technical face climbing, pockets and a quieter Central European climbing rhythm. It is not a polished Mediterranean trip; it is a practical local-area climbing base with a strong route count.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -60,87 +81,121 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock and climbing character",
       "status": "enriched",
-      "body": "The source describes vertical, pocketed limestone faces, with conglomerate also retained from the legacy/SummitPost-style geology evidence.",
-      "sourceRefs": ["s1"],
+      "body": "The supported rock picture combines pocketed limestone faces with conglomerate. Expect vertical climbing, small holds, pockets and technical movement rather than pure tufa endurance.\n\nBecause the terrain is forested and mountain-like, conditions can vary by aspect and shade. Route choice matters if you are chasing dry rock after unsettled weather.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who it suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced who it suits content found for this pass."]
+      "status": "enriched",
+      "body": "Sulov suits sport climbers who enjoy technical face climbing and want a broad grade spread. The area has enough easy and moderate routes for mileage, while the upper grades reach hard sport-climbing territory.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced who it suits content found for this pass."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades and difficulty",
       "status": "enriched",
-      "body": "The source reports 1,541 routes across 17 crags, with grades from easy 4s up to 9a+.",
-      "sourceRefs": ["s1"],
+      "body": "The supported scale is 1,541 routes across 17 crags, with grades from easy 4s up to 9a+. That gives Sulov one of the strongest numeric profiles in this half-batch.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season and conditions",
       "status": "enriched",
-      "body": "The source gives late spring to early autumn, May to October, as the best season.",
-      "sourceRefs": ["s1"],
+      "body": "The supported season is late spring to early autumn, roughly May to October. The controlled tags therefore keep spring, summer and autumn as the useful windows.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "status": "enriched",
+      "body": "Bring standard sport gear and a helmet for a forested limestone area where routes and approaches can vary by sector. No destination-specific rope-length rule was verified in this batch.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
       "heading": "Transport and access",
       "status": "enriched",
-      "body": "The source says the area is best reached by car and that public transport is limited but possible via train and bus connections to nearby towns.",
-      "sourceRefs": ["s1"],
+      "body": "A car is the easiest way to reach and use Sulov. Public transport is possible through train and bus links to nearby towns, but it is not the cleanest option for moving between sectors.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
       "heading": "Where to stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced where to stay content found for this pass."]
+      "status": "enriched",
+      "body": "This batch does not carry reliable accommodation detail, so the lodging advice stays broad. Plan around nearby villages and towns until specific climber-friendly options are selected.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced where to stay content found for this pass."
+      ]
     },
     {
       "key": "restdays",
       "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "status": "enriched",
+      "body": "Rest days can stay low-key: walking in the Sulovske vrchy landscape, village time and recovery between technical face-climbing days.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
       "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "status": "enriched",
+      "body": "Treat Sulov as a local climbing area rather than a serviced resort. Bring the guide information you need, plan sector access before the day, and keep backup options for changing conditions.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "status": "enriched",
+      "body": "Use current local information for sector access and route condition. Forested approaches, variable rock condition and less familiar local logistics make conservative route choice worthwhile on the first day.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +203,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "enriched",
+      "body": "How much climbing is there? Sulov is a sizeable Slovak area, with more than 1,500 listed routes across multiple crags.\n\nWhat is the main style? Sport climbing on pocketed limestone and conglomerate.\n\nWhen is the best season? Late spring to early autumn, roughly May to October.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -178,43 +239,141 @@
   "claims": [
     {
       "text": "Location kind: sport-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone and conglomerate.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 1,541 routes across 17 crags.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Sulov, Slovakia",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Súľov is a northern Slovakia climbing area in the Súľovské vrchy landscape.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The source describes vertical, pocketed limestone faces; conglomerate is retained as compatible geology evidence.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The source reports 1,541 routes across 17 crags, with grades from easy 4s up to 9a+.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The source gives late spring to early autumn, May to October, as the best season.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The source says Súľov is best reached by car and that public transport is limited but possible via train and bus connections to nearby towns.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "A northern Slovakia sport climbing area in the Sulovske vrchy, with pocketed limestone and conglomerate, forested approaches and more than 1,500 routes.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Sulov is a compact but serious Slovak sport climbing destination in the Sulovske vrchy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The supported rock picture combines pocketed limestone faces with conglomerate.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Sulov suits sport climbers who enjoy technical face climbing and want a broad grade spread.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The supported scale is 1,541 routes across 17 crags, with grades from easy 4s up to 9a+.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The supported season is late spring to early autumn, roughly May to October.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Bring standard sport gear and a helmet for a forested limestone area where routes and approaches can vary by sector.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "A car is the easiest way to reach and use Sulov.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "This batch does not carry reliable accommodation detail, so the public copy stays broad.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Rest days can stay low-key: walking in the Sulovske vrchy landscape, village time and recovery between technical face-climbing days.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Treat Sulov as a local climbing area rather than a serviced resort.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Use current local information for sector access and route condition.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "How many routes are supported here? This v3 file uses 1,541 routes across 17 crags.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -267,10 +426,25 @@
   "qa": {
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+      "No values outside the location taxonomy contract were added.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
     "unsourcedClaimsRemoved": [
       "Empty or placeholder legacy body was not expanded without external support."
-    ]
+    ],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 39,
+      "legacyMediaId": 1187,
+      "originalName": "sulov.jpg",
+      "providerReference": "443d47364a532102023b5f2de3781dfaebe096f8.jpeg",
+      "contentType": "image/jpeg",
+      "width": 724,
+      "height": 484,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/02/443d47364a532102023b5f2de3781dfaebe096f8.jpeg"
+    }
   }
 }

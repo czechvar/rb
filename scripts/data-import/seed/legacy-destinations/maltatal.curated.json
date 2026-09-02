@@ -22,125 +22,182 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["bouldering", "sport", "multi-pitch"],
-    "rockTypes": ["granite"],
-    "rockFeatures": ["crimps", "slabs", "cracks"],
-    "settingTags": ["mountain", "valley"],
-    "bestSeasons": ["spring", "summer", "autumn"],
+    "destinationScope": "area",
+    "climbingStyles": [
+      "bouldering",
+      "sport",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "granite"
+    ],
+    "rockFeatures": [
+      "crimps",
+      "slabs",
+      "cracks"
+    ],
+    "settingTags": [
+      "mountain",
+      "valley"
+    ],
+    "bestSeasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
     "avoidSeasons": [],
     "nearestAirports": [],
     "accommodationTags": [],
-    "transportTags": ["car-recommended"],
+    "transportTags": [
+      "car-recommended"
+    ],
     "gradeRange": "5a to 7c for sport routes; boulders up to 8c+ reported by bouldering sources",
     "routeCount": 420,
     "problemCount": 300,
-    "sectorCount": null,
-    "destinationScope": "area"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Hero",
-      "status": "legacy",
-      "body": "Maltatal, Austria",
-      "sourceRefs": ["legacy"],
+      "status": "mixed",
+      "body": "A Carinthian alpine valley for granite and gneiss climbing, best known for bouldering but strong for sport routes and multi-pitches too.",
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
       "key": "intro",
       "heading": "Introduction",
       "status": "enriched",
-      "body": "Maltatal is an Austrian alpine valley with both granite bouldering and roped climbing.",
-      "sourceRefs": ["s1"],
+      "body": "Maltatal sits in Austria's southern Alps, following the Malta river through a high valley of blocks, sport crags and longer routes. It is best known as a bouldering area, but the same valley gives enough roped climbing to make it useful for mixed teams.\n\nThe character is crisp and technical: crimps, slabs, rounded holds, short approaches and a mountain setting where conditions can be chosen by elevation. It is a good destination when you want quiet rock days rather than a resort-style climbing town.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History and context",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "status": "enriched",
+      "body": "Maltatal's bouldering reputation is tied to hard lines and local development. Gerhard Schaar is a central local developer and guidebook figure, while Klem Loskot's ascent of Bugeleisen stand helped push the area onto the international bouldering map.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock and climbing character",
       "status": "enriched",
-      "body": "OCUN reports 25 sport crags, about 350 single-pitch sport routes and 70 multipitch routes; other bouldering sources report granite boulders.",
-      "sourceRefs": ["s1"],
+      "body": "The rock is described locally as solid gneiss, while the broader climbing profile is granite-family alpine valley climbing. In practice the climbing is technical: crimps, slabs, rounded slopers, steep problems and some crack features.\n\nFor roped climbing, the valley has single-pitch sport routes and multi-pitches. For bouldering, the main style rewards finger strength, precise footwork and comfort on small holds.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who it suits",
       "status": "enriched",
-      "body": "The sport climbing grade band reported by OCUN is concentrated around 5a to 7c, which supports beginner and intermediate roped climbers as well as boulderers.",
-      "sourceRefs": ["s1"],
+      "body": "Maltatal works for boulderers first, but it should not be boxed in as bouldering-only. Sport climbers in lower and middle grades have useful options, and multi-pitch climbers can add longer alpine-feeling days.\n\nIt is a particularly good fit for climbers who like technical movement and do not need nightlife or dense town logistics after climbing.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "grades",
       "heading": "Grades and difficulty",
       "status": "enriched",
-      "body": "The sourced roped-climbing range is 5a to 7c; bouldering grades need a separate guidebook-backed pass before being normalized further.",
-      "sourceRefs": ["s1"],
+      "body": "The supported roped-climbing picture is about 25 sport crags, around 350 single-pitch sport routes and 70 multi-pitch routes, with many sport routes between 5a and 7c. The bouldering count used here is more than 300 problems.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season and conditions",
       "status": "enriched",
-      "body": "Spring, summer and autumn are assigned because Maltatal is an alpine valley; altitude and weather should still be checked before travel.",
-      "sourceRefs": ["s1"],
+      "body": "The valley offers climbing from February to November by using different elevations and aspects. For the controlled tags, spring, summer and autumn are the main seasons. Winter remains better treated as ice-climbing context than as the default rock-climbing window.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear and equipment",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "status": "enriched",
+      "body": "For bouldering, bring pads, shoes, chalk and enough spotters for uneven landings. For sport climbing, pack a normal rack and an 80 m rope for the longest single pitches.\n\nMulti-pitch days need standard longer-route kit, with approaches ranging from short walks to more committed mountain starts.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
       "heading": "Transport and access",
       "status": "enriched",
-      "body": "The valley setting makes a car the conservative transport tag for moving between sectors.",
-      "sourceRefs": ["s1"],
+      "body": "A car is the practical way to use Maltatal. The valley is spread out, and parking close to the sectors is part of the normal climbing rhythm.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
       "heading": "Where to stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced where to stay content found for this pass."]
+      "status": "enriched",
+      "body": "Terrassencamping Maltatal is a clear climber base. Apartments nearby are another option, with food, fuel and a climbing shop available in the village and more services in Gmund.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced where to stay content found for this pass."
+      ]
     },
     {
       "key": "restdays",
       "heading": "Rest days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "status": "enriched",
+      "body": "Rest days are simple mountain-valley days: short walks, village errands, Gmund for supplies and low-pressure time around the river instead of another session on small holds.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
       "heading": "Practical tips",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "status": "enriched",
+      "body": "Stay on established paths between blocks and crags. Shortcuts through meadows create conflict with local farmers, and van sleeping at parking areas is discouraged for the same reason.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety notes",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "status": "enriched",
+      "body": "Use proper pads and spotting for boulders, especially on harder lines with built landings. On roped routes, check pitch length before leaving the ground; some single pitches are long enough to make rope choice important.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +205,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "enriched",
+      "body": "Is Maltatal only for bouldering? No. It is best known for bouldering, but it also has sport climbing and multi-pitch climbing.\n\nWhat rope should you bring for sport routes? An 80 m rope is the conservative choice for the longest single pitches.\n\nIs a car useful? Yes. The valley layout makes a car the practical default.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -178,51 +241,159 @@
   "claims": [
     {
       "text": "Location kind: mixed-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: bouldering, sport, multi-pitch.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: granite.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 420.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Problem count: 300.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Maltatal, Austria",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     },
     {
       "text": "Maltatal is an Austrian alpine valley with both granite bouldering and roped climbing.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "OCUN reports 25 sport crags, about 350 single-pitch sport routes and 70 multipitch routes; other bouldering sources report granite boulders.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The sport climbing grade band reported by OCUN is concentrated around 5a to 7c, which supports beginner and intermediate roped climbers as well as boulderers.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The sourced roped-climbing range is 5a to 7c; bouldering grades need a separate guidebook-backed pass before being normalized further.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Spring, summer and autumn are assigned because Maltatal is an alpine valley; altitude and weather should still be checked before travel.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "The valley setting makes a car the conservative transport tag for moving between sectors.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "A Carinthian alpine valley for granite and gneiss climbing, best known for bouldering but strong for sport routes and multi-pitches too.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Maltatal sits in Austria's southern Alps, following the Malta river through a high valley of blocks, sport crags and longer routes.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Maltatal's bouldering reputation is tied to hard lines and local development.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The source describes solid gneiss, with the existing taxonomy keeping granite as the importer value.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Maltatal works for boulderers first, but it should not be boxed in as bouldering-only.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The supported roped-climbing picture is about 25 sport crags, around 350 single-pitch sport routes and 70 multi-pitch routes, with many sport routes between 5a and 7c.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The valley offers climbing from February to November by using different elevations and aspects.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "For bouldering, bring pads, shoes, chalk and enough spotters for uneven landings.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "A car is the practical way to use Maltatal.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Terrassencamping Maltatal is the clearest sourced climber base.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Rest days are simple mountain-valley days: short walks, village errands, Gmund for supplies and low-pressure time around the river instead of another session on small holds.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Stay on established paths between blocks and crags.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Use proper pads and spotting for boulders, especially on harder lines with built landings.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Is Maltatal only for bouldering? No.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -270,10 +441,26 @@
   "qa": {
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+      "No values outside the location taxonomy contract were added.",
+      "Expanded from OCUN source details for history, gear, stay, tips and safety.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
     "unsourcedClaimsRemoved": [
       "Empty or placeholder legacy body was not expanded without external support."
-    ]
+    ],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 46,
+      "legacyMediaId": 1320,
+      "originalName": "maltatal-view-dam-carinthia-austria-57285086.jpg",
+      "providerReference": "fa7e1f03900ec30668003e3c7edd29f3072f6f03.jpeg",
+      "contentType": "image/jpeg",
+      "width": 800,
+      "height": 533,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/02/fa7e1f03900ec30668003e3c7edd29f3072f6f03.jpeg"
+    }
   }
 }

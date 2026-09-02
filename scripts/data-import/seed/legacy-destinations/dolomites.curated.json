@@ -1,6 +1,6 @@
 {
   "slug": "dolomites",
-  "title": "DOLOMITES",
+  "title": "Dolomites",
   "status": "partial",
   "sources": [
     {
@@ -22,36 +22,66 @@
   ],
   "facts": {
     "locationKind": "alpine-climbing-area",
-    "climbingStyles": ["multi-pitch"],
-    "rockTypes": ["dolomite", "limestone"],
-    "rockFeatures": [],
-    "settingTags": ["mountain"],
-    "bestSeasons": [],
-    "avoidSeasons": [],
+    "destinationScope": "region",
+    "climbingStyles": [
+      "multi-pitch",
+      "sport",
+      "trad"
+    ],
+    "rockTypes": [
+      "dolomite",
+      "limestone"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "cracks"
+    ],
+    "settingTags": [
+      "mountain"
+    ],
+    "bestSeasons": [
+      "summer",
+      "autumn"
+    ],
+    "avoidSeasons": [
+      "winter"
+    ],
     "nearestAirports": [],
-    "accommodationTags": [],
-    "transportTags": [],
+    "accommodationTags": [
+      "refuge-hut",
+      "hotel",
+      "apartment"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
     "gradeRange": null,
     "routeCount": null,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "region"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "enriched",
+      "body": "The Dolomites are a mountain-region destination, not a single crag: steep pale walls, long routes, sport crags, via ferrata terrain and classic alpine days spread across northern Italy.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "enriched",
-      "body": "The Dolomites are an alpine climbing region rather than a single sport crag, with guidebook coverage split by massif and route style.",
-      "sourceRefs": ["s1"],
+      "body": "A Dolomites trip needs a clear objective. One climber may be thinking about bolted plaisir multi-pitches, another about traditional classics on the Sella Towers, Marmolada or Civetta, and another about low-level sport crags around Cortina.\n\nThat range is the strength of the area. The same holiday can mix valley cragging with long mountain routes, but conditions, route length and descent knowledge matter more than on a normal sport-climbing trip.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -60,55 +90,79 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "enriched",
-      "body": "Current guidebook listings include bolted multi-pitch routes and major Dolomites walls such as Marmolada.",
-      "sourceRefs": ["s1"],
+      "body": "The climbing is mainly on steep limestone and dolomite walls. Guidebook coverage separates sport crags, bolted multi-pitch routes, traditional classics and major walls, which is a good reflection of how the area works on the ground.\n\nExpect everything from roadside sport climbing to very long routes. The bigger objectives require alpine judgement: route finding, weather timing, descent planning and comfort moving efficiently above the valley.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "enriched",
+      "body": "The Dolomites suit teams who want mountain climbing rather than a single-crag holiday. It can work for sport climbers if they choose low-level crags, but the classic experience is multi-pitch and alpine in character.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Grades And Scale."]
+      "status": "enriched",
+      "body": "There is no single useful route count for the whole Dolomites in the available guidebook data. The guidebooks split the region into sport crags, bolted multi-pitches, traditional routes and major walls, so grade and route choice belongs with the specific massif or guidebook.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Grades And Scale."
+      ]
     },
     {
       "key": "season",
       "heading": "Season",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "status": "enriched",
+      "body": "Summer and early autumn are the normal windows for bigger mountain routes. Low-level sport crags can extend the season, but snow, storms and cold conditions make winter a different proposition.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Season."
+      ]
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "enriched",
+      "body": "Pack for the objective, not just for the region name. Bolted multi-pitches may need a sport rack and descent kit; traditional classics can need cams, wires and alpine anchors; big walls demand head torches, layers and enough margin for slow route finding.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "enriched",
+      "body": "A car is strongly recommended because the climbing is spread across valleys, passes and different mountain groups. Choose accommodation near the routes you actually plan to climb rather than assuming the whole Dolomites are within easy daily reach.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
     },
     {
       "key": "stay",
@@ -116,7 +170,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
@@ -124,23 +180,33 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "enriched",
+      "body": "Choose a specific sub-area before choosing accommodation. The Dolomites reward precise planning: route length, aspect, descent and afternoon weather are often more important than raw grade.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "enriched",
+      "body": "Treat long Dolomites routes as alpine outings. Weather can change quickly, descents may be complex, and route-finding errors cost time. Start early and keep enough reserve for descent and retreat.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +214,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "enriched",
+      "body": "Is this a sport-climbing destination? Partly. The Dolomites have sport crags, but the classic identity is mountain and multi-pitch climbing.\n\nCan beginners go? Yes, with careful route choice or instruction, but independent teams should match objectives to alpine experience.\n\nDo route counts help here? Not much at region scale. Pick the relevant valley, wall or guidebook.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -164,7 +236,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -172,13 +246,83 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "Dolomites guidebook listings include bolted multi-pitch climbing and Marmolada south-face routes.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: hero section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: intro section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: rock section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: who section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: grades section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: season section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: gear section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: transport section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: tips section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: safety section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Dolomites: faq section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [

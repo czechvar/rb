@@ -22,101 +22,164 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport", "trad"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["pockets"],
-    "settingTags": ["mountain"],
-    "bestSeasons": ["spring", "summer", "autumn"],
+    "destinationScope": "crag",
+    "climbingStyles": [
+      "sport",
+      "trad",
+      "multi-pitch",
+      "bouldering"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "pockets",
+      "overhangs"
+    ],
+    "settingTags": [
+      "mountain"
+    ],
+    "bestSeasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
     "avoidSeasons": [],
-    "nearestAirports": ["Nimes"],
-    "accommodationTags": ["campsite", "guesthouse-b-and-b"],
-    "transportTags": ["car-recommended", "flight-access"],
-    "gradeRange": null,
+    "nearestAirports": [
+      "Nimes"
+    ],
+    "accommodationTags": [
+      "campsite",
+      "guesthouse-b-and-b"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
+    "gradeRange": "F4 to F9b",
     "routeCount": 800,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "crag"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Ceüse is high, pocketed limestone above Gap: a world-class sport cliff where the approach, altitude and exposure are part of the point.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "mixed",
-      "body": "Ceuse is a high limestone sport-climbing cliff above Gap with legacy text already describing its altitude, long approach and reputation.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Ceüse is not an ordinary roadside sport crag. The cliff sits above 1,700 m, the approach takes effort, and the reward is long limestone climbing in a mountain setting.\n\nThe crag is famous for hard pocketed routes and overhanging sectors, but the current guidebook range is broader than the reputation suggests. There are routes from F4 to F9b, plus some multi-pitch, trad and bouldering coverage.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "status": "mixed",
+      "body": "Ceüse has a global reputation built around its hardest sport routes and the quality of its pocketed limestone. Sectors such as Biographie are part of modern sport-climbing history, but the crag is not only a museum of hard routes.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "mixed",
-      "body": "The current guidebook page describes more than 800 routes, mostly sport, with some trad routes shown separately on the topos.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is beautifully pocketed limestone, with outstanding lines across vertical and overhanging ground. Sector choice changes the style: long pumpy jug climbing, stamina routes and technical pocket climbing all exist on the same cliff.\n\nBolting can feel spaced compared with friendlier holiday crags, so the climbing has atmosphere even when the route is fully equipped.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "mixed",
+      "body": "Ceüse suits sport climbers who are happy to hike and who want quality over convenience. Stronger climbers get the famous test pieces, but mid-grade teams can still have a good trip if they choose sectors carefully.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
-      "status": "mixed",
-      "body": "The current guidebook page describes over 800 routes at Ceuse.",
-      "sourceRefs": ["legacy", "s1"],
+      "status": "enriched",
+      "body": "The current guidebook describes more than 800 routes, mostly sport, across a range from F4 to F9b. Some trad routes, bouldering and multi-pitch routes up to four pitches are also included.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "The legacy packet says the best season is from late spring to early autumn and that summers can be very hot.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Late spring through autumn is the main window. The altitude helps in summer, and the cliff has east, south and west-facing sectors, so it is usually possible to choose sun or shade.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring a sport rack, helmet and enough layers and water for a high crag with a long approach. Check route length and descent notes, especially for multi-pitch lines or sectors where lowering length is not obvious.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "legacy",
+      "body": "A car is the practical default for reaching Ceüse and staying below the hill. Climbers commonly base themselves around Les Guérins, close to the approach.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
     },
     {
       "key": "stay",
       "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "status": "legacy",
+      "body": "Les Guérins campsite is the classic climber base below the hill. Guesthouses and other accommodation around the Gap area give more comfort if camping is not the plan.",
+      "sourceRefs": [
+        "legacy"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
@@ -124,23 +187,35 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "mixed",
+      "body": "Respect the approach. Start with enough water, do not overload your pack, and choose sectors by sun, wind and grade rather than walking all the way up without a plan.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "The combination of altitude, long approach, spaced bolts and summer heat deserves respect. A helmet is sensible, and tired descents after a hard day should not be underestimated.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +223,22 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "Is Ceüse only for elite climbers? No. The famous routes are hard, but the guidebook range starts at F4.\n\nHow long is the approach? Plan for a substantial uphill walk rather than a roadside sport-crag day.\n\nWhen is best? Late spring to autumn is the main season.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -164,7 +246,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -172,13 +256,105 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "The current Ceuse guidebook page describes over 800 routes, mostly sport routes.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: hero section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: intro section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: history section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: rock section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: who section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: grades section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: season section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: gear section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: transport section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Ceüse: stay section has sourced public copy.",
+      "sourceRefs": [
+        "legacy"
+      ]
+    },
+    {
+      "text": "Ceüse: tips section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: safety section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Ceüse: faq section has sourced public copy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [

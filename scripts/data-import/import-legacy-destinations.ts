@@ -11,18 +11,15 @@ import './env'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { JSDOM } from 'jsdom'
 import { getPayload, type Payload } from 'payload'
-import { convertHTMLToLexical, editorConfigFactory } from '@payloadcms/richtext-lexical'
 import config from '../../src/payload.config'
 import { locationTaxonomy, type LocationTaxonomyField } from '../../src/lib/taxonomy/location'
 
 const SEED_DIR = path.resolve(import.meta.dirname, 'seed')
 const LEGACY_DESTINATION_DIR = path.join(SEED_DIR, 'legacy-destinations')
+const DEFAULT_MEDIA_LOOKUP_FILE =
+  '/media/czechspekk/ws-backup-data-1/xbusters/rockbusters/media-transfer/payload-media-lookup.json'
 const PRODUCTION_DB_HOST = 'ep-weathered-pine-alvc3sdj'
-
-type EditorConfig = Awaited<ReturnType<typeof editorConfigFactory.default>>
-type LexicalState = ReturnType<typeof convertHTMLToLexical>
 
 type LegacyLocationSeed = {
   rows: Array<{
@@ -65,6 +62,11 @@ type CuratedDestination = {
     problemCount?: number | null
     sectorCount?: number | null
   }
+  media?: {
+    mainImage?: {
+      legacyMediaId?: number | null
+    } | null
+  }
   sections: Array<{
     key: string
     heading: string
@@ -73,6 +75,10 @@ type CuratedDestination = {
     sourceRefs?: string[]
     warnings?: string[]
   }>
+}
+
+type PayloadMediaLookup = {
+  byLegacyMediaId?: Record<string, string>
 }
 
 export type BuiltLocationData = {
@@ -96,6 +102,9 @@ async function readJson<T>(file: string): Promise<T> {
 }
 
 async function readCuratedDestinations(inputDir = LEGACY_DESTINATION_DIR) {
+  const stat = await fs.stat(inputDir)
+  if (stat.isFile()) return [await readJson<CuratedDestination>(inputDir)]
+
   const entries = await fs.readdir(inputDir)
   const files = entries.filter((entry) => entry.endsWith('.curated.json')).sort()
   if (!files.length) {
@@ -105,9 +114,40 @@ async function readCuratedDestinations(inputDir = LEGACY_DESTINATION_DIR) {
   return Promise.all(files.map((file) => readJson<CuratedDestination>(path.join(inputDir, file))))
 }
 
+function parseArgs(argv: string[]) {
+  const parsed: { input?: string } = {}
+  for (let index = 0; index < argv.length; index += 1) {
+    const arg = argv[index]
+    if (arg === '--input') {
+      parsed.input = argv[++index]
+    } else if (arg === '--allow-production') {
+      continue
+    } else if (arg === '--help') {
+      console.log(
+        'Usage: pnpm data-import:legacy-destinations [--input FILE_OR_DIR] [--allow-production]',
+      )
+      process.exit(0)
+    } else {
+      throw new Error(`Unknown argument: ${arg}`)
+    }
+  }
+  return parsed
+}
+
 async function readLegacyLocationSeed() {
   const seed = await readJson<LegacyLocationSeed>(path.join(SEED_DIR, 'locations.json'))
   return new Map(seed.rows.map((row) => [row.slug, row]))
+}
+
+async function readPayloadMediaLookup() {
+  const file = process.env.PAYLOAD_MEDIA_LOOKUP_FILE ?? DEFAULT_MEDIA_LOOKUP_FILE
+  try {
+    const lookup = await readJson<PayloadMediaLookup>(file)
+    return new Map(Object.entries(lookup.byLegacyMediaId ?? {}))
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return new Map<string, string>()
+    throw err
+  }
 }
 
 function assertKnownValue(field: LocationTaxonomyField, value: string | null | undefined) {
@@ -126,36 +166,32 @@ function cleanText(value: string | null | undefined): string | undefined {
   return cleaned || undefined
 }
 
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-}
+function cleanMultilineText(value: string | null | undefined): string | undefined {
+  const cleaned = value
+    ?.split(/\n{2,}/)
+    .map((paragraph) => paragraph.replace(/\s+/g, ' ').trim())
+    .filter(Boolean)
+    .join('\n\n')
 
-function sectionHtml(record: CuratedDestination): string {
-  const chunks = record.sections
-    .filter((section) => section.body && !['not-applicable', 'missing'].includes(section.status))
-    .map((section) => {
-      const heading = escapeHtml(section.heading)
-      const body = escapeHtml(section.body ?? '')
-      return `<h2>${heading}</h2><p>${body}</p>`
-    })
-
-  return chunks.join('')
-}
-
-function toLexical(html: string, editorConfig: EditorConfig): LexicalState | undefined {
-  if (!html) return undefined
-  return convertHTMLToLexical({ editorConfig, html, JSDOM })
+  return cleaned || undefined
 }
 
 function sectionBody(record: CuratedDestination, key: string): string | undefined {
   const section = record.sections.find((candidate) => candidate.key === key)
   if (!section || section.status === 'missing' || section.status === 'not-applicable')
     return undefined
-  return cleanText(section.body)
+  return cleanMultilineText(section.body)
+}
+
+function contentSections(record: CuratedDestination) {
+  return record.sections.map((section) => ({
+    key: section.key,
+    heading: section.heading,
+    status: section.status,
+    body: cleanMultilineText(section.body) ?? null,
+    sourceRefs: section.sourceRefs ?? [],
+    warnings: section.warnings ?? [],
+  }))
 }
 
 function normalizeDate(value: string | null | undefined): string | undefined {
@@ -168,7 +204,7 @@ function normalizeDate(value: string | null | undefined): string | undefined {
 export function buildLocationData(
   record: CuratedDestination,
   legacySeed: LegacyLocationSeed['rows'][number] | undefined,
-  content: LexicalState | undefined,
+  mediaLookup = new Map<string, string>(),
 ): BuiltLocationData {
   const facts = record.facts ?? {}
 
@@ -206,6 +242,8 @@ export function buildLocationData(
     seasonSummary: sectionBody(record, 'season') ?? null,
     transportSummary: sectionBody(record, 'transport') ?? null,
     accommodationSummary: sectionBody(record, 'stay') ?? null,
+    content: null,
+    contentSections: contentSections(record),
     sourceReferences: record.sources.map((source) => ({
       sourceId: source.id,
       title: cleanText(source.title) ?? null,
@@ -216,7 +254,9 @@ export function buildLocationData(
     })),
   }
 
-  if (content) data.content = content
+  const legacyMainImageId = record.media?.mainImage?.legacyMediaId
+  const mainPictureId = legacyMainImageId ? mediaLookup.get(String(legacyMainImageId)) : undefined
+  if (mainPictureId) data.mainPicture = mainPictureId
   if (legacySeed?.country_nicename) data.country = legacySeed.country_nicename
   if (legacySeed && (legacySeed.latitude !== 0 || legacySeed.longitude !== 0)) {
     data.coordinates = [legacySeed.longitude, legacySeed.latitude]
@@ -256,16 +296,16 @@ async function upsertLocation(
 
 async function main() {
   assertNotProduction()
+  const args = parseArgs(process.argv.slice(2))
 
   const payload = await getPayload({ config })
-  const editorConfig = await editorConfigFactory.default({ config: payload.config })
   const legacyLocations = await readLegacyLocationSeed()
-  const records = await readCuratedDestinations()
+  const mediaLookup = await readPayloadMediaLookup()
+  const records = await readCuratedDestinations(args.input)
 
   const totals = { created: 0, updated: 0 }
   for (const record of records) {
-    const content = toLexical(sectionHtml(record), editorConfig)
-    const built = buildLocationData(record, legacyLocations.get(record.slug), content)
+    const built = buildLocationData(record, legacyLocations.get(record.slug), mediaLookup)
     const result = await upsertLocation(payload, built.slug, built.data)
     totals[result] += 1
   }

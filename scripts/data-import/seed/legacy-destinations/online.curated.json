@@ -1,0 +1,235 @@
+{
+  "slug": "online",
+  "title": "Online",
+  "status": "insufficient-source",
+  "sources": [
+    {
+      "id": "legacy",
+      "url": "https://rockbusters.net/",
+      "title": "Legacy Rockbusters destination packet",
+      "publisher": "Rockbusters",
+      "accessedAt": "2026-09-01",
+      "notes": "Existing native review output; used only for original legacy destination facts."
+    },
+    {
+      "id": "s1",
+      "url": "https://rockbusters.net/event/beginner-climbing-course/",
+      "title": "Beginner climbing course",
+      "publisher": "Rockbusters",
+      "accessedAt": "2026-09-01",
+      "notes": "Rockbusters course page; confirms this is course content, not destination geography."
+    }
+  ],
+  "facts": {
+    "locationKind": "online",
+    "destinationScope": "unknown",
+    "climbingStyles": [],
+    "rockTypes": [],
+    "rockFeatures": [],
+    "settingTags": [],
+    "bestSeasons": [],
+    "avoidSeasons": [],
+    "nearestAirports": [],
+    "accommodationTags": [],
+    "transportTags": [],
+    "gradeRange": null,
+    "routeCount": null,
+    "problemCount": null,
+    "sectorCount": null
+  },
+  "sections": [
+    {
+      "key": "hero",
+      "heading": "Destination Snapshot",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
+    },
+    {
+      "key": "intro",
+      "heading": "Overview",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": []
+    },
+    {
+      "key": "history",
+      "heading": "History And Reputation",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
+    },
+    {
+      "key": "rock",
+      "heading": "Rock And Climbing Character",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Rock And Climbing Character."
+      ]
+    },
+    {
+      "key": "who",
+      "heading": "Who It Suits",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
+    },
+    {
+      "key": "grades",
+      "heading": "Grades And Scale",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Grades And Scale."
+      ]
+    },
+    {
+      "key": "season",
+      "heading": "Season",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Season."
+      ]
+    },
+    {
+      "key": "gear",
+      "heading": "Gear",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
+    },
+    {
+      "key": "transport",
+      "heading": "Getting There",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
+    },
+    {
+      "key": "stay",
+      "heading": "Where To Stay",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
+    },
+    {
+      "key": "restdays",
+      "heading": "Rest Days",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
+    },
+    {
+      "key": "tips",
+      "heading": "Local Tips And Rules",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
+    },
+    {
+      "key": "safety",
+      "heading": "Safety",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
+    },
+    {
+      "key": "costs",
+      "heading": "Costs",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
+    },
+    {
+      "key": "faq",
+      "heading": "FAQ",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
+    },
+    {
+      "key": "trips",
+      "heading": "Trips",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
+    },
+    {
+      "key": "related",
+      "heading": "Related Destinations",
+      "status": "not-applicable",
+      "body": null,
+      "sourceRefs": [],
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "text": "The available source describes a Rockbusters course offering rather than a physical destination.",
+      "sourceRefs": [
+        "s1"
+      ]
+    }
+  ],
+  "editorialGaps": [
+    {
+      "section": "all",
+      "missing": "This record is not a physical climbing destination; decide whether indoor/online entries belong in destination pages.",
+      "priority": "high"
+    }
+  ],
+  "qa": {
+    "notes": [
+      "missing_country, missing_main_image, missing_or_short_location_body",
+      "Missing main image.",
+      "Marked destination sections not-applicable because the source supports a course/online or non-physical record rather than a destination guide."
+    ],
+    "unsourcedClaimsRemoved": [
+      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+    ]
+  }
+}

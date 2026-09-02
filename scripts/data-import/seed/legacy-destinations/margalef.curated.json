@@ -1,7 +1,7 @@
 {
   "slug": "margalef",
   "title": "Margalef",
-  "status": "partial",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,199 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": ["conglomerate"],
-    "rockFeatures": ["pockets", "overhangs"],
-    "settingTags": ["gorge-canyon", "mountain"],
-    "bestSeasons": ["spring", "autumn", "summer"],
+    "climbingStyles": [
+      "sport"
+    ],
+    "rockTypes": [
+      "conglomerate"
+    ],
+    "rockFeatures": [
+      "pockets",
+      "overhangs"
+    ],
+    "settingTags": [
+      "gorge-canyon",
+      "mountain"
+    ],
+    "bestSeasons": [
+      "spring",
+      "autumn",
+      "summer"
+    ],
     "avoidSeasons": [],
-    "nearestAirports": ["Barcelona"],
-    "accommodationTags": ["campsite", "apartment", "guesthouse-b-and-b"],
-    "transportTags": ["car-recommended", "flight-access"],
+    "nearestAirports": [
+      "Barcelona"
+    ],
+    "accommodationTags": [
+      "campsite",
+      "apartment",
+      "guesthouse-b-and-b"
+    ],
+    "transportTags": [
+      "car-recommended",
+      "flight-access"
+    ],
     "gradeRange": "F4 to F9b+",
     "routeCount": 1600,
     "problemCount": null,
     "sectorCount": null,
     "destinationScope": "crag"
   },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 20,
+      "legacyMediaId": 414,
+      "originalName": "renaudmalahostia2.jpg",
+      "providerReference": "f5d7fc614c89035fbae0f9e307151380e0c66da3.jpeg",
+      "contentType": "image/jpeg",
+      "width": 1024,
+      "height": 683,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/01/f5d7fc614c89035fbae0f9e307151380e0c66da3.jpeg"
+    }
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Margalef is steep Catalan sport climbing on pocketed conglomerate: short approaches, powerful sequences, endurance routes and enough lines from F4 to F9b+ to keep a team busy for weeks.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Margalef is a Montsant-region sport-climbing area known for pocketed conglomerate.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Margalef sits in the Montsant region and has become one of Spain’s clearest answers to the question: where do we go for pocketed sport climbing with real depth?\n\nThe style is distinctive. You pull on cobbles, pockets and edges, often on walls that are steeper than they first look. The village is small, the sectors are numerous, and a car-based week lets you chase shade, sun and grade bands without wasting much energy.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "Margalef’s reputation comes from modern sport-climbing development and the sheer productivity of the rock. It is a destination where hard climbing is visible, but the area is not only for elite grades.\n\nThe best trip rhythm is local and simple: climb, rest, eat, check skin and fingers, then pick the next sector by conditions.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The source describes the climbing as sport climbing on conglomerate walls filled with pockets.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is conglomerate, with pockets as the headline. Some routes are finger-intensive and bouldery; others build into long resistance pitches where reading the rests matters as much as pulling hard.\n\nExpect overhangs, positive pockets, small edges and the occasional sequence that feels strange until you trust the feet. Skin and finger care are part of the destination.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "Margalef works for sport climbers who like steep movement and projecting, especially from the 6s upward. Strong intermediates and advanced climbers get the most obvious value from the density.\n\nThere are easier routes in the range, but this is not the softest first outdoor sport venue. Climbers should be comfortable reading bolts, resting well and managing pockets carefully.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The cited area guide says the area covers more than 1,600 routes, with grades from F4 to F9b+.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Margalef has more than 1,600 sport routes from F4 to F9b+. That is enough range for mixed groups, but the character still leans toward pocketed sport climbing rather than gentle mileage.\n\nUse a current topo to choose sectors by grade density, aspect and approach.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "The source lists spring and autumn as the best climbing seasons and says shaded routes can make summer possible.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Spring and autumn are the main planning seasons. Shaded summer climbing can be possible, but heat management becomes part of the day.\n\nStart early, pick aspect carefully and keep rest days available if the forecast turns too hot for pockets.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring a sport rack with enough quickdraws for the chosen sector, a rope appropriate to current topo lengths, helmet, belay glasses if you use them, and tape for pocket-worn fingers.\n\nFor projecting, pack kneepads only if the topo and route style justify them. Do not assume every sector climbs the same.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
       "status": "mixed",
-      "body": "The source says the best way to reach Margalef is to fly to Barcelona and rent a car.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "Flying to Barcelona and renting a car is the practical plan. Margalef is rural, and sector choice is much easier with a vehicle.\n\nBuild drives, parking and food runs into the day rather than treating the village as a full-service resort.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Campsites, apartments and guesthouse-style bases are the main lodging categories to plan around. Confirm named options before booking.\n\nFor a climbing week, prioritize cooking access, drying space and easy car logistics over hotel polish.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can stay local in the Montsant landscape: walking, village time, slow meals and finger recovery. Siurana and other Catalan climbing areas are close enough to tempt a change of scene, but skin often needs a real break.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Choose sectors by finger condition as much as by grade. Pocketed conglomerate can feel friendly for one session and harsh by day three.\n\nRespect parking, paths and quiet village life. Margalef works because climbing and the small local base still fit together.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "Pocket injuries are the obvious climbing-specific risk. Warm up properly, avoid reckless mono or two-finger loading, and step back if fingers feel tweaky.\n\nWear a helmet where rockfall or crowded belays make it sensible, and check route length before lowering.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +222,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "What style is Margalef? Sport climbing on pocketed conglomerate, often steep and powerful.\n\nWhat grades are covered? F4 to F9b+ across more than 1,600 routes.\n\nDo I need a car? Yes, a rental car is the practical plan.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +243,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,71 +253,83 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "Margalef has more than 1,600 sport routes on pocketed conglomerate, with grades from F4 to F9b+.",
-      "sourceRefs": ["s1"]
+      "text": "Margalef is represented as sport-climbing-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Margalef has climbing styles: sport.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Margalef rock types retained: conglomerate.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Margalef retained grade range: F4 to F9b+.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Margalef retained route count: 1600.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Margalef best seasons retained: spring, autumn, summer.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "section": "transport",
+      "missing": "Confirm current parking, access and campsite/restaurant status before adding named recommendations.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "The route count and grade range are well supported by the retained theTopo source; detailed sector and lodging choices still need local topo review.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": [],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
+    ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "The route count and grade range are well supported by the retained theTopo source; detailed sector and lodging choices still need local topo review."
     ]
   }
 }

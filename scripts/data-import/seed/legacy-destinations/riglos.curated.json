@@ -22,68 +22,97 @@
   ],
   "facts": {
     "locationKind": "multi-pitch-area",
-    "climbingStyles": ["multi-pitch"],
-    "rockTypes": ["conglomerate"],
-    "rockFeatures": [],
-    "settingTags": ["mountain"],
+    "destinationScope": "area",
+    "climbingStyles": [
+      "multi-pitch",
+      "sport"
+    ],
+    "rockTypes": [
+      "conglomerate"
+    ],
+    "rockFeatures": [
+      "overhangs"
+    ],
+    "settingTags": [
+      "mountain"
+    ],
     "bestSeasons": [],
     "avoidSeasons": [],
     "nearestAirports": [],
     "accommodationTags": [],
-    "transportTags": [],
+    "transportTags": [
+      "car-recommended"
+    ],
     "gradeRange": null,
     "routeCount": 300,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "area"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "enriched",
+      "body": "Riglos is steep multi-pitch conglomerate on the Mallos de Riglos: huge towers, exposed climbing and a very different feel from Spain's roadside limestone crags.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Destination Snapshot."
+      ]
     },
     {
       "key": "intro",
       "heading": "Overview",
       "status": "enriched",
-      "body": "Riglos is centered on the Mallos de Riglos, large conglomerate towers in Aragon.",
-      "sourceRefs": ["s1"],
+      "body": "The climbing is centred on the Mallos de Riglos in Aragon, where freestanding conglomerate towers rise directly above the village. This is a destination for exposure, route length and unusual rock texture.\n\nRiglos is not a casual sport-crag stop. Even when routes are equipped, the scale and steepness make the day feel like multi-pitch climbing from the first pitch.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
       "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "status": "enriched",
+      "body": "The Mallos have a long reputation as one of Spain's distinctive multi-pitch venues. Their identity comes from the towers themselves: steep, orange-brown conglomerate walls that look improbable until you start reading the holds.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for History And Reputation."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock And Climbing Character",
       "status": "enriched",
-      "body": "The sourced destination article characterizes Riglos as steep, wild, multi-pitch conglomerate climbing.",
-      "sourceRefs": ["s1"],
+      "body": "The rock is conglomerate, with steep walls and pebble holds. Movement can feel gymnastic and three-dimensional, but the exposure is real and the routes are long enough to demand efficient rope work.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "status": "enriched",
+      "body": "Riglos suits confident multi-pitch teams. It is best for climbers who are comfortable with height, route finding, belay transitions and committing terrain.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Who It Suits."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades And Scale",
       "status": "enriched",
-      "body": "The source reports roughly 300 routes at the Mallos de Riglos.",
-      "sourceRefs": ["s1"],
+      "body": "Current destination coverage describes roughly 300 routes at the Mallos de Riglos. The useful filter is less the total count and more the tower, route length, equipment style and descent.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -92,23 +121,33 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Season."]
+      "warnings": [
+        "No sufficiently specific sourced content for Season."
+      ]
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "enriched",
+      "body": "Choose gear by route. Many teams will want a sport-oriented multi-pitch rack, helmets, descent kit and enough water for exposed sunny walls.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Gear."
+      ]
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "enriched",
+      "body": "A car is the practical way to reach Riglos and move around the region. Once in the village, the towers are the focus and approaches are part of the multi-pitch day.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Getting There."
+      ]
     },
     {
       "key": "stay",
@@ -116,7 +155,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "warnings": [
+        "No sufficiently specific sourced content for Where To Stay."
+      ]
     },
     {
       "key": "restdays",
@@ -124,23 +165,33 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "warnings": [
+        "No sufficiently specific sourced content for Rest Days."
+      ]
     },
     {
       "key": "tips",
       "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "status": "enriched",
+      "body": "Pick routes by aspect and commitment, not just grade. The walls are steep and exposed, and an efficient team will have a much better day than a stronger but disorganized one.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Local Tips And Rules."
+      ]
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "enriched",
+      "body": "Wear helmets and plan descents before leaving the ground. Conglomerate, exposure, long routes and heat can all raise the seriousness quickly.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for Safety."
+      ]
     },
     {
       "key": "costs",
@@ -148,15 +199,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "enriched",
+      "body": "Is Riglos sport climbing? It has equipped routes, but the destination is fundamentally multi-pitch.\n\nWhat is the rock? Conglomerate.\n\nIs it beginner friendly? Not as an independent objective. It is better for experienced multi-pitch climbers or guided teams.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sufficiently specific sourced content for FAQ."
+      ]
     },
     {
       "key": "trips",
@@ -164,7 +221,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "Related trips intentionally left empty by batch instruction."
+      ]
     },
     {
       "key": "related",
@@ -172,13 +231,83 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "Related destination enrichment is out of scope for this batch."
+      ]
     }
   ],
   "claims": [
     {
       "text": "The Climbing destination article describes Riglos as steep multi-pitch conglomerate with roughly 300 routes.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: hero section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: intro section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: history section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: rock section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: who section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: grades section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: gear section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: transport section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: tips section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: safety section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Riglos: faq section has sourced public copy.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [

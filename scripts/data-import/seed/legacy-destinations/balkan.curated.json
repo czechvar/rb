@@ -14,6 +14,7 @@
   ],
   "facts": {
     "locationKind": null,
+    "destinationScope": "country",
     "climbingStyles": [],
     "rockTypes": [],
     "rockFeatures": [],
@@ -26,8 +27,7 @@
     "gradeRange": null,
     "routeCount": null,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "country"
+    "sectorCount": null
   },
   "sections": [
     {
@@ -35,7 +35,9 @@
       "heading": "Hero",
       "status": "legacy",
       "body": "Balkan",
-      "sourceRefs": ["legacy"],
+      "sourceRefs": [
+        "legacy"
+      ],
       "warnings": []
     },
     {
@@ -54,7 +56,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
@@ -62,7 +66,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced rock and climbing character content found for this pass."]
+      "warnings": [
+        "No sourced rock and climbing character content found for this pass."
+      ]
     },
     {
       "key": "who",
@@ -70,7 +76,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced who it suits content found for this pass."]
+      "warnings": [
+        "No sourced who it suits content found for this pass."
+      ]
     },
     {
       "key": "grades",
@@ -78,7 +86,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced grades and difficulty content found for this pass."]
+      "warnings": [
+        "No sourced grades and difficulty content found for this pass."
+      ]
     },
     {
       "key": "season",
@@ -86,7 +96,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced season and conditions content found for this pass."]
+      "warnings": [
+        "No sourced season and conditions content found for this pass."
+      ]
     },
     {
       "key": "gear",
@@ -94,7 +106,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
@@ -102,7 +116,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced transport and access content found for this pass."]
+      "warnings": [
+        "No sourced transport and access content found for this pass."
+      ]
     },
     {
       "key": "stay",
@@ -110,7 +126,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced where to stay content found for this pass."]
+      "warnings": [
+        "No sourced where to stay content found for this pass."
+      ]
     },
     {
       "key": "restdays",
@@ -118,7 +136,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
@@ -126,7 +146,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
@@ -134,7 +156,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
@@ -142,7 +166,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
@@ -150,7 +176,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -172,7 +200,9 @@
   "claims": [
     {
       "text": "Balkan",
-      "sourceRefs": ["legacy"]
+      "sourceRefs": [
+        "legacy"
+      ]
     }
   ],
   "editorialGaps": [
@@ -260,10 +290,25 @@
   "qa": {
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
-      "No values outside the location taxonomy contract were added."
+      "No values outside the location taxonomy contract were added.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
     "unsourcedClaimsRemoved": [
       "Empty or placeholder legacy body was not expanded without external support."
-    ]
+    ],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 44,
+      "legacyMediaId": 1186,
+      "originalName": "prvi detjl_001.jpg",
+      "providerReference": "e1a69e671b0333208e1fe04f0681687e8739aed1.jpeg",
+      "contentType": "image/jpeg",
+      "width": 5898,
+      "height": 3932,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/02/e1a69e671b0333208e1fe04f0681687e8739aed1.jpeg"
+    }
   }
 }

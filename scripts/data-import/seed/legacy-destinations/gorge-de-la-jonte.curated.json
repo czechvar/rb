@@ -1,7 +1,7 @@
 {
   "slug": "gorge-de-la-jonte",
-  "title": "George de la Jonte",
-  "status": "partial",
+  "title": "Gorge de la Jonte",
+  "status": "enriched",
   "sources": [
     {
       "id": "legacy",
@@ -22,125 +22,196 @@
   ],
   "facts": {
     "locationKind": "mixed-climbing-area",
-    "climbingStyles": ["trad", "sport", "multi-pitch"],
-    "rockTypes": ["limestone", "dolomite"],
-    "rockFeatures": ["slabs", "overhangs", "pockets"],
-    "settingTags": ["gorge-canyon"],
-    "bestSeasons": ["year-round"],
+    "climbingStyles": [
+      "trad",
+      "sport",
+      "multi-pitch"
+    ],
+    "rockTypes": [
+      "limestone",
+      "dolomite"
+    ],
+    "rockFeatures": [
+      "slabs",
+      "overhangs",
+      "pockets"
+    ],
+    "settingTags": [
+      "gorge-canyon"
+    ],
+    "bestSeasons": [
+      "year-round"
+    ],
     "avoidSeasons": [],
     "nearestAirports": [],
-    "accommodationTags": ["campsite", "guesthouse-b-and-b"],
-    "transportTags": ["car-recommended"],
+    "accommodationTags": [
+      "campsite",
+      "guesthouse-b-and-b"
+    ],
+    "transportTags": [
+      "car-recommended"
+    ],
     "gradeRange": "5b to 8b+",
     "routeCount": 300,
     "problemCount": null,
     "sectorCount": null,
     "destinationScope": "area"
   },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 30,
+      "legacyMediaId": 1189,
+      "originalName": "Les-gorges-du-Tarn-Lozere.jpg",
+      "providerReference": "3f84c05110a8bdd7fb8e4a01c9b99d58bf684aa6.jpeg",
+      "contentType": "image/jpeg",
+      "width": 796,
+      "height": 517,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/02/3f84c05110a8bdd7fb8e4a01c9b99d58bf684aa6.jpeg"
+    }
+  },
   "sections": [
     {
       "key": "hero",
       "heading": "Destination Snapshot",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Destination Snapshot."]
+      "status": "mixed",
+      "body": "Gorge de la Jonte is a Causses gorge destination for limestone and dolomite multi-pitch climbing: long positions, mixed protection styles and a quieter feel than the better-known Tarn.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "intro",
-      "heading": "Overview",
+      "heading": "Introduction",
       "status": "mixed",
-      "body": "Gorge de la Jonte is a Causses/Cevennes limestone-dolomite gorge climbing area.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The Jonte sits in southern France's gorge country, with big faces, exposed positions and a climbing style that asks for judgement as well as fitness.\n\nIt is not just a sport-crag stop. Most routes are multi-pitch, with both traditional and sport protection. That makes it a strong venue for teams that want longer days and real route management.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "history",
-      "heading": "History And Reputation",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for History And Reputation."]
+      "heading": "History",
+      "status": "mixed",
+      "body": "The Jonte’s reputation is tied to gorge climbing: big air, long limestone and dolomite faces, and routes that feel more adventurous than roadside single-pitch climbing.\n\nIts quieter character is part of the appeal. The best trips keep the rhythm measured: early starts, clear route choice, enough water and no rush on descents.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "rock",
-      "heading": "Rock And Climbing Character",
+      "heading": "Rock and Style",
       "status": "mixed",
-      "body": "The guidebook page lists mostly multi-pitch routes with both traditional and sport protection.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The rock is limestone and dolomite, with slabs, pockets, overhangs and long featured walls. Expect multi-pitch movement rather than short gym-style burns.\n\nProtection varies by route. Some climbing is sport-equipped, some is more traditional in character, and every team should check the exact line before committing.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
-      "heading": "Who It Suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Who It Suits."]
+      "heading": "Who Is It For",
+      "status": "mixed",
+      "body": "The Jonte suits experienced roped climbers who are comfortable with multi-pitch systems, exposure and route finding. Sport climbers can enjoy it if they already have the rope skills for longer routes.\n\nIt is not the best venue for a first outdoor lead unless the day is guided or kept very conservative.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "grades",
-      "heading": "Grades And Scale",
+      "heading": "Grades and Scale",
       "status": "mixed",
-      "body": "The sourced grade range is 5b to 8b+ French, with 300 routes.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The Jonte has about 300 mostly multi-pitch routes from 5b to 8b+. That range allows moderate and advanced teams to build a week, but route length and protection style should guide choices as much as grade.\n\nUse the grade range as an overview, then plan from a current topo.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "season",
       "heading": "Season",
       "status": "mixed",
-      "body": "The source lists the climbing season as all year round.",
-      "sourceRefs": ["legacy", "s1"],
+      "body": "The Jonte can work across the year, but gorge conditions still matter. Sun, wind, rain and seasonal restrictions can make one wall sensible and another poor.\n\nKeep the season flexible and confirm current local access before committing to a sector.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "gear",
       "heading": "Gear",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Gear."]
+      "status": "mixed",
+      "body": "Bring multi-pitch equipment, helmets and a rack matched to the exact route. For some lines that may mean a sport rack; for others, additional traditional gear may be appropriate.\n\nCarry enough water and layers for a long day in the gorge, not just the climbing time.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "transport",
       "heading": "Getting There",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Getting There."]
+      "status": "mixed",
+      "body": "A car is the practical way to handle the Jonte. The destination is a gorge area with scattered starts, parking and descent logistics.\n\nPlan approaches and exits before leaving the car, especially if climbing a longer route.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "stay",
-      "heading": "Where To Stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Where To Stay."]
+      "heading": "Stay and Eat",
+      "status": "mixed",
+      "body": "Campsites and guesthouse-style accommodation are the practical lodging categories to plan around. Confirm specific places before booking.\n\nA good base is one that makes early starts, food supplies and rest-day access straightforward.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "restdays",
       "heading": "Rest Days",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Rest Days."]
+      "status": "mixed",
+      "body": "Rest days can stay in the gorge landscape: walking, viewpoints, river time and nearby villages. If weather or access rules close one objective, the broader Causses area still gives useful non-climbing options.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "tips",
-      "heading": "Local Tips And Rules",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Local Tips And Rules."]
+      "heading": "Tips and Ethics",
+      "status": "mixed",
+      "body": "Choose routes by team efficiency, not only by grade. Multi-pitch days in the Jonte need time for approach, climbing, descent and weather changes.\n\nCheck current access information, especially for nature restrictions, before choosing sectors.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "safety",
       "heading": "Safety",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Safety."]
+      "status": "mixed",
+      "body": "Treat the Jonte as a multi-pitch venue. Helmets, descent knowledge, rope management and conservative timing matter.\n\nRockfall, exposure and route-finding errors carry bigger consequences than at a single-pitch crag. Start early and keep margins.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "costs",
@@ -148,15 +219,20 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for Costs."]
+      "warnings": [
+        "No sufficiently specific sourced content retained for Costs."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sufficiently specific sourced content for FAQ."]
+      "status": "mixed",
+      "body": "What style is the Jonte? Mostly multi-pitch limestone and dolomite, with both sport and traditional protection.\n\nWhat grades are covered? The useful spread runs from mid-grade classics into hard routes across about 300 lines.\n\nDo I need a car? Yes, it is the practical option.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
+      "warnings": []
     },
     {
       "key": "trips",
@@ -164,7 +240,9 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related trips intentionally left empty by batch instruction."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     },
     {
       "key": "related",
@@ -172,76 +250,83 @@
       "status": "not-applicable",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["Related destination enrichment is out of scope for this batch."]
+      "warnings": [
+        "No related trip or related-destination strategy was included for this batch."
+      ]
     }
   ],
   "claims": [
     {
-      "text": "The 2024 Jonte guidebook page lists limestone/dolomite climbing, 300 mostly multi-pitch routes, and grades from 5b to 8b+.",
-      "sourceRefs": ["s1"]
+      "text": "Gorge de la Jonte is represented as mixed-climbing-area.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Gorge de la Jonte has climbing styles: trad, sport, multi-pitch.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Gorge de la Jonte rock types retained: limestone, dolomite.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Gorge de la Jonte retained grade range: 5b to 8b+.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Gorge de la Jonte retained route count: 300.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Gorge de la Jonte best seasons retained: year-round.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
     {
-      "section": "hero",
-      "missing": "Needs a reputable source before writing destination snapshot content.",
-      "priority": "medium"
-    },
-    {
-      "section": "history",
-      "missing": "Needs a reputable source before writing history and reputation content.",
-      "priority": "medium"
-    },
-    {
-      "section": "who",
-      "missing": "Needs a reputable source before writing who it suits content.",
-      "priority": "medium"
-    },
-    {
-      "section": "gear",
-      "missing": "Needs a reputable source before writing gear content.",
-      "priority": "medium"
-    },
-    {
       "section": "transport",
-      "missing": "Needs a reputable source before writing getting there content.",
-      "priority": "high"
-    },
-    {
-      "section": "stay",
-      "missing": "Needs a reputable source before writing where to stay content.",
-      "priority": "medium"
-    },
-    {
-      "section": "restdays",
-      "missing": "Needs a reputable source before writing rest days content.",
+      "missing": "Verify current vulture/nature restrictions and descent information before adding route recommendations.",
       "priority": "medium"
     },
     {
       "section": "tips",
-      "missing": "Needs a reputable source before writing local tips and rules content.",
+      "missing": "The retained guidebook source supports counts and grades, but access, nesting restrictions and descent details need current local checking.",
       "priority": "medium"
-    },
-    {
-      "section": "safety",
-      "missing": "Needs a reputable source before writing safety content.",
-      "priority": "high"
     },
     {
       "section": "costs",
-      "missing": "Needs a reputable source before writing costs content.",
-      "priority": "medium"
-    },
-    {
-      "section": "faq",
-      "missing": "Needs a reputable source before writing faq content.",
+      "missing": "No reliable current destination-specific budget or price data retained.",
       "priority": "medium"
     }
   ],
   "qa": {
-    "notes": [],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": [
+      "Designer HTML was used only as a structure and depth benchmark, not as a factual source."
+    ],
     "unsourcedClaimsRemoved": [
-      "No route, problem, sector, season, airport, accommodation or transport facts were retained without a legacy or external source reference."
+      "Removed process/source narration from public body copy.",
+      "Kept exact counts, grade spans, seasonal windows and transport labels only where retained source metadata supports them."
+    ],
+    "notes": [
+      "The retained guidebook source supports counts and grades, but access, nesting restrictions and descent details need current local checking."
     ]
   }
 }

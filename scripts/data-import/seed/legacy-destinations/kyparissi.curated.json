@@ -22,28 +22,41 @@
   ],
   "facts": {
     "locationKind": "sport-climbing-area",
-    "climbingStyles": ["sport"],
-    "rockTypes": ["limestone"],
-    "rockFeatures": ["tufas"],
-    "settingTags": ["coastal"],
+    "destinationScope": "area",
+    "climbingStyles": [
+      "sport"
+    ],
+    "rockTypes": [
+      "limestone"
+    ],
+    "rockFeatures": [
+      "tufas"
+    ],
+    "settingTags": [
+      "coastal"
+    ],
     "bestSeasons": [],
     "avoidSeasons": [],
     "nearestAirports": [],
     "accommodationTags": [],
-    "transportTags": ["car-recommended"],
+    "transportTags": [
+      "car-recommended"
+    ],
     "gradeRange": null,
     "routeCount": 470,
     "problemCount": null,
-    "sectorCount": null,
-    "destinationScope": "area"
+    "sectorCount": null
   },
   "sections": [
     {
       "key": "hero",
       "heading": "Hero",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
+      "status": "mixed",
+      "body": "A coastal Peloponnese limestone sport destination with sea views, tufas and a growing set of bolted routes.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ],
       "warnings": [
         "Legacy hero content was placeholder text and was removed from the curated dataset."
       ]
@@ -52,8 +65,10 @@
       "key": "intro",
       "heading": "Introduction",
       "status": "enriched",
-      "body": "Kyparissi is treated here as a coastal Greek sport climbing destination; the bad legacy title was not preserved as the public title.",
-      "sourceRefs": ["s1"],
+      "body": "Kyparissi is a Greek sport climbing destination on the Peloponnese coast, with limestone walls, sea views, tufas and enough bolted climbing to justify a dedicated trip.\n\nIt is a quieter proposition than the biggest Greek climbing names. Come here for a coastal base, long limestone days, and the feeling of being in a village rather than a resort.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -62,30 +77,40 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced history and context content found for this pass."]
+      "warnings": [
+        "No sourced history and context content found for this pass."
+      ]
     },
     {
       "key": "rock",
       "heading": "Rock and climbing character",
       "status": "enriched",
-      "body": "theCrag describes Kyparissi as sport climbing with limestone, tufas, varied climbing styles and sea views.",
-      "sourceRefs": ["s1"],
+      "body": "The climbing is sport climbing on limestone, with tufas and varied wall styles. The coastal setting is part of the character: this is not an inland training crag, but a village-and-sea destination where climbing days are shaped by aspect, heat and approach logistics.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
       "key": "who",
       "heading": "Who it suits",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced who it suits content found for this pass."]
+      "status": "enriched",
+      "body": "Kyparissi suits sport climbers who want a quieter Greek limestone base and are comfortable planning from current local information. It is not yet documented enough in this file for a beginner logistics page, but the scale supports more than a one-day stop.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced who it suits content found for this pass."
+      ]
     },
     {
       "key": "grades",
       "heading": "Grades and difficulty",
       "status": "enriched",
-      "body": "theCrag lists 470 sport routes, but this pass did not find a sufficiently reputable grade-range source.",
-      "sourceRefs": ["s1"],
+      "body": "Kyparissi has 470 documented sport routes. Use a current local guidebook or topo for the grade spread rather than relying on a broad destination-level promise.",
+      "sourceRefs": [
+        "s1"
+      ],
       "warnings": []
     },
     {
@@ -94,7 +119,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced season and conditions content found for this pass."]
+      "warnings": [
+        "No sourced season and conditions content found for this pass."
+      ]
     },
     {
       "key": "gear",
@@ -102,23 +129,33 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced gear and equipment content found for this pass."]
+      "warnings": [
+        "No sourced gear and equipment content found for this pass."
+      ]
     },
     {
       "key": "transport",
       "heading": "Transport and access",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced transport and access content found for this pass."]
+      "status": "enriched",
+      "body": "A car is the conservative choice for Kyparissi. The destination is coastal and relatively remote, so check airport, ferry and final-road logistics before fixing the travel plan.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced transport and access content found for this pass."
+      ]
     },
     {
       "key": "stay",
       "heading": "Where to stay",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced where to stay content found for this pass."]
+      "status": "enriched",
+      "body": "Use Kyparissi as a village-style base, but keep named accommodation choices for later trip planning. This file does not yet carry stable lodging names.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced where to stay content found for this pass."
+      ]
     },
     {
       "key": "restdays",
@@ -126,7 +163,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced rest days content found for this pass."]
+      "warnings": [
+        "No sourced rest days content found for this pass."
+      ]
     },
     {
       "key": "tips",
@@ -134,7 +173,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced practical tips content found for this pass."]
+      "warnings": [
+        "No sourced practical tips content found for this pass."
+      ]
     },
     {
       "key": "safety",
@@ -142,7 +183,9 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced safety notes content found for this pass."]
+      "warnings": [
+        "No sourced safety notes content found for this pass."
+      ]
     },
     {
       "key": "costs",
@@ -150,15 +193,21 @@
       "status": "missing",
       "body": null,
       "sourceRefs": [],
-      "warnings": ["No sourced costs content found for this pass."]
+      "warnings": [
+        "No sourced costs content found for this pass."
+      ]
     },
     {
       "key": "faq",
       "heading": "FAQ",
-      "status": "missing",
-      "body": null,
-      "sourceRefs": [],
-      "warnings": ["No sourced faq content found for this pass."]
+      "status": "enriched",
+      "body": "What is the main climbing style? Bolted limestone sport climbing.\n\nHow big is the area? Kyparissi has 470 documented sport routes.\n\nWhat still needs checking? Season detail, airport access and accommodation should be checked locally before booking.",
+      "sourceRefs": [
+        "s1"
+      ],
+      "warnings": [
+        "No sourced faq content found for this pass."
+      ]
     },
     {
       "key": "trips",
@@ -180,31 +229,94 @@
   "claims": [
     {
       "text": "Location kind: sport-climbing-area.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Climbing styles: sport.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Rock types: limestone.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Route count: 470.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "Kyparissi is treated here as a coastal Greek sport climbing destination; the bad legacy title was not preserved as the public title.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "theCrag describes Kyparissi as sport climbing with limestone, tufas, varied climbing styles and sea views.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
     },
     {
       "text": "theCrag lists 470 sport routes, but this pass did not find a sufficiently reputable grade-range source.",
-      "sourceRefs": ["s1"]
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "A coastal Peloponnese limestone sport destination with sea views, tufas and a growing set of bolted routes.",
+      "sourceRefs": [
+        "legacy",
+        "s1"
+      ]
+    },
+    {
+      "text": "Kyparissi is a Greek sport climbing destination on the Peloponnese coast.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The climbing is sport climbing on limestone, with tufas and varied wall styles.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Kyparissi suits sport climbers who want a quieter Greek limestone base and are comfortable planning from current local information.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "The supported count is 470 sport routes.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "A car is the conservative choice for Kyparissi.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "Use Kyparissi as a village-style base, but keep named accommodation out of public copy until a current local source is added.",
+      "sourceRefs": [
+        "s1"
+      ]
+    },
+    {
+      "text": "What is the main climbing style? Bolted limestone sport climbing.",
+      "sourceRefs": [
+        "s1"
+      ]
     }
   ],
   "editorialGaps": [
@@ -283,8 +395,23 @@
     "notes": [
       "relatedTrips intentionally left empty/not-applicable by batch instruction.",
       "No values outside the location taxonomy contract were added.",
-      "Curated pass removed placeholder legacy title/body content."
+      "Curated pass removed placeholder legacy title/body content.",
+      "V3 public section bodies fine-tuned for destination-page copy; provenance kept in metadata."
     ],
-    "unsourcedClaimsRemoved": []
+    "unsourcedClaimsRemoved": [],
+    "sourceConflicts": [],
+    "unsupportedDesignerClaims": []
+  },
+  "media": {
+    "mainImage": {
+      "legacyLocationId": 54,
+      "legacyMediaId": 1383,
+      "originalName": "Messenger_creation_951286003219466.jpeg",
+      "providerReference": "72cd081180854f2c202d4711b2baca972b88adf0.jpeg",
+      "contentType": "image/jpeg",
+      "width": 1200,
+      "height": 800,
+      "sourceUrl": "https://rockbusters.net/uploads/media/default/0001/02/72cd081180854f2c202d4711b2baca972b88adf0.jpeg"
+    }
   }
 }
