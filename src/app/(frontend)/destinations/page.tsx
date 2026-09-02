@@ -1,27 +1,51 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getActiveLocations } from '@/lib/queries'
+import { getActiveLocations, getPublishedPageBySlug } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { JsonLd } from '@/components/JsonLd'
 import { collectionPageGraphJsonLd, locationListItems } from '@/lib/jsonld'
 import { mediaUrl, mediaAlt } from '@/lib/media'
+import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import type { Location } from '@/payload-types'
 import styles from './destinations.module.css'
 
-export const metadata = { title: 'Destinations — Rockbusters' }
+export async function generateMetadata() {
+  const page = await getPublishedPageBySlug('destinations')
+  return {
+    title: page?.seo?.title || 'Destinations - Rockbusters',
+    description: page?.seo?.description || undefined,
+    keywords: page?.seo?.keywords || undefined,
+  }
+}
 
 function countryAnchor(country: string) {
   return country.toLowerCase().replace(/[^a-z0-9]+/g, '-')
 }
 
 export default async function DestinationsPage() {
-  const docs = await getActiveLocations()
+  const [page, docs] = await Promise.all([
+    getPublishedPageBySlug('destinations'),
+    getActiveLocations(),
+  ])
   const jsonLd = collectionPageGraphJsonLd({
     path: '/destinations',
-    name: 'Destinations',
-    description: 'Browse Rockbusters climbing destinations by country.',
+    name: page?.seo?.title || page?.title || 'Destinations',
+    description:
+      page?.seo?.description || 'Browse Rockbusters climbing destinations by country.',
     items: locationListItems(docs),
   })
+
+  if (page?.layout?.length) {
+    return (
+      <MarketingShell>
+        <JsonLd data={jsonLd} />
+        <main>
+          <RenderBlocks blocks={page.layout} context={{ page }} />
+        </main>
+      </MarketingShell>
+    )
+  }
+
   const byCountry = new Map<string, Location[]>()
   for (const loc of docs) {
     const key = loc.country ?? 'Elsewhere'

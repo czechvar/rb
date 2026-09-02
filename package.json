@@ -34,6 +34,7 @@
     "data-import:backfill-event-images": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/backfill-event-main-pictures.ts",
     "data-import:export-homepage": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/export-homepage-seed.ts",
     "data-import:homepage": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-homepage-seed.ts",
+    "data-import:destinations-page": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-destinations-page-seed.ts",
     "data-import:fetch-airports": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/fetch-airports-seed.ts",
     "data-import:airports": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-airports-seed.ts",
     "data-import:extract-legacy-airports": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/legacy/extract-legacy-airports.ts",

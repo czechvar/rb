@@ -6,6 +6,7 @@ import { CTABlockConfig } from './CTA/config'
 import { TripGridBlockConfig } from './TripGrid/config'
 import { ProgramGridBlockConfig } from './ProgramGrid/config'
 import { LocationGridBlockConfig } from './LocationGrid/config'
+import { DestinationCountryIndexBlockConfig } from './DestinationCountryIndex/config'
 import { GuideGridBlockConfig } from './GuideGrid/config'
 import { PostGridBlockConfig } from './PostGrid/config'
 import { CalendarBlockConfig } from './Calendar/config'
@@ -127,6 +128,13 @@ const rawBlockCatalogue = [
     sourceModes: ['currentContext', 'manualSelection'],
   },
   { config: LocationGridBlockConfig, category: 'catalogue' },
+  {
+    config: DestinationCountryIndexBlockConfig,
+    category: 'catalogue',
+    dataDependencies: ['location'],
+    sourceModes: ['configuredContent'],
+    compatibleWith: ['page'],
+  },
   {
     config: FeaturedLocationBlockConfig,
     category: 'catalogue',

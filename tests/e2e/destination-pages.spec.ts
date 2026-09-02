@@ -34,6 +34,30 @@ function richText(...paragraphs: string[]) {
 
 test.beforeAll(async () => {
   const payload = await getPayload({ config })
+  await payload.delete({ collection: 'pages', where: { slug: { equals: 'destinations' } } })
+  await payload.create({
+    collection: 'pages',
+    data: {
+      title: 'Destinations',
+      slug: 'destinations',
+      status: 'published',
+      layout: [
+        {
+          blockType: 'hero',
+          heading: 'Destinations',
+          body: 'CMS-powered destination page for e2e coverage.',
+          variant: 'simple',
+        },
+        {
+          blockType: 'destinationCountryIndex',
+          heading: 'Browse destinations',
+          source: 'all',
+          variant: 'flagCards',
+          showJumpBar: true,
+        },
+      ],
+    } as never,
+  })
   const loc = await payload.create({
     collection: 'locations',
     data: {
@@ -61,6 +85,7 @@ test.afterAll(async () => {
   const payload = await getPayload({ config })
   await payload.delete({ collection: 'events', where: { title: { equals: eventTitle } } })
   await payload.delete({ collection: 'locations', where: { slug: { equals: dest.slug } } })
+  await payload.delete({ collection: 'pages', where: { slug: { equals: 'destinations' } } })
 })
 
 test.describe('destination pages', () => {

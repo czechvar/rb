@@ -8,6 +8,7 @@ import { CTABlock } from './CTABlock'
 import { TripGridBlock } from './TripGridBlock'
 import { ProgramGridBlock } from './ProgramGridBlock'
 import { LocationGridBlock } from './LocationGridBlock'
+import { DestinationCountryIndexBlock } from './DestinationCountryIndexBlock'
 import { GuideGridBlock } from './GuideGridBlock'
 import { PostGridBlock } from './PostGridBlock'
 import { CalendarBlock } from './CalendarBlock'
@@ -111,6 +112,10 @@ const blockRenderers: Record<string, BlockRenderer> = {
     FeaturedProgramBlock(block as Extract<PageBlock, { blockType: 'featuredProgram' }>, context),
   locationGrid: (block) =>
     LocationGridBlock(block as Extract<PageBlock, { blockType: 'locationGrid' }>),
+  destinationCountryIndex: (block) =>
+    DestinationCountryIndexBlock(
+      block as Extract<PageBlock, { blockType: 'destinationCountryIndex' }>,
+    ),
   featuredLocation: (block, context) =>
     FeaturedLocationBlock(block as Extract<PageBlock, { blockType: 'featuredLocation' }>, context),
   guideGrid: (block) => GuideGridBlock(block as Extract<PageBlock, { blockType: 'guideGrid' }>),

@@ -294,6 +294,15 @@ export interface Program {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -932,6 +941,15 @@ export interface Event {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -1679,6 +1697,15 @@ export interface Location {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -2137,6 +2164,15 @@ export interface Guide {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -2684,6 +2720,15 @@ export interface Post {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -3476,6 +3521,15 @@ export interface Page {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
@@ -3626,6 +3680,17 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'all' | 'featured';
+            variant: 'photoCards' | 'flagCards';
+            showJumpBar?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationCountryIndex';
           }
         | {
             eyebrow?: string | null;
@@ -4331,6 +4396,12 @@ export interface ProgramsSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
@@ -4908,6 +4979,12 @@ export interface GuidesSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
@@ -5443,6 +5520,12 @@ export interface LocationsSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
@@ -5886,6 +5969,12 @@ export interface EventsSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
@@ -6628,6 +6717,12 @@ export interface PostsSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
@@ -7037,6 +7132,12 @@ export interface PagesSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
@@ -7171,6 +7272,18 @@ export interface PagesSelect<T extends boolean = true> {
               locations?: T;
               limit?: T;
               variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        destinationCountryIndex?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              variant?: T;
+              showJumpBar?: T;
               id?: T;
               blockName?: T;
             };

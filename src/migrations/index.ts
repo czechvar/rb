@@ -36,6 +36,8 @@ import * as migration_20260902_101132 from './20260902_101132';
 import * as migration_20260902_130000_section_intro_variant from './20260902_130000_section_intro_variant';
 import * as migration_20260902_131500_stats_columns from './20260902_131500_stats_columns';
 import * as migration_20260902_132000_add_event_catalogue_card from './20260902_132000_add_event_catalogue_card';
+import * as migration_20260902_203646_destination_country_index_block from './20260902_203646_destination_country_index_block';
+import * as migration_20260902_211615_hero_accent_words from './20260902_211615_hero_accent_words';
 
 export const migrations = [
   {
@@ -211,21 +213,31 @@ export const migrations = [
   {
     up: migration_20260902_101132.up,
     down: migration_20260902_101132.down,
-    name: '20260902_101132'
+    name: '20260902_101132',
   },
   {
     up: migration_20260902_130000_section_intro_variant.up,
     down: migration_20260902_130000_section_intro_variant.down,
-    name: '20260902_130000_section_intro_variant'
+    name: '20260902_130000_section_intro_variant',
   },
   {
     up: migration_20260902_131500_stats_columns.up,
     down: migration_20260902_131500_stats_columns.down,
-    name: '20260902_131500_stats_columns'
+    name: '20260902_131500_stats_columns',
   },
   {
     up: migration_20260902_132000_add_event_catalogue_card.up,
     down: migration_20260902_132000_add_event_catalogue_card.down,
-    name: '20260902_132000_add_event_catalogue_card'
+    name: '20260902_132000_add_event_catalogue_card',
   },
-];
+  {
+    up: migration_20260902_203646_destination_country_index_block.up,
+    down: migration_20260902_203646_destination_country_index_block.down,
+    name: '20260902_203646_destination_country_index_block',
+  },
+  {
+    up: migration_20260902_211615_hero_accent_words.up,
+    down: migration_20260902_211615_hero_accent_words.down,
+    name: '20260902_211615_hero_accent_words',
+  },
+]

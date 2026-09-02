@@ -50,6 +50,11 @@ describe('block registry groups', () => {
     'guideProfile',
     'guideTrips',
   ]
+  const pageBlockSlugs = [
+    ...reusableBlockSlugs.slice(0, reusableBlockSlugs.indexOf('featuredLocation')),
+    'destinationCountryIndex',
+    ...reusableBlockSlugs.slice(reusableBlockSlugs.indexOf('featuredLocation')),
+  ]
 
   it('exposes categorized block groups from the catalogue', () => {
     expect(contentBlocks.map((block) => block.slug)).toEqual([
@@ -65,6 +70,7 @@ describe('block registry groups', () => {
       'programGrid',
       'featuredProgram',
       'locationGrid',
+      'destinationCountryIndex',
       'featuredLocation',
       'guideGrid',
       'featuredGuide',
@@ -128,9 +134,7 @@ describe('block registry groups', () => {
   })
 
   it('builds surface block lists from compatibility metadata', () => {
-    expect(pageBlocks.map((block) => block.slug)).toEqual([
-      ...reusableBlockSlugs,
-    ])
+    expect(pageBlocks.map((block) => block.slug)).toEqual(pageBlockSlugs)
     expect(eventLayoutBlocks.map((block) => block.slug)).toEqual([
       ...reusableBlockSlugs,
       'tripHero',
