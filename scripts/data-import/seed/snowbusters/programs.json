@@ -1,0 +1,94 @@
+{
+  "generatedAt": "2026-08-27T16:18:41.908Z",
+  "source": "../snowbusters-static-html/static/CATEGORIES/*.html",
+  "rows": [
+    {
+      "source": "static-category-page",
+      "sourceFile": "../snowbusters-static-html/static/CATEGORIES/alps-ski-vacations.html",
+      "name": "Alps Ski Vacations",
+      "slug": "alps-ski-vacations",
+      "shortDescription": "Snowbusters runs local-guided ski vacations across the Alps — groomed-slope guiding, technique coaching for all levels, ski safaris, and family-friendly weeks. Local guides, no guesswork. Every trip includes the DOWN Ski Demo.",
+      "active": true,
+      "state": "published",
+      "position": 1,
+      "staticTitle": "Alps Ski Vacations 2026–27 | Snowbusters — Local-Guided Ski Holidays, Family Weeks & Ski Safaris in the Alps"
+    },
+    {
+      "source": "static-category-page",
+      "sourceFile": "../snowbusters-static-html/static/CATEGORIES/custom-group-trips.html",
+      "name": "Custom Group Trips",
+      "slug": "custom-group-trips",
+      "shortDescription": "Snowbusters builds fully custom group ski and snowboard trips — choose your destination, terrain style, difficulty, and dates. On-piste, off-piste, or a mix, built around your crew. Every trip includes the DOWN Ski Demo.",
+      "active": true,
+      "state": "published",
+      "position": 2,
+      "staticTitle": "Custom Group Trips 2026–27 | Snowbusters — Design Your Own Ski & Snowboard Trip With Your Crew"
+    },
+    {
+      "source": "static-category-page",
+      "sourceFile": "../snowbusters-static-html/static/CATEGORIES/freeride-camps.html",
+      "name": "Freeride Camps",
+      "slug": "freeride-camps",
+      "shortDescription": "Snowbusters runs guided freeride camps in the world's best powder — the Alps, Japan, Alaska, and Patagonia. Deep snow, steep lines, and coaching from riders who live for it. Every trip includes the DOWN Ski Demo.",
+      "active": true,
+      "state": "published",
+      "position": 3,
+      "staticTitle": "Freeride Camps 2026–27 | Snowbusters — Guided Freeride Ski & Snowboard Camps in the Alps, Japan & Beyond"
+    },
+    {
+      "source": "static-category-page",
+      "sourceFile": "../snowbusters-static-html/static/CATEGORIES/freestyle-park-camps.html",
+      "name": "Freestyle Park Camps",
+      "slug": "freestyle-park-camps",
+      "shortDescription": "Snowbusters runs guided freestyle park camps for skiers and snowboarders — progressive trick coaching, filmed sessions, and jump and rail lines from first hits to advanced tricks. Every trip includes the DOWN Ski Demo.",
+      "active": true,
+      "state": "published",
+      "position": 4,
+      "staticTitle": "Freestyle Park Camps 2026–27 | Snowbusters — Guided Ski & Snowboard Park Camps in Whistler, the Alps & Beyond"
+    },
+    {
+      "source": "static-category-page",
+      "sourceFile": "../snowbusters-static-html/static/CATEGORIES/heli-cat-skiing.html",
+      "name": "Heli & Cat Skiing",
+      "slug": "heli-cat-skiing",
+      "shortDescription": "Snowbusters runs guided heli-skiing and cat-skiing trips into the deepest, most remote terrain on earth — Alaska, British Columbia, and the Alps. Zero skin track, maximum vertical, expert guiding. Every trip includes the DOWN Ski Demo.",
+      "active": true,
+      "state": "published",
+      "position": 5,
+      "staticTitle": "Heli & Cat Skiing 2026–27 | Snowbusters — Guided Heli-Skiing & Cat-Skiing Trips in Alaska, Canada & Beyond"
+    },
+    {
+      "source": "static-category-page",
+      "sourceFile": "../snowbusters-static-html/static/CATEGORIES/private-guiding.html",
+      "name": "Private Guiding",
+      "slug": "private-guiding",
+      "shortDescription": "Snowbusters runs fully private ski and snowboard guiding — on-piste coaching, off-piste and backcountry days, and multi-day touring, tailored entirely to your group. One guide, your pace, any resort. Every trip includes the DOWN Ski Demo.",
+      "active": true,
+      "state": "published",
+      "position": 6,
+      "staticTitle": "Private Guiding 2026–27 | Snowbusters — Private Ski & Snowboard Guiding, On-Piste & Off-Piste, Across the Alps & Beyond"
+    },
+    {
+      "source": "static-category-page",
+      "sourceFile": "../snowbusters-static-html/static/CATEGORIES/ski-touring-splitboarding.html",
+      "name": "Ski Touring & Splitboarding",
+      "slug": "ski-touring-splitboarding",
+      "shortDescription": "Snowbusters runs guided ski touring and splitboarding trips across the Alps, Scandinavia, and beyond. Earn your turns — skin up, ride down, and travel light through some of the best backcountry terrain on earth. Every trip includes the DOWN Ski Demo.",
+      "active": true,
+      "state": "published",
+      "position": 7,
+      "staticTitle": "Ski Touring & Splitboarding 2026–27 | Snowbusters — Guided Backcountry Ski Touring & Splitboard Trips in the Alps & Beyond"
+    },
+    {
+      "source": "static-category-page",
+      "sourceFile": "../snowbusters-static-html/static/CATEGORIES/technique-camps.html",
+      "name": "Technique Camps",
+      "slug": "technique-camps",
+      "shortDescription": "Snowbusters runs intensive technique camps for skiers and snowboarders who want to master the details — video analysis, biomechanics, and small-group coaching on glacier and groomed terrain across the Alps. Every trip includes the DOWN Ski Demo.",
+      "active": true,
+      "state": "published",
+      "position": 8,
+      "staticTitle": "Technique Camps 2026–27 | Snowbusters — Intensive Ski & Snowboard Technique Coaching Camps in the Alps"
+    }
+  ]
+}

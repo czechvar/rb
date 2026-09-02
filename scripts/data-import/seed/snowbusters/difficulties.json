@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-08-27T16:18:41.908Z",
+  "source": "https://snowbusters.eu/api/courses scoped.difficulties",
+  "rows": [
+    {
+      "sourceId": 3,
+      "name": "Advanced",
+      "active": true
+    },
+    {
+      "sourceId": 1,
+      "name": "Beginner",
+      "active": true
+    },
+    {
+      "sourceId": 2,
+      "name": "Intermediate",
+      "active": true
+    }
+  ]
+}

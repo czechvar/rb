@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-08-27T16:18:41.907Z",
+  "source": "https://snowbusters.eu API snapshot plus static category pages",
+  "rawDataPath": "../sb-github/data/snowbusters-api/raw",
+  "decisions": {
+    "programs": "Use static category/design taxonomy from ../snowbusters-static-html; API types are discipline facets only.",
+    "media": "Text-only v1; media refs retained but not intended for import yet.",
+    "airports": "Skip v1; source lacks vetted IATA lookup.",
+    "price": "Use gross price_with_vat for event-dates.price.",
+    "invalidDates": "Quarantine invalid date rows; do not create event/event-date seed rows."
+  },
+  "counts": {
+    "categories": 4,
+    "difficulties": 3,
+    "apiTypesAsDisciplines": 2,
+    "programs": 8,
+    "locations": 15,
+    "guides": 12,
+    "partners": 7,
+    "sourceCourses": 42,
+    "events": 41,
+    "eventDates": 41,
+    "quarantinedCourses": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-08-27T16:18:41.908Z",
+  "source": "https://snowbusters.eu/api/courses scoped.types",
+  "importDecision": "Do not import into programs. Preserve as discipline/equipment facet source data only.",
+  "rows": [
+    {
+      "sourceId": 1,
+      "name": "Ski",
+      "active": true
+    },
+    {
+      "sourceId": 2,
+      "name": "Snowboard",
+      "active": true
+    }
+  ]
+}

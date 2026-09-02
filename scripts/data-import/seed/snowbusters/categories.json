@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-08-27T16:18:41.908Z",
+  "source": "https://snowbusters.eu/api/courses scoped.categories",
+  "rows": [
+    {
+      "sourceId": 1,
+      "name": "Explore Backcountry",
+      "slug": "backcountry-freeride-ski-touring-splitboarding",
+      "text": "EXPLORE BACKCOUNTRY: WHERE FREEDOM MEETS POWDER Venture beyond boundaries into a world where mountains become your canvas and untouched powder your medium. Backcountry freeriding isn't just skiing or snowboarding—it's the ultimate expression of mountain freedom, where no course is set, no rules exist, and your only goal is pure, unadulterated joy carving through pristine snow. This is nature's playground at its wildest—a thrilling realm where danger and beauty dance together across avalanche terrain and dramatic landscapes. Here, solid technique isn't just about style—it's your lifeline. Avalanche training isn't optional—it's essential. Experience isn't just valuable—it's critical. At Snowbusters, we elevate your backcountry experience by masterfully blending freeriding with touring techniques. Whether we're skinning up remote peaks or strategically using lifts as launchpads, our approach unlocks terrain most riders only dream of—secluded powder stashes where tracks are yours to create and crowds cease to exist. When you join our ski and snowboard adventures, expect nothing less than maximum riding time on the mountain's most coveted lines, paired with expert coaching from guides who live and breathe the backcountry ethos.",
+      "textHtml": "<p><strong>EXPLORE BACKCOUNTRY: WHERE FREEDOM MEETS POWDER</strong></p>\n<p>Venture beyond boundaries into a world where mountains become your canvas and untouched powder your medium. Backcountry freeriding isn't just skiing or snowboarding—it's the ultimate expression of mountain freedom, where no course is set, no rules exist, and your only goal is pure, unadulterated joy carving through pristine snow.</p>\n<p>This is nature's playground at its wildest—a thrilling realm where danger and beauty dance together across avalanche terrain and dramatic landscapes. Here, solid technique isn't just about style—it's your lifeline. Avalanche training isn't optional—it's essential. Experience isn't just valuable—it's critical.</p>\n<p>At Snowbusters, we elevate your backcountry experience by masterfully blending freeriding with touring techniques. Whether we're skinning up remote peaks or strategically using lifts as launchpads, our approach unlocks terrain most riders only dream of—secluded powder stashes where tracks are yours to create and crowds cease to exist.</p>\n<p>When you join our ski and snowboard adventures, expect nothing less than maximum riding time on the mountain's most coveted lines, paired with expert coaching from guides who live and breathe the backcountry ethos.</p>",
+      "position": 1,
+      "active": true,
+      "image": {
+        "sourceId": 23,
+        "path": "/api/www/images/course_category/SB_course-category-image_3000x1688px_03.jpg",
+        "name": null,
+        "alt": null
+      }
+    },
+    {
+      "sourceId": 2,
+      "name": "Technique Master-Class",
+      "slug": "ski-snowboard-technique-coaching",
+      "text": "PERFORMANCE COACHING: TRANSFORM YOUR SKIING & SNOWBOARDING Forget ordinary lessons—Snowbusters Performance Coaching Camps are where transformation happens. These aren't camps for those content with simply surviving the mountain; they're for skiers hungry to dominate it. Every turn. Every run. Every challenge. From first-timers to seasoned experts, one thing unites our participants: the burning desire to evolve. If you've ever watched elite skiers, or snowboarders carve perfect lines and thought \"I want that\"—we've been waiting for you. Traditional lessons teach basics. We engineer breakthroughs. Through targeted coaching, personalized goals, and maximized mountain time, you'll compress years of improvement into days. Our method doesn't just change how you ski—it revolutionizes how you experience the mountain. Don't mistake intensity for rigidity. At our core, Snowbusters delivers serious progression wrapped in genuine mountain joy. Our fully certified coaches haven't just mastered skiing/snowboarding—they've dedicated their lives to it. They're not just instructors; they're cultural ambassadors to a lifestyle where mountains become home and skiing and snowboarding becomes language. Join us to not merely improve your technique, but to become initiated into a community where skiing transcends sport. Our Performance Coaching Camps deliver technical mastery alongside something far more valuable: authentic mountain identity. With Snowbusters, you don't just learn to ski, or snowboard better. You become a skier/snowboarder!",
+      "textHtml": "<p><strong>PERFORMANCE COACHING: TRANSFORM YOUR SKIING &amp; SNOWBOARDING</strong></p>\n<p>Forget ordinary lessons—Snowbusters Performance Coaching Camps are where transformation happens. These aren't camps for those content with simply surviving the mountain; they're for skiers hungry to dominate it. Every turn. Every run. Every challenge.</p>\n<p>From first-timers to seasoned experts, one thing unites our participants: the burning desire to evolve. If you've ever watched elite skiers, or snowboarders carve perfect lines and thought \"I want that\"—we've been waiting for you.</p>\n<p>Traditional lessons teach basics. We engineer breakthroughs. Through targeted coaching, personalized goals, and maximized mountain time, you'll compress years of improvement into days. Our method doesn't just change how you ski—it revolutionizes how you experience the mountain.</p>\n<p>Don't mistake intensity for rigidity. At our core, Snowbusters delivers serious progression wrapped in genuine mountain joy. Our fully certified coaches haven't just mastered skiing/snowboarding—they've dedicated their lives to it. They're not just instructors; they're cultural ambassadors to a lifestyle where mountains become home and skiing and snowboarding becomes language.</p>\n<p>Join us to not merely improve your technique, but to become initiated into a community where skiing transcends sport. Our Performance Coaching Camps deliver technical mastery alongside something far more valuable: authentic mountain identity.</p>\n<p>With Snowbusters, you don't just learn to ski, or snowboard better. You become a skier/snowboarder!</p>",
+      "position": 2,
+      "active": true,
+      "image": {
+        "sourceId": 22,
+        "path": "/api/www/images/course_category/SB_course-category-image_3000x1688px_02.jpg",
+        "name": null,
+        "alt": null
+      }
+    },
+    {
+      "sourceId": 5,
+      "name": "Your Custom Ride",
+      "slug": "ski-snowboard-private-guiding-coaching",
+      "text": "PRIVATE COACHING & GUIDING: YOUR MOUNTAIN, YOUR RULES When group schedules don't align with your vision or when you demand nothing less than undivided expertise, Snowbusters' Private Coaching & Guiding unlocks your perfect mountain experience. This isn't just personalized service—it's mountain mastery crafted exclusively around you. Imagine your ideal mountain adventure, then watch us exceed it. Please select from our signature experiences or collaborate directly to craft something unique. With private coaching, limitations dissolve and possibilities expand—your imagination becomes our blueprint. Whether you crave heart-pounding descents through untouched powder fields, transformative technical coaching that revolutionizes your riding style, or the pure adrenaline of launching into freestyle progression, our elite coaches adapt their world-class expertise to your personal journey. From first-time riders to seasoned mountaineers, from groomed-run perfectionists to backcountry explorers—private sessions deliver the ultimate shortcut to your skiing and snowboarding aspirations.",
+      "textHtml": "<p><strong>PRIVATE COACHING &amp; GUIDING: YOUR MOUNTAIN, YOUR RULES</strong></p>\n<p>When group schedules don't align with your vision or when you demand nothing less than undivided expertise, Snowbusters' Private Coaching &amp; Guiding unlocks your perfect mountain experience. This isn't just personalized service—it's mountain mastery crafted exclusively around you.</p>\n<p>Imagine your ideal mountain adventure, then watch us exceed it. Please select from our signature experiences or collaborate directly to craft something unique. With private coaching, limitations dissolve and possibilities expand—your imagination becomes our blueprint.</p>\n<p>Whether you crave heart-pounding descents through untouched powder fields, transformative technical coaching that revolutionizes your riding style, or the pure adrenaline of launching into freestyle progression, our elite coaches adapt their world-class expertise to your personal journey.</p>\n<p>From first-time riders to seasoned mountaineers, from groomed-run perfectionists to backcountry explorers—private sessions deliver the ultimate shortcut to your skiing and snowboarding aspirations.</p>",
+      "position": 3,
+      "active": true,
+      "image": null
+    },
+    {
+      "sourceId": 4,
+      "name": "Trick Zone",
+      "slug": "freestyle-ski-snowboard-coaching",
+      "text": "FREESTYLE: DEFY GRAVITY, DEFINE STYLE Step into the playground where snow meets sky and imagination becomes reality. Snowbusters Freestyle isn't just about tricks—it's about personal expression, pushing boundaries, and the intoxicating feeling of momentary flight. From perfectly sculpted park features to natural terrain hits, our freestyle coaching transforms ordinary riders into aerial artists. Whether you're eyeing your first confident ollie or perfecting that technical cork 720, we break down seemingly impossible maneuvers into achievable progression paths. Our freestyle coaches aren't just technically brilliant—they're passionate innovators who understand that true freestyle mastery combines technical precision with unmistakable personal style. Under their guidance, you'll develop not just the mechanics of movement but the confidence to make each feature your canvas. We approach freestyle differently—focusing equally on fundamentals and flair, safety and spectacle. Our methodical coaching builds the essential building blocks while nurturing the creative spark that makes freestyle riding so magnetic. Join Snowbusters Freestyle to experience the perfect balance of disciplined progression and boundless creativity. Here, gravity becomes optional, and your unique riding signature becomes legendary.",
+      "textHtml": "<p>FREESTYLE: DEFY GRAVITY, DEFINE STYLE</p>\n<p>Step into the playground where snow meets sky and imagination becomes reality. Snowbusters Freestyle isn't just about tricks—it's about personal expression, pushing boundaries, and the intoxicating feeling of momentary flight.</p>\n<p>From perfectly sculpted park features to natural terrain hits, our freestyle coaching transforms ordinary riders into aerial artists. Whether you're eyeing your first confident ollie or perfecting that technical cork 720, we break down seemingly impossible maneuvers into achievable progression paths.</p>\n<p>Our freestyle coaches aren't just technically brilliant—they're passionate innovators who understand that true freestyle mastery combines technical precision with unmistakable personal style. Under their guidance, you'll develop not just the mechanics of movement but the confidence to make each feature your canvas.</p>\n<p>We approach freestyle differently—focusing equally on fundamentals and flair, safety and spectacle. Our methodical coaching builds the essential building blocks while nurturing the creative spark that makes freestyle riding so magnetic.</p>\n<p>Join Snowbusters Freestyle to experience the perfect balance of disciplined progression and boundless creativity. Here, gravity becomes optional, and your unique riding signature becomes legendary.</p>",
+      "position": 4,
+      "active": true,
+      "image": {
+        "sourceId": 24,
+        "path": "/api/www/images/course_category/SB_course-category-image_3000x1688px_04.jpg",
+        "name": null,
+        "alt": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,847 @@
+{
+  "generatedAt": "2026-08-27T16:18:41.908Z",
+  "source": "https://snowbusters.eu/api/partners scoped.partners",
+  "rows": [
+    {
+      "sourceId": 1,
+      "name": "DOWN SKIS",
+      "slug": "down-skis",
+      "link": "https://downskis.com/",
+      "descriptionSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1771874944068,
+          "blocks": [
+            {
+              "id": "H-jDVUub6N",
+              "data": {
+                "text": "Snowbusters x DOWN Skis",
+                "level": 2
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "MRC4Hay0Cp",
+              "data": {
+                "text": "At Snowbusters, we don't just use DOWN Skis—we help build and test them. Our partnership with DOWN is rooted in a shared obsession: creating the perfect tool for dedicated freeriders and ski tourers who demand more from their gear than the mass market provides."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "vXOOeQHBVu",
+              "data": {
+                "text": "Why we ski DOWN:",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "li2ZMkdqNH",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<b>Freeride-First Engineering</b>: DOWN Skis are designed for the \"sharp end\" of skiing. Whether it’s the legendary Countdown series or their specialized touring shapes, these skis are built to be stable at high speeds and intuitive in deep powder."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>The \"Weight vs. Performance\" Balance</b>: Through the use of high-grade carbon, flax, and premium wood cores, DOWN achieves a weight that won't kill your legs on a 1,500m skin, but provides the dampness and \"charge-ability\" of a much heavier alpine ski on the way down."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Direct-to-Skier Philosophy</b>: By cutting out the middleman, DOWN focuses every cent on the highest quality materials. This aligns with our mission at Snowbusters: providing elite-level experiences without the corporate fluff."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Tested in the Wild</b>: Our guides put these skis through thousands of vertical meters every season—from the rugged Accursed Mountains in Kosovo to the high-alpine granite of the Alps. If a ski survives a season with the Snowbusters crew, it’s indestructible. "
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "9W2gds45Ev",
+              "data": {
+                "text": "We believe that your gear should never be the limiting factor. With DOWN Skis underfoot, you have the confidence to push your limits, no matter how remote the terrain."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "logo": {
+        "sourceId": 1551,
+        "path": "/api/www/uploads/partner-logo/2026-02/1/zj5d46w7t3.png",
+        "name": null,
+        "alt": null
+      },
+      "featured": true,
+      "active": true
+    },
+    {
+      "sourceId": 2,
+      "name": "ATK Bindings",
+      "slug": "atk-bindings",
+      "link": "https://atkbindings.com/en-us",
+      "descriptionSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1771874835880,
+          "blocks": [
+            {
+              "id": "4BRBRdVd87",
+              "data": {
+                "text": "Snowbusters x ATK Bindings",
+                "level": 2
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "jzF_iPBeGW",
+              "data": {
+                "text": "We are proud to partner with ATK Bindings, the gold standard in Italian engineering. When we are deep in the backcountry of Kosovo or the steep faces of the Alps, we don't just use ATK—we rely on them."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "zGaT3EpF6j",
+              "data": {
+                "text": "Why we ski ATK:    ",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "aXkQDbg2Wz",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<b>Unrivaled Precision</b>: ATK manages to do the impossible—creating bindings that are incredibly lightweight for the skin up, yet stiff and responsive enough to drive a wide freeride ski through technical terrain and deep powder.     "
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Zero-Compromise Safety</b>: Their patented systems, like the Cam Release System® and Elastic Response System®, provide the most reliable release values in the tech-binding world. "
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Built for the Mission</b>: We put our gear through the ultimate torture test every single day. ATK’s CNC-machined aluminum construction holds up to the abuse of professional guiding, where plastic simply can't. "
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>The Perfect Match for DOWN Skis</b>: To get the most out of our high-performance fleet, we need a binding that transfers every bit of energy to the edge. ATK is the only choice that matches our \"light and fast\" performance philosophy. "
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "7qQJE-PL7f",
+              "data": {
+                "text": "Whether we are touring or charging lines with CAT assistance, ATK Bindings provide the security and performance our guides and guests demand."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "logo": {
+        "sourceId": 1550,
+        "path": "/api/www/uploads/partner-logo/2026-02/2/k2on0ppxfk.png",
+        "name": null,
+        "alt": null
+      },
+      "featured": true,
+      "active": true
+    },
+    {
+      "sourceId": 3,
+      "name": "Pomoca",
+      "slug": "pomoca",
+      "link": "https://www.pomoca.com/",
+      "descriptionSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1771875151597,
+          "blocks": [
+            {
+              "id": "SRFtMSNrhm",
+              "data": {
+                "text": "Snowbusters x POMOCA",
+                "level": 2
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "SAen7QHM0G",
+              "data": {
+                "text": "At the heart of every great ski touring mission is the climb, and for that, we trust nothing but POMOCA. Based in Switzerland, POMOCA has spent over 80 years perfecting the \"glide and grip\" balance. In the rugged, unpredictable terrain where Snowbusters operates, these skins are an essential piece of safety and performance equipment."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "LgRIOS2KoP",
+              "data": {
+                "text": "Why we climb with POMOCA:",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "Y0CDAJTcbV",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<b>The Best Glide in the Game</b>: POMOCA skins are famous for their efficiency. Their specialized fiber treatments mean you expend less energy with every step, allowing our guests and guides to save their strength for the descent."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Reliable Grip when it Matters</b>: Whether we are skinning up icy tracks in the Alps or breaking trail in deep Kosovo powder, the grip is consistent and dependable. They provide the \"bite\" you need to tackle steep kick-turns with confidence."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>The \"Everdry\" Advantage</b>: There is nothing worse than skins \"gluing\" up with clumps of snow. POMOCA’s Everdry 3.0 treatment is the first on the market to be PFC-free while still providing the best anti-glopping performance in the world."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Compact &amp; Lightweight</b>: When the skins come off for the descent, POMOCA skins pack down incredibly small. They don't bulk up your jacket or pack, fitting perfectly into our \"light and fast\" mountain philosophy."
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "AwfwJSz3wO",
+              "data": {
+                "text": "For the Snowbusters crew, POMOCA represents the perfect connection between the mountain and our DOWN Skis. They simply work, every single time."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "logo": {
+        "sourceId": 1552,
+        "path": "/api/www/uploads/partner-logo/2026-02/3/u8nreja44i.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "featured": true,
+      "active": true
+    },
+    {
+      "sourceId": 4,
+      "name": "Scarpa",
+      "slug": "scarpa",
+      "link": null,
+      "descriptionSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1771875372242,
+          "blocks": [
+            {
+              "id": "Qt8L9yjO46",
+              "data": {
+                "text": "Snowbusters x SCARPA",
+                "level": 2
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "4dEkL9awm-",
+              "data": {
+                "text": "For the Snowbusters crew, the boot is the most critical link between the body and the mountain. That’s why we step into SCARPA. As a family-owned Italian brand with nearly a century of mountain heritage, SCARPA represents the pinnacle of craftsmanship, comfort, and downhill power."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "oF6BiPdSNz",
+              "data": {
+                "text": "Why we ride in SCARPA:",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "a2PB-nzWKD",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<b>Unmatched Fit &amp; Comfort</b>: A 10-hour day in the Accursed Mountains is only possible if your boots feel like an extension of your feet. SCARPA’s anatomical lasts provide out-of-the-box comfort that handles high-volume touring without the hotspots."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Power-to-Weight Ratio</b>: Whether we are using the legendary Maestrale family or the more aggressive Quattro series, SCARPA boots provide the lateral stiffness and progressive flex needed to drive big skis through variable snow, while remaining incredibly light for the skin track."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Industry-Leading Walk Mode</b>: Range of motion is everything. SCARPA’s frictionless walk mechanisms offer the freedom of movement needed for technical approaches and long ascents, ensuring you arrive at the peak with fresh legs."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Sustainability &amp; Durability</b>: Our guides live in their boots. We trust SCARPA because their \"Green Manifesto\" isn't just talk—they use bio-based plastics and Pebax® Rnew materials that are built to survive seasons of professional abuse while respecting the environment we play in."
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "CaRa3LtciQ",
+              "data": {
+                "text": "From technical couloirs in the Alps to deep-snow CAT missions, SCARPA ensures that every Snowbuster has the stability and control to charge with confidence."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "logo": {
+        "sourceId": 1553,
+        "path": "/api/www/uploads/partner-logo/2026-02/4/pddb4ysvp2.webp",
+        "name": null,
+        "alt": null
+      },
+      "featured": true,
+      "active": true
+    },
+    {
+      "sourceId": 5,
+      "name": "Singing Rock",
+      "slug": "singing-rock",
+      "link": "https://www.singingrock.cz/",
+      "descriptionSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1777050338618,
+          "blocks": [
+            {
+              "id": "sepptDgVwL",
+              "data": {
+                "text": "Welcome to the Snowbusters family! Adding <b>Singing Rock</b> to the roster isn't just about getting gear; it’s about partnering with a brand that lives and breathes the vertical world as much as we do."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "-6pfyX6E-l",
+              "data": {
+                "text": "Based in the heart of the Czech Republic—surrounded by incredible sandstone climbing towers—Singing Rock has evolved from a small workshop into one of the world's leading manufacturers of professional mountaineering and rescue equipment."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "xz1Unm4nly",
+              "data": [],
+              "type": "delimiter",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "9ScLr9GchT",
+              "data": {
+                "text": "Why Singing Rock?",
+                "level": 2
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "B6YZBgqjAZ",
+              "data": {
+                "text": "We chose Singing Rock because they strike the perfect balance between <b>innovative engineering</b> and <b>rugged reliability</b>. Whether we are ice climbing in the High Tatras or ski touring through deep powder, their gear is designed to perform in the harshest conditions."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "lKKJMYYZ8j",
+              "data": {
+                "text": "Core Strengths",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "8eK0Pf7Qtz",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<b>Safety First</b>: Every piece of equipment is rigorously tested in their in-house laboratory and meets the highest international safety standards."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Climber-Centric Design</b>: Their products are designed by climbers for climbers. You can feel the intentionality in the ergonomics of their harnesses and the bite of their crampons."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Sustainability</b>: They are committed to environmentally friendly production, ensuring the mountains we love today are protected for the generations we’ll be guiding tomorrow."
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "logo": {
+        "sourceId": 1934,
+        "path": "/api/www/uploads/partner-logo/2026-04/5/anhxnr57md.png",
+        "name": null,
+        "alt": null
+      },
+      "featured": true,
+      "active": true
+    },
+    {
+      "sourceId": 6,
+      "name": "Chimpanzee",
+      "slug": "chimpanzee",
+      "link": "https://www.chimpanzee.cz/",
+      "descriptionSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1777050628762,
+          "blocks": [
+            {
+              "id": "d8jM0EUqHy",
+              "data": {
+                "text": "Chimpanzee: Natural Food Energy",
+                "level": 1
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "oYDUTBYPto",
+              "data": {
+                "text": "If there is one thing we’ve learned from years in the mountains, it’s that your performance is only as good as your fuel. That’s why Snowbusters is proud to partner with <b>Chimpanzee</b>, a brand that has revolutionized outdoor nutrition by proving that \"natural\" and \"high-performance\" belong in the same sentence."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "jfPdxSboXm",
+              "data": {
+                "text": "Based in the Czech Republic, Chimpanzee rejects the chemical-heavy formulas of traditional sports snacks. Instead, they create energy bars, proteins, and hydration from real, whole-food ingredients that your body actually knows how to process."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "f_jhXi-oEi",
+              "data": {
+                "text": "Why Snowbusters Choose Chimpanzee",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "xtRhutCU8_",
+              "data": {
+                "text": "When you are skinning up a glacier or belaying in freezing temperatures, you need nutrition that works. We trust Chimpanzee for four simple reasons:"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "H5Lf8fOMu8",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<b>Real Ingredients</b>: No GMOs, no trans fats, and no artificial sweeteners. Just oats, nuts, fruit, and organic syrups."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Weather Resistant</b>: Many energy bars turn into \"bricks\" in the cold. Chimpanzee bars stay chewable and delicious even in sub-zero alpine conditions."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Sustained Power</b>: Their blend of complex carbohydrates provides a steady release of energy, preventing the dreaded \"bonk\" during long days on the mountain."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Eco-Conscious</b>: As members of <i>1% for the Planet</i>, Chimpanzee gives back to the environments we love to explore.\n\n"
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "vcn1JmtGyk",
+              "data": {
+                "text": "Fuel for Every Mission",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "M8mQnmZ9vg",
+              "data": {
+                "text": "From quick-hit energy to recovery, there is a \"Chimp\" for every part of your trip:"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "hp00M60Aq3",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<b>Energy Bars</b>: High-fiber fuel in flavors like <i>Cashew Caramel</i> and <i>Apricot</i>."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Protein Bars</b>: Plant-based recovery to help your muscles bounce back for the next day's adventure."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Energy Chews</b>: Quick-release fruit gummies for that final push to the summit."
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "_jlOmzKN__",
+              "data": {
+                "text": "<b>Power your next adventure with the cleanest energy on the mountain. Grab a Chimpanzee and let's get moving!</b>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "logo": {
+        "sourceId": 1935,
+        "path": "/api/www/uploads/partner-logo/2026-04/6/l6g9cm246u.webp",
+        "name": null,
+        "alt": null
+      },
+      "featured": true,
+      "active": true
+    },
+    {
+      "sourceId": 7,
+      "name": "AvantLink",
+      "slug": "avantlink",
+      "link": "https://www.avantlink.com/programs/40273/",
+      "descriptionSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1777051091213,
+          "blocks": [
+            {
+              "id": "vHuEJCN0Nk",
+              "data": {
+                "text": "AvantLink: Connecting the Adventure Community",
+                "level": 2
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "2UqadXEeov",
+              "data": {
+                "text": "At Snowbusters, we believe in the power of community and the importance of high-quality gear. That’s why we partner with <b>AvantLink</b>, the industry’s premier affiliate marketing network for the outdoor and adventure space."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "Rdgh7EVK7U",
+              "data": {
+                "text": "AvantLink acts as the bridge between us, our favorite gear brands, and you. By using a platform built on <b>transparency and integrity</b>, they ensure that the products we recommend are coming from reputable sources that share our passion for the mountains."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "JJXNnNYpC3",
+              "data": {
+                "text": "Why AvantLink?",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "LFrTiLHwjw",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<b>Quality First</b>: They only work with top-tier outdoor brands that meet rigorous standards for performance and reliability."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Trust &amp; Transparency</b>: They only work with top-tier outdoor brands that meet rigorous standards for performance and reliability."
+                  },
+                  {
+                    "items": [],
+                    "content": "<b>Support for the Industry</b>: By streamlining the connection between creators and manufacturers, they help sustain the outdoor economy we all rely on."
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "kJe0_s7X5j",
+              "data": {
+                "text": "<b>Through our partnership with AvantLink, we’re able to keep you equipped with the best tools in the business while continuing to grow the Snowbusters community.</b>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "logo": {
+        "sourceId": 1936,
+        "path": "/api/www/uploads/partner-logo/2026-04/7/hro7qdzq7t.webp",
+        "name": null,
+        "alt": null
+      },
+      "featured": false,
+      "active": true
+    }
+  ]
+}

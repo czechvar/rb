@@ -1,0 +1,1350 @@
+{
+  "generatedAt": "2026-08-27T16:18:41.908Z",
+  "source": "https://snowbusters.eu/api/guides scoped.courseGuides",
+  "rows": [
+    {
+      "sourceId": 1,
+      "name": "Jany Novotny",
+      "slug": "jany-novotny",
+      "tagline": "Have you ever heard of a funny mean guy from Eastern Europe? Sounds like a contradiction, right? Well, Jany is here to show you how it all comes together in the coolest way possible.",
+      "descriptionSource": {
+        "kind": "html",
+        "value": "<p>Have you ever heard of a funny mean guy from Eastern Europe? Sounds like a contradiction, right? Well, Jany is here to show you how it all comes together in the coolest way possible.</p>"
+      },
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1764679915933,
+          "blocks": [
+            {
+              "id": "_FZ8qw5ymo",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Years Skiing: 45</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "Djld-dOBaG",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Jany is our CEO. He is also a coach for:</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "XidUiD7njk",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Sunnmøre Steep &amp; Deep  </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">The Shar Cat-Ski Expedition  </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">The Accursed Cat-Ski Expedition  </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">The Accursed Powder Traverse: HUT to HUT </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Improve Your Off-Piste Riding  </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Performance coaching - beginner to expert  </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Salzburg Shred Safari  </span>"
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "pRwxPdwFFI",
+              "data": {
+                "text": "Meet Jany: The Chill Freeride Visionary",
+                "level": 4
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "x5fZ5cTWo3",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Have you ever heard of a funny, mean guy from Eastern Europe? Sounds like a contradiction, right? Well, Jany is here to show you how it all comes together in the coolest way possible.</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "HzsrAOzY-D",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Jany isn't just any skier; he's a freeride visionary. Picture this: you're on a mountain, the snow is pristine, and endless lines are waiting to be shredded. Jany sees those lines like no one else. He doesn't just ski them; he owns them with a style that's both effortless and inspiring.</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "w08HgYOTaq",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">With a laid-back attitude and a knack for finding the sickest routes, Jany makes freeriding look like pure art. He's the guy who turns every slope into his playground, and he's got the skills to back it up. Whether you're a skier or a snowboarder, you'll find yourself wanting to tag along on his epic adventures.</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "D1F42SUJnd",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">So, if you're ready to embrace the chill vibes and see the mountains through Jany's eyes, keep an eye out for his next ride. Join the freeride community and get ready to shred like never before!</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "nDHTZDc3tN",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Follow Jany's Adventures and catch the latest lines he's carving. Don't miss out on the chance to see a true freeride visionary in action!</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "RHV66Gxy0r",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Meet Jan, the ultimate skiing and rock-climbing guru from the Czech Republic. This guy is one of the masterminds behind Snowbusters and Rockbusters. When winter rolls around, Jan shreds the slopes in Austria, always on the hunt for the gnarliest on and off-piste lines. Come summer, he's scaling rock faces like a pro. He's been living and breathing these sports for years, and it shows in his mad skills.</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "B6RvSyDonv",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Jan isn't just about the action; he's also got the language game on lock. Fluent in Czech, English, and Spanish, he's been sharing his passion for skiing since 2000. His journey started in Harrachov with JPK, then he hit up Spain's Sierra Nevada with the British Ski Centre and Rio Sport. These days, he's running his trips and courses, teaming up with the Frost ski school in Kaprun.</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "Fc9ovbxLuz",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">As Jan puts it, \"I grew up near some tiny mountains in the Czech Republic and have been skiing since I was a baby. I started with a small ski team in my hometown, then took on the Alps. At 18, I got my first taste of Colorado powder and spent a whole season in Vail and Beaver Creek. Now, I'm stoked to share more epic skiing experiences with you.\"</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "a59oZ5Q3E7",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Ready to shred with Jan? Let's hit the slopes and rock faces together! Shred it deep &amp; steep!</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 323,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-11/1/k0snd4tsge.jpg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": {
+        "sourceId": 11,
+        "path": "/api/www/images/headers/SB_header-image_3000x1688px_01.jpg",
+        "name": null,
+        "alt": null
+      },
+      "attachments": [
+        {
+          "sourceId": 315,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/110ae84e611a1be1a74a9167d7b55541.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 316,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/3a4014cd5fd8c2293d99cc1f7dfe5d9b.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 317,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/6badbdbd6e26731a6c608955566b0d8f.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 318,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/638883d1fed92b17eaf727f6c7c746cc.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 319,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/c8d01c7a3750e409d5be7add6d8a81f9.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 320,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/2c829fc1063d9561e1378dc7fd08bc59.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 321,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/3b1d1e404d4c9949113bb6e110277a2e.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 322,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/c18f6002f19a53ab9f3f5e69183ac1b6.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 307,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/e5be9f70a9987c9c7beb23bbf57cb902.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 308,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/c1737bd5bb760c8ebdb1f62a670a874f.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 309,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/1ed7cc09c3e188217855907140b8bff0.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 310,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/0fb6592c75c3c0fd85d45d09e6d2e564.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 311,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/a96dadddf6fb08af051b7c13bfe8c6c9.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 312,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/e4344cdc86a97cf9cdc38682dfddd957.jpg",
+          "name": null,
+          "alt": null
+        },
+        {
+          "sourceId": 313,
+          "path": "/api/www/uploads/course-guides-gallery/2025-11/1/a7de05fa4e475367ef1fbb16fae2706b.jpg",
+          "name": null,
+          "alt": null
+        }
+      ],
+      "vimeoId": "754632490",
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 2,
+      "name": "Adam Pernikar",
+      "slug": "adam-pernikar",
+      "tagline": "When Adam’s not shredding pow, he’s snapping epic mountain shots that’ll make your Instagram weep. Check out @pernikphoto and prepare for immediate mountain envy.",
+      "descriptionSource": {
+        "kind": "html",
+        "value": "<p data-pm-slice=\"1 1 []\">When Adam’s not shredding pow, he’s snapping epic mountain shots that’ll make your Instagram weep. Check out @pernikphoto and prepare for immediate mountain envy.</p>"
+      },
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1756821790902,
+          "blocks": [
+            {
+              "id": "3eA684VXdF",
+              "data": {
+                "text": "Years Skiing: 35"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "IKKOWDTDky",
+              "data": {
+                "text": "Adam is our main photographer and a coach for:"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "ckbYAFIUO0",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "Freeride touring in Norway"
+                  },
+                  {
+                    "items": [],
+                    "content": "Freeride touring Macedonia"
+                  },
+                  {
+                    "items": [],
+                    "content": "Intensive coaching for off-piste riding"
+                  },
+                  {
+                    "items": [],
+                    "content": "Ski touring course"
+                  },
+                  {
+                    "items": [],
+                    "content": "Performance coaching - beginner to expert"
+                  },
+                  {
+                    "items": [],
+                    "content": "Ski &amp; snowboard in Switzerland"
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "i5iEgnRnUQ",
+              "data": {
+                "text": "<b>City Kid Gone Pow-Pow Wild</b>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "LbbV7Aw4q6",
+              "data": {
+                "text": "Adam might’ve been born with concrete under his feet, but dude was clearly supposed to be shredding mountains. While other kids were playing video games, this Czech grom was already plotting his escape to the hills."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "GierkEuIb6",
+              "data": {
+                "text": "His first taste of the stoke? Bombing down a tiny 400m “mountain” (more like a speed bump with ambition) with his cousins. One janky rope tow, zero fancy amenities, 100% pure stoke. That little hill didn’t know it was creating a monster."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "tMCnekR98o",
+              "data": {
+                "text": "Racing gates? Adam gave it a shot, but homeboy quickly realized that being told where to turn is like being told when to breathe—hard pass. Instead, he went full powder hound, ditching the corduroy for that sweet, sweet untouched fluff. From first chair to last light, if there’s snow to slash, Adam’s there sending it."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "KrlC_fcVFI",
+              "data": {
+                "text": "This dude’s mountain evolution has taken him from those cute little Czech bumps to Austrian heavyweights and all the way to the gnarly Swiss peaks that’ll make your knees weak just looking at them. And he didn’t just survive—he thrived."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "8YV14sJXwi",
+              "data": {
+                "text": "When Adam’s not face-planting in champagne powder (which happens to the best of us, let’s be real), he’s flexing his Sport Management and Photography skills. But these days, you’ll find him dropping knowledge as part of our instructor crew, teaching clients how to get rad while keeping all their limbs intact—a skill we highly recommend."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "OVq0VLrKLg",
+              "data": {
+                "text": "Wanna experience the mountains through a powder junkie’s eyes? Adam’s your guy. Just don’t challenge him to a “who can eat snow faster” contest. Spoiler alert: he always wins."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 25,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-09/2/dhxp9y5xmo.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": {
+        "sourceId": 12,
+        "path": "/api/www/images/headers/SB_header-image_3000x1688px_10.jpg",
+        "name": null,
+        "alt": null
+      },
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 3,
+      "name": "Pablo Riuz Seco",
+      "slug": "pablo-ruiz-seco",
+      "tagline": "One of the few UIAGM guides on Snowbusters team, the man who should have been born as a mountain goat.",
+      "descriptionSource": {
+        "kind": "html",
+        "value": "<p>One of the few UIAGM guides on Snowbusters team, the man who should have been born as a mountain goat.</p>"
+      },
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1756822754350,
+          "blocks": [
+            {
+              "id": "GOCCaA3LGO",
+              "data": {
+                "text": "Pablo is UIAGM guide and coach for:"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "afs2kWC57Q",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "Ski touring course"
+                  },
+                  {
+                    "items": [],
+                    "content": "Chamonix to Zermatt ski tour"
+                  },
+                  {
+                    "items": [],
+                    "content": "Silvreta ski tour"
+                  },
+                  {
+                    "items": [],
+                    "content": "Lyngen freeride touring"
+                  },
+                  {
+                    "items": [],
+                    "content": "Lofoten freeride touring"
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "3wbhH-6OVT",
+              "data": {
+                "text": "Pablo lives in Reinosa, Cantabria, a small powder paradise in the north of Spain. He's been shredding the slopes since he was 14, carving his way through all types of snow adventures – from backcountry powder hunting to gnarly alpine descents, tree skiing, and even the occasional snowpark session when he's feeling fancy. These days, Pablo's heart belongs to the steep and deep."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "z5m1FxW4nI",
+              "data": {
+                "text": "As a certified UAIGM mountain guide (that's fancy-talk for 'guy who won't get you killed in the mountains'), Pablo has face-planted in snow across Europe – Italy, Austria, France, the UK, and Slovenia. He's conquered legendary peaks in the Alps, including Cervino, Aiguille Verte, and Aiguille de Argentiere, often taking the 'scenic route' down (because chairlifts are for tourists). His skis have carved fresh tracks through the Dolomites and Picos de Europa, including epic descents off routes like Comici en la Cima Grande de Lavaredo and the east face of Naranjo de Bulnes."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "Qd7IGHx_y4",
+              "data": {
+                "text": "When he's not setting speed records or guiding nervous first-timers down bunny slopes, Pablo enjoys some casual park sessions – his idea of 'relaxing' is hitting kickers that would send most of us to the hospital. Last season, he was spotted throwing down tricks at Spain's premier resorts that made the youngsters question their life choices. And when not making snow angels (unintentionally, after catching an edge), you'll find Pablo guiding ski tours around the Pyrenees, probably telling dad jokes about 'going downhill in life' while ascending 3,000-meter peaks."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 27,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-09/3/jywz5ay78d.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": null,
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 4,
+      "name": "Roberto Munoz Gonzalez",
+      "slug": "roberto-munoz-gonzalez",
+      "tagline": "One of Snowbusters UIAGM guides. The shredder from Chamonix: \"Every mountain is skiable!\"",
+      "descriptionSource": {
+        "kind": "html",
+        "value": "<p>One of Snowbusters UIAGM guides. The shredder from Chamonix: \"Every mountain is skiable!\"</p>"
+      },
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1756823071448,
+          "blocks": [
+            {
+              "id": "c7wGYRcEmH",
+              "data": {
+                "text": "Years Skiing: 25"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "PqptCUIEag",
+              "data": {
+                "text": "Roberto is our coach and guide for:"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "RRCKXgeNiB",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "Silvretta ski tour"
+                  },
+                  {
+                    "items": [],
+                    "content": "Chamonix to Zermatt ski tour"
+                  },
+                  {
+                    "items": [],
+                    "content": "Freeride touring Norway"
+                  },
+                  {
+                    "items": [],
+                    "content": "Freeride touring Macedonia"
+                  },
+                  {
+                    "items": [],
+                    "content": "Ski touring course"
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "LH-MtUdAqL",
+              "data": {
+                "text": "Roberto is one of our certified UIAGM mountain guides at Snowbusters who absolutely shreds when it comes to Ski Touring, Freeride, and Big Wall Climbing courses. This Madrid native heard the mountains calling (they were probably yelling \"SEND IT!\") and couldn't resist moving to Chamonix in 2014, where the powder is deeper than his life philosophies."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "Ud3O-hZZLz",
+              "data": {
+                "text": "He earned his UIAGM mountain guide stripes at ENSA in Chamonix – the oldest guide school in the world (basically the Hogwarts for people who think gravity is just a suggestion)."
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "aF8BUTXXt_",
+              "data": {
+                "text": "These days, Roberto plays in the mountains year-round – slaying freshies in winter and hanging off rock faces in summer like it's totally normal behavior. He knows the Chamonix peaks better than the back of his ski gloves, having conquered some seriously spicy routes like American Direct on the west face of the Drus and Walker Spur on the north face of Grandes Jorasses. Despite these hardcore credentials, what really makes Roberto's ski boots tingle is guiding clients to unexplored terrain where everyone – including him – gets that \"what the heck did I sign up for?\" adventure experience. Don't worry though, he'll bring you back... probably!"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 28,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-09/4/sx9c9jxt3z.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": null,
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 5,
+      "name": "Lukas Partl",
+      "slug": "lukas-partl",
+      "tagline": "Lukas has banked over 3,500 days on snow—he’s got a vertical odometer that won’t quit. He’s a Level 4 Examiner, but his true stoke is turning your ‘scared-to-send-it’ face into a ‘Goggles Up!’ grin. He diagnoses your shred issues before you hit the lift line and makes dropping that ridiculous line feel simple. Come ride with the legend who’s ready to find your next favorite line.",
+      "descriptionSource": {
+        "kind": "html",
+        "value": "<p>Lukas has banked over 3,500 days on snow—he’s got a vertical odometer that won’t quit. He’s a Level 4 Examiner, but his true stoke is turning your ‘scared-to-send-it’ face into a ‘Goggles Up!’ grin. He diagnoses your shred issues before you hit the lift line and makes dropping that ridiculous line feel simple. Come ride with the legend who’s ready to find your next favorite line.</p>"
+      },
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1764859259989,
+          "blocks": [
+            {
+              "id": "I8uqFWue8N",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Years Skiing: 43</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "eSaOJJvMkq",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Improve Your Off-Piste Riding  </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Performance coaching - beginner to expert  </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Salzburg Shred Safari  </span>"
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "AugBJ2Ze9H",
+              "data": {
+                "text": "Meet Lukas: The Vertical Odometer",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "y3YLzJUj-p",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Lukas is an absolute snow vet: 35 years in the white room, banking 3,500+ days. He’s not just a guide—he’s a Level 4 ISIA examiner, Alpine Coach, and a certified sensei in Telemark and Snowboard. </span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "2nThsHcLhG",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">He took his Master’s in Physical Education and pointed it straight downhill, swapping the classroom for eight global ranges (from Japan to the USA). His superpower is hacking your technique using sports science, delivering the ultimate feeling: total confidence and the realization that the toughest lines are \"that simple.\" Get ready to send it, fully dialed.</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 580,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-12/5/9t34imklc2.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": {
+        "sourceId": 11,
+        "path": "/api/www/images/headers/SB_header-image_3000x1688px_01.jpg",
+        "name": null,
+        "alt": null
+      },
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 6,
+      "name": "Jonas Kryl",
+      "slug": "jonas-kryl",
+      "tagline": "Jonas Kryl: Swedish-born, Austrian-certified, Staatlich geprüfter Skilehrer und Skiführer examiner. He brought his longboat to the Alps in '92, conquered every black diamond, and now teaches the pros how to carve. Don't be fooled by the summer rafting—this Viking lives for winter. Get ready to pillage the powder.",
+      "descriptionSource": {
+        "kind": "html",
+        "value": "<p data-pm-slice=\"1 1 []\">Jonas Kryl: Swedish-born, Austrian-certified, <strong>Staatlich geprüfter Skilehrer und Skiführer</strong> examiner. He brought his longboat to the Alps in '92, conquered every black diamond, and now teaches the pros how to carve. Don't be fooled by the summer rafting—this Viking lives for winter. Get ready to pillage the powder.</p>"
+      },
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1764859184115,
+          "blocks": [
+            {
+              "id": "tTezyO4gj7",
+              "data": {
+                "text": "Years Skiing: 48"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "dIZDXGt6zi",
+              "data": {
+                "items": [
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Improve Your Off-Piste Riding  </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Performance coaching - beginner to expert  </span>"
+                  },
+                  {
+                    "items": [],
+                    "content": "<span style=\"font-weight: normal;\">Salzburg Shred Safari  </span><span style=\"font-weight: normal;\"></span>"
+                  }
+                ],
+                "style": "unordered"
+              },
+              "type": "list",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                }
+              }
+            },
+            {
+              "id": "J0yA642-fb",
+              "data": {
+                "text": "Meet Jonas: The Alpine Viking",
+                "level": 3
+              },
+              "type": "header",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                }
+              }
+            },
+            {
+              "id": "QSEyshHlx_",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Jonas Kryl brings serious Swedish steel to the Austrian Alps. He's been dominating Zell am See – Kaprun since '92, moving from Snowboard Boss to Head Instructor and stacking certifications until he hit the Austrian summit: \"Staatlich geprüfter Skilehrer und Skiführer\" (the highest level, achieved in '02). </span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                },
+                "textVariantTune": ""
+              }
+            },
+            {
+              "id": "z-qD60FTEH",
+              "data": {
+                "text": "<span style=\"font-weight: normal;\">Now, he's the examiner who teaches the instructors, switching seamlessly between carving clinics and dropping powder lines. Need a challenge? He spends his summers paddling class V whitewater. When Jonas guides, you're not just skiing; you're getting lessons from the guy who grades the pros. Fully stoked, fully certified, fully Frost.</span>"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "center"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 581,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-12/6/wv24xuxeej.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": {
+        "sourceId": 12,
+        "path": "/api/www/images/headers/SB_header-image_3000x1688px_10.jpg",
+        "name": null,
+        "alt": null
+      },
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 7,
+      "name": "Linda Synakova",
+      "slug": "linda-synakova",
+      "tagline": null,
+      "descriptionSource": null,
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1764859585469,
+          "blocks": [
+            {
+              "id": "Mg5hIizue7",
+              "data": {
+                "text": "&nbsp;"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": false,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 582,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-12/7/ki5riq3g6w.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": {
+        "sourceId": 12,
+        "path": "/api/www/images/headers/SB_header-image_3000x1688px_10.jpg",
+        "name": null,
+        "alt": null
+      },
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 8,
+      "name": "Petra Pivonkova",
+      "slug": "petra-pivonkova",
+      "tagline": null,
+      "descriptionSource": null,
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1764859626387,
+          "blocks": [
+            {
+              "id": "DzljXJ8K_R",
+              "data": {
+                "text": "&nbsp;"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": false,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 584,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-12/8/26wjm4h8ud.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": {
+        "sourceId": 11,
+        "path": "/api/www/images/headers/SB_header-image_3000x1688px_01.jpg",
+        "name": null,
+        "alt": null
+      },
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 9,
+      "name": "Sara Mikolaskova",
+      "slug": "sara-mikolaskova",
+      "tagline": null,
+      "descriptionSource": null,
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1765294310822,
+          "blocks": [],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 1106,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-12/9/5in94xq38x.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": {
+        "sourceId": 12,
+        "path": "/api/www/images/headers/SB_header-image_3000x1688px_10.jpg",
+        "name": null,
+        "alt": null
+      },
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 10,
+      "name": "Michal Kasparovky",
+      "slug": "michal-kasparovky",
+      "tagline": null,
+      "descriptionSource": null,
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1765294645173,
+          "blocks": [
+            {
+              "id": "hom4ZhKTUI",
+              "data": {
+                "text": "&nbsp;"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 1107,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-12/10/vp05a7nrxk.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": {
+        "sourceId": 11,
+        "path": "/api/www/images/headers/SB_header-image_3000x1688px_01.jpg",
+        "name": null,
+        "alt": null
+      },
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 11,
+      "name": "Radek Pivnicka",
+      "slug": "radek-pivnicka",
+      "tagline": null,
+      "descriptionSource": null,
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1765294688517,
+          "blocks": [
+            {
+              "id": "JljpdQV23q",
+              "data": {
+                "text": "&nbsp;"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 1108,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-12/11/kq0p5xfngv.jpg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": {
+        "sourceId": 12,
+        "path": "/api/www/images/headers/SB_header-image_3000x1688px_10.jpg",
+        "name": null,
+        "alt": null
+      },
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    },
+    {
+      "sourceId": 12,
+      "name": "Lucie Rosenkrancova",
+      "slug": "lucie-rosenkrancova",
+      "tagline": null,
+      "descriptionSource": null,
+      "contentSource": {
+        "kind": "editorjs",
+        "value": {
+          "time": 1765294776943,
+          "blocks": [
+            {
+              "id": "e-RWnOJ_tE",
+              "data": {
+                "text": "&nbsp;"
+              },
+              "type": "paragraph",
+              "tunes": {
+                "alignTune": {
+                  "alignment": "left"
+                },
+                "textVariantTune": ""
+              }
+            }
+          ],
+          "version": "2.30.5"
+        }
+      },
+      "email": null,
+      "phone": null,
+      "section": "team",
+      "featured": true,
+      "isFounder": false,
+      "active": true,
+      "photo": {
+        "sourceId": 1109,
+        "path": "/api/www/uploads/course-guides-profile-picture/2025-12/12/4149dfdmlk.jpeg",
+        "name": null,
+        "alt": null
+      },
+      "headerImage": null,
+      "attachments": [],
+      "vimeoId": null,
+      "seo": {
+        "title": null,
+        "keywords": null,
+        "description": null
+      }
+    }
+  ]
+}
