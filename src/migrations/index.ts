@@ -38,6 +38,7 @@ import * as migration_20260902_131500_stats_columns from './20260902_131500_stat
 import * as migration_20260902_132000_add_event_catalogue_card from './20260902_132000_add_event_catalogue_card';
 import * as migration_20260902_203646_destination_country_index_block from './20260902_203646_destination_country_index_block';
 import * as migration_20260902_211615_hero_accent_words from './20260902_211615_hero_accent_words';
+import * as migration_20260902_220351_gallery_context_source from './20260902_220351_gallery_context_source';
 
 export const migrations = [
   {
@@ -240,4 +241,9 @@ export const migrations = [
     down: migration_20260902_211615_hero_accent_words.down,
     name: '20260902_211615_hero_accent_words',
   },
-]
+  {
+    up: migration_20260902_220351_gallery_context_source.up,
+    down: migration_20260902_220351_gallery_context_source.down,
+    name: '20260902_220351_gallery_context_source'
+  },
+];

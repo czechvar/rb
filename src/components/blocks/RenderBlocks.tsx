@@ -129,7 +129,9 @@ const blockRenderers: Record<string, BlockRenderer> = {
   featuredEventDate: (block) =>
     FeaturedEventDateBlock(block as Extract<PageBlock, { blockType: 'featuredEventDate' }>),
   mediaBlock: (block) => <MediaBlock {...(block as Extract<PageBlock, { blockType: 'mediaBlock' }>)} />,
-  gallery: (block) => <GalleryBlock {...(block as Extract<PageBlock, { blockType: 'gallery' }>)} />,
+  gallery: (block, context) => (
+    <GalleryBlock {...(block as Extract<PageBlock, { blockType: 'gallery' }>)} context={context} />
+  ),
   video: (block) => <VideoBlock {...(block as Extract<PageBlock, { blockType: 'video' }>)} />,
   faq: (block, context) => FAQBlock(block as Extract<PageBlock, { blockType: 'faq' }>, context),
   reviewGrid: (block, context) =>

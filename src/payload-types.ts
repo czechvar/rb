@@ -552,7 +552,8 @@ export interface Program {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -1199,7 +1200,8 @@ export interface Event {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -1955,7 +1957,8 @@ export interface Location {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -2422,7 +2425,8 @@ export interface Guide {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -2978,7 +2982,8 @@ export interface Post {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -3790,7 +3795,8 @@ export interface Page {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
             variant: 'grid' | 'masonry';
             id?: string | null;
             blockName?: string | null;
@@ -4647,6 +4653,7 @@ export interface ProgramsSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -5230,6 +5237,7 @@ export interface GuidesSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -5771,6 +5779,7 @@ export interface LocationsSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -6220,6 +6229,7 @@ export interface EventsSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -6968,6 +6978,7 @@ export interface PostsSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -7395,6 +7406,7 @@ export interface PagesSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;

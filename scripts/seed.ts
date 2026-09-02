@@ -1652,6 +1652,7 @@ async function main() {
           heading: 'Reusable image groups',
           body:
             'Gallery blocks use Payload Media relationships and let the component decide responsive layout.',
+          source: 'manual',
           images: [demoMedia.id],
           variant: 'grid',
         },

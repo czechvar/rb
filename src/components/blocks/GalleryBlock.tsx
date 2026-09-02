@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import type { Page } from '@/payload-types'
 import { mediaAlt, mediaUrl } from '@/lib/media'
+import type { BlockRenderContext } from './RenderBlocks'
 import styles from './blocks.module.css'
 
 type GalleryBlockProps = Extract<
@@ -8,8 +9,15 @@ type GalleryBlockProps = Extract<
   { blockType: 'gallery' }
 >
 
-export function GalleryBlock({ body, eyebrow, heading, images, variant }: GalleryBlockProps) {
-  const resolved = (images ?? []).filter((image) => mediaUrl(image))
+function galleryImages(block: GalleryBlockProps, context: BlockRenderContext) {
+  if (block.source === 'currentEvent') return context.event?.gallery ?? []
+  if (block.source === 'currentLocation') return context.location?.gallery ?? []
+  return block.images ?? []
+}
+
+export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderContext }) {
+  const { body, eyebrow, heading, variant } = props
+  const resolved = galleryImages(props, props.context ?? {}).filter((image) => mediaUrl(image))
   if (resolved.length === 0) return null
 
   const className = [

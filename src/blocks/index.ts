@@ -163,7 +163,12 @@ const rawBlockCatalogue = [
     sourceModes: ['manualSelection'],
   },
   { config: MediaBlockConfig, category: 'media' },
-  { config: GalleryBlockConfig, category: 'media' },
+  {
+    config: GalleryBlockConfig,
+    category: 'media',
+    dataDependencies: ['event', 'location'],
+    sourceModes: ['currentContext', 'manualSelection'],
+  },
   { config: VideoBlockConfig, category: 'media' },
   { config: FAQBlockConfig, category: 'socialProof' },
   { config: ReviewGridBlockConfig, category: 'socialProof' },
