@@ -1295,6 +1295,12 @@ export interface Event {
   categories?: (number | Category)[] | null;
   difficulties?: (number | Difficulty)[] | null;
   programs?: (number | Program)[] | null;
+  climbingStyles?: ('sport' | 'bouldering' | 'trad' | 'multi-pitch' | 'deep-water-soloing')[] | null;
+  audienceTags?:
+    | ('beginner-friendly' | 'kids-friendly' | 'women-only' | 'intermediate' | 'advanced' | 'expert')[]
+    | null;
+  formatTags?: ('private-guiding' | 'coaching' | 'learn-to-lead' | 'road-trip' | 'demo-test' | 'family-youth')[] | null;
+  partnerTags?: ('evolv' | 'singing-rock' | 'the-send')[] | null;
   locations?: (number | Location)[] | null;
   highlights?:
     | {
@@ -1558,7 +1564,7 @@ export interface Location {
     | ('car-recommended' | 'public-transport-possible' | 'flight-access' | 'ferry-access' | 'walkable-local-access')[]
     | null;
   /**
-   * Normalized airport city labels. Keep as strings until airport-specific filtering needs IATA data.
+   * Normalized airport city labels retained from mined source material for editorial traceability.
    */
   nearestAirports?:
     | {
@@ -1566,6 +1572,10 @@ export interface Location {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Canonical airport relations resolved from nearest-airport labels where possible.
+   */
+  airportRefs?: (number | Airport)[] | null;
   gradeRange?: string | null;
   routeCount?: number | null;
   problemCount?: number | null;
@@ -1996,6 +2006,26 @@ export interface Location {
     keywords?: string | null;
     description?: string | null;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "airports".
+ */
+export interface Airport {
+  id: number;
+  name: string;
+  iata: string;
+  country?: string | null;
+  continent?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  size?: number | null;
+  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -2986,32 +3016,92 @@ export interface EventDate {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Optional date-specific logistics copy when this occurrence differs from the parent event or location defaults.
+   */
+  logisticsOverrides?: {
+    accommodation?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    food?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    included?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    excluded?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    note?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
   active?: boolean | null;
   /**
    * Sum of participants in pending+confirmed+paid orders.
    */
   bookedSeats?: number | null;
   remainingSeats?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "airports".
- */
-export interface Airport {
-  id: number;
-  name: string;
-  iata: string;
-  country?: string | null;
-  continent?: string | null;
-  /**
-   * @minItems 2
-   * @maxItems 2
-   */
-  coordinates?: [number, number] | null;
-  size?: number | null;
-  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -5203,6 +5293,7 @@ export interface LocationsSelect<T extends boolean = true> {
         name?: T;
         id?: T;
       };
+  airportRefs?: T;
   gradeRange?: T;
   routeCount?: T;
   problemCount?: T;
@@ -6063,6 +6154,10 @@ export interface EventsSelect<T extends boolean = true> {
   categories?: T;
   difficulties?: T;
   programs?: T;
+  climbingStyles?: T;
+  audienceTags?: T;
+  formatTags?: T;
+  partnerTags?: T;
   locations?: T;
   highlights?:
     | T
@@ -6225,6 +6320,15 @@ export interface EventDatesSelect<T extends boolean = true> {
   capacity?: T;
   minParticipants?: T;
   extraContent?: T;
+  logisticsOverrides?:
+    | T
+    | {
+        accommodation?: T;
+        food?: T;
+        included?: T;
+        excluded?: T;
+        note?: T;
+      };
   active?: T;
   bookedSeats?: T;
   remainingSeats?: T;

@@ -23,6 +23,14 @@ describe('locations collection', () => {
 
   it('stores structured destination taxonomy and source references', async () => {
     const payload = await getTestPayload()
+    const airport = await payload.create({
+      collection: 'airports',
+      data: {
+        name: `Valencia Airport ${Date.now()}`,
+        iata: `V${String(Date.now()).slice(-2)}`,
+        active: true,
+      },
+    })
     const doc = (await payload.create({
       collection: 'locations',
       data: {
@@ -40,6 +48,7 @@ describe('locations collection', () => {
         accommodationTags: ['apartment', 'campsite'],
         transportTags: ['car-recommended', 'flight-access'],
         nearestAirports: [{ name: 'Valencia' }, { name: 'Zaragoza' }],
+        airportRefs: [airport.id],
         gradeRange: 'Font 3 to 8C',
         routeCount: 1700,
         problemCount: 1700,
@@ -91,6 +100,9 @@ describe('locations collection', () => {
     expect(doc.accommodationTags).toEqual(['apartment', 'campsite'])
     expect(doc.transportTags).toEqual(['car-recommended', 'flight-access'])
     expect(doc.nearestAirports?.map((airport) => airport.name)).toEqual(['Valencia', 'Zaragoza'])
+    expect((doc.airportRefs ?? []).map((airport) => (typeof airport === 'object' ? airport.id : airport))).toEqual([
+      airport.id,
+    ])
     expect(doc.gradeRange).toBe('Font 3 to 8C')
     expect(doc.routeCount).toBe(1700)
     expect(doc.problemCount).toBe(1700)

@@ -20,7 +20,7 @@ type JsonPrimitive = string | number | boolean
 export type JsonLdValue = JsonPrimitive | JsonLdObject | JsonLdValue[] | null | undefined
 export type JsonLdObject = { [key: string]: JsonLdValue }
 
-type Maybe<T> = T | number | null | undefined
+type Maybe<T> = T | number | string | null | undefined
 type BreadcrumbItem = { name: string; path: string }
 type ListItemInput = { name: string; url: string }
 type JsonLdGraph = JsonLdObject & { '@graph': JsonLdObject[] }

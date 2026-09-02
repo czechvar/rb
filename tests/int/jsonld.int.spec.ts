@@ -24,7 +24,7 @@ import {
 import type { Event, EventDate, Faq, Guide, Location, Media, Page, Post, Program } from '@/payload-types'
 
 const media: Media = {
-  id: 10,
+  id: 'med_jsonld_test',
   alt: 'Kalymnos cliff',
   url: '/media/kalymnos.jpg',
   updatedAt: '2026-01-02T00:00:00.000Z',
@@ -40,7 +40,7 @@ const location: Location = {
   address: 'Main Road',
   coordinates: [26.98, 36.95],
   mainPicture: media,
-  gallery: [{ ...media, id: 12, url: '/media/location-gallery.jpg' }],
+  gallery: [{ ...media, id: 'med_jsonld_location_gallery', url: '/media/location-gallery.jpg' }],
   active: true,
   seo: { description: 'Limestone island climbing.' },
   updatedAt: '2026-01-02T00:00:00.000Z',
@@ -79,7 +79,7 @@ const event: Event = {
   slug: 'kalymnos-autumn-camp',
   shortDescription: 'A week of coached limestone climbing.',
   mainPicture: media,
-  gallery: [{ ...media, id: 11, url: '/media/gallery.jpg' }],
+  gallery: [{ ...media, id: 'med_jsonld_event_gallery', url: '/media/gallery.jpg' }],
   locations: [location],
   coaches: [guide],
   programs: [program],

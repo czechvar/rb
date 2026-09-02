@@ -54,6 +54,22 @@ export const EventDates: CollectionConfig = {
     { name: 'capacity', type: 'number', required: true, min: 0 },
     { name: 'minParticipants', type: 'number', defaultValue: 0, min: 0 },
     { name: 'extraContent', type: 'richText' },
+    {
+      name: 'logisticsOverrides',
+      type: 'group',
+      label: 'Logistics overrides',
+      admin: {
+        description:
+          'Optional date-specific logistics copy when this occurrence differs from the parent event or location defaults.',
+      },
+      fields: [
+        { name: 'accommodation', type: 'richText' },
+        { name: 'food', type: 'richText' },
+        { name: 'included', type: 'richText' },
+        { name: 'excluded', type: 'richText' },
+        { name: 'note', type: 'richText' },
+      ],
+    },
     { name: 'active', type: 'checkbox', defaultValue: false },
     {
       name: 'bookedSeats',

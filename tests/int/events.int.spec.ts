@@ -39,6 +39,26 @@ describe('events collection', () => {
     expect(ids).toEqual([a.id, b.id])
   })
 
+  it('stores scoped event tags separately from public taxonomy relations', async () => {
+    const payload = await getTestPayload()
+    // @ts-expect-error state defaulted
+    const doc = await payload.create({
+      collection: 'events',
+      data: {
+        title: `Tagged Event ${Date.now()}`,
+        climbingStyles: ['sport', 'bouldering'],
+        audienceTags: ['kids-friendly', 'expert'],
+        formatTags: ['road-trip', 'learn-to-lead'],
+        partnerTags: ['evolv'],
+      },
+    })
+
+    expect(doc.climbingStyles).toEqual(['sport', 'bouldering'])
+    expect(doc.audienceTags).toEqual(['kids-friendly', 'expert'])
+    expect(doc.formatTags).toEqual(['road-trip', 'learn-to-lead'])
+    expect(doc.partnerTags).toEqual(['evolv'])
+  })
+
   it('stores highlights, audience cards, prerequisites, essential equipment', async () => {
     const payload = await getTestPayload()
     // @ts-expect-error state defaulted

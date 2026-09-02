@@ -119,10 +119,21 @@ export const Locations: CollectionConfig = {
       label: 'Nearest airports',
       admin: {
         description:
-          'Normalized airport city labels. Keep as strings until airport-specific filtering needs IATA data.',
+          'Normalized airport city labels retained from mined source material for editorial traceability.',
         initCollapsed: true,
       },
       fields: [{ name: 'name', type: 'text', required: true }],
+    },
+    {
+      name: 'airportRefs',
+      type: 'relationship',
+      relationTo: 'airports',
+      hasMany: true,
+      label: 'Airport references',
+      filterOptions: () => ({ active: { equals: true } }),
+      admin: {
+        description: 'Canonical airport relations resolved from nearest-airport labels where possible.',
+      },
     },
     { name: 'gradeRange', type: 'text', label: 'Grade range' },
     { name: 'routeCount', type: 'number', label: 'Route count' },

@@ -20,6 +20,31 @@ const LEGACY_DESTINATION_DIR = path.join(SEED_DIR, 'legacy-destinations')
 const DEFAULT_MEDIA_LOOKUP_FILE =
   '/media/czechspekk/ws-backup-data-1/xbusters/rockbusters/media-transfer/payload-media-lookup.json'
 const PRODUCTION_DB_HOST = 'ep-weathered-pine-alvc3sdj'
+const AIRPORT_LABEL_TO_IATA = new Map([
+  ['Alicante', ['ALC']],
+  ['Antalya', ['AYT']],
+  ['Athens', ['ATH']],
+  ['Avignon', ['AVN']],
+  ['Barcelona', ['BCN']],
+  ['Dresden', ['DRS']],
+  ['Genoa', ['GOA']],
+  ['Girona', ['GRO']],
+  ['Gothenburg', ['GOT']],
+  ['Innsbruck', ['INN']],
+  ['Kos', ['KGS']],
+  ['Lyon', ['LYS']],
+  ['Madrid', ['MAD']],
+  ['Malaga', ['AGP']],
+  ['Malta International Airport', ['MLA']],
+  ['Marseille', ['MRS']],
+  ['Munich', ['MUC']],
+  ['Nimes', ['FNI']],
+  ['Oslo', ['OSL']],
+  ['Prague', ['PRG']],
+  ['Salzburg', ['SZG']],
+  ['Valencia', ['VLC']],
+  ['Zaragoza', ['ZAZ']],
+])
 
 type LegacyLocationSeed = {
   rows: Array<{
@@ -150,6 +175,15 @@ async function readPayloadMediaLookup() {
   }
 }
 
+async function airportIdsByIata(payload: Payload) {
+  const airports = await payload.find({
+    collection: 'airports',
+    limit: 20_000,
+    depth: 0,
+  })
+  return new Map(airports.docs.map((airport) => [airport.iata, airport.id]))
+}
+
 function assertKnownValue(field: LocationTaxonomyField, value: string | null | undefined) {
   if (!value) return
   if (!(value in locationTaxonomy[field])) {
@@ -205,6 +239,7 @@ export function buildLocationData(
   record: CuratedDestination,
   legacySeed: LegacyLocationSeed['rows'][number] | undefined,
   mediaLookup = new Map<string, string>(),
+  airportLookup = new Map<string, number>(),
 ): BuiltLocationData {
   const facts = record.facts ?? {}
 
@@ -235,6 +270,14 @@ export function buildLocationData(
     accommodationTags: facts.accommodationTags ?? [],
     transportTags: facts.transportTags ?? [],
     nearestAirports: (facts.nearestAirports ?? []).map((name) => ({ name })),
+    airportRefs: [
+      ...new Set(
+        (facts.nearestAirports ?? [])
+          .flatMap((name) => AIRPORT_LABEL_TO_IATA.get(name) ?? [])
+          .map((iata) => airportLookup.get(iata))
+          .filter((id): id is number => id !== undefined),
+      ),
+    ],
     gradeRange: facts.gradeRange ?? null,
     routeCount: facts.routeCount ?? null,
     problemCount: facts.problemCount ?? null,
@@ -301,11 +344,12 @@ async function main() {
   const payload = await getPayload({ config })
   const legacyLocations = await readLegacyLocationSeed()
   const mediaLookup = await readPayloadMediaLookup()
+  const airportLookup = await airportIdsByIata(payload)
   const records = await readCuratedDestinations(args.input)
 
   const totals = { created: 0, updated: 0 }
   for (const record of records) {
-    const built = buildLocationData(record, legacyLocations.get(record.slug), mediaLookup)
+    const built = buildLocationData(record, legacyLocations.get(record.slug), mediaLookup, airportLookup)
     const result = await upsertLocation(payload, built.slug, built.data)
     totals[result] += 1
   }

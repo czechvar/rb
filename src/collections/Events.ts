@@ -5,6 +5,7 @@ import { seoFields } from '../fields/seo'
 import { revalidateOnChange } from './hooks/revalidate'
 import { eventLayoutBlocks } from '../blocks'
 import { TAGS } from '@/lib/cache'
+import { eventTaxonomyOptions } from '@/lib/taxonomy/event'
 
 export const Events: CollectionConfig = {
   slug: 'events',
@@ -62,6 +63,34 @@ export const Events: CollectionConfig = {
       relationTo: 'programs',
       hasMany: true,
       filterOptions: () => ({ active: { equals: true } }),
+    },
+    {
+      name: 'climbingStyles',
+      type: 'select',
+      label: 'Climbing styles',
+      hasMany: true,
+      options: eventTaxonomyOptions.climbingStyles,
+    },
+    {
+      name: 'audienceTags',
+      type: 'select',
+      label: 'Audience tags',
+      hasMany: true,
+      options: eventTaxonomyOptions.audienceTags,
+    },
+    {
+      name: 'formatTags',
+      type: 'select',
+      label: 'Format tags',
+      hasMany: true,
+      options: eventTaxonomyOptions.formatTags,
+    },
+    {
+      name: 'partnerTags',
+      type: 'select',
+      label: 'Partner tags',
+      hasMany: true,
+      options: eventTaxonomyOptions.partnerTags,
     },
 
     // Event-level locations (per Martin's note: "event can have more than one location")

@@ -19,6 +19,24 @@ describe('event-dates collection', () => {
         vat: 21,
         currency: 'EUR',
         capacity: 12,
+        logisticsOverrides: {
+          accommodation: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  version: 1,
+                  children: [{ type: 'text', version: 1, text: 'Shared rooms in a local hostel.' }],
+                },
+              ],
+              direction: null,
+              format: '',
+              indent: 0,
+              version: 1,
+            },
+          },
+        },
         active: true,
       },
     })
@@ -30,5 +48,6 @@ describe('event-dates collection', () => {
     expect(eventRef).toBe(event.id)
     // minParticipants defaults to 0
     expect(doc.minParticipants).toBe(0)
+    expect(doc.logisticsOverrides?.accommodation).toBeDefined()
   })
 })
