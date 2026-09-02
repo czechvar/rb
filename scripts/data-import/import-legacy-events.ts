@@ -18,6 +18,7 @@ const SEED_DIR = path.resolve(import.meta.dirname, 'seed')
 const EVENTS_FILE = path.join(SEED_DIR, 'legacy-events.json')
 const EVENT_DATES_FILE = path.join(SEED_DIR, 'legacy-event-dates.json')
 const TYPE_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-event-date-type-lookup.json')
+const EVENT_CATALOGUE_CARDS_FILE = path.join(SEED_DIR, 'event-catalogue-cards.json')
 const EVENT_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-event-lookup.json')
 const EVENT_DATE_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-event-date-lookup.json')
 const GUIDE_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-guide-lookup.json')
@@ -51,6 +52,15 @@ type TaxonomyProjection = {
   audienceTags?: string[]
   formatTags?: string[]
   partnerTags?: string[]
+}
+
+type EventCatalogueCard = {
+  title: string
+  description: string
+}
+
+type EventCatalogueCardSeed = {
+  rows?: Array<{ slug: string } & EventCatalogueCard>
 }
 
 type LegacyEventRow = {
@@ -364,6 +374,7 @@ async function buildEventData(
   row: LegacyEventRow,
   editorConfig: EditorConfig,
   typeLookup: Map<string, TaxonomyProjection>,
+  catalogueCards: Map<string, EventCatalogueCard>,
   lookups: RelationLookups,
   report: ImportReport,
 ) {
@@ -378,6 +389,7 @@ async function buildEventData(
     title: row.title,
     slug: row.slug,
     shortDescription: cleanPlainText(row.perex) ?? null,
+    catalogueCard: catalogueCards.get(row.slug) ?? null,
     content: toLexical(row.body, editorConfig) ?? null,
     additionalInfo: buildAdditionalInfo(row, editorConfig),
     mainPicture,
@@ -587,14 +599,19 @@ function emptyReport(): ImportReport {
 async function main() {
   assertNotProduction()
 
-  const [eventsSeed, eventDatesSeed, typeLookupFile, existingEventDateLookup] = await Promise.all([
+  const [eventsSeed, eventDatesSeed, typeLookupFile, catalogueCardsFile, existingEventDateLookup] = await Promise.all([
     readJson<SeedFile<LegacyEventRow>>(EVENTS_FILE),
     readJson<SeedFile<LegacyEventDateRow>>(EVENT_DATES_FILE),
     readJson<LookupFile<TaxonomyProjection>>(TYPE_LOOKUP_FILE),
+    readJsonIfExists<EventCatalogueCardSeed>(EVENT_CATALOGUE_CARDS_FILE, {}),
     readJsonIfExists<LookupFile<unknown>>(EVENT_DATE_LOOKUP_FILE, {}),
   ])
 
   const typeLookup = new Map(Object.entries(typeLookupFile.byLegacyTypeSlug ?? {}))
+  const catalogueCards = new Map((catalogueCardsFile.rows ?? []).map((row) => [row.slug, {
+    title: row.title,
+    description: row.description,
+  }]))
   const eventRowsByLegacyId = new Map(eventsSeed.rows.map((row) => [row.id, row]))
   const payload = await getPayload({ config })
   const editorConfig = await editorConfigFactory.default({ config: payload.config })
@@ -609,7 +626,7 @@ async function main() {
     try {
       const projection = projectTypeSlugs(row.typeSlugs, typeLookup, report.missingTypeMappings)
       const relations = relationData(row, projection, lookups, report)
-      const data = await buildEventData(row, editorConfig, typeLookup, lookups, report)
+      const data = await buildEventData(row, editorConfig, typeLookup, catalogueCards, lookups, report)
       const result = await upsertEvent(payload, row, data)
       eventIdsByLegacyId.set(String(row.id), result.id)
       eventRelationsByLegacyId.set(row.id, { locations: relations.locations, guides: relations.coaches })

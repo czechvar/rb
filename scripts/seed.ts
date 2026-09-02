@@ -12,6 +12,7 @@
  */
 import 'dotenv/config'
 import { createHash } from 'node:crypto'
+import fs from 'node:fs/promises'
 import { getPayload, type Payload, type CollectionSlug, type Where } from 'payload'
 import sharp from 'sharp'
 import config from '../src/payload.config'
@@ -23,6 +24,8 @@ import {
 
 type Ref = { id: number }
 type MediaRef = { id: string }
+
+const HOMEPAGE_SEED_FILE = new URL('./data-import/seed/home-page.json', import.meta.url)
 
 const demoMediaSvg = `
 <svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
@@ -225,6 +228,33 @@ function richText(...paragraphs: string[]) {
       })),
     },
   }
+}
+
+async function readHomepageSeed(): Promise<Record<string, unknown> | null> {
+  try {
+    const seed = JSON.parse(await fs.readFile(HOMEPAGE_SEED_FILE, 'utf8')) as {
+      row?: Record<string, unknown> & { slug?: string }
+    }
+    if (seed.row?.slug !== 'home') {
+      throw new Error(`Expected homepage seed slug "home", received ${String(seed.row?.slug)}`)
+    }
+    return seed.row
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return null
+    throw err
+  }
+}
+
+async function upsertHomepageSnapshot(payload: Payload) {
+  const homepageSeed = await readHomepageSeed()
+  if (!homepageSeed) return
+
+  await upsert(payload, {
+    collection: 'pages',
+    where: { slug: { equals: 'home' } },
+    data: homepageSeed,
+    label: 'home page layout snapshot',
+  })
 }
 
 async function main() {
@@ -1753,6 +1783,7 @@ async function main() {
     },
     label: 'home page layout',
   })
+  await upsertHomepageSnapshot(payload)
 
   console.log('\nseed complete.')
 }

@@ -5,6 +5,24 @@ import { type BlockRenderContext, RenderBlocks } from '@/components/blocks/Rende
 
 type RenderBlocksInput = Parameters<typeof RenderBlocks>[0]
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const richText = (text: string): any => ({
+  root: {
+    type: 'root',
+    children: [
+      {
+        type: 'paragraph',
+        version: 1,
+        children: [{ type: 'text', version: 1, text }],
+      },
+    ],
+    direction: null,
+    format: '',
+    indent: 0,
+    version: 1,
+  },
+})
+
 describe('RenderBlocks', () => {
   it('renders nothing for an empty layout', async () => {
     await expect(RenderBlocks({ blocks: [] })).resolves.toBeNull()
@@ -49,12 +67,14 @@ describe('RenderBlocks', () => {
           blockType: 'section-intro',
           eyebrow: 'Generic content',
           heading: 'Reusable intro',
-          body: 'Short lead copy.',
+          body: richText('Short lead copy.'),
           alignment: 'left',
+          variant: 'light',
         },
         {
           blockType: 'stats',
           heading: 'Proof points',
+          columns: 'auto',
           items: [
             { value: '12', label: 'Locations' },
             { value: '98%', label: 'Would return' },

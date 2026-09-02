@@ -305,8 +305,23 @@ export interface Program {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -347,6 +362,7 @@ export interface Program {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -859,6 +875,13 @@ export interface Event {
   title: string;
   slug: string;
   shortDescription?: string | null;
+  /**
+   * Optional title and teaser for catalogue grids. Public trip pages keep using the main title and short description.
+   */
+  catalogueCard?: {
+    title?: string | null;
+    description?: string | null;
+  };
   content?: {
     root: {
       type: string;
@@ -920,8 +943,23 @@ export interface Event {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -962,6 +1000,7 @@ export interface Event {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -1651,8 +1690,23 @@ export interface Location {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -1693,6 +1747,7 @@ export interface Location {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -2093,8 +2148,23 @@ export interface Guide {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -2135,6 +2205,7 @@ export interface Guide {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -2624,8 +2695,23 @@ export interface Post {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -2666,6 +2752,7 @@ export interface Post {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -3400,8 +3487,23 @@ export interface Page {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -3442,6 +3544,7 @@ export interface Page {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -4244,6 +4347,7 @@ export interface ProgramsSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -4272,6 +4376,7 @@ export interface ProgramsSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -4819,6 +4924,7 @@ export interface GuidesSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -4847,6 +4953,7 @@ export interface GuidesSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -5352,6 +5459,7 @@ export interface LocationsSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -5380,6 +5488,7 @@ export interface LocationsSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -5749,6 +5858,12 @@ export interface EventsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   shortDescription?: T;
+  catalogueCard?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
   content?: T;
   additionalInfo?:
     | T
@@ -5787,6 +5902,7 @@ export interface EventsSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -5815,6 +5931,7 @@ export interface EventsSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -6527,6 +6644,7 @@ export interface PostsSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -6555,6 +6673,7 @@ export interface PostsSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -6934,6 +7053,7 @@ export interface PagesSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -6962,6 +7082,7 @@ export interface PagesSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };

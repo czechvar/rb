@@ -22,6 +22,7 @@ describe('Homepage generic layout', () => {
           eyebrow: 'Proof points',
           heading: 'Rockbusters in numbers',
           variant: 'inlineDark',
+          columns: 'auto',
           items: [
             { value: '15+', label: 'Years on the rock' },
             { value: '3000+', label: 'Climbers coached' },
@@ -32,6 +33,7 @@ describe('Homepage generic layout', () => {
           eyebrow: 'Why climb with us',
           heading: 'Maximum climbing time',
           variant: 'numberedDark',
+          columns: 'auto',
           items: [
             { value: '01', label: 'Technical coaching' },
             { value: '02', label: 'Local knowledge' },

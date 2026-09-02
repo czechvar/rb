@@ -85,6 +85,7 @@ interface GuideRow {
   phone: string | null
   display: number
   image_id?: number | null
+  featured?: boolean
 }
 
 interface PayloadMediaLookup {
@@ -315,7 +316,7 @@ async function importGuides(
         tags: [],
         photo: photo ?? null,
         content: content ?? null,
-        featured: false,
+        featured: Boolean(row.featured),
         isFounder: false,
         vimeoId: null,
         heroSub: null,

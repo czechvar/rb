@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Event, EventDate, Guide, Location, Post, Program } from '@/payload-types'
 import { mediaAlt, mediaUrl } from '@/lib/media'
+import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
 import styles from './blocks.module.css'
 
 export type FeaturedCardVariant = 'card' | 'feature' | 'compact' | 'mediaLed'
@@ -55,6 +56,8 @@ export function TripCard({
 }) {
   const img = mediaUrl(event.mainPicture)
   const loc = locationLabel(event.locations)
+  const title = eventCatalogueTitle(event)
+  const description = eventCatalogueDescription(event)
   return (
     <Link
       href={`/trips/${event.slug}`}
@@ -72,8 +75,8 @@ export function TripCard({
       </div>
       <div className={styles.tripContent}>
         {loc ? <p className={styles.cardMeta}>{loc}</p> : null}
-        <h3>{event.title}</h3>
-        {event.shortDescription ? <p>{event.shortDescription}</p> : null}
+        <h3>{title}</h3>
+        {description ? <p>{description}</p> : null}
         <div className={styles.tripFooter}>
           {price ? <span>{price}</span> : <span>Upcoming dates</span>}
           <span aria-hidden="true">-&gt;</span>

@@ -434,6 +434,58 @@
   text-align: center;
 }
 
+.sectionIntroDarkSplit {
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
+}
+
+.sectionIntroDarkSplit .sectionInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+  gap: clamp(42px, 7vw, 120px);
+}
+
+.sectionIntroDarkSplit .sectionHeader {
+  max-width: none;
+  margin-bottom: 0;
+}
+
+.sectionIntroDarkSplit h2 {
+  max-width: 760px;
+  font-size: 72px;
+  line-height: 0.92;
+}
+
+.sectionIntroBody {
+  max-width: 680px;
+  color: inherit;
+  font-size: var(--fs-body-lg);
+  line-height: 1.7;
+  opacity: 0.78;
+}
+
+.sectionIntroBody :where(p, ul, ol) {
+  margin: 18px 0 0;
+}
+
+.sectionIntroBody :where(p, ul, ol):first-child {
+  margin-top: 0;
+}
+
+.sectionIntroDarkSplit .sectionIntroBody {
+  align-self: center;
+  color: var(--theme-color-paper-60);
+  opacity: 1;
+}
+
+.sectionIntroDarkSplit .sectionIntroBody :where(p, ul, ol) {
+  margin-top: 22px;
+}
+
+.sectionIntroDarkSplit .sectionIntroBody :where(p, ul, ol):first-child {
+  margin-top: 0;
+}
+
 .richTextSection {
   background: var(--theme-color-white-paper);
 }
@@ -517,6 +569,18 @@
   margin: 0;
 }
 
+.statsColumns2 .statsGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.statsColumns3 .statsGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.statsColumns4 .statsGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .statItem {
   padding: 26px 24px;
   border: 1px solid var(--theme-color-ink-border-subtle);
@@ -575,14 +639,12 @@
 }
 
 .featuredCatalogueSection .sectionInner {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1fr);
-  gap: 56px;
-  align-items: start;
+  display: block;
 }
 
 .featuredCatalogueSection .sectionHeader {
-  margin-bottom: 0;
+  max-width: 920px;
+  margin-bottom: 48px;
 }
 
 .featuredCatalogueSection .featuredCatalogueWrap {
@@ -656,6 +718,56 @@
   border-color: var(--theme-color-primary-strong-border);
 }
 
+.domainGridDarkCompact .sectionHeader,
+.featuredCatalogueMediaLedSection .sectionHeader,
+.tripGridEditorial .sectionHeader,
+.tripGridFeatureLead .sectionHeader,
+.locationTilesSection .sectionHeader,
+.guidePhotoSection .sectionHeader,
+.reviewGridSection .sectionHeader {
+  display: block;
+  max-width: 720px;
+  margin-bottom: 42px;
+}
+
+.domainGridDarkCompact .lead,
+.featuredCatalogueMediaLedSection .lead,
+.tripGridEditorial .sectionHeader .lead,
+.tripGridFeatureLead .sectionHeader .lead,
+.locationTilesSection .lead,
+.guidePhotoSection .lead,
+.reviewGridSection .lead {
+  max-width: 680px;
+  margin-top: 28px;
+  color: var(--theme-color-paper-60);
+  opacity: 1;
+}
+
+.domainGridDarkCompact .sectionHeader h2,
+.featuredCatalogueMediaLedSection .sectionHeader h2,
+.tripGridEditorial .sectionHeader h2,
+.tripGridFeatureLead .sectionHeader h2,
+.locationTilesSection .sectionHeader h2,
+.guidePhotoSection .sectionHeader h2,
+.reviewGridSection .sectionHeader h2 {
+  font-size: 96px;
+  line-height: 0.88;
+}
+
+.featuredCatalogueSection .lead,
+.partnerStripSection .lead,
+.faqSection .lead {
+  max-width: 760px;
+  margin-top: 24px;
+}
+
+.featuredCatalogueSection .sectionHeader h2,
+.partnerStripSection .sectionHeader h2,
+.faqSection .sectionHeader h2 {
+  font-size: 72px;
+  line-height: 0.92;
+}
+
 .domainCard,
 .reviewCard {
   position: relative;
@@ -704,20 +816,6 @@
 
 .locationTileGrid {
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-}
-
-.locationTilesSection .sectionHeader,
-.guidePhotoSection .sectionHeader {
-  display: grid;
-  max-width: none;
-  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1fr);
-  gap: 48px;
-  align-items: end;
-}
-
-.locationTilesSection .lead,
-.guidePhotoSection .lead {
-  margin-top: 0;
 }
 
 .locationTilesSection .domainCard {
@@ -927,18 +1025,6 @@
   gap: 24px;
 }
 
-.tripGridFeatureLead .sectionHeader {
-  display: flex;
-  max-width: none;
-  align-items: end;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-.tripGridFeatureLead .sectionHeader .lead {
-  max-width: 420px;
-}
-
 .tripGridFeatureLead .tripCards {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -1129,6 +1215,25 @@
   line-height: 1.65;
 }
 
+@media (max-width: 1199px) {
+  .domainGridDarkCompact .sectionHeader h2,
+  .featuredCatalogueMediaLedSection .sectionHeader h2,
+  .tripGridEditorial .sectionHeader h2,
+  .tripGridFeatureLead .sectionHeader h2,
+  .locationTilesSection .sectionHeader h2,
+  .guidePhotoSection .sectionHeader h2,
+  .reviewGridSection .sectionHeader h2 {
+    font-size: 76px;
+  }
+
+  .featuredCatalogueSection .sectionHeader h2,
+  .sectionIntroDarkSplit h2,
+  .partnerStripSection .sectionHeader h2,
+  .faqSection .sectionHeader h2 {
+    font-size: 58px;
+  }
+}
+
 @media (max-width: 767px) {
   .sectionInner {
     width: min(100% - 28px, 1400px);
@@ -1146,6 +1251,23 @@
     font-size: 72px;
   }
 
+  .domainGridDarkCompact .sectionHeader h2,
+  .featuredCatalogueMediaLedSection .sectionHeader h2,
+  .tripGridEditorial .sectionHeader h2,
+  .tripGridFeatureLead .sectionHeader h2,
+  .locationTilesSection .sectionHeader h2,
+  .guidePhotoSection .sectionHeader h2,
+  .reviewGridSection .sectionHeader h2 {
+    font-size: 54px;
+  }
+
+  .featuredCatalogueSection .sectionHeader h2,
+  .sectionIntroDarkSplit h2,
+  .partnerStripSection .sectionHeader h2,
+  .faqSection .sectionHeader h2 {
+    font-size: 42px;
+  }
+
   .heroInner {
     width: min(100% - 28px, 1120px);
     padding: 130px 0 58px;
@@ -1154,10 +1276,8 @@
   .statsInlineDark .statsGrid,
   .statsNumberedDark .sectionInner,
   .statsNumberedDark .statsGrid,
-  .locationTilesSection .sectionHeader,
-  .guidePhotoSection .sectionHeader,
-  .tripGridFeatureLead .tripCards,
-  .tripGridFeatureLead .sectionHeader {
+  .sectionIntroDarkSplit .sectionInner,
+  .tripGridFeatureLead .tripCards {
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -1182,6 +1302,9 @@
   .tripCards,
   .partnerStrip,
   .partnerCards,
+  .statsColumns2 .statsGrid,
+  .statsColumns3 .statsGrid,
+  .statsColumns4 .statsGrid,
   .faqList,
   .galleryGrid {
     grid-template-columns: 1fr;

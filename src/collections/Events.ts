@@ -18,6 +18,19 @@ export const Events: CollectionConfig = {
     { name: 'title', type: 'text', required: true },
     slugField('title'),
     { name: 'shortDescription', type: 'textarea' },
+    {
+      name: 'catalogueCard',
+      type: 'group',
+      label: 'Catalogue card',
+      admin: {
+        description:
+          'Optional title and teaser for catalogue grids. Public trip pages keep using the main title and short description.',
+      },
+      fields: [
+        { name: 'title', type: 'text' },
+        { name: 'description', type: 'textarea' },
+      ],
+    },
     { name: 'content', type: 'richText' },
     {
       name: 'additionalInfo',

@@ -1,0 +1,521 @@
+{
+  "generatedAt": "2026-09-02T12:58:44.645Z",
+  "source": "Payload pages collection, slug=home, depth=0",
+  "row": {
+    "title": "Home",
+    "slug": "home",
+    "status": "published",
+    "seo": {
+      "title": null,
+      "keywords": null,
+      "description": null
+    },
+    "structuredData": {
+      "schemaType": "WebPage"
+    },
+    "layout": [
+      {
+        "id": "6a8eb1a04e29920464ad1d8d",
+        "eyebrow": "Climbers for climbers - Europe's finest crags",
+        "heading": "Climb harder. Climb smarter.",
+        "body": "We are a community of rock climbing guides, coaches, and passionate climbers. Climb harder. Climb smarter - with people obsessed with getting you stronger, sharper, and further than you thought possible.",
+        "backgroundMedia": "med_a57ffc41a03d4511b46cf5dee3425b21",
+        "variant": "brandEditorial",
+        "blockName": null,
+        "blockType": "hero",
+        "primaryAction": {
+          "label": "Find your trip",
+          "href": "/programs"
+        }
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1d92",
+        "eyebrow": null,
+        "heading": null,
+        "body": null,
+        "variant": "inlineDark",
+        "columns": "auto",
+        "blockName": "BRAND STATS",
+        "items": [
+          {
+            "id": "6a8eb1a04e29920464ad1d8e",
+            "value": "15+",
+            "label": "Years on the rock",
+            "body": "Guiding and coaching across European crags."
+          },
+          {
+            "id": "6a8eb1a04e29920464ad1d8f",
+            "value": "3000+",
+            "label": "Climbers coached",
+            "body": "From first outdoor leads to performance camps."
+          },
+          {
+            "id": "6a8eb1a04e29920464ad1d90",
+            "value": "8",
+            "label": "Countries",
+            "body": "Destination knowledge across the core climbing regions."
+          },
+          {
+            "id": "6a8eb1a04e29920464ad1d91",
+            "value": "100%",
+            "label": "Climbing focus",
+            "body": "No filler travel package, just routes and coaching."
+          }
+        ],
+        "blockType": "stats"
+      },
+      {
+        "id": "6a9802b05ad83f57b964608c",
+        "eyebrow": "Who we are",
+        "heading": "Not a tour company. A climbing community.",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "text": "Rockbusters is a community of guides, coaches, and passionate climbers who have made rock climbing our entire life. We don't guide on the side — this is it for us.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "\nEvery trip and course we run is built around one thing: maximum quality and quantity of climbing. Technical mastery, mental game, movement efficiency — we coach it all, on the same crags where the world's best do their hardest routes.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null
+              }
+            ],
+            "direction": null
+          }
+        },
+        "alignment": "center",
+        "variant": "darkSplit",
+        "blockName": "NOT A TOUR COMPANY",
+        "blockType": "section-intro"
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1d9a",
+        "eyebrow": "Why climb with us",
+        "heading": "",
+        "body": "",
+        "variant": "inlineDark",
+        "columns": "3",
+        "blockName": "WHY ROCKBUSTERS ",
+        "items": [
+          {
+            "id": "6a8eb1a04e29920464ad1d94",
+            "value": "01",
+            "label": "Maximum climbing time",
+            "body": "Each day is structured around actual climbing volume, not bus transfers."
+          },
+          {
+            "id": "6a8eb1a04e29920464ad1d95",
+            "value": "02",
+            "label": "Technical and mental coaching",
+            "body": "Movement, tactics, head game, and practical systems stay part of the trip."
+          },
+          {
+            "id": "6a8eb1a04e29920464ad1d96",
+            "value": "03",
+            "label": "World-class coaches",
+            "body": "Experienced climbers teach what works outside, not just indoors."
+          },
+          {
+            "id": "6a8eb1a04e29920464ad1d97",
+            "value": "04",
+            "label": "Ground logistics sorted",
+            "body": "Accommodation, airports, local transport, and partner logistics are handled."
+          },
+          {
+            "id": "6a8eb1a04e29920464ad1d98",
+            "value": "05",
+            "label": "Insider area knowledge",
+            "body": "Routes and crags are picked from local experience, conditions, and goals."
+          },
+          {
+            "id": "6a8eb1a04e29920464ad1d99",
+            "value": "06",
+            "label": "Climbing is our lifestyle",
+            "body": "The culture is built by climbers who live this year round."
+          }
+        ],
+        "blockType": "stats"
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1d9b",
+        "eyebrow": "Rockbusters picks",
+        "heading": "Trips and courses worth climbing for",
+        "intro": "",
+        "source": "upcoming",
+        "program": null,
+        "location": null,
+        "limit": 6,
+        "variant": "featureLead",
+        "blockName": "UPCOMING TRIPS",
+        "blockType": "tripGrid",
+        "events": []
+      },
+      {
+        "id": "6a9817fc1afd7b8ca2c43a36",
+        "eyebrow": "Why Rockbusters",
+        "heading": "EVERY QUESTION YOU'RE PROBABLY ASKING",
+        "source": "inline",
+        "event": null,
+        "program": null,
+        "limit": 6,
+        "variant": "lightEditorial",
+        "blockName": "WHY ROCKBUSTERS FAQ",
+        "items": [
+          {
+            "id": "6a9818341afd7b8ca2c43a38",
+            "question": "Can't find time to improve? Can't stay disciplined?",
+            "answer": {
+              "root": {
+                "type": "root",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Total immersion fixes both. Intensive coaching, professional guides by your side all day, every day. Plateaus get smashed.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  }
+                ],
+                "direction": null
+              }
+            }
+          },
+          {
+            "id": "6a9818651afd7b8ca2c43a3a",
+            "question": "Want real coaching, not just guided mileage?",
+            "answer": {
+              "root": {
+                "type": "root",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Video analysis, one-on-one instruction, individual feedback. We coach movement, not just route lists.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  },
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  }
+                ],
+                "direction": null
+              }
+            }
+          },
+          {
+            "id": "6a9818771afd7b8ca2c43a3c",
+            "question": "Want to build habits that stick after the trip?",
+            "answer": {
+              "root": {
+                "type": "root",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "We teach you how to train, how to read routes, how to think like a climber. The gains come home with you.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  }
+                ],
+                "direction": null
+              }
+            }
+          },
+          {
+            "id": "6a9818851afd7b8ca2c43a3e",
+            "question": "Seems like a big decision? It really isn't.",
+            "answer": {
+              "root": {
+                "type": "root",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Buy your flights. We help with all ground logistics — accommodation, guiding, coaching, equipment, local knowledge, and we connect you with fellow climbers to share rental cars. Simple.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  }
+                ],
+                "direction": null
+              }
+            }
+          },
+          {
+            "id": "6a9818951afd7b8ca2c43a40",
+            "question": "Coming alone? We match you with your climbing tribe.",
+            "answer": {
+              "root": {
+                "type": "root",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Our buddy system pairs solo climbers. You arrive alone, you leave with partners for life. Happens every trip.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  }
+                ],
+                "direction": null
+              }
+            }
+          },
+          {
+            "id": "6a9818aa1afd7b8ca2c43a42",
+            "question": "Want the routes no guidebook will ever show you?",
+            "answer": {
+              "root": {
+                "type": "root",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "We know these crags obsessively. The hidden sectors, perfect-grade routes, the locals-only classics. That's your experience.",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null,
+                    "textStyle": "",
+                    "textFormat": 0
+                  }
+                ],
+                "direction": null
+              }
+            }
+          }
+        ],
+        "blockType": "faq",
+        "faqs": []
+      },
+      {
+        "id": "6a9818f41afd7b8ca2c43a44",
+        "eyebrow": "Pro climber workshops",
+        "heading": "LEARN FROM THE WORLD'S BEST",
+        "intro": "We bring elite climbers into our trips and camps — not for photos, but for real coaching. Workshops, sessions on the rock, Q&A, and time actually climbing alongside people operating at the sport's absolute ceiling.",
+        "source": "featured",
+        "limit": 3,
+        "variant": "photoOverlay",
+        "blockName": "PRO WORKSHOPS",
+        "blockType": "guideGrid",
+        "guides": []
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1d9c",
+        "eyebrow": "Find your climbing path",
+        "heading": "Pick your experience",
+        "intro": "Programs stay canonical while the homepage controls placement and presentation.",
+        "source": "all",
+        "limit": 6,
+        "variant": "darkCompact",
+        "blockName": null,
+        "blockType": "programGrid",
+        "programs": []
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1d9d",
+        "eyebrow": "Where we climb",
+        "heading": "Europe's finest crags",
+        "intro": "Locations power destination sections from the same source used by destination pages.",
+        "source": "all",
+        "country": null,
+        "limit": 14,
+        "variant": "countryTiles",
+        "blockName": null,
+        "blockType": "locationGrid",
+        "locations": []
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1d9e",
+        "eyebrow": "The people behind the progression",
+        "heading": "Climbers. Coaches. Mentors.",
+        "intro": "Guide records keep the homepage team section connected to the People collection.",
+        "source": "team",
+        "limit": 6,
+        "variant": "photoOverlay",
+        "blockName": null,
+        "blockType": "guideGrid",
+        "guides": []
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1d9f",
+        "eyebrow": "Real climbers. Real progress.",
+        "heading": "What happens when you come",
+        "intro": null,
+        "source": "byProgram",
+        "event": null,
+        "program": 1,
+        "limit": 3,
+        "variant": "cards",
+        "blockName": null,
+        "blockType": "reviewGrid",
+        "reviews": []
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1da0",
+        "eyebrow": "Quick answers",
+        "heading": "FAQ",
+        "source": "global",
+        "event": null,
+        "program": null,
+        "limit": 6,
+        "variant": "lightEditorial",
+        "blockName": null,
+        "items": [],
+        "blockType": "faq",
+        "faqs": []
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1da1",
+        "eyebrow": "Partners",
+        "heading": "Trusted by the best brands in climbing",
+        "intro": null,
+        "source": "featured",
+        "limit": 5,
+        "variant": "logos",
+        "blockName": null,
+        "blockType": "partnerStrip",
+        "partners": []
+      },
+      {
+        "id": "6a8eb1a04e29920464ad1da2",
+        "eyebrow": "Your next level starts now",
+        "heading": "Find the trip worth training for.",
+        "body": "Start with the right route, the right coach, and enough time on real rock.",
+        "variant": "finalRed",
+        "blockName": null,
+        "blockType": "cta",
+        "primaryAction": {
+          "label": "Find your trip",
+          "href": "/programs"
+        },
+        "secondaryAction": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        }
+      }
+    ]
+  }
+}
