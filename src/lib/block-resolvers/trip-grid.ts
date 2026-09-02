@@ -51,7 +51,7 @@ export async function resolveTripGridEvents(input: TripGridResolverInput): Promi
       collection: 'event-dates',
       where: { and: [{ active: { equals: true } }, upcomingEventDateWhere()] },
       sort: 'dateFrom',
-      depth: 1,
+      depth: 2,
       limit: 50,
     })
 

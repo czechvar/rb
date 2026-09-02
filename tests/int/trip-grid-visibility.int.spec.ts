@@ -53,6 +53,29 @@ describe('trip-grid public event visibility', () => {
       }),
     )
   })
+
+  it('loads upcoming event dates deeply enough for trip card media', async () => {
+    payload.find.mockResolvedValueOnce({
+      docs: [
+        {
+          event: currentEvent,
+        },
+      ],
+    })
+
+    const events = await resolveTripGridEvents({
+      source: 'upcoming',
+      limit: 3,
+    })
+
+    expect(events.map((item) => item.id)).toEqual([currentEvent.id])
+    expect(payload.find).toHaveBeenCalledWith(
+      expect.objectContaining({
+        collection: 'event-dates',
+        depth: 2,
+      }),
+    )
+  })
 })
 
 function event(input: { id: number; title: string }): Event {
