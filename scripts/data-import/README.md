@@ -13,6 +13,8 @@ Two commands, both idempotent:
 - `pnpm data-import:locations` — imports locations only.
 - `pnpm data-import:legacy-destinations` — upserts the curated destination
   research snapshot into `locations`.
+- `pnpm data-import:legacy-galleries` — appends legacy event-date gallery
+  media to `events.gallery` and unambiguous `locations.gallery`.
 
 Plus one refresh command:
 
@@ -24,6 +26,9 @@ Plus one refresh command:
   location pages.
 - `pnpm data-import:extract-legacy-support-content` — regenerates support
   content seeds from the local legacy Postgres container.
+- `pnpm data-import:extract-legacy-galleries` — regenerates the committed
+  event-date gallery placement snapshot from the local legacy Postgres
+  container.
 
 This slice covers `team_member` → `guides` (38 rows) and `location` → `locations`
 (59 rows). Other entities are follow-up specs.
@@ -79,7 +84,7 @@ pnpm data-import:sandbox
 This resets only `rockbusters_import_sandbox` on local Postgres, runs migrations,
 imports media metadata, airports, locations, guides, seed data, curated
 partners, testimonials, blog categories, blog posts, destinations, legacy
-events, catalogue-card copy, and the homepage snapshot.
+events, legacy galleries, catalogue-card copy, and the homepage snapshot.
 It then reruns the FK-heavy imports to prove they are idempotent.
 Target-specific lookup files are written under
 `.scratch/data-import-sandbox-lookups` so committed seed files are not polluted
@@ -246,6 +251,41 @@ not invent new media IDs.
 This command is allowed to publish partial records because that product decision
 was accepted for the first migration pass. The `contentCompleteness` field keeps
 those records visible for later editorial review.
+
+## Legacy gallery import
+
+Refresh the committed gallery placement snapshot from the local legacy Postgres
+container only when the source dump changes:
+
+```bash
+pnpm data-import:extract-legacy-galleries
+```
+
+This writes:
+
+```text
+scripts/data-import/seed/legacy-gallery-placements.json
+```
+
+Import the resolved gallery relations into Payload:
+
+```bash
+PAYLOAD_DISABLE_DB_PUSH=true pnpm data-import:legacy-galleries
+```
+
+The importer follows ADR-0007:
+
+- reads `event_date.gallery_id` placements,
+- resolves ordered `media__gallery_media` rows through the legacy media lookup,
+- appends all resolved placement media to the owning `events.gallery`,
+- appends placement media to `locations.gallery` only when the event date maps
+  to exactly one legacy location,
+- preserves any existing Payload gallery order and appends only missing legacy
+  media IDs.
+
+The importer does not upload media and does not create `event-dates.gallery`.
+Run it after `data-import:seed-media`, `data-import:legacy-destinations`, and
+`data-import:legacy-events`.
 
 ## Legacy location media references
 

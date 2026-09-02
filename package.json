@@ -25,6 +25,8 @@
     "data-import:legacy-destinations": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-legacy-destinations.ts",
     "data-import:extract-legacy-events": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/extract-legacy-events.ts",
     "data-import:legacy-events": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-legacy-events.ts",
+    "data-import:extract-legacy-galleries": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/extract-legacy-gallery-placements.ts",
+    "data-import:legacy-galleries": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-legacy-galleries.ts",
     "data-import:extract-legacy-support-content": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/extract-legacy-support-content.ts",
     "data-import:legacy-support-content": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-legacy-support-content.ts",
     "data-import:promote-event-catalogue-cards": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/promote-event-catalogue-card-proposals.ts",

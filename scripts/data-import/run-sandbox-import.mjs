@@ -134,6 +134,7 @@ runPnpmScript('seed', env)
 runPnpmScript('data-import:legacy-support-content', env)
 runPnpmScript('data-import:legacy-destinations', env)
 runPnpmScript('data-import:legacy-events', env)
+runPnpmScript('data-import:legacy-galleries', env)
 runPnpmScript('data-import:event-catalogue-cards', env)
 runPnpmScript('data-import:homepage', env)
 
@@ -146,12 +147,15 @@ const beforeRerun = psqlValue(
     "(select count(*) from partners) || ',' ||",
     "(select count(*) from reviews) || ',' ||",
     "(select count(*) from post_categories) || ',' ||",
-    "(select count(*) from posts);",
+    "(select count(*) from posts) || ',' ||",
+    "(select count(*) from events_rels where path = 'gallery' and media_id is not null) || ',' ||",
+    "(select count(*) from locations_rels where path = 'gallery' and media_id is not null);",
   ].join(' '),
 )
 
 console.log('\nVerifying idempotent reruns')
 runPnpmScript('data-import:legacy-events', env)
+runPnpmScript('data-import:legacy-galleries', env)
 runPnpmScript('data-import:legacy-support-content', env)
 runPnpmScript('data-import:event-catalogue-cards', env)
 runPnpmScript('data-import:homepage', env)
@@ -165,13 +169,17 @@ const afterRerun = psqlValue(
     "(select count(*) from partners) || ',' ||",
     "(select count(*) from reviews) || ',' ||",
     "(select count(*) from post_categories) || ',' ||",
-    "(select count(*) from posts);",
+    "(select count(*) from posts) || ',' ||",
+    "(select count(*) from events_rels where path = 'gallery' and media_id is not null) || ',' ||",
+    "(select count(*) from locations_rels where path = 'gallery' and media_id is not null);",
   ].join(' '),
 )
 if (afterRerun !== beforeRerun) {
   throw new Error(`Idempotency check failed: before=${beforeRerun} after=${afterRerun}`)
 }
-console.log(`Idempotency check passed: events,event_dates,partners,reviews,post_categories,posts=${afterRerun}`)
+console.log(
+  `Idempotency check passed: events,event_dates,partners,reviews,post_categories,posts,event_gallery,location_gallery=${afterRerun}`,
+)
 
 psql(
   targetUrl,
@@ -184,6 +192,8 @@ psql(
     "(select count(*) from reviews) as reviews,",
     "(select count(*) from post_categories) as post_categories,",
     "(select count(*) from posts) as posts,",
+    "(select count(*) from events_rels where path = 'gallery' and media_id is not null) as event_gallery,",
+    "(select count(*) from locations_rels where path = 'gallery' and media_id is not null) as location_gallery,",
     "(select count(*) from pages where slug = 'home') as home_pages;",
   ].join(' '),
 )

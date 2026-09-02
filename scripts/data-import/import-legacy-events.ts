@@ -403,7 +403,6 @@ async function buildEventData(
     content: toLexical(row.body, editorConfig) ?? null,
     additionalInfo: buildAdditionalInfo(row, editorConfig),
     mainPicture,
-    gallery: [],
     categories: relations.categories,
     difficulties: relations.difficulties,
     programs: relations.programs,
