@@ -10,6 +10,14 @@
 
 **Spec:** `docs/superpowers/specs/2026-09-02-benefit-plus-gateway-design.md`
 
+**Running tests:** `pnpm test:int` runs the whole suite. To run one file, use
+`pnpm exec vitest run --config ./vitest.config.mts <path>` — `pnpm test:int -- <path>`
+does *not* filter, it silently runs everything.
+
+**Worktree setup (once):** this worktree needs `.env` and `.env.test` copied from
+the main checkout at `/Users/janantl/Work/rockbusters/v3/`, and `pnpm install` run
+in it. Both are already done.
+
 ---
 
 ## File Structure
@@ -197,7 +205,7 @@ describe('CZK order pricing', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/order-pricing.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/order-pricing.int.spec.ts
 ```
 
 Expected: FAIL. Payload rejects the unknown `priceCzk` / `unitPriceCzk` fields, or `totalPriceCzk` comes back `undefined`.
@@ -349,7 +357,7 @@ Expected: two new files in `src/migrations/` — a `.ts` and its `.json` Drizzle
 - [ ] **Step 9: Apply the migration and run the tests**
 
 ```bash
-pnpm payload migrate && pnpm test:int -- tests/int/order-pricing.int.spec.ts
+pnpm payload migrate && pnpm exec vitest run --config ./vitest.config.mts tests/int/order-pricing.int.spec.ts
 ```
 
 Expected: migration applies, all three new tests PASS.
@@ -419,7 +427,7 @@ describe('toMinorUnits', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/money.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/money.int.spec.ts
 ```
 
 Expected: FAIL — cannot resolve `@/payments/money`.
@@ -458,7 +466,7 @@ import { toMinorUnits } from '../money'
 - [ ] **Step 5: Run the tests**
 
 ```bash
-pnpm test:int -- tests/int/money.int.spec.ts tests/int/comgate-gateway.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/money.int.spec.ts tests/int/comgate-gateway.int.spec.ts
 ```
 
 Expected: PASS. The Comgate tests are the regression check that the move changed no behaviour.
@@ -629,7 +637,7 @@ Remove the now-unused `TransactionState`/`PaymentMethod`/`TransactionStore` impo
 - [ ] **Step 4: Typecheck and run the payment tests**
 
 ```bash
-pnpm exec tsc --noEmit && pnpm test:int -- tests/int/order-payment-service.int.spec.ts
+pnpm exec tsc --noEmit && pnpm exec vitest run --config ./vitest.config.mts tests/int/order-payment-service.int.spec.ts
 ```
 
 Expected: no type errors, tests PASS unchanged.
@@ -805,7 +813,7 @@ describe('applyOutcome', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/order-transitions.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/order-transitions.int.spec.ts
 ```
 
 Expected: FAIL — cannot resolve `@/payments/order-transitions`.
@@ -917,7 +925,7 @@ import { applyOutcome } from './order-transitions'
 - [ ] **Step 5: Run the tests**
 
 ```bash
-pnpm test:int -- tests/int/order-transitions.int.spec.ts tests/int/order-payment-service.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/order-transitions.int.spec.ts tests/int/order-payment-service.int.spec.ts
 ```
 
 Expected: all PASS. The Comgate webhook tests are the regression check.
@@ -1043,7 +1051,7 @@ describe('rawUrlEncode', () => {
 - [ ] **Step 2: Run the test**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-signing.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-signing.int.spec.ts
 ```
 
 Expected: the primitives were ported carefully, so these should PASS on the first run. If any fail, fix the source file (not the test) — these assertions restate documented MuzaPay requirements, and getting them wrong means the gateway rejects every request.
@@ -1157,7 +1165,7 @@ describe('isBenefitPlusConfigured', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-config.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-config.int.spec.ts
 ```
 
 Expected: FAIL — cannot resolve `@/payments/muzapay/config`.
@@ -1238,7 +1246,7 @@ export function isBenefitPlusConfigured(): boolean {
 - [ ] **Step 4: Run the test to verify it passes**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-config.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-config.int.spec.ts
 ```
 
 Expected: PASS.
@@ -1355,7 +1363,7 @@ describe('MuzaPayClient.put', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-client.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-client.int.spec.ts
 ```
 
 Expected: FAIL — cannot resolve `@/payments/muzapay/client`.
@@ -1459,7 +1467,7 @@ export class MuzaPayClient {
 - [ ] **Step 4: Run the test to verify it passes**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-client.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-client.int.spec.ts
 ```
 
 Expected: PASS.
@@ -1675,7 +1683,7 @@ describe('MuzaPayGateway.begin', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-gateway.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-gateway.int.spec.ts
 ```
 
 Expected: FAIL — cannot resolve `@/payments/muzapay/gateway`.
@@ -1832,7 +1840,7 @@ export class MuzaPayGateway implements PaymentGateway {
 - [ ] **Step 4: Run the test to verify it passes**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-gateway.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-gateway.int.spec.ts
 ```
 
 Expected: PASS — all six `begin` tests.
@@ -1937,7 +1945,7 @@ describe('MuzaPayGateway.handleReturn', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-gateway.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-gateway.int.spec.ts
 ```
 
 Expected: FAIL with "MuzaPayGateway.checkStatus is not implemented yet."
@@ -2007,7 +2015,7 @@ then add a private helper and replace the `checkStatus` stub:
 - [ ] **Step 4: Run the test to verify it passes**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-gateway.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-gateway.int.spec.ts
 ```
 
 Expected: PASS.
@@ -2080,7 +2088,7 @@ describe('MuzaPayGateway.cancel', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/muzapay-gateway.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-gateway.int.spec.ts
 ```
 
 Expected: FAIL with "MuzaPayGateway.cancel is not implemented yet."
@@ -2148,7 +2156,7 @@ In `src/payments/muzapay/gateway.ts` replace the `cancel` stub:
 - [ ] **Step 4: Run the tests and typecheck**
 
 ```bash
-pnpm exec tsc --noEmit && pnpm test:int -- tests/int/muzapay-gateway.int.spec.ts tests/int/comgate-gateway.int.spec.ts
+pnpm exec tsc --noEmit && pnpm exec vitest run --config ./vitest.config.mts tests/int/muzapay-gateway.int.spec.ts tests/int/comgate-gateway.int.spec.ts
 ```
 
 Expected: no type errors, all PASS.
@@ -2361,7 +2369,7 @@ describe('beginBenefitPlusPayment', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/benefit-plus-payment-service.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/benefit-plus-payment-service.int.spec.ts
 ```
 
 Expected: FAIL — `beginBenefitPlusPayment` is not exported.
@@ -2469,7 +2477,7 @@ export async function beginBenefitPlusPayment(
 - [ ] **Step 4: Run the test to verify it passes**
 
 ```bash
-pnpm test:int -- tests/int/benefit-plus-payment-service.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/benefit-plus-payment-service.int.spec.ts
 ```
 
 Expected: PASS.
@@ -2601,7 +2609,7 @@ describe('resolveBenefitPlusPayment', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/benefit-plus-payment-service.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/benefit-plus-payment-service.int.spec.ts
 ```
 
 Expected: FAIL — `resolveBenefitPlusPayment` is not exported.
@@ -2632,7 +2640,7 @@ export async function resolveBenefitPlusPayment(uuid: string): Promise<void> {
 - [ ] **Step 4: Run the test to verify it passes**
 
 ```bash
-pnpm test:int -- tests/int/benefit-plus-payment-service.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/benefit-plus-payment-service.int.spec.ts
 ```
 
 Expected: PASS.
@@ -2886,7 +2894,7 @@ describe('sweepBenefitPlusPayments', () => {
 - [ ] **Step 2: Run the test to verify it fails**
 
 ```bash
-pnpm test:int -- tests/int/benefit-plus-sweep.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/benefit-plus-sweep.int.spec.ts
 ```
 
 Expected: FAIL — `sweepBenefitPlusPayments` is not exported.
@@ -2960,7 +2968,7 @@ export async function sweepBenefitPlusPayments(): Promise<SweepSummary> {
 - [ ] **Step 4: Run the test to verify it passes**
 
 ```bash
-pnpm test:int -- tests/int/benefit-plus-sweep.int.spec.ts
+pnpm exec vitest run --config ./vitest.config.mts tests/int/benefit-plus-sweep.int.spec.ts
 ```
 
 Expected: PASS.
