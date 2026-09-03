@@ -269,9 +269,6 @@ function normalizeReview(review) {
     transportTags,
     structuredTextFields: {
       gradeRange: facts.gradeRange ?? null,
-      seasonSummary: sectionBody(review, 'season'),
-      transportSummary: sectionBody(review, 'transport'),
-      accommodationSummary: sectionBody(review, 'stay'),
     },
     rawFacts: facts,
   }
@@ -329,10 +326,6 @@ function inferDestinationScope(slug, title, sourceText) {
   if (/crag|wall|sector|cliff|single crag/i.test(sourceText)) return 'crag'
   if (/region|island|peninsula|coast|range|valley|gorge|area/i.test(sourceText)) return 'area'
   return 'unknown'
-}
-
-function sectionBody(review, key) {
-  return review.sections?.find((section) => section.key === key)?.body ?? null
 }
 
 function normalizeArray(values, aliases) {

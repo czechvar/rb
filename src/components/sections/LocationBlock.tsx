@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import type { Location, Media, Program } from '@/payload-types'
+import type { Media, Program } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import styles from './LocationBlock.module.css'
 
 export interface LocationBlockProps {
-  /** Lexical rich-text body — the only data currently available from both callers. */
-  content?: Program['content'] | Location['content']
+  content?: Program['content']
+  body?: string | null
   /** Optional Bebas display heading rendered above the eyebrow + prose
    *  (e.g. a destination name like "Kalymnos"). Only rendered when provided. */
   heading?: string
@@ -21,8 +21,8 @@ export interface LocationBlockProps {
   imageAlt?: string
 }
 
-export function LocationBlock({ content, heading, eyebrow, image, imageAlt }: LocationBlockProps) {
-  if (!content) return null
+export function LocationBlock({ body, content, heading, eyebrow, image, imageAlt }: LocationBlockProps) {
+  if (!content && !body) return null
 
   const imgUrl = image ? mediaUrl(image) : undefined
   const imgAlt = imageAlt ?? (image ? mediaAlt(image) : '')
@@ -49,11 +49,22 @@ export function LocationBlock({ content, heading, eyebrow, image, imageAlt }: Lo
           <div className={styles.textCol}>
             {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
             <div className={styles.prose}>
-              <Lexical data={content} />
+              {content ? (
+                <Lexical data={content} />
+              ) : (
+                paragraphs(body).map((paragraph) => <p key={paragraph}>{paragraph}</p>)
+              )}
             </div>
           </div>
         </div>
       </div>
     </section>
   )
+}
+
+function paragraphs(value: string | null | undefined) {
+  return String(value ?? '')
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
 }

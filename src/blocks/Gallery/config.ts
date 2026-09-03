@@ -28,6 +28,7 @@ export const GalleryBlockConfig: Block = {
       values: [
         { label: 'Grid', value: 'grid' },
         { label: 'Masonry', value: 'masonry' },
+        { label: 'Tiles', value: 'tiles' },
       ],
     }),
   ],

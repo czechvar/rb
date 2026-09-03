@@ -47,6 +47,12 @@ import { LocationHeroBlockConfig } from './LocationHero/config'
 import { LocationContentBlockConfig } from './LocationContent/config'
 import { LocationMapBlockConfig } from './LocationMap/config'
 import { LocationTripsBlockConfig } from './LocationTrips/config'
+import { DestinationHeroBlockConfig } from './DestinationHero/config'
+import { DestinationSectionsBlockConfig } from './DestinationSections/config'
+import { DestinationCardGridBlockConfig } from './DestinationCardGrid/config'
+import { DestinationSeasonBlockConfig } from './DestinationSeason/config'
+import { DestinationLogisticsBlockConfig } from './DestinationLogistics/config'
+import { DestinationSidebarBlockConfig } from './DestinationSidebar/config'
 import { GuideHeroBlockConfig } from './GuideHero/config'
 import { GuideStatsBlockConfig } from './GuideStats/config'
 import { GuideAboutBlockConfig } from './GuideAbout/config'
@@ -322,6 +328,48 @@ const rawBlockCatalogue = [
   },
   {
     config: LocationTripsBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationHeroBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationSectionsBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationCardGridBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationSeasonBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationLogisticsBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationSidebarBlockConfig,
     category: 'locationDetail',
     dataDependencies: ['location'],
     sourceModes: ['currentContext'],

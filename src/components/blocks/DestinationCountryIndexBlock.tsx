@@ -189,10 +189,8 @@ function countryAnchor(country: string) {
 
 function destinationTeaser(location: Location) {
   const candidates = [
-    location.seasonSummary,
-    location.transportSummary,
-    location.accommodationSummary,
-    ...(location.contentSections ?? []).map((section) => section.body),
+    location.destinationDetail?.hero?.body,
+    ...(location.destinationDetail?.sections ?? []).map((section) => section.body),
   ]
 
   const value = candidates

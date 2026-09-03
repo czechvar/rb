@@ -13,6 +13,18 @@ Two commands, both idempotent:
 - `pnpm data-import:locations` — imports locations only.
 - `pnpm data-import:legacy-destinations` — upserts the curated destination
   research snapshot into `locations`.
+- `pnpm data-import:prepare-location-structured-extraction` — prepares
+  all-location source packets for generating `locations.destinationDetail`
+  JSON.
+- `pnpm data-import:build-location-structured` — builds one derived
+  `destinationDetail` JSON file per prepared location packet.
+- `pnpm data-import:validate-location-structured` — validates generated
+  `destinationDetail` JSON before import.
+- `pnpm data-import:location-structured` — imports one generated
+  `destinationDetail` JSON file.
+- `pnpm data-import:locations-structured` — imports all generated
+  `destinationDetail` JSON files from
+  `.scratch/location-structured-extraction/output`.
 - `pnpm data-import:legacy-galleries` — appends legacy event-date gallery
   media to `events.gallery` and unambiguous `locations.gallery`.
 
@@ -71,6 +83,50 @@ You do NOT need MAMP for this. The seed lives in git.
 
 That's it. Locations use skip-if-exists, while guides are overwritten from the
 legacy seed. Both are safe to re-run when that behavior is intentional.
+
+## Destination detail extraction and writeback
+
+The destination-detail page template is code-defined. It automatically renders
+for a Location when `destinationDetail.hero.heading` exists and the Location
+does not have custom `layout` blocks. The structured writeback updates only
+`locations.destinationDetail`; it does not touch canonical location facts,
+media, galleries, active state, source references, or custom layout blocks.
+
+Prepare all source packets:
+
+```bash
+pnpm data-import:prepare-location-structured-extraction
+```
+
+Generate one output JSON per destination into:
+
+```bash
+pnpm data-import:build-location-structured
+```
+
+```txt
+.scratch/location-structured-extraction/output/<slug>.json
+```
+
+Validate the generated JSON before any Payload writes:
+
+```bash
+pnpm data-import:validate-location-structured -- --input .scratch/location-structured-extraction/output --strict --check-filenames
+pnpm data-import:locations-structured -- --validate-only
+```
+
+Write all validated destination details:
+
+```bash
+pnpm data-import:locations-structured
+```
+
+For one destination:
+
+```bash
+pnpm data-import:location-structured -- --slug albarracin --file .scratch/location-structured-extraction/output/albarracin.json --validate-only
+pnpm data-import:location-structured -- --slug albarracin --file .scratch/location-structured-extraction/output/albarracin.json
+```
 
 ## Fresh local sandbox check
 

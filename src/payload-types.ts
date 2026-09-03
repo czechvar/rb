@@ -554,7 +554,7 @@ export interface Program {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry';
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -1202,7 +1202,7 @@ export interface Event {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry';
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -1556,21 +1556,6 @@ export interface Location {
   id: number;
   name: string;
   slug: string;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   address?: string | null;
   city?: string | null;
   country?: string | null;
@@ -1639,39 +1624,6 @@ export interface Location {
   routeCount?: number | null;
   problemCount?: number | null;
   sectorCount?: number | null;
-  seasonSummary?: string | null;
-  transportSummary?: string | null;
-  accommodationSummary?: string | null;
-  /**
-   * Structured destination content extracted from legacy data and research. Missing sections are kept for editorial traceability.
-   */
-  contentSections?:
-    | {
-        key: string;
-        heading: string;
-        status: 'enriched' | 'mixed' | 'legacy' | 'missing' | 'not-applicable';
-        body?: string | null;
-        sourceRefs?:
-          | {
-              [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        warnings?:
-          | {
-              [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   /**
    * Traceability for mined or enriched destination facts.
    */
@@ -1688,6 +1640,213 @@ export interface Location {
     | null;
   mainPicture?: (string | null) | Media;
   gallery?: (string | Media)[] | null;
+  /**
+   * Structured content for the default destination detail renderer. Canonical location facts remain on the parent Location record.
+   */
+  destinationDetail?: {
+    hero?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      accentWord?: string | null;
+      body?: string | null;
+      primaryAction?: {
+        label?: string | null;
+        href?: string | null;
+      };
+      heroStats?:
+        | {
+            value: string;
+            label: string;
+            derivedFrom?: string | null;
+            format?: string | null;
+            note?: string | null;
+            sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    sections?:
+      | {
+          key: string;
+          navLabel?: string | null;
+          heading: string;
+          body?: string | null;
+          keyCharacteristics?: string[] | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          id?: string | null;
+        }[]
+      | null;
+    audience?:
+      | {
+          label: string;
+          gradeRange?: string | null;
+          body?: string | null;
+          badge?: string | null;
+          tone?:
+            | ('neutral' | 'positive' | 'strong' | 'limited' | 'warning' | 'critical' | 'peak' | 'good' | 'avoid')
+            | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    sectors?:
+      | {
+          name: string;
+          badges?: string[] | null;
+          gradeRange?: string | null;
+          body?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    seasonMonths?:
+      | {
+          month: number;
+          label: string;
+          score: number;
+          temperature?: string | null;
+          conditions?: string | null;
+          tone?:
+            | ('neutral' | 'positive' | 'strong' | 'limited' | 'warning' | 'critical' | 'peak' | 'good' | 'avoid')
+            | null;
+          notes?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          id?: string | null;
+        }[]
+      | null;
+    gearGroups?:
+      | {
+          heading: string;
+          items?: string[] | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    transportOptions?:
+      | {
+          label: string;
+          type?: string | null;
+          duration?: string | null;
+          body?: string | null;
+          recommended?: boolean | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    accommodationOptions?:
+      | {
+          type?: string | null;
+          name: string;
+          body?: string | null;
+          href?: string | null;
+          actionLabel?: string | null;
+          priceHint?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    restDayIdeas?:
+      | {
+          title: string;
+          body?: string | null;
+          distance?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    accessRules?:
+      | {
+          title: string;
+          body?: string | null;
+          tone?:
+            | ('neutral' | 'positive' | 'strong' | 'limited' | 'warning' | 'critical' | 'peak' | 'good' | 'avoid')
+            | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    safetyItems?:
+      | {
+          label: string;
+          value?: string | null;
+          body?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    costItems?:
+      | {
+          label: string;
+          unit?: string | null;
+          budget?: string | null;
+          midRange?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    destinationFaqs?:
+      | {
+          question: string;
+          answer: string;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    tripPromos?:
+      | {
+          type?: string | null;
+          title: string;
+          body?: string | null;
+          action?: {
+            label?: string | null;
+            href?: string | null;
+          };
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    relatedLocations?: (number | Location)[] | null;
+    /**
+     * Fallback display cards for related destinations when matching Location records are not available yet.
+     */
+    relatedDestinationCards?:
+      | {
+          slug?: string | null;
+          name: string;
+          country?: string | null;
+          region?: string | null;
+          summary?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    cta?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      body?: string | null;
+      primaryAction?: {
+        label?: string | null;
+        href?: string | null;
+      };
+      secondaryAction?: {
+        label?: string | null;
+        href?: string | null;
+      };
+      sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+    };
+  };
   /**
    * Optional block-driven layout for this public destination page. Empty uses the current default layout.
    */
@@ -1959,7 +2118,7 @@ export interface Location {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry';
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -2081,6 +2240,76 @@ export interface Location {
             id?: string | null;
             blockName?: string | null;
             blockType: 'locationTrips';
+          }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationHero';
+          }
+        | {
+            eyebrow?: string | null;
+            /**
+             * Optional override. Empty uses the first rendered section heading.
+             */
+            heading?: string | null;
+            /**
+             * Optional filter. Empty renders all destinationDetail.sections.
+             */
+            sectionKeys?:
+              | {
+                  key: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationSections';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source:
+              | 'audience'
+              | 'sectors'
+              | 'restDayIdeas'
+              | 'accessRules'
+              | 'safetyItems'
+              | 'destinationFaqs'
+              | 'tripPromos'
+              | 'relatedLocations'
+              | 'relatedDestinationCards';
+            columns: 'auto' | '2' | '3';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationCardGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationSeason';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'all' | 'gearGroups' | 'transportOptions' | 'accommodationOptions' | 'costItems';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationLogistics';
+          }
+        | {
+            includeCta?: boolean | null;
+            includeQuickFacts?: boolean | null;
+            includeAccommodationLinks?: boolean | null;
+            includeResources?: boolean | null;
+            includeEmergencyContacts?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationSidebar';
           }
       )[]
     | null;
@@ -2427,7 +2656,7 @@ export interface Guide {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry';
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -2984,7 +3213,7 @@ export interface Post {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry';
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -3797,7 +4026,7 @@ export interface Page {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry';
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -5463,7 +5692,6 @@ export interface GuidesSelect<T extends boolean = true> {
 export interface LocationsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
-  content?: T;
   address?: T;
   city?: T;
   country?: T;
@@ -5490,20 +5718,6 @@ export interface LocationsSelect<T extends boolean = true> {
   routeCount?: T;
   problemCount?: T;
   sectorCount?: T;
-  seasonSummary?: T;
-  transportSummary?: T;
-  accommodationSummary?: T;
-  contentSections?:
-    | T
-    | {
-        key?: T;
-        heading?: T;
-        status?: T;
-        body?: T;
-        sourceRefs?: T;
-        warnings?: T;
-        id?: T;
-      };
   sourceReferences?:
     | T
     | {
@@ -5517,6 +5731,215 @@ export interface LocationsSelect<T extends boolean = true> {
       };
   mainPicture?: T;
   gallery?: T;
+  destinationDetail?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              accentWord?: T;
+              body?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              heroStats?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    derivedFrom?: T;
+                    format?: T;
+                    note?: T;
+                    sourceStatus?: T;
+                    id?: T;
+                  };
+            };
+        sections?:
+          | T
+          | {
+              key?: T;
+              navLabel?: T;
+              heading?: T;
+              body?: T;
+              keyCharacteristics?: T;
+              sourceStatus?: T;
+              id?: T;
+            };
+        audience?:
+          | T
+          | {
+              label?: T;
+              gradeRange?: T;
+              body?: T;
+              badge?: T;
+              tone?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        sectors?:
+          | T
+          | {
+              name?: T;
+              badges?: T;
+              gradeRange?: T;
+              body?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        seasonMonths?:
+          | T
+          | {
+              month?: T;
+              label?: T;
+              score?: T;
+              temperature?: T;
+              conditions?: T;
+              tone?: T;
+              notes?: T;
+              sourceStatus?: T;
+              id?: T;
+            };
+        gearGroups?:
+          | T
+          | {
+              heading?: T;
+              items?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        transportOptions?:
+          | T
+          | {
+              label?: T;
+              type?: T;
+              duration?: T;
+              body?: T;
+              recommended?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        accommodationOptions?:
+          | T
+          | {
+              type?: T;
+              name?: T;
+              body?: T;
+              href?: T;
+              actionLabel?: T;
+              priceHint?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        restDayIdeas?:
+          | T
+          | {
+              title?: T;
+              body?: T;
+              distance?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        accessRules?:
+          | T
+          | {
+              title?: T;
+              body?: T;
+              tone?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        safetyItems?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              body?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        costItems?:
+          | T
+          | {
+              label?: T;
+              unit?: T;
+              budget?: T;
+              midRange?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        destinationFaqs?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        tripPromos?:
+          | T
+          | {
+              type?: T;
+              title?: T;
+              body?: T;
+              action?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        relatedLocations?: T;
+        relatedDestinationCards?:
+          | T
+          | {
+              slug?: T;
+              name?: T;
+              country?: T;
+              region?: T;
+              summary?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              sourceStatus?: T;
+            };
+      };
   layout?:
     | T
     | {
@@ -5896,6 +6319,67 @@ export interface LocationsSelect<T extends boolean = true> {
         locationTrips?:
           | T
           | {
+              id?: T;
+              blockName?: T;
+            };
+        destinationHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        destinationSections?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              sectionKeys?:
+                | T
+                | {
+                    key?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        destinationCardGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              columns?: T;
+              id?: T;
+              blockName?: T;
+            };
+        destinationSeason?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              id?: T;
+              blockName?: T;
+            };
+        destinationLogistics?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              id?: T;
+              blockName?: T;
+            };
+        destinationSidebar?:
+          | T
+          | {
+              includeCta?: T;
+              includeQuickFacts?: T;
+              includeAccommodationLinks?: T;
+              includeResources?: T;
+              includeEmergencyContacts?: T;
               id?: T;
               blockName?: T;
             };

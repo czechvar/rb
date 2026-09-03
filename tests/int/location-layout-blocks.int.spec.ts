@@ -9,28 +9,11 @@ type RenderBlocksInput = Parameters<typeof RenderBlocks>[0]
 
 const trackedIds: Record<string, number[]> = {}
 
-const richText = (text: string): Record<string, unknown> => ({
-  root: {
-    type: 'root',
-    children: [
-      {
-        type: 'paragraph',
-        version: 1,
-        children: [{ type: 'text', version: 1, text }],
-      },
-    ],
-    direction: null,
-    format: '',
-    indent: 0,
-    version: 1,
-  },
-})
-
 describe('Location layout blocks', () => {
   afterEach(async () => {
     const payload = await getTestPayload()
 
-    for (const collection of ['events', 'locations']) {
+    for (const collection of ['event-dates', 'events', 'locations']) {
       const ids = trackedIds[collection]
       if (!ids?.length) continue
       await payload.delete({ collection: collection as never, where: { id: { in: ids } } })
@@ -46,8 +29,19 @@ describe('Location layout blocks', () => {
       city: 'Test City',
       country: 'Test Country',
       coordinates: [14.41, 50.08],
-      content: richText('Location body from the current Location record.'),
+      destinationDetail: {
+        sections: [
+          {
+            id: 'intro',
+            key: 'intro',
+            heading: 'Introduction',
+            body: 'Location body from the current Location record.',
+          },
+        ],
+      },
       active: true,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     } as Location
 
     const element = await RenderBlocks({
@@ -92,6 +86,22 @@ describe('Location layout blocks', () => {
       },
     })
     track('events', event.id)
+
+    const eventDate = await payload.create({
+      collection: 'event-dates',
+      data: {
+        event: event.id,
+        dateFrom: '2028-04-10T00:00:00.000Z',
+        dateTo: '2028-04-17T00:00:00.000Z',
+        price: 1190,
+        vat: 0,
+        currency: 'EUR',
+        capacity: 8,
+        minParticipants: 2,
+        active: true,
+      },
+    })
+    track('event-dates', eventDate.id)
 
     const element = await RenderBlocks({
       blocks: [

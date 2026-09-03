@@ -26,8 +26,23 @@ type ImportTotals = {
 type SeedID = string | number
 type SeedIDMap = Map<CollectionSlug, Map<string, SeedID>>
 
+const REMOVED_LOCATION_FIELDS = [
+  'content',
+  'contentSections',
+  'seasonSummary',
+  'transportSummary',
+  'accommodationSummary',
+]
+
 function collectionRows(seed: CanonicalSeed, slug: CollectionSlug) {
   return seed.collections.find((collection) => collection.slug === slug)?.rows ?? []
+}
+
+function pruneRemovedFields(collection: CollectionSlug, row: Record<string, unknown>) {
+  if (collection !== 'locations') return row
+  const next = { ...row }
+  for (const field of REMOVED_LOCATION_FIELDS) delete next[field]
+  return next
 }
 
 function idKey(id: unknown) {
@@ -253,7 +268,10 @@ async function upsertRow(
   const id = row.id
   if (id === null || id === undefined) return 'skipped'
 
-  const data = remapRelationships(maps, collection, row) as Record<string, unknown>
+  const data = pruneRemovedFields(
+    collection,
+    remapRelationships(maps, collection, row) as Record<string, unknown>,
+  )
   const existing = await findExistingRow(payload, collection, data, options)
   const existingID = existing?.id
   if (existingID !== null && existingID !== undefined) {

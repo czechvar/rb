@@ -41,6 +41,23 @@ function withoutTemporaryRows(slug: string, rows: Array<Record<string, unknown>>
   return kept
 }
 
+const REMOVED_LOCATION_FIELDS = [
+  'content',
+  'contentSections',
+  'seasonSummary',
+  'transportSummary',
+  'accommodationSummary',
+]
+
+function pruneRemovedFields(slug: string, rows: Array<Record<string, unknown>>) {
+  if (slug !== 'locations') return rows
+  return rows.map((row) => {
+    const next = { ...row }
+    for (const field of REMOVED_LOCATION_FIELDS) delete next[field]
+    return next
+  })
+}
+
 function pruneRowsWithMissingRequiredRelations(collections: CanonicalSeed['collections']) {
   const events = new Set(
     collections.find((collection) => collection.slug === 'events')?.rows.map((row) => row.id) ?? [],
@@ -65,7 +82,7 @@ async function main() {
   const collections: CanonicalSeed['collections'] = []
 
   for (const { slug } of CANONICAL_SEED_COLLECTIONS) {
-    const rows = withoutTemporaryRows(slug, await findAll(payload, slug))
+    const rows = pruneRemovedFields(slug, withoutTemporaryRows(slug, await findAll(payload, slug)))
     collections.push({ slug, rows })
     console.log(`canonical seed export: ${slug} rows=${rows.length}`)
   }

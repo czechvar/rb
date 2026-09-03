@@ -234,7 +234,7 @@ interface RunTotals {
 
 async function importLocations(
   payload: Payload,
-  editorConfig: EditorConfig,
+  _editorConfig: EditorConfig,
   rows: LocationRow[],
 ): Promise<RunTotals> {
   const totals: RunTotals = {
@@ -249,8 +249,8 @@ async function importLocations(
   for (const row of rows) {
     try {
       const { html, strippedImgs } = cleanBody(row.body)
+      void html
       totals.imgsStripped += strippedImgs
-      const content = toLexical(html, editorConfig)
 
       const data: Record<string, unknown> = {
         name: row.title,
@@ -258,7 +258,6 @@ async function importLocations(
         active: Boolean(row.display),
         featured: false,
       }
-      if (content) data.content = content
       if (row.country_nicename) data.country = row.country_nicename
       if (row.latitude !== 0 || row.longitude !== 0) {
         data.coordinates = [row.longitude, row.latitude]

@@ -23,6 +23,7 @@ export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderC
   const className = [
     styles.gallerySection,
     variant === 'masonry' ? styles.galleryMasonry : '',
+    variant === 'tiles' ? styles.galleryTiles : '',
   ].filter(Boolean).join(' ')
 
   return (

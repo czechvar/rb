@@ -1,8 +1,10 @@
 # Issue Tracker: Workstreams + Local Markdown
 
-Board-level tasks for this repo live in **Workstreams.ai**. Repo-local specs,
-PRDs, implementation plans, ADRs, and wayfinding artifacts live as markdown in
-this repository. The Git remote is GitLab
+Board-level tasks for this repo live in **Workstreams.ai** and must be accessed
+through the **Workstreams.ai - Xbusters** MCP connector whenever updating,
+creating, or otherwise managing Xbusters board tasks. Repo-local specs, PRDs,
+implementation plans, ADRs, and wayfinding artifacts live as markdown in this
+repository. The Git remote is GitLab
 (`git@gitlab.com:roman_roznovsky/xbusters.git`) and is used for code branches,
 commits, and merge requests, not as the canonical agent issue tracker.
 
@@ -10,7 +12,8 @@ commits, and merge requests, not as the canonical agent issue tracker.
 
 - **Specs / PRDs** → `docs/superpowers/specs/YYYY-MM-DD-<slug>-design.md` (16+ existing specs follow this pattern; use today's date and a kebab-case slug).
 - **Plans** → `docs/superpowers/plans/YYYY-MM-DD-<slug>.md`.
-- **Board tasks / delivery status** → Workstreams.ai Xbusters board.
+- **Board tasks / delivery status** → Workstreams.ai Xbusters board, via the
+  `Workstreams.ai - Xbusters` MCP connector.
 - **Ad-hoc wayfinding / grilling artefacts** → `.scratch/<effort>/` (create if needed; not checked in unless explicitly staged).
 - **Triage state** → a `Status:` line near the top of each file (see `triage-labels.md` for the role strings).
 - **Comments and conversation history** → append to the bottom of the file under a `## Comments` heading.
@@ -19,9 +22,12 @@ commits, and merge requests, not as the canonical agent issue tracker.
 
 For repo-local engineering work, create or update markdown under
 `docs/superpowers/specs/` or `docs/superpowers/plans/`. For board-visible work,
-create or update the corresponding Workstreams.ai task. Do not run
-`gh issue create`, and do not use GitLab Issues unless the user explicitly asks
-for a GitLab issue mirror.
+create or update the corresponding Workstreams.ai task using the
+`Workstreams.ai - Xbusters` MCP connector. Do not use the generic
+Workstreams.ai connector, local helper scripts, or direct API calls for Xbusters
+tracker writes unless the Xbusters MCP connector is unavailable and the fallback
+is called out explicitly. Do not run `gh issue create`, and do not use GitLab
+Issues unless the user explicitly asks for a GitLab issue mirror.
 
 ## When a skill says "fetch the relevant ticket"
 

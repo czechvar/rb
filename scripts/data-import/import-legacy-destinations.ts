@@ -233,34 +233,6 @@ function cleanText(value: string | null | undefined): string | undefined {
   return cleaned || undefined
 }
 
-function cleanMultilineText(value: string | null | undefined): string | undefined {
-  const cleaned = value
-    ?.split(/\n{2,}/)
-    .map((paragraph) => paragraph.replace(/\s+/g, ' ').trim())
-    .filter(Boolean)
-    .join('\n\n')
-
-  return cleaned || undefined
-}
-
-function sectionBody(record: CuratedDestination, key: string): string | undefined {
-  const section = record.sections.find((candidate) => candidate.key === key)
-  if (!section || section.status === 'missing' || section.status === 'not-applicable')
-    return undefined
-  return cleanMultilineText(section.body)
-}
-
-function contentSections(record: CuratedDestination) {
-  return record.sections.map((section) => ({
-    key: section.key,
-    heading: section.heading,
-    status: section.status,
-    body: cleanMultilineText(section.body) ?? null,
-    sourceRefs: section.sourceRefs ?? [],
-    warnings: section.warnings ?? [],
-  }))
-}
-
 function normalizeDate(value: string | null | undefined): string | undefined {
   if (!value) return undefined
   const date = new Date(value)
@@ -315,11 +287,6 @@ export function buildLocationData(
     routeCount: facts.routeCount ?? null,
     problemCount: facts.problemCount ?? null,
     sectorCount: facts.sectorCount ?? null,
-    seasonSummary: sectionBody(record, 'season') ?? null,
-    transportSummary: sectionBody(record, 'transport') ?? null,
-    accommodationSummary: sectionBody(record, 'stay') ?? null,
-    content: null,
-    contentSections: contentSections(record),
     sourceReferences: record.sources.map((source) => ({
       sourceId: source.id,
       title: cleanText(source.title) ?? null,
