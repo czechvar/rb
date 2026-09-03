@@ -17,6 +17,7 @@ import {
   type OrderDoc,
   type TransactionDoc,
 } from './transaction-store'
+import { applyOutcome } from './order-transitions'
 
 function comgateGateway() {
   return new ComgateGateway({
@@ -96,69 +97,13 @@ export async function applyComgateWebhook(request: Request): Promise<Response> {
   const gateway = comgateGateway()
   const result = await gateway.handleWebhook(request)
 
-  const cms = await getPayloadClient()
-  const { docs } = await cms.find({
-    collection: 'transactions',
-    where: { uuid: { equals: result.transactionUuid } },
-    limit: 1,
-    overrideAccess: true,
-  })
-  const txnDoc = docs[0] as TransactionDoc | undefined
+  const store = new PayloadTransactionStore()
+  const txnDoc = await store.findDocByUuid(result.transactionUuid)
   if (!txnDoc) {
     return new Response('Transaction not found', { status: 404 })
   }
 
-  // Already applied (duplicate webhook) — ack without re-running the order transition.
-  if (txnDoc.state === result.outcome.state) {
-    return new Response(result.acknowledgement.body, { status: result.acknowledgement.status })
-  }
-
-  // Apply the order-state transition(s) BEFORE marking the transaction terminal
-  // (see below) — if this throws (e.g. the order was independently cancelled
-  // between begin() and this webhook, making the transition invalid), the
-  // transaction stays in `begun`/`pending-payment`, so a webhook retry will not
-  // short-circuit on the idempotency check above and will retry the order chain.
-  const orderId = typeof txnDoc.order === 'object' ? txnDoc.order.id : txnDoc.order
-  const order = (await cms.findByID({
-    collection: 'orders',
-    id: orderId,
-    overrideAccess: true,
-  })) as OrderDoc
-
-  if (result.outcome.state === 'paid' && order.state !== 'paid') {
-    if (order.state === 'pending') {
-      await cms.update({
-        collection: 'orders',
-        id: orderId,
-        data: { state: 'confirmed' },
-        overrideAccess: true,
-      })
-    }
-    await cms.update({
-      collection: 'orders',
-      id: orderId,
-      data: { state: 'paid' },
-      overrideAccess: true,
-    })
-  } else if (result.outcome.state === 'cancelled' && order.state !== 'cancelled') {
-    await cms.update({
-      collection: 'orders',
-      id: orderId,
-      data: { state: 'cancelled' },
-      overrideAccess: true,
-    })
-  }
-
-  // Persisted last: if this write fails after the order already transitioned,
-  // that's self-healing too — the order-update above is idempotently skipped as
-  // already-applied on the next webhook attempt, and the transaction gets marked
-  // correctly then.
-  await cms.update({
-    collection: 'transactions',
-    id: txnDoc.id,
-    data: { state: result.outcome.state, callbackPayload: result.outcome.callbackPayload },
-    overrideAccess: true,
-  })
+  await applyOutcome(txnDoc, result.outcome)
 
   return new Response(result.acknowledgement.body, { status: result.acknowledgement.status })
 }
