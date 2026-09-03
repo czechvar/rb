@@ -104,6 +104,12 @@ export interface Transaction {
   money: Money;
   /** Short human label shown to the payer / on the gateway. */
   label: string;
+  /**
+   * The human order number (e.g. "RB-2026-000123") sent to gateways that
+   * accept a merchant-side reference. Optional because not every gateway
+   * has a field for it.
+   */
+  orderReference?: string;
   /** Payer email. */
   email: string;
   state: TransactionState;

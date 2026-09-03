@@ -11,95 +11,12 @@ import { getPayloadClient } from '@/lib/payload'
 import { siteUrl } from '@/lib/url'
 import { ComgateGateway } from './comgate/gateway'
 import { comgateConfigFromEnv } from './comgate/config'
-import type {
-  Transaction as GatewayTransaction,
-  TransactionState,
-  PaymentMethod,
-  TransactionStore,
-} from './gateway'
-
-type Currency = 'EUR' | 'CZK'
-type OrderState = 'pending' | 'confirmed' | 'paid' | 'completed' | 'cancelled'
-
-// OrderDoc/TransactionDoc below are hand-narrowed subsets of the generated Payload
-// types, not a verified 1:1 mirror of payload-types.ts — e.g. `orderNumber` is
-// treated as always-present because `allocateOrderNumber` sets it on create, and
-// `payload`/`callbackPayload` are narrowed to object-only because nothing but this
-// file ever writes them.
-interface OrderDoc {
-  id: number
-  orderNumber: string
-  state: OrderState
-  totalPrice: number
-  vat: number
-  currency: Currency
-  user: number | { id: number; email: string }
-}
-
-interface TransactionDoc {
-  id: number
-  uuid: string
-  order: number | { id: number }
-  amount: number
-  amountWithoutVat: number
-  currency: Currency
-  label: string
-  email: string
-  state: TransactionState
-  paymentMethod: PaymentMethod
-  payload: Record<string, unknown> | null
-  callbackPayload: Record<string, unknown> | null
-  createdAt: string
-  updatedAt: string
-}
-
-function toGatewayTransaction(doc: TransactionDoc): GatewayTransaction {
-  return {
-    id: String(doc.id),
-    uuid: doc.uuid,
-    money: {
-      amount: doc.amount.toFixed(2),
-      amountWithoutVat: doc.amountWithoutVat.toFixed(2),
-      currency: doc.currency,
-    },
-    label: doc.label,
-    email: doc.email,
-    state: doc.state,
-    paymentMethod: doc.paymentMethod,
-    payload: doc.payload ?? {},
-    callbackPayload: doc.callbackPayload,
-    createdAt: doc.createdAt,
-    updatedAt: doc.updatedAt,
-  }
-}
-
-class PayloadTransactionStore implements TransactionStore {
-  async findByUuid(uuid: string): Promise<GatewayTransaction | null> {
-    const cms = await getPayloadClient()
-    const { docs } = await cms.find({
-      collection: 'transactions',
-      where: { uuid: { equals: uuid } },
-      limit: 1,
-      overrideAccess: true,
-    })
-    const doc = docs[0] as TransactionDoc | undefined
-    return doc ? toGatewayTransaction(doc) : null
-  }
-
-  async findByGatewayTransactionId(
-    gatewayTransactionId: string,
-  ): Promise<GatewayTransaction | null> {
-    const cms = await getPayloadClient()
-    const { docs } = await cms.find({
-      collection: 'transactions',
-      where: { 'payload.gatewayTransactionId': { equals: gatewayTransactionId } },
-      limit: 1,
-      overrideAccess: true,
-    })
-    const doc = docs[0] as TransactionDoc | undefined
-    return doc ? toGatewayTransaction(doc) : null
-  }
-}
+import {
+  PayloadTransactionStore,
+  toGatewayTransaction,
+  type OrderDoc,
+  type TransactionDoc,
+} from './transaction-store'
 
 function comgateGateway() {
   return new ComgateGateway({
