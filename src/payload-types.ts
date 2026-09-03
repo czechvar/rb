@@ -3251,7 +3251,7 @@ export interface Transaction {
   currency: 'EUR' | 'CZK';
   label: string;
   /**
-   * The human order number sent to the gateway, so support tickets can be reconciled without the internal id.
+   * Intended to hold the human order number sent to the gateway, so support tickets can be reconciled without the internal id. Not yet populated by any code path.
    */
   orderReference?: string | null;
   email: string;
