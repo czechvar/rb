@@ -224,3 +224,127 @@ describe('order pricing — snowbusters stacking rule', () => {
     expect(order.referralCommission).toBe(0)
   })
 })
+
+async function seedEventDateWithCzk(price = 200, priceCzk = 5000) {
+  const payload = await getTestPayload()
+  const unique = `${Date.now()}-${Math.random().toString(36).slice(2)}`
+  const event = await payload.create({
+    collection: 'events',
+    data: {
+      title: `CzkPricingTest ${unique}`,
+      slug: `czkpricingtest-${unique}`,
+      state: 'published',
+    } as never,
+    overrideAccess: true,
+  })
+  const ed = await payload.create({
+    collection: 'event-dates',
+    data: {
+      event: event.id,
+      dateFrom: '2027-01-01',
+      dateTo: '2027-01-08',
+      price,
+      priceCzk,
+      vat: 21,
+      currency: 'EUR',
+      capacity: 10,
+      active: true,
+    } as never,
+    overrideAccess: true,
+  })
+  return { eventDateId: ed.id as number }
+}
+
+describe('CZK order pricing', () => {
+  it('derives totalPriceCzk with the same discount formula as totalPrice', async () => {
+    const payload = await getTestPayload()
+    const { eventDateId } = await seedEventDateWithCzk(200, 5000)
+    const user = await seedUser()
+    const discount = await payload.create({
+      collection: 'discount-codes',
+      data: {
+        code: `CZK${Date.now()}${Math.floor(Math.random() * 1000)}`,
+        title: 'CZK test',
+        discountPercent: 10,
+        validFrom: '2020-01-01',
+        validUntil: '2099-01-01',
+        active: true,
+      } as never,
+      overrideAccess: true,
+    })
+
+    const order = await payload.create({
+      collection: 'orders',
+      data: {
+        user: user.id,
+        eventDate: eventDateId,
+        participants: [
+          { firstName: 'A', lastName: 'B', email: 'a@x.test', phone: '+1' },
+          { firstName: 'C', lastName: 'D', email: 'c@x.test', phone: '+2' },
+        ],
+        billingAddress: billing,
+        unitPrice: 200,
+        unitPriceCzk: 5000,
+        vat: 21,
+        currency: 'EUR',
+        discountCode: discount.id,
+        state: 'pending',
+      } as never,
+      overrideAccess: true,
+    })
+
+    // EUR: 200 * 2 = 400, less 10% = 360. CZK: 5000 * 2 = 10000, less 10% = 9000.
+    expect(order.totalPrice).toBe(360)
+    expect(order.unitPriceCzk).toBe(5000)
+    expect(order.totalPriceCzk).toBe(9000)
+  })
+
+  it('leaves totalPriceCzk null when the trip has no CZK price', async () => {
+    const payload = await getTestPayload()
+    const { eventDateId } = await seedEventDate(200)
+    const user = await seedUser()
+
+    const order = await payload.create({
+      collection: 'orders',
+      data: {
+        user: user.id,
+        eventDate: eventDateId,
+        participants: [{ firstName: 'A', lastName: 'B', email: 'a@x.test', phone: '+1' }],
+        billingAddress: billing,
+        unitPrice: 200,
+        vat: 21,
+        currency: 'EUR',
+        state: 'pending',
+      } as never,
+      overrideAccess: true,
+    })
+
+    expect(order.totalPrice).toBe(200)
+    expect(order.unitPriceCzk ?? null).toBeNull()
+    expect(order.totalPriceCzk ?? null).toBeNull()
+  })
+
+  it('treats a zero CZK price as a real price, not as "unavailable"', async () => {
+    const payload = await getTestPayload()
+    const { eventDateId } = await seedEventDateWithCzk(200, 0)
+    const user = await seedUser()
+
+    const order = await payload.create({
+      collection: 'orders',
+      data: {
+        user: user.id,
+        eventDate: eventDateId,
+        participants: [{ firstName: 'A', lastName: 'B', email: 'a@x.test', phone: '+1' }],
+        billingAddress: billing,
+        unitPrice: 200,
+        unitPriceCzk: 0,
+        vat: 21,
+        currency: 'EUR',
+        state: 'pending',
+      } as never,
+      overrideAccess: true,
+    })
+
+    expect(order.totalPriceCzk).toBe(0)
+  })
+})

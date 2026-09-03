@@ -91,7 +91,7 @@ export async function createBookingAction(
 
   const ed = await payload.findByID({ collection: 'event-dates', id: eventDateId, depth: 0 })
   const edObj = ed as {
-    active?: boolean; price: number; vat: number; currency: 'EUR' | 'CZK'
+    active?: boolean; price: number; priceCzk?: number | null; vat: number; currency: 'EUR' | 'CZK'
   }
   if (!edObj.active) {
     return { ok: false, formError: 'This date is no longer available.' }
@@ -139,6 +139,7 @@ export async function createBookingAction(
         participants: parsed.data.participants,
         billingAddress,
         unitPrice: edObj.price,
+        unitPriceCzk: edObj.priceCzk ?? null,
         vat: edObj.vat,
         currency: edObj.currency,
         state: 'pending',

@@ -44,6 +44,14 @@ export const Transactions: CollectionConfig = {
       ],
     },
     { name: 'label', type: 'text', required: true },
+    {
+      name: 'orderReference',
+      type: 'text',
+      admin: {
+        description:
+          'The human order number sent to the gateway, so support tickets can be reconciled without the internal id.',
+      },
+    },
     { name: 'email', type: 'email', required: true },
     {
       name: 'state',
@@ -65,7 +73,7 @@ export const Transactions: CollectionConfig = {
       required: true,
       options: [
         { label: 'PayPal', value: 'paypal' },
-        { label: 'MuzaPay', value: 'muzapay' },
+        { label: 'Benefit+ (MuzaPay)', value: 'muzapay' },
         { label: 'Comgate — card', value: 'comgate-card' },
         { label: 'Comgate — bank transfer', value: 'comgate-transfer' },
         { label: 'Bank transfer', value: 'bank-transfer' },

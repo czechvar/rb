@@ -19,6 +19,7 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
   const d = data as {
     participants?: unknown[]
     unitPrice?: unknown
+    unitPriceCzk?: unknown
     discountCode?: number | null
     referral?: number | null
   }
@@ -26,6 +27,12 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
   const participantCount = participants.length
   const unitPrice = Number(d.unitPrice ?? 0)
   const basePrice = unitPrice * participantCount
+
+  // Null, not 0: a trip with no CZK price must be distinguishable from a
+  // free one, because null is what hides the Benefit+ button.
+  const unitPriceCzk =
+    d.unitPriceCzk === null || d.unitPriceCzk === undefined ? null : Number(d.unitPriceCzk)
+  const basePriceCzk = unitPriceCzk === null ? null : unitPriceCzk * participantCount
 
   let dc: { discountPercent: number; commissionPercent?: number | null } | null = null
   if (d.discountCode) {
@@ -51,6 +58,10 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
   const discountPercent = dc ? dc.discountPercent : ref ? ref.discountPercent : 0
   const discountAmount = Math.round((basePrice * discountPercent) / 100)
   const totalPrice = basePrice - discountAmount
+  const totalPriceCzk =
+    basePriceCzk === null
+      ? null
+      : basePriceCzk - Math.round((basePriceCzk * discountPercent) / 100)
   const discountCommission = dc
     ? Math.round((basePrice * (dc.commissionPercent ?? 0)) / 100)
     : 0
@@ -62,6 +73,7 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
     ...data,
     participantCount,
     totalPrice,
+    totalPriceCzk,
     discountAmount,
     discountCommission,
     referralCommission,

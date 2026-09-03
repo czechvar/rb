@@ -2967,6 +2967,10 @@ export interface EventDate {
   airportFrom?: (number | null) | Airport;
   airportTo?: (number | null) | Airport;
   price: number;
+  /**
+   * CZK price per person, used only for Benefit+ (MuzaPay) payments. Leave empty to disable Benefit+ for this trip.
+   */
+  priceCzk?: number | null;
   vat: number;
   currency: 'EUR' | 'CZK';
   capacity: number;
@@ -3136,9 +3140,17 @@ export interface Order {
     };
   };
   unitPrice: number;
+  /**
+   * CZK price per person, snapshotted from the event date at booking time. Null when the trip has no CZK price.
+   */
+  unitPriceCzk?: number | null;
   vat: number;
   currency: 'EUR' | 'CZK';
   totalPrice: number;
+  /**
+   * CZK order total, derived with the same discount formula as totalPrice. Used only as the Benefit+ payment amount. Null when the trip has no CZK price.
+   */
+  totalPriceCzk?: number | null;
   /**
    * Discount code applied at booking time (snapshot).
    */
@@ -3238,6 +3250,10 @@ export interface Transaction {
   amountWithoutVat: number;
   currency: 'EUR' | 'CZK';
   label: string;
+  /**
+   * The human order number sent to the gateway, so support tickets can be reconciled without the internal id.
+   */
+  orderReference?: string | null;
   email: string;
   state: 'created' | 'begun' | 'pending-payment' | 'paid' | 'cancelled' | 'failed';
   paymentMethod: 'paypal' | 'muzapay' | 'comgate-card' | 'comgate-transfer' | 'bank-transfer';
@@ -6220,6 +6236,7 @@ export interface EventDatesSelect<T extends boolean = true> {
   airportFrom?: T;
   airportTo?: T;
   price?: T;
+  priceCzk?: T;
   vat?: T;
   currency?: T;
   capacity?: T;
@@ -6297,9 +6314,11 @@ export interface OrdersSelect<T extends boolean = true> {
             };
       };
   unitPrice?: T;
+  unitPriceCzk?: T;
   vat?: T;
   currency?: T;
   totalPrice?: T;
+  totalPriceCzk?: T;
   discountCode?: T;
   referral?: T;
   discountAmount?: T;
@@ -6329,6 +6348,7 @@ export interface TransactionsSelect<T extends boolean = true> {
   amountWithoutVat?: T;
   currency?: T;
   label?: T;
+  orderReference?: T;
   email?: T;
   state?: T;
   paymentMethod?: T;
