@@ -5,6 +5,10 @@ import { BlockAction } from './BlockAction'
 import styles from './blocks.module.css'
 
 type HeroBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'hero' }>
+type HeroBlockAnalyticsContext = {
+  pageSlug?: string | null
+  blockIndex?: number
+}
 
 export function HeroBlock({
   accentWords,
@@ -12,9 +16,11 @@ export function HeroBlock({
   body,
   eyebrow,
   heading,
+  id,
   primaryAction,
   variant,
-}: HeroBlockProps) {
+  analyticsContext,
+}: HeroBlockProps & { analyticsContext?: HeroBlockAnalyticsContext }) {
   const imageUrl = mediaUrl(backgroundMedia)
   const className = [
     styles.hero,
@@ -45,6 +51,15 @@ export function HeroBlock({
         <BlockAction
           href={primaryAction?.href}
           label={primaryAction?.label}
+          analytics={primaryAction?.analytics}
+          analyticsDefaults={{
+            actionSlot: 'primary',
+            blockId: id,
+            blockIndex: analyticsContext?.blockIndex,
+            blockType: 'hero',
+            location: 'hero',
+            pageSlug: analyticsContext?.pageSlug,
+          }}
           className={styles.primaryButton}
         />
       </div>

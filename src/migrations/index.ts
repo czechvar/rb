@@ -44,6 +44,7 @@ import * as migration_20260903_124615_add_location_destination_detail_blocks fro
 import * as migration_20260903_131955_gallery_tiles_variant from './20260903_131955_gallery_tiles_variant';
 import * as migration_20260903_134342_destination_sidebar_block from './20260903_134342_destination_sidebar_block';
 import * as migration_20260903_160351_cleanup_location_destination_detail from './20260903_160351_cleanup_location_destination_detail';
+import * as migration_20260903_183000_action_analytics_fields from './20260903_183000_action_analytics_fields';
 
 export const migrations = [
   {
@@ -275,5 +276,10 @@ export const migrations = [
     up: migration_20260903_160351_cleanup_location_destination_detail.up,
     down: migration_20260903_160351_cleanup_location_destination_detail.down,
     name: '20260903_160351_cleanup_location_destination_detail'
+  },
+  {
+    up: migration_20260903_183000_action_analytics_fields.up,
+    down: migration_20260903_183000_action_analytics_fields.down,
+    name: '20260903_183000_action_analytics_fields'
   },
 ];

@@ -306,6 +306,23 @@ export interface Program {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -384,10 +401,44 @@ export interface Program {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -954,6 +1005,23 @@ export interface Event {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -1032,10 +1100,44 @@ export interface Event {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -1870,6 +1972,23 @@ export interface Location {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -1948,10 +2067,44 @@ export interface Location {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -2408,6 +2561,23 @@ export interface Guide {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -2486,10 +2656,44 @@ export interface Guide {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -2965,6 +3169,23 @@ export interface Post {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -3043,10 +3264,44 @@ export interface Post {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -3767,6 +4022,23 @@ export interface Page {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -3845,10 +4117,44 @@ export interface Page {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -4642,6 +4948,16 @@ export interface ProgramsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -4698,12 +5014,32 @@ export interface ProgramsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -5226,6 +5562,16 @@ export interface GuidesSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -5282,12 +5628,32 @@ export interface GuidesSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -5962,6 +6328,16 @@ export interface LocationsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -6018,12 +6394,32 @@ export interface LocationsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -6473,6 +6869,16 @@ export interface EventsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -6529,12 +6935,32 @@ export interface EventsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -7222,6 +7648,16 @@ export interface PostsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -7278,12 +7714,32 @@ export interface PostsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -7638,6 +8094,16 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -7694,12 +8160,32 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;

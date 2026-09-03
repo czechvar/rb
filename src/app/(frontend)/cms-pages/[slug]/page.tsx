@@ -29,7 +29,7 @@ export default async function CMSPage({ params }: Props) {
     <MarketingShell>
       <JsonLd data={jsonLd} />
       <main>
-        <RenderBlocks blocks={page.layout} />
+        <RenderBlocks blocks={page.layout} context={{ page }} />
       </main>
     </MarketingShell>
   )

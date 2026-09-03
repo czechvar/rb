@@ -3,15 +3,21 @@ import { BlockAction } from './BlockAction'
 import styles from './blocks.module.css'
 
 type CTABlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'cta' }>
+type CTABlockAnalyticsContext = {
+  pageSlug?: string | null
+  blockIndex?: number
+}
 
 export function CTABlock({
   body,
   eyebrow,
   heading,
+  id,
   primaryAction,
   secondaryAction,
   variant,
-}: CTABlockProps) {
+  analyticsContext,
+}: CTABlockProps & { analyticsContext?: CTABlockAnalyticsContext }) {
   const className = [
     styles.cta,
     variant === 'light' ? styles.ctaLight : '',
@@ -33,11 +39,29 @@ export function CTABlock({
           <BlockAction
             href={primaryAction?.href}
             label={primaryAction?.label}
+            analytics={primaryAction?.analytics}
+            analyticsDefaults={{
+              actionSlot: 'primary',
+              blockId: id,
+              blockIndex: analyticsContext?.blockIndex,
+              blockType: 'cta',
+              location: 'body_cta',
+              pageSlug: analyticsContext?.pageSlug,
+            }}
             className={styles.primaryButton}
           />
           <BlockAction
             href={secondaryAction?.href}
             label={secondaryAction?.label}
+            analytics={secondaryAction?.analytics}
+            analyticsDefaults={{
+              actionSlot: 'secondary',
+              blockId: id,
+              blockIndex: analyticsContext?.blockIndex,
+              blockType: 'cta',
+              location: 'body_cta',
+              pageSlug: analyticsContext?.pageSlug,
+            }}
             className={styles.secondaryButton}
           />
         </div>

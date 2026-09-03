@@ -96,10 +96,16 @@ export type BlockRenderContext = {
 type BlockRenderer = (
   block: RenderableBlock,
   context: BlockRenderContext,
+  index: number,
 ) => Promise<React.ReactNode> | React.ReactNode
 
 const blockRenderers: Record<string, BlockRenderer> = {
-  hero: (block) => <HeroBlock {...(block as Extract<PageBlock, { blockType: 'hero' }>)} />,
+  hero: (block, context, index) => (
+    <HeroBlock
+      {...(block as Extract<PageBlock, { blockType: 'hero' }>)}
+      analyticsContext={{ blockIndex: index, pageSlug: context.page?.slug }}
+    />
+  ),
   'section-intro': (block) => (
     <SectionIntroBlock {...(block as Extract<PageBlock, { blockType: 'section-intro' }>)} />
   ),
@@ -107,7 +113,12 @@ const blockRenderers: Record<string, BlockRenderer> = {
     <RichTextBlock {...(block as Extract<PageBlock, { blockType: 'rich-text' }>)} />
   ),
   stats: (block) => <StatsBlock {...(block as Extract<PageBlock, { blockType: 'stats' }>)} />,
-  cta: (block) => <CTABlock {...(block as Extract<PageBlock, { blockType: 'cta' }>)} />,
+  cta: (block, context, index) => (
+    <CTABlock
+      {...(block as Extract<PageBlock, { blockType: 'cta' }>)}
+      analyticsContext={{ blockIndex: index, pageSlug: context.page?.slug }}
+    />
+  ),
   tripGrid: (block, context) =>
     TripGridBlock(block as Extract<PageBlock, { blockType: 'tripGrid' }>, context),
   featuredTrip: (block, context) =>
@@ -194,7 +205,7 @@ async function renderBlock(block: RenderableBlock, index: number, context: Block
   const key = block.id ?? `${block.blockType}-${index}`
   const renderer = blockRenderers[block.blockType]
   if (!renderer) return null
-  return <React.Fragment key={key}>{await renderer(block, context)}</React.Fragment>
+  return <React.Fragment key={key}>{await renderer(block, context, index)}</React.Fragment>
 }
 
 export async function RenderBlocks({
