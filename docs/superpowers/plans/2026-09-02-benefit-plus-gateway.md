@@ -48,6 +48,11 @@ not treat them as a regression:
 
 A clean full-suite run is therefore `2 failed | 56 passed` files.
 
+**`tsc --noEmit` has a pre-existing baseline of 20 errors**, all in `src/lib/jsonld.ts`
+(17) and `tests/int/jsonld.int.spec.ts` (3). Steps below that say "Expected: no type
+errors" mean *no errors in the files this task touches* — compare against that
+baseline of 20 rather than expecting a clean run.
+
 ---
 
 ## File Structure
