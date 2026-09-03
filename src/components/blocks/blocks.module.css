@@ -12,16 +12,20 @@
 .cta h2 {
   margin: 0;
   color: inherit;
+  font-size: var(--theme-text-section);
+  font-weight: var(--theme-weight-section);
+  line-height: var(--theme-line-section);
+  letter-spacing: 0;
 }
 
 .eyebrow {
   margin: 0 0 10px;
   color: var(--theme-color-primary);
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body-sm);
-  font-weight: 800;
+  font-size: var(--theme-text-label);
+  font-weight: var(--theme-weight-card);
   letter-spacing: 0.16em;
-  line-height: 1.2;
+  line-height: var(--theme-line-label);
   text-transform: uppercase;
 }
 
@@ -29,8 +33,8 @@
   max-width: 680px;
   margin: 18px 0 0;
   color: inherit;
-  font-size: var(--fs-body-lg);
-  line-height: 1.7;
+  font-size: var(--theme-text-lead);
+  line-height: var(--theme-line-lead);
   opacity: 0.78;
 }
 
@@ -74,9 +78,9 @@
 .heroBody {
   max-width: 620px;
   margin: 22px 0 0;
-  color: var(--theme-color-paper-80);
-  font-size: var(--fs-body-lg);
-  line-height: 1.7;
+  color: var(--theme-color-paper);
+  font-size: var(--theme-text-lead);
+  line-height: var(--theme-line-lead);
 }
 
 .heroSimple {
@@ -125,8 +129,9 @@
 
 .heroBrandEditorial h1 {
   max-width: 620px;
-  font-size: clamp(76px, 8vw, 148px);
-  line-height: 0.86;
+  font-size: var(--theme-text-hero);
+  font-weight: var(--theme-weight-hero);
+  line-height: var(--theme-line-hero);
 }
 
 .heroBrandEditorial h1 span {
@@ -151,10 +156,10 @@
   padding: 13px 22px;
   border: 1px solid transparent;
   font-family: var(--theme-font-body);
-  font-size: 13px;
-  font-weight: 800;
+  font-size: var(--theme-text-nav);
+  font-weight: var(--theme-weight-card);
   letter-spacing: 0.14em;
-  line-height: 1.2;
+  line-height: var(--theme-line-nav);
   text-transform: uppercase;
 }
 
@@ -204,8 +209,9 @@
 .ctaFinalRed h2 {
   margin-inline: auto;
   max-width: 760px;
-  font-size: clamp(58px, 8vw, 128px);
-  line-height: 0.86;
+  font-size: var(--theme-text-hero);
+  font-weight: var(--theme-weight-hero);
+  line-height: var(--theme-line-hero);
 }
 
 .ctaFinalRed .lead {
@@ -333,14 +339,14 @@
 
 .locationMapLabel strong {
   font-family: var(--theme-font-heading);
-  font-size: 28px;
-  line-height: 1;
+  font-size: var(--theme-text-card-lg);
+  line-height: var(--theme-line-card-lg);
 }
 
 .locationMapLabel span {
   margin-top: 6px;
-  font-size: var(--fs-body-sm);
-  line-height: 1.4;
+  font-size: var(--theme-text-small);
+  line-height: var(--theme-line-small);
   opacity: 0.74;
 }
 
@@ -399,17 +405,17 @@
   max-width: 680px;
   margin: 22px 0 0;
   color: var(--theme-color-paper-80);
-  font-size: var(--fs-body-lg);
-  line-height: 1.7;
+  font-size: var(--theme-text-lead);
+  line-height: var(--theme-line-lead);
 }
 
 .postMeta {
   margin: 28px 0 0;
   color: var(--theme-color-paper-80);
-  font-size: var(--fs-body-sm);
-  font-weight: 800;
+  font-size: var(--theme-text-small);
+  font-weight: var(--theme-weight-card);
   letter-spacing: 0.1em;
-  line-height: 1.3;
+  line-height: var(--theme-line-small);
   text-transform: uppercase;
 }
 
@@ -423,8 +429,8 @@
   width: min(860px, calc(100% - 40px));
   margin: 0 auto;
   color: inherit;
-  font-size: var(--fs-body-lg);
-  line-height: 1.75;
+  font-size: var(--theme-text-lead);
+  line-height: var(--theme-line-lead);
 }
 
 .sectionIntroCenter .sectionHeader {
@@ -452,15 +458,15 @@
 
 .sectionIntroDarkSplit h2 {
   max-width: 760px;
-  font-size: 72px;
-  line-height: 0.92;
+  font-size: var(--theme-text-section);
+  line-height: var(--theme-line-section);
 }
 
 .sectionIntroBody {
   max-width: 680px;
   color: inherit;
-  font-size: var(--fs-body-lg);
-  line-height: 1.7;
+  font-size: var(--theme-text-lead);
+  line-height: var(--theme-line-lead);
   opacity: 0.78;
 }
 
@@ -487,7 +493,8 @@
 }
 
 .richTextSection {
-  background: var(--theme-color-white-paper);
+  background: var(--theme-color-canvas);
+  color: var(--theme-color-paper);
 }
 
 .richTextSection .sectionInner {
@@ -500,8 +507,8 @@
 
 .richTextBody {
   color: inherit;
-  font-size: var(--fs-body-lg);
-  line-height: 1.75;
+  font-size: var(--theme-text-lead);
+  line-height: var(--theme-line-lead);
 }
 
 .richTextBody :where(p, ul, ol) {
@@ -559,7 +566,7 @@
 }
 
 .statsNumberedDark .statItem dt {
-  font-size: 44px;
+  font-size: var(--theme-text-section);
 }
 
 .statsGrid {
@@ -596,8 +603,8 @@
   margin: 0 0 8px;
   color: var(--theme-color-primary);
   font-family: var(--theme-font-heading);
-  font-size: 58px;
-  line-height: 0.9;
+  font-size: var(--theme-text-hero);
+  line-height: var(--theme-line-hero);
 }
 
 .statItem dd {
@@ -611,15 +618,15 @@
 }
 
 .statItem strong {
-  font-size: var(--fs-body);
-  line-height: 1.35;
+  font-size: var(--theme-text-subheading);
+  line-height: var(--theme-line-subheading);
   text-transform: uppercase;
 }
 
 .statItem span {
   margin-top: 8px;
-  font-size: var(--fs-body-sm);
-  line-height: 1.55;
+  font-size: var(--theme-text-body);
+  line-height: var(--theme-line-body);
   opacity: 0.72;
 }
 
@@ -667,8 +674,8 @@
 
 .featuredCatalogueFeature h3 {
   max-width: 720px;
-  font-size: clamp(42px, 6vw, 88px);
-  line-height: 0.86;
+  font-size: var(--theme-text-hero);
+  line-height: var(--theme-line-hero);
 }
 
 .featuredCatalogueCompact {
@@ -750,8 +757,8 @@
 .locationTilesSection .sectionHeader h2,
 .guidePhotoSection .sectionHeader h2,
 .reviewGridSection .sectionHeader h2 {
-  font-size: 96px;
-  line-height: 0.88;
+  font-size: var(--theme-text-hero);
+  line-height: var(--theme-line-hero);
 }
 
 .featuredCatalogueSection .lead,
@@ -764,8 +771,8 @@
 .featuredCatalogueSection .sectionHeader h2,
 .partnerStripSection .sectionHeader h2,
 .faqSection .sectionHeader h2 {
-  font-size: 72px;
-  line-height: 0.92;
+  font-size: var(--theme-text-section);
+  line-height: var(--theme-line-section);
 }
 
 .domainCard,
@@ -788,16 +795,17 @@
 }
 
 .domainCard h3 {
-  font-size: 34px;
-  line-height: 0.96;
+  font-size: var(--theme-text-subheading);
+  font-weight: var(--theme-weight-subheading);
+  line-height: var(--theme-line-subheading);
 }
 
 .domainCard p:not(.cardMeta),
 .reviewCard footer {
   margin: 18px 0 0;
   color: inherit;
-  font-size: var(--fs-body-sm);
-  line-height: 1.6;
+  font-size: var(--theme-text-body);
+  line-height: var(--theme-line-body);
   opacity: 0.72;
 }
 
@@ -807,10 +815,10 @@
   margin-top: auto;
   padding-top: 24px;
   color: var(--theme-color-primary);
-  font-size: 12px;
-  font-weight: 800;
+  font-size: var(--theme-text-small);
+  font-weight: var(--theme-weight-card);
   letter-spacing: 0.12em;
-  line-height: 1.2;
+  line-height: var(--theme-line-label);
   text-transform: uppercase;
 }
 
@@ -821,12 +829,11 @@
 .locationTilesSection .domainCard {
   min-height: 210px;
   overflow: hidden;
-  border-color: var(--theme-color-paper-08);
-  background: var(--theme-color-surface-1);
-  color: var(--theme-color-paper);
+  border-color: var(--theme-color-ink-border-faint);
+  background: var(--theme-color-paper);
+  color: var(--theme-color-ink);
 }
 
-.locationTilesSection .domainCard::after,
 .guidePhotoSection .domainCard::after {
   position: absolute;
   inset: 0;
@@ -866,9 +873,9 @@
   padding: 7px 9px;
   background: var(--theme-color-primary);
   color: var(--theme-color-paper);
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1;
+  font-size: var(--theme-text-label);
+  font-weight: var(--theme-weight-label);
+  line-height: var(--theme-line-label);
 }
 
 .guidePhotoGrid {
@@ -885,7 +892,9 @@
 }
 
 .guidePhotoSection .domainCard h3 {
-  font-size: 42px;
+  font-size: var(--theme-text-card-lg);
+  font-weight: var(--theme-weight-card);
+  line-height: var(--theme-line-card-lg);
 }
 
 .guidePhotoSection .domainCard:hover {
@@ -909,8 +918,8 @@
 }
 
 .reviewCard p {
-  font-size: var(--fs-body-lg);
-  line-height: 1.55;
+  font-size: var(--theme-text-body);
+  line-height: var(--theme-line-body);
 }
 
 .reviewCard footer {
@@ -923,12 +932,12 @@
   display: block;
   margin-top: 8px;
   color: var(--theme-color-primary);
-  font-weight: 800;
+  font-weight: var(--theme-weight-card);
   opacity: 1;
 }
 
 .partnerStripSection {
-  background: var(--theme-color-white-paper);
+  background: var(--theme-color-paper);
 }
 
 .partnerStrip,
@@ -946,23 +955,32 @@
   justify-content: center;
   gap: 8px;
   border: 1px solid var(--theme-color-ink-border-subtle);
-  background: var(--theme-color-white-paper-muted);
+  background: var(--theme-color-paper);
   color: var(--theme-color-ink);
   text-decoration: none;
 }
 
+.partnerLogo {
+  width: auto;
+  max-width: 150px;
+  height: 34px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0);
+}
+
 .partnerItem span {
   font-family: var(--theme-font-display);
-  font-size: 1.35rem;
-  line-height: 1;
+  font-size: var(--theme-text-card);
+  font-weight: var(--theme-weight-card);
+  line-height: var(--theme-line-card);
   text-transform: uppercase;
 }
 
 .partnerItem small {
   color: var(--theme-color-primary);
-  font-size: 0.72rem;
-  font-weight: 800;
-  line-height: 1.2;
+  font-size: var(--theme-text-label);
+  font-weight: var(--theme-weight-card);
+  line-height: var(--theme-line-label);
   text-transform: uppercase;
 }
 
@@ -978,8 +996,8 @@
 .guideProfileCard h3 {
   margin: 8px 0;
   color: inherit;
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 0.95;
+  font-size: var(--theme-text-section);
+  line-height: var(--theme-line-section);
 }
 
 .guideProfileCard p {
@@ -1008,7 +1026,7 @@
 
 .faqLightEditorial .faqItem {
   border-color: var(--theme-color-ink-border-faint);
-  background: var(--theme-color-white-paper);
+  background: var(--theme-color-paper);
 }
 
 .faqLightEditorial .faqItem dt {
@@ -1073,25 +1091,26 @@
 .tripContent h3 {
   margin: 0 0 12px;
   color: inherit;
-  font-size: 32px;
-  line-height: 0.95;
+  font-size: var(--theme-text-card-lg);
+  font-weight: var(--theme-weight-card);
+  line-height: var(--theme-line-card-lg);
 }
 
 .tripContent p {
   margin: 0;
   color: inherit;
-  font-size: var(--fs-body);
-  line-height: 1.6;
+  font-size: var(--theme-text-body);
+  line-height: var(--theme-line-body);
   opacity: 0.74;
 }
 
 .cardMeta {
   margin-bottom: 12px;
   color: var(--theme-color-primary);
-  font-size: 12px;
-  font-weight: 800;
+  font-size: var(--theme-text-small);
+  font-weight: var(--theme-weight-card);
   letter-spacing: 0.14em;
-  line-height: 1.2;
+  line-height: var(--theme-line-label);
   text-transform: uppercase;
 }
 
@@ -1103,10 +1122,10 @@
   margin-top: auto;
   padding-top: 26px;
   color: var(--theme-color-primary);
-  font-size: 13px;
-  font-weight: 800;
+  font-size: var(--theme-text-small);
+  font-weight: var(--theme-weight-card);
   letter-spacing: 0.1em;
-  line-height: 1.3;
+  line-height: var(--theme-line-small);
   text-transform: uppercase;
 }
 
@@ -1153,8 +1172,8 @@
   left: 18px;
   z-index: 2;
   color: var(--theme-color-paper);
-  font-size: var(--smallTextFontSize);
-  line-height: var(--smallTextLineHeight);
+  font-size: var(--theme-text-small);
+  line-height: var(--theme-line-small);
   text-shadow: var(--theme-shadow-text-strong);
 }
 
@@ -1204,15 +1223,15 @@
 .faqItem dt {
   margin-bottom: 12px;
   color: var(--theme-color-paper);
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 1.25;
+  font-size: var(--theme-text-subheading);
+  font-weight: var(--theme-weight-card);
+  line-height: var(--theme-line-subheading);
 }
 
 .faqItem dd {
   color: var(--theme-color-paper-80);
-  font-size: var(--fs-body);
-  line-height: 1.65;
+  font-size: var(--theme-text-body);
+  line-height: var(--theme-line-body);
 }
 
 .destinationCountryIndex {
@@ -1230,8 +1249,8 @@
 
 .destinationCountryIndex .sectionHeader h2 {
   max-width: 880px;
-  font-size: clamp(56px, 8vw, 108px);
-  line-height: 0.9;
+  font-size: var(--theme-text-hero);
+  line-height: var(--theme-line-hero);
 }
 
 .destinationCountryIndex .lead {
@@ -1265,10 +1284,10 @@
   padding: 9px 14px;
   border: 1px solid var(--theme-color-paper-12);
   color: var(--theme-color-paper-60);
-  font-size: 11px;
-  font-weight: 800;
+  font-size: var(--theme-text-label);
+  font-weight: var(--theme-weight-card);
   letter-spacing: 0.1em;
-  line-height: 1;
+  line-height: var(--theme-line-label);
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -1302,18 +1321,18 @@
 .destinationCountryHead h2 {
   margin: 0;
   color: var(--theme-color-paper);
-  font-size: clamp(34px, 5vw, 56px);
-  line-height: 0.95;
+  font-size: var(--theme-text-section);
+  line-height: var(--theme-line-section);
 }
 
 .destinationCountryHead > span:last-child {
   border: 1px solid var(--theme-color-primary-strong-border);
   padding: 6px 12px;
   color: var(--theme-color-primary);
-  font-size: 11px;
-  font-weight: 800;
+  font-size: var(--theme-text-label);
+  font-weight: var(--theme-weight-card);
   letter-spacing: 0.14em;
-  line-height: 1;
+  line-height: var(--theme-line-label);
   text-transform: uppercase;
 }
 
@@ -1404,14 +1423,14 @@
 
 .destinationCard strong {
   color: var(--theme-color-primary);
-  font-size: 17px;
-  line-height: 1.25;
+  font-size: var(--theme-text-subheading);
+  line-height: var(--theme-line-subheading);
 }
 
 .destinationCardTeaser {
   color: var(--theme-color-paper-60);
-  font-size: var(--fs-body-sm);
-  line-height: 1.6;
+  font-size: var(--theme-text-body);
+  line-height: var(--theme-line-body);
 }
 
 .destinationCardPhoto .destinationCardTeaser {
@@ -1422,10 +1441,10 @@
   margin-top: auto;
   padding-top: 8px;
   color: var(--theme-color-primary);
-  font-size: 11px;
-  font-weight: 800;
+  font-size: var(--theme-text-label);
+  font-weight: var(--theme-weight-card);
   letter-spacing: 0.1em;
-  line-height: 1.2;
+  line-height: var(--theme-line-label);
   text-transform: uppercase;
 }
 
@@ -1437,14 +1456,14 @@
   .locationTilesSection .sectionHeader h2,
   .guidePhotoSection .sectionHeader h2,
   .reviewGridSection .sectionHeader h2 {
-    font-size: 76px;
+    font-size: var(--theme-text-hero);
   }
 
   .featuredCatalogueSection .sectionHeader h2,
   .sectionIntroDarkSplit h2,
   .partnerStripSection .sectionHeader h2,
   .faqSection .sectionHeader h2 {
-    font-size: 58px;
+    font-size: var(--theme-text-section);
   }
 }
 
@@ -1462,7 +1481,7 @@
   }
 
   .heroBrandEditorial h1 {
-    font-size: 72px;
+    font-size: var(--theme-text-hero);
   }
 
   .domainGridDarkCompact .sectionHeader h2,
@@ -1472,14 +1491,14 @@
   .locationTilesSection .sectionHeader h2,
   .guidePhotoSection .sectionHeader h2,
   .reviewGridSection .sectionHeader h2 {
-    font-size: 54px;
+    font-size: var(--theme-text-hero);
   }
 
   .featuredCatalogueSection .sectionHeader h2,
   .sectionIntroDarkSplit h2,
   .partnerStripSection .sectionHeader h2,
   .faqSection .sectionHeader h2 {
-    font-size: 42px;
+    font-size: var(--theme-text-section);
   }
 
   .heroInner {

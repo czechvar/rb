@@ -16,8 +16,9 @@
 .card {
   padding: 28px;
   text-align: center;
-  border: 1px solid var(--theme-color-paper-12);
-  color: var(--theme-color-paper);
+  border: 1px solid var(--theme-color-ink-border-faint);
+  color: var(--theme-color-ink);
+  background: var(--theme-color-paper);
   text-decoration: none;
   transition: border-color 0.18s;
 }
@@ -27,23 +28,25 @@
 }
 
 .flag {
-  font-size: 40px;
-  line-height: 1;
+  font-size: var(--theme-text-section);
+  line-height: var(--theme-line-section);
   margin-bottom: 12px;
 }
 
 .name {
   font-family: var(--theme-font-heading);
-  font-size: 28px;
-  line-height: 1;
-  color: var(--theme-color-paper);
+  font-size: var(--theme-text-subheading);
+  font-weight: var(--theme-weight-subheading);
+  line-height: var(--theme-line-subheading);
+  color: var(--theme-color-ink);
   margin: 0 0 8px;
 }
 
 .crags {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body-sm);
-  color: var(--theme-color-paper-60);
+  font-size: var(--theme-text-body);
+  color: var(--theme-color-page-text);
+  line-height: var(--theme-line-body);
   margin: 0;
 }
 

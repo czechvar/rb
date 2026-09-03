@@ -23,32 +23,32 @@
 .card {
   padding: var(--theme-card-pad);
   border: 1px solid var(--theme-color-ink-border-faint);
-  background: var(--theme-color-white-paper-soft);
+  background: var(--theme-color-paper);
 }
 
 .cardTag {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-eyebrow);
+  font-size: var(--theme-text-label);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--theme-color-primary);
-  font-weight: 700;
+  font-weight: var(--theme-weight-subheading);
   margin: 0 0 12px;
 }
 
 .cardHeading {
   font-family: var(--theme-font-body);
-  font-size: 18px;
-  font-weight: 700;
+  font-size: var(--theme-text-subheading);
+  font-weight: var(--theme-weight-subheading);
   color: var(--theme-color-ink);
   margin: 0 0 12px;
-  line-height: 1.3;
+  line-height: var(--theme-line-subheading);
 }
 
 .cardBody {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-page-text);
-  line-height: 1.6;
+  line-height: var(--theme-line-body);
   margin: 0;
 }

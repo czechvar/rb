@@ -56,25 +56,27 @@ export default async function HomePage() {
     <>
       <Header />
       <JsonLd data={jsonLd} />
-      {usesCmsLayout ? (
-        <RenderBlocks blocks={homePage?.layout} context={{ page: homePage }} />
-      ) : (
-        <>
-          <Hero backgroundMedia={homepage.heroMedia} />
-          <StatsBar />
-          <WhoWeAre />
-          <FeaturedTrips events={homepage.events} datesByEvent={datesByEvent(homepage)} />
-          <WhyRockbusters />
-          <ProClimbers guides={homepage.proClimbers} />
-          <PickYourExperience />
-          <Destinations />
-          <Testimonials reviews={homepage.reviews} />
-          <Team founder={homepage.founder} />
-          <HomepageFAQ faqs={homepage.faqs} />
-          <Partners partners={homepage.partners} />
-          <FinalCTA />
-        </>
-      )}
+      <main>
+        {usesCmsLayout ? (
+          <RenderBlocks blocks={homePage?.layout} context={{ page: homePage }} />
+        ) : (
+          <>
+            <Hero backgroundMedia={homepage.heroMedia} />
+            <StatsBar />
+            <WhoWeAre />
+            <FeaturedTrips events={homepage.events} datesByEvent={datesByEvent(homepage)} />
+            <WhyRockbusters />
+            <ProClimbers guides={homepage.proClimbers} />
+            <PickYourExperience />
+            <Destinations />
+            <Testimonials reviews={homepage.reviews} />
+            <Team founder={homepage.founder} />
+            <HomepageFAQ faqs={homepage.faqs} />
+            <Partners partners={homepage.partners} />
+            <FinalCTA />
+          </>
+        )}
+      </main>
       <Footer />
     </>
   )

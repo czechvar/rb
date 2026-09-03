@@ -40,7 +40,7 @@ export function Footer() {
               <p>
                 A community of climbing coaches and guides dedicated to maximum
                 progression on real rock across Europe&apos;s greatest crags.
-                Climbers. Coaches. Lifers.
+                Climb harder. Climb smarter.
               </p>
               <NewsletterForm />
             </div>
@@ -89,7 +89,7 @@ export function Footer() {
               </Link>
             </small>
             <span className={styles.footerTagline}>
-              Climbers. Coaches. Lifers.
+              Climb harder. Climb smarter.
             </span>
           </div>
         </div>

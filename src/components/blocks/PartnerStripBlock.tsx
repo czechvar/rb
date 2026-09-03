@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import type { Page, Partner } from '@/payload-types'
 import { resolvePartnerStripPartners } from '@/lib/block-resolvers/content-discovery'
+import { mediaAlt, mediaUrl } from '@/lib/media'
 import styles from './blocks.module.css'
 
 type PartnerStripBlockProps = Extract<
@@ -34,9 +36,20 @@ export async function PartnerStripBlock({
 }
 
 function PartnerItem({ partner }: { partner: Partner }) {
+  const logoUrl = mediaUrl(partner.logo)
   const content = (
     <>
-      <span>{partner.name}</span>
+      {logoUrl ? (
+        <Image
+          src={logoUrl}
+          alt={mediaAlt(partner.logo) || partner.name}
+          width={150}
+          height={34}
+          className={styles.partnerLogo}
+        />
+      ) : (
+        <span>{partner.name}</span>
+      )}
       {partner.featured ? <small>Featured partner</small> : null}
     </>
   )

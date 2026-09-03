@@ -6,11 +6,11 @@
 
 .label {
   font-family: var(--theme-font-body);
-  font-size: 11px;
+  font-size: var(--theme-text-label);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--theme-color-paper-45);
-  font-weight: 700;
+  font-weight: var(--theme-weight-subheading);
   margin: 0 0 24px;
 }
 
@@ -24,16 +24,16 @@
 
 .name {
   font-family: var(--theme-font-body);
-  font-size: 16px;
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-60);
   letter-spacing: 0.06em;
 }
 
 .logo {
-  opacity: 0.7;
+  opacity: 0.82;
   transition: opacity 0.18s;
   object-fit: contain;
-  filter: grayscale(1);
+  filter: grayscale(1) brightness(0) invert(92%) sepia(8%) saturate(180%) hue-rotate(351deg);
 }
 
 .logo:hover {

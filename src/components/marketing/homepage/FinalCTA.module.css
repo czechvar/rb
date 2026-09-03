@@ -7,8 +7,9 @@
 
 .display {
   font-family: var(--theme-font-heading);
-  font-size: clamp(48px, 8vw, 120px);
-  line-height: 0.92;
+  font-size: var(--theme-text-hero);
+  font-weight: var(--theme-weight-hero);
+  line-height: var(--theme-line-hero);
   color: var(--theme-color-paper);
   margin: 0 0 24px;
 }
@@ -17,9 +18,9 @@
   max-width: 640px;
   margin: 0 auto 40px;
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body-lg);
-  line-height: 1.6;
-  color: var(--theme-color-paper-80);
+  font-size: var(--theme-text-lead);
+  line-height: var(--theme-line-lead);
+  color: var(--theme-color-paper);
 }
 
 .ctas {

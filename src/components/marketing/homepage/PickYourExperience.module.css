@@ -28,19 +28,20 @@
 
 .cardName {
   font-family: var(--theme-font-body);
-  font-size: 20px;
-  font-weight: 700;
+  font-size: var(--theme-text-subheading);
+  font-weight: var(--theme-weight-subheading);
   color: var(--theme-color-paper);
+  line-height: var(--theme-line-subheading);
   margin: 0 0 8px;
   max-width: calc(100% - 36px);
 }
 
 .cardTag {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-60);
   margin: 0;
-  line-height: 1.5;
+  line-height: var(--theme-line-body);
 }
 
 .cardArrow {
@@ -48,8 +49,8 @@
   right: 28px;
   top: 32px;
   color: var(--theme-color-primary);
-  font-size: 24px;
-  line-height: 1;
+  font-size: var(--theme-text-card);
+  line-height: var(--theme-line-card);
 }
 
 .ctaWrap {

@@ -20,9 +20,9 @@
 
 .body {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body-lg);
+  font-size: var(--theme-text-lead);
   color: var(--theme-color-paper-60);
-  line-height: 1.75;
+  line-height: var(--theme-line-lead);
   margin: 0;
 }
 
@@ -73,17 +73,18 @@
 
 .cardRole {
   font-family: var(--theme-font-body);
-  font-size: 11px;
+  font-size: var(--theme-text-label);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--theme-color-primary);
-  font-weight: 700;
+  font-weight: var(--theme-weight-subheading);
 }
 
 .cardName {
   font-family: var(--theme-font-heading);
-  font-size: 32px;
-  line-height: 1;
+  font-size: var(--theme-text-card-lg);
+  font-weight: var(--theme-weight-card);
+  line-height: var(--theme-line-card-lg);
   color: var(--theme-color-paper);
   margin: 8px 0 12px;
 }
@@ -94,9 +95,9 @@
 
 .cardTagline {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-60);
-  line-height: 1.5;
+  line-height: var(--theme-line-body);
   margin: 0;
 }
 
@@ -124,8 +125,8 @@
 .statNum,
 .statNumRed {
   font-family: var(--theme-font-heading);
-  font-size: 36px;
-  line-height: 1;
+  font-size: var(--theme-text-section);
+  line-height: var(--theme-line-section);
 }
 
 .statNum {
@@ -138,7 +139,7 @@
 
 .statLabel {
   font-family: var(--theme-font-body);
-  font-size: 10px;
+  font-size: var(--theme-text-label);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--theme-color-paper-30);
