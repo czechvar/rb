@@ -18,6 +18,36 @@ does *not* filter, it silently runs everything.
 the main checkout at `/Users/janantl/Work/rockbusters/v3/`, and `pnpm install` run
 in it. Both are already done.
 
+**Payload CLI — always redirect stdin.** Every `pnpm payload …` command must end
+with `< /dev/null`, or it blocks forever on an interactive prompt with no output.
+Two separate prompts do this:
+
+- `migrate:create` waits on stdin and never returns.
+- `migrate` bootstraps the config, and `payload.config.ts:101` enables drizzle
+  schema-push outside `NODE_ENV=test`; push then asks for data-loss confirmation.
+  Run migrations as `PAYLOAD_DISABLE_DB_PUSH=true pnpm payload migrate < /dev/null`.
+
+**Applying a migration to the test database.** `NODE_ENV=test` disables schema
+push, so the test DB gets new columns only from migrations. After creating one:
+
+```bash
+DATABASE_URL="<the DATABASE_URL from .env.test>" PAYLOAD_DISABLE_DB_PUSH=true   sh -c 'printf "y\n" | pnpm payload migrate'
+```
+
+The `y` answers Payload's "you've run in dev mode, data loss will occur" prompt.
+That is safe on the test branch specifically — it is wiped and reseeded by tests.
+Never answer `y` against the dev or production branch.
+
+**Known-failing tests (pre-existing, not yours).** Two specs fail on this branch
+before any of this work and are unrelated to it — do not try to fix them, and do
+not treat them as a regression:
+
+- `tests/int/domain-block-resolvers.int.spec.ts` — "resolves locations by country
+  and filters inactive records"
+- `tests/int/queries.int.spec.ts` — "getActiveEventDatesForEvent wires keyParts + tags"
+
+A clean full-suite run is therefore `2 failed | 56 passed` files.
+
 ---
 
 ## File Structure
