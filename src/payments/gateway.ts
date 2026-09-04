@@ -276,16 +276,15 @@ export interface PaymentGatewayConfig {
 export type PaymentGatewayFactory = (method: PaymentMethod) => PaymentGateway;
 
 // ---------------------------------------------------------------------------
-// DRAFT — open questions to settle before implementing concrete gateways
+// Resolved design notes
 // ---------------------------------------------------------------------------
 //
-// 1. Webhook routing: one shared endpoint that dispatches by method, or one
-//    route per gateway? PHP uses PaymentPresenter actions per gateway.
-// 2. handleWebhook receives the Web `Request`; confirm Payload custom
-//    endpoints expose it (vs. a Next.js route handler forwarding to a
-//    service). Stable public URLs are required either way.
-// 3. checkStatus scheduling: Payload Jobs Queue vs. external cron hitting an
-//    endpoint. PHP runs it as a cron.
-// 4. MuzaPay signing (MuzaPaySigner / SignatureBuilder / TokenProvider) must
-//    be ported byte-exact and verified against the MuzaPay sandbox before
-//    anything else — see snowbusters api/MUZAPAY_README.md.
+// 1. Webhook routing: one route per gateway, under
+//    src/app/api/payments/<gateway>/. Benefit+ has no webhook route at all.
+// 2. handleWebhook receives the Web `Request` straight from a Next.js route
+//    handler; the service layer (`order-payment-service.ts`) owns persistence.
+// 3. checkStatus scheduling: Vercel Cron hits
+//    /api/payments/muzapay/reconcile every 10 minutes. Comgate does not need
+//    it — its webhook is authoritative.
+// 4. MuzaPay signing is ported and unit-tested in
+//    tests/int/muzapay-signing.int.spec.ts.
