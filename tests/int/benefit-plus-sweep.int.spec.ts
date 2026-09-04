@@ -128,6 +128,45 @@ async function orderState(orderId: number): Promise<string> {
   return o.state as string
 }
 
+/**
+ * Stubs the auth token, and — scoped to `paymentId` only, so leftover
+ * `begun` transactions from other test runs don't interfere — the first GET
+ * on the state endpoint as still in progress (so `checkStatus` returns
+ * null and the sweep falls through to the stale-cancel branch), the PUT on
+ * the cancel endpoint as accepted (202, MuzaPay's cancel is async), and the
+ * follow-up GET as CANCELED.
+ */
+function stubStaleCancel(paymentId: string) {
+  let getCalls = 0
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async (url: string, init?: RequestInit) => {
+      const u = String(url)
+      if (u.includes('/v2/auth/token')) {
+        return new Response(
+          JSON.stringify({
+            accessToken: 'tok-1',
+            validTo: new Date(Date.now() + 600_000).toISOString(),
+          }),
+          { status: 200 },
+        )
+      }
+      const match = u.match(/\/v2\/payments\/([^/]+)\//)
+      if (match?.[1] !== paymentId) {
+        return new Response('{}', { status: 404 })
+      }
+      const method = init?.method ?? 'GET'
+      if (method === 'PUT') {
+        // MuzaPay's cancel acknowledgement: 202, empty body.
+        return new Response(null, { status: 202 })
+      }
+      getCalls++
+      const paymentState = getCalls === 1 ? 'IN_PROGRESS_UNPAID' : 'CANCELED'
+      return new Response(JSON.stringify({ paymentState }), { status: 200 })
+    }),
+  )
+}
+
 describe('sweepBenefitPlusPayments', () => {
   it('resolves a payment that completed after the payer closed the tab', async () => {
     const id = `PAY-SWEEP-${Date.now()}`
@@ -169,5 +208,35 @@ describe('sweepBenefitPlusPayments', () => {
     // The real assertion: a transaction queued *behind* a failing one still got
     // resolved.
     expect(await orderState(goodOrder)).toBe('paid')
+  })
+
+  it('cancels a payment that has sat begun past STALE_AFTER_MS with no resolution', async () => {
+    const payload = await getTestPayload()
+    const id = `PAY-STALE-${Date.now()}`
+    const { orderId, txnId } = await seedBegunTransaction(id)
+
+    // Backdate createdAt past the one-hour STALE_AFTER_MS threshold — done
+    // via a follow-up update rather than on create, since Payload manages
+    // createdAt itself at create time.
+    const staleCreatedAt = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
+    await payload.update({
+      collection: 'transactions',
+      id: txnId,
+      data: { createdAt: staleCreatedAt } as never,
+      overrideAccess: true,
+    })
+
+    stubStaleCancel(id)
+
+    const summary = await sweepBenefitPlusPayments()
+
+    expect(summary.resolved).toBeGreaterThanOrEqual(1)
+    expect(await orderState(orderId)).toBe('cancelled')
+    const txn = await payload.findByID({
+      collection: 'transactions',
+      id: txnId,
+      overrideAccess: true,
+    })
+    expect(txn.state).toBe('cancelled')
   })
 })

@@ -123,9 +123,24 @@ export async function applyOutcome(
 ): Promise<void> {
   const cms = await getPayloadClient()
 
+  // `txnDoc` is a snapshot the caller fetched, possibly well before this call
+  // (e.g. across a slow gateway.checkStatus() round trip) — by now another
+  // caller (the return URL vs. the cron sweep) may have already applied this
+  // exact outcome. Re-read the transaction's authoritative current state
+  // rather than trusting the stale snapshot for this decision; this narrows,
+  // but does not close, the race — two callers can still interleave between
+  // this fresh read and their writes below (closing that fully needs
+  // locking, which is out of scope here).
+  const freshTxnDoc = await cms.findByID({
+    collection: 'transactions',
+    id: txnDoc.id,
+    overrideAccess: true,
+  })
+  const currentTxnState = (freshTxnDoc as { state?: TransactionDoc['state'] } | null)?.state
+
   // Already applied (duplicate webhook, or a poll racing the return URL) —
   // return without re-running the order transition.
-  if (txnDoc.state === outcome.state) return
+  if (currentTxnState === outcome.state || txnDoc.state === outcome.state) return
 
   // Apply the order-state transition(s) BEFORE marking the transaction terminal
   // (see below) — if this throws (e.g. the order was independently cancelled

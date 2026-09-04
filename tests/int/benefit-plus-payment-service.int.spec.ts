@@ -147,6 +147,27 @@ describe('beginBenefitPlusPayment', () => {
     expect(refreshed.state).toBe('pending') // begin() never touches order state
   })
 
+  it('allows a 0 Kč trip — the guard must not treat a legitimate zero price as missing', async () => {
+    const payload = await getTestPayload()
+    const { user, order } = await seedOrder({ priceCzk: 0 })
+    stubInit()
+
+    const { redirectUrl } = await beginBenefitPlusPayment(order.id, {
+      id: user.id,
+      email: user.email,
+    })
+    expect(redirectUrl).toBe('https://gate.pay.muza.cz/p/PAY-SVC-1')
+
+    const { docs } = await payload.find({
+      collection: 'transactions',
+      where: { order: { equals: order.id } },
+      overrideAccess: true,
+    })
+    expect(docs).toHaveLength(1)
+    expect(docs[0].state).toBe('begun')
+    expect(docs[0].amount).toBe(0)
+  })
+
   it('refuses when the trip has no CZK price', async () => {
     const { user, order } = await seedOrder({ priceCzk: null })
     stubInit()
