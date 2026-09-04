@@ -1,9 +1,21 @@
 /**
- * The only module that reads/writes both `transactions` and `orders`. Wraps
- * ComgateGateway with Payload persistence and owns the order-state chaining
- * that the gateway itself knows nothing about (see docs/superpowers/plans/
- * 2026-08-28-comgate-payment-gateway.md for why pending->paid needs two
- * `payload.update` calls, not one).
+ * The public entry points for taking a payment. Wraps both gateways with
+ * Payload persistence: ComgateGateway for card payments and MuzaPayGateway
+ * for Benefit+.
+ *
+ * The two differ in how an outcome arrives, and that shapes this file.
+ * Comgate confirms by webhook, so `applyComgateWebhook` is the whole story.
+ * Benefit+ sends no webhook, so its outcome is polled from a status endpoint
+ * by two callers that overlap by design — `resolveBenefitPlusPayment` from
+ * the payer's return URL, and `sweepBenefitPlusPayments` from a cron sweep
+ * for payers who never came back.
+ *
+ * Both paths converge on `applyOutcome` (src/payments/order-transitions.ts),
+ * which owns the order-state chaining the gateways know nothing about — see
+ * docs/superpowers/plans/2026-08-28-comgate-payment-gateway.md for why
+ * pending->paid needs two `payload.update` calls, not one, and
+ * docs/superpowers/specs/2026-09-02-benefit-plus-gateway-design.md for the
+ * Benefit+ polling design.
  */
 
 import { randomUUID } from 'node:crypto'
