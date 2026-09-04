@@ -2,7 +2,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { generateKeyPairSync } from 'node:crypto'
 import { getTestPayload } from '../helpers/payload'
-import { beginBenefitPlusPayment } from '@/payments/order-payment-service'
+import {
+  beginBenefitPlusPayment,
+  resolveBenefitPlusPayment,
+} from '@/payments/order-payment-service'
 
 const { privateKey } = generateKeyPairSync('rsa', {
   modulusLength: 2048,
@@ -179,5 +182,98 @@ describe('beginBenefitPlusPayment', () => {
     await expect(
       beginBenefitPlusPayment(order.id, { id: user.id, email: user.email }),
     ).rejects.toThrow(/cannot be paid/i)
+  })
+})
+
+function stubState(paymentState: string) {
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async (url: string) => {
+      if (String(url).includes('/v2/auth/token')) {
+        return new Response(
+          JSON.stringify({
+            accessToken: 'tok-1',
+            validTo: new Date(Date.now() + 600_000).toISOString(),
+          }),
+          { status: 200 },
+        )
+      }
+      return new Response(JSON.stringify({ paymentState }), { status: 200 })
+    }),
+  )
+}
+
+async function begunTransactionUuid(orderId: number, user: { id: number; email: string }) {
+  stubInit()
+  await beginBenefitPlusPayment(orderId, user)
+  const payload = await getTestPayload()
+  const { docs } = await payload.find({
+    collection: 'transactions',
+    where: { order: { equals: orderId } },
+    sort: '-createdAt',
+    limit: 1,
+    overrideAccess: true,
+  })
+  return docs[0].uuid as string
+}
+
+describe('resolveBenefitPlusPayment', () => {
+  it('marks the order paid when the gateway reports PAID', async () => {
+    const payload = await getTestPayload()
+    const { user, order } = await seedOrder({ priceCzk: 2490 })
+    const uuid = await begunTransactionUuid(order.id, { id: user.id, email: user.email })
+
+    stubState('PAID')
+    await resolveBenefitPlusPayment(uuid)
+
+    const refreshed = await payload.findByID({
+      collection: 'orders',
+      id: order.id,
+      overrideAccess: true,
+    })
+    expect(refreshed.state).toBe('paid')
+  })
+
+  it('leaves the order pending while the payment is in progress', async () => {
+    const payload = await getTestPayload()
+    const { user, order } = await seedOrder({ priceCzk: 2490 })
+    const uuid = await begunTransactionUuid(order.id, { id: user.id, email: user.email })
+
+    stubState('IN_PROGRESS_UNPAID')
+    await resolveBenefitPlusPayment(uuid)
+
+    const refreshed = await payload.findByID({
+      collection: 'orders',
+      id: order.id,
+      overrideAccess: true,
+    })
+    expect(refreshed.state).toBe('pending')
+  })
+
+  it('leaves the order payable after a decline', async () => {
+    const payload = await getTestPayload()
+    const { user, order } = await seedOrder({ priceCzk: 2490 })
+    const uuid = await begunTransactionUuid(order.id, { id: user.id, email: user.email })
+
+    stubState('DECLINED')
+    await resolveBenefitPlusPayment(uuid)
+
+    const refreshed = await payload.findByID({
+      collection: 'orders',
+      id: order.id,
+      overrideAccess: true,
+    })
+    expect(refreshed.state).toBe('pending')
+    const { docs } = await payload.find({
+      collection: 'transactions',
+      where: { uuid: { equals: uuid } },
+      overrideAccess: true,
+    })
+    expect(docs[0].state).toBe('failed')
+  })
+
+  it('is a no-op for an unknown uuid', async () => {
+    stubState('PAID')
+    await expect(resolveBenefitPlusPayment('no-such-uuid')).resolves.toBeUndefined()
   })
 })

@@ -174,6 +174,23 @@ export async function beginBenefitPlusPayment(
 }
 
 /**
+ * Reads the current Benefit+ payment state and applies it. Safe to call more
+ * than once and from more than one place — the return URL and the cron sweep
+ * both do — because `applyOutcome` short-circuits an already-applied result.
+ */
+export async function resolveBenefitPlusPayment(uuid: string): Promise<void> {
+  const store = new PayloadTransactionStore()
+  const txnDoc = await store.findDocByUuid(uuid)
+  if (!txnDoc || txnDoc.state !== 'begun') return
+
+  const gateway = benefitPlusGateway()
+  const outcome = await gateway.checkStatus(toGatewayTransaction(txnDoc))
+  if (!outcome) return
+
+  await applyOutcome(txnDoc, outcome)
+}
+
+/**
  * Handles an inbound Comgate webhook end to end: verifies + parses it via
  * the gateway, persists the outcome on the transaction, and advances the
  * linked order. Returns the HTTP response Comgate expects.
