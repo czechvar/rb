@@ -142,4 +142,87 @@ describe('applyOutcome', () => {
     // rather than replayed.
     expect(await orderState(orderId)).toBe('pending')
   })
+
+  it('tolerates two racing callers resolving a paid outcome off the same stale snapshot', async () => {
+    const { orderId, txn } = await seedOrderAndTransaction('pending')
+    const payload = await getTestPayload()
+
+    // applyOutcome re-reads the order itself, so two applyOutcome calls fired
+    // one after another (even back-to-back, with no intervening await) do NOT
+    // reproduce the race: the second call's own fresh read already sees
+    // whatever the first call finished, and its outer `order.state !== target`
+    // guard turns it into a clean no-op. The actual failure needs both calls'
+    // order reads to land while the order is still `pending`, i.e. genuine
+    // interleaving of two in-flight calls — which is exactly what happens
+    // when a payer's return-URL hit and a cron sweep overlap in production.
+    //
+    // To make that interleaving deterministic in a test (rather than relying
+    // on network timing luck — which, tried directly via Promise.all, did not
+    // reliably reproduce it locally), this drives the two calls with
+    // `Promise.allSettled` so both order reads happen concurrently while the
+    // order is still `pending`, and forces the second caller's `confirmed`
+    // write to land only after the first caller's `paid` write has committed
+    // — the precise interleaving the review flagged.
+    const realUpdate = payload.update.bind(payload)
+    let confirmedWriteCount = 0
+    let paidWritten = false
+    payload.update = (async (args: Parameters<typeof realUpdate>[0]) => {
+      const data = args.data as { state?: string } | undefined
+      if (args.collection === 'orders' && args.id === orderId && data?.state === 'confirmed') {
+        confirmedWriteCount++
+        if (confirmedWriteCount === 2) {
+          while (!paidWritten) await new Promise((resolve) => setTimeout(resolve, 5))
+        }
+      }
+      const result = await realUpdate(args)
+      if (args.collection === 'orders' && args.id === orderId && data?.state === 'paid') {
+        paidWritten = true
+      }
+      return result
+    }) as typeof realUpdate
+
+    let results: PromiseSettledResult<void>[]
+    try {
+      results = await Promise.allSettled([
+        applyOutcome(txn, { state: 'paid', callbackPayload: { paymentState: 'PAID' } }),
+        applyOutcome(txn, { state: 'paid', callbackPayload: { paymentState: 'PAID' } }),
+      ])
+    } finally {
+      payload.update = realUpdate
+    }
+
+    for (const result of results) {
+      if (result.status === 'rejected') throw result.reason
+    }
+    expect(await orderState(orderId)).toBe('paid')
+    expect(await transactionState(txn.id)).toBe('paid')
+  })
+
+  it('tolerates two racing callers resolving a cancelled outcome off the same stale snapshot', async () => {
+    const { orderId, txn } = await seedOrderAndTransaction('pending')
+    await applyOutcome(txn, { state: 'cancelled', callbackPayload: { paymentState: 'CANCELED' } })
+    await applyOutcome(txn, { state: 'cancelled', callbackPayload: { paymentState: 'CANCELED' } })
+    expect(await orderState(orderId)).toBe('cancelled')
+    expect(await transactionState(txn.id)).toBe('cancelled')
+  })
+
+  it('leaves a completed order alone when a paid outcome arrives', async () => {
+    const payload = await getTestPayload()
+    const { orderId, txn } = await seedOrderAndTransaction('confirmed')
+    await payload.update({
+      collection: 'orders',
+      id: orderId,
+      data: { state: 'paid' },
+      overrideAccess: true,
+    })
+    await payload.update({
+      collection: 'orders',
+      id: orderId,
+      data: { state: 'completed' },
+      overrideAccess: true,
+    })
+    await applyOutcome(txn, { state: 'paid', callbackPayload: { paymentState: 'PAID' } })
+    expect(await orderState(orderId)).toBe('completed')
+    expect(await transactionState(txn.id)).toBe('paid')
+  })
 })
