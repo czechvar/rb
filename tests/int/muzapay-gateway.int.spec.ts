@@ -260,3 +260,47 @@ describe('MuzaPayGateway.handleReturn', () => {
     expect(outcome?.state).toBe('paid')
   })
 })
+
+describe('MuzaPayGateway.cancel', () => {
+  function begunTransaction() {
+    return makeTransaction({ state: 'begun', payload: { gatewayTransactionId: 'PAY-1' } })
+  }
+
+  it('submits the cancel and reports the confirmed outcome', async () => {
+    const calls = stubMuzaPay(
+      new Response('', { status: 202 }),
+      new Response(JSON.stringify({ paymentState: 'CANCELED' }), { status: 200 }),
+    )
+
+    const outcome = await makeGateway().cancel(begunTransaction())
+
+    const cancel = calls.find((c) => c.url.includes('/cancel'))
+    expect(cancel?.init.method).toBe('PUT')
+    expect(cancel?.url).toMatch(/\/v2\/payments\/PAY-1\/cancel\?signature=/)
+    expect(outcome).toEqual({ state: 'cancelled', callbackPayload: { paymentState: 'CANCELED' } })
+  })
+
+  it('returns null when the payment did not actually cancel', async () => {
+    stubMuzaPay(
+      new Response('', { status: 202 }),
+      new Response(JSON.stringify({ paymentState: 'IN_PROGRESS_UNPAID' }), { status: 200 }),
+    )
+    expect(await makeGateway().cancel(begunTransaction())).toBeNull()
+  })
+
+  it('reports a payment that turned out to be paid rather than cancelling it', async () => {
+    // A race: the payer completed while the sweep decided the payment was stale.
+    stubMuzaPay(
+      new Response('', { status: 202 }),
+      new Response(JSON.stringify({ paymentState: 'PAID' }), { status: 200 }),
+    )
+    expect((await makeGateway().cancel(begunTransaction()))?.state).toBe('paid')
+  })
+
+  it('refuses a transaction that has not begun', async () => {
+    stubMuzaPay()
+    await expect(makeGateway().cancel(makeTransaction({ state: 'created' }))).rejects.toThrow(
+      PaymentGatewayError,
+    )
+  })
+})

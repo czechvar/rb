@@ -184,7 +184,35 @@ export class MuzaPayGateway implements PaymentGateway {
     return { state, callbackPayload: response }
   }
 
-  async cancel(_transaction: Transaction): Promise<void> {
-    throw new PaymentGatewayError('MuzaPayGateway.cancel is not implemented yet.')
+  /**
+   * Asks MuzaPay to cancel an in-flight payment, then re-reads the state to
+   * see what actually happened — the cancel itself is asynchronous (202), so
+   * its acceptance proves nothing. Benefit+ documents at most three attempts
+   * at progressive intervals; that spacing comes from the cron sweep calling
+   * this once per pass, not from a loop in here.
+   */
+  async cancel(transaction: Transaction): Promise<PaymentOutcome | null> {
+    if (transaction.state !== 'begun') {
+      throw new PaymentGatewayError('Cannot cancel the transaction at this point.')
+    }
+
+    const paymentId = this.paymentId(transaction)
+    const token = await this.tokenProvider.getToken()
+    const authorization = { Authorization: `Bearer ${token.accessToken}` }
+
+    await this.client.put(this.signedPath(paymentId, 'cancel'), authorization, 202)
+
+    const response = await this.client.getJson(
+      this.signedPath(paymentId, 'state'),
+      authorization,
+      200,
+    )
+    const paymentState = response.paymentState
+    if (typeof paymentState !== 'string') return null
+
+    const state = mapPaymentState(paymentState)
+    if (state === null) return null
+
+    return { state, callbackPayload: response }
   }
 }

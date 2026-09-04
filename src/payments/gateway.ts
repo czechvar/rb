@@ -211,11 +211,12 @@ export interface PaymentGateway {
   checkStatus(transaction: Transaction): Promise<PaymentOutcome | null>;
 
   /**
-   * Cancel/reverse a previously initiated payment. May be asynchronous —
-   * verify the result with checkStatus().
+   * Cancel/reverse a previously initiated payment. Returns the resolved
+   * outcome when the provider confirms one, or null if the payment is still
+   * in flight — cancellation may be asynchronous.
    * PHP: `cancel(Transaction): void`.
    */
-  cancel(transaction: Transaction): Promise<void>;
+  cancel(transaction: Transaction): Promise<PaymentOutcome | null>;
 }
 
 /** Raised by gateways for provider/transport failures. PHP: `PaymentGatewayException`. */

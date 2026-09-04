@@ -141,7 +141,7 @@ export class ComgateGateway implements PaymentGateway {
     )
   }
 
-  async cancel(_transaction: Transaction): Promise<void> {
+  async cancel(_transaction: Transaction): Promise<PaymentOutcome | null> {
     throw new PaymentGatewayError(
       'ComgateGateway.cancel is not implemented (deferred — see docs/superpowers/plans/2026-08-28-comgate-payment-gateway.md).',
     )
