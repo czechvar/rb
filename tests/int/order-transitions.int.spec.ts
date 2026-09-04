@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { randomUUID } from 'node:crypto'
 import { getTestPayload } from '../helpers/payload'
 import { applyOutcome } from '@/payments/order-transitions'
@@ -224,5 +224,92 @@ describe('applyOutcome', () => {
     await applyOutcome(txn, { state: 'paid', callbackPayload: { paymentState: 'PAID' } })
     expect(await orderState(orderId)).toBe('completed')
     expect(await transactionState(txn.id)).toBe('paid')
+  })
+
+  it('warns instead of silently dropping a paid outcome for an already-cancelled order', async () => {
+    const { orderId, txn } = await seedOrderAndTransaction('pending')
+    await applyOutcome(txn, { state: 'cancelled', callbackPayload: { paymentState: 'CANCELED' } })
+
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    try {
+      await expect(
+        applyOutcome(
+          { ...txn, state: 'cancelled' },
+          { state: 'paid', callbackPayload: { paymentState: 'PAID' } },
+        ),
+      ).resolves.not.toThrow()
+
+      expect(await orderState(orderId)).toBe('cancelled')
+      expect(await transactionState(txn.id)).toBe('paid')
+      // mockRestore() (in the finally below) clears the recorded call
+      // history, so this assertion must run before that.
+      expect(errorSpy).toHaveBeenCalled()
+    } finally {
+      errorSpy.mockRestore()
+    }
+  })
+
+  it('warns (not throws) when the order is cancelled mid-flight by a racing caller', async () => {
+    const { orderId, txn } = await seedOrderAndTransaction('pending')
+    const payload = await getTestPayload()
+
+    // Force the same interleaving as the existing racing-callers test above,
+    // but this time the second caller (racing to cancel the order) commits
+    // its `cancelled` write before the first caller's `confirmed` write
+    // lands, so the first caller's write is refused and its catch-block
+    // re-read sees `cancelled` rather than `paid` or `confirmed`.
+    const realUpdate = payload.update.bind(payload)
+    let cancelledWritten = false
+    payload.update = (async (args: Parameters<typeof realUpdate>[0]) => {
+      const data = args.data as { state?: string } | undefined
+      if (args.collection === 'orders' && args.id === orderId && data?.state === 'confirmed') {
+        while (!cancelledWritten) await new Promise((resolve) => setTimeout(resolve, 5))
+      }
+      const result = await realUpdate(args)
+      if (args.collection === 'orders' && args.id === orderId && data?.state === 'cancelled') {
+        cancelledWritten = true
+      }
+      return result
+    }) as typeof realUpdate
+
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    try {
+      const results = await Promise.allSettled([
+        applyOutcome(txn, { state: 'paid', callbackPayload: { paymentState: 'PAID' } }),
+        applyOutcome(txn, { state: 'cancelled', callbackPayload: { paymentState: 'CANCELED' } }),
+      ])
+      for (const result of results) {
+        if (result.status === 'rejected') throw result.reason
+      }
+
+      expect(await orderState(orderId)).toBe('cancelled')
+      // mockRestore() (in the finally below) clears the recorded call
+      // history, so this assertion must run before that.
+      expect(errorSpy).toHaveBeenCalled()
+    } finally {
+      payload.update = realUpdate
+      errorSpy.mockRestore()
+    }
+  })
+
+  it('leaves a completed order alone when a cancelled outcome arrives', async () => {
+    const payload = await getTestPayload()
+    const { orderId, txn } = await seedOrderAndTransaction('confirmed')
+    await payload.update({
+      collection: 'orders',
+      id: orderId,
+      data: { state: 'paid' },
+      overrideAccess: true,
+    })
+    await payload.update({
+      collection: 'orders',
+      id: orderId,
+      data: { state: 'completed' },
+      overrideAccess: true,
+    })
+    await expect(
+      applyOutcome(txn, { state: 'cancelled', callbackPayload: { paymentState: 'CANCELED' } }),
+    ).resolves.not.toThrow()
+    expect(await orderState(orderId)).toBe('completed')
   })
 })
