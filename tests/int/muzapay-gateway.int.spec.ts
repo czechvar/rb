@@ -184,3 +184,79 @@ describe('MuzaPayGateway.begin', () => {
     expect(body.orderDescription).toHaveLength(255)
   })
 })
+
+describe('MuzaPayGateway.checkStatus', () => {
+  function begunTransaction() {
+    return makeTransaction({
+      state: 'begun',
+      payload: { gatewayTransactionId: 'PAY-1' },
+    })
+  }
+
+  it('signs the payment id and queries the state endpoint', async () => {
+    const calls = stubMuzaPay(
+      new Response(JSON.stringify({ paymentState: 'PAID' }), { status: 200 }),
+    )
+    const outcome = await makeGateway().checkStatus(begunTransaction())
+
+    const state = calls.find((c) => c.url.includes('/state'))
+    expect(state?.url).toMatch(/\/v2\/payments\/PAY-1\/state\?signature=/)
+    expect((state?.init.headers as Record<string, string>).Authorization).toBe('Bearer tok-1')
+    expect(outcome).toEqual({ state: 'paid', callbackPayload: { paymentState: 'PAID' } })
+  })
+
+  it.each([
+    ['PAID', 'paid'],
+    ['CANCELED', 'cancelled'],
+    ['DECLINED', 'failed'],
+    ['EXPIRED', 'failed'],
+  ])('maps %s to %s', async (paymentState, expected) => {
+    stubMuzaPay(new Response(JSON.stringify({ paymentState }), { status: 200 }))
+    const outcome = await makeGateway().checkStatus(begunTransaction())
+    expect(outcome?.state).toBe(expected)
+  })
+
+  it.each(['IN_PROGRESS_UNPAID', 'PENDING_INFO', 'SOMETHING_NEW', ''])(
+    'returns null for the non-terminal state %s',
+    async (paymentState) => {
+      stubMuzaPay(new Response(JSON.stringify({ paymentState }), { status: 200 }))
+      expect(await makeGateway().checkStatus(begunTransaction())).toBeNull()
+    },
+  )
+
+  it('accepts a lower-case state', async () => {
+    stubMuzaPay(new Response(JSON.stringify({ paymentState: 'paid' }), { status: 200 }))
+    expect((await makeGateway().checkStatus(begunTransaction()))?.state).toBe('paid')
+  })
+
+  it('returns null without calling the gateway when the transaction has not begun', async () => {
+    const calls = stubMuzaPay()
+    expect(await makeGateway().checkStatus(makeTransaction({ state: 'created' }))).toBeNull()
+    expect(calls).toHaveLength(0)
+  })
+
+  it('throws when the transaction has no gateway payment id', async () => {
+    stubMuzaPay()
+    await expect(
+      makeGateway().checkStatus(makeTransaction({ state: 'begun', payload: {} })),
+    ).rejects.toThrow(/payment id/i)
+  })
+})
+
+describe('MuzaPayGateway.handleWebhook', () => {
+  it('refuses — Benefit+ has no webhook', async () => {
+    await expect(
+      makeGateway().handleWebhook(new Request('https://x/api/payments/muzapay/webhook')),
+    ).rejects.toThrow(/does not send webhooks/i)
+  })
+})
+
+describe('MuzaPayGateway.handleReturn', () => {
+  it('delegates to checkStatus rather than trusting the redirect', async () => {
+    stubMuzaPay(new Response(JSON.stringify({ paymentState: 'PAID' }), { status: 200 }))
+    const outcome = await makeGateway().handleReturn(
+      makeTransaction({ state: 'begun', payload: { gatewayTransactionId: 'PAY-1' } }),
+    )
+    expect(outcome?.state).toBe('paid')
+  })
+})

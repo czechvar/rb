@@ -24,6 +24,25 @@ import { MuzaPayTokenProvider } from './token-provider'
 
 const ORDER_DESCRIPTION_MAX_LENGTH = 255
 
+/**
+ * MuzaPay's payment states. Note `CANCELED` — a single L, unlike our
+ * `cancelled`. Anything unrecognised maps to null, i.e. "still pending",
+ * which is the safe direction: a payment is never wrongly marked terminal.
+ */
+function mapPaymentState(paymentState: string): PaymentOutcome['state'] | null {
+  switch (paymentState.toUpperCase()) {
+    case 'PAID':
+      return 'paid'
+    case 'CANCELED':
+      return 'cancelled'
+    case 'DECLINED':
+    case 'EXPIRED':
+      return 'failed'
+    default:
+      return null
+  }
+}
+
 export interface MuzaPayGatewayConfig {
   baseUrl: string
   eshopId: string
@@ -132,8 +151,37 @@ export class MuzaPayGateway implements PaymentGateway {
     return this.checkStatus(transaction)
   }
 
-  async checkStatus(_transaction: Transaction): Promise<PaymentOutcome | null> {
-    throw new PaymentGatewayError('MuzaPayGateway.checkStatus is not implemented yet.')
+  private paymentId(transaction: Transaction): string {
+    const id = transaction.payload.gatewayTransactionId
+    if (typeof id !== 'string' || id === '') {
+      throw new PaymentGatewayError('Transaction has no MuzaPay payment id.')
+    }
+    return id
+  }
+
+  private signedPath(paymentId: string, suffix: string): string {
+    const signature = this.signer.signToUrlEncoded(this.signatureBuilder.build([paymentId]))
+    return `/v2/payments/${encodeURIComponent(paymentId)}/${suffix}?signature=${signature}`
+  }
+
+  async checkStatus(transaction: Transaction): Promise<PaymentOutcome | null> {
+    if (transaction.state !== 'begun') return null
+
+    const paymentId = this.paymentId(transaction)
+    const token = await this.tokenProvider.getToken()
+    const response = await this.client.getJson(
+      this.signedPath(paymentId, 'state'),
+      { Authorization: `Bearer ${token.accessToken}` },
+      200,
+    )
+
+    const paymentState = response.paymentState
+    if (typeof paymentState !== 'string') return null
+
+    const state = mapPaymentState(paymentState)
+    if (state === null) return null
+
+    return { state, callbackPayload: response }
   }
 
   async cancel(_transaction: Transaction): Promise<void> {
