@@ -122,6 +122,7 @@ export function DestinationHeroBlock(
   const heading = hero?.heading || location.name
   const place = hero?.eyebrow || [location.city, location.country].filter(Boolean).join(', ')
   const stats = hero?.heroStats?.filter((stat) => stat.value && stat.label) ?? []
+  const overlayStats = destinationHeroOverlayStats(location)
 
   return (
     <section className={styles.destinationHero}>
@@ -146,6 +147,16 @@ export function DestinationHeroBlock(
           </a>
         ) : null}
       </div>
+      {overlayStats.length ? (
+        <dl className={styles.destinationHeroOverlayStats} aria-label="Destination quick facts">
+          {overlayStats.map((stat) => (
+            <div key={stat.label} className={styles.destinationHeroOverlayStat}>
+              <dt>{stat.value}</dt>
+              <dd>{stat.label}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : null}
       {stats.length ? (
         <dl className={styles.destinationHeroStats}>
           {stats.map((stat) => (
@@ -158,6 +169,29 @@ export function DestinationHeroBlock(
       ) : null}
     </section>
   )
+}
+
+function destinationHeroOverlayStats(location: Location) {
+  const detail = location.destinationDetail
+  const bestSeason = bestSeasonFromMonths(detail)
+  return [
+    location.problemCount ? { value: formatCount(location.problemCount), label: 'Problems' } : null,
+    location.gradeRange ? { value: compactGradeRange(location.gradeRange), label: 'Grade range' } : null,
+    location.sectorCount ? { value: formatCount(location.sectorCount), label: 'Sectors' } : null,
+    bestSeason ? { value: bestSeason, label: 'Best season' } : null,
+  ].filter((item): item is { value: string; label: string } => Boolean(item?.value))
+}
+
+function formatCount(value: number) {
+  return `${new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(value)}+`
+}
+
+function compactGradeRange(value: string) {
+  const match = value.match(/(?:Font|French|UIAA|V)\s*([\w+-]+)\s+to\s+([\w+-]+)/i)
+  if (!match) return value
+  const system = match[0].match(/^(Font|French|UIAA|V)/i)?.[1]
+  const prefix = system && system.toLowerCase() !== 'v' ? `${system} ` : system?.toUpperCase() ?? ''
+  return `${prefix}${match[1]}-${match[2]}`
 }
 
 export function DestinationSectionsBlock(
@@ -252,9 +286,10 @@ export function DestinationCardGridBlock(
   const eyebrow = stringValue(block.eyebrow)
   const intro = stringValue(block.intro)
   const columns = stringValue(block.columns)
+  const anchorId = stringValue(block.anchorId)
 
   return (
-    <section className={styles.destinationDarkBand}>
+    <section id={anchorId} className={styles.destinationDarkBand}>
       <div className={styles.sectionInner}>
         <DestinationBlockHeader eyebrow={eyebrow} heading={heading} intro={intro} />
         <div className={`${styles.destinationCardGrid} ${destinationColumnsClass(columns)}`}>
@@ -287,9 +322,10 @@ export function DestinationSeasonBlock(
     .filter((month) => month.label && typeof month.score === 'number')
     .sort((a, b) => a.month - b.month)
   if (!months.length) return null
+  const anchorId = stringValue(block.anchorId)
 
   return (
-    <section className={styles.destinationSeasonBand}>
+    <section id={anchorId} className={styles.destinationSeasonBand}>
       <div className={styles.sectionInner}>
         <DestinationBlockHeader
           eyebrow={stringValue(block.eyebrow)}
@@ -327,9 +363,10 @@ export function DestinationLogisticsBlock(
   const groups = logisticsGroups(location.destinationDetail, stringValue(block.source))
   if (!groups.length) return null
   const singleGroup = groups.length === 1
+  const anchorId = stringValue(block.anchorId)
 
   return (
-    <section className={styles.destinationDarkBand}>
+    <section id={anchorId} className={styles.destinationDarkBand}>
       <div className={styles.sectionInner}>
         <DestinationBlockHeader
           eyebrow={stringValue(block.eyebrow)}
@@ -885,9 +922,35 @@ function findHeroStat(
 function bestSeasonFromMonths(detail: DestinationDetail | null | undefined) {
   const months = detail?.seasonMonths?.filter((month) => month.score >= 4).sort((a, b) => a.month - b.month) ?? []
   if (!months.length) return undefined
-  const first = months.at(0)?.label
-  const last = months.at(-1)?.label
-  return first && last && first !== last ? `${first}-${last}` : first
+
+  const labels = new Map(months.map((month) => [month.month, month.label]))
+  const selected = new Set(months.map((month) => month.month))
+  const groups: Array<{ start: number; end: number }> = []
+
+  for (let month = 1; month <= 12; month += 1) {
+    if (!selected.has(month) || selected.has(month - 1)) continue
+    let end = month
+    while (end < 12 && selected.has(end + 1)) end += 1
+    groups.push({ start: month, end })
+  }
+
+  if (groups.length > 1 && groups[0]?.start === 1 && groups.at(-1)?.end === 12) {
+    const first = groups.shift()
+    const last = groups.pop()
+    if (first && last) groups.unshift({ start: last.start, end: first.end })
+  }
+
+  return groups
+    .map(({ start, end }) => formatMonthRange(labels, start, end))
+    .filter((range): range is string => Boolean(range))
+    .join(', ')
+}
+
+function formatMonthRange(labels: Map<number, string>, start: number, end: number) {
+  const startLabel = labels.get(start)
+  const endLabel = labels.get(end)
+  if (!startLabel) return undefined
+  return startLabel === endLabel || !endLabel ? startLabel : `${startLabel}-${endLabel}`
 }
 
 function recommendedTransport(detail: DestinationDetail | null | undefined) {

@@ -45,6 +45,23 @@ function pruneRemovedFields(collection: CollectionSlug, row: Record<string, unkn
   return next
 }
 
+function deferLocationSelfRelations(
+  collection: CollectionSlug,
+  row: Record<string, unknown>,
+  shouldDefer: boolean,
+) {
+  if (!shouldDefer || collection !== 'locations') return row
+  const destinationDetail = row.destinationDetail
+  if (!destinationDetail || typeof destinationDetail !== 'object') return row
+  return {
+    ...row,
+    destinationDetail: {
+      ...(destinationDetail as Record<string, unknown>),
+      relatedLocations: [],
+    },
+  }
+}
+
 function idKey(id: unknown) {
   return String(id)
 }
@@ -88,6 +105,7 @@ function relationForField(parentCollection: CollectionSlug, fieldName: string): 
   if (fieldName === 'eventDates') return 'event-dates'
   if (fieldName === 'location') return 'locations'
   if (fieldName === 'locations') return 'locations'
+  if (fieldName === 'relatedLocations') return 'locations'
   if (fieldName === 'guide') return 'guides'
   if (fieldName === 'guides') return 'guides'
   if (fieldName === 'program') return 'programs'
@@ -263,14 +281,15 @@ async function upsertRow(
   collection: CollectionSlug,
   row: Record<string, unknown>,
   maps: SeedIDMap,
-  options: { forceCreateWhenMissingID?: boolean } = {},
+  options: { forceCreateWhenMissingID?: boolean; deferLocationSelfRelations?: boolean } = {},
 ): Promise<'created' | 'updated' | 'skipped'> {
   const id = row.id
   if (id === null || id === undefined) return 'skipped'
 
-  const data = pruneRemovedFields(
+  const data = deferLocationSelfRelations(
     collection,
-    remapRelationships(maps, collection, row) as Record<string, unknown>,
+    pruneRemovedFields(collection, remapRelationships(maps, collection, row) as Record<string, unknown>),
+    options.deferLocationSelfRelations === true,
   )
   const existing = await findExistingRow(payload, collection, data, options)
   const existingID = existing?.id
@@ -368,6 +387,7 @@ async function importCollection(
   seed: CanonicalSeed,
   collection: CollectionSlug,
   maps: SeedIDMap,
+  options: { deferLocationSelfRelations?: boolean } = {},
 ): Promise<ImportTotals> {
   const totals: ImportTotals = { created: 0, updated: 0, skipped: 0 }
   const rows = collectionRows(seed, collection)
@@ -382,6 +402,7 @@ async function importCollection(
           : await upsertRow(payload, collection, row, maps, {
               forceCreateWhenMissingID:
                 collection === 'event-dates' && initialCount.totalDocs === 0,
+              deferLocationSelfRelations: options.deferLocationSelfRelations,
             })
       totals[result] += 1
     } catch (error) {
@@ -398,6 +419,18 @@ async function importCollection(
   return totals
 }
 
+async function importDeferredLocationSelfRelations(payload: Payload, seed: CanonicalSeed, maps: SeedIDMap) {
+  const totals = await importCollection(payload, seed, 'locations', maps)
+  console.log(
+    [
+      'canonical seed: locations relatedLocations',
+      `created=${totals.created}`,
+      `updated=${totals.updated}`,
+      `skipped=${totals.skipped}`,
+    ].join(' '),
+  )
+}
+
 async function main() {
   const args = parseSeedArgs(process.argv.slice(2))
   assertNotProduction(args)
@@ -407,7 +440,9 @@ async function main() {
   const maps: SeedIDMap = new Map()
 
   for (const { slug } of CANONICAL_SEED_COLLECTIONS) {
-    const totals = await importCollection(payload, seed, slug, maps)
+    const totals = await importCollection(payload, seed, slug, maps, {
+      deferLocationSelfRelations: slug === 'locations',
+    })
     console.log(
       [
         `canonical seed: ${slug}`,
@@ -416,6 +451,7 @@ async function main() {
         `skipped=${totals.skipped}`,
       ].join(' '),
     )
+    if (slug === 'locations') await importDeferredLocationSelfRelations(payload, seed, maps)
   }
 
   console.log(`canonical seed complete: ${args.file}`)

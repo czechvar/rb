@@ -29,7 +29,20 @@ describe('Location layout blocks', () => {
       city: 'Test City',
       country: 'Test Country',
       coordinates: [14.41, 50.08],
+      problemCount: 1600,
+      sectorCount: 30,
+      gradeRange: 'Font 3 to 8B+',
       destinationDetail: {
+        hero: {
+          heading: 'POC Destination Hero',
+          heroStats: [
+            {
+              id: 'bottom-stat',
+              value: '12',
+              label: 'Bottom stat',
+            },
+          ],
+        },
         sections: [
           {
             id: 'intro',
@@ -37,6 +50,14 @@ describe('Location layout blocks', () => {
             heading: 'Introduction',
             body: 'Location body from the current Location record.',
           },
+        ],
+        seasonMonths: [
+          { id: 'oct', month: 10, label: 'Oct', score: 4 },
+          { id: 'nov', month: 11, label: 'Nov', score: 4 },
+          { id: 'dec', month: 12, label: 'Dec', score: 4 },
+          { id: 'jan', month: 1, label: 'Jan', score: 4 },
+          { id: 'feb', month: 2, label: 'Feb', score: 4 },
+          { id: 'mar', month: 3, label: 'Mar', score: 4 },
         ],
       },
       active: true,
@@ -47,6 +68,7 @@ describe('Location layout blocks', () => {
     const element = await RenderBlocks({
       blocks: [
         { blockType: 'locationHero' },
+        { blockType: 'destinationHero' },
         { blockType: 'locationContent', heading: 'Local climbing style' },
         { blockType: 'locationMap', heading: 'Where it is' },
       ] as RenderBlocksInput['blocks'],
@@ -57,6 +79,12 @@ describe('Location layout blocks', () => {
     expect(markup).toContain('POC Location Layout')
     expect(markup).toContain('Test City')
     expect(markup).toContain('Test Country')
+    expect(markup).toContain('POC Destination Hero')
+    expect(markup).toContain('1,600+')
+    expect(markup).toContain('Font 3-8B+')
+    expect(markup).toContain('30+')
+    expect(markup).toContain('Oct-Mar')
+    expect(markup).toContain('Bottom stat')
     expect(markup).toContain('Location body from the current Location record.')
     expect(markup).toContain('Local climbing style')
     expect(markup).toContain('Where it is')

@@ -399,6 +399,46 @@
   line-height: var(--theme-line-lead);
 }
 
+.destinationHeroOverlayStats {
+  position: absolute;
+  top: 50%;
+  right: max(20px, calc((100vw - 1180px) / 2));
+  z-index: 2;
+  width: min(240px, calc(100% - 40px));
+  margin: 0;
+  border: 1px solid var(--theme-color-paper-12);
+  background: var(--theme-overlay-dark-strong);
+  transform: translateY(-50%);
+}
+
+.destinationHeroOverlayStat {
+  padding: 22px;
+  border-bottom: 1px solid var(--theme-color-paper-12);
+}
+
+.destinationHeroOverlayStat:last-child {
+  border-bottom: 0;
+}
+
+.destinationHeroOverlayStat dt {
+  margin: 0;
+  color: var(--theme-color-paper);
+  font-family: var(--theme-font-heading);
+  font-size: var(--theme-text-card-lg);
+  line-height: var(--theme-line-card-lg);
+  text-transform: uppercase;
+}
+
+.destinationHeroOverlayStat dd {
+  margin: 7px 0 0;
+  color: var(--theme-color-primary);
+  font-size: var(--theme-text-small);
+  font-weight: var(--theme-weight-card);
+  letter-spacing: 0.14em;
+  line-height: var(--theme-line-small);
+  text-transform: uppercase;
+}
+
 .destinationHeroStats {
   position: absolute;
   right: max(20px, calc((100vw - 1180px) / 2));
@@ -439,6 +479,43 @@
   letter-spacing: 0.12em;
   line-height: var(--theme-line-small);
   text-transform: uppercase;
+}
+
+.destinationJumpNav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  border-bottom: 1px solid var(--theme-color-paper-08);
+  background: var(--theme-color-canvas);
+}
+
+.destinationJumpNavScroller {
+  display: flex;
+  gap: clamp(22px, 2.2vw, 36px);
+  width: min(100%, 1880px);
+  margin: 0 auto;
+  overflow-x: auto;
+  padding: 19px max(18px, calc((100vw - 1760px) / 2));
+  scrollbar-width: none;
+}
+
+.destinationJumpNavScroller::-webkit-scrollbar {
+  display: none;
+}
+
+.destinationJumpNav a {
+  flex: 0 0 auto;
+  color: var(--theme-color-paper-60);
+  font-size: var(--theme-text-small);
+  font-weight: var(--theme-weight-card);
+  letter-spacing: 0.16em;
+  line-height: var(--theme-line-small);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.destinationJumpNav a:hover {
+  color: var(--theme-color-paper);
 }
 
 .destinationDarkBand,
@@ -2094,7 +2171,20 @@
 
   .destinationHeroInner {
     width: min(100% - 28px, 1180px);
-    padding: 140px 0 230px;
+    padding: 140px 0 450px;
+  }
+
+  .destinationHeroOverlayStats {
+    top: auto;
+    right: 14px;
+    bottom: 198px;
+    left: 14px;
+    width: auto;
+    transform: none;
+  }
+
+  .destinationHeroOverlayStat {
+    padding: 14px 18px;
   }
 
   .destinationHeroStats {
@@ -2112,6 +2202,11 @@
 
   .destinationHeroStat:last-child {
     border-bottom: 0;
+  }
+
+  .destinationJumpNavScroller {
+    gap: 20px;
+    padding: 14px;
   }
 
   .destinationSectionLayout,

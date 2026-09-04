@@ -123,6 +123,8 @@ export default buildConfig({
       },
     }),
     mcpPlugin({
+      // Keep MCP authoring scoped to public catalogue/content records. Sales,
+      // auth, and payment collections are intentionally omitted here.
       collections: {
         pages: {
           enabled: mcpAuthoringAccess,

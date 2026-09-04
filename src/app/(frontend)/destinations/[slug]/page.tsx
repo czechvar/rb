@@ -15,6 +15,7 @@ type LocationDetailPageData = NonNullable<Awaited<ReturnType<typeof getLocationB
 type DestinationDetailData = NonNullable<LocationDetailPageData['destinationDetail']>
 type SynthesizedBlock = {
   blockType: string
+  anchorId?: string
   [key: string]: unknown
 }
 type DestinationBlockGroups = {
@@ -75,6 +76,7 @@ export default async function DestinationPage({ params }: Props) {
         <JsonLd data={jsonLd} />
         <main>
           <RenderBlocks blocks={defaultDestinationBlocks.top} context={{ location: loc }} />
+          <DestinationJumpNav items={destinationJumpNavItems(loc)} />
           <section className={blockStyles.destinationContentBand}>
             <div className={blockStyles.destinationContentShell}>
               <div className={blockStyles.destinationContentMain}>
@@ -170,6 +172,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationCardGrid',
+      anchorId: 'who-is-it-for',
       eyebrow: 'Suitability',
       heading: 'Who is it for?',
       source: 'audience',
@@ -183,6 +186,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationCardGrid',
+      anchorId: 'grades-sectors',
       eyebrow: 'Problems & areas',
       heading: 'Key sectors',
       source: 'sectors',
@@ -190,12 +194,14 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationSeason',
+      anchorId: 'best-season',
       eyebrow: 'Conditions',
       heading: 'Best season',
       intro: sectionBody(detail.sections, 'season'),
     },
     {
       blockType: 'destinationLogistics',
+      anchorId: 'gear',
       eyebrow: 'Equipment',
       heading: 'What gear to bring',
       source: 'gearGroups',
@@ -203,6 +209,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationLogistics',
+      anchorId: 'getting-there',
       eyebrow: 'Travel',
       heading: 'Getting there',
       source: 'transportOptions',
@@ -210,6 +217,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationLogistics',
+      anchorId: 'stay-eat',
       eyebrow: 'Accommodation & food',
       heading: 'Stay & eat',
       source: 'accommodationOptions',
@@ -217,6 +225,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationCardGrid',
+      anchorId: 'rest-days',
       eyebrow: 'Beyond climbing',
       heading: 'Rest days',
       source: 'restDayIdeas',
@@ -225,6 +234,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationCardGrid',
+      anchorId: 'tips-ethics',
       eyebrow: 'Responsible climbing',
       heading: 'Tips & ethics',
       source: 'accessRules',
@@ -232,6 +242,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationCardGrid',
+      anchorId: 'safety',
       eyebrow: 'Emergency information',
       heading: 'Safety & emergency',
       source: 'safetyItems',
@@ -240,6 +251,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationLogistics',
+      anchorId: 'costs',
       eyebrow: 'Budget planning',
       heading: 'Costs & budget',
       source: 'costItems',
@@ -247,6 +259,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationCardGrid',
+      anchorId: 'faq',
       eyebrow: 'Questions',
       heading: 'Frequently asked questions',
       source: 'destinationFaqs',
@@ -254,6 +267,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
     },
     {
       blockType: 'destinationCardGrid',
+      anchorId: 'rockbusters-trips',
       eyebrow: 'Guided trips',
       heading: `Rockbusters trips to ${loc.name}`,
       source: 'tripPromos',
@@ -290,6 +304,50 @@ function sectionBody(
   key: string,
 ) {
   return sections?.find((section) => section.key === key)?.body ?? undefined
+}
+
+function DestinationJumpNav({ items }: { items: Array<{ href: string; label: string }> }) {
+  if (!items.length) return null
+
+  return (
+    <nav className={blockStyles.destinationJumpNav} aria-label="Destination sections">
+      <div className={blockStyles.destinationJumpNavScroller}>
+        {items.map((item) => (
+          <a key={item.href} href={item.href}>
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  )
+}
+
+function destinationJumpNavItems(loc: LocationDetailPageData) {
+  const detail = loc.destinationDetail
+  if (!detail) return []
+
+  const hasSection = (key: string) => detail.sections?.some((section) => section.key === key && section.body)
+  const hasItems = (items: unknown[] | null | undefined) => Boolean(items?.length)
+  const item = (anchorId: string, label: string, show: boolean) =>
+    show ? { href: `#${anchorId}`, label } : null
+
+  return [
+    item('destination-intro', 'Introduction', Boolean(hasSection('intro'))),
+    item('destination-history', 'History', Boolean(hasSection('history'))),
+    item('destination-rock', 'Rock & style', Boolean(hasSection('rock'))),
+    item('who-is-it-for', 'Who is it for', hasItems(detail.audience)),
+    item('grades-sectors', 'Grades & sectors', Boolean(hasSection('grades')) || hasItems(detail.sectors)),
+    item('best-season', 'Best season', hasItems(detail.seasonMonths)),
+    item('gear', 'Gear', hasItems(detail.gearGroups)),
+    item('getting-there', 'Getting there', hasItems(detail.transportOptions)),
+    item('stay-eat', 'Stay & eat', hasItems(detail.accommodationOptions)),
+    item('rest-days', 'Rest days', hasItems(detail.restDayIdeas)),
+    item('tips-ethics', 'Tips & ethics', hasItems(detail.accessRules)),
+    item('safety', 'Safety', hasItems(detail.safetyItems)),
+    item('costs', 'Costs', hasItems(detail.costItems)),
+    item('faq', 'FAQ', hasItems(detail.destinationFaqs)),
+    item('rockbusters-trips', 'Rockbusters trips', hasItems(detail.tripPromos)),
+  ].filter((navItem): navItem is { href: string; label: string } => Boolean(navItem))
 }
 
 function destinationGalleryImages(loc: LocationDetailPageData) {
