@@ -81,4 +81,13 @@ describe('isBenefitPlusConfigured', () => {
     setMinimalEnv()
     expect(isBenefitPlusConfigured()).toBe(true)
   })
+
+  // A variable present but blank is what a half-filled Vercel dashboard looks
+  // like. It must read as unconfigured, or the button renders and the payment
+  // fails at the gateway instead of simply not being offered.
+  it('treats a blank required variable as unconfigured', () => {
+    setMinimalEnv()
+    process.env.MUZAPAY_ESHOP_ID = ''
+    expect(isBenefitPlusConfigured()).toBe(false)
+  })
 })
