@@ -151,16 +151,23 @@ describe('sweepBenefitPlusPayments', () => {
   })
 
   it('keeps going when one transaction throws', async () => {
-    const good = `PAY-GOOD-${Date.now()}`
     const bad = `PAY-BAD-${Date.now()}`
-    const { orderId: goodOrder } = await seedBegunTransaction(good)
+    const good = `PAY-GOOD-${Date.now()}`
+    // Seed order matters: the sweep processes oldest-first, so the failing
+    // transaction must be created FIRST. Seeded the other way round, a broken
+    // implementation that wraps the whole loop in one try/catch — stopping at
+    // the first exception instead of isolating each transaction — would still
+    // pass, because the good one would already have been processed.
     await seedBegunTransaction(bad)
+    const { orderId: goodOrder } = await seedBegunTransaction(good)
     // `bad` is absent from the map, so its state call 404s and throws.
     stubStates({ [good]: 'PAID' })
 
     const summary = await sweepBenefitPlusPayments()
 
     expect(summary.failed).toBeGreaterThanOrEqual(1)
+    // The real assertion: a transaction queued *behind* a failing one still got
+    // resolved.
     expect(await orderState(goodOrder)).toBe('paid')
   })
 })
