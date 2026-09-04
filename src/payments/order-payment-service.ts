@@ -190,6 +190,66 @@ export async function resolveBenefitPlusPayment(uuid: string): Promise<void> {
   await applyOutcome(txnDoc, outcome)
 }
 
+/** How long a payment may sit `begun` before the sweep tries to cancel it. */
+const STALE_AFTER_MS = 60 * 60 * 1000
+/** Cap per run, so one sweep cannot fan out into an unbounded number of calls. */
+const SWEEP_BATCH_SIZE = 50
+
+export interface SweepSummary {
+  checked: number
+  resolved: number
+  failed: number
+}
+
+/**
+ * Resolves Benefit+ payments the return URL never got to — the payer closed
+ * the tab, or the status check failed at the time. Runs from Vercel Cron.
+ *
+ * One failing transaction must not abort the batch: each is logged and the
+ * loop continues, because a single unreachable payment would otherwise stall
+ * every other order in the queue.
+ */
+export async function sweepBenefitPlusPayments(): Promise<SweepSummary> {
+  const cms = await getPayloadClient()
+  const { docs } = await cms.find({
+    collection: 'transactions',
+    where: {
+      and: [{ paymentMethod: { equals: 'muzapay' } }, { state: { equals: 'begun' } }],
+    },
+    sort: 'createdAt',
+    limit: SWEEP_BATCH_SIZE,
+    overrideAccess: true,
+  })
+
+  const gateway = benefitPlusGateway()
+  const summary: SweepSummary = { checked: 0, resolved: 0, failed: 0 }
+
+  for (const doc of docs as TransactionDoc[]) {
+    summary.checked += 1
+    try {
+      const transaction = toGatewayTransaction(doc)
+      let outcome = await gateway.checkStatus(transaction)
+
+      // Still unresolved well past the point a payer would have finished:
+      // ask MuzaPay to cancel it, which their docs require for uncertain
+      // states. Repeated passes give the progressive spacing they ask for.
+      if (!outcome && Date.now() - new Date(doc.createdAt).getTime() > STALE_AFTER_MS) {
+        outcome = await gateway.cancel(transaction)
+      }
+
+      if (outcome) {
+        await applyOutcome(doc, outcome)
+        summary.resolved += 1
+      }
+    } catch (err) {
+      summary.failed += 1
+      console.error(`[muzapay/sweep] transaction ${doc.uuid} failed:`, err)
+    }
+  }
+
+  return summary
+}
+
 /**
  * Handles an inbound Comgate webhook end to end: verifies + parses it via
  * the gateway, persists the outcome on the transaction, and advances the
