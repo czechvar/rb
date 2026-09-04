@@ -20,7 +20,7 @@ import { toMinorUnits } from '../money'
 import { MuzaPayClient } from './client'
 import { MuzaPaySignatureBuilder } from './signature-builder'
 import { MuzaPaySigner } from './signer'
-import { MuzaPayTokenProvider } from './token-provider'
+import { getMuzaPayTokenProvider, type MuzaPayTokenProvider } from './token-provider'
 
 const ORDER_DESCRIPTION_MAX_LENGTH = 255
 
@@ -69,7 +69,7 @@ export class MuzaPayGateway implements PaymentGateway {
     this.client = new MuzaPayClient(config.baseUrl)
     this.signer = new MuzaPaySigner(config.privateKeyPem, config.privateKeyPassphrase)
     this.signatureBuilder = new MuzaPaySignatureBuilder(config.signatureDelimiter)
-    this.tokenProvider = new MuzaPayTokenProvider({
+    this.tokenProvider = getMuzaPayTokenProvider({
       baseUrl: config.baseUrl,
       eshopId: config.eshopId,
       eshopPassword: config.eshopPassword,
@@ -80,10 +80,14 @@ export class MuzaPayGateway implements PaymentGateway {
 
   async begin(transaction: Transaction): Promise<BeginResult> {
     if (transaction.state !== 'created') {
-      throw new PaymentGatewayError('Cannot begin the transaction at this point.')
+      throw new PaymentGatewayError(
+        `Cannot begin the transaction at this point (transaction ${transaction.uuid}).`,
+      )
     }
     if (!transaction.orderReference) {
-      throw new PaymentGatewayError('MuzaPay requires an order reference on the transaction.')
+      throw new PaymentGatewayError(
+        `MuzaPay requires an order reference on the transaction (transaction ${transaction.uuid}).`,
+      )
     }
 
     const token = await this.tokenProvider.getToken()
@@ -120,7 +124,9 @@ export class MuzaPayGateway implements PaymentGateway {
     const paymentId = response.paymentId
     const gatewayUrl = response.gatewayUrl
     if (typeof paymentId !== 'string' || typeof gatewayUrl !== 'string') {
-      throw new PaymentGatewayError('MuzaPay init response is missing paymentId/gatewayUrl.')
+      throw new PaymentGatewayError(
+        `MuzaPay init response is missing paymentId/gatewayUrl (transaction ${transaction.uuid}).`,
+      )
     }
 
     return {
@@ -154,7 +160,7 @@ export class MuzaPayGateway implements PaymentGateway {
   private paymentId(transaction: Transaction): string {
     const id = transaction.payload.gatewayTransactionId
     if (typeof id !== 'string' || id === '') {
-      throw new PaymentGatewayError('Transaction has no MuzaPay payment id.')
+      throw new PaymentGatewayError(`Transaction ${transaction.uuid} has no MuzaPay payment id.`)
     }
     return id
   }
@@ -193,7 +199,9 @@ export class MuzaPayGateway implements PaymentGateway {
    */
   async cancel(transaction: Transaction): Promise<PaymentOutcome | null> {
     if (transaction.state !== 'begun') {
-      throw new PaymentGatewayError('Cannot cancel the transaction at this point.')
+      throw new PaymentGatewayError(
+        `Cannot cancel the transaction at this point (transaction ${transaction.uuid}).`,
+      )
     }
 
     const paymentId = this.paymentId(transaction)

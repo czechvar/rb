@@ -2,7 +2,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { generateKeyPairSync } from 'node:crypto'
 import { PaymentGatewayError, type Transaction, type TransactionStore } from '@/payments/gateway'
-import { MuzaPayGateway } from '@/payments/muzapay/gateway'
+import { MuzaPayGateway, type MuzaPayGatewayConfig } from '@/payments/muzapay/gateway'
 
 afterEach(() => {
   vi.unstubAllGlobals()
@@ -43,7 +43,10 @@ function makeStore(transactions: Transaction[]): TransactionStore {
   }
 }
 
-function makeGateway(store: TransactionStore = makeStore([])) {
+function makeGateway(
+  store: TransactionStore = makeStore([]),
+  overrides: Partial<MuzaPayGatewayConfig> = {},
+) {
   return new MuzaPayGateway({
     baseUrl: 'https://api.gate.int.pay.muza.cz',
     eshopId: 'ESHOP1',
@@ -56,6 +59,7 @@ function makeGateway(store: TransactionStore = makeStore([])) {
     language: 'cs',
     backendBaseUrl: 'https://beta.rockbusters.net',
     store,
+    ...overrides,
   })
 }
 
@@ -124,8 +128,7 @@ describe('MuzaPayGateway.begin', () => {
         orderReferenceCode: 'RB-2026-000123',
         orderDescription: 'Vysoké Tatry — zimní přechod',
         merchantData: Buffer.from('uuid-benefit-1').toString('base64'),
-        returnUrl:
-          'https://beta.rockbusters.net/api/payments/muzapay/return?refId=uuid-benefit-1',
+        returnUrl: 'https://beta.rockbusters.net/api/payments/muzapay/return?refId=uuid-benefit-1',
         language: 'cs',
       }),
     )
@@ -154,9 +157,9 @@ describe('MuzaPayGateway.begin', () => {
 
   it('refuses a transaction that has already begun', async () => {
     stubMuzaPay()
-    await expect(
-      makeGateway().begin(makeTransaction({ state: 'begun' })),
-    ).rejects.toThrow(PaymentGatewayError)
+    await expect(makeGateway().begin(makeTransaction({ state: 'begun' }))).rejects.toThrow(
+      PaymentGatewayError,
+    )
   })
 
   it('refuses a transaction with no order reference', async () => {
@@ -173,10 +176,9 @@ describe('MuzaPayGateway.begin', () => {
 
   it('truncates an over-long description to 255 characters', async () => {
     const calls = stubMuzaPay(
-      new Response(
-        JSON.stringify({ paymentId: 'P', gatewayUrl: 'https://x', currency: 'CZK' }),
-        { status: 200 },
-      ),
+      new Response(JSON.stringify({ paymentId: 'P', gatewayUrl: 'https://x', currency: 'CZK' }), {
+        status: 200,
+      }),
     )
     await makeGateway().begin(makeTransaction({ label: 'x'.repeat(300) }))
     const init = calls.find((c) => c.url.includes('/v2/payments/init'))
@@ -302,5 +304,45 @@ describe('MuzaPayGateway.cancel', () => {
     await expect(makeGateway().cancel(makeTransaction({ state: 'created' }))).rejects.toThrow(
       PaymentGatewayError,
     )
+  })
+})
+
+describe('MuzaPay token sharing across gateway instances', () => {
+  function begunTransactionWithId(paymentId: string) {
+    return makeTransaction({ state: 'begun', payload: { gatewayTransactionId: paymentId } })
+  }
+
+  it('shares one cached token across two gateways built from the same config', async () => {
+    const calls = stubMuzaPay(
+      new Response(JSON.stringify({ paymentState: 'PAID' }), { status: 200 }),
+      new Response(JSON.stringify({ paymentState: 'PAID' }), { status: 200 }),
+    )
+
+    const gateway1 = makeGateway(undefined, { eshopId: 'ESHOP-SHARE-SAME' })
+    await gateway1.checkStatus(begunTransactionWithId('PAY-SHARE-1'))
+
+    // A freshly constructed gateway, same credentials — mirrors the
+    // per-operation gateway construction pattern used by callers.
+    const gateway2 = makeGateway(undefined, { eshopId: 'ESHOP-SHARE-SAME' })
+    await gateway2.checkStatus(begunTransactionWithId('PAY-SHARE-1'))
+
+    const authCalls = calls.filter((c) => c.url.includes('/v2/auth/token'))
+    expect(authCalls).toHaveLength(1)
+  })
+
+  it('authenticates separately for a gateway built with a different eshopId', async () => {
+    const calls = stubMuzaPay(
+      new Response(JSON.stringify({ paymentState: 'PAID' }), { status: 200 }),
+      new Response(JSON.stringify({ paymentState: 'PAID' }), { status: 200 }),
+    )
+
+    const gatewayA = makeGateway(undefined, { eshopId: 'ESHOP-SHARE-A' })
+    await gatewayA.checkStatus(begunTransactionWithId('PAY-SHARE-2'))
+
+    const gatewayB = makeGateway(undefined, { eshopId: 'ESHOP-SHARE-B' })
+    await gatewayB.checkStatus(begunTransactionWithId('PAY-SHARE-2'))
+
+    const authCalls = calls.filter((c) => c.url.includes('/v2/auth/token'))
+    expect(authCalls).toHaveLength(2)
   })
 })
