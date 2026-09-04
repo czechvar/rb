@@ -53,6 +53,21 @@ A clean full-suite run is therefore `2 failed | 56 passed` files.
 errors" mean *no errors in the files this task touches* — compare against that
 baseline of 20 rather than expecting a clean run.
 
+> **⛔ Those 20 errors also make `pnpm build` fail.** `next.config.ts` sets no
+> `typescript.ignoreBuildErrors`, so Next type-checks during the build and stops on
+> them. Verified at the branch point (`b3cf051`): the same 20 errors, so this predates
+> this feature and blocks a production build of `devel`/`main` today, not just of this
+> branch. Benefit+ cannot deploy until `src/lib/jsonld.ts` is fixed — that fix belongs
+> to whoever owns the catalogue JSON-LD work (`674060a`), not to this plan.
+
+**Test-database hygiene affects the sweep specs.** `sweepBenefitPlusPayments` queries
+*all* `begun` muzapay transactions, oldest first, capped at `SWEEP_BATCH_SIZE` (50).
+The sweep specs seed real rows and never clean them up, so repeated local runs
+accumulate stale `begun` transactions; once they exceed 50 they push fresh fixtures
+out of the query window and the sweep tests fail even with correct code. If a sweep
+spec fails for no apparent reason, count the stale rows first and purge them from the
+**test** branch. CI on a fresh database is unaffected.
+
 ---
 
 ## File Structure
