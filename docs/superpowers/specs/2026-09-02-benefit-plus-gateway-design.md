@@ -328,22 +328,56 @@ Resend configuration.
 
 ## Risks and Open Questions
 
-These are unverified until the sandbox run, and the sandbox run is a blocking
-step before merge:
+Risks 1-3 below were **resolved on 2026-09-04 against Benefit+'s own published
+documentation**, without needing sandbox credentials. Sources:
 
-1. **Signature field order.** Taken from the PHP original's comment "don't
-   change order of fields!". If MuzaPay rejects the signature, this is the
-   first thing to vary.
-2. **Amount units.** Assumed haléře (minor units), following
-   `bcmul($price, '100')` in the PHP. Unconfirmed against the current API
-   version.
-3. **`paymentState` vocabulary.** Taken from the PHP match expression. The
-   documentation describes states in prose without enumerating the wire values,
-   so the mapping may be incomplete; unknown values fall through to "still
-   pending", which is the safe direction.
-4. **Token response shape.** `token-provider.ts` expects `accessToken` and
-   `validTo`; unverified.
-5. **Cron plan level.** A sub-daily schedule requires Vercel Pro.
+- Security / signing rules: https://benefitplus.atlassian.net/wiki/spaces/BP2/pages/87818393/Security
+- Parameters: https://benefitplus.atlassian.net/wiki/spaces/BP2/pages/87818435/Parameters
+- Codebooks (enumerations): https://benefitplus.atlassian.net/wiki/spaces/BP2/pages/87818481/Codebooks
+
+1. **Signature field order — RESOLVED, matches.** The Security page specifies
+   `initPayment()` as `x-correlation-id, amount, productCode, orderReferenceCode,
+   orderDescription, merchantData, returnUrl, language`, and both
+   `getPaymentState()` and `cancelPayment()` as `paymentId` alone. That is
+   exactly what `MuzaPayGateway` builds. The same page confirms the rest of the
+   scheme: RSASSA-PKCS1-v1_5 with SHA-256 (RFC 8017 §8.2), `|` delimiter,
+   absent optional fields omitted *along with their delimiters*, zero-length
+   text treated as absent, Base64 then URL-encoding, and the signature passed
+   as a query parameter that is never itself part of the signed string. Every
+   one of those matches `signature-builder.ts` / `signer.ts`, which
+   `tests/int/muzapay-signing.int.spec.ts` pins.
+2. **Amount units — RESOLVED, matches.** Parameters defines `amount` as
+   `integer int64` in "cents/pennies", with the example `1350 (= 13.50 CZK or
+   EUR)`. `toMinorUnits` produces exactly that.
+3. **`paymentState` vocabulary — RESOLVED, complete.** Codebooks enumerates
+   exactly six values: `PAID`, `CANCELED` (one L), `DECLINED`, `EXPIRED`,
+   `IN_PROGRESS_UNPAID`, `PENDING_INFO`. The gateway maps all six, so the
+   "unknown falls through to still-pending" branch is now a safety net rather
+   than an expected path.
+4. **Token response shape — still unverified.** `token-provider.ts` expects
+   `accessToken` and `validTo`. Not covered by the pages above; needs the
+   sandbox.
+5. **Cron plan level — still to confirm.** A sub-daily schedule requires
+   Vercel Pro. As of 2026-09-04 the `rockbusters` project has no `MUZAPAY_*`
+   or `CRON_SECRET` variables set in Production.
+
+### Found while reading the documentation
+
+- **Return URL contract.** Parameters states the e-shop "must implement an
+  endpoint accepting the GET method with the `paymentId` query parameter" —
+  the gateway supplies its own identifier, and the docs do not say whether an
+  existing query string survives. Our return URL carries `refId`. The route
+  now accepts either, falling back to `paymentId`, so a replaced query string
+  cannot strand the payer on the homepage.
+- **`orderReferenceCode` is capped at 40 characters** and Benefit+ enforces
+  duplicate prevention on it: a second *successful* payment for the same code
+  is rejected with `responseCode 94`. Our order numbers (`RB-2026-000001`, 14
+  characters) fit, and the duplicate rule is desirable — but note the
+  consequence for a retry after a payment that succeeded and was never
+  recorded on our side: the retry is rejected rather than double-charging, and
+  currently surfaces as a generic init failure rather than a specific message.
+- **`merchantData` is capped at 255 characters** and must be Base64. Ours is
+  Base64 of a UUID (48 characters).
 
 ## Out of Scope
 
