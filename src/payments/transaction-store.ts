@@ -93,9 +93,10 @@ export class PayloadTransactionStore implements TransactionStore {
     return doc ? toGatewayTransaction(doc) : null
   }
 
-  async findByGatewayTransactionId(
+  /** Raw-document counterpart of `findByGatewayTransactionId`, for the service layer. */
+  async findDocByGatewayTransactionId(
     gatewayTransactionId: string,
-  ): Promise<GatewayTransaction | null> {
+  ): Promise<TransactionDoc | null> {
     const cms = await getPayloadClient()
     const { docs } = await cms.find({
       collection: 'transactions',
@@ -103,7 +104,13 @@ export class PayloadTransactionStore implements TransactionStore {
       limit: 1,
       overrideAccess: true,
     })
-    const doc = docs[0] as TransactionDoc | undefined
+    return (docs[0] as TransactionDoc | undefined) ?? null
+  }
+
+  async findByGatewayTransactionId(
+    gatewayTransactionId: string,
+  ): Promise<GatewayTransaction | null> {
+    const doc = await this.findDocByGatewayTransactionId(gatewayTransactionId)
     return doc ? toGatewayTransaction(doc) : null
   }
 }
