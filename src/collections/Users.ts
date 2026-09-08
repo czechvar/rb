@@ -1,5 +1,5 @@
 import type { CollectionConfig, FieldAccess, Validate } from 'payload'
-import { anyone, isAdmin, isAdminOrSelf, isAdminUser } from '../access'
+import { anyone, canAccessAdminPanel, isAdmin, isAdminOrSelf, isAdminUser } from '../access'
 import { verifyEmailTemplate, resetPasswordTemplate } from '../lib/email/templates'
 
 // Field-level access wrapper: admins only. The `Access` (collection-level)
@@ -60,6 +60,14 @@ export const Users: CollectionConfig = {
   },
   admin: { useAsTitle: 'email', group: 'Admin' },
   access: {
+    // Gates entry to the admin panel itself, not just the data. Users is the
+    // collection `payload.config.ts` designates as `admin.user`, so without
+    // this every authenticated customer can load /admin. They see very little
+    // — every content collection is `isAdmin` for writes and reads are
+    // access-filtered — but it is confusing for customers and needless
+    // surface, and it would become a real hole the first time a collection
+    // ships with looser write access.
+    admin: canAccessAdminPanel,
     read: isAdminOrSelf,
     create: anyone,
     update: isAdminOrSelf,
