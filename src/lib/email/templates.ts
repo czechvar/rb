@@ -14,17 +14,32 @@ interface TemplateProps {
   name: string
 }
 
+// The wordmark in logo-rockbusters.png is white on transparent, so it only reads
+// on a dark ground — hence the near-black brand band above the white card.
+const LOGO_WIDTH = 180
+const LOGO_HEIGHT = 27 // 265x39 source, scaled to LOGO_WIDTH
+
+function brandHeader(): string {
+  const src = siteUrl('/logo-rockbusters.png')
+  return `<div style="background:#0a0a0a;padding:20px 32px;border-radius:8px 8px 0 0;">
+      <img src="${src}" alt="Rockbusters" width="${LOGO_WIDTH}" height="${LOGO_HEIGHT}" style="display:block;border:0;outline:none;text-decoration:none;width:${LOGO_WIDTH}px;height:${LOGO_HEIGHT}px;" />
+    </div>`
+}
+
 function shell(title: string, bodyHtml: string, cta: { label: string; href: string }): string {
   return `<!doctype html>
 <html><body style="font-family:Lato,system-ui,sans-serif;background:#f7f5f3;margin:0;padding:24px;color:#1a1a1a;">
-  <div style="max-width:520px;margin:0 auto;background:#fff;padding:32px;border-radius:8px;">
-    <h1 style="font-family:'Libre Franklin',sans-serif;color:#c8102e;margin:0 0 16px;font-size:22px;">${escapeHtml(title)}</h1>
-    ${bodyHtml}
-    <p style="margin:24px 0;">
-      <a href="${cta.href}" style="background:#c8102e;color:#fff;text-decoration:none;padding:12px 20px;border-radius:4px;display:inline-block;font-weight:600;">${escapeHtml(cta.label)}</a>
-    </p>
-    <p style="font-size:13px;color:#666;">If the button doesn't work, copy this link into your browser:<br/><span style="word-break:break-all;">${cta.href}</span></p>
-    <p style="font-size:13px;color:#666;margin-top:32px;">— Rockbusters</p>
+  <div style="max-width:520px;margin:0 auto;">
+    ${brandHeader()}
+    <div style="background:#fff;padding:32px;border-radius:0 0 8px 8px;">
+      <h1 style="font-family:'Libre Franklin',sans-serif;color:#c8102e;margin:0 0 16px;font-size:22px;">${escapeHtml(title)}</h1>
+      ${bodyHtml}
+      <p style="margin:24px 0;">
+        <a href="${cta.href}" style="background:#c8102e;color:#fff;text-decoration:none;padding:12px 20px;border-radius:4px;display:inline-block;font-weight:600;">${escapeHtml(cta.label)}</a>
+      </p>
+      <p style="font-size:13px;color:#666;">If the button doesn't work, copy this link into your browser:<br/><span style="word-break:break-all;">${cta.href}</span></p>
+      <p style="font-size:13px;color:#666;margin-top:32px;">— Rockbusters</p>
+    </div>
   </div>
 </body></html>`
 }
