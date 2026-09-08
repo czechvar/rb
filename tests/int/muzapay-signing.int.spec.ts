@@ -77,6 +77,29 @@ describe('MuzaPaySigner', () => {
     expect(() => new MuzaPaySigner('not a pem')).toThrow()
     expect(() => new MuzaPaySigner('')).toThrow()
   })
+
+  // Benefit+'s "Test keys generation" page tells integrators to run
+  // `openssl genrsa`, which emits a traditional PKCS#1 key
+  // (-----BEGIN RSA PRIVATE KEY-----). The tests above all use PKCS#8, so the
+  // one format their documentation actually produces was the one uncovered
+  // until the 2026-09-08 sandbox run happened to exercise it.
+  it('accepts a PKCS#1 key, which is what `openssl genrsa` produces', () => {
+    const pkcs1 = generateKeyPairSync('rsa', {
+      modulusLength: 2048,
+      publicKeyEncoding: { type: 'spki', format: 'pem' },
+      privateKeyEncoding: { type: 'pkcs1', format: 'pem' },
+    })
+    expect(pkcs1.privateKey).toContain('BEGIN RSA PRIVATE KEY')
+
+    const pkcs1Signer = new MuzaPaySigner(pkcs1.privateKey)
+    const data = 'uuid-1|249000|LEISURE|RB-2026-000123'
+    const signature = pkcs1Signer.signToBase64(data)
+
+    const verifier = createVerify('RSA-SHA256')
+    verifier.update(data, 'utf8')
+    verifier.end()
+    expect(verifier.verify(pkcs1.publicKey, signature, 'base64')).toBe(true)
+  })
 })
 
 describe('rawUrlEncode', () => {
