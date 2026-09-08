@@ -29,7 +29,7 @@
   opacity: 0;
   transition:
     width 120ms ease-out,
-    opacity 260ms ease-out;
+    opacity 200ms ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
