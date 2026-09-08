@@ -361,6 +361,45 @@ documentation**, without needing sandbox credentials. Sources:
    Vercel Pro. As of 2026-09-04 the `rockbusters` project has no `MUZAPAY_*`
    or `CRON_SECRET` variables set in Production.
 
+## Sandbox Verification (2026-09-08) — PASSED
+
+Run against the live sandbox (`https://api.gate.int.pay.muza.cz`) with the
+Rockbusters test-gateway credentials and a freshly generated RSA 2048 keypair.
+**Every remaining assumption held; nothing had to be changed.**
+
+| Step | Result |
+|---|---|
+| `POST /v2/auth/token` | HTTP 200, fields exactly `accessToken` + `validTo` — resolves risk 4, `token-provider.ts` parses it unchanged |
+| `POST /v2/payments/init` | **Signature accepted on the first attempt.** Returned `paymentId` (`^[A-F0-9]{32}$` as documented), `gatewayUrl`, `currency: CZK`, `beneficiaryId` |
+| Amount encoding | `2490.00 CZK` sent as `249000` and accepted — haléře confirmed |
+| Diacritics | `orderDescription` "Vysoké Tatry — zimní přechod" accepted; UTF-8 signing is correct |
+| `GET /v2/payments/{id}/state` | `IN_PROGRESS_UNPAID` → `null`, then `PAID` → `paid`. Mapping confirmed against live values |
+| `PUT /v2/payments/{id}/cancel` | HTTP 202 accepted |
+| Full order chain | Order `RB-2026-000709`: EUR 100 order with a CZK 2490 transaction, `begun` → gateway → `pending` → `confirmed` → `paid`, driven entirely by `resolveBenefitPlusPayment` |
+
+### What the run taught us
+
+- **The `cancel()` design decision was vindicated immediately.** The sandbox
+  settles a payment on its own within seconds. A cancel issued against a
+  payment that had just been paid returned HTTP 202 (accepted) and then the
+  state read came back `PAID`. Because `cancel()` re-reads state and reports
+  the outcome instead of assuming cancellation, it correctly reported `paid`.
+  An implementation that treated the 202 as "cancelled" would have marked a
+  **paid** order cancelled and lost the money — on the first real call.
+- **Key format gap that testing had missed.** Benefit+'s documented
+  `openssl genrsa` command produces a **PKCS#1** key (`BEGIN RSA PRIVATE
+  KEY`), while every unit test used PKCS#8 (`BEGIN PRIVATE KEY`). The format
+  their docs tell you to generate was the one never covered. Node's
+  `createPrivateKey` accepts both, so it works — but that was luck, not
+  coverage.
+- **Local-dev gotcha:** the order-created email fires during this flow, so
+  `RESEND_API_KEY` must be unset locally or `payload.create` throws a 403 out
+  of the Resend sandbox sender. Already documented in `CLAUDE.md`.
+
+Still outstanding: nothing technical. Production go-live needs the Benefit+
+production credentials, `MUZAPAY_BASE_URL` switched to
+`https://api.gate.pay.muza.cz`, and a Vercel Pro plan for the 10-minute cron.
+
 ### Found while reading the documentation
 
 - **Return URL contract.** Parameters states the e-shop "must implement an

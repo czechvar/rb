@@ -63,8 +63,11 @@ Self-registration with email verification, login (with lockout + verify-required
   event dates carry an optional `priceCzk` that orders snapshot as
   `unitPriceCzk`/`totalPriceCzk`; the order itself stays EUR. See
   `docs/superpowers/specs/2026-09-02-benefit-plus-gateway-design.md`.
-  Still **unverified against the real MuzaPay sandbox** — that verification
-  pass is a separate outstanding task.
+  **Verified end-to-end against the real MuzaPay sandbox on 2026-09-08**: the
+  signature was accepted first try, and an order went `pending -> confirmed ->
+  paid` from a live gateway payment. See the "Sandbox Verification" section of
+  the design spec. Production go-live still needs production credentials and
+  `MUZAPAY_BASE_URL` pointed at `https://api.gate.pay.muza.cz`.
 
 ## Proposed stack (tentative — not final)
 
