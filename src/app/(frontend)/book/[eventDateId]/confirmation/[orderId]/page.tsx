@@ -63,16 +63,30 @@ export default async function BookingConfirmation({ params }: Props) {
         <p><strong>Total:</strong> {o.totalPrice} {o.currency}</p>
       </div>
       {o.state === 'pending' && (
-        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', margin: '24px 0' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: 12,
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            margin: '24px 0',
+          }}
+        >
+          {/* `styles.css` resets bare `button` to a transparent, borderless
+              element, so these need the shared button classes or they render
+              as plain text. Card is the primary path; Benefit+ is the
+              alternative, hence the secondary treatment. */}
           <form action={payByCardAction.bind(null, o.id)}>
-            <button type="submit">Pay by card</button>
+            <button type="submit" className="btn-primary">
+              Pay by card
+            </button>
           </form>
           {o.totalPriceCzk != null && isBenefitPlusConfigured() && (
             <form action={payWithBenefitPlusAction.bind(null, o.id)}>
               {/* The CZK amount is shown because it differs from the EUR total
                   above — Benefit+ settles in CZK at an independently set price,
                   and the payer should not first learn that at the gateway. */}
-              <button type="submit">
+              <button type="submit" className="btn-outline-dark">
                 Pay with Benefit+ — {o.totalPriceCzk.toLocaleString('cs-CZ')} Kč
               </button>
             </form>
