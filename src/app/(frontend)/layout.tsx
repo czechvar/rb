@@ -1,6 +1,7 @@
 import { Bebas_Neue, Inter } from 'next/font/google'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { DirectGa4 } from '@/components/analytics/DirectGa4'
+import { RouteProgress } from '@/components/navigation/RouteProgress'
 import './styles.css'
 
 const inter = Inter({
@@ -27,6 +28,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${bebasNeue.variable}`}>
       <body data-theme="rockbusters">
+        <Suspense fallback={null}>
+          <RouteProgress />
+        </Suspense>
         {children}
         <DirectGa4 />
       </body>
