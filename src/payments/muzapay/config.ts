@@ -20,6 +20,8 @@ export interface MuzaPayEnvConfig {
   signatureDelimiter: string
   productCode: string
   language: string
+  /** API version path segment, e.g. "v4". See MUZAPAY_API_VERSION below. */
+  apiVersion: string
 }
 
 const REQUIRED = [
@@ -53,6 +55,12 @@ export function muzapayConfigFromEnv(): MuzaPayEnvConfig {
     signatureDelimiter: '|',
     productCode: process.env.MUZAPAY_PRODUCT_CODE || 'LEISURE',
     language: process.env.MUZAPAY_LANGUAGE || 'cs',
+    // Defaults to v4, which Benefit+ lists as current with no discontinuation
+    // date. v2 and v3 both sunset on 2026-12-31. v4.1 is a revision of the v4
+    // spec, not a separate path — `/v4.1/` 404s. Verified against the sandbox
+    // on 2026-09-08: v4 takes the identical request, signature and response
+    // shape as v2, so this is a path change and nothing more.
+    apiVersion: process.env.MUZAPAY_API_VERSION || 'v4',
   }
 }
 

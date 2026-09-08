@@ -54,6 +54,8 @@ export interface MuzaPayGatewayConfig {
   signatureDelimiter: string
   productCode: string
   language: string
+  /** API version path segment, e.g. "v4". */
+  apiVersion: string
   /** Public base URL of this Next.js app, for building the return URL. */
   backendBaseUrl: string
   store: TransactionStore
@@ -75,6 +77,7 @@ export class MuzaPayGateway implements PaymentGateway {
       eshopPassword: config.eshopPassword,
       country: config.country,
       tokenScope: config.tokenScope,
+      apiVersion: config.apiVersion,
     })
   }
 
@@ -112,7 +115,7 @@ export class MuzaPayGateway implements PaymentGateway {
     )
 
     const response = await this.client.postJson(
-      `/v2/payments/init?signature=${signature}`,
+      `/${this.config.apiVersion}/payments/init?signature=${signature}`,
       initRequest,
       {
         Authorization: `Bearer ${token.accessToken}`,
@@ -167,7 +170,7 @@ export class MuzaPayGateway implements PaymentGateway {
 
   private signedPath(paymentId: string, suffix: string): string {
     const signature = this.signer.signToUrlEncoded(this.signatureBuilder.build([paymentId]))
-    return `/v2/payments/${encodeURIComponent(paymentId)}/${suffix}?signature=${signature}`
+    return `/${this.config.apiVersion}/payments/${encodeURIComponent(paymentId)}/${suffix}?signature=${signature}`
   }
 
   async checkStatus(transaction: Transaction): Promise<PaymentOutcome | null> {

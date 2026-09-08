@@ -110,6 +110,7 @@ Required environment variables in the Vercel project settings:
 - `MUZAPAY_PRIVATE_KEY_PASSPHRASE` — optional passphrase for that key.
 - `MUZAPAY_PRODUCT_CODE` — Benefit+ product category. Defaults to `LEISURE`; a Rockbusters order is always one trip, so the category never varies within a payment.
 - `MUZAPAY_LANGUAGE` — gateway UI language, defaults to `cs`.
+- `MUZAPAY_API_VERSION` — API version path segment, defaults to `v4`. Benefit+ lists v4/v4.1 as current with no discontinuation date, while **v2 and v3 both sunset on 2026-12-31**. v4.1 is a revision of the v4 spec rather than a separate path (`/v4.1/` 404s), so `v4` is the value to use.
 - `MUZAPAY_COUNTRY` / `MUZAPAY_TOKEN_SCOPE` — default to `CZ` and `SINGLE_PAYMENT`.
 - `CRON_SECRET` — bearer secret for `/api/payments/muzapay/reconcile`. Vercel Cron sends it automatically; without it the endpoint returns 503.
 

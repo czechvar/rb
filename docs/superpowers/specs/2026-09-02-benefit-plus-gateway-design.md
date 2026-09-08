@@ -377,6 +377,22 @@ Rockbusters test-gateway credentials and a freshly generated RSA 2048 keypair.
 | `PUT /v2/payments/{id}/cancel` | HTTP 202 accepted |
 | Full order chain | Order `RB-2026-000709`: EUR 100 order with a CZK 2490 transaction, `begun` → gateway → `pending` → `confirmed` → `paid`, driven entirely by `resolveBenefitPlusPayment` |
 
+### API version
+
+Built against **v4** (`MUZAPAY_API_VERSION`, default `v4`). The original port
+targeted v2, following the snowbusters PHP original — but Benefit+'s "API
+version plan and history" page gives **v2 and v3a sunset date of 2026-12-31**,
+while v4/v4.1 are current with no discontinuation date. Shipping on v2 would
+have meant a forced migration within four months.
+
+Probed against the sandbox on 2026-09-08: `/v2/`, `/v3/` and `/v4/` all
+respond; `/v4.1/` 404s, so 4.1 is a revision of the v4 spec rather than a
+separate path. An identical init request, signature and response shape was
+accepted on both v2 and v4, and the full order flow was re-verified live on v4
+(order `RB-2026-000772`, `pending -> paid`). The documented v2->v4 changes are
+confined to `productCode` (enum widened to string, more values); `LEISURE` is
+valid in every version, so nothing else moved.
+
 ### What the run taught us
 
 - **The `cancel()` design decision was vindicated immediately.** The sandbox

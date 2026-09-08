@@ -105,7 +105,7 @@ function stubStates(byPaymentId: Record<string, string>) {
     'fetch',
     vi.fn(async (url: string) => {
       const u = String(url)
-      if (u.includes('/v2/auth/token')) {
+      if (u.includes('/auth/token')) {
         return new Response(
           JSON.stringify({
             accessToken: 'tok-1',
@@ -114,7 +114,7 @@ function stubStates(byPaymentId: Record<string, string>) {
           { status: 200 },
         )
       }
-      const match = u.match(/\/v2\/payments\/([^/]+)\//)
+      const match = u.match(/\/payments\/([^/]+)\//)
       const paymentState = match ? byPaymentId[match[1]] : undefined
       if (!paymentState) return new Response('{}', { status: 404 })
       return new Response(JSON.stringify({ paymentState }), { status: 200 })
@@ -142,7 +142,7 @@ function stubStaleCancel(paymentId: string) {
     'fetch',
     vi.fn(async (url: string, init?: RequestInit) => {
       const u = String(url)
-      if (u.includes('/v2/auth/token')) {
+      if (u.includes('/auth/token')) {
         return new Response(
           JSON.stringify({
             accessToken: 'tok-1',
@@ -151,7 +151,7 @@ function stubStaleCancel(paymentId: string) {
           { status: 200 },
         )
       }
-      const match = u.match(/\/v2\/payments\/([^/]+)\//)
+      const match = u.match(/\/payments\/([^/]+)\//)
       if (match?.[1] !== paymentId) {
         return new Response('{}', { status: 404 })
       }

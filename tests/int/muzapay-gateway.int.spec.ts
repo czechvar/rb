@@ -56,6 +56,7 @@ function makeGateway(
     privateKeyPem: privateKey,
     signatureDelimiter: '|',
     productCode: 'LEISURE',
+    apiVersion: 'v4',
     language: 'cs',
     backendBaseUrl: 'https://beta.rockbusters.net',
     store,
@@ -74,7 +75,7 @@ function stubMuzaPay(...responses: Response[]) {
     'fetch',
     vi.fn(async (url: string, init: RequestInit) => {
       calls.push({ url: String(url), init })
-      if (String(url).includes('/v2/auth/token')) {
+      if (String(url).includes('/auth/token')) {
         return new Response(
           JSON.stringify({
             accessToken: 'tok-1',
@@ -111,9 +112,9 @@ describe('MuzaPayGateway.begin', () => {
     expect(result.redirectUrl).toBe('https://gate.pay.muza.cz/p/PAY-1')
     expect(result.gatewayTransactionId).toBe('PAY-1')
 
-    const init = calls.find((c) => c.url.includes('/v2/payments/init'))
+    const init = calls.find((c) => c.url.includes('/v4/payments/init'))
     expect(init).toBeDefined()
-    expect(init?.url).toMatch(/\/v2\/payments\/init\?signature=/)
+    expect(init?.url).toMatch(/\/v4\/payments\/init\?signature=/)
 
     const headers = init?.init.headers as Record<string, string>
     expect(headers.Authorization).toBe('Bearer tok-1')
@@ -181,7 +182,7 @@ describe('MuzaPayGateway.begin', () => {
       }),
     )
     await makeGateway().begin(makeTransaction({ label: 'x'.repeat(300) }))
-    const init = calls.find((c) => c.url.includes('/v2/payments/init'))
+    const init = calls.find((c) => c.url.includes('/v4/payments/init'))
     const body = JSON.parse(String(init?.init.body)) as { orderDescription: string }
     expect(body.orderDescription).toHaveLength(255)
   })
@@ -202,7 +203,7 @@ describe('MuzaPayGateway.checkStatus', () => {
     const outcome = await makeGateway().checkStatus(begunTransaction())
 
     const state = calls.find((c) => c.url.includes('/state'))
-    expect(state?.url).toMatch(/\/v2\/payments\/PAY-1\/state\?signature=/)
+    expect(state?.url).toMatch(/\/v4\/payments\/PAY-1\/state\?signature=/)
     expect((state?.init.headers as Record<string, string>).Authorization).toBe('Bearer tok-1')
     expect(outcome).toEqual({ state: 'paid', callbackPayload: { paymentState: 'PAID' } })
   })
@@ -278,7 +279,7 @@ describe('MuzaPayGateway.cancel', () => {
 
     const cancel = calls.find((c) => c.url.includes('/cancel'))
     expect(cancel?.init.method).toBe('PUT')
-    expect(cancel?.url).toMatch(/\/v2\/payments\/PAY-1\/cancel\?signature=/)
+    expect(cancel?.url).toMatch(/\/v4\/payments\/PAY-1\/cancel\?signature=/)
     expect(outcome).toEqual({ state: 'cancelled', callbackPayload: { paymentState: 'CANCELED' } })
   })
 
@@ -326,7 +327,7 @@ describe('MuzaPay token sharing across gateway instances', () => {
     const gateway2 = makeGateway(undefined, { eshopId: 'ESHOP-SHARE-SAME' })
     await gateway2.checkStatus(begunTransactionWithId('PAY-SHARE-1'))
 
-    const authCalls = calls.filter((c) => c.url.includes('/v2/auth/token'))
+    const authCalls = calls.filter((c) => c.url.includes('/auth/token'))
     expect(authCalls).toHaveLength(1)
   })
 
@@ -342,7 +343,7 @@ describe('MuzaPay token sharing across gateway instances', () => {
     const gatewayB = makeGateway(undefined, { eshopId: 'ESHOP-SHARE-B' })
     await gatewayB.checkStatus(begunTransactionWithId('PAY-SHARE-2'))
 
-    const authCalls = calls.filter((c) => c.url.includes('/v2/auth/token'))
+    const authCalls = calls.filter((c) => c.url.includes('/auth/token'))
     expect(authCalls).toHaveLength(2)
   })
 })

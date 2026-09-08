@@ -89,7 +89,7 @@ function stubInit() {
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string) => {
-      if (String(url).includes('/v2/auth/token')) {
+      if (String(url).includes('/auth/token')) {
         return new Response(
           JSON.stringify({
             accessToken: 'tok-1',
@@ -210,7 +210,7 @@ function stubState(paymentState: string) {
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string) => {
-      if (String(url).includes('/v2/auth/token')) {
+      if (String(url).includes('/auth/token')) {
         return new Response(
           JSON.stringify({
             accessToken: 'tok-1',

@@ -4,7 +4,7 @@
  * TypeScript port of snowbusters
  * api/app/PaymentsModule/service/MuzaPay/MuzaPayTokenProvider.php
  *
- * Fetches a bearer token from `POST /v2/auth/token` (HTTP Basic auth with
+ * Fetches a bearer token from `POST /{apiVersion}/auth/token` (HTTP Basic auth with
  * eshop credentials) and caches it until shortly before it expires.
  *
  * Caching: the PHP version layered a per-request static var over a Nette
@@ -41,6 +41,8 @@ export interface MuzaPayTokenProviderConfig {
   country: string;
   /** e.g. "SINGLE_PAYMENT" */
   tokenScope: string;
+  /** API version path segment, e.g. "v4". */
+  apiVersion: string;
 }
 
 export class MuzaPayTokenProvider {
@@ -79,7 +81,7 @@ export class MuzaPayTokenProvider {
   }
 
   private async authenticate(): Promise<MuzaPayToken> {
-    const { baseUrl, eshopId, eshopPassword, country, tokenScope } = this.config;
+    const { baseUrl, eshopId, eshopPassword, country, tokenScope, apiVersion } = this.config;
     if (!baseUrl) {
       throw new PaymentGatewayError('MuzaPay baseUrl is not configured.');
     }
@@ -92,7 +94,7 @@ export class MuzaPayTokenProvider {
 
     let response: Response;
     try {
-      response = await fetch(new URL('/v2/auth/token', baseUrl), {
+      response = await fetch(new URL(`/${apiVersion}/auth/token`, baseUrl), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -132,7 +134,7 @@ export class MuzaPayTokenProvider {
  * call, including the cron sweep's up-to-50-transactions-per-pass loop.
  *
  * Keyed on the same fields the PHP original hashed (sha1) into its cache
- * key: `baseUrl`, `eshopId`, `country`, `tokenScope`. `JSON.stringify` of
+ * key: `baseUrl`, `eshopId`, `country`, `tokenScope`, `apiVersion`. `JSON.stringify` of
  * the tuple is used instead of a hash — easier to debug, and collision-safe
  * because each field is individually quoted/escaped in the JSON output, so
  * the combination is unambiguous. The password is deliberately excluded
@@ -141,9 +143,18 @@ export class MuzaPayTokenProvider {
 const tokenProviders = new Map<string, MuzaPayTokenProvider>();
 
 function tokenProviderCacheKey(
-  config: Pick<MuzaPayTokenProviderConfig, 'baseUrl' | 'eshopId' | 'country' | 'tokenScope'>,
+  config: Pick<
+    MuzaPayTokenProviderConfig,
+    'baseUrl' | 'eshopId' | 'country' | 'tokenScope' | 'apiVersion'
+  >,
 ): string {
-  return JSON.stringify([config.baseUrl, config.eshopId, config.country, config.tokenScope]);
+  return JSON.stringify([
+    config.baseUrl,
+    config.eshopId,
+    config.country,
+    config.tokenScope,
+    config.apiVersion,
+  ]);
 }
 
 /**
