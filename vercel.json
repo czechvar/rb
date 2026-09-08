@@ -5,7 +5,7 @@
   "crons": [
     {
       "path": "/api/payments/muzapay/reconcile",
-      "schedule": "*/10 * * * *"
+      "schedule": "0 3 * * *"
     }
   ]
 }

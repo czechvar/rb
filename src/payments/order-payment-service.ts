@@ -202,7 +202,15 @@ export async function resolveBenefitPlusPayment(uuid: string): Promise<void> {
   await applyOutcome(txnDoc, outcome)
 }
 
-/** How long a payment may sit `begun` before the sweep tries to cancel it. */
+/**
+ * How long a payment may sit `begun` before the sweep tries to cancel it.
+ *
+ * Deliberately independent of how often the sweep runs: on the Vercel Hobby
+ * plan the cron fires once a day, so the first pass to see an abandoned
+ * payment is already far past this threshold and cancels on that pass. On a
+ * ten-minute schedule (Vercel Pro) the same threshold instead gives the payer
+ * a full hour to finish before anything tries to cancel on them.
+ */
 const STALE_AFTER_MS = 60 * 60 * 1000
 /** Cap per run, so one sweep cannot fan out into an unbounded number of calls. */
 const SWEEP_BATCH_SIZE = 50
@@ -244,7 +252,10 @@ export async function sweepBenefitPlusPayments(): Promise<SweepSummary> {
 
       // Still unresolved well past the point a payer would have finished:
       // ask MuzaPay to cancel it, which their docs require for uncertain
-      // states. Repeated passes give the progressive spacing they ask for.
+      // states. Their "at most three attempts at progressive intervals" comes
+      // from successive cron passes rather than a retry loop here — which
+      // means three days apart on the daily Hobby schedule, and thirty minutes
+      // apart on Pro. Either satisfies "progressive"; neither hammers them.
       if (!outcome && Date.now() - new Date(doc.createdAt).getTime() > STALE_AFTER_MS) {
         outcome = await gateway.cancel(transaction)
       }

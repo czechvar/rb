@@ -73,7 +73,7 @@ Settled with the user during design:
 | Credentials | Sandbox credentials are in hand; the flow is verified end to end against the sandbox before merge. |
 | Button placement | Booking confirmation page only. `/account/orders/[id]` is unchanged. |
 | Env var prefix | `MUZAPAY_*`, matching the `src/payments/muzapay/` namespace and the actual API vendor, even though the button reads "Benefit+". |
-| Cron cadence | Every 10 minutes. |
+| Cron cadence | Daily at 03:00 UTC while on the Vercel Hobby plan, which permits no finer schedule. Raise to `*/10 * * * *` on Pro. |
 
 ## Design
 
@@ -239,7 +239,7 @@ the loop continues.
 `vercel.json` gains:
 
 ```json
-"crons": [{ "path": "/api/payments/muzapay/reconcile", "schedule": "*/10 * * * *" }]
+"crons": [{ "path": "/api/payments/muzapay/reconcile", "schedule": "0 3 * * *" }]
 ```
 
 **Plan requirement:** sub-daily cron schedules need the Vercel Pro plan. On
@@ -398,7 +398,8 @@ Rockbusters test-gateway credentials and a freshly generated RSA 2048 keypair.
 
 Still outstanding: nothing technical. Production go-live needs the Benefit+
 production credentials, `MUZAPAY_BASE_URL` switched to
-`https://api.gate.pay.muza.cz`, and a Vercel Pro plan for the 10-minute cron.
+`https://api.gate.pay.muza.cz`, and — to shorten the reconciliation window
+from a day to ten minutes — a Vercel Pro plan.
 
 ### Found while reading the documentation
 

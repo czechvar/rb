@@ -59,7 +59,8 @@ Self-registration with email verification, login (with lockout + verify-required
   `signer.ts` and `token-provider.ts`, now unit-tested. Benefit+ sends **no
   webhook**: results are read from its status endpoint on the return URL
   (`/api/payments/muzapay/return`) and by a cron sweep
-  (`/api/payments/muzapay/reconcile`, every 10 minutes). It settles in CZK, so
+  (`/api/payments/muzapay/reconcile`, daily at 03:00 UTC — the Hobby plan
+  allows no finer, so raise it to `*/10 * * * *` on Pro). It settles in CZK, so
   event dates carry an optional `priceCzk` that orders snapshot as
   `unitPriceCzk`/`totalPriceCzk`; the order itself stays EUR. See
   `docs/superpowers/specs/2026-09-02-benefit-plus-gateway-design.md`.

@@ -284,7 +284,8 @@ export type PaymentGatewayFactory = (method: PaymentMethod) => PaymentGateway;
 // 2. handleWebhook receives the Web `Request` straight from a Next.js route
 //    handler; the service layer (`order-payment-service.ts`) owns persistence.
 // 3. checkStatus scheduling: Vercel Cron hits
-//    /api/payments/muzapay/reconcile every 10 minutes. Comgate does not need
+//    /api/payments/muzapay/reconcile daily (Hobby plan; */10 on Pro).
+//    Comgate does not need
 //    it — its webhook is authoritative.
 // 4. MuzaPay signing is ported and unit-tested in
 //    tests/int/muzapay-signing.int.spec.ts.
