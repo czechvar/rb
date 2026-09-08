@@ -6,6 +6,15 @@
 
 import { PaymentGatewayError } from '../gateway'
 
+/**
+ * Ceiling on a single MuzaPay request. Without one, a hung connection blocks
+ * until the platform kills the whole function — which for the reconciliation
+ * sweep means every transaction queued behind it goes unprocessed until the
+ * next run. Benefit+'s own integration-test suite includes timeout scenarios,
+ * so this is a documented condition rather than a hypothetical one.
+ */
+const REQUEST_TIMEOUT_MS = 15_000
+
 export class MuzaPayClient {
   constructor(private readonly baseUrl: string) {}
 
@@ -23,13 +32,24 @@ export class MuzaPayClient {
   ): Promise<Response> {
     let response: Response
     try {
-      response = await fetch(this.url(pathWithQuery), init)
+      response = await fetch(this.url(pathWithQuery), {
+        ...init,
+        signal: init.signal ?? AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      })
     } catch (cause) {
-      throw new PaymentGatewayError('MuzaPay request failed.', cause)
+      const timedOut = cause instanceof Error && cause.name === 'TimeoutError'
+      throw new PaymentGatewayError(
+        timedOut
+          ? `MuzaPay did not respond within ${REQUEST_TIMEOUT_MS}ms.`
+          : 'MuzaPay request failed.',
+        cause,
+      )
     }
     if (response.status !== expectedCode) {
       throw new PaymentGatewayError(
         `Unexpected HTTP ${response.status} from MuzaPay (expected ${expectedCode}).`,
+        undefined,
+        response.status,
       )
     }
     return response

@@ -264,6 +264,66 @@ describe('MuzaPayGateway.handleReturn', () => {
   })
 })
 
+describe('MuzaPayGateway token retry on 401', () => {
+  /**
+   * Serves a fresh token on every auth call, then answers the state endpoint
+   * with 401 for the first `unauthorizedTimes` attempts and PAID after that.
+   */
+  function stubUnauthorizedThen(unauthorizedTimes: number) {
+    const calls: string[] = []
+    let rejections = 0
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => {
+        const u = String(url)
+        calls.push(u)
+        if (u.includes('/auth/token')) {
+          return new Response(
+            JSON.stringify({
+              accessToken: `tok-${calls.length}`,
+              validTo: new Date(Date.now() + 600_000).toISOString(),
+            }),
+            { status: 200 },
+          )
+        }
+        if (rejections < unauthorizedTimes) {
+          rejections++
+          return new Response('{}', { status: 401 })
+        }
+        return new Response(JSON.stringify({ paymentState: 'PAID' }), { status: 200 })
+      }),
+    )
+    return calls
+  }
+
+  const begun = () =>
+    makeTransaction({ state: 'begun', payload: { gatewayTransactionId: 'PAY-401' } })
+
+  it('re-authenticates once and succeeds when the token is rejected', async () => {
+    const calls = stubUnauthorizedThen(1)
+    // A fresh gateway each time would mask this, so reuse one instance —
+    // the cached token is exactly what has to be discarded.
+    const gateway = makeGateway()
+
+    const outcome = await gateway.checkStatus(begun())
+
+    expect(outcome?.state).toBe('paid')
+    // The state endpoint was called twice — the rejected attempt and the
+    // retry. Counting auth calls would not prove it: the token cache is
+    // process-wide, so the first getToken() may well be served from cache.
+    expect(calls.filter((u) => u.includes('/state'))).toHaveLength(2)
+    // And a re-authentication happened between them.
+    const firstState = calls.findIndex((u) => u.includes('/state'))
+    const lastState = calls.length - 1 - [...calls].reverse().findIndex((u) => u.includes('/state'))
+    expect(calls.slice(firstState, lastState).some((u) => u.includes('/auth/token'))).toBe(true)
+  })
+
+  it('gives up after one retry rather than looping on bad credentials', async () => {
+    stubUnauthorizedThen(99)
+    await expect(makeGateway().checkStatus(begun())).rejects.toThrow(/401/)
+  })
+})
+
 describe('MuzaPayGateway.cancel', () => {
   function begunTransaction() {
     return makeTransaction({ state: 'begun', payload: { gatewayTransactionId: 'PAY-1' } })

@@ -81,6 +81,32 @@ export class MuzaPayGateway implements PaymentGateway {
     })
   }
 
+  /**
+   * Runs an authenticated call and, if MuzaPay rejects the bearer token,
+   * drops the cached one and tries once more.
+   *
+   * The token is cached for its full advertised lifetime and shared across
+   * gateway instances in the process, so a token invalidated early — revoked,
+   * or the eshop's credentials rotated — would otherwise fail every call until
+   * `validTo`, including every transaction in a reconciliation sweep. One
+   * retry makes that self-healing. Benefit+'s integration-test suite covers a
+   * 401 response, so this is a documented condition.
+   *
+   * Retries once only: a second 401 means the credentials are genuinely wrong,
+   * and hammering their auth endpoint would not help.
+   */
+  private async withTokenRetry<T>(call: (accessToken: string) => Promise<T>): Promise<T> {
+    const token = await this.tokenProvider.getToken()
+    try {
+      return await call(token.accessToken)
+    } catch (err) {
+      if (!(err instanceof PaymentGatewayError) || err.status !== 401) throw err
+      this.tokenProvider.invalidate()
+      const fresh = await this.tokenProvider.getToken()
+      return call(fresh.accessToken)
+    }
+  }
+
   async begin(transaction: Transaction): Promise<BeginResult> {
     if (transaction.state !== 'created') {
       throw new PaymentGatewayError(
@@ -93,7 +119,6 @@ export class MuzaPayGateway implements PaymentGateway {
       )
     }
 
-    const token = await this.tokenProvider.getToken()
     const correlationId = transaction.uuid
     const base = this.config.backendBaseUrl.replace(/\/+$/, '')
 
@@ -114,14 +139,16 @@ export class MuzaPayGateway implements PaymentGateway {
       this.signatureBuilder.build([correlationId, ...Object.values(initRequest)]),
     )
 
-    const response = await this.client.postJson(
-      `/${this.config.apiVersion}/payments/init?signature=${signature}`,
-      initRequest,
-      {
-        Authorization: `Bearer ${token.accessToken}`,
-        'x-correlation-id': correlationId,
-      },
-      200,
+    const response = await this.withTokenRetry((accessToken) =>
+      this.client.postJson(
+        `/${this.config.apiVersion}/payments/init?signature=${signature}`,
+        initRequest,
+        {
+          Authorization: `Bearer ${accessToken}`,
+          'x-correlation-id': correlationId,
+        },
+        200,
+      ),
     )
 
     const paymentId = response.paymentId
@@ -177,11 +204,12 @@ export class MuzaPayGateway implements PaymentGateway {
     if (transaction.state !== 'begun') return null
 
     const paymentId = this.paymentId(transaction)
-    const token = await this.tokenProvider.getToken()
-    const response = await this.client.getJson(
-      this.signedPath(paymentId, 'state'),
-      { Authorization: `Bearer ${token.accessToken}` },
-      200,
+    const response = await this.withTokenRetry((accessToken) =>
+      this.client.getJson(
+        this.signedPath(paymentId, 'state'),
+        { Authorization: `Bearer ${accessToken}` },
+        200,
+      ),
     )
 
     const paymentState = response.paymentState
@@ -208,15 +236,23 @@ export class MuzaPayGateway implements PaymentGateway {
     }
 
     const paymentId = this.paymentId(transaction)
-    const token = await this.tokenProvider.getToken()
-    const authorization = { Authorization: `Bearer ${token.accessToken}` }
 
-    await this.client.put(this.signedPath(paymentId, 'cancel'), authorization, 202)
+    await this.withTokenRetry((accessToken) =>
+      this.client.put(
+        this.signedPath(paymentId, 'cancel'),
+        { Authorization: `Bearer ${accessToken}` },
+        202,
+      ),
+    )
 
-    const response = await this.client.getJson(
-      this.signedPath(paymentId, 'state'),
-      authorization,
-      200,
+    // Wrapped separately from the cancel above: a 401 on this read must not
+    // re-issue the cancel itself.
+    const response = await this.withTokenRetry((accessToken) =>
+      this.client.getJson(
+        this.signedPath(paymentId, 'state'),
+        { Authorization: `Bearer ${accessToken}` },
+        200,
+      ),
     )
     const paymentState = response.paymentState
     if (typeof paymentState !== 'string') return null

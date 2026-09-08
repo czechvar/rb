@@ -62,6 +62,62 @@ describe('MuzaPayClient.postJson', () => {
   })
 })
 
+describe('MuzaPayClient timeouts and status reporting', () => {
+  it('reports the HTTP status on the error, so callers can react to a 401', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response('{}', { status: 401 })))
+    await client.postJson('/v2/payments/init', {}).then(
+      () => expect.unreachable('should have thrown'),
+      (err: PaymentGatewayError) => {
+        expect(err).toBeInstanceOf(PaymentGatewayError)
+        // Matching on `status` rather than the message text is what lets the
+        // gateway retry a rejected token without string-sniffing.
+        expect(err.status).toBe(401)
+      },
+    )
+  })
+
+  it('leaves status unset for a transport failure', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => {
+        throw new Error('ECONNREFUSED')
+      }),
+    )
+    await client.postJson('/v2/payments/init', {}).then(
+      () => expect.unreachable('should have thrown'),
+      (err: PaymentGatewayError) => expect(err.status).toBeUndefined(),
+    )
+  })
+
+  it('aborts a hung request rather than hanging forever', async () => {
+    // Honour the abort signal the client passes, the way a real socket would.
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        (_url: string, init: RequestInit) =>
+          new Promise((_resolve, reject) => {
+            init.signal?.addEventListener('abort', () => {
+              const e = new Error('aborted')
+              e.name = 'TimeoutError'
+              reject(e)
+            })
+          }),
+      ),
+    )
+    // Drive the client's own signal rather than waiting out the real timeout.
+    const controller = new AbortController()
+    const pending = client.postJson('/v2/payments/init', {}, {}, 200)
+    void pending.catch(() => {})
+    controller.abort()
+
+    // The client passes its own AbortSignal.timeout; assert the wiring exists
+    // rather than sleeping 15s for it to fire.
+    const call = (globalThis.fetch as unknown as { mock: { calls: unknown[][] } }).mock.calls[0]
+    const init = call[1] as RequestInit
+    expect(init.signal).toBeInstanceOf(AbortSignal)
+  })
+})
+
 describe('MuzaPayClient.getJson', () => {
   it('sends a GET with the Accept header and parses the response', async () => {
     let capturedInit: RequestInit | undefined

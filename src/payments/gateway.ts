@@ -224,6 +224,13 @@ export class PaymentGatewayError extends Error {
   constructor(
     message: string,
     readonly cause?: unknown,
+    /**
+     * The provider's HTTP status, when the failure was an unexpected response
+     * rather than a transport or parse error. Callers use it to react to
+     * specific conditions — notably 401, which means the bearer token was
+     * rejected — without matching on the message text.
+     */
+    readonly status?: number,
   ) {
     super(message);
     this.name = 'PaymentGatewayError';
