@@ -1,0 +1,270 @@
+// @vitest-environment node
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
+import { generateKeyPairSync, randomUUID } from 'node:crypto'
+import { getTestPayload } from '../helpers/payload'
+import { sweepBenefitPlusPayments } from '@/payments/order-payment-service'
+
+const { privateKey } = generateKeyPairSync('rsa', {
+  modulusLength: 2048,
+  publicKeyEncoding: { type: 'spki', format: 'pem' },
+  privateKeyEncoding: { type: 'pkcs8', format: 'pem' },
+})
+
+process.env.MUZAPAY_BASE_URL = 'https://api.gate.int.pay.muza.cz'
+process.env.MUZAPAY_ESHOP_ID = 'ESHOP1'
+process.env.MUZAPAY_ESHOP_PASSWORD = 'pw'
+process.env.MUZAPAY_PRIVATE_KEY = Buffer.from(privateKey).toString('base64')
+process.env.NEXT_PUBLIC_SITE_URL = 'https://beta.rockbusters.net'
+
+afterEach(() => {
+  vi.unstubAllGlobals()
+})
+
+/**
+ * The sweep queries *every* `begun` muzapay transaction in the database, not
+ * just this file's fixtures, so leftovers from earlier runs compete with them
+ * — and once the leftovers exceed SWEEP_BATCH_SIZE (50) they push fresh
+ * fixtures out of the query window entirely, failing perfectly correct code.
+ * (Observed for real: 58 accumulated rows.) Retire whatever is left behind so
+ * these tests depend on their own setup rather than on database history.
+ */
+beforeAll(async () => {
+  const payload = await getTestPayload()
+  const { docs } = await payload.find({
+    collection: 'transactions',
+    where: { and: [{ paymentMethod: { equals: 'muzapay' } }, { state: { equals: 'begun' } }] },
+    limit: 500,
+    overrideAccess: true,
+  })
+  for (const doc of docs) {
+    // `failed` rather than deleted: it is a legitimate terminal state that
+    // excludes the row from the sweep, and it leaves the linked order alone.
+    await payload.update({
+      collection: 'transactions',
+      id: doc.id,
+      data: { state: 'failed' },
+      overrideAccess: true,
+    })
+  }
+})
+
+const billing = {
+  firstName: 'A',
+  lastName: 'B',
+  street: 'Main 1',
+  city: 'Prague',
+  postalCode: '11000',
+  country: 'CZ',
+}
+
+/** Seeds an order plus a `begun` muzapay transaction, bypassing the gateway. */
+async function seedBegunTransaction(paymentId: string) {
+  const payload = await getTestPayload()
+  const unique = `${Date.now()}-${Math.random().toString(36).slice(2)}`
+  const event = await payload.create({
+    collection: 'events',
+    data: { title: `Sweep ${unique}`, slug: `sweep-${unique}`, state: 'published' } as never,
+    overrideAccess: true,
+  })
+  const ed = await payload.create({
+    collection: 'event-dates',
+    data: {
+      event: event.id,
+      dateFrom: '2027-05-01T00:00:00.000Z',
+      dateTo: '2027-05-05T00:00:00.000Z',
+      price: 100,
+      priceCzk: 2490,
+      vat: 21,
+      currency: 'EUR',
+      capacity: 10,
+      active: true,
+    } as never,
+    overrideAccess: true,
+  })
+  const user = await payload.create({
+    collection: 'users',
+    data: {
+      name: 'Sweep',
+      phone: '+420 600 000 060',
+      email: `sweep-${unique}@x.test`,
+      password: 'sweep-test-pwd',
+      role: 'customer',
+      _verified: true,
+    } as never,
+    overrideAccess: true,
+  })
+  const order = await payload.create({
+    collection: 'orders',
+    data: {
+      user: user.id,
+      eventDate: ed.id,
+      participants: [{ firstName: 'A', lastName: 'B', email: 'a@x.test', phone: '+1' }],
+      billingAddress: billing,
+      unitPrice: 100,
+      unitPriceCzk: 2490,
+      vat: 21,
+      currency: 'EUR',
+      state: 'pending',
+    } as never,
+    overrideAccess: true,
+  })
+  const txn = await payload.create({
+    collection: 'transactions',
+    data: {
+      uuid: randomUUID(),
+      order: order.id,
+      amount: 2490,
+      amountWithoutVat: 2057.85,
+      currency: 'CZK',
+      label: `Sweep ${unique}`,
+      orderReference: order.orderNumber,
+      email: user.email,
+      state: 'begun',
+      paymentMethod: 'muzapay',
+      payload: { gatewayTransactionId: paymentId },
+    } as never,
+    overrideAccess: true,
+  })
+  return { orderId: order.id as number, txnId: txn.id as number }
+}
+
+function stubStates(byPaymentId: Record<string, string>) {
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async (url: string) => {
+      const u = String(url)
+      if (u.includes('/auth/token')) {
+        return new Response(
+          JSON.stringify({
+            accessToken: 'tok-1',
+            validTo: new Date(Date.now() + 600_000).toISOString(),
+          }),
+          { status: 200 },
+        )
+      }
+      const match = u.match(/\/payments\/([^/]+)\//)
+      const paymentState = match ? byPaymentId[match[1]] : undefined
+      if (!paymentState) return new Response('{}', { status: 404 })
+      return new Response(JSON.stringify({ paymentState }), { status: 200 })
+    }),
+  )
+}
+
+async function orderState(orderId: number): Promise<string> {
+  const payload = await getTestPayload()
+  const o = await payload.findByID({ collection: 'orders', id: orderId, overrideAccess: true })
+  return o.state as string
+}
+
+/**
+ * Stubs the auth token, and — scoped to `paymentId` only, so leftover
+ * `begun` transactions from other test runs don't interfere — the first GET
+ * on the state endpoint as still in progress (so `checkStatus` returns
+ * null and the sweep falls through to the stale-cancel branch), the PUT on
+ * the cancel endpoint as accepted (202, MuzaPay's cancel is async), and the
+ * follow-up GET as CANCELED.
+ */
+function stubStaleCancel(paymentId: string) {
+  let getCalls = 0
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async (url: string, init?: RequestInit) => {
+      const u = String(url)
+      if (u.includes('/auth/token')) {
+        return new Response(
+          JSON.stringify({
+            accessToken: 'tok-1',
+            validTo: new Date(Date.now() + 600_000).toISOString(),
+          }),
+          { status: 200 },
+        )
+      }
+      const match = u.match(/\/payments\/([^/]+)\//)
+      if (match?.[1] !== paymentId) {
+        return new Response('{}', { status: 404 })
+      }
+      const method = init?.method ?? 'GET'
+      if (method === 'PUT') {
+        // MuzaPay's cancel acknowledgement: 202, empty body.
+        return new Response(null, { status: 202 })
+      }
+      getCalls++
+      const paymentState = getCalls === 1 ? 'IN_PROGRESS_UNPAID' : 'CANCELED'
+      return new Response(JSON.stringify({ paymentState }), { status: 200 })
+    }),
+  )
+}
+
+describe('sweepBenefitPlusPayments', () => {
+  it('resolves a payment that completed after the payer closed the tab', async () => {
+    const id = `PAY-SWEEP-${Date.now()}`
+    const { orderId } = await seedBegunTransaction(id)
+    stubStates({ [id]: 'PAID' })
+
+    const summary = await sweepBenefitPlusPayments()
+
+    expect(summary.checked).toBeGreaterThanOrEqual(1)
+    expect(await orderState(orderId)).toBe('paid')
+  })
+
+  it('leaves an in-progress payment alone', async () => {
+    const id = `PAY-INPROG-${Date.now()}`
+    const { orderId } = await seedBegunTransaction(id)
+    stubStates({ [id]: 'IN_PROGRESS_UNPAID' })
+
+    await sweepBenefitPlusPayments()
+
+    expect(await orderState(orderId)).toBe('pending')
+  })
+
+  it('keeps going when one transaction throws', async () => {
+    const bad = `PAY-BAD-${Date.now()}`
+    const good = `PAY-GOOD-${Date.now()}`
+    // Seed order matters: the sweep processes oldest-first, so the failing
+    // transaction must be created FIRST. Seeded the other way round, a broken
+    // implementation that wraps the whole loop in one try/catch — stopping at
+    // the first exception instead of isolating each transaction — would still
+    // pass, because the good one would already have been processed.
+    await seedBegunTransaction(bad)
+    const { orderId: goodOrder } = await seedBegunTransaction(good)
+    // `bad` is absent from the map, so its state call 404s and throws.
+    stubStates({ [good]: 'PAID' })
+
+    const summary = await sweepBenefitPlusPayments()
+
+    expect(summary.failed).toBeGreaterThanOrEqual(1)
+    // The real assertion: a transaction queued *behind* a failing one still got
+    // resolved.
+    expect(await orderState(goodOrder)).toBe('paid')
+  })
+
+  it('cancels a payment that has sat begun past STALE_AFTER_MS with no resolution', async () => {
+    const payload = await getTestPayload()
+    const id = `PAY-STALE-${Date.now()}`
+    const { orderId, txnId } = await seedBegunTransaction(id)
+
+    // Backdate createdAt past the one-hour STALE_AFTER_MS threshold — done
+    // via a follow-up update rather than on create, since Payload manages
+    // createdAt itself at create time.
+    const staleCreatedAt = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
+    await payload.update({
+      collection: 'transactions',
+      id: txnId,
+      data: { createdAt: staleCreatedAt } as never,
+      overrideAccess: true,
+    })
+
+    stubStaleCancel(id)
+
+    const summary = await sweepBenefitPlusPayments()
+
+    expect(summary.resolved).toBeGreaterThanOrEqual(1)
+    expect(await orderState(orderId)).toBe('cancelled')
+    const txn = await payload.findByID({
+      collection: 'transactions',
+      id: txnId,
+      overrideAccess: true,
+    })
+    expect(txn.state).toBe('cancelled')
+  })
+})

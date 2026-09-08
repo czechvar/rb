@@ -104,6 +104,12 @@ export interface Transaction {
   money: Money;
   /** Short human label shown to the payer / on the gateway. */
   label: string;
+  /**
+   * The human order number (e.g. "RB-2026-000123") sent to gateways that
+   * accept a merchant-side reference. Optional because not every gateway
+   * has a field for it.
+   */
+  orderReference?: string;
   /** Payer email. */
   email: string;
   state: TransactionState;
@@ -205,11 +211,12 @@ export interface PaymentGateway {
   checkStatus(transaction: Transaction): Promise<PaymentOutcome | null>;
 
   /**
-   * Cancel/reverse a previously initiated payment. May be asynchronous —
-   * verify the result with checkStatus().
+   * Cancel/reverse a previously initiated payment. Returns the resolved
+   * outcome when the provider confirms one, or null if the payment is still
+   * in flight — cancellation may be asynchronous.
    * PHP: `cancel(Transaction): void`.
    */
-  cancel(transaction: Transaction): Promise<void>;
+  cancel(transaction: Transaction): Promise<PaymentOutcome | null>;
 }
 
 /** Raised by gateways for provider/transport failures. PHP: `PaymentGatewayException`. */
@@ -217,6 +224,13 @@ export class PaymentGatewayError extends Error {
   constructor(
     message: string,
     readonly cause?: unknown,
+    /**
+     * The provider's HTTP status, when the failure was an unexpected response
+     * rather than a transport or parse error. Callers use it to react to
+     * specific conditions — notably 401, which means the bearer token was
+     * rejected — without matching on the message text.
+     */
+    readonly status?: number,
   ) {
     super(message);
     this.name = 'PaymentGatewayError';
@@ -269,16 +283,16 @@ export interface PaymentGatewayConfig {
 export type PaymentGatewayFactory = (method: PaymentMethod) => PaymentGateway;
 
 // ---------------------------------------------------------------------------
-// DRAFT — open questions to settle before implementing concrete gateways
+// Resolved design notes
 // ---------------------------------------------------------------------------
 //
-// 1. Webhook routing: one shared endpoint that dispatches by method, or one
-//    route per gateway? PHP uses PaymentPresenter actions per gateway.
-// 2. handleWebhook receives the Web `Request`; confirm Payload custom
-//    endpoints expose it (vs. a Next.js route handler forwarding to a
-//    service). Stable public URLs are required either way.
-// 3. checkStatus scheduling: Payload Jobs Queue vs. external cron hitting an
-//    endpoint. PHP runs it as a cron.
-// 4. MuzaPay signing (MuzaPaySigner / SignatureBuilder / TokenProvider) must
-//    be ported byte-exact and verified against the MuzaPay sandbox before
-//    anything else — see snowbusters api/MUZAPAY_README.md.
+// 1. Webhook routing: one route per gateway, under
+//    src/app/api/payments/<gateway>/. Benefit+ has no webhook route at all.
+// 2. handleWebhook receives the Web `Request` straight from a Next.js route
+//    handler; the service layer (`order-payment-service.ts`) owns persistence.
+// 3. checkStatus scheduling: Vercel Cron hits
+//    /api/payments/muzapay/reconcile daily (Hobby plan; */10 on Pro).
+//    Comgate does not need
+//    it — its webhook is authoritative.
+// 4. MuzaPay signing is ported and unit-tested in
+//    tests/int/muzapay-signing.int.spec.ts.

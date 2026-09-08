@@ -92,6 +92,15 @@ export const Orders: CollectionConfig = {
       ],
     },
     { name: 'unitPrice', type: 'number', required: true, admin: { readOnly: true } },
+    {
+      name: 'unitPriceCzk',
+      type: 'number',
+      admin: {
+        readOnly: true,
+        description:
+          'CZK price per person, snapshotted from the event date at booking time. Null when the trip has no CZK price.',
+      },
+    },
     { name: 'vat', type: 'number', required: true, admin: { readOnly: true } },
     {
       name: 'currency',
@@ -104,6 +113,15 @@ export const Orders: CollectionConfig = {
       admin: { readOnly: true },
     },
     { name: 'totalPrice', type: 'number', required: true, admin: { readOnly: true } },
+    {
+      name: 'totalPriceCzk',
+      type: 'number',
+      admin: {
+        readOnly: true,
+        description:
+          'CZK order total, derived with the same discount formula as totalPrice. Used only as the Benefit+ payment amount. Null when the trip has no CZK price.',
+      },
+    },
     {
       name: 'discountCode',
       type: 'relationship',

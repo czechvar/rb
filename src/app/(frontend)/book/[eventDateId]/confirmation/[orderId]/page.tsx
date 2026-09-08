@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
-import { payByCardAction } from './actions'
+import { payByCardAction, payWithBenefitPlusAction } from './actions'
+import { isBenefitPlusConfigured } from '@/payments/muzapay/config'
 
 interface Props {
   params: Promise<{ eventDateId: string; orderId: string }>
@@ -27,7 +28,7 @@ export default async function BookingConfirmation({ params }: Props) {
   }
   const o = order as {
     id: number; orderNumber: string; state: string; user: number | { id: number }
-    totalPrice: number; currency: string; participantCount: number
+    totalPrice: number; totalPriceCzk?: number | null; currency: string; participantCount: number
     eventDate: { dateFrom: string; dateTo: string; event?: { title?: string } | number }
     discountAmount?: number
     discountCode?: number | { code: string } | null
@@ -62,9 +63,21 @@ export default async function BookingConfirmation({ params }: Props) {
         <p><strong>Total:</strong> {o.totalPrice} {o.currency}</p>
       </div>
       {o.state === 'pending' && (
-        <form action={payByCardAction.bind(null, o.id)} style={{ margin: '24px 0' }}>
-          <button type="submit">Pay by card</button>
-        </form>
+        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', margin: '24px 0' }}>
+          <form action={payByCardAction.bind(null, o.id)}>
+            <button type="submit">Pay by card</button>
+          </form>
+          {o.totalPriceCzk != null && isBenefitPlusConfigured() && (
+            <form action={payWithBenefitPlusAction.bind(null, o.id)}>
+              {/* The CZK amount is shown because it differs from the EUR total
+                  above — Benefit+ settles in CZK at an independently set price,
+                  and the payer should not first learn that at the gateway. */}
+              <button type="submit">
+                Pay with Benefit+ — {o.totalPriceCzk.toLocaleString('cs-CZ')} Kč
+              </button>
+            </form>
+          )}
+        </div>
       )}
       <p>
         <a href={`/account/orders/${o.id}`}>View in your account →</a>

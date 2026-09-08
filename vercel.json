@@ -1,5 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "pnpm payload migrate && pnpm build",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/payments/muzapay/reconcile",
+      "schedule": "0 3 * * *"
+    }
+  ]
 }

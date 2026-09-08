@@ -36,6 +36,7 @@ import * as migration_20260902_101132 from './20260902_101132';
 import * as migration_20260902_130000_section_intro_variant from './20260902_130000_section_intro_variant';
 import * as migration_20260902_131500_stats_columns from './20260902_131500_stats_columns';
 import * as migration_20260902_132000_add_event_catalogue_card from './20260902_132000_add_event_catalogue_card';
+import * as migration_20260902_202525_add_czk_prices_and_order_reference from './20260902_202525_add_czk_prices_and_order_reference';
 import * as migration_20260902_203646_destination_country_index_block from './20260902_203646_destination_country_index_block';
 import * as migration_20260902_211615_hero_accent_words from './20260902_211615_hero_accent_words';
 import * as migration_20260902_220351_gallery_context_source from './20260902_220351_gallery_context_source';
@@ -236,6 +237,11 @@ export const migrations = [
     up: migration_20260902_132000_add_event_catalogue_card.up,
     down: migration_20260902_132000_add_event_catalogue_card.down,
     name: '20260902_132000_add_event_catalogue_card',
+  },
+  {
+    up: migration_20260902_202525_add_czk_prices_and_order_reference.up,
+    down: migration_20260902_202525_add_czk_prices_and_order_reference.down,
+    name: '20260902_202525_add_czk_prices_and_order_reference',
   },
   {
     up: migration_20260902_203646_destination_country_index_block.up,
