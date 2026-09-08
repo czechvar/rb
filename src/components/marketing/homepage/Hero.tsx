@@ -32,15 +32,12 @@ export function Hero({ backgroundMedia }: HeroProps) {
         </h1>
         <p className={styles.sub}>
           We&apos;re not a travel company. We&apos;re a community of rock climbing guides,
-          coaches, and lifers — obsessed with getting you stronger, sharper, and further than you
-          thought possible.
+          coaches, and passionate climbers. Climb harder. Climb smarter — with people obsessed
+          with getting you stronger, sharper, and further than you thought possible.
         </p>
         <div className={styles.ctas}>
           <Link href="/programs" className="btn-primary">
-            Explore Trips &amp; Courses
-          </Link>
-          <Link href="/programs?level=beginner" className="btn-ghost">
-            Find Your Level →
+            Find Your Trip
           </Link>
         </div>
         <div className={styles.trustStrip}>

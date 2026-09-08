@@ -51,13 +51,24 @@ Self-registration with email verification, login (with lockout + verify-required
   `blocksFor(surface)`; blocks are compatible with all surfaces by default and
   opt out through `notCompatibleWith` when a required data dependency cannot
   currently be resolved.
-- `src/payments/gateway.ts` — TypeScript port of the payment gateway abstraction: domain types (`Transaction`, `TransactionState`, `Money`), the `PaymentGateway` contract, and the factory config shape. Unlike the PHP original, gateway methods return result objects instead of mutating the transaction; `src/payments/order-payment-service.ts` (the `PaymentService` equivalent) owns persistence and state transitions. Still has a "DRAFT — open questions" block at the bottom covering gateways beyond Comgate (webhook routing per-gateway vs. shared, `checkStatus` scheduling).
+- `src/payments/gateway.ts` — TypeScript port of the payment gateway abstraction: domain types (`Transaction`, `TransactionState`, `Money`), the `PaymentGateway` contract, and the factory config shape. Unlike the PHP original, gateway methods return result objects instead of mutating the transaction; `src/payments/order-payment-service.ts` (the `PaymentService` equivalent) owns persistence and state transitions. Ends with a "Resolved design notes" block covering webhook routing, `handleWebhook`'s `Request` shape, and `checkStatus` scheduling — now settled for both Comgate and Benefit+.
 - `src/payments/comgate/` — **implemented** (MVP: `begin()` + webhook only; `checkStatus`/`cancel` are deferred stubs — see the plan doc above): `client.ts` (raw form-urlencoded HTTP transport), `gateway.ts` (`ComgateGateway`), `config.ts` (env var config). Backed by the `transactions` Payload collection (`src/collections/Transactions.ts`) and wired into the booking flow via `src/payments/order-payment-service.ts` and `src/app/api/payments/comgate/{webhook,return}/route.ts`.
-- `src/payments/muzapay/` — **draft** port of the MuzaPay signing/auth primitives:
-  - `signature-builder.ts` — builds the plaintext (ordered, trimmed, empties skipped) to be signed.
-  - `signer.ts` — RSA-SHA256 (PKCS#1 v1.5) sign → base64 → `rawurlencode`. Header comment pins the byte-exactness details.
-  - `token-provider.ts` — bearer token from `POST /v2/auth/token`, in-memory cached with a 30s margin.
-  - All three are **unverified** — they must be checked against the MuzaPay sandbox, and `signature-builder`/`signer` need unit tests with test vectors once a test runner exists. The concrete `MuzaPayGateway` and HTTP client are not ported yet.
+- `src/payments/muzapay/` — **implemented**: the Benefit+ gateway. `config.ts`
+  (env config + `isBenefitPlusConfigured()`), `client.ts` (JSON HTTP transport),
+  `gateway.ts` (`MuzaPayGateway`), plus the previously-drafted `signature-builder.ts`,
+  `signer.ts` and `token-provider.ts`, now unit-tested. Benefit+ sends **no
+  webhook**: results are read from its status endpoint on the return URL
+  (`/api/payments/muzapay/return`) and by a cron sweep
+  (`/api/payments/muzapay/reconcile`, daily at 03:00 UTC — the Hobby plan
+  allows no finer, so raise it to `*/10 * * * *` on Pro). It settles in CZK, so
+  event dates carry an optional `priceCzk` that orders snapshot as
+  `unitPriceCzk`/`totalPriceCzk`; the order itself stays EUR. See
+  `docs/superpowers/specs/2026-09-02-benefit-plus-gateway-design.md`.
+  **Verified end-to-end against the real MuzaPay sandbox on 2026-09-08**: the
+  signature was accepted first try, and an order went `pending -> confirmed ->
+  paid` from a live gateway payment. See the "Sandbox Verification" section of
+  the design spec. Production go-live still needs production credentials and
+  `MUZAPAY_BASE_URL` pointed at `https://api.gate.pay.muza.cz`.
 
 ## Proposed stack (tentative — not final)
 
@@ -93,6 +104,17 @@ Required environment variables in the Vercel project settings:
 - `COMGATE_MERCHANT` — Comgate merchant ID (from the Comgate merchant portal).
 - `COMGATE_SECRET` — Comgate merchant secret, used both to sign requests and to verify inbound webhooks.
 - `COMGATE_TEST_MODE` — `true` routes through the Comgate sandbox; set to `false` only once the integration is verified against a live Comgate account. Defaults to `true` if unset.
+- `MUZAPAY_BASE_URL` — Benefit+ (MuzaPay) API base. Sandbox `https://api.gate.int.pay.muza.cz`, production `https://api.gate.pay.muza.cz`.
+- `MUZAPAY_ESHOP_ID` / `MUZAPAY_ESHOP_PASSWORD` — eshop credentials for the token endpoint (HTTP Basic).
+- `MUZAPAY_PRIVATE_KEY` — RSA private key used to sign every request, **base64-encoded PEM** (a multi-line PEM does not survive `.env` files or `vercel env pull`). A raw PEM is also accepted.
+- `MUZAPAY_PRIVATE_KEY_PASSPHRASE` — optional passphrase for that key.
+- `MUZAPAY_PRODUCT_CODE` — Benefit+ product category. Defaults to `LEISURE`; a Rockbusters order is always one trip, so the category never varies within a payment.
+- `MUZAPAY_LANGUAGE` — gateway UI language, defaults to `cs`.
+- `MUZAPAY_API_VERSION` — API version path segment, defaults to `v4`. Benefit+ lists v4/v4.1 as current with no discontinuation date, while **v2 and v3 both sunset on 2026-12-31**. v4.1 is a revision of the v4 spec rather than a separate path (`/v4.1/` 404s), so `v4` is the value to use.
+- `MUZAPAY_COUNTRY` / `MUZAPAY_TOKEN_SCOPE` — default to `CZ` and `SINGLE_PAYMENT`.
+- `CRON_SECRET` — bearer secret for `/api/payments/muzapay/reconcile`. Vercel Cron sends it automatically; without it the endpoint returns 503.
+
+If any of the four required `MUZAPAY_*` vars (`BASE_URL`, `ESHOP_ID`, `ESHOP_PASSWORD`, `PRIVATE_KEY`) is unset, the Benefit+ button does not render — same defensive fallback as the R2 and Resend configuration.
 
 If any of the four `R2_*` vars is unset, Payload falls back to local-disk storage (useful for tests, broken for production).
 

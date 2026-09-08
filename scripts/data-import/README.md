@@ -13,6 +13,20 @@ Two commands, both idempotent:
 - `pnpm data-import:locations` — imports locations only.
 - `pnpm data-import:legacy-destinations` — upserts the curated destination
   research snapshot into `locations`.
+- `pnpm data-import:prepare-location-structured-extraction` — prepares
+  all-location source packets for generating `locations.destinationDetail`
+  JSON.
+- `pnpm data-import:build-location-structured` — builds one derived
+  `destinationDetail` JSON file per prepared location packet.
+- `pnpm data-import:validate-location-structured` — validates generated
+  `destinationDetail` JSON before import.
+- `pnpm data-import:location-structured` — imports one generated
+  `destinationDetail` JSON file.
+- `pnpm data-import:locations-structured` — imports all generated
+  `destinationDetail` JSON files from
+  `.scratch/location-structured-extraction/output`.
+- `pnpm data-import:legacy-galleries` — appends legacy event-date gallery
+  media to `events.gallery` and unambiguous `locations.gallery`.
 
 Plus one refresh command:
 
@@ -22,6 +36,11 @@ Plus one refresh command:
 - `pnpm data-import:extract-location-media` — regenerates legacy media
   references from the local legacy Postgres container and the live legacy
   location pages.
+- `pnpm data-import:extract-legacy-support-content` — regenerates support
+  content seeds from the local legacy Postgres container.
+- `pnpm data-import:extract-legacy-galleries` — regenerates the committed
+  event-date gallery placement snapshot from the local legacy Postgres
+  container.
 
 This slice covers `team_member` → `guides` (38 rows) and `location` → `locations`
 (59 rows). Other entities are follow-up specs.
@@ -64,6 +83,76 @@ You do NOT need MAMP for this. The seed lives in git.
 
 That's it. Locations use skip-if-exists, while guides are overwritten from the
 legacy seed. Both are safe to re-run when that behavior is intentional.
+
+## Destination detail extraction and writeback
+
+The destination-detail page template is code-defined. It automatically renders
+for a Location when `destinationDetail.hero.heading` exists and the Location
+does not have custom `layout` blocks. The structured writeback updates only
+`locations.destinationDetail`; it does not touch canonical location facts,
+media, galleries, active state, source references, or custom layout blocks.
+
+Prepare all source packets:
+
+```bash
+pnpm data-import:prepare-location-structured-extraction
+```
+
+Generate one output JSON per destination into:
+
+```bash
+pnpm data-import:build-location-structured
+```
+
+```txt
+.scratch/location-structured-extraction/output/<slug>.json
+```
+
+Validate the generated JSON before any Payload writes:
+
+```bash
+pnpm data-import:validate-location-structured -- --input .scratch/location-structured-extraction/output --strict --check-filenames
+pnpm data-import:locations-structured -- --validate-only
+```
+
+Write all validated destination details:
+
+```bash
+pnpm data-import:locations-structured
+```
+
+For one destination:
+
+```bash
+pnpm data-import:location-structured -- --slug albarracin --file .scratch/location-structured-extraction/output/albarracin.json --validate-only
+pnpm data-import:location-structured -- --slug albarracin --file .scratch/location-structured-extraction/output/albarracin.json
+```
+
+## Fresh local sandbox check
+
+Before trusting import changes, run the full pipeline into a disposable local
+database:
+
+```bash
+pnpm data-import:sandbox
+```
+
+This resets only `rockbusters_import_sandbox` on local Postgres, runs migrations,
+imports media metadata, airports, locations, guides, seed data, curated
+partners, testimonials, blog categories, blog posts, destinations, legacy
+events, legacy galleries, catalogue-card copy, and the homepage snapshot.
+It then reruns the FK-heavy imports to prove they are idempotent.
+Target-specific lookup files are written under
+`.scratch/data-import-sandbox-lookups` so committed seed files are not polluted
+with sandbox-local numeric IDs.
+
+Override the database name when needed:
+
+```bash
+pnpm data-import:sandbox -- --database rockbusters_import_sandbox_2
+```
+
+The sandbox runner refuses non-local admin database hosts.
 
 ### Against production
 
@@ -219,6 +308,41 @@ This command is allowed to publish partial records because that product decision
 was accepted for the first migration pass. The `contentCompleteness` field keeps
 those records visible for later editorial review.
 
+## Legacy gallery import
+
+Refresh the committed gallery placement snapshot from the local legacy Postgres
+container only when the source dump changes:
+
+```bash
+pnpm data-import:extract-legacy-galleries
+```
+
+This writes:
+
+```text
+scripts/data-import/seed/legacy-gallery-placements.json
+```
+
+Import the resolved gallery relations into Payload:
+
+```bash
+PAYLOAD_DISABLE_DB_PUSH=true pnpm data-import:legacy-galleries
+```
+
+The importer follows ADR-0007:
+
+- reads `event_date.gallery_id` placements,
+- resolves ordered `media__gallery_media` rows through the legacy media lookup,
+- appends all resolved placement media to the owning `events.gallery`,
+- appends placement media to `locations.gallery` only when the event date maps
+  to exactly one legacy location,
+- preserves any existing Payload gallery order and appends only missing legacy
+  media IDs.
+
+The importer does not upload media and does not create `event-dates.gallery`.
+Run it after `data-import:seed-media`, `data-import:legacy-destinations`, and
+`data-import:legacy-events`.
+
 ## Legacy location media references
 
 The media-reference extraction step writes:
@@ -281,3 +405,42 @@ The seed importer does not upload files and does not call Payload upload
 processing. It directly inserts missing `media` rows with stable `med_...` IDs
 and skips existing rows by default. Use `--update-existing` only when you
 intentionally want the seed snapshot to overwrite existing media metadata.
+
+## Legacy support content import
+
+Refresh the committed support-content seed snapshots from the local legacy
+Postgres container only when the source dump changes:
+
+```bash
+pnpm data-import:extract-legacy-support-content
+```
+
+This writes:
+
+```text
+scripts/data-import/seed/legacy-partners.json
+scripts/data-import/seed/legacy-testimonials.json
+scripts/data-import/seed/legacy-blog-categories.json
+scripts/data-import/seed/legacy-blog-posts.json
+```
+
+Import them into Payload:
+
+```bash
+PAYLOAD_DISABLE_DB_PUSH=true pnpm data-import:legacy-support-content
+```
+
+The importer upserts by slug:
+
+- `partner` → `partners`, including logo media when the legacy media lookup
+  resolves,
+- `testimonial` → global `reviews`,
+- `blog_category` → `post-categories`,
+- `blog` → `posts`, including hero image, rich-text body, SEO fields, published
+  state, and the first legacy category relation.
+
+Legacy `blog_post_category` can contain multiple categories per post, but the
+current Payload `posts.category` field stores only one relation. The importer
+chooses the first legacy category ID deterministically; the full legacy
+`categoryIds` array remains in `legacy-blog-posts.json` for a future schema
+expansion if needed.

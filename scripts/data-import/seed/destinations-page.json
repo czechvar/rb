@@ -1,0 +1,96 @@
+{
+  "generatedAt": "2026-09-02T00:00:00.000Z",
+  "source": "Design-provided CMS seed for canonical /destinations page",
+  "row": {
+    "title": "Destinations",
+    "slug": "destinations",
+    "status": "published",
+    "seo": {
+      "title": "All Destinations | Rockbusters",
+      "keywords": null,
+      "description": "Every Rockbusters climbing destination across Europe, organized by country - Spain, France, Italy, Greece and beyond. Guided by climbers, not a travel agency."
+    },
+    "structuredData": {
+      "schemaType": "CollectionPage"
+    },
+    "layout": [
+      {
+        "id": "destinations-hero",
+        "eyebrow": "Where We Climb",
+        "heading": "Every crag we actually climb, guide and road-trip",
+        "body": "No stock-photo destination list. Every venue below is somewhere a Rockbusters guide has racked up, roped in, and run a trip - sorted by country so you can find your next objective fast.",
+        "backgroundMedia": null,
+        "variant": "brandEditorial",
+        "accentWords": [
+          {
+            "text": "crag"
+          }
+        ],
+        "blockName": "DESTINATIONS HERO",
+        "blockType": "hero",
+        "primaryAction": {
+          "label": "Find your trip",
+          "href": "/programs"
+        }
+      },
+      {
+        "id": "destinations-stats",
+        "eyebrow": null,
+        "heading": null,
+        "body": null,
+        "variant": "inlineDark",
+        "columns": "3",
+        "blockName": "DESTINATION STATS",
+        "items": [
+          {
+            "id": "destinations-stat-countries",
+            "value": "14",
+            "label": "Countries",
+            "body": "European climbing venues grouped for fast browsing."
+          },
+          {
+            "id": "destinations-stat-venues",
+            "value": "50+",
+            "label": "Destinations",
+            "body": "Crags, areas, and regions held as Location records."
+          },
+          {
+            "id": "destinations-stat-guided",
+            "value": "100%",
+            "label": "Guided by climbers",
+            "body": "Each destination belongs to the real Rockbusters catalogue."
+          }
+        ],
+        "blockType": "stats"
+      },
+      {
+        "id": "destinations-country-index",
+        "eyebrow": "Browse by country",
+        "heading": "Choose your next objective",
+        "intro": "Jump country by country through the active Rockbusters location catalogue.",
+        "source": "all",
+        "variant": "photoCards",
+        "showJumpBar": true,
+        "blockName": "DESTINATION COUNTRY INDEX",
+        "blockType": "destinationCountryIndex"
+      },
+      {
+        "id": "destinations-final-cta",
+        "eyebrow": null,
+        "heading": "Don't see your dream crag?",
+        "body": "If it's climbable, we've probably been there - or we'll go find out. Tell us where you want to go and we'll build the trip.",
+        "variant": "finalRed",
+        "blockName": "DESTINATIONS FINAL CTA",
+        "blockType": "cta",
+        "primaryAction": {
+          "label": "Request a custom trip",
+          "href": "/programs"
+        },
+        "secondaryAction": {
+          "label": "See upcoming trips",
+          "href": "/programs"
+        }
+      }
+    ]
+  }
+}

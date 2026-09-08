@@ -175,6 +175,39 @@ async function readPayloadMediaLookup() {
   }
 }
 
+async function filterMediaLookupToExistingIds(
+  payload: Payload,
+  mediaLookup: Map<string, string>,
+  records: CuratedDestination[],
+) {
+  const neededLegacyIds = [
+    ...new Set(
+      records
+        .map((record) => record.media?.mainImage?.legacyMediaId)
+        .filter((id): id is number => id !== null && id !== undefined),
+    ),
+  ]
+  const filtered = new Map<string, string>()
+  let missing = 0
+
+  for (const legacyId of neededLegacyIds) {
+    const payloadMediaId = mediaLookup.get(String(legacyId))
+    if (!payloadMediaId) {
+      missing += 1
+      continue
+    }
+
+    try {
+      await payload.findByID({ collection: 'media', id: payloadMediaId, depth: 0 })
+      filtered.set(String(legacyId), payloadMediaId)
+    } catch {
+      missing += 1
+    }
+  }
+
+  return { mediaLookup: filtered, missing }
+}
+
 async function airportIdsByIata(payload: Payload) {
   const airports = await payload.find({
     collection: 'airports',
@@ -198,34 +231,6 @@ function assertKnownValues(field: LocationTaxonomyField, values: string[] | null
 function cleanText(value: string | null | undefined): string | undefined {
   const cleaned = value?.replace(/\s+/g, ' ').trim()
   return cleaned || undefined
-}
-
-function cleanMultilineText(value: string | null | undefined): string | undefined {
-  const cleaned = value
-    ?.split(/\n{2,}/)
-    .map((paragraph) => paragraph.replace(/\s+/g, ' ').trim())
-    .filter(Boolean)
-    .join('\n\n')
-
-  return cleaned || undefined
-}
-
-function sectionBody(record: CuratedDestination, key: string): string | undefined {
-  const section = record.sections.find((candidate) => candidate.key === key)
-  if (!section || section.status === 'missing' || section.status === 'not-applicable')
-    return undefined
-  return cleanMultilineText(section.body)
-}
-
-function contentSections(record: CuratedDestination) {
-  return record.sections.map((section) => ({
-    key: section.key,
-    heading: section.heading,
-    status: section.status,
-    body: cleanMultilineText(section.body) ?? null,
-    sourceRefs: section.sourceRefs ?? [],
-    warnings: section.warnings ?? [],
-  }))
 }
 
 function normalizeDate(value: string | null | undefined): string | undefined {
@@ -282,11 +287,6 @@ export function buildLocationData(
     routeCount: facts.routeCount ?? null,
     problemCount: facts.problemCount ?? null,
     sectorCount: facts.sectorCount ?? null,
-    seasonSummary: sectionBody(record, 'season') ?? null,
-    transportSummary: sectionBody(record, 'transport') ?? null,
-    accommodationSummary: sectionBody(record, 'stay') ?? null,
-    content: null,
-    contentSections: contentSections(record),
     sourceReferences: record.sources.map((source) => ({
       sourceId: source.id,
       title: cleanText(source.title) ?? null,
@@ -343,9 +343,14 @@ async function main() {
 
   const payload = await getPayload({ config })
   const legacyLocations = await readLegacyLocationSeed()
-  const mediaLookup = await readPayloadMediaLookup()
   const airportLookup = await airportIdsByIata(payload)
   const records = await readCuratedDestinations(args.input)
+  const rawMediaLookup = await readPayloadMediaLookup()
+  const { mediaLookup, missing: missingMainPictureMedia } = await filterMediaLookupToExistingIds(
+    payload,
+    rawMediaLookup,
+    records,
+  )
 
   const totals = { created: 0, updated: 0 }
   for (const record of records) {
@@ -357,6 +362,11 @@ async function main() {
   console.log(
     `legacy destinations: created=${totals.created} updated=${totals.updated} total=${records.length}`,
   )
+  if (missingMainPictureMedia) {
+    console.warn(
+      `legacy destinations: skipped missing main-picture media refs=${missingMainPictureMedia}`,
+    )
+  }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

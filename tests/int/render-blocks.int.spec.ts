@@ -98,6 +98,72 @@ describe('RenderBlocks', () => {
     expect(markup).toContain('A safe external video.')
   })
 
+  it('renders current Event gallery media from context', async () => {
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'gallery',
+          source: 'currentEvent',
+          heading: 'Trip gallery',
+          variant: 'grid',
+        },
+      ] as RenderBlocksInput['blocks'],
+      context: {
+        event: {
+          id: 1001,
+          title: 'Context gallery trip',
+          slug: 'context-gallery-trip',
+          state: 'published',
+          gallery: [
+            {
+              id: 'med_event_context',
+              url: '/api/media/file/event-context.jpg',
+              alt: 'Event context photo',
+            },
+          ],
+        },
+      } as BlockRenderContext,
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).toContain('Trip gallery')
+    expect(markup).toContain('event-context.jpg')
+    expect(markup).toContain('Event context photo')
+  })
+
+  it('renders current Location gallery media from context', async () => {
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'gallery',
+          source: 'currentLocation',
+          heading: 'Destination gallery',
+          variant: 'masonry',
+        },
+      ] as RenderBlocksInput['blocks'],
+      context: {
+        location: {
+          id: 1002,
+          name: 'Context gallery location',
+          slug: 'context-gallery-location',
+          active: true,
+          gallery: [
+            {
+              id: 'med_location_context',
+              url: '/api/media/file/location-context.jpg',
+              alt: 'Location context photo',
+            },
+          ],
+        },
+      } as BlockRenderContext,
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).toContain('Destination gallery')
+    expect(markup).toContain('location-context.jpg')
+    expect(markup).toContain('Location context photo')
+  })
+
   it('does not render unsafe action hrefs', async () => {
     const element = await RenderBlocks({
       blocks: [

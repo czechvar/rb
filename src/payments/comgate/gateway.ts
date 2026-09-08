@@ -21,21 +21,9 @@ import {
   type WebhookResult,
 } from '../gateway'
 import { comgatePostForm } from './client'
+import { toMinorUnits } from '../money'
 
 const API_BASE = 'https://payments.comgate.cz'
-
-/**
- * Converts a decimal-string amount (e.g. "199.00") to integer minor units
- * (e.g. 19900) without ever routing the value through float multiplication.
- * `transaction.money.amount` is a `DecimalString` specifically because
- * floating point is unsafe for money (see `src/payments/gateway.ts`) — do
- * not replace this with `Math.round(Number(amount) * 100)`.
- */
-function toMinorUnits(decimal: string): number {
-  const [whole, fraction = ''] = decimal.split('.')
-  const cents = (fraction + '00').slice(0, 2)
-  return Number(whole) * 100 + Number(cents)
-}
 
 export interface ComgateGatewayConfig {
   merchant: string
@@ -153,7 +141,7 @@ export class ComgateGateway implements PaymentGateway {
     )
   }
 
-  async cancel(_transaction: Transaction): Promise<void> {
+  async cancel(_transaction: Transaction): Promise<PaymentOutcome | null> {
     throw new PaymentGatewayError(
       'ComgateGateway.cancel is not implemented (deferred — see docs/superpowers/plans/2026-08-28-comgate-payment-gateway.md).',
     )

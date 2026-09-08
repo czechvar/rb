@@ -16,9 +16,9 @@ Partners, Posts, and Post Categories.
 The existing Payload model already separates public page composition from
 commerce and account data. `pages` uses approved block contracts rather than
 arbitrary component names or executable code. Catalogue collections require
-admin access for writes. Auth, orders, discount codes, and referrals carry
-higher operational and privacy risk and are not needed for the first MCP
-authoring workflow.
+admin access for writes. Auth, orders, transactions, discount codes, and
+referrals carry higher operational and privacy risk and are not needed for the
+first MCP authoring workflow.
 
 The Payload MCP plugin exposes collection operations as tools. Its config is
 the maximum allowed surface, while the MCP API Keys collection can further
@@ -54,6 +54,7 @@ Do not expose MCP operations for:
 
 - `users`
 - `orders`
+- `transactions`
 - `discount-codes`
 - `referrals`
 

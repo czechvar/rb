@@ -1,0 +1,43 @@
+/* Top-edge navigation progress bar (GitHub style).
+   Fixed pixel height on purpose: rem is theme-dependent here (--rem-base is
+   10px or 16px depending on the active theme) and this is browser chrome, not
+   type-scaled content. */
+
+.track {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  height: 3px;
+  pointer-events: none;
+}
+
+.bar {
+  position: relative;
+  height: 100%;
+  width: 0;
+  background: var(--theme-color-white-paper);
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--theme-color-white-paper) 70%, transparent),
+    0 0 3px color-mix(in srgb, var(--theme-color-white-paper) 90%, transparent);
+  transition: width 200ms ease-out;
+  will-change: width;
+}
+
+.finishing {
+  opacity: 0;
+  transition:
+    width 120ms ease-out,
+    opacity 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition-duration: 1ms;
+  }
+
+  .finishing {
+    transition-duration: 1ms, 120ms;
+  }
+}

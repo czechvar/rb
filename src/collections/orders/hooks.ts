@@ -3,8 +3,8 @@ import type { CollectionBeforeValidateHook, CollectionBeforeChangeHook } from 'p
 /**
  * On create only: compute participantCount from participants.length,
  * apply the snowbusters discount stacking rule, and derive totalPrice,
- * discountAmount, and commission fields. On update we leave all alone
- * (they're readOnly in admin and immutable by contract).
+ * totalPriceCzk, discountAmount, and commission fields. On update we leave
+ * all alone (they're readOnly in admin and immutable by contract).
  *
  * Snowbusters stacking rule:
  * - If discountCode is set, it wins on price (discountPercent takes precedence)
@@ -12,13 +12,18 @@ import type { CollectionBeforeValidateHook, CollectionBeforeChangeHook } from 'p
  * - If referral is set (and no discountCode), it applies discount and records commission.
  * - If both are set, discountCode applies the discount, but referral commission
  *   is ALSO recorded (both commissions are paid out).
- * - discountAmount and totalPrice are based on basePrice = unitPrice * participantCount.
+ * - discountAmount and totalPrice are based on basePrice = unitPrice * participantCount;
+ *   totalPriceCzk is derived the same way from basePriceCzk = unitPriceCzk * participantCount,
+ *   using the same discount formula. If the event date has no CZK price, unitPriceCzk and
+ *   totalPriceCzk are `null` (not `0`) — a genuinely free trip stays distinguishable from
+ *   one where Benefit+ is unavailable.
  */
 export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data, operation, req }) => {
   if (operation !== 'create' || !data) return data
   const d = data as {
     participants?: unknown[]
     unitPrice?: unknown
+    unitPriceCzk?: unknown
     discountCode?: number | null
     referral?: number | null
   }
@@ -26,6 +31,12 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
   const participantCount = participants.length
   const unitPrice = Number(d.unitPrice ?? 0)
   const basePrice = unitPrice * participantCount
+
+  // Null, not 0: a trip with no CZK price must be distinguishable from a
+  // free one, because null is what hides the Benefit+ button.
+  const unitPriceCzk =
+    d.unitPriceCzk === null || d.unitPriceCzk === undefined ? null : Number(d.unitPriceCzk)
+  const basePriceCzk = unitPriceCzk === null ? null : unitPriceCzk * participantCount
 
   let dc: { discountPercent: number; commissionPercent?: number | null } | null = null
   if (d.discountCode) {
@@ -49,8 +60,17 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
 
   // Snowbusters stacking rule: discount-code wins on price; referral commission always tracked.
   const discountPercent = dc ? dc.discountPercent : ref ? ref.discountPercent : 0
-  const discountAmount = Math.round((basePrice * discountPercent) / 100)
-  const totalPrice = basePrice - discountAmount
+
+  // Shared by EUR and CZK so the two currencies cannot drift onto different
+  // rounding rules — both totals must be derived from this one formula.
+  const applyDiscount = (base: number, percent: number) => {
+    const amount = Math.round((base * percent) / 100)
+    return { amount, total: base - amount }
+  }
+
+  const { amount: discountAmount, total: totalPrice } = applyDiscount(basePrice, discountPercent)
+  const totalPriceCzk =
+    basePriceCzk === null ? null : applyDiscount(basePriceCzk, discountPercent).total
   const discountCommission = dc
     ? Math.round((basePrice * (dc.commissionPercent ?? 0)) / 100)
     : 0
@@ -62,6 +82,7 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
     ...data,
     participantCount,
     totalPrice,
+    totalPriceCzk,
     discountAmount,
     discountCommission,
     referralCommission,

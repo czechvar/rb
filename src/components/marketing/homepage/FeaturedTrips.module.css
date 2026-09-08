@@ -15,7 +15,7 @@
 
 .viewAll {
   font-family: var(--theme-font-body);
-  font-size: 13px;
+  font-size: var(--theme-text-nav);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--theme-color-primary);
@@ -75,14 +75,14 @@
   align-items: center;
   gap: 10px;
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-small);
   color: var(--theme-color-paper-60);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .cardLoc {
-  font-weight: 700;
+  font-weight: var(--theme-weight-subheading);
   color: var(--theme-color-paper);
 }
 
@@ -95,17 +95,18 @@
 
 .cardTitle {
   font-family: var(--theme-font-heading);
-  font-size: 36px;
-  line-height: 1;
+  font-size: var(--theme-text-card-lg);
+  font-weight: var(--theme-weight-card);
+  line-height: var(--theme-line-card-lg);
   color: var(--theme-color-paper);
   margin: 0 0 12px;
 }
 
 .cardHook {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-60);
-  line-height: 1.6;
+  line-height: var(--theme-line-body);
   margin: 0 0 24px;
 }
 
@@ -118,16 +119,16 @@
 
 .cardPrice {
   font-family: var(--theme-font-body);
-  font-weight: 700;
+  font-weight: var(--theme-weight-subheading);
   color: var(--theme-color-paper);
-  font-size: var(--fs-body);
+  font-size: var(--theme-text-body);
 }
 
 .cardCta {
   font-family: var(--theme-font-body);
-  font-size: 13px;
+  font-size: var(--theme-text-nav);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--theme-color-primary);
-  font-weight: 700;
+  font-weight: var(--theme-weight-subheading);
 }

@@ -21,9 +21,9 @@
 
 .body {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body-lg);
+  font-size: var(--theme-text-lead);
   color: var(--theme-color-paper-60);
-  line-height: 1.75;
+  line-height: var(--theme-line-lead);
   margin: 0 0 22px;
 }
 
@@ -46,24 +46,25 @@
 
 .pillarNum {
   font-family: var(--theme-font-heading);
-  font-size: 48px;
+  font-size: var(--theme-text-section);
   color: var(--theme-color-primary);
-  line-height: 1;
+  line-height: var(--theme-line-section);
   margin-bottom: 16px;
 }
 
 .pillarTitle {
   font-family: var(--theme-font-body);
-  font-size: 18px;
-  font-weight: 700;
+  font-size: var(--theme-text-subheading);
+  font-weight: var(--theme-weight-subheading);
   color: var(--theme-color-paper);
   margin: 0 0 8px;
+  line-height: var(--theme-line-subheading);
 }
 
 .pillarBody {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-60);
-  line-height: 1.6;
+  line-height: var(--theme-line-body);
   margin: 0;
 }

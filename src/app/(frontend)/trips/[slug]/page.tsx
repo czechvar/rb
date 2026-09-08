@@ -68,6 +68,8 @@ export default async function TripPage({ params }: Props) {
   const location = typeof firstLocation === 'object' && firstLocation !== null
     ? firstLocation
     : null
+  const locationIntro =
+    location?.destinationDetail?.sections?.find((section) => section.key === 'intro')?.body ?? null
 
   return (
     <MarketingShell transparentHeader>
@@ -83,10 +85,10 @@ export default async function TripPage({ params }: Props) {
         <BookingCTA event={event} heading="Ready to commit?" />
         <DayByDayItinerary data={event.itinerary} />
         {/* LocationBlock — destination showcase (wireframe block 6) */}
-        {location?.content && (
+        {location && locationIntro && (
           <LocationBlock
             heading={location.name}
-            content={location.content}
+            body={locationIntro}
             eyebrow="The Destination"
             image={location.mainPicture}
           />

@@ -16,6 +16,22 @@ export const HeroBlockConfig: Block = {
         { label: 'Brand editorial', value: 'brandEditorial' },
       ],
     }),
+    {
+      name: 'accentWords',
+      label: 'Accent words',
+      type: 'array',
+      admin: {
+        description: 'Words or phrases in the heading to render in the brand accent color.',
+        condition: (_, siblingData) => siblingData?.variant === 'brandEditorial',
+      },
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
     actionField('primaryAction'),
   ],
 }

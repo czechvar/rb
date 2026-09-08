@@ -39,6 +39,15 @@ export const EventDates: CollectionConfig = {
       filterOptions: () => ({ active: { equals: true } }),
     },
     { name: 'price', type: 'number', required: true, min: 0 },
+    {
+      name: 'priceCzk',
+      type: 'number',
+      min: 0,
+      admin: {
+        description:
+          'CZK price per person, used only for Benefit+ (MuzaPay) payments. Leave empty to disable Benefit+ for this trip.',
+      },
+    },
     { name: 'vat', type: 'number', required: true, defaultValue: 0, min: 0, max: 100 },
     {
       name: 'currency',

@@ -36,6 +36,16 @@ import * as migration_20260902_101132 from './20260902_101132';
 import * as migration_20260902_130000_section_intro_variant from './20260902_130000_section_intro_variant';
 import * as migration_20260902_131500_stats_columns from './20260902_131500_stats_columns';
 import * as migration_20260902_132000_add_event_catalogue_card from './20260902_132000_add_event_catalogue_card';
+import * as migration_20260902_202525_add_czk_prices_and_order_reference from './20260902_202525_add_czk_prices_and_order_reference';
+import * as migration_20260902_203646_destination_country_index_block from './20260902_203646_destination_country_index_block';
+import * as migration_20260902_211615_hero_accent_words from './20260902_211615_hero_accent_words';
+import * as migration_20260902_220351_gallery_context_source from './20260902_220351_gallery_context_source';
+import * as migration_20260903_120950_destination_detail_structured_content from './20260903_120950_destination_detail_structured_content';
+import * as migration_20260903_124615_add_location_destination_detail_blocks from './20260903_124615_add_location_destination_detail_blocks';
+import * as migration_20260903_131955_gallery_tiles_variant from './20260903_131955_gallery_tiles_variant';
+import * as migration_20260903_134342_destination_sidebar_block from './20260903_134342_destination_sidebar_block';
+import * as migration_20260903_160351_cleanup_location_destination_detail from './20260903_160351_cleanup_location_destination_detail';
+import * as migration_20260903_183000_action_analytics_fields from './20260903_183000_action_analytics_fields';
 
 export const migrations = [
   {
@@ -211,21 +221,71 @@ export const migrations = [
   {
     up: migration_20260902_101132.up,
     down: migration_20260902_101132.down,
-    name: '20260902_101132'
+    name: '20260902_101132',
   },
   {
     up: migration_20260902_130000_section_intro_variant.up,
     down: migration_20260902_130000_section_intro_variant.down,
-    name: '20260902_130000_section_intro_variant'
+    name: '20260902_130000_section_intro_variant',
   },
   {
     up: migration_20260902_131500_stats_columns.up,
     down: migration_20260902_131500_stats_columns.down,
-    name: '20260902_131500_stats_columns'
+    name: '20260902_131500_stats_columns',
   },
   {
     up: migration_20260902_132000_add_event_catalogue_card.up,
     down: migration_20260902_132000_add_event_catalogue_card.down,
-    name: '20260902_132000_add_event_catalogue_card'
+    name: '20260902_132000_add_event_catalogue_card',
+  },
+  {
+    up: migration_20260902_202525_add_czk_prices_and_order_reference.up,
+    down: migration_20260902_202525_add_czk_prices_and_order_reference.down,
+    name: '20260902_202525_add_czk_prices_and_order_reference',
+  },
+  {
+    up: migration_20260902_203646_destination_country_index_block.up,
+    down: migration_20260902_203646_destination_country_index_block.down,
+    name: '20260902_203646_destination_country_index_block',
+  },
+  {
+    up: migration_20260902_211615_hero_accent_words.up,
+    down: migration_20260902_211615_hero_accent_words.down,
+    name: '20260902_211615_hero_accent_words',
+  },
+  {
+    up: migration_20260902_220351_gallery_context_source.up,
+    down: migration_20260902_220351_gallery_context_source.down,
+    name: '20260902_220351_gallery_context_source',
+  },
+  {
+    up: migration_20260903_120950_destination_detail_structured_content.up,
+    down: migration_20260903_120950_destination_detail_structured_content.down,
+    name: '20260903_120950_destination_detail_structured_content',
+  },
+  {
+    up: migration_20260903_124615_add_location_destination_detail_blocks.up,
+    down: migration_20260903_124615_add_location_destination_detail_blocks.down,
+    name: '20260903_124615_add_location_destination_detail_blocks',
+  },
+  {
+    up: migration_20260903_131955_gallery_tiles_variant.up,
+    down: migration_20260903_131955_gallery_tiles_variant.down,
+    name: '20260903_131955_gallery_tiles_variant',
+  },
+  {
+    up: migration_20260903_134342_destination_sidebar_block.up,
+    down: migration_20260903_134342_destination_sidebar_block.down,
+    name: '20260903_134342_destination_sidebar_block',
+  },
+  {
+    up: migration_20260903_160351_cleanup_location_destination_detail.up,
+    down: migration_20260903_160351_cleanup_location_destination_detail.down,
+    name: '20260903_160351_cleanup_location_destination_detail'
+  },
+  {
+    up: migration_20260903_183000_action_analytics_fields.up,
+    down: migration_20260903_183000_action_analytics_fields.down,
+    name: '20260903_183000_action_analytics_fields'
   },
 ];

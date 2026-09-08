@@ -4,14 +4,18 @@
  * TypeScript port of snowbusters
  * api/app/PaymentsModule/service/MuzaPay/MuzaPayTokenProvider.php
  *
- * Fetches a bearer token from `POST /v2/auth/token` (HTTP Basic auth with
+ * Fetches a bearer token from `POST /{apiVersion}/auth/token` (HTTP Basic auth with
  * eshop credentials) and caches it until shortly before it expires.
  *
  * Caching: the PHP version layered a per-request static var over a Nette
- * cache. In a long-lived Node process an instance field already persists
- * across requests, so this keeps a single in-memory cache. Swap in a shared
- * cache (Redis) only if multiple instances need to share tokens — see the
- * `TokenCache` note at the bottom.
+ * cache. `MuzaPayGateway` is built fresh per operation (see
+ * `order-payment-service.ts`), so an instance field on the provider itself
+ * would never survive between calls — the cron sweep alone would issue 50+
+ * auth requests per pass. `getMuzaPayTokenProvider` below keeps a
+ * module-level cache of providers, keyed by config, so all gateway instances
+ * sharing the same MuzaPay credentials share one token for the life of the
+ * process. Swap in a shared cache (Redis) only if multiple *processes* need
+ * to share tokens — see the note at the bottom.
  *
  * VERIFICATION: confirm the auth endpoint, request body, and response shape
  * against the MuzaPay sandbox.
@@ -37,6 +41,8 @@ export interface MuzaPayTokenProviderConfig {
   country: string;
   /** e.g. "SINGLE_PAYMENT" */
   tokenScope: string;
+  /** API version path segment, e.g. "v4". */
+  apiVersion: string;
 }
 
 export class MuzaPayTokenProvider {
@@ -75,7 +81,7 @@ export class MuzaPayTokenProvider {
   }
 
   private async authenticate(): Promise<MuzaPayToken> {
-    const { baseUrl, eshopId, eshopPassword, country, tokenScope } = this.config;
+    const { baseUrl, eshopId, eshopPassword, country, tokenScope, apiVersion } = this.config;
     if (!baseUrl) {
       throw new PaymentGatewayError('MuzaPay baseUrl is not configured.');
     }
@@ -88,7 +94,7 @@ export class MuzaPayTokenProvider {
 
     let response: Response;
     try {
-      response = await fetch(new URL('/v2/auth/token', baseUrl), {
+      response = await fetch(new URL(`/${apiVersion}/auth/token`, baseUrl), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,6 +124,57 @@ export class MuzaPayTokenProvider {
   }
 }
 
+/**
+ * Process-lifetime cache of token providers, keyed by the credentials they
+ * authenticate with. `MuzaPayGateway` is constructed fresh per operation
+ * (following the same factory pattern as `comgateGateway()` in
+ * `order-payment-service.ts`), so without this, each gateway instance would
+ * get its own provider and its own token cache — defeating the cache
+ * entirely and re-authenticating on every `begin`/`checkStatus`/`cancel`
+ * call, including the cron sweep's up-to-50-transactions-per-pass loop.
+ *
+ * Keyed on the same fields the PHP original hashed (sha1) into its cache
+ * key: `baseUrl`, `eshopId`, `country`, `tokenScope`, `apiVersion`. `JSON.stringify` of
+ * the tuple is used instead of a hash — easier to debug, and collision-safe
+ * because each field is individually quoted/escaped in the JSON output, so
+ * the combination is unambiguous. The password is deliberately excluded
+ * from the key.
+ */
+const tokenProviders = new Map<string, MuzaPayTokenProvider>();
+
+function tokenProviderCacheKey(
+  config: Pick<
+    MuzaPayTokenProviderConfig,
+    'baseUrl' | 'eshopId' | 'country' | 'tokenScope' | 'apiVersion'
+  >,
+): string {
+  return JSON.stringify([
+    config.baseUrl,
+    config.eshopId,
+    config.country,
+    config.tokenScope,
+    config.apiVersion,
+  ]);
+}
+
+/**
+ * Returns the shared `MuzaPayTokenProvider` for this config, creating it on
+ * first use. Callers with identical `baseUrl`/`eshopId`/`country`/
+ * `tokenScope` share one provider (and therefore one cached token) for the
+ * lifetime of the process, regardless of how many `MuzaPayGateway`
+ * instances are constructed.
+ */
+export function getMuzaPayTokenProvider(config: MuzaPayTokenProviderConfig): MuzaPayTokenProvider {
+  const key = tokenProviderCacheKey(config);
+  const existing = tokenProviders.get(key);
+  if (existing) {
+    return existing;
+  }
+  const provider = new MuzaPayTokenProvider(config);
+  tokenProviders.set(key, provider);
+  return provider;
+}
+
 function parseTokenResponse(data: unknown): MuzaPayToken {
   if (typeof data !== 'object' || data === null) {
     throw new PaymentGatewayError('MuzaPay auth response is not an object.');
@@ -142,11 +199,17 @@ function parseTokenResponse(data: unknown): MuzaPayToken {
 }
 
 /**
- * DRAFT — open question: cross-instance token sharing.
+ * DRAFT — open question: cross-process token sharing.
  *
- * If the backend runs as multiple instances (or serverless functions that
- * cold-start often), each keeps its own token and re-auths independently.
- * That is usually fine — tokens are cheap and short-lived — but if MuzaPay
+ * `getMuzaPayTokenProvider` above shares one token per process — solved: all
+ * `MuzaPayGateway` instances built from the same credentials within a single
+ * Node process (including every call in one cron sweep pass) now share one
+ * cached token instead of each re-authenticating.
+ *
+ * What remains open is sharing *across* processes: if the backend runs as
+ * multiple instances (or serverless functions that cold-start often), each
+ * process still keeps its own provider map and re-auths independently. That
+ * is usually fine — tokens are cheap and short-lived — but if MuzaPay
  * rate-limits auth, introduce a shared `TokenCache` port here:
  *
  *   interface TokenCache {

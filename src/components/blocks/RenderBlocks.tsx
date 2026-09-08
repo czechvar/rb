@@ -8,6 +8,7 @@ import { CTABlock } from './CTABlock'
 import { TripGridBlock } from './TripGridBlock'
 import { ProgramGridBlock } from './ProgramGridBlock'
 import { LocationGridBlock } from './LocationGridBlock'
+import { DestinationCountryIndexBlock } from './DestinationCountryIndexBlock'
 import { GuideGridBlock } from './GuideGridBlock'
 import { PostGridBlock } from './PostGridBlock'
 import { CalendarBlock } from './CalendarBlock'
@@ -48,6 +49,12 @@ import {
 } from './ProgramContextBlocks'
 import {
   LocationContentBlock,
+  DestinationCardGridBlock,
+  DestinationHeroBlock,
+  DestinationLogisticsBlock,
+  DestinationSeasonBlock,
+  DestinationSectionsBlock,
+  DestinationSidebarBlock,
   LocationHeroBlock,
   LocationMapBlock,
   LocationTripsBlock,
@@ -89,10 +96,16 @@ export type BlockRenderContext = {
 type BlockRenderer = (
   block: RenderableBlock,
   context: BlockRenderContext,
+  index: number,
 ) => Promise<React.ReactNode> | React.ReactNode
 
 const blockRenderers: Record<string, BlockRenderer> = {
-  hero: (block) => <HeroBlock {...(block as Extract<PageBlock, { blockType: 'hero' }>)} />,
+  hero: (block, context, index) => (
+    <HeroBlock
+      {...(block as Extract<PageBlock, { blockType: 'hero' }>)}
+      analyticsContext={{ blockIndex: index, pageSlug: context.page?.slug }}
+    />
+  ),
   'section-intro': (block) => (
     <SectionIntroBlock {...(block as Extract<PageBlock, { blockType: 'section-intro' }>)} />
   ),
@@ -100,7 +113,12 @@ const blockRenderers: Record<string, BlockRenderer> = {
     <RichTextBlock {...(block as Extract<PageBlock, { blockType: 'rich-text' }>)} />
   ),
   stats: (block) => <StatsBlock {...(block as Extract<PageBlock, { blockType: 'stats' }>)} />,
-  cta: (block) => <CTABlock {...(block as Extract<PageBlock, { blockType: 'cta' }>)} />,
+  cta: (block, context, index) => (
+    <CTABlock
+      {...(block as Extract<PageBlock, { blockType: 'cta' }>)}
+      analyticsContext={{ blockIndex: index, pageSlug: context.page?.slug }}
+    />
+  ),
   tripGrid: (block, context) =>
     TripGridBlock(block as Extract<PageBlock, { blockType: 'tripGrid' }>, context),
   featuredTrip: (block, context) =>
@@ -111,6 +129,10 @@ const blockRenderers: Record<string, BlockRenderer> = {
     FeaturedProgramBlock(block as Extract<PageBlock, { blockType: 'featuredProgram' }>, context),
   locationGrid: (block) =>
     LocationGridBlock(block as Extract<PageBlock, { blockType: 'locationGrid' }>),
+  destinationCountryIndex: (block) =>
+    DestinationCountryIndexBlock(
+      block as Extract<PageBlock, { blockType: 'destinationCountryIndex' }>,
+    ),
   featuredLocation: (block, context) =>
     FeaturedLocationBlock(block as Extract<PageBlock, { blockType: 'featuredLocation' }>, context),
   guideGrid: (block) => GuideGridBlock(block as Extract<PageBlock, { blockType: 'guideGrid' }>),
@@ -124,7 +146,9 @@ const blockRenderers: Record<string, BlockRenderer> = {
   featuredEventDate: (block) =>
     FeaturedEventDateBlock(block as Extract<PageBlock, { blockType: 'featuredEventDate' }>),
   mediaBlock: (block) => <MediaBlock {...(block as Extract<PageBlock, { blockType: 'mediaBlock' }>)} />,
-  gallery: (block) => <GalleryBlock {...(block as Extract<PageBlock, { blockType: 'gallery' }>)} />,
+  gallery: (block, context) => (
+    <GalleryBlock {...(block as Extract<PageBlock, { blockType: 'gallery' }>)} context={context} />
+  ),
   video: (block) => <VideoBlock {...(block as Extract<PageBlock, { blockType: 'video' }>)} />,
   faq: (block, context) => FAQBlock(block as Extract<PageBlock, { blockType: 'faq' }>, context),
   reviewGrid: (block, context) =>
@@ -156,6 +180,12 @@ const blockRenderers: Record<string, BlockRenderer> = {
   locationContent: (block, context) => LocationContentBlock(block, context),
   locationMap: (block, context) => LocationMapBlock(block, context),
   locationTrips: (block, context) => LocationTripsBlock(block, context),
+  destinationHero: (block, context) => DestinationHeroBlock(block, context),
+  destinationSections: (block, context) => DestinationSectionsBlock(block, context),
+  destinationCardGrid: (block, context) => DestinationCardGridBlock(block, context),
+  destinationSeason: (block, context) => DestinationSeasonBlock(block, context),
+  destinationLogistics: (block, context) => DestinationLogisticsBlock(block, context),
+  destinationSidebar: (block, context) => DestinationSidebarBlock(block, context),
   guideHero: (block, context) => GuideHeroBlock(block, context),
   guideStats: (block, context) => GuideStatsBlock(block, context),
   guideAbout: (block, context) => GuideAboutBlock(block, context),
@@ -175,7 +205,7 @@ async function renderBlock(block: RenderableBlock, index: number, context: Block
   const key = block.id ?? `${block.blockType}-${index}`
   const renderer = blockRenderers[block.blockType]
   if (!renderer) return null
-  return <React.Fragment key={key}>{await renderer(block, context)}</React.Fragment>
+  return <React.Fragment key={key}>{await renderer(block, context, index)}</React.Fragment>
 }
 
 export async function RenderBlocks({

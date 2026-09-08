@@ -7,7 +7,7 @@
 import './env'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { getPayload } from 'payload'
+import { getPayload, type Payload } from 'payload'
 import config from '../../src/payload.config'
 
 const SEED_FILE = path.resolve(import.meta.dirname, 'seed/home-page.json')
@@ -22,7 +22,65 @@ type HomePageSeed = {
   source: string
   row: Record<string, unknown> & {
     slug?: string
+    layout?: Array<Record<string, unknown>>
   }
+}
+
+async function relationshipExists(
+  payload: Payload,
+  collection: 'media' | 'programs' | 'events',
+  id: unknown,
+): Promise<boolean> {
+  if (typeof id !== 'number' && typeof id !== 'string') return false
+  try {
+    await payload.findByID({ collection, id, depth: 0 })
+    return true
+  } catch {
+    return false
+  }
+}
+
+async function homepageHeroMedia(payload: Payload): Promise<string | null> {
+  const result = await payload.find({
+    collection: 'media',
+    where: { filename: { equals: '2025-05-05 11.05.52.jpg' } },
+    limit: 1,
+    depth: 0,
+  })
+  return result.docs[0]?.id ?? null
+}
+
+async function normalizeHomepageSeed(
+  payload: Payload,
+  row: HomePageSeed['row'],
+): Promise<HomePageSeed['row']> {
+  if (!Array.isArray(row.layout)) return row
+
+  const layout = await Promise.all(
+    row.layout.map(async (block) => {
+      if (block.blockType === 'hero' && block.backgroundMedia) {
+        if (await relationshipExists(payload, 'media', block.backgroundMedia)) return block
+        return { ...block, backgroundMedia: await homepageHeroMedia(payload) }
+      }
+
+      if (block.blockType !== 'reviewGrid') return block
+
+      if (
+        block.source === 'byProgram' &&
+        !(await relationshipExists(payload, 'programs', block.program))
+      ) {
+        return { ...block, source: 'global', program: null }
+      }
+
+      if (block.source === 'byEvent' && !(await relationshipExists(payload, 'events', block.event))) {
+        return { ...block, source: 'global', event: null }
+      }
+
+      return block
+    }),
+  )
+
+  return { ...row, layout }
 }
 
 function parseArgs(argv: string[]): Args {
@@ -56,6 +114,7 @@ async function main() {
   }
 
   const payload = await getPayload({ config })
+  const row = await normalizeHomepageSeed(payload, seed.row)
   const existing = await payload.find({
     collection: 'pages',
     where: { slug: { equals: 'home' } },
@@ -68,7 +127,7 @@ async function main() {
       collection: 'pages',
       id: existing.docs[0].id,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      data: seed.row as any,
+      data: row as any,
     })
     console.log(`updated homepage from ${path.relative(process.cwd(), SEED_FILE)}`)
     return
@@ -77,7 +136,7 @@ async function main() {
   await payload.create({
     collection: 'pages',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    data: seed.row as any,
+    data: row as any,
   })
   console.log(`created homepage from ${path.relative(process.cwd(), SEED_FILE)}`)
 }
