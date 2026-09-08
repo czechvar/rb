@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Difficulty, Event, EventDate, Guide, Location, Media } from '@/payload-types'
+import { isUpcomingEventDate } from '@/lib/event-date-visibility'
 import styles from './UpcomingTrips.module.css'
 
 type UpcomingTripsProps = { dates: EventDate[] }
@@ -43,10 +44,9 @@ function gradeRange(ev: Event): string | null {
 }
 
 export function UpcomingTrips({ dates }: UpcomingTripsProps) {
-  const now = new Date().toISOString()
+  const now = new Date()
   const upcoming = dates
-    // ISO-8601 strings compare lexicographically — safe for Payload's UTC date serialisation
-    .filter((d) => d.dateFrom >= now && typeof d.event === 'object')
+    .filter((d) => isUpcomingEventDate(d, now) && typeof d.event === 'object')
     .slice(0, 5)
   if (upcoming.length === 0) return null
 

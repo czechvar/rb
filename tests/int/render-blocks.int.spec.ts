@@ -5,6 +5,24 @@ import { type BlockRenderContext, RenderBlocks } from '@/components/blocks/Rende
 
 type RenderBlocksInput = Parameters<typeof RenderBlocks>[0]
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const richText = (text: string): any => ({
+  root: {
+    type: 'root',
+    children: [
+      {
+        type: 'paragraph',
+        version: 1,
+        children: [{ type: 'text', version: 1, text }],
+      },
+    ],
+    direction: null,
+    format: '',
+    indent: 0,
+    version: 1,
+  },
+})
+
 describe('RenderBlocks', () => {
   it('renders nothing for an empty layout', async () => {
     await expect(RenderBlocks({ blocks: [] })).resolves.toBeNull()
@@ -49,12 +67,14 @@ describe('RenderBlocks', () => {
           blockType: 'section-intro',
           eyebrow: 'Generic content',
           heading: 'Reusable intro',
-          body: 'Short lead copy.',
+          body: richText('Short lead copy.'),
           alignment: 'left',
+          variant: 'light',
         },
         {
           blockType: 'stats',
           heading: 'Proof points',
+          columns: 'auto',
           items: [
             { value: '12', label: 'Locations' },
             { value: '98%', label: 'Would return' },
@@ -76,6 +96,72 @@ describe('RenderBlocks', () => {
     expect(markup).toContain('Would return')
     expect(markup).toContain('https://player.vimeo.com/video/123456')
     expect(markup).toContain('A safe external video.')
+  })
+
+  it('renders current Event gallery media from context', async () => {
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'gallery',
+          source: 'currentEvent',
+          heading: 'Trip gallery',
+          variant: 'grid',
+        },
+      ] as RenderBlocksInput['blocks'],
+      context: {
+        event: {
+          id: 1001,
+          title: 'Context gallery trip',
+          slug: 'context-gallery-trip',
+          state: 'published',
+          gallery: [
+            {
+              id: 'med_event_context',
+              url: '/api/media/file/event-context.jpg',
+              alt: 'Event context photo',
+            },
+          ],
+        },
+      } as BlockRenderContext,
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).toContain('Trip gallery')
+    expect(markup).toContain('event-context.jpg')
+    expect(markup).toContain('Event context photo')
+  })
+
+  it('renders current Location gallery media from context', async () => {
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'gallery',
+          source: 'currentLocation',
+          heading: 'Destination gallery',
+          variant: 'masonry',
+        },
+      ] as RenderBlocksInput['blocks'],
+      context: {
+        location: {
+          id: 1002,
+          name: 'Context gallery location',
+          slug: 'context-gallery-location',
+          active: true,
+          gallery: [
+            {
+              id: 'med_location_context',
+              url: '/api/media/file/location-context.jpg',
+              alt: 'Location context photo',
+            },
+          ],
+        },
+      } as BlockRenderContext,
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).toContain('Destination gallery')
+    expect(markup).toContain('location-context.jpg')
+    expect(markup).toContain('Location context photo')
   })
 
   it('does not render unsafe action hrefs', async () => {

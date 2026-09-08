@@ -6,7 +6,7 @@ type StatsBlockProps = Extract<
   { blockType: 'stats' }
 >
 
-export function StatsBlock({ body, eyebrow, heading, items, variant }: StatsBlockProps) {
+export function StatsBlock({ body, columns, eyebrow, heading, items, variant }: StatsBlockProps) {
   if (!items?.length) return null
 
   const className = [
@@ -16,6 +16,9 @@ export function StatsBlock({ body, eyebrow, heading, items, variant }: StatsBloc
       : '',
     variant === 'inlineDark' ? styles.statsInlineDark : '',
     variant === 'numberedDark' ? styles.statsNumberedDark : '',
+    columns === '2' ? styles.statsColumns2 : '',
+    columns === '3' ? styles.statsColumns3 : '',
+    columns === '4' ? styles.statsColumns4 : '',
   ].filter(Boolean).join(' ')
 
   return (

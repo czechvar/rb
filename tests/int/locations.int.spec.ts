@@ -23,6 +23,14 @@ describe('locations collection', () => {
 
   it('stores structured destination taxonomy and source references', async () => {
     const payload = await getTestPayload()
+    const airport = await payload.create({
+      collection: 'airports',
+      data: {
+        name: `Valencia Airport ${Date.now()}`,
+        iata: `V${String(Date.now()).slice(-2)}`,
+        active: true,
+      },
+    })
     const doc = (await payload.create({
       collection: 'locations',
       data: {
@@ -40,31 +48,32 @@ describe('locations collection', () => {
         accommodationTags: ['apartment', 'campsite'],
         transportTags: ['car-recommended', 'flight-access'],
         nearestAirports: [{ name: 'Valencia' }, { name: 'Zaragoza' }],
+        airportRefs: [airport.id],
         gradeRange: 'Font 3 to 8C',
         routeCount: 1700,
         problemCount: 1700,
         sectorCount: 15,
-        seasonSummary: 'Autumn through spring are commonly used for bouldering conditions.',
-        transportSummary: 'A car is normally recommended for reaching sectors.',
-        accommodationSummary: 'Apartments and campsites are common local options.',
-        contentSections: [
-          {
-            key: 'intro',
-            heading: 'Introduction',
-            status: 'mixed',
-            body: 'Albarracin is a sandstone bouldering destination near Teruel.',
-            sourceRefs: ['legacy', 'albarracin-topo'],
-            warnings: [],
+        destinationDetail: {
+          hero: {
+            heading: 'Albarracin',
+            accentWord: 'Alba',
+            body: 'A sandstone bouldering destination near Teruel.',
+            heroStats: [
+              { value: '1700+', label: 'Problems', sourceStatus: 'curated-derived' },
+            ],
           },
-          {
-            key: 'gear',
-            heading: 'Gear',
-            status: 'missing',
-            body: null,
-            sourceRefs: [],
-            warnings: ['No sourced gear content found.'],
-          },
-        ],
+          sections: [
+            {
+              key: 'intro',
+              heading: 'Introduction',
+              body: 'Albarracin is a sandstone bouldering destination near Teruel.',
+              sourceStatus: 'curated-derived',
+            },
+          ],
+          seasonMonths: [
+            { month: 1, label: 'Jan', score: 4, tone: 'peak', sourceStatus: 'curated-derived' },
+          ],
+        },
         sourceReferences: [
           {
             sourceId: 'albarracin-topo',
@@ -91,17 +100,17 @@ describe('locations collection', () => {
     expect(doc.accommodationTags).toEqual(['apartment', 'campsite'])
     expect(doc.transportTags).toEqual(['car-recommended', 'flight-access'])
     expect(doc.nearestAirports?.map((airport) => airport.name)).toEqual(['Valencia', 'Zaragoza'])
+    expect((doc.airportRefs ?? []).map((airport) => (typeof airport === 'object' ? airport.id : airport))).toEqual([
+      airport.id,
+    ])
     expect(doc.gradeRange).toBe('Font 3 to 8C')
     expect(doc.routeCount).toBe(1700)
     expect(doc.problemCount).toBe(1700)
     expect(doc.sectorCount).toBe(15)
-    expect(doc.seasonSummary).toContain('Autumn')
-    expect(doc.transportSummary).toContain('car')
-    expect(doc.accommodationSummary).toContain('Apartments')
-    expect(doc.contentSections?.[0]?.key).toBe('intro')
-    expect(doc.contentSections?.[0]?.sourceRefs).toEqual(['legacy', 'albarracin-topo'])
-    expect(doc.contentSections?.[1]?.status).toBe('missing')
-    expect(doc.contentSections?.[1]?.warnings).toEqual(['No sourced gear content found.'])
+    expect(doc.destinationDetail?.hero?.heading).toBe('Albarracin')
+    expect(doc.destinationDetail?.hero?.heroStats?.[0]?.label).toBe('Problems')
+    expect(doc.destinationDetail?.sections?.[0]?.key).toBe('intro')
+    expect(doc.destinationDetail?.seasonMonths?.[0]?.score).toBe(4)
     expect(doc.sourceReferences?.[0]?.sourceId).toBe('albarracin-topo')
   })
 

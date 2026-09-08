@@ -20,33 +20,34 @@
 
 .stars {
   color: var(--theme-color-primary);
-  font-size: 18px;
+  font-size: var(--theme-text-lead);
   margin-bottom: 16px;
 }
 
 .pull {
   font-family: var(--theme-font-heading);
-  font-size: 24px;
-  line-height: 1.2;
+  font-size: var(--theme-text-card);
+  font-weight: var(--theme-weight-card);
+  line-height: var(--theme-line-card);
   color: var(--theme-color-paper);
   margin: 0 0 16px;
 }
 
 .body {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-body);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-60);
-  line-height: 1.6;
+  line-height: var(--theme-line-body);
   margin: 0 0 20px;
 }
 
 .who {
   font-family: var(--theme-font-body);
-  font-size: 11px;
+  font-size: var(--theme-text-label);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--theme-color-paper-45);
-  font-weight: 700;
+  font-weight: var(--theme-weight-subheading);
 }
 
 .ctaWrap {

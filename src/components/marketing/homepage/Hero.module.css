@@ -39,16 +39,19 @@
 
 .eyebrow {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-eyebrow);
+  font-size: var(--theme-text-label);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: var(--theme-weight-subheading);
   color: var(--theme-color-primary);
   margin: 0 0 24px;
 }
 
 .h1 {
-  font-size: clamp(64px, 9vw, 140px);
+  color: var(--theme-color-paper);
+  font-size: var(--theme-text-hero);
+  font-weight: var(--theme-weight-hero);
+  line-height: var(--theme-line-hero);
   margin: 0 0 28px;
 }
 
@@ -59,9 +62,9 @@
 
 .sub {
   max-width: 720px;
-  font-size: var(--fs-body-lg);
+  font-size: var(--theme-text-lead);
   color: var(--theme-color-paper-60);
-  line-height: 1.6;
+  line-height: var(--theme-line-lead);
   margin: 0 0 36px;
 }
 
@@ -78,7 +81,7 @@
   gap: 16px;
   align-items: center;
   font-family: var(--theme-font-body);
-  font-size: 13px;
+  font-size: var(--theme-text-small);
   color: var(--theme-color-paper-45);
 }
 

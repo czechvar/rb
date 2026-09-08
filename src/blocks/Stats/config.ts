@@ -26,6 +26,15 @@ export const StatsBlockConfig: Block = {
         { label: 'Numbered dark', value: 'numberedDark' },
       ],
     }),
+    selectField('columns', {
+      defaultValue: 'auto',
+      values: [
+        { label: 'Auto', value: 'auto' },
+        { label: '2 columns', value: '2' },
+        { label: '3 columns', value: '3' },
+        { label: '4 columns', value: '4' },
+      ],
+    }),
   ],
 }
 

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-27T09:49:00.470Z",
-  "source": "old_db/20260827_rb.sql",
+  "generatedAt": "2026-09-02T13:07:22.848Z",
+  "source": "old_db/20260827_rb.sql; Payload guides featured overlay",
   "rows": [
     {
       "id": 1,
@@ -80,7 +80,8 @@
       "email": null,
       "phone": null,
       "display": 1,
-      "image_id": 1035
+      "image_id": 1035,
+      "featured": true
     },
     {
       "id": 9,
@@ -90,7 +91,8 @@
       "email": null,
       "phone": null,
       "display": 1,
-      "image_id": 1036
+      "image_id": 1036,
+      "featured": true
     },
     {
       "id": 10,

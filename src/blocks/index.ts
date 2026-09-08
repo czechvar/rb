@@ -6,6 +6,7 @@ import { CTABlockConfig } from './CTA/config'
 import { TripGridBlockConfig } from './TripGrid/config'
 import { ProgramGridBlockConfig } from './ProgramGrid/config'
 import { LocationGridBlockConfig } from './LocationGrid/config'
+import { DestinationCountryIndexBlockConfig } from './DestinationCountryIndex/config'
 import { GuideGridBlockConfig } from './GuideGrid/config'
 import { PostGridBlockConfig } from './PostGrid/config'
 import { CalendarBlockConfig } from './Calendar/config'
@@ -46,6 +47,12 @@ import { LocationHeroBlockConfig } from './LocationHero/config'
 import { LocationContentBlockConfig } from './LocationContent/config'
 import { LocationMapBlockConfig } from './LocationMap/config'
 import { LocationTripsBlockConfig } from './LocationTrips/config'
+import { DestinationHeroBlockConfig } from './DestinationHero/config'
+import { DestinationSectionsBlockConfig } from './DestinationSections/config'
+import { DestinationCardGridBlockConfig } from './DestinationCardGrid/config'
+import { DestinationSeasonBlockConfig } from './DestinationSeason/config'
+import { DestinationLogisticsBlockConfig } from './DestinationLogistics/config'
+import { DestinationSidebarBlockConfig } from './DestinationSidebar/config'
 import { GuideHeroBlockConfig } from './GuideHero/config'
 import { GuideStatsBlockConfig } from './GuideStats/config'
 import { GuideAboutBlockConfig } from './GuideAbout/config'
@@ -128,6 +135,13 @@ const rawBlockCatalogue = [
   },
   { config: LocationGridBlockConfig, category: 'catalogue' },
   {
+    config: DestinationCountryIndexBlockConfig,
+    category: 'catalogue',
+    dataDependencies: ['location'],
+    sourceModes: ['configuredContent'],
+    compatibleWith: ['page'],
+  },
+  {
     config: FeaturedLocationBlockConfig,
     category: 'catalogue',
     dataDependencies: ['location'],
@@ -155,7 +169,12 @@ const rawBlockCatalogue = [
     sourceModes: ['manualSelection'],
   },
   { config: MediaBlockConfig, category: 'media' },
-  { config: GalleryBlockConfig, category: 'media' },
+  {
+    config: GalleryBlockConfig,
+    category: 'media',
+    dataDependencies: ['event', 'location'],
+    sourceModes: ['currentContext', 'manualSelection'],
+  },
   { config: VideoBlockConfig, category: 'media' },
   { config: FAQBlockConfig, category: 'socialProof' },
   { config: ReviewGridBlockConfig, category: 'socialProof' },
@@ -309,6 +328,48 @@ const rawBlockCatalogue = [
   },
   {
     config: LocationTripsBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationHeroBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationSectionsBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationCardGridBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationSeasonBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationLogisticsBlockConfig,
+    category: 'locationDetail',
+    dataDependencies: ['location'],
+    sourceModes: ['currentContext'],
+    notCompatibleWith: allNonLocationSurfaces,
+  },
+  {
+    config: DestinationSidebarBlockConfig,
     category: 'locationDetail',
     dataDependencies: ['location'],
     sourceModes: ['currentContext'],

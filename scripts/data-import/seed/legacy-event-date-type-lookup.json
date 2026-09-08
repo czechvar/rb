@@ -1,0 +1,186 @@
+{
+  "generatedAt": "2026-09-02T00:00:00.000Z",
+  "source": "legacy event_date_type table, curated into Rockbusters catalogue taxonomy",
+  "byLegacyTypeSlug": {
+    "private-coaching-guiding": {
+      "categories": ["private-guiding"],
+      "programs": ["technique-coaching"],
+      "difficulties": [],
+      "climbingStyles": [],
+      "audienceTags": [],
+      "formatTags": ["private-guiding", "coaching"],
+      "partnerTags": []
+    },
+    "evolv-test-demo": {
+      "categories": [],
+      "programs": [],
+      "difficulties": [],
+      "climbingStyles": [],
+      "audienceTags": [],
+      "formatTags": ["demo-test"],
+      "partnerTags": ["evolv"]
+    },
+    "sport-climbing": {
+      "categories": ["climbing-camps"],
+      "programs": ["climbing-camps"],
+      "difficulties": [],
+      "climbingStyles": ["sport"],
+      "audienceTags": [],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "bouldering": {
+      "categories": ["climbing-camps"],
+      "programs": ["climbing-camps"],
+      "difficulties": [],
+      "climbingStyles": ["bouldering"],
+      "audienceTags": [],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "trad-climbing": {
+      "categories": ["climbing-camps"],
+      "programs": ["climbing-camps"],
+      "difficulties": [],
+      "climbingStyles": ["trad"],
+      "audienceTags": [],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "multipitch-climbing": {
+      "categories": ["climbing-camps"],
+      "programs": ["climbing-camps"],
+      "difficulties": [],
+      "climbingStyles": ["multi-pitch"],
+      "audienceTags": [],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "beginner-climbing-course": {
+      "categories": ["technique-coaching"],
+      "programs": ["technique-coaching"],
+      "difficulties": ["Beginner"],
+      "climbingStyles": [],
+      "audienceTags": ["beginner-friendly"],
+      "formatTags": ["learn-to-lead"],
+      "partnerTags": []
+    },
+    "professional-climbers-coaching": {
+      "categories": ["technique-coaching"],
+      "programs": ["technique-coaching"],
+      "difficulties": ["Advanced"],
+      "climbingStyles": [],
+      "audienceTags": ["advanced", "expert"],
+      "formatTags": ["coaching"],
+      "partnerTags": []
+    },
+    "learn-to-lead": {
+      "categories": ["technique-coaching"],
+      "programs": ["technique-coaching"],
+      "difficulties": [],
+      "climbingStyles": [],
+      "audienceTags": ["beginner-friendly"],
+      "formatTags": ["learn-to-lead"],
+      "partnerTags": []
+    },
+    "women-only-climbing-courses": {
+      "categories": ["climbing-camps"],
+      "programs": ["climbing-camps"],
+      "difficulties": [],
+      "climbingStyles": [],
+      "audienceTags": ["women-only"],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "climbing-road-trip": {
+      "categories": ["climbing-camps"],
+      "programs": ["climbing-camps"],
+      "difficulties": [],
+      "climbingStyles": [],
+      "audienceTags": [],
+      "formatTags": ["road-trip"],
+      "partnerTags": []
+    },
+    "kids-climbing-course": {
+      "categories": ["climbing-camps"],
+      "programs": ["climbing-camps"],
+      "difficulties": ["Beginner"],
+      "climbingStyles": [],
+      "audienceTags": ["kids-friendly", "beginner-friendly"],
+      "formatTags": ["family-youth"],
+      "partnerTags": []
+    },
+    "kids-friendly": {
+      "categories": ["climbing-camps"],
+      "programs": [],
+      "difficulties": [],
+      "climbingStyles": [],
+      "audienceTags": ["kids-friendly"],
+      "formatTags": ["family-youth"],
+      "partnerTags": []
+    },
+    "beginner": {
+      "categories": [],
+      "programs": [],
+      "difficulties": ["Beginner"],
+      "climbingStyles": [],
+      "audienceTags": ["beginner-friendly"],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "intermediate": {
+      "categories": [],
+      "programs": [],
+      "difficulties": ["Intermediate"],
+      "climbingStyles": [],
+      "audienceTags": ["intermediate"],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "advance": {
+      "categories": [],
+      "programs": [],
+      "difficulties": ["Advanced"],
+      "climbingStyles": [],
+      "audienceTags": ["advanced"],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "expert": {
+      "categories": [],
+      "programs": [],
+      "difficulties": ["Expert"],
+      "climbingStyles": [],
+      "audienceTags": ["expert"],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "deep-water-solo": {
+      "categories": ["climbing-camps"],
+      "programs": ["climbing-camps"],
+      "difficulties": [],
+      "climbingStyles": ["deep-water-soloing"],
+      "audienceTags": [],
+      "formatTags": [],
+      "partnerTags": []
+    },
+    "singing-rock-test-demo": {
+      "categories": [],
+      "programs": [],
+      "difficulties": [],
+      "climbingStyles": [],
+      "audienceTags": [],
+      "formatTags": ["demo-test"],
+      "partnerTags": ["singing-rock"]
+    },
+    "send-test-demo": {
+      "categories": [],
+      "programs": [],
+      "difficulties": [],
+      "climbingStyles": [],
+      "audienceTags": [],
+      "formatTags": ["demo-test"],
+      "partnerTags": ["the-send"]
+    }
+  }
+}

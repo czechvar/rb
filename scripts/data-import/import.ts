@@ -31,7 +31,10 @@ import { convertHTMLToLexical, editorConfigFactory } from '@payloadcms/richtext-
 import config from '../../src/payload.config'
 
 const SEED_DIR = path.resolve(import.meta.dirname, 'seed')
-const GUIDE_LOOKUP_FILE = path.join(SEED_DIR, 'legacy-guide-lookup.json')
+const LOOKUP_DIR = process.env.DATA_IMPORT_LOOKUP_DIR
+  ? path.resolve(process.env.DATA_IMPORT_LOOKUP_DIR)
+  : SEED_DIR
+const GUIDE_LOOKUP_FILE = path.join(LOOKUP_DIR, 'legacy-guide-lookup.json')
 const DEFAULT_MEDIA_LOOKUP_FILE =
   '/media/czechspekk/ws-backup-data-1/xbusters/rockbusters/media-transfer/payload-media-lookup.json'
 const PRODUCTION_DB_HOST = 'ep-weathered-pine-alvc3sdj'
@@ -85,6 +88,7 @@ interface GuideRow {
   phone: string | null
   display: number
   image_id?: number | null
+  featured?: boolean
 }
 
 interface PayloadMediaLookup {
@@ -230,7 +234,7 @@ interface RunTotals {
 
 async function importLocations(
   payload: Payload,
-  editorConfig: EditorConfig,
+  _editorConfig: EditorConfig,
   rows: LocationRow[],
 ): Promise<RunTotals> {
   const totals: RunTotals = {
@@ -245,8 +249,8 @@ async function importLocations(
   for (const row of rows) {
     try {
       const { html, strippedImgs } = cleanBody(row.body)
+      void html
       totals.imgsStripped += strippedImgs
-      const content = toLexical(html, editorConfig)
 
       const data: Record<string, unknown> = {
         name: row.title,
@@ -254,7 +258,6 @@ async function importLocations(
         active: Boolean(row.display),
         featured: false,
       }
-      if (content) data.content = content
       if (row.country_nicename) data.country = row.country_nicename
       if (row.latitude !== 0 || row.longitude !== 0) {
         data.coordinates = [row.longitude, row.latitude]
@@ -315,7 +318,7 @@ async function importGuides(
         tags: [],
         photo: photo ?? null,
         content: content ?? null,
-        featured: false,
+        featured: Boolean(row.featured),
         isFounder: false,
         vimeoId: null,
         heroSub: null,

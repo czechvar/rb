@@ -166,11 +166,11 @@ export function Header({ transparent = false }: { transparent?: boolean } = {}) 
               </Link>
             ))}
             <Link
-              href="/programs"
+              href="https://wa.me/420776805045"
               className={styles.joinUs}
-              data-testid="nav-cta-find-your-trip"
+              data-testid="nav-cta-lets-talk"
             >
-              Find Your Trip
+              LET&apos;S TALK
             </Link>
             <Link href={userHref} className={styles.userLink} aria-label={userLabel}>
               <UserIcon />
@@ -203,8 +203,8 @@ export function Header({ transparent = false }: { transparent?: boolean } = {}) 
               {l.label}
             </Link>
           ))}
-          <Link href="/programs" onClick={() => setDrawerOpen(false)}>
-            Find Your Trip
+          <Link href="https://wa.me/420776805045" onClick={() => setDrawerOpen(false)}>
+            LET&apos;S TALK
           </Link>
           <Link href={userHref} onClick={() => setDrawerOpen(false)}>
             {userLabel}

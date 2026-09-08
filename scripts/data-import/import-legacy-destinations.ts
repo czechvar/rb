@@ -20,6 +20,31 @@ const LEGACY_DESTINATION_DIR = path.join(SEED_DIR, 'legacy-destinations')
 const DEFAULT_MEDIA_LOOKUP_FILE =
   '/media/czechspekk/ws-backup-data-1/xbusters/rockbusters/media-transfer/payload-media-lookup.json'
 const PRODUCTION_DB_HOST = 'ep-weathered-pine-alvc3sdj'
+const AIRPORT_LABEL_TO_IATA = new Map([
+  ['Alicante', ['ALC']],
+  ['Antalya', ['AYT']],
+  ['Athens', ['ATH']],
+  ['Avignon', ['AVN']],
+  ['Barcelona', ['BCN']],
+  ['Dresden', ['DRS']],
+  ['Genoa', ['GOA']],
+  ['Girona', ['GRO']],
+  ['Gothenburg', ['GOT']],
+  ['Innsbruck', ['INN']],
+  ['Kos', ['KGS']],
+  ['Lyon', ['LYS']],
+  ['Madrid', ['MAD']],
+  ['Malaga', ['AGP']],
+  ['Malta International Airport', ['MLA']],
+  ['Marseille', ['MRS']],
+  ['Munich', ['MUC']],
+  ['Nimes', ['FNI']],
+  ['Oslo', ['OSL']],
+  ['Prague', ['PRG']],
+  ['Salzburg', ['SZG']],
+  ['Valencia', ['VLC']],
+  ['Zaragoza', ['ZAZ']],
+])
 
 type LegacyLocationSeed = {
   rows: Array<{
@@ -150,6 +175,48 @@ async function readPayloadMediaLookup() {
   }
 }
 
+async function filterMediaLookupToExistingIds(
+  payload: Payload,
+  mediaLookup: Map<string, string>,
+  records: CuratedDestination[],
+) {
+  const neededLegacyIds = [
+    ...new Set(
+      records
+        .map((record) => record.media?.mainImage?.legacyMediaId)
+        .filter((id): id is number => id !== null && id !== undefined),
+    ),
+  ]
+  const filtered = new Map<string, string>()
+  let missing = 0
+
+  for (const legacyId of neededLegacyIds) {
+    const payloadMediaId = mediaLookup.get(String(legacyId))
+    if (!payloadMediaId) {
+      missing += 1
+      continue
+    }
+
+    try {
+      await payload.findByID({ collection: 'media', id: payloadMediaId, depth: 0 })
+      filtered.set(String(legacyId), payloadMediaId)
+    } catch {
+      missing += 1
+    }
+  }
+
+  return { mediaLookup: filtered, missing }
+}
+
+async function airportIdsByIata(payload: Payload) {
+  const airports = await payload.find({
+    collection: 'airports',
+    limit: 20_000,
+    depth: 0,
+  })
+  return new Map(airports.docs.map((airport) => [airport.iata, airport.id]))
+}
+
 function assertKnownValue(field: LocationTaxonomyField, value: string | null | undefined) {
   if (!value) return
   if (!(value in locationTaxonomy[field])) {
@@ -166,34 +233,6 @@ function cleanText(value: string | null | undefined): string | undefined {
   return cleaned || undefined
 }
 
-function cleanMultilineText(value: string | null | undefined): string | undefined {
-  const cleaned = value
-    ?.split(/\n{2,}/)
-    .map((paragraph) => paragraph.replace(/\s+/g, ' ').trim())
-    .filter(Boolean)
-    .join('\n\n')
-
-  return cleaned || undefined
-}
-
-function sectionBody(record: CuratedDestination, key: string): string | undefined {
-  const section = record.sections.find((candidate) => candidate.key === key)
-  if (!section || section.status === 'missing' || section.status === 'not-applicable')
-    return undefined
-  return cleanMultilineText(section.body)
-}
-
-function contentSections(record: CuratedDestination) {
-  return record.sections.map((section) => ({
-    key: section.key,
-    heading: section.heading,
-    status: section.status,
-    body: cleanMultilineText(section.body) ?? null,
-    sourceRefs: section.sourceRefs ?? [],
-    warnings: section.warnings ?? [],
-  }))
-}
-
 function normalizeDate(value: string | null | undefined): string | undefined {
   if (!value) return undefined
   const date = new Date(value)
@@ -205,6 +244,7 @@ export function buildLocationData(
   record: CuratedDestination,
   legacySeed: LegacyLocationSeed['rows'][number] | undefined,
   mediaLookup = new Map<string, string>(),
+  airportLookup = new Map<string, number>(),
 ): BuiltLocationData {
   const facts = record.facts ?? {}
 
@@ -235,15 +275,18 @@ export function buildLocationData(
     accommodationTags: facts.accommodationTags ?? [],
     transportTags: facts.transportTags ?? [],
     nearestAirports: (facts.nearestAirports ?? []).map((name) => ({ name })),
+    airportRefs: [
+      ...new Set(
+        (facts.nearestAirports ?? [])
+          .flatMap((name) => AIRPORT_LABEL_TO_IATA.get(name) ?? [])
+          .map((iata) => airportLookup.get(iata))
+          .filter((id): id is number => id !== undefined),
+      ),
+    ],
     gradeRange: facts.gradeRange ?? null,
     routeCount: facts.routeCount ?? null,
     problemCount: facts.problemCount ?? null,
     sectorCount: facts.sectorCount ?? null,
-    seasonSummary: sectionBody(record, 'season') ?? null,
-    transportSummary: sectionBody(record, 'transport') ?? null,
-    accommodationSummary: sectionBody(record, 'stay') ?? null,
-    content: null,
-    contentSections: contentSections(record),
     sourceReferences: record.sources.map((source) => ({
       sourceId: source.id,
       title: cleanText(source.title) ?? null,
@@ -300,12 +343,18 @@ async function main() {
 
   const payload = await getPayload({ config })
   const legacyLocations = await readLegacyLocationSeed()
-  const mediaLookup = await readPayloadMediaLookup()
+  const airportLookup = await airportIdsByIata(payload)
   const records = await readCuratedDestinations(args.input)
+  const rawMediaLookup = await readPayloadMediaLookup()
+  const { mediaLookup, missing: missingMainPictureMedia } = await filterMediaLookupToExistingIds(
+    payload,
+    rawMediaLookup,
+    records,
+  )
 
   const totals = { created: 0, updated: 0 }
   for (const record of records) {
-    const built = buildLocationData(record, legacyLocations.get(record.slug), mediaLookup)
+    const built = buildLocationData(record, legacyLocations.get(record.slug), mediaLookup, airportLookup)
     const result = await upsertLocation(payload, built.slug, built.data)
     totals[result] += 1
   }
@@ -313,6 +362,11 @@ async function main() {
   console.log(
     `legacy destinations: created=${totals.created} updated=${totals.updated} total=${records.length}`,
   )
+  if (missingMainPictureMedia) {
+    console.warn(
+      `legacy destinations: skipped missing main-picture media refs=${missingMainPictureMedia}`,
+    )
+  }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

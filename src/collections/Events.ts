@@ -5,6 +5,7 @@ import { seoFields } from '../fields/seo'
 import { revalidateOnChange } from './hooks/revalidate'
 import { eventLayoutBlocks } from '../blocks'
 import { TAGS } from '@/lib/cache'
+import { eventTaxonomyOptions } from '@/lib/taxonomy/event'
 
 export const Events: CollectionConfig = {
   slug: 'events',
@@ -17,6 +18,19 @@ export const Events: CollectionConfig = {
     { name: 'title', type: 'text', required: true },
     slugField('title'),
     { name: 'shortDescription', type: 'textarea' },
+    {
+      name: 'catalogueCard',
+      type: 'group',
+      label: 'Catalogue card',
+      admin: {
+        description:
+          'Optional title and teaser for catalogue grids. Public trip pages keep using the main title and short description.',
+      },
+      fields: [
+        { name: 'title', type: 'text' },
+        { name: 'description', type: 'textarea' },
+      ],
+    },
     { name: 'content', type: 'richText' },
     {
       name: 'additionalInfo',
@@ -62,6 +76,34 @@ export const Events: CollectionConfig = {
       relationTo: 'programs',
       hasMany: true,
       filterOptions: () => ({ active: { equals: true } }),
+    },
+    {
+      name: 'climbingStyles',
+      type: 'select',
+      label: 'Climbing styles',
+      hasMany: true,
+      options: eventTaxonomyOptions.climbingStyles,
+    },
+    {
+      name: 'audienceTags',
+      type: 'select',
+      label: 'Audience tags',
+      hasMany: true,
+      options: eventTaxonomyOptions.audienceTags,
+    },
+    {
+      name: 'formatTags',
+      type: 'select',
+      label: 'Format tags',
+      hasMany: true,
+      options: eventTaxonomyOptions.formatTags,
+    },
+    {
+      name: 'partnerTags',
+      type: 'select',
+      label: 'Partner tags',
+      hasMany: true,
+      options: eventTaxonomyOptions.partnerTags,
     },
 
     // Event-level locations (per Martin's note: "event can have more than one location")
@@ -209,7 +251,6 @@ export const Events: CollectionConfig = {
       type: 'relationship',
       relationTo: 'guides',
       hasMany: true,
-      filterOptions: () => ({ active: { equals: true } }),
     },
     {
       name: 'coachTeamBullets',

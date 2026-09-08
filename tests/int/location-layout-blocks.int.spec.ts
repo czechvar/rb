@@ -9,28 +9,11 @@ type RenderBlocksInput = Parameters<typeof RenderBlocks>[0]
 
 const trackedIds: Record<string, number[]> = {}
 
-const richText = (text: string): Record<string, unknown> => ({
-  root: {
-    type: 'root',
-    children: [
-      {
-        type: 'paragraph',
-        version: 1,
-        children: [{ type: 'text', version: 1, text }],
-      },
-    ],
-    direction: null,
-    format: '',
-    indent: 0,
-    version: 1,
-  },
-})
-
 describe('Location layout blocks', () => {
   afterEach(async () => {
     const payload = await getTestPayload()
 
-    for (const collection of ['events', 'locations']) {
+    for (const collection of ['event-dates', 'events', 'locations']) {
       const ids = trackedIds[collection]
       if (!ids?.length) continue
       await payload.delete({ collection: collection as never, where: { id: { in: ids } } })
@@ -46,13 +29,46 @@ describe('Location layout blocks', () => {
       city: 'Test City',
       country: 'Test Country',
       coordinates: [14.41, 50.08],
-      content: richText('Location body from the current Location record.'),
+      problemCount: 1600,
+      sectorCount: 30,
+      gradeRange: 'Font 3 to 8B+',
+      destinationDetail: {
+        hero: {
+          heading: 'POC Destination Hero',
+          heroStats: [
+            {
+              id: 'bottom-stat',
+              value: '12',
+              label: 'Bottom stat',
+            },
+          ],
+        },
+        sections: [
+          {
+            id: 'intro',
+            key: 'intro',
+            heading: 'Introduction',
+            body: 'Location body from the current Location record.',
+          },
+        ],
+        seasonMonths: [
+          { id: 'oct', month: 10, label: 'Oct', score: 4 },
+          { id: 'nov', month: 11, label: 'Nov', score: 4 },
+          { id: 'dec', month: 12, label: 'Dec', score: 4 },
+          { id: 'jan', month: 1, label: 'Jan', score: 4 },
+          { id: 'feb', month: 2, label: 'Feb', score: 4 },
+          { id: 'mar', month: 3, label: 'Mar', score: 4 },
+        ],
+      },
       active: true,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     } as Location
 
     const element = await RenderBlocks({
       blocks: [
         { blockType: 'locationHero' },
+        { blockType: 'destinationHero' },
         { blockType: 'locationContent', heading: 'Local climbing style' },
         { blockType: 'locationMap', heading: 'Where it is' },
       ] as RenderBlocksInput['blocks'],
@@ -63,6 +79,12 @@ describe('Location layout blocks', () => {
     expect(markup).toContain('POC Location Layout')
     expect(markup).toContain('Test City')
     expect(markup).toContain('Test Country')
+    expect(markup).toContain('POC Destination Hero')
+    expect(markup).toContain('1,600+')
+    expect(markup).toContain('Font 3-8B+')
+    expect(markup).toContain('30+')
+    expect(markup).toContain('Oct-Mar')
+    expect(markup).toContain('Bottom stat')
     expect(markup).toContain('Location body from the current Location record.')
     expect(markup).toContain('Local climbing style')
     expect(markup).toContain('Where it is')
@@ -92,6 +114,22 @@ describe('Location layout blocks', () => {
       },
     })
     track('events', event.id)
+
+    const eventDate = await payload.create({
+      collection: 'event-dates',
+      data: {
+        event: event.id,
+        dateFrom: '2028-04-10T00:00:00.000Z',
+        dateTo: '2028-04-17T00:00:00.000Z',
+        price: 1190,
+        vat: 0,
+        currency: 'EUR',
+        capacity: 8,
+        minParticipants: 2,
+        active: true,
+      },
+    })
+    track('event-dates', eventDate.id)
 
     const element = await RenderBlocks({
       blocks: [

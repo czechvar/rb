@@ -70,6 +70,7 @@ describe('legacy destination import mapper', () => {
         description: 'Albarracin destination.',
       },
       new Map([['323', 'med_80e4f5c45a4da3e4428f13af']]),
+      new Map([['VLC', 8087]]),
     )
 
     expect(built.slug).toBe('albarracin')
@@ -92,39 +93,10 @@ describe('legacy destination import mapper', () => {
       accommodationTags: ['campsite'],
       transportTags: ['car-recommended'],
       nearestAirports: [{ name: 'Valencia' }],
+      airportRefs: [8087],
       gradeRange: 'Font 3 to 8C',
       problemCount: 1600,
       sectorCount: 15,
-      seasonSummary: 'Spring and autumn are the main windows.\n\nWinter can be good too.',
-      transportSummary: 'A car is normally recommended.',
-      accommodationSummary: 'Campsites are available.',
-      content: null,
-      contentSections: [
-        {
-          key: 'season',
-          heading: 'Season',
-          status: 'legacy',
-          body: 'Spring and autumn are the main windows.\n\nWinter can be good too.',
-          sourceRefs: [],
-          warnings: [],
-        },
-        {
-          key: 'transport',
-          heading: 'Getting there',
-          status: 'legacy',
-          body: 'A car is normally recommended.',
-          sourceRefs: [],
-          warnings: [],
-        },
-        {
-          key: 'stay',
-          heading: 'Where to stay',
-          status: 'legacy',
-          body: 'Campsites are available.',
-          sourceRefs: [],
-          warnings: [],
-        },
-      ],
       seo: {
         keywords: 'albarracin,bouldering',
         description: 'Albarracin destination.',

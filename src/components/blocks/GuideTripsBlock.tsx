@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Event, Page } from '@/payload-types'
 import type { BlockRenderContext } from './RenderBlocks'
 import { resolveGuideTripsEvents } from '@/lib/block-resolvers/content-discovery'
+import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
 import styles from './blocks.module.css'
 
 type GuideTripsBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'guideTrips' }>
@@ -34,11 +35,12 @@ export async function GuideTripsBlock(
 }
 
 function GuideTripCard({ event }: { event: Event }) {
+  const description = eventCatalogueDescription(event)
   return (
     <Link href={`/trips/${event.slug}`} className={styles.domainCard}>
       <p className={styles.cardMeta}>Trip</p>
-      <h3>{event.title}</h3>
-      {event.shortDescription ? <p>{event.shortDescription}</p> : null}
+      <h3>{eventCatalogueTitle(event)}</h3>
+      {description ? <p>{description}</p> : null}
       <span className={styles.cardLinkText}>View trip</span>
     </Link>
   )

@@ -294,9 +294,35 @@ export interface Program {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -305,8 +331,23 @@ export interface Program {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -347,6 +388,7 @@ export interface Program {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -359,10 +401,44 @@ export interface Program {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -527,8 +603,9 @@ export interface Program {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
-            variant: 'grid' | 'masonry';
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -859,6 +936,13 @@ export interface Event {
   title: string;
   slug: string;
   shortDescription?: string | null;
+  /**
+   * Optional title and teaser for catalogue grids. Public trip pages keep using the main title and short description.
+   */
+  catalogueCard?: {
+    title?: string | null;
+    description?: string | null;
+  };
   content?: {
     root: {
       type: string;
@@ -909,9 +993,35 @@ export interface Event {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -920,8 +1030,23 @@ export interface Event {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -962,6 +1087,7 @@ export interface Event {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -974,10 +1100,44 @@ export interface Event {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -1142,8 +1302,9 @@ export interface Event {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
-            variant: 'grid' | 'masonry';
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -1295,6 +1456,12 @@ export interface Event {
   categories?: (number | Category)[] | null;
   difficulties?: (number | Difficulty)[] | null;
   programs?: (number | Program)[] | null;
+  climbingStyles?: ('sport' | 'bouldering' | 'trad' | 'multi-pitch' | 'deep-water-soloing')[] | null;
+  audienceTags?:
+    | ('beginner-friendly' | 'kids-friendly' | 'women-only' | 'intermediate' | 'advanced' | 'expert')[]
+    | null;
+  formatTags?: ('private-guiding' | 'coaching' | 'learn-to-lead' | 'road-trip' | 'demo-test' | 'family-youth')[] | null;
+  partnerTags?: ('evolv' | 'singing-rock' | 'the-send')[] | null;
   locations?: (number | Location)[] | null;
   highlights?:
     | {
@@ -1491,21 +1658,6 @@ export interface Location {
   id: number;
   name: string;
   slug: string;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   address?: string | null;
   city?: string | null;
   country?: string | null;
@@ -1558,7 +1710,7 @@ export interface Location {
     | ('car-recommended' | 'public-transport-possible' | 'flight-access' | 'ferry-access' | 'walkable-local-access')[]
     | null;
   /**
-   * Normalized airport city labels. Keep as strings until airport-specific filtering needs IATA data.
+   * Normalized airport city labels retained from mined source material for editorial traceability.
    */
   nearestAirports?:
     | {
@@ -1566,43 +1718,14 @@ export interface Location {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Canonical airport relations resolved from nearest-airport labels where possible.
+   */
+  airportRefs?: (number | Airport)[] | null;
   gradeRange?: string | null;
   routeCount?: number | null;
   problemCount?: number | null;
   sectorCount?: number | null;
-  seasonSummary?: string | null;
-  transportSummary?: string | null;
-  accommodationSummary?: string | null;
-  /**
-   * Structured destination content extracted from legacy data and research. Missing sections are kept for editorial traceability.
-   */
-  contentSections?:
-    | {
-        key: string;
-        heading: string;
-        status: 'enriched' | 'mixed' | 'legacy' | 'missing' | 'not-applicable';
-        body?: string | null;
-        sourceRefs?:
-          | {
-              [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        warnings?:
-          | {
-              [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   /**
    * Traceability for mined or enriched destination facts.
    */
@@ -1620,6 +1743,213 @@ export interface Location {
   mainPicture?: (string | null) | Media;
   gallery?: (string | Media)[] | null;
   /**
+   * Structured content for the default destination detail renderer. Canonical location facts remain on the parent Location record.
+   */
+  destinationDetail?: {
+    hero?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      accentWord?: string | null;
+      body?: string | null;
+      primaryAction?: {
+        label?: string | null;
+        href?: string | null;
+      };
+      heroStats?:
+        | {
+            value: string;
+            label: string;
+            derivedFrom?: string | null;
+            format?: string | null;
+            note?: string | null;
+            sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    sections?:
+      | {
+          key: string;
+          navLabel?: string | null;
+          heading: string;
+          body?: string | null;
+          keyCharacteristics?: string[] | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          id?: string | null;
+        }[]
+      | null;
+    audience?:
+      | {
+          label: string;
+          gradeRange?: string | null;
+          body?: string | null;
+          badge?: string | null;
+          tone?:
+            | ('neutral' | 'positive' | 'strong' | 'limited' | 'warning' | 'critical' | 'peak' | 'good' | 'avoid')
+            | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    sectors?:
+      | {
+          name: string;
+          badges?: string[] | null;
+          gradeRange?: string | null;
+          body?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    seasonMonths?:
+      | {
+          month: number;
+          label: string;
+          score: number;
+          temperature?: string | null;
+          conditions?: string | null;
+          tone?:
+            | ('neutral' | 'positive' | 'strong' | 'limited' | 'warning' | 'critical' | 'peak' | 'good' | 'avoid')
+            | null;
+          notes?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          id?: string | null;
+        }[]
+      | null;
+    gearGroups?:
+      | {
+          heading: string;
+          items?: string[] | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    transportOptions?:
+      | {
+          label: string;
+          type?: string | null;
+          duration?: string | null;
+          body?: string | null;
+          recommended?: boolean | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    accommodationOptions?:
+      | {
+          type?: string | null;
+          name: string;
+          body?: string | null;
+          href?: string | null;
+          actionLabel?: string | null;
+          priceHint?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    restDayIdeas?:
+      | {
+          title: string;
+          body?: string | null;
+          distance?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    accessRules?:
+      | {
+          title: string;
+          body?: string | null;
+          tone?:
+            | ('neutral' | 'positive' | 'strong' | 'limited' | 'warning' | 'critical' | 'peak' | 'good' | 'avoid')
+            | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    safetyItems?:
+      | {
+          label: string;
+          value?: string | null;
+          body?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    costItems?:
+      | {
+          label: string;
+          unit?: string | null;
+          budget?: string | null;
+          midRange?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    destinationFaqs?:
+      | {
+          question: string;
+          answer: string;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    tripPromos?:
+      | {
+          type?: string | null;
+          title: string;
+          body?: string | null;
+          action?: {
+            label?: string | null;
+            href?: string | null;
+          };
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    relatedLocations?: (number | Location)[] | null;
+    /**
+     * Fallback display cards for related destinations when matching Location records are not available yet.
+     */
+    relatedDestinationCards?:
+      | {
+          slug?: string | null;
+          name: string;
+          country?: string | null;
+          region?: string | null;
+          summary?: string | null;
+          sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+          needsVerification?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    cta?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      body?: string | null;
+      primaryAction?: {
+        label?: string | null;
+        href?: string | null;
+      };
+      secondaryAction?: {
+        label?: string | null;
+        href?: string | null;
+      };
+      sourceStatus?: ('curated' | 'curated-derived' | 'design-derived' | 'mixed') | null;
+    };
+  };
+  /**
    * Optional block-driven layout for this public destination page. Empty uses the current default layout.
    */
   layout?:
@@ -1630,9 +1960,35 @@ export interface Location {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -1641,8 +1997,23 @@ export interface Location {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -1683,6 +2054,7 @@ export interface Location {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -1695,10 +2067,44 @@ export interface Location {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -1863,8 +2269,9 @@ export interface Location {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
-            variant: 'grid' | 'masonry';
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -1987,6 +2394,76 @@ export interface Location {
             blockName?: string | null;
             blockType: 'locationTrips';
           }
+        | {
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationHero';
+          }
+        | {
+            eyebrow?: string | null;
+            /**
+             * Optional override. Empty uses the first rendered section heading.
+             */
+            heading?: string | null;
+            /**
+             * Optional filter. Empty renders all destinationDetail.sections.
+             */
+            sectionKeys?:
+              | {
+                  key: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationSections';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source:
+              | 'audience'
+              | 'sectors'
+              | 'restDayIdeas'
+              | 'accessRules'
+              | 'safetyItems'
+              | 'destinationFaqs'
+              | 'tripPromos'
+              | 'relatedLocations'
+              | 'relatedDestinationCards';
+            columns: 'auto' | '2' | '3';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationCardGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationSeason';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'all' | 'gearGroups' | 'transportOptions' | 'accommodationOptions' | 'costItems';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationLogistics';
+          }
+        | {
+            includeCta?: boolean | null;
+            includeQuickFacts?: boolean | null;
+            includeAccommodationLinks?: boolean | null;
+            includeResources?: boolean | null;
+            includeEmergencyContacts?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationSidebar';
+          }
       )[]
     | null;
   featured?: boolean | null;
@@ -1996,6 +2473,26 @@ export interface Location {
     keywords?: string | null;
     description?: string | null;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "airports".
+ */
+export interface Airport {
+  id: number;
+  name: string;
+  iata: string;
+  country?: string | null;
+  continent?: string | null;
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates?: [number, number] | null;
+  size?: number | null;
+  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -2052,9 +2549,35 @@ export interface Guide {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -2063,8 +2586,23 @@ export interface Guide {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -2105,6 +2643,7 @@ export interface Guide {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -2117,10 +2656,44 @@ export interface Guide {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -2285,8 +2858,9 @@ export interface Guide {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
-            variant: 'grid' | 'masonry';
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -2583,9 +3157,35 @@ export interface Post {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -2594,8 +3194,23 @@ export interface Post {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -2636,6 +3251,7 @@ export interface Post {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -2648,10 +3264,44 @@ export interface Post {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -2816,8 +3466,9 @@ export interface Post {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
-            variant: 'grid' | 'masonry';
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -2990,32 +3641,92 @@ export interface EventDate {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Optional date-specific logistics copy when this occurrence differs from the parent event or location defaults.
+   */
+  logisticsOverrides?: {
+    accommodation?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    food?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    included?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    excluded?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    note?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
   active?: boolean | null;
   /**
    * Sum of participants in pending+confirmed+paid orders.
    */
   bookedSeats?: number | null;
   remainingSeats?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "airports".
- */
-export interface Airport {
-  id: number;
-  name: string;
-  iata: string;
-  country?: string | null;
-  continent?: string | null;
-  /**
-   * @minItems 2
-   * @maxItems 2
-   */
-  coordinates?: [number, number] | null;
-  size?: number | null;
-  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -3315,9 +4026,35 @@ export interface Page {
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
+            /**
+             * Words or phrases in the heading to render in the brand accent color.
+             */
+            accentWords?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -3326,8 +4063,23 @@ export interface Page {
         | {
             eyebrow?: string | null;
             heading: string;
-            body?: string | null;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             alignment: 'left' | 'center';
+            variant: 'light' | 'darkSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -3368,6 +4120,7 @@ export interface Page {
                 }[]
               | null;
             variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
             blockType: 'stats';
@@ -3380,10 +4133,44 @@ export interface Page {
             primaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             secondaryAction?: {
               label?: string | null;
               href?: string | null;
+              /**
+               * Optional click tracking metadata for this action.
+               */
+              analytics?: {
+                enabled?: boolean | null;
+                /**
+                 * Defaults to cta_click. Keep names stable once reporting depends on them.
+                 */
+                eventName?: string | null;
+                /**
+                 * Stable reporting ID, for example homepage_hero_find_trip.
+                 */
+                actionId?: string | null;
+                location?: ('auto' | 'header' | 'hero' | 'body_cta' | 'sidebar' | 'footer') | null;
+                intent?: ('navigation' | 'lead' | 'booking' | 'contact' | 'social' | 'download') | null;
+                customLabel?: string | null;
+              };
             };
             id?: string | null;
             blockName?: string | null;
@@ -3449,6 +4236,17 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'locationGrid';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            source: 'all' | 'featured';
+            variant: 'photoCards' | 'flagCards';
+            showJumpBar?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'destinationCountryIndex';
           }
         | {
             eyebrow?: string | null;
@@ -3548,8 +4346,9 @@ export interface Page {
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
-            images: (string | Media)[];
-            variant: 'grid' | 'masonry';
+            source: 'manual' | 'currentEvent' | 'currentLocation';
+            images?: (string | Media)[] | null;
+            variant: 'grid' | 'masonry' | 'tiles';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -4154,11 +4953,27 @@ export interface ProgramsSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -4170,6 +4985,7 @@ export interface ProgramsSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -4198,6 +5014,7 @@ export interface ProgramsSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -4213,12 +5030,32 @@ export interface ProgramsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -4397,6 +5234,7 @@ export interface ProgramsSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -4729,11 +5567,27 @@ export interface GuidesSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -4745,6 +5599,7 @@ export interface GuidesSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -4773,6 +5628,7 @@ export interface GuidesSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -4788,12 +5644,32 @@ export interface GuidesSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -4972,6 +5848,7 @@ export interface GuidesSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -5197,7 +6074,6 @@ export interface GuidesSelect<T extends boolean = true> {
 export interface LocationsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
-  content?: T;
   address?: T;
   city?: T;
   country?: T;
@@ -5219,24 +6095,11 @@ export interface LocationsSelect<T extends boolean = true> {
         name?: T;
         id?: T;
       };
+  airportRefs?: T;
   gradeRange?: T;
   routeCount?: T;
   problemCount?: T;
   sectorCount?: T;
-  seasonSummary?: T;
-  transportSummary?: T;
-  accommodationSummary?: T;
-  contentSections?:
-    | T
-    | {
-        key?: T;
-        heading?: T;
-        status?: T;
-        body?: T;
-        sourceRefs?: T;
-        warnings?: T;
-        id?: T;
-      };
   sourceReferences?:
     | T
     | {
@@ -5250,6 +6113,215 @@ export interface LocationsSelect<T extends boolean = true> {
       };
   mainPicture?: T;
   gallery?: T;
+  destinationDetail?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              accentWord?: T;
+              body?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              heroStats?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    derivedFrom?: T;
+                    format?: T;
+                    note?: T;
+                    sourceStatus?: T;
+                    id?: T;
+                  };
+            };
+        sections?:
+          | T
+          | {
+              key?: T;
+              navLabel?: T;
+              heading?: T;
+              body?: T;
+              keyCharacteristics?: T;
+              sourceStatus?: T;
+              id?: T;
+            };
+        audience?:
+          | T
+          | {
+              label?: T;
+              gradeRange?: T;
+              body?: T;
+              badge?: T;
+              tone?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        sectors?:
+          | T
+          | {
+              name?: T;
+              badges?: T;
+              gradeRange?: T;
+              body?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        seasonMonths?:
+          | T
+          | {
+              month?: T;
+              label?: T;
+              score?: T;
+              temperature?: T;
+              conditions?: T;
+              tone?: T;
+              notes?: T;
+              sourceStatus?: T;
+              id?: T;
+            };
+        gearGroups?:
+          | T
+          | {
+              heading?: T;
+              items?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        transportOptions?:
+          | T
+          | {
+              label?: T;
+              type?: T;
+              duration?: T;
+              body?: T;
+              recommended?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        accommodationOptions?:
+          | T
+          | {
+              type?: T;
+              name?: T;
+              body?: T;
+              href?: T;
+              actionLabel?: T;
+              priceHint?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        restDayIdeas?:
+          | T
+          | {
+              title?: T;
+              body?: T;
+              distance?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        accessRules?:
+          | T
+          | {
+              title?: T;
+              body?: T;
+              tone?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        safetyItems?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              body?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        costItems?:
+          | T
+          | {
+              label?: T;
+              unit?: T;
+              budget?: T;
+              midRange?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        destinationFaqs?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        tripPromos?:
+          | T
+          | {
+              type?: T;
+              title?: T;
+              body?: T;
+              action?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        relatedLocations?: T;
+        relatedDestinationCards?:
+          | T
+          | {
+              slug?: T;
+              name?: T;
+              country?: T;
+              region?: T;
+              summary?: T;
+              sourceStatus?: T;
+              needsVerification?: T;
+              id?: T;
+            };
+        cta?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              primaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              secondaryAction?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                  };
+              sourceStatus?: T;
+            };
+      };
   layout?:
     | T
     | {
@@ -5261,11 +6333,27 @@ export interface LocationsSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -5277,6 +6365,7 @@ export interface LocationsSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -5305,6 +6394,7 @@ export interface LocationsSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -5320,12 +6410,32 @@ export interface LocationsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -5504,6 +6614,7 @@ export interface LocationsSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -5623,6 +6734,67 @@ export interface LocationsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        destinationHero?:
+          | T
+          | {
+              id?: T;
+              blockName?: T;
+            };
+        destinationSections?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              sectionKeys?:
+                | T
+                | {
+                    key?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        destinationCardGrid?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              columns?: T;
+              id?: T;
+              blockName?: T;
+            };
+        destinationSeason?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              id?: T;
+              blockName?: T;
+            };
+        destinationLogistics?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              id?: T;
+              blockName?: T;
+            };
+        destinationSidebar?:
+          | T
+          | {
+              includeCta?: T;
+              includeQuickFacts?: T;
+              includeAccommodationLinks?: T;
+              includeResources?: T;
+              includeEmergencyContacts?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   featured?: T;
   active?: T;
@@ -5674,6 +6846,12 @@ export interface EventsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   shortDescription?: T;
+  catalogueCard?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
   content?: T;
   additionalInfo?:
     | T
@@ -5696,11 +6874,27 @@ export interface EventsSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -5712,6 +6906,7 @@ export interface EventsSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -5740,6 +6935,7 @@ export interface EventsSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -5755,12 +6951,32 @@ export interface EventsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -5939,6 +7155,7 @@ export interface EventsSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -6079,6 +7296,10 @@ export interface EventsSelect<T extends boolean = true> {
   categories?: T;
   difficulties?: T;
   programs?: T;
+  climbingStyles?: T;
+  audienceTags?: T;
+  formatTags?: T;
+  partnerTags?: T;
   locations?: T;
   highlights?:
     | T
@@ -6242,6 +7463,15 @@ export interface EventDatesSelect<T extends boolean = true> {
   capacity?: T;
   minParticipants?: T;
   extraContent?: T;
+  logisticsOverrides?:
+    | T
+    | {
+        accommodation?: T;
+        food?: T;
+        included?: T;
+        excluded?: T;
+        note?: T;
+      };
   active?: T;
   bookedSeats?: T;
   remainingSeats?: T;
@@ -6427,11 +7657,27 @@ export interface PostsSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -6443,6 +7689,7 @@ export interface PostsSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -6471,6 +7718,7 @@ export interface PostsSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -6486,12 +7734,32 @@ export interface PostsSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -6670,6 +7938,7 @@ export interface PostsSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;
@@ -6834,11 +8103,27 @@ export interface PagesSelect<T extends boolean = true> {
               body?: T;
               backgroundMedia?: T;
               variant?: T;
+              accentWords?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               primaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -6850,6 +8135,7 @@ export interface PagesSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               alignment?: T;
+              variant?: T;
               id?: T;
               blockName?: T;
             };
@@ -6878,6 +8164,7 @@ export interface PagesSelect<T extends boolean = true> {
                     id?: T;
                   };
               variant?: T;
+              columns?: T;
               id?: T;
               blockName?: T;
             };
@@ -6893,12 +8180,32 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               secondaryAction?:
                 | T
                 | {
                     label?: T;
                     href?: T;
+                    analytics?:
+                      | T
+                      | {
+                          enabled?: T;
+                          eventName?: T;
+                          actionId?: T;
+                          location?: T;
+                          intent?: T;
+                          customLabel?: T;
+                        };
                   };
               id?: T;
               blockName?: T;
@@ -6966,6 +8273,18 @@ export interface PagesSelect<T extends boolean = true> {
               locations?: T;
               limit?: T;
               variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        destinationCountryIndex?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              source?: T;
+              variant?: T;
+              showJumpBar?: T;
               id?: T;
               blockName?: T;
             };
@@ -7077,6 +8396,7 @@ export interface PagesSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               body?: T;
+              source?: T;
               images?: T;
               variant?: T;
               id?: T;

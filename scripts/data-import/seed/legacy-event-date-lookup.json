@@ -1,0 +1,5489 @@
+{
+  "generatedAt": "2026-09-02T10:52:30.554Z",
+  "source": "scripts/data-import/seed/legacy-event-dates.json + Payload event-dates collection",
+  "byLegacyEventDateId": {
+    "3": 8,
+    "4": 9,
+    "6": 10,
+    "7": 11,
+    "8": 12,
+    "9": 13,
+    "10": 14,
+    "11": 15,
+    "12": 16,
+    "13": 17,
+    "14": 18,
+    "15": 19,
+    "16": 20,
+    "17": 21,
+    "18": 22,
+    "19": 23,
+    "20": 24,
+    "21": 25,
+    "31": 26,
+    "32": 27,
+    "33": 28,
+    "34": 29,
+    "35": 30,
+    "36": 31,
+    "37": 32,
+    "38": 33,
+    "39": 34,
+    "40": 35,
+    "41": 36,
+    "47": 37,
+    "48": 38,
+    "49": 39,
+    "50": 40,
+    "51": 41,
+    "53": 42,
+    "55": 43,
+    "56": 44,
+    "57": 45,
+    "58": 46,
+    "59": 47,
+    "60": 48,
+    "61": 49,
+    "62": 50,
+    "63": 51,
+    "64": 52,
+    "65": 53,
+    "66": 54,
+    "67": 55,
+    "68": 56,
+    "69": 57,
+    "70": 58,
+    "71": 59,
+    "72": 60,
+    "73": 61,
+    "74": 62,
+    "75": 63,
+    "76": 64,
+    "77": 65,
+    "78": 66,
+    "79": 67,
+    "80": 68,
+    "81": 69,
+    "82": 70,
+    "83": 71,
+    "84": 72,
+    "85": 73,
+    "86": 74,
+    "87": 75,
+    "88": 76,
+    "89": 77,
+    "90": 78,
+    "91": 79,
+    "92": 80,
+    "93": 81,
+    "94": 82,
+    "95": 83,
+    "96": 84,
+    "97": 85,
+    "98": 86,
+    "99": 87,
+    "100": 88,
+    "101": 89,
+    "102": 90,
+    "103": 91,
+    "104": 92,
+    "105": 93,
+    "106": 94,
+    "107": 95,
+    "108": 96,
+    "109": 97,
+    "110": 98,
+    "111": 99,
+    "112": 100,
+    "113": 101,
+    "114": 102,
+    "115": 103,
+    "116": 104,
+    "117": 105,
+    "118": 106,
+    "119": 107,
+    "120": 108,
+    "121": 109,
+    "122": 110,
+    "123": 111,
+    "124": 112,
+    "125": 113,
+    "126": 114,
+    "127": 115,
+    "128": 116,
+    "129": 117,
+    "130": 118,
+    "131": 119,
+    "132": 120,
+    "133": 121,
+    "134": 122,
+    "135": 123,
+    "136": 124,
+    "137": 125,
+    "138": 126,
+    "139": 127,
+    "140": 128,
+    "141": 129,
+    "142": 130,
+    "143": 131,
+    "146": 132,
+    "147": 133,
+    "148": 134,
+    "149": 135,
+    "151": 136,
+    "152": 137,
+    "153": 138,
+    "154": 139,
+    "155": 140,
+    "156": 141,
+    "157": 142,
+    "158": 143,
+    "159": 144,
+    "160": 145,
+    "161": 146,
+    "162": 147,
+    "163": 148,
+    "164": 149,
+    "165": 150,
+    "166": 151,
+    "167": 152,
+    "171": 153,
+    "173": 154,
+    "174": 155,
+    "175": 156,
+    "176": 157,
+    "177": 158,
+    "178": 159,
+    "179": 160,
+    "180": 161,
+    "181": 162,
+    "182": 163,
+    "183": 780,
+    "184": 164,
+    "185": 165,
+    "186": 166,
+    "187": 167,
+    "188": 168,
+    "189": 169,
+    "190": 170,
+    "191": 171,
+    "192": 172,
+    "193": 173,
+    "194": 174,
+    "195": 175,
+    "196": 176,
+    "197": 177,
+    "198": 178,
+    "199": 179,
+    "200": 180,
+    "201": 181,
+    "202": 182,
+    "203": 183,
+    "204": 184,
+    "205": 185,
+    "206": 186,
+    "207": 187,
+    "208": 188,
+    "209": 189,
+    "210": 190,
+    "211": 191,
+    "212": 192,
+    "213": 193,
+    "214": 194,
+    "215": 195,
+    "216": 196,
+    "217": 197,
+    "218": 198,
+    "219": 199,
+    "220": 200,
+    "221": 201,
+    "222": 202,
+    "223": 203,
+    "224": 204,
+    "225": 205,
+    "226": 206,
+    "227": 207,
+    "228": 208,
+    "229": 209,
+    "230": 210,
+    "231": 211,
+    "232": 212,
+    "233": 213,
+    "234": 214,
+    "235": 215,
+    "236": 216,
+    "237": 217,
+    "238": 218,
+    "239": 219,
+    "240": 220,
+    "241": 221,
+    "242": 222,
+    "243": 223,
+    "244": 224,
+    "245": 225,
+    "246": 226,
+    "247": 227,
+    "248": 228,
+    "249": 229,
+    "250": 230,
+    "251": 231,
+    "252": 232,
+    "253": 233,
+    "254": 234,
+    "256": 235,
+    "257": 236,
+    "258": 237,
+    "259": 238,
+    "260": 239,
+    "261": 240,
+    "262": 241,
+    "263": 242,
+    "264": 243,
+    "265": 244,
+    "266": 245,
+    "267": 246,
+    "268": 247,
+    "269": 248,
+    "272": 249,
+    "273": 250,
+    "274": 251,
+    "275": 252,
+    "276": 253,
+    "277": 254,
+    "278": 255,
+    "279": 256,
+    "280": 257,
+    "281": 258,
+    "282": 259,
+    "283": 260,
+    "284": 261,
+    "285": 262,
+    "286": 263,
+    "287": 264,
+    "288": 265,
+    "289": 266,
+    "290": 267,
+    "293": 268,
+    "294": 269,
+    "295": 270,
+    "296": 271,
+    "297": 272,
+    "298": 273,
+    "299": 274,
+    "300": 275,
+    "301": 276,
+    "302": 277,
+    "303": 278,
+    "304": 279,
+    "305": 280,
+    "306": 281,
+    "307": 282,
+    "308": 283,
+    "309": 284,
+    "310": 285,
+    "311": 286,
+    "312": 287,
+    "313": 288,
+    "314": 289,
+    "315": 290,
+    "316": 291,
+    "319": 292,
+    "321": 293,
+    "322": 294,
+    "323": 295,
+    "324": 296,
+    "325": 297,
+    "327": 298,
+    "330": 299,
+    "331": 300,
+    "332": 301,
+    "337": 302,
+    "338": 303,
+    "340": 304,
+    "343": 305,
+    "345": 306,
+    "346": 307,
+    "356": 308,
+    "357": 309,
+    "358": 310,
+    "359": 311,
+    "360": 312,
+    "361": 313,
+    "362": 314,
+    "363": 315,
+    "364": 316,
+    "365": 317,
+    "366": 318,
+    "367": 319,
+    "368": 320,
+    "369": 321,
+    "370": 322,
+    "371": 323,
+    "372": 324,
+    "373": 325,
+    "374": 326,
+    "375": 327,
+    "376": 328,
+    "377": 329,
+    "378": 330,
+    "379": 331,
+    "380": 332,
+    "381": 333,
+    "382": 334,
+    "383": 335,
+    "384": 336,
+    "385": 337,
+    "386": 338,
+    "387": 339,
+    "388": 340,
+    "389": 341,
+    "390": 342,
+    "391": 343,
+    "392": 344,
+    "393": 345,
+    "394": 346,
+    "395": 347,
+    "396": 348,
+    "397": 349,
+    "398": 350,
+    "399": 351,
+    "401": 352,
+    "402": 353,
+    "403": 354,
+    "404": 355,
+    "405": 356,
+    "406": 357,
+    "407": 358,
+    "408": 359,
+    "409": 360,
+    "410": 361,
+    "411": 362,
+    "412": 363,
+    "413": 364,
+    "415": 365,
+    "416": 366,
+    "417": 367,
+    "418": 368,
+    "419": 369,
+    "420": 370,
+    "421": 371,
+    "422": 372,
+    "423": 781,
+    "424": 782,
+    "427": 373,
+    "428": 374,
+    "429": 375,
+    "430": 376,
+    "432": 377,
+    "433": 378,
+    "434": 379,
+    "438": 380,
+    "439": 381,
+    "440": 382,
+    "441": 383,
+    "442": 384,
+    "444": 385,
+    "445": 386,
+    "446": 387,
+    "447": 388,
+    "448": 389,
+    "449": 390,
+    "450": 391,
+    "459": 392,
+    "460": 393,
+    "461": 394,
+    "462": 395,
+    "463": 396,
+    "464": 397,
+    "465": 398,
+    "466": 399,
+    "467": 400,
+    "468": 401,
+    "469": 402,
+    "470": 403,
+    "471": 404,
+    "472": 405,
+    "473": 406,
+    "474": 407,
+    "475": 408,
+    "476": 409,
+    "477": 410,
+    "478": 411,
+    "479": 412,
+    "480": 413,
+    "481": 414,
+    "482": 415,
+    "483": 416,
+    "484": 417,
+    "485": 418,
+    "486": 419,
+    "487": 783,
+    "488": 420,
+    "489": 421,
+    "490": 422,
+    "492": 423,
+    "493": 784,
+    "494": 424,
+    "495": 425,
+    "496": 426,
+    "497": 427,
+    "498": 428,
+    "499": 429,
+    "500": 430,
+    "501": 431,
+    "502": 432,
+    "503": 433,
+    "504": 434,
+    "505": 435,
+    "506": 436,
+    "507": 437,
+    "508": 438,
+    "509": 439,
+    "510": 440,
+    "511": 441,
+    "512": 442,
+    "513": 443,
+    "514": 444,
+    "515": 445,
+    "516": 446,
+    "517": 447,
+    "518": 448,
+    "519": 449,
+    "520": 450,
+    "521": 451,
+    "522": 452,
+    "523": 453,
+    "524": 454,
+    "525": 455,
+    "526": 456,
+    "527": 457,
+    "528": 458,
+    "529": 459,
+    "530": 460,
+    "532": 461,
+    "533": 462,
+    "534": 463,
+    "536": 464,
+    "537": 465,
+    "538": 466,
+    "539": 467,
+    "540": 468,
+    "541": 469,
+    "544": 470,
+    "546": 471,
+    "547": 472,
+    "550": 473,
+    "551": 474,
+    "552": 475,
+    "553": 476,
+    "555": 477,
+    "556": 478,
+    "557": 479,
+    "558": 480,
+    "559": 481,
+    "560": 482,
+    "561": 483,
+    "562": 484,
+    "564": 485,
+    "565": 486,
+    "566": 487,
+    "567": 488,
+    "568": 489,
+    "569": 490,
+    "570": 491,
+    "571": 492,
+    "572": 493,
+    "573": 494,
+    "574": 495,
+    "575": 496,
+    "576": 497,
+    "577": 498,
+    "578": 499,
+    "579": 500,
+    "580": 501,
+    "581": 502,
+    "582": 503,
+    "583": 504,
+    "584": 505,
+    "585": 506,
+    "586": 507,
+    "587": 508,
+    "588": 509,
+    "590": 510,
+    "591": 511,
+    "592": 512,
+    "593": 513,
+    "594": 514,
+    "595": 515,
+    "596": 516,
+    "597": 517,
+    "598": 518,
+    "599": 519,
+    "600": 520,
+    "601": 521,
+    "602": 522,
+    "603": 523,
+    "604": 524,
+    "605": 525,
+    "606": 526,
+    "607": 527,
+    "608": 528,
+    "609": 529,
+    "610": 530,
+    "611": 531,
+    "612": 532,
+    "613": 533,
+    "614": 534,
+    "615": 535,
+    "616": 536,
+    "617": 537,
+    "618": 538,
+    "619": 539,
+    "620": 540,
+    "621": 541,
+    "622": 542,
+    "624": 543,
+    "625": 544,
+    "626": 545,
+    "627": 546,
+    "628": 547,
+    "629": 548,
+    "630": 549,
+    "631": 550,
+    "632": 551,
+    "633": 552,
+    "634": 553,
+    "635": 554,
+    "636": 555,
+    "637": 556,
+    "638": 557,
+    "639": 558,
+    "640": 559,
+    "641": 560,
+    "643": 561,
+    "644": 562,
+    "645": 563,
+    "647": 564,
+    "648": 565,
+    "649": 566,
+    "650": 567,
+    "652": 568,
+    "653": 569,
+    "654": 570,
+    "655": 571,
+    "656": 572,
+    "657": 573,
+    "658": 574,
+    "659": 575,
+    "660": 576,
+    "661": 577,
+    "665": 578,
+    "666": 579,
+    "667": 580,
+    "668": 581,
+    "669": 582,
+    "670": 583,
+    "671": 584,
+    "675": 585,
+    "676": 586,
+    "677": 587,
+    "678": 588,
+    "679": 589,
+    "680": 590,
+    "683": 591,
+    "684": 592,
+    "685": 593,
+    "686": 594,
+    "688": 595,
+    "689": 596,
+    "692": 597,
+    "693": 598,
+    "694": 599,
+    "695": 600,
+    "696": 785,
+    "697": 601,
+    "698": 602,
+    "699": 603,
+    "700": 604,
+    "701": 605,
+    "702": 606,
+    "703": 607,
+    "704": 608,
+    "705": 609,
+    "706": 610,
+    "707": 611,
+    "708": 612,
+    "709": 613,
+    "710": 614,
+    "711": 615,
+    "712": 616,
+    "713": 617,
+    "714": 618,
+    "715": 619,
+    "716": 620,
+    "717": 621,
+    "718": 622,
+    "719": 623,
+    "723": 624,
+    "724": 625,
+    "725": 626,
+    "726": 627,
+    "727": 628,
+    "728": 629,
+    "729": 630,
+    "730": 631,
+    "731": 632,
+    "732": 633,
+    "733": 634,
+    "734": 635,
+    "735": 636,
+    "737": 637,
+    "738": 638,
+    "739": 639,
+    "740": 640,
+    "741": 641,
+    "742": 642,
+    "743": 643,
+    "744": 644,
+    "745": 645,
+    "746": 646,
+    "747": 647,
+    "748": 648,
+    "749": 649,
+    "750": 650,
+    "751": 651,
+    "752": 652,
+    "753": 653,
+    "754": 654,
+    "755": 655,
+    "756": 656,
+    "757": 657,
+    "758": 658,
+    "759": 659,
+    "760": 660,
+    "761": 661,
+    "762": 662,
+    "763": 663,
+    "764": 664,
+    "765": 665,
+    "766": 666,
+    "767": 667,
+    "768": 668,
+    "769": 669,
+    "770": 670,
+    "771": 671,
+    "772": 672,
+    "773": 673,
+    "774": 674,
+    "775": 675,
+    "776": 676,
+    "777": 677,
+    "778": 678,
+    "779": 679,
+    "780": 680,
+    "781": 681,
+    "782": 682,
+    "783": 683,
+    "784": 684,
+    "785": 685,
+    "786": 686,
+    "787": 687,
+    "788": 688,
+    "789": 689,
+    "790": 690,
+    "791": 691,
+    "792": 692,
+    "794": 693,
+    "795": 694,
+    "796": 695,
+    "797": 696,
+    "798": 697,
+    "799": 698,
+    "800": 699,
+    "801": 700,
+    "802": 701,
+    "803": 702,
+    "804": 703,
+    "805": 704,
+    "808": 705,
+    "809": 706,
+    "811": 707,
+    "812": 708,
+    "813": 709,
+    "814": 710,
+    "815": 711,
+    "816": 712,
+    "817": 713,
+    "818": 714,
+    "819": 715,
+    "820": 716,
+    "821": 717,
+    "822": 718,
+    "823": 719,
+    "824": 720,
+    "825": 721,
+    "826": 722,
+    "827": 723,
+    "828": 724,
+    "829": 725,
+    "830": 726,
+    "831": 727,
+    "832": 728,
+    "833": 729,
+    "834": 730,
+    "835": 731,
+    "836": 732,
+    "838": 733,
+    "839": 734,
+    "840": 735,
+    "841": 736,
+    "842": 737,
+    "843": 738,
+    "844": 739,
+    "845": 740,
+    "846": 741,
+    "847": 742,
+    "848": 743,
+    "851": 744,
+    "852": 745,
+    "853": 746,
+    "857": 747,
+    "858": 748,
+    "859": 749,
+    "860": 750,
+    "861": 751,
+    "862": 752,
+    "863": 753,
+    "864": 754,
+    "865": 755,
+    "866": 786,
+    "867": 787,
+    "868": 788,
+    "869": 789,
+    "870": 756,
+    "871": 757,
+    "872": 758,
+    "873": 790,
+    "874": 759,
+    "875": 760,
+    "876": 761,
+    "877": 762,
+    "878": 763,
+    "879": 764,
+    "880": 765,
+    "881": 766,
+    "882": 767,
+    "883": 768,
+    "884": 769,
+    "885": 770,
+    "886": 771,
+    "887": 772,
+    "888": 773,
+    "889": 774,
+    "890": 775,
+    "891": 776,
+    "892": 777,
+    "893": 778,
+    "894": 779
+  },
+  "rows": [
+    {
+      "legacyEventDateId": 3,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2017-04-01-3",
+      "payloadEventDateId": 8
+    },
+    {
+      "legacyEventDateId": 4,
+      "legacyEventId": 13,
+      "slug": "easter-climbing-in-sella--2016-03-19-4",
+      "payloadEventDateId": 9
+    },
+    {
+      "legacyEventDateId": 6,
+      "legacyEventId": 18,
+      "slug": "girls-on-rock--2016-06-18-6",
+      "payloadEventDateId": 10
+    },
+    {
+      "legacyEventDateId": 7,
+      "legacyEventId": 19,
+      "slug": "san-fermin-climbing--2016-07-02-7",
+      "payloadEventDateId": 11
+    },
+    {
+      "legacyEventDateId": 8,
+      "legacyEventId": 7,
+      "slug": "europe-climbing-trip--2016-08-13-8",
+      "payloadEventDateId": 12
+    },
+    {
+      "legacyEventDateId": 9,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2016-10-15-9",
+      "payloadEventDateId": 13
+    },
+    {
+      "legacyEventDateId": 10,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2016-11-05-10",
+      "payloadEventDateId": 14
+    },
+    {
+      "legacyEventDateId": 11,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2016-11-05-11",
+      "payloadEventDateId": 15
+    },
+    {
+      "legacyEventDateId": 12,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-coaching--2016-11-19-12",
+      "payloadEventDateId": 16
+    },
+    {
+      "legacyEventDateId": 13,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2016-12-17-13",
+      "payloadEventDateId": 17
+    },
+    {
+      "legacyEventDateId": 14,
+      "legacyEventId": 6,
+      "slug": "sport-climbing-camp--2016-02-13-14",
+      "payloadEventDateId": 18
+    },
+    {
+      "legacyEventDateId": 15,
+      "legacyEventId": 13,
+      "slug": "easter-climbing-in-sella--2016-03-19-15",
+      "payloadEventDateId": 19
+    },
+    {
+      "legacyEventDateId": 16,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2016-11-05-16",
+      "payloadEventDateId": 20
+    },
+    {
+      "legacyEventDateId": 17,
+      "legacyEventId": 6,
+      "slug": "sport-climbing-camp--2016-02-14-17",
+      "payloadEventDateId": 21
+    },
+    {
+      "legacyEventDateId": 18,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch--2016-04-09-18",
+      "payloadEventDateId": 22
+    },
+    {
+      "legacyEventDateId": 19,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch--2016-10-08-19",
+      "payloadEventDateId": 23
+    },
+    {
+      "legacyEventDateId": 20,
+      "legacyEventId": 21,
+      "slug": "rockbusters-private-guiding--2016-04-13-20",
+      "payloadEventDateId": 24
+    },
+    {
+      "legacyEventDateId": 21,
+      "legacyEventId": 2,
+      "slug": "novice-course--2016-07-02-21",
+      "payloadEventDateId": 25
+    },
+    {
+      "legacyEventDateId": 31,
+      "legacyEventId": 5,
+      "slug": "czech-sandstone--2016-05-21-31",
+      "payloadEventDateId": 26
+    },
+    {
+      "legacyEventDateId": 32,
+      "legacyEventId": 5,
+      "slug": "czech-sandstone--2016-06-25-32",
+      "payloadEventDateId": 27
+    },
+    {
+      "legacyEventDateId": 33,
+      "legacyEventId": 5,
+      "slug": "czech-sandstone--2016-09-10-33",
+      "payloadEventDateId": 28
+    },
+    {
+      "legacyEventDateId": 34,
+      "legacyEventId": 15,
+      "slug": "spanish-climbing-trip--2016-04-02-34",
+      "payloadEventDateId": 29
+    },
+    {
+      "legacyEventDateId": 35,
+      "legacyEventId": 15,
+      "slug": "spanish-climbing-trip--2016-04-09-35",
+      "payloadEventDateId": 30
+    },
+    {
+      "legacyEventDateId": 36,
+      "legacyEventId": 15,
+      "slug": "spanish-climbing-trip--2016-04-16-36",
+      "payloadEventDateId": 31
+    },
+    {
+      "legacyEventDateId": 37,
+      "legacyEventId": 15,
+      "slug": "spanish-climbing-trip--2016-04-23-37",
+      "payloadEventDateId": 32
+    },
+    {
+      "legacyEventDateId": 38,
+      "legacyEventId": 7,
+      "slug": "europe-climbing-trip--2016-08-13-38",
+      "payloadEventDateId": 33
+    },
+    {
+      "legacyEventDateId": 39,
+      "legacyEventId": 7,
+      "slug": "europe-climbing-trip--2016-08-20-39",
+      "payloadEventDateId": 34
+    },
+    {
+      "legacyEventDateId": 40,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2016-08-27-40",
+      "payloadEventDateId": 35
+    },
+    {
+      "legacyEventDateId": 41,
+      "legacyEventId": 7,
+      "slug": "europe-climbing-trip--2016-09-03-41",
+      "payloadEventDateId": 36
+    },
+    {
+      "legacyEventDateId": 47,
+      "legacyEventId": 9,
+      "slug": "rockbusters-coaching-footwork-balance--2016-05-07-47",
+      "payloadEventDateId": 37
+    },
+    {
+      "legacyEventDateId": 48,
+      "legacyEventId": 10,
+      "slug": "rockbusters-coaching-overhangs--2016-05-28-48",
+      "payloadEventDateId": 38
+    },
+    {
+      "legacyEventDateId": 49,
+      "legacyEventId": 18,
+      "slug": "girls-on-rock--2016-06-18-49",
+      "payloadEventDateId": 39
+    },
+    {
+      "legacyEventDateId": 50,
+      "legacyEventId": 18,
+      "slug": "girls-on-rock--2016-06-25-50",
+      "payloadEventDateId": 40
+    },
+    {
+      "legacyEventDateId": 51,
+      "legacyEventId": 19,
+      "slug": "san-fermin-climbing--2016-07-02-51",
+      "payloadEventDateId": 41
+    },
+    {
+      "legacyEventDateId": 53,
+      "legacyEventId": 19,
+      "slug": "san-fermin-climbing--2016-07-09-53",
+      "payloadEventDateId": 42
+    },
+    {
+      "legacyEventDateId": 55,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2016-10-15-55",
+      "payloadEventDateId": 43
+    },
+    {
+      "legacyEventDateId": 56,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2016-10-22-56",
+      "payloadEventDateId": 44
+    },
+    {
+      "legacyEventDateId": 57,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2016-11-05-57",
+      "payloadEventDateId": 45
+    },
+    {
+      "legacyEventDateId": 58,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2016-11-12-58",
+      "payloadEventDateId": 46
+    },
+    {
+      "legacyEventDateId": 59,
+      "legacyEventId": 2,
+      "slug": "novice-course--2016-07-02-59",
+      "payloadEventDateId": 47
+    },
+    {
+      "legacyEventDateId": 60,
+      "legacyEventId": 2,
+      "slug": "novice-course--2016-07-09-60",
+      "payloadEventDateId": 48
+    },
+    {
+      "legacyEventDateId": 61,
+      "legacyEventId": 8,
+      "slug": "rockbusters-coaching-on-sight-red-point--2016-06-18-61",
+      "payloadEventDateId": 49
+    },
+    {
+      "legacyEventDateId": 62,
+      "legacyEventId": 11,
+      "slug": "rockbusters-weekends--2016-06-03-62",
+      "payloadEventDateId": 50
+    },
+    {
+      "legacyEventDateId": 63,
+      "legacyEventId": 2,
+      "slug": "novice-course--2016-08-20-63",
+      "payloadEventDateId": 51
+    },
+    {
+      "legacyEventDateId": 64,
+      "legacyEventId": 9,
+      "slug": "rockbusters-coaching-footwork-balance--2016-08-27-64",
+      "payloadEventDateId": 52
+    },
+    {
+      "legacyEventDateId": 65,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2016-12-17-65",
+      "payloadEventDateId": 53
+    },
+    {
+      "legacyEventDateId": 66,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2016-12-24-66",
+      "payloadEventDateId": 54
+    },
+    {
+      "legacyEventDateId": 67,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-coaching--2016-11-19-67",
+      "payloadEventDateId": 55
+    },
+    {
+      "legacyEventDateId": 68,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-coaching--2016-11-26-68",
+      "payloadEventDateId": 56
+    },
+    {
+      "legacyEventDateId": 69,
+      "legacyEventId": 27,
+      "slug": "pro-climbers-performance-coaching--2017-03-04-69",
+      "payloadEventDateId": 57
+    },
+    {
+      "legacyEventDateId": 70,
+      "legacyEventId": 28,
+      "slug": "adam-ondra-patxi-usobiaga-work-shop--2017-03-11-70",
+      "payloadEventDateId": 58
+    },
+    {
+      "legacyEventDateId": 71,
+      "legacyEventId": 29,
+      "slug": "adam-ondra-patxi-usobiaga-work-shop-extension--2017-03-04-71",
+      "payloadEventDateId": 59
+    },
+    {
+      "legacyEventDateId": 72,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-coaching--2017-05-06-72",
+      "payloadEventDateId": 60
+    },
+    {
+      "legacyEventDateId": 73,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-coaching--2017-05-06-73",
+      "payloadEventDateId": 61
+    },
+    {
+      "legacyEventDateId": 74,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-coaching--2017-05-13-74",
+      "payloadEventDateId": 62
+    },
+    {
+      "legacyEventDateId": 75,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2017-04-01-75",
+      "payloadEventDateId": 63
+    },
+    {
+      "legacyEventDateId": 76,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2017-04-08-76",
+      "payloadEventDateId": 64
+    },
+    {
+      "legacyEventDateId": 77,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2017-04-15-77",
+      "payloadEventDateId": 65
+    },
+    {
+      "legacyEventDateId": 78,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2017-04-22-78",
+      "payloadEventDateId": 66
+    },
+    {
+      "legacyEventDateId": 79,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2017-05-06-79",
+      "payloadEventDateId": 67
+    },
+    {
+      "legacyEventDateId": 80,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2017-08-12-80",
+      "payloadEventDateId": 68
+    },
+    {
+      "legacyEventDateId": 81,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2017-04-08-81",
+      "payloadEventDateId": 69
+    },
+    {
+      "legacyEventDateId": 82,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-coaching--2017-04-29-82",
+      "payloadEventDateId": 70
+    },
+    {
+      "legacyEventDateId": 83,
+      "legacyEventId": 31,
+      "slug": "hazel-findlay-mental-coaching--2017-03-04-83",
+      "payloadEventDateId": 71
+    },
+    {
+      "legacyEventDateId": 84,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2017-10-14-84",
+      "payloadEventDateId": 72
+    },
+    {
+      "legacyEventDateId": 85,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2017-12-23-85",
+      "payloadEventDateId": 73
+    },
+    {
+      "legacyEventDateId": 86,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2017-06-17-86",
+      "payloadEventDateId": 74
+    },
+    {
+      "legacyEventDateId": 87,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2017-11-18-87",
+      "payloadEventDateId": 75
+    },
+    {
+      "legacyEventDateId": 88,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-climbing-work-shop--2017-10-23-88",
+      "payloadEventDateId": 76
+    },
+    {
+      "legacyEventDateId": 89,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2017-10-14-89",
+      "payloadEventDateId": 77
+    },
+    {
+      "legacyEventDateId": 90,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2017-10-21-90",
+      "payloadEventDateId": 78
+    },
+    {
+      "legacyEventDateId": 91,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2017-11-04-91",
+      "payloadEventDateId": 79
+    },
+    {
+      "legacyEventDateId": 92,
+      "legacyEventId": 8,
+      "slug": "climbing-coaching-on-sight-red-point--2017-05-13-92",
+      "payloadEventDateId": 80
+    },
+    {
+      "legacyEventDateId": 93,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2017-08-12-93",
+      "payloadEventDateId": 81
+    },
+    {
+      "legacyEventDateId": 94,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2017-08-19-94",
+      "payloadEventDateId": 82
+    },
+    {
+      "legacyEventDateId": 95,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2017-08-26-95",
+      "payloadEventDateId": 83
+    },
+    {
+      "legacyEventDateId": 96,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2017-09-02-96",
+      "payloadEventDateId": 84
+    },
+    {
+      "legacyEventDateId": 97,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2017-09-09-97",
+      "payloadEventDateId": 85
+    },
+    {
+      "legacyEventDateId": 98,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2017-09-16-98",
+      "payloadEventDateId": 86
+    },
+    {
+      "legacyEventDateId": 99,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2017-09-23-99",
+      "payloadEventDateId": 87
+    },
+    {
+      "legacyEventDateId": 100,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2017-09-30-100",
+      "payloadEventDateId": 88
+    },
+    {
+      "legacyEventDateId": 101,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2017-03-25-101",
+      "payloadEventDateId": 89
+    },
+    {
+      "legacyEventDateId": 102,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2017-02-11-102",
+      "payloadEventDateId": 90
+    },
+    {
+      "legacyEventDateId": 103,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2017-06-17-103",
+      "payloadEventDateId": 91
+    },
+    {
+      "legacyEventDateId": 104,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2017-06-24-104",
+      "payloadEventDateId": 92
+    },
+    {
+      "legacyEventDateId": 105,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2017-01-14-105",
+      "payloadEventDateId": 93
+    },
+    {
+      "legacyEventDateId": 106,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2017-04-08-106",
+      "payloadEventDateId": 94
+    },
+    {
+      "legacyEventDateId": 107,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2017-05-28-107",
+      "payloadEventDateId": 95
+    },
+    {
+      "legacyEventDateId": 108,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2017-07-09-108",
+      "payloadEventDateId": 96
+    },
+    {
+      "legacyEventDateId": 109,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2017-09-03-109",
+      "payloadEventDateId": 97
+    },
+    {
+      "legacyEventDateId": 110,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2017-03-19-110",
+      "payloadEventDateId": 98
+    },
+    {
+      "legacyEventDateId": 111,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2017-04-23-111",
+      "payloadEventDateId": 99
+    },
+    {
+      "legacyEventDateId": 112,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2017-02-25-112",
+      "payloadEventDateId": 100
+    },
+    {
+      "legacyEventDateId": 113,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-climbing-work-shop--2017-06-24-113",
+      "payloadEventDateId": 101
+    },
+    {
+      "legacyEventDateId": 114,
+      "legacyEventId": 19,
+      "slug": "san-fermin-climbing--2017-07-01-114",
+      "payloadEventDateId": 102
+    },
+    {
+      "legacyEventDateId": 115,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2017-03-01-115",
+      "payloadEventDateId": 103
+    },
+    {
+      "legacyEventDateId": 116,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2017-12-23-116",
+      "payloadEventDateId": 104
+    },
+    {
+      "legacyEventDateId": 117,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2017-12-30-117",
+      "payloadEventDateId": 105
+    },
+    {
+      "legacyEventDateId": 118,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-06-17-118",
+      "payloadEventDateId": 106
+    },
+    {
+      "legacyEventDateId": 119,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-06-17-119",
+      "payloadEventDateId": 107
+    },
+    {
+      "legacyEventDateId": 120,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-06-24-120",
+      "payloadEventDateId": 108
+    },
+    {
+      "legacyEventDateId": 121,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-05-13-121",
+      "payloadEventDateId": 109
+    },
+    {
+      "legacyEventDateId": 122,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2017-05-27-122",
+      "payloadEventDateId": 110
+    },
+    {
+      "legacyEventDateId": 123,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2017-07-15-123",
+      "payloadEventDateId": 111
+    },
+    {
+      "legacyEventDateId": 124,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2017-08-05-124",
+      "payloadEventDateId": 112
+    },
+    {
+      "legacyEventDateId": 125,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2017-08-12-125",
+      "payloadEventDateId": 113
+    },
+    {
+      "legacyEventDateId": 126,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2017-08-05-126",
+      "payloadEventDateId": 114
+    },
+    {
+      "legacyEventDateId": 127,
+      "legacyEventId": 13,
+      "slug": "easter-climbing-in-sella--2017-04-15-127",
+      "payloadEventDateId": 115
+    },
+    {
+      "legacyEventDateId": 128,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2017-07-01-128",
+      "payloadEventDateId": 116
+    },
+    {
+      "legacyEventDateId": 129,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-11-25-129",
+      "payloadEventDateId": 117
+    },
+    {
+      "legacyEventDateId": 130,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2017-05-13-130",
+      "payloadEventDateId": 118
+    },
+    {
+      "legacyEventDateId": 131,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2017-06-17-131",
+      "payloadEventDateId": 119
+    },
+    {
+      "legacyEventDateId": 132,
+      "legacyEventId": 28,
+      "slug": "adam-ondra-patxi-usobiaga-work-shop--2018-03-10-132",
+      "payloadEventDateId": 120
+    },
+    {
+      "legacyEventDateId": 133,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2018-03-31-133",
+      "payloadEventDateId": 121
+    },
+    {
+      "legacyEventDateId": 134,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-06-17-134",
+      "payloadEventDateId": 122
+    },
+    {
+      "legacyEventDateId": 135,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-06-17-135",
+      "payloadEventDateId": 123
+    },
+    {
+      "legacyEventDateId": 136,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-06-24-136",
+      "payloadEventDateId": 124
+    },
+    {
+      "legacyEventDateId": 137,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-11-18-137",
+      "payloadEventDateId": 125
+    },
+    {
+      "legacyEventDateId": 138,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-11-25-138",
+      "payloadEventDateId": 126
+    },
+    {
+      "legacyEventDateId": 139,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2017-11-18-139",
+      "payloadEventDateId": 127
+    },
+    {
+      "legacyEventDateId": 140,
+      "legacyEventId": 28,
+      "slug": "adam-ondra-patxi-usobiaga-work-shop--2018-03-17-140",
+      "payloadEventDateId": 128
+    },
+    {
+      "legacyEventDateId": 141,
+      "legacyEventId": 28,
+      "slug": "adam-ondra-patxi-usobiaga-work-shop--2018-03-10-141",
+      "payloadEventDateId": 129
+    },
+    {
+      "legacyEventDateId": 142,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2018-04-07-142",
+      "payloadEventDateId": 130
+    },
+    {
+      "legacyEventDateId": 143,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2017-09-02-143",
+      "payloadEventDateId": 131
+    },
+    {
+      "legacyEventDateId": 146,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2018-06-09-146",
+      "payloadEventDateId": 132
+    },
+    {
+      "legacyEventDateId": 147,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-climbing-work-shop--2017-10-30-147",
+      "payloadEventDateId": 133
+    },
+    {
+      "legacyEventDateId": 148,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2017-09-16-148",
+      "payloadEventDateId": 134
+    },
+    {
+      "legacyEventDateId": 149,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-08-18-149",
+      "payloadEventDateId": 135
+    },
+    {
+      "legacyEventDateId": 151,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2018-04-14-151",
+      "payloadEventDateId": 136
+    },
+    {
+      "legacyEventDateId": 152,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2018-04-21-152",
+      "payloadEventDateId": 137
+    },
+    {
+      "legacyEventDateId": 153,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2018-03-31-153",
+      "payloadEventDateId": 138
+    },
+    {
+      "legacyEventDateId": 154,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2018-04-07-154",
+      "payloadEventDateId": 139
+    },
+    {
+      "legacyEventDateId": 155,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2018-10-20-155",
+      "payloadEventDateId": 140
+    },
+    {
+      "legacyEventDateId": 156,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2018-01-27-156",
+      "payloadEventDateId": 141
+    },
+    {
+      "legacyEventDateId": 157,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2018-02-17-157",
+      "payloadEventDateId": 142
+    },
+    {
+      "legacyEventDateId": 158,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2018-03-01-158",
+      "payloadEventDateId": 143
+    },
+    {
+      "legacyEventDateId": 159,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-08-18-159",
+      "payloadEventDateId": 144
+    },
+    {
+      "legacyEventDateId": 160,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-08-25-160",
+      "payloadEventDateId": 145
+    },
+    {
+      "legacyEventDateId": 161,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-09-01-161",
+      "payloadEventDateId": 146
+    },
+    {
+      "legacyEventDateId": 162,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-09-08-162",
+      "payloadEventDateId": 147
+    },
+    {
+      "legacyEventDateId": 163,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-09-15-163",
+      "payloadEventDateId": 148
+    },
+    {
+      "legacyEventDateId": 164,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-09-22-164",
+      "payloadEventDateId": 149
+    },
+    {
+      "legacyEventDateId": 165,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-09-29-165",
+      "payloadEventDateId": 150
+    },
+    {
+      "legacyEventDateId": 166,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-10-06-166",
+      "payloadEventDateId": 151
+    },
+    {
+      "legacyEventDateId": 167,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2018-07-07-167",
+      "payloadEventDateId": 152
+    },
+    {
+      "legacyEventDateId": 171,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2018-05-26-171",
+      "payloadEventDateId": 153
+    },
+    {
+      "legacyEventDateId": 173,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2018-06-16-173",
+      "payloadEventDateId": 154
+    },
+    {
+      "legacyEventDateId": 174,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2018-06-09-174",
+      "payloadEventDateId": 155
+    },
+    {
+      "legacyEventDateId": 175,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2018-10-20-175",
+      "payloadEventDateId": 156
+    },
+    {
+      "legacyEventDateId": 176,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2018-10-27-176",
+      "payloadEventDateId": 157
+    },
+    {
+      "legacyEventDateId": 177,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2018-08-11-177",
+      "payloadEventDateId": 158
+    },
+    {
+      "legacyEventDateId": 178,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2018-06-23-178",
+      "payloadEventDateId": 159
+    },
+    {
+      "legacyEventDateId": 179,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2018-05-26-179",
+      "payloadEventDateId": 160
+    },
+    {
+      "legacyEventDateId": 180,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2018-09-15-180",
+      "payloadEventDateId": 161
+    },
+    {
+      "legacyEventDateId": 181,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2018-05-19-181",
+      "payloadEventDateId": 162
+    },
+    {
+      "legacyEventDateId": 182,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2018-05-19-182",
+      "payloadEventDateId": 163
+    },
+    {
+      "legacyEventDateId": 183,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-08-25-183",
+      "payloadEventDateId": 780
+    },
+    {
+      "legacyEventDateId": 184,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2018-12-22-184",
+      "payloadEventDateId": 164
+    },
+    {
+      "legacyEventDateId": 185,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2018-12-22-185",
+      "payloadEventDateId": 165
+    },
+    {
+      "legacyEventDateId": 186,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2018-12-29-186",
+      "payloadEventDateId": 166
+    },
+    {
+      "legacyEventDateId": 187,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2018-11-17-187",
+      "payloadEventDateId": 167
+    },
+    {
+      "legacyEventDateId": 188,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2018-10-06-188",
+      "payloadEventDateId": 168
+    },
+    {
+      "legacyEventDateId": 189,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2018-07-07-189",
+      "payloadEventDateId": 169
+    },
+    {
+      "legacyEventDateId": 190,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2018-07-07-190",
+      "payloadEventDateId": 170
+    },
+    {
+      "legacyEventDateId": 191,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2018-07-14-191",
+      "payloadEventDateId": 171
+    },
+    {
+      "legacyEventDateId": 192,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2018-07-01-192",
+      "payloadEventDateId": 172
+    },
+    {
+      "legacyEventDateId": 193,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2018-11-17-193",
+      "payloadEventDateId": 173
+    },
+    {
+      "legacyEventDateId": 194,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2018-11-24-194",
+      "payloadEventDateId": 174
+    },
+    {
+      "legacyEventDateId": 195,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2019-03-30-195",
+      "payloadEventDateId": 175
+    },
+    {
+      "legacyEventDateId": 196,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2019-03-30-196",
+      "payloadEventDateId": 176
+    },
+    {
+      "legacyEventDateId": 197,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2019-04-06-197",
+      "payloadEventDateId": 177
+    },
+    {
+      "legacyEventDateId": 198,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2019-04-13-198",
+      "payloadEventDateId": 178
+    },
+    {
+      "legacyEventDateId": 199,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2019-04-20-199",
+      "payloadEventDateId": 179
+    },
+    {
+      "legacyEventDateId": 200,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2018-06-30-200",
+      "payloadEventDateId": 180
+    },
+    {
+      "legacyEventDateId": 201,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2018-07-28-201",
+      "payloadEventDateId": 181
+    },
+    {
+      "legacyEventDateId": 202,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2018-08-25-202",
+      "payloadEventDateId": 182
+    },
+    {
+      "legacyEventDateId": 203,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2018-07-14-203",
+      "payloadEventDateId": 183
+    },
+    {
+      "legacyEventDateId": 204,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2019-05-11-204",
+      "payloadEventDateId": 184
+    },
+    {
+      "legacyEventDateId": 205,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2019-06-01-205",
+      "payloadEventDateId": 185
+    },
+    {
+      "legacyEventDateId": 206,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2019-08-17-206",
+      "payloadEventDateId": 186
+    },
+    {
+      "legacyEventDateId": 207,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2019-05-04-207",
+      "payloadEventDateId": 187
+    },
+    {
+      "legacyEventDateId": 208,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2019-05-18-208",
+      "payloadEventDateId": 188
+    },
+    {
+      "legacyEventDateId": 209,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2019-05-11-209",
+      "payloadEventDateId": 189
+    },
+    {
+      "legacyEventDateId": 210,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2019-06-01-210",
+      "payloadEventDateId": 190
+    },
+    {
+      "legacyEventDateId": 211,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2019-06-08-211",
+      "payloadEventDateId": 191
+    },
+    {
+      "legacyEventDateId": 212,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2018-08-06-212",
+      "payloadEventDateId": 192
+    },
+    {
+      "legacyEventDateId": 213,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2018-07-10-213",
+      "payloadEventDateId": 193
+    },
+    {
+      "legacyEventDateId": 214,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2018-07-07-214",
+      "payloadEventDateId": 194
+    },
+    {
+      "legacyEventDateId": 215,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-08-18-215",
+      "payloadEventDateId": 195
+    },
+    {
+      "legacyEventDateId": 216,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-08-25-216",
+      "payloadEventDateId": 196
+    },
+    {
+      "legacyEventDateId": 217,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2018-08-18-217",
+      "payloadEventDateId": 197
+    },
+    {
+      "legacyEventDateId": 218,
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos--2019-04-13-218",
+      "payloadEventDateId": 198
+    },
+    {
+      "legacyEventDateId": 219,
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos--2019-04-13-219",
+      "payloadEventDateId": 199
+    },
+    {
+      "legacyEventDateId": 220,
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos--2019-04-20-220",
+      "payloadEventDateId": 200
+    },
+    {
+      "legacyEventDateId": 221,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2019-08-17-221",
+      "payloadEventDateId": 201
+    },
+    {
+      "legacyEventDateId": 222,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2019-08-24-222",
+      "payloadEventDateId": 202
+    },
+    {
+      "legacyEventDateId": 223,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2019-08-31-223",
+      "payloadEventDateId": 203
+    },
+    {
+      "legacyEventDateId": 224,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2019-07-06-224",
+      "payloadEventDateId": 204
+    },
+    {
+      "legacyEventDateId": 225,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2019-07-06-225",
+      "payloadEventDateId": 205
+    },
+    {
+      "legacyEventDateId": 226,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2019-07-13-226",
+      "payloadEventDateId": 206
+    },
+    {
+      "legacyEventDateId": 227,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2019-09-07-227",
+      "payloadEventDateId": 207
+    },
+    {
+      "legacyEventDateId": 228,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2019-09-14-228",
+      "payloadEventDateId": 208
+    },
+    {
+      "legacyEventDateId": 229,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2019-09-21-229",
+      "payloadEventDateId": 209
+    },
+    {
+      "legacyEventDateId": 230,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2019-09-28-230",
+      "payloadEventDateId": 210
+    },
+    {
+      "legacyEventDateId": 231,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2019-10-05-231",
+      "payloadEventDateId": 211
+    },
+    {
+      "legacyEventDateId": 232,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2019-10-19-232",
+      "payloadEventDateId": 212
+    },
+    {
+      "legacyEventDateId": 233,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2018-12-29-233",
+      "payloadEventDateId": 213
+    },
+    {
+      "legacyEventDateId": 234,
+      "legacyEventId": 9,
+      "slug": "climbing-coaching-footwork-balance--2019-02-02-234",
+      "payloadEventDateId": 214
+    },
+    {
+      "legacyEventDateId": 235,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2019-02-23-235",
+      "payloadEventDateId": 215
+    },
+    {
+      "legacyEventDateId": 236,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2019-06-16-236",
+      "payloadEventDateId": 216
+    },
+    {
+      "legacyEventDateId": 237,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2019-07-14-237",
+      "payloadEventDateId": 217
+    },
+    {
+      "legacyEventDateId": 238,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2019-08-04-238",
+      "payloadEventDateId": 218
+    },
+    {
+      "legacyEventDateId": 239,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2019-11-09-239",
+      "payloadEventDateId": 219
+    },
+    {
+      "legacyEventDateId": 240,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2019-12-21-240",
+      "payloadEventDateId": 220
+    },
+    {
+      "legacyEventDateId": 241,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2019-03-23-241",
+      "payloadEventDateId": 221
+    },
+    {
+      "legacyEventDateId": 242,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2019-01-26-242",
+      "payloadEventDateId": 222
+    },
+    {
+      "legacyEventDateId": 243,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2019-02-16-243",
+      "payloadEventDateId": 223
+    },
+    {
+      "legacyEventDateId": 244,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2019-10-19-244",
+      "payloadEventDateId": 224
+    },
+    {
+      "legacyEventDateId": 245,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2019-10-26-245",
+      "payloadEventDateId": 225
+    },
+    {
+      "legacyEventDateId": 246,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2019-08-31-246",
+      "payloadEventDateId": 226
+    },
+    {
+      "legacyEventDateId": 247,
+      "legacyEventId": 38,
+      "slug": "andalucia-climbing--2019-03-16-247",
+      "payloadEventDateId": 227
+    },
+    {
+      "legacyEventDateId": 248,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2019-05-25-248",
+      "payloadEventDateId": 228
+    },
+    {
+      "legacyEventDateId": 249,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2019-08-10-249",
+      "payloadEventDateId": 229
+    },
+    {
+      "legacyEventDateId": 250,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2020-03-28-250",
+      "payloadEventDateId": 230
+    },
+    {
+      "legacyEventDateId": 251,
+      "legacyEventId": 12,
+      "slug": "christmas-climbing-holiday--2019-12-21-251",
+      "payloadEventDateId": 231
+    },
+    {
+      "legacyEventDateId": 252,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2019-12-28-252",
+      "payloadEventDateId": 232
+    },
+    {
+      "legacyEventDateId": 253,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-climbing-work-shop--2020-01-25-253",
+      "payloadEventDateId": 233
+    },
+    {
+      "legacyEventDateId": 254,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2019-11-09-254",
+      "payloadEventDateId": 234
+    },
+    {
+      "legacyEventDateId": 256,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2020-03-28-256",
+      "payloadEventDateId": 235
+    },
+    {
+      "legacyEventDateId": 257,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2020-04-04-257",
+      "payloadEventDateId": 236
+    },
+    {
+      "legacyEventDateId": 258,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2020-04-11-258",
+      "payloadEventDateId": 237
+    },
+    {
+      "legacyEventDateId": 259,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2020-04-18-259",
+      "payloadEventDateId": 238
+    },
+    {
+      "legacyEventDateId": 260,
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos--2020-04-04-260",
+      "payloadEventDateId": 239
+    },
+    {
+      "legacyEventDateId": 261,
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos--2020-04-04-261",
+      "payloadEventDateId": 240
+    },
+    {
+      "legacyEventDateId": 262,
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos--2020-04-11-262",
+      "payloadEventDateId": 241
+    },
+    {
+      "legacyEventDateId": 263,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2020-05-30-263",
+      "payloadEventDateId": 242
+    },
+    {
+      "legacyEventDateId": 264,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2020-05-30-264",
+      "payloadEventDateId": 243
+    },
+    {
+      "legacyEventDateId": 265,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2020-06-06-265",
+      "payloadEventDateId": 244
+    },
+    {
+      "legacyEventDateId": 266,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2019-11-16-266",
+      "payloadEventDateId": 245
+    },
+    {
+      "legacyEventDateId": 267,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2019-11-09-267",
+      "payloadEventDateId": 246
+    },
+    {
+      "legacyEventDateId": 268,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2019-11-30-268",
+      "payloadEventDateId": 247
+    },
+    {
+      "legacyEventDateId": 269,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2020-02-22-269",
+      "payloadEventDateId": 248
+    },
+    {
+      "legacyEventDateId": 272,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2020-03-14-272",
+      "payloadEventDateId": 249
+    },
+    {
+      "legacyEventDateId": 273,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2020-05-02-273",
+      "payloadEventDateId": 250
+    },
+    {
+      "legacyEventDateId": 274,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2019-06-22-274",
+      "payloadEventDateId": 251
+    },
+    {
+      "legacyEventDateId": 275,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2019-07-06-275",
+      "payloadEventDateId": 252
+    },
+    {
+      "legacyEventDateId": 276,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2019-09-14-276",
+      "payloadEventDateId": 253
+    },
+    {
+      "legacyEventDateId": 277,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2019-09-28-277",
+      "payloadEventDateId": 254
+    },
+    {
+      "legacyEventDateId": 278,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2019-11-16-278",
+      "payloadEventDateId": 255
+    },
+    {
+      "legacyEventDateId": 279,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2019-07-20-279",
+      "payloadEventDateId": 256
+    },
+    {
+      "legacyEventDateId": 280,
+      "legacyEventId": 9,
+      "slug": "climbing-coaching-footwork-balance--2019-07-27-280",
+      "payloadEventDateId": 257
+    },
+    {
+      "legacyEventDateId": 281,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-08-15-281",
+      "payloadEventDateId": 258
+    },
+    {
+      "legacyEventDateId": 282,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-08-15-282",
+      "payloadEventDateId": 259
+    },
+    {
+      "legacyEventDateId": 283,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-08-22-283",
+      "payloadEventDateId": 260
+    },
+    {
+      "legacyEventDateId": 284,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-08-29-284",
+      "payloadEventDateId": 261
+    },
+    {
+      "legacyEventDateId": 285,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-09-05-285",
+      "payloadEventDateId": 262
+    },
+    {
+      "legacyEventDateId": 286,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-09-12-286",
+      "payloadEventDateId": 263
+    },
+    {
+      "legacyEventDateId": 287,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-09-19-287",
+      "payloadEventDateId": 264
+    },
+    {
+      "legacyEventDateId": 288,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-09-26-288",
+      "payloadEventDateId": 265
+    },
+    {
+      "legacyEventDateId": 289,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-10-03-289",
+      "payloadEventDateId": 266
+    },
+    {
+      "legacyEventDateId": 290,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2020-10-17-290",
+      "payloadEventDateId": 267
+    },
+    {
+      "legacyEventDateId": 293,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-07-04-293",
+      "payloadEventDateId": 268
+    },
+    {
+      "legacyEventDateId": 294,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-climbing-work-shop--2019-09-05-294",
+      "payloadEventDateId": 269
+    },
+    {
+      "legacyEventDateId": 295,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2019-07-20-295",
+      "payloadEventDateId": 270
+    },
+    {
+      "legacyEventDateId": 296,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2019-07-13-296",
+      "payloadEventDateId": 271
+    },
+    {
+      "legacyEventDateId": 297,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-climbing-work-shop--2020-02-01-297",
+      "payloadEventDateId": 272
+    },
+    {
+      "legacyEventDateId": 298,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-05-16-298",
+      "payloadEventDateId": 273
+    },
+    {
+      "legacyEventDateId": 299,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-05-23-299",
+      "payloadEventDateId": 274
+    },
+    {
+      "legacyEventDateId": 300,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-05-16-300",
+      "payloadEventDateId": 275
+    },
+    {
+      "legacyEventDateId": 301,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-03-14-301",
+      "payloadEventDateId": 276
+    },
+    {
+      "legacyEventDateId": 302,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2020-03-21-302",
+      "payloadEventDateId": 277
+    },
+    {
+      "legacyEventDateId": 303,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2019-12-28-303",
+      "payloadEventDateId": 278
+    },
+    {
+      "legacyEventDateId": 304,
+      "legacyEventId": 2,
+      "slug": "beginners-learn-to-lead-climbing-course--2020-07-04-304",
+      "payloadEventDateId": 279
+    },
+    {
+      "legacyEventDateId": 305,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-07-18-305",
+      "payloadEventDateId": 280
+    },
+    {
+      "legacyEventDateId": 306,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-08-08-306",
+      "payloadEventDateId": 281
+    },
+    {
+      "legacyEventDateId": 307,
+      "legacyEventId": 4,
+      "slug": "trad-and-multipitch-climbing--2020-05-02-307",
+      "payloadEventDateId": 282
+    },
+    {
+      "legacyEventDateId": 308,
+      "legacyEventId": 2,
+      "slug": "beginners-climbing--2020-04-18-308",
+      "payloadEventDateId": 283
+    },
+    {
+      "legacyEventDateId": 309,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2020-11-14-309",
+      "payloadEventDateId": 284
+    },
+    {
+      "legacyEventDateId": 310,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2019-11-30-310",
+      "payloadEventDateId": 285
+    },
+    {
+      "legacyEventDateId": 311,
+      "legacyEventId": 30,
+      "slug": "daila-ojeda-climbing-work-shop--2020-01-25-311",
+      "payloadEventDateId": 286
+    },
+    {
+      "legacyEventDateId": 312,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2020-06-28-312",
+      "payloadEventDateId": 287
+    },
+    {
+      "legacyEventDateId": 313,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2020-06-20-313",
+      "payloadEventDateId": 288
+    },
+    {
+      "legacyEventDateId": 314,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2020-07-18-314",
+      "payloadEventDateId": 289
+    },
+    {
+      "legacyEventDateId": 315,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-07-04-315",
+      "payloadEventDateId": 290
+    },
+    {
+      "legacyEventDateId": 316,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-07-04-316",
+      "payloadEventDateId": 291
+    },
+    {
+      "legacyEventDateId": 319,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-12-19-319",
+      "payloadEventDateId": 292
+    },
+    {
+      "legacyEventDateId": 321,
+      "legacyEventId": 18,
+      "slug": "girls-climbing--2020-09-12-321",
+      "payloadEventDateId": 293
+    },
+    {
+      "legacyEventDateId": 322,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2021-05-29-322",
+      "payloadEventDateId": 294
+    },
+    {
+      "legacyEventDateId": 323,
+      "legacyEventId": 43,
+      "slug": "multipitch-performance-coaching--2021-04-24-323",
+      "payloadEventDateId": 295
+    },
+    {
+      "legacyEventDateId": 324,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2021-08-14-324",
+      "payloadEventDateId": 296
+    },
+    {
+      "legacyEventDateId": 325,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2021-10-16-325",
+      "payloadEventDateId": 297
+    },
+    {
+      "legacyEventDateId": 327,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-11-07-327",
+      "payloadEventDateId": 298
+    },
+    {
+      "legacyEventDateId": 330,
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos--2021-03-27-330",
+      "payloadEventDateId": 299
+    },
+    {
+      "legacyEventDateId": 331,
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos--2021-03-27-331",
+      "payloadEventDateId": 300
+    },
+    {
+      "legacyEventDateId": 332,
+      "legacyEventId": 37,
+      "slug": "easter-climbing-camp-in-kalymnos--2021-04-03-332",
+      "payloadEventDateId": 301
+    },
+    {
+      "legacyEventDateId": 337,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-11-14-337",
+      "payloadEventDateId": 302
+    },
+    {
+      "legacyEventDateId": 338,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-11-07-338",
+      "payloadEventDateId": 303
+    },
+    {
+      "legacyEventDateId": 340,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2021-07-03-340",
+      "payloadEventDateId": 304
+    },
+    {
+      "legacyEventDateId": 343,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2020-11-21-343",
+      "payloadEventDateId": 305
+    },
+    {
+      "legacyEventDateId": 345,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2020-11-21-345",
+      "payloadEventDateId": 306
+    },
+    {
+      "legacyEventDateId": 346,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2020-11-28-346",
+      "payloadEventDateId": 307
+    },
+    {
+      "legacyEventDateId": 356,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-06-20-356",
+      "payloadEventDateId": 308
+    },
+    {
+      "legacyEventDateId": 357,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-06-27-357",
+      "payloadEventDateId": 309
+    },
+    {
+      "legacyEventDateId": 358,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-07-11-358",
+      "payloadEventDateId": 310
+    },
+    {
+      "legacyEventDateId": 359,
+      "legacyEventId": 2,
+      "slug": "beginners-learn-to-lead-climbing-course--2020-06-20-359",
+      "payloadEventDateId": 311
+    },
+    {
+      "legacyEventDateId": 360,
+      "legacyEventId": 2,
+      "slug": "beginners-learn-to-lead-climbing-course--2020-07-04-360",
+      "payloadEventDateId": 312
+    },
+    {
+      "legacyEventDateId": 361,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2020-06-27-361",
+      "payloadEventDateId": 313
+    },
+    {
+      "legacyEventDateId": 362,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2020-09-05-362",
+      "payloadEventDateId": 314
+    },
+    {
+      "legacyEventDateId": 363,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2020-07-18-363",
+      "payloadEventDateId": 315
+    },
+    {
+      "legacyEventDateId": 364,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-03-27-364",
+      "payloadEventDateId": 316
+    },
+    {
+      "legacyEventDateId": 365,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-05-08-365",
+      "payloadEventDateId": 317
+    },
+    {
+      "legacyEventDateId": 366,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-06-05-366",
+      "payloadEventDateId": 318
+    },
+    {
+      "legacyEventDateId": 367,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-06-27-367",
+      "payloadEventDateId": 319
+    },
+    {
+      "legacyEventDateId": 368,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-07-04-368",
+      "payloadEventDateId": 320
+    },
+    {
+      "legacyEventDateId": 369,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-07-11-369",
+      "payloadEventDateId": 321
+    },
+    {
+      "legacyEventDateId": 370,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-06-20-370",
+      "payloadEventDateId": 322
+    },
+    {
+      "legacyEventDateId": 371,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-08-15-371",
+      "payloadEventDateId": 323
+    },
+    {
+      "legacyEventDateId": 372,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-08-15-372",
+      "payloadEventDateId": 324
+    },
+    {
+      "legacyEventDateId": 373,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-08-22-373",
+      "payloadEventDateId": 325
+    },
+    {
+      "legacyEventDateId": 374,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-08-29-374",
+      "payloadEventDateId": 326
+    },
+    {
+      "legacyEventDateId": 375,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-09-05-375",
+      "payloadEventDateId": 327
+    },
+    {
+      "legacyEventDateId": 376,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-09-12-376",
+      "payloadEventDateId": 328
+    },
+    {
+      "legacyEventDateId": 377,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-09-19-377",
+      "payloadEventDateId": 329
+    },
+    {
+      "legacyEventDateId": 378,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-09-26-378",
+      "payloadEventDateId": 330
+    },
+    {
+      "legacyEventDateId": 379,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2020-10-03-379",
+      "payloadEventDateId": 331
+    },
+    {
+      "legacyEventDateId": 380,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2020-10-24-380",
+      "payloadEventDateId": 332
+    },
+    {
+      "legacyEventDateId": 381,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2020-10-17-381",
+      "payloadEventDateId": 333
+    },
+    {
+      "legacyEventDateId": 382,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2021-05-29-382",
+      "payloadEventDateId": 334
+    },
+    {
+      "legacyEventDateId": 383,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2021-06-05-383",
+      "payloadEventDateId": 335
+    },
+    {
+      "legacyEventDateId": 384,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2020-10-31-384",
+      "payloadEventDateId": 336
+    },
+    {
+      "legacyEventDateId": 385,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-12-19-385",
+      "payloadEventDateId": 337
+    },
+    {
+      "legacyEventDateId": 386,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-12-26-386",
+      "payloadEventDateId": 338
+    },
+    {
+      "legacyEventDateId": 387,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-12-18-387",
+      "payloadEventDateId": 339
+    },
+    {
+      "legacyEventDateId": 388,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2020-10-03-388",
+      "payloadEventDateId": 340
+    },
+    {
+      "legacyEventDateId": 389,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2021-05-15-389",
+      "payloadEventDateId": 341
+    },
+    {
+      "legacyEventDateId": 390,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2021-05-29-390",
+      "payloadEventDateId": 342
+    },
+    {
+      "legacyEventDateId": 391,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2021-06-19-391",
+      "payloadEventDateId": 343
+    },
+    {
+      "legacyEventDateId": 392,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-11-07-392",
+      "payloadEventDateId": 344
+    },
+    {
+      "legacyEventDateId": 393,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2020-11-28-393",
+      "payloadEventDateId": 345
+    },
+    {
+      "legacyEventDateId": 394,
+      "legacyEventId": 45,
+      "slug": "balkans-rock-climbing--2021-11-06-394",
+      "payloadEventDateId": 346
+    },
+    {
+      "legacyEventDateId": 395,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-07-31-395",
+      "payloadEventDateId": 347
+    },
+    {
+      "legacyEventDateId": 396,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-08-07-396",
+      "payloadEventDateId": 348
+    },
+    {
+      "legacyEventDateId": 397,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-03-27-397",
+      "payloadEventDateId": 349
+    },
+    {
+      "legacyEventDateId": 398,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-03-27-398",
+      "payloadEventDateId": 350
+    },
+    {
+      "legacyEventDateId": 399,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-04-03-399",
+      "payloadEventDateId": 351
+    },
+    {
+      "legacyEventDateId": 401,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-04-10-401",
+      "payloadEventDateId": 352
+    },
+    {
+      "legacyEventDateId": 402,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-04-17-402",
+      "payloadEventDateId": 353
+    },
+    {
+      "legacyEventDateId": 403,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2021-08-14-403",
+      "payloadEventDateId": 354
+    },
+    {
+      "legacyEventDateId": 404,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2021-08-21-404",
+      "payloadEventDateId": 355
+    },
+    {
+      "legacyEventDateId": 405,
+      "legacyEventId": 7,
+      "slug": "climbing-trip-europe--2021-08-28-405",
+      "payloadEventDateId": 356
+    },
+    {
+      "legacyEventDateId": 406,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2021-09-04-406",
+      "payloadEventDateId": 357
+    },
+    {
+      "legacyEventDateId": 407,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2021-09-11-407",
+      "payloadEventDateId": 358
+    },
+    {
+      "legacyEventDateId": 408,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2021-09-18-408",
+      "payloadEventDateId": 359
+    },
+    {
+      "legacyEventDateId": 409,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2021-09-25-409",
+      "payloadEventDateId": 360
+    },
+    {
+      "legacyEventDateId": 410,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2021-10-02-410",
+      "payloadEventDateId": 361
+    },
+    {
+      "legacyEventDateId": 411,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2021-07-03-411",
+      "payloadEventDateId": 362
+    },
+    {
+      "legacyEventDateId": 412,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2021-07-10-412",
+      "payloadEventDateId": 363
+    },
+    {
+      "legacyEventDateId": 413,
+      "legacyEventId": 40,
+      "slug": "sport-climbing-masterclass--2021-05-22-413",
+      "payloadEventDateId": 364
+    },
+    {
+      "legacyEventDateId": 415,
+      "legacyEventId": 40,
+      "slug": "sport-climbing-masterclass--2021-05-22-415",
+      "payloadEventDateId": 365
+    },
+    {
+      "legacyEventDateId": 416,
+      "legacyEventId": 40,
+      "slug": "sport-climbing-masterclass--2021-05-29-416",
+      "payloadEventDateId": 366
+    },
+    {
+      "legacyEventDateId": 417,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-12-18-417",
+      "payloadEventDateId": 367
+    },
+    {
+      "legacyEventDateId": 418,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-12-25-418",
+      "payloadEventDateId": 368
+    },
+    {
+      "legacyEventDateId": 419,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-07-31-419",
+      "payloadEventDateId": 369
+    },
+    {
+      "legacyEventDateId": 420,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2021-10-16-420",
+      "payloadEventDateId": 370
+    },
+    {
+      "legacyEventDateId": 421,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2021-10-23-421",
+      "payloadEventDateId": 371
+    },
+    {
+      "legacyEventDateId": 422,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-06-26-422",
+      "payloadEventDateId": 372
+    },
+    {
+      "legacyEventDateId": 423,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-07-04-423",
+      "payloadEventDateId": 781
+    },
+    {
+      "legacyEventDateId": 424,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2020-07-04-424",
+      "payloadEventDateId": 782
+    },
+    {
+      "legacyEventDateId": 427,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-06-26-427",
+      "payloadEventDateId": 373
+    },
+    {
+      "legacyEventDateId": 428,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2021-07-03-428",
+      "payloadEventDateId": 374
+    },
+    {
+      "legacyEventDateId": 429,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2021-10-09-429",
+      "payloadEventDateId": 375
+    },
+    {
+      "legacyEventDateId": 430,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2021-11-13-430",
+      "payloadEventDateId": 376
+    },
+    {
+      "legacyEventDateId": 432,
+      "legacyEventId": 45,
+      "slug": "balkans-rock-climbing--2021-11-13-432",
+      "payloadEventDateId": 377
+    },
+    {
+      "legacyEventDateId": 433,
+      "legacyEventId": 45,
+      "slug": "balkans-rock-climbing--2021-11-20-433",
+      "payloadEventDateId": 378
+    },
+    {
+      "legacyEventDateId": 434,
+      "legacyEventId": 45,
+      "slug": "balkans-rock-climbing--2021-11-27-434",
+      "payloadEventDateId": 379
+    },
+    {
+      "legacyEventDateId": 438,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2021-07-25-438",
+      "payloadEventDateId": 380
+    },
+    {
+      "legacyEventDateId": 439,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2021-06-21-439",
+      "payloadEventDateId": 381
+    },
+    {
+      "legacyEventDateId": 440,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2021-09-05-440",
+      "payloadEventDateId": 382
+    },
+    {
+      "legacyEventDateId": 441,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-06-05-441",
+      "payloadEventDateId": 383
+    },
+    {
+      "legacyEventDateId": 442,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2021-06-26-442",
+      "payloadEventDateId": 384
+    },
+    {
+      "legacyEventDateId": 444,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2021-11-27-444",
+      "payloadEventDateId": 385
+    },
+    {
+      "legacyEventDateId": 445,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2023-05-20-445",
+      "payloadEventDateId": 386
+    },
+    {
+      "legacyEventDateId": 446,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2021-11-20-446",
+      "payloadEventDateId": 387
+    },
+    {
+      "legacyEventDateId": 447,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2021-11-20-447",
+      "payloadEventDateId": 388
+    },
+    {
+      "legacyEventDateId": 448,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2022-10-15-448",
+      "payloadEventDateId": 389
+    },
+    {
+      "legacyEventDateId": 449,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2022-10-15-449",
+      "payloadEventDateId": 390
+    },
+    {
+      "legacyEventDateId": 450,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2022-10-22-450",
+      "payloadEventDateId": 391
+    },
+    {
+      "legacyEventDateId": 459,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2022-10-01-459",
+      "payloadEventDateId": 392
+    },
+    {
+      "legacyEventDateId": 460,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2022-09-24-460",
+      "payloadEventDateId": 393
+    },
+    {
+      "legacyEventDateId": 461,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2022-09-17-461",
+      "payloadEventDateId": 394
+    },
+    {
+      "legacyEventDateId": 462,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2022-09-10-462",
+      "payloadEventDateId": 395
+    },
+    {
+      "legacyEventDateId": 463,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2022-09-03-463",
+      "payloadEventDateId": 396
+    },
+    {
+      "legacyEventDateId": 464,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2022-08-27-464",
+      "payloadEventDateId": 397
+    },
+    {
+      "legacyEventDateId": 465,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2022-08-20-465",
+      "payloadEventDateId": 398
+    },
+    {
+      "legacyEventDateId": 466,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2022-08-13-466",
+      "payloadEventDateId": 399
+    },
+    {
+      "legacyEventDateId": 467,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2022-08-13-467",
+      "payloadEventDateId": 400
+    },
+    {
+      "legacyEventDateId": 468,
+      "legacyEventId": 45,
+      "slug": "balkans-rock-climbing--2021-11-06-468",
+      "payloadEventDateId": 401
+    },
+    {
+      "legacyEventDateId": 469,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2021-05-22-469",
+      "payloadEventDateId": 402
+    },
+    {
+      "legacyEventDateId": 470,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2021-05-22-470",
+      "payloadEventDateId": 403
+    },
+    {
+      "legacyEventDateId": 471,
+      "legacyEventId": 33,
+      "slug": "klemen-becan-performance-coaching-workshop--2021-05-29-471",
+      "payloadEventDateId": 404
+    },
+    {
+      "legacyEventDateId": 472,
+      "legacyEventId": 46,
+      "slug": "sport-climbing-private-coaching--2021-05-01-472",
+      "payloadEventDateId": 405
+    },
+    {
+      "legacyEventDateId": 473,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2022-04-09-473",
+      "payloadEventDateId": 406
+    },
+    {
+      "legacyEventDateId": 474,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2022-04-09-474",
+      "payloadEventDateId": 407
+    },
+    {
+      "legacyEventDateId": 475,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2022-04-16-475",
+      "payloadEventDateId": 408
+    },
+    {
+      "legacyEventDateId": 476,
+      "legacyEventId": 49,
+      "slug": "advance-sport-climbing-course--2021-06-19-476",
+      "payloadEventDateId": 409
+    },
+    {
+      "legacyEventDateId": 477,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-07-17-477",
+      "payloadEventDateId": 410
+    },
+    {
+      "legacyEventDateId": 478,
+      "legacyEventId": 32,
+      "slug": "alpine-rock-climbing-in-chamonix--2021-07-31-478",
+      "payloadEventDateId": 411
+    },
+    {
+      "legacyEventDateId": 479,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-08-09-479",
+      "payloadEventDateId": 412
+    },
+    {
+      "legacyEventDateId": 480,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2021-10-23-480",
+      "payloadEventDateId": 413
+    },
+    {
+      "legacyEventDateId": 481,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2022-05-14-481",
+      "payloadEventDateId": 414
+    },
+    {
+      "legacyEventDateId": 482,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2022-05-14-482",
+      "payloadEventDateId": 415
+    },
+    {
+      "legacyEventDateId": 483,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2022-05-21-483",
+      "payloadEventDateId": 416
+    },
+    {
+      "legacyEventDateId": 484,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-10-23-484",
+      "payloadEventDateId": 417
+    },
+    {
+      "legacyEventDateId": 485,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2022-04-23-485",
+      "payloadEventDateId": 418
+    },
+    {
+      "legacyEventDateId": 486,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-11-20-486",
+      "payloadEventDateId": 419
+    },
+    {
+      "legacyEventDateId": 487,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-08-09-beginner-climbing-course-2021-08-09-479-3",
+      "payloadEventDateId": 783
+    },
+    {
+      "legacyEventDateId": 488,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2022-03-19-488",
+      "payloadEventDateId": 420
+    },
+    {
+      "legacyEventDateId": 489,
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix--2022-06-19-489",
+      "payloadEventDateId": 421
+    },
+    {
+      "legacyEventDateId": 490,
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix--2022-07-25-490",
+      "payloadEventDateId": 422
+    },
+    {
+      "legacyEventDateId": 492,
+      "legacyEventId": 43,
+      "slug": "multipitch-performance-coaching--2022-04-23-492",
+      "payloadEventDateId": 423
+    },
+    {
+      "legacyEventDateId": 493,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2021-08-09-beginner-climbing-course-2021-08-09-479",
+      "payloadEventDateId": 784
+    },
+    {
+      "legacyEventDateId": 494,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2022-05-28-494",
+      "payloadEventDateId": 424
+    },
+    {
+      "legacyEventDateId": 495,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2022-06-04-495",
+      "payloadEventDateId": 425
+    },
+    {
+      "legacyEventDateId": 496,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2023-05-13-496",
+      "payloadEventDateId": 426
+    },
+    {
+      "legacyEventDateId": 497,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2021-11-20-497",
+      "payloadEventDateId": 427
+    },
+    {
+      "legacyEventDateId": 498,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2021-11-27-498",
+      "payloadEventDateId": 428
+    },
+    {
+      "legacyEventDateId": 499,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2021-11-20-499",
+      "payloadEventDateId": 429
+    },
+    {
+      "legacyEventDateId": 500,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2022-07-09-500",
+      "payloadEventDateId": 430
+    },
+    {
+      "legacyEventDateId": 501,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2022-07-09-501",
+      "payloadEventDateId": 431
+    },
+    {
+      "legacyEventDateId": 502,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2022-07-16-502",
+      "payloadEventDateId": 432
+    },
+    {
+      "legacyEventDateId": 503,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2022-07-02-503",
+      "payloadEventDateId": 433
+    },
+    {
+      "legacyEventDateId": 504,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2022-07-30-504",
+      "payloadEventDateId": 434
+    },
+    {
+      "legacyEventDateId": 505,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2022-07-30-505",
+      "payloadEventDateId": 435
+    },
+    {
+      "legacyEventDateId": 506,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2022-08-06-506",
+      "payloadEventDateId": 436
+    },
+    {
+      "legacyEventDateId": 507,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2022-11-12-507",
+      "payloadEventDateId": 437
+    },
+    {
+      "legacyEventDateId": 508,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2022-11-12-508",
+      "payloadEventDateId": 438
+    },
+    {
+      "legacyEventDateId": 509,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2022-11-19-509",
+      "payloadEventDateId": 439
+    },
+    {
+      "legacyEventDateId": 510,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2022-05-21-510",
+      "payloadEventDateId": 440
+    },
+    {
+      "legacyEventDateId": 511,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2022-06-18-511",
+      "payloadEventDateId": 441
+    },
+    {
+      "legacyEventDateId": 512,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2022-09-10-512",
+      "payloadEventDateId": 442
+    },
+    {
+      "legacyEventDateId": 513,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2022-10-01-513",
+      "payloadEventDateId": 443
+    },
+    {
+      "legacyEventDateId": 514,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2022-10-29-514",
+      "payloadEventDateId": 444
+    },
+    {
+      "legacyEventDateId": 515,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2022-06-11-515",
+      "payloadEventDateId": 445
+    },
+    {
+      "legacyEventDateId": 516,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2022-03-12-516",
+      "payloadEventDateId": 446
+    },
+    {
+      "legacyEventDateId": 517,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2022-02-26-517",
+      "payloadEventDateId": 447
+    },
+    {
+      "legacyEventDateId": 518,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2022-04-09-518",
+      "payloadEventDateId": 448
+    },
+    {
+      "legacyEventDateId": 519,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2022-10-08-519",
+      "payloadEventDateId": 449
+    },
+    {
+      "legacyEventDateId": 520,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2022-11-19-520",
+      "payloadEventDateId": 450
+    },
+    {
+      "legacyEventDateId": 521,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2022-12-24-521",
+      "payloadEventDateId": 451
+    },
+    {
+      "legacyEventDateId": 522,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2022-12-24-522",
+      "payloadEventDateId": 452
+    },
+    {
+      "legacyEventDateId": 523,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2022-12-31-523",
+      "payloadEventDateId": 453
+    },
+    {
+      "legacyEventDateId": 524,
+      "legacyEventId": 42,
+      "slug": "trad-climbing-course--2022-06-18-524",
+      "payloadEventDateId": 454
+    },
+    {
+      "legacyEventDateId": 525,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2022-11-05-525",
+      "payloadEventDateId": 455
+    },
+    {
+      "legacyEventDateId": 526,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2022-09-24-526",
+      "payloadEventDateId": 456
+    },
+    {
+      "legacyEventDateId": 527,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2022-11-05-527",
+      "payloadEventDateId": 457
+    },
+    {
+      "legacyEventDateId": 528,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2023-03-18-528",
+      "payloadEventDateId": 458
+    },
+    {
+      "legacyEventDateId": 529,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2023-06-10-529",
+      "payloadEventDateId": 459
+    },
+    {
+      "legacyEventDateId": 530,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2023-10-28-530",
+      "payloadEventDateId": 460
+    },
+    {
+      "legacyEventDateId": 532,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2023-06-24-532",
+      "payloadEventDateId": 461
+    },
+    {
+      "legacyEventDateId": 533,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2023-11-11-533",
+      "payloadEventDateId": 462
+    },
+    {
+      "legacyEventDateId": 534,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2023-10-28-534",
+      "payloadEventDateId": 463
+    },
+    {
+      "legacyEventDateId": 536,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2023-09-16-536",
+      "payloadEventDateId": 464
+    },
+    {
+      "legacyEventDateId": 537,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2023-10-14-537",
+      "payloadEventDateId": 465
+    },
+    {
+      "legacyEventDateId": 538,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2023-05-20-538",
+      "payloadEventDateId": 466
+    },
+    {
+      "legacyEventDateId": 539,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2023-08-12-539",
+      "payloadEventDateId": 467
+    },
+    {
+      "legacyEventDateId": 540,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2023-06-17-540",
+      "payloadEventDateId": 468
+    },
+    {
+      "legacyEventDateId": 541,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2022-05-28-541",
+      "payloadEventDateId": 469
+    },
+    {
+      "legacyEventDateId": 544,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2022-10-22-544",
+      "payloadEventDateId": 470
+    },
+    {
+      "legacyEventDateId": 546,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2023-05-13-546",
+      "payloadEventDateId": 471
+    },
+    {
+      "legacyEventDateId": 547,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2023-05-20-547",
+      "payloadEventDateId": 472
+    },
+    {
+      "legacyEventDateId": 550,
+      "legacyEventId": 51,
+      "slug": "performance-coaching-gear-test--2022-10-22-550",
+      "payloadEventDateId": 473
+    },
+    {
+      "legacyEventDateId": 551,
+      "legacyEventId": 51,
+      "slug": "performance-coaching-gear-test--2022-10-15-551",
+      "payloadEventDateId": 474
+    },
+    {
+      "legacyEventDateId": 552,
+      "legacyEventId": 51,
+      "slug": "performance-coaching-gear-test--2022-10-15-552",
+      "payloadEventDateId": 475
+    },
+    {
+      "legacyEventDateId": 553,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-01-21-553",
+      "payloadEventDateId": 476
+    },
+    {
+      "legacyEventDateId": 555,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-04-01-555",
+      "payloadEventDateId": 477
+    },
+    {
+      "legacyEventDateId": 556,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-04-01-556",
+      "payloadEventDateId": 478
+    },
+    {
+      "legacyEventDateId": 557,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-04-08-557",
+      "payloadEventDateId": 479
+    },
+    {
+      "legacyEventDateId": 558,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2023-06-24-558",
+      "payloadEventDateId": 480
+    },
+    {
+      "legacyEventDateId": 559,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2023-07-01-559",
+      "payloadEventDateId": 481
+    },
+    {
+      "legacyEventDateId": 560,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2023-03-04-560",
+      "payloadEventDateId": 482
+    },
+    {
+      "legacyEventDateId": 561,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2023-04-22-561",
+      "payloadEventDateId": 483
+    },
+    {
+      "legacyEventDateId": 562,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2023-10-21-562",
+      "payloadEventDateId": 484
+    },
+    {
+      "legacyEventDateId": 564,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2023-03-25-564",
+      "payloadEventDateId": 485
+    },
+    {
+      "legacyEventDateId": 565,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2023-05-20-565",
+      "payloadEventDateId": 486
+    },
+    {
+      "legacyEventDateId": 566,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2023-10-07-566",
+      "payloadEventDateId": 487
+    },
+    {
+      "legacyEventDateId": 567,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2023-11-04-567",
+      "payloadEventDateId": 488
+    },
+    {
+      "legacyEventDateId": 568,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2023-08-12-568",
+      "payloadEventDateId": 489
+    },
+    {
+      "legacyEventDateId": 569,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2023-08-19-569",
+      "payloadEventDateId": 490
+    },
+    {
+      "legacyEventDateId": 570,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2023-08-26-570",
+      "payloadEventDateId": 491
+    },
+    {
+      "legacyEventDateId": 571,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2023-09-02-571",
+      "payloadEventDateId": 492
+    },
+    {
+      "legacyEventDateId": 572,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2023-09-09-572",
+      "payloadEventDateId": 493
+    },
+    {
+      "legacyEventDateId": 573,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2023-09-16-573",
+      "payloadEventDateId": 494
+    },
+    {
+      "legacyEventDateId": 574,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2023-09-23-574",
+      "payloadEventDateId": 495
+    },
+    {
+      "legacyEventDateId": 575,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2023-09-30-575",
+      "payloadEventDateId": 496
+    },
+    {
+      "legacyEventDateId": 576,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2023-05-27-576",
+      "payloadEventDateId": 497
+    },
+    {
+      "legacyEventDateId": 577,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2023-05-20-577",
+      "payloadEventDateId": 498
+    },
+    {
+      "legacyEventDateId": 578,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2023-11-11-578",
+      "payloadEventDateId": 499
+    },
+    {
+      "legacyEventDateId": 579,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2023-11-18-579",
+      "payloadEventDateId": 500
+    },
+    {
+      "legacyEventDateId": 580,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-12-23-580",
+      "payloadEventDateId": 501
+    },
+    {
+      "legacyEventDateId": 581,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-12-23-581",
+      "payloadEventDateId": 502
+    },
+    {
+      "legacyEventDateId": 582,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-12-30-582",
+      "payloadEventDateId": 503
+    },
+    {
+      "legacyEventDateId": 583,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-02-18-583",
+      "payloadEventDateId": 504
+    },
+    {
+      "legacyEventDateId": 584,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2023-03-11-584",
+      "payloadEventDateId": 505
+    },
+    {
+      "legacyEventDateId": 585,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-03-18-585",
+      "payloadEventDateId": 506
+    },
+    {
+      "legacyEventDateId": 586,
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix--2023-06-25-586",
+      "payloadEventDateId": 507
+    },
+    {
+      "legacyEventDateId": 587,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2023-04-22-587",
+      "payloadEventDateId": 508
+    },
+    {
+      "legacyEventDateId": 588,
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix--2023-08-13-588",
+      "payloadEventDateId": 509
+    },
+    {
+      "legacyEventDateId": 590,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-07-22-590",
+      "payloadEventDateId": 510
+    },
+    {
+      "legacyEventDateId": 591,
+      "legacyEventId": 42,
+      "slug": "trad-climbing-course--2023-07-08-591",
+      "payloadEventDateId": 511
+    },
+    {
+      "legacyEventDateId": 592,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2023-09-02-592",
+      "payloadEventDateId": 512
+    },
+    {
+      "legacyEventDateId": 593,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2023-07-15-593",
+      "payloadEventDateId": 513
+    },
+    {
+      "legacyEventDateId": 594,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2023-09-09-594",
+      "payloadEventDateId": 514
+    },
+    {
+      "legacyEventDateId": 595,
+      "legacyEventId": 8,
+      "slug": "climbing-coaching-on-sight-red-point--2023-10-21-595",
+      "payloadEventDateId": 515
+    },
+    {
+      "legacyEventDateId": 596,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-08-19-596",
+      "payloadEventDateId": 516
+    },
+    {
+      "legacyEventDateId": 597,
+      "legacyEventId": 8,
+      "slug": "climbing-coaching-on-sight-red-point--2023-11-25-597",
+      "payloadEventDateId": 517
+    },
+    {
+      "legacyEventDateId": 598,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2023-10-28-598",
+      "payloadEventDateId": 518
+    },
+    {
+      "legacyEventDateId": 599,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2023-10-28-599",
+      "payloadEventDateId": 519
+    },
+    {
+      "legacyEventDateId": 600,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2023-11-04-600",
+      "payloadEventDateId": 520
+    },
+    {
+      "legacyEventDateId": 601,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-08-05-601",
+      "payloadEventDateId": 521
+    },
+    {
+      "legacyEventDateId": 602,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2024-08-17-602",
+      "payloadEventDateId": 522
+    },
+    {
+      "legacyEventDateId": 603,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-10-07-603",
+      "payloadEventDateId": 523
+    },
+    {
+      "legacyEventDateId": 604,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2024-05-11-604",
+      "payloadEventDateId": 524
+    },
+    {
+      "legacyEventDateId": 605,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2024-05-11-605",
+      "payloadEventDateId": 525
+    },
+    {
+      "legacyEventDateId": 606,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2024-05-18-606",
+      "payloadEventDateId": 526
+    },
+    {
+      "legacyEventDateId": 607,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2024-08-17-607",
+      "payloadEventDateId": 527
+    },
+    {
+      "legacyEventDateId": 608,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2024-08-24-608",
+      "payloadEventDateId": 528
+    },
+    {
+      "legacyEventDateId": 609,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-06-29-609",
+      "payloadEventDateId": 529
+    },
+    {
+      "legacyEventDateId": 610,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2024-08-31-610",
+      "payloadEventDateId": 530
+    },
+    {
+      "legacyEventDateId": 611,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2024-09-07-611",
+      "payloadEventDateId": 531
+    },
+    {
+      "legacyEventDateId": 612,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2024-09-14-612",
+      "payloadEventDateId": 532
+    },
+    {
+      "legacyEventDateId": 613,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2024-09-21-613",
+      "payloadEventDateId": 533
+    },
+    {
+      "legacyEventDateId": 614,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2024-09-28-614",
+      "payloadEventDateId": 534
+    },
+    {
+      "legacyEventDateId": 615,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2024-10-05-615",
+      "payloadEventDateId": 535
+    },
+    {
+      "legacyEventDateId": 616,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2024-04-27-616",
+      "payloadEventDateId": 536
+    },
+    {
+      "legacyEventDateId": 617,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-12-21-617",
+      "payloadEventDateId": 537
+    },
+    {
+      "legacyEventDateId": 618,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-12-21-618",
+      "payloadEventDateId": 538
+    },
+    {
+      "legacyEventDateId": 619,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-12-28-619",
+      "payloadEventDateId": 539
+    },
+    {
+      "legacyEventDateId": 620,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2024-03-02-620",
+      "payloadEventDateId": 540
+    },
+    {
+      "legacyEventDateId": 621,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2024-04-20-621",
+      "payloadEventDateId": 541
+    },
+    {
+      "legacyEventDateId": 622,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2024-06-01-622",
+      "payloadEventDateId": 542
+    },
+    {
+      "legacyEventDateId": 624,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2024-05-11-624",
+      "payloadEventDateId": 543
+    },
+    {
+      "legacyEventDateId": 625,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2024-06-08-625",
+      "payloadEventDateId": 544
+    },
+    {
+      "legacyEventDateId": 626,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2024-09-14-626",
+      "payloadEventDateId": 545
+    },
+    {
+      "legacyEventDateId": 627,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2024-10-12-627",
+      "payloadEventDateId": 546
+    },
+    {
+      "legacyEventDateId": 628,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-07-13-628",
+      "payloadEventDateId": 547
+    },
+    {
+      "legacyEventDateId": 629,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-08-03-629",
+      "payloadEventDateId": 548
+    },
+    {
+      "legacyEventDateId": 630,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2024-09-28-630",
+      "payloadEventDateId": 549
+    },
+    {
+      "legacyEventDateId": 631,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2024-07-06-631",
+      "payloadEventDateId": 550
+    },
+    {
+      "legacyEventDateId": 632,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2024-02-24-632",
+      "payloadEventDateId": 551
+    },
+    {
+      "legacyEventDateId": 633,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2024-03-23-633",
+      "payloadEventDateId": 552
+    },
+    {
+      "legacyEventDateId": 634,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2024-10-19-634",
+      "payloadEventDateId": 553
+    },
+    {
+      "legacyEventDateId": 635,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2024-11-16-635",
+      "payloadEventDateId": 554
+    },
+    {
+      "legacyEventDateId": 636,
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix--2024-06-08-636",
+      "payloadEventDateId": 555
+    },
+    {
+      "legacyEventDateId": 637,
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix--2024-07-06-637",
+      "payloadEventDateId": 556
+    },
+    {
+      "legacyEventDateId": 638,
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix--2024-08-10-638",
+      "payloadEventDateId": 557
+    },
+    {
+      "legacyEventDateId": 639,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-12-23-639",
+      "payloadEventDateId": 558
+    },
+    {
+      "legacyEventDateId": 640,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-03-23-640",
+      "payloadEventDateId": 559
+    },
+    {
+      "legacyEventDateId": 641,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-03-30-641",
+      "payloadEventDateId": 560
+    },
+    {
+      "legacyEventDateId": 643,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2024-03-24-643",
+      "payloadEventDateId": 561
+    },
+    {
+      "legacyEventDateId": 644,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2024-06-01-644",
+      "payloadEventDateId": 562
+    },
+    {
+      "legacyEventDateId": 645,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2024-10-26-645",
+      "payloadEventDateId": 563
+    },
+    {
+      "legacyEventDateId": 647,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-02-10-647",
+      "payloadEventDateId": 564
+    },
+    {
+      "legacyEventDateId": 648,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-03-02-648",
+      "payloadEventDateId": 565
+    },
+    {
+      "legacyEventDateId": 649,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-01-20-649",
+      "payloadEventDateId": 566
+    },
+    {
+      "legacyEventDateId": 650,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-02-17-650",
+      "payloadEventDateId": 567
+    },
+    {
+      "legacyEventDateId": 652,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2024-11-02-652",
+      "payloadEventDateId": 568
+    },
+    {
+      "legacyEventDateId": 653,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-10-05-653",
+      "payloadEventDateId": 569
+    },
+    {
+      "legacyEventDateId": 654,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2024-11-30-654",
+      "payloadEventDateId": 570
+    },
+    {
+      "legacyEventDateId": 655,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2024-03-09-655",
+      "payloadEventDateId": 571
+    },
+    {
+      "legacyEventDateId": 656,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2024-03-09-656",
+      "payloadEventDateId": 572
+    },
+    {
+      "legacyEventDateId": 657,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2024-03-16-657",
+      "payloadEventDateId": 573
+    },
+    {
+      "legacyEventDateId": 658,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-12-23-658",
+      "payloadEventDateId": 574
+    },
+    {
+      "legacyEventDateId": 659,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2023-12-30-659",
+      "payloadEventDateId": 575
+    },
+    {
+      "legacyEventDateId": 660,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-03-23-660",
+      "payloadEventDateId": 576
+    },
+    {
+      "legacyEventDateId": 661,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2024-05-25-661",
+      "payloadEventDateId": 577
+    },
+    {
+      "legacyEventDateId": 665,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2024-06-22-665",
+      "payloadEventDateId": 578
+    },
+    {
+      "legacyEventDateId": 666,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2024-07-20-666",
+      "payloadEventDateId": 579
+    },
+    {
+      "legacyEventDateId": 667,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2024-09-07-667",
+      "payloadEventDateId": 580
+    },
+    {
+      "legacyEventDateId": 668,
+      "legacyEventId": 8,
+      "slug": "climbing-coaching-on-sight-red-point--2024-04-20-668",
+      "payloadEventDateId": 581
+    },
+    {
+      "legacyEventDateId": 669,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2024-11-09-669",
+      "payloadEventDateId": 582
+    },
+    {
+      "legacyEventDateId": 670,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2024-11-09-670",
+      "payloadEventDateId": 583
+    },
+    {
+      "legacyEventDateId": 671,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2024-11-16-671",
+      "payloadEventDateId": 584
+    },
+    {
+      "legacyEventDateId": 675,
+      "legacyEventId": 54,
+      "slug": "feldenkrais-method-workshop-for-climbers--2024-07-18-675",
+      "payloadEventDateId": 585
+    },
+    {
+      "legacyEventDateId": 676,
+      "legacyEventId": 54,
+      "slug": "feldenkrais-method-workshop-for-climbers--2024-08-07-676",
+      "payloadEventDateId": 586
+    },
+    {
+      "legacyEventDateId": 677,
+      "legacyEventId": 8,
+      "slug": "climbing-coaching-on-sight-red-point--2024-11-23-677",
+      "payloadEventDateId": 587
+    },
+    {
+      "legacyEventDateId": 678,
+      "legacyEventId": 8,
+      "slug": "climbing-coaching-on-sight-red-point--2024-11-23-678",
+      "payloadEventDateId": 588
+    },
+    {
+      "legacyEventDateId": 679,
+      "legacyEventId": 8,
+      "slug": "climbing-coaching-on-sight-red-point--2024-11-30-679",
+      "payloadEventDateId": 589
+    },
+    {
+      "legacyEventDateId": 680,
+      "legacyEventId": 55,
+      "slug": "climb-work--2024-10-12-680",
+      "payloadEventDateId": 590
+    },
+    {
+      "legacyEventDateId": 683,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2024-11-02-683",
+      "payloadEventDateId": 591
+    },
+    {
+      "legacyEventDateId": 684,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2025-08-16-684",
+      "payloadEventDateId": 592
+    },
+    {
+      "legacyEventDateId": 685,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2025-08-16-685",
+      "payloadEventDateId": 593
+    },
+    {
+      "legacyEventDateId": 686,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2025-08-23-686",
+      "payloadEventDateId": 594
+    },
+    {
+      "legacyEventDateId": 688,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2025-08-30-688",
+      "payloadEventDateId": 595
+    },
+    {
+      "legacyEventDateId": 689,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2025-09-13-689",
+      "payloadEventDateId": 596
+    },
+    {
+      "legacyEventDateId": 692,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2025-03-15-692",
+      "payloadEventDateId": 597
+    },
+    {
+      "legacyEventDateId": 693,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2025-09-20-693",
+      "payloadEventDateId": 598
+    },
+    {
+      "legacyEventDateId": 694,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2025-09-27-694",
+      "payloadEventDateId": 599
+    },
+    {
+      "legacyEventDateId": 695,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2025-10-04-695",
+      "payloadEventDateId": 600
+    },
+    {
+      "legacyEventDateId": 696,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2024-05-11-climbing-technique-mental-coaching-2024-05-11-604",
+      "payloadEventDateId": 785
+    },
+    {
+      "legacyEventDateId": 697,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2025-05-03-697",
+      "payloadEventDateId": 601
+    },
+    {
+      "legacyEventDateId": 698,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2025-05-03-698",
+      "payloadEventDateId": 602
+    },
+    {
+      "legacyEventDateId": 699,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2025-05-10-699",
+      "payloadEventDateId": 603
+    },
+    {
+      "legacyEventDateId": 700,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2025-04-26-700",
+      "payloadEventDateId": 604
+    },
+    {
+      "legacyEventDateId": 701,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2025-10-25-701",
+      "payloadEventDateId": 605
+    },
+    {
+      "legacyEventDateId": 702,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2025-11-29-702",
+      "payloadEventDateId": 606
+    },
+    {
+      "legacyEventDateId": 703,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2025-11-01-703",
+      "payloadEventDateId": 607
+    },
+    {
+      "legacyEventDateId": 704,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2025-04-19-704",
+      "payloadEventDateId": 608
+    },
+    {
+      "legacyEventDateId": 705,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2025-02-08-705",
+      "payloadEventDateId": 609
+    },
+    {
+      "legacyEventDateId": 706,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2025-05-31-706",
+      "payloadEventDateId": 610
+    },
+    {
+      "legacyEventDateId": 707,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2025-07-19-707",
+      "payloadEventDateId": 611
+    },
+    {
+      "legacyEventDateId": 708,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-07-12-708",
+      "payloadEventDateId": 612
+    },
+    {
+      "legacyEventDateId": 709,
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix--2025-06-07-709",
+      "payloadEventDateId": 613
+    },
+    {
+      "legacyEventDateId": 710,
+      "legacyEventId": 32,
+      "slug": "big-wall-climbing-in-chamonix--2025-08-23-710",
+      "payloadEventDateId": 614
+    },
+    {
+      "legacyEventDateId": 711,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-07-26-711",
+      "payloadEventDateId": 615
+    },
+    {
+      "legacyEventDateId": 712,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-07-26-712",
+      "payloadEventDateId": 616
+    },
+    {
+      "legacyEventDateId": 713,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-08-02-713",
+      "payloadEventDateId": 617
+    },
+    {
+      "legacyEventDateId": 714,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-01-11-714",
+      "payloadEventDateId": 618
+    },
+    {
+      "legacyEventDateId": 715,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2024-11-09-715",
+      "payloadEventDateId": 619
+    },
+    {
+      "legacyEventDateId": 716,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2025-03-01-716",
+      "payloadEventDateId": 620
+    },
+    {
+      "legacyEventDateId": 717,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-04-12-717",
+      "payloadEventDateId": 621
+    },
+    {
+      "legacyEventDateId": 718,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-04-19-718",
+      "payloadEventDateId": 622
+    },
+    {
+      "legacyEventDateId": 719,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-04-12-719",
+      "payloadEventDateId": 623
+    },
+    {
+      "legacyEventDateId": 723,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2025-03-01-723",
+      "payloadEventDateId": 624
+    },
+    {
+      "legacyEventDateId": 724,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2025-03-08-724",
+      "payloadEventDateId": 625
+    },
+    {
+      "legacyEventDateId": 725,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2025-03-15-725",
+      "payloadEventDateId": 626
+    },
+    {
+      "legacyEventDateId": 726,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2025-03-22-726",
+      "payloadEventDateId": 627
+    },
+    {
+      "legacyEventDateId": 727,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2025-05-17-727",
+      "payloadEventDateId": 628
+    },
+    {
+      "legacyEventDateId": 728,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2025-06-14-728",
+      "payloadEventDateId": 629
+    },
+    {
+      "legacyEventDateId": 729,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2025-07-05-729",
+      "payloadEventDateId": 630
+    },
+    {
+      "legacyEventDateId": 730,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2025-07-26-730",
+      "payloadEventDateId": 631
+    },
+    {
+      "legacyEventDateId": 731,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2025-09-06-731",
+      "payloadEventDateId": 632
+    },
+    {
+      "legacyEventDateId": 732,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2025-10-04-732",
+      "payloadEventDateId": 633
+    },
+    {
+      "legacyEventDateId": 733,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2025-11-01-733",
+      "payloadEventDateId": 634
+    },
+    {
+      "legacyEventDateId": 734,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2025-09-06-734",
+      "payloadEventDateId": 635
+    },
+    {
+      "legacyEventDateId": 735,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2025-03-29-735",
+      "payloadEventDateId": 636
+    },
+    {
+      "legacyEventDateId": 737,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2025-04-26-737",
+      "payloadEventDateId": 637
+    },
+    {
+      "legacyEventDateId": 738,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2025-10-11-738",
+      "payloadEventDateId": 638
+    },
+    {
+      "legacyEventDateId": 739,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2025-11-08-739",
+      "payloadEventDateId": 639
+    },
+    {
+      "legacyEventDateId": 740,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-04-12-740",
+      "payloadEventDateId": 640
+    },
+    {
+      "legacyEventDateId": 741,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-04-19-741",
+      "payloadEventDateId": 641
+    },
+    {
+      "legacyEventDateId": 742,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-04-12-742",
+      "payloadEventDateId": 642
+    },
+    {
+      "legacyEventDateId": 743,
+      "legacyEventId": 46,
+      "slug": "sport-climbing-private-coaching--2025-03-23-743",
+      "payloadEventDateId": 643
+    },
+    {
+      "legacyEventDateId": 744,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2025-05-18-744",
+      "payloadEventDateId": 644
+    },
+    {
+      "legacyEventDateId": 745,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2025-05-24-745",
+      "payloadEventDateId": 645
+    },
+    {
+      "legacyEventDateId": 746,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2025-11-08-746",
+      "payloadEventDateId": 646
+    },
+    {
+      "legacyEventDateId": 747,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2025-11-08-747",
+      "payloadEventDateId": 647
+    },
+    {
+      "legacyEventDateId": 748,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2025-11-15-748",
+      "payloadEventDateId": 648
+    },
+    {
+      "legacyEventDateId": 749,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-12-20-749",
+      "payloadEventDateId": 649
+    },
+    {
+      "legacyEventDateId": 750,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-12-20-750",
+      "payloadEventDateId": 650
+    },
+    {
+      "legacyEventDateId": 751,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-12-27-751",
+      "payloadEventDateId": 651
+    },
+    {
+      "legacyEventDateId": 752,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-09-26-752",
+      "payloadEventDateId": 652
+    },
+    {
+      "legacyEventDateId": 753,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2025-06-03-753",
+      "payloadEventDateId": 653
+    },
+    {
+      "legacyEventDateId": 754,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-07-05-754",
+      "payloadEventDateId": 654
+    },
+    {
+      "legacyEventDateId": 755,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2025-10-11-755",
+      "payloadEventDateId": 655
+    },
+    {
+      "legacyEventDateId": 756,
+      "legacyEventId": 4,
+      "slug": "multipitch-climbing-course--2025-10-04-756",
+      "payloadEventDateId": 656
+    },
+    {
+      "legacyEventDateId": 757,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2025-06-21-757",
+      "payloadEventDateId": 657
+    },
+    {
+      "legacyEventDateId": 758,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2025-07-19-758",
+      "payloadEventDateId": 658
+    },
+    {
+      "legacyEventDateId": 759,
+      "legacyEventId": 5,
+      "slug": "sandstone-climbing--2025-09-13-759",
+      "payloadEventDateId": 659
+    },
+    {
+      "legacyEventDateId": 760,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-10-18-760",
+      "payloadEventDateId": 660
+    },
+    {
+      "legacyEventDateId": 761,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-11-01-761",
+      "payloadEventDateId": 661
+    },
+    {
+      "legacyEventDateId": 762,
+      "legacyEventId": 58,
+      "slug": "andalucia-rock-trip--2025-11-01-762",
+      "payloadEventDateId": 662
+    },
+    {
+      "legacyEventDateId": 763,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2026-02-21-763",
+      "payloadEventDateId": 663
+    },
+    {
+      "legacyEventDateId": 764,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2026-02-21-764",
+      "payloadEventDateId": 664
+    },
+    {
+      "legacyEventDateId": 765,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2026-02-28-765",
+      "payloadEventDateId": 665
+    },
+    {
+      "legacyEventDateId": 766,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2026-03-07-766",
+      "payloadEventDateId": 666
+    },
+    {
+      "legacyEventDateId": 767,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2026-03-14-767",
+      "payloadEventDateId": 667
+    },
+    {
+      "legacyEventDateId": 768,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-01-17-768",
+      "payloadEventDateId": 668
+    },
+    {
+      "legacyEventDateId": 769,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-09-20-769",
+      "payloadEventDateId": 669
+    },
+    {
+      "legacyEventDateId": 770,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2025-09-27-770",
+      "payloadEventDateId": 670
+    },
+    {
+      "legacyEventDateId": 771,
+      "legacyEventId": 42,
+      "slug": "trad-climbing-course--2025-07-26-771",
+      "payloadEventDateId": 671
+    },
+    {
+      "legacyEventDateId": 772,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2026-05-25-772",
+      "payloadEventDateId": 672
+    },
+    {
+      "legacyEventDateId": 773,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2026-11-28-773",
+      "payloadEventDateId": 673
+    },
+    {
+      "legacyEventDateId": 774,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2026-03-21-774",
+      "payloadEventDateId": 674
+    },
+    {
+      "legacyEventDateId": 775,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2026-10-24-775",
+      "payloadEventDateId": 675
+    },
+    {
+      "legacyEventDateId": 776,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2026-11-21-776",
+      "payloadEventDateId": 676
+    },
+    {
+      "legacyEventDateId": 777,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2026-10-31-777",
+      "payloadEventDateId": 677
+    },
+    {
+      "legacyEventDateId": 778,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2026-07-04-778",
+      "payloadEventDateId": 678
+    },
+    {
+      "legacyEventDateId": 779,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2026-06-06-779",
+      "payloadEventDateId": 679
+    },
+    {
+      "legacyEventDateId": 780,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2026-03-28-780",
+      "payloadEventDateId": 680
+    },
+    {
+      "legacyEventDateId": 781,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2026-02-07-781",
+      "payloadEventDateId": 681
+    },
+    {
+      "legacyEventDateId": 782,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-10-03-782",
+      "payloadEventDateId": 682
+    },
+    {
+      "legacyEventDateId": 783,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-09-26-783",
+      "payloadEventDateId": 683
+    },
+    {
+      "legacyEventDateId": 784,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-09-19-784",
+      "payloadEventDateId": 684
+    },
+    {
+      "legacyEventDateId": 785,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-09-12-785",
+      "payloadEventDateId": 685
+    },
+    {
+      "legacyEventDateId": 786,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-09-05-786",
+      "payloadEventDateId": 686
+    },
+    {
+      "legacyEventDateId": 787,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-08-29-787",
+      "payloadEventDateId": 687
+    },
+    {
+      "legacyEventDateId": 788,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-08-22-788",
+      "payloadEventDateId": 688
+    },
+    {
+      "legacyEventDateId": 789,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-08-15-789",
+      "payloadEventDateId": 689
+    },
+    {
+      "legacyEventDateId": 790,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-08-15-790",
+      "payloadEventDateId": 690
+    },
+    {
+      "legacyEventDateId": 791,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2025-10-11-791",
+      "payloadEventDateId": 691
+    },
+    {
+      "legacyEventDateId": 792,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2025-10-18-792",
+      "payloadEventDateId": 692
+    },
+    {
+      "legacyEventDateId": 794,
+      "legacyEventId": 61,
+      "slug": "spain-rock-trip-cuenca-costa-blanca-chulilla-siurana--2025-11-01-794",
+      "payloadEventDateId": 693
+    },
+    {
+      "legacyEventDateId": 795,
+      "legacyEventId": 61,
+      "slug": "spain-rock-trip-cuenca-costa-blanca-chulilla-siurana--2025-11-08-795",
+      "payloadEventDateId": 694
+    },
+    {
+      "legacyEventDateId": 796,
+      "legacyEventId": 61,
+      "slug": "spain-rock-trip-cuenca-costa-blanca-chulilla-siurana--2025-11-15-796",
+      "payloadEventDateId": 695
+    },
+    {
+      "legacyEventDateId": 797,
+      "legacyEventId": 61,
+      "slug": "spain-rock-trip-cuenca-costa-blanca-chulilla-siurana--2025-11-22-797",
+      "payloadEventDateId": 696
+    },
+    {
+      "legacyEventDateId": 798,
+      "legacyEventId": 61,
+      "slug": "spain-rock-trip-cuenca-costa-blanca-chulilla-siurana--2025-11-01-798",
+      "payloadEventDateId": 697
+    },
+    {
+      "legacyEventDateId": 799,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2026-04-04-799",
+      "payloadEventDateId": 698
+    },
+    {
+      "legacyEventDateId": 800,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2026-05-02-800",
+      "payloadEventDateId": 699
+    },
+    {
+      "legacyEventDateId": 801,
+      "legacyEventId": 62,
+      "slug": "knots-stone-czech-climbing-tradition--2026-06-13-801",
+      "payloadEventDateId": 700
+    },
+    {
+      "legacyEventDateId": 802,
+      "legacyEventId": 62,
+      "slug": "knots-stone-czech-climbing-tradition--2026-08-01-802",
+      "payloadEventDateId": 701
+    },
+    {
+      "legacyEventDateId": 803,
+      "legacyEventId": 62,
+      "slug": "knots-stone-czech-climbing-tradition--2026-09-12-803",
+      "payloadEventDateId": 702
+    },
+    {
+      "legacyEventDateId": 804,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-06-27-804",
+      "payloadEventDateId": 703
+    },
+    {
+      "legacyEventDateId": 805,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-06-27-805",
+      "payloadEventDateId": 704
+    },
+    {
+      "legacyEventDateId": 808,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-07-04-808",
+      "payloadEventDateId": 705
+    },
+    {
+      "legacyEventDateId": 809,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-08-01-809",
+      "payloadEventDateId": 706
+    },
+    {
+      "legacyEventDateId": 811,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-01-24-811",
+      "payloadEventDateId": 707
+    },
+    {
+      "legacyEventDateId": 812,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-01-23-812",
+      "payloadEventDateId": 708
+    },
+    {
+      "legacyEventDateId": 813,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-03-28-813",
+      "payloadEventDateId": 709
+    },
+    {
+      "legacyEventDateId": 814,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-03-28-814",
+      "payloadEventDateId": 710
+    },
+    {
+      "legacyEventDateId": 815,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-04-04-815",
+      "payloadEventDateId": 711
+    },
+    {
+      "legacyEventDateId": 816,
+      "legacyEventId": 57,
+      "slug": "fear-management-mental-coaching--2026-04-25-816",
+      "payloadEventDateId": 712
+    },
+    {
+      "legacyEventDateId": 817,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2026-05-02-817",
+      "payloadEventDateId": 713
+    },
+    {
+      "legacyEventDateId": 818,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2026-05-09-818",
+      "payloadEventDateId": 714
+    },
+    {
+      "legacyEventDateId": 819,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-12-19-819",
+      "payloadEventDateId": 715
+    },
+    {
+      "legacyEventDateId": 820,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-12-19-820",
+      "payloadEventDateId": 716
+    },
+    {
+      "legacyEventDateId": 821,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-12-26-821",
+      "payloadEventDateId": 717
+    },
+    {
+      "legacyEventDateId": 822,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-03-20-822",
+      "payloadEventDateId": 718
+    },
+    {
+      "legacyEventDateId": 823,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-03-20-823",
+      "payloadEventDateId": 719
+    },
+    {
+      "legacyEventDateId": 824,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-03-27-824",
+      "payloadEventDateId": 720
+    },
+    {
+      "legacyEventDateId": 825,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2027-05-08-825",
+      "payloadEventDateId": 721
+    },
+    {
+      "legacyEventDateId": 826,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2027-05-08-826",
+      "payloadEventDateId": 722
+    },
+    {
+      "legacyEventDateId": 827,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2027-05-15-827",
+      "payloadEventDateId": 723
+    },
+    {
+      "legacyEventDateId": 828,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2027-08-21-828",
+      "payloadEventDateId": 724
+    },
+    {
+      "legacyEventDateId": 829,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2027-08-21-829",
+      "payloadEventDateId": 725
+    },
+    {
+      "legacyEventDateId": 830,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2027-08-28-830",
+      "payloadEventDateId": 726
+    },
+    {
+      "legacyEventDateId": 831,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2027-09-04-831",
+      "payloadEventDateId": 727
+    },
+    {
+      "legacyEventDateId": 832,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2027-09-11-832",
+      "payloadEventDateId": 728
+    },
+    {
+      "legacyEventDateId": 833,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2027-09-18-833",
+      "payloadEventDateId": 729
+    },
+    {
+      "legacyEventDateId": 834,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2027-09-25-834",
+      "payloadEventDateId": 730
+    },
+    {
+      "legacyEventDateId": 835,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2027-10-02-835",
+      "payloadEventDateId": 731
+    },
+    {
+      "legacyEventDateId": 836,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2027-10-09-836",
+      "payloadEventDateId": 732
+    },
+    {
+      "legacyEventDateId": 838,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2026-06-06-838",
+      "payloadEventDateId": 733
+    },
+    {
+      "legacyEventDateId": 839,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2026-08-08-839",
+      "payloadEventDateId": 734
+    },
+    {
+      "legacyEventDateId": 840,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2026-09-26-840",
+      "payloadEventDateId": 735
+    },
+    {
+      "legacyEventDateId": 841,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2026-10-03-841",
+      "payloadEventDateId": 736
+    },
+    {
+      "legacyEventDateId": 842,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2026-09-26-842",
+      "payloadEventDateId": 737
+    },
+    {
+      "legacyEventDateId": 843,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2026-11-14-843",
+      "payloadEventDateId": 738
+    },
+    {
+      "legacyEventDateId": 844,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2026-11-14-844",
+      "payloadEventDateId": 739
+    },
+    {
+      "legacyEventDateId": 845,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2026-11-21-845",
+      "payloadEventDateId": 740
+    },
+    {
+      "legacyEventDateId": 846,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2026-10-17-846",
+      "payloadEventDateId": 741
+    },
+    {
+      "legacyEventDateId": 847,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-07-25-847",
+      "payloadEventDateId": 742
+    },
+    {
+      "legacyEventDateId": 848,
+      "legacyEventId": 64,
+      "slug": "youth-summer-rock-climbing-bouldering-camp--2026-07-04-848",
+      "payloadEventDateId": 743
+    },
+    {
+      "legacyEventDateId": 851,
+      "legacyEventId": 64,
+      "slug": "youth-summer-rock-climbing-bouldering-camp--2026-07-18-851",
+      "payloadEventDateId": 744
+    },
+    {
+      "legacyEventDateId": 852,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-10-03-852",
+      "payloadEventDateId": 745
+    },
+    {
+      "legacyEventDateId": 853,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-09-26-853",
+      "payloadEventDateId": 746
+    },
+    {
+      "legacyEventDateId": 857,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2026-05-09-857",
+      "payloadEventDateId": 747
+    },
+    {
+      "legacyEventDateId": 858,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2027-02-20-858",
+      "payloadEventDateId": 748
+    },
+    {
+      "legacyEventDateId": 859,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2027-02-20-859",
+      "payloadEventDateId": 749
+    },
+    {
+      "legacyEventDateId": 860,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2027-02-27-860",
+      "payloadEventDateId": 750
+    },
+    {
+      "legacyEventDateId": 861,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2027-03-06-861",
+      "payloadEventDateId": 751
+    },
+    {
+      "legacyEventDateId": 862,
+      "legacyEventId": 15,
+      "slug": "climbing-trip-spain--2027-03-13-862",
+      "payloadEventDateId": 752
+    },
+    {
+      "legacyEventDateId": 863,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-01-17-sport-climbing-2026-01-17-812",
+      "payloadEventDateId": 753
+    },
+    {
+      "legacyEventDateId": 864,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-01-23-864",
+      "payloadEventDateId": 754
+    },
+    {
+      "legacyEventDateId": 865,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-01-30-865",
+      "payloadEventDateId": 755
+    },
+    {
+      "legacyEventDateId": 866,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2026-05-02-866",
+      "payloadEventDateId": 786
+    },
+    {
+      "legacyEventDateId": 867,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2026-05-02-867",
+      "payloadEventDateId": 787
+    },
+    {
+      "legacyEventDateId": 868,
+      "legacyEventId": 33,
+      "slug": "climbing-technique-mental-coaching--2026-05-09-868",
+      "payloadEventDateId": 788
+    },
+    {
+      "legacyEventDateId": 869,
+      "legacyEventId": 49,
+      "slug": "advanced-sport-climbing-course--2026-05-25-869",
+      "payloadEventDateId": 789
+    },
+    {
+      "legacyEventDateId": 870,
+      "legacyEventId": 57,
+      "slug": "fear-management-mental-coaching--2026-04-25-870",
+      "payloadEventDateId": 756
+    },
+    {
+      "legacyEventDateId": 871,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2027-03-20-871",
+      "payloadEventDateId": 757
+    },
+    {
+      "legacyEventDateId": 872,
+      "legacyEventId": 18,
+      "slug": "woman-climbing--2027-10-09-872",
+      "payloadEventDateId": 758
+    },
+    {
+      "legacyEventDateId": 873,
+      "legacyEventId": 7,
+      "slug": "europe-rock-climbing-trip--2026-08-15-873",
+      "payloadEventDateId": 790
+    },
+    {
+      "legacyEventDateId": 874,
+      "legacyEventId": 55,
+      "slug": "climb-work--2026-10-10-874",
+      "payloadEventDateId": 759
+    },
+    {
+      "legacyEventDateId": 875,
+      "legacyEventId": 55,
+      "slug": "climb-work--2027-04-24-875",
+      "payloadEventDateId": 760
+    },
+    {
+      "legacyEventDateId": 876,
+      "legacyEventId": 55,
+      "slug": "climb-work--2027-10-16-876",
+      "payloadEventDateId": 761
+    },
+    {
+      "legacyEventDateId": 877,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2026-07-25-877",
+      "payloadEventDateId": 762
+    },
+    {
+      "legacyEventDateId": 878,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-06-19-878",
+      "payloadEventDateId": 763
+    },
+    {
+      "legacyEventDateId": 879,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-06-26-879",
+      "payloadEventDateId": 764
+    },
+    {
+      "legacyEventDateId": 880,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-06-19-880",
+      "payloadEventDateId": 765
+    },
+    {
+      "legacyEventDateId": 881,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-07-24-881",
+      "payloadEventDateId": 766
+    },
+    {
+      "legacyEventDateId": 882,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-07-24-882",
+      "payloadEventDateId": 767
+    },
+    {
+      "legacyEventDateId": 883,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-07-31-883",
+      "payloadEventDateId": 768
+    },
+    {
+      "legacyEventDateId": 884,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2027-02-13-884",
+      "payloadEventDateId": 769
+    },
+    {
+      "legacyEventDateId": 885,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2027-04-10-885",
+      "payloadEventDateId": 770
+    },
+    {
+      "legacyEventDateId": 886,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2027-06-12-886",
+      "payloadEventDateId": 771
+    },
+    {
+      "legacyEventDateId": 887,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2027-07-17-887",
+      "payloadEventDateId": 772
+    },
+    {
+      "legacyEventDateId": 888,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2027-10-16-888",
+      "payloadEventDateId": 773
+    },
+    {
+      "legacyEventDateId": 889,
+      "legacyEventId": 2,
+      "slug": "beginner-climbing-course--2027-11-06-889",
+      "payloadEventDateId": 774
+    },
+    {
+      "legacyEventDateId": 890,
+      "legacyEventId": 16,
+      "slug": "deep-water-solo-mallorca--2026-08-17-890",
+      "payloadEventDateId": 775
+    },
+    {
+      "legacyEventDateId": 891,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-04-17-891",
+      "payloadEventDateId": 776
+    },
+    {
+      "legacyEventDateId": 892,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-04-17-892",
+      "payloadEventDateId": 777
+    },
+    {
+      "legacyEventDateId": 893,
+      "legacyEventId": 6,
+      "slug": "sport-climbing--2027-04-24-893",
+      "payloadEventDateId": 778
+    },
+    {
+      "legacyEventDateId": 894,
+      "legacyEventId": 3,
+      "slug": "bouldering-albarracin--2026-10-31-894",
+      "payloadEventDateId": 779
+    }
+  ]
+}

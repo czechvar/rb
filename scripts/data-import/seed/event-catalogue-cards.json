@@ -1,0 +1,331 @@
+{
+  "generatedAt": "2026-09-02T13:22:00.500Z",
+  "source": ".scratch/event-catalogue-card-copy-proposals.md, derived from legacy event and event-date seed copy",
+  "rows": [
+    {
+      "slug": "adam-ondra-on-sight-red-point",
+      "title": "Adam Ondra On-Sight & Redpoint",
+      "description": "Climb and get coached by Adam Ondra, with focused work on on-sight tactics, redpoint process, and hard-route performance."
+    },
+    {
+      "slug": "advanced-sport-climbing-course",
+      "title": "Advanced Sport Climbing Course",
+      "description": "Push physical and mental limits, learn how to project harder routes, and climb better with focused performance coaching."
+    },
+    {
+      "slug": "andalucia-climbing",
+      "title": "Andalucia Climbing",
+      "description": "Explore Andalucia limestone with Rockbusters coaching, local crag knowledge, and a relaxed southern Spain climbing base."
+    },
+    {
+      "slug": "andalucia-rock-trip",
+      "title": "Andalucia Rock Trip",
+      "description": "Climb Andalucia's limestone crags, improve technique and mental game, and enjoy a hassle-free Rockbusters road-trip format."
+    },
+    {
+      "slug": "balkans-rock-climbing",
+      "title": "Balkans Climbing Road Trip",
+      "description": "Explore the best Balkan crags, maximize climbing time, and improve performance across a varied road-trip itinerary."
+    },
+    {
+      "slug": "big-wall-climbing-in-chamonix",
+      "title": "Big Wall Climbing in Chamonix",
+      "description": "Take on big-wall climbing in Chamonix with technical guidance for long routes, exposure, and alpine-scale objectives."
+    },
+    {
+      "slug": "bolt-send-sicily-s-virgin-rock",
+      "title": "Bolt & Send: Sicily's Virgin Rock",
+      "description": "Learn to spot, bolt, and climb new Sicilian limestone routes while helping open fresh lines for future climbers."
+    },
+    {
+      "slug": "bouldering-albarracin",
+      "title": "Bouldering Albarracin",
+      "description": "Tackle Albarracin's sandstone roofs, slabs, and highballs with Rockbusters coaching, pads, and a strong bouldering crew."
+    },
+    {
+      "slug": "bouldering-and-sport-climbing-in-india",
+      "title": "Bouldering & Sport Climbing in India",
+      "description": "Discover Indian rock on a bouldering and sport climbing adventure built around striking crags, movement, and exploration."
+    },
+    {
+      "slug": "bouldering-weekend-with-alizee-dufraisse",
+      "title": "Bouldering Weekend with Alizee Dufraisse",
+      "description": "Spend three days on Swiss granite with Alizee Dufraisse, turning gym strength into sharper movement on real rock."
+    },
+    {
+      "slug": "beginner-climbing-course",
+      "title": "Novice Climbing Course",
+      "description": "Move from indoor climbing to real rock with basics, belaying, movement, safety skills, and a full Rockbusters camp week."
+    },
+    {
+      "slug": "camper-van-rental",
+      "title": "Camper Van Rental",
+      "description": "Rent a camper van for flexible climbing travel, simple logistics, and more time close to the crags."
+    },
+    {
+      "slug": "climb-work",
+      "title": "Climb & Work",
+      "description": "Combine remote work with serious sport climbing, coaching, community, and time on the best routes in your grade."
+    },
+    {
+      "slug": "climbers-hut-your-base-camp-for-epic-ascents",
+      "title": "Climbers Hut",
+      "description": "Use Climbers Hut as a simple base camp for climbing days, dirtbag comfort, and easy access to nearby ascents."
+    },
+    {
+      "slug": "climbing-coaching",
+      "title": "Climbing Coaching",
+      "description": "Learn from top climbers and Rockbusters coaches in focused sessions built to sharpen technique, tactics, and confidence."
+    },
+    {
+      "slug": "climbing-coaching-footwork-balance",
+      "title": "Footwork & Balance Coaching",
+      "description": "Improve climbing efficiency with targeted footwork, balance, and movement coaching for stronger, cleaner technique."
+    },
+    {
+      "slug": "climbing-coaching-on-sight-red-point",
+      "title": "On-Sight & Redpoint Coaching",
+      "description": "Build better tactics for on-sight and redpoint attempts, from reading routes to executing when it matters."
+    },
+    {
+      "slug": "climbing-coaching-overhangs",
+      "title": "Overhang Coaching",
+      "description": "Train body position, power, and confidence for steep climbing so overhangs become a strength rather than a block."
+    },
+    {
+      "slug": "climbing-technique-mental-coaching",
+      "title": "Master Class Coaching with Klemen Becan",
+      "description": "Work with Klemen Becan on technique, mindset, and performance habits for climbing better, harder, and with more control."
+    },
+    {
+      "slug": "climbing-trip-spain",
+      "title": "Spanish Climbing Trip",
+      "description": "Discover Spain's standout crags on an intense Rockbusters road trip through some of the world's best sport climbing areas."
+    },
+    {
+      "slug": "customized-climbing-rock-trip",
+      "title": "Customized Climbing Rock Trip",
+      "description": "Design a custom European climbing road trip around your destinations, dates, grade, coaching goals, and travel style."
+    },
+    {
+      "slug": "deep-blue-psicobloc",
+      "title": "Deep Blue: The Psicobloc Camp",
+      "description": "Psicobloc in Mallorca: no harness, no rope, just warm limestone, clear water, and deep-water solo coaching."
+    },
+    {
+      "slug": "deep-water-solo-mallorca",
+      "title": "Deep Water Solo Mallorca",
+      "description": "Explore Mallorca's deep-water solo cliffs and bolted sport crags with guides who know the island's best lines."
+    },
+    {
+      "slug": "dolomite-dolce-vita",
+      "title": "The Dolomite Dolce Vita",
+      "description": "Scale Dolomite limestone with expert coaching, multi-pitch movement, alpine views, and a full dose of Rockbusters camp life."
+    },
+    {
+      "slug": "easter-climbing-camp-in-kalymnos",
+      "title": "Easter Climbing Camp in Kalymnos",
+      "description": "Spend Easter on Kalymnos sport routes, with hundreds of climbs, serious crags, and coaching to sharpen your technique."
+    },
+    {
+      "slug": "efficient-technique-injury-prevention-sport-climbing-course",
+      "title": "Efficient Technique & Injury Prevention",
+      "description": "Learn to use your body better, prevent injuries, and improve climbing performance through efficient movement coaching."
+    },
+    {
+      "slug": "europe-rock-climbing-trip",
+      "title": "European Climbing Road Trip",
+      "description": "Join the Rockbusters road trip across Europe's standout crags. Drop in for one section or stay for the full tour."
+    },
+    {
+      "slug": "fear-management-mental-coaching",
+      "title": "Fear Management & Mental Coaching",
+      "description": "Work on the mental side of climbing, from fear management to confidence, commitment, and better decisions on the wall."
+    },
+    {
+      "slug": "feldenkrais-method-workshop-for-climbers",
+      "title": "Feldenkrais Method for Climbers",
+      "description": "Build mobility, body awareness, and injury-prevention habits through Feldenkrais work designed for long-term climbing."
+    },
+    {
+      "slug": "france-rock-trip",
+      "title": "France Rock Trip",
+      "description": "Climb France's limestone classics with Rockbusters coaching, strong community energy, and a hassle-free climbing holiday format."
+    },
+    {
+      "slug": "hazel-findlay-mental-coaching",
+      "title": "Hazel Findlay Mental Coaching",
+      "description": "Learn practical mental tools for climbing performance, fear, commitment, and confidence from Hazel Findlay's coaching approach."
+    },
+    {
+      "slug": "internship",
+      "title": "Rockbusters Internship",
+      "description": "Join the Rockbusters team behind the scenes and gain hands-on experience running outdoor climbing courses, camps, and trips."
+    },
+    {
+      "slug": "introduction-to-bouldering",
+      "title": "Introduction to Bouldering",
+      "description": "Start bouldering outdoors with coaching matched to your level, whether you are new or coming from the gym."
+    },
+    {
+      "slug": "knots-stone-czech-climbing-tradition",
+      "title": "Knots & Stone: Czech Climbing Tradition",
+      "description": "Learn Czech sandstone ethics, knot protection, delicate footwork, and tower climbing with expert local guidance."
+    },
+    {
+      "slug": "multipitch-climbing-course",
+      "title": "Trad & Multipitch Climbing",
+      "description": "Move from single-pitch climbing into trad and multi-pitch routes with technical coaching for bigger, higher objectives."
+    },
+    {
+      "slug": "multipitch-climbing-private-guiding-coaching",
+      "title": "Multi-Pitch Private Guiding & Coaching",
+      "description": "Build multi-pitch skills privately, from safety systems to route efficiency, with coaching tailored to your objectives."
+    },
+    {
+      "slug": "multipitch-performance-coaching",
+      "title": "Multi-Pitch Performance Coaching",
+      "description": "Improve on long routes with coaching from elite climbers and guides who understand big-wall tactics and performance."
+    },
+    {
+      "slug": "patxi-usobiaga-training",
+      "title": "Patxi Usobiaga Training",
+      "description": "Train with world champion Patxi Usobiaga and learn how to structure climbing practice for better long-term performance."
+    },
+    {
+      "slug": "performance-coaching-gear-test",
+      "title": "Big Gear Test & Performance Coaching",
+      "description": "Test Evolv shoes, Singing Rock gear, and Send kneepads while pushing technique, tactics, and climbing performance."
+    },
+    {
+      "slug": "sandstone-climbing",
+      "title": "Czech Sandstone",
+      "description": "Experience Elbe sandstone climbing, unique ethics, and technical movement on one of Europe's most distinctive rock types."
+    },
+    {
+      "slug": "sport-climbing",
+      "title": "Sport Climbing Camp",
+      "description": "A week or two of sport climbing, performance coaching, and camp life at some of Europe's best crags."
+    },
+    {
+      "slug": "sport-climbing-basics",
+      "title": "Sport Climbing Basics",
+      "description": "Turn indoor climbing skills into safe outdoor leading with a practical week of movement, belaying, and crag skills."
+    },
+    {
+      "slug": "sport-climbing-masterclass",
+      "title": "Sport Climbing Masterclass",
+      "description": "Sharpen sport climbing performance with concentrated coaching for technique, movement, route strategy, and mental game."
+    },
+    {
+      "slug": "sport-climbing-private-coaching",
+      "title": "Sport Climbing Private Coaching",
+      "description": "Get private sport climbing coaching built around your goals, grade, movement habits, and time on the best routes."
+    },
+    {
+      "slug": "trad-climbing-course",
+      "title": "Trad Climbing Course",
+      "description": "Learn to climb on your own gear with technical trad skills, confidence-building coaching, and real route practice."
+    },
+    {
+      "slug": "trad-climbing-private-coaching",
+      "title": "Trad Climbing Private Coaching",
+      "description": "Explore trad climbing privately, building confidence with gear placements, systems, and independent route decisions."
+    },
+    {
+      "slug": "woman-climbing",
+      "title": "Girls on Rock",
+      "description": "A women-only climbing trip focused on progression, confidence, community, and getting better without the macho noise."
+    },
+    {
+      "slug": "youth-summer-rock-climbing-bouldering-camp",
+      "title": "Youth Summer Rock Climbing & Bouldering Camp",
+      "description": "Challenge experienced young climbers on Pyrenees rock with coaching for technical routes, bouldering, and progression."
+    },
+    {
+      "slug": "spain-rock-trip-cuenca-costa-blanca-chulilla-siurana",
+      "title": "Spain Rock Trip",
+      "description": "Travel through Cuenca, Costa Blanca, Chulilla, and Siurana on a four-week Spanish limestone road trip."
+    },
+    {
+      "slug": "adam-ondra-patxi-usobiaga-work-shop",
+      "title": "Adam, Patxi & Pablo Workshop",
+      "description": "A pro-level coaching workshop combining elite climbing experience, performance training, and direct feedback on the rock."
+    },
+    {
+      "slug": "adam-ondra-patxi-usobiaga-work-shop-extension",
+      "title": "Adam, Patxi & Pablo Workshop Extension",
+      "description": "Extend the workshop with more climbing, training, and coaching time around the Adam, Patxi, and Pablo program."
+    },
+    {
+      "slug": "biomechanica-funcional",
+      "title": "Biomechanica Funcional",
+      "description": "Work with Pablo Scorza on climbing biomechanics, injury prevention, and better movement patterns for long-term performance."
+    },
+    {
+      "slug": "catalunya-climbing",
+      "title": "Catalunya Climbing",
+      "description": "Climb Catalonia classics including Margalef, Siurana, Montsant, Terradets, and Montserrat with Rockbusters guides."
+    },
+    {
+      "slug": "christmas-climbing-holiday",
+      "title": "Christmas Climbing Camp",
+      "description": "Swap the usual Christmas routine for sunny crags, Rockbusters camp life, and a festive climbing crew."
+    },
+    {
+      "slug": "daila-ojeda-climbing-work-shop",
+      "title": "Daila Ojeda Climbing Clinic",
+      "description": "Climb with Daila Ojeda and focus on movement, motivation, and sport climbing progression in a small-group clinic."
+    },
+    {
+      "slug": "deep-water-solo-sailing-mallorca",
+      "title": "Deep Water Solo & Sailing Mallorca",
+      "description": "Sail around Mallorca and climb sea cliffs above clear water on a deep-water solo adventure."
+    },
+    {
+      "slug": "easter-climbing-in-sella",
+      "title": "Easter Climbing in Sella",
+      "description": "Spend Easter climbing Sella's Costa Blanca limestone instead of staying home, with Rockbusters coaching and crag time."
+    },
+    {
+      "slug": "klemen-becan-performance-coaching-privat",
+      "title": "Master Class Coaching with Klemen Becan",
+      "description": "Private masterclass coaching with Klemen Becan, focused on technique, performance, and climbing smarter."
+    },
+    {
+      "slug": "pro-climbers-performance-coaching",
+      "title": "Rockbusters Coaching with Brother and Primo",
+      "description": "Prepare for harder climbing with Brother and Primo through performance coaching, shared experience, and Rockbusters intensity."
+    },
+    {
+      "slug": "rockbusters-climbing-express",
+      "title": "Rockbusters Climbing Express",
+      "description": "Tell Rockbusters where and when you want to climb, then let the team handle Spain trip logistics."
+    },
+    {
+      "slug": "rockbusters-private-guiding",
+      "title": "Rockbusters Private Guiding",
+      "description": "Choose your destination and dates for focused private guiding, personal coaching, and flexible climbing in Spain."
+    },
+    {
+      "slug": "rockbusters-summer-2018",
+      "title": "Rockbusters Summer",
+      "description": "Summer climbing with the Rockbusters crew, built around crag time, coaching, travel, and community."
+    },
+    {
+      "slug": "climbing-weekends",
+      "title": "Rockbusters Climbing Weekends",
+      "description": "Fit a sharp dose of Spanish climbing, coaching, and camp life into a shorter weekend format."
+    },
+    {
+      "slug": "san-fermin-climbing",
+      "title": "San Fermin Climbing",
+      "description": "Combine Basque sport climbing with the San Fermin festival in Pamplona for a high-energy summer adventure."
+    },
+    {
+      "slug": "singing-rock-mobile-test-center",
+      "title": "Singing Rock Mobile Test Center",
+      "description": "Test Singing Rock ropes, harnesses, helmets, and hardware on real Rockbusters climbing trips and crag days."
+    }
+  ]
+}
