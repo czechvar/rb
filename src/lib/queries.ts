@@ -14,6 +14,7 @@ import type {
   Page,
 } from '@/payload-types'
 import { catalogueDateFloor, upcomingEventDateWhere } from '@/lib/event-date-visibility'
+import { assignCatalogueImageVariants, catalogueImageCandidates, toCatalogueResult, type CatalogueResult } from '@/lib/catalogue-results'
 
 // --- CMS pages ----------------------------------------------------------
 
@@ -24,8 +25,11 @@ export function getPublishedPageBySlug(slug: string) {
       TAGS.pages,
       TAGS.events,
       TAGS.eventDates,
+      TAGS.categories,
+      TAGS.difficulties,
       TAGS.faqs,
       TAGS.guides,
+      TAGS.media,
       TAGS.locations,
       TAGS.media,
       TAGS.partners,
@@ -43,6 +47,41 @@ export function getPublishedPageBySlug(slug: string) {
         depth: 2,
       })
       return docs[0] ?? null
+    },
+  )
+}
+
+// The catalogue results block needs the complete eligible set before its client
+// controls can apply URL-backed filters. Keep this DTO compact and cache it by
+// the current date floor rather than reusing the display-limited calendar query.
+export function getUpcomingCatalogueResults() {
+  const dateFloor = catalogueDateFloor()
+  return cachedQuery(
+    ['upcoming-catalogue-results', dateFloor],
+    [
+      TAGS.events,
+      TAGS.eventDates,
+      TAGS.categories,
+      TAGS.difficulties,
+      TAGS.locations,
+      TAGS.guides,
+    ],
+    async (): Promise<CatalogueResult[]> => {
+      const payload = await getPayloadClient()
+      const { docs } = await payload.find({
+        collection: 'event-dates',
+        where: { and: [{ active: { equals: true } }, upcomingEventDateWhere()] },
+        sort: 'dateFrom',
+        depth: 2,
+        limit: 500,
+      })
+
+      return assignCatalogueImageVariants(
+        docs.flatMap((date) => {
+          const result = toCatalogueResult(date)
+          return result ? [{ result, images: catalogueImageCandidates(date) }] : []
+        }),
+      )
     },
   )
 }

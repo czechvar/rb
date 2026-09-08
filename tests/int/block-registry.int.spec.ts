@@ -55,6 +55,7 @@ describe('block registry groups', () => {
     'destinationCountryIndex',
     ...reusableBlockSlugs.slice(reusableBlockSlugs.indexOf('featuredLocation')),
   ]
+  pageBlockSlugs.splice(pageBlockSlugs.indexOf('featuredEventDate'), 0, 'catalogueResults')
 
   it('exposes categorized block groups from the catalogue', () => {
     expect(contentBlocks.map((block) => block.slug)).toEqual([
@@ -77,6 +78,7 @@ describe('block registry groups', () => {
       'postGrid',
       'featuredPost',
       'calendar',
+      'catalogueResults',
       'featuredEventDate',
     ])
     expect(mediaBlocks.map((block) => block.slug)).toEqual(['mediaBlock', 'gallery', 'video'])

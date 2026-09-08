@@ -54,7 +54,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header />
+      <Header transparent />
       <JsonLd data={jsonLd} />
       <main>
         {usesCmsLayout ? (

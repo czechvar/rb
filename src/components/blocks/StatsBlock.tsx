@@ -16,6 +16,7 @@ export function StatsBlock({ body, columns, eyebrow, heading, items, variant }: 
       : '',
     variant === 'inlineDark' ? styles.statsInlineDark : '',
     variant === 'numberedDark' ? styles.statsNumberedDark : '',
+    variant === 'heroBar' ? styles.statsHeroBar : '',
     columns === '2' ? styles.statsColumns2 : '',
     columns === '3' ? styles.statsColumns3 : '',
     columns === '4' ? styles.statsColumns4 : '',

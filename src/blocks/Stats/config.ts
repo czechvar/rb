@@ -24,6 +24,7 @@ export const StatsBlockConfig: Block = {
         { label: 'Dark', value: 'dark' },
         { label: 'Inline dark', value: 'inlineDark' },
         { label: 'Numbered dark', value: 'numberedDark' },
+        { label: 'Hero bar', value: 'heroBar' },
       ],
     }),
     selectField('columns', {

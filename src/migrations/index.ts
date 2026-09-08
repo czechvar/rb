@@ -46,6 +46,9 @@ import * as migration_20260903_131955_gallery_tiles_variant from './20260903_131
 import * as migration_20260903_134342_destination_sidebar_block from './20260903_134342_destination_sidebar_block';
 import * as migration_20260903_160351_cleanup_location_destination_detail from './20260903_160351_cleanup_location_destination_detail';
 import * as migration_20260903_183000_action_analytics_fields from './20260903_183000_action_analytics_fields';
+import * as migration_20260904_211000_stats_hero_bar_variant from './20260904_211000_stats_hero_bar_variant';
+import * as migration_20260904_225500_destination_logistics_variant from './20260904_225500_destination_logistics_variant';
+import * as migration_20260907_203729_catalogue_results_reconciliation from './20260907_203729_catalogue_results_reconciliation';
 
 export const migrations = [
   {
@@ -281,11 +284,26 @@ export const migrations = [
   {
     up: migration_20260903_160351_cleanup_location_destination_detail.up,
     down: migration_20260903_160351_cleanup_location_destination_detail.down,
-    name: '20260903_160351_cleanup_location_destination_detail'
+    name: '20260903_160351_cleanup_location_destination_detail',
   },
   {
     up: migration_20260903_183000_action_analytics_fields.up,
     down: migration_20260903_183000_action_analytics_fields.down,
-    name: '20260903_183000_action_analytics_fields'
+    name: '20260903_183000_action_analytics_fields',
+  },
+  {
+    up: migration_20260904_211000_stats_hero_bar_variant.up,
+    down: migration_20260904_211000_stats_hero_bar_variant.down,
+    name: '20260904_211000_stats_hero_bar_variant',
+  },
+  {
+    up: migration_20260904_225500_destination_logistics_variant.up,
+    down: migration_20260904_225500_destination_logistics_variant.down,
+    name: '20260904_225500_destination_logistics_variant',
+  },
+  {
+    up: migration_20260907_203729_catalogue_results_reconciliation.up,
+    down: migration_20260907_203729_catalogue_results_reconciliation.down,
+    name: '20260907_203729_catalogue_results_reconciliation'
   },
 ];

@@ -19,6 +19,15 @@ export const DestinationLogisticsBlockConfig: Block = {
       type: 'textarea',
     },
     {
+      name: 'variant',
+      type: 'select',
+      defaultValue: 'cards',
+      options: [
+        { label: 'Cards', value: 'cards' },
+        { label: 'List', value: 'list' },
+      ],
+    },
+    {
       name: 'source',
       type: 'select',
       required: true,

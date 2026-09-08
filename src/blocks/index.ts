@@ -10,6 +10,7 @@ import { DestinationCountryIndexBlockConfig } from './DestinationCountryIndex/co
 import { GuideGridBlockConfig } from './GuideGrid/config'
 import { PostGridBlockConfig } from './PostGrid/config'
 import { CalendarBlockConfig } from './Calendar/config'
+import { CatalogueResultsBlockConfig } from './CatalogueResults/config'
 import {
   FeaturedEventDateBlockConfig,
   FeaturedGuideBlockConfig,
@@ -162,6 +163,7 @@ const rawBlockCatalogue = [
     sourceModes: ['currentContext', 'manualSelection'],
   },
   { config: CalendarBlockConfig, category: 'catalogue' },
+  { config: CatalogueResultsBlockConfig, category: 'catalogue', compatibleWith: ['page'] },
   {
     config: FeaturedEventDateBlockConfig,
     category: 'catalogue',

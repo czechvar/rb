@@ -125,49 +125,53 @@ export function DestinationHeroBlock(
   const overlayStats = destinationHeroOverlayStats(location)
 
   return (
-    <section className={styles.destinationHero}>
-      {image ? (
-        <Image
-          src={image}
-          alt={mediaAlt(location.mainPicture) || location.name}
-          fill
-          priority
-          sizes="100vw"
-          className={styles.destinationHeroImage}
-        />
-      ) : null}
-      <div className={styles.destinationHeroOverlay} />
-      <div className={styles.destinationHeroInner}>
-        {place ? <p className={styles.eyebrow}>{place}</p> : null}
-        <h1>{renderHeadingWithAccent(heading, hero?.accentWord)}</h1>
-        {hero?.body ? <p className={styles.destinationHeroBody}>{hero.body}</p> : null}
-        {hero?.primaryAction?.label && hero.primaryAction.href ? (
-          <a className={styles.primaryButton} href={hero.primaryAction.href}>
-            {hero.primaryAction.label}
-          </a>
+    <>
+      <section className={styles.destinationHero}>
+        {image ? (
+          <Image
+            src={image}
+            alt={mediaAlt(location.mainPicture) || location.name}
+            fill
+            priority
+            sizes="100vw"
+            className={styles.destinationHeroImage}
+          />
         ) : null}
-      </div>
-      {overlayStats.length ? (
-        <dl className={styles.destinationHeroOverlayStats} aria-label="Destination quick facts">
-          {overlayStats.map((stat) => (
-            <div key={stat.label} className={styles.destinationHeroOverlayStat}>
-              <dt>{stat.value}</dt>
-              <dd>{stat.label}</dd>
-            </div>
-          ))}
-        </dl>
-      ) : null}
+        <div className={styles.destinationHeroOverlay} />
+        <div className={styles.destinationHeroInner}>
+          {place ? <p className={styles.eyebrow}>{place}</p> : null}
+          <h1>{renderHeadingWithAccent(heading, hero?.accentWord)}</h1>
+          {hero?.body ? <p className={styles.destinationHeroBody}>{hero.body}</p> : null}
+          {hero?.primaryAction?.label && hero.primaryAction.href ? (
+            <a className={styles.primaryButton} href={hero.primaryAction.href}>
+              {hero.primaryAction.label}
+            </a>
+          ) : null}
+        </div>
+        {overlayStats.length ? (
+          <dl className={styles.destinationHeroOverlayStats} aria-label="Destination quick facts">
+            {overlayStats.map((stat) => (
+              <div key={stat.label} className={styles.destinationHeroOverlayStat}>
+                <dt>{stat.value}</dt>
+                <dd>{stat.label}</dd>
+              </div>
+            ))}
+          </dl>
+        ) : null}
+      </section>
       {stats.length ? (
-        <dl className={styles.destinationHeroStats}>
-          {stats.map((stat) => (
-            <div key={stat.id ?? `${stat.value}-${stat.label}`} className={styles.destinationHeroStat}>
-              <dt>{stat.value}</dt>
-              <dd>{stat.label}</dd>
-            </div>
-          ))}
-        </dl>
+        <section className={styles.destinationHeroStatsBar} aria-label="Destination hero stats">
+          <dl className={styles.destinationHeroStats}>
+            {stats.map((stat) => (
+              <div key={stat.id ?? `${stat.value}-${stat.label}`} className={styles.destinationHeroStat}>
+                <dt>{stat.value}</dt>
+                <dd>{stat.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
       ) : null}
-    </section>
+    </>
   )
 }
 
@@ -274,6 +278,84 @@ export function DestinationSectionsBlock(
   )
 }
 
+export function DestinationIntroStatsBlock(
+  _block: LocationContextBlock,
+  { location }: BlockRenderContext,
+) {
+  if (!isLocation(location)) return null
+  const stats = destinationIntroStats(location)
+  if (!stats.length) return null
+
+  return (
+    <section className={styles.destinationIntroStatsBand} aria-label="Destination introduction stats">
+      <div className={styles.sectionInner}>
+        <dl className={styles.destinationIntroStats}>
+          {stats.map((stat) => (
+            <div key={stat.label} className={styles.destinationIntroStat}>
+              <dt>{stat.label}</dt>
+              <dd>{stat.value}</dd>
+              {stat.note ? <small>{stat.note}</small> : null}
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  )
+}
+
+export function DestinationRockStatsBlock(
+  _block: LocationContextBlock,
+  { location }: BlockRenderContext,
+) {
+  if (!isLocation(location)) return null
+  const stats = destinationRockStats(location)
+  if (!stats.length) return null
+
+  return (
+    <section className={`${styles.destinationIntroStatsBand} ${styles.destinationRockStatsBand}`} aria-label="Destination rock stats">
+      <div className={styles.sectionInner}>
+        <dl className={styles.destinationIntroStats}>
+          {stats.map((stat) => (
+            <div key={stat.label} className={styles.destinationIntroStat}>
+              <dt>{stat.label}</dt>
+              <dd>{stat.value}</dd>
+              {stat.note ? <small>{stat.note}</small> : null}
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  )
+}
+
+export function DestinationMediaBreakBlock(
+  block: LocationContextBlock,
+  { location }: BlockRenderContext,
+) {
+  if (!isLocation(location)) return null
+  const variant = stringValue(block.variant) === 'split' ? 'split' : 'strip'
+  const offset = numberValue(block.offset, 0)
+  const count = variant === 'split' ? 2 : 4
+  const media = destinationMediaBreakItems(location, offset, count)
+  if (media.length < count) return null
+
+  return (
+    <section
+      className={[
+        styles.destinationMediaBreak,
+        variant === 'split' ? styles.destinationMediaBreakSplit : styles.destinationMediaBreakStrip,
+      ].join(' ')}
+      aria-label="Destination images"
+    >
+      {media.map((item) => (
+        <figure key={item.src} className={styles.destinationMediaBreakItem}>
+          <Image src={item.src} alt={item.alt} fill sizes={variant === 'split' ? '50vw' : '25vw'} />
+        </figure>
+      ))}
+    </section>
+  )
+}
+
 export function DestinationCardGridBlock(
   block: LocationContextBlock,
   { location }: BlockRenderContext,
@@ -362,21 +444,52 @@ export function DestinationLogisticsBlock(
   if (!isLocation(location)) return null
   const groups = logisticsGroups(location.destinationDetail, stringValue(block.source))
   if (!groups.length) return null
+  const variant = stringValue(block.variant) === 'list' ? 'list' : 'cards'
   const singleGroup = groups.length === 1
   const anchorId = stringValue(block.anchorId)
+  const header = (
+    <DestinationBlockHeader
+      eyebrow={stringValue(block.eyebrow)}
+      heading={stringValue(block.heading) || 'Plan the trip'}
+      intro={stringValue(block.intro)}
+    />
+  )
+
+  if (variant === 'cards') {
+    const cards = groups.flatMap((group) =>
+      group.items.map((item) => ({
+        ...item,
+        group: group.heading,
+      })),
+    )
+
+    return (
+      <section id={anchorId} className={styles.destinationDarkBand}>
+        <div className={styles.sectionInner}>
+          {header}
+          <div className={`${styles.destinationCardGrid} ${styles.destinationCardGridTwo}`}>
+            {cards.map((card) => (
+              <article key={`${card.group}-${card.key}`} className={styles.destinationDetailCard}>
+                <p className={styles.destinationDetailCardMeta}>{card.group}</p>
+                <h3>{card.title}</h3>
+                {card.meta ? <p className={styles.destinationDetailCardSubMeta}>{card.meta}</p> : null}
+                {card.body ? <p>{card.body}</p> : null}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id={anchorId} className={styles.destinationDarkBand}>
       <div className={styles.sectionInner}>
-        <DestinationBlockHeader
-          eyebrow={stringValue(block.eyebrow)}
-          heading={stringValue(block.heading) || 'Plan the trip'}
-          intro={stringValue(block.intro)}
-        />
+        {header}
         <div
           className={[
             styles.destinationLogisticsGrid,
-            singleGroup ? styles.destinationLogisticsGridSingle : '',
+            variant === 'list' && singleGroup ? styles.destinationLogisticsGridSingle : '',
           ].filter(Boolean).join(' ')}
         >
           {groups.map((group) => (
@@ -384,7 +497,7 @@ export function DestinationLogisticsBlock(
               key={group.key}
               className={[
                 styles.destinationLogisticsGroup,
-                singleGroup ? styles.destinationLogisticsGroupList : '',
+                variant === 'list' && singleGroup ? styles.destinationLogisticsGroupList : '',
               ].filter(Boolean).join(' ')}
             >
               <h3>{group.heading}</h3>
@@ -483,6 +596,10 @@ function booleanValue(value: unknown, fallback: boolean) {
   return typeof value === 'boolean' ? value : fallback
 }
 
+function numberValue(value: unknown, fallback: number) {
+  return typeof value === 'number' && Number.isFinite(value) ? value : fallback
+}
+
 function paragraphs(value: string | null | undefined) {
   return String(value ?? '')
     .split(/\n{2,}/)
@@ -526,6 +643,221 @@ function selectDestinationSections(
 
 function destinationSectionId(section: DestinationSection) {
   return `destination-${section.key.replace(/[^a-z0-9_-]/gi, '-').toLowerCase()}`
+}
+
+type DestinationIntroStat = {
+  label: string
+  value: string
+  note?: string
+}
+
+function destinationIntroStats(location: Location) {
+  const detail = location.destinationDetail
+  const heroStats = detail?.hero?.heroStats ?? []
+  const problemCount = findHeroStatItem(heroStats, 'problem')
+  const gradeRange = findHeroStatItem(heroStats, 'grade')
+  const airport = recommendedTransport(detail)
+  const rockType = formatTaxonomyList(location.rockTypes)
+
+  const stats: Array<DestinationIntroStat | null> = [
+    rockType
+      ? {
+          label: 'Rock type',
+          value: rockType,
+          note: 'Primary climbing medium',
+        }
+      : null,
+    problemCount
+      ? {
+          label: 'Total problems',
+          value: problemCount.value,
+          note: problemCount.note
+            ?? (location.sectorCount ? `Across ${formatCount(location.sectorCount)} sectors` : undefined),
+        }
+      : location.problemCount
+        ? {
+            label: 'Total problems',
+            value: formatCount(location.problemCount),
+            note: location.sectorCount ? `Across ${formatCount(location.sectorCount)} sectors` : undefined,
+          }
+      : null,
+    gradeRange
+      ? {
+          label: 'Grade range',
+          value: compactGradeRange(gradeRange.value),
+          note: gradeRange.note ?? gradeSweetSpot(location),
+        }
+      : location.gradeRange
+        ? {
+            label: 'Grade range',
+            value: compactGradeRange(location.gradeRange),
+            note: gradeSweetSpot(location),
+          }
+      : null,
+    airport
+      ? {
+          label: 'Nearest airport',
+          value: airport.split('/')[0]?.trim() ?? airport,
+          note: airport.includes('/') ? airport.split('/').slice(1).join('/').trim() : undefined,
+        }
+      : null,
+    familyFriendlyStat(detail),
+    dogFriendlyStat(detail),
+  ]
+
+  return stats.filter((item): item is DestinationIntroStat => Boolean(item?.value))
+}
+
+function gradeSweetSpot(location: Location) {
+  const audienceRange = location.destinationDetail?.audience
+    ?.filter((item) => !item.label.toLowerCase().includes('famil'))
+    ?.map((item) => item.gradeRange)
+    .find((range): range is string => Boolean(range))
+  return audienceRange ? `Sweet spot ${compactGradeRange(audienceRange)}` : undefined
+}
+
+function familyFriendlyStat(detail: DestinationDetail | null | undefined): DestinationIntroStat | null {
+  const family = detail?.audience?.find((item) => item.label.toLowerCase().includes('famil'))
+  if (!family) return null
+  return {
+    label: 'Family friendly',
+    value: 'Yes',
+    note: family.body ?? family.badge ?? undefined,
+  }
+}
+
+function dogFriendlyStat(detail: DestinationDetail | null | undefined): DestinationIntroStat | null {
+  const dogRule = detail?.accessRules?.find((item) =>
+    [item.title, item.body].some((value) => value?.toLowerCase().includes('dog')),
+  )
+  if (!dogRule) return null
+
+  return {
+    label: 'Dog friendly',
+    value: ['avoid', 'critical'].includes(dogRule.tone ?? '') ? 'Check access' : 'Yes',
+    note: dogRule.body ?? dogRule.title,
+  }
+}
+
+function destinationRockStats(location: Location) {
+  const rockSection = location.destinationDetail?.sections?.find((section) => section.key === 'rock')
+  const rockType = formatTaxonomyList(location.rockTypes)
+  const style = formatTaxonomyList(location.climbingStyles)
+  const averageHeight = extractRockHeight(location)
+  const friction = extractFrictionNote(location)
+
+  const stats: Array<DestinationIntroStat | null> = [
+    rockType
+      ? {
+          label: 'Rock type',
+          value: rockType,
+          note: firstMatchingCharacteristic(rockSection, ['sandstone', 'limestone', 'granite', 'conglomerate'])
+            ?? 'Primary climbing medium',
+        }
+      : null,
+    averageHeight,
+    friction,
+    style
+      ? {
+          label: 'Style',
+          value: style,
+          note: firstMatchingCharacteristic(rockSection, ['sloper', 'crimp', 'compression', 'technical', 'steep']),
+        }
+      : null,
+  ]
+
+  return stats.filter((item): item is DestinationIntroStat => Boolean(item?.value)).slice(0, 3)
+}
+
+function extractRockHeight(location: Location): DestinationIntroStat | null {
+  const text = destinationSearchText(location, ['intro', 'rock'])
+  const rangeMatch = text.match(/(\d+)\s*[–-]\s*(\d+)\s*(?:m|metres|meters)\b/i)
+  if (rangeMatch) {
+    return {
+      label: 'Average height',
+      value: `${rangeMatch[1]}-${rangeMatch[2]}m`,
+      note: 'Typical boulder height',
+    }
+  }
+
+  const underMatch = text.match(/(?:under|below|less than)\s+(\d+)\s*(?:m|metres|meters)\b/i)
+  if (underMatch) {
+    return {
+      label: 'Average height',
+      value: `Under ${underMatch[1]}m`,
+      note: 'Low, pad-friendly climbing',
+    }
+  }
+
+  const bouldering = location.climbingStyles?.includes('bouldering')
+  return bouldering
+    ? {
+        label: 'Average height',
+        value: 'Low',
+        note: 'Bouldering venue',
+      }
+    : null
+}
+
+function extractFrictionNote(location: Location): DestinationIntroStat | null {
+  const text = destinationSearchText(location, ['intro', 'rock', 'season'])
+  const excellent = text.match(/\b(excellent|good|perfect)\s+friction\b/i)
+  if (excellent) {
+    return {
+      label: 'Friction',
+      value: capitalize(excellent[1]),
+      note: 'In dry, cool conditions',
+    }
+  }
+
+  const season = bestSeasonFromMonths(location.destinationDetail)
+  if (!season) return null
+
+  return {
+    label: 'Friction',
+    value: 'Best cool',
+    note: season,
+  }
+}
+
+function destinationSearchText(location: Location, keys: string[]) {
+  const sections = location.destinationDetail?.sections ?? []
+  return sections
+    .filter((section) => keys.includes(section.key))
+    .flatMap((section) => [section.body, ...(section.keyCharacteristics ?? [])])
+    .filter(Boolean)
+    .join(' ')
+}
+
+function firstMatchingCharacteristic(
+  section: DestinationSection | undefined,
+  needles: string[],
+) {
+  return section?.keyCharacteristics?.find((item) =>
+    needles.some((needle) => item.toLowerCase().includes(needle)),
+  )
+}
+
+function capitalize(value: string) {
+  return `${value.charAt(0).toUpperCase()}${value.slice(1).toLowerCase()}`
+}
+
+function destinationMediaBreakItems(location: Location, offset: number, count: number) {
+  const candidates = [location.mainPicture, ...(location.gallery ?? [])]
+    .map((media) => {
+      const src = mediaUrl(media)
+      if (!src) return null
+      return {
+        src,
+        alt: mediaAlt(media) || location.name,
+      }
+    })
+    .filter((item): item is { src: string; alt: string } => Boolean(item))
+
+  if (candidates.length < count) return []
+  return candidates.slice(offset, offset + count).length === count
+    ? candidates.slice(offset, offset + count)
+    : candidates.slice(0, count)
 }
 
 type DestinationCard = {
@@ -917,6 +1249,18 @@ function findHeroStat(
   needle: string,
 ) {
   return stats?.find((stat) => stat.label.toLowerCase().includes(needle))?.value
+}
+
+function findHeroStatItem(
+  stats: NonNullable<DestinationDetail['hero']>['heroStats'] | null | undefined,
+  needle: string,
+) {
+  const stat = stats?.find((item) => item.label.toLowerCase().includes(needle))
+  if (!stat?.value) return undefined
+  return {
+    value: stat.value,
+    note: stat.note ?? undefined,
+  }
 }
 
 function bestSeasonFromMonths(detail: DestinationDetail | null | undefined) {

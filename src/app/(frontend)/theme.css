@@ -176,14 +176,15 @@
   --smallTextLineHeight: 1.8rem;
 
   /* Header */
-  --headerContactsHeight: 4.5rem;
-  --headerHeight: 4.4rem;
-  --headerTotalHeight: calc(var(--headerContactsHeight) + var(--headerHeight) + 2rem);
+  --headerContactsHeight: 0rem;
+  --headerHeight: 7rem;
+  --headerTotalHeight: var(--headerHeight);
   --headerDividerWidth: 350px;
   --headerDividerMaxWidth: 65vw;
   --headerDividerHeight: 2px;
-  --headerBg: rgba(43, 12, 12, 0.55);
-  --headerBgScrolled: rgba(43, 12, 12, 0.85);
+  --headerBgTransparent: rgba(13, 13, 13, 0.55);
+  --headerBg: rgba(13, 13, 13, 0.92);
+  --headerBgScrolled: rgba(13, 13, 13, 0.96);
 
   /* Legacy Rockbusters aliases */
   --rb-red: var(--theme-color-primary);
@@ -321,6 +322,7 @@
   --theme-overlay-dark-heavy: rgba(8, 11, 16, 0.92);
   --theme-motion-fast: 160ms;
   --theme-motion-base: 240ms;
+  --headerBgTransparent: rgba(8, 11, 16, 0.55);
   --headerBg: rgba(8, 11, 16, 0.94);
   --headerBgScrolled: rgba(8, 11, 16, 0.94);
 }

@@ -239,6 +239,7 @@ const headerTokens = [
   '--headerDividerWidth',
   '--headerDividerMaxWidth',
   '--headerDividerHeight',
+  '--headerBgTransparent',
   '--headerBg',
   '--headerBgScrolled',
 ] as const

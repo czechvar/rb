@@ -1,0 +1,3074 @@
+[
+  {
+    "kind": "exact",
+    "firstId": "med_0008654109f426694f4a530e",
+    "secondId": "med_5870db75e1be2dcde7900d41",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_01725a97dfb6c8563e9374da",
+    "secondId": "med_9bb6936dcaafe0f29c56be61",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_01725a97dfb6c8563e9374da",
+    "secondId": "med_f4ed936310fb5e48e69c7882",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_01956a89fd0213016cac7dd7",
+    "secondId": "med_abd115db3c8b28de6d02907d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_01956a89fd0213016cac7dd7",
+    "secondId": "med_b7ccf90225fe1d67e3ee933e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0209c75d51ebbbc41d1f89c0",
+    "secondId": "med_fe7d4db307364b3643d2231d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_046bb08cd262ec5ba59b7051",
+    "secondId": "med_04b3c59a16e190c0c0f440b9",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_046cd8b5a1fe88601fcea2e9",
+    "secondId": "med_63472494c8ad2b8d16cc66a0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0566d37def90cd9759a2e9ec",
+    "secondId": "med_5cc308f57d6a73ac1fa206e0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0566d37def90cd9759a2e9ec",
+    "secondId": "med_a1b2acc8283d60c72f39bc65",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_069411e4f998537f7b41627b",
+    "secondId": "med_1767179507730227c5c42ae1",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_069411e4f998537f7b41627b",
+    "secondId": "med_32a5cd825fec24c3ea513856",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_069411e4f998537f7b41627b",
+    "secondId": "med_5d9644fb9377da7a6d38f05a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_06e0be58027ed68d33faf7cc",
+    "secondId": "med_540cf2e56d264030d25cfc80",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_06f8204b254d37a65ea841e2",
+    "secondId": "med_6bb574c646810b258e49c41c",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_06f8204b254d37a65ea841e2",
+    "secondId": "med_7ad96dccd0f96ce8ff0d63fc",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_076e7f6e6051fa296be73d60",
+    "secondId": "med_0eaf7fa711387a2210ad5469",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_076e7f6e6051fa296be73d60",
+    "secondId": "med_d5572a05c172414482911d4e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0a5322ad04f77a58eef963bc",
+    "secondId": "med_f0bf0961335521b91644acf8",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0b05fb8c77baa89328424163",
+    "secondId": "med_84e3f433f1c9b7385adb052e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0b05fb8c77baa89328424163",
+    "secondId": "med_9569c4c612b9485cb3cb32c5",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0b1ed9faa41157366289c86e",
+    "secondId": "med_17829467b31cbba23ceb43d8",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0e6d2f5a6668a1e96285f1fd",
+    "secondId": "med_ab3e93f974c9ca8fcf887bf5",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0e6d2f5a6668a1e96285f1fd",
+    "secondId": "med_be46e91ce9bdda32daa52d3a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0e6d2f5a6668a1e96285f1fd",
+    "secondId": "med_df73fc39f10a594e87c69343",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_0ffe0a2047597437c98b88d6",
+    "secondId": "med_6b2d7c391739ef5b80cc3bcb",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_10f03ed2949df30a217b0dcb",
+    "secondId": "med_4a78da4ee713794fbd85e6f3",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_10f03ed2949df30a217b0dcb",
+    "secondId": "med_5ebaa7bd640d01c94461a85d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_10f03ed2949df30a217b0dcb",
+    "secondId": "med_63d42444cc58c1cf9911aee0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_10f03ed2949df30a217b0dcb",
+    "secondId": "med_9661def05331f02034badda4",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_10f03ed2949df30a217b0dcb",
+    "secondId": "med_d0a152da81a98d1893c39229",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_10f03ed2949df30a217b0dcb",
+    "secondId": "med_d5a0eda32f78b78629ff4181",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1192dbff207a579c20a48897",
+    "secondId": "med_1cdb11fd1260c827e84b7499",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1192dbff207a579c20a48897",
+    "secondId": "med_3260555d1fa965a4bca0646a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_11ef049c03da9eb320bc3184",
+    "secondId": "med_8f1865adc08333e3db42c622",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_11ef049c03da9eb320bc3184",
+    "secondId": "med_d0a9ff87a761d58e7a795f3f",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_136a97a653447f302ad943ce",
+    "secondId": "med_f575e1381f3754361341da5d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_14221dea6c0f8bdefb235ab7",
+    "secondId": "med_2474d5f4dde60c77acbc142f",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1630df5b81e3cf177451ddf7",
+    "secondId": "med_3101dd6a93b96dda3d76df7c",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_16c3639383bb8966009e2482",
+    "secondId": "med_8f0f59828471fee41cb8d1e8",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_16d47f3a3e008f3c70588c15",
+    "secondId": "med_8a922490a98d6bba31056a43",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_181fb04372e1baffa4bf78e2",
+    "secondId": "med_5c471a212b199aa0f988f1df",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_18660e3a77e0c4f055b2543f",
+    "secondId": "med_e42449d62e925ef84f9ea0a0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1a65bad1e37d1d648d2233fc",
+    "secondId": "med_e9e5ff14c4b093899021aa6d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1a840ef5602ebe27cb78b583",
+    "secondId": "med_3f833d48fc839a151dc9daaf",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1afe3c0a6c4b49dfc36842e1",
+    "secondId": "med_ac92b7c51856f93f043d52ba",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1b134d2b63cb2e7dcceddde8",
+    "secondId": "med_45490dfdb7c69278486a9251",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1b134d2b63cb2e7dcceddde8",
+    "secondId": "med_9cb4c160656807936a52f824",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1b134d2b63cb2e7dcceddde8",
+    "secondId": "med_f5cec171a816a6358101e842",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1b3906b63f7cec192d41c07e",
+    "secondId": "med_52e8a6f8dbb7b2f74bb7ea55",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1b3906b63f7cec192d41c07e",
+    "secondId": "med_ed5d7670313d766c85bdb674",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1c7480ddfb9d218d70713ea0",
+    "secondId": "med_66a8f1b18031d6d140f3a612",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1c74c16c8cabf86dafe2ffa3",
+    "secondId": "med_3ffdd6db0023e6ecb11e1ec0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1c74c16c8cabf86dafe2ffa3",
+    "secondId": "med_8d5c8fe30248be3132ca78f7",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1c74c16c8cabf86dafe2ffa3",
+    "secondId": "med_a26f1d20c6c86a9effac4e1a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1c74c16c8cabf86dafe2ffa3",
+    "secondId": "med_ccc6af12fc935fb44ebe27b2",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1c74c16c8cabf86dafe2ffa3",
+    "secondId": "med_d3212ee235ca7e9c29af4f89",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1c74c16c8cabf86dafe2ffa3",
+    "secondId": "med_e196a4420b27cfff0ac19518",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1d393bc96180ef4c48dca81d",
+    "secondId": "med_3c6056818445a409f53430c1",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1d393bc96180ef4c48dca81d",
+    "secondId": "med_8b1e72f243a1a69bda714946",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1d393bc96180ef4c48dca81d",
+    "secondId": "med_ec6119ebd341fe684392f036",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1dbd29db33af6eaaa923145f",
+    "secondId": "med_64d02388ff9d5ada902e1158",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1dc82fc54ea054f0b58680bb",
+    "secondId": "med_fe95404cbbc3f71a89375c0c",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1f148bc864446545a014442e",
+    "secondId": "med_3e3aedb6c581a9109eb3aeed",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1f217f03be1f679bef996cba",
+    "secondId": "med_a16f275f15b81e5200651a8a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_1f217f03be1f679bef996cba",
+    "secondId": "med_a9e1aadd89e90411bae8f69e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_20f595c69ff77d917cf38c45",
+    "secondId": "med_e82fbd8d846ad5e42e244481",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_217dc473fae827036b14dafd",
+    "secondId": "med_b68b4f06da7f7d3bf8ace071",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_217dc473fae827036b14dafd",
+    "secondId": "med_fb9e489199a4aeda1060102a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_217eb556cd1ef4680c129f8b",
+    "secondId": "med_4a422f4dce9af5f4e5cda8f4",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_217eb556cd1ef4680c129f8b",
+    "secondId": "med_5c87d057473f3a48eb13c7af",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_217eb556cd1ef4680c129f8b",
+    "secondId": "med_b087a97ff4ac07fcef482572",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_217eb556cd1ef4680c129f8b",
+    "secondId": "med_c3f6659eadf0dfe05c822116",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_217eb556cd1ef4680c129f8b",
+    "secondId": "med_d3a9701e7c2396e62dfe8d20",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_217eb556cd1ef4680c129f8b",
+    "secondId": "med_df89cbfd124ab84698e35354",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_217eb556cd1ef4680c129f8b",
+    "secondId": "med_f37afb4f7affc48f3a339b44",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_23c21a62ccc7a509cbf59de3",
+    "secondId": "med_30833cbdd00ffbaa970249ea",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_244f2d4cd040a6c0bebfea66",
+    "secondId": "med_28241f696749f4367825dc64",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_244f2d4cd040a6c0bebfea66",
+    "secondId": "med_3916ffa7f9794762be2700d9",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_25024edc444e6534b8cb30b4",
+    "secondId": "med_66e64737b3218e5197038695",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_25024edc444e6534b8cb30b4",
+    "secondId": "med_8cdcadf9d4d3eb31bf9b4779",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_26c0c6887501e56c0189c5aa",
+    "secondId": "med_977bc79896eae61e1d241756",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_26d17a6f65c08f55786ec1fa",
+    "secondId": "med_bef0f3cc956c1d313ef22ad6",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_27ac50c716feee5f66cbb68a",
+    "secondId": "med_2e24d5b9e1182182ecee4c20",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_27ac50c716feee5f66cbb68a",
+    "secondId": "med_6a0c969cc4496c915022a08e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_28901945685f5b754dd840c6",
+    "secondId": "med_c8d7a09db2d267fdcd5ec748",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_289f8a64a73c4b734b5e36b6",
+    "secondId": "med_700fd4084856111b1af8a79a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_289f8a64a73c4b734b5e36b6",
+    "secondId": "med_e593512dabfc27961dc8cfc4",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_28beb30277bfba2896f21fc1",
+    "secondId": "med_6a860bb7f661800a4d4f4e14",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2b08c0d89220f72042108683",
+    "secondId": "med_ee87bad801877edbcfe344fc",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_b66d4df28653feb5f9dca3c2",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_b8689c357702f28e1dfbb2d7",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2b74cfa1dca5274d8b29234d",
+    "secondId": "med_358121964e986cb9df01191f",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2b74cfa1dca5274d8b29234d",
+    "secondId": "med_985050b20fb40adb0ea41fc3",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2b74cfa1dca5274d8b29234d",
+    "secondId": "med_fd15af81a3077c15368b13e7",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2c12abc0cce07f8295230485",
+    "secondId": "med_cff364472956ba76467b4024",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2c4b47d3b762cdd216e2201c",
+    "secondId": "med_629d771707ad1130c74adcb9",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2c4b47d3b762cdd216e2201c",
+    "secondId": "med_e22eb5ca515bdd7242f1e025",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2c6ee06b52340fdeadf512b8",
+    "secondId": "med_5d7379876fd00dfd8d1de358",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2dc5b0322610e31cec2e3920",
+    "secondId": "med_66d80beba11c82e5874e2e68",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_2dc5b0322610e31cec2e3920",
+    "secondId": "med_6ca05847db68c2a4ec869008",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_30fa3ff785eab96177ed2037",
+    "secondId": "med_4b836c0ac98acd9b692e4736",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_30fa3ff785eab96177ed2037",
+    "secondId": "med_904ccd757ed44a09624a0781",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_30fa3ff785eab96177ed2037",
+    "secondId": "med_9c14d803fcd158225dbf073b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_30fa3ff785eab96177ed2037",
+    "secondId": "med_cfde64a45fe78c3c167508b4",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_31411be99d79a5cd679a8e30",
+    "secondId": "med_d718d252faa8e8235614a0cf",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_31411be99d79a5cd679a8e30",
+    "secondId": "med_d916a94f57b7139861e24f74",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_346ae2f8e115a71f5e1d92dd",
+    "secondId": "med_ec654b949d9ae1770a1e4d57",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_34df159e43b2b5a45d013217",
+    "secondId": "med_78ae77a56fbefaf8b3327e02",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_356ee6d167ef08fd2fbfef40",
+    "secondId": "med_458fc3d72d3bcf3603e027e6",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_360e3870c87321e479c7cd22",
+    "secondId": "med_5a8b82ecdbbaaff7ed046f9b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_360e3870c87321e479c7cd22",
+    "secondId": "med_8521b4aafd4327789a5c8b6b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_360e3870c87321e479c7cd22",
+    "secondId": "med_8853fbd021766f2f5a0cdf01",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_360e3870c87321e479c7cd22",
+    "secondId": "med_9bbdd1a83c9739cb8ac572d5",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_360e3870c87321e479c7cd22",
+    "secondId": "med_d4b5add21e8113d9757652cb",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_371f74e8f44d072122148d2a",
+    "secondId": "med_8458c74ec1bca555ae688e5d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_371f74e8f44d072122148d2a",
+    "secondId": "med_86391828448e3eeedaed609f",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_371f74e8f44d072122148d2a",
+    "secondId": "med_cfbd3f1aa8e166ef37a9f75b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3a1ea40f8eab327e16263424",
+    "secondId": "med_4ce1d50cf90bd8c8bdb7dfec",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3a1ea40f8eab327e16263424",
+    "secondId": "med_7edab3d324d81fd722c7e03f",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3a6c6815dac6deefc2c58108",
+    "secondId": "med_56b9bb0573eec51a7537971d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3bff60cf89757b6a48d0b56a",
+    "secondId": "med_b457ba87ecb8dcd63abfd51e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3c94f0ffc8e05bdd53846f02",
+    "secondId": "med_58c26af5014a93d6f81c52a0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3ce04a80bc8359c5682e4fb8",
+    "secondId": "med_692cce8944b039294dfef95e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3ce04a80bc8359c5682e4fb8",
+    "secondId": "med_85e122d0c748b54b630c65d4",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3ce04a80bc8359c5682e4fb8",
+    "secondId": "med_fdaead2bacf19346a937e72b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3d4af5161695b0c274353daf",
+    "secondId": "med_4ea778a64ff1a6342ece8b2e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3e470ef625696ccb05645166",
+    "secondId": "med_bc63fb7ba87aafac53dbfb42",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3f3bea1a2581d7f8fec0b6c8",
+    "secondId": "med_e8e7061b7c311d8ed2c82633",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_3f59d32e2e5a587a8135e790",
+    "secondId": "med_61b2e7c76b0c2870cc21d032",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_41f6fc5bb130f7147175f955",
+    "secondId": "med_d5d265b3639e5eda8c2a446f",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4325124662d185c7f81aad56",
+    "secondId": "med_7fd931c69b97f3b369af8bb2",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_44701ae24cee1e0a5cf1d8c7",
+    "secondId": "med_494eca9ef1560d3147cb3ccd",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_44701ae24cee1e0a5cf1d8c7",
+    "secondId": "med_4b945c89e2781c02fe2bbb25",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_44701ae24cee1e0a5cf1d8c7",
+    "secondId": "med_b835de5700f98f850bd8176d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_44701ae24cee1e0a5cf1d8c7",
+    "secondId": "med_cdffd1707773e44e1d498f26",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4487ddbc7c626dda7b107f96",
+    "secondId": "med_6f9acb415248cbaa5b2756fc",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_44c74eed2ad75b5c3a01021a",
+    "secondId": "med_e3eb19c9f9955ba29c34ceb6",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4585985f28369c0d2c6c9be9",
+    "secondId": "med_4b497e61915052055f679459",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4585985f28369c0d2c6c9be9",
+    "secondId": "med_aa22f4e29710d1ad649013ad",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4585985f28369c0d2c6c9be9",
+    "secondId": "med_b73e60b6c10a85f882fd0d1d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4594e0e196b55926df39b773",
+    "secondId": "med_93c9b18069605151de74792d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4594e0e196b55926df39b773",
+    "secondId": "med_a6f63ebfe3f7e9d4840ebd2b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_461dadb41e5abaf99baf2e0d",
+    "secondId": "med_a9379a4e5071e6df70623421",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4626c3f5b1c0d05db0357a4e",
+    "secondId": "med_5bb2d21ecb4f44bffbc178d0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_46d961a6b9e91143c6a86412",
+    "secondId": "med_5e9644e3745dc06001a6ca1d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_46d961a6b9e91143c6a86412",
+    "secondId": "med_a5ec00a6dbed6ad484f4b584",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_488fb1dd50c7ee6e28d2ebb5",
+    "secondId": "med_74193976a43b07186d8ec7a0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_488fb1dd50c7ee6e28d2ebb5",
+    "secondId": "med_aafe7ba09e2cee9259724f3a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4b14ee8f69f23360694bd640",
+    "secondId": "med_b2e93921fcc95417fcc202c8",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4b14ee8f69f23360694bd640",
+    "secondId": "med_cf298044fbb79cc32150f87a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4cab71a4cd91d299e6590da3",
+    "secondId": "med_d10ce46a0f0021a968ea96ec",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4d50ece13aff61c6196efc23",
+    "secondId": "med_4ed8ed0725feea74c3f595ad",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4dacd65e9faef1b22239fbf5",
+    "secondId": "med_6a556a44f834555ae5bea4a7",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4ecae25b01d418a530eaf162",
+    "secondId": "med_cae6e5dee7a79bf45f71dc79",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_4f554b84f1d3e6e33418deff",
+    "secondId": "med_f3924a4c748bdaecf988aa7e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_50869010a9cbfc565a8a4917",
+    "secondId": "med_e2aa83a07b73d311c13a87de",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_50a75c04b935a705807b65c0",
+    "secondId": "med_96524eb6a40e6fa954f63cc0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5371cee7f2b0b0a43dde99f9",
+    "secondId": "med_b880d3df0efb4892234046f7",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5371cee7f2b0b0a43dde99f9",
+    "secondId": "med_d58a9d8d777743e6567fdadd",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_53d9b45b33555dbd143258a8",
+    "secondId": "med_ed8918d8f96d7ffedb6634d4",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5689b1610037870228e53ec5",
+    "secondId": "med_a7c9d232f47d2d191d003471",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_56a4018e9c6f5e152d23f9bd",
+    "secondId": "med_5a1793652d334ce1b970c65b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_56a4018e9c6f5e152d23f9bd",
+    "secondId": "med_e1d7f406114eaded9abcbbf1",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_56a4018e9c6f5e152d23f9bd",
+    "secondId": "med_e61cdf78cb40efaee6150178",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_56ef144c14a7a38f47cc48b2",
+    "secondId": "med_ba5070180e4e235b6232a4b1",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_573fc8b07bb4fd69b96b034e",
+    "secondId": "med_b9ef9cba5fd8727f5bbd87db",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_58fbb00561c06915969729f3",
+    "secondId": "med_74198afc5a73637cf48d48f8",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5a7e54cad1cdd91ccb21c454",
+    "secondId": "med_73fcead7f765723a0b23388a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5b1453655f4736b6ded0fbf8",
+    "secondId": "med_978550f7db0e09b2c63e043c",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5b1453655f4736b6ded0fbf8",
+    "secondId": "med_cf80eb71c557393d8908e0a4",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5b70bde483e10617a0037b9b",
+    "secondId": "med_d5ccfdbd7982862ffba294ce",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5f76181869f8116d776de59e",
+    "secondId": "med_d4beabb51661d1fbcb55a23b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5f76181869f8116d776de59e",
+    "secondId": "med_ea3d1a3bcf75e2b5ca27ad12",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5f85d3c5ba3c370ab603909c",
+    "secondId": "med_f26a3b79354945fe6faffb7d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_5f85d3c5ba3c370ab603909c",
+    "secondId": "med_f9c1c93f56f575d851d5cf6f",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_624615269c2cf72b48fd1d10",
+    "secondId": "med_f190873244e2fe0d78bbe0e2",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_62642a8a273e318dd7c57efc",
+    "secondId": "med_efa5dfe300163e806470dde2",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_6285c995cc8d9f6b418831bf",
+    "secondId": "med_d40714d1646f502f2f722efc",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_62faf8197b27efb777ecf23c",
+    "secondId": "med_79c1a6a0f35b3ad148169c59",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_62faf8197b27efb777ecf23c",
+    "secondId": "med_b6e7a188de472f250f499356",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_64a21b6261a1f213f4187f35",
+    "secondId": "med_d44483429dd0640d16e2f665",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_671129c3547dbc471dbe37f1",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_9ca7381b627708dde28bf27f",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_b1471e247276335a1850d893",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_c00c900d5a65ceb12fdb3b28",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_c46c88206126472847610170",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_c63eb9751e8d52888b7bc385",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_d1978510021e9b45c2bb10a8",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_de58b8826bf02b0c5b16d607",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_e258721d749484e8b545688c",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_66018cbbc495cb5a48c6f67f",
+    "secondId": "med_f4db2897858d3d1d76cbbe71",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_67c63e273b00bfb5324340a2",
+    "secondId": "med_95173cf9922e5d90b8a8a88c",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_67c63e273b00bfb5324340a2",
+    "secondId": "med_9855731ad3cf877256487eab",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_6a585e042f95cfddcfc9e7e9",
+    "secondId": "med_a2c84ca8f9373d4380d5ede2",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_6ce68dcc7d9a7716ae88e42c",
+    "secondId": "med_799b5268352159b42db1be9d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_6ddfc1858fa705e9fe151c7c",
+    "secondId": "med_6f964570a82e8a014a289e17",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_6ddfc1858fa705e9fe151c7c",
+    "secondId": "med_be224e550db9cd46eb63944b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_6f289cda6859a9e2d7efa297",
+    "secondId": "med_bcf9294f79ae35fcca845e1a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_6f289cda6859a9e2d7efa297",
+    "secondId": "med_c8e1dc3c87088503def91ff3",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_6ffef239db1fcdd13d130b15",
+    "secondId": "med_8f21ce3ec0050fe38161d384",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_704cd3d643b8e701feb57873",
+    "secondId": "med_bee44c8ddc124dc493450e84",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_7294642308ebcdc344233bc4",
+    "secondId": "med_f477344465e61f645a69382a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_74c6cd2d83fcd8d0f05c9da2",
+    "secondId": "med_7ac2e6d25a58726f0096a049",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_7615c260b756b35ceb338757",
+    "secondId": "med_d35d9ba1ebe99ce5e83fecb6",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_7989f95a9953c23fb9e5ffe2",
+    "secondId": "med_a7b8a89431b102fed0c1d81d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_7b42fc981b02bf9022f7b883",
+    "secondId": "med_7ea8e541b4c4f255130fd86a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_7b42fc981b02bf9022f7b883",
+    "secondId": "med_8a41e7dcba62e69cffd9388e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_7d516009c7c025059c6c8989",
+    "secondId": "med_f7787909b92e90ffd6948a69",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_7d615f432d4070208da4f4fb",
+    "secondId": "med_b07022516e931970c40eef1d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_7e074835702e1156d44fef20",
+    "secondId": "med_a1e1d6217a3297da7f41faeb",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_80ad6f7e58928e29fe79ad93",
+    "secondId": "med_bde6689dbdcc67cda49394f2",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_84847692756b55301a53fa7d",
+    "secondId": "med_ab2f505c4559505261a08be7",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_8c2628648602084f82555f44",
+    "secondId": "med_8eb54d3003968527986bf826",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_8ca09418434ace9baa761e4f",
+    "secondId": "med_8d227f75a17cae863ea3c563",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_8d7a469d6a7b623a7f3e8d79",
+    "secondId": "med_fa693194a6f91e17f3cdf8c4",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_8e44a2a7dc69441e9ac8f76a",
+    "secondId": "med_942085e36eb6476a986963be",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_93d361b72c0c1838ec60e30c",
+    "secondId": "med_e725b00d7a6ac0e40643e974",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_93ecd7af996e057925efcf02",
+    "secondId": "med_9a9d61ba57132585432079e0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_93ecd7af996e057925efcf02",
+    "secondId": "med_a9e8235ccd2091171b55f29d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_93ecd7af996e057925efcf02",
+    "secondId": "med_cbd8f3a91e08feca2158f122",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_945994d6e86360e8224f2b25",
+    "secondId": "med_9761d4cf42e52f72ce446a27",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_945994d6e86360e8224f2b25",
+    "secondId": "med_f7714a2f131039a663d3e13b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_958cbaec8683cbfcca26c578",
+    "secondId": "med_f51b2b48ffe17b546e38cc28",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_95f7a27be579a1900d3bea79",
+    "secondId": "med_d97d070394251ed4150d3c0b",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_98de0b315faf668520f1b81a",
+    "secondId": "med_a3ecf53ada8c18619bcb500d",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_9fb9a9eef42f4011d122324e",
+    "secondId": "med_f35701e8c12d5cbd0913c505",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_a234d46a979c6932c2471e8b",
+    "secondId": "med_ae147c4bfe76519f51d902e7",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_a40d381f4af3a1f1ee5ff916",
+    "secondId": "med_d36e134661d026e620011134",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_a66bf5d0caaf9fa6f5c5d501",
+    "secondId": "med_f91b14ca46b1929a6357b2b7",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_a8cbb68feda9ae87cf6a6408",
+    "secondId": "med_dacd3796c093c5a34d109ad6",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_aab7a02e9140cc3e21f66b37",
+    "secondId": "med_bec3d68ed0216d2966d8240e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_aab7a02e9140cc3e21f66b37",
+    "secondId": "med_c3aa2483a602b92151139b8e",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_ab8a3fc24660afb672729df6",
+    "secondId": "med_e55490bb30ac5b435063899a",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_aeb4353f38157cebc37126c7",
+    "secondId": "med_b1ceae121fd6965e72b1e63f",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_b080aa7d3842e0be1ba90fcb",
+    "secondId": "med_c19d340f4de6dcfaf9a7dd99",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_b706d0a816bf87cd8cd5c0f6",
+    "secondId": "med_d1e1a85747dbe5a74d9a1ff7",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_b982ad160ee14f42bdc1635b",
+    "secondId": "med_d97a7465b8ad29072315220c",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_c0003c1406d2c250dc7b336b",
+    "secondId": "med_e0aa1762011dcb340c875538",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_c5e5f4350d29e944499e29db",
+    "secondId": "med_ccd61f983e50b0b039128fcb",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_d08eb6c2f67a02463099c83d",
+    "secondId": "med_d293550eb0410125fb6303a0",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_dd3732d14041fbe74868ab8a",
+    "secondId": "med_f09b8d4eec0b0c41c21bfe73",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_e9c050f91419fc41fda50ef6",
+    "secondId": "med_e9e47635ff4669239db9d315",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_ec2eae5aea348fb05d95cf6e",
+    "secondId": "med_f109ffaf65e01078eeb91076",
+    "distance": 0
+  },
+  {
+    "kind": "exact",
+    "firstId": "med_f3f125c1d6d429f1b01154a7",
+    "secondId": "med_f74a25dfbf56ea32034ec6d3",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_00d24ad9660fbb831f838d59",
+    "secondId": "med_8fac386aa59b04ca263487b4",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_00d24ad9660fbb831f838d59",
+    "secondId": "med_d8aba0ed56161d2449a2e007",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_01c3b867d54216e749848928",
+    "secondId": "med_9f4a8701808a1e1b8f131668",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_036830d79fbb85d8bafbbabc",
+    "secondId": "med_9fb4e1e18e4299920237a72b",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_03b2bb11445d45faa1d5277f",
+    "secondId": "med_b9f2081b54d99b7e1a7bb4e7",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_04ea89c5d44cfa806942f18c",
+    "secondId": "med_6373a042fe35905f1094d83a",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_0763b5dce612b60fd9e53a37",
+    "secondId": "med_a8fb8362f3377e92bf8259c3",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_08716e27829cba167a25e6e1",
+    "secondId": "med_ff8f095fe731a0d257e3cbb1",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_0ec3bacd0fe1bb1a892ef54f",
+    "secondId": "med_292c7d7d10887af001f40bf1",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_106b689f1b898c53bca0ebb5",
+    "secondId": "med_6554a1c84b7595eb16ff51f3",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1189e8876b5774b5920ee9e4",
+    "secondId": "med_1c74c16c8cabf86dafe2ffa3",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1189e8876b5774b5920ee9e4",
+    "secondId": "med_3ffdd6db0023e6ecb11e1ec0",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1189e8876b5774b5920ee9e4",
+    "secondId": "med_8d5c8fe30248be3132ca78f7",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1189e8876b5774b5920ee9e4",
+    "secondId": "med_a26f1d20c6c86a9effac4e1a",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1189e8876b5774b5920ee9e4",
+    "secondId": "med_ccc6af12fc935fb44ebe27b2",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1189e8876b5774b5920ee9e4",
+    "secondId": "med_d3212ee235ca7e9c29af4f89",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1189e8876b5774b5920ee9e4",
+    "secondId": "med_e196a4420b27cfff0ac19518",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_119747ad2da70833e986576a",
+    "secondId": "med_2b4f97c7e0ea56cd9d30049f",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_119747ad2da70833e986576a",
+    "secondId": "med_e78c20d7b9c4cc0274726826",
+    "distance": 5
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1607f7ed80c6b832f8d5a5ed",
+    "secondId": "med_172d5d62f12074dfdc54fe2e",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1607f7ed80c6b832f8d5a5ed",
+    "secondId": "med_3a6c6815dac6deefc2c58108",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1607f7ed80c6b832f8d5a5ed",
+    "secondId": "med_56b9bb0573eec51a7537971d",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1729f92260742643856a41f6",
+    "secondId": "med_d96caee8b6e129f31657b938",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1729f92260742643856a41f6",
+    "secondId": "med_f3b5443060fda76b4fb8da4d",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_172d5d62f12074dfdc54fe2e",
+    "secondId": "med_3a6c6815dac6deefc2c58108",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_172d5d62f12074dfdc54fe2e",
+    "secondId": "med_56b9bb0573eec51a7537971d",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_17c25bc734f35d93a6c6ef63",
+    "secondId": "med_55d4e554c5cc4bd0a1b8f2dd",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1a65bad1e37d1d648d2233fc",
+    "secondId": "med_624cfa8345ee86c62593ce91",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1a65bad1e37d1d648d2233fc",
+    "secondId": "med_670bcfec0c87e71182841f61",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1ba09130d25c68b817ca0815",
+    "secondId": "med_2c565f40104f0a24f471f3e8",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1ba09130d25c68b817ca0815",
+    "secondId": "med_4ed67e597317da60d73d6590",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1ba09130d25c68b817ca0815",
+    "secondId": "med_99b6224ab16fa31362b06d71",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1c7480ddfb9d218d70713ea0",
+    "secondId": "med_aa74e02692cc26d07cd3b2b9",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1cb05a5c01a9bcf1f26d7297",
+    "secondId": "med_54fe20ae330cb1b9266572cf",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1dc82fc54ea054f0b58680bb",
+    "secondId": "med_266cefdea8fab25fa3803c14",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1dc82fc54ea054f0b58680bb",
+    "secondId": "med_4788b6d2c4018e4ded875d74",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1e5899de6b71dda87142f8aa",
+    "secondId": "med_bd968950a0293c7d4db6e420",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1f27bf7ec6feb1ec8a17cdc7",
+    "secondId": "med_384648f4dcfbfd1249183880",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_1f27bf7ec6feb1ec8a17cdc7",
+    "secondId": "med_fa775ac60d23f7f486b5cbd8",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_209dfbf0274b1bfe2950cc41",
+    "secondId": "med_bdda574d581d36a0d8b67dbc",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_209dfbf0274b1bfe2950cc41",
+    "secondId": "med_d1e285532d898c26f9173b4f",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_20bf2e5fa6925d7c49f0968e",
+    "secondId": "med_944932d04262c481680ac84c",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_20f595c69ff77d917cf38c45",
+    "secondId": "med_a3e3b22c5ab4f0dc6f73807b",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_210bbb6d7d865ed4866f788d",
+    "secondId": "med_67c2cd56ac48363b7c1470a1",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_21b8a063d2394f55285ae675",
+    "secondId": "med_8bab7abf7e1a0020adca4994",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_21b8a063d2394f55285ae675",
+    "secondId": "med_b8a652314c0d7a3fce638d8d",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_22d0ae6eb2fd162476b86572",
+    "secondId": "med_3f3bea1a2581d7f8fec0b6c8",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_22d0ae6eb2fd162476b86572",
+    "secondId": "med_e8e7061b7c311d8ed2c82633",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_23c21a62ccc7a509cbf59de3",
+    "secondId": "med_646be2a29aebdf60c5868f3b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_23c21a62ccc7a509cbf59de3",
+    "secondId": "med_c5e5f4350d29e944499e29db",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_23c21a62ccc7a509cbf59de3",
+    "secondId": "med_ccd61f983e50b0b039128fcb",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_244f2d4cd040a6c0bebfea66",
+    "secondId": "med_a8cbb68feda9ae87cf6a6408",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_244f2d4cd040a6c0bebfea66",
+    "secondId": "med_dacd3796c093c5a34d109ad6",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_266cefdea8fab25fa3803c14",
+    "secondId": "med_4788b6d2c4018e4ded875d74",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_266cefdea8fab25fa3803c14",
+    "secondId": "med_fe95404cbbc3f71a89375c0c",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2678c30cef642a7d74b87e09",
+    "secondId": "med_be4d100534975255c4b08094",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_26c0c6887501e56c0189c5aa",
+    "secondId": "med_39afd4ad8c4f457e203711f2",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_28241f696749f4367825dc64",
+    "secondId": "med_a8cbb68feda9ae87cf6a6408",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_28241f696749f4367825dc64",
+    "secondId": "med_dacd3796c093c5a34d109ad6",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_653e4c25c9d959eccc128b1f",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_671129c3547dbc471dbe37f1",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_9996c410c4646d583338ebef",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_9ca7381b627708dde28bf27f",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_b1471e247276335a1850d893",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_c00c900d5a65ceb12fdb3b28",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_c46c88206126472847610170",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_c63eb9751e8d52888b7bc385",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_d1978510021e9b45c2bb10a8",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_de58b8826bf02b0c5b16d607",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b19ca711ee9fadc679c7fc8",
+    "secondId": "med_e258721d749484e8b545688c",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b4f97c7e0ea56cd9d30049f",
+    "secondId": "med_668967ad92ad4062ee389fad",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b4f97c7e0ea56cd9d30049f",
+    "secondId": "med_e78c20d7b9c4cc0274726826",
+    "distance": 5
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2b74cfa1dca5274d8b29234d",
+    "secondId": "med_94353281696fc4be9cc87d35",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2c565f40104f0a24f471f3e8",
+    "secondId": "med_4ed67e597317da60d73d6590",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2c565f40104f0a24f471f3e8",
+    "secondId": "med_99b6224ab16fa31362b06d71",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2c6ee06b52340fdeadf512b8",
+    "secondId": "med_8c2628648602084f82555f44",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2c6ee06b52340fdeadf512b8",
+    "secondId": "med_8eb54d3003968527986bf826",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2cb5178b148ae914e199a56c",
+    "secondId": "med_8ced9460158e381f69247da8",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2d4e1fbb11836e87a3590dad",
+    "secondId": "med_f189e9d1550e003baac41ce3",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2dce1411f0b1e8471b12e509",
+    "secondId": "med_657c13761ff43bdbd3f313ca",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2e787752af94bb4ba5a3d495",
+    "secondId": "med_af918d938fce54af93e17779",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2fe491eed2308b85709a3f2b",
+    "secondId": "med_5fda71af71780d894f4c56e7",
+    "distance": 5
+  },
+  {
+    "kind": "near",
+    "firstId": "med_2fe491eed2308b85709a3f2b",
+    "secondId": "med_a2335a4688320da2865db0bc",
+    "distance": 6
+  },
+  {
+    "kind": "near",
+    "firstId": "med_30833cbdd00ffbaa970249ea",
+    "secondId": "med_646be2a29aebdf60c5868f3b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_30833cbdd00ffbaa970249ea",
+    "secondId": "med_c5e5f4350d29e944499e29db",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_30833cbdd00ffbaa970249ea",
+    "secondId": "med_ccd61f983e50b0b039128fcb",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_30ea0a898fc4841bc3f84bc3",
+    "secondId": "med_9a01e3bb6b32429221032709",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_31a7bfff9e7e34fc1af54069",
+    "secondId": "med_4f56889b2f112e6d55796755",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_31a7bfff9e7e34fc1af54069",
+    "secondId": "med_a978fa8f1ddeaf1e7f7c66c2",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_33d5d6cdb8398779114f5333",
+    "secondId": "med_5bb5f1c7092867d2179d6849",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_33d5d6cdb8398779114f5333",
+    "secondId": "med_6327d470015ce00cc9c5953e",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_33d5d6cdb8398779114f5333",
+    "secondId": "med_e86dbe8c14879a05972bc178",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_34c1ea1d6006bd7f73214bcf",
+    "secondId": "med_78462e9c4f71e724a9bce2dd",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_358121964e986cb9df01191f",
+    "secondId": "med_94353281696fc4be9cc87d35",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_37b2c01f8f370685e4a32ca1",
+    "secondId": "med_39fe0578c88feb398462d99d",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_37b2c01f8f370685e4a32ca1",
+    "secondId": "med_acbb02f26cd9578e8692e95e",
+    "distance": 6
+  },
+  {
+    "kind": "near",
+    "firstId": "med_384648f4dcfbfd1249183880",
+    "secondId": "med_fa775ac60d23f7f486b5cbd8",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_3916ffa7f9794762be2700d9",
+    "secondId": "med_a8cbb68feda9ae87cf6a6408",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_3916ffa7f9794762be2700d9",
+    "secondId": "med_dacd3796c093c5a34d109ad6",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_39afd4ad8c4f457e203711f2",
+    "secondId": "med_977bc79896eae61e1d241756",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_39c31f1067f739fba9a19586",
+    "secondId": "med_93ecd7af996e057925efcf02",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_39c31f1067f739fba9a19586",
+    "secondId": "med_9a9d61ba57132585432079e0",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_39c31f1067f739fba9a19586",
+    "secondId": "med_a9e8235ccd2091171b55f29d",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_39c31f1067f739fba9a19586",
+    "secondId": "med_cbd8f3a91e08feca2158f122",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_3be5dd81180bf53bba245947",
+    "secondId": "med_de1a3e917e67e628f3a75d87",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_3c94f0ffc8e05bdd53846f02",
+    "secondId": "med_a3e3b22c5ab4f0dc6f73807b",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_3eb4335d3e9ec2d079d76569",
+    "secondId": "med_f19e209dcd9c8cb87f022fbd",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_40ce147ef3f24315bf6941b7",
+    "secondId": "med_fa352f5e232d77083c897dad",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_41ad068619ebd8d1bcdd4d4e",
+    "secondId": "med_6285c995cc8d9f6b418831bf",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_41ad068619ebd8d1bcdd4d4e",
+    "secondId": "med_d40714d1646f502f2f722efc",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_41ad068619ebd8d1bcdd4d4e",
+    "secondId": "med_e2a1c5c2d9d8aaf0ed2a7e34",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_4768e6d82607ef4809093a33",
+    "secondId": "med_c94c0ac834dd3f41d884539c",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_4788b6d2c4018e4ded875d74",
+    "secondId": "med_fe95404cbbc3f71a89375c0c",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_4ed67e597317da60d73d6590",
+    "secondId": "med_99b6224ab16fa31362b06d71",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_4f56889b2f112e6d55796755",
+    "secondId": "med_a978fa8f1ddeaf1e7f7c66c2",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_50127eec071b14867f14fca2",
+    "secondId": "med_acbb02f26cd9578e8692e95e",
+    "distance": 5
+  },
+  {
+    "kind": "near",
+    "firstId": "med_50a75c04b935a705807b65c0",
+    "secondId": "med_7b42fc981b02bf9022f7b883",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_50a75c04b935a705807b65c0",
+    "secondId": "med_7ea8e541b4c4f255130fd86a",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_50a75c04b935a705807b65c0",
+    "secondId": "med_8a41e7dcba62e69cffd9388e",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_512e782c8a722fe2eefdabc6",
+    "secondId": "med_61872eec56d24c4ef620463d",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_512e782c8a722fe2eefdabc6",
+    "secondId": "med_ce20c847718a4e45ae801631",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_512e782c8a722fe2eefdabc6",
+    "secondId": "med_dd1b0b68609432c1af14a508",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_513e4022b6fe357e59861514",
+    "secondId": "med_c410142febaac81ff0f94a3e",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_513e4022b6fe357e59861514",
+    "secondId": "med_de63d41dfc793e6f81456629",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_513e4022b6fe357e59861514",
+    "secondId": "med_fbd0db885e17b2c0f4709cfb",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_56ac2b3aef4eb0ab4a71c373",
+    "secondId": "med_66a10ab10275853bc9f23b38",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_56ac2b3aef4eb0ab4a71c373",
+    "secondId": "med_7ec968f761faea6d6f5019d9",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_56ac2b3aef4eb0ab4a71c373",
+    "secondId": "med_e0716a357a7d5035ff733c37",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_56ac2b3aef4eb0ab4a71c373",
+    "secondId": "med_f40a37e794d246f55d5ef8fc",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_58c26af5014a93d6f81c52a0",
+    "secondId": "med_a3e3b22c5ab4f0dc6f73807b",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5910e80672ea3800f618a29e",
+    "secondId": "med_bfab34db36d3787b04211b4f",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5910e80672ea3800f618a29e",
+    "secondId": "med_e1f2fcb43ae1d8cfd770f716",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5bb5f1c7092867d2179d6849",
+    "secondId": "med_6327d470015ce00cc9c5953e",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5bb5f1c7092867d2179d6849",
+    "secondId": "med_e86dbe8c14879a05972bc178",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5bd337aff566bc58344cf011",
+    "secondId": "med_e18d91645feaf27b2c923a36",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5d7379876fd00dfd8d1de358",
+    "secondId": "med_8c2628648602084f82555f44",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5d7379876fd00dfd8d1de358",
+    "secondId": "med_8eb54d3003968527986bf826",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5f575a10287231485954a14a",
+    "secondId": "med_83047be6b4901fdfaa8a4eda",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5f575a10287231485954a14a",
+    "secondId": "med_83a25aabe93877c83e2f5242",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5f575a10287231485954a14a",
+    "secondId": "med_c611a261ca16f48e8282525b",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_5fda71af71780d894f4c56e7",
+    "secondId": "med_a2335a4688320da2865db0bc",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_61872eec56d24c4ef620463d",
+    "secondId": "med_ce20c847718a4e45ae801631",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_61872eec56d24c4ef620463d",
+    "secondId": "med_dd1b0b68609432c1af14a508",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_624cfa8345ee86c62593ce91",
+    "secondId": "med_670bcfec0c87e71182841f61",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_624cfa8345ee86c62593ce91",
+    "secondId": "med_e9e5ff14c4b093899021aa6d",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_62642a8a273e318dd7c57efc",
+    "secondId": "med_89ac29e26588d65121de924c",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_62642a8a273e318dd7c57efc",
+    "secondId": "med_ff582af1bc0e7cead4991f60",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_6285c995cc8d9f6b418831bf",
+    "secondId": "med_e2a1c5c2d9d8aaf0ed2a7e34",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_6327d470015ce00cc9c5953e",
+    "secondId": "med_e86dbe8c14879a05972bc178",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_646be2a29aebdf60c5868f3b",
+    "secondId": "med_c5e5f4350d29e944499e29db",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_646be2a29aebdf60c5868f3b",
+    "secondId": "med_ccd61f983e50b0b039128fcb",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_9996c410c4646d583338ebef",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_b66d4df28653feb5f9dca3c2",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_b8689c357702f28e1dfbb2d7",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_653e4c25c9d959eccc128b1f",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_66a10ab10275853bc9f23b38",
+    "secondId": "med_7ec968f761faea6d6f5019d9",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_66a10ab10275853bc9f23b38",
+    "secondId": "med_e0716a357a7d5035ff733c37",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_66a10ab10275853bc9f23b38",
+    "secondId": "med_f40a37e794d246f55d5ef8fc",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_66a8f1b18031d6d140f3a612",
+    "secondId": "med_aa74e02692cc26d07cd3b2b9",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_670bcfec0c87e71182841f61",
+    "secondId": "med_e9e5ff14c4b093899021aa6d",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_671129c3547dbc471dbe37f1",
+    "secondId": "med_9996c410c4646d583338ebef",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_671129c3547dbc471dbe37f1",
+    "secondId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_671129c3547dbc471dbe37f1",
+    "secondId": "med_b66d4df28653feb5f9dca3c2",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_671129c3547dbc471dbe37f1",
+    "secondId": "med_b8689c357702f28e1dfbb2d7",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_671129c3547dbc471dbe37f1",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_6bfe53f3898b3446df0980ce",
+    "secondId": "med_fb7a59cb303d9009dbf6f5c8",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_6e9ef8b6ba17e445b7fd7152",
+    "secondId": "med_76e927340f1c360e7471f3a6",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_6e9ef8b6ba17e445b7fd7152",
+    "secondId": "med_ecec31d23cd918d1a28946de",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_6fc8b8aa4286b2181999adbc",
+    "secondId": "med_8ca09418434ace9baa761e4f",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_6fc8b8aa4286b2181999adbc",
+    "secondId": "med_8d227f75a17cae863ea3c563",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_6fc8b8aa4286b2181999adbc",
+    "secondId": "med_a9bdfe967be049bc9e35e818",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_7162c089c584f32e2f2a4e7e",
+    "secondId": "med_8f78830feb458d523e71152c",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_7170d24cebf181918ea59592",
+    "secondId": "med_b7ca06d2beb69fd85eb9d524",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_74121d907e116f1fca6f3a59",
+    "secondId": "med_f505dbcba64d9e42be7a453c",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_767a1d4ad85b3ffe4087ab3b",
+    "secondId": "med_857e191ca47a90144cdfec22",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_76e927340f1c360e7471f3a6",
+    "secondId": "med_ecec31d23cd918d1a28946de",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_7a57edc0a1ef12b488d6758a",
+    "secondId": "med_eb08f161723732689524fa28",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_7b42fc981b02bf9022f7b883",
+    "secondId": "med_96524eb6a40e6fa954f63cc0",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_7ea8e541b4c4f255130fd86a",
+    "secondId": "med_96524eb6a40e6fa954f63cc0",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_7ec968f761faea6d6f5019d9",
+    "secondId": "med_e0716a357a7d5035ff733c37",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_7ec968f761faea6d6f5019d9",
+    "secondId": "med_f40a37e794d246f55d5ef8fc",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_80e4f5c45a4da3e4428f13af",
+    "secondId": "med_ea29a07db973a6f9ae7b3dde",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_80efbffeb3b1c515dc1d9a26",
+    "secondId": "med_970d1b83ac2196c002e01688",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_83047be6b4901fdfaa8a4eda",
+    "secondId": "med_83a25aabe93877c83e2f5242",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_83047be6b4901fdfaa8a4eda",
+    "secondId": "med_c611a261ca16f48e8282525b",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_83a25aabe93877c83e2f5242",
+    "secondId": "med_c611a261ca16f48e8282525b",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_83db643e873cbc56529efa42",
+    "secondId": "med_c744ba9a5b49eb5de0d65b98",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_84a9445a0904bcb90728c22b",
+    "secondId": "med_f3b2059bb3e0201c02a06b4c",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_857e191ca47a90144cdfec22",
+    "secondId": "med_d96caee8b6e129f31657b938",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_8708825f8ceb7742fcbd403a",
+    "secondId": "med_8f7a914fbce4f28c4f2c44d8",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_8708825f8ceb7742fcbd403a",
+    "secondId": "med_c6e18723f38ca40588b0225e",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_89ac29e26588d65121de924c",
+    "secondId": "med_efa5dfe300163e806470dde2",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_89ac29e26588d65121de924c",
+    "secondId": "med_ff582af1bc0e7cead4991f60",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_8a41e7dcba62e69cffd9388e",
+    "secondId": "med_96524eb6a40e6fa954f63cc0",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_8bab7abf7e1a0020adca4994",
+    "secondId": "med_b8a652314c0d7a3fce638d8d",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_8ca09418434ace9baa761e4f",
+    "secondId": "med_a9bdfe967be049bc9e35e818",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_8d227f75a17cae863ea3c563",
+    "secondId": "med_a9bdfe967be049bc9e35e818",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_8f7a914fbce4f28c4f2c44d8",
+    "secondId": "med_c6e18723f38ca40588b0225e",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_8fac386aa59b04ca263487b4",
+    "secondId": "med_d8aba0ed56161d2449a2e007",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_94353281696fc4be9cc87d35",
+    "secondId": "med_985050b20fb40adb0ea41fc3",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_94353281696fc4be9cc87d35",
+    "secondId": "med_fd15af81a3077c15368b13e7",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_9ca7381b627708dde28bf27f",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_b1471e247276335a1850d893",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_b66d4df28653feb5f9dca3c2",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_b8689c357702f28e1dfbb2d7",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_c00c900d5a65ceb12fdb3b28",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_c46c88206126472847610170",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_c63eb9751e8d52888b7bc385",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_d1978510021e9b45c2bb10a8",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_de58b8826bf02b0c5b16d607",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_e258721d749484e8b545688c",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9996c410c4646d583338ebef",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9ca7381b627708dde28bf27f",
+    "secondId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9ca7381b627708dde28bf27f",
+    "secondId": "med_b66d4df28653feb5f9dca3c2",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9ca7381b627708dde28bf27f",
+    "secondId": "med_b8689c357702f28e1dfbb2d7",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9ca7381b627708dde28bf27f",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_b1471e247276335a1850d893",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_b66d4df28653feb5f9dca3c2",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_b8689c357702f28e1dfbb2d7",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_c00c900d5a65ceb12fdb3b28",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_c46c88206126472847610170",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_c63eb9751e8d52888b7bc385",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_d1978510021e9b45c2bb10a8",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_de58b8826bf02b0c5b16d607",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_e258721d749484e8b545688c",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_9f010cb7b6ce0e33af0c1ffe",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_a3e3b22c5ab4f0dc6f73807b",
+    "secondId": "med_e82fbd8d846ad5e42e244481",
+    "distance": 7
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b09e1ad018668657d41affdf",
+    "secondId": "med_cc4a1a0868e88de5c129a314",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b1471e247276335a1850d893",
+    "secondId": "med_b66d4df28653feb5f9dca3c2",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b1471e247276335a1850d893",
+    "secondId": "med_b8689c357702f28e1dfbb2d7",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b1471e247276335a1850d893",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b4cfa9c4ce4dc1b1b4e538cb",
+    "secondId": "med_eef1c2b8bce9fe5519cf8876",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b66d4df28653feb5f9dca3c2",
+    "secondId": "med_c00c900d5a65ceb12fdb3b28",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b66d4df28653feb5f9dca3c2",
+    "secondId": "med_c46c88206126472847610170",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b66d4df28653feb5f9dca3c2",
+    "secondId": "med_c63eb9751e8d52888b7bc385",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b66d4df28653feb5f9dca3c2",
+    "secondId": "med_d1978510021e9b45c2bb10a8",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b66d4df28653feb5f9dca3c2",
+    "secondId": "med_de58b8826bf02b0c5b16d607",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b66d4df28653feb5f9dca3c2",
+    "secondId": "med_e258721d749484e8b545688c",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b8689c357702f28e1dfbb2d7",
+    "secondId": "med_c00c900d5a65ceb12fdb3b28",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b8689c357702f28e1dfbb2d7",
+    "secondId": "med_c46c88206126472847610170",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b8689c357702f28e1dfbb2d7",
+    "secondId": "med_c63eb9751e8d52888b7bc385",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b8689c357702f28e1dfbb2d7",
+    "secondId": "med_d1978510021e9b45c2bb10a8",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b8689c357702f28e1dfbb2d7",
+    "secondId": "med_de58b8826bf02b0c5b16d607",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_b8689c357702f28e1dfbb2d7",
+    "secondId": "med_e258721d749484e8b545688c",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_bd6a03287bd8176c40f5ca5a",
+    "secondId": "med_d96caee8b6e129f31657b938",
+    "distance": 8
+  },
+  {
+    "kind": "near",
+    "firstId": "med_bfab34db36d3787b04211b4f",
+    "secondId": "med_e1f2fcb43ae1d8cfd770f716",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_c00c900d5a65ceb12fdb3b28",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_c16cc9237644af53b0b0da57",
+    "secondId": "med_cf66fa313be753d2d89f08ba",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_c16cc9237644af53b0b0da57",
+    "secondId": "med_e11ae8457a5738cc1cc917eb",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_c410142febaac81ff0f94a3e",
+    "secondId": "med_de63d41dfc793e6f81456629",
+    "distance": 1
+  },
+  {
+    "kind": "near",
+    "firstId": "med_c410142febaac81ff0f94a3e",
+    "secondId": "med_fbd0db885e17b2c0f4709cfb",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_c46c88206126472847610170",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_c63eb9751e8d52888b7bc385",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_ce20c847718a4e45ae801631",
+    "secondId": "med_dd1b0b68609432c1af14a508",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_cf66fa313be753d2d89f08ba",
+    "secondId": "med_e11ae8457a5738cc1cc917eb",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_d1978510021e9b45c2bb10a8",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_d40714d1646f502f2f722efc",
+    "secondId": "med_e2a1c5c2d9d8aaf0ed2a7e34",
+    "distance": 4
+  },
+  {
+    "kind": "near",
+    "firstId": "med_de58b8826bf02b0c5b16d607",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_de63d41dfc793e6f81456629",
+    "secondId": "med_fbd0db885e17b2c0f4709cfb",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_e0716a357a7d5035ff733c37",
+    "secondId": "med_f40a37e794d246f55d5ef8fc",
+    "distance": 2
+  },
+  {
+    "kind": "near",
+    "firstId": "med_e258721d749484e8b545688c",
+    "secondId": "med_f9fbba114db9f01209c7783b",
+    "distance": 3
+  },
+  {
+    "kind": "near",
+    "firstId": "med_e40d54b80d94d65896de0ba1",
+    "secondId": "med_e45e0735a39d422914ab291d",
+    "distance": 0
+  },
+  {
+    "kind": "near",
+    "firstId": "med_efa5dfe300163e806470dde2",
+    "secondId": "med_ff582af1bc0e7cead4991f60",
+    "distance": 0
+  }
+]

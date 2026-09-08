@@ -6,6 +6,8 @@ import { revalidateTag, unstable_cache } from 'next/cache'
  * revalidate hooks (src/collections/hooks/revalidate.ts).
  */
 export const TAGS = {
+  categories: 'categories',
+  difficulties: 'difficulties',
   guides: 'guides',
   locations: 'locations',
   events: 'events',

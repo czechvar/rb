@@ -12,6 +12,7 @@ import { DestinationCountryIndexBlock } from './DestinationCountryIndexBlock'
 import { GuideGridBlock } from './GuideGridBlock'
 import { PostGridBlock } from './PostGridBlock'
 import { CalendarBlock } from './CalendarBlock'
+import { CatalogueResultsBlock } from './CatalogueResultsBlock'
 import {
   FeaturedEventDateBlock,
   FeaturedGuideBlock,
@@ -51,7 +52,10 @@ import {
   LocationContentBlock,
   DestinationCardGridBlock,
   DestinationHeroBlock,
+  DestinationIntroStatsBlock,
   DestinationLogisticsBlock,
+  DestinationMediaBreakBlock,
+  DestinationRockStatsBlock,
   DestinationSeasonBlock,
   DestinationSectionsBlock,
   DestinationSidebarBlock,
@@ -143,6 +147,7 @@ const blockRenderers: Record<string, BlockRenderer> = {
     FeaturedPostBlock(block as Extract<PageBlock, { blockType: 'featuredPost' }>, context),
   calendar: (block, context) =>
     CalendarBlock(block as Extract<PageBlock, { blockType: 'calendar' }>, context),
+  catalogueResults: (block) => CatalogueResultsBlock(block as unknown as Parameters<typeof CatalogueResultsBlock>[0]),
   featuredEventDate: (block) =>
     FeaturedEventDateBlock(block as Extract<PageBlock, { blockType: 'featuredEventDate' }>),
   mediaBlock: (block) => <MediaBlock {...(block as Extract<PageBlock, { blockType: 'mediaBlock' }>)} />,
@@ -182,6 +187,9 @@ const blockRenderers: Record<string, BlockRenderer> = {
   locationTrips: (block, context) => LocationTripsBlock(block, context),
   destinationHero: (block, context) => DestinationHeroBlock(block, context),
   destinationSections: (block, context) => DestinationSectionsBlock(block, context),
+  destinationIntroStats: (block, context) => DestinationIntroStatsBlock(block, context),
+  destinationRockStats: (block, context) => DestinationRockStatsBlock(block, context),
+  destinationMediaBreak: (block, context) => DestinationMediaBreakBlock(block, context),
   destinationCardGrid: (block, context) => DestinationCardGridBlock(block, context),
   destinationSeason: (block, context) => DestinationSeasonBlock(block, context),
   destinationLogistics: (block, context) => DestinationLogisticsBlock(block, context),

@@ -20,10 +20,12 @@ export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderC
   const resolved = galleryImages(props, props.context ?? {}).filter((image) => mediaUrl(image))
   if (resolved.length === 0) return null
 
+  const isDestinationStrip = variant === 'tiles' && Boolean(props.context?.location)
   const className = [
     styles.gallerySection,
     variant === 'masonry' ? styles.galleryMasonry : '',
     variant === 'tiles' ? styles.galleryTiles : '',
+    isDestinationStrip ? styles.galleryDestinationStrip : '',
   ].filter(Boolean).join(' ')
 
   return (
@@ -43,7 +45,7 @@ export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderC
                 src={mediaUrl(image) ?? ''}
                 alt={mediaAlt(image)}
                 fill
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes={isDestinationStrip ? '(max-width: 768px) 25vw, 25vw' : '(max-width: 768px) 100vw, 33vw'}
               />
             </figure>
           ))}

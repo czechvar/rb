@@ -84,6 +84,88 @@ describe('pages collection and CMS block bindings', () => {
     expect(docs).toEqual([])
   })
 
+  it('persists Catalogue Results CMS controls on a page', async () => {
+    const payload = await getTestPayload()
+    const slug = `cms-page-catalogue-results-${Date.now()}`
+
+    const page = await payload.create({
+      collection: 'pages',
+      overrideAccess: true,
+      data: {
+        title: 'Trips Catalogue CMS Page',
+        slug,
+        status: 'draft',
+        layout: [
+          {
+            blockType: 'catalogueResults',
+            heading: 'Upcoming trips',
+            enabledFacets: ['category', 'difficulty', 'location', 'month', 'guide'],
+            defaultSort: 'date',
+            resultLimit: 12,
+            paginationMode: 'showMore',
+            presentation: 'calendar',
+            stickyFilters: true,
+          },
+        ],
+      },
+    })
+    track('pages', page.id)
+
+    expect(page.layout?.[0]).toMatchObject({
+      blockType: 'catalogueResults',
+      enabledFacets: ['category', 'difficulty', 'location', 'month', 'guide'],
+      stickyFilters: true,
+    })
+  })
+
+  it('accepts the hero bar stats variant on page updates', async () => {
+    const payload = await getTestPayload()
+    const slug = `cms-page-stats-hero-bar-${Date.now()}`
+
+    const createdPage = await payload.create({
+      collection: 'pages',
+      overrideAccess: true,
+      data: {
+        title: 'Stats Hero Bar CMS Page',
+        slug,
+        status: 'draft',
+        layout: [
+          {
+            blockType: 'stats',
+            variant: 'light',
+            columns: 'auto',
+            items: [{ value: '1,600+', label: 'Problems' }],
+          },
+        ],
+      },
+    })
+    track('pages', createdPage.id)
+
+    const updatedPage = await payload.update({
+      collection: 'pages',
+      id: createdPage.id,
+      overrideAccess: true,
+      data: {
+        layout: [
+          {
+            blockType: 'stats',
+            variant: 'heroBar',
+            columns: 'auto',
+            items: [
+              { value: '1,600+', label: 'Problems' },
+              { value: '30+', label: 'Sectors' },
+            ],
+          },
+        ],
+      },
+    })
+
+    expect(updatedPage.layout?.[0]).toMatchObject({
+      blockType: 'stats',
+      variant: 'heroBar',
+    })
+  })
+
   it('resolves manual trip-grid bindings to published events only', async () => {
     const payload = await getTestPayload()
     const runId = Date.now()

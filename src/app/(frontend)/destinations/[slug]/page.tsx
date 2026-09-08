@@ -5,6 +5,7 @@ import { getLocationBySlug, getPublishedEventsForLocation } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
+import { DestinationJumpNav } from '@/components/blocks/DestinationJumpNav'
 import { JsonLd } from '@/components/JsonLd'
 import { locationDetailGraphJsonLd } from '@/lib/jsonld'
 import blockStyles from '@/components/blocks/blocks.module.css'
@@ -72,7 +73,7 @@ export default async function DestinationPage({ params }: Props) {
     defaultDestinationBlocks.after.length
   ) {
     return (
-      <MarketingShell>
+      <MarketingShell transparentHeader>
         <JsonLd data={jsonLd} />
         <main>
           <RenderBlocks blocks={defaultDestinationBlocks.top} context={{ location: loc }} />
@@ -163,12 +164,18 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
       sectionKeys: sectionKeys(['intro']),
     },
     {
+      blockType: 'destinationIntroStats',
+    },
+    {
       blockType: 'destinationSections',
       sectionKeys: sectionKeys(['history']),
     },
     {
       blockType: 'destinationSections',
       sectionKeys: sectionKeys(['rock']),
+    },
+    {
+      blockType: 'destinationRockStats',
     },
     {
       blockType: 'destinationCardGrid',
@@ -183,6 +190,11 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
       eyebrow: 'Problems & areas',
       heading: 'Grades',
       sectionKeys: sectionKeys(['grades']),
+    },
+    {
+      blockType: 'destinationMediaBreak',
+      variant: 'split',
+      offset: 4,
     },
     {
       blockType: 'destinationCardGrid',
@@ -204,6 +216,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
       anchorId: 'gear',
       eyebrow: 'Equipment',
       heading: 'What gear to bring',
+      variant: 'cards',
       source: 'gearGroups',
       intro: sectionBody(detail.sections, 'gear'),
     },
@@ -212,14 +225,21 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
       anchorId: 'getting-there',
       eyebrow: 'Travel',
       heading: 'Getting there',
+      variant: 'cards',
       source: 'transportOptions',
       intro: sectionBody(detail.sections, 'transport'),
+    },
+    {
+      blockType: 'destinationMediaBreak',
+      variant: 'strip',
+      offset: 6,
     },
     {
       blockType: 'destinationLogistics',
       anchorId: 'stay-eat',
       eyebrow: 'Accommodation & food',
       heading: 'Stay & eat',
+      variant: 'cards',
       source: 'accommodationOptions',
       intro: sectionBody(detail.sections, 'stay'),
     },
@@ -254,6 +274,7 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
       anchorId: 'costs',
       eyebrow: 'Budget planning',
       heading: 'Costs & budget',
+      variant: 'cards',
       source: 'costItems',
       intro: sectionBody(detail.sections, 'costs'),
     },
@@ -304,22 +325,6 @@ function sectionBody(
   key: string,
 ) {
   return sections?.find((section) => section.key === key)?.body ?? undefined
-}
-
-function DestinationJumpNav({ items }: { items: Array<{ href: string; label: string }> }) {
-  if (!items.length) return null
-
-  return (
-    <nav className={blockStyles.destinationJumpNav} aria-label="Destination sections">
-      <div className={blockStyles.destinationJumpNavScroller}>
-        {items.map((item) => (
-          <a key={item.href} href={item.href}>
-            {item.label}
-          </a>
-        ))}
-      </div>
-    </nav>
-  )
 }
 
 function destinationJumpNavItems(loc: LocationDetailPageData) {

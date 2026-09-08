@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-09-07T00:00:00.000Z",
+  "source": "CMS seed for the canonical /trips catalogue page",
+  "row": {
+    "title": "Trips & Courses",
+    "slug": "trips",
+    "status": "published",
+    "seo": {
+      "title": "Trips & Courses | Rockbusters",
+      "keywords": null,
+      "description": "Browse every upcoming Rockbusters climbing trip and course by type, level, destination, month and guide."
+    },
+    "structuredData": {
+      "schemaType": "CollectionPage"
+    },
+    "layout": [
+      {
+        "id": "trips-hero",
+        "eyebrow": "Every trip, camp and course",
+        "heading": "Trips & Courses",
+        "body": "Road trips, sport holidays, bouldering camps and performance coaching. Filter the upcoming calendar to find the trip that fits you.",
+        "backgroundMedia": null,
+        "variant": "brandEditorial",
+        "accentWords": [
+          { "text": "Courses" }
+        ],
+        "blockName": "TRIPS HERO",
+        "blockType": "hero"
+      },
+      {
+        "id": "trips-catalogue-results",
+        "eyebrow": "Find your trip",
+        "heading": "Upcoming trips & courses",
+        "intro": "Filter by type, level, destination, month or guide. Every result below has an active upcoming date.",
+        "enabledFacets": ["category", "difficulty", "location", "month", "guide"],
+        "defaultSort": "date",
+        "resultLimit": 12,
+        "paginationMode": "showMore",
+        "presentation": "calendar",
+        "stickyFilters": true,
+        "blockName": "TRIPS CATALOGUE RESULTS",
+        "blockType": "catalogueResults"
+      },
+      {
+        "id": "trips-final-cta",
+        "eyebrow": null,
+        "heading": "Need a trip built around your goals?",
+        "body": "Tell us where you want to climb and what you want to improve. We will help shape the right trip.",
+        "variant": "finalRed",
+        "blockName": "TRIPS FINAL CTA",
+        "blockType": "cta",
+        "primaryAction": {
+          "label": "Let's talk",
+          "href": "/contact"
+        }
+      }
+    ]
+  }
+}

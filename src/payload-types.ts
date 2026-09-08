@@ -387,7 +387,7 @@ export interface Program {
                   id?: string | null;
                 }[]
               | null;
-            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark' | 'heroBar';
             columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
@@ -1086,7 +1086,7 @@ export interface Event {
                   id?: string | null;
                 }[]
               | null;
-            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark' | 'heroBar';
             columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
@@ -2053,7 +2053,7 @@ export interface Location {
                   id?: string | null;
                 }[]
               | null;
-            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark' | 'heroBar';
             columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
@@ -2449,6 +2449,7 @@ export interface Location {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
+            variant?: ('cards' | 'list') | null;
             source: 'all' | 'gearGroups' | 'transportOptions' | 'accommodationOptions' | 'costItems';
             id?: string | null;
             blockName?: string | null;
@@ -2642,7 +2643,7 @@ export interface Guide {
                   id?: string | null;
                 }[]
               | null;
-            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark' | 'heroBar';
             columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
@@ -3250,7 +3251,7 @@ export interface Post {
                   id?: string | null;
                 }[]
               | null;
-            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark' | 'heroBar';
             columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
@@ -4119,7 +4120,7 @@ export interface Page {
                   id?: string | null;
                 }[]
               | null;
-            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark';
+            variant: 'light' | 'dark' | 'inlineDark' | 'numberedDark' | 'heroBar';
             columns: 'auto' | '2' | '3' | '4';
             id?: string | null;
             blockName?: string | null;
@@ -4318,6 +4319,23 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'calendar';
+          }
+        | {
+            eyebrow?: string | null;
+            heading?: string | null;
+            intro?: string | null;
+            /**
+             * Type uses the trip category taxonomy. Filters without matching trips are hidden automatically.
+             */
+            enabledFacets?: ('category' | 'difficulty' | 'location' | 'month' | 'guide')[] | null;
+            defaultSort: 'date' | 'priceAsc' | 'priceDesc' | 'title';
+            resultLimit?: number | null;
+            paginationMode: 'showMore' | 'all';
+            presentation: 'calendar' | 'compact';
+            stickyFilters?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'catalogueResults';
           }
         | {
             eyebrow?: string | null;
@@ -6780,6 +6798,7 @@ export interface LocationsSelect<T extends boolean = true> {
               eyebrow?: T;
               heading?: T;
               intro?: T;
+              variant?: T;
               source?: T;
               id?: T;
               blockName?: T;
@@ -8362,6 +8381,21 @@ export interface PagesSelect<T extends boolean = true> {
               eventDates?: T;
               limit?: T;
               variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        catalogueResults?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              enabledFacets?: T;
+              defaultSort?: T;
+              resultLimit?: T;
+              paginationMode?: T;
+              presentation?: T;
+              stickyFilters?: T;
               id?: T;
               blockName?: T;
             };

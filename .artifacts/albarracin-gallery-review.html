@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Albarracin reviewed gallery</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #090909; color: #f0ede6; font-family: Arial, sans-serif; }
+      .meta { padding: 28px 40px 20px; border-bottom: 1px solid #2a2a2a; }
+      .meta p { margin: 0 0 8px; color: #e30713; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+      .meta h1 { margin: 0; font-size: 28px; }
+      .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: #090909; }
+      figure { position: relative; aspect-ratio: 3 / 4; margin: 0; overflow: hidden; background: #171717; }
+      img { width: 100%; height: 100%; object-fit: cover; }
+      figcaption { position: absolute; right: 0; bottom: 0; left: 0; padding: 12px; background: rgba(0, 0, 0, .72); color: #f0ede6; font-size: 12px; }
+      figcaption span { display: block; margin-top: 4px; color: #aaa; }
+    </style>
+  </head>
+  <body>
+    <div class="meta">
+      <p>Technical review preview</p>
+      <h1>Albarracin gallery: four high-resolution, focused candidates</h1>
+    </div>
+    <main class="gallery">
+      <figure>
+        <img src="http://localhost:3333/api/media/file/000310-0dfbd9cc23f43f19acde5ace8b16a391a5b625dc.jpeg" alt="albarracin" />
+        <figcaption>albarracin.JPG <span>2816 x 2112, focus 2284.73</span></figcaption>
+      </figure>
+      <figure>
+        <img src="http://localhost:3333/api/media/file/000311-32a2039159c1aee3a9b0b6ea25b5925fd29519d9.jpeg" alt="albarracin 1" />
+        <figcaption>albarracin1.JPG <span>2816 x 2112, focus 1702.79</span></figcaption>
+      </figure>
+      <figure>
+        <img src="http://localhost:3333/api/media/file/000312-ac53dd4f6110ac6e75e2ccf4cc0eb960deb7568f.jpeg" alt="albarracin 2" />
+        <figcaption>albarracin2.JPG <span>2816 x 2112, focus 1845.63</span></figcaption>
+      </figure>
+      <figure>
+        <img src="http://localhost:3333/api/media/file/000313-5e2b54fe04c79f56c5a0f32f08b8f0dd3dbeb858.jpeg" alt="albarracin 3" />
+        <figcaption>albarracin3.JPG <span>3024 x 4032, focus 757.25</span></figcaption>
+      </figure>
+    </main>
+  </body>
+</html>
