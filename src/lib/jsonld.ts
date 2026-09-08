@@ -58,7 +58,7 @@ export function structuredDataSiteUrl(pathname = ''): string {
   return `${trimmed}${path}`
 }
 
-export function absoluteMediaUrl(media: Maybe<Media>): string | undefined {
+export function absoluteMediaUrl(media: string | Maybe<Media>): string | undefined {
   if (!isDoc(media)) return undefined
   const url = payloadMediaUrl(media)
   if (!url) return undefined
@@ -856,7 +856,7 @@ function docs<T>(items: Maybe<T>[] | null | undefined): T[] {
   return items.filter(isDoc)
 }
 
-function mediaUrls(items: Maybe<Media>[]): string[] | undefined {
+function mediaUrls(items: (string | Maybe<Media>)[]): string[] | undefined {
   const urls = items.map(absoluteMediaUrl).filter((url): url is string => Boolean(url))
   return urls.length ? urls : undefined
 }
