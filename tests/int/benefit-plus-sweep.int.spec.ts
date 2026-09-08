@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { generateKeyPairSync, randomUUID } from 'node:crypto'
 import { getTestPayload } from '../helpers/payload'
 import { sweepBenefitPlusPayments } from '@/payments/order-payment-service'
@@ -18,6 +18,34 @@ process.env.NEXT_PUBLIC_SITE_URL = 'https://beta.rockbusters.net'
 
 afterEach(() => {
   vi.unstubAllGlobals()
+})
+
+/**
+ * The sweep queries *every* `begun` muzapay transaction in the database, not
+ * just this file's fixtures, so leftovers from earlier runs compete with them
+ * — and once the leftovers exceed SWEEP_BATCH_SIZE (50) they push fresh
+ * fixtures out of the query window entirely, failing perfectly correct code.
+ * (Observed for real: 58 accumulated rows.) Retire whatever is left behind so
+ * these tests depend on their own setup rather than on database history.
+ */
+beforeAll(async () => {
+  const payload = await getTestPayload()
+  const { docs } = await payload.find({
+    collection: 'transactions',
+    where: { and: [{ paymentMethod: { equals: 'muzapay' } }, { state: { equals: 'begun' } }] },
+    limit: 500,
+    overrideAccess: true,
+  })
+  for (const doc of docs) {
+    // `failed` rather than deleted: it is a legitimate terminal state that
+    // excludes the row from the sweep, and it leaves the linked order alone.
+    await payload.update({
+      collection: 'transactions',
+      id: doc.id,
+      data: { state: 'failed' },
+      overrideAccess: true,
+    })
+  }
 })
 
 const billing = {

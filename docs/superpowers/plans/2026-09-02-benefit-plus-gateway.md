@@ -60,13 +60,14 @@ baseline of 20 rather than expecting a clean run.
 > branch. Benefit+ cannot deploy until `src/lib/jsonld.ts` is fixed — that fix belongs
 > to whoever owns the catalogue JSON-LD work (`674060a`), not to this plan.
 
-**Test-database hygiene affects the sweep specs.** `sweepBenefitPlusPayments` queries
-*all* `begun` muzapay transactions, oldest first, capped at `SWEEP_BATCH_SIZE` (50).
-The sweep specs seed real rows and never clean them up, so repeated local runs
-accumulate stale `begun` transactions; once they exceed 50 they push fresh fixtures
-out of the query window and the sweep tests fail even with correct code. If a sweep
-spec fails for no apparent reason, count the stale rows first and purge them from the
-**test** branch. CI on a fresh database is unaffected.
+**Test-database hygiene affects the sweep specs — now handled.**
+`sweepBenefitPlusPayments` queries *all* `begun` muzapay transactions, oldest first,
+capped at `SWEEP_BATCH_SIZE` (50). The specs seed real rows and never clean them up,
+so repeated local runs accumulate stale `begun` transactions; once they exceed 50 they
+push fresh fixtures out of the query window and the tests fail with perfectly correct
+code. This was observed for real at 58 rows. `benefit-plus-sweep.int.spec.ts` now
+retires any leftover `begun` muzapay transactions in a `beforeAll`, so the file
+depends on its own setup rather than on database history — no manual purging needed.
 
 ---
 
