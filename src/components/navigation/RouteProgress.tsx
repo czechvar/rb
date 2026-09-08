@@ -20,14 +20,23 @@ import styles from './RouteProgress.module.css'
  *   - `popstate` (browser back/forward).
  */
 
-/** Nothing is drawn for navigations faster than this — avoids a flash. */
-const START_DELAY_MS = 120
+/** Width the bar mounts at, so a navigation registers instantly. */
+const START_PROGRESS = 8
+/** Bumped on the next frame, so the bar animates in instead of popping. */
+const RAMP_PROGRESS = 20
+/**
+ * The bar is shown on every navigation, with no suppression window: prerendered
+ * and prefetched routes commit in ~150ms, which any start delay long enough to
+ * be worth having would swallow entirely. Instead a fast navigation is held
+ * open to this minimum so it reads as a deliberate sweep rather than a flicker.
+ */
+const MIN_VISIBLE_MS = 250
 const TRICKLE_INTERVAL_MS = 200
 /** Trickle asymptote: never reach 100% until the route actually commits. */
 const CEILING = 92
 /** How long the filled bar sits at 100% before it fades out. */
-const FILL_HOLD_MS = 160
-const FADE_MS = 260
+const FILL_HOLD_MS = 120
+const FADE_MS = 200
 /** Last resort, in case a navigation never commits (error, aborted fetch). */
 const FAILSAFE_MS = 20_000
 
@@ -44,67 +53,83 @@ export function RouteProgress() {
 
   const timeouts = useRef<number[]>([])
   const trickle = useRef<number | null>(null)
-  /** A navigation is in flight (may still be inside the start delay). */
+  const failsafe = useRef<number | null>(null)
+  const raf = useRef<number | null>(null)
+  /** A navigation is in flight. */
   const running = useRef(false)
-  /** The bar is actually on screen (start delay has elapsed). */
-  const visible = useRef(false)
+  const startedAt = useRef(0)
   /** URL of the route currently rendered, used to ignore no-op history writes. */
   const committedUrl = useRef<string | null>(null)
 
-  const clearTimers = useCallback(() => {
-    timeouts.current.forEach((id) => window.clearTimeout(id))
-    timeouts.current = []
+  const clearTrickle = useCallback(() => {
     if (trickle.current !== null) {
       window.clearInterval(trickle.current)
       trickle.current = null
     }
   }, [])
 
+  const clearTimers = useCallback(() => {
+    timeouts.current.forEach((id) => window.clearTimeout(id))
+    timeouts.current = []
+    if (failsafe.current !== null) {
+      window.clearTimeout(failsafe.current)
+      failsafe.current = null
+    }
+    if (raf.current !== null) {
+      window.cancelAnimationFrame(raf.current)
+      raf.current = null
+    }
+    clearTrickle()
+  }, [clearTrickle])
+
   const finish = useCallback(() => {
     if (!running.current) return
     running.current = false
-    clearTimers()
 
-    if (!visible.current) {
-      // Navigation resolved before the bar was ever shown.
-      setPhase('idle')
-      setProgress(0)
-      return
+    if (failsafe.current !== null) {
+      window.clearTimeout(failsafe.current)
+      failsafe.current = null
     }
 
-    setProgress(100)
-    timeouts.current.push(window.setTimeout(() => setPhase('finishing'), FILL_HOLD_MS))
+    // Keep trickling through the remainder of the minimum, so the bar is still
+    // moving rather than frozen while it waits to complete.
+    const remaining = Math.max(0, MIN_VISIBLE_MS - (performance.now() - startedAt.current))
+
     timeouts.current.push(
       window.setTimeout(() => {
-        visible.current = false
-        setPhase('idle')
-        setProgress(0)
-      }, FILL_HOLD_MS + FADE_MS),
+        clearTrickle()
+        setProgress(100)
+        timeouts.current.push(window.setTimeout(() => setPhase('finishing'), FILL_HOLD_MS))
+        timeouts.current.push(
+          window.setTimeout(() => {
+            setPhase('idle')
+            setProgress(0)
+          }, FILL_HOLD_MS + FADE_MS),
+        )
+      }, remaining),
     )
-  }, [clearTimers])
+  }, [clearTrickle])
 
   const start = useCallback(() => {
     if (running.current) return
     running.current = true
+    startedAt.current = performance.now()
 
     // A new navigation during the fade-out of the previous one resets the bar.
     clearTimers()
-    visible.current = false
-    setPhase('idle')
-    setProgress(0)
+    setProgress(START_PROGRESS)
+    setPhase('loading')
 
-    timeouts.current.push(
-      window.setTimeout(() => {
-        visible.current = true
-        setProgress(8)
-        setPhase('loading')
-        trickle.current = window.setInterval(() => {
-          setProgress((value) => value + (CEILING - value) * 0.12)
-        }, TRICKLE_INTERVAL_MS)
-      }, START_DELAY_MS),
-    )
+    raf.current = window.requestAnimationFrame(() => {
+      raf.current = null
+      setProgress((value) => Math.max(value, RAMP_PROGRESS))
+    })
 
-    timeouts.current.push(window.setTimeout(finish, FAILSAFE_MS))
+    trickle.current = window.setInterval(() => {
+      setProgress((value) => value + (CEILING - value) * 0.12)
+    }, TRICKLE_INTERVAL_MS)
+
+    failsafe.current = window.setTimeout(finish, FAILSAFE_MS)
   }, [clearTimers, finish])
 
   // The route committed: record the new URL and complete the bar.
