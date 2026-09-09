@@ -31,7 +31,6 @@ export function getPublishedPageBySlug(slug: string) {
       TAGS.guides,
       TAGS.media,
       TAGS.locations,
-      TAGS.media,
       TAGS.partners,
       TAGS.posts,
       TAGS.postCategories,
@@ -65,6 +64,7 @@ export function getUpcomingCatalogueResults() {
       TAGS.difficulties,
       TAGS.locations,
       TAGS.guides,
+      TAGS.media,
     ],
     async (): Promise<CatalogueResult[]> => {
       const payload = await getPayloadClient()

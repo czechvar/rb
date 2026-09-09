@@ -28,7 +28,7 @@ type SitemapPayload = {
   }): Promise<{ docs: SitemapDoc[] }>
 }
 
-const STATIC_PATHS = ['/', '/programs', '/destinations', '/team', '/blog', '/calendar']
+const STATIC_PATHS = ['/', '/trips', '/programs', '/destinations', '/team', '/blog', '/calendar']
 const TRIP_SUBPATHS = ['', '/dates', '/faq', '/logistics']
 
 function sitemapEntry(pathname: string, updatedAt?: string | null): MetadataRoute.Sitemap[number] {
@@ -51,7 +51,7 @@ function entriesForDocs(
 
 function entriesForCmsPages(docs: SitemapDoc[]): MetadataRoute.Sitemap {
   return entriesForDocs(
-    docs.filter((doc) => doc.slug !== 'home'),
+    docs.filter((doc) => doc.slug !== 'home' && doc.slug !== 'trips'),
     (slug) => `/cms-pages/${slug}`,
   )
 }

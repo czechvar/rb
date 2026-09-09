@@ -26,6 +26,7 @@ const docsByCollection = {
   pages: [
     { slug: 'about-us', updatedAt: '2026-01-09T03:04:05.000Z' },
     { slug: 'home', updatedAt: '2026-01-10T03:04:05.000Z' },
+    { slug: 'trips', updatedAt: '2026-01-11T03:04:05.000Z' },
   ],
 } as const
 
@@ -48,6 +49,7 @@ describe('buildSitemap', () => {
 
     expect(urls).toEqual([
       'https://rockbusters.net/',
+      'https://rockbusters.net/trips',
       'https://rockbusters.net/programs',
       'https://rockbusters.net/destinations',
       'https://rockbusters.net/team',
@@ -66,8 +68,8 @@ describe('buildSitemap', () => {
       'https://rockbusters.net/blog/category/training',
       'https://rockbusters.net/cms-pages/about-us',
     ])
-    expect(urls).not.toContain('https://rockbusters.net/trips')
     expect(urls).not.toContain('https://rockbusters.net/cms-pages/home')
+    expect(urls).not.toContain('https://rockbusters.net/cms-pages/trips')
     expect(sitemap.find((entry) => entry.url.endsWith('/trips/kalymnos-camp'))?.lastModified).toEqual(
       new Date('2026-01-02T03:04:05.000Z'),
     )
