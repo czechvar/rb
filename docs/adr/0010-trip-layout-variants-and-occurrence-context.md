@@ -10,7 +10,7 @@ The source-preserving sections introduced by ADR-0009 need public rendering. Tri
 
 ## Decision
 
-Preserve explicit Event layouts as authoritative. When an Event has meaningful tripDetail sections and no custom layout, synthesize a sequence of registered CMS blocks. Otherwise retain the legacy composition. Extend shared presentations with explicit variants whose absent/default value preserves existing consumers.
+Preserve explicit Event layouts as authoritative. When an Event has no custom layout, synthesize a sequence of registered CMS blocks regardless of whether tripDetail sections have been populated. Optional blocks omit missing content and preserve unmatched source in the remainder. The user clarified this on 2026-09-10 after clearing the Deep Blue override still exposed the old fallback; source-migration completeness must not choose the visual template. This supersedes ADR-0003's legacy hardcoded fallback for Event pages only. Extend shared presentations with explicit variants whose absent/default value preserves existing consumers.
 
 Read upcoming active Event Dates once per trip request, without long-lived catalogue caching. Select a valid requested occurrence, otherwise the first available occurrence, then the earliest sold-out occurrence. Recompute remaining seats after asynchronous booking counts resolve. No occurrence or a sold-out occurrence offers an inquiry rather than a direct booking link. Booking still validates capacity on submission.
 
