@@ -953,9 +953,28 @@
   max-height: calc(100dvh - var(--headerTotalHeight) - var(--destination-menu-height, 0px) - 2 * var(--theme-space-4));
   overflow-y: auto;
   overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-color-paper-30) var(--theme-color-canvas);
   display: grid;
   gap: 16px;
   padding-bottom: var(--theme-space-4);
+}
+
+.destinationSidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.destinationSidebar::-webkit-scrollbar-track {
+  background: var(--theme-color-canvas);
+}
+
+.destinationSidebar::-webkit-scrollbar-thumb {
+  background: var(--theme-color-paper-30);
+  border-radius: var(--theme-radius-md);
+}
+
+.destinationSidebar::-webkit-scrollbar-button {
+  display: none;
 }
 
 .destinationSidebarCta,
