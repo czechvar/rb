@@ -5,6 +5,7 @@ export const TripDatesBlockConfig: Block = {
   slug: 'tripDates',
   labels: { singular: 'Trip Dates', plural: 'Trip Dates blocks' },
   fields: [
+    { name: 'eyebrow', type: 'text' },
     selectField('variant', { defaultValue: 'default', values: [{'label': 'Default', 'value': 'default'}, {'label': 'Rows', 'value': 'rows'}] }),
     {
       name: 'heading',

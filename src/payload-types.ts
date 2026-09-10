@@ -1023,6 +1023,7 @@ export interface Event {
   layout?:
     | (
         | {
+            eyebrow?: string | null;
             section:
               | 'overview'
               | 'learning'
@@ -1051,6 +1052,7 @@ export interface Event {
             blockType: 'tripVenue';
           }
         | {
+            eyebrow?: string | null;
             variant: 'default' | 'cards';
             id?: string | null;
             blockName?: string | null;
@@ -1499,6 +1501,7 @@ export interface Event {
             blockType: 'tripHighlights';
           }
         | {
+            eyebrow?: string | null;
             variant: 'default' | 'rows';
             heading?: string | null;
             id?: string | null;
@@ -1515,6 +1518,7 @@ export interface Event {
             blockType: 'tripBookingCTA';
           }
         | {
+            eyebrow?: string | null;
             variant: 'default' | 'cards';
             /**
              * Uses the accommodation and transport content from the current Event.
@@ -6997,6 +7001,7 @@ export interface EventsSelect<T extends boolean = true> {
         tripContent?:
           | T
           | {
+              eyebrow?: T;
               section?: T;
               variant?: T;
               id?: T;
@@ -7019,6 +7024,7 @@ export interface EventsSelect<T extends boolean = true> {
         tripTeam?:
           | T
           | {
+              eyebrow?: T;
               variant?: T;
               id?: T;
               blockName?: T;
@@ -7430,6 +7436,7 @@ export interface EventsSelect<T extends boolean = true> {
         tripDates?:
           | T
           | {
+              eyebrow?: T;
               variant?: T;
               heading?: T;
               id?: T;
@@ -7448,6 +7455,7 @@ export interface EventsSelect<T extends boolean = true> {
         tripLogistics?:
           | T
           | {
+              eyebrow?: T;
               variant?: T;
               heading?: T;
               id?: T;

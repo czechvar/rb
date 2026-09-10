@@ -5,6 +5,7 @@ export const TripLogisticsBlockConfig: Block = {
   slug: 'tripLogistics',
   labels: { singular: 'Trip Logistics', plural: 'Trip Logistics blocks' },
   fields: [
+    { name: 'eyebrow', type: 'text' },
     selectField('variant', { defaultValue: 'default', values: [{'label': 'Default', 'value': 'default'}, {'label': 'Cards', 'value': 'cards'}] }),
     {
       name: 'heading',

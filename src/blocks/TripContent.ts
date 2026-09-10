@@ -5,6 +5,7 @@ export const TripContentBlockConfig: Block = {
   slug: 'tripContent',
   labels: { singular: 'Trip Content Section', plural: 'Trip Content Sections' },
   fields: [
+    { name: 'eyebrow', type: 'text' },
     selectField('section', { defaultValue: 'overview', values: [
       'overview', 'learning', 'itinerary', 'requirements', 'equipment', 'audience', 'highlights', 'notes', 'remaining',
     ].map(value => ({ label: value === 'remaining' ? 'Additional trip information' : value, value })) }),
@@ -29,7 +30,7 @@ export const TripVenueBlockConfig: Block = {
 }
 export const TripTeamBlockConfig: Block = {
   slug: 'tripTeam', labels: { singular: 'Trip Team', plural: 'Trip Teams' },
-  fields: [selectField('variant', { defaultValue: 'default', values: [
+  fields: [{ name: 'eyebrow', type: 'text' }, selectField('variant', { defaultValue: 'default', values: [
     { label: 'Default', value: 'default' }, { label: 'Cards', value: 'cards' },
   ] })],
 }
