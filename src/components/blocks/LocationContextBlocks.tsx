@@ -549,7 +549,7 @@ export function DestinationSidebarBlock(
   }
 
   return (
-    <div className={styles.destinationSidebar}>
+    <div className={styles.destinationSidebar} role="region" aria-label="Destination information" tabIndex={0}>
       {cta ? (
         <aside className={styles.destinationSidebarCta}>
           {cta.eyebrow ? <p data-eyebrow="section">{cta.eyebrow}</p> : null}

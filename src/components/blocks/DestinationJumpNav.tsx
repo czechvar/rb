@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from './blocks.module.css'
 
 type DestinationJumpNavItem = {
@@ -9,11 +9,29 @@ type DestinationJumpNavItem = {
 }
 
 export function DestinationJumpNav({ items }: { items: DestinationJumpNavItem[] }) {
+  const navRef = useRef<HTMLElement>(null)
   const [activeHref, setActiveHref] = useState(items[0]?.href ?? '')
   const sectionIds = useMemo(
     () => items.map((item) => item.href.replace(/^#/, '')).filter(Boolean),
     [items],
   )
+
+  useEffect(() => {
+    const nav = navRef.current
+    const page = nav?.closest('main')
+    if (!nav || !page) return
+    // Runtime geometry, scoped to this destination page rather than the theme.
+    const updateHeight = () => page.style.setProperty(
+      '--destination-menu-height', `${nav.getBoundingClientRect().height}px`,
+    )
+    updateHeight()
+    const observer = new ResizeObserver(updateHeight)
+    observer.observe(nav)
+    return () => {
+      observer.disconnect()
+      page.style.removeProperty('--destination-menu-height')
+    }
+  }, [items.length])
 
   useEffect(() => {
     if (!sectionIds.length) return
@@ -50,7 +68,7 @@ export function DestinationJumpNav({ items }: { items: DestinationJumpNavItem[] 
   if (!items.length) return null
 
   return (
-    <nav className={styles.destinationJumpNav} aria-label="Destination sections">
+    <nav ref={navRef} className={styles.destinationJumpNav} aria-label="Destination sections">
       <div className={styles.destinationJumpNavScroller}>
         {items.map((item) => {
           const active = item.href === activeHref

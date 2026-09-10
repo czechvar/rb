@@ -109,3 +109,20 @@ keyboard focus returns to the first link, and grades lands below the sticky menu
 Scoped ESLint, TypeScript and strict CSS passed. No CMS/database records changed.
 Both destination navigation review findings are resolved; the older destructive
 E2E fixture setup and inferred dog-access advice remain open.
+
+## Destination sidebar sticky positioning
+
+The right grid column now stretches through the main content so its sticky child
+has room to remain pinned. DestinationJumpNav measures its own height with a
+ResizeObserver and publishes that runtime geometry only on its containing main.
+The sidebar's offset combines the theme header height, measured menu height and
+shared spacing. Its maximum height fits the remaining dynamic viewport; tall
+content scrolls internally in a labelled, keyboard-focusable region. Mobile
+retains the normal stacked layout with no height cap. Sticky positioning remains
+bounded by the destination content, so it does not overlap the footer.
+
+Live Albarracin checks at 900/1440px and three page-scroll positions kept the
+sidebar below both menus and inside a 900px viewport; internal scrolling did not
+move the document. Mobile 390px remained static/uncapped. TypeScript, scoped lint
+and strict CSS passed. Evidence: .scratch/design-effects/sidebar-results.json and
+sidebar-sticky.png. No CMS/data changes.

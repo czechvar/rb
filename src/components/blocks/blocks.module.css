@@ -672,7 +672,7 @@
 }
 
 .destinationContentAside {
-  align-self: start;
+  align-self: stretch;
 }
 
 .destinationSectionLayout {
@@ -949,10 +949,13 @@
 
 .destinationSidebar {
   position: sticky;
-  top: 96px;
+  top: calc(var(--headerTotalHeight) + var(--destination-menu-height, 0px) + var(--theme-space-4));
+  max-height: calc(100dvh - var(--headerTotalHeight) - var(--destination-menu-height, 0px) - 2 * var(--theme-space-4));
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
   display: grid;
   gap: 16px;
-  padding-bottom: 72px;
+  padding-bottom: var(--theme-space-4);
 }
 
 .destinationSidebarCta,
@@ -2433,6 +2436,8 @@
 
   .destinationSidebar {
     position: static;
+    max-height: none;
+    overflow: visible;
     padding-bottom: 36px;
   }
 
