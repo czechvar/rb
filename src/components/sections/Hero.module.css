@@ -5,7 +5,7 @@
   grid-template-columns: 1fr 320px;
   gap: 40px;
   padding: 60px;
-  min-height: 360px;
+  min-height: var(--theme-hero-min-height);
 }
 
 .text h1 {
@@ -63,4 +63,8 @@
   .hero {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 900px) {
+  .hero { min-height: var(--theme-hero-mobile-min-height); }
 }

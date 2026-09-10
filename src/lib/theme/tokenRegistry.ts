@@ -171,6 +171,8 @@ const layoutTokens = [
   '--theme-content-lead-max',
   '--theme-content-form-max',
   '--theme-content-sidebar-max',
+  '--theme-hero-min-height',
+  '--theme-hero-mobile-min-height',
   '--theme-content-compact-max',
   '--theme-content-logo-max',
   '--theme-content-copy-max',

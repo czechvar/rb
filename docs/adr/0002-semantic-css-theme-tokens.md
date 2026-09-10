@@ -129,6 +129,10 @@ capability gated, and reduced motion disables movement.
   require review. Registry/preset updates and responsive visual checks remain
   required when implementing width-token changes.
 
+## Shared hero sizing
+
+All public hero variants consume `--theme-hero-min-height` and the shared responsive `--theme-hero-mobile-min-height` from the theme contract. Do not add page-specific viewport-height or variant-height overrides. The initial values match the destination hero (760px desktop, 680px mobile). Trip booking summaries sit beside the hero on desktop and below it on mobile, so the summary does not increase mobile hero height. The summary sits above image overlays.
+
 ## References
 
 - `src/app/(frontend)/theme.css`

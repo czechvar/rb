@@ -2,7 +2,7 @@
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: var(--theme-hero-min-height);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -108,7 +108,7 @@
 /* ── Mobile ──────────────────────────────────────────────── */
 @media screen and (max-width: 900px) {
   .hero {
-    min-height: auto;
+    min-height: var(--theme-hero-min-height);
     padding-top: 120px;
     padding-bottom: 4rem;
   }
@@ -128,7 +128,6 @@
 
 /* Editorial variant keeps the title and booking summary in independent columns. */
 .editorial {
-  min-height: 100svh;
   padding: 160px var(--theme-content-gutter) 72px;
 }
 
@@ -197,4 +196,14 @@
   -webkit-line-clamp: 3;
   line-clamp: 3;
   overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .hero { min-height: var(--theme-hero-mobile-min-height); }
+}
+
+.heroFrame { position: relative; }
+.editorialSummary { position: absolute; z-index: 3; right: var(--theme-content-gutter); bottom: 72px; width: var(--theme-content-sidebar-max); }
+@media (max-width: 900px) {
+  .editorialSummary { position: static; width: auto; padding: 3rem var(--theme-content-gutter); background: var(--theme-color-ink); color: var(--theme-color-paper); }
 }

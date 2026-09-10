@@ -110,6 +110,8 @@ export const rockbustersTheme: ThemePreset = {
   '--theme-content-lead-max': '600px',
   '--theme-content-form-max': '480px',
   '--theme-content-sidebar-max': '340px',
+  '--theme-hero-min-height': '760px',
+  '--theme-hero-mobile-min-height': '680px',
   '--theme-content-compact-max': '260px',
   '--theme-content-logo-max': '150px',
   '--theme-content-copy-max': '56ch',

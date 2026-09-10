@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: var(--theme-hero-min-height);
   overflow: hidden;
   background: var(--theme-color-ink);
   color: var(--theme-color-paper);
@@ -90,4 +90,8 @@
 
 .trustDot {
   color: var(--theme-color-paper-30);
+}
+
+@media (max-width: 900px) {
+  .hero { min-height: var(--theme-hero-mobile-min-height); }
 }
