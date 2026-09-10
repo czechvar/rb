@@ -51,6 +51,7 @@ import * as migration_20260904_225500_destination_logistics_variant from './2026
 import * as migration_20260907_203729_catalogue_results_reconciliation from './20260907_203729_catalogue_results_reconciliation';
 import * as migration_20260910_151403_event_trip_detail_sections from './20260910_151403_event_trip_detail_sections';
 import * as migration_20260910_155720_trip_layout_variants from './20260910_155720_trip_layout_variants';
+import * as migration_20260910_173426_event_comparison_learning_pillar from './20260910_173426_event_comparison_learning_pillar';
 
 export const migrations = [
   {
@@ -316,6 +317,11 @@ export const migrations = [
   {
     up: migration_20260910_155720_trip_layout_variants.up,
     down: migration_20260910_155720_trip_layout_variants.down,
-    name: '20260910_155720_trip_layout_variants'
+    name: '20260910_155720_trip_layout_variants',
+  },
+  {
+    up: migration_20260910_173426_event_comparison_learning_pillar.up,
+    down: migration_20260910_173426_event_comparison_learning_pillar.down,
+    name: '20260910_173426_event_comparison_learning_pillar'
   },
 ];

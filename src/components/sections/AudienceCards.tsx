@@ -5,11 +5,13 @@ import styles from './AudienceCards.module.css'
 
 export function AudienceCards({
   headingVariant,
+  eyebrow,
   cards,
   soloNote,
   redirectCallout,
 }: {
   headingVariant?: SectionIntroVariant
+  eyebrow?: string
   cards?: Program['audienceCards']
   soloNote?: Program['soloNote']
   redirectCallout?: Program['redirectCallout']
@@ -18,7 +20,7 @@ export function AudienceCards({
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <SectionIntro variant={headingVariant} title="Who this camp is for" align="left" />
+        <SectionIntro eyebrow={eyebrow} variant={headingVariant} title="Who this camp is for" align="left" />
         <div className={styles.grid}>
           {cards.map((c, i) => (
             <div

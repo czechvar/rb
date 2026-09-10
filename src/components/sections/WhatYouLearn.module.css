@@ -83,6 +83,10 @@
 }
 
 /* ── Responsive ────────────────────────────────────── */
+.pillars { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pillars .num { display: none; }
+.pillars .pillar:nth-child(2) .heading { color: var(--theme-color-primary); }
+
 @media screen and (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;

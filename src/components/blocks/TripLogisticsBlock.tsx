@@ -12,6 +12,7 @@ export function TripLogisticsBlock(block: TripLogisticsBlockProps, { event, trip
       accommodation={trip?.accommodation ?? event.accommodation}
       variant={block.variant === 'cards' ? 'cards' : undefined}
       logisticsOverrides={trip?.logisticsOverrides}
+      eyebrow={typeof block.eyebrow === 'string' ? block.eyebrow : undefined}
       heading={typeof block.heading === 'string' ? block.heading : undefined}
       transport={trip?.transport ?? event.transport}
     />

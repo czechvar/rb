@@ -10,15 +10,19 @@ export function TripEditorialSection({
   section,
   variant = 'prose',
   id,
+  eyebrow,
+  tone,
 }: {
   section: TripSection
   variant?: 'prose' | 'cards' | 'timeline'
   id?: string
+  eyebrow?: string
+  tone?: 'bright'
 }) {
   return (
-    <section id={id} className={`${styles.section} ${styles[variant]}`}>
+    <section id={id} className={`${styles.section} ${styles[variant]} ${tone === 'bright' ? styles.bright : ''}`}>
       <div className={styles.inner}>
-        <SectionIntro title={section.heading} align="left" />
+        <SectionIntro variant="embedded" eyebrow={eyebrow} title={section.heading} align="left" />
         <div className={styles.body}><Lexical data={section.body} /></div>
       </div>
     </section>

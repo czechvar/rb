@@ -36,6 +36,61 @@ function meaningful(value: RichText | null | undefined): value is RichText {
   return !!value && (nodeText(value).trim().length > 0 || value.root.children.some(node => ['upload', 'block'].includes(node.type)))
 }
 
+// These are explicit source headings already recognized by the content migration.
+// Matching chooses a rendering slot only; it never changes the heading or body.
+const sourceHeadings: Record<Sections[number]['kind'], string[]> = {
+  overview: ['course overview', 'trip overview', 'overview', 'about this course', 'about this trip'],
+  learning: ['what you ll learn', 'what you will learn', 'what you learn', 'learning outcomes'],
+  itinerary: ['itinerary', 'daily schedule', 'daily structure', 'programme', 'program', 'schedule'],
+  requirements: ['requirements', 'prerequisites', 'physical technical requirements', 'physical and technical requirements'],
+  equipment: ['what to bring', 'equipment', 'gear', 'essential equipment', 'kit list'],
+  audience: ['who is it for', 'who this course is for', 'who this trip is for'],
+  highlights: ['highlights', 'trip highlights', 'course highlights'],
+  notes: ['need to know'],
+}
+
+function sourceKind(heading: string): Sections[number]['kind'] | undefined {
+  const key = heading.toLowerCase().replace(/[’‘]/g, "'").replace(/[^a-z0-9]+/g, ' ').trim()
+  return (Object.keys(sourceHeadings) as Sections[number]['kind'][]).find(kind => sourceHeadings[kind].includes(key))
+}
+
+/** Runtime presentation of original source; this does not approve or backfill disputed copy. */
+export function resolveTripSections(event: Event): Sections {
+  const stored = (event.tripDetail?.sections ?? []).filter(section => meaningful(section.body))
+  const occupied = new Set((event.tripDetail?.sections ?? []).map(section => section.kind))
+  if (event.audienceCards?.length) occupied.add('audience')
+  if (event.highlights?.length) occupied.add('highlights')
+  if (event.prerequisites?.length) occupied.add('requirements')
+  if (event.essentialEquipment?.length) occupied.add('equipment')
+  if (event.whatYouLearn?.box1Heading || event.whatYouLearn?.box2Heading || event.whatYouLearn?.box3Heading) occupied.add('learning')
+  if (event.itinerary?.days?.length) occupied.add('itinerary')
+  const derived: Sections = []
+  const add = (heading: string, body: RichText, id: string) => {
+    const kind = sourceKind(heading)
+    if (!kind || occupied.has(kind) || !meaningful(body)) return
+    // Separate same-topic source passages remain separate; do not choose a winner.
+    if (!derived.some(section => section.kind === kind && section.heading === heading && exact(section.body, body))) {
+      derived.push({ kind, heading, body, id })
+    }
+  }
+  const content = event.content
+  if (content) {
+    const nodes = content.root.children
+    const boundaries = nodes.map((node, index) => ({ node, index })).filter(({ node }) =>
+      nodeText(node).trim() && (node.type === 'heading' || (node.type === 'paragraph' && sourceKind(nodeText(node)))))
+    boundaries.forEach(({ node, index }, position) => {
+      const heading = nodeText(node)
+      if (!sourceKind(heading)) return
+      const children = nodes.slice(index + 1, boundaries[position + 1]?.index ?? nodes.length)
+      add(heading, { ...content, root: { ...content.root, children } }, `source-content-${index}`)
+    })
+  }
+  event.additionalInfo?.forEach((info, index) => {
+    if (info.body) add(info.heading, info.body, `source-additional-${info.id ?? index}`)
+  })
+  return [...stored, ...derived]
+}
+
 // Ignore object key order only. Wording, node order, links and formatting must match.
 function exact(left: unknown, right: unknown): boolean {
   if (left === right) return true
@@ -118,7 +173,7 @@ export function resolveTripDetail(event: Event, dates: EventDate[], selectedId?:
     .filter(airport => typeof airport === 'object' && airport !== null)
     .filter((airport, index, airports) => airports.findIndex(item => item.id === airport.id) === index)
   const transport = dateAirports.length ? { ...event.transport, airports: dateAirports } : event.transport
-  const sections = (event.tripDetail?.sections ?? []).filter(section => meaningful(section.body))
+  const sections = resolveTripSections(event)
   const facts: TripDetailView['facts'] = []
   if (dateLabel) facts.push({ label: 'Dates', value: dateLabel })
   if (locations.length) facts.push({ label: 'Location', value: locations.map(location => location.name).join(', ') })

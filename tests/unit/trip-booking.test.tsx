@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it, vi } from 'vitest'
-import type { Event, EventDate } from '@/payload-types'
+import type { Event, EventDate, Guide, Location } from '@/payload-types'
 import { resolveTripDetail } from '@/lib/trip-detail'
 import { DetailHero } from '@/components/sections/DetailHero'
 import { EventDatesList } from '@/components/sections/EventDatesList'
@@ -61,7 +61,7 @@ describe('trip booking presentation', () => {
     const trip = resolveTripDetail(event, [date(1), date(2, { price: 300 })], 2)
     for (const variant of ['default', 'editorial'] as const) {
       const html = renderToStaticMarkup(<DetailHero event={event} trip={trip} variant={variant} />)
-      expect(html).toContain(event.title)
+      expect(html.replace(/<[^>]*>/g, '')).toContain(event.title)
       expect(html).toContain('€300.00')
       expect(html).toContain('href="/book/2"')
       expect(html).not.toContain('/book/1')
@@ -102,6 +102,25 @@ describe('trip booking presentation', () => {
       expect(unavailable.match(/href="mailto:info@rockbusters.net"/g)).toHaveLength(1)
       expect(unavailable).not.toContain('href="/book/')
     }
+  })
+
+
+  it('shows source metadata and destination-style title emphasis without rewriting the title or description', () => {
+    const trip = resolveTripDetail(event, [date(1)])
+    trip.locations = [{ id: 1, country: 'Czech Republic' }, { id: 2, country: 'Czech Republic' }] as Location[]
+    trip.guides = [{ id: 1, name: 'Selected Guide' }] as Guide[]
+    trip.facts.push({ label: 'Difficulty', value: 'Original difficulty' })
+    const html = renderToStaticMarkup(<DetailHero event={event} trip={trip} variant="editorial" />)
+    const title = html.match(/<h1[^>]*>(.*?)<\/h1>/)?.[1] ?? ''
+    expect(title.replace(/<[^>]*>/g, '')).toBe(event.title)
+    expect(title).toContain('heroAccentWord')
+    expect(html).toContain('Czech Republic')
+    expect(html).toContain('With <strong>Selected Guide</strong>')
+    expect(html).toContain('Original difficulty')
+    expect(html).toContain(event.shortDescription!)
+    const missing = renderToStaticMarkup(<DetailHero event={{ ...event, title: 'Title without colon' }} variant="editorial" />)
+    expect(missing).not.toContain('heroAccentWord')
+    expect(missing).not.toContain('With ')
   })
 
   it('retains default CTA routing while the image variant reuses only the existing photo', () => {

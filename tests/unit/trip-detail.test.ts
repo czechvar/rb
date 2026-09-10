@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import type { Airport, Difficulty, Event, EventDate, Guide, Location } from '../../src/payload-types'
-import { remainingTripAdditionalInfo, remainingTripContent, resolveTripDetail } from '../../src/lib/trip-detail'
+import { remainingTripAdditionalInfo, remainingTripContent, resolveTripDetail, resolveTripSections } from '../../src/lib/trip-detail'
 
 // Pure in-memory fixtures: no Payload startup, environment loading or database writes.
 const paragraph = (text: string) => ({ type: 'paragraph', version: 1, children: [{ type: 'text', text, version: 1, format: 0 }] })
@@ -184,4 +184,44 @@ test('custom layout preserves additionalInfo for migrated sections omitted from 
   assert.deepEqual(remainingTripAdditionalInfo(source, []), source.additionalInfo)
   assert.deepEqual(remainingTripAdditionalInfo(source, [equipment, notes]), source.additionalInfo?.slice(2))
   assert.deepEqual(source, before)
+})
+
+test('surfaces original programme and requirements verbatim without correcting disputed source statements', () => {
+  const programme = [paragraph('Day 1: Introduction\nIntroduction to Czech sandstone ethics and history. Equipment check and basic techniques practice on smaller formations.'),
+    paragraph('Day 2-5: Progressive Climbing\nDaily excursions to different climbing areas with increasing difficulty. Morning technique workshops followed by guided climbs on selected routes.'),
+    paragraph('Day 6: Challenge Day\nAttempt a classic multi-pitch route on one of the iconic towers. Farewell dinner.')]
+  const requirements = { type: 'list', version: 1, listType: 'bullet', children: [
+    { type: 'listitem', version: 1, children: [{ type: 'text', version: 1, format: 1, text: 'Equipment: Standard trad rack plus specialized equipment (rental available)' }] },
+  ] }
+  const source = event({ content: rich(paragraph('Duration: 5 Days'), heading('DAILY SCHEDULE'), ...programme,
+    heading('REQUIREMENTS'), requirements, heading('Other original copy'), paragraph('Keep this original copy')) })
+  const before = structuredClone(source)
+  const view = resolveTripDetail(source, [])
+  assert.deepEqual(view.sections.map(section => section.kind), ['itinerary', 'requirements'])
+  assert.equal(view.sections[0].heading, 'DAILY SCHEDULE')
+  assert.deepEqual(view.sections[0].body.root.children, programme)
+  assert.deepEqual(view.sections[1].body.root.children, [requirements])
+  assert.deepEqual(view.remainingContent, rich(paragraph('Duration: 5 Days'), heading('Other original copy'), paragraph('Keep this original copy')))
+  assert.deepEqual(source, before)
+})
+
+test('runtime derivation honors editor-owned sections and existing structured content', () => {
+  const source = event({ content: rich(heading('DAILY SCHEDULE'), paragraph('Old programme'), heading('REQUIREMENTS'), paragraph('Old requirements')),
+    tripDetail: { sections: [{ kind: 'itinerary', heading: 'Edited schedule', body: rich(paragraph('Editor copy')) }] },
+    prerequisites: [{ text: 'Existing structured requirements' }],
+  })
+  const sections = resolveTripSections(source)
+  assert.deepEqual(sections, source.tripDetail?.sections)
+  assert.deepEqual(remainingTripContent(source.content, sections), source.content)
+})
+
+test('runtime derivation keeps distinct same-topic sources and never invents audience or comparisons', () => {
+  const source = event({ content: rich(heading('DAILY SCHEDULE'), paragraph('Main original schedule')),
+    additionalInfo: [{ heading: 'Itinerary', body: rich(paragraph('Other original itinerary')) }],
+  })
+  const sections = resolveTripSections(source)
+  assert.deepEqual(sections.map(section => section.kind), ['itinerary', 'itinerary'])
+  assert.deepEqual(sections.map(section => section.heading), ['DAILY SCHEDULE', 'Itinerary'])
+  assert.deepEqual(remainingTripAdditionalInfo(source, sections), [])
+  assert.deepEqual(resolveTripSections(event({ content: rich(paragraph('A course for intermediate climbers.')) })), [])
 })

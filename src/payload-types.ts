@@ -1582,6 +1582,30 @@ export interface Event {
           id?: string | null;
         }[]
       | null;
+    box3Heading?: string | null;
+    box3Bullets?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Optional comparison beside the programme. Enter verified source content; empty comparisons are omitted.
+   */
+  comparison?: {
+    heading?: string | null;
+    intro?: string | null;
+    leftHeading?: string | null;
+    rightHeading?: string | null;
+    rows?:
+      | {
+          label: string;
+          left: string;
+          right: string;
+          id?: string | null;
+        }[]
+      | null;
   };
   itinerary?: {
     intro?: string | null;
@@ -7484,6 +7508,29 @@ export interface EventsSelect<T extends boolean = true> {
           | T
           | {
               text?: T;
+              id?: T;
+            };
+        box3Heading?: T;
+        box3Bullets?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+      };
+  comparison?:
+    | T
+    | {
+        heading?: T;
+        intro?: T;
+        leftHeading?: T;
+        rightHeading?: T;
+        rows?:
+          | T
+          | {
+              label?: T;
+              left?: T;
+              right?: T;
               id?: T;
             };
       };

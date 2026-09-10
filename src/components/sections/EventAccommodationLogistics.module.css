@@ -149,3 +149,5 @@
 
 .inclusions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--theme-space-6); padding-top: var(--theme-space-6); border-top: 1px solid var(--theme-color-border); }
 @media (max-width: 600px) { .inclusions { grid-template-columns: minmax(0, 1fr); } }
+
+.eyebrow { color: var(--theme-color-primary); font-size: var(--fs-eyebrow); letter-spacing: .14em; text-transform: uppercase; margin-bottom: .75rem; }

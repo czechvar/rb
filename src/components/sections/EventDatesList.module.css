@@ -134,3 +134,5 @@
 @media (prefers-reduced-motion: reduce) {
   .card, .cta { transition: none; }
 }
+
+.eyebrow { color: var(--theme-color-primary); font-size: var(--fs-eyebrow); letter-spacing: .14em; text-transform: uppercase; margin-bottom: .75rem; }

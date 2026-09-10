@@ -15,6 +15,7 @@ export async function TripDatesBlock(block: TripDatesBlockProps, { event, trip }
       variant={block.variant === 'rows' ? 'rows' : 'default'}
       selectedId={trip?.selectedDate?.id}
       eventSlug={event.slug}
+      eyebrow={typeof block.eyebrow === 'string' ? block.eyebrow : undefined}
       heading={typeof block.heading === 'string' ? block.heading : 'Dates & Pricing'}
     />
   )

@@ -5,17 +5,19 @@ import styles from './HighlightsGrid.module.css'
 
 export function HighlightsGrid({
   headingVariant,
+  eyebrow,
   items,
   heading = 'Trip Highlights',
 }: {
   headingVariant?: SectionIntroVariant
+  eyebrow?: string
   items?: Event['highlights']
   heading?: string
 }) {
   if (!items?.length) return null
   return (
     <section className={styles.section}>
-      <SectionIntro variant={headingVariant} title={heading} />
+      <SectionIntro eyebrow={eyebrow} variant={headingVariant} title={heading} />
       <CardGrid>
         {items.map((h, i) => (
           <Card key={i}>

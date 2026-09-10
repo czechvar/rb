@@ -186,3 +186,15 @@
 }
 
 .actions a { min-height: 44px; justify-content: center; }
+
+.editorial .title span { display: block; }
+.meta { display: flex; flex-wrap: wrap; gap: var(--theme-space-4) var(--theme-space-6); align-items: baseline; }
+.meta p { margin: 0; }
+.meta strong { color: var(--theme-color-paper); }
+.editorial .lead {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}

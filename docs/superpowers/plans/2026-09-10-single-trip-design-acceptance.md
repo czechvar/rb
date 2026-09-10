@@ -2,7 +2,7 @@
 
 Task: https://app.workstreams.ai/teams/S_ZYh417Os/board/AceE0P/tasks/a0cca40c-12bf-4d82-a969-a0d4b776bd2b
 Date: 2026-09-10
-Status: structured review executed; programme/comparison editorial dependencies and final full-content acceptance remain open.
+Status: top-down corrections implemented and checked; overall visual acceptance and missing editorial groups/personas/comparison content remain open.
 
 The old checklist marked 20/20 complete. That recorded implementation coverage and incorrectly implied visual acceptance. A passing render/overflow check does not demonstrate agreement with the reference design. Use this matrix before checking visual work complete.
 
@@ -89,3 +89,20 @@ Review sheet: `.scratch/trip-checklist-qa/report.html` (reference/current sectio
 | Logistics | EventAccommodationLogistics through existing TripLogisticsBlock and design-system specimens; additive cards variant |
 | Closing action | Existing BookingCTA through TripBookingCTABlock; additive image variant |
 | Source remainder / partner / demo | Lexical plus existing PartnerBlock and DemoLessonBlock, preserving their Event fields |
+
+
+## Top-down correction pass (latest; supersedes earlier acceptance claims)
+
+- Hero: selected date/country and guide metadata; populated difficulty only; existing destination red-accent CSS on the unchanged title suffix after a colon. Hero description is visually clamped to three lines; stored text is unchanged.
+- Overview: section eyebrow, paper-white body token, booking link to selected occurrence (pilot `/book/701`) or inquiry fallback.
+- Eyebrows: optional props on existing section components; neutral default trip labels. Other callers retain their defaults.
+- Programme/requirements: runtime-only extraction of explicitly headed original passages exposes DAILY SCHEDULE and REQUIREMENTS on Knots. Original wording, node order and formatting are retained. Exact displayed slices are removed from the remainder; no editorial reconciliation or CMS backfill occurred.
+- Supplementary prose is visible, not collapsed. Original conflicting facts remain available and require editorial review.
+- Learning: existing six Knots learning items are visible. Existing WhatYouLearn now supports an optional third pillar with the trip cards variant. No new grouping was invented.
+- Audience: existing shared AudienceCards remains supported; the pilot has no source cards/personas.
+- Comparison: optional Event heading/intro/column labels/rows and the programme/table pairing are implemented. Empty/incomplete comparisons are omitted, and comparison-only content uses full width. The pilot has no source comparison rows.
+- Additive migration `20260910_173426_event_comparison_learning_pillar` applied and tables read back in the local development DB. New comparison and third-pillar tables each contain zero rows; Events remain 65. No editorial records inserted. Test/remote DB migration is not claimed.
+
+Evidence: `.scratch/trip-topdown-qa/verified.json` and section screenshots at 1440/390px. Hero checked at both widths: red accent, three-line clamp, metadata, no overlap/overflow. Overview/learning/itinerary/requirements each visible with eyebrow; overview computed paper color `rgb(240,237,231)` and booking `/book/701`; no collapsed details or horizontal overflow. Existing six learning items differ deliberately from the screenshot's three editorial groups. The absent audience/comparison cannot receive visual full-content acceptance from this pilot.
+
+Validation: 36 isolated render/query tests, 21 resolver/composition tests, TypeScript, scoped lint and theme checks. Final design acceptance remains open; component availability is not full-content visual signoff.

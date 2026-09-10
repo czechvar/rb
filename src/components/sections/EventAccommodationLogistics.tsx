@@ -19,6 +19,7 @@ function BulletList({
 
 export function EventAccommodationLogistics({
   accommodation,
+  eyebrow,
   heading = 'Everything Sorted',
   transport,
   variant,
@@ -27,6 +28,7 @@ export function EventAccommodationLogistics({
   variant?: 'cards'
   logisticsOverrides?: EventDate['logisticsOverrides']
   accommodation?: Event['accommodation']
+  eyebrow?: string
   heading?: string
   transport?: Event['transport']
 }) {
@@ -52,6 +54,7 @@ export function EventAccommodationLogistics({
   return (
     <section className={`${styles.section} ${variant === 'cards' ? styles.cards : ''}`}>
       <div className={styles.inner}>
+        {eyebrow && <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p>}
         <h2>{heading}</h2>
         <div className={styles.twoCol}>
           {hasAccommodation && (

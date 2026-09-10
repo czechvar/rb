@@ -1,0 +1,12 @@
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--theme-space-8); padding: 5rem var(--theme-content-gutter); background: var(--theme-color-ink); color: var(--theme-color-paper); }
+.programme, .comparison { min-width: 0; }
+.single { grid-template-columns: minmax(0, 1fr); }
+.programme > section { padding: 0; }
+.scroll { overflow-x: auto; margin-top: var(--theme-space-8); }
+.scroll:focus-visible { outline: 2px solid var(--theme-color-primary); outline-offset: 2px; }
+.comparison table { width: 100%; border-collapse: collapse; font-size: var(--theme-text-body); }
+.comparison th, .comparison td { padding: var(--theme-space-4); border-bottom: 1px solid var(--theme-color-paper-12); text-align: left; }
+.comparison thead th { font-family: var(--theme-font-heading); font-size: var(--theme-text-card); border-color: var(--theme-color-primary); }
+.comparison td { color: var(--theme-color-paper-60); }
+.caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }

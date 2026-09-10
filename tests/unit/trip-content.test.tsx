@@ -8,6 +8,7 @@ import { SectionIntro } from '@/components/sections/SectionIntro'
 import { EventAccommodationLogistics } from '@/components/sections/EventAccommodationLogistics'
 import { AudienceCards } from '@/components/sections/AudienceCards'
 import { defaultTripLayout } from '@/lib/trip-layout'
+import { WhatYouLearn } from '@/components/sections/WhatYouLearn'
 
 vi.mock('next/link', () => ({ default: ({ children, ...props }: React.ComponentProps<'a'>) => <a {...props}>{children}</a> }))
 
@@ -25,6 +26,30 @@ function source(overrides: Partial<Event> = {}): Event {
 function context(event: Event) { return { event, trip: resolveTripDetail(event, []) } }
 
 describe('trip source content preservation', () => {
+  it('preserves an equipment introduction without manufacturing equipment items', () => {
+    const html = renderToStaticMarkup(TripContentBlock({ section: 'equipment' }, context(source({ equipmentIntro: 'Original equipment introduction.' }))))
+    expect(html).toContain('Original equipment introduction.')
+    expect(html).not.toContain('<li')
+  })
+  it('renders optional comparison alongside the programme, and omits incomplete comparisons', () => {
+    const comparison = { heading: 'Source comparison', leftHeading: 'First', rightHeading: 'Second', rows: [{ label: 'Source feature', left: 'Original left', right: 'Original right' }] }
+    const html = renderToStaticMarkup(TripContentBlock({ section: 'itinerary', variant: 'timeline' }, context(source({ comparison }))))
+    expect(html).toContain('<table>')
+    expect(html).toContain('scope="row">Source feature')
+    expect(html).toContain('Original left')
+    expect(html).toContain('Original right')
+    const empty = renderToStaticMarkup(TripContentBlock({ section: 'itinerary', variant: 'timeline' }, context(source({ comparison: { ...comparison, rows: [] } }))))
+    expect(empty).not.toContain('<table>')
+    expect(empty).not.toContain('Source comparison')
+  })
+
+  it('supports a third learning pillar without creating missing pillar content', () => {
+    const html = renderToStaticMarkup(<WhatYouLearn variant="pillars" data={{ box1Heading: 'One', box1Bullets: [{ text: 'First source' }], box3Heading: 'Three', box3Bullets: [{ text: 'Third source' }] }} />)
+    expect(html).toContain('Third source')
+    expect(html.match(/<h3/g)).toHaveLength(2)
+    expect(html).not.toContain('Mental Game')
+  })
+
   it('keeps team bullets and framing when there are no populated guide records', () => {
     const event = source({ coaches: [], coachFramingParagraph: 'Original team framing.', coachTeamBullets: [{ text: 'Original team contribution.' }] })
     const html = renderToStaticMarkup(TripTeamBlock({ variant: 'cards' }, context(event)))
@@ -117,6 +142,22 @@ describe('trip source content preservation', () => {
     expect(html.match(/Original mined highlight\./g)).toHaveLength(1)
   })
 
+  it('adds the overview eyebrow and resolved booking or inquiry action without changing the source', () => {
+    const event = source({ tripDetail: { sections: [{ kind: 'overview', heading: 'Original overview heading', body: rich('Original overview copy.') }] } })
+    const before = structuredClone(event)
+    for (const bookingHref of ['/book/42', null]) {
+      const ctx = context(event)
+      ctx.trip.bookingHref = bookingHref
+      const html = renderToStaticMarkup(TripContentBlock({ section: 'overview', variant: 'overview', eyebrow: 'About This Course' }, ctx))
+      expect(html).toContain('data-eyebrow="section"')
+      expect(html).toContain('About This Course')
+      expect(html).toContain('Original overview copy.')
+      expect(html).toContain(`href="${bookingHref ?? 'mailto:info@rockbusters.net'}"`)
+      expect(html).toContain(bookingHref ? 'Book Your Spot' : 'Ask a Question')
+    }
+    expect(event).toEqual(before)
+  })
+
   it('keeps partner and demo content even when no unmatched prose remains', () => {
     const event = source({
       partnerHeadline: 'Original partner headline', partnerDescription: 'Original partner description.',
@@ -125,7 +166,7 @@ describe('trip source content preservation', () => {
       demoCta: { label: 'Original demo action', url: '/original-demo' },
     })
     const ctx = context(event)
-    expect(defaultTripLayout(ctx.trip)).toContainEqual({ blockType: 'tripContent', section: 'remaining', variant: 'prose' })
+    expect(defaultTripLayout(ctx.trip)).toContainEqual(expect.objectContaining({ blockType: 'tripContent', section: 'remaining', variant: 'prose' }))
     const html = renderToStaticMarkup(TripContentBlock({ section: 'remaining' }, ctx))
     for (const text of ['Original partner headline', 'Original partner description.', 'Original partner benefit.', 'Original demo heading', 'Original demo body.', 'Original demo action']) expect(html).toContain(text)
     expect(html).toContain('href="/original-demo"')
@@ -136,7 +177,8 @@ describe('trip source content preservation', () => {
     const event = source({ content: rich('Original unmatched main content.'), additionalInfo: [{ heading: 'Original additional heading', body: rich('Original additional body.') }], partnerDescription: 'Original partner copy.' })
     const html = renderToStaticMarkup(TripContentBlock({ section: 'remaining' }, context(event)))
     for (const text of ['Original unmatched main content.', 'Original additional heading', 'Original additional body.', 'Original partner copy.']) expect(html).toContain(text)
-    expect(html).toContain('<details>')
+    expect(html).not.toContain('<details>')
+    expect(html).toContain('More about this trip')
     expect(html).not.toContain('Try before you commit')
   })
 })

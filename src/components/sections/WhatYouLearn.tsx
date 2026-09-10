@@ -2,7 +2,7 @@ import type { Event } from '@/payload-types'
 import { SectionIntro, type SectionIntroVariant } from './SectionIntro'
 import styles from './WhatYouLearn.module.css'
 
-export function WhatYouLearn({ data, headingVariant }: { data?: Event['whatYouLearn']; headingVariant?: SectionIntroVariant }) {
+export function WhatYouLearn({ data, headingVariant, eyebrow, variant }: { data?: Event['whatYouLearn']; headingVariant?: SectionIntroVariant; eyebrow?: string; variant?: 'pillars' }) {
   if (!data) return null
   const boxes = [
     data.box1Heading && {
@@ -15,6 +15,11 @@ export function WhatYouLearn({ data, headingVariant }: { data?: Event['whatYouLe
       heading: data.box2Heading,
       bullets: data.box2Bullets ?? [],
     },
+    data.box3Heading && {
+      num: '03',
+      heading: data.box3Heading,
+      bullets: data.box3Bullets ?? [],
+    },
   ].filter(Boolean) as { num: string; heading: string; bullets: { text: string }[] }[]
 
   if (!boxes.length) return null
@@ -22,12 +27,12 @@ export function WhatYouLearn({ data, headingVariant }: { data?: Event['whatYouLe
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <SectionIntro variant={headingVariant}
+        <SectionIntro eyebrow={eyebrow} variant={headingVariant}
           title="What you'll learn"
           lead={data.intro ?? undefined}
           align="left"
         />
-        <div className={styles.grid}>
+        <div className={`${styles.grid} ${variant === 'pillars' ? styles.pillars : ''}`}>
           {boxes.map((box) => (
             <div key={box.num} className={styles.pillar}>
               <div className={styles.rule} />

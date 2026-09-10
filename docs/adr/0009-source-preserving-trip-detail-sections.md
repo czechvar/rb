@@ -14,7 +14,9 @@ Add optional `events.tripDetail.sections`, a typed Payload array with `kind`, or
 
 Keep current content, additionalInfo, existing typed arrays, custom layouts and relationships intact. Fill only an empty section array from deterministic exact-source candidates. Preserve existing section arrays on repeat runs. Store source provenance, conflicts, omitted ranges and preconditions in migration artifacts, not a new CMS collection.
 
-Conflicting or ambiguous candidates remain outside the backfill for editors. Date prices, schedules, guides, locations and logistics overrides stay on Event Dates under ADR-0005. HTML and internet material are not sources for the backfill. This migration does not change public rendering; source removal/render cutover is separate work.
+Conflicting or ambiguous candidates remain outside the backfill for editors. Public rendering may now expose exact original passages under explicitly recognized source headings in their corresponding sections, even when other original statements are disputed. This runtime presentation does not approve, correct or persist those statements. Editor-owned structured sections take priority, and only exact source slices actually rendered are subtracted from supplementary copy. Date prices, schedules, guides, locations and logistics overrides stay on Event Dates under ADR-0005. HTML and internet material are not sources for the backfill.
+
+Optional third learning-pillar fields extend the existing learning group; an optional Event comparison group owns its heading, column labels and source rows. The timeline variant pairs a complete comparison with the programme; incomplete comparisons are omitted. Adding these fields does not populate them from design examples. Original ungrouped learning items remain ungrouped until editors provide grouping.
 
 ## Alternatives Considered
 

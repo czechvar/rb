@@ -196,6 +196,33 @@ export const Events: CollectionConfig = {
           type: 'array',
           fields: [{ name: 'text', type: 'text', required: true }],
         },
+        { name: 'box3Heading', type: 'text' },
+        {
+          name: 'box3Bullets',
+          type: 'array',
+          fields: [{ name: 'text', type: 'text', required: true }],
+        },
+      ],
+    },
+
+    {
+      name: 'comparison',
+      type: 'group',
+      admin: { description: 'Optional comparison beside the programme. Enter verified source content; empty comparisons are omitted.' },
+      fields: [
+        { name: 'heading', type: 'text' },
+        { name: 'intro', type: 'textarea' },
+        { name: 'leftHeading', type: 'text' },
+        { name: 'rightHeading', type: 'text' },
+        {
+          name: 'rows',
+          type: 'array',
+          fields: [
+            { name: 'label', type: 'text', required: true },
+            { name: 'left', type: 'text', required: true },
+            { name: 'right', type: 'text', required: true },
+          ],
+        },
       ],
     },
 

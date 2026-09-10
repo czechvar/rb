@@ -16,12 +16,14 @@ function durationDays(from: string, to: string): number {
 
 export function EventDatesList({
   items,
+  eyebrow,
   heading = 'Dates & Pricing',
   variant = 'default',
   selectedId,
   eventSlug,
 }: {
   items: EventDate[]
+  eyebrow?: string
   heading?: string
   variant?: 'default' | 'rows'
   selectedId?: number
@@ -30,7 +32,8 @@ export function EventDatesList({
   if (!items?.length) return null
   return (
     <section id="dates" className={`${styles.section} ${variant === 'rows' ? styles.rows : ''}`}>
-      <h2>{heading}</h2>
+      {eyebrow && <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p>}
+        <h2>{heading}</h2>
       <ul className={styles.grid}>
         {items.map((d) => {
           const days = durationDays(d.dateFrom, d.dateTo)
