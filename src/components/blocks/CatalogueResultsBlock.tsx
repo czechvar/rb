@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { getUpcomingCatalogueResults } from '@/lib/queries'
 import { BlockHeader } from './CatalogueCards'
 import { CatalogueResultsClient } from './CatalogueResultsClient'
@@ -24,15 +25,17 @@ export async function CatalogueResultsBlock(block: CatalogueResultsBlockProps) {
     <section className={styles.section}>
       <div className={sharedStyles.sectionInner}>
         <BlockHeader eyebrow={block.eyebrow} heading={block.heading} intro={block.intro} />
-        <CatalogueResultsClient
-          results={results}
-          enabledFacets={block.enabledFacets?.filter(isFacet) ?? [...catalogueFacetKeys]}
-          defaultSort={block.defaultSort ?? 'date'}
-          resultLimit={block.resultLimit ?? 12}
-          paginationMode={block.paginationMode ?? 'showMore'}
-          presentation={block.presentation ?? 'calendar'}
-          stickyFilters={block.stickyFilters ?? false}
-        />
+        <Suspense fallback={null}>
+          <CatalogueResultsClient
+            results={results}
+            enabledFacets={block.enabledFacets?.filter(isFacet) ?? [...catalogueFacetKeys]}
+            defaultSort={block.defaultSort ?? 'date'}
+            resultLimit={block.resultLimit ?? 12}
+            paginationMode={block.paginationMode ?? 'showMore'}
+            presentation={block.presentation ?? 'calendar'}
+            stickyFilters={block.stickyFilters ?? false}
+          />
+        </Suspense>
       </div>
     </section>
   )
