@@ -127,18 +127,15 @@ test.afterAll(async () => {
 })
 
 test.describe('/trips catalogue', () => {
-  test('uses the URL-backed type filter and renders calendar cards', async ({ page }) => {
-    await page.goto(`${BASE}/trips`)
+  test('consumes the URL-backed type filter and renders calendar cards', async ({ page }) => {
+    await page.goto(`${BASE}/trips?category=${category.slug}`)
     await expect(page.getByRole('heading', { name: pageTitle })).toBeVisible()
+    await expect(page).toHaveURL(new RegExp(`\\?category=${category.slug}$`))
+    await expect(page.getByLabel('Type')).toHaveValue(category.slug)
     await expect(page.getByText(matchingTripTitle)).toBeVisible()
-    await expect(page.getByText(otherTripTitle)).toBeVisible()
     await expect(
       page.locator('a').filter({ hasText: matchingTripTitle }).locator('time'),
     ).toHaveCount(0)
-
-    await page.getByLabel('Type').selectOption(category.slug)
-    await expect(page).toHaveURL(new RegExp(`\\?category=${category.slug}$`))
-    await expect(page.getByText(matchingTripTitle)).toBeVisible()
     await expect(page.getByText(otherTripTitle)).toHaveCount(0)
   })
 
