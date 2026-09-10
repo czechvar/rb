@@ -107,3 +107,11 @@
     padding: 64px 5%;
   }
 }
+
+.editorial { padding-inline: var(--theme-content-gutter); }
+.imageZoom { composes: imageZoom from '../effects/interaction.module.css'; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 2rem 0 0; }
+.facts > div { border-top: 1px solid var(--theme-color-paper-12); padding-top: 1rem; min-width: 0; }
+.facts dt { font-size: var(--fs-eyebrow); text-transform: uppercase; letter-spacing: 0.12em; color: var(--theme-color-primary); }
+.facts dd { margin: 0.5rem 0 0; overflow-wrap: anywhere; }
+@media (max-width: 600px) { .facts { grid-template-columns: 1fr; } }

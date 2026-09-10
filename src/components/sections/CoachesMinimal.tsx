@@ -12,7 +12,9 @@ export function CoachesMinimal({
   coaches,
   framing,
   teamBullets,
+  variant,
 }: {
+  variant?: 'cards'
   coaches?: Event['coaches']
   framing?: Event['coachFramingParagraph']
   teamBullets?: Event['coachTeamBullets']
@@ -20,7 +22,7 @@ export function CoachesMinimal({
   const resolved = (coaches ?? []).filter(isGuide)
   if (!resolved.length && !teamBullets?.length) return null
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${variant === 'cards' ? styles.cards : ''}`}>
       <div className={styles.inner}>
         <SectionIntro title="Meet your guides" lead={framing ?? undefined} />
         {resolved.length ? (
@@ -29,7 +31,7 @@ export function CoachesMinimal({
               const url = mediaUrl(g.photo)
               return (
                 <div key={g.id} className={styles.card}>
-                  <div className={styles.photoWrap}>
+                  <div className={`${styles.photoWrap} ${variant === 'cards' && !url ? styles.withoutPhoto : ''}`}>
                     {url ? (
                       <Image
                         src={url}
@@ -39,7 +41,7 @@ export function CoachesMinimal({
                         sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
                       />
                     ) : (
-                      <div className={styles.photoPlaceholder}>PHOTO</div>
+                      variant !== 'cards' ? <div className={styles.photoPlaceholder}>PHOTO</div> : null
                     )}
                     <div className={styles.gradient} />
                     <div className={styles.overlay}>

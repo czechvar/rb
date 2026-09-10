@@ -2,6 +2,7 @@ import Link from 'next/link'
 import styles from './PricingSidebar.module.css'
 
 export type PricingSidebarProps = {
+  variant?: 'default' | 'dark'
   primaryPrice: string
   secondaryPrice?: string
   caption: string
@@ -12,6 +13,7 @@ export type PricingSidebarProps = {
 }
 
 export function PricingSidebar({
+  variant = 'default',
   primaryPrice,
   secondaryPrice,
   caption,
@@ -21,7 +23,7 @@ export function PricingSidebar({
   ctaLabel,
 }: PricingSidebarProps) {
   return (
-    <aside className={styles.card} aria-label="Trip pricing">
+    <aside className={`${styles.card} ${variant === 'dark' ? styles.dark : ''}`} aria-label="Trip pricing">
       <div className={styles.priceBlock}>
         <p className={styles.primaryPrice}>{primaryPrice}</p>
         {secondaryPrice && <p className={styles.secondaryPrice}>{secondaryPrice}</p>}

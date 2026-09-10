@@ -64,7 +64,7 @@ export const FAQBlockConfig: Block = {
       name: 'limit',
       type: 'number',
       min: 1,
-      max: 20,
+      max: 100,
       defaultValue: 6,
       required: true,
     },

@@ -18,6 +18,7 @@ import { TagChipStrip } from '@/components/sections/TagChipStrip'
 import { themeTokenGroups, themeTokens, type ThemeToken } from '@/lib/theme/tokenRegistry'
 import styles from './page.module.css'
 import { ThemeWorkbench } from './ThemeWorkbench'
+import { TripVariantsPreview } from './TripVariantsPreview'
 import { ImageTripCard } from '@/components/catalogue/ImageTripCard'
 import tripCardStyles from '@/components/catalogue/ImageTripCard.module.css'
 import { StatsBlock } from '@/components/blocks/StatsBlock'
@@ -568,6 +569,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
             })}
           </div>
         </section>
+        <TripVariantsPreview />
       </div>
     </ThemeWorkbench>
   )

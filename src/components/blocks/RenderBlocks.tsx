@@ -1,3 +1,6 @@
+import { remainingTripContent, remainingTripAdditionalInfo } from '@/lib/trip-detail'
+import type { TripDetailView } from '@/lib/trip-detail'
+import { TripContentBlock, TripFactsBlock, TripVenueBlock, TripTeamBlock } from './TripContentBlocks'
 import React from 'react'
 import type { Event, Guide, Location, Page, Post, Program } from '@/payload-types'
 import { HeroBlock } from './HeroBlock'
@@ -89,6 +92,7 @@ type RenderableBlock = PageBlock | {
 }
 
 export type BlockRenderContext = {
+  trip?: TripDetailView | null
   page?: Pick<Page, 'id' | 'slug'> | null
   event?: Event | null
   program?: Program | null
@@ -164,7 +168,11 @@ const blockRenderers: Record<string, BlockRenderer> = {
     GuideProfileBlock(block as Extract<PageBlock, { blockType: 'guideProfile' }>, context),
   guideTrips: (block, context) =>
     GuideTripsBlock(block as Extract<PageBlock, { blockType: 'guideTrips' }>, context),
-  tripHero: (_block, context) => <TripHeroBlock {...context} />,
+  tripHero: (block, context) => <TripHeroBlock {...context} variant={'variant' in block && block.variant === 'editorial' ? 'editorial' : 'default'} />,
+  tripContent: (block, context) => TripContentBlock(block, context),
+  tripFacts: (block, context) => TripFactsBlock(block, context),
+  tripVenue: (block, context) => TripVenueBlock(block, context),
+  tripTeam: (block, context) => TripTeamBlock(block, context),
   tripPitch: (_block, context) => <TripPitchContextBlock {...context} />,
   tripHighlights: (block, context) => TripHighlightsBlock(block, context),
   tripDates: (block, context) => TripDatesBlock(block, context),
@@ -224,5 +232,15 @@ export async function RenderBlocks({
   context?: BlockRenderContext
 }) {
   if (!blocks?.length) return null
+  // Deduplicate only source sections actually rendered by this layout.
+  if (context.trip && context.event) {
+    const kinds = new Set(blocks.filter(block => block.blockType === 'tripContent').map(block => 'section' in block ? block.section : 'overview'))
+    const sections = context.trip.sections.filter(section => kinds.has(section.kind))
+    context = { ...context, trip: {
+      ...context.trip,
+      remainingContent: remainingTripContent(context.event.content, sections),
+      remainingAdditionalInfo: remainingTripAdditionalInfo(context.event, sections),
+    } }
+  }
   return <>{await Promise.all(blocks.map((block, index) => renderBlock(block, index, context)))}</>
 }

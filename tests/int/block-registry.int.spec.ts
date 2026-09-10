@@ -90,6 +90,10 @@ describe('block registry groups', () => {
       'guideTrips',
     ])
     expect(tripDetailBlocks.map((block) => block.slug)).toEqual([
+      'tripContent',
+      'tripFacts',
+      'tripVenue',
+      'tripTeam',
       'tripHero',
       'tripPitch',
       'tripHighlights',
@@ -138,6 +142,10 @@ describe('block registry groups', () => {
   it('builds surface block lists from compatibility metadata', () => {
     expect(pageBlocks.map((block) => block.slug)).toEqual(pageBlockSlugs)
     expect(eventLayoutBlocks.map((block) => block.slug)).toEqual([
+      'tripContent',
+      'tripFacts',
+      'tripVenue',
+      'tripTeam',
       ...reusableBlockSlugs,
       'tripHero',
       'tripPitch',

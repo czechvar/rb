@@ -605,7 +605,7 @@ export interface Program {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry' | 'tiles';
+            variant: 'grid' | 'masonry' | 'tiles' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -958,6 +958,41 @@ export interface Event {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Source-preserving sections for reusable trip blocks. Original content and occurrence-specific facts remain on their existing fields.
+   */
+  tripDetail?: {
+    sections?:
+      | {
+          kind:
+            | 'overview'
+            | 'learning'
+            | 'itinerary'
+            | 'requirements'
+            | 'equipment'
+            | 'audience'
+            | 'highlights'
+            | 'notes';
+          heading: string;
+          body: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
   additionalInfo?:
     | {
         heading: string;
@@ -987,6 +1022,40 @@ export interface Event {
    */
   layout?:
     | (
+        | {
+            section:
+              | 'overview'
+              | 'learning'
+              | 'itinerary'
+              | 'requirements'
+              | 'equipment'
+              | 'audience'
+              | 'highlights'
+              | 'notes'
+              | 'remaining';
+            variant: 'prose' | 'cards' | 'timeline' | 'overview';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripContent';
+          }
+        | {
+            variant: 'heroBar' | 'grid';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripFacts';
+          }
+        | {
+            variant: 'default' | 'editorial';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripVenue';
+          }
+        | {
+            variant: 'default' | 'cards';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripTeam';
+          }
         | {
             eyebrow?: string | null;
             heading: string;
@@ -1304,7 +1373,7 @@ export interface Event {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry' | 'tiles';
+            variant: 'grid' | 'masonry' | 'tiles' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -1405,6 +1474,7 @@ export interface Event {
             blockType: 'guideTrips';
           }
         | {
+            variant: 'default' | 'editorial';
             /**
              * Optional section anchor for in-page links.
              */
@@ -1429,12 +1499,14 @@ export interface Event {
             blockType: 'tripHighlights';
           }
         | {
+            variant: 'default' | 'rows';
             heading?: string | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'tripDates';
           }
         | {
+            variant: 'default' | 'image';
             eyebrow?: string | null;
             heading?: string | null;
             body?: string | null;
@@ -1443,6 +1515,7 @@ export interface Event {
             blockType: 'tripBookingCTA';
           }
         | {
+            variant: 'default' | 'cards';
             /**
              * Uses the accommodation and transport content from the current Event.
              */
@@ -2271,7 +2344,7 @@ export interface Location {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry' | 'tiles';
+            variant: 'grid' | 'masonry' | 'tiles' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -2861,7 +2934,7 @@ export interface Guide {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry' | 'tiles';
+            variant: 'grid' | 'masonry' | 'tiles' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -3469,7 +3542,7 @@ export interface Post {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry' | 'tiles';
+            variant: 'grid' | 'masonry' | 'tiles' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -4366,7 +4439,7 @@ export interface Page {
             body?: string | null;
             source: 'manual' | 'currentEvent' | 'currentLocation';
             images?: (string | Media)[] | null;
-            variant: 'grid' | 'masonry' | 'tiles';
+            variant: 'grid' | 'masonry' | 'tiles' | 'featureLead';
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
@@ -6872,6 +6945,18 @@ export interface EventsSelect<T extends boolean = true> {
         description?: T;
       };
   content?: T;
+  tripDetail?:
+    | T
+    | {
+        sections?:
+          | T
+          | {
+              kind?: T;
+              heading?: T;
+              body?: T;
+              id?: T;
+            };
+      };
   additionalInfo?:
     | T
     | {
@@ -6885,6 +6970,35 @@ export interface EventsSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        tripContent?:
+          | T
+          | {
+              section?: T;
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripFacts?:
+          | T
+          | {
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripVenue?:
+          | T
+          | {
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
+        tripTeam?:
+          | T
+          | {
+              variant?: T;
+              id?: T;
+              blockName?: T;
+            };
         hero?:
           | T
           | {
@@ -7270,6 +7384,7 @@ export interface EventsSelect<T extends boolean = true> {
         tripHero?:
           | T
           | {
+              variant?: T;
               anchor?: T;
               id?: T;
               blockName?: T;
@@ -7291,6 +7406,7 @@ export interface EventsSelect<T extends boolean = true> {
         tripDates?:
           | T
           | {
+              variant?: T;
               heading?: T;
               id?: T;
               blockName?: T;
@@ -7298,6 +7414,7 @@ export interface EventsSelect<T extends boolean = true> {
         tripBookingCTA?:
           | T
           | {
+              variant?: T;
               eyebrow?: T;
               heading?: T;
               body?: T;
@@ -7307,6 +7424,7 @@ export interface EventsSelect<T extends boolean = true> {
         tripLogistics?:
           | T
           | {
+              variant?: T;
               heading?: T;
               id?: T;
               blockName?: T;

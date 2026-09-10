@@ -49,6 +49,8 @@ import * as migration_20260903_183000_action_analytics_fields from './20260903_1
 import * as migration_20260904_211000_stats_hero_bar_variant from './20260904_211000_stats_hero_bar_variant';
 import * as migration_20260904_225500_destination_logistics_variant from './20260904_225500_destination_logistics_variant';
 import * as migration_20260907_203729_catalogue_results_reconciliation from './20260907_203729_catalogue_results_reconciliation';
+import * as migration_20260910_151403_event_trip_detail_sections from './20260910_151403_event_trip_detail_sections';
+import * as migration_20260910_155720_trip_layout_variants from './20260910_155720_trip_layout_variants';
 
 export const migrations = [
   {
@@ -304,6 +306,16 @@ export const migrations = [
   {
     up: migration_20260907_203729_catalogue_results_reconciliation.up,
     down: migration_20260907_203729_catalogue_results_reconciliation.down,
-    name: '20260907_203729_catalogue_results_reconciliation'
+    name: '20260907_203729_catalogue_results_reconciliation',
+  },
+  {
+    up: migration_20260910_151403_event_trip_detail_sections.up,
+    down: migration_20260910_151403_event_trip_detail_sections.down,
+    name: '20260910_151403_event_trip_detail_sections',
+  },
+  {
+    up: migration_20260910_155720_trip_layout_variants.up,
+    down: migration_20260910_155720_trip_layout_variants.down,
+    name: '20260910_155720_trip_layout_variants'
   },
 ];

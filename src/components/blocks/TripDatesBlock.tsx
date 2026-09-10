@@ -5,13 +5,16 @@ import type { BlockRenderContext } from './RenderBlocks'
 
 type TripDatesBlockProps = Record<string, unknown>
 
-export async function TripDatesBlock(block: TripDatesBlockProps, { event }: BlockRenderContext) {
+export async function TripDatesBlock(block: TripDatesBlockProps, { event, trip }: BlockRenderContext) {
   if (!isEvent(event)) return null
 
-  const dates = await getActiveEventDatesForEvent(event.id)
+  const dates = trip?.dates ?? await getActiveEventDatesForEvent(event.id)
   return (
     <EventDatesList
       items={dates}
+      variant={block.variant === 'rows' ? 'rows' : 'default'}
+      selectedId={trip?.selectedDate?.id}
+      eventSlug={event.slug}
       heading={typeof block.heading === 'string' ? block.heading : 'Dates & Pricing'}
     />
   )

@@ -5,6 +5,8 @@ import { mediaUrl, mediaAlt } from '@/lib/media'
 import styles from './LocationBlock.module.css'
 
 export interface LocationBlockProps {
+  variant?: 'editorial'
+  facts?: { label: string; value: string }[]
   content?: Program['content']
   body?: string | null
   /** Optional Bebas display heading rendered above the eyebrow + prose
@@ -21,20 +23,20 @@ export interface LocationBlockProps {
   imageAlt?: string
 }
 
-export function LocationBlock({ body, content, heading, eyebrow, image, imageAlt }: LocationBlockProps) {
-  if (!content && !body) return null
+export function LocationBlock({ body, content, heading, eyebrow, image, imageAlt, variant, facts }: LocationBlockProps) {
+  if (!content && !body && !facts?.length) return null
 
   const imgUrl = image ? mediaUrl(image) : undefined
   const imgAlt = imageAlt ?? (image ? mediaAlt(image) : '')
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${variant === 'editorial' ? styles.editorial : ''}`}>
       <div className={styles.inner}>
         {heading && <h2 className={`section-title ${styles.sectionHeading}`}>{heading}</h2>}
         <div className={imgUrl ? styles.grid : undefined}>
           {/* Left: photo column — only rendered when an image is supplied */}
           {imgUrl && (
-            <div className={styles.imgCol}>
+            <div className={`${styles.imgCol} ${variant === 'editorial' ? styles.imageZoom : ''}`}>
               <Image
                 src={imgUrl}
                 alt={imgAlt}
@@ -55,6 +57,13 @@ export function LocationBlock({ body, content, heading, eyebrow, image, imageAlt
                 paragraphs(body).map((paragraph) => <p key={paragraph}>{paragraph}</p>)
               )}
             </div>
+            {facts?.length ? (
+              <dl className={styles.facts}>
+                {facts.map((fact, index) => (
+                  <div key={index}><dt>{fact.label}</dt><dd>{fact.value}</dd></div>
+                ))}
+              </dl>
+            ) : null}
           </div>
         </div>
       </div>

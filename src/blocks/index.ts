@@ -1,3 +1,4 @@
+import { TripContentBlockConfig, TripFactsBlockConfig, TripVenueBlockConfig, TripTeamBlockConfig } from './TripContent'
 import { HeroBlockConfig } from './Hero/config'
 import { SectionIntroBlockConfig } from './SectionIntro/config'
 import { RichTextBlockConfig } from './RichText/config'
@@ -115,6 +116,10 @@ const allNonGuideSurfaces = ['page', 'event', 'program', 'location', 'post'] as 
 const allNonPostSurfaces = ['page', 'event', 'program', 'location', 'guide'] as const
 
 const rawBlockCatalogue = [
+  ...[TripContentBlockConfig, TripFactsBlockConfig, TripVenueBlockConfig, TripTeamBlockConfig].map(config => ({
+    config, category: 'tripDetail' as const, dataDependencies: ['event'] as const,
+    sourceModes: ['currentContext'] as const, notCompatibleWith: allNonEventSurfaces,
+  })),
   { config: HeroBlockConfig, category: 'content' },
   { config: SectionIntroBlockConfig, category: 'content' },
   { config: RichTextBlockConfig, category: 'content' },

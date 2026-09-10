@@ -137,3 +137,11 @@
     margin-bottom: 2rem;
   }
 }
+
+.cards { padding-inline: var(--theme-content-gutter); }
+.cards .twoCol { gap: 1.5rem; background: transparent; border: none; }
+.cards .col { border: 1px solid var(--theme-color-paper-12); min-width: 0; overflow-wrap: anywhere; }
+.cards .col:only-child { grid-column: 1 / -1; }
+.cards .box a { color: var(--theme-color-primary); text-decoration: underline; }
+.cards .box :is(ul, ol) { padding-left: 1.25rem; }
+.cards .box .bullets { padding-left: 0; }

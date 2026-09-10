@@ -154,3 +154,16 @@
     grid-template-columns: 1fr;
   }
 }
+
+.cards { padding-inline: var(--theme-content-gutter); }
+.cards .photoWrap { aspect-ratio: auto; background: transparent; }
+.cards .photo { position: relative !important; height: 22.5rem !important; }
+.cards .gradient { display: none; }
+.cards .overlay { position: static; padding: 1.5rem 0 0; display: flex; flex-direction: column-reverse; gap: 0.6rem; }
+.cards .name { font-size: 1.8rem; }
+.cards .role { font-size: var(--fs-eyebrow); }
+.cards .bio { padding-top: 0.8rem; }
+.cards .withoutPhoto { min-height: 0; }
+.cards .withoutPhoto .overlay { padding-top: 0; }
+.cards .inner > section { padding: 0; background: transparent; text-align: left; }
+.cards .inner > section > div { max-width: none; }

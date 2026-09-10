@@ -4,14 +4,16 @@ import type { BlockRenderContext } from './RenderBlocks'
 
 type TripLogisticsBlockProps = Record<string, unknown>
 
-export function TripLogisticsBlock(block: TripLogisticsBlockProps, { event }: BlockRenderContext) {
+export function TripLogisticsBlock(block: TripLogisticsBlockProps, { event, trip }: BlockRenderContext) {
   if (!isEvent(event)) return null
 
   return (
     <EventAccommodationLogistics
-      accommodation={event.accommodation}
+      accommodation={trip?.accommodation ?? event.accommodation}
+      variant={block.variant === 'cards' ? 'cards' : undefined}
+      logisticsOverrides={trip?.logisticsOverrides}
       heading={typeof block.heading === 'string' ? block.heading : undefined}
-      transport={event.transport}
+      transport={trip?.transport ?? event.transport}
     />
   )
 }

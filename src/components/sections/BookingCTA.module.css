@@ -75,3 +75,13 @@
   background: var(--theme-color-primary-hover);
   color: var(--theme-color-paper);
 }
+
+.withImage { padding: 120px var(--theme-content-gutter); }
+.withImage::before { z-index: 1; background: var(--theme-overlay-dark-strong); }
+.image { object-fit: cover; object-position: center; }
+.withImage .inner { z-index: 2; max-width: var(--theme-content-text-max); }
+.withImage .heading { font-size: clamp(3rem, 7vw, 6rem); text-wrap: balance; }
+.details { color: var(--theme-color-paper-80); font-size: 0.85rem; line-height: 1.7; margin: 0 0 1.5rem; }
+.button:focus-visible { outline: 2px solid var(--theme-color-paper); outline-offset: 5px; }
+@media (max-width: 650px) { .withImage { padding-block: 72px; } }
+@media (prefers-reduced-motion: reduce) { .button { transition: none; } }

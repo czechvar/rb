@@ -37,7 +37,7 @@ export const ReviewGridBlockConfig: Block = {
       admin: { condition: (_, siblingData) => siblingData?.source === 'manual' },
       filterOptions: () => ({ active: { equals: true } }),
     },
-    { name: 'limit', type: 'number', min: 1, max: 12, defaultValue: 3 },
+    { name: 'limit', type: 'number', min: 1, max: 50, defaultValue: 3 },
     selectField('variant', {
       defaultValue: 'cards',
       values: [

@@ -3,6 +3,7 @@ import type { Page } from '@/payload-types'
 import { mediaAlt, mediaUrl } from '@/lib/media'
 import type { BlockRenderContext } from './RenderBlocks'
 import styles from './blocks.module.css'
+import variants from './GalleryBlock.module.css'
 
 type GalleryBlockProps = Extract<
   NonNullable<Page['layout']>[number],
@@ -23,6 +24,7 @@ export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderC
   const isDestinationStrip = variant === 'tiles' && Boolean(props.context?.location)
   const className = [
     styles.gallerySection,
+    variant === 'featureLead' ? variants.featureLead : '',
     variant === 'masonry' ? styles.galleryMasonry : '',
     variant === 'tiles' ? styles.galleryTiles : '',
     isDestinationStrip ? styles.galleryDestinationStrip : '',
@@ -38,14 +40,14 @@ export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderC
             {body ? <p className={styles.lead}>{body}</p> : null}
           </div>
         ) : null}
-        <div className={styles.galleryGrid}>
+        <div className={`${styles.galleryGrid} ${variant === 'featureLead' ? variants.grid : ''}`}>
           {resolved.map((image, index) => (
-            <figure key={typeof image === 'object' ? image.id : index} className={styles.galleryItem}>
+            <figure key={typeof image === 'object' ? image.id : index} className={`${styles.galleryItem} ${variant === 'featureLead' ? variants.item : ''}`}>
               <Image
                 src={mediaUrl(image) ?? ''}
                 alt={mediaAlt(image)}
                 fill
-                sizes={isDestinationStrip ? '(max-width: 768px) 25vw, 25vw' : '(max-width: 768px) 100vw, 33vw'}
+                sizes={variant === 'featureLead' ? '(max-width: 600px) 100vw, (max-width: 900px) 50vw, 45vw' : isDestinationStrip ? '(max-width: 768px) 25vw, 25vw' : '(max-width: 768px) 100vw, 33vw'}
               />
             </figure>
           ))}

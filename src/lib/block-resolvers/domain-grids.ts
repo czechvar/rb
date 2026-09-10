@@ -228,7 +228,7 @@ export async function resolveFeaturedGuide(input: FeaturedGuideResolverInput): P
 
 export async function resolveReviewGridReviews(input: ReviewGridResolverInput): Promise<Review[]> {
   const payload = await getPayloadClient()
-  const limit = boundedLimit(input.limit, 3, 12)
+  const limit = boundedLimit(input.limit, 3, 50)
   const source = input.source ?? 'global'
 
   if (source === 'manual') {

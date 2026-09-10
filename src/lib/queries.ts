@@ -232,7 +232,7 @@ export function getPublishedPostsByCategory(categoryId: number) {
 // depth 2 embeds coaches (guides) + locations on /trips/[slug] → tag all three.
 
 export function getPublishedEventBySlug(slug: string) {
-  return cachedQuery(['event-by-slug', slug], [TAGS.events, TAGS.guides, TAGS.locations], async (): Promise<Event | null> => {
+  return cachedQuery(['event-by-slug', slug], [TAGS.events, TAGS.guides, TAGS.locations, TAGS.media], async (): Promise<Event | null> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'events',
@@ -257,6 +257,34 @@ export function getActiveEventDatesForEvent(eventId: number) {
     })
     return docs
   })
+}
+
+// The trip page shares one occurrence read across its blocks. Capacity is live;
+// do not put this result in the long-lived catalogue cache.
+export async function getTripDetailEventDates(eventId: number): Promise<EventDate[]> {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'event-dates',
+    where: { and: [{ event: { equals: eventId } }, { active: { equals: true } }, upcomingEventDateWhere()] },
+    sort: 'dateFrom',
+    limit: 100,
+    depth: 2,
+    select: {
+      event: true, dateFrom: true, dateTo: true, price: true, currency: true,
+      capacity: true, active: true, guides: true, locations: true,
+      vat: true, updatedAt: true, createdAt: true,
+      airportFrom: true, airportTo: true, logisticsOverrides: true,
+      bookedSeats: true, remainingSeats: true,
+    },
+    populate: {
+      events: { title: true, slug: true },
+      guides: { name: true, slug: true, role: true, tagline: true, photo: true },
+      locations: { name: true, slug: true, country: true, mainPicture: true, gradeRange: true, destinationDetail: true },
+    },
+  })
+  // Payload field afterRead hooks run concurrently; remainingSeats may have
+  // observed bookedSeats before its async hook completed. Derive it now.
+  return docs.map(date => ({ ...date, remainingSeats: Math.max(0, date.capacity - (date.bookedSeats ?? 0)) }))
 }
 
 // --- Programs ------------------------------------------------------------

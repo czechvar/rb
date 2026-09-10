@@ -125,3 +125,62 @@
     margin-top: 2rem;
   }
 }
+
+/* Editorial variant keeps the title and booking summary in independent columns. */
+.editorial {
+  min-height: 100svh;
+  padding: 160px var(--theme-content-gutter) 72px;
+}
+
+.editorial .content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--theme-content-sidebar-max);
+  align-items: end;
+  gap: 4vw;
+}
+
+.editorial .textCol {
+  min-width: 0;
+  max-width: none;
+}
+
+.editorial .title {
+  font-size: clamp(64px, 8vw, 140px);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.editorial .sidebar {
+  position: static;
+  width: 100%;
+  margin: 0;
+}
+
+.meta {
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--theme-color-paper-80);
+  margin-bottom: 1.5rem;
+}
+
+.editorial .actions a:focus-visible {
+  outline: 2px solid var(--theme-color-paper);
+  outline-offset: 5px;
+}
+
+@media (max-width: 900px) {
+  .editorial {
+    padding-top: 140px;
+    padding-bottom: 48px;
+  }
+
+  .editorial .content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .editorial .title {
+    font-size: clamp(52px, 11vw, 96px);
+  }
+}

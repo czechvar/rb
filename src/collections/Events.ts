@@ -33,6 +33,32 @@ export const Events: CollectionConfig = {
     },
     { name: 'content', type: 'richText' },
     {
+      name: 'tripDetail',
+      type: 'group',
+      label: 'Structured trip content',
+      admin: {
+        description: 'Source-preserving sections for reusable trip blocks. Original content and occurrence-specific facts remain on their existing fields.',
+      },
+      fields: [
+        {
+          name: 'sections',
+          type: 'array',
+          dbName: 'event_trip_sections',
+          admin: { initCollapsed: true },
+          fields: [
+            {
+              name: 'kind',
+              type: 'select',
+              required: true,
+              options: ['overview', 'learning', 'itinerary', 'requirements', 'equipment', 'audience', 'highlights', 'notes'],
+            },
+            { name: 'heading', type: 'text', required: true },
+            { name: 'body', type: 'richText', required: true },
+          ],
+        },
+      ],
+    },
+    {
       name: 'additionalInfo',
       type: 'array',
       label: 'Additional info sections',

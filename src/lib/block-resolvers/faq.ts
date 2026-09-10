@@ -15,7 +15,7 @@ export type FAQResolverInput = {
 
 export async function resolveFAQs(input: FAQResolverInput): Promise<Faq[]> {
   const payload = await getPayloadClient()
-  const limit = Math.min(Math.max(input.limit ?? 6, 1), 20)
+  const limit = Math.min(Math.max(input.limit ?? 6, 1), 100)
   const source = input.source ?? 'global'
 
   if (source === 'manual') {
