@@ -494,7 +494,7 @@
 
 .destinationJumpNavScroller {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: clamp(22px, 2.2vw, 36px);
   width: 100%;
   box-sizing: border-box;
@@ -2404,7 +2404,7 @@
     gap: 20px;
     justify-content: flex-start;
     width: 100%;
-    padding: 14px;
+    padding: 14px var(--theme-content-gutter);
   }
 
   .destinationJumpNavActive::after,

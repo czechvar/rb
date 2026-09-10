@@ -5,6 +5,7 @@ import { getLocationBySlug, getPublishedEventsForLocation } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
+import { destinationJumpNavItems } from '@/lib/destination-navigation'
 import { DestinationJumpNav } from '@/components/blocks/DestinationJumpNav'
 import { JsonLd } from '@/components/JsonLd'
 import { locationDetailGraphJsonLd } from '@/lib/jsonld'
@@ -327,33 +328,6 @@ function sectionBody(
   return sections?.find((section) => section.key === key)?.body ?? undefined
 }
 
-function destinationJumpNavItems(loc: LocationDetailPageData) {
-  const detail = loc.destinationDetail
-  if (!detail) return []
-
-  const hasSection = (key: string) => detail.sections?.some((section) => section.key === key && section.body)
-  const hasItems = (items: unknown[] | null | undefined) => Boolean(items?.length)
-  const item = (anchorId: string, label: string, show: boolean) =>
-    show ? { href: `#${anchorId}`, label } : null
-
-  return [
-    item('destination-intro', 'Introduction', Boolean(hasSection('intro'))),
-    item('destination-history', 'History', Boolean(hasSection('history'))),
-    item('destination-rock', 'Rock & style', Boolean(hasSection('rock'))),
-    item('who-is-it-for', 'Who is it for', hasItems(detail.audience)),
-    item('grades-sectors', 'Grades & sectors', Boolean(hasSection('grades')) || hasItems(detail.sectors)),
-    item('best-season', 'Best season', hasItems(detail.seasonMonths)),
-    item('gear', 'Gear', hasItems(detail.gearGroups)),
-    item('getting-there', 'Getting there', hasItems(detail.transportOptions)),
-    item('stay-eat', 'Stay & eat', hasItems(detail.accommodationOptions)),
-    item('rest-days', 'Rest days', hasItems(detail.restDayIdeas)),
-    item('tips-ethics', 'Tips & ethics', hasItems(detail.accessRules)),
-    item('safety', 'Safety', hasItems(detail.safetyItems)),
-    item('costs', 'Costs', hasItems(detail.costItems)),
-    item('faq', 'FAQ', hasItems(detail.destinationFaqs)),
-    item('rockbusters-trips', 'Rockbusters trips', hasItems(detail.tripPromos)),
-  ].filter((navItem): navItem is { href: string; label: string } => Boolean(navItem))
-}
 
 function destinationGalleryImages(loc: LocationDetailPageData) {
   const seen = new Set<string>()

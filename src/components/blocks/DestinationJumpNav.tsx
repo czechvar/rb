@@ -19,9 +19,8 @@ export function DestinationJumpNav({ items }: { items: DestinationJumpNavItem[] 
     if (!sectionIds.length) return
 
     const updateActiveSection = () => {
-      const headerHeight = parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue('--headerTotalHeight'),
-      ) || 0
+      const headerHeight = document.querySelector('header[data-scrolled]')
+        ?.getBoundingClientRect().height ?? 0
       const navHeight = document
         .querySelector(`.${styles.destinationJumpNav}`)
         ?.getBoundingClientRect().height ?? 0
@@ -61,7 +60,14 @@ export function DestinationJumpNav({ items }: { items: DestinationJumpNavItem[] 
               href={item.href}
               className={active ? styles.destinationJumpNavActive : undefined}
               aria-current={active ? 'true' : undefined}
-              onClick={() => setActiveHref(item.href)}
+              onClick={(event) => {
+                const section = document.getElementById(item.href.slice(1))
+                const headerHeight = document.querySelector('header[data-scrolled]')
+                  ?.getBoundingClientRect().height ?? 0
+                const navHeight = event.currentTarget.closest('nav')?.getBoundingClientRect().height ?? 0
+                if (section) section.style.scrollMarginTop = `${headerHeight + navHeight + 16}px`
+                setActiveHref(item.href)
+              }}
             >
               {item.label}
             </a>

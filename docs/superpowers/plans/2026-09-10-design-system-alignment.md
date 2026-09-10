@@ -90,3 +90,22 @@ Added a read-only browser regression for desktop and mobile in both session stat
 (mocked /api/users/me; no users or database fixtures). The test, scoped lint,
 TypeScript and strict theme CSS check passed. This resolves the desktop account
 entry-point review finding; the other older-commit findings remain open.
+
+## Review follow-up: destination section navigation
+
+The destination menu is left-aligned at every width and remains horizontally
+scrollable. Its item builder now follows rendered-section availability: editorial
+headings, valid season records, populated gear groups and nonempty card/logistics
+sources. Grades prose targets destination-grades; sectors-only content targets
+grades-sectors. Empty destinations produce no menu items. Anchor clicks measure
+the actual header/menu heights so target headings remain visible below them;
+active-section tracking likewise uses the header's pixel height rather than
+parsing its rem-valued CSS variable as pixels.
+
+Five regression tests cover empty content, grades-only, sectors-only, combined
+content and partial season/gear data. Live Albarracin checks at 390/900/1440px
+confirmed all links have targets, first/last links are reachable by scrolling,
+keyboard focus returns to the first link, and grades lands below the sticky menu.
+Scoped ESLint, TypeScript and strict CSS passed. No CMS/database records changed.
+Both destination navigation review findings are resolved; the older destructive
+E2E fixture setup and inferred dog-access advice remain open.
