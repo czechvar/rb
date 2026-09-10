@@ -7,7 +7,7 @@
 }
 
 .inner {
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .center .inner {
-  max-width: 760px;
+  max-width: var(--theme-content-text-max);
 }
 
 /* Red eyebrow line per wireframe — "— About the Camp" style */
@@ -32,20 +32,9 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--theme-color-primary);
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin-bottom: 0.75rem;
 }
 
-.eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background: var(--theme-color-primary);
-  flex-shrink: 0;
-}
 
 .title {
   font-family: var(--theme-font-heading);
@@ -61,7 +50,7 @@
   font-size: var(--fs-body-lg);
   line-height: 1.7;
   color: var(--theme-color-paper-80);
-  max-width: 640px;
+  max-width: var(--theme-content-lead-max);
 }
 
 .center .lead {

@@ -1,13 +1,12 @@
 .section { padding: 90px 5%; background: var(--theme-color-ink); }
 .grid {
-  max-width: 1400px; margin: 0 auto;
+  max-width: var(--theme-content-max); margin: 0 auto;
   display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 80px; align-items: start;
 }
-.label { color: var(--theme-color-primary); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--theme-color-primary); flex-shrink: 0; }
+.label { color: var(--theme-color-primary); margin-bottom: 14px; }
 .heading { font-size: clamp(42px, 6vw, 80px); margin-bottom: 24px; text-transform: uppercase; }
 .accent { color: var(--theme-color-primary); }
-.bio { font-size: 16px; line-height: 1.78; color: var(--theme-color-paper-60); max-width: 580px; }
+.bio { font-size: 16px; line-height: 1.78; color: var(--theme-color-paper-60); max-width: var(--theme-content-lead-max); }
 .bio :global(p + p) { margin-top: 18px; }
 .bio :global(h1), .bio :global(h2), .bio :global(h3), .bio :global(h4) { color: var(--theme-color-paper); }
 .bio :global(a) { color: var(--theme-color-primary); }

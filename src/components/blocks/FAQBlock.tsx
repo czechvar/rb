@@ -25,7 +25,7 @@ export async function FAQBlock(block: FAQBlockProps, context: BlockRenderContext
     ].filter(Boolean).join(' ')}>
       <div className={styles.sectionInner}>
         <div className={styles.sectionHeader}>
-          {block.eyebrow ? <p className={styles.eyebrow}>{block.eyebrow}</p> : null}
+          {block.eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{block.eyebrow}</p> : null}
           <h2>{block.heading}</h2>
         </div>
         <dl className={`${styles.faqList} ${block.variant === 'singleColumn' ? styles.faqSingle : ''}`}>

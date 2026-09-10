@@ -31,7 +31,7 @@ export function CTABlock({
     <section className={className}>
       <div className={styles.sectionInner}>
         <div>
-          {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+          {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
           <h2>{heading}</h2>
           {body ? <p className={styles.lead}>{body}</p> : null}
         </div>

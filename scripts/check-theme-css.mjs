@@ -2,6 +2,7 @@
 
 import { readdirSync, readFileSync } from 'node:fs'
 import { relative, resolve } from 'node:path'
+import { hasHardcodedWidthCap } from './theme-width-rules.mjs'
 
 const root = process.cwd()
 const themeFile = 'src/app/(frontend)/theme.css'
@@ -21,10 +22,12 @@ for (const absFile of cssFiles) {
   const isThemeFile = file === themeFile
   const isCssModule = file.endsWith('.module.css')
   let inBlockComment = false
+  const uncommentedLines = []
 
   lines.forEach((line, index) => {
     const lineNo = index + 1
     const scanLine = stripCssCommentsFromLine(line)
+    uncommentedLines.push(scanLine)
 
     if (!isThemeFile && /^\s*--(?:theme|rb)-[a-zA-Z0-9-]+\s*:/.test(scanLine)) {
       hardErrors.push({
@@ -89,6 +92,22 @@ for (const absFile of cssFiles) {
       return output
     }
   })
+
+  if (!isThemeFile) {
+    const css = uncommentedLines.join('\n')
+    // A declaration starts after a rule brace or another declaration, never
+    // after an opening parenthesis in a media query. Include multiline values.
+    for (const match of css.matchAll(/(?:^|[;{])\s*(max-width|max-inline-size|width|inline-size)\s*:\s*([^;{}]+)/g)) {
+      if (hasHardcodedWidthCap(match[1], match[2])) {
+        hardErrors.push({
+          file,
+          lineNo: css.slice(0, match.index + match[0].indexOf(match[1])).split('\n').length,
+          line: `${match[1]}: ${match[2].trim()}`,
+          reason: 'Design width caps must use semantic theme tokens defined in theme.css.',
+        })
+      }
+    }
+  }
 }
 
 if (hardErrors.length > 0) {

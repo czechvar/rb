@@ -13,7 +13,7 @@
   line-height: 1.05;
   letter-spacing: 0.02em;
   color: var(--theme-color-paper);
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto 3rem;
 }
 
@@ -21,14 +21,14 @@
   font-size: var(--fs-body-sm);
   color: var(--theme-color-paper-45);
   font-style: italic;
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
 }
 
 .list {
   list-style: none;
   padding: 0;
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
   display: grid;
   gap: 1.5px;

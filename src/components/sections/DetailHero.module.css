@@ -38,11 +38,13 @@
   position: relative;
   z-index: 2;
   width: 100%;
+  max-width: var(--theme-content-max);
+  margin-inline: auto;
 }
 
 /* text column — constrain width per wireframe .hero-text-col */
 .textCol {
-  max-width: 560px;
+  max-width: var(--theme-content-lead-max);
 }
 
 .title {
@@ -60,7 +62,7 @@
   font-size: 1.1rem;
   color: var(--theme-color-paper-60);
   margin: 0 0 2.5rem;
-  max-width: 560px;
+  max-width: var(--theme-content-lead-max);
   line-height: 1.5;
 }
 
@@ -75,7 +77,7 @@
 /* info card — absolute bottom-right on desktop */
 .sidebar {
   position: absolute;
-  right: 5vw;
+  right: max(5vw, calc((100% - var(--theme-content-max)) / 2));
   bottom: 72px; /* matches hero bottom padding */
   width: 340px;
   z-index: 3;
@@ -99,7 +101,7 @@
   /* prevent text column from running under the absolute sidebar
      (390px sidebar + 50px gap ≈ 440px reserved on the right) */
   .textCol {
-    max-width: min(560px, calc(100% - 440px));
+    max-width: min(var(--theme-content-lead-max), calc(100% - 440px));
   }
 }
 

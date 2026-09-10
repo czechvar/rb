@@ -1,7 +1,7 @@
 .wrap {
-  max-width: 1080px;
+  width: min(var(--theme-content-max), calc(100% - 2 * var(--theme-content-gutter)));
   margin: 0 auto;
-  padding: 32px 16px 64px;
+  padding: 32px 0 64px;
 }
 
 .grid {

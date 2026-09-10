@@ -18,6 +18,8 @@ import { TagChipStrip } from '@/components/sections/TagChipStrip'
 import { themeTokenGroups, themeTokens, type ThemeToken } from '@/lib/theme/tokenRegistry'
 import styles from './page.module.css'
 import { ThemeWorkbench } from './ThemeWorkbench'
+import { ImageTripCard } from '@/components/catalogue/ImageTripCard'
+import tripCardStyles from '@/components/catalogue/ImageTripCard.module.css'
 
 type DesignSystemPageProps = {
   searchParams: Promise<{ theme?: string }>
@@ -137,7 +139,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div>
-            <p className={styles.eyebrow}>Theme contract</p>
+            <p data-eyebrow="hero" className={styles.eyebrow}>Theme contract</p>
             <h1>Shared Design System</h1>
             <p className={styles.heroCopy}>
               This page is a deployable specimen for the semantic CSS contract. It should change
@@ -189,13 +191,26 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
           </div>
           <div className={styles.coverageGrid}>
             <article className={styles.typeSpecimen}>
-              <p className={styles.eyebrow}>Type scale</p>
+              <p data-eyebrow="section" className={styles.eyebrow}>Type scale</p>
               <h3>Heading sample</h3>
               <p>
                 Body copy uses the semantic body font and page text color. Technical labels use the
                 mono token for data-heavy surfaces.
               </p>
               <code>font-family: var(--theme-font-technical)</code>
+            </article>
+            <article className={styles.eyebrowSamples} aria-label="Eyebrow variants">
+              <div>
+                <p data-eyebrow="hero" className={styles.eyebrow}>Climbers for climbers</p>
+              </div>
+              <div className={styles.eyebrowCentered}>
+                <p data-eyebrow="section" className={styles.eyebrow}>Who we are</p>
+              </div>
+              <div className={styles.eyebrowNarrow}>
+                <p data-eyebrow="section" className={styles.eyebrow}>
+                  The people behind the progression
+                </p>
+              </div>
             </article>
             <article className={styles.statusPanel}>
               <span className={styles.infoStatus}>Info</span>
@@ -204,7 +219,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
               <span className={styles.dangerStatus}>Closed</span>
             </article>
             <article className={styles.layoutPanel}>
-              <p className={styles.eyebrow}>Layout rhythm</p>
+              <p data-eyebrow="section" className={styles.eyebrow}>Layout rhythm</p>
               <div className={styles.spacingTrack}>
                 <span />
                 <span />
@@ -214,7 +229,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
               <p>Spacing bars consume the semantic space scale and card padding tokens.</p>
             </article>
             <article className={styles.focusPanel}>
-              <p className={styles.eyebrow}>Focus state</p>
+              <p data-eyebrow="section" className={styles.eyebrow}>Focus state</p>
               <button type="button">Focusable control</button>
               <p>The outline consumes the shared focus token used by keyboard navigation.</p>
             </article>
@@ -228,7 +243,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
           </div>
           <div className={styles.componentGrid}>
             <article className={styles.darkCard}>
-              <p className={styles.eyebrow}>Dark surface</p>
+              <p data-eyebrow="section" className={styles.eyebrow}>Dark surface</p>
               <h3>Trip planning panel</h3>
               <p>
                 Dark cards should retain readable text, restrained borders, and enough shadow to
@@ -253,7 +268,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
             </article>
 
             <article className={styles.paperCard}>
-              <p className={styles.eyebrow}>White paper</p>
+              <p data-eyebrow="section" className={styles.eyebrow}>White paper</p>
               <h3>Checkout summary</h3>
               <p>
                 Explicit white-paper tokens protect forms, breadcrumb bars, checkout panels, and
@@ -265,7 +280,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
             </article>
 
             <article className={styles.detailCard}>
-              <p className={styles.eyebrow}>Detail palette</p>
+              <p data-eyebrow="section" className={styles.eyebrow}>Detail palette</p>
               <h3>Program detail module</h3>
               <p>
                 Detail tokens are brand-specific accents for itinerary, curriculum, logistics, and
@@ -282,7 +297,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
             </article>
 
             <form className={styles.formCard}>
-              <p className={styles.eyebrow}>Form surface</p>
+              <p data-eyebrow="section" className={styles.eyebrow}>Form surface</p>
               <h3>Account details</h3>
               <label>
                 Full name
@@ -378,13 +393,37 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
             </div>
 
             <div className={styles.catalogueSurface}>
+              <BlockHeader eyebrow="Trip gallery" heading="Shared image cards" />
+              <div className={tripCardStyles.grid}>
+                <ImageTripCard
+                  href={`/trips/${sampleEvent.slug}`}
+                  title={sampleEvent.title}
+                  description={sampleEvent.shortDescription}
+                  category="Climbing camps"
+                  location="Mallorca"
+                  price="From EUR 1,390"
+                  featured
+                />
+                <ImageTripCard
+                  href={`/trips/${sampleEvent.slug}`}
+                  title={sampleEvent.title}
+                  description="A scheduled occurrence uses the same card, with dates and an exact price."
+                  category="Climbing camps"
+                  location="Mallorca"
+                  schedule="12–19 Oct · 7 days"
+                  price="EUR 1,390"
+                />
+              </div>
+            </div>
+
+            <div className={styles.catalogueSurface}>
               <BlockHeader
                 eyebrow="Catalogue cards"
                 heading="Domain Card Variants"
                 intro="Cards from the block system show how theme values behave across trip, program, location, guide, post, and date surfaces."
               />
               <div className={styles.catalogueGrid}>
-                <CatalogueTripCard event={sampleEvent} price="From EUR 1,390" lead />
+                <CatalogueTripCard event={sampleEvent} price="From EUR 1,390" />
                 <ProgramCard program={sampleProgram} className={featuredCardClassName('feature')} />
                 <LocationCard
                   location={sampleLocation}
@@ -411,7 +450,7 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
           <article className={styles.tripCard}>
             <div className={styles.tripMedia}>
               <div>
-                <p className={styles.eyebrow}>Mallorca</p>
+                <p data-eyebrow="section" className={styles.eyebrow}>Mallorca</p>
                 <h2>Deep Blue Psicobloc</h2>
               </div>
             </div>

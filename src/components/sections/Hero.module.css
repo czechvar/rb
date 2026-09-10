@@ -20,7 +20,7 @@
   line-height: 1.7;
   color: var(--theme-color-detail-text);
   font-style: italic;
-  max-width: 680px;
+  max-width: var(--theme-content-text-max);
   margin: 0;
 }
 

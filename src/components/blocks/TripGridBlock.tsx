@@ -1,8 +1,13 @@
 import type { EventDate, Page } from '@/payload-types'
+import Link from 'next/link'
 import { getActiveEventDatesForEvents } from '@/lib/queries'
 import { resolveTripGridEvents } from '@/lib/block-resolvers/trip-grid'
 import type { BlockRenderContext } from './RenderBlocks'
 import { BlockHeader, TripCard } from './CatalogueCards'
+import { ImageTripCard } from '@/components/catalogue/ImageTripCard'
+import imageCardStyles from '@/components/catalogue/ImageTripCard.module.css'
+import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
+import { mediaUrl } from '@/lib/media'
 import styles from './blocks.module.css'
 
 type TripGridBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'tripGrid' }>
@@ -48,16 +53,37 @@ export async function TripGridBlock(block: TripGridBlockProps, context: BlockRen
   return (
     <section className={className}>
       <div className={styles.sectionInner}>
-        <BlockHeader eyebrow={block.eyebrow} heading={block.heading} intro={block.intro} />
-        <div className={styles.tripCards}>
+        {block.variant === 'featureLead' ? (
+          <div className={imageCardStyles.header}>
+            <BlockHeader eyebrow={block.eyebrow} heading={block.heading} intro={block.intro} />
+            <Link className={imageCardStyles.viewAll} href="/trips">
+              View all trips &amp; courses <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        ) : <BlockHeader eyebrow={block.eyebrow} heading={block.heading} intro={block.intro} />}
+        <div className={block.variant === 'featureLead' ? imageCardStyles.grid : styles.tripCards}>
           {events.map((event, index) => {
             const price = formatPrice(lowestPrice(datesByEvent.get(event.id) ?? []))
+            if (block.variant === 'featureLead') {
+              return (
+                <ImageTripCard
+                  key={event.id}
+                  href={`/trips/${event.slug}`}
+                  title={eventCatalogueTitle(event)}
+                  description={eventCatalogueDescription(event)}
+                  image={mediaUrl(event.mainPicture)}
+                  category={event.categories?.flatMap((item) => typeof item === 'object' ? [item.name] : [])[0]}
+                  location={event.locations?.flatMap((item) => typeof item === 'object' ? [item.name] : [])[0]}
+                  price={price}
+                  featured={index === 0}
+                />
+              )
+            }
             return (
               <TripCard
                 event={event}
                 key={event.id}
                 price={price}
-                lead={block.variant === 'featureLead' && index === 0}
               />
             )
           })}

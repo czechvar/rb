@@ -13,7 +13,7 @@
   line-height: 1.05;
   letter-spacing: 0.02em;
   color: var(--theme-color-paper);
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto 3rem;
 }
 
@@ -21,7 +21,7 @@
   display: grid;
   grid-template-columns: 1fr 260px;
   gap: 1.5px;
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
   background: var(--theme-color-paper-08);
   border: 1px solid var(--theme-color-paper-08);

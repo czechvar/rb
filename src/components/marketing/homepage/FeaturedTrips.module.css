@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: end;
   gap: 32px;
-  max-width: 1400px;
+  max-width: var(--theme-content-max);
   margin: 0 auto 48px;
   flex-wrap: wrap;
 }
@@ -27,7 +27,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
-  max-width: 1400px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
 }
 

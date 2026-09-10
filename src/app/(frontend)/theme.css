@@ -108,17 +108,47 @@
   --theme-space-7: 3rem;
   --theme-space-8: 4.5rem;
   --theme-space-9: 7rem;
-  --theme-content: 76rem;
-  --theme-copy: 42rem;
+  --theme-content: var(--theme-content-max);
+  --theme-copy: var(--theme-content-text-max);
   --theme-content-padding: 3rem;
-  --theme-content-max: 1920px;
-  --theme-content-text-max: 1484px;
+  --theme-content-max: 100vw;
+  --theme-content-text-max: 760px;
+  --theme-content-article-max: 960px;
+  --theme-content-lead-max: 600px;
+  --theme-content-form-max: 480px;
+  --theme-content-sidebar-max: 340px;
+  --theme-content-compact-max: 260px;
+  --theme-content-logo-max: 150px;
+  --theme-content-copy-max: 56ch;
+  --theme-content-gutter: 5vw;
   --theme-gap: 1rem;
   --theme-section-pad: 90px 5%;
   --theme-card-pad: 36px 28px;
   --theme-section-gap-lg: 12rem;
   --theme-section-gap-md: 8rem;
   --theme-section-gap-sm: 4rem;
+
+  /* Shared image trip cards */
+  --theme-content-teaser-max: 440px;
+  --theme-trip-card-grid-gap: 2px;
+  --theme-trip-card-height: 420px;
+  --theme-trip-card-featured-height: 480px;
+  --theme-trip-card-padding: 32px 28px;
+  --theme-trip-card-title-size: 28px;
+  --theme-trip-card-featured-title-size: 42px;
+  --theme-trip-card-title-weight: 400;
+  --theme-trip-card-featured-copy-size: 15px;
+  --theme-trip-card-motion: 600ms;
+  --theme-trip-card-overlay: linear-gradient(to top, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.72) 38%, rgba(13,13,13,0.32) 65%, rgba(13,13,13,0.08) 100%);
+  --theme-trip-card-hover-overlay: linear-gradient(to top, rgba(13,13,13,0.98) 0%, rgba(13,13,13,0.75) 50%, rgba(13,13,13,0.2) 85%, rgba(13,13,13,0.1) 100%);
+
+  /* Eyebrow decoration */
+  --theme-eyebrow-line-width: 24px;
+  --theme-eyebrow-hero-line-width: 32px;
+  --theme-eyebrow-line-height: 1px;
+  --theme-eyebrow-gap: 10px;
+  --theme-eyebrow-hero-gap: 12px;
+  --theme-eyebrow-line-color: currentColor;
 
   /* Shape, elevation, motion */
   --theme-radius-sm: 0.25rem;
@@ -295,11 +325,11 @@
   --theme-space-7: 3rem;
   --theme-space-8: 4.5rem;
   --theme-space-9: 7rem;
-  --theme-content: 76rem;
-  --theme-copy: 42rem;
+  --theme-content: var(--theme-content-max);
+  --theme-copy: var(--theme-content-text-max);
   --theme-content-padding: 2rem;
-  --theme-content-max: 76rem;
-  --theme-content-text-max: 42rem;
+  --theme-content-max: 100vw;
+  --theme-content-text-max: 760px;
   --theme-gap: 1rem;
   --theme-section-pad: 4.5rem 1rem;
   --theme-card-pad: 1.25rem;

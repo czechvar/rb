@@ -43,7 +43,7 @@ export function LocationHeroBlock(_block: LocationContextBlock, { location }: Bl
       ) : null}
       <div className={styles.locationHeroOverlay} />
       <div className={styles.locationHeroInner}>
-        {place ? <p className={styles.eyebrow}>{place}</p> : null}
+        {place ? <p data-eyebrow="hero" className={styles.eyebrow}>{place}</p> : null}
         <h1>{location.name}</h1>
       </div>
     </section>
@@ -80,7 +80,7 @@ export function LocationMapBlock(block: LocationContextBlock, { location }: Bloc
     <section className={styles.locationMapSection}>
       <div className={styles.sectionInner}>
         <div className={styles.sectionHeader}>
-          <p className={styles.eyebrow}>{location.country}</p>
+          <p data-eyebrow="section" className={styles.eyebrow}>{location.country}</p>
           <h2>{heading}</h2>
         </div>
         <div className={styles.locationMapFrame}>
@@ -139,7 +139,7 @@ export function DestinationHeroBlock(
         ) : null}
         <div className={styles.destinationHeroOverlay} />
         <div className={styles.destinationHeroInner}>
-          {place ? <p className={styles.eyebrow}>{place}</p> : null}
+          {place ? <p data-eyebrow="hero" className={styles.eyebrow}>{place}</p> : null}
           <h1>{renderHeadingWithAccent(heading, hero?.accentWord)}</h1>
           {hero?.body ? <p className={styles.destinationHeroBody}>{hero.body}</p> : null}
           {hero?.primaryAction?.label && hero.primaryAction.href ? (
@@ -218,7 +218,7 @@ export function DestinationSectionsBlock(
             id={destinationSectionId(section)}
             className={`${styles.destinationEditorialPanel} ${styles.destinationEditorialPanelSolo}`}
           >
-            {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+            {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
             {heading ? <h2>{heading}</h2> : null}
             {paragraphs(section.body).map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -241,7 +241,7 @@ export function DestinationSectionsBlock(
       <div className={styles.sectionInner}>
         <div className={styles.destinationSectionLayout}>
           <aside className={styles.destinationSectionNav}>
-            {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+            {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
             {heading ? <h2>{heading}</h2> : null}
             <ol>
               {sections.map((section) => (
@@ -552,7 +552,7 @@ export function DestinationSidebarBlock(
     <div className={styles.destinationSidebar}>
       {cta ? (
         <aside className={styles.destinationSidebarCta}>
-          {cta.eyebrow ? <p>{cta.eyebrow}</p> : null}
+          {cta.eyebrow ? <p data-eyebrow="section">{cta.eyebrow}</p> : null}
           <h2>{cta.heading}</h2>
           {cta.body ? <p>{cta.body}</p> : null}
           <DestinationSidebarActions cta={cta} />
@@ -1028,7 +1028,7 @@ function DestinationBlockHeader({
 
   return (
     <div className={styles.sectionHeader}>
-      {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+      {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
       {heading ? <h2>{heading}</h2> : null}
       {intro ? <p className={styles.lead}>{intro}</p> : null}
     </div>

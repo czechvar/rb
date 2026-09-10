@@ -7,7 +7,7 @@
 }
 
 .inner {
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -18,7 +18,7 @@
 /* when no stats are available, collapse to a single centred column */
 .innerSingle {
   grid-template-columns: 1fr;
-  max-width: 720px;
+  max-width: var(--theme-content-text-max);
 }
 
 /* ── Left column ─────────────────────────────── */
@@ -36,20 +36,9 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--theme-color-primary);
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin-bottom: 0.75rem;
 }
 
-.eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background: var(--theme-color-primary);
-  flex-shrink: 0;
-}
 
 /* ── Lexical rich-text prose (dark bg) ──────── */
 .prose {

@@ -24,7 +24,7 @@ export function InlineFAQ({ faqs, slug }: InlineFAQProps) {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <p className={styles.eyebrow}>FAQ</p>
+        <p data-eyebrow="section" className={styles.eyebrow}>FAQ</p>
         <h2 className={styles.title}>Common Questions</h2>
         <div className={styles.list}>
           {top.map((f) => (

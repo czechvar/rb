@@ -31,10 +31,9 @@
 .content {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
-  width: 100%;
+  width: min(var(--theme-content-max), calc(100% - 2 * var(--theme-content-gutter)));
   margin: 0 auto;
-  padding: 120px 5% 96px;
+  padding: 120px 0 96px;
 }
 
 .eyebrow {
@@ -61,7 +60,7 @@
 }
 
 .sub {
-  max-width: 720px;
+  max-width: var(--theme-content-text-max);
   font-size: var(--theme-text-lead);
   color: var(--theme-color-paper-60);
   line-height: var(--theme-line-lead);

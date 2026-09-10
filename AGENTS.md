@@ -148,6 +148,13 @@ For design-system, theme-token, Snowbusters/Rockbusters variant, or
 `/design-system` playground work, use the repo-local
 `.agents/skills/design-system/SKILL.md` skill before editing.
 
+Across frontend pages, components, and blocks, express design max-widths only
+through semantic theme tokens defined in `src/app/(frontend)/theme.css`.
+This includes caps in `width: min(...)`, responsive overrides, inline styles,
+and gutter calculations tied to a content cap. Reuse tokens by layout purpose;
+do not introduce component-specific numeric caps. See ADR-0002 and the
+design-system skill for intrinsic sizing exceptions and migration guidance.
+
 ## Agent Skills
 
 ### Issue tracker

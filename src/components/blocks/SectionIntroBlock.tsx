@@ -21,7 +21,7 @@ export function SectionIntroBlock({ alignment, body, eyebrow, heading, variant }
     <section className={className}>
       <div className={styles.sectionInner}>
         <div className={styles.sectionHeader}>
-          {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+          {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
           <h2>{heading}</h2>
         </div>
         {body ? (

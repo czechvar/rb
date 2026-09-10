@@ -47,7 +47,7 @@ export function LocationBlock({ body, content, heading, eyebrow, image, imageAlt
 
           {/* Right: text column */}
           <div className={styles.textCol}>
-            {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
+            {eyebrow && <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p>}
             <div className={styles.prose}>
               {content ? (
                 <Lexical data={content} />

@@ -22,7 +22,7 @@
   font-size: 14px;
   line-height: 1.75;
   color: var(--theme-color-page-text);
-  max-width: 720px;
+  max-width: var(--theme-content-text-max);
 }
 
 .blocks {

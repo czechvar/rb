@@ -45,7 +45,7 @@ export default async function ProgramsIndex() {
       <JsonLd data={jsonLd} />
       <main className={styles.page}>
         <header className={styles.header}>
-          <span className={styles.eyebrow}>What we run</span>
+          <span data-eyebrow="section" className={styles.eyebrow}>What we run</span>
           <h1>Programs</h1>
           <p className={styles.lede}>
             Camps, coaching weeks, and guided trips — pick the format that fits the

@@ -1,9 +1,8 @@
 .section { background: var(--theme-color-surface-1); padding: 90px 5%; }
-.inner { max-width: 1400px; margin: 0 auto; }
-.label { color: var(--theme-color-primary); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--theme-color-primary); flex-shrink: 0; }
+.inner { max-width: var(--theme-content-max); margin: 0 auto; }
+.label { color: var(--theme-color-primary); margin-bottom: 14px; }
 .heading { font-size: clamp(42px, 6vw, 80px); margin-bottom: 24px; text-transform: uppercase; }
-.intro { font-size: 16px; line-height: 1.78; color: var(--theme-color-paper-60); max-width: 580px; }
+.intro { font-size: 16px; line-height: 1.78; color: var(--theme-color-paper-60); max-width: var(--theme-content-lead-max); }
 .grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 56px;
   background: var(--theme-color-paper-08); border: 1px solid var(--theme-color-paper-08);

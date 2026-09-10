@@ -25,7 +25,7 @@ export function GuideHero({ guide }: { guide: Guide }) {
       ) : null}
       <div className={styles.overlay} aria-hidden="true" />
       <div className={styles.content}>
-        {guide.role ? <p className={`section-label ${styles.eyebrow}`}>{guide.role}</p> : null}
+        {guide.role ? <p data-eyebrow="hero" className={`section-label ${styles.eyebrow}`}>{guide.role}</p> : null}
         <h1 className={styles.name}>
           {first}
           {rest ? (

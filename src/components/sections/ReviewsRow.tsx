@@ -6,7 +6,7 @@ export function ReviewsRow({ items }: { items?: Review[] }) {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <p className={styles.eyebrow}>Results</p>
+        <p data-eyebrow="section" className={styles.eyebrow}>Results</p>
         <h2 className={styles.title}>What Past Campers Say</h2>
         <div className={styles.grid}>
           {items.slice(0, 3).map(review => (

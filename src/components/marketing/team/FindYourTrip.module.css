@@ -4,7 +4,7 @@
 }
 
 .inner {
-  max-width: 1400px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
 }
 

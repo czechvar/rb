@@ -7,7 +7,7 @@
 }
 
 .inner {
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
 }
 
@@ -78,7 +78,7 @@
 
 /* ── Footer notes ──────────────────────────────────── */
 .soloNote {
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 2.5rem auto 0;
   font-size: var(--fs-body-sm);
   color: var(--theme-color-paper-52);
@@ -86,7 +86,7 @@
 }
 
 .callout {
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 2rem auto 0;
   padding: 1.5rem 2rem;
   background: var(--theme-color-paper-08);

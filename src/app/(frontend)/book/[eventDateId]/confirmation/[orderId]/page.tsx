@@ -39,7 +39,7 @@ export default async function BookingConfirmation({ params }: Props) {
 
   const eventTitle = typeof o.eventDate.event === 'object' ? o.eventDate.event?.title ?? 'Trip' : 'Trip'
   return (
-    <div style={{ maxWidth: 640, margin: '0 auto', padding: '48px 16px', textAlign: 'center' }}>
+    <div style={{ maxWidth: 'var(--theme-content-lead-max)', margin: '0 auto', padding: '48px 16px', textAlign: 'center' }}>
       <h1>Booking received</h1>
       <p>We&apos;ve sent a confirmation email to <strong>{user.email}</strong>. Our team will confirm your booking shortly.</p>
       <div style={{ background: '#f5f1ea', padding: 24, borderRadius: 8, margin: '24px 0', textAlign: 'left' }}>

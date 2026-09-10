@@ -22,7 +22,7 @@
 .body {
   font-size: 17px;
   color: var(--theme-overlay-dark-medium);
-  max-width: 480px;
+  max-width: var(--theme-content-form-max);
   margin: 0 auto 44px;
   line-height: 1.65;
   font-family: var(--theme-font-body);
@@ -47,7 +47,7 @@
 
   .ctas > * {
     width: 100%;
-    max-width: 320px;
+    max-width: var(--theme-content-sidebar-max);
     justify-content: center;
   }
 }

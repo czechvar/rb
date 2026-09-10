@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  max-width: 1400px;
+  max-width: var(--theme-content-max);
   margin: 0 auto 64px;
 }
 
@@ -30,7 +30,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
-  max-width: 1400px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
 }
 
@@ -107,7 +107,7 @@
   gap: 32px;
   margin: 56px auto 0;
   flex-wrap: wrap;
-  max-width: 1400px;
+  max-width: var(--theme-content-max);
 }
 
 .stats {

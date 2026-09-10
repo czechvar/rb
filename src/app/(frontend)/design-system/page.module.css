@@ -319,7 +319,7 @@
 
 .previewCompact .content {
   gap: 42px;
-  width: min(100%, 980px);
+  width: min(100%, var(--theme-content-article-max));
   padding-top: 48px;
   padding-bottom: 48px;
 }
@@ -333,7 +333,7 @@
 }
 
 .previewGallery .content {
-  width: min(100%, 1480px);
+  width: min(100%, var(--theme-content-max));
 }
 
 .previewGallery .swatchGrid,
@@ -448,7 +448,7 @@
   grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
   gap: clamp(48px, 7vw, 112px);
   align-items: end;
-  width: min(100%, 1216px);
+  width: min(100%, var(--theme-content-max));
   margin: 0 auto;
 }
 
@@ -465,7 +465,7 @@
 
 .hero h1 {
   color: var(--theme-color-text);
-  max-width: 720px;
+  max-width: var(--theme-content-text-max);
   font-size: clamp(72px, 9vw, 128px);
 }
 
@@ -479,10 +479,26 @@
 }
 
 .heroCopy {
-  max-width: 560px;
+  max-width: var(--theme-content-lead-max);
   margin: 24px 0 0;
   color: var(--theme-color-text-muted);
   font-size: 21px;
+}
+
+.eyebrowSamples {
+  display: grid;
+  align-content: start;
+  gap: var(--theme-space-6);
+  padding: var(--theme-card-pad);
+  border: 1px solid var(--theme-color-border);
+}
+
+.eyebrowCentered {
+  text-align: center;
+}
+
+.eyebrowNarrow {
+  width: min(100%, var(--theme-content-compact-max));
 }
 
 .statPanel {
@@ -532,7 +548,7 @@
 .content {
   display: grid;
   gap: 72px;
-  width: min(100%, 1216px);
+  width: min(100%, var(--theme-content-max));
   margin: 0 auto;
   padding: 80px clamp(24px, 4vw, 48px);
 }
@@ -557,7 +573,7 @@
 }
 
 .sectionHeading p {
-  max-width: 540px;
+  max-width: var(--theme-content-lead-max);
   margin: 0;
   font-size: 18px;
 }

@@ -43,7 +43,7 @@ export function DayByDayItinerary({ data }: { data?: Event['itinerary'] }) {
                 </div>
                 <div className={styles.body}>
                   {day.eyebrow && (
-                    <div className={styles.eyebrow}>{day.eyebrow}</div>
+                    <div data-eyebrow="section" className={styles.eyebrow}>{day.eyebrow}</div>
                   )}
                   {day.heading && (
                     <h3 className={styles.heading}>{day.heading}</h3>

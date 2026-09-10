@@ -1,5 +1,6 @@
 .section {
   padding: var(--theme-section-pad);
+  padding-inline: 0;
   background: var(--theme-color-canvas);
   color: var(--theme-color-paper);
 }
@@ -8,8 +9,8 @@
 
 .filters {
   z-index: 4;
-  margin-inline: calc((100vw - min(1400px, calc(100vw - 40px))) / -2);
-  padding: var(--theme-space-5) max(20px, calc((100vw - min(1400px, calc(100vw - 40px))) / 2));
+  margin-inline: calc((100vw - min(var(--theme-content-max), calc(100vw - 2 * var(--theme-content-gutter)))) / -2);
+  padding: var(--theme-space-5) max(var(--theme-content-gutter), calc((100vw - min(var(--theme-content-max), calc(100vw - 2 * var(--theme-content-gutter)))) / 2));
   border-block: 1px solid var(--theme-color-border);
   background: var(--theme-color-ink);
 }
@@ -98,8 +99,8 @@
 .monthGroup { min-width: 0; }
 
 .calendarGroups .monthGroup {
-  margin-inline: calc((100vw - min(1400px, calc(100vw - 40px))) / -2);
-  padding: var(--theme-space-7) max(20px, calc((100vw - min(1400px, calc(100vw - 40px))) / 2)) var(--theme-space-6);
+  margin-inline: calc((100vw - min(var(--theme-content-max), calc(100vw - 2 * var(--theme-content-gutter)))) / -2);
+  padding: var(--theme-space-7) max(var(--theme-content-gutter), calc((100vw - min(var(--theme-content-max), calc(100vw - 2 * var(--theme-content-gutter)))) / 2)) var(--theme-space-6);
   background: var(--theme-color-surface-1);
 }
 
@@ -130,122 +131,6 @@
   font-weight: var(--theme-weight-label);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-.cardGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2px;
-}
-
-.calendarTrip {
-  position: relative;
-  display: flex;
-  min-height: 410px;
-  overflow: hidden;
-  background: var(--theme-color-surface-2);
-  color: var(--theme-color-paper);
-  text-decoration: none;
-}
-
-.calendarTrip:hover .cardMedia { transform: scale(1.04); }
-.calendarTrip:hover .cardFooter > span:last-child { color: var(--theme-color-paper); }
-.calendarTrip:focus-visible { outline: 3px solid var(--theme-color-focus); outline-offset: 3px; }
-
-.cardMedia,
-.cardOverlay { position: absolute; inset: 0; }
-
-.cardMedia {
-  background: var(--theme-color-surface-3);
-  transition: transform var(--theme-motion-base) ease;
-}
-
-.cardMedia img { object-fit: cover; }
-
-.cardOverlay {
-  background: linear-gradient(
-    to top,
-    var(--theme-overlay-dark-heavy) 0%,
-    var(--theme-overlay-dark-strong) 45%,
-    var(--theme-overlay-dark-soft) 100%
-  );
-}
-
-.cardTop,
-.cardContent {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.cardTop { padding: var(--theme-space-5); }
-
-.cardBadge {
-  padding: 5px 9px;
-  background: var(--theme-color-primary);
-  color: var(--theme-color-ink);
-  font-family: var(--theme-font-body);
-  font-size: var(--theme-text-label);
-  font-weight: var(--theme-weight-label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.cardMetaLine {
-  margin-top: var(--theme-space-3);
-  color: var(--theme-color-paper-80);
-  font-size: var(--theme-text-small);
-  font-weight: var(--theme-weight-card);
-  line-height: var(--theme-line-small);
-}
-
-.cardContent {
-  width: 100%;
-  margin-top: auto;
-  padding: var(--theme-space-6) var(--theme-space-5);
-}
-
-.cardContent > strong {
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-card-lg);
-  font-weight: var(--theme-weight-card);
-  line-height: var(--theme-line-card-lg);
-}
-
-.cardDescription {
-  display: -webkit-box;
-  max-width: 34rem;
-  margin-top: var(--theme-space-3);
-  overflow: hidden;
-  color: var(--theme-color-paper-80);
-  font-size: var(--theme-text-small);
-  line-height: var(--theme-line-small);
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
-.cardFooter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: var(--theme-space-4);
-  margin-top: var(--theme-space-5);
-  color: var(--theme-color-paper);
-  font-size: var(--theme-text-label);
-  font-weight: var(--theme-weight-label);
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.cardFooter > span:last-child { color: var(--theme-color-primary); transition: color var(--theme-motion-fast) ease; }
-
-@media (min-width: 901px) {
-  .calendarTripFeatured { grid-column: span 2; min-height: 470px; }
-  .calendarTripFeatured .cardContent > strong { font-size: var(--theme-text-section); }
-  .calendarTripFeatured .cardDescription { font-size: var(--theme-text-body); }
 }
 
 .tripList { border-top: 1px solid var(--theme-color-border); }
@@ -284,25 +169,20 @@
   .filterControls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .filter:nth-child(3n) { border-right: 0; }
   .filter:nth-child(n + 4) { border-top: 1px solid var(--theme-color-border); }
-  .cardGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .calendarTripFeatured { grid-column: span 2; }
 }
 
 @media (max-width: 720px) {
   .section { padding-inline: 0; }
   .section > :global(*) { width: 100%; }
-  .filters { position: static; margin-inline: 0; padding-inline: 14px; }
+  .filters { position: static; margin-inline: 0; padding-inline: var(--theme-content-gutter); }
   .filterControls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .filter { border-top: 1px solid var(--theme-color-border); }
   .filter:nth-child(-n + 2) { border-top: 0; }
   .filter:nth-child(2n) { border-right: 0; }
   .filter:nth-child(3n) { border-right: 1px solid var(--theme-color-border); }
   .filter:nth-child(2n) { border-right: 0; }
-  .calendarGroups .monthGroup { margin-inline: 0; padding-inline: 14px; }
+  .calendarGroups .monthGroup { margin-inline: 0; padding-inline: var(--theme-content-gutter); }
   .monthHeading h3 { font-size: var(--theme-text-card-lg); }
-  .cardGrid { grid-template-columns: 1fr; }
-  .calendarTrip, .calendarTripFeatured { grid-column: auto; min-height: 390px; }
-  .cardContent > strong, .calendarTripFeatured .cardContent > strong { font-size: var(--theme-text-card-lg); }
   .trip { grid-template-columns: 1fr; gap: var(--theme-space-2); }
   .tripMeta br { display: none; }
 }

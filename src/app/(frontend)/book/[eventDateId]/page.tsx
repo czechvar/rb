@@ -103,7 +103,7 @@ export default async function BookPage({ params }: Props) {
   }
 
   return (
-    <div style={{ maxWidth: 720, margin: '0 auto', padding: '32px 16px' }}>
+    <div style={{ maxWidth: 'var(--theme-content-text-max)', margin: '0 auto', padding: '32px 16px' }}>
       <h1>{eventTitle}</h1>
       <p>{new Date(ed.dateFrom).toLocaleDateString('en-GB')} – {new Date(ed.dateTo).toLocaleDateString('en-GB')}</p>
       <p><strong>{ed.price} {ed.currency}</strong> per participant — {remaining} seat(s) remaining</p>

@@ -1,10 +1,9 @@
 .section { background: var(--theme-color-canvas); padding: 90px 5%; text-align: center; }
-.label { color: var(--theme-color-primary); display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
-.label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--theme-color-primary); flex-shrink: 0; }
+.label { color: var(--theme-color-primary); justify-content: center; margin-bottom: 14px; }
 .heading { font-size: clamp(42px, 6vw, 80px); margin-bottom: 24px; text-transform: uppercase; }
 .card {
   background: var(--theme-color-ink); border: 1px solid var(--theme-color-paper-08);
-  padding: 44px 40px; max-width: 760px; margin: 48px auto 0;
+  padding: 44px 40px; max-width: var(--theme-content-text-max); margin: 48px auto 0;
 }
 .stars { color: var(--theme-color-primary); font-size: 14px; letter-spacing: 5px; margin-bottom: 18px; }
 .quote { font-size: 18px; font-weight: 700; color: var(--theme-color-paper); line-height: 1.5; margin: 0 0 18px; font-style: italic; }

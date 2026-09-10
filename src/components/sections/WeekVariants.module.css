@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  max-width: 720px;
+  max-width: var(--theme-content-text-max);
   margin: 16px 0;
 }
 

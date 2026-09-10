@@ -1,6 +1,6 @@
 .page {
-  padding: 60px var(--contentPadding) 80px;
-  max-width: 120rem;
+  padding: 60px 0 80px;
+  width: min(var(--theme-content-max), calc(100% - 2 * var(--theme-content-gutter)));
   margin: 0 auto;
 }
 
@@ -10,7 +10,6 @@
 }
 
 .eyebrow {
-  display: block;
   font-size: var(--eyebrowFontSize);
   letter-spacing: var(--eyebrowLetterSpacing);
   text-transform: uppercase;
@@ -26,7 +25,7 @@
 .lede {
   font-size: var(--pFontSize);
   line-height: var(--textLineHeight);
-  max-width: 60rem;
+  max-width: var(--theme-content-lead-max);
   margin: 0 auto;
   color: var(--theme-color-page-text);
 }

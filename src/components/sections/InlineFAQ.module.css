@@ -20,7 +20,7 @@
 }
 
 .inner {
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
 }
 
@@ -32,20 +32,9 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--theme-color-primary);
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin-bottom: 0.75rem;
 }
 
-.eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background: var(--theme-color-primary);
-  flex-shrink: 0;
-}
 
 /* ── Section heading ─────────────────────────────── */
 .title {

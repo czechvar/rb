@@ -41,7 +41,7 @@ export default async function CalendarPage() {
       <JsonLd data={jsonLd} />
       <main className={styles.page}>
         <header className={styles.header}>
-          <span className={styles.eyebrow}>Upcoming dates</span>
+          <span data-eyebrow="section" className={styles.eyebrow}>Upcoming dates</span>
           <h1>Calendar</h1>
           <p className={styles.lede}>
             Every bookable date across every program, in order. Click any row for the

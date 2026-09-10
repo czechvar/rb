@@ -15,7 +15,7 @@
 }
 
 .body {
-  max-width: 640px;
+  max-width: var(--theme-content-lead-max);
   margin: 0 auto 40px;
   font-family: var(--theme-font-body);
   font-size: var(--theme-text-lead);

@@ -14,7 +14,7 @@
  */
 
 .section { background: var(--theme-color-surface-1); padding: var(--theme-section-pad); }
-.inner { max-width: 1400px; margin: 0 auto; }
+.inner { max-width: var(--theme-content-max); margin: 0 auto; }
 
 .grid {
   margin-top: 48px;

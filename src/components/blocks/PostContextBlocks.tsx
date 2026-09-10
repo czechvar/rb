@@ -28,7 +28,7 @@ export function PostHeroBlock(_block: PostContextBlock, { post }: BlockRenderCon
       ) : null}
       <div className={styles.postHeroOverlay} />
       <div className={styles.postHeroInner}>
-        <p className={styles.eyebrow}>{category?.name ?? 'Rockbusters Journal'}</p>
+        <p data-eyebrow="hero" className={styles.eyebrow}>{category?.name ?? 'Rockbusters Journal'}</p>
         <h1>{post.title}</h1>
         {post.excerpt ? <p className={styles.postHeroLead}>{post.excerpt}</p> : null}
         <p className={styles.postMeta}>
@@ -69,7 +69,7 @@ export async function RelatedPostsBlock(block: PostContextBlock, { post }: Block
     <section className={styles.domainGridSection}>
       <div className={styles.sectionInner}>
         <div className={styles.sectionHeader}>
-          <p className={styles.eyebrow}>Journal</p>
+          <p data-eyebrow="section" className={styles.eyebrow}>Journal</p>
           <h2>{typeof block.heading === 'string' && block.heading ? block.heading : 'Related Reading'}</h2>
         </div>
         <div className={styles.domainGrid}>
@@ -92,7 +92,7 @@ export function PostCTABlock(_block: PostContextBlock, _context: BlockRenderCont
     <section className={styles.cta}>
       <div className={styles.sectionInner}>
         <div>
-          <p className={styles.eyebrow}>Keep Exploring</p>
+          <p data-eyebrow="section" className={styles.eyebrow}>Keep Exploring</p>
           <h2>Find the next trip worth training for.</h2>
         </div>
         <div className={styles.actionRow}>

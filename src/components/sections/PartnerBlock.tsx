@@ -31,7 +31,7 @@ export function PartnerBlock({
       <h2>Try Before You Buy</h2>
       <div className={styles.panel}>
         <div className={styles.body}>
-          {eyebrow && <div className={styles.eyebrow}>{eyebrow}</div>}
+          {eyebrow && <div data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</div>}
           {headline && <h3>{headline}</h3>}
           {description && <p className={styles.desc}>{description}</p>}
           {benefits?.length ? (

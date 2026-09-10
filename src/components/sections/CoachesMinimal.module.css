@@ -14,7 +14,7 @@
 }
 
 .inner {
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
 }
 
@@ -118,7 +118,7 @@
   list-style: none;
   padding: 0;
   margin: 2.5rem auto 0;
-  max-width: 720px;
+  max-width: var(--theme-content-text-max);
 }
 
 .bullets li {

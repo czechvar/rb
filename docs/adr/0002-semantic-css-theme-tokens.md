@@ -2,6 +2,7 @@
 
 - Status: Accepted
 - Date: 2026-08-25
+- Updated: 2026-09-10 (theme-owned maximum widths)
 - Owners: Engineering
 
 ## Context
@@ -38,6 +39,49 @@ Continue using CSS Modules and small React components for shared primitives
 instead of adding Tailwind, Storybook, shadcn, or another component-system
 dependency at this stage.
 
+### Theme-owned maximum widths
+
+All frontend design maximum widths must use semantic theme tokens, including
+page shells, blocks, component interiors, responsive rules, and inline styles.
+Numeric caps belong only in `theme.css`. This also covers implicit caps in
+`width: min(...)`/`clamp(...)` and offsets calculated from a container width.
+Choose reusable tokens by layout purpose; reading text, forms, and sidebars
+may intentionally have different caps from page content. Intrinsic/relative
+values such as `100%`, `none`, `min-content`, and `max-content` remain valid;
+media-query breakpoints are outside this rule.
+
+The September review found independent 1400px CMS containers, 1200px detail
+sections, and a largely unused 1920px content token. The original homepage
+HTML uses fluid 5% gutters rather than a global cap. Centralizing ownership
+allows these layouts to be aligned deliberately.
+
+The implemented baseline matches the original fluid design: `--theme-content-max`
+is `100vw` in both theme presets, with `5vw` outer gutters. Full-page containers
+therefore use 90% of the viewport (1728px at 1920px), with no fixed desktop cap. Article
+and contained media use 960px; reading text 760px; lead text 600px; forms 480px;
+sidebars 340px; compact content 260px; logos 150px. A 56ch measure remains for
+character-based copy. These are role-based defaults, not one token for each
+old component value. Full-width backgrounds remain outside the container.
+A fixed 1400px desktop cap was trialled, then replaced with the original fluid
+layout at the user's request. Width ownership remains in the theme contract.
+
+### Shared eyebrow decoration
+
+Editorial eyebrow labels use one CSS recipe selected by `data-eyebrow`:
+section (24px line, 10px gap) or hero (32px line, 12px gap). Theme tokens own
+line width, height, gap, and color. The 1px line follows `currentColor` by
+default, including contrasting CTA labels. Legacy global label classes map
+to the section variant. Component modules retain their typography and margins,
+while centered and wrapped labels use the shared layout behavior. Decorative
+lines use empty pseudo-elements rather than punctuation in content.
+
+Image-overlay trip galleries share `ImageTripCard` and its grid recipe between
+Trip Grid featureLead and Catalogue Results calendar. Callers retain Event versus
+Event Date selection, pricing, and grouping. The theme owns card dimensions,
+title hierarchy, overlays, and image-motion duration; the component owns hover,
+focus, and reduced-motion behavior. Other compact/editorial variants remain
+separate compositions.
+
 ## Alternatives Considered
 
 - Copy Snowbusters CSS directly into Rockbusters: rejected because it would
@@ -47,6 +91,9 @@ dependency at this stage.
 - Keep only brand-specific `--rb-*` variables: rejected because it blocks
   reusable skins and makes future Snowbusters/Rockbusters component sharing
   harder.
+- Keep maximum widths local to components: rejected because shared theme
+  changes then cannot reliably align pages. One universal cap is also rejected
+  because text, forms, and page grids have different layout needs.
 
 ## Consequences
 
@@ -61,6 +108,11 @@ dependency at this stage.
   CMS-managed brand selection or per-site runtime theming.
 - `pnpm check:theme-css` enforces centralized token definitions and reports the
   existing migration backlog for hardcoded component primitives.
+- Frontend CSS caps and booking inline max-widths have been migrated to the
+  theme contract. The CSS checker rejects numeric element caps, including caps
+  nested in sizing functions. Inline styles and alignment arithmetic still
+  require review. Registry/preset updates and responsive visual checks remain
+  required when implementing width-token changes.
 
 ## References
 

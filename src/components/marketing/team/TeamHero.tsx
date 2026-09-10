@@ -20,7 +20,7 @@ export function TeamHero({ backgroundMedia }: TeamHeroProps) {
       )}
       <div className={styles.overlay} aria-hidden="true" />
       <div className={styles.content}>
-        <span className={styles.eyebrow}>Elite Climbing Guides &amp; Coaching</span>
+        <span data-eyebrow="hero" className={styles.eyebrow}>Elite Climbing Guides &amp; Coaching</span>
         <h1 className={styles.title}>
           Your rock.
           <br />

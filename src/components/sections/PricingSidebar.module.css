@@ -8,7 +8,7 @@
   flex-direction: column;
   gap: 1.6rem;
   width: 100%;
-  max-width: 34rem;
+  max-width: var(--theme-content-sidebar-max);
 }
 
 .priceBlock {

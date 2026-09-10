@@ -1,6 +1,7 @@
 'use client'
 
-import Image from 'next/image'
+import { ImageTripCard } from '@/components/catalogue/ImageTripCard'
+import imageCardStyles from '@/components/catalogue/ImageTripCard.module.css'
 import { useMemo, useState, useTransition } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import {
@@ -114,7 +115,7 @@ export function CatalogueResultsClient({
                   {group.items.map((trip) => <CompactTrip key={trip.id} trip={trip} />)}
                 </div>
               ) : (
-                <div className={styles.cardGrid}>
+                <div className={imageCardStyles.grid}>
                   {group.items.map((trip, index) => <CalendarTrip key={trip.id} trip={trip} featured={index === 0} />)}
                 </div>
               )}
@@ -140,25 +141,19 @@ function CompactTrip({ trip }: { trip: CatalogueResult }) {
 }
 
 function CalendarTrip({ trip, featured }: { trip: CatalogueResult; featured: boolean }) {
-  const category = trip.categories[0]?.label || 'Rockbusters trip'
-  const metadata = [locationLabel(trip), `${formatDateRange(trip.dateFrom, trip.dateTo)} · ${tripDuration(trip)}`]
-
   return (
-    <a className={[styles.calendarTrip, featured ? styles.calendarTripFeatured : ''].filter(Boolean).join(' ')} href={trip.href}>
-      <span className={styles.cardMedia} aria-hidden="true">
-        {trip.image ? <Image src={trip.image.url} alt="" fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" /> : null}
-      </span>
-      <span className={styles.cardOverlay} aria-hidden="true" />
-      <span className={styles.cardTop}>
-        <span className={styles.cardBadge}>{category}</span>
-        <span className={styles.cardMetaLine}>{metadata.join(' · ')}</span>
-      </span>
-      <span className={styles.cardContent}>
-        <strong>{trip.title}</strong>
-        {trip.description ? <span className={styles.cardDescription}>{trip.description}</span> : null}
-        <span className={styles.cardFooter}><span>{formatPrice(trip)}</span><span>View trip details <span aria-hidden="true">-&gt;</span></span></span>
-      </span>
-    </a>
+    <ImageTripCard
+      href={trip.href}
+      title={trip.title}
+      description={trip.description}
+      image={trip.image?.url}
+      category={trip.categories[0]?.label}
+      location={locationLabel(trip)}
+      schedule={`${formatDateRange(trip.dateFrom, trip.dateTo)} · ${tripDuration(trip)}`}
+      price={formatPrice(trip)}
+      featured={featured}
+      headingLevel={4}
+    />
   )
 }
 

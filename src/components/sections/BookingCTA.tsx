@@ -16,7 +16,7 @@ export function BookingCTA({
   return (
     <section className={styles.cta}>
       <div className={styles.inner}>
-        {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
+        {eyebrow && <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p>}
         <h2 className={styles.heading}>{heading}</h2>
         {body && <p className={styles.body}>{body}</p>}
         <Link href={`/trips/${event.slug}/dates`} className={styles.button}>

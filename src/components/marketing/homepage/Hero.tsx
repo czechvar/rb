@@ -20,7 +20,7 @@ export function Hero({ backgroundMedia }: HeroProps) {
       )}
       <div className={styles.overlay} aria-hidden="true" />
       <div className={styles.content}>
-        <p className={styles.eyebrow}>Climbers for climbers — Europe&apos;s finest crags</p>
+        <p data-eyebrow="hero" className={styles.eyebrow}>Climbers for climbers — Europe&apos;s finest crags</p>
         <h1 className={`section-title ${styles.h1}`}>
           CLIMB
           <br />

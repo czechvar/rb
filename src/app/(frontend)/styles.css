@@ -130,17 +130,13 @@ ol {
 /* ===== Layout helpers ============================================== */
 
 .contentWrap {
-  width: 100%;
-  max-width: var(--contentMaxWidth);
+  width: min(var(--theme-content-max), calc(100% - 2 * var(--theme-content-gutter)));
   margin: 0 auto;
-  padding: 0 var(--contentPadding);
 }
 
 .contentWrapNarrow {
-  width: 100%;
-  max-width: var(--contentTextMaxWidth);
+  width: min(var(--theme-content-text-max), calc(100% - 2 * var(--theme-content-gutter)));
   margin: 0 auto;
-  padding: 0 var(--contentPadding);
 }
 
 .eyebrow {
@@ -180,6 +176,31 @@ ol {
   text-transform: uppercase;
   font-weight: 700;
   color: var(--rb-eyebrow-color, var(--rb-white-60));
+}
+
+/* Shared decoration for editorial eyebrows. Inline flex keeps a centered
+   label and its line together; the line aligns to the first wrapped line. */
+:where(.section-label, .eyebrow, [data-eyebrow]) {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--theme-eyebrow-gap);
+  max-width: 100%;
+}
+
+:where(.section-label, .eyebrow, [data-eyebrow])::before {
+  content: '';
+  flex: 0 0 var(--theme-eyebrow-line-width);
+  height: var(--theme-eyebrow-line-height);
+  margin-top: calc(0.5lh - var(--theme-eyebrow-line-height) / 2);
+  background: var(--theme-eyebrow-line-color);
+}
+
+[data-eyebrow='hero'] {
+  gap: var(--theme-eyebrow-hero-gap);
+}
+
+[data-eyebrow='hero']::before {
+  flex-basis: var(--theme-eyebrow-hero-line-width);
 }
 
 .btn-primary,

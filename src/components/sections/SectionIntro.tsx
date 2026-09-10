@@ -19,7 +19,7 @@ export function SectionIntro({
       className={`${styles.intro} ${align === 'center' ? styles.center : styles.left}`}
     >
       <div className={styles.inner}>
-        {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
+        {eyebrow && <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p>}
         <h2 className={styles.title}>{title}</h2>
         {lead && <p className={styles.lead}>{lead}</p>}
       </div>

@@ -44,20 +44,9 @@
   color: var(--theme-color-primary);
   text-transform: uppercase;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin-bottom: 20px;
 }
 
-.eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: var(--theme-color-primary);
-  flex-shrink: 0;
-}
 
 .title {
   font-family: var(--theme-font-heading);
@@ -77,7 +66,7 @@
 .sub {
   font-size: clamp(16px, 2vw, 19px);
   line-height: 1.65;
-  max-width: 560px;
+  max-width: var(--theme-content-lead-max);
   color: var(--theme-color-paper-80);
   margin-bottom: 44px;
   font-weight: 400;

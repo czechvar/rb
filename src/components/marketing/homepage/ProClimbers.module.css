@@ -4,7 +4,7 @@
 }
 
 .body {
-  max-width: 720px;
+  max-width: var(--theme-content-text-max);
   font-family: var(--theme-font-body);
   font-size: var(--theme-text-lead);
   color: var(--theme-color-paper-60);

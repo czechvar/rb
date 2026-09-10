@@ -26,7 +26,7 @@ export function TripPitchBlock({ event }: { event: Event }) {
     <section className={styles.pitch}>
       <div className={`${styles.inner} ${!hasStats ? styles.innerSingle : ''}`}>
         <div className={styles.left}>
-          <span className={styles.eyebrow}>About the Trip</span>
+          <span data-eyebrow="section" className={styles.eyebrow}>About the Trip</span>
           {hasContent && (
             <div className={styles.prose}>
               <Lexical data={event.content} />

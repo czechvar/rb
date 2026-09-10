@@ -25,7 +25,7 @@ export function MediaBlock({ body, caption, heading, eyebrow, media, source, var
       <div className={styles.sectionInner}>
         {heading || body || eyebrow ? (
           <div className={styles.sectionHeader}>
-            {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+            {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
             {heading ? <h2>{heading}</h2> : null}
             {body ? <p className={styles.lead}>{body}</p> : null}
           </div>

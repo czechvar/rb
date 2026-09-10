@@ -45,7 +45,7 @@ export function HeroBlock({
       ) : null}
       <div className={styles.heroOverlay} aria-hidden="true" />
       <div className={styles.heroInner}>
-        {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+        {eyebrow ? <p data-eyebrow="hero" className={styles.eyebrow}>{eyebrow}</p> : null}
         <h1>{formatBrandHeading(heading, variant, accentWords)}</h1>
         {body ? <p className={styles.heroBody}>{body}</p> : null}
         <BlockAction

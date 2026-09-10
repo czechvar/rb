@@ -19,7 +19,7 @@ export function BlockHeader({
   if (!eyebrow && !heading && !intro) return null
   return (
     <div className={styles.sectionHeader}>
-      {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+      {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
       {heading ? <h2>{heading}</h2> : null}
       {intro ? <p className={styles.lead}>{intro}</p> : null}
     </div>
@@ -46,12 +46,10 @@ export function featuredCardClassName(variant?: string | null) {
 export function TripCard({
   event,
   price,
-  lead,
   className,
 }: {
   event: Event
   price?: string | null
-  lead?: boolean
   className?: string
 }) {
   const img = mediaUrl(event.mainPicture)
@@ -61,7 +59,7 @@ export function TripCard({
   return (
     <Link
       href={`/trips/${event.slug}`}
-      className={[styles.tripCard, className, lead ? styles.tripCardLead : ''].filter(Boolean).join(' ')}
+      className={[styles.tripCard, className].filter(Boolean).join(' ')}
     >
       <div className={styles.tripMedia}>
         {img ? (

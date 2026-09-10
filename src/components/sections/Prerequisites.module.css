@@ -7,7 +7,7 @@
 }
 
 .list {
-  max-width: 1200px;
+  max-width: var(--theme-content-max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

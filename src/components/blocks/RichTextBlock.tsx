@@ -18,7 +18,7 @@ export function RichTextBlock({ content, eyebrow, heading, width }: RichTextBloc
       <div className={styles.sectionInner}>
         {heading || eyebrow ? (
           <div className={styles.sectionHeader}>
-            {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+            {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
             {heading ? <h2>{heading}</h2> : null}
           </div>
         ) : null}
