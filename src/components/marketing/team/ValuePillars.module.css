@@ -19,9 +19,7 @@
   transition: background 0.2s;
 }
 
-.pillar:hover {
-  background: var(--theme-color-surface-1);
-}
+
 
 .num {
   font-family: var(--theme-font-heading);
@@ -51,4 +49,12 @@
   .grid {
     grid-template-columns: 1fr;
   }
+}
+
+.pillar { transition: background-color var(--theme-motion-fast) ease, border-color var(--theme-motion-fast) ease; }
+@media (hover: hover) {
+  .pillar:hover { background: var(--theme-color-fact-hover); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pillar { transition: none; }
 }

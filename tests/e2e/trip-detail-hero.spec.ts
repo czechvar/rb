@@ -45,7 +45,7 @@ test.describe('Trip Detail hero (Figma R3)', () => {
     // Breadcrumb is suppressed on this page
     await expect(page.getByRole('navigation', { name: 'Breadcrumb' })).toHaveCount(0)
 
-    // Header is transparent at top, opaque after scrolling past the hero
+    // Header uses the shared top gradient and becomes opaque after scrolling.
     const header = page.locator('header').first()
     const bgAtTop = await header.evaluate(
       (el) => getComputedStyle(el).backgroundColor,

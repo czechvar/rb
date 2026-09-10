@@ -62,6 +62,8 @@ const colorTokens = [
   '--theme-color-surface-1',
   '--theme-color-surface-2',
   '--theme-color-surface-3',
+  '--theme-color-fact-hover',
+  '--theme-color-card-hover',
   '--theme-color-paper',
   '--theme-color-white-paper',
   '--theme-color-white-paper-soft',
@@ -218,7 +220,11 @@ const overlayTokens = [
   '--theme-overlay-dark-heavy',
 ] as const
 
-const motionTokens = ['--theme-motion-fast', '--theme-motion-base'] as const
+const motionTokens = [
+  '--theme-motion-image',
+  '--theme-motion-fast',
+  '--theme-motion-base',
+] as const
 
 const legacyTypeTokens = [
   '--fs-eyebrow',

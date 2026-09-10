@@ -45,7 +45,7 @@ export default async function TeamPage() {
   })
 
   return (
-    <MarketingShell transparentHeader>
+    <MarketingShell>
       <JsonLd data={jsonLd} />
       <main>
         <TeamHero />

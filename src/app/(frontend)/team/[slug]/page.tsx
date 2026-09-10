@@ -32,7 +32,7 @@ export default async function GuidePage({ params }: Props) {
 
   if (guide.layout?.length) {
     return (
-      <MarketingShell transparentHeader>
+      <MarketingShell>
         <JsonLd data={jsonLd} />
         <main className={styles.page}>
           <RenderBlocks blocks={guide.layout} context={{ guide }} />
@@ -44,7 +44,7 @@ export default async function GuidePage({ params }: Props) {
   // Email/phone exist on the collection but are intentionally not rendered —
   // public team pages must not leak contacts (see team-pages spec).
   return (
-    <MarketingShell transparentHeader>
+    <MarketingShell>
       <JsonLd data={jsonLd} />
       <main className={styles.page}>
         <GuideHero guide={guide} />

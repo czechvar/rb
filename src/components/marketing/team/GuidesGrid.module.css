@@ -27,7 +27,8 @@
   gap: 20px;
 }
 
-.card { text-decoration: none; display: block; }
+.card {
+  composes: imageZoom from "../../effects/interaction.module.css"; text-decoration: none; display: block; }
 
 /* ── photo ─────────────────────────────────────────────── */
 .photoWrap {
@@ -36,8 +37,8 @@
   overflow: hidden;
   background: var(--theme-color-ink);
 }
-.photo { object-fit: cover; transition: transform 0.55s ease; }
-.card:hover .photo { transform: scale(1.04); }
+.photo { object-fit: cover;  }
+
 .photoPlaceholder { position: absolute; inset: 0; background: var(--theme-color-paper-08); }
 
 /* heavier gradient (wireframe): near-opaque at base, fades to barely-there at top */

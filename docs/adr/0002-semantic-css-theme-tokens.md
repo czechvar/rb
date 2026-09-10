@@ -82,6 +82,21 @@ title hierarchy, overlays, and image-motion duration; the component owns hover,
 focus, and reduced-motion behavior. Other compact/editorial variants remain
 separate compositions.
 
+### Global header and interaction ownership
+
+The public Header has one scroll rule: gradient at 0–60px, solid/blur above
+60px, reset on return to the top. This follows the original homepage/calendar
+HTML. Page-selected `transparent` / `transparentHeader` modes are removed; they
+had selected competing 0px and 80vh thresholds. Only Header owns the scroll
+state and only its shared module styles that state. Breadcrumb placement remains
+separate from header appearance. No page or CMS block overrides the effect.
+
+Gallery and guide-photo renderers share the `imageZoom` composition (1.04 scale),
+while image trip cards preserve their 1.05 reference effect. Theme tokens own
+image timing and fact/card hover surfaces. Decorative static content does not
+acquire keyboard tab stops; links have focus equivalents, hover zoom is pointer
+capability gated, and reduced motion disables movement.
+
 ## Alternatives Considered
 
 - Copy Snowbusters CSS directly into Rockbusters: rejected because it would

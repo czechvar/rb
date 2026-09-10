@@ -48,3 +48,12 @@
 .answer p:last-child {
   margin-bottom: 0;
 }
+
+.item { transition: border-color var(--theme-motion-fast) ease; }
+@media (hover: hover) {
+  .item:hover { border-color: var(--theme-color-primary); }
+}
+.item:focus-within { border-color: var(--theme-color-primary); }
+@media (prefers-reduced-motion: reduce) {
+  .item { transition: none; }
+}

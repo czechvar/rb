@@ -8,6 +8,9 @@ export const rockbustersTheme: ThemePreset = {
   '--theme-color-surface-1': '#111111',
   '--theme-color-surface-2': '#171717',
   '--theme-color-surface-3': '#242424',
+  '--theme-color-fact-hover': '#131313',
+  '--theme-color-card-hover': '#161616',
+  '--theme-motion-image': '550ms',
   '--theme-color-paper': '#f0ede7',
   '--theme-color-white-paper': '#ffffff',
   '--theme-color-white-paper-soft': '#fafaf8',
@@ -192,7 +195,7 @@ export const rockbustersTheme: ThemePreset = {
   '--headerDividerWidth': '350px',
   '--headerDividerMaxWidth': '65vw',
   '--headerDividerHeight': '2px',
-  '--headerBgTransparent': 'rgba(13, 13, 13, 0.55)',
+  '--headerBgTransparent': 'rgba(13, 13, 13, 0.85)',
   '--headerBg': 'rgba(13, 13, 13, 0.92)',
   '--headerBgScrolled': 'rgba(13, 13, 13, 0.96)',
   '--rb-red': 'var(--theme-color-primary)',
@@ -232,6 +235,8 @@ export const rockbustersTheme: ThemePreset = {
 
 export const snowbustersTheme: ThemePreset = {
   ...rockbustersTheme,
+  '--theme-color-fact-hover': '#131b27',
+  '--theme-color-card-hover': '#172232',
   '--theme-color-ink': '#080b10',
   '--theme-color-canvas': '#080b10',
   '--theme-color-surface-1': '#0f141c',
@@ -294,7 +299,7 @@ export const snowbustersTheme: ThemePreset = {
   '--theme-overlay-dark-medium': 'rgba(8, 11, 16, 0.55)',
   '--theme-overlay-dark-strong': 'rgba(8, 11, 16, 0.78)',
   '--theme-overlay-dark-heavy': 'rgba(8, 11, 16, 0.92)',
-  '--headerBgTransparent': 'rgba(8, 11, 16, 0.55)',
+  '--headerBgTransparent': 'rgba(8, 11, 16, 0.85)',
   '--headerBg': 'rgba(8, 11, 16, 0.94)',
   '--headerBgScrolled': 'rgba(8, 11, 16, 0.94)',
 }

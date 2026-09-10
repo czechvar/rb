@@ -7,23 +7,19 @@
   width: 100%;
   z-index: 50;
   color: var(--theme-color-paper);
-  background: var(--headerBg);
+  background: linear-gradient(to bottom, var(--headerBgTransparent), transparent);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   transition:
     background var(--transitionTimeBase) ease,
     backdrop-filter var(--transitionTimeBase) ease;
 }
 
-.headerScrolled {
+.header[data-scrolled="true"] {
   border-bottom: 1px solid var(--theme-color-paper-08);
   background: var(--headerBgScrolled);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-}
-
-.headerTransparent {
-  background: linear-gradient(to bottom, var(--headerBgTransparent), transparent);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  backdrop-filter: blur(12px);
 }
 
 .menuBar {
@@ -117,7 +113,7 @@
   height: 2.4rem;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1099px) {
   .menuBar {
     display: flex;
     justify-content: space-between;
@@ -179,12 +175,25 @@
 /* ===== Breadcrumb ================================================== */
 
 .breadcrumb {
+  position: relative;
   padding: 1.5rem max(var(--theme-content-gutter), calc((100% - var(--theme-content-max)) / 2));
   background: var(--theme-color-breadcrumb-bg);
   border-bottom: 1px solid var(--theme-color-breadcrumb-border);
   font-size: 1.3rem;
   color: var(--theme-color-page-text);
   margin-top: var(--headerTotalHeight);
+}
+
+/* The breadcrumb reserves header space on light pages. Its backing scrolls
+   with the document; the fixed Header keeps exactly the same state rules. */
+.breadcrumb::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: var(--headerTotalHeight);
+  background: var(--theme-color-canvas);
 }
 
 .breadcrumb a {
@@ -359,4 +368,8 @@
   letter-spacing: 0.14em;
   color: var(--theme-color-paper-30);
   text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header { transition: none; }
 }

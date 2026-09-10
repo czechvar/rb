@@ -73,7 +73,7 @@ export default async function DestinationPage({ params }: Props) {
     defaultDestinationBlocks.after.length
   ) {
     return (
-      <MarketingShell transparentHeader>
+      <MarketingShell>
         <JsonLd data={jsonLd} />
         <main>
           <RenderBlocks blocks={defaultDestinationBlocks.top} context={{ location: loc }} />

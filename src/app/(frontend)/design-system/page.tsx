@@ -20,6 +20,7 @@ import styles from './page.module.css'
 import { ThemeWorkbench } from './ThemeWorkbench'
 import { ImageTripCard } from '@/components/catalogue/ImageTripCard'
 import tripCardStyles from '@/components/catalogue/ImageTripCard.module.css'
+import { StatsBlock } from '@/components/blocks/StatsBlock'
 
 type DesignSystemPageProps = {
   searchParams: Promise<{ theme?: string }>
@@ -438,6 +439,30 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
               </div>
             </div>
           </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className={styles.sectionHeading}>
+            <h2>Fact card interactions</h2>
+          </div>
+          <StatsBlock
+            blockType="stats"
+            variant="dark"
+            columns="2"
+            items={[
+              { value: '15+', label: 'Years on the rock', body: 'Coaching built on time outdoors.' },
+              { value: '8', label: 'Countries', body: 'Find the rock that fits your climbing.' },
+            ]}
+          />
+          <StatsBlock
+            blockType="stats"
+            variant="light"
+            columns="2"
+            items={[
+              { value: '01', label: 'Personal coaching', body: 'Progress at your own pace.' },
+              { value: '02', label: 'Small groups', body: 'More time with your guide.' },
+            ]}
+          />
         </section>
 
         <section className={styles.section}>

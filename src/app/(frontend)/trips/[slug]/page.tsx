@@ -38,7 +38,7 @@ export default async function TripPage({ params }: Props) {
 
   if (event.layout?.length) {
     return (
-      <MarketingShell transparentHeader>
+      <MarketingShell>
         <JsonLd data={jsonLd} />
         <main>
           <RenderBlocks blocks={event.layout} context={{ event }} />
@@ -72,7 +72,7 @@ export default async function TripPage({ params }: Props) {
     location?.destinationDetail?.sections?.find((section) => section.key === 'intro')?.body ?? null
 
   return (
-    <MarketingShell transparentHeader>
+    <MarketingShell>
       <JsonLd data={jsonLd} />
       <main>
         <DetailHero event={event} />

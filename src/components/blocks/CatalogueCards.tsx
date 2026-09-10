@@ -4,6 +4,7 @@ import type { Event, EventDate, Guide, Location, Post, Program } from '@/payload
 import { mediaAlt, mediaUrl } from '@/lib/media'
 import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
 import styles from './blocks.module.css'
+import effects from '../effects/interaction.module.css'
 
 export type FeaturedCardVariant = 'card' | 'feature' | 'compact' | 'mediaLed'
 
@@ -136,7 +137,7 @@ export function GuideCard({
 }) {
   const image = mediaUrl(guide.photo)
   return (
-    <Link href={`/team/${guide.slug}`} className={className ?? styles.domainCard}>
+    <Link href={`/team/${guide.slug}`} className={[className ?? styles.domainCard, effects.imageZoom].join(' ')}>
       {(variant === 'photoOverlay' || variant === 'mediaLed') && image ? (
         <span className={styles.guideCardImage} aria-hidden="true">
           <Image src={image} alt={mediaAlt(guide.photo)} fill sizes="(max-width: 768px) 100vw, 25vw" />

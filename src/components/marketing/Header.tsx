@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import styles from './marketing.module.css'
 import { useMe } from './useMe'
 
@@ -30,9 +31,12 @@ function CloseIcon() {
   )
 }
 
-export function Header({ transparent = false }: { transparent?: boolean } = {}) {
+// One rule for every public route; page shells cannot override scroll behavior.
+const SCROLL_THRESHOLD = 60
+
+export function Header() {
   const [scrolled, setScrolled] = useState(false)
-  const [pastHero, setPastHero] = useState(false)
+  const pathname = usePathname()
   const [drawerOpen, setDrawerOpen] = useState(false)
   const me = useMe()
   const userHref = me === 'in' ? '/account' : '/login'
@@ -40,14 +44,16 @@ export function Header({ transparent = false }: { transparent?: boolean } = {}) 
 
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY
-      setScrolled(y > 0)
-      setPastHero(y > window.innerHeight * 0.8)
+      setScrolled(window.scrollY > SCROLL_THRESHOLD)
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    window.addEventListener('pageshow', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('pageshow', onScroll)
+    }
+  }, [pathname])
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? 'hidden' : ''
@@ -56,16 +62,9 @@ export function Header({ transparent = false }: { transparent?: boolean } = {}) 
     }
   }, [drawerOpen])
 
-  const transparentAtTop = transparent && !pastHero
-  const solidHeader = transparent ? pastHero : scrolled
-
-  const classes = [styles.header, solidHeader ? styles.headerScrolled : '', transparentAtTop ? styles.headerTransparent : '']
-    .filter(Boolean)
-    .join(' ')
-
   return (
     <>
-      <header className={classes}>
+      <header className={styles.header} data-scrolled={scrolled}>
         <div className={styles.menuBar}>
           <Link href="/" className={styles.brand} aria-label="Rockbusters home">
             <Image

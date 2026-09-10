@@ -12,6 +12,9 @@
   --theme-color-canvas: #0a0a0a;
   --theme-color-surface-1: #111111;
   --theme-color-surface-2: #171717;
+  --theme-color-fact-hover: #131313;
+  --theme-color-card-hover: #161616;
+  --theme-motion-image: 550ms;
   --theme-color-surface-3: #242424;
   --theme-color-paper: #f0ede7;
   --theme-color-white-paper: #ffffff;
@@ -212,7 +215,7 @@
   --headerDividerWidth: 350px;
   --headerDividerMaxWidth: 65vw;
   --headerDividerHeight: 2px;
-  --headerBgTransparent: rgba(13, 13, 13, 0.55);
+  --headerBgTransparent: rgba(13, 13, 13, 0.85);
   --headerBg: rgba(13, 13, 13, 0.92);
   --headerBgScrolled: rgba(13, 13, 13, 0.96);
 
@@ -254,6 +257,8 @@
 
 [data-theme='snowbusters'],
 .theme-snowbusters {
+  --theme-color-fact-hover: #131b27;
+  --theme-color-card-hover: #172232;
   color-scheme: dark;
 
   /* Brand tokens extracted from snowbusters-design-system.html */
@@ -352,7 +357,7 @@
   --theme-overlay-dark-heavy: rgba(8, 11, 16, 0.92);
   --theme-motion-fast: 160ms;
   --theme-motion-base: 240ms;
-  --headerBgTransparent: rgba(8, 11, 16, 0.55);
+  --headerBgTransparent: rgba(8, 11, 16, 0.85);
   --headerBg: rgba(8, 11, 16, 0.94);
   --headerBgScrolled: rgba(8, 11, 16, 0.94);
 }

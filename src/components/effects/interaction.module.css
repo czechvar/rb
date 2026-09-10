@@ -1,0 +1,16 @@
+/* Compose on the clipped photo container, or on its enclosing link. */
+.imageZoom img {
+  transition: transform var(--theme-motion-image) ease;
+}
+
+@media (hover: hover) {
+  .imageZoom:hover img { transform: scale(1.04); }
+}
+
+.imageZoom:focus-visible img { transform: scale(1.04); }
+
+@media (prefers-reduced-motion: reduce) {
+  .imageZoom img { transition: none; }
+  .imageZoom:hover img,
+  .imageZoom:focus-visible img { transform: none; }
+}

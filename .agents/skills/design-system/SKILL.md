@@ -76,6 +76,23 @@ pricing, selection, grouping, and filters. Gallery dimensions and overlays use
 `--theme-trip-card-*` tokens. Verify both callers, keyboard focus, reduced motion,
 and the two theme specimens when changing this presentation.
 
+## Global header and interaction ownership
+
+`Header.tsx` owns the fixed menu's single 60px scroll threshold on every public
+route. Its `data-scrolled` state selects the gradient or solid/blur treatment in
+`marketing.module.css`. Pages and CMS blocks must not pass header mode props,
+mutate that state, or override those selectors. Breadcrumb placement is content
+layout, independent of header behavior. Check top, threshold, scroll-back and
+client navigation when changing the shell.
+
+Compose `imageZoom` from `src/components/effects/interaction.module.css` for
+1.04 gallery/guide-photo zoom. Clip media in its container; use the enclosing
+link for keyboard focus. Trip cards retain their distinct 1.05 reference zoom.
+Use theme motion and hover-surface tokens for fact/card effects. Do not add tab
+stops or pointer cursors to static facts/photos just to expose decorative hover.
+Hover-only movement must be gated by pointer capability and disabled for reduced
+motion; real links also get a keyboard-focus equivalent.
+
 ## Playground
 
 The local design-system surface lives at:

@@ -52,3 +52,11 @@
   line-height: var(--theme-line-body);
   margin: 0;
 }
+
+.card { transition: background-color var(--theme-motion-fast) ease, border-color var(--theme-motion-fast) ease; }
+@media (hover: hover) {
+  .card:hover { border-color: var(--theme-color-primary); background: var(--theme-color-white-paper); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+}

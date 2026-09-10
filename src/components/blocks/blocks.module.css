@@ -651,6 +651,7 @@
 }
 
 .destinationMediaBreakItem {
+  composes: imageZoom from "../effects/interaction.module.css";
   position: relative;
   min-height: 0;
   margin: 0;
@@ -668,11 +669,6 @@
 
 .destinationMediaBreakItem img {
   object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.destinationMediaBreakItem:hover img {
-  transform: scale(1.04);
 }
 
 .destinationContentAside {
@@ -1997,15 +1993,8 @@
   border: 0;
 }
 
-.galleryDestinationStrip .galleryItem img {
-  transition: transform 0.4s ease;
-}
-
-.galleryDestinationStrip .galleryItem:hover img {
-  transform: scale(1.04);
-}
-
 .galleryItem {
+  composes: imageZoom from "../effects/interaction.module.css";
   position: relative;
   min-height: 320px;
   margin: 0;
@@ -2470,4 +2459,39 @@
   .destinationCard {
     min-height: 184px;
   }
+}
+
+/* Shared catalogue interaction vocabulary; visual state never changes layout. */
+.statsInlineDark .statItem { background: var(--theme-color-canvas); }
+.statsNumberedDark .statItem { background: var(--theme-color-surface-1); }
+.statItem,
+.domainCard,
+.faqItem,
+.partnerItem {
+  transition: background-color var(--theme-motion-fast) ease,
+    border-color var(--theme-motion-fast) ease;
+}
+
+@media (hover: hover) {
+  .statsDark .statItem:hover { background: var(--theme-color-fact-hover); }
+  .statsSection:not(.statsDark):not(.statsHeroBar) .statItem:hover,
+  .faqItem:hover { border-color: var(--theme-color-primary); }
+  .domainGridDarkCompact .domainCard:hover { background: var(--theme-color-card-hover); }
+  .partnerItem:hover { border-color: var(--theme-color-primary); }
+}
+
+.domainCard:focus-visible,
+.partnerItem:focus-visible { border-color: var(--theme-color-primary); }
+.domainGridDarkCompact .domainCard:focus-visible { background: var(--theme-color-card-hover); }
+.faqItem:focus-within { border-color: var(--theme-color-primary); }
+
+@media (prefers-reduced-motion: reduce) {
+  .statItem,
+  .domainCard,
+  .faqItem,
+  .partnerItem { transition: none; }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .destinationMonthGrid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 }

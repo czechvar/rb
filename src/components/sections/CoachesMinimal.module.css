@@ -3,8 +3,8 @@
  * Wireframe reference:
  *   docs/html/TRIP-COURSE/.../block_07_block_7.html (.coaches-section)
  *
- * Photo-card language copied from GuidesGrid.module.css
- * (independent component; CSS is copied, not imported).
+ * Photo-card composition follows GuidesGrid; photo interaction is shared
+ * through effects/interaction.module.css.
  */
 
 .section {
@@ -28,6 +28,7 @@
 
 /* ── Single card ───────────────────────────────────── */
 .card {
+  composes: imageZoom from "../effects/interaction.module.css";
   overflow: hidden;
   display: block;
 }
@@ -44,11 +45,7 @@
 .photo {
   object-fit: cover;
   object-position: top;
-  transition: transform 0.55s ease;
-}
 
-.card:hover .photo {
-  transform: scale(1.04);
 }
 
 .photoPlaceholder {
