@@ -9,7 +9,7 @@
 .body {
   max-width: var(--theme-content-max);
   margin: 0 auto;
-  font-size: var(--fs-body);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-60);
   line-height: 1.7;
 }
@@ -34,7 +34,7 @@
   color: var(--theme-color-paper);
   font-family: var(--theme-font-body);
   font-weight: 600;
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   text-decoration: none;

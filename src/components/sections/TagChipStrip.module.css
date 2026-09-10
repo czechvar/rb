@@ -28,7 +28,7 @@
 }
 
 .label {
-  font-size: 1.2rem;
+  font-size: var(--theme-text-small);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;

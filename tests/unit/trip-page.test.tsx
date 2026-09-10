@@ -15,7 +15,7 @@ vi.mock('@/components/blocks/RenderBlocks', () => ({
 
 // The route uses real trip resolution and default composition with in-memory queries.
 // No Payload client, environment setup, browser or database is loaded.
-const event = { id: -1, title: 'Original trip', slug: 'unit-trip-page', layout: [], tripDetail: { sections: [] } } as Event
+const event = { id: -1, title: 'Original trip', slug: 'unit-trip-page', state: 'published', createdAt: '', updatedAt: '', layout: [], tripDetail: { sections: [] } } as Event
 const props = () => ({ params: Promise.resolve({ slug: event.slug }), searchParams: Promise.resolve({}) })
 
 beforeEach(() => {

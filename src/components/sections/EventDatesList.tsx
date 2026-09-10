@@ -60,7 +60,7 @@ export function EventDatesList({
               )}
               <div className={styles.cta}>
                 {variant === 'rows' ? (
-                  !d.active ? <span>Unavailable</span> : soldOut ? <span>Sold out</span> : <Link href={`/book/${d.id}`}>Book this date →</Link>
+                  !d.active ? <span>Unavailable</span> : soldOut ? <span>Sold out</span> : <Link href={`/book/${d.id}`} className="btn-primary">Book this date →</Link>
                 ) : <DateRowBookButton eventDateId={d.id} active={Boolean(d.active)} />}
               </div>
             </li>

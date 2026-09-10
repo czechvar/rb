@@ -49,7 +49,7 @@
 
 .title {
   font-family: var(--theme-font-heading);
-  font-size: clamp(72px, 11vw, 140px);
+  font-size: var(--theme-text-hero);
   line-height: 0.95;
   letter-spacing: 0.01em;
   font-weight: 400;
@@ -59,8 +59,8 @@
 }
 
 .lead {
-  font-size: 1.1rem;
-  color: var(--theme-color-paper-60);
+  font-size: var(--theme-text-lead);
+  color: var(--theme-color-paper-80);
   margin: 0 0 2.5rem;
   max-width: var(--theme-content-lead-max);
   line-height: 1.5;
@@ -145,7 +145,7 @@
 }
 
 .editorial .title {
-  font-size: clamp(64px, 8vw, 140px);
+  font-size: var(--theme-text-hero);
   overflow-wrap: anywhere;
   text-wrap: balance;
 }
@@ -157,7 +157,7 @@
 }
 
 .meta {
-  font-size: var(--fs-eyebrow);
+  font-size: var(--theme-text-small);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--theme-color-paper-80);
@@ -181,6 +181,8 @@
   }
 
   .editorial .title {
-    font-size: clamp(52px, 11vw, 96px);
+    font-size: var(--theme-text-hero);
   }
 }
+
+.actions a { min-height: 44px; justify-content: center; }

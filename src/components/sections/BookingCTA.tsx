@@ -30,7 +30,7 @@ export function BookingCTA({
         <h2 className={styles.heading}>{heading}</h2>
         {body && <p className={styles.body}>{body}</p>}
         {trip?.dateLabel && <p className={styles.details}>{[trip.dateLabel, trip.priceLabel, trip.availabilityLabel].filter(Boolean).join(' · ')}</p>}
-        <Link href={href} className={styles.button}>
+        <Link href={href} className={`btn-primary ${styles.button}`}>
           {label}
         </Link>
       </div>

@@ -1343,7 +1343,7 @@
 .statsHeroBar .statItem dt {
   margin: 0;
   color: var(--theme-color-paper);
-  font-size: 5.2rem;
+  font-size: var(--theme-text-section);
   line-height: 1;
   letter-spacing: 0.04em;
 }
@@ -1365,7 +1365,7 @@
   margin-top: 8px;
   color: var(--theme-color-paper-80);
   font-size: var(--theme-text-sm);
-  line-height: var(--theme-line-sm);
+  line-height: var(--theme-line-small);
 }
 
 .statsGrid {

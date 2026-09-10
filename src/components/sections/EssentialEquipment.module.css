@@ -51,7 +51,7 @@
 
 /* ── Icon ────────────────────────────────────────────── */
 .icon {
-  font-size: 1.8rem;
+  font-size: var(--theme-text-card);
   line-height: 1;
   flex-shrink: 0;
   margin-top: 2px;
@@ -60,7 +60,7 @@
 /* ── Name ────────────────────────────────────────────── */
 .name {
   font-family: var(--theme-font-heading);
-  font-size: 1.1rem;
+  font-size: var(--theme-text-card);
   letter-spacing: 0.03em;
   color: var(--theme-color-paper);
   margin: 0;
@@ -74,7 +74,7 @@
 
 /* ── Note ────────────────────────────────────────────── */
 .note {
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-52);
   margin: 0.3rem 0 0;
   line-height: 1.55;

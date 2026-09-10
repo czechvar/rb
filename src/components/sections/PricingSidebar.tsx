@@ -39,7 +39,7 @@ export function PricingSidebar({
         ))}
       </dl>
       {callout && <p className={styles.callout}>{callout}</p>}
-      <Link href={ctaHref} className={styles.cta}>
+      <Link href={ctaHref} className={`btn-primary ${styles.cta}`}>
         {ctaLabel}
       </Link>
     </aside>

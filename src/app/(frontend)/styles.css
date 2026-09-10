@@ -165,7 +165,7 @@ ol {
   line-height: 0.92;
   letter-spacing: -0.005em;
   color: var(--rb-section-title-color, var(--rb-white));
-  font-size: clamp(40px, 6vw, 88px);
+  font-size: var(--theme-text-section);
 }
 
 .section-label,
@@ -213,7 +213,7 @@ ol {
   padding: 14px 28px;
   font-family: var(--theme-font-body);
   font-weight: 700;
-  font-size: 13px;
+  font-size: var(--theme-text-small);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   border: 1px solid transparent;

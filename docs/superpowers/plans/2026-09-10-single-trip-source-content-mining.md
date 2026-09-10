@@ -191,3 +191,12 @@ The first complete integration run after test-schema reconciliation passed 393/4
 ### Follow-up: consistent default layout
 
 After explicitly clearing Deep Blue's seven saved CMS blocks (local Event 2; other fields unchanged), the user still saw the old design. API read-back confirmed an empty layout: the route's sections.length gate selected the legacy fallback. Removed that gate and the duplicate legacy route composition. Every Event without a saved CMS layout now uses the shared template; missing structured sections stay absent, exact existing content remains available, and explicit custom layouts are still authoritative. ADR-0010 records this clarification. No content was invented or migrated by this rendering correction.
+
+
+### Follow-up: theme typography and shared image gallery
+
+Replaced local font-size literals/clamps in trip sections and booking presentations with existing semantic theme roles, including SectionIntro and the shared section-title helper. Pricing labels/values use small/body, price uses section, headings use hero/section/card roles, and prose uses body. Primary booking actions reuse the shared button recipe with at least 44px height. The old rem-based labels were below readable sizes under the theme's 10px root. No new typography scale was introduced.
+
+Trip gallery featureLead now renders ImageTripCard variant=photo with the same image renderer, grid, sizing tokens and motion used by homepage/Trip Grid/Catalogue Results. The photo variant retains original media alt text and omits links/commercial labels. Removed the separate GalleryBlock CSS variant. Existing gallery grid/masonry/tiles and linked image cards remain supported.
+
+Verification: 23 isolated rendering/query/route/gallery tests, typecheck, scoped lint and theme CSS/registry checks pass. Browser measured Deep Blue and Knots & Stone desktop/mobile against responsive theme sizes with no overflow. Homepage and trips overview retain keyboard-focusable shared cards. Both theme previews pass desktop/mobile overflow checks, reduced-motion disables image transforms, and changing the section-size token updates/restores the rendered heading. No database/content changes.

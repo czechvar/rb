@@ -55,7 +55,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-eyebrow);
+  font-size: var(--theme-text-label);
   color: var(--theme-color-paper-45);
   letter-spacing: 0.1em;
 }
@@ -83,7 +83,7 @@
 }
 
 .role {
-  font-size: 9px;
+  font-size: var(--theme-text-small);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--theme-color-primary);
@@ -95,7 +95,7 @@
 .name {
   font-family: var(--theme-font-heading);
   font-weight: 400;
-  font-size: 26px;
+  font-size: var(--theme-text-card-lg);
   line-height: 1;
   letter-spacing: 0.04em;
   color: var(--theme-color-paper);
@@ -105,7 +105,7 @@
 /* ── Bio below photo ────────────────────────────────── */
 .bio {
   padding: 14px 2px 0;
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-52);
   line-height: 1.65;
 }
@@ -120,7 +120,7 @@
 
 .bullets li {
   padding: 0.6rem 0 0.6rem 1.4rem;
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-52);
   position: relative;
   border-bottom: 1px solid var(--theme-color-paper-12);
@@ -160,8 +160,8 @@
 .cards .photo { position: relative !important; height: 22.5rem !important; }
 .cards .gradient { display: none; }
 .cards .overlay { position: static; padding: 1.5rem 0 0; display: flex; flex-direction: column-reverse; gap: 0.6rem; }
-.cards .name { font-size: 1.8rem; }
-.cards .role { font-size: var(--fs-eyebrow); }
+.cards .name { font-size: var(--theme-text-card-lg); }
+.cards .role { font-size: var(--theme-text-small); }
 .cards .bio { padding-top: 0.8rem; }
 .cards .withoutPhoto { min-height: 0; }
 .cards .withoutPhoto .overlay { padding-top: 0; }

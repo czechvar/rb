@@ -29,7 +29,7 @@
 
 .eyebrow {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-eyebrow);
+  font-size: var(--theme-text-small);
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -40,7 +40,7 @@
 
 .heading {
   font-family: var(--theme-font-heading);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: var(--theme-text-section);
   line-height: 0.95;
   letter-spacing: 0.02em;
   margin-bottom: 1.2rem;
@@ -48,40 +48,24 @@
 }
 
 .body {
-  font-size: 1.05rem;
+  font-size: var(--theme-text-body);
   line-height: 1.7;
-  color: var(--theme-color-paper-60);
+  color: var(--theme-color-paper-80);
   margin-bottom: 2.5rem;
 }
 
 .button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  background: var(--theme-color-primary);
-  color: var(--theme-color-paper);
-  font-family: var(--theme-font-body);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 1px solid transparent;
-  transition: background 0.18s ease;
-}
-
-.button:hover {
-  background: var(--theme-color-primary-hover);
-  color: var(--theme-color-paper);
+  min-height: 44px;
+  justify-content: center;
+  text-align: center;
 }
 
 .withImage { padding: 120px var(--theme-content-gutter); }
 .withImage::before { z-index: 1; background: var(--theme-overlay-dark-strong); }
 .image { object-fit: cover; object-position: center; }
 .withImage .inner { z-index: 2; max-width: var(--theme-content-text-max); }
-.withImage .heading { font-size: clamp(3rem, 7vw, 6rem); text-wrap: balance; }
-.details { color: var(--theme-color-paper-80); font-size: 0.85rem; line-height: 1.7; margin: 0 0 1.5rem; }
+.withImage .heading { font-size: var(--theme-text-hero); text-wrap: balance; }
+.details { color: var(--theme-color-paper-80); font-size: var(--theme-text-body); line-height: 1.7; margin: 0 0 1.5rem; }
 .button:focus-visible { outline: 2px solid var(--theme-color-paper); outline-offset: 5px; }
 @media (max-width: 650px) { .withImage { padding-block: 72px; } }
 @media (prefers-reduced-motion: reduce) { .button { transition: none; } }

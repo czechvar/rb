@@ -8,14 +8,14 @@
 
 /* ── Icon checkmark ─────────────────────────────────── */
 .icon {
-  font-size: 2rem;
+  font-size: var(--theme-text-card);
   color: var(--theme-color-primary);
   line-height: 1;
 }
 
 /* ── Item text ──────────────────────────────────────── */
 .text {
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-60);
   line-height: 1.6;
   margin: 0;

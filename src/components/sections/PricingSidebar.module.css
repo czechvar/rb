@@ -3,6 +3,7 @@
   border-radius: 6px;
   padding: 2.4rem;
   color: var(--theme-color-page-text);
+  font-family: var(--theme-font-body);
   box-shadow: var(--theme-shadow-panel);
   display: flex;
   flex-direction: column;
@@ -18,7 +19,7 @@
 }
 
 .primaryPrice {
-  font-size: 3.2rem;
+  font-size: var(--theme-text-section);
   font-weight: 700;
   line-height: 1.1;
   margin: 0;
@@ -26,14 +27,14 @@
 }
 
 .secondaryPrice {
-  font-size: 1.4rem;
+  font-size: var(--theme-text-body);
   font-weight: 600;
   color: var(--theme-color-primary);
   margin: 0;
 }
 
 .caption {
-  font-size: 1.3rem;
+  font-size: var(--theme-text-small);
   color: var(--theme-color-page-text);
   margin: 0;
 }
@@ -53,19 +54,19 @@
 
 .row {
   display: grid;
-  grid-template-columns: minmax(8rem, auto) 1fr;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
   gap: 1.2rem;
   align-items: baseline;
 }
 
 .rowLabel {
-  font-size: 1.3rem;
+  font-size: var(--theme-text-small);
   color: var(--theme-color-page-text);
   margin: 0;
 }
 
 .rowValue {
-  font-size: 1.4rem;
+  font-size: var(--theme-text-body);
   font-weight: 600;
   color: var(--theme-color-page-text);
   margin: 0;
@@ -76,31 +77,17 @@
   border: 1px solid var(--theme-color-primary);
   border-radius: 4px;
   padding: 1rem 1.2rem;
-  font-size: 1.3rem;
+  font-size: var(--theme-text-small);
   color: var(--theme-color-primary);
   text-align: center;
   margin: 0;
 }
 
 .cta {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  padding: 1.2rem 2rem;
-  background: var(--theme-color-primary);
-  color: var(--theme-color-paper);
-  text-transform: uppercase;
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.1rem;
+  min-height: 44px;
   border-radius: 4px;
-  text-decoration: none;
-  transition: background-color var(--transitionTimeBase) ease;
-}
-
-.cta:hover {
-  background: var(--theme-color-primary-hover);
-  color: var(--theme-color-paper);
+  text-align: center;
 }
 
 .dark {
@@ -115,16 +102,16 @@
 }
 
 .dark .priceBlock { padding: 1.9rem 2rem 1.4rem; }
-.dark .primaryPrice { font-family: var(--theme-font-heading); font-size: 3rem; font-weight: 400; color: var(--theme-color-paper); }
-.dark .caption { font-size: 0.75rem; color: var(--theme-color-paper-80); }
+.dark .primaryPrice { font-family: var(--theme-font-heading); font-size: var(--theme-text-section); font-weight: 400; color: var(--theme-color-paper); }
+.dark .caption { font-size: var(--theme-text-small); color: var(--theme-color-paper-80); }
 .dark .divider { border-color: var(--theme-color-border); }
 .dark .rows { gap: 0; padding: 0.5rem 0; }
 .dark .row { grid-template-columns: minmax(0, auto) minmax(0, 1fr); gap: 1rem; padding: 0.65rem 2rem; border-bottom: 1px solid var(--theme-color-paper-08); }
 .dark .row:last-child { border-bottom: 0; }
-.dark .rowLabel { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--theme-color-paper-80); }
-.dark .rowValue { font-size: 0.86rem; line-height: 1.4; color: var(--theme-color-paper); overflow-wrap: anywhere; }
-.dark .callout { margin: 0.5rem 1.6rem 1.6rem; padding: 0.8rem 1.1rem; border-color: var(--theme-color-primary-border); border-radius: 0; background: var(--theme-color-primary-soft); font-size: 0.8rem; color: var(--theme-color-paper-80); }
-.dark .cta { border-radius: 0; font-size: 0.85rem; padding: 1.25rem; }
+.dark .rowLabel { font-size: var(--theme-text-small); letter-spacing: 0.1em; text-transform: uppercase; color: var(--theme-color-paper-80); }
+.dark .rowValue { font-size: var(--theme-text-body); line-height: 1.4; color: var(--theme-color-paper); overflow-wrap: anywhere; }
+.dark .callout { margin: 0.5rem 1.6rem 1.6rem; padding: 0.8rem 1.1rem; border-color: var(--theme-color-primary-border); border-radius: 0; background: var(--theme-color-primary-soft); font-size: var(--theme-text-body); color: var(--theme-color-paper-80); }
+.dark .cta { border-radius: 0; }
 .cta:focus-visible { outline: 2px solid var(--theme-color-paper); outline-offset: -5px; }
 
 @media (prefers-reduced-motion: reduce) {

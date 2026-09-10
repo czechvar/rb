@@ -184,3 +184,7 @@
   .viewAll:hover > span,
   .viewAll:focus-visible > span { transform: none; }
 }
+
+/* Media-only detail-gallery variant shares the catalogue grid and image treatment. */
+.photo { margin: 0; }
+.photo:only-child { grid-column: 1 / -1; }

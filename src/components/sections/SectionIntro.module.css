@@ -27,7 +27,7 @@
 /* Red eyebrow line per wireframe — "— About the Camp" style */
 .eyebrow {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-eyebrow);
+  font-size: var(--theme-text-label);
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -42,12 +42,12 @@
   line-height: 0.92;
   letter-spacing: -0.005em;
   color: var(--theme-color-paper);
-  font-size: clamp(40px, 6vw, 88px);
+  font-size: var(--theme-text-section);
   margin-bottom: 1.5rem;
 }
 
 .lead {
-  font-size: var(--fs-body-lg);
+  font-size: var(--theme-text-lead);
   line-height: 1.7;
   color: var(--theme-color-paper-80);
   max-width: var(--theme-content-lead-max);

@@ -42,7 +42,7 @@
 /* numbered label above heading */
 .num {
   font-family: var(--theme-font-heading);
-  font-size: 3rem;
+  font-size: var(--theme-text-card-lg);
   color: var(--theme-color-primary);
   line-height: 1;
   margin-bottom: 0.5rem;
@@ -51,7 +51,7 @@
 
 .heading {
   font-family: var(--theme-font-heading);
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-size: var(--theme-text-card);
   letter-spacing: 0.02em;
   line-height: 1.05;
   color: var(--theme-color-paper);
@@ -66,7 +66,7 @@
 }
 
 .bullets li {
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-52);
   padding: 0.45rem 0;
   border-bottom: 1px solid var(--theme-color-paper-12);

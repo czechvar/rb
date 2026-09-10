@@ -51,7 +51,7 @@
 /* ── Card num ──────────────────────────────────────── */
 .num {
   font-family: var(--theme-font-heading);
-  font-size: 3rem;
+  font-size: var(--theme-text-card-lg);
   color: var(--theme-color-primary);
   line-height: 1;
   margin-bottom: 0.8rem;
@@ -61,7 +61,7 @@
 /* ── Card heading ──────────────────────────────────── */
 .heading {
   font-family: var(--theme-font-heading);
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-size: var(--theme-text-card);
   letter-spacing: 0.02em;
   line-height: 1.05;
   color: var(--theme-color-paper);
@@ -70,7 +70,7 @@
 
 /* ── Card body ─────────────────────────────────────── */
 .body {
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-52);
   line-height: 1.6;
   margin: 0;
@@ -80,7 +80,7 @@
 .soloNote {
   max-width: var(--theme-content-max);
   margin: 2.5rem auto 0;
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-52);
   line-height: 1.6;
 }
@@ -91,7 +91,7 @@
   padding: 1.5rem 2rem;
   background: var(--theme-color-paper-08);
   border: 1px solid var(--theme-color-paper-12);
-  font-size: var(--fs-body-sm);
+  font-size: var(--theme-text-body);
   color: var(--theme-color-paper-60);
   line-height: 1.6;
 }
