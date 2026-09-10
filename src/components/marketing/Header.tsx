@@ -85,6 +85,9 @@ export function Header() {
           </nav>
 
           <div className={styles.headerActions}>
+            <Link href={userHref} className={styles.accountLink}>
+              {userLabel}
+            </Link>
             <Link
               href="https://wa.me/420776805045"
               className={styles.joinUs}

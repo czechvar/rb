@@ -29,7 +29,7 @@
   width: 100%;
   height: var(--headerHeight);
   padding: 0 max(var(--theme-content-gutter), calc((100% - var(--theme-content-max)) / 2));
-  gap: clamp(2rem, 3vw, 5rem);
+  gap: clamp(1.6rem, 2vw, 3.2rem);
 }
 
 .brand {
@@ -49,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3.2rem;
+  gap: clamp(1.6rem, 2vw, 3.2rem);
   font-size: var(--theme-text-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -72,6 +72,21 @@
   justify-self: end;
   justify-content: flex-end;
   align-items: center;
+  gap: var(--theme-space-4);
+  white-space: nowrap;
+}
+
+.accountLink {
+  color: var(--theme-color-paper);
+  font-size: var(--theme-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.accountLink:hover,
+.accountLink:focus-visible {
+  color: var(--theme-color-primary);
 }
 
 .nav a.joinUs,

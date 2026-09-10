@@ -2,6 +2,38 @@ import { test, expect } from '@playwright/test'
 
 // Read-only: exercise the shared shell against existing public pages, no fixtures.
 test.describe('Global header scroll behavior', () => {
+  test('account access is available on desktop and mobile in both session states', async ({ page }) => {
+    test.setTimeout(120_000)
+    for (const signedIn of [false, true]) {
+      // Test shell presentation without creating users or authenticating fixtures.
+      await page.route('**/api/users/me', (route) => route.fulfill({
+        json: { user: signedIn ? { id: 1 } : null },
+      }))
+      await Promise.all([
+        page.waitForResponse('**/api/users/me'),
+        page.goto('/blog', { waitUntil: 'domcontentloaded' }),
+      ])
+      const name = signedIn ? 'My account' : 'Log in'
+      const href = signedIn ? '/account' : '/login'
+      for (const width of [1100, 1440]) {
+        await page.setViewportSize({ width, height: 900 })
+        const account = page.locator('header').getByRole('link', { name, exact: true })
+        await expect(account).toBeVisible()
+        await expect(account).toHaveAttribute('href', href)
+        const nav = await page.locator('header nav').boundingBox()
+        const action = await account.boundingBox()
+        expect(nav!.x + nav!.width).toBeLessThanOrEqual(action!.x)
+      }
+      await page.setViewportSize({ width: 390, height: 900 })
+      await page.getByRole('button', { name: 'Open menu' }).click()
+      const account = page.getByRole('dialog', { name: 'Site menu' }).getByRole('link', { name, exact: true })
+      await expect(account).toBeVisible()
+      await expect(account).toHaveAttribute('href', href)
+      await page.getByRole('button', { name: 'Close menu' }).click()
+      await page.unroute('**/api/users/me')
+    }
+  })
+
   for (const width of [390, 1440]) {
     test(`uses the same transition across pages at ${width}px`, async ({ page }) => {
       test.setTimeout(240_000)

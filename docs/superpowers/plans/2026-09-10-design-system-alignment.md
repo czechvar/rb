@@ -80,3 +80,13 @@ no fixed desktop cap; the theme contract therefore uses 100vw plus 5vw gutters.
 
 The hover pass implements the audited interactions, not every possible effect
 in every HTML draft. The candidates above remain an explicit review backlog.
+
+## Review follow-up: account navigation
+
+Restored a visible desktop Log in / My account link beside LET'S TALK using the
+existing useMe session state. Mobile drawer retains the same destination/label.
+Tightened shared navigation gaps so both actions fit from 1100px without overlap.
+Added a read-only browser regression for desktop and mobile in both session states
+(mocked /api/users/me; no users or database fixtures). The test, scoped lint,
+TypeScript and strict theme CSS check passed. This resolves the desktop account
+entry-point review finding; the other older-commit findings remain open.
