@@ -20,6 +20,19 @@ describe('shared trip gallery presentation', () => {
     expect(html).toContain(sharedStyles.featured)
     expect(html).not.toMatch(/<a[ >]|Upcoming dates|View trip details|Rockbusters trip|aria-hidden/)
   })
+  it('limits the detail variant to the first five valid images without mutating the source', () => {
+    const images = Array.from({ length: 64 }, (_, index) => ({ ...media, id: `${media.id}-${index}`, alt: `Source photo ${index}` }))
+    const source = ['unresolved-media-id', ...images]
+    const before = structuredClone(source)
+    const html = renderToStaticMarkup(<GalleryBlock blockType="gallery" source="manual" variant="featureLead" images={source} />)
+    expect(html.match(/<figure /g)).toHaveLength(5)
+    expect([...html.matchAll(/alt="Source photo (\d+)"/g)].map(match => Number(match[1]))).toEqual([0, 1, 2, 3, 4])
+    expect(source).toEqual(before)
+    for (const variant of ['grid', 'masonry', 'tiles'] as const) {
+      const legacy = renderToStaticMarkup(<GalleryBlock blockType="gallery" source="manual" variant={variant} images={source} />)
+      expect(legacy.match(/<figure /g)).toHaveLength(64)
+    }
+  })
   it('keeps the default linked catalogue card unchanged', () => {
     const html = renderToStaticMarkup(<ImageTripCard href="/trips/original" title="Original trip" image={media.url} />)
     expect(html).toContain('href="/trips/original"')

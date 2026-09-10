@@ -12,6 +12,8 @@ import { CoachesMinimal } from '@/components/sections/CoachesMinimal'
 import { PartnerBlock } from '@/components/sections/PartnerBlock'
 import { DemoLessonBlock } from '@/components/sections/DemoLessonBlock'
 import { StatsBlock } from './StatsBlock'
+import { BlockHeader, GuideCard } from './CatalogueCards'
+import catalogueStyles from './blocks.module.css'
 import type { BlockRenderContext } from './RenderBlocks'
 import styles from './TripContentBlocks.module.css'
 
@@ -98,6 +100,21 @@ export function TripVenueBlock(block: Options, context: BlockRenderContext) {
 export function TripTeamBlock(block: Options, context: BlockRenderContext) {
   const trip = view(context)
   if (!trip || (!trip.guides.length && !trip.event.coachTeamBullets?.length)) return null
-  return <div id="team"><CoachesMinimal coaches={trip.guides} framing={trip.event.coachFramingParagraph}
-    teamBullets={trip.event.coachTeamBullets} variant={block.variant === 'cards' ? 'cards' : undefined} /></div>
+  if (block.variant !== 'cards') {
+    return <div id="team"><CoachesMinimal coaches={trip.guides} framing={trip.event.coachFramingParagraph}
+      teamBullets={trip.event.coachTeamBullets} /></div>
+  }
+  return (
+    <section id="team" className={`${catalogueStyles.domainGridSection} ${catalogueStyles.guidePhotoSection}`}>
+      <div className={catalogueStyles.sectionInner}>
+        <BlockHeader heading="Meet your guides" intro={trip.event.coachFramingParagraph} />
+        {trip.guides.length > 0 && <div className={`${catalogueStyles.domainGrid} ${catalogueStyles.guidePhotoGrid}`}>
+          {trip.guides.map(guide => <GuideCard key={guide.id} guide={guide} variant="photoOverlay" />)}
+        </div>}
+        {!!trip.event.coachTeamBullets?.length && <div className={catalogueStyles.richTextBody}>
+          <ul>{trip.event.coachTeamBullets.map((bullet, index) => <li key={bullet.id ?? index}>{bullet.text}</li>)}</ul>
+        </div>}
+      </div>
+    </section>
+  )
 }

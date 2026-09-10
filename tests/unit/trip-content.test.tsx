@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it, vi } from 'vitest'
-import type { Event } from '@/payload-types'
+import type { Event, Guide } from '@/payload-types'
 import { TripContentBlock, TripTeamBlock } from '@/components/blocks/TripContentBlocks'
 import { resolveTripDetail } from '@/lib/trip-detail'
 import { defaultTripLayout } from '@/lib/trip-layout'
@@ -29,6 +29,27 @@ describe('trip source content preservation', () => {
     expect(html).toContain('Original team contribution.')
     expect(html).not.toContain('PHOTO')
     expect(renderToStaticMarkup(TripTeamBlock({ variant: 'cards' }, context(source())))).toBe('')
+  })
+
+
+  it('reuses the shared photo guide cards with the selected occurrence team and original photo metadata', () => {
+    const eventGuide = { id: 1, name: 'Event guide', slug: 'event-guide' } as Guide
+    const selectedGuide = { id: 2, name: 'Selected guide', slug: 'selected-guide', role: 'Original role', tagline: 'Original tagline',
+      photo: { id: 'unit-guide-photo', url: '/unit-guide.jpg', alt: 'Original guide photo', createdAt: '', updatedAt: '' } } as Guide
+    const event = source({ coaches: [eventGuide], coachFramingParagraph: 'Original team framing.' })
+    const ctx = context(event)
+    ctx.trip.guides = [selectedGuide]
+    const html = renderToStaticMarkup(TripTeamBlock({ variant: 'cards' }, ctx))
+    expect(html).toContain('href="/team/selected-guide"')
+    expect(html).toContain('Original role')
+    expect(html).toContain('Original tagline')
+    expect(html).toContain('Original guide photo')
+    expect(html).toContain('Meet guide')
+    expect(html).not.toContain('Event guide')
+    expect(html).not.toContain('/team/event-guide')
+    const defaultHtml = renderToStaticMarkup(TripTeamBlock({}, ctx))
+    expect(defaultHtml).toContain('Selected guide')
+    expect(defaultHtml).not.toContain('Meet guide')
   })
 
   it.each(['overview', 'cards', 'prose'])('keeps existing highlights alongside mined highlights with the %s variant', variant => {

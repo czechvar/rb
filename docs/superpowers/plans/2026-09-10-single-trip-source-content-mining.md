@@ -1,6 +1,6 @@
 # Single trip view: source-preserving content mining and implementation handoff
 
-Status: local source mining and additive migration completed; frontend work remains
+Status: migration and frontend bindings implemented; design acceptance reopened
 Date: 2026-09-10
 Task: https://app.workstreams.ai/teams/S_ZYh417Os/board/AceE0P/tasks/a0cca40c-12bf-4d82-a969-a0d4b776bd2b
 
@@ -10,7 +10,7 @@ The user subsequently authorized proceeding with migration. This supersedes the 
 
 The consolidated working dataset and per-Event manifest are in `.scratch/event-detail-migration/`; see `scripts/data-import/event-detail/README.md` for reproducible commands, target guards and receipts. Schema migration `20260910_151403_event_trip_detail_sections` and the backfill added 96 exact-copy sections to 47 Events. Fifteen candidate sections remain for editors; all 65 Events are accounted for. Independent read-back verified all inserted bodies and unchanged captured source data. The canonical seed received the same 96 sections on 47 existing Events.
 
-The later component/rendering work is still pending. The original Phase A prompt below is historical; do not rerun it as if mining were outstanding. Refresh live evidence before any further migration and preserve subsequent editor changes.
+The later component/rendering work is implemented; current visual acceptance is tracked in docs/superpowers/plans/2026-09-10-single-trip-design-acceptance.md. The original Phase A prompt below is historical; do not rerun it as if mining were outstanding. Refresh live evidence before any further migration and preserve subsequent editor changes.
 
 ## Objective and authority
 

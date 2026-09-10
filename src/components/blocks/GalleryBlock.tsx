@@ -21,6 +21,8 @@ export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderC
   const { body, eyebrow, heading, variant } = props
   const resolved = galleryImages(props, props.context ?? {}).filter((image) => mediaUrl(image))
   if (resolved.length === 0) return null
+  // The detail reference presents five photos; retain the complete source gallery.
+  const visible = variant === 'featureLead' ? resolved.slice(0, 5) : resolved
 
   const isDestinationStrip = variant === 'tiles' && Boolean(props.context?.location)
   const className = [
@@ -41,7 +43,7 @@ export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderC
           </div>
         ) : null}
         <div className={variant === 'featureLead' ? imageCardStyles.grid : styles.galleryGrid}>
-          {resolved.map((image, index) => variant === 'featureLead' ? (
+          {visible.map((image, index) => variant === 'featureLead' ? (
             <ImageTripCard key={typeof image === 'object' ? image.id : index} variant="photo" image={mediaUrl(image) ?? ''} alt={mediaAlt(image)} featured={index === 0} />
           ) : (
             <figure key={typeof image === 'object' ? image.id : index} className={styles.galleryItem}>
