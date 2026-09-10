@@ -1,8 +1,8 @@
 import type { Event } from '@/payload-types'
-import { SectionIntro } from './SectionIntro'
+import { SectionIntro, type SectionIntroVariant } from './SectionIntro'
 import styles from './WhatYouLearn.module.css'
 
-export function WhatYouLearn({ data }: { data?: Event['whatYouLearn'] }) {
+export function WhatYouLearn({ data, headingVariant }: { data?: Event['whatYouLearn']; headingVariant?: SectionIntroVariant }) {
   if (!data) return null
   const boxes = [
     data.box1Heading && {
@@ -22,7 +22,7 @@ export function WhatYouLearn({ data }: { data?: Event['whatYouLearn'] }) {
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <SectionIntro
+        <SectionIntro variant={headingVariant}
           title="What you'll learn"
           lead={data.intro ?? undefined}
           align="left"

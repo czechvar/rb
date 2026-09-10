@@ -1,15 +1,15 @@
 import Image from 'next/image'
 import type { Event } from '@/payload-types'
 import { mediaUrl, mediaAlt } from '@/lib/media'
-import { SectionIntro } from './SectionIntro'
+import { SectionIntro, type SectionIntroVariant } from './SectionIntro'
 import styles from './DayByDayItinerary.module.css'
 
-export function DayByDayItinerary({ data }: { data?: Event['itinerary'] }) {
+export function DayByDayItinerary({ data, headingVariant }: { data?: Event['itinerary']; headingVariant?: SectionIntroVariant }) {
   if (!data?.days?.length) return null
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <SectionIntro title="Daily flow" lead={data.intro ?? undefined} />
+        <SectionIntro variant={headingVariant} title="Daily flow" lead={data.intro ?? undefined} />
         <ol className={styles.days}>
           {data.days.map((day, i) => {
             const url = mediaUrl(day.image)

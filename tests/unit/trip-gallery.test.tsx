@@ -14,7 +14,7 @@ describe('shared trip gallery presentation', () => {
     const images = Array.from({ length: count }, (_, index) => ({ ...media, id: `${media.id}-${index}` }))
     const event = { gallery: images } as Event
     const html = renderToStaticMarkup(<GalleryBlock blockType="gallery" source="currentEvent" variant="featureLead" context={{ event }} />)
-    expect(html).toContain(`class="${sharedStyles.grid}"`)
+    expect(html).toContain(`class="${sharedStyles.grid} ${sharedStyles.photoGrid}"`)
     expect(html.match(/<figure /g)).toHaveLength(count)
     expect(html.match(/alt="Original gallery description"/g)).toHaveLength(count)
     expect(html).toContain(sharedStyles.featured)

@@ -33,15 +33,21 @@ export function EventAccommodationLogistics({
   const includedOverride = hasContent(logisticsOverrides?.included) ? logisticsOverrides?.included : undefined
   const excludedOverride = hasContent(logisticsOverrides?.excluded) ? logisticsOverrides?.excluded : undefined
   const note = hasContent(logisticsOverrides?.note) ? logisticsOverrides?.note : undefined
-  const hasAccommodation =
-    includedOverride || excludedOverride ||
-    accommodation?.description ||
-    accommodation?.included?.length ||
-    accommodation?.notIncluded?.length ||
-    accommodation?.cuisineHighlights
+  const hasInclusions = !!(includedOverride || excludedOverride || accommodation?.included?.length || accommodation?.notIncluded?.length)
+  const inclusions = <>
+    {(includedOverride || accommodation?.included?.length) && <div className={styles.box}>
+      <p className={styles.listLabel}>Included in our price</p>
+      {includedOverride ? <Lexical data={includedOverride} /> : <BulletList items={accommodation?.included} />}
+    </div>}
+    {(excludedOverride || accommodation?.notIncluded?.length) && <div className={styles.box}>
+      <p className={`${styles.listLabel} ${styles.listLabelNot}`}>Not included</p>
+      {excludedOverride ? <Lexical data={excludedOverride} /> : <BulletList items={accommodation?.notIncluded} />}
+    </div>}
+  </>
+  const hasAccommodation = accommodation?.description || accommodation?.cuisineHighlights || (variant !== 'cards' && hasInclusions)
   const hasTransport = transport?.description || transport?.airports?.length
 
-  if (!hasAccommodation && !hasTransport && !note) return null
+  if (!hasAccommodation && !hasTransport && !hasInclusions && !note) return null
 
   return (
     <section className={`${styles.section} ${variant === 'cards' ? styles.cards : ''}`}>
@@ -55,18 +61,7 @@ export function EventAccommodationLogistics({
                 {accommodation?.description && (
                   <Lexical data={accommodation.description} />
                 )}
-                {includedOverride ? <><p className={styles.listLabel}>Included in our price</p><Lexical data={includedOverride} /></> : accommodation?.included?.length ? (
-                  <>
-                    <p className={styles.listLabel}>Included in our price</p>
-                    <BulletList items={accommodation.included} />
-                  </>
-                ) : null}
-                {excludedOverride ? <><p className={styles.listLabel}>Not included</p><Lexical data={excludedOverride} /></> : accommodation?.notIncluded?.length ? (
-                  <>
-                    <p className={styles.listLabel + ' ' + styles.listLabelNot}>Not included</p>
-                    <BulletList items={accommodation.notIncluded} />
-                  </>
-                ) : null}
+                {variant !== 'cards' && inclusions}
                 {accommodation?.cuisineHighlights && (
                   <Lexical data={accommodation.cuisineHighlights} />
                 )}
@@ -95,6 +90,7 @@ export function EventAccommodationLogistics({
             </div>
           )}
         </div>
+        {variant === 'cards' && hasInclusions ? <div className={styles.inclusions}>{inclusions}</div> : null}
         {note ? <div className={styles.box}><Lexical data={note} /></div> : null}
       </div>
     </section>

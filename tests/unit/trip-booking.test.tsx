@@ -89,6 +89,21 @@ describe('trip booking presentation', () => {
     }
   })
 
+
+  it('offers a secondary inquiry only beside a bookable image CTA and never duplicates an unavailable action', () => {
+    const bookable = resolveTripDetail(event, [date(1)])
+    const image = renderToStaticMarkup(<BookingCTA event={event} trip={bookable} variant="image" />)
+    expect(image.match(/href="mailto:info@rockbusters.net"/g)).toHaveLength(1)
+    expect(image.match(/href="\/book\/1"/g)).toHaveLength(1)
+    const defaultHtml = renderToStaticMarkup(<BookingCTA event={event} trip={bookable} />)
+    expect(defaultHtml).not.toContain('mailto:')
+    for (const dates of [[], [date(1, { remainingSeats: 0 })]]) {
+      const unavailable = renderToStaticMarkup(<BookingCTA event={event} trip={resolveTripDetail(event, dates)} variant="image" />)
+      expect(unavailable.match(/href="mailto:info@rockbusters.net"/g)).toHaveLength(1)
+      expect(unavailable).not.toContain('href="/book/')
+    }
+  })
+
   it('retains default CTA routing while the image variant reuses only the existing photo', () => {
     expect(renderToStaticMarkup(<BookingCTA event={event} />)).toContain('href="/trips/in-memory-only/dates"')
     const withPhoto = { ...event, mainPicture: { id: 'photo-fixture', url: '/original-photo.jpg', alt: 'Original photo', createdAt: '', updatedAt: '' } } as Event

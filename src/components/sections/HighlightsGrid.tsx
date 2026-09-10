@@ -1,19 +1,21 @@
 import type { Event } from '@/payload-types'
 import { Card, CardGrid } from './Card'
-import { SectionIntro } from './SectionIntro'
+import { SectionIntro, type SectionIntroVariant } from './SectionIntro'
 import styles from './HighlightsGrid.module.css'
 
 export function HighlightsGrid({
+  headingVariant,
   items,
   heading = 'Trip Highlights',
 }: {
+  headingVariant?: SectionIntroVariant
   items?: Event['highlights']
   heading?: string
 }) {
   if (!items?.length) return null
   return (
     <section className={styles.section}>
-      <SectionIntro title={heading} />
+      <SectionIntro variant={headingVariant} title={heading} />
       <CardGrid>
         {items.map((h, i) => (
           <Card key={i}>

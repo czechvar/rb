@@ -1,13 +1,15 @@
 import type { Program } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
-import { SectionIntro } from './SectionIntro'
+import { SectionIntro, type SectionIntroVariant } from './SectionIntro'
 import styles from './AudienceCards.module.css'
 
 export function AudienceCards({
+  headingVariant,
   cards,
   soloNote,
   redirectCallout,
 }: {
+  headingVariant?: SectionIntroVariant
   cards?: Program['audienceCards']
   soloNote?: Program['soloNote']
   redirectCallout?: Program['redirectCallout']
@@ -16,7 +18,7 @@ export function AudienceCards({
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <SectionIntro title="Who this camp is for" align="left" />
+        <SectionIntro variant={headingVariant} title="Who this camp is for" align="left" />
         <div className={styles.grid}>
           {cards.map((c, i) => (
             <div

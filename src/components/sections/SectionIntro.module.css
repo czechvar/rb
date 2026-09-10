@@ -62,3 +62,10 @@
     padding: 64px 5%;
   }
 }
+
+/* Embedded headings inherit their enclosing section's gutters and spacing. */
+.intro.embedded {
+  padding: 0;
+  margin-bottom: var(--theme-space-7);
+  background: transparent;
+}

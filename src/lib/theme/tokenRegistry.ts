@@ -177,6 +177,8 @@ const layoutTokens = [
   '--theme-content-gutter',
   '--theme-content-teaser-max',
   '--theme-trip-card-grid-gap',
+  '--theme-photo-gallery-row-height',
+  '--theme-photo-gallery-gap',
   '--theme-trip-card-height',
   '--theme-trip-card-featured-height',
   '--theme-trip-card-padding',

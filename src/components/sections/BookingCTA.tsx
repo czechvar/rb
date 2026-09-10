@@ -30,9 +30,12 @@ export function BookingCTA({
         <h2 className={styles.heading}>{heading}</h2>
         {body && <p className={styles.body}>{body}</p>}
         {trip?.dateLabel && <p className={styles.details}>{[trip.dateLabel, trip.priceLabel, trip.availabilityLabel].filter(Boolean).join(' · ')}</p>}
+        <div className={styles.actions}>
         <Link href={href} className={`btn-primary ${styles.button}`}>
           {label}
         </Link>
+        {variant === 'image' && trip?.bookingHref && <Link href="mailto:info@rockbusters.net" className={`btn-ghost ${styles.button}`}>Ask a Question →</Link>}
+        </div>
       </div>
     </section>
   )

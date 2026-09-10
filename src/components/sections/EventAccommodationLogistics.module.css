@@ -106,7 +106,7 @@
   font-size: var(--theme-text-body);
   color: var(--theme-color-paper-52);
   line-height: 1.55;
-  padding: 0.45rem 0 0.45rem 1.2rem;
+  padding: 0.45rem 0 0.45rem var(--theme-space-6);
   border-bottom: 1px solid var(--theme-color-paper-08);
   position: relative;
 }
@@ -146,3 +146,6 @@
 .cards .box a { color: var(--theme-color-primary); text-decoration: underline; }
 .cards .box :is(ul, ol) { padding-left: 1.25rem; }
 .cards .box .bullets { padding-left: 0; }
+
+.inclusions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--theme-space-6); padding-top: var(--theme-space-6); border-top: 1px solid var(--theme-color-border); }
+@media (max-width: 600px) { .inclusions { grid-template-columns: minmax(0, 1fr); } }

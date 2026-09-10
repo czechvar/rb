@@ -116,6 +116,8 @@ export const rockbustersTheme: ThemePreset = {
   '--theme-content-gutter': '5vw',
   '--theme-content-teaser-max': '440px',
   '--theme-trip-card-grid-gap': '2px',
+  '--theme-photo-gallery-row-height': '300px',
+  '--theme-photo-gallery-gap': '4px',
   '--theme-trip-card-height': '420px',
   '--theme-trip-card-featured-height': '480px',
   '--theme-trip-card-padding': '32px 28px',

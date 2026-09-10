@@ -42,7 +42,7 @@ export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderC
             {body ? <p className={styles.lead}>{body}</p> : null}
           </div>
         ) : null}
-        <div className={variant === 'featureLead' ? imageCardStyles.grid : styles.galleryGrid}>
+        <div className={variant === 'featureLead' ? `${imageCardStyles.grid} ${imageCardStyles.photoGrid}` : styles.galleryGrid}>
           {visible.map((image, index) => variant === 'featureLead' ? (
             <ImageTripCard key={typeof image === 'object' ? image.id : index} variant="photo" image={mediaUrl(image) ?? ''} alt={mediaAlt(image)} featured={index === 0} />
           ) : (

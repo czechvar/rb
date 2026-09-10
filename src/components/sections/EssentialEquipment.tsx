@@ -1,11 +1,13 @@
 import type { Event } from '@/payload-types'
-import { SectionIntro } from './SectionIntro'
+import { SectionIntro, type SectionIntroVariant } from './SectionIntro'
 import styles from './EssentialEquipment.module.css'
 
 export function EssentialEquipment({
+  headingVariant,
   items,
   intro,
 }: {
+  headingVariant?: SectionIntroVariant
   items?: Event['essentialEquipment']
   intro?: string | null
 }) {
@@ -13,7 +15,7 @@ export function EssentialEquipment({
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <SectionIntro
+        <SectionIntro variant={headingVariant}
           title="Essential equipment"
           lead={intro ?? undefined}
           align="left"

@@ -33,7 +33,9 @@ export function ImageTripCard(props: ImageTripCardProps) {
           src={image}
           alt={props.variant === 'photo' ? props.alt : ''}
           fill
-          sizes={featured
+          sizes={props.variant === 'photo'
+            ? featured ? '(max-width: 900px) 90vw, 45vw' : '(max-width: 900px) 45vw, 22.5vw'
+            : featured
             ? '(max-width: 560px) 90vw, (max-width: 900px) 45vw, 60vw'
             : '(max-width: 560px) 90vw, (max-width: 900px) 45vw, 30vw'}
         />

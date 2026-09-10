@@ -4,6 +4,9 @@ import { describe, expect, it, vi } from 'vitest'
 import type { Event, Guide } from '@/payload-types'
 import { TripContentBlock, TripTeamBlock } from '@/components/blocks/TripContentBlocks'
 import { resolveTripDetail } from '@/lib/trip-detail'
+import { SectionIntro } from '@/components/sections/SectionIntro'
+import { EventAccommodationLogistics } from '@/components/sections/EventAccommodationLogistics'
+import { AudienceCards } from '@/components/sections/AudienceCards'
 import { defaultTripLayout } from '@/lib/trip-layout'
 
 vi.mock('next/link', () => ({ default: ({ children, ...props }: React.ComponentProps<'a'>) => <a {...props}>{children}</a> }))
@@ -50,6 +53,55 @@ describe('trip source content preservation', () => {
     const defaultHtml = renderToStaticMarkup(TripTeamBlock({}, ctx))
     expect(defaultHtml).toContain('Selected guide')
     expect(defaultHtml).not.toContain('Meet guide')
+  })
+
+
+  it('opts trip fallback headings into the embedded variant while shared defaults remain unchanged', () => {
+    const cards = [{ heading: 'Original audience', body: 'Original audience text.' }]
+    const event = source({ audienceCards: cards })
+    const tripHtml = renderToStaticMarkup(TripContentBlock({ section: 'audience' }, context(event)))
+    const defaultHtml = renderToStaticMarkup(<AudienceCards cards={cards} />)
+    expect(tripHtml).toContain('Original audience text.')
+    expect(tripHtml).toMatch(/class="[^"]*embedded/)
+    expect(defaultHtml).not.toMatch(/class="[^"]*embedded/)
+    const heading = renderToStaticMarkup(<SectionIntro title="Original heading" variant="embedded" />)
+    expect(heading).toContain('Original heading')
+    expect(heading).toMatch(/class="[^"]*embedded/)
+  })
+
+
+  it('renders inclusion-only cards without inventing an Accommodation group and keeps the default grouping', () => {
+    const accommodation = { included: [{ text: 'Original included item.' }], notIncluded: [{ text: 'Original excluded item.' }] }
+    const cards = renderToStaticMarkup(<EventAccommodationLogistics accommodation={accommodation} variant="cards" />)
+    const defaultHtml = renderToStaticMarkup(<EventAccommodationLogistics accommodation={accommodation} />)
+    expect(cards).not.toContain('<h3>Accommodation</h3>')
+    expect(cards).toContain('Included in our price')
+    expect(cards).toContain('Not included')
+    expect(defaultHtml).toContain('<h3>Accommodation</h3>')
+    for (const html of [cards, defaultHtml]) {
+      expect(html.match(/Original included item\./g)).toHaveLength(1)
+      expect(html.match(/Original excluded item\./g)).toHaveLength(1)
+    }
+    expect(defaultHtml.indexOf('Accommodation')).toBeLessThan(defaultHtml.indexOf('Original included item.'))
+  })
+
+  it('places inclusion cards after primary logistics without duplicating source descriptions', () => {
+    const html = renderToStaticMarkup(<EventAccommodationLogistics variant="cards"
+      accommodation={{ description: rich('Original accommodation body.'), included: [{ text: 'Original price inclusion.' }] }}
+      transport={{ description: rich('Original transport body.') }} />)
+    for (const text of ['Original accommodation body.', 'Original transport body.', 'Original price inclusion.']) {
+      expect(html.split(text)).toHaveLength(2)
+    }
+    expect(html.indexOf('Original transport body.')).toBeLessThan(html.indexOf('Included in our price'))
+  })
+
+  it.each(['cards', undefined] as const)('preserves occurrence inclusion overrides and hides replaced Event lists for %s', variant => {
+    const html = renderToStaticMarkup(<EventAccommodationLogistics variant={variant}
+      accommodation={{ included: [{ text: 'Replaced Event inclusion.' }], notIncluded: [{ text: 'Replaced Event exclusion.' }] }}
+      logisticsOverrides={{ included: rich('Original date inclusion.'), excluded: rich('Original date exclusion.'), note: rich('Original date note.') }} />)
+    for (const text of ['Original date inclusion.', 'Original date exclusion.', 'Original date note.']) expect(html.split(text)).toHaveLength(2)
+    expect(html).not.toContain('Replaced Event inclusion.')
+    expect(html).not.toContain('Replaced Event exclusion.')
   })
 
   it.each(['overview', 'cards', 'prose'])('keeps existing highlights alongside mined highlights with the %s variant', variant => {

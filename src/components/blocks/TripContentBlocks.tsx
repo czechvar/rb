@@ -49,12 +49,12 @@ export function TripContentBlock(block: Options, context: BlockRenderContext) {
   const sections = trip.sections.filter(section => section.kind === kind)
   const existingContent = (() => {
     const event = trip.event
-    if (kind === 'audience') return <AudienceCards cards={event.audienceCards} />
-    if (kind === 'learning') return <WhatYouLearn data={event.whatYouLearn} />
-    if (kind === 'itinerary') return <DayByDayItinerary data={event.itinerary} />
-    if (kind === 'equipment') return <EssentialEquipment items={event.essentialEquipment} intro={event.equipmentIntro} />
-    if (kind === 'requirements') return <Prerequisites items={event.prerequisites} />
-    if (kind === 'highlights') return <HighlightsGrid items={event.highlights} heading="Trip Highlights" />
+    if (kind === 'audience') return <AudienceCards headingVariant="embedded" cards={event.audienceCards} />
+    if (kind === 'learning') return <WhatYouLearn headingVariant="embedded" data={event.whatYouLearn} />
+    if (kind === 'itinerary') return <DayByDayItinerary headingVariant="embedded" data={event.itinerary} />
+    if (kind === 'equipment') return <EssentialEquipment headingVariant="embedded" items={event.essentialEquipment} intro={event.equipmentIntro} />
+    if (kind === 'requirements') return <Prerequisites headingVariant="embedded" items={event.prerequisites} />
+    if (kind === 'highlights') return <HighlightsGrid headingVariant="embedded" items={event.highlights} heading="Trip Highlights" />
     return null
   })()
   if (!sections.length) return existingContent
