@@ -98,6 +98,10 @@ export function RouteProgress() {
     timeouts.current.push(
       window.setTimeout(() => {
         clearTrickle()
+        if (raf.current !== null) {
+          window.cancelAnimationFrame(raf.current)
+          raf.current = null
+        }
         setProgress(100)
         timeouts.current.push(window.setTimeout(() => setPhase('finishing'), FILL_HOLD_MS))
         timeouts.current.push(
@@ -117,12 +121,16 @@ export function RouteProgress() {
 
     // A new navigation during the fade-out of the previous one resets the bar.
     clearTimers()
-    setProgress(START_PROGRESS)
-    setPhase('loading')
-
+    // Next writes history during useInsertionEffect. Track the navigation now
+    // so the commit effect can finish it, but schedule visual state outside
+    // React's commit phase. The second frame preserves the entrance animation.
     raf.current = window.requestAnimationFrame(() => {
-      raf.current = null
-      setProgress((value) => Math.max(value, RAMP_PROGRESS))
+      setProgress(START_PROGRESS)
+      setPhase('loading')
+      raf.current = window.requestAnimationFrame(() => {
+        raf.current = null
+        setProgress((value) => Math.max(value, RAMP_PROGRESS))
+      })
     })
 
     trickle.current = window.setInterval(() => {
