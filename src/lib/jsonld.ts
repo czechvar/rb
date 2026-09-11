@@ -773,6 +773,16 @@ async function visibleCatalogueFromPageLayout(layout: Page['layout'] | null | un
         break
       }
       case 'postGrid': {
+        if (block.variant === 'index') {
+          const { getBlogIndex } = await import('@/lib/queries')
+          const { posts } = await getBlogIndex()
+          const selected = block.posts?.[0]
+          const featuredId = typeof selected === 'object' ? selected.id : selected
+          const featured = posts.find(post => post.id === featuredId)
+          const visible = featured ? [featured, ...posts.filter(post => post.id !== featured.id)] : posts
+          items.push(...visible.map(post => ({ name: post.title, url: absoluteUrl(`/blog/${post.slug}`) })))
+          break
+        }
         const posts = await resolvePostGridPosts(block)
         items.push(...postListItems(posts))
         break

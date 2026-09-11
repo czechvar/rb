@@ -15,6 +15,7 @@ import type {
 } from '@/payload-types'
 import { catalogueDateFloor, upcomingEventDateWhere } from '@/lib/event-date-visibility'
 import { assignCatalogueImageVariants, catalogueImageCandidates, toCatalogueResult, type CatalogueResult } from '@/lib/catalogue-results'
+import { toBlogIndexPost } from '@/lib/blog-index'
 
 // --- CMS pages ----------------------------------------------------------
 
@@ -173,6 +174,38 @@ export function getPublishedEventsForLocation(locationId: number) {
 }
 
 // --- Posts / blog --------------------------------------------------------
+export function getBlogIndex() {
+  return cachedQuery(['blog-index'], [TAGS.posts, TAGS.postCategories, TAGS.media], async () => {
+    const payload = await getPayloadClient()
+    const posts: ReturnType<typeof toBlogIndexPost>[] = []
+    let page = 1
+    // Fetch every published post: the teaser query's 50-post cap is not an archive.
+    while (true) {
+      const result = await payload.find({
+        collection: 'posts',
+        where: { state: { equals: 'published' } },
+        sort: '-publishedAt',
+        depth: 1,
+        limit: 100,
+        page,
+        select: { title: true, slug: true, excerpt: true, author: true, publishedAt: true, heroImage: true, category: true, content: true },
+      })
+      posts.push(...result.docs.map(toBlogIndexPost))
+      if (!result.hasNextPage) break
+      page += 1
+    }
+    const categories: { slug: string; name: string }[] = []
+    page = 1
+    while (true) {
+      const result = await payload.find({ collection: 'post-categories', sort: 'name', limit: 100, page, depth: 0 })
+      categories.push(...result.docs.map(({ slug, name }) => ({ slug, name })))
+      if (!result.hasNextPage) break
+      page += 1
+    }
+    return { posts, categories }
+  })
+}
+
 // depth 1 embeds the category (name shown on cards/byline) → tag post-categories too.
 
 export function getPublishedPosts() {

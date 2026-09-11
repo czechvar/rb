@@ -1,13 +1,40 @@
-import { getPublishedPosts } from '@/lib/queries'
+import { getPublishedPageBySlug, getPublishedPosts } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { JsonLd } from '@/components/JsonLd'
-import { collectionPageGraphJsonLd, postListItems } from '@/lib/jsonld'
+import {
+  absoluteUrl,
+  collectionPageGraphJsonLd,
+  genericCmsPageGraphJsonLd,
+  postListItems,
+} from '@/lib/jsonld'
+import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import { PostCard } from './PostCard'
 import styles from './blog.module.css'
 
-export const metadata = { title: 'Blog — Rockbusters' }
+export async function generateMetadata() {
+  const page = await getPublishedPageBySlug('blog')
+  return {
+    title: page?.seo?.title || 'Blog — Rockbusters',
+    description:
+      page?.seo?.description ||
+      'Climbing stories, coaching notes and destination guides from Rockbusters.',
+    alternates: { canonical: absoluteUrl('/blog') },
+  }
+}
 
 export default async function BlogPage() {
+  const page = await getPublishedPageBySlug('blog')
+  if (page?.layout?.length) {
+    const jsonLd = await genericCmsPageGraphJsonLd(page, '/blog')
+    return (
+      <MarketingShell>
+        <JsonLd data={jsonLd} />
+        <main>
+          <RenderBlocks blocks={page.layout} context={{ page }} />
+        </main>
+      </MarketingShell>
+    )
+  }
   const docs = await getPublishedPosts()
   const jsonLd = collectionPageGraphJsonLd({
     path: '/blog',

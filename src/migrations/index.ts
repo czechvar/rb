@@ -57,6 +57,8 @@ import * as migration_20260911_120000_trip_summary_content from './20260911_1200
 import * as migration_20260911_135715_trip_editorial_occurrence_overrides from './20260911_135715_trip_editorial_occurrence_overrides';
 import * as migration_20260911_155714_trip_editorial_companion_variants from './20260911_155714_trip_editorial_companion_variants';
 
+import * as migration_20260911_190000_blog_index_variant from './20260911_190000_blog_index_variant';
+
 export const migrations = [
   {
     up: migration_20260527_124751.up,
@@ -347,5 +349,10 @@ export const migrations = [
     up: migration_20260911_155714_trip_editorial_companion_variants.up,
     down: migration_20260911_155714_trip_editorial_companion_variants.down,
     name: '20260911_155714_trip_editorial_companion_variants'
+  },
+  {
+    up: migration_20260911_190000_blog_index_variant.up,
+    down: migration_20260911_190000_blog_index_variant.down,
+    name: '20260911_190000_blog_index_variant',
   },
 ];

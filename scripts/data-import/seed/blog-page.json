@@ -1,0 +1,49 @@
+{
+  "row": {
+    "title": "Blog",
+    "slug": "blog",
+    "status": "published",
+    "seo": {
+      "title": "Stories from the Rock — Rockbusters Blog",
+      "description": "Trip dispatches, coaching notes, gear breakdowns and destination guides from the Rockbusters team."
+    },
+    "structuredData": {
+      "schemaType": "CollectionPage"
+    },
+    "layout": [
+      {
+        "blockType": "hero",
+        "blockName": "Blog introduction",
+        "variant": "brandEditorial",
+        "eyebrow": "The Rockbusters Blog",
+        "heading": "Stories from the Rock",
+        "accentWords": [
+          {
+            "text": "Rock"
+          }
+        ],
+        "body": "Trip dispatches, coaching notes, gear breakdowns and destination guides — written by the guides and coaches who actually run the trips.",
+        "backgroundMedia": "med_3f833d48fc839a151dc9daaf"
+      },
+      {
+        "blockType": "postGrid",
+        "blockName": "Blog archive",
+        "variant": "index",
+        "source": "latest",
+        "eyebrow": "Latest dispatch",
+        "heading": "Fresh off the rock"
+      },
+      {
+        "blockType": "cta",
+        "blockName": "From stories to trips",
+        "variant": "finalRed",
+        "heading": "Your next story starts here",
+        "body": "Take the inspiration onto real rock. Explore climbing trips, coaching and new places with the Rockbusters team.",
+        "primaryAction": {
+          "label": "Explore the trips",
+          "href": "/trips"
+        }
+      }
+    ]
+  }
+}

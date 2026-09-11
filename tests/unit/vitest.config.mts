@@ -6,5 +6,5 @@ export default defineConfig({
   envDir: false,
   resolve: { alias: { '@': fileURLToPath(new URL('../../src', import.meta.url)) } },
   esbuild: { jsx: 'automatic' },
-  test: { environment: 'node', include: ['tests/unit/trip-booking.test.tsx', 'tests/unit/trip-dates-query.test.ts', 'tests/unit/trip-content.test.tsx', 'tests/unit/trip-page.test.tsx', 'tests/unit/trip-gallery.test.tsx', 'tests/unit/editorial-heading.test.tsx', 'tests/unit/trip-editorial-blocks.test.tsx', 'tests/unit/trip-editorial.test.ts', 'tests/unit/trip-editorial-render.test.tsx', 'tests/unit/trip-editorial-commercial.test.tsx'], setupFiles: [] },
+  test: { environment: 'node', include: ['tests/unit/blog-page.test.tsx', 'tests/unit/blog-index.test.ts', 'tests/unit/trip-booking.test.tsx', 'tests/unit/trip-dates-query.test.ts', 'tests/unit/trip-content.test.tsx', 'tests/unit/trip-page.test.tsx', 'tests/unit/trip-gallery.test.tsx', 'tests/unit/editorial-heading.test.tsx', 'tests/unit/trip-editorial-blocks.test.tsx', 'tests/unit/trip-editorial.test.ts', 'tests/unit/trip-editorial-render.test.tsx', 'tests/unit/trip-editorial-commercial.test.tsx'], setupFiles: [] },
 })

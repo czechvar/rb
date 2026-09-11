@@ -26,6 +26,9 @@ type LexicalState = ReturnType<typeof convertHTMLToLexical>
 type Args = {
   allowProduction: boolean
   dryRun: boolean
+  blogOnly: boolean
+  skipExisting: boolean
+  localOnly: boolean
 }
 
 type SeedFile<Row> = {
@@ -93,11 +96,17 @@ function parseArgs(argv: string[]): Args {
   return {
     allowProduction: argv.includes('--allow-production'),
     dryRun: argv.includes('--dry-run'),
+    blogOnly: argv.includes('--only=blog'),
+    skipExisting: argv.includes('--skip-existing'),
+    localOnly: argv.includes('--local-only'),
   }
 }
 
-function assertNotProduction({ allowProduction }: Args) {
+function assertNotProduction({ allowProduction, localOnly }: Args) {
   const dbUrl = process.env.DATABASE_URL ?? ''
+  if (localOnly && !['localhost', '127.0.0.1', '[::1]'].includes(new URL(dbUrl).hostname)) {
+    throw new Error('--local-only requires a localhost database')
+  }
   if (dbUrl.includes(PRODUCTION_DB_HOST) && !allowProduction) {
     console.error(
       'DATABASE_URL points at the PRODUCTION Neon branch. ' +
@@ -288,6 +297,18 @@ async function importCategories(
   const lookupRows: Array<{ legacyBlogCategoryId: number; slug: string; payloadPostCategoryId: number | string | null }> = []
 
   for (const row of rows) {
+    if (args.skipExisting) {
+      const existing = await payload.find({
+        collection: 'post-categories',
+        where: { slug: { equals: row.slug } },
+        limit: 1,
+        depth: 0,
+      })
+      if (existing.docs[0]) {
+        lookupRows.push({ legacyBlogCategoryId: row.id, slug: row.slug, payloadPostCategoryId: existing.docs[0].id })
+        continue
+      }
+    }
     const result = await upsertBySlug(payload, {
       collection: 'post-categories',
       slug: row.slug,
@@ -433,6 +454,15 @@ async function importPosts(
 
   for (const row of rows) {
     try {
+      if (args.skipExisting) {
+        const existing = await payload.find({
+          collection: 'posts',
+          where: { slug: { equals: row.slug } },
+          limit: 1,
+          depth: 0,
+        })
+        if (existing.docs[0]) continue
+      }
       const firstCategoryId = row.categoryIds[0]
       const category = firstCategoryId ? categoryLookup.get(String(firstCategoryId)) ?? null : null
       for (const legacyCategoryId of row.categoryIds) {
@@ -462,11 +492,8 @@ async function importPosts(
       })
       if (result.created) totals.created += 1
       else totals.updated += 1
-    } catch (cause) {
-      console.error(JSON.stringify((cause as { data?: unknown }).data ?? cause, null, 2))
-      throw new Error(`legacy blog post #${row.id} (${row.slug}) failed`, {
-        cause: cause instanceof Error ? cause : undefined,
-      })
+    } catch {
+      throw new Error(`legacy blog post #${row.id} failed`)
     }
   }
 
@@ -499,8 +526,8 @@ async function main() {
   const editorConfig = await editorConfigFactory.default({ config: payload.config })
 
   const categoryResult = await importCategories(payload, args, categorySeed.rows)
-  const partnerTotals = await importPartners(payload, args, partnerSeed.rows, mediaLookup, editorConfig)
-  const reviewTotals = await importReviews(payload, args, testimonialSeed.rows)
+  const partnerTotals = args.blogOnly ? null : await importPartners(payload, args, partnerSeed.rows, mediaLookup, editorConfig)
+  const reviewTotals = args.blogOnly ? null : await importReviews(payload, args, testimonialSeed.rows)
   const postTotals = await importPosts(
     payload,
     args,
@@ -512,14 +539,14 @@ async function main() {
   )
 
   printTotals('legacy blog categories', categoryResult.totals)
-  printTotals('legacy partners', partnerTotals)
-  printTotals('legacy testimonials', reviewTotals)
+  if (partnerTotals) printTotals('legacy partners', partnerTotals)
+  if (reviewTotals) printTotals('legacy testimonials', reviewTotals)
   printTotals('legacy blog posts', postTotals)
 }
 
 main()
   .then(() => process.exit(0))
-  .catch((err) => {
-    console.error('legacy support content import failed:', err)
+  .catch(() => {
+    console.error('legacy support content import failed; details suppressed to protect configuration')
     process.exit(1)
   })

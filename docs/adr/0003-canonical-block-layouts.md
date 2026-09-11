@@ -24,6 +24,15 @@ underlying record has one. If the layout is empty, the route must keep its
 existing hardcoded fallback. This applies to the Home page, Trip/Event detail,
 Program detail, Location detail, Guide detail, and Blog Post detail routes.
 
+The Blog index at `/blog` also reads a published Page with slug `blog`, falling
+back to its original listing if that Page/layout is absent. It emits metadata
+and structured data for `/blog`, not the generic preview path. Generic blocks
+remain available; the existing Post Grid's `index` variant owns its archive
+statistics, category/date controls, featured post, and complete published list.
+Its source query caches compact card data with posts, post-categories, and media
+tags; full rich text stays on the server. The teaser variants retain their limits.
+Post and category detail routes retain their existing URL ownership.
+
 The `/cms-pages/[slug]` route remains available for standalone CMS pages and
 campaign-style content. Published Page records are the only records that may
 render publicly through the Pages collection.

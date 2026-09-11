@@ -131,6 +131,12 @@ capability gated, and reduced motion disables movement.
 
 ## Shared hero sizing
 
+Hero statistics on a primary-color (Rockbusters red) panel use
+`--theme-color-ink` for the large values and full-opacity `--theme-color-paper`
+for small labels and supporting text. Apply this consistently to generic CMS,
+blog, destination, and guide hero statistics; dark-panel statistics keep their
+existing color treatment.
+
 All public hero variants consume `--theme-hero-min-height` and the shared responsive `--theme-hero-mobile-min-height` from the theme contract. Do not add page-specific viewport-height or variant-height overrides. The initial values match the destination hero (760px desktop, 680px mobile). Trip booking summaries sit beside the hero on desktop and below it on mobile, so the summary does not increase mobile hero height. The summary sits above image overlays.
 
 ## References

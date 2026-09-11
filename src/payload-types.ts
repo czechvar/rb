@@ -543,11 +543,14 @@ export interface Program {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
-            source: 'latest' | 'byCategory' | 'manual';
+            source?: ('latest' | 'byCategory' | 'manual') | null;
             category?: (number | null) | PostCategory;
+            /**
+             * For the full blog index, the first selected published post is featured. Leave empty to feature the newest post.
+             */
             posts?: (number | Post)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'index';
             id?: string | null;
             blockName?: string | null;
             blockType: 'postGrid';
@@ -1320,11 +1323,14 @@ export interface Event {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
-            source: 'latest' | 'byCategory' | 'manual';
+            source?: ('latest' | 'byCategory' | 'manual') | null;
             category?: (number | null) | PostCategory;
+            /**
+             * For the full blog index, the first selected published post is featured. Leave empty to feature the newest post.
+             */
             posts?: (number | Post)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'index';
             id?: string | null;
             blockName?: string | null;
             blockType: 'postGrid';
@@ -2773,11 +2779,14 @@ export interface Location {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
-            source: 'latest' | 'byCategory' | 'manual';
+            source?: ('latest' | 'byCategory' | 'manual') | null;
             category?: (number | null) | PostCategory;
+            /**
+             * For the full blog index, the first selected published post is featured. Leave empty to feature the newest post.
+             */
             posts?: (number | Post)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'index';
             id?: string | null;
             blockName?: string | null;
             blockType: 'postGrid';
@@ -3363,11 +3372,14 @@ export interface Guide {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
-            source: 'latest' | 'byCategory' | 'manual';
+            source?: ('latest' | 'byCategory' | 'manual') | null;
             category?: (number | null) | PostCategory;
+            /**
+             * For the full blog index, the first selected published post is featured. Leave empty to feature the newest post.
+             */
             posts?: (number | Post)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'index';
             id?: string | null;
             blockName?: string | null;
             blockType: 'postGrid';
@@ -3971,11 +3983,14 @@ export interface Post {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
-            source: 'latest' | 'byCategory' | 'manual';
+            source?: ('latest' | 'byCategory' | 'manual') | null;
             category?: (number | null) | PostCategory;
+            /**
+             * For the full blog index, the first selected published post is featured. Leave empty to feature the newest post.
+             */
             posts?: (number | Post)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'index';
             id?: string | null;
             blockName?: string | null;
             blockType: 'postGrid';
@@ -5307,11 +5322,14 @@ export interface Page {
             eyebrow?: string | null;
             heading?: string | null;
             intro?: string | null;
-            source: 'latest' | 'byCategory' | 'manual';
+            source?: ('latest' | 'byCategory' | 'manual') | null;
             category?: (number | null) | PostCategory;
+            /**
+             * For the full blog index, the first selected published post is featured. Leave empty to feature the newest post.
+             */
             posts?: (number | Post)[] | null;
             limit?: number | null;
-            variant: 'cards' | 'compact';
+            variant: 'cards' | 'compact' | 'index';
             id?: string | null;
             blockName?: string | null;
             blockType: 'postGrid';

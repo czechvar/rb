@@ -444,3 +444,34 @@ current Payload `posts.category` field stores only one relation. The importer
 chooses the first legacy category ID deterministically; the full legacy
 `categoryIds` array remains in `legacy-blog-posts.json` for a future schema
 expansion if needed.
+
+To fill missing blog records in local development while preserving existing
+posts and categories, use:
+
+```bash
+PAYLOAD_DISABLE_DB_PUSH=true DATA_IMPORT_LOOKUP_DIR=.scratch/blog-migration \
+  pnpm data-import:legacy-support-content --only=blog --skip-existing --local-only --dry-run
+# Remove --dry-run to import persistent migrated content.
+```
+
+`--only=blog` excludes partners and testimonials. `--skip-existing` preserves
+existing posts and post categories by slug. `--local-only` refuses any database
+host other than localhost; it cannot be overridden by `--allow-production`.
+
+Content limitation: the HTML converter removes inline images and iframes. Hero
+image relationships are retained, but embedded article media needs separate
+recovery from `seed/legacy-blog-posts.json`. Do not interpret a complete slug
+count as complete article fidelity. The source export also retains additional
+category memberships that the single-category CMS schema cannot represent.
+
+The persistent CMS Blog index page is separate from importing blog posts:
+
+```bash
+PAYLOAD_DISABLE_DB_PUSH=true pnpm exec tsx scripts/data-import/import-blog-page-seed.ts
+```
+
+Apply tracked migrations first. This seed requires localhost, creates the Page
+with slug `blog`, and preserves it on subsequent runs. Use `--replace` only when
+intentionally restoring the committed layout over editor changes. The public
+route is `/blog`; editors can add or reorder generic Page blocks and configure
+the Post Grid's full-index variant and featured post.
