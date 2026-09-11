@@ -83,16 +83,28 @@ export function tripCommercialText(
 ): string | undefined {
   if (text == null) return undefined
   const summary = tripSummary(view)
+  const durationDays = view.selectedDate
+    ? Math.round(
+        (Date.parse(view.selectedDate.dateTo.slice(0, 10)) -
+          Date.parse(view.selectedDate.dateFrom.slice(0, 10))) /
+          86400000,
+      )
+    : null
   const values: Record<string, string> = {
     price: summary?.price ?? view.priceLabel ?? 'Enquire',
     weeklyPrice: summary?.weeklyPrice ?? 'Enquire',
-    durationDays: summary ? String(summary.durationDays) : '',
+    durationDays: durationDays === null ? '' : String(durationDays),
+    durationWeeks: durationDays === null ? '' : String(durationDays / 7),
+    dates: view.dateLabel ?? 'Dates to be confirmed',
+    country: [...new Set(view.locations.map((location) => location.country).filter(Boolean))].join(
+      ', ',
+    ),
     capacity: view.selectedDate ? String(view.selectedDate.capacity) : 'Enquire',
     location: view.locations.map((location) => location.name).join(', '),
     coaches: view.guides.map((guide) => guide.name).join(' & '),
   }
   return text.replace(
-    /\{(price|weeklyPrice|durationDays|capacity|location|coaches)\}/g,
+    /\{(price|weeklyPrice|durationDays|durationWeeks|dates|country|capacity|location|coaches)\}/g,
     (_, key: string) => values[key],
   )
 }

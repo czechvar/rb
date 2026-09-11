@@ -1,3 +1,4 @@
+import { SectionIntro } from '@/components/sections/SectionIntro'
 import { tripCopy } from './trip-copy'
 import type { Event } from '@/payload-types'
 import { getActiveEventDatesForEvent } from '@/lib/queries'
@@ -6,12 +7,25 @@ import type { BlockRenderContext } from './RenderBlocks'
 
 type TripDatesBlockProps = Record<string, unknown>
 
-export async function TripDatesBlock(block: TripDatesBlockProps, { event, trip }: BlockRenderContext) {
+export async function TripDatesBlock(
+  block: TripDatesBlockProps,
+  { event, trip }: BlockRenderContext,
+) {
   if (!isEvent(event)) return null
 
   const copy = tripCopy(trip, 'dates', block, { heading: 'Dates & Pricing' })
   if (copy.hide) return null
-  const dates = trip?.dates ?? await getActiveEventDatesForEvent(event.id)
+  if (trip?.editorial?.datesMode === 'notice')
+    return (
+      <SectionIntro
+        id="dates"
+        title={copy.heading}
+        eyebrow={copy.eyebrow}
+        lead={copy.intro}
+        align="left"
+      />
+    )
+  const dates = trip?.dates ?? (await getActiveEventDatesForEvent(event.id))
   return (
     <EventDatesList
       items={dates}

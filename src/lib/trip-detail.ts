@@ -140,9 +140,9 @@ function unavailable(date: EventDate): boolean {
   return date.capacity <= 0 || (date.remainingSeats != null && date.remainingSeats <= 0)
 }
 
-export function resolveTripDetail(event: Event, dates: EventDate[], selectedId?: number): TripDetailView {
+export function resolveTripDetail(event: Event, dates: EventDate[], selectedId?: number, now = new Date()): TripDetailView {
   const upcoming = dates.filter(date => date.active === true &&
-    (typeof date.event === 'object' ? date.event.id : date.event) === event.id && isUpcomingEventDate(date) &&
+    (typeof date.event === 'object' ? date.event.id : date.event) === event.id && isUpcomingEventDate(date, now) &&
     Number.isFinite(Date.parse(date.dateTo)) && Date.parse(date.dateTo) >= Date.parse(date.dateFrom))
     .sort((a, b) => Date.parse(a.dateFrom) - Date.parse(b.dateFrom) || a.id - b.id)
   const selectedDate = upcoming.find(date => date.id === selectedId) ??

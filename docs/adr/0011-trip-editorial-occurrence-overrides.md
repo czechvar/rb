@@ -26,7 +26,7 @@ Explicit saved layout fields win when supplied. Synthesized layout labels are de
 
 ## Consequences
 
-Queries and all trip blocks must use the same selected occurrence projection. Tests cover leakage, custom layouts and clear/reset semantics. Date-specific content migration is local, reversible and source-traced; other catalogue enrichment remains gated by Kalymnos acceptance.
+Queries and all trip blocks must use the same selected occurrence projection. Tests cover leakage, custom layouts and clear/reset semantics. Date-specific content migration is local, reversible and source-traced; the approved mapped-reference rollout uses the same boundary, and enrichment of other catalogue records remains separate.
 
 ## References
 
@@ -37,3 +37,8 @@ Queries and all trip blocks must use the same selected occurrence projection. Te
 ## Implementation clarifications
 
 Section visibility is an explicit inherit/show/hide choice rather than an ambiguous false checkbox. Clear flags apply to text; absent values inherit. The supported commercial placeholders in overview facts, comparison column headings and closing primary CTA are interpolated from selected occurrence data. Nested itinerary images and transport airports cannot be overridden by editorial fields; existing source relationships remain authoritative. Unused nullable relational structures from the additive migration are retained rather than destructively editing an applied migration.
+
+
+## Remaining reference rollout — 2026-09-11
+
+The user approved enrichment of all remaining 25 mapped references. Extend the same optional editorial contract with ordered companion table columns/cells, related-option links (shared safe-URL validation), summary/facts-strip labels and overview/summary action labels. These cover observed venue tables, format comparisons and related options without a full layout fork. A dates notice variant handles references without a schedule. Date eligibility remains unchanged; historical QA renders fixtures at an explicit reference clock outside public routes. Root matches source booking identities rather than merging similarly titled Events.

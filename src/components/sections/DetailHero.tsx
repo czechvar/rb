@@ -2,7 +2,7 @@ import { HeadingText } from '@/components/ui/EditorialHeading'
 import Image from 'next/image'
 import type { Event } from '@/payload-types'
 import { resolveTripDetail, type TripDetailView } from '@/lib/trip-detail'
-import { tripSummary } from '@/lib/trip-summary'
+import { tripSummary, tripCommercialText } from '@/lib/trip-summary'
 import { PricingSidebar } from './PricingSidebar'
 import { TagChipStrip, type TagChip } from './TagChipStrip'
 import styles from './DetailHero.module.css'
@@ -89,10 +89,21 @@ export function DetailHero({
       primaryPrice={summary?.primaryPrice ?? view.priceLabel ?? 'Enquire'}
       secondaryPrice={summary?.secondaryPrice}
       caption={summary?.caption ?? (view.priceLabel ? 'per person' : '')}
-      rows={summary?.rows ?? view.facts}
+      rows={
+        view.editorial?.summaryRows?.length
+          ? view.editorial.summaryRows.map((fact) => ({
+              label: tripCommercialText(view, fact.label) ?? '',
+              value: tripCommercialText(view, fact.value) ?? '',
+            }))
+          : (summary?.rows ?? view.facts)
+      }
       callout={summary?.callout ?? view.availabilityLabel ?? undefined}
       ctaHref={bookingHref}
-      ctaLabel={view.bookingHref ? 'Book Your Spot' : bookingLabel}
+      ctaLabel={
+        view.bookingHref
+          ? tripCommercialText(view, view.editorial?.actions?.summaryLabel) || 'Book Your Spot'
+          : bookingLabel
+      }
     />
   )
 

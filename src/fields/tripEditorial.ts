@@ -159,6 +159,27 @@ export function tripEditorialField(scope: 'event' | 'date', sourceFields: Field[
         fields: [text('time'), text('title'), text('description', 'textarea')],
       },
       facts('overviewFacts'),
+      facts('factsStrip'),
+      facts('summaryRows'),
+      { name: 'actions', type: 'group', fields: [text('overviewLabel'), text('summaryLabel')] },
+      { name: 'datesMode', type: 'select', options: ['list', 'notice'] },
+      {
+        name: 'companion',
+        type: 'group',
+        fields: [
+          { name: 'columns', type: 'array', fields: [text('label')] },
+          {
+            name: 'rows',
+            type: 'array',
+            fields: [{ name: 'cells', type: 'array', fields: [text('text', 'textarea')] }],
+          },
+          {
+            name: 'links',
+            type: 'array',
+            fields: [text('label'), text('href'), text('description', 'textarea')],
+          },
+        ],
+      },
       {
         name: 'venue',
         type: 'group',

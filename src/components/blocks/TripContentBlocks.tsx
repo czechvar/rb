@@ -91,6 +91,8 @@ export function TripContentBlock(block: Options, context: BlockRenderContext) {
   const pairProgramme = (programme: React.ReactNode) => (
     <TripProgrammeComparison
       programme={programme}
+      companion={comparisonCopy.hide ? undefined : trip.editorial?.companion}
+      text={(value) => tripCommercialText(trip, value)}
       comparison={
         comparison
           ? {
@@ -216,7 +218,12 @@ export function TripContentBlock(block: Options, context: BlockRenderContext) {
             className={`btn-primary ${styles.overviewAction}`}
             href={trip.bookingHref ?? 'mailto:info@rockbusters.net'}
           >
-            {trip.bookingHref ? tripCommercialText(trip, trip.editorial?.booking?.primaryLabel) || 'Book Your Spot' : 'Ask a Question'}
+            {trip.bookingHref
+              ? tripCommercialText(
+                  trip,
+                  trip.editorial?.actions?.overviewLabel ?? trip.editorial?.booking?.primaryLabel,
+                ) || 'Book Your Spot'
+              : 'Ask a Question'}
           </a>
         </div>
         {(trip.editorial?.overviewFacts?.length || trip.facts.length > 0) && (
@@ -265,10 +272,16 @@ export function TripContentBlock(block: Options, context: BlockRenderContext) {
 export function TripFactsBlock(block: Options, context: BlockRenderContext) {
   const trip = view(context)
   if (!trip) return null
-  const items = tripSummary(trip)?.strip ?? [
-    ...trip.facts,
-    ...(trip.priceLabel ? [{ label: 'Price per person', value: trip.priceLabel }] : []),
-  ]
+  const authored = trip.editorial?.factsStrip?.map((fact) => ({
+    label: tripCommercialText(trip, fact.label) ?? '',
+    value: tripCommercialText(trip, fact.value) ?? '',
+  }))
+  const items = authored?.length
+    ? authored
+    : (tripSummary(trip)?.strip ?? [
+        ...trip.facts,
+        ...(trip.priceLabel ? [{ label: 'Price per person', value: trip.priceLabel }] : []),
+      ])
   if (!items.length) return null
   return (
     <StatsBlock

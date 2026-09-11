@@ -1,0 +1,3627 @@
+[
+  {
+    "version": 1,
+    "classification": "local design comparison content; not canonical seed",
+    "sourceFile": "PROJECT ESPANA/rockbusters_espana_chulilla.html",
+    "target": {
+      "eventId": 17,
+      "eventSlug": "climbing-trip-spain",
+      "eventDateId": 749,
+      "dateFrom": "2027-02-27",
+      "dateTo": "2027-03-06"
+    },
+    "sections": [
+      {
+        "key": "overview",
+        "eyebrow": "About This Leg",
+        "heading": "Where Endurance Gets Built",
+        "headingParts": [
+          {
+            "text": "Where Endurance Gets Built",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "North of Valencia, Chulilla's towering walls rise above the crystalline Turia River — over 900 routes known for their length, technical vertical faces, and subtle tufa formations. While Sella introduced you to Spanish limestone, Chulilla is where the trip starts demanding more.\n\nWork iconic sectors like El Balcón, La Muela, and El Oasis, applying Week 1's technical foundation to routes running up to 40 metres on a single pitch — exactly the kind of sustained climbing that forces genuinely efficient movement and strategic resting.\n\nEvenings unfold in a medieval village of cobblestone streets beneath a 13th-century castle, with analysis sessions in local cafés and a rest-day option to soak in nearby thermal springs."
+      },
+      {
+        "key": "dates",
+        "eyebrow": "The Full Journey",
+        "heading": "Project España 2027 — Full Schedule",
+        "headingParts": [
+          {
+            "text": "Project España 2027 — Full Schedule",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "This leg is one stop on a 4-week route across Spain. Book just this week, or grab the full trip and follow the coast from Sella to Margalef."
+      },
+      {
+        "key": "gallery",
+        "eyebrow": "Real Rock, Real Chulilla",
+        "heading": "Tufas, Canyon Walls & Sustained Pump",
+        "headingParts": [
+          {
+            "text": "Tufas, Canyon Walls",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "& ",
+            "accent": false,
+            "breakBefore": true
+          },
+          {
+            "text": "Sustained Pump",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "intro": "No stock photos, no staged sends — just climbers building endurance above the Turia River."
+      },
+      {
+        "key": "audience",
+        "eyebrow": "Who Should Show Up",
+        "heading": "Built for the Endurance-Curious",
+        "headingParts": [
+          {
+            "text": "Built for the Endurance-Curious",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "learning",
+        "eyebrow": "The Coaching",
+        "heading": "Three Skills Worth the Pump",
+        "headingParts": [
+          {
+            "text": "Three ",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "Skills",
+            "accent": true,
+            "breakBefore": false
+          },
+          {
+            "text": " Worth the Pump",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "itinerary",
+        "eyebrow": "Daily Structure",
+        "heading": "A Typical Day",
+        "headingParts": [
+          {
+            "text": "A Typical Day",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom."
+      },
+      {
+        "key": "comparison",
+        "eyebrow": "1 Week vs Full Trip",
+        "heading": "Which Format?",
+        "headingParts": [
+          {
+            "text": "Which Format?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "One week gets you the endurance leg. Four weeks gets you the entire Spanish route — and a road-trip crew that gets closer with every stop."
+      },
+      {
+        "key": "venue",
+        "eyebrow": "The Venue",
+        "heading": "Chulilla, Spain",
+        "headingParts": [
+          {
+            "text": "Chulilla, Spain",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "team",
+        "eyebrow": "Your Coach",
+        "heading": "World-Class Coaching",
+        "headingParts": [
+          {
+            "text": "World-Class Coaching",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "reviews",
+        "eyebrow": "Results",
+        "heading": "What Past Climbers Say",
+        "headingParts": [
+          {
+            "text": "What Past Climbers Say",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "logistics",
+        "eyebrow": "Accommodation & Logistics",
+        "heading": "We Sorted the Boring Bits",
+        "headingParts": [
+          {
+            "text": "We Sorted the Boring Bits",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "package",
+        "eyebrow": "What's Included",
+        "heading": "Full Package",
+        "headingParts": [
+          {
+            "text": "Full Package",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "faq",
+        "eyebrow": "FAQ",
+        "heading": "Common Questions",
+        "headingParts": [
+          {
+            "text": "Common Questions",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "booking",
+        "eyebrow": "Reserve Your Place",
+        "heading": "Ready to Build Some Endurance?",
+        "headingParts": [
+          {
+            "text": "Ready to Build Some Endurance?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Spaces fill fast, and we only run this leg with a minimum of 3 climbers. Secure your spot now — or drop us a line first if you've got questions."
+      }
+    ],
+    "hero": {
+      "titleParts": [
+        {
+          "text": "PROJECT ESPAÑA 2027",
+          "accent": false,
+          "breakBefore": false
+        },
+        {
+          "text": "CHULILLA",
+          "accent": true,
+          "breakBefore": true
+        }
+      ],
+      "description": "Week Two of Project España: seven days in a limestone canyon above the turquoise Turia River, where 40-metre routes build the endurance the rest of the trip demands.",
+      "hashtag": "#TufasBeforeTermas",
+      "primaryLabel": "Reserve Your Place",
+      "secondaryLabel": "Read the Programme",
+      "sourceSecondaryHref": "#overview"
+    },
+    "overview": [
+      "North of Valencia, Chulilla's towering walls rise above the crystalline Turia River — over 900 routes known for their length, technical vertical faces, and subtle tufa formations. While Sella introduced you to Spanish limestone, Chulilla is where the trip starts demanding more.",
+      "Work iconic sectors like El Balcón, La Muela, and El Oasis, applying Week 1's technical foundation to routes running up to 40 metres on a single pitch — exactly the kind of sustained climbing that forces genuinely efficient movement and strategic resting.",
+      "Evenings unfold in a medieval village of cobblestone streets beneath a 13th-century castle, with analysis sessions in local cafés and a rest-day option to soak in nearby thermal springs."
+    ],
+    "overviewFacts": [
+      {
+        "label": "Duration",
+        "value": "7 Days",
+        "description": "Week 2 of the 4-week trip"
+      },
+      {
+        "label": "Location",
+        "value": "Chulilla",
+        "description": "Valencia region, Spain"
+      },
+      {
+        "label": "Route Length",
+        "value": "Up to 40m",
+        "description": "Single-pitch endurance"
+      },
+      {
+        "label": "Group Size",
+        "value": "Small & Focused",
+        "description": "Min. 3 climbers to run"
+      },
+      {
+        "label": "Coach",
+        "value": "Arturo Aparicio",
+        "description": "Guiding every leg"
+      },
+      {
+        "label": "Price",
+        "value": "€1,050",
+        "description": "Part of the €3,550 full trip"
+      }
+    ],
+    "strip": [
+      {
+        "value": "Chulilla",
+        "label": "Turia River Canyon"
+      },
+      {
+        "value": "27 Feb–6 Mar",
+        "label": "7 Days"
+      },
+      {
+        "value": "40m",
+        "label": "Longest Single Pitches"
+      },
+      {
+        "value": "3",
+        "label": "Min. Participants"
+      },
+      {
+        "value": "€1,050",
+        "label": "Week 2 of the 4-Week Trip"
+      }
+    ],
+    "summary": {
+      "rows": [
+        {
+          "label": "Dates",
+          "value": "27 Feb – 6 March 2027",
+          "description": ""
+        },
+        {
+          "label": "Duration",
+          "value": "7 Days (Week 2 of 4)",
+          "description": ""
+        },
+        {
+          "label": "Location",
+          "value": "Chulilla, Valencia, Spain",
+          "description": ""
+        },
+        {
+          "label": "Level",
+          "value": "Lead 6a indoor / 5 outdoor",
+          "description": ""
+        },
+        {
+          "label": "Coach",
+          "value": "Arturo Aparicio",
+          "description": ""
+        }
+      ],
+      "price": "€ 1,050 / 1 week Part of the 4-week trip — €3,550 per person · coaching & guiding included",
+      "travelNote": "Fly into Valencia — we handle the rest",
+      "ctaLabel": "Book Your Spot →",
+      "priceCaption": "per person · coaching & guiding included",
+      "alternatePrice": "Part of the 4-week trip — €3,550"
+    },
+    "audienceCards": [
+      {
+        "heading": "The Sella Graduate",
+        "body": "You've built the foundation in Week 1, or arrived with solid technique already, and you're ready for routes that actually test your stamina."
+      },
+      {
+        "heading": "The Efficiency Seeker",
+        "body": "Long routes expose wasted movement fast. Chulilla's 40-metre pitches are the best classroom there is for learning to climb efficiently."
+      },
+      {
+        "heading": "The Medieval Village Romantic",
+        "body": "Cobblestone streets, a 13th-century castle, thermal springs on rest days. You want the postcard version of a Spanish climbing basecamp."
+      }
+    ],
+    "pillars": [
+      {
+        "heading": "Technique",
+        "headingParts": [
+          {
+            "text": "Technique",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Choosing & caring for gear that keeps you alive"
+          },
+          {
+            "text": "Movement skills & efficient footwork"
+          },
+          {
+            "text": "Perfect balance over your centre of gravity"
+          },
+          {
+            "text": "Overhang tricks: side-stepping, drop knee, flagging, heel hooking"
+          },
+          {
+            "text": "Cleaning anchors — keeping all your gear"
+          }
+        ]
+      },
+      {
+        "heading": "Mental Game",
+        "headingParts": [
+          {
+            "text": "Mental Game",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Basic understanding of outdoor risks"
+          },
+          {
+            "text": "Climbing calls & communication that get your message across"
+          },
+          {
+            "text": "Redpoint & onsight attempts on new climbs"
+          },
+          {
+            "text": "Personalized coaching to break through mental barriers"
+          },
+          {
+            "text": "Mental stamina for routes that just keep going"
+          }
+        ]
+      },
+      {
+        "heading": "Tactics",
+        "headingParts": [
+          {
+            "text": "Tactics",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Belaying & lead belaying, catching falls dynamically"
+          },
+          {
+            "text": "Setting up top-ropes"
+          },
+          {
+            "text": "Clipstick timing & pre-clipping the first draw"
+          },
+          {
+            "text": "Strategic resting & energy conservation on long pitches"
+          },
+          {
+            "text": "Long-term progression beyond this week"
+          }
+        ]
+      }
+    ],
+    "dailySchedule": [
+      {
+        "time": "08:30",
+        "title": "Morning Briefing",
+        "description": "Crag plan, conditions check, coffee"
+      },
+      {
+        "time": "09:30",
+        "title": "Guided Climbing Block",
+        "description": "Movement & technique coaching on selected lines"
+      },
+      {
+        "time": "13:00",
+        "title": "Crag Lunch & Reset",
+        "description": "Packed lunch, rest, tactics chat with your coach"
+      },
+      {
+        "time": "14:30",
+        "title": "Afternoon Session",
+        "description": "Project burns or mileage — your call"
+      },
+      {
+        "time": "18:30",
+        "title": "Pack Down & Return",
+        "description": "Back to the village, gear sorted for tomorrow"
+      },
+      {
+        "time": "20:00",
+        "title": "Café Analysis & Dinner",
+        "description": "Movement efficiency breakdown, tall tales from the day"
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "What's Included",
+        "1 Week €1,050",
+        "Full Trip €3,550"
+      ],
+      "rows": [
+        {
+          "label": "Climbing days",
+          "left": "6",
+          "right": "24"
+        },
+        {
+          "label": "Destinations",
+          "left": "1 (Chulilla)",
+          "right": "4 across Spain"
+        },
+        {
+          "label": "Individualized coaching & guiding",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Safety equipment & gear",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Shared accommodation",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Full road-trip community & lifelong sending buddies",
+          "left": "—",
+          "right": "✓"
+        }
+      ]
+    },
+    "venue": {
+      "paragraphs": [
+        {
+          "text": "A dramatic river gorge north of Valencia, where towering limestone walls rise above the crystalline Turia River — over 900 routes known for their length, technical vertical faces, and subtle tufa formations."
+        },
+        {
+          "text": "The medieval village itself, with cobblestone streets winding beneath a 13th-century castle, offers thermal springs and gorge hiking trails for rest days, and a genuinely tranquil counterpoint to the climbing."
+        }
+      ],
+      "facts": [
+        {
+          "label": "Nearest Airport",
+          "value": "Valencia (both ways)",
+          "description": ""
+        },
+        {
+          "label": "Rock Type",
+          "value": "Limestone",
+          "description": ""
+        },
+        {
+          "label": "Climate in Late Feb/Mar",
+          "value": "12–19°C",
+          "description": ""
+        },
+        {
+          "label": "Style",
+          "value": "Long endurance routes, subtle tufas",
+          "description": ""
+        }
+      ]
+    },
+    "coaches": [
+      {
+        "name": "Arturo Aparicio",
+        "role": "Guide & Performance Coach",
+        "bio": "Arturo found climbing after years of surfing in Tenerife, and never looked back. Guiding every leg of Project España, he brings the same easygoing, patient energy to Chulilla's longer routes as he did to Sella's foundation-building week."
+      }
+    ],
+    "previewReviews": [
+      {
+        "quote": "I'd never thought about resting strategically mid-route before Chulilla. A 40-metre pitch has a way of teaching you fast whether you like it or not.",
+        "reviewerName": "[Design preview] Anders J. 6b · Sweden"
+      },
+      {
+        "quote": "The evening café analysis sessions were oddly one of my favorite parts. Breaking down footage over coffee in a medieval village hits different.",
+        "reviewerName": "[Design preview] Beatriz C. 6a+ · Portugal"
+      },
+      {
+        "quote": "Spent our rest day in the thermal springs after a week of pumped forearms. Genuinely one of the best recovery days I've had on any climbing trip.",
+        "reviewerName": "[Design preview] Tom H. 6b+ · United Kingdom"
+      }
+    ],
+    "practicalCards": [
+      {
+        "heading": "Accommodation",
+        "body": "Shared accommodation in a local climbing cottage run by local climbers. A private room is possible if arranged ahead, for an extra charge."
+      },
+      {
+        "heading": "Getting There",
+        "body": "Fly into Valencia for both arrival and departure. Local transport is organised once you land."
+      },
+      {
+        "heading": "Gear",
+        "body": "All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't."
+      },
+      {
+        "heading": "Group Size",
+        "body": "Minimum 3 climbers to run the leg. Small enough for real coaching, never a crowd-control exercise."
+      }
+    ],
+    "packageItems": [
+      {
+        "text": "Individualized coaching — technical, mental, and tactical"
+      },
+      {
+        "text": "Guiding & local knowledge — routes picked for your grade"
+      },
+      {
+        "text": "Climbing safety equipment — ropes, draws, helmets, slings"
+      },
+      {
+        "text": "Shared basic accommodation — local climbing hosts"
+      }
+    ],
+    "packageNote": "Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars.",
+    "faqs": [
+      {
+        "question": "What level do I need to be?",
+        "answer": "Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high."
+      },
+      {
+        "question": "Do I need my own gear?",
+        "answer": "Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes)."
+      },
+      {
+        "question": "Is food included?",
+        "answer": "Breakfast and lunch ingredients are covered — we take you shopping on arrival. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars."
+      },
+      {
+        "question": "Can I join this leg without doing Week 1?",
+        "answer": "Yes — every leg works as a standalone week. You don't need to have done Sella first, though the technical foundation from Week 1 does help you get more out of Chulilla's longer routes."
+      },
+      {
+        "question": "What if fewer than 3 people book?",
+        "answer": "We need a minimum of 3 participants to run this leg. If numbers don't add up, we'll offer an equivalent (or better) alternative, or a full refund. No hard feelings."
+      },
+      {
+        "question": "Where do I fly in and out of?",
+        "answer": "Valencia Airport, for both arrival and departure."
+      }
+    ],
+    "closingSupport": "Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast.",
+    "closingPrimaryLabel": "Book Now — €1,050",
+    "scheduleReference": [
+      {
+        "text": "Week 1 Sella, Spain 20–27 February 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/859"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_sella.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 You Are Here",
+        "links": []
+      },
+      {
+        "text": "Week 3 Siurana, Spain 6–13 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/861"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_siurana.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 4 Margalef, Spain 13–20 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/862"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_margalef.html"
+          }
+        ]
+      },
+      {
+        "text": "All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 Add Full Trip More Info",
+        "links": [
+          {
+            "text": "Add Full Trip",
+            "href": "https://rockbusters.net/order/new/858"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_projectespana_fulltrip.html"
+          }
+        ]
+      }
+    ],
+    "heroMeta": [
+      "27 Feb–6 Mar 2027 · Chulilla, Spain",
+      "With Arturo Aparicio",
+      "Lead 6a indoor / 5 outdoor"
+    ],
+    "overviewLinks": [
+      {
+        "label": "Book Now — From €1,050",
+        "href": "#book"
+      }
+    ],
+    "closingBadges": [
+      "1 week €1,050",
+      "Full trip €3,550"
+    ],
+    "allSectionText": [
+      {
+        "index": 0,
+        "text": "27 Feb–6 Mar 2027 · Chulilla, Spain With Arturo Aparicio Lead 6a indoor / 5 outdoor PROJECT ESPAÑA 2027 CHULILLA Week Two of Project España: seven days in a limestone canyon above the turquoise Turia River, where 40-metre routes build the endurance the rest of the trip demands. #TufasBeforeTermas Reserve Your Place Read the Programme € 1,050 / 1 week Part of the 4-week trip — €3,550 per person · coaching & guiding included Dates 27 Feb – 6 March 2027 Duration 7 Days (Week 2 of 4) Location Chulilla, Valencia, Spain Level Lead 6a indoor / 5 outdoor Coach Arturo Aparicio Fly into Valencia — we handle the rest Book Your Spot →"
+      },
+      {
+        "index": 1,
+        "text": "About This Leg Where Endurance Gets Built North of Valencia, Chulilla's towering walls rise above the crystalline Turia River — over 900 routes known for their length, technical vertical faces, and subtle tufa formations. While Sella introduced you to Spanish limestone, Chulilla is where the trip starts demanding more. Work iconic sectors like El Balcón, La Muela, and El Oasis, applying Week 1's technical foundation to routes running up to 40 metres on a single pitch — exactly the kind of sustained climbing that forces genuinely efficient movement and strategic resting. Evenings unfold in a medieval village of cobblestone streets beneath a 13th-century castle, with analysis sessions in local cafés and a rest-day option to soak in nearby thermal springs. Book Now — From €1,050 Duration 7 Days Week 2 of the 4-week trip Location Chulilla Valencia region, Spain Route Length Up to 40m Single-pitch endurance Group Size Small & Focused Min. 3 climbers to run Coach Arturo Aparicio Guiding every leg Price €1,050 Part of the €3,550 full trip The Full Journey Project España 2027 — Full Schedule This leg is one stop on a 4-week route across Spain. Book just this week, or grab the full trip and follow the coast from Sella to Margalef. Week 1 Sella, Spain 20–27 February 2027 €1,050 Add This Week More Info Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 You Are Here Week 3 Siurana, Spain 6–13 March 2027 €1,050 Add This Week More Info Week 4 Margalef, Spain 13–20 March 2027 €1,050 Add This Week More Info All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 Add Full Trip More Info"
+      },
+      {
+        "index": 2,
+        "text": "Real Rock, Real Chulilla Tufas, Canyon Walls & Sustained Pump No stock photos, no staged sends — just climbers building endurance above the Turia River."
+      },
+      {
+        "index": 3,
+        "text": "Who Should Show Up Built for the Endurance-Curious 01 The Sella Graduate You've built the foundation in Week 1, or arrived with solid technique already, and you're ready for routes that actually test your stamina. 02 The Efficiency Seeker Long routes expose wasted movement fast. Chulilla's 40-metre pitches are the best classroom there is for learning to climb efficiently. 03 The Medieval Village Romantic Cobblestone streets, a 13th-century castle, thermal springs on rest days. You want the postcard version of a Spanish climbing basecamp."
+      },
+      {
+        "index": 4,
+        "text": "The Coaching Three Skills Worth the Pump Technique Choosing & caring for gear that keeps you alive Movement skills & efficient footwork Perfect balance over your centre of gravity Overhang tricks: side-stepping, drop knee, flagging, heel hooking Cleaning anchors — keeping all your gear Mental Game Basic understanding of outdoor risks Climbing calls & communication that get your message across Redpoint & onsight attempts on new climbs Personalized coaching to break through mental barriers Mental stamina for routes that just keep going Tactics Belaying & lead belaying, catching falls dynamically Setting up top-ropes Clipstick timing & pre-clipping the first draw Strategic resting & energy conservation on long pitches Long-term progression beyond this week"
+      },
+      {
+        "index": 5,
+        "text": "Daily Structure A Typical Day Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom. 08:30 Morning Briefing Crag plan, conditions check, coffee 09:30 Guided Climbing Block Movement & technique coaching on selected lines 13:00 Crag Lunch & Reset Packed lunch, rest, tactics chat with your coach 14:30 Afternoon Session Project burns or mileage — your call 18:30 Pack Down & Return Back to the village, gear sorted for tomorrow 20:00 Café Analysis & Dinner Movement efficiency breakdown, tall tales from the day 1 Week vs Full Trip Which Format? One week gets you the endurance leg. Four weeks gets you the entire Spanish route — and a road-trip crew that gets closer with every stop. What's Included 1 Week €1,050 Full Trip €3,550 Climbing days 6 24 Destinations 1 (Chulilla) 4 across Spain Individualized coaching & guiding Safety equipment & gear Shared accommodation Full road-trip community & lifelong sending buddies —"
+      },
+      {
+        "index": 6,
+        "text": "The Venue Chulilla, Spain A dramatic river gorge north of Valencia, where towering limestone walls rise above the crystalline Turia River — over 900 routes known for their length, technical vertical faces, and subtle tufa formations. The medieval village itself, with cobblestone streets winding beneath a 13th-century castle, offers thermal springs and gorge hiking trails for rest days, and a genuinely tranquil counterpoint to the climbing. Nearest Airport Valencia (both ways) Rock Type Limestone Climate in Late Feb/Mar 12–19°C Style Long endurance routes, subtle tufas"
+      },
+      {
+        "index": 7,
+        "text": "Your Coach World-Class Coaching Arturo Aparicio Guide & Performance Coach Arturo found climbing after years of surfing in Tenerife, and never looked back. Guiding every leg of Project España, he brings the same easygoing, patient energy to Chulilla's longer routes as he did to Sella's foundation-building week."
+      },
+      {
+        "index": 8,
+        "text": "Results What Past Climbers Say I'd never thought about resting strategically mid-route before Chulilla. A 40-metre pitch has a way of teaching you fast whether you like it or not. Anders J. 6b · Sweden The evening café analysis sessions were oddly one of my favorite parts. Breaking down footage over coffee in a medieval village hits different. Beatriz C. 6a+ · Portugal Spent our rest day in the thermal springs after a week of pumped forearms. Genuinely one of the best recovery days I've had on any climbing trip. Tom H. 6b+ · United Kingdom"
+      },
+      {
+        "index": 9,
+        "text": "Accommodation & Logistics We Sorted the Boring Bits Accommodation Shared accommodation in a local climbing cottage run by local climbers. A private room is possible if arranged ahead, for an extra charge. Getting There Fly into Valencia for both arrival and departure. Local transport is organised once you land. Gear All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't. Group Size Minimum 3 climbers to run the leg. Small enough for real coaching, never a crowd-control exercise. What's Included Full Package Individualized coaching — technical, mental, and tactical Guiding & local knowledge — routes picked for your grade Climbing safety equipment — ropes, draws, helmets, slings Shared basic accommodation — local climbing hosts Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars."
+      },
+      {
+        "index": 10,
+        "text": "FAQ Common Questions What level do I need to be? Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high. Do I need my own gear? Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes). Is food included? Breakfast and lunch ingredients are covered — we take you shopping on arrival. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars. Can I join this leg without doing Week 1? Yes — every leg works as a standalone week. You don't need to have done Sella first, though the technical foundation from Week 1 does help you get more out of Chulilla's longer routes. What if fewer than 3 people book? We need a minimum of 3 participants to run this leg. If numbers don't add up, we'll offer an equivalent (or better) alternative, or a full refund. No hard feelings. Where do I fly in and out of? Valencia Airport, for both arrival and departure."
+      },
+      {
+        "index": 11,
+        "text": "Reserve Your Place Ready to Build Some Endurance? Spaces fill fast, and we only run this leg with a minimum of 3 climbers. Secure your spot now — or drop us a line first if you've got questions. Book Now — €1,050 1 week €1,050 Full trip €3,550 Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast."
+      }
+    ]
+  },
+  {
+    "version": 1,
+    "classification": "local design comparison content; not canonical seed",
+    "sourceFile": "PROJECT ESPANA/rockbusters_espana_margalef.html",
+    "target": {
+      "eventId": 17,
+      "eventSlug": "climbing-trip-spain",
+      "eventDateId": 751,
+      "dateFrom": "2027-03-13",
+      "dateTo": "2027-03-20"
+    },
+    "sections": [
+      {
+        "key": "overview",
+        "eyebrow": "About This Leg",
+        "heading": "Where the Journey Gets Tested",
+        "headingParts": [
+          {
+            "text": "Where the Journey Gets Tested",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Three weeks of progression have led here: a serene valley carved by the Montsant River, where distinctive orange and gray conglomerate walls are riddled with thousands of pockets of every imaginable size and depth. Margalef is a genuinely different physical puzzle from anything earlier in the trip.\n\nThe climbing demands creative thinking, real finger strength, and the confidence to commit to powerful movement between holds that sometimes look more trustworthy than they feel. Work legendary sectors like Laboratori, Tenebres, and Espadelles — where the endurance built in Chulilla and the precision honed in Siurana finally synthesize into one final push.\n\nEvenings unfold at the climber-owned Refugi, sharing tapas and stories with fellow athletes, in a tiny Catalonian village that closes the trip out exactly how it deserves."
+      },
+      {
+        "key": "dates",
+        "eyebrow": "The Full Journey",
+        "heading": "Project España 2027 — Full Schedule",
+        "headingParts": [
+          {
+            "text": "Project España 2027 — Full Schedule",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "This leg closes out a 4-week route across Spain. Book just this week, or grab the full trip and follow the coast from Sella to Margalef."
+      },
+      {
+        "key": "gallery",
+        "eyebrow": "Real Rock, Real Margalef",
+        "heading": "Pockets, Power & The Finish Line",
+        "headingParts": [
+          {
+            "text": "Pockets, Power",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "& ",
+            "accent": false,
+            "breakBefore": true
+          },
+          {
+            "text": "The Finish Line",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "intro": "No stock photos, no staged sends — just climbers earning it on Spain's most distinctive conglomerate."
+      },
+      {
+        "key": "audience",
+        "eyebrow": "Who Should Show Up",
+        "heading": "Built for the Trip's Last Send",
+        "headingParts": [
+          {
+            "text": "Built for the Trip's Last Send",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "learning",
+        "eyebrow": "The Coaching",
+        "heading": "Three Skills Worth the Finale",
+        "headingParts": [
+          {
+            "text": "Three ",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "Skills",
+            "accent": true,
+            "breakBefore": false
+          },
+          {
+            "text": " Worth the Finale",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "itinerary",
+        "eyebrow": "Daily Structure",
+        "heading": "A Typical Day",
+        "headingParts": [
+          {
+            "text": "A Typical Day",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom."
+      },
+      {
+        "key": "comparison",
+        "eyebrow": "1 Week vs Full Trip",
+        "heading": "Which Format?",
+        "headingParts": [
+          {
+            "text": "Which Format?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "One week gets you the Margalef finale energy. Four weeks gets you the whole build-up that makes it land the way it should."
+      },
+      {
+        "key": "venue",
+        "eyebrow": "The Venue",
+        "heading": "Margalef, Spain",
+        "headingParts": [
+          {
+            "text": "Margalef, Spain",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "team",
+        "eyebrow": "Your Coach",
+        "heading": "World-Class Coaching",
+        "headingParts": [
+          {
+            "text": "World-Class Coaching",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "reviews",
+        "eyebrow": "Results",
+        "heading": "What Past Climbers Say",
+        "headingParts": [
+          {
+            "text": "What Past Climbers Say",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "logistics",
+        "eyebrow": "Accommodation & Logistics",
+        "heading": "We Sorted the Boring Bits",
+        "headingParts": [
+          {
+            "text": "We Sorted the Boring Bits",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "package",
+        "eyebrow": "What's Included",
+        "heading": "Full Package",
+        "headingParts": [
+          {
+            "text": "Full Package",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "faq",
+        "eyebrow": "FAQ",
+        "heading": "Common Questions",
+        "headingParts": [
+          {
+            "text": "Common Questions",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "booking",
+        "eyebrow": "Reserve Your Place",
+        "heading": "Ready for the Grand Finale?",
+        "headingParts": [
+          {
+            "text": "Ready for the Grand Finale?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Spaces fill fast, and we only run this leg with a minimum of 3 climbers. Secure your spot now — or drop us a line first if you've got questions."
+      }
+    ],
+    "hero": {
+      "titleParts": [
+        {
+          "text": "PROJECT ESPAÑA 2027",
+          "accent": false,
+          "breakBefore": false
+        },
+        {
+          "text": "MARGALEF",
+          "accent": true,
+          "breakBefore": true
+        }
+      ],
+      "description": "Week Four — the grand finale. Seven days in a pocket universe of orange and gray conglomerate, where three weeks of progression finally get put to the test.",
+      "hashtag": "#FingersBeforeFarewells",
+      "primaryLabel": "Reserve Your Place",
+      "secondaryLabel": "Read the Programme",
+      "sourceSecondaryHref": "#overview"
+    },
+    "overview": [
+      "Three weeks of progression have led here: a serene valley carved by the Montsant River, where distinctive orange and gray conglomerate walls are riddled with thousands of pockets of every imaginable size and depth. Margalef is a genuinely different physical puzzle from anything earlier in the trip.",
+      "The climbing demands creative thinking, real finger strength, and the confidence to commit to powerful movement between holds that sometimes look more trustworthy than they feel. Work legendary sectors like Laboratori, Tenebres, and Espadelles — where the endurance built in Chulilla and the precision honed in Siurana finally synthesize into one final push.",
+      "Evenings unfold at the climber-owned Refugi, sharing tapas and stories with fellow athletes, in a tiny Catalonian village that closes the trip out exactly how it deserves."
+    ],
+    "overviewFacts": [
+      {
+        "label": "Duration",
+        "value": "7 Days",
+        "description": "Week 4 of 4 — Grand Finale"
+      },
+      {
+        "label": "Location",
+        "value": "Margalef",
+        "description": "Montsant Valley, Catalonia"
+      },
+      {
+        "label": "Routes",
+        "value": "1,600+",
+        "description": "Overhangs to steep caves"
+      },
+      {
+        "label": "Group Size",
+        "value": "Small & Focused",
+        "description": "Min. 3 climbers to run"
+      },
+      {
+        "label": "Coach",
+        "value": "Arturo Aparicio",
+        "description": "Guiding every leg"
+      },
+      {
+        "label": "Price",
+        "value": "€1,050",
+        "description": "Part of the €3,550 full trip"
+      }
+    ],
+    "strip": [
+      {
+        "value": "Margalef",
+        "label": "Pocket Paradise"
+      },
+      {
+        "value": "13–20 Mar",
+        "label": "7 Days"
+      },
+      {
+        "value": "1,600+",
+        "label": "Routes"
+      },
+      {
+        "value": "3",
+        "label": "Min. Participants"
+      },
+      {
+        "value": "€1,050",
+        "label": "Week 4 of 4 — The Finale"
+      }
+    ],
+    "summary": {
+      "rows": [
+        {
+          "label": "Dates",
+          "value": "13–20 March 2027",
+          "description": ""
+        },
+        {
+          "label": "Duration",
+          "value": "7 Days (Week 4 of 4 — Finale)",
+          "description": ""
+        },
+        {
+          "label": "Location",
+          "value": "Margalef, Catalonia, Spain",
+          "description": ""
+        },
+        {
+          "label": "Level",
+          "value": "Lead 6a indoor / 5 outdoor",
+          "description": ""
+        },
+        {
+          "label": "Coach",
+          "value": "Arturo Aparicio",
+          "description": ""
+        }
+      ],
+      "price": "€ 1,050 / 1 week Part of the 4-week trip — €3,550 per person · coaching & guiding included",
+      "travelNote": "Fly into Barcelona — we handle the rest",
+      "ctaLabel": "Book Your Spot →",
+      "priceCaption": "per person · coaching & guiding included",
+      "alternatePrice": "Part of the 4-week trip — €3,550"
+    },
+    "audienceCards": [
+      {
+        "heading": "The Full-Trip Finisher",
+        "body": "You've done three legs, three completely different climbing styles, and now it's time for the pocket-pulling grand finale that ties it all together."
+      },
+      {
+        "heading": "The Pocket Puller",
+        "body": "You want to test genuine finger strength and creative movement on rock that looks nothing like anything else on the trip — or most places in Europe."
+      },
+      {
+        "heading": "The Community Seeker",
+        "body": "You'd rather end a month of climbing at a climber-owned Refugi, sharing tapas with international athletes, than fly home straight from a crag."
+      }
+    ],
+    "pillars": [
+      {
+        "heading": "Technique",
+        "headingParts": [
+          {
+            "text": "Technique",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Choosing & caring for gear that keeps you alive"
+          },
+          {
+            "text": "Creative movement between distinctive pocket holds"
+          },
+          {
+            "text": "Overhang tricks: drop knee, flagging, heel hooking, kneebars"
+          },
+          {
+            "text": "Committing to powerful moves on uncertain holds"
+          },
+          {
+            "text": "Cleaning anchors — keeping all your gear"
+          }
+        ]
+      },
+      {
+        "heading": "Mental Game",
+        "headingParts": [
+          {
+            "text": "Mental Game",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Basic understanding of outdoor risks"
+          },
+          {
+            "text": "Climbing calls & communication that get your message across"
+          },
+          {
+            "text": "Redpoint & onsight attempts on new climbs"
+          },
+          {
+            "text": "Personalized coaching to break through mental barriers"
+          },
+          {
+            "text": "Synthesizing a month's worth of mental training into one final push"
+          }
+        ]
+      },
+      {
+        "heading": "Tactics",
+        "headingParts": [
+          {
+            "text": "Tactics",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Belaying & lead belaying, catching falls dynamically"
+          },
+          {
+            "text": "Setting up top-ropes"
+          },
+          {
+            "text": "Clipstick timing & pre-clipping the first draw"
+          },
+          {
+            "text": "Pocket-specific movement reading"
+          },
+          {
+            "text": "Taking everything you've learned home with you"
+          }
+        ]
+      }
+    ],
+    "dailySchedule": [
+      {
+        "time": "08:30",
+        "title": "Morning Briefing",
+        "description": "Crag plan, conditions check, coffee"
+      },
+      {
+        "time": "09:30",
+        "title": "Guided Climbing Block",
+        "description": "Movement & technique coaching on selected lines"
+      },
+      {
+        "time": "13:00",
+        "title": "Crag Lunch & Reset",
+        "description": "Packed lunch, rest, tactics chat with your coach"
+      },
+      {
+        "time": "14:30",
+        "title": "Afternoon Session",
+        "description": "Project burns or mileage — your call"
+      },
+      {
+        "time": "18:30",
+        "title": "Pack Down & Return",
+        "description": "Back to the Refugi, gear sorted for tomorrow"
+      },
+      {
+        "time": "20:00",
+        "title": "Tapas & Farewells",
+        "description": "Stories with the international crew, closing out the trip"
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "What's Included",
+        "1 Week €1,050",
+        "Full Trip €3,550"
+      ],
+      "rows": [
+        {
+          "label": "Climbing days",
+          "left": "6",
+          "right": "24"
+        },
+        {
+          "label": "Destinations",
+          "left": "1 (Margalef)",
+          "right": "4 across Spain"
+        },
+        {
+          "label": "Individualized coaching & guiding",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Safety equipment & gear",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Shared accommodation",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Full road-trip community & lifelong sending buddies",
+          "left": "—",
+          "right": "✓"
+        }
+      ]
+    },
+    "venue": {
+      "paragraphs": [
+        {
+          "text": "A serene valley carved by the Montsant River, home to over 1,600 routes across dozens of sectors on distinctive orange and gray conglomerate — walls punctuated by thousands of pockets of every imaginable size and depth, from gently overhanging to wildly steep caves."
+        },
+        {
+          "text": "Legendary sectors like Laboratori, Tenebres, and Espadelles draw climbers from around the world, all converging on a tiny, tranquil Catalonian village that feels a world away from anywhere else on the trip."
+        }
+      ],
+      "facts": [
+        {
+          "label": "Nearest Airport",
+          "value": "Barcelona (both ways)",
+          "description": ""
+        },
+        {
+          "label": "Rock Type",
+          "value": "Conglomerate",
+          "description": ""
+        },
+        {
+          "label": "Climate in March",
+          "value": "10–18°C",
+          "description": ""
+        },
+        {
+          "label": "Style",
+          "value": "Extreme pocket pulling",
+          "description": ""
+        }
+      ]
+    },
+    "coaches": [
+      {
+        "name": "Arturo Aparicio",
+        "role": "Guide & Performance Coach",
+        "bio": "Arturo found climbing after years of surfing in Tenerife, and never looked back. Having guided every leg of Project España, he knows exactly how to bring a month of progression together for Margalef's very different, very powerful pocket game."
+      }
+    ],
+    "previewReviews": [
+      {
+        "quote": "Ending a month of climbing across four completely different rock types at a climber-owned Refugi, with people I now consider family, was not on my bingo card. Perfect way to close it out.",
+        "reviewerName": "[Design preview] Rasmus O. Project España · Denmark"
+      },
+      {
+        "quote": "Margalef's pockets humbled me in ways Sella, Chulilla, and Siurana never did. Different sport entirely, somehow, on the same trip.",
+        "reviewerName": "[Design preview] Valeria N. 6c · Italy"
+      },
+      {
+        "quote": "Started the trip intimidated on 6a. Sent my first 7a on the second-to-last day in Margalef. Genuinely didn't think a month could do that.",
+        "reviewerName": "[Design preview] Owen P. 7a · Australia"
+      }
+    ],
+    "practicalCards": [
+      {
+        "heading": "Accommodation",
+        "body": "Shared accommodation in a local climbing cottage run by local climbers, including the climber-owned Refugi. A private room is possible if arranged ahead, for an extra charge."
+      },
+      {
+        "heading": "Getting There",
+        "body": "Fly into Barcelona for both arrival and departure. Local transport is organised once you land."
+      },
+      {
+        "heading": "Gear",
+        "body": "All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't."
+      },
+      {
+        "heading": "Group Size",
+        "body": "Minimum 3 climbers to run the leg. Small enough for real coaching, never a crowd-control exercise."
+      }
+    ],
+    "packageItems": [
+      {
+        "text": "Individualized coaching — technical, mental, and tactical"
+      },
+      {
+        "text": "Guiding & local knowledge — routes picked for your grade"
+      },
+      {
+        "text": "Climbing safety equipment — ropes, draws, helmets, slings"
+      },
+      {
+        "text": "Shared basic accommodation — local climbing hosts"
+      }
+    ],
+    "packageNote": "Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars.",
+    "faqs": [
+      {
+        "question": "What level do I need to be?",
+        "answer": "Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high."
+      },
+      {
+        "question": "Do I need my own gear?",
+        "answer": "Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes)."
+      },
+      {
+        "question": "Is food included?",
+        "answer": "Breakfast and lunch ingredients are covered — we take you shopping on arrival. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars."
+      },
+      {
+        "question": "Do I need to have done the earlier weeks first?",
+        "answer": "No — every leg works as a standalone week. Margalef's conglomerate is its own distinct style, so you'll get full value here whether or not you've done the rest of the trip."
+      },
+      {
+        "question": "What if fewer than 3 people book?",
+        "answer": "We need a minimum of 3 participants to run this leg. If numbers don't add up, we'll offer an equivalent (or better) alternative, or a full refund. No hard feelings."
+      },
+      {
+        "question": "Where do I fly in and out of?",
+        "answer": "Barcelona International Airport, for both arrival and departure."
+      }
+    ],
+    "closingSupport": "Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast.",
+    "closingPrimaryLabel": "Book Now — €1,050",
+    "scheduleReference": [
+      {
+        "text": "Week 1 Sella, Spain 20–27 February 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/859"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_sella.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/860"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_chulilla.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 3 Siurana, Spain 6–13 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/861"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_siurana.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 4 Margalef, Spain 13–20 March 2027 €1,050 You Are Here",
+        "links": []
+      },
+      {
+        "text": "All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 Add Full Trip More Info",
+        "links": [
+          {
+            "text": "Add Full Trip",
+            "href": "https://rockbusters.net/order/new/858"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_projectespana_fulltrip.html"
+          }
+        ]
+      }
+    ],
+    "heroMeta": [
+      "13–20 Mar 2027 · Margalef, Spain",
+      "With Arturo Aparicio",
+      "Lead 6a indoor / 5 outdoor"
+    ],
+    "overviewLinks": [
+      {
+        "label": "Book Now — From €1,050",
+        "href": "#book"
+      }
+    ],
+    "closingBadges": [
+      "1 week €1,050",
+      "Full trip €3,550"
+    ],
+    "allSectionText": [
+      {
+        "index": 0,
+        "text": "13–20 Mar 2027 · Margalef, Spain With Arturo Aparicio Lead 6a indoor / 5 outdoor PROJECT ESPAÑA 2027 MARGALEF Week Four — the grand finale. Seven days in a pocket universe of orange and gray conglomerate, where three weeks of progression finally get put to the test. #FingersBeforeFarewells Reserve Your Place Read the Programme € 1,050 / 1 week Part of the 4-week trip — €3,550 per person · coaching & guiding included Dates 13–20 March 2027 Duration 7 Days (Week 4 of 4 — Finale) Location Margalef, Catalonia, Spain Level Lead 6a indoor / 5 outdoor Coach Arturo Aparicio Fly into Barcelona — we handle the rest Book Your Spot →"
+      },
+      {
+        "index": 1,
+        "text": "About This Leg Where the Journey Gets Tested Three weeks of progression have led here: a serene valley carved by the Montsant River, where distinctive orange and gray conglomerate walls are riddled with thousands of pockets of every imaginable size and depth. Margalef is a genuinely different physical puzzle from anything earlier in the trip. The climbing demands creative thinking, real finger strength, and the confidence to commit to powerful movement between holds that sometimes look more trustworthy than they feel. Work legendary sectors like Laboratori, Tenebres, and Espadelles — where the endurance built in Chulilla and the precision honed in Siurana finally synthesize into one final push. Evenings unfold at the climber-owned Refugi, sharing tapas and stories with fellow athletes, in a tiny Catalonian village that closes the trip out exactly how it deserves. Book Now — From €1,050 Duration 7 Days Week 4 of 4 — Grand Finale Location Margalef Montsant Valley, Catalonia Routes 1,600+ Overhangs to steep caves Group Size Small & Focused Min. 3 climbers to run Coach Arturo Aparicio Guiding every leg Price €1,050 Part of the €3,550 full trip The Full Journey Project España 2027 — Full Schedule This leg closes out a 4-week route across Spain. Book just this week, or grab the full trip and follow the coast from Sella to Margalef. Week 1 Sella, Spain 20–27 February 2027 €1,050 Add This Week More Info Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 Add This Week More Info Week 3 Siurana, Spain 6–13 March 2027 €1,050 Add This Week More Info Week 4 Margalef, Spain 13–20 March 2027 €1,050 You Are Here All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 Add Full Trip More Info"
+      },
+      {
+        "index": 2,
+        "text": "Real Rock, Real Margalef Pockets, Power & The Finish Line No stock photos, no staged sends — just climbers earning it on Spain's most distinctive conglomerate."
+      },
+      {
+        "index": 3,
+        "text": "Who Should Show Up Built for the Trip's Last Send 01 The Full-Trip Finisher You've done three legs, three completely different climbing styles, and now it's time for the pocket-pulling grand finale that ties it all together. 02 The Pocket Puller You want to test genuine finger strength and creative movement on rock that looks nothing like anything else on the trip — or most places in Europe. 03 The Community Seeker You'd rather end a month of climbing at a climber-owned Refugi, sharing tapas with international athletes, than fly home straight from a crag."
+      },
+      {
+        "index": 4,
+        "text": "The Coaching Three Skills Worth the Finale Technique Choosing & caring for gear that keeps you alive Creative movement between distinctive pocket holds Overhang tricks: drop knee, flagging, heel hooking, kneebars Committing to powerful moves on uncertain holds Cleaning anchors — keeping all your gear Mental Game Basic understanding of outdoor risks Climbing calls & communication that get your message across Redpoint & onsight attempts on new climbs Personalized coaching to break through mental barriers Synthesizing a month's worth of mental training into one final push Tactics Belaying & lead belaying, catching falls dynamically Setting up top-ropes Clipstick timing & pre-clipping the first draw Pocket-specific movement reading Taking everything you've learned home with you"
+      },
+      {
+        "index": 5,
+        "text": "Daily Structure A Typical Day Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom. 08:30 Morning Briefing Crag plan, conditions check, coffee 09:30 Guided Climbing Block Movement & technique coaching on selected lines 13:00 Crag Lunch & Reset Packed lunch, rest, tactics chat with your coach 14:30 Afternoon Session Project burns or mileage — your call 18:30 Pack Down & Return Back to the Refugi, gear sorted for tomorrow 20:00 Tapas & Farewells Stories with the international crew, closing out the trip 1 Week vs Full Trip Which Format? One week gets you the Margalef finale energy. Four weeks gets you the whole build-up that makes it land the way it should. What's Included 1 Week €1,050 Full Trip €3,550 Climbing days 6 24 Destinations 1 (Margalef) 4 across Spain Individualized coaching & guiding Safety equipment & gear Shared accommodation Full road-trip community & lifelong sending buddies —"
+      },
+      {
+        "index": 6,
+        "text": "The Venue Margalef, Spain A serene valley carved by the Montsant River, home to over 1,600 routes across dozens of sectors on distinctive orange and gray conglomerate — walls punctuated by thousands of pockets of every imaginable size and depth, from gently overhanging to wildly steep caves. Legendary sectors like Laboratori, Tenebres, and Espadelles draw climbers from around the world, all converging on a tiny, tranquil Catalonian village that feels a world away from anywhere else on the trip. Nearest Airport Barcelona (both ways) Rock Type Conglomerate Climate in March 10–18°C Style Extreme pocket pulling"
+      },
+      {
+        "index": 7,
+        "text": "Your Coach World-Class Coaching Arturo Aparicio Guide & Performance Coach Arturo found climbing after years of surfing in Tenerife, and never looked back. Having guided every leg of Project España, he knows exactly how to bring a month of progression together for Margalef's very different, very powerful pocket game."
+      },
+      {
+        "index": 8,
+        "text": "Results What Past Climbers Say Ending a month of climbing across four completely different rock types at a climber-owned Refugi, with people I now consider family, was not on my bingo card. Perfect way to close it out. Rasmus O. Project España · Denmark Margalef's pockets humbled me in ways Sella, Chulilla, and Siurana never did. Different sport entirely, somehow, on the same trip. Valeria N. 6c · Italy Started the trip intimidated on 6a. Sent my first 7a on the second-to-last day in Margalef. Genuinely didn't think a month could do that. Owen P. 7a · Australia"
+      },
+      {
+        "index": 9,
+        "text": "Accommodation & Logistics We Sorted the Boring Bits Accommodation Shared accommodation in a local climbing cottage run by local climbers, including the climber-owned Refugi. A private room is possible if arranged ahead, for an extra charge. Getting There Fly into Barcelona for both arrival and departure. Local transport is organised once you land. Gear All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't. Group Size Minimum 3 climbers to run the leg. Small enough for real coaching, never a crowd-control exercise. What's Included Full Package Individualized coaching — technical, mental, and tactical Guiding & local knowledge — routes picked for your grade Climbing safety equipment — ropes, draws, helmets, slings Shared basic accommodation — local climbing hosts Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars."
+      },
+      {
+        "index": 10,
+        "text": "FAQ Common Questions What level do I need to be? Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high. Do I need my own gear? Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes). Is food included? Breakfast and lunch ingredients are covered — we take you shopping on arrival. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars. Do I need to have done the earlier weeks first? No — every leg works as a standalone week. Margalef's conglomerate is its own distinct style, so you'll get full value here whether or not you've done the rest of the trip. What if fewer than 3 people book? We need a minimum of 3 participants to run this leg. If numbers don't add up, we'll offer an equivalent (or better) alternative, or a full refund. No hard feelings. Where do I fly in and out of? Barcelona International Airport, for both arrival and departure."
+      },
+      {
+        "index": 11,
+        "text": "Reserve Your Place Ready for the Grand Finale? Spaces fill fast, and we only run this leg with a minimum of 3 climbers. Secure your spot now — or drop us a line first if you've got questions. Book Now — €1,050 1 week €1,050 Full trip €3,550 Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast."
+      }
+    ]
+  },
+  {
+    "version": 1,
+    "classification": "local design comparison content; not canonical seed",
+    "sourceFile": "PROJECT ESPANA/rockbusters_espana_sella.html",
+    "target": {
+      "eventId": 17,
+      "eventSlug": "climbing-trip-spain",
+      "eventDateId": 748,
+      "dateFrom": "2027-02-20",
+      "dateTo": "2027-02-27"
+    },
+    "sections": [
+      {
+        "key": "overview",
+        "eyebrow": "About This Leg",
+        "heading": "Where the Journey Begins",
+        "headingParts": [
+          {
+            "text": "Where the Journey Begins",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Sella sits at the foot of the imposing Sella Peña (1,100m), a Costa Blanca village of just 650 people where steep limestone cliffs rise dramatically above narrow streets. It's the perfect on-ramp into a month of Spanish climbing — generous pocketing, short approaches, and routes across every level.\n\nWork technical face climbing at Pared de Rosalía, push into the overhangs at Techo del Rino, and let your coach calibrate exactly where your climbing actually stands before the trip gets more demanding.\n\nSeven days building the foundation — technique, partnerships, and the rhythm of climbing days and relaxed village evenings — that the next three weeks will build on."
+      },
+      {
+        "key": "dates",
+        "eyebrow": "The Full Journey",
+        "heading": "Project España 2027 — Full Schedule",
+        "headingParts": [
+          {
+            "text": "Project España 2027 — Full Schedule",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "This leg is one stop on a 4-week route across Spain. Book just this week, or grab the full trip and follow the coast from Sella to Margalef."
+      },
+      {
+        "key": "gallery",
+        "eyebrow": "Real Rock, Real Sella",
+        "heading": "Pockets, Village Life & The Foundation",
+        "headingParts": [
+          {
+            "text": "Pockets, Village Life",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "& ",
+            "accent": false,
+            "breakBefore": true
+          },
+          {
+            "text": "The Foundation",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "intro": "No stock photos, no staged sends — just climbers building the foundation for a month in Spain."
+      },
+      {
+        "key": "audience",
+        "eyebrow": "Who Should Show Up",
+        "heading": "Built for the Trip Starters",
+        "headingParts": [
+          {
+            "text": "Built for the Trip Starters",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "learning",
+        "eyebrow": "The Coaching",
+        "heading": "Three Skills Worth the Foundation",
+        "headingParts": [
+          {
+            "text": "Three ",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "Skills",
+            "accent": true,
+            "breakBefore": false
+          },
+          {
+            "text": " Worth the Foundation",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "itinerary",
+        "eyebrow": "Daily Structure",
+        "heading": "A Typical Day",
+        "headingParts": [
+          {
+            "text": "A Typical Day",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom."
+      },
+      {
+        "key": "comparison",
+        "eyebrow": "1 Week vs Full Trip",
+        "heading": "Which Format?",
+        "headingParts": [
+          {
+            "text": "Which Format?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "One week gets you the Sella foundation. Four weeks gets you the entire Spanish route — and a road-trip crew that gets closer with every stop."
+      },
+      {
+        "key": "venue",
+        "eyebrow": "The Venue",
+        "heading": "Sella, Spain",
+        "headingParts": [
+          {
+            "text": "Sella, Spain",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "team",
+        "eyebrow": "Your Coach",
+        "heading": "World-Class Coaching",
+        "headingParts": [
+          {
+            "text": "World-Class Coaching",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "reviews",
+        "eyebrow": "Results",
+        "heading": "What Past Climbers Say",
+        "headingParts": [
+          {
+            "text": "What Past Climbers Say",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "logistics",
+        "eyebrow": "Accommodation & Logistics",
+        "heading": "We Sorted the Boring Bits",
+        "headingParts": [
+          {
+            "text": "We Sorted the Boring Bits",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "package",
+        "eyebrow": "What's Included",
+        "heading": "Full Package",
+        "headingParts": [
+          {
+            "text": "Full Package",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "faq",
+        "eyebrow": "FAQ",
+        "heading": "Common Questions",
+        "headingParts": [
+          {
+            "text": "Common Questions",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "booking",
+        "eyebrow": "Reserve Your Place",
+        "heading": "Ready to Start in Sella?",
+        "headingParts": [
+          {
+            "text": "Ready to Start in Sella?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Spaces fill fast, and we only run this leg with a minimum of 3 climbers. Secure your spot now — or drop us a line first if you've got questions."
+      }
+    ],
+    "hero": {
+      "titleParts": [
+        {
+          "text": "PROJECT ESPAÑA 2027",
+          "accent": false,
+          "breakBefore": false
+        },
+        {
+          "text": "SELLA",
+          "accent": true,
+          "breakBefore": true
+        }
+      ],
+      "description": "Week One of Project España: seven days at the foot of the Sella Penya, where generous pocketing, short approaches, and a 650-person village set the foundation for the month ahead.",
+      "hashtag": "#PocketsBeforePaella",
+      "primaryLabel": "Reserve Your Place",
+      "secondaryLabel": "Read the Programme",
+      "sourceSecondaryHref": "#overview"
+    },
+    "overview": [
+      "Sella sits at the foot of the imposing Sella Peña (1,100m), a Costa Blanca village of just 650 people where steep limestone cliffs rise dramatically above narrow streets. It's the perfect on-ramp into a month of Spanish climbing — generous pocketing, short approaches, and routes across every level.",
+      "Work technical face climbing at Pared de Rosalía, push into the overhangs at Techo del Rino, and let your coach calibrate exactly where your climbing actually stands before the trip gets more demanding.",
+      "Seven days building the foundation — technique, partnerships, and the rhythm of climbing days and relaxed village evenings — that the next three weeks will build on."
+    ],
+    "overviewFacts": [
+      {
+        "label": "Duration",
+        "value": "7 Days",
+        "description": "Week 1 of the 4-week trip"
+      },
+      {
+        "label": "Location",
+        "value": "Sella",
+        "description": "Costa Blanca, Spain"
+      },
+      {
+        "label": "Min. Lead Grade",
+        "value": "6a indoor",
+        "description": "5 outdoor"
+      },
+      {
+        "label": "Group Size",
+        "value": "Small & Focused",
+        "description": "Min. 3 climbers to run"
+      },
+      {
+        "label": "Coach",
+        "value": "Arturo Aparicio",
+        "description": "Guiding every leg"
+      },
+      {
+        "label": "Price",
+        "value": "€1,050",
+        "description": "Part of the €3,550 full trip"
+      }
+    ],
+    "strip": [
+      {
+        "value": "Sella",
+        "label": "Costa Blanca, Spain"
+      },
+      {
+        "value": "20–27 Feb",
+        "label": "7 Days"
+      },
+      {
+        "value": "6a/5",
+        "label": "Min. Lead Grade"
+      },
+      {
+        "value": "3",
+        "label": "Min. Participants"
+      },
+      {
+        "value": "€1,050",
+        "label": "Week 1 of the 4-Week Trip"
+      }
+    ],
+    "summary": {
+      "rows": [
+        {
+          "label": "Dates",
+          "value": "20–27 February 2027",
+          "description": ""
+        },
+        {
+          "label": "Duration",
+          "value": "7 Days (Week 1 of 4)",
+          "description": ""
+        },
+        {
+          "label": "Location",
+          "value": "Sella, Costa Blanca, Spain",
+          "description": ""
+        },
+        {
+          "label": "Level",
+          "value": "Lead 6a indoor / 5 outdoor",
+          "description": ""
+        },
+        {
+          "label": "Coach",
+          "value": "Arturo Aparicio",
+          "description": ""
+        }
+      ],
+      "price": "€ 1,050 / 1 week Part of the 4-week trip — €3,550 per person · coaching & guiding included",
+      "travelNote": "Fly into Alicante — we handle the rest",
+      "ctaLabel": "Book Your Spot →",
+      "priceCaption": "per person · coaching & guiding included",
+      "alternatePrice": "Part of the 4-week trip — €3,550"
+    },
+    "audienceCards": [
+      {
+        "heading": "The Trip Starter",
+        "body": "You're booking Week 1 specifically to test the waters before deciding whether to commit to more of the route."
+      },
+      {
+        "heading": "The Foundation Builder",
+        "body": "You want your technique genuinely dialed in before the trip gets more demanding through Chulilla, Siurana, and Margalef."
+      },
+      {
+        "heading": "The Village Life Seeker",
+        "body": "650 people, narrow streets, climbing practically from the doorstep. You want that specific kind of small-town basecamp, not a resort."
+      }
+    ],
+    "pillars": [
+      {
+        "heading": "Technique",
+        "headingParts": [
+          {
+            "text": "Technique",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Choosing & caring for gear that keeps you alive"
+          },
+          {
+            "text": "Movement skills & efficient footwork"
+          },
+          {
+            "text": "Perfect balance over your centre of gravity"
+          },
+          {
+            "text": "Overhang tricks: side-stepping, drop knee, flagging, heel hooking"
+          },
+          {
+            "text": "Cleaning anchors — keeping all your gear"
+          }
+        ]
+      },
+      {
+        "heading": "Mental Game",
+        "headingParts": [
+          {
+            "text": "Mental Game",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Basic understanding of outdoor risks"
+          },
+          {
+            "text": "Climbing calls & communication that get your message across"
+          },
+          {
+            "text": "Redpoint & onsight attempts on new climbs"
+          },
+          {
+            "text": "Personalized coaching to break through mental barriers"
+          },
+          {
+            "text": "Building the calibration the rest of the trip depends on"
+          }
+        ]
+      },
+      {
+        "heading": "Tactics",
+        "headingParts": [
+          {
+            "text": "Tactics",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Belaying & lead belaying, catching falls dynamically"
+          },
+          {
+            "text": "Setting up top-ropes"
+          },
+          {
+            "text": "Clipstick timing & pre-clipping the first draw"
+          },
+          {
+            "text": "Pocket-specific movement reading"
+          },
+          {
+            "text": "Long-term progression beyond this week"
+          }
+        ]
+      }
+    ],
+    "dailySchedule": [
+      {
+        "time": "08:30",
+        "title": "Morning Briefing",
+        "description": "Crag plan, conditions check, coffee"
+      },
+      {
+        "time": "09:30",
+        "title": "Guided Climbing Block",
+        "description": "Movement & technique coaching on selected lines"
+      },
+      {
+        "time": "13:00",
+        "title": "Crag Lunch & Reset",
+        "description": "Packed lunch, rest, tactics chat with your coach"
+      },
+      {
+        "time": "14:30",
+        "title": "Afternoon Session",
+        "description": "Project burns or mileage — your call"
+      },
+      {
+        "time": "18:30",
+        "title": "Pack Down & Return",
+        "description": "Back to the village, gear sorted for tomorrow"
+      },
+      {
+        "time": "20:00",
+        "title": "Dinner & Debrief",
+        "description": "Village life, good company, tall tales from the day"
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "What's Included",
+        "1 Week €1,050",
+        "Full Trip €3,550"
+      ],
+      "rows": [
+        {
+          "label": "Climbing days",
+          "left": "6",
+          "right": "24"
+        },
+        {
+          "label": "Destinations",
+          "left": "1 (Sella)",
+          "right": "4 across Spain"
+        },
+        {
+          "label": "Individualized coaching & guiding",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Safety equipment & gear",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Shared accommodation",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Full road-trip community & lifelong sending buddies",
+          "left": "—",
+          "right": "✓"
+        }
+      ]
+    },
+    "venue": {
+      "paragraphs": [
+        {
+          "text": "Nestled at the foot of the Sella Peña (1,100m), this Costa Blanca village of just 650 people has steep limestone cliffs rising dramatically above narrow streets — short approaches and an incredible diversity of routes across every difficulty level."
+        },
+        {
+          "text": "From the technical face climbing of Pared de Rosalía to the challenging overhangs at Techo del Rino, Sella's exceptional rock quality and generous pocketing make it the ideal place to build a foundation before the trip's more demanding legs."
+        }
+      ],
+      "facts": [
+        {
+          "label": "Nearest Airport",
+          "value": "Alicante (both ways)",
+          "description": ""
+        },
+        {
+          "label": "Rock Type",
+          "value": "Limestone",
+          "description": ""
+        },
+        {
+          "label": "Climate in February",
+          "value": "12–18°C",
+          "description": ""
+        },
+        {
+          "label": "Style",
+          "value": "Technical faces & pocketed overhangs",
+          "description": ""
+        }
+      ]
+    },
+    "coaches": [
+      {
+        "name": "Arturo Aparicio",
+        "role": "Guide & Performance Coach",
+        "bio": "Arturo found climbing after years of surfing in Tenerife, and never looked back. These days he lives out of his van around Sella, chasing new projects and knowing the local sectors better than almost anyone — exactly who you want setting the foundation for a month in Spain."
+      }
+    ],
+    "previewReviews": [
+      {
+        "quote": "Sella was the perfect place to shake off the rust before three more weeks of harder terrain. The village itself was half the charm.",
+        "reviewerName": "[Design preview] Lotte V. 6a · Netherlands"
+      },
+      {
+        "quote": "Short approaches meant more actual climbing time than any trip I'd done before. Arturo had us dialed into the right sectors within a day.",
+        "reviewerName": "[Design preview] Hugo L. 6b · France"
+      },
+      {
+        "quote": "650 people, one bakery, incredible pockets. I've never wanted to move somewhere this badly after a single week.",
+        "reviewerName": "[Design preview] Sarah K. 6a+ · Canada"
+      }
+    ],
+    "practicalCards": [
+      {
+        "heading": "Accommodation",
+        "body": "Shared accommodation in a local climbing cottage run by local climbers. A private room is possible if arranged ahead, for an extra charge."
+      },
+      {
+        "heading": "Getting There",
+        "body": "Fly into Alicante for both arrival and departure. Local transport is organised once you land."
+      },
+      {
+        "heading": "Gear",
+        "body": "All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't."
+      },
+      {
+        "heading": "Group Size",
+        "body": "Minimum 3 climbers to run the leg. Small enough for real coaching, never a crowd-control exercise."
+      }
+    ],
+    "packageItems": [
+      {
+        "text": "Individualized coaching — technical, mental, and tactical"
+      },
+      {
+        "text": "Guiding & local knowledge — routes picked for your grade"
+      },
+      {
+        "text": "Climbing safety equipment — ropes, draws, helmets, slings"
+      },
+      {
+        "text": "Shared basic accommodation — local climbing hosts"
+      }
+    ],
+    "packageNote": "Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars.",
+    "faqs": [
+      {
+        "question": "What level do I need to be?",
+        "answer": "Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high."
+      },
+      {
+        "question": "Do I need my own gear?",
+        "answer": "Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes)."
+      },
+      {
+        "question": "Is food included?",
+        "answer": "Breakfast and lunch ingredients are covered — we take you shopping on arrival. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars."
+      },
+      {
+        "question": "Can I continue on to the rest of the trip afterward?",
+        "answer": "Absolutely — that's exactly how this leg is designed. Book any of the remaining weeks individually, or upgrade to the full 4-week Project España for €3,550."
+      },
+      {
+        "question": "What if fewer than 3 people book?",
+        "answer": "We need a minimum of 3 participants to run this leg. If numbers don't add up, we'll offer an equivalent (or better) alternative, or a full refund. No hard feelings."
+      },
+      {
+        "question": "Where do I fly in and out of?",
+        "answer": "Alicante International Airport, for both arrival and departure."
+      }
+    ],
+    "closingSupport": "Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast.",
+    "closingPrimaryLabel": "Book Now — €1,050",
+    "scheduleReference": [
+      {
+        "text": "Week 1 Sella, Spain 20–27 February 2027 €1,050 You Are Here",
+        "links": []
+      },
+      {
+        "text": "Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/860"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_chulilla.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 3 Siurana, Spain 6–13 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/861"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_siurana.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 4 Margalef, Spain 13–20 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/862"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_margalef.html"
+          }
+        ]
+      },
+      {
+        "text": "All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 Add Full Trip More Info",
+        "links": [
+          {
+            "text": "Add Full Trip",
+            "href": "https://rockbusters.net/order/new/858"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_projectespana_fulltrip.html"
+          }
+        ]
+      }
+    ],
+    "heroMeta": [
+      "20–27 Feb 2027 · Sella, Spain",
+      "With Arturo Aparicio",
+      "Lead 6a indoor / 5 outdoor"
+    ],
+    "overviewLinks": [
+      {
+        "label": "Book Now — From €1,050",
+        "href": "#book"
+      }
+    ],
+    "closingBadges": [
+      "1 week €1,050",
+      "Full trip €3,550"
+    ],
+    "allSectionText": [
+      {
+        "index": 0,
+        "text": "20–27 Feb 2027 · Sella, Spain With Arturo Aparicio Lead 6a indoor / 5 outdoor PROJECT ESPAÑA 2027 SELLA Week One of Project España: seven days at the foot of the Sella Penya, where generous pocketing, short approaches, and a 650-person village set the foundation for the month ahead. #PocketsBeforePaella Reserve Your Place Read the Programme € 1,050 / 1 week Part of the 4-week trip — €3,550 per person · coaching & guiding included Dates 20–27 February 2027 Duration 7 Days (Week 1 of 4) Location Sella, Costa Blanca, Spain Level Lead 6a indoor / 5 outdoor Coach Arturo Aparicio Fly into Alicante — we handle the rest Book Your Spot →"
+      },
+      {
+        "index": 1,
+        "text": "About This Leg Where the Journey Begins Sella sits at the foot of the imposing Sella Peña (1,100m), a Costa Blanca village of just 650 people where steep limestone cliffs rise dramatically above narrow streets. It's the perfect on-ramp into a month of Spanish climbing — generous pocketing, short approaches, and routes across every level. Work technical face climbing at Pared de Rosalía, push into the overhangs at Techo del Rino, and let your coach calibrate exactly where your climbing actually stands before the trip gets more demanding. Seven days building the foundation — technique, partnerships, and the rhythm of climbing days and relaxed village evenings — that the next three weeks will build on. Book Now — From €1,050 Duration 7 Days Week 1 of the 4-week trip Location Sella Costa Blanca, Spain Min. Lead Grade 6a indoor 5 outdoor Group Size Small & Focused Min. 3 climbers to run Coach Arturo Aparicio Guiding every leg Price €1,050 Part of the €3,550 full trip The Full Journey Project España 2027 — Full Schedule This leg is one stop on a 4-week route across Spain. Book just this week, or grab the full trip and follow the coast from Sella to Margalef. Week 1 Sella, Spain 20–27 February 2027 €1,050 You Are Here Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 Add This Week More Info Week 3 Siurana, Spain 6–13 March 2027 €1,050 Add This Week More Info Week 4 Margalef, Spain 13–20 March 2027 €1,050 Add This Week More Info All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 Add Full Trip More Info"
+      },
+      {
+        "index": 2,
+        "text": "Real Rock, Real Sella Pockets, Village Life & The Foundation No stock photos, no staged sends — just climbers building the foundation for a month in Spain."
+      },
+      {
+        "index": 3,
+        "text": "Who Should Show Up Built for the Trip Starters 01 The Trip Starter You're booking Week 1 specifically to test the waters before deciding whether to commit to more of the route. 02 The Foundation Builder You want your technique genuinely dialed in before the trip gets more demanding through Chulilla, Siurana, and Margalef. 03 The Village Life Seeker 650 people, narrow streets, climbing practically from the doorstep. You want that specific kind of small-town basecamp, not a resort."
+      },
+      {
+        "index": 4,
+        "text": "The Coaching Three Skills Worth the Foundation Technique Choosing & caring for gear that keeps you alive Movement skills & efficient footwork Perfect balance over your centre of gravity Overhang tricks: side-stepping, drop knee, flagging, heel hooking Cleaning anchors — keeping all your gear Mental Game Basic understanding of outdoor risks Climbing calls & communication that get your message across Redpoint & onsight attempts on new climbs Personalized coaching to break through mental barriers Building the calibration the rest of the trip depends on Tactics Belaying & lead belaying, catching falls dynamically Setting up top-ropes Clipstick timing & pre-clipping the first draw Pocket-specific movement reading Long-term progression beyond this week"
+      },
+      {
+        "index": 5,
+        "text": "Daily Structure A Typical Day Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom. 08:30 Morning Briefing Crag plan, conditions check, coffee 09:30 Guided Climbing Block Movement & technique coaching on selected lines 13:00 Crag Lunch & Reset Packed lunch, rest, tactics chat with your coach 14:30 Afternoon Session Project burns or mileage — your call 18:30 Pack Down & Return Back to the village, gear sorted for tomorrow 20:00 Dinner & Debrief Village life, good company, tall tales from the day 1 Week vs Full Trip Which Format? One week gets you the Sella foundation. Four weeks gets you the entire Spanish route — and a road-trip crew that gets closer with every stop. What's Included 1 Week €1,050 Full Trip €3,550 Climbing days 6 24 Destinations 1 (Sella) 4 across Spain Individualized coaching & guiding Safety equipment & gear Shared accommodation Full road-trip community & lifelong sending buddies —"
+      },
+      {
+        "index": 6,
+        "text": "The Venue Sella, Spain Nestled at the foot of the Sella Peña (1,100m), this Costa Blanca village of just 650 people has steep limestone cliffs rising dramatically above narrow streets — short approaches and an incredible diversity of routes across every difficulty level. From the technical face climbing of Pared de Rosalía to the challenging overhangs at Techo del Rino, Sella's exceptional rock quality and generous pocketing make it the ideal place to build a foundation before the trip's more demanding legs. Nearest Airport Alicante (both ways) Rock Type Limestone Climate in February 12–18°C Style Technical faces & pocketed overhangs"
+      },
+      {
+        "index": 7,
+        "text": "Your Coach World-Class Coaching Arturo Aparicio Guide & Performance Coach Arturo found climbing after years of surfing in Tenerife, and never looked back. These days he lives out of his van around Sella, chasing new projects and knowing the local sectors better than almost anyone — exactly who you want setting the foundation for a month in Spain."
+      },
+      {
+        "index": 8,
+        "text": "Results What Past Climbers Say Sella was the perfect place to shake off the rust before three more weeks of harder terrain. The village itself was half the charm. Lotte V. 6a · Netherlands Short approaches meant more actual climbing time than any trip I'd done before. Arturo had us dialed into the right sectors within a day. Hugo L. 6b · France 650 people, one bakery, incredible pockets. I've never wanted to move somewhere this badly after a single week. Sarah K. 6a+ · Canada"
+      },
+      {
+        "index": 9,
+        "text": "Accommodation & Logistics We Sorted the Boring Bits Accommodation Shared accommodation in a local climbing cottage run by local climbers. A private room is possible if arranged ahead, for an extra charge. Getting There Fly into Alicante for both arrival and departure. Local transport is organised once you land. Gear All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't. Group Size Minimum 3 climbers to run the leg. Small enough for real coaching, never a crowd-control exercise. What's Included Full Package Individualized coaching — technical, mental, and tactical Guiding & local knowledge — routes picked for your grade Climbing safety equipment — ropes, draws, helmets, slings Shared basic accommodation — local climbing hosts Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars."
+      },
+      {
+        "index": 10,
+        "text": "FAQ Common Questions What level do I need to be? Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high. Do I need my own gear? Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes). Is food included? Breakfast and lunch ingredients are covered — we take you shopping on arrival. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars. Can I continue on to the rest of the trip afterward? Absolutely — that's exactly how this leg is designed. Book any of the remaining weeks individually, or upgrade to the full 4-week Project España for €3,550. What if fewer than 3 people book? We need a minimum of 3 participants to run this leg. If numbers don't add up, we'll offer an equivalent (or better) alternative, or a full refund. No hard feelings. Where do I fly in and out of? Alicante International Airport, for both arrival and departure."
+      },
+      {
+        "index": 11,
+        "text": "Reserve Your Place Ready to Start in Sella? Spaces fill fast, and we only run this leg with a minimum of 3 climbers. Secure your spot now — or drop us a line first if you've got questions. Book Now — €1,050 1 week €1,050 Full trip €3,550 Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast."
+      }
+    ]
+  },
+  {
+    "version": 1,
+    "classification": "local design comparison content; not canonical seed",
+    "sourceFile": "PROJECT ESPANA/rockbusters_espana_siurana.html",
+    "target": {
+      "eventId": 17,
+      "eventSlug": "climbing-trip-spain",
+      "eventDateId": 750,
+      "dateFrom": "2027-03-06",
+      "dateTo": "2027-03-13"
+    },
+    "sections": [
+      {
+        "key": "overview",
+        "eyebrow": "About This Leg",
+        "heading": "Where Finesse Beats Power",
+        "headingParts": [
+          {
+            "text": "Where Finesse Beats Power",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Siurana is a pilgrimage site for a reason: compact, feature-rich limestone perched on a dramatic ridge above the Priorat wine region, on the same walls that helped shape sport climbing as we know it.\n\nAfter building endurance in Chulilla, this is where the trip gets technical. Precision footwork, subtle body positioning, and genuine creative problem-solving across sectors like L'Olla, El Pati, and La Siuranella — routes that reward finesse over brute strength, whatever grade you're pushing.\n\nBetween sessions, settle into a perfectly preserved medieval village for local olive oil, regional wine, and the kind of international climbing culture that's been drawn to these storied walls for generations."
+      },
+      {
+        "key": "dates",
+        "eyebrow": "The Full Journey",
+        "heading": "Project España 2027 — Full Schedule",
+        "headingParts": [
+          {
+            "text": "Project España 2027 — Full Schedule",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "This leg is one stop on a 4-week route across Spain. Book just this week, or grab the full trip and follow the coast from Sella to Margalef."
+      },
+      {
+        "key": "gallery",
+        "eyebrow": "Real Rock, Real Siurana",
+        "heading": "Crimps, History & Precision",
+        "headingParts": [
+          {
+            "text": "Crimps, History",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "& ",
+            "accent": false,
+            "breakBefore": true
+          },
+          {
+            "text": "Precision",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "intro": "No stock photos, no staged sends — just climbers earning it on the walls that shaped the sport."
+      },
+      {
+        "key": "audience",
+        "eyebrow": "Who Should Show Up",
+        "heading": "Built for the Technically Curious",
+        "headingParts": [
+          {
+            "text": "Built for the Technically Curious",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "learning",
+        "eyebrow": "The Coaching",
+        "heading": "Three Skills Worth the Precision",
+        "headingParts": [
+          {
+            "text": "Three ",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "Skills",
+            "accent": true,
+            "breakBefore": false
+          },
+          {
+            "text": " Worth the Precision",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "itinerary",
+        "eyebrow": "Daily Structure",
+        "heading": "A Typical Day",
+        "headingParts": [
+          {
+            "text": "A Typical Day",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom."
+      },
+      {
+        "key": "comparison",
+        "eyebrow": "1 Week vs Full Trip",
+        "heading": "Which Format?",
+        "headingParts": [
+          {
+            "text": "Which Format?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "One week gets you the Siurana initiation. Four weeks gets you the entire Spanish route — and a road-trip crew that gets closer with every stop."
+      },
+      {
+        "key": "venue",
+        "eyebrow": "The Venue",
+        "heading": "Siurana, Spain",
+        "headingParts": [
+          {
+            "text": "Siurana, Spain",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "team",
+        "eyebrow": "Your Coach",
+        "heading": "World-Class Coaching",
+        "headingParts": [
+          {
+            "text": "World-Class Coaching",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "reviews",
+        "eyebrow": "Results",
+        "heading": "What Past Climbers Say",
+        "headingParts": [
+          {
+            "text": "What Past Climbers Say",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "logistics",
+        "eyebrow": "Accommodation & Logistics",
+        "heading": "We Sorted the Boring Bits",
+        "headingParts": [
+          {
+            "text": "We Sorted the Boring Bits",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "package",
+        "eyebrow": "What's Included",
+        "heading": "Full Package",
+        "headingParts": [
+          {
+            "text": "Full Package",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "faq",
+        "eyebrow": "FAQ",
+        "heading": "Common Questions",
+        "headingParts": [
+          {
+            "text": "Common Questions",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "booking",
+        "eyebrow": "Reserve Your Place",
+        "heading": "Ready for Some Precision Climbing?",
+        "headingParts": [
+          {
+            "text": "Ready for Some Precision Climbing?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Spaces fill fast, and we only run this leg with a minimum of 3 climbers. Secure your spot now — or drop us a line first if you've got questions."
+      }
+    ],
+    "hero": {
+      "titleParts": [
+        {
+          "text": "PROJECT ESPAÑA 2027",
+          "accent": false,
+          "breakBefore": false
+        },
+        {
+          "text": "SIURANA",
+          "accent": true,
+          "breakBefore": true
+        }
+      ],
+      "description": "Week Three of Project España: seven days on the same crimpy, compact limestone that helped shape sport climbing history, above a medieval village overlooking Catalonia's wine country.",
+      "hashtag": "#CrimpsBeforeCava",
+      "primaryLabel": "Reserve Your Place",
+      "secondaryLabel": "Read the Programme",
+      "sourceSecondaryHref": "#overview"
+    },
+    "overview": [
+      "Siurana is a pilgrimage site for a reason: compact, feature-rich limestone perched on a dramatic ridge above the Priorat wine region, on the same walls that helped shape sport climbing as we know it.",
+      "After building endurance in Chulilla, this is where the trip gets technical. Precision footwork, subtle body positioning, and genuine creative problem-solving across sectors like L'Olla, El Pati, and La Siuranella — routes that reward finesse over brute strength, whatever grade you're pushing.",
+      "Between sessions, settle into a perfectly preserved medieval village for local olive oil, regional wine, and the kind of international climbing culture that's been drawn to these storied walls for generations."
+    ],
+    "overviewFacts": [
+      {
+        "label": "Duration",
+        "value": "7 Days",
+        "description": "Week 3 of the 4-week trip"
+      },
+      {
+        "label": "Location",
+        "value": "Siurana",
+        "description": "Priorat, Catalonia"
+      },
+      {
+        "label": "Style",
+        "value": "Technical & Crimpy",
+        "description": "Precision over power"
+      },
+      {
+        "label": "Group Size",
+        "value": "Small & Focused",
+        "description": "Min. 3 climbers to run"
+      },
+      {
+        "label": "Coach",
+        "value": "Arturo Aparicio",
+        "description": "Guiding every leg"
+      },
+      {
+        "label": "Price",
+        "value": "€1,050",
+        "description": "Part of the €3,550 full trip"
+      }
+    ],
+    "strip": [
+      {
+        "value": "Siurana",
+        "label": "Historic Catalan Limestone"
+      },
+      {
+        "value": "6–13 Mar",
+        "label": "7 Days"
+      },
+      {
+        "value": "Technical",
+        "label": "Crimps & Precision"
+      },
+      {
+        "value": "3",
+        "label": "Min. Participants"
+      },
+      {
+        "value": "€1,050",
+        "label": "Week 3 of the 4-Week Trip"
+      }
+    ],
+    "summary": {
+      "rows": [
+        {
+          "label": "Dates",
+          "value": "6–13 March 2027",
+          "description": ""
+        },
+        {
+          "label": "Duration",
+          "value": "7 Days (Week 3 of 4)",
+          "description": ""
+        },
+        {
+          "label": "Location",
+          "value": "Siurana, Catalonia, Spain",
+          "description": ""
+        },
+        {
+          "label": "Level",
+          "value": "Lead 6a indoor / 5 outdoor",
+          "description": ""
+        },
+        {
+          "label": "Coach",
+          "value": "Arturo Aparicio",
+          "description": ""
+        }
+      ],
+      "price": "€ 1,050 / 1 week Part of the 4-week trip — €3,550 per person · coaching & guiding included",
+      "travelNote": "Fly into Barcelona — we handle the rest",
+      "ctaLabel": "Book Your Spot →",
+      "priceCaption": "per person · coaching & guiding included",
+      "alternatePrice": "Part of the 4-week trip — €3,550"
+    },
+    "audienceCards": [
+      {
+        "heading": "The Endurance Graduate",
+        "body": "You've built stamina in Chulilla, and now it's time to trade sustained pump for precision, subtlety, and genuinely creative movement."
+      },
+      {
+        "heading": "The Climbing Historian",
+        "body": "You want to touch walls that have shaped sport climbing for generations, and maybe watch an elite athlete working a project while you're there."
+      },
+      {
+        "heading": "The Wine-and-Rock Romantic",
+        "body": "A medieval village, Priorat vineyards on the horizon, local olive oil in stone-walled cafés. You want the full Catalan package with your climbing."
+      }
+    ],
+    "pillars": [
+      {
+        "heading": "Technique",
+        "headingParts": [
+          {
+            "text": "Technique",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Choosing & caring for gear that keeps you alive"
+          },
+          {
+            "text": "Precision footwork on compact, feature-rich limestone"
+          },
+          {
+            "text": "Subtle body positioning over your centre of gravity"
+          },
+          {
+            "text": "Technical corner & crimpy-face movement"
+          },
+          {
+            "text": "Cleaning anchors — keeping all your gear"
+          }
+        ]
+      },
+      {
+        "heading": "Mental Game",
+        "headingParts": [
+          {
+            "text": "Mental Game",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Basic understanding of outdoor risks"
+          },
+          {
+            "text": "Climbing calls & communication that get your message across"
+          },
+          {
+            "text": "Redpoint & onsight attempts on new climbs"
+          },
+          {
+            "text": "Personalized coaching to break through mental barriers"
+          },
+          {
+            "text": "Creative problem-solving on delicate sequences"
+          }
+        ]
+      },
+      {
+        "heading": "Tactics",
+        "headingParts": [
+          {
+            "text": "Tactics",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Belaying & lead belaying, catching falls dynamically"
+          },
+          {
+            "text": "Setting up top-ropes"
+          },
+          {
+            "text": "Clipstick timing & pre-clipping the first draw"
+          },
+          {
+            "text": "Reading technical sequences before committing"
+          },
+          {
+            "text": "Long-term progression beyond this week"
+          }
+        ]
+      }
+    ],
+    "dailySchedule": [
+      {
+        "time": "08:30",
+        "title": "Morning Briefing",
+        "description": "Crag plan, conditions check, coffee"
+      },
+      {
+        "time": "09:30",
+        "title": "Guided Climbing Block",
+        "description": "Movement & technique coaching on selected lines"
+      },
+      {
+        "time": "13:00",
+        "title": "Crag Lunch & Reset",
+        "description": "Packed lunch, rest, tactics chat with your coach"
+      },
+      {
+        "time": "14:30",
+        "title": "Afternoon Session",
+        "description": "Project burns or mileage — your call"
+      },
+      {
+        "time": "18:30",
+        "title": "Pack Down & Return",
+        "description": "Back to the village, gear sorted for tomorrow"
+      },
+      {
+        "time": "20:00",
+        "title": "Beta & Wine",
+        "description": "Stone-walled cafés, local wine, tall tales from the day"
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "What's Included",
+        "1 Week €1,050",
+        "Full Trip €3,550"
+      ],
+      "rows": [
+        {
+          "label": "Climbing days",
+          "left": "6",
+          "right": "24"
+        },
+        {
+          "label": "Destinations",
+          "left": "1 (Siurana)",
+          "right": "4 across Spain"
+        },
+        {
+          "label": "Individualized coaching & guiding",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Safety equipment & gear",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Shared accommodation",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Full road-trip community & lifelong sending buddies",
+          "left": "—",
+          "right": "✓"
+        }
+      ]
+    },
+    "venue": {
+      "paragraphs": [
+        {
+          "text": "A legendary destination perched atop a dramatic limestone ridge in Catalonia — compact, feature-rich rock that has drawn sport climbers on pilgrimage for generations, home to sectors like L'Olla, El Pati, and La Siuranella."
+        },
+        {
+          "text": "The perfectly preserved medieval village above the Priorat wine region adds a cultural richness few climbing destinations can match — cobblestone streets, commanding views, and some of Spain's best local wine within walking distance of the crag."
+        }
+      ],
+      "facts": [
+        {
+          "label": "Nearest Airport",
+          "value": "Barcelona (both ways)",
+          "description": ""
+        },
+        {
+          "label": "Rock Type",
+          "value": "Limestone",
+          "description": ""
+        },
+        {
+          "label": "Climate in March",
+          "value": "10–18°C",
+          "description": ""
+        },
+        {
+          "label": "Style",
+          "value": "Technical crimps & delicate sequences",
+          "description": ""
+        }
+      ]
+    },
+    "coaches": [
+      {
+        "name": "Arturo Aparicio",
+        "role": "Guide & Performance Coach",
+        "bio": "Arturo found climbing after years of surfing in Tenerife, and never looked back. Guiding every leg of Project España, he brings the same patient, technique-focused coaching to Siurana's precision game as he did to the trip's earlier, more power-oriented legs."
+      }
+    ],
+    "previewReviews": [
+      {
+        "quote": "Chulilla taught me to push through the pump. Siurana taught me I didn't always need to. Completely different lesson, equally valuable.",
+        "reviewerName": "[Design preview] Elin F. 6b · Finland"
+      },
+      {
+        "quote": "Watching a pro quietly working a project two sectors over while I fumbled through 6a was equal parts humbling and completely inspiring.",
+        "reviewerName": "[Design preview] Diego M. 6a+ · Argentina"
+      },
+      {
+        "quote": "Evenings in the village with local wine and other climbers' beta were honestly as memorable as anything that happened on the wall.",
+        "reviewerName": "[Design preview] Charlotte D. 6b+ · Belgium"
+      }
+    ],
+    "practicalCards": [
+      {
+        "heading": "Accommodation",
+        "body": "Shared accommodation in a local climbing cottage run by local climbers. A private room is possible if arranged ahead, for an extra charge."
+      },
+      {
+        "heading": "Getting There",
+        "body": "Fly into Barcelona for both arrival and departure. Local transport is organised once you land."
+      },
+      {
+        "heading": "Gear",
+        "body": "All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't."
+      },
+      {
+        "heading": "Group Size",
+        "body": "Minimum 3 climbers to run the leg. Small enough for real coaching, never a crowd-control exercise."
+      }
+    ],
+    "packageItems": [
+      {
+        "text": "Individualized coaching — technical, mental, and tactical"
+      },
+      {
+        "text": "Guiding & local knowledge — routes picked for your grade"
+      },
+      {
+        "text": "Climbing safety equipment — ropes, draws, helmets, slings"
+      },
+      {
+        "text": "Shared basic accommodation — local climbing hosts"
+      }
+    ],
+    "packageNote": "Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars.",
+    "faqs": [
+      {
+        "question": "What level do I need to be?",
+        "answer": "Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high."
+      },
+      {
+        "question": "Do I need my own gear?",
+        "answer": "Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes)."
+      },
+      {
+        "question": "Is food included?",
+        "answer": "Breakfast and lunch ingredients are covered — we take you shopping on arrival. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars."
+      },
+      {
+        "question": "Can I join this leg without doing Weeks 1 or 2?",
+        "answer": "Yes — every leg works as a standalone week. Siurana's technical style is genuinely its own thing, so you don't need Chulilla's endurance focus behind you to get real value here."
+      },
+      {
+        "question": "What if fewer than 3 people book?",
+        "answer": "We need a minimum of 3 participants to run this leg. If numbers don't add up, we'll offer an equivalent (or better) alternative, or a full refund. No hard feelings."
+      },
+      {
+        "question": "Where do I fly in and out of?",
+        "answer": "Barcelona International Airport, for both arrival and departure."
+      }
+    ],
+    "closingSupport": "Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast.",
+    "closingPrimaryLabel": "Book Now — €1,050",
+    "scheduleReference": [
+      {
+        "text": "Week 1 Sella, Spain 20–27 February 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/859"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_sella.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/860"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_chulilla.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 3 Siurana, Spain 6–13 March 2027 €1,050 You Are Here",
+        "links": []
+      },
+      {
+        "text": "Week 4 Margalef, Spain 13–20 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/862"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_margalef.html"
+          }
+        ]
+      },
+      {
+        "text": "All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 Add Full Trip More Info",
+        "links": [
+          {
+            "text": "Add Full Trip",
+            "href": "https://rockbusters.net/order/new/858"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_projectespana_fulltrip.html"
+          }
+        ]
+      }
+    ],
+    "heroMeta": [
+      "6–13 Mar 2027 · Siurana, Spain",
+      "With Arturo Aparicio",
+      "Lead 6a indoor / 5 outdoor"
+    ],
+    "overviewLinks": [
+      {
+        "label": "Book Now — From €1,050",
+        "href": "#book"
+      }
+    ],
+    "closingBadges": [
+      "1 week €1,050",
+      "Full trip €3,550"
+    ],
+    "allSectionText": [
+      {
+        "index": 0,
+        "text": "6–13 Mar 2027 · Siurana, Spain With Arturo Aparicio Lead 6a indoor / 5 outdoor PROJECT ESPAÑA 2027 SIURANA Week Three of Project España: seven days on the same crimpy, compact limestone that helped shape sport climbing history, above a medieval village overlooking Catalonia's wine country. #CrimpsBeforeCava Reserve Your Place Read the Programme € 1,050 / 1 week Part of the 4-week trip — €3,550 per person · coaching & guiding included Dates 6–13 March 2027 Duration 7 Days (Week 3 of 4) Location Siurana, Catalonia, Spain Level Lead 6a indoor / 5 outdoor Coach Arturo Aparicio Fly into Barcelona — we handle the rest Book Your Spot →"
+      },
+      {
+        "index": 1,
+        "text": "About This Leg Where Finesse Beats Power Siurana is a pilgrimage site for a reason: compact, feature-rich limestone perched on a dramatic ridge above the Priorat wine region, on the same walls that helped shape sport climbing as we know it. After building endurance in Chulilla, this is where the trip gets technical. Precision footwork, subtle body positioning, and genuine creative problem-solving across sectors like L'Olla, El Pati, and La Siuranella — routes that reward finesse over brute strength, whatever grade you're pushing. Between sessions, settle into a perfectly preserved medieval village for local olive oil, regional wine, and the kind of international climbing culture that's been drawn to these storied walls for generations. Book Now — From €1,050 Duration 7 Days Week 3 of the 4-week trip Location Siurana Priorat, Catalonia Style Technical & Crimpy Precision over power Group Size Small & Focused Min. 3 climbers to run Coach Arturo Aparicio Guiding every leg Price €1,050 Part of the €3,550 full trip The Full Journey Project España 2027 — Full Schedule This leg is one stop on a 4-week route across Spain. Book just this week, or grab the full trip and follow the coast from Sella to Margalef. Week 1 Sella, Spain 20–27 February 2027 €1,050 Add This Week More Info Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 Add This Week More Info Week 3 Siurana, Spain 6–13 March 2027 €1,050 You Are Here Week 4 Margalef, Spain 13–20 March 2027 €1,050 Add This Week More Info All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 Add Full Trip More Info"
+      },
+      {
+        "index": 2,
+        "text": "Real Rock, Real Siurana Crimps, History & Precision No stock photos, no staged sends — just climbers earning it on the walls that shaped the sport."
+      },
+      {
+        "index": 3,
+        "text": "Who Should Show Up Built for the Technically Curious 01 The Endurance Graduate You've built stamina in Chulilla, and now it's time to trade sustained pump for precision, subtlety, and genuinely creative movement. 02 The Climbing Historian You want to touch walls that have shaped sport climbing for generations, and maybe watch an elite athlete working a project while you're there. 03 The Wine-and-Rock Romantic A medieval village, Priorat vineyards on the horizon, local olive oil in stone-walled cafés. You want the full Catalan package with your climbing."
+      },
+      {
+        "index": 4,
+        "text": "The Coaching Three Skills Worth the Precision Technique Choosing & caring for gear that keeps you alive Precision footwork on compact, feature-rich limestone Subtle body positioning over your centre of gravity Technical corner & crimpy-face movement Cleaning anchors — keeping all your gear Mental Game Basic understanding of outdoor risks Climbing calls & communication that get your message across Redpoint & onsight attempts on new climbs Personalized coaching to break through mental barriers Creative problem-solving on delicate sequences Tactics Belaying & lead belaying, catching falls dynamically Setting up top-ropes Clipstick timing & pre-clipping the first draw Reading technical sequences before committing Long-term progression beyond this week"
+      },
+      {
+        "index": 5,
+        "text": "Daily Structure A Typical Day Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom. 08:30 Morning Briefing Crag plan, conditions check, coffee 09:30 Guided Climbing Block Movement & technique coaching on selected lines 13:00 Crag Lunch & Reset Packed lunch, rest, tactics chat with your coach 14:30 Afternoon Session Project burns or mileage — your call 18:30 Pack Down & Return Back to the village, gear sorted for tomorrow 20:00 Beta & Wine Stone-walled cafés, local wine, tall tales from the day 1 Week vs Full Trip Which Format? One week gets you the Siurana initiation. Four weeks gets you the entire Spanish route — and a road-trip crew that gets closer with every stop. What's Included 1 Week €1,050 Full Trip €3,550 Climbing days 6 24 Destinations 1 (Siurana) 4 across Spain Individualized coaching & guiding Safety equipment & gear Shared accommodation Full road-trip community & lifelong sending buddies —"
+      },
+      {
+        "index": 6,
+        "text": "The Venue Siurana, Spain A legendary destination perched atop a dramatic limestone ridge in Catalonia — compact, feature-rich rock that has drawn sport climbers on pilgrimage for generations, home to sectors like L'Olla, El Pati, and La Siuranella. The perfectly preserved medieval village above the Priorat wine region adds a cultural richness few climbing destinations can match — cobblestone streets, commanding views, and some of Spain's best local wine within walking distance of the crag. Nearest Airport Barcelona (both ways) Rock Type Limestone Climate in March 10–18°C Style Technical crimps & delicate sequences"
+      },
+      {
+        "index": 7,
+        "text": "Your Coach World-Class Coaching Arturo Aparicio Guide & Performance Coach Arturo found climbing after years of surfing in Tenerife, and never looked back. Guiding every leg of Project España, he brings the same patient, technique-focused coaching to Siurana's precision game as he did to the trip's earlier, more power-oriented legs."
+      },
+      {
+        "index": 8,
+        "text": "Results What Past Climbers Say Chulilla taught me to push through the pump. Siurana taught me I didn't always need to. Completely different lesson, equally valuable. Elin F. 6b · Finland Watching a pro quietly working a project two sectors over while I fumbled through 6a was equal parts humbling and completely inspiring. Diego M. 6a+ · Argentina Evenings in the village with local wine and other climbers' beta were honestly as memorable as anything that happened on the wall. Charlotte D. 6b+ · Belgium"
+      },
+      {
+        "index": 9,
+        "text": "Accommodation & Logistics We Sorted the Boring Bits Accommodation Shared accommodation in a local climbing cottage run by local climbers. A private room is possible if arranged ahead, for an extra charge. Getting There Fly into Barcelona for both arrival and departure. Local transport is organised once you land. Gear All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't. Group Size Minimum 3 climbers to run the leg. Small enough for real coaching, never a crowd-control exercise. What's Included Full Package Individualized coaching — technical, mental, and tactical Guiding & local knowledge — routes picked for your grade Climbing safety equipment — ropes, draws, helmets, slings Shared basic accommodation — local climbing hosts Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars."
+      },
+      {
+        "index": 10,
+        "text": "FAQ Common Questions What level do I need to be? Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high. Do I need my own gear? Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes). Is food included? Breakfast and lunch ingredients are covered — we take you shopping on arrival. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars. Can I join this leg without doing Weeks 1 or 2? Yes — every leg works as a standalone week. Siurana's technical style is genuinely its own thing, so you don't need Chulilla's endurance focus behind you to get real value here. What if fewer than 3 people book? We need a minimum of 3 participants to run this leg. If numbers don't add up, we'll offer an equivalent (or better) alternative, or a full refund. No hard feelings. Where do I fly in and out of? Barcelona International Airport, for both arrival and departure."
+      },
+      {
+        "index": 11,
+        "text": "Reserve Your Place Ready for Some Precision Climbing? Spaces fill fast, and we only run this leg with a minimum of 3 climbers. Secure your spot now — or drop us a line first if you've got questions. Book Now — €1,050 1 week €1,050 Full trip €3,550 Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast."
+      }
+    ]
+  },
+  {
+    "version": 1,
+    "classification": "local design comparison content; not canonical seed",
+    "sourceFile": "PROJECT ESPANA/rockbusters_projectespana_fulltrip.html",
+    "target": {
+      "eventId": 17,
+      "eventSlug": "climbing-trip-spain",
+      "eventDateId": 747,
+      "dateFrom": "2027-02-20",
+      "dateTo": "2027-03-20"
+    },
+    "sections": [
+      {
+        "key": "overview",
+        "eyebrow": "About This Trip",
+        "heading": "Four Weeks. Four Crags. One Country Done Properly.",
+        "headingParts": [
+          {
+            "text": "Four Weeks. Four Crags. One Country Done Properly.",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "This is Spain's greatest hits, in order: the sun-drenched diversity of Sella, the dramatic tufa-lined columns of Chulilla, the technical face climbing that made Siurana legendary, and the powerful conglomerate pocket-pulling of Margalef.\n\nEach week stands entirely on its own — book the whole month and hop between destinations with local guiding and coaching threaded through every single day, or pick the one leg that fits your calendar.\n\nMinimum three climbers per leg, personalized coaching every day, and by night, authentic Spanish climbing cottages, tapas, and a community that tends to become genuinely hard to leave by week three."
+      },
+      {
+        "key": "dates",
+        "eyebrow": "Pick Your Weeks",
+        "heading": "The Full Project España Route",
+        "headingParts": [
+          {
+            "text": "The Full Project España Route",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Book the whole month below, or use this as your menu — every leg works as a standalone week if four weeks isn't in the cards right now."
+      },
+      {
+        "key": "gallery",
+        "eyebrow": "Real Rock, Four Crags",
+        "heading": "Sella to Margalef & Everything Between",
+        "headingParts": [
+          {
+            "text": "Sella to Margalef",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "& ",
+            "accent": false,
+            "breakBefore": true
+          },
+          {
+            "text": "Everything Between",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "intro": "No stock photos, no staged sends — just climbers earning it across Spain's four best-known limestone playgrounds."
+      },
+      {
+        "key": "audience",
+        "eyebrow": "Who Should Show Up",
+        "heading": "Built for the Spain-Obsessed",
+        "headingParts": [
+          {
+            "text": "Built for the Spain-Obsessed",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "learning",
+        "eyebrow": "The Coaching",
+        "heading": "Three Skills Across Four Crags",
+        "headingParts": [
+          {
+            "text": "Three ",
+            "accent": false,
+            "breakBefore": false
+          },
+          {
+            "text": "Skills",
+            "accent": true,
+            "breakBefore": false
+          },
+          {
+            "text": " Across Four Crags",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "itinerary",
+        "eyebrow": "Daily Structure",
+        "heading": "A Typical Day",
+        "headingParts": [
+          {
+            "text": "A Typical Day",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "The crag changes every week; the rhythm doesn't. Maximum climbing time, minimum logistical hassle, wherever you are."
+      },
+      {
+        "key": "comparison",
+        "eyebrow": "1 Week vs Full Trip",
+        "heading": "Which Format?",
+        "headingParts": [
+          {
+            "text": "Which Format?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Not sure four weeks is realistic right now? Every leg above works as a standalone week — here's what changes if you go all in."
+      },
+      {
+        "key": "venue",
+        "eyebrow": "The Route",
+        "heading": "Sella to Margalef",
+        "headingParts": [
+          {
+            "text": "Sella to Margalef",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "team",
+        "eyebrow": "Your Coach",
+        "heading": "World-Class Coaching",
+        "headingParts": [
+          {
+            "text": "World-Class Coaching",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "reviews",
+        "eyebrow": "Results",
+        "heading": "What Past Climbers Say",
+        "headingParts": [
+          {
+            "text": "What Past Climbers Say",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "logistics",
+        "eyebrow": "Accommodation & Logistics",
+        "heading": "We Sorted the Boring Bits",
+        "headingParts": [
+          {
+            "text": "We Sorted the Boring Bits",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "package",
+        "eyebrow": "What's Included",
+        "heading": "Full Package",
+        "headingParts": [
+          {
+            "text": "Full Package",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "faq",
+        "eyebrow": "FAQ",
+        "heading": "Common Questions",
+        "headingParts": [
+          {
+            "text": "Common Questions",
+            "accent": false,
+            "breakBefore": false
+          }
+        ]
+      },
+      {
+        "key": "booking",
+        "eyebrow": "Reserve Your Place",
+        "heading": "Ready for the Full España Project?",
+        "headingParts": [
+          {
+            "text": "Ready for the Full España Project?",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "intro": "Spaces are limited across all four legs, and this is the trip climbers build their spring around. Secure the full route now — or drop us a line first if you've got questions."
+      }
+    ],
+    "hero": {
+      "titleParts": [
+        {
+          "text": "PROJECT ESPAÑA",
+          "accent": false,
+          "breakBefore": false
+        },
+        {
+          "text": "2027",
+          "accent": true,
+          "breakBefore": true
+        }
+      ],
+      "description": "Four weeks, four legendary Spanish limestone destinations, one continuous vertical adventure — from Sella's sun-drenched walls to Margalef's powerful pockets. Pick a week, or pick the whole month.",
+      "hashtag": "#SendsBeforeSiesta",
+      "primaryLabel": "Reserve the Full Trip",
+      "secondaryLabel": "See the Itinerary",
+      "sourceSecondaryHref": "#overview"
+    },
+    "overview": [
+      "This is Spain's greatest hits, in order: the sun-drenched diversity of Sella, the dramatic tufa-lined columns of Chulilla, the technical face climbing that made Siurana legendary, and the powerful conglomerate pocket-pulling of Margalef.",
+      "Each week stands entirely on its own — book the whole month and hop between destinations with local guiding and coaching threaded through every single day, or pick the one leg that fits your calendar.",
+      "Minimum three climbers per leg, personalized coaching every day, and by night, authentic Spanish climbing cottages, tapas, and a community that tends to become genuinely hard to leave by week three."
+    ],
+    "overviewFacts": [
+      {
+        "label": "Duration",
+        "value": "28 Days",
+        "description": "4 weeks across Spain"
+      },
+      {
+        "label": "Destinations",
+        "value": "4 Crags",
+        "description": "Sella, Chulilla, Siurana, Margalef"
+      },
+      {
+        "label": "Min. Lead Grade",
+        "value": "6a indoor",
+        "description": "5 outdoor"
+      },
+      {
+        "label": "Group Size",
+        "value": "Small & Focused",
+        "description": "Min. 3 climbers per leg"
+      },
+      {
+        "label": "Coach",
+        "value": "Arturo Aparicio",
+        "description": "Guiding every leg"
+      },
+      {
+        "label": "Price",
+        "value": "€3,550",
+        "description": "Or €1,050 per week, à la carte"
+      }
+    ],
+    "strip": [
+      {
+        "value": "Spain",
+        "label": "4 Legendary Crags"
+      },
+      {
+        "value": "20 Feb–20 Mar",
+        "label": "28 Days"
+      },
+      {
+        "value": "6a/5",
+        "label": "Min. Lead Grade"
+      },
+      {
+        "value": "3",
+        "label": "Min. Participants per Leg"
+      },
+      {
+        "value": "€3,550",
+        "label": "Full Trip (or €1,050/week)"
+      }
+    ],
+    "summary": {
+      "rows": [
+        {
+          "label": "Dates",
+          "value": "20 Feb – 20 Mar 2027",
+          "description": ""
+        },
+        {
+          "label": "Duration",
+          "value": "28 Days (4 Weeks)",
+          "description": ""
+        },
+        {
+          "label": "Destinations",
+          "value": "4 Crags, All Spain",
+          "description": ""
+        },
+        {
+          "label": "Level",
+          "value": "Lead 6a indoor / 5 outdoor",
+          "description": ""
+        },
+        {
+          "label": "Coach",
+          "value": "Arturo Aparicio",
+          "description": ""
+        }
+      ],
+      "price": "€ 3,550 / 4 weeks Or €1,050 per week, à la carte per person · coaching & guiding included",
+      "travelNote": "Fly into Alicante, out of Barcelona — we handle everything between",
+      "ctaLabel": "Book the Full Trip →",
+      "priceCaption": "per person · coaching & guiding included",
+      "alternatePrice": "Or €1,050 per week, à la carte"
+    },
+    "audienceCards": [
+      {
+        "heading": "The Grade-Chaser",
+        "body": "You're leading 6a indoors and 5 outdoors, ready to turn that into confident 7a climbing. Four weeks of structured coaching is exactly the runway that takes."
+      },
+      {
+        "heading": "The Rock-Type Collector",
+        "body": "You want to feel the actual difference between Sella's variety, Chulilla's tufas, Siurana's technical faces, and Margalef's cobblestone pockets — all in one trip."
+      },
+      {
+        "heading": "The Community Seeker",
+        "body": "You'd rather spend a month climbing alongside a crew that gets closer every week than bounce between solo trips and gym partners you barely know."
+      }
+    ],
+    "pillars": [
+      {
+        "heading": "Technique",
+        "headingParts": [
+          {
+            "text": "Technique",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Choosing & caring for gear that keeps you safe"
+          },
+          {
+            "text": "Movement skills & efficient footwork"
+          },
+          {
+            "text": "Perfect balance over your centre of gravity"
+          },
+          {
+            "text": "Overhang tricks: side-stepping, drop knee, flagging, heel hooking, kneebars"
+          },
+          {
+            "text": "Cleaning anchors — keeping all your gear"
+          }
+        ]
+      },
+      {
+        "heading": "Mental Game",
+        "headingParts": [
+          {
+            "text": "Mental Game",
+            "accent": true,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Basic understanding of outdoor risks"
+          },
+          {
+            "text": "Climbing calls & communication that get your message across"
+          },
+          {
+            "text": "Redpoint & onsight attempts on new climbs"
+          },
+          {
+            "text": "Personalized coaching to break through mental barriers"
+          },
+          {
+            "text": "Adapting fast when the rock changes every week"
+          }
+        ]
+      },
+      {
+        "heading": "Tactics",
+        "headingParts": [
+          {
+            "text": "Tactics",
+            "accent": false,
+            "breakBefore": false
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Belaying & lead belaying, catching falls dynamically"
+          },
+          {
+            "text": "Setting up top-ropes"
+          },
+          {
+            "text": "Clipstick timing & pre-clipping the first draw"
+          },
+          {
+            "text": "Rock-specific movement reading, leg by leg"
+          },
+          {
+            "text": "Long-term progression beyond the trip"
+          }
+        ]
+      }
+    ],
+    "dailySchedule": [
+      {
+        "time": "08:30",
+        "title": "Morning Briefing",
+        "description": "Crag plan, conditions check, coffee"
+      },
+      {
+        "time": "09:30",
+        "title": "Guided Climbing Block",
+        "description": "Movement & technique coaching on selected lines"
+      },
+      {
+        "time": "13:00",
+        "title": "Crag Lunch & Reset",
+        "description": "Packed lunch, rest, tactics chat with your coach"
+      },
+      {
+        "time": "14:30",
+        "title": "Afternoon Session",
+        "description": "Project burns or mileage — your call"
+      },
+      {
+        "time": "18:30",
+        "title": "Pack Down & Return",
+        "description": "Back to the cottage, gear sorted for tomorrow"
+      },
+      {
+        "time": "20:00",
+        "title": "Dinner & Debrief",
+        "description": "Tapas, good company, tall tales from the day"
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "What's Included",
+        "1 Week €1,050",
+        "Full Trip €3,550"
+      ],
+      "rows": [
+        {
+          "label": "Climbing days",
+          "left": "6",
+          "right": "24"
+        },
+        {
+          "label": "Destinations",
+          "left": "1",
+          "right": "4 across Spain"
+        },
+        {
+          "label": "Individualized coaching & guiding",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Safety equipment & gear",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Shared accommodation",
+          "left": "✓",
+          "right": "✓"
+        },
+        {
+          "label": "Full road-trip community & lifelong sending buddies",
+          "left": "—",
+          "right": "✓"
+        }
+      ]
+    },
+    "venue": {
+      "paragraphs": [
+        {
+          "text": "Starting on the Costa Blanca in Sella, the trip tracks north through Chulilla's dramatic tufa-lined canyon, up to Siurana's legendary technical faces above the Priorat, before finishing in Margalef's otherworldly conglomerate pocket-pulling — roughly 400km of Spain's absolute best limestone."
+        },
+        {
+          "text": "The itinerary is sequenced for variety as much as geography: from Sella's beginner-friendly diversity through increasingly technical and powerful terrain, so your skills build the same way the trip does."
+        }
+      ],
+      "facts": [
+        {
+          "label": "Fly Into",
+          "value": "Alicante",
+          "description": ""
+        },
+        {
+          "label": "Fly Out Of",
+          "value": "Barcelona",
+          "description": ""
+        },
+        {
+          "label": "Rock Types",
+          "value": "Limestone & Conglomerate",
+          "description": ""
+        },
+        {
+          "label": "Climate in Feb/Mar",
+          "value": "12–20°C",
+          "description": ""
+        }
+      ]
+    },
+    "coaches": [
+      {
+        "name": "Arturo Aparicio",
+        "role": "Guide & Performance Coach",
+        "bio": "Arturo found climbing after years of surfing in Tenerife, and never looked back. These days he lives out of his van chasing new projects around Sella, bringing that same easygoing, patient energy to four straight weeks of coaching across Spain's best crags."
+      }
+    ],
+    "previewReviews": [
+      {
+        "quote": "I started the trip intimidated on 6a routes. By Margalef in week four I was confidently working 7a. I genuinely didn't think a month could change that much.",
+        "reviewerName": "[Design preview] Nils P. 7a · Sweden"
+      },
+      {
+        "quote": "Four crags, four completely different climbing styles, one coach who adapted his teaching to each of them. I left with a far more well-rounded game than I arrived with.",
+        "reviewerName": "[Design preview] Chiara B. 6c · Italy"
+      },
+      {
+        "quote": "Booked one week almost on a whim. Extended twice on the road. That's basically the whole pitch for this trip right there.",
+        "reviewerName": "[Design preview] Marcus T. 6b+ · Germany"
+      }
+    ],
+    "practicalCards": [
+      {
+        "heading": "Accommodation",
+        "body": "Shared accommodation in local climbing cottages run by local climbers, at each of the four stops. A private room is possible if arranged ahead, for an extra charge."
+      },
+      {
+        "heading": "Getting There",
+        "body": "Fly into Alicante at the start, out of Barcelona at the end. We're happy to help coordinate shared rental cars within the group between legs."
+      },
+      {
+        "heading": "Gear",
+        "body": "All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't."
+      },
+      {
+        "heading": "Group Size",
+        "body": "Minimum 3 climbers per leg to run. Small enough for real coaching, never a crowd-control exercise, on any single week."
+      }
+    ],
+    "packageItems": [
+      {
+        "text": "Individualized coaching — technical, mental, and tactical"
+      },
+      {
+        "text": "Guiding & local knowledge — routes picked for your grade, every leg"
+      },
+      {
+        "text": "Climbing safety equipment — ropes, draws, helmets, slings"
+      },
+      {
+        "text": "Shared basic accommodation — local climbing hosts"
+      }
+    ],
+    "packageNote": "Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars.",
+    "faqs": [
+      {
+        "question": "Do I have to book all 4 weeks?",
+        "answer": "No — every leg works as a standalone week. This page is for climbers who want the entire route booked as one continuous trip, with everything sorted in advance."
+      },
+      {
+        "question": "What level do I need to be?",
+        "answer": "Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high."
+      },
+      {
+        "question": "Do I need my own gear?",
+        "answer": "Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes)."
+      },
+      {
+        "question": "Is food included?",
+        "answer": "Breakfast and lunch ingredients are covered throughout — we take you shopping on arrival at each leg. Dinners are flexible: communal dinners can be organised, or explore the local restaurants and bars."
+      },
+      {
+        "question": "What if a leg doesn't reach 3 participants?",
+        "answer": "We need a minimum of 3 participants to run any given leg. If numbers don't add up for a specific week, we'll offer an equivalent (or better) alternative, or a full refund for that portion. No hard feelings."
+      },
+      {
+        "question": "Where do I fly in and out of?",
+        "answer": "Fly into Alicante for the start of the trip, and out of Barcelona at the end. If you're only booking individual weeks, each leg has its own nearest airport listed on its page."
+      }
+    ],
+    "closingSupport": "Prefer to test the waters first? Pick a single week from the schedule above. Questions? Email info@rockbusters.net or catch us on WhatsApp — we reply fast.",
+    "closingPrimaryLabel": "Book Full Trip — €3,550",
+    "scheduleReference": [
+      {
+        "text": "Week 1 Sella, Spain 20–27 February 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/859"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_sella.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/860"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_chulilla.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 3 Siurana, Spain 6–13 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/861"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_siurana.html"
+          }
+        ]
+      },
+      {
+        "text": "Week 4 Margalef, Spain 13–20 March 2027 €1,050 Add This Week More Info",
+        "links": [
+          {
+            "text": "Add This Week",
+            "href": "https://rockbusters.net/order/new/862"
+          },
+          {
+            "text": "More Info",
+            "href": "rockbusters_espana_margalef.html"
+          }
+        ]
+      },
+      {
+        "text": "All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 You Are Here",
+        "links": []
+      }
+    ],
+    "heroMeta": [
+      "20 Feb – 20 Mar 2027 · Spain",
+      "With Arturo Aparicio",
+      "Lead indoor 6a / outdoor 5"
+    ],
+    "overviewLinks": [
+      {
+        "label": "Book the Full Trip — €3,550",
+        "href": "#book"
+      }
+    ],
+    "closingBadges": [
+      "Full trip €3,550",
+      "1 week €1,050"
+    ],
+    "allSectionText": [
+      {
+        "index": 0,
+        "text": "20 Feb – 20 Mar 2027 · Spain With Arturo Aparicio Lead indoor 6a / outdoor 5 PROJECT ESPAÑA 2027 Four weeks, four legendary Spanish limestone destinations, one continuous vertical adventure — from Sella's sun-drenched walls to Margalef's powerful pockets. Pick a week, or pick the whole month. #SendsBeforeSiesta Reserve the Full Trip See the Itinerary € 3,550 / 4 weeks Or €1,050 per week, à la carte per person · coaching & guiding included Dates 20 Feb – 20 Mar 2027 Duration 28 Days (4 Weeks) Destinations 4 Crags, All Spain Level Lead 6a indoor / 5 outdoor Coach Arturo Aparicio Fly into Alicante, out of Barcelona — we handle everything between Book the Full Trip →"
+      },
+      {
+        "index": 1,
+        "text": "About This Trip Four Weeks. Four Crags. One Country Done Properly. This is Spain's greatest hits, in order: the sun-drenched diversity of Sella, the dramatic tufa-lined columns of Chulilla, the technical face climbing that made Siurana legendary, and the powerful conglomerate pocket-pulling of Margalef. Each week stands entirely on its own — book the whole month and hop between destinations with local guiding and coaching threaded through every single day, or pick the one leg that fits your calendar. Minimum three climbers per leg, personalized coaching every day, and by night, authentic Spanish climbing cottages, tapas, and a community that tends to become genuinely hard to leave by week three. Book the Full Trip — €3,550 Duration 28 Days 4 weeks across Spain Destinations 4 Crags Sella, Chulilla, Siurana, Margalef Min. Lead Grade 6a indoor 5 outdoor Group Size Small & Focused Min. 3 climbers per leg Coach Arturo Aparicio Guiding every leg Price €3,550 Or €1,050 per week, à la carte Pick Your Weeks The Full Project España Route Book the whole month below, or use this as your menu — every leg works as a standalone week if four weeks isn't in the cards right now. Week 1 Sella, Spain 20–27 February 2027 €1,050 Add This Week More Info Week 2 Chulilla, Spain 27 Feb – 6 March 2027 €1,050 Add This Week More Info Week 3 Siurana, Spain 6–13 March 2027 €1,050 Add This Week More Info Week 4 Margalef, Spain 13–20 March 2027 €1,050 Add This Week More Info All 4 Full Project España — Spain 20 February – 20 March 2027 €3,550 You Are Here"
+      },
+      {
+        "index": 2,
+        "text": "Real Rock, Four Crags Sella to Margalef & Everything Between No stock photos, no staged sends — just climbers earning it across Spain's four best-known limestone playgrounds."
+      },
+      {
+        "index": 3,
+        "text": "Who Should Show Up Built for the Spain-Obsessed 01 The Grade-Chaser You're leading 6a indoors and 5 outdoors, ready to turn that into confident 7a climbing. Four weeks of structured coaching is exactly the runway that takes. 02 The Rock-Type Collector You want to feel the actual difference between Sella's variety, Chulilla's tufas, Siurana's technical faces, and Margalef's cobblestone pockets — all in one trip. 03 The Community Seeker You'd rather spend a month climbing alongside a crew that gets closer every week than bounce between solo trips and gym partners you barely know."
+      },
+      {
+        "index": 4,
+        "text": "The Coaching Three Skills Across Four Crags Technique Choosing & caring for gear that keeps you safe Movement skills & efficient footwork Perfect balance over your centre of gravity Overhang tricks: side-stepping, drop knee, flagging, heel hooking, kneebars Cleaning anchors — keeping all your gear Mental Game Basic understanding of outdoor risks Climbing calls & communication that get your message across Redpoint & onsight attempts on new climbs Personalized coaching to break through mental barriers Adapting fast when the rock changes every week Tactics Belaying & lead belaying, catching falls dynamically Setting up top-ropes Clipstick timing & pre-clipping the first draw Rock-specific movement reading, leg by leg Long-term progression beyond the trip"
+      },
+      {
+        "index": 5,
+        "text": "Daily Structure A Typical Day The crag changes every week; the rhythm doesn't. Maximum climbing time, minimum logistical hassle, wherever you are. 08:30 Morning Briefing Crag plan, conditions check, coffee 09:30 Guided Climbing Block Movement & technique coaching on selected lines 13:00 Crag Lunch & Reset Packed lunch, rest, tactics chat with your coach 14:30 Afternoon Session Project burns or mileage — your call 18:30 Pack Down & Return Back to the cottage, gear sorted for tomorrow 20:00 Dinner & Debrief Tapas, good company, tall tales from the day 1 Week vs Full Trip Which Format? Not sure four weeks is realistic right now? Every leg above works as a standalone week — here's what changes if you go all in. What's Included 1 Week €1,050 Full Trip €3,550 Climbing days 6 24 Destinations 1 4 across Spain Individualized coaching & guiding Safety equipment & gear Shared accommodation Full road-trip community & lifelong sending buddies —"
+      },
+      {
+        "index": 6,
+        "text": "The Route Sella to Margalef Starting on the Costa Blanca in Sella, the trip tracks north through Chulilla's dramatic tufa-lined canyon, up to Siurana's legendary technical faces above the Priorat, before finishing in Margalef's otherworldly conglomerate pocket-pulling — roughly 400km of Spain's absolute best limestone. The itinerary is sequenced for variety as much as geography: from Sella's beginner-friendly diversity through increasingly technical and powerful terrain, so your skills build the same way the trip does. Fly Into Alicante Fly Out Of Barcelona Rock Types Limestone & Conglomerate Climate in Feb/Mar 12–20°C"
+      },
+      {
+        "index": 7,
+        "text": "Your Coach World-Class Coaching Arturo Aparicio Guide & Performance Coach Arturo found climbing after years of surfing in Tenerife, and never looked back. These days he lives out of his van chasing new projects around Sella, bringing that same easygoing, patient energy to four straight weeks of coaching across Spain's best crags."
+      },
+      {
+        "index": 8,
+        "text": "Results What Past Climbers Say I started the trip intimidated on 6a routes. By Margalef in week four I was confidently working 7a. I genuinely didn't think a month could change that much. Nils P. 7a · Sweden Four crags, four completely different climbing styles, one coach who adapted his teaching to each of them. I left with a far more well-rounded game than I arrived with. Chiara B. 6c · Italy Booked one week almost on a whim. Extended twice on the road. That's basically the whole pitch for this trip right there. Marcus T. 6b+ · Germany"
+      },
+      {
+        "index": 9,
+        "text": "Accommodation & Logistics We Sorted the Boring Bits Accommodation Shared accommodation in local climbing cottages run by local climbers, at each of the four stops. A private room is possible if arranged ahead, for an extra charge. Getting There Fly into Alicante at the start, out of Barcelona at the end. We're happy to help coordinate shared rental cars within the group between legs. Gear All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't. Group Size Minimum 3 climbers per leg to run. Small enough for real coaching, never a crowd-control exercise, on any single week. What's Included Full Package Individualized coaching — technical, mental, and tactical Guiding & local knowledge — routes picked for your grade, every leg Climbing safety equipment — ropes, draws, helmets, slings Shared basic accommodation — local climbing hosts Not included: local transport (we help organise shared rental cars within the group), flights, and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars."
+      },
+      {
+        "index": 10,
+        "text": "FAQ Common Questions Do I have to book all 4 weeks? No — every leg works as a standalone week. This page is for climbers who want the entire route booked as one continuous trip, with everything sorted in advance. What level do I need to be? Previous outdoor sport climbing experience is expected, with a minimum lead grade of indoor 6a or outdoor 5. Suitable for women and men aged 15 and up; physical intensity is medium to high. Do I need my own gear? Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, approach shoes). Is food included? Breakfast and lunch ingredients are covered throughout — we take you shopping on arrival at each leg. Dinners are flexible: communal dinners can be organised, or explore the local restaurants and bars. What if a leg doesn't reach 3 participants? We need a minimum of 3 participants to run any given leg. If numbers don't add up for a specific week, we'll offer an equivalent (or better) alternative, or a full refund for that portion. No hard feelings. Where do I fly in and out of? Fly into Alicante for the start of the trip, and out of Barcelona at the end. If you're only booking individual weeks, each leg has its own nearest airport listed on its page."
+      },
+      {
+        "index": 11,
+        "text": "Reserve Your Place Ready for the Full España Project? Spaces are limited across all four legs, and this is the trip climbers build their spring around. Secure the full route now — or drop us a line first if you've got questions. Book Full Trip — €3,550 Full trip €3,550 1 week €1,050 Prefer to test the waters first? Pick a single week from the schedule above. Questions? Email info@rockbusters.net or catch us on WhatsApp — we reply fast."
+      }
+    ]
+  }
+]

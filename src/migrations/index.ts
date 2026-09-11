@@ -55,6 +55,7 @@ import * as migration_20260910_173426_event_comparison_learning_pillar from './2
 import * as migration_20260910_181448_trip_block_eyebrows from './20260910_181448_trip_block_eyebrows';
 import * as migration_20260911_120000_trip_summary_content from './20260911_120000_trip_summary_content';
 import * as migration_20260911_135715_trip_editorial_occurrence_overrides from './20260911_135715_trip_editorial_occurrence_overrides';
+import * as migration_20260911_155714_trip_editorial_companion_variants from './20260911_155714_trip_editorial_companion_variants';
 
 export const migrations = [
   {
@@ -340,6 +341,11 @@ export const migrations = [
   {
     up: migration_20260911_135715_trip_editorial_occurrence_overrides.up,
     down: migration_20260911_135715_trip_editorial_occurrence_overrides.down,
-    name: '20260911_135715_trip_editorial_occurrence_overrides'
+    name: '20260911_135715_trip_editorial_occurrence_overrides',
+  },
+  {
+    up: migration_20260911_155714_trip_editorial_companion_variants.up,
+    down: migration_20260911_155714_trip_editorial_companion_variants.down,
+    name: '20260911_155714_trip_editorial_companion_variants'
   },
 ];

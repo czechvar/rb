@@ -1832,6 +1832,54 @@ export interface Event {
           id?: string | null;
         }[]
       | null;
+    factsStrip?:
+      | {
+          label?: string | null;
+          value?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    summaryRows?:
+      | {
+          label?: string | null;
+          value?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    actions?: {
+      overviewLabel?: string | null;
+      summaryLabel?: string | null;
+    };
+    datesMode?: ('list' | 'notice') | null;
+    companion?: {
+      columns?:
+        | {
+            label?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      rows?:
+        | {
+            cells?:
+              | {
+                  text?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+          }[]
+        | null;
+      links?:
+        | {
+            label?: string | null;
+            href?: string | null;
+            description?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
     venue?: {
       paragraphs?:
         | {
@@ -4235,6 +4283,54 @@ export interface EventDate {
           id?: string | null;
         }[]
       | null;
+    factsStrip?:
+      | {
+          label?: string | null;
+          value?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    summaryRows?:
+      | {
+          label?: string | null;
+          value?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    actions?: {
+      overviewLabel?: string | null;
+      summaryLabel?: string | null;
+    };
+    datesMode?: ('list' | 'notice') | null;
+    companion?: {
+      columns?:
+        | {
+            label?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      rows?:
+        | {
+            cells?:
+              | {
+                  text?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+          }[]
+        | null;
+      links?:
+        | {
+            label?: string | null;
+            href?: string | null;
+            description?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
     venue?: {
       paragraphs?:
         | {
@@ -8521,6 +8617,58 @@ export interface EventsSelect<T extends boolean = true> {
               description?: T;
               id?: T;
             };
+        factsStrip?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              description?: T;
+              id?: T;
+            };
+        summaryRows?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              description?: T;
+              id?: T;
+            };
+        actions?:
+          | T
+          | {
+              overviewLabel?: T;
+              summaryLabel?: T;
+            };
+        datesMode?: T;
+        companion?:
+          | T
+          | {
+              columns?:
+                | T
+                | {
+                    label?: T;
+                    id?: T;
+                  };
+              rows?:
+                | T
+                | {
+                    cells?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              links?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                    description?: T;
+                    id?: T;
+                  };
+            };
         venue?:
           | T
           | {
@@ -8823,6 +8971,58 @@ export interface EventDatesSelect<T extends boolean = true> {
               value?: T;
               description?: T;
               id?: T;
+            };
+        factsStrip?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              description?: T;
+              id?: T;
+            };
+        summaryRows?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              description?: T;
+              id?: T;
+            };
+        actions?:
+          | T
+          | {
+              overviewLabel?: T;
+              summaryLabel?: T;
+            };
+        datesMode?: T;
+        companion?:
+          | T
+          | {
+              columns?:
+                | T
+                | {
+                    label?: T;
+                    id?: T;
+                  };
+              rows?:
+                | T
+                | {
+                    cells?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              links?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                    description?: T;
+                    id?: T;
+                  };
             };
         venue?:
           | T

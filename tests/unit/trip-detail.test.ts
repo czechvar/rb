@@ -225,3 +225,13 @@ test('runtime derivation keeps distinct same-topic sources and never invents aud
   assert.deepEqual(remainingTripAdditionalInfo(source, sections), [])
   assert.deepEqual(resolveTripSections(event({ content: rich(paragraph('A course for intermediate climbers.')) })), [])
 })
+
+test('an explicit QA clock can resolve historical content without changing public date eligibility', () => {
+  const historical = date(90, { dateFrom: '2000-09-12T00:00:00.000Z', dateTo: '2000-09-19T00:00:00.000Z' })
+  const future = date(2)
+  assert.equal(resolveTripDetail(event(), [historical, future], 90).selectedDate?.id, 2)
+  const preview = resolveTripDetail(event(), [historical, future], 90, new Date('2000-09-12T00:00:00.000Z'))
+  assert.equal(preview.selectedDate?.id, 90)
+  assert.equal(preview.selectedDate?.dateFrom, historical.dateFrom)
+  assert.equal(resolveTripDetail(event(), [{ ...historical, active: false }, future], 90, new Date('2000-09-12')).selectedDate?.id, 2)
+})

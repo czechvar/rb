@@ -34,6 +34,15 @@ export type TripEditorial = {
     | { time?: string | null; title?: string | null; description?: string | null }[]
     | null
   overviewFacts?: EditorialFact[] | null
+  factsStrip?: EditorialFact[] | null
+  summaryRows?: EditorialFact[] | null
+  actions?: { overviewLabel?: string | null; summaryLabel?: string | null } | null
+  datesMode?: 'list' | 'notice' | null
+  companion?: {
+    columns?: { label?: string | null }[] | null
+    rows?: { cells?: { text?: string | null }[] | null }[] | null
+    links?: { label?: string | null; href?: string | null; description?: string | null }[] | null
+  } | null
   venue?: { paragraphs?: { text?: string | null }[] | null; facts?: EditorialFact[] | null } | null
   practicalCards?: { heading?: string | null; body?: string | null }[] | null
   packageItems?: { text?: string | null }[] | null

@@ -1,0 +1,57 @@
+// Temporary local content QA route. Remove before committing the delivery.
+import { notFound } from 'next/navigation'
+import { getPayloadClient } from '@/lib/payload'
+import { getPublishedEventBySlug } from '@/lib/queries'
+import { resolveTripDetail } from '@/lib/trip-detail'
+import { defaultTripLayout } from '@/lib/trip-layout'
+import { tripCommercialText } from '@/lib/trip-summary'
+import { MarketingShell } from '@/components/marketing/MarketingShell'
+import { RenderBlocks } from '@/components/blocks/RenderBlocks'
+import standalone from '../../../../../scripts/data-import/trip-editorial/manifests/standalone.json'
+import espana from '../../../../../scripts/data-import/trip-editorial/manifests/espana.json'
+import rockroad from '../../../../../scripts/data-import/trip-editorial/manifests/rockroad.json'
+
+export const dynamic = 'force-dynamic'
+
+export default async function EditorialQaPage({ params }: { params: Promise<{ id: string }> }) {
+  if (process.env.NODE_ENV === 'production') notFound()
+  const { id } = await params
+  if (!/^\d+$/.test(id)) notFound()
+  const manifest = [...standalone, ...espana, ...rockroad].find(item => item.target.eventDateId === Number(id))
+  if (!manifest) notFound()
+  const payload = await getPayloadClient()
+  const selected = await payload.findByID({ collection: 'event-dates', id: Number(id), depth: 0 })
+  const parentId = typeof selected.event === 'object' ? selected.event.id : selected.event
+  if (parentId !== manifest.target.eventId) notFound()
+  const event = await getPublishedEventBySlug(manifest.target.eventSlug)
+  if (!event || event.id !== parentId) notFound()
+  const { docs } = await payload.find({
+    collection: 'event-dates',
+    where: { and: [{ event: { equals: parentId } }, { active: { equals: true } }] },
+    depth: 2,
+    limit: 1000,
+    sort: 'dateFrom',
+  })
+  const dates = docs.map(date => ({ ...date, remainingSeats: Math.max(0, date.capacity - (date.bookedSeats ?? 0)) }))
+  const trip = resolveTripDetail(event, dates, selected.id, new Date(selected.dateFrom))
+  if (trip.selectedDate?.id !== selected.id) notFound()
+  const data = {
+    selectedId: trip.selectedDate.id,
+    expectedText: manifest.expectedText.map(text => tripCommercialText(trip, text)),
+    sectionHeadings: (trip.editorial?.sections ?? []).filter(section => section.visibility !== 'hide').map(section => ({
+      key: section.key,
+      text: section.headingParts?.length ? section.headingParts.map(part => part.text).join('') : section.heading ?? '',
+      accentTexts: (section.headingParts ?? []).filter(part => part.accent).map(part => part.text),
+    })),
+    heroHeading: trip.editorial?.hero?.titleParts?.map(part => part.text).join('') ?? trip.event.title,
+  }
+  const hasCustomLayout = Boolean(event.layout?.length)
+  return (
+    <MarketingShell>
+      <script id="editorial-qa-data" type="application/json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029') }} />
+      <main style={hasCustomLayout ? undefined : { background: 'var(--theme-color-ink)', color: 'var(--theme-color-text)' }}>
+        <RenderBlocks blocks={hasCustomLayout ? event.layout : defaultTripLayout(trip)} context={{ event, trip }} />
+      </main>
+    </MarketingShell>
+  )
+}
