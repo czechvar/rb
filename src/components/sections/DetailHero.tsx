@@ -92,7 +92,7 @@ export function DetailHero({
       rows={summary?.rows ?? view.facts}
       callout={summary?.callout ?? view.availabilityLabel ?? undefined}
       ctaHref={bookingHref}
-      ctaLabel={bookingLabel}
+      ctaLabel={view.bookingHref ? 'Book Your Spot' : bookingLabel}
     />
   )
 

@@ -216,7 +216,7 @@ export function TripContentBlock(block: Options, context: BlockRenderContext) {
             className={`btn-primary ${styles.overviewAction}`}
             href={trip.bookingHref ?? 'mailto:info@rockbusters.net'}
           >
-            {trip.bookingHref ? 'Book Your Spot' : 'Ask a Question'}
+            {trip.bookingHref ? tripCommercialText(trip, trip.editorial?.booking?.primaryLabel) || 'Book Your Spot' : 'Ask a Question'}
           </a>
         </div>
         {(trip.editorial?.overviewFacts?.length || trip.facts.length > 0) && (

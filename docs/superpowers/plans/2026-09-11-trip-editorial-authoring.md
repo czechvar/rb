@@ -15,7 +15,7 @@ Blank fields inherit. Use **Clear inherited heading/eyebrow/intro** to deliberat
 
 The same editorial group contains daily schedule rows, overview facts, venue paragraphs/facts, practical cards, package items/note, FAQ entries, and guide profile copy. The **Content** subgroup reuses existing trip content fields for occurrence-specific stories, audience cards, learning pillars and comparisons. **Clear content fields** deliberately suppresses inherited source fields in this view; it does not delete the parent record's content.
 
-Hero title parts, description, hashtag and button labels are under **Hero**. The secondary button can target the programme or dates page. Closing button labels/support are under **Booking**. Inquiry behavior still takes precedence when booking is unavailable.
+Hero title parts, description, hashtag and button labels are under **Hero**. The secondary button can target the programme or dates page. Closing button labels/support are under **Booking**; the overview booking action reuses that primary label. The summary keeps its Book Your Spot action. Inquiry behavior still takes precedence when booking is unavailable.
 
 Prominent commercial text uses explicit placeholders in overview fact values/descriptions, comparison column headings, and the closing primary button label: `{price}`, `{weeklyPrice}`, `{durationDays}`, `{capacity}`, `{location}`, `{coaches}`. These resolve from the selected occurrence. For example `Book Now — {price}`. A weekly price requires an actual matching one-week occurrence; otherwise it says Enquire. These placeholders are supported in those fields only, not arbitrary prose/headings.
 

@@ -66,3 +66,7 @@ Follow-up task: https://app.workstreams.ai/teams/S_ZYh417Os/board/AceE0P/tasks/2
 Evidence: `.scratch/kalymnos-editorial-qa/desktop.json`, `matrix.json`, screenshots, `cms-edit-result.json`; local importer receipts in `.scratch/kalymnos-editorial-745/`. Portable reference, manifest, baseline, reversible runner and README are tracked under `scripts/data-import/kalymnos-editorial/`. [Editor guide](2026-09-11-trip-editorial-authoring.md).
 
 No production deployment, remote database write, imagery replacement, canonical seed promotion or bulk enrichment performed. Remaining work after this delivery is human visual/editorial signoff and the explicitly deferred wider-catalogue rollout/branding decisions from the audit.
+
+- Final CTA reconciliation: overview reuses authored closing booking text with live price interpolation; pricing summary retains the reference Book Your Spot label. Thirty relevant tests passed after this final copy adjustment.
+
+Eight remaining full-suite failures were reproduced in the affected subset and traced to unchanged behavior against pre-branch `13287d5`: two strict registry expectations, one paginated location fixture, three missing App Router test contexts and two undated Event fixtures. This is fixed-baseline source comparison plus current reproduction, not a clean-baseline full-suite run. See [integration limitations](2026-09-11-kalymnos-integration-limitations.md).
