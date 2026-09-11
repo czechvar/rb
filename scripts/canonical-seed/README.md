@@ -2,7 +2,9 @@
 
 This is the single content bootstrap for freshly provisioned Rockbusters databases.
 The tracked snapshot includes the reviewed September 11 catalogue and all 26
-trip occurrence editorial overrides, including Kalymnos. No legacy or editorial
+trip occurrence editorial overrides, including Kalymnos. The September 12 refresh
+also includes all 53 local posts (50 published), 14 blog categories, and the Blog
+CMS Page with its selected Rodellar hero and index grid. No legacy or editorial
 import command is needed after `pnpm seed`.
 
 ## Commands
