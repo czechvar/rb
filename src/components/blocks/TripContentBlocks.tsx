@@ -33,7 +33,7 @@ export function TripContentBlock(block: Options, context: BlockRenderContext) {
   const kind = typeof block.section === 'string' ? block.section : 'overview'
   const copy = tripCopy(trip, kind as TripSectionKey, block)
   const { eyebrow, heading, intro } = copy
-  if (copy.hide) return null
+  if (copy.hide && kind !== 'itinerary') return null
   if (kind === 'remaining') {
     const event = trip.event
     return (
@@ -110,6 +110,7 @@ export function TripContentBlock(block: Options, context: BlockRenderContext) {
       intro={comparisonCopy.intro}
     />
   )
+  if (copy.hide) return pairProgramme(null)
   const schedule = trip.editorial?.dailySchedule?.filter(
     (row) => row.time || row.title || row.description,
   )

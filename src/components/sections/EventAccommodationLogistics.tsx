@@ -22,6 +22,7 @@ export function EventAccommodationLogistics({
   accommodation,
   eyebrow,
   heading = 'Everything Sorted',
+  intro,
   transport,
   variant,
   logisticsOverrides,
@@ -31,6 +32,7 @@ export function EventAccommodationLogistics({
   accommodation?: Event['accommodation']
   eyebrow?: string
   heading?: ReactNode
+  intro?: string
   transport?: Event['transport']
 }) {
   const includedOverride = hasContent(logisticsOverrides?.included) ? logisticsOverrides?.included : undefined
@@ -57,6 +59,7 @@ export function EventAccommodationLogistics({
       <div className={styles.inner}>
         {eyebrow && <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p>}
         {heading && <h2>{heading}</h2>}
+        {intro && <p>{intro}</p>}
         <div className={styles.twoCol}>
           {hasAccommodation && (
             <div className={styles.col}>

@@ -3,6 +3,8 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
+import { replacement } from '../trip-editorial/replacement'
+import { editorialMatches } from './editorial-readback'
 import { connect } from '../event-detail/source.mjs'
 const dir = path.dirname(fileURLToPath(import.meta.url))
 const receipts = path.resolve('.scratch/kalymnos-editorial-745')
@@ -98,13 +100,16 @@ try {
   if(!transactionID)throw new Error('transaction unavailable')
   const currentDate=await find('event-dates',745)
   if(!equal(cleanEditorial(currentDate.editorial),cleanEditorial(receipt.after.editorial)))throw new Error('refresh conflict')
-  await payload.update({collection:'event-dates',id:745,data:{editorial:manifest.editorial},depth:0,overrideAccess:true,req:{transactionID},context:{disableRevalidate:true}})
+  const editorialPatch=replacement(cleanEditorial(currentDate.editorial),manifest.editorial)
+  await payload.update({collection:'event-dates',id:745,data:{editorial:editorialPatch},depth:0,overrideAccess:true,req:{transactionID},context:{disableRevalidate:true}})
   const refreshed=await find('event-dates',745)
+  if(!editorialMatches(refreshed.editorial,editorialPatch))throw new Error('refresh editorial readback mismatch')
   const protectedDate=(doc:any)=>Object.fromEntries(Object.entries(doc).filter(([key])=>!['editorial','updatedAt','createdAt'].includes(key)))
   if(!equal(clean(protectedDate(currentDate)),clean(protectedDate(refreshed))))throw new Error('refresh protected fields changed')
   const nextReceipt={...receipt,after:{...receipt.after,editorial:refreshed.editorial},provenance:manifest.provenance,refreshHistory:[...(receipt.refreshHistory??[]),{previousEditorial:receipt.after.editorial,previousProvenance:receipt.provenance}]}
   await fs.writeFile(path.join(receipts,'pending.json'),JSON.stringify(nextReceipt,null,2)+'\n',{flag:'wx'})
   await payload.db.commitTransaction(transactionID);transactionID=null
+  if(!editorialMatches((await find('event-dates',745)).editorial,editorialPatch))throw new Error('committed refresh mismatch')
   await fs.rename(path.join(receipts,'pending.json'),path.join(receipts,'receipt.json'))
   console.log(JSON.stringify({...plan,refreshed:true}));process.exit(0)
  }
@@ -140,9 +145,12 @@ try {
   if(!receipt||!equal(clean(picked(event,receipt.eventKeys)),clean(receipt.after.event))||!equal(cleanEditorial(date.editorial),cleanEditorial(receipt.after.editorial)))throw new Error('rollback conflict')
   for(const item of receipt.related)if((await find(item.collection,item.id)).active!==item.afterActive)throw new Error('rollback related conflict')
   await update('events',8,receipt.before.event)
-  await update('event-dates',745,{editorial:receipt.before.editorial})
+  const editorialPatch=replacement(cleanEditorial(date.editorial),cleanEditorial(receipt.before.editorial))
+  await update('event-dates',745,{editorial:editorialPatch})
   for(const item of receipt.related)await update(item.collection,item.id,{active:item.beforeActive})
+  if(!editorialMatches((await find('event-dates',745)).editorial,editorialPatch))throw new Error('rollback editorial readback mismatch')
   await payload.db.commitTransaction(transactionID);transactionID=null
+  if(!editorialMatches((await find('event-dates',745)).editorial,editorialPatch))throw new Error('committed rollback mismatch')
   await fs.rename(path.join(receipts,'receipt.json'),path.join(receipts,`rolled-back-${Date.now()}.json`))
   console.log(JSON.stringify({rolledBack:true,eventDateId:745}));process.exit(0)
  }
@@ -150,15 +158,18 @@ try {
  const eventKeys=Object.keys(patch)
  const before={event:picked(event,eventKeys),editorial:date.editorial??null}
  await update('events',8,patch)
- await update('event-dates',745,{editorial:manifest.editorial})
+ const editorialPatch=replacement(cleanEditorial(date.editorial),manifest.editorial)
+ await update('event-dates',745,{editorial:editorialPatch})
  for(const item of relatedChanges)await update(item.collection,item.id,{active:item.afterActive})
  const updatedEvent=await find('events',8),updatedDate=await find('event-dates',745)
+ if(!editorialMatches(updatedDate.editorial,editorialPatch))throw new Error('apply editorial readback mismatch')
  const strip=(doc:any,omit:string[])=>Object.fromEntries(Object.entries(doc).filter(([k])=>!omit.includes(k)&&!['createdAt','updatedAt'].includes(k)))
  if(!equal(clean(strip(date,['editorial'])),clean(strip(updatedDate,['editorial'])))||!equal(clean(strip(event,eventKeys)),clean(strip(updatedEvent,eventKeys))))throw new Error('protected fields changed')
  const result={version:1,marker:manifest.marker,eventKeys,before,after:{event:picked(updatedEvent,eventKeys),editorial:updatedDate.editorial},related:relatedChanges,skippedSubsequentEdits:skipped,provenance:manifest.provenance}
  await fs.mkdir(receipts,{recursive:true})
  await fs.writeFile(path.join(receipts,'pending.json'),JSON.stringify(result,null,2)+'\n',{flag:'wx'})
  await payload.db.commitTransaction(transactionID);transactionID=null
+ if(!editorialMatches((await find('event-dates',745)).editorial,editorialPatch))throw new Error('committed apply mismatch')
  await fs.rename(path.join(receipts,'pending.json'),path.join(receipts,'receipt.json'))
  console.log(JSON.stringify({applied:true,eventDateId:745,eventRestoreFields:eventKeys.length,relatedPreviewRecords:relatedChanges.length,skippedSubsequentEdits:skipped.length,protectedFieldsUnchanged:true}))
 } catch {

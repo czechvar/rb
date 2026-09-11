@@ -188,7 +188,7 @@
 
 .actions a { min-height: 44px; justify-content: center; }
 
-.editorial .title span { display: block; }
+.editorial .title .legacyTitleAccent { display: block; }
 .meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--theme-space-4) var(--theme-space-5); align-items: center; }
 .meta p { margin: 0; }
 .meta strong { color: var(--theme-color-paper); }

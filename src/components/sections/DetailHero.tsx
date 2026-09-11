@@ -73,7 +73,9 @@ export function DetailHero({
   ) : variant === 'editorial' && titleBreak >= 0 && event.title.slice(titleBreak + 1).trim() ? (
     <>
       {event.title.slice(0, titleBreak + 1)}
-      <span className={heroStyles.heroAccentWord}>{event.title.slice(titleBreak + 1)}</span>
+      <span className={`${heroStyles.heroAccentWord} ${styles.legacyTitleAccent}`}>
+        {event.title.slice(titleBreak + 1)}
+      </span>
     </>
   ) : (
     event.title

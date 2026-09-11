@@ -64,6 +64,7 @@ export function TripLogisticsBlock(
       }
       eyebrow={copy.eyebrow}
       heading={copy.heading}
+      intro={copy.intro}
       transport={transport}
     />
   )

@@ -94,8 +94,7 @@ export function TripProgrammeComparison({
       </div>
     )
   if (
-    !comparison?.heading ||
-    !comparison.leftHeading ||
+    !comparison?.leftHeading ||
     !comparison.rightHeading ||
     !comparison.rows?.length
   )
@@ -111,9 +110,9 @@ export function TripProgrammeComparison({
           lead={intro ?? comparison.intro ?? undefined}
           align="left"
         />
-        <div className={styles.scroll} role="region" aria-label={comparison.heading} tabIndex={0}>
+        <div className={styles.scroll} role="region" aria-label={comparison.heading || 'Programme comparison'} tabIndex={0}>
           <table>
-            <caption className={styles.caption}>{comparison.heading}</caption>
+            <caption className={styles.caption}>{comparison.heading || 'Programme comparison'}</caption>
             <thead>
               <tr>
                 <th scope="col">Feature</th>
