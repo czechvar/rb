@@ -1,0 +1,20 @@
+import fs from 'node:fs/promises'
+const dir = new URL('./', import.meta.url)
+const source = JSON.parse(await fs.readFile(new URL('reference.json',dir),'utf8'))
+const r = JSON.parse(JSON.stringify(source).replaceAll('5–15','up to 8'))
+const food = 'Food arrangements and any included meals are confirmed before departure.'
+const paragraph = text => ({type:'paragraph',version:1,format:'',indent:0,direction:null,children:[{type:'text',text,version:1,format:0,detail:0,mode:'normal',style:''}],textFormat:0,textStyle:''})
+const rich = text => ({root:{type:'root',version:1,format:'',indent:0,direction:null,children:(Array.isArray(text)?text:[text]).map(paragraph)}})
+const content = {title:'Sport Climbing Course: Kalymnos, Greece',shortDescription:r.hero.description,content:null,additionalInfo:[],audienceCards:r.audienceCards,whatYouLearn:{},comparison:{heading:'Which Format?',intro:r.sections.find(x=>x.key==='comparison').intro,leftHeading:'1 Week {weeklyPrice}',rightHeading:'2 Weeks {price}',rows:r.comparison.rows},tripDetail:{locationDescriptor:'Greek Limestone',gradeRange:'5+–7c',leadRequirement:'Lead 5+ outdoor / 6a indoor',minimumParticipants:3,priceCaption:'per person · coaching & guiding included',travelNote:r.summary.travelNote,hashtag:r.hero.hashtag,sections:[{kind:'overview',heading:'Where Tufas Teach Patience',body:rich(r.overview)}]}}
+for (const [i,p] of r.pillars.entries()) {content.whatYouLearn[`box${i+1}Heading`]=p.heading;content.whatYouLearn[`box${i+1}Bullets`]=p.bullets}
+const editorial={clearContentFields:['additionalInfo','content'],sections:r.sections,hero:{titleParts:r.hero.titleParts,description:r.hero.description,hashtag:r.hero.hashtag,primaryLabel:r.hero.primaryLabel,secondaryLabel:r.hero.secondaryLabel,secondaryTarget:'programme'},booking:{primaryLabel:'Book Now — {price}',support:r.closingSupport},dailySchedule:r.dailySchedule,overviewFacts:r.overviewFacts,venue:r.venue,practicalCards:r.practicalCards,packageItems:r.packageItems,packageNote:r.packageNote.replace(/Food is flexible.*$/,food),content,faqs:r.faqs.map(x=>({...x,answer:x.question==='Is food included?'?food:x.answer})),previewReviews:r.previewReviews.map(x=>({name:x.reviewerName,quote:x.quote,context:"Design preview — unverified source testimonial"})),coachProfiles:r.coaches.map(x=>({guide:x.name==='Sergi Medina'?28:30,role:x.role,bio:x.bio}))}
+delete editorial.sections.find(section=>section.key==='overview').intro
+for (const fact of editorial.overviewFacts) {
+ const values={Duration:'{durationDays} Days',Location:'{location}','Group Size':'Maximum {capacity}',Coaches:'{coaches}',Price:'{price}'}
+ if(values[fact.label])fact.value=values[fact.label]
+ if(fact.label==='Duration')fact.description='On Kalymnos'
+ if(fact.label==='Price')fact.description='Or {weeklyPrice} per week'
+}
+const manifest={version:1,classification:'temporary local design comparison content',marker:'kalymnos-editorial-745',target:source.target,sourceFile:source.sourceFile,editorial,provenance:{unchangedReference:'reference.json',adaptations:[{reason:'Selected occurrence capacity is 8; reference says 5–15.',from:'5–15',to:'Maximum {capacity} in fact tile; up to 8 in scoped audience/practical prose.'},{reason:'Design FAQ meal inclusion conflicts with package wording; no verified inclusion source.',from:source.faqs.find(x=>x.question==='Is food included?').answer,to:food},{reason:'Authored commercial facts must follow the selected occurrence.',change:'Duration, location, capacity, coaches, price, weekly price and closing/comparison price labels use explicit safe interpolation tokens.'},{reason:'Testimonials copied from design are not verified reviews.',change:'Visible [Design preview] author prefix; local preview array only.'}],commercialBoundary:'No price, date, capacity, guide, location, imagery or booking relationship is changed.',sourceSecondaryHref:r.hero.sourceSecondaryHref,closingSupport:r.closingSupport,closingPrimaryLabel:r.closingPrimaryLabel}}
+await fs.writeFile(new URL('manifest.json',dir),JSON.stringify(manifest,null,2)+'\n')
+console.log(JSON.stringify({manifestBuilt:true,targetDate:745,sectionCount:editorial.sections.length}))

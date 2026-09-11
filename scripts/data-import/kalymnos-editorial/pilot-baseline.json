@@ -1,0 +1,2393 @@
+{
+  "classification": "historical local pilot restoration preconditions; never bulk seed",
+  "before": {
+    "events": [
+      {
+        "title": "Sport Climbing Camp",
+        "short_description": "For the Rockbusters team climbing is not just a sport, it’s what we eat, drink, breathe and sleep - it’s what we live for. Our Sport Climbing Camp gives you the opportunity to get a taste of what we mean and become part of our climbing crew. Come and join us for a week or two in one of the best European crags. You’ll get to spend all day on the face, taking on as many climbs as your fingers can handle. Then, it’s all back to camp to kick back and relax as hard as you want to - living the climbing life we love.",
+        "content": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "During the Sport Climbing Camp we’ll provide one-on-one coaching, video and photo analysis to help improve your performance. This is really useful for climbers who already have some outdoor experience and who want to hone their technique and to get deeper into the climbing culture.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "During your stay you’ll get:",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "On-going performance coaching so that you’re always building on your technique",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 3,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 3
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Time on slab and vertical ground to improve footwork for better climbing",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 3,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 3
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Work on balance so that you climb in a more efficient way (leading F5 or more)",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 3,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 3
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Overhang work to build strength and confidence so you can take on tougher climbing challenges",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 3,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 3
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Tuition for difficult routes of F6 or more for more experienced climbers looking to move up the grades",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 3,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 3
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Red point and on-sight attempts so you can tackle new climbs more easily",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 3,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 3
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "The focus of our Sport Climbing Camp is on quality climbing, so it’s aimed at climbers with some experience. Beginners might be more suited to our Novice course, which is equally intense but in a different way. We will push you to achieve more during your stay,arming you with all the necessary techniques and safety measures before you try anything new.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "You’ll be shown how to use a guidebook so you can read the topo and figure out new climbing areas for yourself. We’ll develop your calls and communication so you can stay in touch with other climbers on the face, and communicate with those at the base. You’ll learn about cleaning anchors and safe belaying for top rope and leading. Basically, everything we know we’ll try and pass on to you. And that’s a heck of a lot.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Our Sport Climbing Camp gives you a little glimpse of what it’s like to lead the climbing life. This is who we are and what we do, and we’d love the chance to show just why we do it every day. . ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "What's Included:",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 2,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 2
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Guiding / Coaching",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 1,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 1
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Accommodation ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 1,
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "(campsites, refuges, ...)",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 1
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Transport",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 1,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 1
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Safety equipment ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 1,
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "(quick draws, ropes, harness, helmet, ... NO CLIMBING SHOES)",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 1
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "(your travel and climbing insurance, flight tickets and food is not included in the price)",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Optional: common dinners 10€",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "What you need:",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 2,
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "Sleeping bag",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 1,
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": " (possibility camp – tent)",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 2
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": " ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "! It may be possible to choose your preferred dates.  Please contact us for more details !",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 3,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "equipment_intro": null,
+        "what_you_learn_intro": null,
+        "what_you_learn_box1_heading": null,
+        "what_you_learn_box2_heading": null,
+        "what_you_learn_box3_heading": null,
+        "comparison_heading": null,
+        "comparison_intro": null,
+        "comparison_left_heading": null,
+        "comparison_right_heading": null,
+        "accommodation_description": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "tag": "ul",
+                "type": "list",
+                "start": 1,
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "type": "listitem",
+                    "value": 1,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "Shared accommodation in local climbing hostels, cottages, campsites, or places run by local climbers",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null
+                  },
+                  {
+                    "type": "listitem",
+                    "value": 2,
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "children": [
+                      {
+                        "mode": "normal",
+                        "text": "For accommodation of higher standards please make a personal inquiry through email/WhatsApp",
+                        "type": "text",
+                        "style": "",
+                        "detail": 0,
+                        "format": 0,
+                        "version": 1
+                      }
+                    ],
+                    "direction": null
+                  }
+                ],
+                "listType": "bullet",
+                "direction": null
+              }
+            ],
+            "direction": null
+          }
+        },
+        "accommodation_cuisine_highlights": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Upon arrival, before you get to the place of your final destination you will need to stop in the store to shop for breakfast and lunch food for the week. There is an equipped kitchen with a refrigerator in the place and nearby shops to replenish supplies.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "There are plenty of restaurants and bars to have dinner. Communal dinners can be organized if required.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "More info will be provided after booking/inquiring!",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "transport_description": null,
+        "coach_framing_paragraph": null,
+        "trip_detail_location_descriptor": null,
+        "trip_detail_grade_range": null,
+        "trip_detail_lead_requirement": null,
+        "trip_detail_minimum_participants": null,
+        "trip_detail_price_caption": null,
+        "trip_detail_travel_note": null,
+        "trip_detail_hashtag": null
+      }
+    ],
+    "event_trip_sections": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "9ed1a06f5808c564db2be948",
+        "kind": "notes",
+        "heading": "Need to know",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "We welcome intermediate to expert climbers with issues to lead. There is not much previous experience required although we recommend you to climb at least indoor regularly.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "On the end for this week you will be fed up by climbing but hungry for more in the same time. Of course you can expect cool progress and confidence boost.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "This is a climbing trip and our number one goal is to maximize your time spent on the rock.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "Worries free climbing vacation. Book your flights and leave rest to us. We sort out all logistics for you.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "dcabd084b7f9d846bf476685",
+        "kind": "equipment",
+        "heading": "What to bring",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "reasonably tight climbing shoes / harness / helmet / belay device / 2 screw gate carabiners / 60cm sling",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "We provide most of the gear, but you will need to bring your own climbing shoes and harness. We have belay devices, slings, and helmets, but you might prefer to bring your own you used to. We strongly suggest bringing a down jacket, a hat, a rain jacket, a pair of comfortable approach shoes, a headlamp, a sleeping bag, and a backpack big enough for carrying lunch and gear to the crag. ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      }
+    ],
+    "events_additional_info": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b15",
+        "heading": "Need to know",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "We welcome intermediate to expert climbers with issues to lead. There is not much previous experience required although we recommend you to climb at least indoor regularly.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "On the end for this week you will be fed up by climbing but hungry for more in the same time. Of course you can expect cool progress and confidence boost.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "This is a climbing trip and our number one goal is to maximize your time spent on the rock.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "mode": "normal",
+                    "text": "Worries free climbing vacation. Book your flights and leave rest to us. We sort out all logistics for you.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b16",
+        "heading": "What to bring",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "reasonably tight climbing shoes / harness / helmet / belay device / 2 screw gate carabiners / 60cm sling",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "We provide most of the gear, but you will need to bring your own climbing shoes and harness. We have belay devices, slings, and helmets, but you might prefer to bring your own you used to. We strongly suggest bringing a down jacket, a hat, a rain jacket, a pair of comfortable approach shoes, a headlamp, a sleeping bag, and a backpack big enough for carrying lunch and gear to the crag. ",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      }
+    ],
+    "events_audience_cards": [],
+    "events_what_you_learn_box1_bullets": [],
+    "events_what_you_learn_box2_bullets": [],
+    "events_what_you_learn_box3_bullets": [],
+    "events_accommodation_included": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b17",
+        "text": "Guiding (local knowledge)"
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b18",
+        "text": "Individualized coaching"
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b19",
+        "text": "Climbing safety equipment & gear"
+      },
+      {
+        "_order": 4,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b1a",
+        "text": "Shared accommodation"
+      }
+    ],
+    "events_accommodation_not_included": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b1b",
+        "text": "Transportation, local transportation"
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b1c",
+        "text": "Accommodation of any higher standards"
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b1d",
+        "text": "Climbing and travel insurance"
+      },
+      {
+        "_order": 4,
+        "_parent_id": 8,
+        "id": "6a97ff4b821aadc3945a2b1e",
+        "text": "Food & drinks"
+      }
+    ],
+    "events_comparison_rows": [],
+    "events_coach_team_bullets": [],
+    "faqs": [],
+    "reviews": []
+  },
+  "after": {
+    "events": [
+      {
+        "title": "Sport Climbing Course: Kalymnos, Greece",
+        "short_description": "Two weeks of intensive coaching on some of Europe's best limestone — tufas, pockets, and enough quality routes in your grade to actually feel the improvement by the time you fly home.",
+        "content": null,
+        "equipment_intro": null,
+        "what_you_learn_intro": null,
+        "what_you_learn_box1_heading": "Technique",
+        "what_you_learn_box2_heading": "Mental Game",
+        "what_you_learn_box3_heading": "Tactics",
+        "comparison_heading": "Which Format?",
+        "comparison_intro": "One week gets you the Kalymnos initiation. Two weeks means real progression — enough time to actually feel the improvement stick.",
+        "comparison_left_heading": "1 Week — €1,090",
+        "comparison_right_heading": "2 Weeks — €1,890",
+        "accommodation_description": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Shared accommodation in local climbing hostels, cottages, or places run by local climbers. Want something more comfortable? Send us a personal inquiry by email or WhatsApp.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "accommodation_cuisine_highlights": null,
+        "transport_description": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Fly into Kos, then a short ferry across to Kalymnos. Local transport on the island is organised once you land.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "coach_framing_paragraph": "World-Class Coaches",
+        "trip_detail_location_descriptor": "Greek Limestone",
+        "trip_detail_grade_range": "5+–7c",
+        "trip_detail_lead_requirement": "Lead 5+ outdoor / 6a indoor",
+        "trip_detail_minimum_participants": "3",
+        "trip_detail_price_caption": "per person · coaching & guiding included",
+        "trip_detail_travel_note": "Fly into Kos — we handle the rest",
+        "trip_detail_hashtag": "#TufasBeforeTzatziki"
+      }
+    ],
+    "event_trip_sections": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-32",
+        "kind": "overview",
+        "heading": "Where Tufas Teach Patience",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Kalymnos is basically what happens when a Greek island decides to be made entirely of climbable limestone — steep walls, hanging tufas, and stalactite features that turn every route into a three-dimensional puzzle.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Two weeks of daily coaching from Sergi and Miha, covering everything from proper belaying and clipping tactics to redpoint mindset and overhang technique — whatever's actually holding your climbing back.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Small enough group ratios (max 7:1) that you're never just another face in the crowd, big enough energy that the evenings are just as memorable as the days.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "parity8-33",
+        "kind": "itinerary",
+        "heading": "A Typical Day",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "08:30 — Morning Briefing Crag plan, conditions check, coffee",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "09:30 — Guided Climbing Block Movement & technique coaching on selected lines",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "13:00 — Crag Lunch & Reset Packed lunch, rest, tactics chat with your coach",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "14:30 — Afternoon Session Project burns or mileage — your call",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "18:30 — Pack Down & Return Back to base, gear sorted for tomorrow",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "20:00 — Dinner & Debrief Greek food, cold drinks, and tall tales from the day",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "parity8-34",
+        "kind": "equipment",
+        "heading": "Gear",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 4,
+        "_parent_id": 8,
+        "id": "parity8-35",
+        "kind": "notes",
+        "heading": "Group Size",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "5–8 participants, max 7:1 coach ratio. Minimum 3 to run the course — otherwise we offer an equivalent alternative or a full refund.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      }
+    ],
+    "events_additional_info": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-36",
+        "heading": "Tufas, Pockets & Pure Grit",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "No stock photos, no staged sends — just climbers earning it on Greek limestone.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "parity8-37",
+        "heading": "Kalymnos, Greece",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "A small Dodecanese island that quietly became one of Europe's best sport climbing destinations — steep grey limestone dripping with tufas and stalactites, set right above a genuinely turquoise Aegean.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Routes here reward technical, three-dimensional movement over raw power, with a huge spread of grades packed into a small area — ideal for a course built around real, measurable progression.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Nearest Airport: Kos (ferry transfer)",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Rock Type: Limestone",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Climate in October: 20–27°C",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Style: Steep tufas & technical pockets",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "parity8-38",
+        "heading": "Ready to Climb Better, Harder, More?",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Spaces fill fast, and we only run this course with a minimum of 3 participants. Secure your spot now — or drop us a line first if you've got questions.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 4,
+        "_parent_id": 8,
+        "id": "parity8-39",
+        "heading": "This Course Travels",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Sport Climbing Course runs year-round across several destinations. This page covers Kalymnos in autumn — here's everywhere else it's happening.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 5,
+        "_parent_id": 8,
+        "id": "parity8-40",
+        "heading": "Built for the Gym-to-Crag Gap",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Three Skills Worth the Trip",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "We Sorted the Boring Bits",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Full Package",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "#TufasBeforeTzatziki",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      },
+      {
+        "_order": 6,
+        "_parent_id": 8,
+        "id": "parity8-overview-facts",
+        "heading": "About This Course — reference facts",
+        "body": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Duration 14 Days 2 weeks on Kalymnos",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Location Kalymnos Dodecanese, Greece",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Grade Range 5+ → 7c Something for every level",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Group Size 5–8 Max 7:1 coach ratio",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Coaches Sergi & Miha 25 & 14 years climbing",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              },
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Price €1,890 Or €1,090 per week",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        }
+      }
+    ],
+    "events_audience_cards": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-1",
+        "heading": "The Gym-to-Crag Climber",
+        "body": "You're comfortable indoors at 6a, but outdoor leading still feels like a completely different sport. Two weeks of guided mileage fixes that gap fast.",
+        "highlighted": false
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "parity8-2",
+        "heading": "The Plateaued Climber",
+        "body": "Technically fine but stuck at the same grade for way too long. Sometimes it just takes someone watching you climb to see what you can't.",
+        "highlighted": false
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "parity8-3",
+        "heading": "The Solo Traveler Who Wants a Crew",
+        "body": "Courses run 5–8 people. You show up alone, you leave with a climbing family and several new trip plans already half-booked.",
+        "highlighted": false
+      }
+    ],
+    "events_what_you_learn_box1_bullets": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-4",
+        "text": "Choosing & caring for gear that keeps you safe"
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "parity8-5",
+        "text": "Movement skills & efficient footwork"
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "parity8-6",
+        "text": "Perfect balance over your centre of gravity"
+      },
+      {
+        "_order": 4,
+        "_parent_id": 8,
+        "id": "parity8-7",
+        "text": "Overhang tricks: drop knee, flagging, heel & toe hooks"
+      },
+      {
+        "_order": 5,
+        "_parent_id": 8,
+        "id": "parity8-8",
+        "text": "Cleaning anchors — keeping all your gear"
+      }
+    ],
+    "events_what_you_learn_box2_bullets": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-9",
+        "text": "Basic understanding of outdoor risks"
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "parity8-10",
+        "text": "Climbing calls & communication that get your message across"
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "parity8-11",
+        "text": "Redpoint & onsight approach to new climbs"
+      },
+      {
+        "_order": 4,
+        "_parent_id": 8,
+        "id": "parity8-12",
+        "text": "Personalized coaching to break through mental barriers"
+      },
+      {
+        "_order": 5,
+        "_parent_id": 8,
+        "id": "parity8-13",
+        "text": "Video analysis to see what you can't feel"
+      }
+    ],
+    "events_what_you_learn_box3_bullets": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-14",
+        "text": "Belaying & lead belaying, catching falls dynamically"
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "parity8-15",
+        "text": "Setting up top-ropes"
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "parity8-16",
+        "text": "Clipstick timing & pre-clipping the first draw"
+      },
+      {
+        "_order": 4,
+        "_parent_id": 8,
+        "id": "parity8-17",
+        "text": "Tufa & pocket-specific movement reading"
+      },
+      {
+        "_order": 5,
+        "_parent_id": 8,
+        "id": "parity8-18",
+        "text": "Long-term progression beyond the trip"
+      }
+    ],
+    "events_accommodation_included": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-25",
+        "text": "Individualized coaching — technical, mental, and tactical"
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "parity8-26",
+        "text": "Guiding & local knowledge — routes picked for your grade"
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "parity8-27",
+        "text": "Climbing safety equipment — ropes, draws, helmets, slings"
+      },
+      {
+        "_order": 4,
+        "_parent_id": 8,
+        "id": "parity8-28",
+        "text": "Shared accommodation — local climbing hosts"
+      }
+    ],
+    "events_accommodation_not_included": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-29",
+        "text": "transportation, local transport, higher-standard accommodation (available on request), and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars."
+      }
+    ],
+    "events_comparison_rows": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-19",
+        "label": "Climbing days",
+        "left": "6",
+        "right": "12"
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "parity8-20",
+        "label": "Individualized coaching & guiding",
+        "left": "✓",
+        "right": "✓"
+      },
+      {
+        "_order": 3,
+        "_parent_id": 8,
+        "id": "parity8-21",
+        "label": "Video analysis",
+        "left": "✓",
+        "right": "✓"
+      },
+      {
+        "_order": 4,
+        "_parent_id": 8,
+        "id": "parity8-22",
+        "label": "Safety equipment & gear",
+        "left": "✓",
+        "right": "✓"
+      },
+      {
+        "_order": 5,
+        "_parent_id": 8,
+        "id": "parity8-23",
+        "label": "Shared accommodation",
+        "left": "✓",
+        "right": "✓"
+      },
+      {
+        "_order": 6,
+        "_parent_id": 8,
+        "id": "parity8-24",
+        "label": "Time for grades to actually stick",
+        "left": "—",
+        "right": "✓"
+      }
+    ],
+    "events_coach_team_bullets": [
+      {
+        "_order": 1,
+        "_parent_id": 8,
+        "id": "parity8-30",
+        "text": "Sergi Medina — Performance Coach. Born and raised around Barcelona's best crags — Montserrat, Siurana, Margalef — Sergi has been climbing for 25 years and now splits his time between Greece and Spain, leading courses and trips across both."
+      },
+      {
+        "_order": 2,
+        "_parent_id": 8,
+        "id": "parity8-31",
+        "text": "Miha Popovic — Performance & Mental Coach. A late starter who progressed to onsighting 7c within three years, Miha left a career in research writing to become a certified climbing instructor and guide, bringing a genuinely science-minded approach to coaching mental barriers."
+      }
+    ],
+    "faqs": [
+      {
+        "id": 9,
+        "question": "What level do I need to be?",
+        "answer": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Previous outdoor sport climbing experience is highly recommended, at a minimum of indoor leading 6a or outdoor leading 5. This course suits climbers from strong beginners to advanced, and it's open to ages 15 and up.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "event_id": 8,
+        "position": "0",
+        "active": true,
+        "updated_at": "2026-09-11T09:27:00.049Z",
+        "created_at": "2026-09-11T09:27:00.049Z",
+        "program_id": null
+      },
+      {
+        "id": 10,
+        "question": "Do I need my own gear?",
+        "answer": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, and a backpack for crag days).",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "event_id": 8,
+        "position": "1",
+        "active": true,
+        "updated_at": "2026-09-11T09:27:00.049Z",
+        "created_at": "2026-09-11T09:27:00.049Z",
+        "program_id": null
+      },
+      {
+        "id": 11,
+        "question": "Is food included?",
+        "answer": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Breakfast and lunch ingredients are covered — we take you shopping on arrival, and there's an equipped kitchen at the accommodation. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "event_id": 8,
+        "position": "2",
+        "active": true,
+        "updated_at": "2026-09-11T09:27:00.049Z",
+        "created_at": "2026-09-11T09:27:00.049Z",
+        "program_id": null
+      },
+      {
+        "id": 12,
+        "question": "What if fewer than 3 people book?",
+        "answer": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "We need a minimum of 3 participants to run the course. If numbers don't add up, we'll offer an equivalent (or better) alternative trip, or a full refund. No hard feelings.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "event_id": 8,
+        "position": "3",
+        "active": true,
+        "updated_at": "2026-09-11T09:27:00.049Z",
+        "created_at": "2026-09-11T09:27:00.049Z",
+        "program_id": null
+      },
+      {
+        "id": 13,
+        "question": "Can I book just one week?",
+        "answer": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Yes — each week runs individually at €1,090. This page covers the full 2-week option at €1,890; see the schedule above for single-week dates.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "event_id": 8,
+        "position": "4",
+        "active": true,
+        "updated_at": "2026-09-11T09:27:00.049Z",
+        "created_at": "2026-09-11T09:27:00.049Z",
+        "program_id": null
+      },
+      {
+        "id": 14,
+        "question": "Where do I fly in and out of?",
+        "answer": {
+          "root": {
+            "type": "root",
+            "format": "",
+            "indent": 0,
+            "version": 1,
+            "children": [
+              {
+                "type": "paragraph",
+                "format": "",
+                "indent": 0,
+                "version": 1,
+                "children": [
+                  {
+                    "mode": "normal",
+                    "text": "Kos International Airport, followed by a short ferry crossing to Kalymnos.",
+                    "type": "text",
+                    "style": "",
+                    "detail": 0,
+                    "format": 0,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "textStyle": "",
+                "textFormat": 0
+              }
+            ],
+            "direction": null
+          }
+        },
+        "event_id": 8,
+        "position": "5",
+        "active": true,
+        "updated_at": "2026-09-11T09:27:00.049Z",
+        "created_at": "2026-09-11T09:27:00.049Z",
+        "program_id": null
+      }
+    ],
+    "reviews": [
+      {
+        "id": 6,
+        "quote": "I'd been stuck at the same grade for two years. Two weeks with Sergi and I finally understood what my feet were supposed to be doing. Embarrassingly simple fix, huge difference.",
+        "reviewer_name": "[Design preview] Nora K. 6c · Germany",
+        "reviewer_location": null,
+        "result_line": null,
+        "event_id": 8,
+        "position": "0",
+        "active": true,
+        "updated_at": "2026-09-11T09:27:00.049Z",
+        "created_at": "2026-09-11T09:27:00.049Z",
+        "program_id": null
+      },
+      {
+        "id": 7,
+        "quote": "Came alone, left with a group chat that's still active a year later and three trips already planned. The climbing was great. The people were the real upgrade.",
+        "reviewer_name": "[Design preview] Dario M. 6b+ · Italy",
+        "reviewer_location": null,
+        "result_line": null,
+        "event_id": 8,
+        "position": "1",
+        "active": true,
+        "updated_at": "2026-09-11T09:27:00.049Z",
+        "created_at": "2026-09-11T09:27:00.049Z",
+        "program_id": null
+      },
+      {
+        "id": 8,
+        "quote": "Miha's video analysis showed me things about my climbing nobody had ever pointed out before. I onsighted my project route on the second-to-last day.",
+        "reviewer_name": "[Design preview] Priya S. 7a · India",
+        "reviewer_location": null,
+        "result_line": null,
+        "event_id": 8,
+        "position": "2",
+        "active": true,
+        "updated_at": "2026-09-11T09:27:00.049Z",
+        "created_at": "2026-09-11T09:27:00.049Z",
+        "program_id": null
+      }
+    ]
+  }
+}

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { Event } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
 import { SectionIntro } from './SectionIntro'
@@ -12,17 +13,21 @@ export function TripEditorialSection({
   id,
   eyebrow,
   tone,
+  heading,
+  intro,
 }: {
   section: TripSection
   variant?: 'prose' | 'cards' | 'timeline'
   id?: string
   eyebrow?: string
   tone?: 'bright'
+  heading?: ReactNode
+  intro?: string
 }) {
   return (
     <section id={id} className={`${styles.section} ${styles[variant]} ${tone === 'bright' ? styles.bright : ''}`}>
       <div className={styles.inner}>
-        <SectionIntro variant="embedded" eyebrow={eyebrow} title={section.heading} align="left" />
+        <SectionIntro variant="embedded" eyebrow={eyebrow} title={heading ?? section.heading} lead={intro} align="left" />
         <div className={styles.body}><Lexical data={section.body} /></div>
       </div>
     </section>

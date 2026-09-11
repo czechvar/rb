@@ -232,6 +232,7 @@ export async function RenderBlocks({
   context?: BlockRenderContext
 }) {
   if (!blocks?.length) return null
+  if (context.trip) context = { ...context, event: context.trip.event }
   // Deduplicate only source sections actually rendered by this layout.
   if (context.trip && context.event) {
     const kinds = new Set(blocks.filter(block => block.blockType === 'tripContent').map(block => 'section' in block ? block.section : 'overview'))

@@ -1,3 +1,4 @@
+import { tripCopy } from './trip-copy'
 import type { Event } from '@/payload-types'
 import { BookingCTA } from '@/components/sections/BookingCTA'
 import type { BlockRenderContext } from './RenderBlocks'
@@ -10,14 +11,16 @@ export function TripBookingCTABlock(
 ) {
   if (!isEvent(event)) return null
 
+  const copy = tripCopy(trip, 'booking', block)
+  if (copy.hide) return null
   return (
     <BookingCTA
       event={event}
       trip={trip ?? undefined}
       variant={block.variant === 'image' ? 'image' : 'default'}
-      eyebrow={typeof block.eyebrow === 'string' ? block.eyebrow : undefined}
-      heading={typeof block.heading === 'string' ? block.heading : undefined}
-      body={typeof block.body === 'string' ? block.body : undefined}
+      eyebrow={copy.eyebrow}
+      heading={copy.heading}
+      body={copy.intro}
     />
   )
 }

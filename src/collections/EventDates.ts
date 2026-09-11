@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload'
+import { tripEditorialField } from '../fields/tripEditorial'
+import { Events } from './Events'
 import { anyone, isAdmin } from '../access'
 import { revalidateOnChange } from './hooks/revalidate'
 import { TAGS } from '@/lib/cache'
@@ -62,6 +64,7 @@ export const EventDates: CollectionConfig = {
     { name: 'capacity', type: 'number', required: true, min: 0 },
     { name: 'minParticipants', type: 'number', defaultValue: 0, min: 0 },
     { name: 'extraContent', type: 'richText' },
+    tripEditorialField('date', Events.fields),
     {
       name: 'logisticsOverrides',
       type: 'group',

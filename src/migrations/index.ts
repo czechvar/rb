@@ -53,6 +53,8 @@ import * as migration_20260910_151403_event_trip_detail_sections from './2026091
 import * as migration_20260910_155720_trip_layout_variants from './20260910_155720_trip_layout_variants';
 import * as migration_20260910_173426_event_comparison_learning_pillar from './20260910_173426_event_comparison_learning_pillar';
 import * as migration_20260910_181448_trip_block_eyebrows from './20260910_181448_trip_block_eyebrows';
+import * as migration_20260911_120000_trip_summary_content from './20260911_120000_trip_summary_content';
+import * as migration_20260911_135715_trip_editorial_occurrence_overrides from './20260911_135715_trip_editorial_occurrence_overrides';
 
 export const migrations = [
   {
@@ -328,6 +330,16 @@ export const migrations = [
   {
     up: migration_20260910_181448_trip_block_eyebrows.up,
     down: migration_20260910_181448_trip_block_eyebrows.down,
-    name: '20260910_181448_trip_block_eyebrows'
+    name: '20260910_181448_trip_block_eyebrows',
+  },
+  {
+    up: migration_20260911_120000_trip_summary_content.up,
+    down: migration_20260911_120000_trip_summary_content.down,
+    name: '20260911_120000_trip_summary_content',
+  },
+  {
+    up: migration_20260911_135715_trip_editorial_occurrence_overrides.up,
+    down: migration_20260911_135715_trip_editorial_occurrence_overrides.down,
+    name: '20260911_135715_trip_editorial_occurrence_overrides'
   },
 ];

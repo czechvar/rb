@@ -1,0 +1,832 @@
+{
+  "version": 1,
+  "classification": "local design comparison content; not canonical seed",
+  "sourceFile": "rockbusters_sportclimbing_kalymnos.html",
+  "target": {
+    "eventId": 8,
+    "eventSlug": "sport-climbing",
+    "eventDateId": 745,
+    "dateFrom": "2026-09-26",
+    "dateTo": "2026-10-10"
+  },
+  "sections": [
+    {
+      "key": "overview",
+      "eyebrow": "About This Course",
+      "heading": "Where Tufas Teach Patience",
+      "headingParts": [
+        {
+          "text": "Where Tufas Teach Patience",
+          "accent": false,
+          "breakBefore": false
+        }
+      ],
+      "intro": "Kalymnos is basically what happens when a Greek island decides to be made entirely of climbable limestone — steep walls, hanging tufas, and stalactite features that turn every route into a three-dimensional puzzle.\n\nTwo weeks of daily coaching from Sergi and Miha, covering everything from proper belaying and clipping tactics to redpoint mindset and overhang technique — whatever's actually holding your climbing back.\n\nSmall enough group ratios (max 7:1) that you're never just another face in the crowd, big enough energy that the evenings are just as memorable as the days."
+    },
+    {
+      "key": "dates",
+      "eyebrow": "Other Dates",
+      "heading": "This Course Travels",
+      "headingParts": [
+        {
+          "text": "This Course Travels",
+          "accent": false,
+          "breakBefore": false
+        }
+      ],
+      "intro": "Sport Climbing Course runs year-round across several destinations. This page covers Kalymnos in autumn — here's everywhere else it's happening."
+    },
+    {
+      "key": "gallery",
+      "eyebrow": "Real Rock, Real Kalymnos",
+      "heading": "Tufas, Pockets & Pure Grit",
+      "headingParts": [
+        {
+          "text": "Tufas, Pockets",
+          "accent": false,
+          "breakBefore": false
+        },
+        {
+          "text": "& ",
+          "accent": false,
+          "breakBefore": true
+        },
+        {
+          "text": "Pure Grit",
+          "accent": true,
+          "breakBefore": false
+        }
+      ],
+      "intro": "No stock photos, no staged sends — just climbers earning it on Greek limestone."
+    },
+    {
+      "key": "audience",
+      "eyebrow": "Who Should Show Up",
+      "heading": "Built for the Gym-to-Crag Gap",
+      "headingParts": [
+        {
+          "text": "Built for the Gym-to-Crag Gap",
+          "accent": false,
+          "breakBefore": false
+        }
+      ]
+    },
+    {
+      "key": "learning",
+      "eyebrow": "The Coaching",
+      "heading": "Three Skills Worth the Trip",
+      "headingParts": [
+        {
+          "text": "Three ",
+          "accent": false,
+          "breakBefore": false
+        },
+        {
+          "text": "Skills",
+          "accent": true,
+          "breakBefore": false
+        },
+        {
+          "text": " Worth the Trip",
+          "accent": false,
+          "breakBefore": false
+        }
+      ]
+    },
+    {
+      "key": "itinerary",
+      "eyebrow": "Daily Structure",
+      "heading": "A Typical Day",
+      "headingParts": [
+        {
+          "text": "A Typical Day",
+          "accent": false,
+          "breakBefore": false
+        }
+      ],
+      "intro": "Maximum climbing time, minimum logistical hassle. Coaching happens on the rock, not in a classroom."
+    },
+    {
+      "key": "comparison",
+      "eyebrow": "1 Week vs 2 Weeks",
+      "heading": "Which Format?",
+      "headingParts": [
+        {
+          "text": "Which Format?",
+          "accent": false,
+          "breakBefore": false
+        }
+      ],
+      "intro": "One week gets you the Kalymnos initiation. Two weeks means real progression — enough time to actually feel the improvement stick."
+    },
+    {
+      "key": "venue",
+      "eyebrow": "The Venue",
+      "heading": "Kalymnos, Greece",
+      "headingParts": [
+        {
+          "text": "Kalymnos, Greece",
+          "accent": false,
+          "breakBefore": false
+        }
+      ]
+    },
+    {
+      "key": "team",
+      "eyebrow": "Your Coaching Team",
+      "heading": "World-Class Coaches",
+      "headingParts": [
+        {
+          "text": "World-Class Coaches",
+          "accent": false,
+          "breakBefore": false
+        }
+      ]
+    },
+    {
+      "key": "reviews",
+      "eyebrow": "Results",
+      "heading": "What Past Climbers Say",
+      "headingParts": [
+        {
+          "text": "What Past Climbers Say",
+          "accent": false,
+          "breakBefore": false
+        }
+      ]
+    },
+    {
+      "key": "logistics",
+      "eyebrow": "Accommodation & Logistics",
+      "heading": "We Sorted the Boring Bits",
+      "headingParts": [
+        {
+          "text": "We Sorted the Boring Bits",
+          "accent": false,
+          "breakBefore": false
+        }
+      ]
+    },
+    {
+      "key": "package",
+      "eyebrow": "What's Included",
+      "heading": "Full Package",
+      "headingParts": [
+        {
+          "text": "Full Package",
+          "accent": false,
+          "breakBefore": false
+        }
+      ]
+    },
+    {
+      "key": "faq",
+      "eyebrow": "FAQ",
+      "heading": "Common Questions",
+      "headingParts": [
+        {
+          "text": "Common Questions",
+          "accent": false,
+          "breakBefore": false
+        }
+      ]
+    },
+    {
+      "key": "booking",
+      "eyebrow": "Reserve Your Place",
+      "heading": "Ready to Climb Better, Harder, More?",
+      "headingParts": [
+        {
+          "text": "Ready to Climb Better, Harder, More?",
+          "accent": false,
+          "breakBefore": false
+        }
+      ],
+      "intro": "Spaces fill fast, and we only run this course with a minimum of 3 participants. Secure your spot now — or drop us a line first if you've got questions."
+    }
+  ],
+  "hero": {
+    "titleParts": [
+      {
+        "text": "SPORT CLIMBING COURSE",
+        "accent": false,
+        "breakBefore": false
+      },
+      {
+        "text": "KALYMNOS, GREECE",
+        "accent": true,
+        "breakBefore": true
+      }
+    ],
+    "description": "Two weeks of intensive coaching on some of Europe's best limestone — tufas, pockets, and enough quality routes in your grade to actually feel the improvement by the time you fly home.",
+    "hashtag": "#TufasBeforeTzatziki",
+    "primaryLabel": "Reserve Your Place",
+    "secondaryLabel": "Read the Programme",
+    "sourceSecondaryHref": "#overview"
+  },
+  "overview": [
+    "Kalymnos is basically what happens when a Greek island decides to be made entirely of climbable limestone — steep walls, hanging tufas, and stalactite features that turn every route into a three-dimensional puzzle.",
+    "Two weeks of daily coaching from Sergi and Miha, covering everything from proper belaying and clipping tactics to redpoint mindset and overhang technique — whatever's actually holding your climbing back.",
+    "Small enough group ratios (max 7:1) that you're never just another face in the crowd, big enough energy that the evenings are just as memorable as the days."
+  ],
+  "overviewFacts": [
+    {
+      "label": "Duration",
+      "value": "14 Days",
+      "description": "2 weeks on Kalymnos"
+    },
+    {
+      "label": "Location",
+      "value": "Kalymnos",
+      "description": "Dodecanese, Greece"
+    },
+    {
+      "label": "Grade Range",
+      "value": "5+ → 7c",
+      "description": "Something for every level"
+    },
+    {
+      "label": "Group Size",
+      "value": "5–15",
+      "description": "Max 7:1 coach ratio"
+    },
+    {
+      "label": "Coaches",
+      "value": "Sergi & Miha",
+      "description": "25 & 14 years climbing"
+    },
+    {
+      "label": "Price",
+      "value": "€1,890",
+      "description": "Or €1,090 per week"
+    }
+  ],
+  "strip": [
+    {
+      "value": "Kalymnos",
+      "label": "Greek Limestone"
+    },
+    {
+      "value": "26 Sep–10 Oct",
+      "label": "14 Days"
+    },
+    {
+      "value": "5+–7c",
+      "label": "Grade"
+    },
+    {
+      "value": "3",
+      "label": "Min. Participants"
+    },
+    {
+      "value": "€1,890",
+      "label": "Price (2 Weeks)"
+    }
+  ],
+  "summary": {
+    "rows": [
+      {
+        "label": "Dates",
+        "value": "26 Sep – 10 Oct 2026",
+        "description": ""
+      },
+      {
+        "label": "Duration",
+        "value": "14 Days (2 Weeks)",
+        "description": ""
+      },
+      {
+        "label": "Location",
+        "value": "Kalymnos, Greece",
+        "description": ""
+      },
+      {
+        "label": "Level",
+        "value": "Lead 5+ outdoor / 6a indoor",
+        "description": ""
+      },
+      {
+        "label": "Coaches",
+        "value": "Sergi Medina & Miha Popovic",
+        "description": ""
+      }
+    ],
+    "price": "€ 1,890 / 2 weeks Or €1,090 per week individually per person · coaching & guiding included",
+    "travelNote": "Fly into Kos — we handle the rest",
+    "ctaLabel": "Book Your Spot →"
+  },
+  "audienceCards": [
+    {
+      "heading": "The Gym-to-Crag Climber",
+      "body": "You're comfortable indoors at 6a, but outdoor leading still feels like a completely different sport. Two weeks of guided mileage fixes that gap fast."
+    },
+    {
+      "heading": "The Plateaued Climber",
+      "body": "Technically fine but stuck at the same grade for way too long. Sometimes it just takes someone watching you climb to see what you can't."
+    },
+    {
+      "heading": "The Solo Traveler Who Wants a Crew",
+      "body": "Courses run 5–15 people. You show up alone, you leave with a climbing family and several new trip plans already half-booked."
+    }
+  ],
+  "pillars": [
+    {
+      "heading": "Technique",
+      "headingParts": [
+        {
+          "text": "Technique",
+          "accent": false,
+          "breakBefore": false
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Choosing & caring for gear that keeps you safe"
+        },
+        {
+          "text": "Movement skills & efficient footwork"
+        },
+        {
+          "text": "Perfect balance over your centre of gravity"
+        },
+        {
+          "text": "Overhang tricks: drop knee, flagging, heel & toe hooks"
+        },
+        {
+          "text": "Cleaning anchors — keeping all your gear"
+        }
+      ]
+    },
+    {
+      "heading": "Mental Game",
+      "headingParts": [
+        {
+          "text": "Mental Game",
+          "accent": true,
+          "breakBefore": false
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Basic understanding of outdoor risks"
+        },
+        {
+          "text": "Climbing calls & communication that get your message across"
+        },
+        {
+          "text": "Redpoint & onsight approach to new climbs"
+        },
+        {
+          "text": "Personalized coaching to break through mental barriers"
+        },
+        {
+          "text": "Video analysis to see what you can't feel"
+        }
+      ]
+    },
+    {
+      "heading": "Tactics",
+      "headingParts": [
+        {
+          "text": "Tactics",
+          "accent": false,
+          "breakBefore": false
+        }
+      ],
+      "bullets": [
+        {
+          "text": "Belaying & lead belaying, catching falls dynamically"
+        },
+        {
+          "text": "Setting up top-ropes"
+        },
+        {
+          "text": "Clipstick timing & pre-clipping the first draw"
+        },
+        {
+          "text": "Tufa & pocket-specific movement reading"
+        },
+        {
+          "text": "Long-term progression beyond the trip"
+        }
+      ]
+    }
+  ],
+  "dailySchedule": [
+    {
+      "time": "08:30",
+      "title": "Morning Briefing",
+      "description": "Crag plan, conditions check, coffee"
+    },
+    {
+      "time": "09:30",
+      "title": "Guided Climbing Block",
+      "description": "Movement & technique coaching on selected lines"
+    },
+    {
+      "time": "13:00",
+      "title": "Crag Lunch & Reset",
+      "description": "Packed lunch, rest, tactics chat with your coach"
+    },
+    {
+      "time": "14:30",
+      "title": "Afternoon Session",
+      "description": "Project burns or mileage — your call"
+    },
+    {
+      "time": "18:30",
+      "title": "Pack Down & Return",
+      "description": "Back to base, gear sorted for tomorrow"
+    },
+    {
+      "time": "20:00",
+      "title": "Dinner & Debrief",
+      "description": "Greek food, cold drinks, and tall tales from the day"
+    }
+  ],
+  "comparison": {
+    "columns": [
+      "What's Included",
+      "1 Week €1,090",
+      "2 Weeks €1,890"
+    ],
+    "rows": [
+      {
+        "label": "Climbing days",
+        "left": "6",
+        "right": "12"
+      },
+      {
+        "label": "Individualized coaching & guiding",
+        "left": "✓",
+        "right": "✓"
+      },
+      {
+        "label": "Video analysis",
+        "left": "✓",
+        "right": "✓"
+      },
+      {
+        "label": "Safety equipment & gear",
+        "left": "✓",
+        "right": "✓"
+      },
+      {
+        "label": "Shared accommodation",
+        "left": "✓",
+        "right": "✓"
+      },
+      {
+        "label": "Time for grades to actually stick",
+        "left": "—",
+        "right": "✓"
+      }
+    ]
+  },
+  "venue": {
+    "paragraphs": [
+      {
+        "text": "A small Dodecanese island that quietly became one of Europe's best sport climbing destinations — steep grey limestone dripping with tufas and stalactites, set right above a genuinely turquoise Aegean."
+      },
+      {
+        "text": "Routes here reward technical, three-dimensional movement over raw power, with a huge spread of grades packed into a small area — ideal for a course built around real, measurable progression."
+      }
+    ],
+    "facts": [
+      {
+        "label": "Nearest Airport",
+        "value": "Kos (ferry transfer)",
+        "description": ""
+      },
+      {
+        "label": "Rock Type",
+        "value": "Limestone",
+        "description": ""
+      },
+      {
+        "label": "Climate in October",
+        "value": "20–27°C",
+        "description": ""
+      },
+      {
+        "label": "Style",
+        "value": "Steep tufas & technical pockets",
+        "description": ""
+      }
+    ]
+  },
+  "coaches": [
+    {
+      "name": "Sergi Medina",
+      "role": "Performance Coach",
+      "bio": "Born and raised around Barcelona's best crags — Montserrat, Siurana, Margalef — Sergi has been climbing for 25 years and now splits his time between Greece and Spain, leading courses and trips across both."
+    },
+    {
+      "name": "Miha Popovic",
+      "role": "Performance & Mental Coach",
+      "bio": "A late starter who progressed to onsighting 7c within three years, Miha left a career in research writing to become a certified climbing instructor and guide, bringing a genuinely science-minded approach to coaching mental barriers."
+    }
+  ],
+  "previewReviews": [
+    {
+      "quote": "I'd been stuck at the same grade for two years. Two weeks with Sergi and I finally understood what my feet were supposed to be doing. Embarrassingly simple fix, huge difference.",
+      "reviewerName": "[Design preview] Nora K. 6c · Germany"
+    },
+    {
+      "quote": "Came alone, left with a group chat that's still active a year later and three trips already planned. The climbing was great. The people were the real upgrade.",
+      "reviewerName": "[Design preview] Dario M. 6b+ · Italy"
+    },
+    {
+      "quote": "Miha's video analysis showed me things about my climbing nobody had ever pointed out before. I onsighted my project route on the second-to-last day.",
+      "reviewerName": "[Design preview] Priya S. 7a · India"
+    }
+  ],
+  "practicalCards": [
+    {
+      "heading": "Accommodation",
+      "body": "Shared accommodation in local climbing hostels, cottages, or places run by local climbers. Want something more comfortable? Send us a personal inquiry by email or WhatsApp."
+    },
+    {
+      "heading": "Getting There",
+      "body": "Fly into Kos, then a short ferry across to Kalymnos. Local transport on the island is organised once you land."
+    },
+    {
+      "heading": "Gear",
+      "body": "All safety equipment provided — ropes, draws, helmets, slings. Bring your own shoes and harness if you have preferences; we've got spares if you don't."
+    },
+    {
+      "heading": "Group Size",
+      "body": "5–15 participants, max 7:1 coach ratio. Minimum 3 to run the course — otherwise we offer an equivalent alternative or a full refund."
+    }
+  ],
+  "packageItems": [
+    {
+      "text": "Individualized coaching — technical, mental, and tactical"
+    },
+    {
+      "text": "Guiding & local knowledge — routes picked for your grade"
+    },
+    {
+      "text": "Climbing safety equipment — ropes, draws, helmets, slings"
+    },
+    {
+      "text": "Shared accommodation — local climbing hosts"
+    }
+  ],
+  "packageNote": "Not included: transportation, local transport, higher-standard accommodation (available on request), and travel & climbing insurance. Food is flexible — shop and cook, join a communal dinner, or head to one of the many nearby restaurants and bars.",
+  "faqs": [
+    {
+      "question": "What level do I need to be?",
+      "answer": "Previous outdoor sport climbing experience is highly recommended, at a minimum of indoor leading 6a or outdoor leading 5. This course suits climbers from strong beginners to advanced, and it's open to ages 15 and up."
+    },
+    {
+      "question": "Do I need my own gear?",
+      "answer": "Bring climbing shoes and a harness you trust. We provide belay devices, helmets, and slings, plus a full kit list once you book (down jacket, headlamp, sleeping bag, and a backpack for crag days)."
+    },
+    {
+      "question": "Is food included?",
+      "answer": "Breakfast and lunch ingredients are covered — we take you shopping on arrival, and there's an equipped kitchen at the accommodation. Dinner is flexible: communal dinners can be organised, or head to one of the many nearby restaurants and bars."
+    },
+    {
+      "question": "What if fewer than 3 people book?",
+      "answer": "We need a minimum of 3 participants to run the course. If numbers don't add up, we'll offer an equivalent (or better) alternative trip, or a full refund. No hard feelings."
+    },
+    {
+      "question": "Can I book just one week?",
+      "answer": "Yes — each week runs individually at €1,090. This page covers the full 2-week option at €1,890; see the schedule above for single-week dates."
+    },
+    {
+      "question": "Where do I fly in and out of?",
+      "answer": "Kos International Airport, followed by a short ferry crossing to Kalymnos."
+    }
+  ],
+  "closingSupport": "Questions first? Email info@rockbusters.net or catch us on WhatsApp — we reply fast.",
+  "closingPrimaryLabel": "Book Now — €1,890",
+  "scheduleReference": [
+    {
+      "text": "Sep Kalymnos, Greece — Week 1 26 Sep – 3 Oct 2026 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/752"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2026-09-26-752/"
+        }
+      ]
+    },
+    {
+      "text": "Oct Kalymnos, Greece — Week 2 3–10 Oct 2026 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/852"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2026-10-03-852/"
+        }
+      ]
+    },
+    {
+      "text": "2wk Kalymnos, Greece — Both Weeks 26 Sep – 10 Oct 2026 €1,890 You Are Here",
+      "links": []
+    },
+    {
+      "text": "Dec Sella, Spain — Week 1 19–26 Dec 2026 €950 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/820"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2026-12-19-820/"
+        }
+      ]
+    },
+    {
+      "text": "Dec Sella, Spain — Both Weeks 19 Dec 2026 – 2 Jan 2027 €1,690 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/819"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2026-12-19-819/"
+        }
+      ]
+    },
+    {
+      "text": "Jan Sella, Spain — Week 2 26 Dec 2026 – 2 Jan 2027 €950 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/821"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2026-12-26-821/"
+        }
+      ]
+    },
+    {
+      "text": "Jan Leonidio, Greece — Week 1 23–30 Jan 2027 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/864"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-01-23-864/"
+        }
+      ]
+    },
+    {
+      "text": "Jan Leonidio, Greece — Both Weeks 23 Jan – 6 Feb 2027 €1,990 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/812"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-01-23-812/"
+        }
+      ]
+    },
+    {
+      "text": "Feb Leonidio, Greece — Week 2 30 Jan – 6 Feb 2027 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/865"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-01-30-865/"
+        }
+      ]
+    },
+    {
+      "text": "Mar Istria, Croatia — Week 1 20–27 Mar 2027 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/823"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-03-20-823/"
+        }
+      ]
+    },
+    {
+      "text": "Mar Istria, Croatia — Both Weeks 20 Mar – 3 Apr 2027 €1,990 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/822"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-03-20-822/"
+        }
+      ]
+    },
+    {
+      "text": "Apr Istria, Croatia — Week 2 27 Mar – 3 Apr 2027 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/824"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-03-27-824/"
+        }
+      ]
+    },
+    {
+      "text": "Jun Dolomites, Italy — Week 1 19–26 Jun 2027 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/878"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-06-19-878/"
+        }
+      ]
+    },
+    {
+      "text": "Jun Dolomites, Italy — Week 2 26 Jun – 3 Jul 2027 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/879"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-06-26-879/"
+        }
+      ]
+    },
+    {
+      "text": "Jun Dolomites, Italy — Both Weeks 19 Jun – 3 Jul 2027 €1,990 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/880"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-06-19-880/"
+        }
+      ]
+    },
+    {
+      "text": "Jul Dolomites, Italy — Week 1 24–31 Jul 2027 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/881"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-07-24-881/"
+        }
+      ]
+    },
+    {
+      "text": "Jul Dolomites, Italy — Both Weeks 24 Jul – 7 Aug 2027 €1,990 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/882"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-07-24-882/"
+        }
+      ]
+    },
+    {
+      "text": "Aug Dolomites, Italy — Week 2 31 Jul – 7 Aug 2027 €1,090 Add This Date More Info",
+      "links": [
+        {
+          "text": "Add This Date",
+          "href": "https://rockbusters.net/order/new/883"
+        },
+        {
+          "text": "More Info",
+          "href": "https://rockbusters.net/event-date/sport-climbing--2027-07-31-883/"
+        }
+      ]
+    }
+  ]
+}

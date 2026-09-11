@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import styles from './SectionIntro.module.css'
 
 export type SectionIntroVariant = 'default' | 'embedded'
@@ -12,7 +13,7 @@ export function SectionIntro({
 }: {
   id?: string
   eyebrow?: string
-  title: string
+  title: ReactNode
   lead?: string
   align?: 'left' | 'center'
   variant?: SectionIntroVariant
@@ -24,7 +25,7 @@ export function SectionIntro({
     >
       <div className={styles.inner}>
         {eyebrow && <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p>}
-        <h2 className={styles.title}>{title}</h2>
+        {title !== null && title !== undefined && title !== '' && <h2 className={styles.title}>{title}</h2>}
         {lead && <p className={styles.lead}>{lead}</p>}
       </div>
     </section>

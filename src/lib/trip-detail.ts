@@ -1,4 +1,5 @@
 import type { Event, EventDate, Guide, Location } from '@/payload-types'
+import { applyTripEditorial, resolveTripEditorial, type TripEditorial } from './trip-editorial'
 import { isUpcomingEventDate } from './event-date-visibility'
 
 type Sections = NonNullable<NonNullable<Event['tripDetail']>['sections']>
@@ -6,6 +7,7 @@ type RichText = NonNullable<Event['content']>
 
 export interface TripDetailView {
   event: Event
+  editorial?: TripEditorial
   dates: EventDate[]
   selectedDate: EventDate | null
   guides: Guide[]
@@ -145,6 +147,8 @@ export function resolveTripDetail(event: Event, dates: EventDate[], selectedId?:
     .sort((a, b) => Date.parse(a.dateFrom) - Date.parse(b.dateFrom) || a.id - b.id)
   const selectedDate = upcoming.find(date => date.id === selectedId) ??
     upcoming.find(date => !unavailable(date)) ?? upcoming[0] ?? null
+  const editorial = resolveTripEditorial(event.editorial, selectedDate?.editorial)
+  event = applyTripEditorial(event, selectedDate)
   const guides = populated(selectedDate?.guides?.length ? selectedDate.guides : event.coaches)
   const locations = populated(selectedDate?.locations?.length ? selectedDate.locations : event.locations)
   const seats = selectedDate?.remainingSeats
@@ -182,7 +186,7 @@ export function resolveTripDetail(event: Event, dates: EventDate[], selectedId?:
   if (selectedDate?.capacity && selectedDate.capacity > 0) facts.push({ label: 'Group size', value: `Maximum ${selectedDate.capacity}` })
   if (guides.length) facts.push({ label: 'Guides', value: guides.map(guide => guide.name).join(', ') })
   return {
-    event, dates: upcoming, selectedDate, guides, locations, facts, priceLabel, dateLabel, dateSpanLabel,
+    event, editorial, dates: upcoming, selectedDate, guides, locations, facts, priceLabel, dateLabel, dateSpanLabel,
     bookingHref: selectedDate && !soldOut ? `/book/${selectedDate.id}` : null,
     availabilityLabel, accommodation, transport, logisticsOverrides, sections,
     remainingContent: remainingTripContent(event.content, sections),

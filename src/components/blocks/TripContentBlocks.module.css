@@ -26,3 +26,10 @@
 .eyebrow { color: var(--theme-color-primary); font-size: var(--fs-eyebrow); letter-spacing: .14em; text-transform: uppercase; margin-bottom: .75rem; }
 .remainingHeading { font-family: var(--theme-font-display); font-weight: 400; font-size: var(--theme-text-section); margin: 0 0 1.5rem; }
 .overviewAction { margin-top: 2rem; }
+
+.dailySchedule { padding: 0; min-width: 0; }
+.dailySchedule dl { margin: 0; }
+.dailySchedule dl > div { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--theme-space-6); padding-block: 1rem; border-bottom: 1px solid var(--theme-color-border); }
+.dailySchedule dt { color: var(--theme-color-accent); }
+.dailySchedule dd { margin: 0; }
+.dailySchedule p, .profileBio, .facts p { color: var(--theme-color-text-muted); font-size: var(--theme-text-small); line-height: 1.6; }

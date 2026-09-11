@@ -37,3 +37,10 @@ Optional third learning-pillar fields extend the existing learning group; an opt
 - docs/adr/0005-catalogue-event-location-date-ownership.md
 - docs/superpowers/plans/2026-09-10-single-trip-source-content-mining.md
 - scripts/data-import/event-detail/README.md
+
+
+## Authored summary content — 2026-09-11
+
+The user subsequently authorized adapting the Kalymnos reference copy for one Event and matching its hero summary and facts strip. This is an editorial operation, separate from the exact-copy migration above. Optional tripDetail fields own locationDescriptor, gradeRange, leadRequirement, minimumParticipants, priceCaption, travelNote and hashtag. Unpopulated Events retain their existing presentation.
+
+Separate strip and summary projections use these authored fields alongside the selected Event Date. Duration is elapsed calendar days (a two-week stay is 14 days), while date endpoints remain unchanged. Dates, currency, prices, venue and coaches follow the selected occurrence; an alternative weekly price requires a same-start, same-venue, same-currency seven-day occurrence. The minimum participant count is editorial copy, not a booking-capacity rule. Sold-out/inquiry behavior remains authoritative. No design example overrides commercial controls.

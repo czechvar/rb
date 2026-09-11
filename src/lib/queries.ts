@@ -273,7 +273,7 @@ export async function getTripDetailEventDates(eventId: number): Promise<EventDat
       event: true, dateFrom: true, dateTo: true, price: true, currency: true,
       capacity: true, active: true, guides: true, locations: true,
       vat: true, updatedAt: true, createdAt: true,
-      airportFrom: true, airportTo: true, logisticsOverrides: true,
+      airportFrom: true, airportTo: true, logisticsOverrides: true, editorial: true,
       bookedSeats: true, remainingSeats: true,
     },
     populate: {

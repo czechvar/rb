@@ -25,5 +25,5 @@ export function defaultTripLayout(trip: TripDetailView): TripBlock[] {
     { blockType: 'faq', source: 'byEvent', heading: 'Common Questions', eyebrow: 'FAQ', variant: 'singleColumn', limit: 100 },
     ...(trip.remainingContent || trip.remainingAdditionalInfo?.length || trip.event.partner || trip.event.partnerHeadline || trip.event.partnerDescription || trip.event.partnerBenefits?.length || trip.event.demoEnabled ? [content('remaining')] : []),
     { blockType: 'tripBookingCTA', variant: 'image', heading: 'Ready to join?', eyebrow: 'Reserve Your Place' },
-  ]
+  ].map(block => ({ ...block, __defaultCopy: true }))
 }

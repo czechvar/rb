@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import Link from 'next/link'
 import type { EventDate } from '@/payload-types'
 import { DateRowBookButton } from '@/components/trip/DateRowBookButton'
@@ -18,13 +19,15 @@ export function EventDatesList({
   items,
   eyebrow,
   heading = 'Dates & Pricing',
+  intro,
   variant = 'default',
   selectedId,
   eventSlug,
 }: {
   items: EventDate[]
   eyebrow?: string
-  heading?: string
+  heading?: ReactNode
+  intro?: string
   variant?: 'default' | 'rows'
   selectedId?: number
   eventSlug?: string
@@ -33,7 +36,8 @@ export function EventDatesList({
   return (
     <section id="dates" className={`${styles.section} ${variant === 'rows' ? styles.rows : ''}`}>
       {eyebrow && <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p>}
-        <h2>{heading}</h2>
+        {heading && <h2>{heading}</h2>}
+      {intro && <p>{intro}</p>}
       <ul className={styles.grid}>
         {items.map((d) => {
           const days = durationDays(d.dateFrom, d.dateTo)

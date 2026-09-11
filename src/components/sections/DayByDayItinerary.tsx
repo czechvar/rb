@@ -1,15 +1,16 @@
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import type { Event } from '@/payload-types'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import { SectionIntro, type SectionIntroVariant } from './SectionIntro'
 import styles from './DayByDayItinerary.module.css'
 
-export function DayByDayItinerary({ data, headingVariant, eyebrow }: { data?: Event['itinerary']; headingVariant?: SectionIntroVariant; eyebrow?: string }) {
+export function DayByDayItinerary({ data, headingVariant, heading = 'Daily flow', intro, eyebrow }: { data?: Event['itinerary']; headingVariant?: SectionIntroVariant; heading?: ReactNode; intro?: string; eyebrow?: string }) {
   if (!data?.days?.length) return null
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
-        <SectionIntro eyebrow={eyebrow} variant={headingVariant} title="Daily flow" lead={data.intro ?? undefined} />
+        <SectionIntro eyebrow={eyebrow} variant={headingVariant} title={heading} lead={intro ?? data.intro ?? undefined} />
         <ol className={styles.days}>
           {data.days.map((day, i) => {
             const url = mediaUrl(day.image)

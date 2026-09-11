@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import type { Media, Program } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
@@ -11,7 +12,7 @@ export interface LocationBlockProps {
   body?: string | null
   /** Optional Bebas display heading rendered above the eyebrow + prose
    *  (e.g. a destination name like "Kalymnos"). Only rendered when provided. */
-  heading?: string
+  heading?: ReactNode
   /** Short all-caps label rendered above the content (e.g. "The Venue").
    *  Omitted when not provided. */
   eyebrow?: string

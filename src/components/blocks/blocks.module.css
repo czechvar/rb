@@ -263,6 +263,11 @@
   color: var(--theme-color-ink);
 }
 
+.galleryFeatureLead {
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
+}
+
 .locationHero {
   position: relative;
   display: grid;

@@ -2,6 +2,7 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it, vi } from 'vitest'
 import type { Event, EventDate, Guide, Location } from '@/payload-types'
+import { tripSummary } from '@/lib/trip-summary'
 import { resolveTripDetail } from '@/lib/trip-detail'
 import { DetailHero } from '@/components/sections/DetailHero'
 import { EventDatesList } from '@/components/sections/EventDatesList'
@@ -128,5 +129,31 @@ describe('trip booking presentation', () => {
     const withPhoto = { ...event, mainPicture: { id: 'photo-fixture', url: '/original-photo.jpg', alt: 'Original photo', createdAt: '', updatedAt: '' } } as Event
     expect(renderToStaticMarkup(<BookingCTA event={withPhoto} variant="image" />)).toContain('src="/original-photo.jpg"')
     expect(renderToStaticMarkup(<BookingCTA event={withPhoto} />)).not.toContain('<img')
+  })
+})
+
+
+describe('editorial trip summaries', () => {
+  const authored = { ...event, tripDetail: { locationDescriptor: 'Greek Limestone', gradeRange: '5+–7c', leadRequirement: 'Lead 5+ outdoor / 6a indoor', minimumParticipants: 3, travelNote: 'Fly into Kos — we handle the rest' } } as Event
+  const weekly = date(1, { price: 1090, locations: [1] })
+  const fortnight = date(2, { dateTo: '2999-10-26T00:00:00.000Z', price: 1890, locations: [1] })
+  it('separates editorial minimum/grade from capacity and follows the chosen occurrence', () => {
+    const two = tripSummary(resolveTripDetail(authored, [weekly, fortnight], 2))!
+    expect(two.primaryPrice).toBe('€1,890 / 2 weeks')
+    expect(two.secondaryPrice).toBe('Or €1,090 per week individually')
+    expect(two.rows.find(row => row.label === 'Duration')?.value).toBe('14 Days (2 Weeks)')
+    expect(two.strip.map(row => row.label)).toEqual(['Greek Limestone', '14 Days', 'Grade', 'Min. Participants', 'Price (2 Weeks)'])
+    expect(two.strip.find(row => row.label === 'Min. Participants')?.value).toBe('3')
+    const one = tripSummary(resolveTripDetail(authored, [weekly, fortnight], 1))!
+    expect(one.primaryPrice).toBe('€1,090 / 1 week')
+    expect(one.secondaryPrice).toBeUndefined()
+    expect(one.rows.find(row => row.label === 'Duration')?.value).toBe('7 Days (1 Week)')
+  })
+  it('does not borrow a weekly price from another venue or hide sold-out status', () => {
+    const trip = resolveTripDetail(authored, [{ ...weekly, locations: [2] }, { ...fortnight, remainingSeats: 0 }], 2)
+    expect(tripSummary(trip)?.secondaryPrice).toBeUndefined()
+    expect(tripSummary(trip)?.callout).toBe('Sold out')
+    expect(tripSummary(resolveTripDetail(event, [weekly]))).toBeNull()
+    expect(tripSummary(resolveTripDetail(authored, []))).toBeNull()
   })
 })

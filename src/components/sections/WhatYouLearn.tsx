@@ -1,8 +1,9 @@
+import type { ReactNode } from 'react'
 import type { Event } from '@/payload-types'
 import { SectionIntro, type SectionIntroVariant } from './SectionIntro'
 import styles from './WhatYouLearn.module.css'
 
-export function WhatYouLearn({ data, headingVariant, eyebrow, variant }: { data?: Event['whatYouLearn']; headingVariant?: SectionIntroVariant; eyebrow?: string; variant?: 'pillars' }) {
+export function WhatYouLearn({ data, headingVariant, heading = "What you'll learn", intro, eyebrow, variant }: { data?: Event['whatYouLearn']; headingVariant?: SectionIntroVariant; heading?: ReactNode; intro?: string; eyebrow?: string; variant?: 'pillars' }) {
   if (!data) return null
   const boxes = [
     data.box1Heading && {
@@ -28,8 +29,8 @@ export function WhatYouLearn({ data, headingVariant, eyebrow, variant }: { data?
     <section className={styles.section}>
       <div className={styles.inner}>
         <SectionIntro eyebrow={eyebrow} variant={headingVariant}
-          title="What you'll learn"
-          lead={data.intro ?? undefined}
+          title={heading}
+          lead={intro ?? data.intro ?? undefined}
           align="left"
         />
         <div className={`${styles.grid} ${variant === 'pillars' ? styles.pillars : ''}`}>

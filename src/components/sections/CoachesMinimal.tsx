@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import type { Event, Guide } from '@/payload-types'
 import { mediaUrl, mediaAlt } from '@/lib/media'
@@ -9,11 +10,15 @@ function isGuide(x: number | Guide): x is Guide {
 }
 
 export function CoachesMinimal({
+  heading = 'Meet your guides',
+  eyebrow,
   coaches,
   framing,
   teamBullets,
   variant,
 }: {
+  heading?: ReactNode
+  eyebrow?: string
   variant?: 'cards'
   coaches?: Event['coaches']
   framing?: Event['coachFramingParagraph']
@@ -24,7 +29,7 @@ export function CoachesMinimal({
   return (
     <section className={`${styles.section} ${variant === 'cards' ? styles.cards : ''}`}>
       <div className={styles.inner}>
-        <SectionIntro title="Meet your guides" lead={framing ?? undefined} />
+        <SectionIntro title={heading} eyebrow={eyebrow} lead={framing ?? undefined} />
         {resolved.length ? (
           <div className={styles.row}>
             {resolved.map(g => {

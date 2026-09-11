@@ -1,3 +1,4 @@
+import { tripCopy } from './trip-copy'
 import Image from 'next/image'
 import type { Page } from '@/payload-types'
 import { mediaAlt, mediaUrl } from '@/lib/media'
@@ -18,7 +19,10 @@ function galleryImages(block: GalleryBlockProps, context: BlockRenderContext) {
 }
 
 export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderContext }) {
-  const { body, eyebrow, heading, variant } = props
+  const { variant } = props
+  const copy = props.source === 'currentEvent' ? tripCopy(props.context?.trip, 'gallery', props) : { ...props, intro: props.body, hide: false }
+  const { eyebrow, heading, intro: body } = copy
+  if (copy.hide) return null
   const resolved = galleryImages(props, props.context ?? {}).filter((image) => mediaUrl(image))
   if (resolved.length === 0) return null
   // The detail reference presents five photos; retain the complete source gallery.
@@ -27,6 +31,7 @@ export function GalleryBlock(props: GalleryBlockProps & { context?: BlockRenderC
   const isDestinationStrip = variant === 'tiles' && Boolean(props.context?.location)
   const className = [
     styles.gallerySection,
+    variant === 'featureLead' ? styles.galleryFeatureLead : '',
     variant === 'masonry' ? styles.galleryMasonry : '',
     variant === 'tiles' ? styles.galleryTiles : '',
     isDestinationStrip ? styles.galleryDestinationStrip : '',

@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { tripEditorialField } from '../fields/tripEditorial'
 import { anyone, isAdmin } from '../access'
 import { slugField } from '../fields/slug'
 import { seoFields } from '../fields/seo'
@@ -40,6 +41,13 @@ export const Events: CollectionConfig = {
         description: 'Source-preserving sections for reusable trip blocks. Original content and occurrence-specific facts remain on their existing fields.',
       },
       fields: [
+        { name: 'locationDescriptor', type: 'text' },
+        { name: 'gradeRange', type: 'text' },
+        { name: 'leadRequirement', type: 'text' },
+        { name: 'minimumParticipants', type: 'number', min: 1 },
+        { name: 'priceCaption', type: 'text' },
+        { name: 'travelNote', type: 'text' },
+        { name: 'hashtag', type: 'text' },
         {
           name: 'sections',
           type: 'array',
@@ -361,3 +369,5 @@ export const Events: CollectionConfig = {
     seoFields,
   ],
 }
+
+Events.fields.push(tripEditorialField('event', Events.fields))

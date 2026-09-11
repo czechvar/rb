@@ -962,6 +962,13 @@ export interface Event {
    * Source-preserving sections for reusable trip blocks. Original content and occurrence-specific facts remain on their existing fields.
    */
   tripDetail?: {
+    locationDescriptor?: string | null;
+    gradeRange?: string | null;
+    leadRequirement?: string | null;
+    minimumParticipants?: number | null;
+    priceCaption?: string | null;
+    travelNote?: string | null;
+    hashtag?: string | null;
     sections?:
       | {
           kind:
@@ -1747,6 +1754,414 @@ export interface Event {
     title?: string | null;
     keywords?: string | null;
     description?: string | null;
+  };
+  /**
+   * Optional copy overrides without replacing the page layout. Empty values inherit. Event Date copy applies only to that selected occurrence. Prices, capacity, guides and locations remain on their existing fields.
+   */
+  editorial?: {
+    sections?:
+      | {
+          key:
+            | 'overview'
+            | 'dates'
+            | 'gallery'
+            | 'audience'
+            | 'learning'
+            | 'itinerary'
+            | 'comparison'
+            | 'venue'
+            | 'team'
+            | 'reviews'
+            | 'logistics'
+            | 'package'
+            | 'faq'
+            | 'booking';
+          eyebrow?: string | null;
+          heading?: string | null;
+          /**
+           * Consecutive text fragments: spaces are preserved. Accent can apply to part of a word. Break before starts a new line.
+           */
+          headingParts?:
+            | {
+                text: string;
+                accent?: boolean | null;
+                breakBefore?: boolean | null;
+                id?: string | null;
+              }[]
+            | null;
+          intro?: string | null;
+          visibility?: ('inherit' | 'show' | 'hide') | null;
+          clearEyebrow?: boolean | null;
+          clearHeading?: boolean | null;
+          clearIntro?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    hero?: {
+      /**
+       * Consecutive text fragments: spaces are preserved. Accent can apply to part of a word. Break before starts a new line.
+       */
+      titleParts?:
+        | {
+            text: string;
+            accent?: boolean | null;
+            breakBefore?: boolean | null;
+            id?: string | null;
+          }[]
+        | null;
+      description?: string | null;
+      hashtag?: string | null;
+      primaryLabel?: string | null;
+      secondaryLabel?: string | null;
+      secondaryTarget?: ('programme' | 'dates') | null;
+      clearHashtag?: boolean | null;
+    };
+    dailySchedule?:
+      | {
+          time?: string | null;
+          title?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    overviewFacts?:
+      | {
+          label?: string | null;
+          value?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    venue?: {
+      paragraphs?:
+        | {
+            text?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      facts?:
+        | {
+            label?: string | null;
+            value?: string | null;
+            description?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    practicalCards?:
+      | {
+          heading?: string | null;
+          body?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    packageItems?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    packageNote?: string | null;
+    booking?: {
+      primaryLabel?: string | null;
+      secondaryLabel?: string | null;
+      support?: string | null;
+    };
+    faqs?:
+      | {
+          question?: string | null;
+          answer?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Design preview testimonials only. Renderer must visibly identify these as unverified preview content.
+     */
+    previewReviews?:
+      | {
+          name?: string | null;
+          quote?: string | null;
+          context?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    coachProfiles?:
+      | {
+          guide?: (number | null) | Guide;
+          role?: string | null;
+          bio?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Explicitly clear inherited content fields for this view. This takes precedence over their supplied content.
+     */
+    clearContentFields?:
+      | (
+          | 'shortDescription'
+          | 'content'
+          | 'tripDetail'
+          | 'additionalInfo'
+          | 'audienceCards'
+          | 'prerequisites'
+          | 'equipmentIntro'
+          | 'essentialEquipment'
+          | 'whatYouLearn'
+          | 'comparison'
+          | 'itinerary'
+          | 'accommodation'
+          | 'transport'
+          | 'coachFramingParagraph'
+          | 'coachTeamBullets'
+          | 'tripDetail.sections'
+        )[]
+      | null;
+    /**
+     * Optional replacements for existing structured content. Non-empty arrays replace the inherited array; empty values inherit. Use section Hide to suppress inherited content.
+     */
+    content?: {
+      title?: string | null;
+      shortDescription?: string | null;
+      content?: {
+        root: {
+          type: string;
+          children: {
+            type: any;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      } | null;
+      /**
+       * Source-preserving sections for reusable trip blocks. Original content and occurrence-specific facts remain on their existing fields.
+       */
+      tripDetail?: {
+        locationDescriptor?: string | null;
+        gradeRange?: string | null;
+        leadRequirement?: string | null;
+        minimumParticipants?: number | null;
+        priceCaption?: string | null;
+        travelNote?: string | null;
+        hashtag?: string | null;
+        sections?:
+          | {
+              kind:
+                | 'overview'
+                | 'learning'
+                | 'itinerary'
+                | 'requirements'
+                | 'equipment'
+                | 'audience'
+                | 'highlights'
+                | 'notes';
+              heading: string;
+              body: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              id?: string | null;
+            }[]
+          | null;
+      };
+      additionalInfo?:
+        | {
+            heading: string;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+          }[]
+        | null;
+      audienceCards?:
+        | {
+            heading: string;
+            body: string;
+            highlighted?: boolean | null;
+            id?: string | null;
+          }[]
+        | null;
+      prerequisites?:
+        | {
+            text: string;
+            id?: string | null;
+          }[]
+        | null;
+      equipmentIntro?: string | null;
+      essentialEquipment?:
+        | {
+            icon?: string | null;
+            name: string;
+            note?: string | null;
+            mandatory?: boolean | null;
+            id?: string | null;
+          }[]
+        | null;
+      whatYouLearn?: {
+        intro?: string | null;
+        box1Heading?: string | null;
+        box1Bullets?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        box2Heading?: string | null;
+        box2Bullets?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        box3Heading?: string | null;
+        box3Bullets?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      /**
+       * Optional comparison beside the programme. Enter verified source content; empty comparisons are omitted.
+       */
+      comparison?: {
+        heading?: string | null;
+        intro?: string | null;
+        leftHeading?: string | null;
+        rightHeading?: string | null;
+        rows?:
+          | {
+              label: string;
+              left: string;
+              right: string;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      itinerary?: {
+        intro?: string | null;
+        days?:
+          | {
+              dayBadge?: string | null;
+              destinationIcon?: string | null;
+              destinationName: string;
+              metaLine?: string | null;
+              eyebrow?: string | null;
+              heading?: string | null;
+              description?: string | null;
+              highlightTags?:
+                | {
+                    text: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              schedule?:
+                | {
+                    time: string;
+                    activity: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      accommodation?: {
+        description?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        included?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        notIncluded?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        cuisineHighlights?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+      };
+      transport?: {
+        description?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+      };
+      coachFramingParagraph?: string | null;
+      coachTeamBullets?:
+        | {
+            text: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
   };
   updatedAt: string;
   createdAt: string;
@@ -3743,6 +4158,414 @@ export interface EventDate {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Optional copy overrides without replacing the page layout. Empty values inherit. Event Date copy applies only to that selected occurrence. Prices, capacity, guides and locations remain on their existing fields.
+   */
+  editorial?: {
+    sections?:
+      | {
+          key:
+            | 'overview'
+            | 'dates'
+            | 'gallery'
+            | 'audience'
+            | 'learning'
+            | 'itinerary'
+            | 'comparison'
+            | 'venue'
+            | 'team'
+            | 'reviews'
+            | 'logistics'
+            | 'package'
+            | 'faq'
+            | 'booking';
+          eyebrow?: string | null;
+          heading?: string | null;
+          /**
+           * Consecutive text fragments: spaces are preserved. Accent can apply to part of a word. Break before starts a new line.
+           */
+          headingParts?:
+            | {
+                text: string;
+                accent?: boolean | null;
+                breakBefore?: boolean | null;
+                id?: string | null;
+              }[]
+            | null;
+          intro?: string | null;
+          visibility?: ('inherit' | 'show' | 'hide') | null;
+          clearEyebrow?: boolean | null;
+          clearHeading?: boolean | null;
+          clearIntro?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    hero?: {
+      /**
+       * Consecutive text fragments: spaces are preserved. Accent can apply to part of a word. Break before starts a new line.
+       */
+      titleParts?:
+        | {
+            text: string;
+            accent?: boolean | null;
+            breakBefore?: boolean | null;
+            id?: string | null;
+          }[]
+        | null;
+      description?: string | null;
+      hashtag?: string | null;
+      primaryLabel?: string | null;
+      secondaryLabel?: string | null;
+      secondaryTarget?: ('programme' | 'dates') | null;
+      clearHashtag?: boolean | null;
+    };
+    dailySchedule?:
+      | {
+          time?: string | null;
+          title?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    overviewFacts?:
+      | {
+          label?: string | null;
+          value?: string | null;
+          description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    venue?: {
+      paragraphs?:
+        | {
+            text?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+      facts?:
+        | {
+            label?: string | null;
+            value?: string | null;
+            description?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    practicalCards?:
+      | {
+          heading?: string | null;
+          body?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    packageItems?:
+      | {
+          text?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    packageNote?: string | null;
+    booking?: {
+      primaryLabel?: string | null;
+      secondaryLabel?: string | null;
+      support?: string | null;
+    };
+    faqs?:
+      | {
+          question?: string | null;
+          answer?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Design preview testimonials only. Renderer must visibly identify these as unverified preview content.
+     */
+    previewReviews?:
+      | {
+          name?: string | null;
+          quote?: string | null;
+          context?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    coachProfiles?:
+      | {
+          guide?: (number | null) | Guide;
+          role?: string | null;
+          bio?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Explicitly clear inherited content fields for this view. This takes precedence over their supplied content.
+     */
+    clearContentFields?:
+      | (
+          | 'shortDescription'
+          | 'content'
+          | 'tripDetail'
+          | 'additionalInfo'
+          | 'audienceCards'
+          | 'prerequisites'
+          | 'equipmentIntro'
+          | 'essentialEquipment'
+          | 'whatYouLearn'
+          | 'comparison'
+          | 'itinerary'
+          | 'accommodation'
+          | 'transport'
+          | 'coachFramingParagraph'
+          | 'coachTeamBullets'
+          | 'tripDetail.sections'
+        )[]
+      | null;
+    /**
+     * Optional replacements for existing structured content. Non-empty arrays replace the inherited array; empty values inherit. Use section Hide to suppress inherited content.
+     */
+    content?: {
+      title?: string | null;
+      shortDescription?: string | null;
+      content?: {
+        root: {
+          type: string;
+          children: {
+            type: any;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      } | null;
+      /**
+       * Source-preserving sections for reusable trip blocks. Original content and occurrence-specific facts remain on their existing fields.
+       */
+      tripDetail?: {
+        locationDescriptor?: string | null;
+        gradeRange?: string | null;
+        leadRequirement?: string | null;
+        minimumParticipants?: number | null;
+        priceCaption?: string | null;
+        travelNote?: string | null;
+        hashtag?: string | null;
+        sections?:
+          | {
+              kind:
+                | 'overview'
+                | 'learning'
+                | 'itinerary'
+                | 'requirements'
+                | 'equipment'
+                | 'audience'
+                | 'highlights'
+                | 'notes';
+              heading: string;
+              body: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              id?: string | null;
+            }[]
+          | null;
+      };
+      additionalInfo?:
+        | {
+            heading: string;
+            body?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+          }[]
+        | null;
+      audienceCards?:
+        | {
+            heading: string;
+            body: string;
+            highlighted?: boolean | null;
+            id?: string | null;
+          }[]
+        | null;
+      prerequisites?:
+        | {
+            text: string;
+            id?: string | null;
+          }[]
+        | null;
+      equipmentIntro?: string | null;
+      essentialEquipment?:
+        | {
+            icon?: string | null;
+            name: string;
+            note?: string | null;
+            mandatory?: boolean | null;
+            id?: string | null;
+          }[]
+        | null;
+      whatYouLearn?: {
+        intro?: string | null;
+        box1Heading?: string | null;
+        box1Bullets?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        box2Heading?: string | null;
+        box2Bullets?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        box3Heading?: string | null;
+        box3Bullets?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      /**
+       * Optional comparison beside the programme. Enter verified source content; empty comparisons are omitted.
+       */
+      comparison?: {
+        heading?: string | null;
+        intro?: string | null;
+        leftHeading?: string | null;
+        rightHeading?: string | null;
+        rows?:
+          | {
+              label: string;
+              left: string;
+              right: string;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      itinerary?: {
+        intro?: string | null;
+        days?:
+          | {
+              dayBadge?: string | null;
+              destinationIcon?: string | null;
+              destinationName: string;
+              metaLine?: string | null;
+              eyebrow?: string | null;
+              heading?: string | null;
+              description?: string | null;
+              highlightTags?:
+                | {
+                    text: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              schedule?:
+                | {
+                    time: string;
+                    activity: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      accommodation?: {
+        description?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        included?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        notIncluded?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        cuisineHighlights?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+      };
+      transport?: {
+        description?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+      };
+      coachFramingParagraph?: string | null;
+      coachTeamBullets?:
+        | {
+            text: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
   /**
    * Optional date-specific logistics copy when this occurrence differs from the parent event or location defaults.
    */
@@ -6976,6 +7799,13 @@ export interface EventsSelect<T extends boolean = true> {
   tripDetail?:
     | T
     | {
+        locationDescriptor?: T;
+        gradeRange?: T;
+        leadRequirement?: T;
+        minimumParticipants?: T;
+        priceCaption?: T;
+        travelNote?: T;
+        hashtag?: T;
         sections?:
           | T
           | {
@@ -7633,6 +8463,287 @@ export interface EventsSelect<T extends boolean = true> {
         keywords?: T;
         description?: T;
       };
+  editorial?:
+    | T
+    | {
+        sections?:
+          | T
+          | {
+              key?: T;
+              eyebrow?: T;
+              heading?: T;
+              headingParts?:
+                | T
+                | {
+                    text?: T;
+                    accent?: T;
+                    breakBefore?: T;
+                    id?: T;
+                  };
+              intro?: T;
+              visibility?: T;
+              clearEyebrow?: T;
+              clearHeading?: T;
+              clearIntro?: T;
+              id?: T;
+            };
+        hero?:
+          | T
+          | {
+              titleParts?:
+                | T
+                | {
+                    text?: T;
+                    accent?: T;
+                    breakBefore?: T;
+                    id?: T;
+                  };
+              description?: T;
+              hashtag?: T;
+              primaryLabel?: T;
+              secondaryLabel?: T;
+              secondaryTarget?: T;
+              clearHashtag?: T;
+            };
+        dailySchedule?:
+          | T
+          | {
+              time?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        overviewFacts?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              description?: T;
+              id?: T;
+            };
+        venue?:
+          | T
+          | {
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              facts?:
+                | T
+                | {
+                    label?: T;
+                    value?: T;
+                    description?: T;
+                    id?: T;
+                  };
+            };
+        practicalCards?:
+          | T
+          | {
+              heading?: T;
+              body?: T;
+              id?: T;
+            };
+        packageItems?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        packageNote?: T;
+        booking?:
+          | T
+          | {
+              primaryLabel?: T;
+              secondaryLabel?: T;
+              support?: T;
+            };
+        faqs?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              id?: T;
+            };
+        previewReviews?:
+          | T
+          | {
+              name?: T;
+              quote?: T;
+              context?: T;
+              id?: T;
+            };
+        coachProfiles?:
+          | T
+          | {
+              guide?: T;
+              role?: T;
+              bio?: T;
+              id?: T;
+            };
+        clearContentFields?: T;
+        content?:
+          | T
+          | {
+              title?: T;
+              shortDescription?: T;
+              content?: T;
+              tripDetail?:
+                | T
+                | {
+                    locationDescriptor?: T;
+                    gradeRange?: T;
+                    leadRequirement?: T;
+                    minimumParticipants?: T;
+                    priceCaption?: T;
+                    travelNote?: T;
+                    hashtag?: T;
+                    sections?:
+                      | T
+                      | {
+                          kind?: T;
+                          heading?: T;
+                          body?: T;
+                          id?: T;
+                        };
+                  };
+              additionalInfo?:
+                | T
+                | {
+                    heading?: T;
+                    body?: T;
+                    id?: T;
+                  };
+              audienceCards?:
+                | T
+                | {
+                    heading?: T;
+                    body?: T;
+                    highlighted?: T;
+                    id?: T;
+                  };
+              prerequisites?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              equipmentIntro?: T;
+              essentialEquipment?:
+                | T
+                | {
+                    icon?: T;
+                    name?: T;
+                    note?: T;
+                    mandatory?: T;
+                    id?: T;
+                  };
+              whatYouLearn?:
+                | T
+                | {
+                    intro?: T;
+                    box1Heading?: T;
+                    box1Bullets?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    box2Heading?: T;
+                    box2Bullets?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    box3Heading?: T;
+                    box3Bullets?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                  };
+              comparison?:
+                | T
+                | {
+                    heading?: T;
+                    intro?: T;
+                    leftHeading?: T;
+                    rightHeading?: T;
+                    rows?:
+                      | T
+                      | {
+                          label?: T;
+                          left?: T;
+                          right?: T;
+                          id?: T;
+                        };
+                  };
+              itinerary?:
+                | T
+                | {
+                    intro?: T;
+                    days?:
+                      | T
+                      | {
+                          dayBadge?: T;
+                          destinationIcon?: T;
+                          destinationName?: T;
+                          metaLine?: T;
+                          eyebrow?: T;
+                          heading?: T;
+                          description?: T;
+                          highlightTags?:
+                            | T
+                            | {
+                                text?: T;
+                                id?: T;
+                              };
+                          schedule?:
+                            | T
+                            | {
+                                time?: T;
+                                activity?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                  };
+              accommodation?:
+                | T
+                | {
+                    description?: T;
+                    included?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    notIncluded?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    cuisineHighlights?: T;
+                  };
+              transport?:
+                | T
+                | {
+                    description?: T;
+                  };
+              coachFramingParagraph?: T;
+              coachTeamBullets?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -7655,6 +8766,287 @@ export interface EventDatesSelect<T extends boolean = true> {
   capacity?: T;
   minParticipants?: T;
   extraContent?: T;
+  editorial?:
+    | T
+    | {
+        sections?:
+          | T
+          | {
+              key?: T;
+              eyebrow?: T;
+              heading?: T;
+              headingParts?:
+                | T
+                | {
+                    text?: T;
+                    accent?: T;
+                    breakBefore?: T;
+                    id?: T;
+                  };
+              intro?: T;
+              visibility?: T;
+              clearEyebrow?: T;
+              clearHeading?: T;
+              clearIntro?: T;
+              id?: T;
+            };
+        hero?:
+          | T
+          | {
+              titleParts?:
+                | T
+                | {
+                    text?: T;
+                    accent?: T;
+                    breakBefore?: T;
+                    id?: T;
+                  };
+              description?: T;
+              hashtag?: T;
+              primaryLabel?: T;
+              secondaryLabel?: T;
+              secondaryTarget?: T;
+              clearHashtag?: T;
+            };
+        dailySchedule?:
+          | T
+          | {
+              time?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+        overviewFacts?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              description?: T;
+              id?: T;
+            };
+        venue?:
+          | T
+          | {
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              facts?:
+                | T
+                | {
+                    label?: T;
+                    value?: T;
+                    description?: T;
+                    id?: T;
+                  };
+            };
+        practicalCards?:
+          | T
+          | {
+              heading?: T;
+              body?: T;
+              id?: T;
+            };
+        packageItems?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        packageNote?: T;
+        booking?:
+          | T
+          | {
+              primaryLabel?: T;
+              secondaryLabel?: T;
+              support?: T;
+            };
+        faqs?:
+          | T
+          | {
+              question?: T;
+              answer?: T;
+              id?: T;
+            };
+        previewReviews?:
+          | T
+          | {
+              name?: T;
+              quote?: T;
+              context?: T;
+              id?: T;
+            };
+        coachProfiles?:
+          | T
+          | {
+              guide?: T;
+              role?: T;
+              bio?: T;
+              id?: T;
+            };
+        clearContentFields?: T;
+        content?:
+          | T
+          | {
+              title?: T;
+              shortDescription?: T;
+              content?: T;
+              tripDetail?:
+                | T
+                | {
+                    locationDescriptor?: T;
+                    gradeRange?: T;
+                    leadRequirement?: T;
+                    minimumParticipants?: T;
+                    priceCaption?: T;
+                    travelNote?: T;
+                    hashtag?: T;
+                    sections?:
+                      | T
+                      | {
+                          kind?: T;
+                          heading?: T;
+                          body?: T;
+                          id?: T;
+                        };
+                  };
+              additionalInfo?:
+                | T
+                | {
+                    heading?: T;
+                    body?: T;
+                    id?: T;
+                  };
+              audienceCards?:
+                | T
+                | {
+                    heading?: T;
+                    body?: T;
+                    highlighted?: T;
+                    id?: T;
+                  };
+              prerequisites?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              equipmentIntro?: T;
+              essentialEquipment?:
+                | T
+                | {
+                    icon?: T;
+                    name?: T;
+                    note?: T;
+                    mandatory?: T;
+                    id?: T;
+                  };
+              whatYouLearn?:
+                | T
+                | {
+                    intro?: T;
+                    box1Heading?: T;
+                    box1Bullets?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    box2Heading?: T;
+                    box2Bullets?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    box3Heading?: T;
+                    box3Bullets?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                  };
+              comparison?:
+                | T
+                | {
+                    heading?: T;
+                    intro?: T;
+                    leftHeading?: T;
+                    rightHeading?: T;
+                    rows?:
+                      | T
+                      | {
+                          label?: T;
+                          left?: T;
+                          right?: T;
+                          id?: T;
+                        };
+                  };
+              itinerary?:
+                | T
+                | {
+                    intro?: T;
+                    days?:
+                      | T
+                      | {
+                          dayBadge?: T;
+                          destinationIcon?: T;
+                          destinationName?: T;
+                          metaLine?: T;
+                          eyebrow?: T;
+                          heading?: T;
+                          description?: T;
+                          highlightTags?:
+                            | T
+                            | {
+                                text?: T;
+                                id?: T;
+                              };
+                          schedule?:
+                            | T
+                            | {
+                                time?: T;
+                                activity?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                  };
+              accommodation?:
+                | T
+                | {
+                    description?: T;
+                    included?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    notIncluded?:
+                      | T
+                      | {
+                          text?: T;
+                          id?: T;
+                        };
+                    cuisineHighlights?: T;
+                  };
+              transport?:
+                | T
+                | {
+                    description?: T;
+                  };
+              coachFramingParagraph?: T;
+              coachTeamBullets?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+            };
+      };
   logisticsOverrides?:
     | T
     | {

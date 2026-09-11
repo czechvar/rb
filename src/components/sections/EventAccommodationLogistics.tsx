@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { Event, EventDate } from '@/payload-types'
 import { Lexical } from '@/lib/lexical'
 import styles from './EventAccommodationLogistics.module.css'
@@ -29,7 +30,7 @@ export function EventAccommodationLogistics({
   logisticsOverrides?: EventDate['logisticsOverrides']
   accommodation?: Event['accommodation']
   eyebrow?: string
-  heading?: string
+  heading?: ReactNode
   transport?: Event['transport']
 }) {
   const includedOverride = hasContent(logisticsOverrides?.included) ? logisticsOverrides?.included : undefined
@@ -55,7 +56,7 @@ export function EventAccommodationLogistics({
     <section className={`${styles.section} ${variant === 'cards' ? styles.cards : ''}`}>
       <div className={styles.inner}>
         {eyebrow && <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p>}
-        <h2>{heading}</h2>
+        {heading && <h2>{heading}</h2>}
         <div className={styles.twoCol}>
           {hasAccommodation && (
             <div className={styles.col}>
