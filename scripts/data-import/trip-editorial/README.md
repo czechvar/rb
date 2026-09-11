@@ -1,5 +1,11 @@
 # Remaining trip editorial rollout
 
+> Seed promotion — 2026-09-11: the reviewed occurrence content is now persistent
+> canonical seed data (ADR-0012). Fresh environments use `pnpm seed` only.
+> The temporary classification and commands below describe the historical import
+> workflow; its local receipts are not required or portable seed inputs.
+
+
 This importer updates only `editorial` on the 25 existing Event Dates mapped by the three manifests. The content is **temporary local design comparison content**, identified by `trip-editorial-{eventDateId}` receipts. It does not promote canonical seed data or mutate parent Events, booking values, relationships, or imagery. Kalymnos Date745 is explicitly excluded.
 
 Run from the repository root through `pnpm exec tsx`:

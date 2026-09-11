@@ -1,5 +1,11 @@
 # Kalymnos occurrence editorial pilot
 
+> Seed promotion — 2026-09-11: the reviewed occurrence content is now persistent
+> canonical seed data (ADR-0012). Fresh environments use `pnpm seed` only.
+> The temporary classification and commands below describe the historical import
+> workflow; its local receipts are not required or portable seed inputs.
+
+
 Classification: temporary local design comparison content. Not canonical seed, not a remote import. Target Event 8 (`sport-climbing`), Event Date 745, 26 September–10 October 2026, capacity 8. Existing imagery and all booking relationships remain unchanged.
 
 `reference.json` is exact text extracted from the supplied HTML, including adjacent heading segments with explicit `accent` and `breakBefore`. No images/CSS/embedded source data are copied. `extract.py [path-to-source.html]` rebuilds it. `node scripts/data-import/kalymnos-editorial/build-manifest.mjs` creates `manifest.json` with the selected occurrence contract and explicit editorial adaptations.

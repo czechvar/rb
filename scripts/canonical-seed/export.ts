@@ -8,7 +8,6 @@
 import 'dotenv/config'
 import { pathToFileURL } from 'node:url'
 import { getPayload } from 'payload'
-import config from '../../src/payload.config'
 import {
   assertNotProduction,
   CANONICAL_SEED_COLLECTIONS,
@@ -78,6 +77,9 @@ async function main() {
   const args = parseSeedArgs(process.argv.slice(2))
   assertNotProduction(args)
 
+  process.env.PAYLOAD_DISABLE_DB_PUSH = 'true'
+  const config = await (await import('../../src/payload.config')).default
+  config.logger = { options: { level: 'silent' } } as typeof config.logger
   const payload = await getPayload({ config })
   const collections: CanonicalSeed['collections'] = []
 
@@ -101,8 +103,8 @@ async function main() {
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main()
     .then(() => process.exit(0))
-    .catch((err) => {
-      console.error('canonical seed export failed:', err)
+    .catch(() => {
+      console.error('canonical seed export failed; runtime details suppressed')
       process.exit(1)
     })
 }

@@ -5,10 +5,12 @@
  * the normal seed path; legacy importers are only for refreshing that snapshot.
  */
 import 'dotenv/config'
+import fs from 'node:fs/promises'
+import { isDeepStrictEqual } from 'node:util'
+import { hasOccurrenceHref, remapOccurrenceHref } from './canonical-seed/occurrence-links'
 import { pathToFileURL } from 'node:url'
 import { sql } from '@payloadcms/db-postgres'
 import { getPayload, type CollectionSlug, type Payload, type Where } from 'payload'
-import config from '../src/payload.config'
 import {
   assertNotProduction,
   CANONICAL_SEED_COLLECTIONS,
@@ -24,7 +26,7 @@ type ImportTotals = {
 }
 
 type SeedID = string | number
-type SeedIDMap = Map<CollectionSlug, Map<string, SeedID>>
+export type SeedIDMap = Map<CollectionSlug, Map<string, SeedID>>
 
 const REMOVED_LOCATION_FIELDS = [
   'content',
@@ -107,10 +109,10 @@ function relationForField(parentCollection: CollectionSlug, fieldName: string): 
   if (fieldName === 'locations') return 'locations'
   if (fieldName === 'relatedLocations') return 'locations'
   if (fieldName === 'guide') return 'guides'
-  if (fieldName === 'guides') return 'guides'
-  if (fieldName === 'program') return 'programs'
+  if (fieldName === 'guides' || fieldName === 'coaches') return 'guides'
+  if (fieldName === 'program' || fieldName === 'programs') return 'programs'
   if (fieldName === 'programs') return 'programs'
-  if (fieldName === 'difficulty') return 'difficulties'
+  if (fieldName === 'difficulty' || fieldName === 'difficulties') return 'difficulties'
   if (fieldName === 'difficulties') return 'difficulties'
   if (fieldName === 'partner') return 'partners'
   if (fieldName === 'partners') return 'partners'
@@ -118,7 +120,7 @@ function relationForField(parentCollection: CollectionSlug, fieldName: string): 
   if (fieldName === 'reviews') return 'reviews'
   if (fieldName === 'faq') return 'faqs'
   if (fieldName === 'faqs') return 'faqs'
-  if (fieldName === 'post') return 'posts'
+  if (fieldName === 'post' || fieldName === 'posts') return 'posts'
   if (fieldName === 'posts') return 'posts'
   if (fieldName === 'category') return 'post-categories'
   if (fieldName === 'categories' && parentCollection === 'posts') return 'post-categories'
@@ -126,12 +128,18 @@ function relationForField(parentCollection: CollectionSlug, fieldName: string): 
   return undefined
 }
 
-function remapRelationships(
+export function remapRelationships(
   maps: SeedIDMap,
   parentCollection: CollectionSlug,
   value: unknown,
   fieldName?: string,
 ): unknown {
+  if (fieldName === 'href' && typeof value === 'string') {
+    return remapOccurrenceHref(value, maps.get('event-dates') ?? new Map())
+  }
+  if ((fieldName === 'faqs' || fieldName === 'reviews') && Array.isArray(value) && value.every((entry) => typeof entry === 'number')) {
+    return remapRelationValue(maps, fieldName, value)
+  }
   if (fieldName) {
     const relation = relationForField(parentCollection, fieldName)
     if (relation) return remapRelationValue(maps, relation, value)
@@ -211,7 +219,7 @@ async function findExistingRow(
   payload: Payload,
   collection: CollectionSlug,
   row: Record<string, unknown>,
-  options: { forceCreateWhenMissingID?: boolean } = {},
+  options: { forceCreateWhenMissingID?: boolean; claimedIDs?: Set<string> } = {},
 ): Promise<Record<string, unknown> | undefined> {
   if (typeof row.slug === 'string') {
     const bySlug = await findOne(payload, collection, { slug: { equals: row.slug } })
@@ -263,20 +271,20 @@ async function findExistingRow(
     })
     const expected = eventDateFingerprint(row)
     const match = (result.docs as unknown as Array<Record<string, unknown>>).find(
-      (doc) => eventDateFingerprint(doc) === expected,
+      (doc) => !options.claimedIDs?.has(idKey(doc.id)) && eventDateFingerprint(doc) === expected,
     )
     if (match) return match
   }
 
   if (row.id !== null && row.id !== undefined) {
     const byID = await findOne(payload, collection, { id: { equals: row.id } })
-    if (byID) return byID
+    if (byID && !options.claimedIDs?.has(idKey(byID.id))) return byID
   }
 
   return undefined
 }
 
-async function upsertRow(
+export async function upsertRow(
   payload: Payload,
   collection: CollectionSlug,
   row: Record<string, unknown>,
@@ -291,20 +299,38 @@ async function upsertRow(
     pruneRemovedFields(collection, remapRelationships(maps, collection, row) as Record<string, unknown>),
     options.deferLocationSelfRelations === true,
   )
-  const existing = await findExistingRow(payload, collection, data, options)
+  const knownID = maps.get(collection)?.get(idKey(id))
+  const existing = knownID !== undefined
+    ? await findOne(payload, collection, { id: { equals: knownID } })
+    : await findExistingRow(payload, collection, data, {
+        ...options,
+        claimedIDs: collection === 'event-dates'
+          ? new Set([...(maps.get(collection)?.values() ?? [])].map(idKey))
+          : undefined,
+      })
   const existingID = existing?.id
   if (existingID !== null && existingID !== undefined) {
     rememberID(maps, collection, id, existingID)
   }
 
   const exists = existingID !== null && existingID !== undefined
+  const withoutRecordMetadata = (record: Record<string, unknown>) => Object.fromEntries(
+    Object.entries(record).filter(([key]) => !['id', 'createdAt', 'updatedAt'].includes(key)),
+  )
+  if (existing && isDeepStrictEqual(withoutRecordMetadata(data), withoutRecordMetadata(existing))) {
+    return 'skipped'
+  }
+  // Numeric IDs belong to the destination DB; keep source identity only in maps.
+  const writeData = { ...data }
+  delete writeData.id
   if (exists) {
     await payload.update({
       collection,
       id: existingID as string | number,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      data: data as any,
+      data: writeData as any,
       depth: 0,
+      context: { disableRevalidate: true },
     })
     return 'updated'
   }
@@ -312,8 +338,9 @@ async function upsertRow(
   const created = await payload.create({
     collection,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    data: data as any,
+    data: writeData as any,
     depth: 0,
+    context: { disableRevalidate: true },
   })
   rememberID(maps, collection, id, (created as { id?: unknown }).id)
   return 'created'
@@ -406,12 +433,16 @@ async function importCollection(
             })
       totals[result] += 1
     } catch (error) {
-      console.error('canonical seed row failed:', {
+      const failure = error as { name?: string; data?: { errors?: { path?: string }[] }; cause?: { code?: string; constraint?: string } }
+      console.error(JSON.stringify({
+        seedRowFailed: true,
         collection,
         id: row.id,
-        slug: row.slug,
-        title: row.title ?? row.name ?? row.question ?? row.reviewerName,
-      })
+        category: failure.name === 'ValidationError' ? 'validation' : 'database-or-hook',
+        fields: failure.data?.errors?.map((entry) => entry.path).filter((field) => typeof field === 'string' && /^[a-zA-Z0-9_.\[\]-]+$/.test(field)) ?? [],
+        constraint: /^[a-z0-9_]+$/.test(failure.cause?.constraint ?? '') ? failure.cause?.constraint : undefined,
+        databaseCode: ['23503', '23505', '23502'].includes(failure.cause?.code ?? '') ? failure.cause?.code : undefined,
+      }))
       throw error
     }
   }
@@ -436,6 +467,9 @@ async function main() {
   assertNotProduction(args)
 
   const seed = await readCanonicalSeed(args.file)
+  process.env.PAYLOAD_DISABLE_DB_PUSH = 'true'
+  const config = await (await import('../src/payload.config')).default
+  config.logger = { options: { level: 'silent' } } as typeof config.logger
   const payload = await getPayload({ config })
   const maps: SeedIDMap = new Map()
 
@@ -454,14 +488,24 @@ async function main() {
     if (slug === 'locations') await importDeferredLocationSelfRelations(payload, seed, maps)
   }
 
+  // URL selections can point forward to occurrences imported later in the snapshot.
+  for (const collection of seed.collections) {
+    for (const row of collection.rows.filter(hasOccurrenceHref)) {
+      await upsertRow(payload, collection.slug, row, maps)
+    }
+  }
+
+  const receiptFile = process.argv.find((arg) => arg.startsWith('--receipt='))?.slice('--receipt='.length)
+  if (receiptFile) await fs.writeFile(receiptFile, JSON.stringify(Object.fromEntries([...maps].map(([slug, ids]) => [slug, Object.fromEntries(ids)])), null, 2) + '\n')
+
   console.log(`canonical seed complete: ${args.file}`)
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main()
     .then(() => process.exit(0))
-    .catch((err) => {
-      console.error('canonical seed failed:', err)
+    .catch(() => {
+      console.error('canonical seed failed; runtime details suppressed')
       process.exit(1)
     })
 }

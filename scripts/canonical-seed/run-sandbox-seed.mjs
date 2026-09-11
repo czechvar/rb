@@ -1,75 +1,189 @@
 #!/usr/bin/env node
-import { spawnSync } from 'node:child_process'
+/** Disposable verification: never reset an existing DB, and never log connection strings. */
+import { spawn } from 'node:child_process'
+import { createRequire } from 'node:module'
+import { randomBytes } from 'node:crypto'
+import { mkdtemp, rm } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import dotenv from 'dotenv'
 
-const DEFAULT_ADMIN_URL = 'postgres://rockbusters:rockbusters@127.0.0.1:5432/postgres'
-const DEFAULT_DATABASE = 'rockbusters_seed_sandbox'
-const POSTGRES_IMAGE = 'postgres:16'
+const require = createRequire(import.meta.url)
+const { Client } = createRequire(require.resolve('@payloadcms/db-postgres'))('pg')
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
+const fileArg = process.argv.slice(2).find((arg) => arg.startsWith('--file='))
+const seedFile = fileArg
+  ? path.resolve(fileArg.slice(7))
+  : path.join(root, 'scripts/data-import/seed/canonical-payload-seed.json')
+// Only read configuration internally; children execute outside the repository's .env search path.
+dotenv.config({ path: path.join(root, '.env') })
 
-function argValue(name) {
-  const prefix = `${name}=`
-  const inline = process.argv.find((arg) => arg.startsWith(prefix))
-  if (inline) return inline.slice(prefix.length)
-  const index = process.argv.indexOf(name)
-  return index === -1 ? undefined : process.argv[index + 1]
-}
-
-function targetDatabaseUrl() {
-  const database = argValue('--database') ?? DEFAULT_DATABASE
-  if (!/^[a-z0-9_]+$/.test(database)) {
-    throw new Error(`Refusing unsafe sandbox database name: ${database}`)
+async function main() {
+  const source = new URL(process.env.DATABASE_URL ?? '')
+  if (!['localhost', '127.0.0.1', '[::1]'].includes(source.hostname)) throw new Error('guard')
+  const admin = new URL(process.env.SANDBOX_ADMIN_DATABASE_URL ?? source.href)
+  if (!['localhost', '127.0.0.1', '[::1]'].includes(admin.hostname)) throw new Error('guard')
+  admin.pathname = '/postgres'
+  const database = `rb_seed_verify_${randomBytes(12).toString('hex')}`
+  const target = new URL(admin.href)
+  target.pathname = `/${database}`
+  if (source.pathname === target.pathname) throw new Error('guard')
+  const directory = await mkdtemp(path.join(tmpdir(), 'rb-seed-verify-'))
+  const client = new Client({ connectionString: admin.href })
+  let created = false
+  let connected = false
+  let stage = 'connect'
+  let activeChild
+  let interrupted = false
+  const interrupt = () => {
+    interrupted = true
+    activeChild?.kill('SIGTERM')
   }
-
-  const adminUrl = new URL(process.env.SANDBOX_ADMIN_DATABASE_URL ?? DEFAULT_ADMIN_URL)
-  if (!['127.0.0.1', 'localhost'].includes(adminUrl.hostname)) {
-    throw new Error(`Refusing non-local admin database host: ${adminUrl.hostname}`)
+  process.once('SIGINT', interrupt)
+  process.once('SIGTERM', interrupt)
+  const childEnv = {
+    ...process.env,
+    DATABASE_URL: target.href,
+    PAYLOAD_DISABLE_DB_PUSH: 'true',
+    DOTENV_CONFIG_PATH: path.join(directory, '.env'),
+    TSX_TSCONFIG_PATH: path.join(root, 'tsconfig.json'),
+    NODE_ENV: 'test',
+    RESEND_API_KEY: '',
+    R2_ACCESS_KEY_ID: '',
+    R2_SECRET_ACCESS_KEY: '',
   }
-
-  const targetUrl = new URL(adminUrl.toString())
-  targetUrl.pathname = `/${database}`
-  return { adminUrl: adminUrl.toString(), database, targetUrl: targetUrl.toString() }
-}
-
-function run(command, args, options = {}) {
-  console.log(`\n$ ${options.label ?? `${command} ${args.join(' ')}`}`)
-  const result = spawnSync(command, args, {
-    env: { ...process.env, ...options.env },
-    stdio: 'inherit',
-    encoding: 'utf8',
-  })
-  if (result.status !== 0) {
-    throw new Error(`${command} ${args.join(' ')} exited with ${result.status ?? 'unknown status'}`)
+  const run = async (label, script, args = []) => {
+    if (interrupted) throw new Error('interrupted')
+    stage = label
+    console.log(`canonical seed sandbox: ${label}`)
+    await new Promise((resolve, reject) => {
+      const child = spawn(
+        process.execPath,
+        ['--import', require.resolve('tsx/esm'), path.join(root, script), ...args],
+        {
+          cwd: directory,
+          env: childEnv,
+          stdio: ['ignore', 'pipe', 'pipe'],
+        },
+      )
+      activeChild = child
+      // Child libraries can log runtime objects. Consume their output without exposing it.
+      // Pass only the verifier's deliberately allowlisted JSON summary to the caller.
+      let tail = ''
+      child.stdout.on('data', (chunk) => {
+        tail = (tail + chunk.toString()).slice(-65536)
+      })
+      let errors = ''
+      child.stderr.on('data', (chunk) => {
+        errors = (errors + chunk.toString()).slice(-65536)
+      })
+      child.on('error', () => reject(new Error('child')))
+      child.on('close', (code) => {
+        activeChild = undefined
+        if (code !== 0) {
+          const collectionPattern = /canonical seed: ([a-z-]+) created=\d+ updated=\d+ skipped=\d+/g
+          const completed = [...tail.matchAll(collectionPattern)].at(-1)?.[1]
+          console.log(JSON.stringify({ lastCompletedCollection: completed ?? 'unknown' }))
+          for (const line of errors.split('\n')) {
+            try {
+              const diagnostic = JSON.parse(line)
+              if (
+                diagnostic.seedRowFailed === true &&
+                /^[a-z-]+$/.test(diagnostic.collection) &&
+                (typeof diagnostic.id === 'number' || /^[a-zA-Z0-9_-]{1,100}$/.test(diagnostic.id))
+              ) {
+                console.log(
+                  JSON.stringify({
+                    seedRowFailed: true,
+                    collection: diagnostic.collection,
+                    id: diagnostic.id,
+                    constraint:
+                      typeof diagnostic.constraint === 'string' &&
+                      /^[a-zA-Z0-9_]+$/.test(diagnostic.constraint)
+                        ? diagnostic.constraint
+                        : undefined,
+                    category: /^[A-Za-z-]+$/.test(diagnostic.category)
+                      ? diagnostic.category
+                      : 'unknown',
+                    databaseCode: /^[A-Z0-9_]{1,20}$/.test(diagnostic.databaseCode)
+                      ? diagnostic.databaseCode
+                      : undefined,
+                    fields: Array.isArray(diagnostic.fields)
+                      ? diagnostic.fields.filter(
+                          (value) => typeof value === 'string' && /^[a-zA-Z0-9_.-]+$/.test(value),
+                        )
+                      : undefined,
+                  }),
+                )
+              }
+            } catch {
+              /* Untrusted runtime diagnostics are deliberately suppressed. */
+            }
+          }
+          return reject(new Error('child'))
+        }
+        if (label.startsWith('verify')) {
+          for (const line of tail.split('\n')) {
+            try {
+              const result = JSON.parse(line)
+              if (
+                result.verificationPassed === true &&
+                ['collections', 'rows', 'enrichedOccurrences'].every((key) =>
+                  Number.isInteger(result[key]),
+                )
+              ) {
+                console.log(
+                  JSON.stringify({
+                    verificationPassed: true,
+                    collections: result.collections,
+                    rows: result.rows,
+                    enrichedOccurrences: result.enrichedOccurrences,
+                  }),
+                )
+              }
+            } catch {
+              /* Ignore every other child message. */
+            }
+          }
+        }
+        resolve()
+      })
+    })
+  }
+  try {
+    await client.connect()
+    connected = true
+    await client.query(`CREATE DATABASE "${database}"`)
+    created = true
+    const receipt = path.join(directory, 'ids.json')
+    const actual = path.join(directory, 'readback.json')
+    await run('migrate', 'scripts/canonical-seed/migrate-sandbox.ts')
+    for (let pass = 1; pass <= 2; pass += 1) {
+      await run(`seed-${pass}`, 'scripts/seed.ts', [`--file=${seedFile}`, `--receipt=${receipt}`])
+      await run(`export-${pass}`, 'scripts/canonical-seed/export.ts', [`--file=${actual}`])
+      await run(`verify-${pass}`, 'scripts/canonical-seed/verify.ts', [seedFile, actual, receipt])
+    }
+  } catch {
+    console.error(`canonical seed sandbox failed: stage=${stage}`)
+    process.exitCode = 1
+  } finally {
+    if (created) {
+      try {
+        await client.query(`DROP DATABASE "${database}" WITH (FORCE)`)
+        console.log('canonical seed sandbox: temporary database cleaned')
+      } catch {
+        console.error('canonical seed sandbox: temporary database cleanup failed')
+        process.exitCode = 1
+      }
+    }
+    if (connected) await client.end().catch(() => {})
+    await rm(directory, { recursive: true, force: true })
+    process.removeListener('SIGINT', interrupt)
+    process.removeListener('SIGTERM', interrupt)
   }
 }
-
-function resetDatabase(adminUrl, database) {
-  run(
-    'docker',
-    [
-      'run',
-      '--rm',
-      '--network',
-      'host',
-      POSTGRES_IMAGE,
-      'psql',
-      adminUrl,
-      '-v',
-      'ON_ERROR_STOP=1',
-      '-c',
-      `DROP DATABASE IF EXISTS ${database} WITH (FORCE);`,
-      '-c',
-      `CREATE DATABASE ${database};`,
-    ],
-    { label: `docker run --rm --network host ${POSTGRES_IMAGE} psql [local-admin-url] -c reset ${database}` },
-  )
-}
-
-const { adminUrl, database, targetUrl } = targetDatabaseUrl()
-const env = {
-  DATABASE_URL: targetUrl,
-  PAYLOAD_DISABLE_DB_PUSH: 'true',
-}
-
-console.log(`Resetting local seed sandbox database: ${database}`)
-resetDatabase(adminUrl, database)
-run('pnpm', ['payload', 'migrate'], { env })
-run('pnpm', ['run', 'seed'], { env })
+main().catch(() => {
+  console.error('canonical seed sandbox: local database configuration guard failed')
+  process.exitCode = 1
+})
