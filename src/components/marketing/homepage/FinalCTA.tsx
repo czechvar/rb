@@ -14,7 +14,7 @@ export function FinalCTA() {
         someone else is on the rock getting stronger.
       </p>
       <div className={styles.ctas}>
-        <Link href="/programs" className="btn-dark">
+        <Link href="/trips" className="btn-dark">
           Find Your Trip
         </Link>
         <Link href="/contact" className="btn-outline-dark">

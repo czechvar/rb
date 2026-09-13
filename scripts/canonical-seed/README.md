@@ -91,3 +91,8 @@ existing environment, promotion needs both that schema migration and a scoped
 Contact Page/block content upsert. A full database replacement is unnecessary.
 The current seed keeps the enquiry form's editorial content; runtime submission
 availability depends on the separately agreed delivery integration.
+
+Browse-trip actions in the Home and Destinations pages point to `/trips`.
+For an existing local database, `pnpm exec tsx scripts/data-import/update-trip-navigation.ts --apply` makes the same narrow,
+idempotent correction without reimporting the catalogue. Omit `--apply` for a
+read-only count. The utility refuses non-local databases.

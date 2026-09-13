@@ -53,7 +53,7 @@ export function ProClimbers({ guides }: ProClimbersProps) {
       </div>
 
       <div className={styles.ctaWrap}>
-        <Link href="/programs?category=pro-clinics" className="btn-primary">
+        <Link href="/trips" className="btn-primary">
           See Upcoming Clinics
         </Link>
       </div>

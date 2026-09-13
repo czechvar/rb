@@ -55,7 +55,7 @@ export function PickYourExperience() {
       </h2>
       <div className={styles.grid}>
         {CATEGORIES.map((c) => (
-          <Link key={c.slug} href={`/programs/${c.slug}`} className={`${styles.card} reveal`}>
+          <Link key={c.slug} href={"/trips"} className={`${styles.card} reveal`}>
             <h3 className={styles.cardName}>{c.name}</h3>
             <p className={styles.cardTag}>{c.tag}</p>
             <span className={styles.cardArrow}>→</span>
@@ -63,7 +63,7 @@ export function PickYourExperience() {
         ))}
       </div>
       <div className={styles.ctaWrap}>
-        <Link href="/programs" className="btn-ghost">
+        <Link href="/trips" className="btn-ghost">
           Explore All Categories →
         </Link>
       </div>

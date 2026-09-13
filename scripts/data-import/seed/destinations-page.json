@@ -30,7 +30,7 @@
         "blockType": "hero",
         "primaryAction": {
           "label": "Find your trip",
-          "href": "/programs"
+          "href": "/trips"
         }
       },
       {
@@ -84,11 +84,11 @@
         "blockType": "cta",
         "primaryAction": {
           "label": "Request a custom trip",
-          "href": "/programs"
+          "href": "/trips"
         },
         "secondaryAction": {
           "label": "See upcoming trips",
-          "href": "/programs"
+          "href": "/trips"
         }
       }
     ]

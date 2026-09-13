@@ -28,7 +28,7 @@ export default async function OrdersPage() {
         <h1>Your orders</h1>
         <div style={{ padding: 48, textAlign: 'center', border: '1px dashed #d0cfcd', borderRadius: 8, color: '#666' }}>
           <p style={{ fontSize: 18 }}>You haven&apos;t booked any trips yet.</p>
-          <p><Link href="/programs">Browse trips →</Link></p>
+          <p><Link href="/trips">Browse trips →</Link></p>
         </div>
       </>
     )

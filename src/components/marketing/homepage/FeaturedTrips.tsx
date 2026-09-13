@@ -101,7 +101,7 @@ export function FeaturedTrips({ events, datesByEvent }: FeaturedTripsProps) {
             WORTH CLIMBING FOR
           </h2>
         </div>
-        <Link href="/programs" className={styles.viewAll}>
+        <Link href="/trips" className={styles.viewAll}>
           View All Trips &amp; Courses →
         </Link>
       </div>

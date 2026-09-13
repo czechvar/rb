@@ -58,7 +58,7 @@ export default async function BookPage({ params }: Props) {
     return (
       <div style={{ padding: 32 }}>
         <h1>This date is not available</h1>
-        <p><Link href="/programs">Back to trips →</Link></p>
+        <p><Link href="/trips">Back to trips →</Link></p>
       </div>
     )
   }
@@ -68,7 +68,7 @@ export default async function BookPage({ params }: Props) {
       <div style={{ padding: 32 }}>
         <h1>Sold out</h1>
         <p>This date is fully booked.</p>
-        <p><Link href="/programs">Browse other trips →</Link></p>
+        <p><Link href="/trips">Browse other trips →</Link></p>
       </div>
     )
   }

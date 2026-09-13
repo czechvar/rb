@@ -18,7 +18,7 @@ export function TeamFinalCTA() {
         <Link href="/calendar" className="btn-dark">
           Find My Course →
         </Link>
-        <Link href="/programs" className="btn-outline-dark">
+        <Link href="/trips" className="btn-outline-dark">
           View All Trips
         </Link>
         <Link href="/contact" className="btn-outline-dark">

@@ -4,17 +4,17 @@ import styles from './marketing.module.css'
 import { NewsletterForm } from './NewsletterForm'
 
 const TRIPS = [
-  { href: '#', label: 'Road Trips' },
-  { href: '#', label: 'Sport Holidays' },
-  { href: '#', label: 'Bouldering Camps' },
-  { href: '#', label: 'Custom Trips' },
+  { href: '/trips', label: 'Road Trips' },
+  { href: '/trips', label: 'Sport Holidays' },
+  { href: '/trips', label: 'Bouldering Camps' },
+  { href: '/trips', label: 'Custom Trips' },
 ]
 
 const COACHING = [
-  { href: '#', label: 'Performance Camps' },
-  { href: '#', label: 'Private Coaching' },
-  { href: '#', label: 'Pro Clinics' },
-  { href: '#', label: 'Video Analysis' },
+  { href: '/trips', label: 'Performance Camps' },
+  { href: '/trips', label: 'Private Coaching' },
+  { href: '/trips', label: 'Pro Clinics' },
+  { href: '/trips', label: 'Video Analysis' },
 ]
 
 const COMPANY = [
@@ -50,7 +50,7 @@ export function Footer() {
               <ul>
                 {TRIPS.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href}>{l.label}</a>
+                    <Link href={l.href}>{l.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -61,7 +61,7 @@ export function Footer() {
               <ul>
                 {COACHING.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href}>{l.label}</a>
+                    <Link href={l.href}>{l.label}</Link>
                   </li>
                 ))}
               </ul>

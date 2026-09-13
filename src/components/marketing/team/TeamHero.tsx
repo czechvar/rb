@@ -33,7 +33,7 @@ export function TeamHero({ backgroundMedia }: TeamHeroProps) {
           community built on genuine passion for the vertical world.
         </p>
         <div className={styles.btnGroup}>
-          <Link href="/programs" className="btn-primary">
+          <Link href="/trips" className="btn-primary">
             Find Your Course →
           </Link>
           <Link href="/team#coaches" className="btn-ghost">

@@ -25,7 +25,7 @@
         "blockType": "hero",
         "primaryAction": {
           "label": "Find your trip",
-          "href": "/programs"
+          "href": "/trips"
         }
       },
       {
@@ -509,7 +509,7 @@
         "blockType": "cta",
         "primaryAction": {
           "label": "Find your trip",
-          "href": "/programs"
+          "href": "/trips"
         },
         "secondaryAction": {
           "label": "Talk to the team",

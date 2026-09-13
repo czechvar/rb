@@ -1446,7 +1446,7 @@ async function main() {
           variant: 'simple',
           primaryAction: {
             label: 'View trips',
-            href: '/programs',
+            href: '/trips',
           },
         },
         {
@@ -1722,7 +1722,7 @@ async function main() {
           variant: 'brandEditorial',
           primaryAction: {
             label: 'Explore trips and courses',
-            href: '/programs',
+            href: '/trips',
           },
         },
         {
@@ -1831,7 +1831,7 @@ async function main() {
           variant: 'finalRed',
           primaryAction: {
             label: 'Find your trip',
-            href: '/programs',
+            href: '/trips',
           },
           secondaryAction: {
             label: 'Talk to the team',

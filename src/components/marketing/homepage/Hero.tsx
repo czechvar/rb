@@ -36,7 +36,7 @@ export function Hero({ backgroundMedia }: HeroProps) {
           with getting you stronger, sharper, and further than you thought possible.
         </p>
         <div className={styles.ctas}>
-          <Link href="/programs" className="btn-primary">
+          <Link href="/trips" className="btn-primary">
             Find Your Trip
           </Link>
         </div>

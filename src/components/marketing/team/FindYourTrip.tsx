@@ -7,20 +7,20 @@ const GROUPS: Group[] = [
   {
     label: 'Type',
     links: [
-      { label: 'Sport', href: '/programs/sport-climbing-holidays' },
-      { label: 'Trad & Multi-Pitch', href: '/programs/trad-multipitch' },
-      { label: 'Bouldering', href: '/programs/bouldering-camps' },
-      { label: 'Big Wall', href: '/programs/road-trips-expeditions' },
-      { label: 'Performance Coaching', href: '/programs/performance-technique-camps' },
+      { label: 'Sport', href: '/trips' },
+      { label: 'Trad & Multi-Pitch', href: '/trips' },
+      { label: 'Bouldering', href: '/trips' },
+      { label: 'Big Wall', href: '/trips' },
+      { label: 'Performance Coaching', href: '/trips' },
     ],
   },
   {
     label: 'Level',
     links: [
-      { label: 'Beginner', href: '/programs' },
-      { label: 'Intermediate', href: '/programs' },
-      { label: 'Advanced', href: '/programs' },
-      { label: 'Expert', href: '/programs' },
+      { label: 'Beginner', href: '/trips' },
+      { label: 'Intermediate', href: '/trips' },
+      { label: 'Advanced', href: '/trips' },
+      { label: 'Expert', href: '/trips' },
     ],
   },
   {

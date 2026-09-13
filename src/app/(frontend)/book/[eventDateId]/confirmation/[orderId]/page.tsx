@@ -96,7 +96,7 @@ export default async function BookingConfirmation({ params }: Props) {
       <p>
         <a href={`/account/orders/${o.id}`}>View in your account →</a>
         {' · '}
-        <Link href="/programs">Browse more trips</Link>
+        <Link href="/trips">Browse more trips</Link>
       </p>
     </div>
   )
