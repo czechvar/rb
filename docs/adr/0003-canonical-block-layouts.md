@@ -82,3 +82,7 @@ block needs.
 - `src/app/(frontend)/destinations/[slug]/page.tsx`
 - `src/app/(frontend)/team/[slug]/page.tsx`
 - `src/app/(frontend)/blog/[slug]/page.tsx`
+
+The `/team` index follows the same published Page contract with slug `team`.
+Its active team and friends lists use the reusable Guide Grid, preserving links
+to guide detail records and supporting a full roster as well as smaller teasers.

@@ -23,7 +23,7 @@ export const GuideGridBlockConfig: Block = {
       admin: { condition: (_, siblingData) => siblingData?.source === 'manual' },
       filterOptions: () => ({ active: { equals: true } }),
     },
-    { name: 'limit', type: 'number', min: 1, max: 12, defaultValue: 6 },
+    { name: 'limit', type: 'number', min: 1, max: 100, defaultValue: 6 },
     selectField('variant', {
       defaultValue: 'cards',
       values: [

@@ -1,3 +1,6 @@
+import { submitContactAction } from '@/app/(frontend)/contact/actions'
+import { ContactDetails } from '@/components/contact/ContactDetails'
+import { ContactForm } from '@/components/contact/ContactForm'
 import { remainingTripContent, remainingTripAdditionalInfo } from '@/lib/trip-detail'
 import type { TripDetailView } from '@/lib/trip-detail'
 import { TripContentBlock, TripFactsBlock, TripVenueBlock, TripTeamBlock } from './TripContentBlocks'
@@ -108,6 +111,8 @@ type BlockRenderer = (
 ) => Promise<React.ReactNode> | React.ReactNode
 
 const blockRenderers: Record<string, BlockRenderer> = {
+  'contact-details': (block) => <ContactDetails {...(block as Extract<PageBlock, { blockType: 'contact-details' }>)} />,
+  'contact-form': (block) => <ContactForm {...(block as Extract<PageBlock, { blockType: 'contact-form' }>)} action={submitContactAction} />,
   hero: (block, context, index) => (
     <HeroBlock
       {...(block as Extract<PageBlock, { blockType: 'hero' }>)}

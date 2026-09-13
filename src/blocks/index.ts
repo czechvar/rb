@@ -1,3 +1,5 @@
+import { ContactDetailsBlock } from './ContactDetails/config'
+import { ContactFormBlock } from './ContactForm/config'
 import { TripContentBlockConfig, TripFactsBlockConfig, TripVenueBlockConfig, TripTeamBlockConfig } from './TripContent'
 import { HeroBlockConfig } from './Hero/config'
 import { SectionIntroBlockConfig } from './SectionIntro/config'
@@ -116,6 +118,8 @@ const allNonGuideSurfaces = ['page', 'event', 'program', 'location', 'post'] as 
 const allNonPostSurfaces = ['page', 'event', 'program', 'location', 'guide'] as const
 
 const rawBlockCatalogue = [
+  { config: ContactDetailsBlock, category: 'conversion' },
+  { config: ContactFormBlock, category: 'conversion' },
   ...[TripContentBlockConfig, TripFactsBlockConfig, TripVenueBlockConfig, TripTeamBlockConfig].map(config => ({
     config, category: 'tripDetail' as const, dataDependencies: ['event'] as const,
     sourceModes: ['currentContext'] as const, notCompatibleWith: allNonEventSurfaces,

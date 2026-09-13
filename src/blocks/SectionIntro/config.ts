@@ -20,6 +20,7 @@ export const SectionIntroBlockConfig: Block = {
       values: [
         { label: 'Light', value: 'light' },
         { label: 'Dark split', value: 'darkSplit' },
+        { label: 'Light split', value: 'lightSplit' },
       ],
     }),
   ],

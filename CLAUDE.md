@@ -99,6 +99,7 @@ Required environment variables in the Vercel project settings:
 - `EMAIL_FROM_ADDRESS` — sender address (e.g. `hello@rockbusters.net` in prod, `onboarding@resend.dev` in dev). Domain must be verified in Resend for prod.
 - `EMAIL_FROM_NAME` — sender display name (e.g. `Rockbusters`).
 - `EMAIL_REPLY_TO` — optional reply-to address.
+- `CONTACT_ENQUIRY_EMAIL` — optional contact-enquiry notification recipient override. Defaults to the published Contact Page contact-details email. Requires the configured Resend adapter; console mode stores the enquiry with notification status `notConfigured` and does not log its contents.
 - `ADMIN_ORDER_NOTIFICATIONS_EMAIL` — recipient of the "new booking" admin notification email. Falls back to `EMAIL_FROM_ADDRESS` if unset.
 - `BANK_TRANSFER_DETAILS` — multi-line text (IBAN, beneficiary, etc.) injected into the "Booking confirmed" email. The order number is used as the variable symbol.
 - `COMGATE_MERCHANT` — Comgate merchant ID (from the Comgate merchant portal).

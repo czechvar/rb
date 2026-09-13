@@ -68,6 +68,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    'contact-enquiries': ContactEnquiry;
     users: User;
     media: Media;
     difficulties: Difficulty;
@@ -96,6 +97,7 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    'contact-enquiries': ContactEnquiriesSelect<false> | ContactEnquiriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     difficulties: DifficultiesSelect<false> | DifficultiesSelect<true>;
@@ -173,6 +175,28 @@ export interface PayloadMcpApiKeyAuthOperations {
     email: string;
     password: string;
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-enquiries".
+ */
+export interface ContactEnquiry {
+  id: number;
+  submissionId: string;
+  payloadDigest: string;
+  name: string;
+  email: string;
+  level?: string | null;
+  interest?: string | null;
+  message: string;
+  preferredContact: 'email' | 'phone' | 'whatsapp';
+  phone?: string | null;
+  source: 'contact-page';
+  status: 'new' | 'handled';
+  notificationStatus: 'pending' | 'sent' | 'failed' | 'notConfigured';
+  notifiedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -291,6 +315,47 @@ export interface Program {
         | {
             eyebrow?: string | null;
             heading: string;
+            emailLabel?: string | null;
+            email: string;
+            emailNote?: string | null;
+            phoneLabel?: string | null;
+            desks?:
+              | {
+                  label: string;
+                  /**
+                   * Public international number, including country code.
+                   */
+                  phone: string;
+                  whatsapp?: boolean | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-details';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            facts?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            submitLabel?: string | null;
+            /**
+             * Explain how enquiry details are used. Do not promise an unconfirmed response time.
+             */
+            privacyNote?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-form';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
@@ -347,7 +412,7 @@ export interface Program {
               [k: string]: unknown;
             } | null;
             alignment: 'left' | 'center';
-            variant: 'light' | 'darkSplit';
+            variant: 'light' | 'darkSplit' | 'lightSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -1034,6 +1099,47 @@ export interface Event {
     | (
         | {
             eyebrow?: string | null;
+            heading: string;
+            emailLabel?: string | null;
+            email: string;
+            emailNote?: string | null;
+            phoneLabel?: string | null;
+            desks?:
+              | {
+                  label: string;
+                  /**
+                   * Public international number, including country code.
+                   */
+                  phone: string;
+                  whatsapp?: boolean | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-details';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            facts?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            submitLabel?: string | null;
+            /**
+             * Explain how enquiry details are used. Do not promise an unconfirmed response time.
+             */
+            privacyNote?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-form';
+          }
+        | {
+            eyebrow?: string | null;
             section:
               | 'overview'
               | 'learning'
@@ -1127,7 +1233,7 @@ export interface Event {
               [k: string]: unknown;
             } | null;
             alignment: 'left' | 'center';
-            variant: 'light' | 'darkSplit';
+            variant: 'light' | 'darkSplit' | 'lightSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -2527,6 +2633,47 @@ export interface Location {
         | {
             eyebrow?: string | null;
             heading: string;
+            emailLabel?: string | null;
+            email: string;
+            emailNote?: string | null;
+            phoneLabel?: string | null;
+            desks?:
+              | {
+                  label: string;
+                  /**
+                   * Public international number, including country code.
+                   */
+                  phone: string;
+                  whatsapp?: boolean | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-details';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            facts?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            submitLabel?: string | null;
+            /**
+             * Explain how enquiry details are used. Do not promise an unconfirmed response time.
+             */
+            privacyNote?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-form';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
@@ -2583,7 +2730,7 @@ export interface Location {
               [k: string]: unknown;
             } | null;
             alignment: 'left' | 'center';
-            variant: 'light' | 'darkSplit';
+            variant: 'light' | 'darkSplit' | 'lightSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -3120,6 +3267,47 @@ export interface Guide {
         | {
             eyebrow?: string | null;
             heading: string;
+            emailLabel?: string | null;
+            email: string;
+            emailNote?: string | null;
+            phoneLabel?: string | null;
+            desks?:
+              | {
+                  label: string;
+                  /**
+                   * Public international number, including country code.
+                   */
+                  phone: string;
+                  whatsapp?: boolean | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-details';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            facts?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            submitLabel?: string | null;
+            /**
+             * Explain how enquiry details are used. Do not promise an unconfirmed response time.
+             */
+            privacyNote?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-form';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
@@ -3176,7 +3364,7 @@ export interface Guide {
               [k: string]: unknown;
             } | null;
             alignment: 'left' | 'center';
-            variant: 'light' | 'darkSplit';
+            variant: 'light' | 'darkSplit' | 'lightSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -3731,6 +3919,47 @@ export interface Post {
         | {
             eyebrow?: string | null;
             heading: string;
+            emailLabel?: string | null;
+            email: string;
+            emailNote?: string | null;
+            phoneLabel?: string | null;
+            desks?:
+              | {
+                  label: string;
+                  /**
+                   * Public international number, including country code.
+                   */
+                  phone: string;
+                  whatsapp?: boolean | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-details';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            facts?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            submitLabel?: string | null;
+            /**
+             * Explain how enquiry details are used. Do not promise an unconfirmed response time.
+             */
+            privacyNote?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-form';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
@@ -3787,7 +4016,7 @@ export interface Post {
               [k: string]: unknown;
             } | null;
             alignment: 'left' | 'center';
-            variant: 'light' | 'darkSplit';
+            variant: 'light' | 'darkSplit' | 'lightSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -5059,6 +5288,47 @@ export interface Page {
         | {
             eyebrow?: string | null;
             heading: string;
+            emailLabel?: string | null;
+            email: string;
+            emailNote?: string | null;
+            phoneLabel?: string | null;
+            desks?:
+              | {
+                  label: string;
+                  /**
+                   * Public international number, including country code.
+                   */
+                  phone: string;
+                  whatsapp?: boolean | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-details';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
+            body?: string | null;
+            facts?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            submitLabel?: string | null;
+            /**
+             * Explain how enquiry details are used. Do not promise an unconfirmed response time.
+             */
+            privacyNote?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-form';
+          }
+        | {
+            eyebrow?: string | null;
+            heading: string;
             body?: string | null;
             backgroundMedia?: (string | null) | Media;
             variant: 'overlay' | 'editorial' | 'simple' | 'brandEditorial';
@@ -5115,7 +5385,7 @@ export interface Page {
               [k: string]: unknown;
             } | null;
             alignment: 'left' | 'center';
-            variant: 'light' | 'darkSplit';
+            variant: 'light' | 'darkSplit' | 'lightSplit';
             id?: string | null;
             blockName?: string | null;
             blockType: 'section-intro';
@@ -5771,6 +6041,10 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
+        relationTo: 'contact-enquiries';
+        value: number | ContactEnquiry;
+      } | null)
+    | ({
         relationTo: 'users';
         value: number | User;
       } | null)
@@ -5908,6 +6182,27 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-enquiries_select".
+ */
+export interface ContactEnquiriesSelect<T extends boolean = true> {
+  submissionId?: T;
+  payloadDigest?: T;
+  name?: T;
+  email?: T;
+  level?: T;
+  interest?: T;
+  message?: T;
+  preferredContact?: T;
+  phone?: T;
+  source?: T;
+  status?: T;
+  notificationStatus?: T;
+  notifiedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
@@ -6001,6 +6296,43 @@ export interface ProgramsSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        'contact-details'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              emailLabel?: T;
+              email?: T;
+              emailNote?: T;
+              phoneLabel?: T;
+              desks?:
+                | T
+                | {
+                    label?: T;
+                    phone?: T;
+                    whatsapp?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'contact-form'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              facts?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              submitLabel?: T;
+              privacyNote?: T;
+              id?: T;
+              blockName?: T;
+            };
         hero?:
           | T
           | {
@@ -6615,6 +6947,43 @@ export interface GuidesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        'contact-details'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              emailLabel?: T;
+              email?: T;
+              emailNote?: T;
+              phoneLabel?: T;
+              desks?:
+                | T
+                | {
+                    label?: T;
+                    phone?: T;
+                    whatsapp?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'contact-form'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              facts?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              submitLabel?: T;
+              privacyNote?: T;
+              id?: T;
+              blockName?: T;
+            };
         hero?:
           | T
           | {
@@ -7381,6 +7750,43 @@ export interface LocationsSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        'contact-details'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              emailLabel?: T;
+              email?: T;
+              emailNote?: T;
+              phoneLabel?: T;
+              desks?:
+                | T
+                | {
+                    label?: T;
+                    phone?: T;
+                    whatsapp?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'contact-form'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              facts?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              submitLabel?: T;
+              privacyNote?: T;
+              id?: T;
+              blockName?: T;
+            };
         hero?:
           | T
           | {
@@ -7942,6 +8348,43 @@ export interface EventsSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        'contact-details'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              emailLabel?: T;
+              email?: T;
+              emailNote?: T;
+              phoneLabel?: T;
+              desks?:
+                | T
+                | {
+                    label?: T;
+                    phone?: T;
+                    whatsapp?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'contact-form'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              facts?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              submitLabel?: T;
+              privacyNote?: T;
+              id?: T;
+              blockName?: T;
+            };
         tripContent?:
           | T
           | {
@@ -9451,6 +9894,43 @@ export interface PostsSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        'contact-details'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              emailLabel?: T;
+              email?: T;
+              emailNote?: T;
+              phoneLabel?: T;
+              desks?:
+                | T
+                | {
+                    label?: T;
+                    phone?: T;
+                    whatsapp?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'contact-form'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              facts?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              submitLabel?: T;
+              privacyNote?: T;
+              id?: T;
+              blockName?: T;
+            };
         hero?:
           | T
           | {
@@ -9897,6 +10377,43 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        'contact-details'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              emailLabel?: T;
+              email?: T;
+              emailNote?: T;
+              phoneLabel?: T;
+              desks?:
+                | T
+                | {
+                    label?: T;
+                    phone?: T;
+                    whatsapp?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'contact-form'?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              facts?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              submitLabel?: T;
+              privacyNote?: T;
+              id?: T;
+              blockName?: T;
+            };
         hero?:
           | T
           | {

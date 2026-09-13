@@ -27,6 +27,7 @@ export function HeroBlock({
     variant === 'simple' ? styles.heroSimple : '',
     variant === 'editorial' ? styles.heroEditorial : '',
     variant === 'brandEditorial' ? styles.heroBrandEditorial : '',
+    variant === 'brandEditorial' && !imageUrl ? styles.heroBrandText : '',
   ]
     .filter(Boolean)
     .join(' ')

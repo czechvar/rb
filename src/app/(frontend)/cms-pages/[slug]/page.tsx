@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import { JsonLd } from '@/components/JsonLd'
@@ -9,6 +9,7 @@ type Props = { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
+  if (slug === 'contact') permanentRedirect('/contact')
   const page = await getPublishedPageBySlug(slug)
   if (!page) return { title: 'Page not found - Rockbusters' }
 
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function CMSPage({ params }: Props) {
   const { slug } = await params
+  if (slug === 'contact') permanentRedirect('/contact')
   const page = await getPublishedPageBySlug(slug)
   if (!page) notFound()
   const jsonLd = await genericCmsPageGraphJsonLd(page)

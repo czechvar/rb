@@ -9,34 +9,43 @@ import styles from './blog-index.module.css'
 type Props = {
   posts: BlogIndexPost[]
   categories: { slug: string; name: string }[]
+  archiveCategory?: string
   featuredId?: number | null
   eyebrow?: string | null
   heading?: string | null
   intro?: string | null
 }
 
-export function BlogIndex({ posts, categories, featuredId, eyebrow, heading, intro }: Props) {
-  const [category, setCategory] = useState('all')
+export function BlogIndex({ posts, categories, featuredId, eyebrow, heading, intro, archiveCategory }: Props) {
+  const [category, setCategory] = useState(archiveCategory || 'all')
   const [sort, setSort] = useState('newest')
   const resultsRef = useRef<HTMLDivElement>(null)
+  const pillsRef = useRef<HTMLDivElement>(null)
   const sortId = useId()
 
   useEffect(() => {
     const restore = () => {
       const params = new URLSearchParams(window.location.search)
-      setCategory(params.get('category') || 'all')
+      setCategory(archiveCategory || params.get('category') || 'all')
       setSort(params.get('sort') === 'oldest' ? 'oldest' : 'newest')
     }
     restore()
+    // Reveal the route's selected category without scrolling past the hero.
+    const pills = pillsRef.current
+    const active = pills?.querySelector<HTMLElement>('[aria-current="page"]')
+    if (archiveCategory && pills && active) {
+      pills.scrollLeft += active.getBoundingClientRect().left - pills.getBoundingClientRect().left
+        - (pills.clientWidth - active.clientWidth) / 2
+    }
     window.addEventListener('popstate', restore)
     return () => window.removeEventListener('popstate', restore)
-  }, [])
+  }, [archiveCategory])
 
   function change(nextCategory: string, nextSort: string) {
     setCategory(nextCategory)
     setSort(nextSort)
     const url = new URL(window.location.href)
-    if (nextCategory === 'all') url.searchParams.delete('category')
+    if (archiveCategory || nextCategory === 'all') url.searchParams.delete('category')
     else url.searchParams.set('category', nextCategory)
     if (nextSort === 'newest') url.searchParams.delete('sort')
     else url.searchParams.set('sort', nextSort)
@@ -48,14 +57,14 @@ export function BlogIndex({ posts, categories, featuredId, eyebrow, heading, int
 
   const filtered = filterBlogPosts(posts, category, sort)
   const featured =
-    category === 'all' && sort === 'newest'
+    (category === 'all' || category === archiveCategory) && sort === 'newest'
       ? (posts.find((post) => post.id === featuredId) ?? filtered[0])
       : undefined
   const gridPosts = featured ? filtered.filter((post) => post.id !== featured.id) : filtered
   const years = new Set(posts.map((post) => post.publishedAt?.slice(0, 4)).filter(Boolean))
   const stats = [
     { value: posts.length, label: 'Articles' },
-    { value: categories.length, label: 'Categories' },
+    { value: archiveCategory ? 1 : categories.length, label: 'Categories' },
     { value: new Set(posts.map((post) => post.author)).size, label: 'Bylines' },
     { value: years.size, label: 'Years of stories' },
   ]
@@ -72,9 +81,17 @@ export function BlogIndex({ posts, categories, featuredId, eyebrow, heading, int
       </dl>
       <div className={styles.filters}>
         <div className={styles.filterInner}>
-          <div className={styles.pills} role="group" aria-label="Filter stories by category">
+          <div className={styles.pills} ref={pillsRef} role="group" aria-label="Filter stories by category">
             {[{ slug: 'all', name: 'All' }, ...categories].map((item) => (
-              <button
+              archiveCategory ? (
+                <Link
+                  key={item.slug}
+                  href={item.slug === 'all' ? '/blog' : `/blog/category/${item.slug}`}
+                  aria-current={category === item.slug ? 'page' : undefined}
+                >
+                  {item.name}
+                </Link>
+              ) : <button
                 type="button"
                 key={item.slug}
                 aria-pressed={category === item.slug}
@@ -124,9 +141,11 @@ export function BlogIndex({ posts, categories, featuredId, eyebrow, heading, int
         ) : !featured ? (
           <div className={styles.empty}>
             <p>No stories in this category yet — check back soon or try another filter.</p>
-            <button type="button" onClick={() => change('all', 'newest')}>
-              Show all stories
-            </button>
+            {archiveCategory ? <Link href="/blog">Show all stories</Link> : (
+              <button type="button" onClick={() => change('all', 'newest')}>
+                Show all stories
+              </button>
+            )}
           </div>
         ) : null}
       </div>

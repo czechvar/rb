@@ -4,7 +4,11 @@ This is the single content bootstrap for freshly provisioned Rockbusters databas
 The tracked snapshot includes the reviewed September 11 catalogue and all 26
 trip occurrence editorial overrides, including Kalymnos. The September 12 refresh
 also includes all 53 local posts (50 published), 14 blog categories, and the Blog
-CMS Page with its selected Rodellar hero and index grid. No legacy or editorial
+CMS Page with its selected Rodellar hero and index grid. It also includes the
+Team CMS Page with the full active-guide roster and shared content blocks, and
+the Contact CMS Page with its seven sections and public desk contacts. Contact
+reference phone/email values are not independently verified business details;
+enquiry submissions and operational records are excluded. No legacy or editorial
 import command is needed after `pnpm seed`.
 
 ## Commands
@@ -71,3 +75,19 @@ See ADR-0012 for the content/operational-data boundary.
 Internal trip links with `?date=` are remapped after all occurrences have been
 imported, so related-option links continue selecting the intended occurrence even
 when the destination database allocates different IDs.
+
+## Contact source maintenance
+
+The Contact Page and its public desk details are persistent CMS content, sourced
+from `scripts/data-import/seed/contact-page.json`. The localhost-only maintenance
+importer `scripts/data-import/import-contact-page-seed.ts` preserves an existing
+`contact` Page unless `--replace` is explicitly supplied. Run it with
+`PAYLOAD_DISABLE_DB_PUSH=true` after applying migrations, then export the canonical
+snapshot. It is not an additional bootstrap step after `pnpm seed`.
+
+The Contact schema migration adds block tables and the `lightSplit` presentation
+variant only; it does not publish a Page or configure enquiry delivery. For an
+existing environment, promotion needs both that schema migration and a scoped
+Contact Page/block content upsert. A full database replacement is unnecessary.
+The current seed keeps the enquiry form's editorial content; runtime submission
+availability depends on the separately agreed delivery integration.

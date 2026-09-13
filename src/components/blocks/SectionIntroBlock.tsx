@@ -6,15 +6,17 @@ type SectionIntroBlockProps = Extract<
   NonNullable<Page['layout']>[number],
   { blockType: 'section-intro' }
 > & {
-  variant?: 'light' | 'darkSplit' | null
+  variant?: 'light' | 'darkSplit' | 'lightSplit' | null
 }
 
 export function SectionIntroBlock({ alignment, body, eyebrow, heading, variant }: SectionIntroBlockProps) {
   const isDarkSplit = variant === 'darkSplit'
+  const isSplit = isDarkSplit || variant === 'lightSplit'
   const className = [
     styles.sectionIntro,
-    alignment === 'center' && !isDarkSplit ? styles.sectionIntroCenter : '',
+    alignment === 'center' && !isSplit ? styles.sectionIntroCenter : '',
     isDarkSplit ? styles.sectionIntroDarkSplit : '',
+    variant === 'lightSplit' ? styles.sectionIntroLightSplit : '',
   ].filter(Boolean).join(' ')
 
   return (

@@ -104,8 +104,8 @@ export function BlockAction({
       href={safeHref}
       className={className}
       onClick={handleExternalClick}
-      rel="noreferrer"
-      target="_blank"
+      rel={safeHref.startsWith('https:') ? 'noreferrer' : undefined}
+      target={safeHref.startsWith('https:') ? '_blank' : undefined}
     >
       {label}
     </a>

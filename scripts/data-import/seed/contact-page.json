@@ -1,0 +1,298 @@
+{
+  "row": {
+    "title": "Contact Rockbusters",
+    "slug": "contact",
+    "status": "published",
+    "seo": {
+      "title": "Contact — Rockbusters",
+      "description": "Talk to Rockbusters about climbing trips, courses and coaching. Reach our public Spain and Czech desks by email, phone or WhatsApp."
+    },
+    "structuredData": {
+      "schemaType": "ContactPage"
+    },
+    "layout": [
+      {
+        "blockType": "hero",
+        "variant": "brandEditorial",
+        "eyebrow": "Get In Touch",
+        "heading": "Talk to Climbers, Not a Call Centre",
+        "accentWords": [
+          {
+            "text": "Climbers"
+          }
+        ],
+        "body": "Tell us about your climbing, your goals and where you would like to go. We can help you explore the trips, courses and coaching that fit."
+      },
+      {
+        "blockType": "contact-details",
+        "eyebrow": "Direct Lines",
+        "heading": "Reach Us Directly",
+        "emailLabel": "Email",
+        "email": "info@rockbusters.net",
+        "emailNote": "For trip enquiries, bookings and itineraries",
+        "phoneLabel": "Phone & WhatsApp",
+        "desks": [
+          {
+            "label": "Spain desk",
+            "phone": "+34 678 243 573",
+            "whatsapp": true
+          },
+          {
+            "label": "Czech Republic desk",
+            "phone": "+420 721 247 724",
+            "whatsapp": true
+          }
+        ]
+      },
+      {
+        "blockType": "stats",
+        "variant": "numberedDark",
+        "columns": "3",
+        "eyebrow": "The Rockbusters Difference",
+        "heading": "Run By Climbers, For Climbers",
+        "body": "A good climbing conversation starts with understanding what you want from your time on the rock.",
+        "items": [
+          {
+            "value": "01",
+            "label": "We Speak Your Grade",
+            "body": "Tell us about the grades and styles you enjoy, what feels comfortable and what you want to work on."
+          },
+          {
+            "value": "02",
+            "label": "Find Your Coach",
+            "body": "Share your experience and goals so we can help you explore suitable coaching and trips."
+          },
+          {
+            "value": "03",
+            "label": "More Than a Place to Stay",
+            "body": "Ask us about the climbing, the destination and the practical details that make a trip work."
+          }
+        ]
+      },
+      {
+        "blockType": "section-intro",
+        "variant": "lightSplit",
+        "eyebrow": "A Small Ask",
+        "heading": "We Might Be Climbing",
+        "body": {
+          "root": {
+            "type": "root",
+            "version": 1,
+            "format": "",
+            "indent": 0,
+            "direction": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Sometimes the person best placed to answer your question is on a route, not at a desk. Thank you for your patience while we get the right information for you.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Include your trip dates and the details of your question so we can help you plan your next days on the rock.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "blockType": "contact-form",
+        "eyebrow": "Send a Message",
+        "heading": "Tell Us Where You're At",
+        "body": "The more you tell us about your climbing — grade, style, goals and available dates — the better we can help you explore your options.",
+        "facts": [
+          {
+            "text": "Tell us what you enjoy climbing"
+          },
+          {
+            "text": "Share your goals and available dates"
+          },
+          {
+            "text": "Choose how you would like us to reply"
+          }
+        ],
+        "submitLabel": "Send Message",
+        "privacyNote": "Share only the details needed to discuss your enquiry. For existing bookings, include your booking reference rather than payment details."
+      },
+      {
+        "blockType": "faq",
+        "variant": "twoColumn",
+        "source": "inline",
+        "limit": 4,
+        "eyebrow": "Before You Ask",
+        "heading": "Common Questions",
+        "items": [
+          {
+            "question": "How can I contact Rockbusters?",
+            "answer": {
+              "root": {
+                "type": "root",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "version": 1,
+                    "format": "",
+                    "indent": 0,
+                    "direction": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "version": 1,
+                        "text": "Email info@rockbusters.net or use the public phone and WhatsApp contacts above. Choose the desk that suits you.",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": ""
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "question": "Why might it take a while to hear back?",
+            "answer": {
+              "root": {
+                "type": "root",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "version": 1,
+                    "format": "",
+                    "indent": 0,
+                    "direction": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "version": 1,
+                        "text": "Our team may be out climbing or guiding. Include the details of your question and any relevant trip dates to help us respond.",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": ""
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "question": "Can you help me choose between trips?",
+            "answer": {
+              "root": {
+                "type": "root",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "version": 1,
+                    "format": "",
+                    "indent": 0,
+                    "direction": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "version": 1,
+                        "text": "Tell us your experience, preferred climbing style, goals and available dates. We can help you explore the trips, courses and coaching on offer.",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": ""
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "question": "What should I include about my climbing?",
+            "answer": {
+              "root": {
+                "type": "root",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "version": 1,
+                    "format": "",
+                    "indent": 0,
+                    "direction": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "version": 1,
+                        "text": "Your usual grade, indoor and outdoor experience, preferred climbing style and anything you would like to work on are useful starting points. It is fine if you are not sure of your level yet.",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": ""
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "blockType": "cta",
+        "variant": "finalRed",
+        "heading": "Let's Find Your Next Line",
+        "body": "Whatever grade you climb, tell us what you're working towards and where you would like to go.",
+        "primaryAction": {
+          "label": "Email Us",
+          "href": "mailto:info@rockbusters.net"
+        },
+        "secondaryAction": {
+          "label": "WhatsApp Us",
+          "href": "https://wa.me/34678243573"
+        }
+      }
+    ]
+  }
+}

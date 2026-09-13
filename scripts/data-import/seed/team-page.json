@@ -1,0 +1,138 @@
+{
+  "row": {
+    "title": "The Rockbusters Team",
+    "slug": "team",
+    "status": "published",
+    "seo": {
+      "title": "Guides & Coaches — Rockbusters",
+      "description": "Meet the climbers, guides and coaches behind Rockbusters. Find your crew and explore their trips."
+    },
+    "structuredData": {
+      "schemaType": "CollectionPage"
+    },
+    "layout": [
+      {
+        "blockType": "hero",
+        "variant": "brandEditorial",
+        "eyebrow": "The Rockbusters crew",
+        "heading": "Your rock. Your limit. Broken.",
+        "accentWords": [
+          {
+            "text": "Broken."
+          }
+        ],
+        "body": "Meet the climbers, guides and coaches who share their experience on the rock. Different backgrounds, a shared love of climbing.",
+        "backgroundMedia": "med_d84b6aef8c0aa5255d878c9c",
+        "primaryAction": {
+          "label": "Explore the trips",
+          "href": "/trips"
+        }
+      },
+      {
+        "blockType": "section-intro",
+        "variant": "darkSplit",
+        "eyebrow": "Our story",
+        "heading": "Born on the rock",
+        "body": {
+          "root": {
+            "type": "root",
+            "version": 1,
+            "format": "",
+            "indent": 0,
+            "direction": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Rockbusters brings together climbers who love sharing what they know. From the first days outdoors to a long-term project, our trips connect you with people, places and coaching that fit your climbing.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "blockType": "stats",
+        "variant": "numberedDark",
+        "columns": "3",
+        "heading": "More than a climbing trip",
+        "items": [
+          {
+            "value": "01",
+            "label": "Learn on real rock",
+            "body": "Develop your movement, confidence and climbing knowledge outdoors."
+          },
+          {
+            "value": "02",
+            "label": "Find your people",
+            "body": "Climb alongside a community of guides, coaches and guests."
+          },
+          {
+            "value": "03",
+            "label": "Explore together",
+            "body": "Discover climbing destinations with people who know the crags."
+          }
+        ]
+      },
+      {
+        "blockType": "guideGrid",
+        "source": "team",
+        "limit": 100,
+        "variant": "photoOverlay",
+        "eyebrow": "The team",
+        "heading": "Guides & coaches",
+        "intro": "Get to know the people behind the trips. Open a profile for their story and climbing trips."
+      },
+      {
+        "blockType": "guideGrid",
+        "source": "friends",
+        "limit": 100,
+        "variant": "photoOverlay",
+        "eyebrow": "Our community",
+        "heading": "Friends & ambassadors"
+      },
+      {
+        "blockType": "tripGrid",
+        "source": "upcoming",
+        "limit": 3,
+        "variant": "featureLead",
+        "eyebrow": "Climb with us",
+        "heading": "Next on the rock"
+      },
+      {
+        "blockType": "reviewGrid",
+        "source": "global",
+        "limit": 3,
+        "heading": "Stories from our guests",
+        "eyebrow": "The community"
+      },
+      {
+        "blockType": "cta",
+        "variant": "finalRed",
+        "eyebrow": "Find your crew",
+        "heading": "Let’s get on the rock",
+        "body": "Explore climbing trips and coaching with Rockbusters.",
+        "primaryAction": {
+          "label": "Explore the trips",
+          "href": "/trips"
+        },
+        "secondaryAction": {
+          "label": "View the calendar",
+          "href": "/calendar"
+        }
+      }
+    ]
+  }
+}

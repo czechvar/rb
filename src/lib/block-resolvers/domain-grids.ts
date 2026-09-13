@@ -174,7 +174,7 @@ export async function resolveFeaturedLocation(input: FeaturedLocationResolverInp
 
 export async function resolveGuideGridGuides(input: GuideGridResolverInput): Promise<Guide[]> {
   const payload = await getPayloadClient()
-  const limit = boundedLimit(input.limit, 6, 12)
+  const limit = boundedLimit(input.limit, 6, 100)
   const source = input.source ?? 'team'
 
   if (source === 'manual') {
@@ -203,7 +203,7 @@ export async function resolveGuideGridGuides(input: GuideGridResolverInput): Pro
   const { docs } = await payload.find({
     collection: 'guides',
     where: { and: whereClauses },
-    sort: 'name',
+    sort: ['-featured', 'name'],
     depth: 1,
     limit,
   })

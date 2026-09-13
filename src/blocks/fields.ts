@@ -14,7 +14,7 @@ type SelectOption = {
 const validateActionHref = (value: unknown): true | string => {
   if (value == null || (typeof value === 'string' && value.trim() === '')) return true
   if (isSafeActionHref(value)) return true
-  return 'Use an internal path starting with / or a full https:// URL.'
+  return 'Use an internal path starting with /, a full https:// URL, mailto:email@example.com, or tel:+internationalnumber.'
 }
 
 const validateGa4Name = (value: unknown): true | string => {

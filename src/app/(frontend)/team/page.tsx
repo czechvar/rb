@@ -1,7 +1,7 @@
-import { getActiveGuides, getActiveEventDates, getHomepageReviews } from '@/lib/queries'
+import { getActiveGuides, getActiveEventDates, getHomepageReviews, getPublishedPageBySlug } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { JsonLd } from '@/components/JsonLd'
-import { collectionPageGraphJsonLd, guideListItems } from '@/lib/jsonld'
+import { absoluteUrl, collectionPageGraphJsonLd, genericCmsPageGraphJsonLd, guideListItems } from '@/lib/jsonld'
 import { TeamHero } from '@/components/marketing/team/TeamHero'
 import { BornOnTheRock } from '@/components/marketing/team/BornOnTheRock'
 import { ValuePillars } from '@/components/marketing/team/ValuePillars'
@@ -11,11 +11,16 @@ import { UpcomingTrips } from '@/components/marketing/team/UpcomingTrips'
 import { FindYourTrip } from '@/components/marketing/team/FindYourTrip'
 import { TeamFinalCTA } from '@/components/marketing/team/TeamFinalCTA'
 import { Testimonials } from '@/components/marketing/homepage/Testimonials'
+import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import type { Guide } from '@/payload-types'
 
-export const metadata = {
-  title: 'Guides & Coaches — Rockbusters',
-  description: 'Elite climbers and UIAGM guides leading every Rockbusters trip.',
+export async function generateMetadata() {
+  const page = await getPublishedPageBySlug('team')
+  return {
+    title: page?.seo?.title || 'Guides & Coaches — Rockbusters',
+    description: page?.seo?.description || 'Meet the climbers, guides and coaches behind Rockbusters.',
+    alternates: { canonical: absoluteUrl('/team') },
+  }
 }
 
 function byFeaturedThenName(a: Guide, b: Guide) {
@@ -25,6 +30,16 @@ function byFeaturedThenName(a: Guide, b: Guide) {
 }
 
 export default async function TeamPage() {
+  const page = await getPublishedPageBySlug('team')
+  if (page?.layout?.length) {
+    const jsonLd = await genericCmsPageGraphJsonLd(page, '/team')
+    return (
+      <MarketingShell>
+        <JsonLd data={jsonLd} />
+        <main><RenderBlocks blocks={page.layout} context={{ page }} /></main>
+      </MarketingShell>
+    )
+  }
   const [docs, dates, reviews] = await Promise.all([
     getActiveGuides(),
     getActiveEventDates(),

@@ -1,3 +1,6 @@
+import * as migration_20260913_110000_contact_enquiry_notification from './20260913_110000_contact_enquiry_notification';
+import * as migration_20260913_090000_contact_enquiry_intake from './20260913_090000_contact_enquiry_intake';
+import * as migration_20260912_150000_contact_page_blocks from './20260912_150000_contact_page_blocks';
 import * as migration_20260527_124751 from './20260527_124751';
 import * as migration_20260527_125021 from './20260527_125021';
 import * as migration_20260528_135559_demo_block_fields from './20260528_135559_demo_block_fields';
@@ -354,5 +357,20 @@ export const migrations = [
     up: migration_20260911_190000_blog_index_variant.up,
     down: migration_20260911_190000_blog_index_variant.down,
     name: '20260911_190000_blog_index_variant',
+  },
+  {
+    up: migration_20260912_150000_contact_page_blocks.up,
+    down: migration_20260912_150000_contact_page_blocks.down,
+    name: '20260912_150000_contact_page_blocks',
+  },
+  {
+    up: migration_20260913_090000_contact_enquiry_intake.up,
+    down: migration_20260913_090000_contact_enquiry_intake.down,
+    name: '20260913_090000_contact_enquiry_intake',
+  },
+  {
+    up: migration_20260913_110000_contact_enquiry_notification.up,
+    down: migration_20260913_110000_contact_enquiry_notification.down,
+    name: '20260913_110000_contact_enquiry_notification',
   },
 ];

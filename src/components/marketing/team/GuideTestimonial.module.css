@@ -1,6 +1,6 @@
-.section { background: var(--theme-color-canvas); padding: 90px 5%; text-align: center; }
+.section { background: var(--theme-color-canvas); padding: 80px var(--theme-content-gutter); text-align: center; }
 .label { color: var(--theme-color-primary); justify-content: center; margin-bottom: 14px; }
-.heading { font-size: clamp(42px, 6vw, 80px); margin-bottom: 24px; text-transform: uppercase; }
+.heading { font-size: var(--theme-text-section); line-height: var(--theme-line-section); margin-bottom: 24px; text-transform: uppercase; }
 .card {
   background: var(--theme-color-ink); border: 1px solid var(--theme-color-paper-08);
   padding: 44px 40px; max-width: var(--theme-content-text-max); margin: 48px auto 0;
@@ -9,4 +9,4 @@
 .quote { font-size: 18px; font-weight: 700; color: var(--theme-color-paper); line-height: 1.5; margin: 0 0 18px; font-style: italic; }
 .who { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--theme-color-primary); font-weight: 700; display: block; }
 .trip { font-size: 11px; color: var(--theme-color-paper-30); margin-top: 3px; letter-spacing: 0.06em; display: block; }
-@media (max-width: 600px) { .section { padding: 60px 5%; } .card { padding: 32px 22px; } }
+@media (max-width: 600px) { .section { padding: 48px var(--theme-content-gutter); } .card { padding: 32px 22px; } }

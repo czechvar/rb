@@ -49,28 +49,3 @@
   font-size: 14px;
   color: var(--theme-color-page-text);
 }
-
-.postHeader {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.byline {
-  color: var(--theme-color-page-text);
-  font-size: 14px;
-}
-
-.heroPhoto {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 24px;
-}
-
-.categoryLink {
-  color: var(--theme-color-primary);
-  font-weight: 600;
-  text-decoration: none;
-}

@@ -7,6 +7,8 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
+import { contactIntakeRateLimits } from './lib/contact/rate-table'
+import { ContactEnquiries } from './collections/ContactEnquiries'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Difficulties } from './collections/Difficulties'
@@ -58,6 +60,7 @@ export default buildConfig({
     },
   },
   collections: [
+    ContactEnquiries,
     Users,
     Media,
     Difficulties,
@@ -90,6 +93,10 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: postgresAdapter({
+    afterSchemaInit: [({ schema }) => ({
+      ...schema,
+      tables: { ...schema.tables, contact_intake_rate_limits: contactIntakeRateLimits },
+    })],
     pool: {
       // Fail loudly on a missing/blank URL. Left empty, pg-connection-string
       // resolves it to the host "base", surfacing as a baffling

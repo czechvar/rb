@@ -1189,17 +1189,20 @@
   color: var(--theme-color-paper);
 }
 
+.sectionIntroLightSplit .sectionInner,
 .sectionIntroDarkSplit .sectionInner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
   gap: clamp(42px, 7vw, 120px);
 }
 
+.sectionIntroLightSplit .sectionHeader,
 .sectionIntroDarkSplit .sectionHeader {
   max-width: none;
   margin-bottom: 0;
 }
 
+.sectionIntroLightSplit h2,
 .sectionIntroDarkSplit h2 {
   max-width: var(--theme-content-text-max);
   font-size: var(--theme-text-section);
@@ -2338,7 +2341,8 @@
   .statsInlineDark .statsGrid,
   .statsNumberedDark .sectionInner,
   .statsNumberedDark .statsGrid,
-  .sectionIntroDarkSplit .sectionInner {
+  .sectionIntroLightSplit .sectionInner,
+.sectionIntroDarkSplit .sectionInner {
     display: grid;
     grid-template-columns: 1fr;
   }
@@ -2523,4 +2527,29 @@
 @media (max-width: 900px) {
   .hero, .heroSimple, .heroBrandEditorial, .locationHero, .destinationHero, .postHero { min-height: var(--theme-hero-mobile-min-height); }
   .heroInner, .heroBrandEditorial .heroInner { padding-top: 140px; padding-bottom: 40px; }
+}
+
+.sectionIntroLightSplit {
+  background: var(--theme-color-paper);
+  color: var(--theme-color-ink);
+}
+
+.sectionIntroLightSplit .sectionIntroBody {
+  align-self: center;
+}
+
+/* Text-only editorial heroes share the brand treatment without an image overlay. */
+.heroBrandText .heroOverlay {
+  background:
+    repeating-linear-gradient(115deg, transparent, transparent 78px, var(--theme-color-paper-08) 78px, var(--theme-color-paper-08) 79px),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--theme-color-primary) 10%, transparent), transparent 45%),
+    var(--theme-color-ink);
+}
+
+.heroBrandText h1 {
+  max-width: var(--theme-content-article-max);
+}
+
+.heroBrandText h1 span {
+  display: inline;
 }

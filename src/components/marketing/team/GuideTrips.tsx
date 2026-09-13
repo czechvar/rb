@@ -9,7 +9,7 @@ export function GuideTrips({ guide, events }: { guide: Guide; events: Event[] })
       <div className={styles.inner}>
         <p className={`section-label ${styles.label}`}>Courses &amp; Coaching</p>
         <h2 className={`section-title ${styles.heading}`}>
-          Train with
+          Climb with
           <br />
           {first}
         </h2>
@@ -30,7 +30,7 @@ export function GuideTrips({ guide, events }: { guide: Guide; events: Event[] })
           </div>
         ) : (
           <p className={styles.empty}>
-            {guide.name} joins selected camps throughout the season — see the calendar for dates.
+            No trips are currently listed for {guide.name}. <Link href="/calendar">Explore the calendar</Link> for upcoming climbing trips.
           </p>
         )}
       </div>

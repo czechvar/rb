@@ -24,6 +24,7 @@ const docsByCollection = {
     { slug: 'uncategorized', updatedAt: '2026-01-10T03:04:05.000Z', category: null },
   ],
   pages: [
+    { slug: 'contact', updatedAt: '2026-09-12T00:00:00.000Z' },
     { slug: 'about-us', updatedAt: '2026-01-09T03:04:05.000Z' },
     { slug: 'home', updatedAt: '2026-01-10T03:04:05.000Z' },
     { slug: 'trips', updatedAt: '2026-01-11T03:04:05.000Z' },
@@ -66,8 +67,11 @@ describe('buildSitemap', () => {
       'https://rockbusters.net/blog/technique-drills',
       'https://rockbusters.net/blog/uncategorized',
       'https://rockbusters.net/blog/category/training',
+      'https://rockbusters.net/contact',
       'https://rockbusters.net/cms-pages/about-us',
     ])
+    expect(urls).not.toContain('https://rockbusters.net/cms-pages/contact')
+    expect(sitemap.find((entry) => entry.url.endsWith('/contact'))?.lastModified).toEqual(new Date('2026-09-12T00:00:00.000Z'))
     expect(urls).not.toContain('https://rockbusters.net/cms-pages/home')
     expect(urls).not.toContain('https://rockbusters.net/cms-pages/trips')
     expect(sitemap.find((entry) => entry.url.endsWith('/trips/kalymnos-camp'))?.lastModified).toEqual(

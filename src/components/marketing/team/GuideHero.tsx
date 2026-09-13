@@ -13,48 +13,53 @@ export function GuideHero({ guide }: { guide: Guide }) {
 
   return (
     <section className={styles.hero}>
-      {photo ? (
-        <Image
-          src={photo}
-          alt={mediaAlt(guide.photo)}
-          fill
-          priority
-          sizes="100vw"
-          className={styles.bg}
-        />
-      ) : null}
-      <div className={styles.overlay} aria-hidden="true" />
-      <div className={styles.content}>
-        {guide.role ? <p data-eyebrow="hero" className={`section-label ${styles.eyebrow}`}>{guide.role}</p> : null}
-        <h1 className={styles.name}>
-          {first}
-          {rest ? (
-            <>
-              <br />
-              <em>{rest}</em>
-            </>
-          ) : null}
-        </h1>
-        {guide.tags?.length ? (
-          <div className={styles.tagRow}>
-            {guide.tags.map((t) => (
-              <span key={t.id ?? t.text} className={styles.tag}>
-                {t.text}
-              </span>
-            ))}
+      <div className={styles.inner}>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+          <Link href="/">Home</Link><span aria-hidden="true">/</span>
+          <Link href="/team">The crew</Link><span aria-hidden="true">/</span>
+          <span aria-current="page">{guide.name}</span>
+        </nav>
+        <div className={photo ? styles.grid : styles.textOnly}>
+          <div className={styles.content}>
+            <p data-eyebrow="hero" className={`section-label ${styles.eyebrow}`}>{guide.role || 'The Rockbusters crew'}</p>
+            <h1 className={styles.name}>
+              {first}
+              {rest ? (
+                <>
+                  <br />
+                  <em>{rest}</em>
+                </>
+              ) : null}
+            </h1>
+            {guide.tags?.length ? (
+              <div className={styles.tagRow}>
+                {guide.tags.map((t) => (
+                  <span key={t.id ?? t.text} className={styles.tag}>
+                    {t.text}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+            {sub ? <p className={styles.sub}>{sub}</p> : null}
+            <div className={styles.btnRow}>
+              <Link href="#trips" className="btn-primary">
+                Explore trips with {first} →
+              </Link>
+              <Link href="/team" className="btn-ghost">
+                Meet the full crew
+              </Link>
+            </div>
           </div>
-        ) : null}
-        {sub ? <p className={styles.sub}>{sub}</p> : null}
-        <div className={styles.btnRow}>
-          <Link href="#trips" className="btn-primary">
-            Book a course with {first} →
-          </Link>
-          <Link href="/team" className="btn-ghost">
-            Meet the full crew
-          </Link>
+          {photo ? (
+            <figure className={styles.portrait}>
+              <div className={styles.photo}>
+                <Image src={photo} alt={mediaAlt(guide.photo) || guide.name} fill priority sizes="(max-width: 900px) 90vw, 40vw" />
+              </div>
+              {guide.heroCaption ? <figcaption className={styles.caption}>{guide.heroCaption}</figcaption> : null}
+            </figure>
+          ) : null}
         </div>
       </div>
-      {guide.heroCaption ? <p className={styles.caption}>{guide.heroCaption}</p> : null}
     </section>
   )
 }

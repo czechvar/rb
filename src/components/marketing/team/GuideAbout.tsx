@@ -32,12 +32,12 @@ export function GuideAbout({ guide }: { guide: Guide }) {
       <div className={hasLeft && hasRight ? styles.grid : `${styles.grid} ${styles.gridSingle}`}>
         {hasLeft ? (
           <div className="reveal">
-            <p className={`section-label ${styles.label}`}>The Coach</p>
+            <p className={`section-label ${styles.label}`}>The Rockbusters crew</p>
             {about?.headline ? (
               <h2 className={`section-title ${styles.heading}`}>
                 <Headline text={about.headline} />
               </h2>
-            ) : null}
+            ) : <h2 className={`section-title ${styles.heading}`}>Meet {first}</h2>}
             {guide.content ? (
               <div className={styles.bio}>
                 <Lexical data={guide.content} />
