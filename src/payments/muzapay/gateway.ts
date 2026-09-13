@@ -201,7 +201,7 @@ export class MuzaPayGateway implements PaymentGateway {
   }
 
   async checkStatus(transaction: Transaction): Promise<PaymentOutcome | null> {
-    if (transaction.state !== 'begun') return null
+    if (!transaction.checkoutId && transaction.state !== 'begun') return null
 
     const paymentId = this.paymentId(transaction)
     const response = await this.withTokenRetry((accessToken) =>
@@ -229,7 +229,7 @@ export class MuzaPayGateway implements PaymentGateway {
    * this once per pass, not from a loop in here.
    */
   async cancel(transaction: Transaction): Promise<PaymentOutcome | null> {
-    if (transaction.state !== 'begun') {
+    if (!transaction.payload.gatewayTransactionId) {
       throw new PaymentGatewayError(
         `Cannot cancel the transaction at this point (transaction ${transaction.uuid}).`,
       )

@@ -1,0 +1,45 @@
+.main :is(h1, h2, h3, h4) {
+  color: var(--theme-color-ink);
+}
+.main {
+  padding: 140px var(--theme-content-gutter) 80px;
+  background: var(--theme-color-paper);
+  color: var(--theme-color-ink);
+  min-height: 75vh;
+}
+.panel {
+  max-width: var(--theme-content-form-max);
+  margin-inline: auto;
+}
+.wide {
+  max-width: var(--theme-content-max);
+  margin-inline: auto;
+}
+.heading {
+  font-family: var(--theme-font-heading);
+  font-size: var(--theme-text-section);
+  margin: 0 0 24px;
+}
+.body {
+  font-size: var(--theme-text-body);
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+.review {
+  border: 1px solid var(--theme-color-border);
+  padding: 24px;
+  margin-block: 24px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.actions button {
+  width: auto;
+}
+.list {
+  margin-block: 16px;
+  padding-left: 24px;
+  line-height: 1.6;
+}

@@ -1,5 +1,7 @@
 'use client'
 
+import { CartNav } from '@/components/checkout/CartNav'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -34,7 +36,7 @@ function CloseIcon() {
 // One rule for every public route; page shells cannot override scroll behavior.
 const SCROLL_THRESHOLD = 60
 
-export function Header() {
+export function Header({ checkoutEnabled = false }: { checkoutEnabled?: boolean } = {}) {
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -85,6 +87,7 @@ export function Header() {
           </nav>
 
           <div className={styles.headerActions}>
+            {checkoutEnabled && <CartNav className={styles.accountLink} />}
             <Link href={userHref} className={styles.accountLink}>
               {userLabel}
             </Link>
@@ -126,6 +129,7 @@ export function Header() {
           <Link href="https://wa.me/420776805045" onClick={() => setDrawerOpen(false)}>
             LET&apos;S TALK
           </Link>
+          {checkoutEnabled && <CartNav onClick={() => setDrawerOpen(false)} />}
           <Link href={userHref} onClick={() => setDrawerOpen(false)}>
             {userLabel}
           </Link>

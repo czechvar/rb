@@ -59,6 +59,7 @@ export async function beginComgatePayment(
     overrideAccess: true,
   })) as OrderDoc
 
+  if ((order as OrderDoc & { checkout?: unknown }).checkout) throw new Error('Pay grouped reservations through their checkout.')
   const ownerId = typeof order.user === 'object' ? order.user.id : order.user
   if (ownerId !== user.id) {
     throw new Error('This order does not belong to you.')
@@ -130,6 +131,7 @@ export async function beginBenefitPlusPayment(
     overrideAccess: true,
   })) as OrderDoc & { eventDate?: { event?: { title?: string } | number } | number }
 
+  if ((order as OrderDoc & { checkout?: unknown }).checkout) throw new Error('Pay grouped reservations through their checkout.')
   const ownerId = typeof order.user === 'object' ? order.user.id : order.user
   if (ownerId !== user.id) {
     throw new Error('This order does not belong to you.')
@@ -193,7 +195,9 @@ export async function beginBenefitPlusPayment(
 export async function resolveBenefitPlusPayment(uuid: string): Promise<void> {
   const store = new PayloadTransactionStore()
   const txnDoc = await store.findDocByUuid(uuid)
-  if (!txnDoc || txnDoc.state !== 'begun') return
+  if (!txnDoc) return
+  if (txnDoc.checkout) { const { reconcileCheckoutPayment } = await import('./checkout-payment-service'); await reconcileCheckoutPayment(uuid); return }
+  if (txnDoc.state !== 'begun') return
 
   const gateway = benefitPlusGateway()
   const outcome = await gateway.checkStatus(toGatewayTransaction(txnDoc))
@@ -234,19 +238,19 @@ export async function sweepBenefitPlusPayments(): Promise<SweepSummary> {
   const { docs } = await cms.find({
     collection: 'transactions',
     where: {
-      and: [{ paymentMethod: { equals: 'muzapay' } }, { state: { equals: 'begun' } }],
+      and: [{ paymentMethod: { equals: 'muzapay' } }, { state: { equals: 'begun' } }, { checkout: { exists: false } }],
     },
     sort: 'createdAt',
     limit: SWEEP_BATCH_SIZE,
     overrideAccess: true,
   })
 
-  const gateway = benefitPlusGateway()
   const summary: SweepSummary = { checked: 0, resolved: 0, failed: 0 }
 
   for (const doc of docs as TransactionDoc[]) {
     summary.checked += 1
     try {
+      const gateway = benefitPlusGateway()
       const transaction = toGatewayTransaction(doc)
       let outcome = await gateway.checkStatus(transaction)
 
@@ -264,9 +268,8 @@ export async function sweepBenefitPlusPayments(): Promise<SweepSummary> {
         await applyOutcome(doc, outcome)
         summary.resolved += 1
       }
-    } catch (err) {
+    } catch {
       summary.failed += 1
-      console.error(`[muzapay/sweep] transaction ${doc.uuid} failed:`, err)
     }
   }
 

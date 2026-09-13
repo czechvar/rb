@@ -140,3 +140,17 @@ Canonical defaults: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-
 ### Domain docs
 
 Single-context: one `CONTEXT.md` plus accepted/proposed ADRs in `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+### Grouped checkout rollout
+
+`CHECKOUT_ENABLED=true` enables the multi-item cart and new reservation flow. Leave
+unset until the additive grouped-checkout migration, email delivery, both provider
+sandbox checks and frequent reconciliation have passed. Do not enable it merely
+because the application build succeeds. Existing single-order callbacks continue
+working when the flag is off. The current daily Vercel cron is insufficient for
+prompt 24-hour hold expiry; configure an authenticated scheduler to call
+`/api/payments/muzapay/reconcile` at least every ten minutes before enablement.
+No browser or ordinary API caller may invoke reconciliation without `CRON_SECRET`.
+Use `pnpm test:checkout` for marked fixtures in a disposable localhost database;
+its teardown drops that database. Checkouts, transactions and verification tokens
+are operational records and must never enter canonical content seeds.

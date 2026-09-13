@@ -14,11 +14,11 @@ const ITEMS: readonly SidebarItem[] = [
   { href: '/account/orders', label: 'Orders' },
 ]
 
-export function AccountSidebar({ email }: { email: string }) {
+export function AccountSidebar({ email, checkoutEnabled = false }: { email: string; checkoutEnabled?: boolean }) {
   const pathname = usePathname()
   return (
     <nav className={styles.sidebar}>
-      {ITEMS.map((it) => {
+      {[...ITEMS, ...(checkoutEnabled ? [{ href: '/account/checkouts', label: 'Trip reservations' }] : [])].map((it) => {
         const active = it.exact ? pathname === it.href : pathname.startsWith(it.href)
         return (
           <a

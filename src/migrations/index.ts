@@ -1,3 +1,4 @@
+import * as migration_20260913_150000_grouped_checkout from './20260913_150000_grouped_checkout';
 import * as migration_20260913_110000_contact_enquiry_notification from './20260913_110000_contact_enquiry_notification';
 import * as migration_20260913_090000_contact_enquiry_intake from './20260913_090000_contact_enquiry_intake';
 import * as migration_20260912_150000_contact_page_blocks from './20260912_150000_contact_page_blocks';
@@ -373,4 +374,5 @@ export const migrations = [
     down: migration_20260913_110000_contact_enquiry_notification.down,
     name: '20260913_110000_contact_enquiry_notification',
   },
+  { up: migration_20260913_150000_grouped_checkout.up, down: migration_20260913_150000_grouped_checkout.down, name: '20260913_150000_grouped_checkout' },
 ];

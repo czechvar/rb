@@ -1,5 +1,7 @@
 'use client'
 
+import { isPrivateAnalyticsPath } from './analytics-privacy'
+
 export type AnalyticsEventParams = Record<string, boolean | number | string | null | undefined>
 
 declare global {
@@ -10,10 +12,12 @@ declare global {
 }
 
 export function trackEvent(eventName: string, params: AnalyticsEventParams = {}) {
-  if (typeof window === 'undefined') return
+  if (typeof window === 'undefined' || isPrivateAnalyticsPath(window.location.pathname)) return
 
   const eventParams = {
     ...params,
+    page_location: window.location.origin + window.location.pathname,
+    page_referrer: '',
     ...(process.env.NODE_ENV !== 'production' ? { debug_mode: true } : {}),
   }
 
@@ -28,6 +32,8 @@ export function trackEvent(eventName: string, params: AnalyticsEventParams = {})
 
 function compactParams(params: AnalyticsEventParams) {
   return Object.fromEntries(
-    Object.entries(params).filter(([, value]) => value !== undefined && value !== null && value !== ''),
+    Object.entries(params).filter(
+      ([, value]) => value !== undefined && value !== null && value !== '',
+    ),
   )
 }

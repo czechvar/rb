@@ -20,6 +20,7 @@ import type { CollectionBeforeValidateHook, CollectionBeforeChangeHook } from 'p
  */
 export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data, operation, req }) => {
   if (operation !== 'create' || !data) return data
+  if (req.context.checkoutEngine && data.checkout) return data
   const d = data as {
     participants?: unknown[]
     unitPrice?: unknown
@@ -97,6 +98,7 @@ export const deriveCountsAndTotal: CollectionBeforeValidateHook = async ({ data,
  */
 export const allocateOrderNumber: CollectionBeforeChangeHook = async ({ data, operation, req }) => {
   if (operation !== 'create') return data
+  if (req.context.checkoutEngine && data?.orderNumber) return data
   const year = new Date().getUTCFullYear()
   const prefix = `RB-${year}-`
   const recent = await req.payload.find({

@@ -31,6 +31,8 @@ function formatDateRange(from: string, to: string): string {
 export const dispatchLifecycleEmails: CollectionAfterChangeHook = async ({
   doc, previousDoc, operation, req,
 }) => {
+  if (doc.checkout) return doc
+
   const o = doc as OrderLike
 
   let userEmail: string, userName: string

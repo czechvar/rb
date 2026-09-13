@@ -1,5 +1,7 @@
 'use server'
 
+import { checkoutEnabled } from '@/lib/checkout/feature'
+
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import { requireUser } from '@/lib/auth'
@@ -66,6 +68,7 @@ export async function createBookingAction(
   _prev: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
+  if (checkoutEnabled()) return { ok: false, formError: 'Please use the cart checkout to reserve your selected trips.' }
   const user = await requireUser()
   const eventDateId = Number(formData.get('eventDateId'))
   if (!Number.isFinite(eventDateId)) {

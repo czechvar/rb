@@ -97,6 +97,10 @@ export interface GatewayPayload {
  * document. Plain data — no behaviour (see design notes above).
  */
 export interface Transaction {
+  /** Present only for the grouped-checkout ledger. */
+  checkoutId?: number;
+  payerName?: string;
+  billingAddress?: Record<string, unknown>;
   /** Payload document id. */
   id: string;
   /** Stable public identifier (UUID v4), safe to expose in URLs. */

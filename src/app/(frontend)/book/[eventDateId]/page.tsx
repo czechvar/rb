@@ -1,3 +1,4 @@
+import { checkoutEnabled } from '@/lib/checkout/feature'
 import React from 'react'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
@@ -36,6 +37,7 @@ function addressPreview(a: Record<string, unknown>): string {
 export default async function BookPage({ params }: Props) {
   const { eventDateId: rawId } = await params
   const eventDateId = Number(rawId)
+  if (checkoutEnabled() && /^\d+$/.test(rawId) && Number.isSafeInteger(eventDateId) && eventDateId > 0) redirect(`/checkout?add=${eventDateId}`)
 
   const user = await getCurrentUser()
   if (!user) redirect(`/login?from=${encodeURIComponent(`/book/${rawId}`)}`)

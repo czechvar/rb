@@ -103,3 +103,10 @@ Payload collection: `event-dates`.
 Snowbusters merged this from two separate entities (`CourseDate` for
 dates, `CoursePrice` for prices) that were not linked to each other.
 Rockbusters merges them by design.
+
+## Checkout
+
+A customer's grouped reservation of one or more Event Dates, with contact details,
+review progress and allocated payments. Each dated trip retains its own Order.
+A cart contains provisional selections; a Checkout becomes a reservation only
+when the server successfully reserves all requested places.

@@ -24,7 +24,28 @@ export const Transactions: CollectionConfig = {
   },
   fields: [
     { name: 'uuid', type: 'text', required: true, unique: true, index: true },
-    { name: 'order', type: 'relationship', relationTo: 'orders', required: true, index: true },
+    { name: 'order', type: 'relationship', relationTo: 'orders', index: true },
+    { name: 'checkout', type: 'relationship', relationTo: 'checkouts', index: true },
+    { name: 'amountMinor', type: 'number', min: 0 },
+    {
+      name: 'allocations',
+      type: 'json',
+      admin: {
+        description: 'Immutable checkout payment allocation ledger in integer minor units.',
+      },
+    },
+    {
+      name: 'refunds',
+      type: 'json',
+      admin: {
+        description: 'Staff-recorded provider refund receipts; this field does not issue a refund.',
+      },
+    },
+    { name: 'purpose', type: 'select', options: ['full', 'deposit', 'balance'] },
+    { name: 'settledAt', type: 'date' },
+    { name: 'reconciliationReason', type: 'textarea' },
+    { name: 'cancelAttempts', type: 'number', defaultValue: 0, min: 0 },
+    { name: 'lastCancelAttemptAt', type: 'date' },
     {
       name: 'amount',
       type: 'number',

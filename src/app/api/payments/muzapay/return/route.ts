@@ -40,10 +40,13 @@ export async function GET(request: Request): Promise<Response> {
 
   try {
     await resolveBenefitPlusPayment(txn.uuid)
-  } catch (err) {
-    console.error('[muzapay/return] status check failed; leaving it to the sweep:', err)
-  }
+  } catch { /* Scheduler reconciles unresolved payments without logging provider data. */ }
 
+  if (txn.checkout) {
+    const checkoutId = typeof txn.checkout === 'object' ? txn.checkout.id : txn.checkout
+    return Response.redirect(siteUrl(`/account/checkouts/${checkoutId}`), 302)
+  }
+  if (!txn.order) return Response.redirect(siteUrl('/account'), 302)
   const orderId = typeof txn.order === 'object' ? txn.order.id : txn.order
   return Response.redirect(siteUrl(`/account/orders/${orderId}`), 302)
 }

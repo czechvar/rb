@@ -57,7 +57,8 @@
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:contact:intake": "node scripts/contact/run-intake-sandbox.mjs",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
-    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
+    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
+    "test:checkout": "node scripts/checkout/run-sandbox.mjs"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.84.1",

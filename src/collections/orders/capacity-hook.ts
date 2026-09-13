@@ -1,5 +1,5 @@
 import type { CollectionBeforeChangeHook } from 'payload'
-import { sql } from 'drizzle-orm'
+import { lockEventDates } from '../../lib/checkout/transaction'
 import { getRemainingCapacity } from '../../lib/capacity'
 
 /**
@@ -18,8 +18,7 @@ export const capacityCheck: CollectionBeforeChangeHook = async ({ data, operatio
   const participantCount = (data as { participantCount?: number }).participantCount ?? 0
   if (!eventDateId || participantCount <= 0) return data
 
-  const drizzle = (req.payload.db as { drizzle: { execute: (q: unknown) => Promise<unknown> } }).drizzle
-  await drizzle.execute(sql`SELECT pg_advisory_xact_lock(${Number(eventDateId)})`)
+  await lockEventDates(req, [Number(eventDateId)])
 
   const remaining = await getRemainingCapacity(eventDateId, { req })
   if (participantCount > remaining) {

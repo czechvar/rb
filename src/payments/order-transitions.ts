@@ -121,6 +121,12 @@ export async function applyOutcome(
   txnDoc: TransactionDoc,
   outcome: PaymentOutcome,
 ): Promise<void> {
+  if (txnDoc.checkout) {
+    const { applyCheckoutPaymentOutcome } = await import('./checkout-payment-service')
+    await applyCheckoutPaymentOutcome(txnDoc.uuid, outcome)
+    return
+  }
+  if (!txnDoc.order) throw new Error('Transaction has no order or checkout.')
   const cms = await getPayloadClient()
 
   // `txnDoc` is a snapshot the caller fetched, possibly well before this call

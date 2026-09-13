@@ -16,12 +16,14 @@ export async function comgatePostForm(
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(params).toString(),
+      signal: AbortSignal.timeout(15000),
+      redirect: 'error',
     })
   } catch (cause) {
     throw new PaymentGatewayError('Comgate request failed.', cause)
   }
 
-  if (response.status !== 200) {
+  if (!response.ok) {
     throw new PaymentGatewayError(`Unexpected HTTP ${response.status} from Comgate.`)
   }
 

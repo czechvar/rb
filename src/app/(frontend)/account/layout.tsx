@@ -1,3 +1,4 @@
+import { checkoutEnabled } from '@/lib/checkout/feature'
 import React from 'react'
 import { redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
@@ -11,7 +12,7 @@ export default async function AccountLayout({ children }: { children: React.Reac
   return (
     <MarketingShell crumbs={[{ href: '/', label: 'Home' }, { label: 'My account' }]}>
       <div className={styles.shell}>
-        <AccountSidebar email={user.email} />
+        <AccountSidebar email={user.email} checkoutEnabled={checkoutEnabled()} />
         <div className={styles.content}>{children}</div>
       </div>
     </MarketingShell>

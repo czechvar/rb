@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
 import { contactIntakeRateLimits } from './lib/contact/rate-table'
+import { Checkouts } from './collections/Checkouts'
 import { ContactEnquiries } from './collections/ContactEnquiries'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -60,6 +61,7 @@ export default buildConfig({
     },
   },
   collections: [
+    Checkouts,
     ContactEnquiries,
     Users,
     Media,

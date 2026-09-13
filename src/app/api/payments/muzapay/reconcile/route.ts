@@ -20,5 +20,7 @@ export async function GET(request: Request): Promise<Response> {
   }
 
   const summary = await sweepBenefitPlusPayments()
-  return Response.json(summary)
+  const { sweepCheckoutPayments } = await import('@/payments/checkout-payment-service')
+  const checkouts = await sweepCheckoutPayments()
+  return Response.json({ ...summary, checkouts })
 }

@@ -1,3 +1,4 @@
+import { checkoutEnabled } from '@/lib/checkout/feature'
 import { tripSummary, tripCommercialText } from '@/lib/trip-summary'
 import type { ReactNode } from 'react'
 import Link from 'next/link'
@@ -54,6 +55,7 @@ export function BookingCTA({
           <Link href={href} className={`btn-primary ${styles.button}`}>
             {label}
           </Link>
+          {checkoutEnabled() && trip?.selectedDate && trip.bookingHref && <Link href={`/cart?add=${trip.selectedDate.id}`} className={`btn-ghost ${styles.button}`}>Add to cart</Link>}
           {variant === 'image' && trip?.bookingHref && (
             <Link href="mailto:info@rockbusters.net" className={`btn-ghost ${styles.button}`}>
               {trip?.editorial?.booking?.secondaryLabel || 'Ask a Question →'}

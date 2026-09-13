@@ -85,7 +85,7 @@ export const Users: CollectionConfig = {
         { label: 'Customer', value: 'customer' },
         { label: 'Admin', value: 'admin' },
       ],
-      access: { update: isAdminField },
+      access: { create: isAdminField, update: isAdminField },
     },
     {
       name: 'addresses',

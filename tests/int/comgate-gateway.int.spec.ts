@@ -141,7 +141,7 @@ describe('ComgateGateway.begin', () => {
       vi.fn(async () => new Response('code=1400&message=Invalid merchant', { status: 200 })),
     )
     const gateway = makeGateway(makeStore([]))
-    await expect(gateway.begin(makeTransaction())).rejects.toThrow(/Invalid merchant/)
+    await expect(gateway.begin(makeTransaction())).rejects.toThrow('Comgate rejected payment creation.')
   })
 })
 
@@ -231,12 +231,12 @@ describe('ComgateGateway.handleWebhook', () => {
   })
 })
 
-describe('ComgateGateway — deferred methods', () => {
+describe('ComgateGateway — return and polling guards', () => {
   it('handleReturn always resolves null (Comgate confirms via webhook only)', async () => {
     const gateway = makeGateway(makeStore([]))
     await expect(gateway.handleReturn(makeTransaction())).resolves.toBeNull()
   })
-  it('checkStatus and cancel are not implemented in this MVP', async () => {
+  it('requires a persisted gateway id before status or cancellation', async () => {
     const gateway = makeGateway(makeStore([]))
     await expect(gateway.checkStatus(makeTransaction())).rejects.toThrow(PaymentGatewayError)
     await expect(gateway.cancel(makeTransaction())).rejects.toThrow(PaymentGatewayError)

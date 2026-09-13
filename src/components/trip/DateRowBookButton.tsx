@@ -1,3 +1,4 @@
+import { checkoutEnabled } from '@/lib/checkout/feature'
 import React from 'react'
 import Link from 'next/link'
 import { getRemainingCapacity } from '@/lib/capacity'
@@ -17,13 +18,13 @@ export async function DateRowBookButton({ eventDateId, active }: Props) {
   }
   return (
     <Link
-      href={`/book/${eventDateId}`}
+      href={checkoutEnabled() ? `/cart?add=${eventDateId}` : `/book/${eventDateId}`}
       style={{
         background: '#c8102e', color: '#fff', textDecoration: 'none',
         padding: '8px 14px', borderRadius: 4, fontWeight: 600, display: 'inline-block',
       }}
     >
-      Book this date
+      {checkoutEnabled() ? 'Add to cart' : 'Book this date'}
     </Link>
   )
 }

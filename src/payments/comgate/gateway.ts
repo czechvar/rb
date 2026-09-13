@@ -2,10 +2,8 @@
  * TypeScript port of snowbusters
  * api/app/PaymentsModule/service/ComgateGateway.php.
  *
- * Scope for this port (see docs/superpowers/plans/2026-08-28-comgate-payment-gateway.md):
- * only begin() and handleWebhook() are implemented. checkStatus() and
- * cancel() throw — they back a cron-reconciliation job and a refund flow
- * that this rebuild doesn't have yet. handleReturn() is a no-op in the PHP
+ * Status and pending-payment cancellation follow the current Comgate HTTP POST API.
+ * Cancellation is never used as a refund of paid funds. handleReturn() is a no-op in the PHP
  * original too: Comgate confirms payment via server-to-server webhook only,
  * the return URL is purely where the payer's browser lands.
  */
@@ -52,18 +50,34 @@ export class ComgateGateway implements PaymentGateway {
       secret: this.config.secret,
       price: String(minorUnits),
       curr: transaction.money.currency,
-      label: transaction.label,
+      label: transaction.label.slice(0, 16),
       email: transaction.email,
+      ...(transaction.payerName ? { fullName: transaction.payerName } : {}),
+      ...(transaction.billingAddress
+        ? {
+            billingAddrCity: String(transaction.billingAddress.city ?? ''),
+            billingAddrStreet: String(transaction.billingAddress.street ?? ''),
+            billingAddrPostalCode: String(transaction.billingAddress.postalCode ?? ''),
+            billingAddrCountry: String(transaction.billingAddress.country ?? ''),
+          }
+        : {}),
+      category: 'OTHER',
+      delivery: 'ELECTRONIC_DELIVERY',
       refId: transaction.uuid,
-      method: 'ALL',
+      method: transaction.paymentMethod === 'comgate-card' ? 'CARD_ALL' : 'ALL',
+      country: 'ALL',
+      expirationTime: '1d',
       prepareOnly: 'true',
       test: this.config.test ? 'true' : 'false',
       returnUrl,
+      url_paid: returnUrl,
+      url_cancelled: returnUrl,
+      url_pending: returnUrl,
       notifyUrl,
     })
 
     if (data.code !== undefined && data.code !== '0') {
-      throw new PaymentGatewayError(`Comgate API error: ${data.message ?? 'Unknown error'}`)
+      throw new PaymentGatewayError('Comgate rejected payment creation.')
     }
     if (!data.redirect || !data.transId) {
       throw new PaymentGatewayError('Comgate response is missing redirect/transId.')
@@ -72,7 +86,14 @@ export class ComgateGateway implements PaymentGateway {
     return {
       redirectUrl: data.redirect,
       gatewayTransactionId: data.transId,
-      payload: { ...data, redirectUrl: data.redirect, gatewayTransactionId: data.transId },
+      payload: {
+        code: data.code,
+        ...(data.message === 'OK' ? { message: 'OK' } : {}),
+        transId: data.transId,
+        redirect: data.redirect,
+        redirectUrl: data.redirect,
+        gatewayTransactionId: data.transId,
+      },
     }
   }
 
@@ -102,17 +123,29 @@ export class ComgateGateway implements PaymentGateway {
 
     // Idempotent: a duplicate webhook for an already-resolved transaction
     // still gets a 200 so Comgate stops retrying.
-    if (isPaymentResult(transaction.state)) {
+    if (
+      transaction.state === 'paid' ||
+      (!transaction.checkoutId && isPaymentResult(transaction.state))
+    ) {
       return {
         transactionUuid: refId,
         outcome: { state: transaction.state, callbackPayload: transaction.callbackPayload ?? {} },
         acknowledgement,
       }
     }
-    if (transaction.state !== 'begun') {
+    if ((!transaction.checkoutId && transaction.state !== 'begun') || !['created', 'begun', 'pending-payment', 'failed', 'cancelled'].includes(transaction.state)) {
       throw new PaymentGatewayError('Transaction cannot be handled at this point.')
     }
 
+    if (transaction.checkoutId)
+      this.verifyPayment(
+        transaction,
+        Object.fromEntries(
+          [...form.entries()].filter(
+            (entry): entry is [string, string] => typeof entry[1] === 'string',
+          ),
+        ),
+      )
     const status = get('status')
     const state = status === 'PAID' ? 'paid' : status === 'CANCELLED' ? 'cancelled' : null
     if (!state) {
@@ -123,9 +156,9 @@ export class ComgateGateway implements PaymentGateway {
     // verified it above) — strip both before persisting so the shared secret never
     // sits in plaintext in a `transactions` row, DB export, or admin view.
     const callbackPayload: Record<string, unknown> = {}
-    for (const [key, value] of form.entries()) {
-      if (key === 'merchant' || key === 'secret') continue
-      callbackPayload[key] = value
+    for (const key of ['transId', 'refId', 'status', 'price', 'curr', 'method']) {
+      const value = get(key)
+      if (value !== null) callbackPayload[key] = value
     }
 
     return { transactionUuid: refId, outcome: { state, callbackPayload }, acknowledgement }
@@ -135,15 +168,52 @@ export class ComgateGateway implements PaymentGateway {
     return null
   }
 
-  async checkStatus(_transaction: Transaction): Promise<PaymentOutcome | null> {
-    throw new PaymentGatewayError(
-      'ComgateGateway.checkStatus is not implemented (deferred — see docs/superpowers/plans/2026-08-28-comgate-payment-gateway.md).',
-    )
+  private verifyPayment(transaction: Transaction, data: Record<string, string>): void {
+    if (
+      data.transId !== transaction.payload.gatewayTransactionId ||
+      data.refId !== transaction.uuid ||
+      data.curr !== transaction.money.currency ||
+      data.price !== String(toMinorUnits(transaction.money.amount))
+    ) {
+      throw new PaymentGatewayError('Comgate payment identity or amount mismatch.')
+    }
   }
 
-  async cancel(_transaction: Transaction): Promise<PaymentOutcome | null> {
-    throw new PaymentGatewayError(
-      'ComgateGateway.cancel is not implemented (deferred — see docs/superpowers/plans/2026-08-28-comgate-payment-gateway.md).',
-    )
+  async checkStatus(transaction: Transaction): Promise<PaymentOutcome | null> {
+    const transId = transaction.payload.gatewayTransactionId
+    if (!transId) throw new PaymentGatewayError('Comgate transaction id is unavailable.')
+    const data = await comgatePostForm(`${API_BASE}/v1.0/status`, {
+      merchant: this.config.merchant,
+      secret: this.config.secret,
+      transId,
+    })
+    if (data.code !== '0') throw new PaymentGatewayError('Comgate status is unavailable.')
+    this.verifyPayment(transaction, data)
+    const state = data.status === 'PAID' ? 'paid' : data.status === 'CANCELLED' ? 'cancelled' : null
+    if (!state) return null
+    return {
+      state,
+      callbackPayload: Object.fromEntries(
+        ['transId', 'refId', 'status', 'price', 'curr', 'method']
+          .filter((key) => data[key] !== undefined)
+          .map((key) => [key, data[key]]),
+      ),
+    }
+  }
+
+  async cancel(transaction: Transaction): Promise<PaymentOutcome | null> {
+    const current = await this.checkStatus(transaction)
+    if (current) return current
+    const transId = transaction.payload.gatewayTransactionId
+    if (!transId) throw new PaymentGatewayError('Comgate transaction id is unavailable.')
+    const data = await comgatePostForm(`${API_BASE}/v1.0/cancel`, {
+      merchant: this.config.merchant,
+      secret: this.config.secret,
+      transId,
+    })
+    // A payment may settle during cancellation. Re-read even for the documented 1400 race.
+    if (data.code !== '0' && data.code !== '1400')
+      throw new PaymentGatewayError('Comgate cancellation could not be confirmed.')
+    return this.checkStatus(transaction)
   }
 }

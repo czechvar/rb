@@ -1,4 +1,4 @@
-import type { CollectionConfig, FieldAccess } from 'payload'
+import type { CollectionConfig, FieldAccess, CollectionBeforeValidateHook } from 'payload'
 import { isAdmin, isAdminUser, isAuthenticated } from '../access'
 import { isAdminOrOwner, canUpdateStateField } from './orders/access'
 import { ORDER_STATES } from './orders/state-machine'
@@ -8,6 +8,33 @@ import { validateStateTransition } from './orders/state-hook'
 import { dispatchLifecycleEmails } from './orders/emails-hook'
 
 const adminOnlyField: FieldAccess = ({ req }) => isAdminUser(req.user)
+
+const validateOrderShape: CollectionBeforeValidateHook = ({
+  data,
+  originalDoc,
+  req,
+  operation,
+}) => {
+  if (!data) return data
+  const grouped = data.checkout || originalDoc?.checkout
+  if (grouped && !req.context.checkoutEngine)
+    throw new Error('Use checkout operations for grouped bookings.')
+  if (operation === 'create' && !grouped) {
+    if (!data.user || !Array.isArray(data.participants) || !data.participants.length)
+      throw new Error('A customer and participants are required.')
+    for (const participant of data.participants)
+      if (
+        !participant.firstName ||
+        !participant.lastName ||
+        !participant.email ||
+        !participant.phone
+      )
+        throw new Error('Participant details are required.')
+    for (const field of ['firstName', 'lastName', 'street', 'city', 'postalCode', 'country'])
+      if (!data.billingAddress?.[field]) throw new Error('Billing details are required.')
+  }
+  return data
+}
 
 export const Orders: CollectionConfig = {
   slug: 'orders',
@@ -24,11 +51,18 @@ export const Orders: CollectionConfig = {
     delete: isAdmin,
   },
   hooks: {
-    beforeValidate: [deriveCountsAndTotal],
+    beforeValidate: [validateOrderShape, deriveCountsAndTotal],
     beforeChange: [validateStateTransition, allocateOrderNumber, capacityCheck, stampNotes],
     afterChange: [dispatchLifecycleEmails],
   },
   fields: [
+    {
+      name: 'checkout',
+      type: 'relationship',
+      relationTo: 'checkouts',
+      index: true,
+      admin: { readOnly: true },
+    },
     {
       name: 'orderNumber',
       type: 'text',
@@ -40,7 +74,6 @@ export const Orders: CollectionConfig = {
       name: 'user',
       type: 'relationship',
       relationTo: 'users',
-      required: true,
       admin: { readOnly: true },
     },
     {
@@ -53,13 +86,11 @@ export const Orders: CollectionConfig = {
     {
       name: 'participants',
       type: 'array',
-      required: true,
-      minRows: 1,
       fields: [
-        { name: 'firstName', type: 'text', required: true },
-        { name: 'lastName', type: 'text', required: true },
+        { name: 'firstName', type: 'text' },
+        { name: 'lastName', type: 'text' },
         { name: 'email', type: 'email', required: true },
-        { name: 'phone', type: 'text', required: true },
+        { name: 'phone', type: 'text' },
       ],
     },
     {
@@ -74,12 +105,12 @@ export const Orders: CollectionConfig = {
       type: 'group',
       admin: { readOnly: true },
       fields: [
-        { name: 'firstName', type: 'text', required: true },
-        { name: 'lastName', type: 'text', required: true },
-        { name: 'street', type: 'text', required: true },
-        { name: 'city', type: 'text', required: true },
-        { name: 'postalCode', type: 'text', required: true },
-        { name: 'country', type: 'text', required: true },
+        { name: 'firstName', type: 'text' },
+        { name: 'lastName', type: 'text' },
+        { name: 'street', type: 'text' },
+        { name: 'city', type: 'text' },
+        { name: 'postalCode', type: 'text' },
+        { name: 'country', type: 'text' },
         {
           name: 'company',
           type: 'group',
@@ -132,25 +163,38 @@ export const Orders: CollectionConfig = {
       name: 'referral',
       type: 'relationship',
       relationTo: 'referrals',
-      admin: { readOnly: true, description: 'Referral source captured from URL at booking time (snapshot).' },
+      admin: {
+        readOnly: true,
+        description: 'Referral source captured from URL at booking time (snapshot).',
+      },
     },
     {
       name: 'discountAmount',
       type: 'number',
       defaultValue: 0,
-      admin: { readOnly: true, description: 'How much the order was reduced by the applied discount, in the order currency.' },
+      admin: {
+        readOnly: true,
+        description:
+          'How much the order was reduced by the applied discount, in the order currency.',
+      },
     },
     {
       name: 'discountCommission',
       type: 'number',
       defaultValue: 0,
-      admin: { readOnly: true, description: 'Commission accrued for the discount-code partner, in the order currency.' },
+      admin: {
+        readOnly: true,
+        description: 'Commission accrued for the discount-code partner, in the order currency.',
+      },
     },
     {
       name: 'referralCommission',
       type: 'number',
       defaultValue: 0,
-      admin: { readOnly: true, description: 'Commission accrued for the referral partner, in the order currency.' },
+      admin: {
+        readOnly: true,
+        description: 'Commission accrued for the referral partner, in the order currency.',
+      },
     },
     {
       name: 'state',

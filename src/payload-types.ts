@@ -68,6 +68,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    checkouts: Checkout;
     'contact-enquiries': ContactEnquiry;
     users: User;
     media: Media;
@@ -97,6 +98,7 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    checkouts: CheckoutsSelect<false> | CheckoutsSelect<true>;
     'contact-enquiries': ContactEnquiriesSelect<false> | ContactEnquiriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -177,24 +179,58 @@ export interface PayloadMcpApiKeyAuthOperations {
   };
 }
 /**
+ * Use the checkout review screen to approve, decline and reconcile reservations.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contact-enquiries".
+ * via the `definition` "checkouts".
  */
-export interface ContactEnquiry {
+export interface Checkout {
   id: number;
-  submissionId: string;
-  payloadDigest: string;
-  name: string;
-  email: string;
-  level?: string | null;
-  interest?: string | null;
-  message: string;
-  preferredContact: 'email' | 'phone' | 'whatsapp';
-  phone?: string | null;
-  source: 'contact-page';
-  status: 'new' | 'handled';
-  notificationStatus: 'pending' | 'sent' | 'failed' | 'notConfigured';
-  notifiedAt?: string | null;
+  reference: string;
+  submissionKey: string;
+  requestDigest: string;
+  state: 'unverified' | 'awaitingReview' | 'approved' | 'reserved' | 'cancelled' | 'expired' | 'reconciliation';
+  customerKind: 'new' | 'returning';
+  user?: (number | null) | User;
+  contact: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+  items:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  currency: 'EUR' | 'CZK';
+  billingAddress?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  expiresAt?: string | null;
+  paymentMethod?: ('comgate-card' | 'muzapay') | null;
+  verificationHash?: string | null;
+  verificationExpiresAt?: string | null;
+  verifiedAt?: string | null;
+  invitationHash?: string | null;
+  invitationExpiresAt?: string | null;
+  invitedAt?: string | null;
+  approvedAt?: string | null;
+  reviewedBy?: (number | null) | User;
+  reviewNote?: string | null;
+  discountCode?: string | null;
+  referralCode?: string | null;
+  notificationStatus?: ('pending' | 'sent' | 'failed' | 'notConfigured') | null;
+  reconciliationReason?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -249,6 +285,28 @@ export interface User {
     | null;
   password?: string | null;
   collection: 'users';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-enquiries".
+ */
+export interface ContactEnquiry {
+  id: number;
+  submissionId: string;
+  payloadDigest: string;
+  name: string;
+  email: string;
+  level?: string | null;
+  interest?: string | null;
+  message: string;
+  preferredContact: 'email' | 'phone' | 'whatsapp';
+  phone?: string | null;
+  source: 'contact-page';
+  status: 'new' | 'handled';
+  notificationStatus: 'pending' | 'sent' | 'failed' | 'notConfigured';
+  notifiedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -5091,24 +5149,27 @@ export interface Category {
  */
 export interface Order {
   id: number;
+  checkout?: (number | null) | Checkout;
   orderNumber?: string | null;
-  user: number | User;
+  user?: (number | null) | User;
   eventDate: number | EventDate;
-  participants: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    id?: string | null;
-  }[];
+  participants?:
+    | {
+        firstName?: string | null;
+        lastName?: string | null;
+        email: string;
+        phone?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   participantCount: number;
-  billingAddress: {
-    firstName: string;
-    lastName: string;
-    street: string;
-    city: string;
-    postalCode: string;
-    country: string;
+  billingAddress?: {
+    firstName?: string | null;
+    lastName?: string | null;
+    street?: string | null;
+    city?: string | null;
+    postalCode?: string | null;
+    country?: string | null;
     company?: {
       companyName?: string | null;
       ico?: string | null;
@@ -5218,7 +5279,38 @@ export interface Referral {
 export interface Transaction {
   id: number;
   uuid: string;
-  order: number | Order;
+  order?: (number | null) | Order;
+  checkout?: (number | null) | Checkout;
+  amountMinor?: number | null;
+  /**
+   * Immutable checkout payment allocation ledger in integer minor units.
+   */
+  allocations?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Staff-recorded provider refund receipts; this field does not issue a refund.
+   */
+  refunds?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  purpose?: ('full' | 'deposit' | 'balance') | null;
+  settledAt?: string | null;
+  reconciliationReason?: string | null;
+  cancelAttempts?: number | null;
+  lastCancelAttemptAt?: string | null;
   /**
    * Total amount, VAT inclusive, in whole currency units (e.g. 199 for €199).
    */
@@ -6041,6 +6133,10 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
+        relationTo: 'checkouts';
+        value: number | Checkout;
+      } | null)
+    | ({
         relationTo: 'contact-enquiries';
         value: number | ContactEnquiry;
       } | null)
@@ -6179,6 +6275,45 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "checkouts_select".
+ */
+export interface CheckoutsSelect<T extends boolean = true> {
+  reference?: T;
+  submissionKey?: T;
+  requestDigest?: T;
+  state?: T;
+  customerKind?: T;
+  user?: T;
+  contact?:
+    | T
+    | {
+        name?: T;
+        email?: T;
+        phone?: T;
+      };
+  items?: T;
+  currency?: T;
+  billingAddress?: T;
+  expiresAt?: T;
+  paymentMethod?: T;
+  verificationHash?: T;
+  verificationExpiresAt?: T;
+  verifiedAt?: T;
+  invitationHash?: T;
+  invitationExpiresAt?: T;
+  invitedAt?: T;
+  approvedAt?: T;
+  reviewedBy?: T;
+  reviewNote?: T;
+  discountCode?: T;
+  referralCode?: T;
+  notificationStatus?: T;
+  reconciliationReason?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -9758,6 +9893,7 @@ export interface ReviewsSelect<T extends boolean = true> {
  * via the `definition` "orders_select".
  */
 export interface OrdersSelect<T extends boolean = true> {
+  checkout?: T;
   orderNumber?: T;
   user?: T;
   eventDate?: T;
@@ -9819,6 +9955,15 @@ export interface OrdersSelect<T extends boolean = true> {
 export interface TransactionsSelect<T extends boolean = true> {
   uuid?: T;
   order?: T;
+  checkout?: T;
+  amountMinor?: T;
+  allocations?: T;
+  refunds?: T;
+  purpose?: T;
+  settledAt?: T;
+  reconciliationReason?: T;
+  cancelAttempts?: T;
+  lastCancelAttemptAt?: T;
   amount?: T;
   amountWithoutVat?: T;
   currency?: T;

@@ -1,3 +1,4 @@
+import { minorDecimal } from './checkout-ledger'
 /**
  * Payload-backed persistence for `transactions`. Split out of
  * order-payment-service.ts so both gateways can share it: Comgate resolves
@@ -35,7 +36,21 @@ export interface OrderDoc {
 export interface TransactionDoc {
   id: number
   uuid: string
-  order: number | { id: number }
+  order?: number | { id: number } | null
+  checkout?: number | { id: number } | null
+  amountMinor?: number | null
+  allocations?: import('./checkout-ledger').PaymentAllocation[] | null
+  purpose?: import('./checkout-ledger').PaymentPurpose | null
+  refunds?: Array<{
+    providerReference: string
+    recordedAt: string
+    recordedBy: number
+    allocations: import('./checkout-ledger').PaymentAllocation[]
+  }> | null
+  settledAt?: string | null
+  reconciliationReason?: string | null
+  cancelAttempts?: number | null
+  lastCancelAttemptAt?: string | null
   amount: number
   amountWithoutVat: number
   currency: Currency
@@ -53,9 +68,13 @@ export interface TransactionDoc {
 export function toGatewayTransaction(doc: TransactionDoc): GatewayTransaction {
   return {
     id: String(doc.id),
+    checkoutId:
+      typeof doc.checkout === 'object' && doc.checkout
+        ? doc.checkout.id
+        : (doc.checkout ?? undefined),
     uuid: doc.uuid,
     money: {
-      amount: doc.amount.toFixed(2),
+      amount: doc.amountMinor != null ? minorDecimal(doc.amountMinor) : doc.amount.toFixed(2),
       amountWithoutVat: doc.amountWithoutVat.toFixed(2),
       currency: doc.currency,
     },
