@@ -13,12 +13,14 @@ import {
   updateCatalogueSearch,
   type CatalogueFacetKey,
   type CatalogueResult,
+  type CatalogueOption,
   type CatalogueSort,
 } from '@/lib/catalogue-results'
 import styles from './catalogue-results.module.css'
 
 type Props = {
   results: CatalogueResult[]
+  categories?: CatalogueOption[]
   enabledFacets: CatalogueFacetKey[]
   defaultSort?: CatalogueSort
   resultLimit?: number
@@ -37,6 +39,7 @@ const facetLabels: Record<CatalogueFacetKey, string> = {
 
 export function CatalogueResultsClient({
   results,
+  categories,
   enabledFacets,
   defaultSort = 'date',
   resultLimit = 12,
@@ -48,12 +51,12 @@ export function CatalogueResultsClient({
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const filters = useMemo(
-    () => parseCatalogueFilters(searchParams, results, enabledFacets),
-    [enabledFacets, results, searchParams],
+    () => parseCatalogueFilters(searchParams, results, enabledFacets, categories),
+    [enabledFacets, results, searchParams, categories],
   )
   const [visibleCount, setVisibleCount] = useState(resultLimit)
   const [isPending, startTransition] = useTransition()
-  const options = useMemo(() => facetOptions(results), [results])
+  const options = useMemo(() => facetOptions(results, categories), [results, categories])
   const filtered = useMemo(
     () => sortCatalogueResults(filterCatalogueResults(results, filters), defaultSort),
     [defaultSort, filters, results],

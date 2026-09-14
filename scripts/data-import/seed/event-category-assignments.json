@@ -1,0 +1,398 @@
+[
+  {
+    "eventSlug": "sport-climbing-basics",
+    "categorySlugs": [
+      "sport-climbing-courses"
+    ]
+  },
+  {
+    "eventSlug": "deep-blue-psicobloc",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "dolomite-dolce-vita",
+    "categorySlugs": [
+      "trad-multipitch",
+      "expeditions"
+    ]
+  },
+  {
+    "eventSlug": "beginner-climbing-course",
+    "categorySlugs": [
+      "sport-climbing-courses"
+    ]
+  },
+  {
+    "eventSlug": "bouldering-albarracin",
+    "categorySlugs": [
+      "bouldering-camps"
+    ]
+  },
+  {
+    "eventSlug": "multipitch-climbing-course",
+    "categorySlugs": [
+      "trad-multipitch"
+    ]
+  },
+  {
+    "eventSlug": "sandstone-climbing",
+    "categorySlugs": [
+      "trad-multipitch"
+    ]
+  },
+  {
+    "eventSlug": "sport-climbing",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "europe-rock-climbing-trip",
+    "categorySlugs": [
+      "expeditions",
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "climbing-coaching-on-sight-red-point",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "climbing-coaching-footwork-balance",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "climbing-coaching-overhangs",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "climbing-weekends",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "christmas-climbing-holiday",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "easter-climbing-in-sella",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "rockbusters-climbing-express",
+    "categorySlugs": [
+      "custom-trips"
+    ]
+  },
+  {
+    "eventSlug": "climbing-trip-spain",
+    "categorySlugs": [
+      "expeditions",
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "deep-water-solo-mallorca",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "catalunya-climbing",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "woman-climbing",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "san-fermin-climbing",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "rockbusters-private-guiding",
+    "categorySlugs": [
+      "private-coaching"
+    ]
+  },
+  {
+    "eventSlug": "singing-rock-mobile-test-center",
+    "categorySlugs": []
+  },
+  {
+    "eventSlug": "adam-ondra-on-sight-red-point",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "patxi-usobiaga-training",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "biomechanica-funcional",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "pro-climbers-performance-coaching",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "adam-ondra-patxi-usobiaga-work-shop",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "adam-ondra-patxi-usobiaga-work-shop-extension",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "daila-ojeda-climbing-work-shop",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "hazel-findlay-mental-coaching",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "big-wall-climbing-in-chamonix",
+    "categorySlugs": [
+      "trad-multipitch"
+    ]
+  },
+  {
+    "eventSlug": "climbing-technique-mental-coaching",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "klemen-becan-performance-coaching-privat",
+    "categorySlugs": [
+      "private-coaching"
+    ]
+  },
+  {
+    "eventSlug": "deep-water-solo-sailing-mallorca",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "rockbusters-summer-2018",
+    "categorySlugs": []
+  },
+  {
+    "eventSlug": "easter-climbing-camp-in-kalymnos",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "andalucia-climbing",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "introduction-to-bouldering",
+    "categorySlugs": [
+      "bouldering-camps"
+    ]
+  },
+  {
+    "eventSlug": "sport-climbing-masterclass",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "climbing-coaching",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "trad-climbing-course",
+    "categorySlugs": [
+      "trad-multipitch"
+    ]
+  },
+  {
+    "eventSlug": "multipitch-performance-coaching",
+    "categorySlugs": [
+      "trad-multipitch",
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "internship",
+    "categorySlugs": []
+  },
+  {
+    "eventSlug": "balkans-rock-climbing",
+    "categorySlugs": [
+      "expeditions",
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "sport-climbing-private-coaching",
+    "categorySlugs": [
+      "private-coaching",
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "multipitch-climbing-private-guiding-coaching",
+    "categorySlugs": [
+      "private-coaching",
+      "trad-multipitch"
+    ]
+  },
+  {
+    "eventSlug": "trad-climbing-private-coaching",
+    "categorySlugs": [
+      "private-coaching",
+      "trad-multipitch"
+    ]
+  },
+  {
+    "eventSlug": "advanced-sport-climbing-course",
+    "categorySlugs": [
+      "sport-climbing-courses",
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "camper-van-rental",
+    "categorySlugs": []
+  },
+  {
+    "eventSlug": "performance-coaching-gear-test",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "efficient-technique-injury-prevention-sport-climbing-course",
+    "categorySlugs": [
+      "performance-technique-camps",
+      "sport-climbing-courses"
+    ]
+  },
+  {
+    "eventSlug": "customized-climbing-rock-trip",
+    "categorySlugs": [
+      "custom-trips"
+    ]
+  },
+  {
+    "eventSlug": "feldenkrais-method-workshop-for-climbers",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "climb-work",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "climbers-hut-your-base-camp-for-epic-ascents",
+    "categorySlugs": []
+  },
+  {
+    "eventSlug": "fear-management-mental-coaching",
+    "categorySlugs": [
+      "performance-technique-camps"
+    ]
+  },
+  {
+    "eventSlug": "andalucia-rock-trip",
+    "categorySlugs": [
+      "expeditions",
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "france-rock-trip",
+    "categorySlugs": [
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "bouldering-and-sport-climbing-in-india",
+    "categorySlugs": [
+      "expeditions",
+      "bouldering-camps",
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "spain-rock-trip-cuenca-costa-blanca-chulilla-siurana",
+    "categorySlugs": [
+      "expeditions",
+      "sport-climbing-holidays"
+    ]
+  },
+  {
+    "eventSlug": "knots-stone-czech-climbing-tradition",
+    "categorySlugs": [
+      "trad-multipitch"
+    ]
+  },
+  {
+    "eventSlug": "bolt-send-sicily-s-virgin-rock",
+    "categorySlugs": [
+      "sport-climbing-courses"
+    ]
+  },
+  {
+    "eventSlug": "youth-summer-rock-climbing-bouldering-camp",
+    "categorySlugs": [
+      "performance-technique-camps",
+      "bouldering-camps"
+    ]
+  },
+  {
+    "eventSlug": "bouldering-weekend-with-alizee-dufraisse",
+    "categorySlugs": [
+      "bouldering-camps",
+      "performance-technique-camps"
+    ]
+  }
+]

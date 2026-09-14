@@ -1,0 +1,10 @@
+[
+  { "name": "Expeditions", "slug": "expeditions", "text": "Multi-week, multi-crag. Live, climb, improve non-stop.", "position": 10, "active": true },
+  { "name": "Sport Climbing Holidays", "slug": "sport-climbing-holidays", "text": "High performance, sun, great routes, great people.", "position": 20, "active": true },
+  { "name": "Bouldering Camps", "slug": "bouldering-camps", "text": "Power, movement, problem-solving on world-class blocs.", "position": 30, "active": true },
+  { "name": "Performance & Technique Camps", "slug": "performance-technique-camps", "text": "Break your plateau. Structured coaching and real feedback.", "position": 40, "active": true },
+  { "name": "Sport Climbing Courses", "slug": "sport-climbing-courses", "text": "Gym to rock. Lead, project, and perform outdoors.", "position": 50, "active": true },
+  { "name": "Trad & Multi-Pitch", "slug": "trad-multipitch", "text": "Bigger terrain. Real systems, real safety, real adventure.", "position": 60, "active": true },
+  { "name": "Private Coaching", "slug": "private-coaching", "text": "Fully personalized. Your goals, your timeline, your level.", "position": 70, "active": true },
+  { "name": "Custom Trips", "slug": "custom-trips", "text": "Your crew. Your vision. Your ultimate climbing experience.", "position": 80, "active": true }
+]

@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { getUpcomingCatalogueResults } from '@/lib/queries'
+import { getActiveTripCategories, getUpcomingCatalogueResults } from '@/lib/queries'
 import { BlockHeader } from './CatalogueCards'
 import { CatalogueResultsClient } from './CatalogueResultsClient'
 import { catalogueFacetKeys, type CatalogueFacetKey, type CatalogueSort } from '@/lib/catalogue-results'
@@ -19,7 +19,7 @@ type CatalogueResultsBlockProps = {
 }
 
 export async function CatalogueResultsBlock(block: CatalogueResultsBlockProps) {
-  const results = await getUpcomingCatalogueResults()
+  const [results, categories] = await Promise.all([getUpcomingCatalogueResults(), getActiveTripCategories()])
 
   return (
     <section className={styles.section}>
@@ -28,6 +28,7 @@ export async function CatalogueResultsBlock(block: CatalogueResultsBlockProps) {
         <Suspense fallback={null}>
           <CatalogueResultsClient
             results={results}
+            categories={categories}
             enabledFacets={block.enabledFacets?.filter(isFacet) ?? [...catalogueFacetKeys]}
             defaultSort={block.defaultSort ?? 'date'}
             resultLimit={block.resultLimit ?? 12}

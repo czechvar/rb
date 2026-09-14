@@ -96,3 +96,15 @@ Browse-trip actions in the Home and Destinations pages point to `/trips`.
 For an existing local database, `pnpm exec tsx scripts/data-import/update-trip-navigation.ts --apply` makes the same narrow,
 idempotent correction without reimporting the catalogue. Omit `--apply` for a
 read-only count. The utility refuses non-local databases.
+
+The eight customer-defined trip categories are persistent seed records, with
+names/descriptions in `scripts/data-import/seed/trip-categories.json`. Run
+`pnpm exec tsx scripts/data-import/import-trip-categories.ts --apply` to upsert
+these categories in an existing local database and refresh only the canonical
+category snapshot. Without `--apply`, the utility reports planned counts only.
+It refuses non-local databases and preserves existing categories and Event
+assignments. Proposed Event mappings are in
+`docs/superpowers/specs/2026-09-13-trip-category-mapping.md` and its CSV companion;
+the user-approved assignments have now been applied locally and included in the canonical seed. Run `pnpm exec tsx scripts/data-import/apply-event-categories.ts --apply` to apply the same mapping in an existing local database. The five held Events retain their assignments; draft Events stay draft. Omit `--apply` for a dry run.
+
+Category snapshot merging preserves canonical IDs by slug, even when local database IDs differ, so existing seed relationships remain valid.

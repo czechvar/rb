@@ -1,0 +1,66 @@
+event_id,event_slug,event_title,publication_state,proposed_primary,proposed_secondary,confidence,rationale
+1,sport-climbing-basics,Sport Climbing Basics — Learn to Lead & Climb Outdoors,published,sport-climbing-courses,,high,Teaching outdoor sport-climbing skills is the main offer.
+2,deep-blue-psicobloc,DEEP BLUE — The Psicobloc Camp,published,sport-climbing-holidays,,review,"Deep-water solo is the lead activity, with sport climbing alongside it. Confirm whether Holidays should include DWS."
+3,dolomite-dolce-vita,The Dolomite Dolce Vita,published,trad-multipitch,expeditions,high,Two-week Dolomites tour focused on multi-pitch sport climbing; Expeditions is a reasonable secondary format.
+4,beginner-climbing-course,Novice course,published,sport-climbing-courses,,high,Teaching outdoor sport-climbing skills is the main offer.
+5,bouldering-albarracin,Bouldering Albarracin,published,bouldering-camps,,high,Bouldering is the main climbing discipline.
+6,multipitch-climbing-course,Trad and Multipitch,published,trad-multipitch,,high,"Trad protection, multi-pitch systems or big-wall climbing is the main discipline."
+7,sandstone-climbing,Czech Sandstone,published,trad-multipitch,,medium,Czech sandstone has traditional protection and ethics; confirm this offer teaches those rather than only visiting the area.
+8,sport-climbing,Sport Climbing Camp,published,sport-climbing-holidays,,high,Destination-led climbing holiday; the experience and time on rock are the main offer.
+9,europe-rock-climbing-trip,Europe  Climbing Trip,published,expeditions,sport-climbing-holidays,high,Travelling multi-crag road trip with multi-week dates or an explicit multi-week itinerary.
+10,climbing-coaching-on-sight-red-point,Rockbusters coaching - On Sight / Red Point,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+11,climbing-coaching-footwork-balance,Rockbusters coaching - Footwork / Balance,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+12,climbing-coaching-overhangs,Rockbusters coaching - Overhangs,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+13,climbing-weekends,Rockbusters weekends,draft,sport-climbing-holidays,,medium,Short climbing weekend; holiday grouping is provisional because the detailed itinerary needs review.
+14,christmas-climbing-holiday,Christmas Climbing Camp,draft,sport-climbing-holidays,,high,Destination-led climbing holiday; the experience and time on rock are the main offer.
+15,easter-climbing-in-sella,Easter Climbing in SELLA,draft,sport-climbing-holidays,,high,Destination-led climbing holiday; the experience and time on rock are the main offer.
+16,rockbusters-climbing-express,Rockbusters Climbing EXPRESS,draft,custom-trips,,high,"Customer chooses where and when; team arranges transport, gear and camping."
+17,climbing-trip-spain,Spanish Climbing Trip,published,expeditions,sport-climbing-holidays,high,Travelling multi-crag road trip with multi-week dates or an explicit multi-week itinerary.
+18,deep-water-solo-mallorca,Deep Water Solo / Mallorka,published,sport-climbing-holidays,,review,Mixed DWS and sport-climbing tour. Confirm whether Holidays should include DWS.
+19,catalunya-climbing,Cataluna Climbing,draft,sport-climbing-holidays,,medium,"Multiple Catalan sport crags, but no dated occurrences establish a multi-week expedition; use Holidays provisionally."
+20,woman-climbing,Girls On Rock,published,sport-climbing-holidays,,medium,"Women-only audience describes who attends, not the activity; Holidays is the provisional format."
+21,san-fermin-climbing,San Fermin Climbing,draft,sport-climbing-holidays,,high,Destination-led climbing holiday; the experience and time on rock are the main offer.
+22,rockbusters-private-guiding,Rockbusters Private Guiding,draft,private-coaching,,high,Explicit one-to-one private guiding; confirm that the public Private Coaching label also covers guiding.
+23,singing-rock-mobile-test-center,Singing Rock Mobile Test Center,draft,,,hold,Mobile gear test centre; no description establishing a bookable climbing trip.
+24,adam-ondra-on-sight-red-point,Adam Ondra ON SIGHT & RED POINT,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+25,patxi-usobiaga-training,Patxi Usobiaga TRAINING,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+26,biomechanica-funcional,BIOMECHANICA FUNCIONAL,draft,performance-technique-camps,,medium,"Injury-prevention/biomechanics workshop fits the performance theme, though it is not a camp."
+27,pro-climbers-performance-coaching,Rockbusters Coaching with Brother and Primo,draft,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+28,adam-ondra-patxi-usobiaga-work-shop,Adam / Patxi / Pablo,draft,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+29,adam-ondra-patxi-usobiaga-work-shop-extension,Brother / Primo /  Adam / Patxi / Pablo,draft,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+30,daila-ojeda-climbing-work-shop,Daila Ojeda Climbing Clinic,draft,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+31,hazel-findlay-mental-coaching,Hazel Findlay MENTAL COACHING,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+32,big-wall-climbing-in-chamonix,Big wall climbing in Chamonix,published,trad-multipitch,,high,"Trad protection, multi-pitch systems or big-wall climbing is the main discipline."
+33,climbing-technique-mental-coaching,Master Class Coaching with Klemen Bečan,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+34,klemen-becan-performance-coaching-privat,MASTER CLASS COACHING with Klemen Becan,draft,private-coaching,,high,Full content explicitly describes private coaching with a maximum of two climbers.
+35,deep-water-solo-sailing-mallorca,"Deep Water Solo & Sailing, Mallorca",draft,sport-climbing-holidays,,review,"DWS and sailing, not a sport-climbing holiday in the strict sense. Needs an explicit taxonomy decision."
+36,rockbusters-summer-2018,ROCKBUSTERS SUMMER 2018,draft,,,hold,Draft 2018 summer programme bundling multiple offers; treat as an archive/umbrella record rather than recategorising as a current trip.
+37,easter-climbing-camp-in-kalymnos,EASTER CLIMBING CAMP in KALYMNOS,published,sport-climbing-holidays,,high,Destination-led climbing holiday; the experience and time on rock are the main offer.
+38,andalucia-climbing,ANDALUCIA CLIMBING,published,sport-climbing-holidays,,high,Destination-led climbing holiday; the experience and time on rock are the main offer.
+39,introduction-to-bouldering,Introduction to bouldering,published,bouldering-camps,,high,A bouldering course belongs with Bouldering Camps despite the course format; it is not a sport-climbing course.
+40,sport-climbing-masterclass,Sport Climbing MASTERCLASS,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+41,climbing-coaching,Climbing coaching,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+42,trad-climbing-course,Trad climbing course,published,trad-multipitch,,high,"Trad protection, multi-pitch systems or big-wall climbing is the main discipline."
+43,multipitch-performance-coaching,Multipitch performance coaching,published,trad-multipitch,performance-technique-camps,high,"Trad protection, multi-pitch systems or big-wall climbing is the main discipline."
+44,internship,Internship,published,,,hold,"Work-experience internship, not a customer climbing trip."
+45,balkans-rock-climbing,Balkans Climbing Road Trip,published,expeditions,sport-climbing-holidays,high,Travelling multi-crag road trip with multi-week dates or an explicit multi-week itinerary.
+46,sport-climbing-private-coaching,Sport climbing private coaching,published,private-coaching,performance-technique-camps,high,"Explicit private, individual or very small tailored coaching/guiding."
+47,multipitch-climbing-private-guiding-coaching,Multipitch climbing private guiding & coaching,published,private-coaching,trad-multipitch,high,"Explicit private, individual or very small tailored coaching/guiding."
+48,trad-climbing-private-coaching,Trad climbing private coaching,published,private-coaching,trad-multipitch,high,"Explicit private, individual or very small tailored coaching/guiding."
+49,advanced-sport-climbing-course,Advance sport climbing course,published,sport-climbing-courses,performance-technique-camps,high,Teaching outdoor sport-climbing skills is the main offer.
+50,camper-van-rental,Camper Van Rental,published,,,hold,Camper van rental is an ancillary service.
+51,performance-coaching-gear-test,BIG Gear Test&Demo / Performance Coaching,published,performance-technique-camps,,high,Performance coaching is a stated main outcome; gear demos are an additional feature.
+52,efficient-technique-injury-prevention-sport-climbing-course,EFFICIENT TECHNIQUE / INJURY PREVENTION Sport Climbing Course,published,performance-technique-camps,sport-climbing-courses,high,Technique/injury prevention is the primary outcome; the authored sport-climbing course format is secondary.
+53,customized-climbing-rock-trip,Customized Climbing Rock Trip,published,custom-trips,,high,"Dates, destination or itinerary are designed around the customer."
+54,feldenkrais-method-workshop-for-climbers,Feldenkrais Method Workshop for Climbers,published,performance-technique-camps,,medium,Feldenkrais/injury-prevention workshop fits performance support; confirm inclusion under a Camps label.
+55,climb-work,CLIMB & WORK,published,sport-climbing-holidays,,medium,Climb-and-work stay; a longer stay alone does not make it a multi-crag expedition.
+56,climbers-hut-your-base-camp-for-epic-ascents,Climbers Hut: Your Base Camp for Epic Ascents!,published,,,hold,"Accommodation/base-camp offer, not a climbing trip."
+57,fear-management-mental-coaching,Fear Management & Mental Coaching,published,performance-technique-camps,,high,"The main promise is structured improvement, technique, training or mental performance."
+58,andalucia-rock-trip,Andalucia Rock Trip,published,expeditions,sport-climbing-holidays,high,Camper-van travel across Andalucian crags plus a multi-week occurrence supports Expeditions.
+59,france-rock-trip,France Rock Trip,published,sport-climbing-holidays,,review,"Multi-crag camper-van format suggests Expeditions, but no occurrence or explicit multi-week duration was found. Keep Holidays provisional until duration is confirmed."
+60,bouldering-and-sport-climbing-in-india,Bourdering and Sport Climbing in INDIA,published,expeditions,bouldering-camps;sport-climbing-holidays,high,Full content explicitly describes a two-week Hampi and Badami trip mixing bouldering and sport climbing.
+61,spain-rock-trip-cuenca-costa-blanca-chulilla-siurana,"SPAIN ROCK TRIP - Cuenca, Costa Blanca, Chulilla, Siurana",published,expeditions,sport-climbing-holidays,high,Travelling multi-crag road trip with multi-week dates or an explicit multi-week itinerary.
+62,knots-stone-czech-climbing-tradition,KNOTS & STONE: Czech Climbing Tradition,published,trad-multipitch,,high,"Trad protection, multi-pitch systems or big-wall climbing is the main discipline."
+63,bolt-send-sicily-s-virgin-rock,Bolt & Send: Sicily's Virgin Rock,published,sport-climbing-courses,,review,"Route development and bolting course. Sport Climbing Courses is the closest category, but the supplied gym-to-rock description does not cover this specialist scope."
+64,youth-summer-rock-climbing-bouldering-camp,Youth Summer Rock Climbing & Bouldering Camp,published,performance-technique-camps,bouldering-camps,high,"Advanced youth performance camp with bouldering; youth is an audience attribute, not a separate category."
+65,bouldering-weekend-with-alizee-dufraisse,Bouldering Weekend with Alizée Dufraisse,published,bouldering-camps,performance-technique-camps,high,"Three-day bouldering coaching weekend; bouldering first, performance coaching second."

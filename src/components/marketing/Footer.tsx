@@ -4,17 +4,17 @@ import styles from './marketing.module.css'
 import { NewsletterForm } from './NewsletterForm'
 
 const TRIPS = [
-  { href: '/trips', label: 'Road Trips' },
-  { href: '/trips', label: 'Sport Holidays' },
-  { href: '/trips', label: 'Bouldering Camps' },
-  { href: '/trips', label: 'Custom Trips' },
+  { href: '/trips?category=expeditions', label: 'Climbing Road Trips & Expeditions' },
+  { href: '/trips?category=sport-climbing-holidays', label: 'Sport Climbing Holidays' },
+  { href: '/trips?category=bouldering-camps', label: 'Bouldering Camps' },
+  { href: '/trips?category=custom-trips', label: 'Custom Trips' },
 ]
 
 const COACHING = [
-  { href: '/trips', label: 'Performance Camps' },
-  { href: '/trips', label: 'Private Coaching' },
-  { href: '/trips', label: 'Pro Clinics' },
-  { href: '/trips', label: 'Video Analysis' },
+  { href: '/trips?category=performance-technique-camps', label: 'Performance & Technique Camps' },
+  { href: '/trips?category=sport-climbing-courses', label: 'Sport Climbing Courses' },
+  { href: '/trips?category=trad-multipitch', label: 'Trad & Multi-Pitch' },
+  { href: '/trips?category=private-coaching', label: 'Private Coaching' },
 ]
 
 const COMPANY = [

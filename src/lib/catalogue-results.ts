@@ -104,8 +104,9 @@ export function parseCatalogueFilters(
   params: Pick<URLSearchParams, 'get'>,
   results: CatalogueResult[],
   enabledFacets: readonly CatalogueFacetKey[] = catalogueFacetKeys,
+  categories: CatalogueOption[] = [],
 ): CatalogueFilters {
-  const available = facetOptions(results)
+  const available = facetOptions(results, categories)
   const filters: CatalogueFilters = {}
 
   for (const facet of enabledFacets) {
@@ -121,9 +122,9 @@ export function parseCatalogueFilters(
   return filters
 }
 
-export function facetOptions(results: CatalogueResult[]): Record<CatalogueFacetKey, CatalogueOption[]> {
+export function facetOptions(results: CatalogueResult[], categories: CatalogueOption[] = []): Record<CatalogueFacetKey, CatalogueOption[]> {
   return {
-    category: uniqueOptions(results.flatMap((result) => result.categories)),
+    category: uniqueOptions([...categories, ...results.flatMap((result) => result.categories)]),
     difficulty: uniqueOptions(results.flatMap((result) => result.difficulties)),
     location: uniqueOptions(results.flatMap((result) => result.locations)),
     month: uniqueOptions(results.map((result) => ({ value: monthValue(result.dateFrom), label: formatMonth(result.dateFrom) }))),

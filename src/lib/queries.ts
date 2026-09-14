@@ -554,3 +554,19 @@ export function getFeaturedEventsForHomepage() {
     },
   )
 }
+
+/** Keep authored categories selectable even when they have no upcoming dates. */
+export function getActiveTripCategories() {
+  return cachedQuery(['active-trip-categories'], [TAGS.categories], async () => {
+    const payload = await getPayloadClient()
+    const { docs } = await payload.find({
+      collection: 'categories',
+      where: { active: { equals: true } },
+      sort: 'position',
+      pagination: false,
+      depth: 0,
+      select: { slug: true, name: true },
+    })
+    return docs.map((category) => ({ value: category.slug, label: category.name }))
+  })
+}
