@@ -10,7 +10,9 @@ import { BookingCTA } from '@/components/sections/BookingCTA'
 
 // Keep server rendering in memory: never import the capacity module or start Payload.
 vi.mock('@/components/trip/DateRowBookButton', () => ({
-  DateRowBookButton: ({ eventDateId }: { eventDateId: number }) => <span data-book-button={eventDateId} />,
+  DateRowBookButton: ({ eventDateId, active }: { eventDateId: number; active: boolean }) => (
+    <span data-book-button={eventDateId} data-book-active={active} />
+  ),
 }))
 vi.mock('next/link', () => ({ default: ({ children, ...props }: React.ComponentProps<'a'>) => <a {...props}>{children}</a> }))
 vi.mock('next/image', () => ({
@@ -33,10 +35,10 @@ describe('trip booking presentation', () => {
     const now = new Date('2026-09-14T12:00:00.000Z')
     const started = resolveTripDetailOccurrence(event, date(1, {
       dateFrom: '2026-09-14T10:00:00.000Z', dateTo: '2026-09-15T10:00:00.000Z',
-    }), now)
+    }), [], now)
     const ended = resolveTripDetailOccurrence(event, date(2, {
       dateFrom: '2026-09-10T10:00:00.000Z', dateTo: '2026-09-14T11:59:59.999Z',
-    }), now)
+    }), [], now)
 
     expect(started.selectedDate?.id).toBe(1)
     expect(started.bookingHref).toBeNull()
@@ -44,6 +46,49 @@ describe('trip booking presentation', () => {
     expect(ended.selectedDate?.id).toBe(2)
     expect(ended.bookingHref).toBeNull()
     expect(ended.availabilityLabel).toBe('Past trip')
+  })
+
+  it('keeps a past exact occurrence selected while exposing only public upcoming sibling dates', () => {
+    const now = new Date('2026-09-14T12:00:00.000Z')
+    const exact = date(1, {
+      dateFrom: '2026-09-01T00:00:00.000Z', dateTo: '2026-09-08T00:00:00.000Z',
+    })
+    const upcoming = date(2, {
+      dateFrom: '2026-10-01T00:00:00.000Z', dateTo: '2026-10-08T00:00:00.000Z',
+    })
+    const otherPast = date(3, {
+      dateFrom: '2026-08-01T00:00:00.000Z', dateTo: '2026-08-08T00:00:00.000Z',
+    })
+    const inactive = date(4, {
+      active: false, dateFrom: '2026-11-01T00:00:00.000Z', dateTo: '2026-11-08T00:00:00.000Z',
+    })
+
+    const trip = resolveTripDetailOccurrence(event, exact, [otherPast, upcoming, inactive, exact], now)
+
+    expect(trip.selectedDate?.id).toBe(exact.id)
+    expect(trip.dates.map(item => item.id)).toEqual([exact.id, upcoming.id])
+    expect(trip.bookingHref).toBeNull()
+  })
+
+  it('keeps sold-out exact identity while exposing a future sibling as an alternative', () => {
+    const exact = date(1, { remainingSeats: 0 })
+    const alternative = date(2, { dateFrom: '2999-11-01T00:00:00.000Z', dateTo: '2999-11-08T00:00:00.000Z' })
+    const trip = resolveTripDetailOccurrence(event, exact, [exact, alternative])
+
+    expect(trip.selectedDate?.id).toBe(exact.id)
+    expect(trip.dates.map(item => item.id)).toEqual([exact.id, alternative.id])
+    expect(trip.bookingHref).toBeNull()
+  })
+
+  it('does not render a booking link for an active past row while retaining its exact link', () => {
+    const past = date(1, { slug: 'past-date', dateFrom: '2000-01-01T00:00:00.000Z', dateTo: '2000-01-08T00:00:00.000Z' })
+    const upcoming = date(2, { slug: 'future-date' })
+    const html = renderRows([past, upcoming], past.id)
+
+    expect(html).toContain('/trips/in-memory-only/past-date#dates')
+    expect(html).not.toContain('href="/book/1"')
+    expect(html).toContain('Past trip')
+    expect(html).toContain('href="/book/2"')
   })
 
   it('shows actual remaining seats instead of capacity and preserves the selected date URL', () => {
@@ -71,8 +116,17 @@ describe('trip booking presentation', () => {
     expect(renderRows([])).toBe('')
     const html = renderToStaticMarkup(<EventDatesList items={[date(1)]} />)
     expect(html).toContain('data-book-button="1"')
+    expect(html).toContain('data-book-active="true"')
     expect(html).not.toContain('?date=')
     expect(html).not.toContain('calendar days')
+  })
+
+  it('disables the default card booking control after an occurrence starts', () => {
+    const html = renderToStaticMarkup(<EventDatesList items={[
+      date(1, { dateFrom: '2000-01-01T00:00:00.000Z', dateTo: '2999-01-01T00:00:00.000Z' }),
+    ]} />)
+    expect(html).toContain('data-book-button="1"')
+    expect(html).toContain('data-book-active="false"')
   })
 
   it('uses one selected date for hero summary and closing CTA across variants', () => {

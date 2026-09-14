@@ -48,10 +48,12 @@ export function featuredCardClassName(variant?: string | null) {
 
 export function TripCard({
   event,
+  href,
   price,
   className,
 }: {
   event: Event
+  href?: string
   price?: string | null
   className?: string
 }) {
@@ -61,7 +63,7 @@ export function TripCard({
   const description = eventCatalogueDescription(event)
   return (
     <Link
-      href={`/trips/${event.slug}`}
+      href={href ?? `/trips/${event.slug}`}
       className={[styles.tripCard, className].filter(Boolean).join(' ')}
     >
       <div className={styles.tripMedia}>

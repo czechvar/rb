@@ -1,4 +1,5 @@
 import { ValidationError, type CollectionBeforeChangeHook, type FieldHook } from 'payload'
+import { sql } from 'drizzle-orm'
 import { deriveOccurrenceSlug, normalizeOccurrenceSlug, normalizePublicOccurrenceSlug } from '@/lib/occurrence-routing'
 
 type Relation = number | { id: number; slug?: string } | null | undefined
@@ -10,6 +11,19 @@ function relationId(value: Relation): number | undefined {
 
 function validation(path: string, message: string, collection = 'event-dates'): never {
   throw new ValidationError({ collection, errors: [{ path, message }] })
+}
+
+async function lockParentOccurrenceIdentities(
+  req: Parameters<CollectionBeforeChangeHook>[0]['req'],
+  eventId: number,
+): Promise<void> {
+  const transactionId = await req.transactionID
+  const adapter = req.payload.db as unknown as {
+    sessions: Record<string, { db: { execute: (query: unknown) => Promise<unknown> } }>
+  }
+  const db = transactionId && adapter.sessions[String(transactionId)]?.db
+  if (!db) throw new Error('Occurrence identity validation requires an active database transaction.')
+  await db.execute(sql`SELECT pg_advisory_xact_lock(42004, ${eventId})`)
 }
 
 export const deriveStoredOccurrenceSlug: FieldHook = async ({ value, data, originalDoc, req }) => {
@@ -56,6 +70,7 @@ export const protectOccurrenceIdentity: CollectionBeforeChangeHook = async ({
 
   const eventId = relationId(data.event as Relation) ?? relationId(originalDoc?.event as Relation)
   if (eventId == null) validation('event', 'Parent Event is required.')
+  await lockParentOccurrenceIdentities(req, eventId)
 
   const previousEventId = relationId(originalDoc?.event as Relation)
   if (operation === 'update' && previousEventId != null && previousEventId !== eventId) {

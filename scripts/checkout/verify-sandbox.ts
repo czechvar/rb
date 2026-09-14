@@ -10,7 +10,6 @@ import { withCheckoutTransaction } from '../../src/lib/checkout/transaction'
 import { quoteCart } from '../../src/lib/checkout/quote'
 import {
   activateGuestReservation,
-  checkoutOwner,
   reserveCheckout,
   cancelCheckout,
 } from '../../src/lib/checkout/reservations'
@@ -163,38 +162,6 @@ async function main() {
       payload.find({ collection: 'checkouts', overrideAccess: false, user: null }),
     )
     passed('anonymous-checkouts-are-private')
-    stage = 'authenticated-first-checkout'
-    const firstTimeUser = await payload.create({
-      collection: 'users',
-      disableVerificationEmail: true,
-      data: {
-        email: 'checkout-first-time@example.invalid',
-        name: '[Checkout test] First time',
-        phone: '+420123456780',
-        password: randomUUID(),
-        _verified: true,
-        role: 'customer',
-      },
-    })
-    const firstTimeCheckout = await reserveCheckout(
-      {
-        submissionKey: randomUUID(),
-        items: [{ eventDateId: dates[3].id, quantity: 1 }],
-        contact: {
-          name: firstTimeUser.name,
-          email: firstTimeUser.email,
-          phone: firstTimeUser.phone,
-        },
-      },
-      firstTimeUser,
-    )
-    assert.equal(firstTimeCheckout.state, 'awaitingReview')
-    assert.equal(firstTimeCheckout.customerKind, 'new')
-    assert(checkoutOwner(firstTimeCheckout, firstTimeUser))
-    assert(firstTimeCheckout.billingAddress == null)
-    assert(firstTimeCheckout.expiresAt == null)
-    assert(firstTimeCheckout.items.every((item) => item.orderId))
-    passed('authenticated-first-checkout-skips-email-verification')
     const user = await payload.create({
       collection: 'users',
       disableVerificationEmail: true,

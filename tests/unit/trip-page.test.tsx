@@ -146,18 +146,22 @@ describe('direct occurrence route', () => {
 
   it('keeps an explicitly addressed active occurrence renderable after its date has passed', async () => {
     const past = { ...occurrence, dateFrom: '2000-10-12T00:00:00.000Z', dateTo: '2000-10-19T00:00:00.000Z' }
+    const upcoming = { ...occurrence, id: 78, slug: 'kalymnos-2999-11-12', dateFrom: '2999-11-12T00:00:00.000Z', dateTo: '2999-11-19T00:00:00.000Z' }
     mocks.occurrence.mockResolvedValueOnce({
       event,
       occurrence: past,
       canonicalPath: `/trips/${event.slug}/${past.slug}`,
       requestedAlias: false,
     })
+    mocks.dates.mockResolvedValueOnce([past, upcoming])
     renderToStaticMarkup(await OccurrencePage({
       params: Promise.resolve({ slug: event.slug, occurrenceSlug: past.slug }),
     }))
     const trip = mocks.blocks.mock.calls.at(-1)?.[0].context.trip
     expect(trip.selectedDate.id).toBe(past.id)
+    expect(trip.dates.map((date: { id: number }) => date.id)).toEqual([past.id, upcoming.id])
     expect(trip.bookingHref).toBeNull()
+    expect(mocks.dates).toHaveBeenCalledWith(event.id)
   })
 
   it('isolates canonical and robots metadata to the exact occurrence', async () => {

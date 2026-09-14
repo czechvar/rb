@@ -9,6 +9,7 @@ import imageCardStyles from '@/components/catalogue/ImageTripCard.module.css'
 import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
 import { mediaUrl } from '@/lib/media'
 import styles from './blocks.module.css'
+import { tripOccurrencePath } from '@/lib/occurrence-routing'
 
 type TripGridBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'tripGrid' }>
 
@@ -63,12 +64,15 @@ export async function TripGridBlock(block: TripGridBlockProps, context: BlockRen
         ) : <BlockHeader eyebrow={block.eyebrow} heading={block.heading} intro={block.intro} />}
         <div className={block.variant === 'featureLead' ? imageCardStyles.grid : styles.tripCards}>
           {events.map((event, index) => {
-            const price = formatPrice(lowestPrice(datesByEvent.get(event.id) ?? []))
+            const eventDates = datesByEvent.get(event.id) ?? []
+            const first = eventDates[0]
+            const href = first?.slug ? tripOccurrencePath(event.slug, first.slug) : `/trips/${event.slug}`
+            const price = formatPrice(lowestPrice(eventDates))
             if (block.variant === 'featureLead') {
               return (
                 <ImageTripCard
                   key={event.id}
-                  href={`/trips/${event.slug}`}
+                  href={href}
                   title={eventCatalogueTitle(event)}
                   description={eventCatalogueDescription(event)}
                   image={mediaUrl(event.mainPicture)}
@@ -82,6 +86,7 @@ export async function TripGridBlock(block: TripGridBlockProps, context: BlockRen
             return (
               <TripCard
                 event={event}
+                href={href}
                 key={event.id}
                 price={price}
               />

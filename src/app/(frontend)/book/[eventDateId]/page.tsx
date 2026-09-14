@@ -8,12 +8,22 @@ import { getPayloadClient } from '@/lib/payload'
 import { getRemainingCapacity } from '@/lib/capacity'
 import { REFERRAL_COOKIE_NAME } from '@/lib/referral'
 import { BookingForm } from './BookingForm'
+import { canCheckoutEventDate, eventDateLifecycle } from '@/lib/event-date-visibility'
 
 interface Props {
   params: Promise<{ eventDateId: string }>
 }
 
 export const metadata = { title: 'Book — Rockbusters' }
+
+function unavailableDate() {
+  return (
+    <div style={{ padding: 32 }}>
+      <h1>This date is not available</h1>
+      <p><Link href="/trips">Back to trips →</Link></p>
+    </div>
+  )
+}
 
 function addressLabel(a: Record<string, unknown>): string {
   return (
@@ -50,19 +60,14 @@ export default async function BookPage({ params }: Props) {
     return <div style={{ padding: 32 }}><h1>Date not found</h1></div>
   }
   const ed = eventDate as {
-    active?: boolean; price: number; vat: number; currency: string
+    active?: boolean; capacity: number; price: number; vat: number; currency: string
     dateFrom: string; dateTo: string
     event?: { title?: string; slug?: string } | number
   }
-  if (!ed.active) {
-    return (
-      <div style={{ padding: 32 }}>
-        <h1>This date is not available</h1>
-        <p><Link href="/trips">Back to trips →</Link></p>
-      </div>
-    )
-  }
+  if (!ed.active) return unavailableDate()
   const remaining = await getRemainingCapacity(eventDateId)
+  const canBook = canCheckoutEventDate({ ...ed, remainingSeats: remaining })
+  if (!canBook && eventDateLifecycle(ed) !== 'upcoming') return unavailableDate()
   if (remaining <= 0) {
     return (
       <div style={{ padding: 32 }}>
@@ -72,6 +77,7 @@ export default async function BookPage({ params }: Props) {
       </div>
     )
   }
+  if (!canBook) return unavailableDate()
 
   const eventTitle = typeof ed.event === 'object' ? ed.event?.title ?? 'Trip' : 'Trip'
   const addresses = ((user.addresses ?? []) as Array<Record<string, unknown>>).map((a, i) => ({

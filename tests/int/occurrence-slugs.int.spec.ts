@@ -136,6 +136,32 @@ describe('Event Date public slug behavior', () => {
     expect(other.slug).toBe(original.slug)
   })
 
+  it('serializes concurrent alias reservations within one parent Event', async () => {
+    const payload = await getTestPayload()
+    const first = await payload.create({
+      collection: 'event-dates', data: occurrence({ slug: `${marker}-alias-race-a` }) as never, overrideAccess: true,
+    })
+    const second = await payload.create({
+      collection: 'event-dates', data: occurrence({ slug: `${marker}-alias-race-b` }) as never, overrideAccess: true,
+    })
+    track('event-dates', first.id)
+    track('event-dates', second.id)
+
+    const sharedAlias = `${marker}-alias-race-shared`
+    const race = await Promise.allSettled([
+      payload.update({
+        collection: 'event-dates', id: first.id,
+        data: { slugAliases: [{ slug: sharedAlias }] }, overrideAccess: true,
+      }),
+      payload.update({
+        collection: 'event-dates', id: second.id,
+        data: { slugAliases: [{ slug: sharedAlias }] }, overrideAccess: true,
+      }),
+    ])
+    expect(race.filter((result) => result.status === 'fulfilled')).toHaveLength(1)
+    expect(race.filter((result) => result.status === 'rejected')).toHaveLength(1)
+  })
+
   it('freezes parent reassignment and published parent slug changes', async () => {
     const payload = await getTestPayload()
     const date = await payload.create({

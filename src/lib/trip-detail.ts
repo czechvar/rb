@@ -205,6 +205,14 @@ export function resolveTripDetail(
   }
 }
 
-export function resolveTripDetailOccurrence(event: Event, occurrence: EventDate, now = new Date()): TripDetailView {
-  return resolveTripDetail(event, [occurrence], occurrence.id, now, { exactSelection: true })
+export function resolveTripDetailOccurrence(
+  event: Event,
+  occurrence: EventDate,
+  publicSiblings: EventDate[] = [],
+  now = new Date(),
+): TripDetailView {
+  const alternatives = publicSiblings.filter(date => date.id !== occurrence.id && date.active === true &&
+    (typeof date.event === 'object' ? date.event.id : date.event) === event.id &&
+    eventDateLifecycle(date, now) === 'upcoming')
+  return resolveTripDetail(event, [occurrence, ...alternatives], occurrence.id, now, { exactSelection: true })
 }

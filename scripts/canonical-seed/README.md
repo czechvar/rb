@@ -77,6 +77,10 @@ Run `pnpm exec tsx scripts/canonical-seed/backfill-occurrence-identities.ts` for
 an offline, read-only identity report. The `--rebuild --write` form updates the
 snapshot after reviewing its missing-location and collision report; it never
 writes to a database. Stored slugs survive destination database ID allocation.
+When the available fields do not establish a unique customer-facing identity,
+the utility preserves the row with a `legacy-record-{sourceId}` provenance suffix
+and `indexable: false`. This is safe quarantine, not editorial resolution. Its
+report lists every quarantined row, collision siblings, active state and reason.
 
 Internal trip links use `/trips/{eventSlug}/{occurrenceSlug}`. Import still
 recognizes a pre-launch `?date={sourceId}` link and resolves it from the snapshot's

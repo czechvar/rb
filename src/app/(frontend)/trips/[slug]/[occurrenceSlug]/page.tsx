@@ -4,7 +4,7 @@ import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import { JsonLd } from '@/components/JsonLd'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { occurrenceGraphJsonLd } from '@/lib/jsonld'
-import { getPublicOccurrenceBySlugs } from '@/lib/queries'
+import { getPublicEventDatesForEvent, getPublicOccurrenceBySlugs } from '@/lib/queries'
 import { resolveTripDetailOccurrence } from '@/lib/trip-detail'
 import { defaultTripLayout } from '@/lib/trip-layout'
 
@@ -43,7 +43,8 @@ export default async function OccurrencePage({ params }: Props) {
   if (resolved.requestedAlias) permanentRedirect(resolved.canonicalPath)
 
   const { event, occurrence } = resolved
-  const trip = resolveTripDetailOccurrence(event, occurrence)
+  const siblings = await getPublicEventDatesForEvent(event.id)
+  const trip = resolveTripDetailOccurrence(event, occurrence, siblings)
   if (!trip.selectedDate) notFound()
 
   const hasCustomLayout = Boolean(event.layout?.length)

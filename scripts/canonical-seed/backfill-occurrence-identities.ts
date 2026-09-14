@@ -17,6 +17,15 @@ export type OccurrenceIdentityReport = {
   semanticCollisionRecordCount: number
   exactFingerprintDuplicateRecordCount: number
   canonicalActiveCollisionOwners: number
+  quarantinedActiveCount: number
+  quarantinedInactiveCount: number
+  quarantinedIdentities: Array<{
+    id: string | number
+    active: boolean
+    semanticSlug: string
+    siblingIds: Array<string | number>
+    reason: string
+  }>
 }
 
 const ids = (values: number[], label: string) => values.map((id) => [String(id), label] as const)
@@ -145,14 +154,31 @@ export function backfillOccurrenceIdentities(
   semanticCollisionRecordCount = 0
   exactFingerprintDuplicateRecordCount = 0
   canonicalActiveCollisionOwners = 0
+  const quarantinedIdentities: OccurrenceIdentityReport['quarantinedIdentities'] = []
   for (const group of semanticGroups.values()) {
     if (group.length < 2) continue
     semanticCollisionRecordCount += group.length
-    if (group.filter((row) => row.active === true).length === 1) canonicalActiveCollisionOwners += 1
+    const activeCount = group.filter((row) => row.active === true).length
+    if (activeCount === 1) canonicalActiveCollisionOwners += 1
     const counts = new Map<string, number>()
     for (const row of group) counts.set(fingerprint(row), (counts.get(fingerprint(row)) ?? 0) + 1)
     exactFingerprintDuplicateRecordCount += group.filter((row) => (counts.get(fingerprint(row)) ?? 0) > 1).length
+    for (const row of group) {
+      if (row.indexable !== false || typeof row.slug !== 'string' || !row.slug.includes('-legacy-record-')) continue
+      quarantinedIdentities.push({
+        id: row.id as string | number,
+        active: row.active === true,
+        semanticSlug: row.slug.replace(/-legacy-record-\d+$/, ''),
+        siblingIds: group.filter((sibling) => sibling !== row).map((sibling) => sibling.id as string | number),
+        reason: activeCount === 1
+          ? 'semantic identity collision; sole active sibling owns canonical path'
+          : activeCount > 1
+            ? 'semantic identity collision; multiple active records require editorial resolution'
+            : 'semantic identity collision; no active record can own canonical path',
+      })
+    }
   }
+  quarantinedIdentities.sort((left, right) => Number(left.id) - Number(right.id))
 
   const canonicalCounts = new Map<string, number>()
   for (const row of dates) {
@@ -192,6 +218,9 @@ export function backfillOccurrenceIdentities(
       semanticCollisionRecordCount,
       exactFingerprintDuplicateRecordCount,
       canonicalActiveCollisionOwners,
+      quarantinedActiveCount: quarantinedIdentities.filter((row) => row.active).length,
+      quarantinedInactiveCount: quarantinedIdentities.filter((row) => !row.active).length,
+      quarantinedIdentities,
     },
   }
 }

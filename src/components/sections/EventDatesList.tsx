@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { EventDate } from '@/payload-types'
 import { DateRowBookButton } from '@/components/trip/DateRowBookButton'
 import { tripOccurrencePath } from '@/lib/occurrence-routing'
+import { canCheckoutEventDate, eventDateLifecycle } from '@/lib/event-date-visibility'
 import styles from './EventDatesList.module.css'
 
 function fmtDate(value: string | null | undefined): string {
@@ -44,6 +45,11 @@ export function EventDatesList({
           const days = durationDays(d.dateFrom, d.dateTo)
           const spots = typeof d.remainingSeats === 'number' ? Math.max(0, d.remainingSeats) : null
           const soldOut = spots === 0 || (typeof d.capacity === 'number' && d.capacity <= 0)
+          const lifecycle = eventDateLifecycle(d)
+          const canBook = canCheckoutEventDate(d)
+          const status = !d.active ? 'Unavailable' : lifecycle === 'ended' ? 'Past trip' :
+            lifecycle === 'in-progress' ? 'In progress' : soldOut ? 'Sold out' :
+              canBook ? null : 'Unavailable'
           return (
             <li key={d.id} className={styles.card} data-selected={d.id === selectedId || undefined}>
               <div data-type="card" className={styles.range}>
@@ -63,13 +69,13 @@ export function EventDatesList({
               <div className={styles.priceNote}>per person</div>
               {spots !== null && (
                 <div className={styles.spots}>
-                  {!d.active ? 'Unavailable' : soldOut ? 'Sold out' : `${spots} spot${spots === 1 ? '' : 's'} available`}
+                  {status ?? `${spots} spot${spots === 1 ? '' : 's'} available`}
                 </div>
               )}
               <div className={styles.cta}>
                 {variant === 'rows' ? (
-                  !d.active ? <span>Unavailable</span> : soldOut ? <span>Sold out</span> : <Link href={`/book/${d.id}`} className="btn-primary">Book this date →</Link>
-                ) : <DateRowBookButton eventDateId={d.id} active={Boolean(d.active)} />}
+                  canBook ? <Link href={`/book/${d.id}`} className="btn-primary">Book this date →</Link> : <span>{status}</span>
+                ) : <DateRowBookButton eventDateId={d.id} active={canBook} />}
               </div>
             </li>
           )

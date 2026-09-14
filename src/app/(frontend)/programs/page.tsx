@@ -4,6 +4,7 @@ import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { JsonLd } from '@/components/JsonLd'
 import { collectionPageGraphJsonLd, tripListItems } from '@/lib/jsonld'
 import type { Event, EventDate, Location } from '@/payload-types'
+import { tripOccurrencePath } from '@/lib/occurrence-routing'
 import styles from './page.module.css'
 
 function fmtDate(value: string | null | undefined): string {
@@ -65,9 +66,10 @@ export default async function ProgramsIndex() {
                 null,
               )
               const loc = locationLabel(ev.locations)
+              const href = first?.slug ? tripOccurrencePath(ev.slug, first.slug) : `/trips/${ev.slug}`
               return (
                 <li key={ev.id} className={styles.card}>
-                  <Link href={`/trips/${ev.slug}`} className={styles.cardLink}>
+                  <Link href={href} className={styles.cardLink}>
                     <div className={styles.cardHead}>
                       <h2 data-type="card">{ev.title}</h2>
                       {loc && <span className={styles.cardLoc}>{loc}</span>}

@@ -2,7 +2,7 @@
 
 Status: ready-for-human
 Date: 2026-09-14
-Implementation: items 1-4 implemented; browser navigation, disposable DB import and legacy editorial resolution outstanding
+Implementation: items 1-4 safely implemented; 36 seed identities quarantined pending editorial resolution, with browser navigation and disposable DB import also outstanding
 Decision: [ADR-0015](../../adr/0015-occurrence-slug-routing.md)
 
 ## Approved outcome
@@ -66,6 +66,12 @@ Blocked by: none.
 
 Likely files: `src/collections/EventDates.ts`, `src/migrations/`,
 `src/lib/queries.ts`, `src/lib/trip-detail.ts`, trip route files and integration tests.
+
+New CMS writes reject an ambiguous slug. For the historical canonical snapshot,
+36 records cannot yet receive a meaningful unique public identity from the
+available evidence. They have stable `legacy-record-{sourceId}` quarantine paths
+and `indexable: false`; this preserves records across seeds without claiming the
+editorial-resolution requirement is complete. Nine are active and 27 inactive.
 
 ## 2. Preserve identity through selection and expiry
 
@@ -135,9 +141,15 @@ Blocked by: 1–3.
   and obsolete URLs separately. Do not automatically approve calendar fallbacks.
 - [x] Validate final destinations return the intended content, not merely HTTP 200.
   Do not ship unresolved legacy mappings as part of this routing change.
+- [ ] Resolve the 36 quarantined canonical-seed identities with evidence-backed
+  meaningful qualifiers or an explicitly approved data correction. Do not infer
+  equivalence or delete duplicate records from numeric IDs or array order.
 
-Offline verification covers 789 stored occurrence slugs and repeat-import behavior
-at the seed public seam. A live disposable database import was not run because the
+Offline verification covers 789 stored occurrence identities and repeat-import
+behavior at the seed public seam. Of these, 753 are approved indexable slugs and
+36 are explicitly noindex quarantine identities still requiring editorial review.
+The review utility reports all affected IDs, semantic siblings, active state and
+reason. A live disposable database import was not run because the
 available local target is protected production and the shared test target is stale.
 The refreshed 2026-09-14 legacy review has 36 exact occurrence matches, 65 relevant
 replacements, 49 unresolved URLs and no asserted obsolete URLs. It emits no
@@ -164,6 +176,7 @@ replacements, 49 unresolved URLs and no asserted obsolete URLs. It emits no
 ## Completion boundary
 
 The plan is complete when canonical occurrence URLs work consistently in public
-navigation, metadata and sitemap, survive expiry and seed rebuilds, and provide
-verified targets for the separate legacy redirect task. Deployment, enabling
-production indexing and resolving unrelated legacy content gaps remain separate.
+navigation, metadata and sitemap, survive expiry and seed rebuilds, provide
+verified targets for the separate legacy redirect task, and the quarantined active
+identity set has an approved editorial disposition. Deployment, enabling production
+indexing and resolving unrelated legacy content gaps remain separate.

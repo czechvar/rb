@@ -1,13 +1,12 @@
 import type { Where } from 'payload'
 import type { EventDate } from '@/payload-types'
+import { isPublicOccurrenceSlug } from '@/lib/occurrence-routing'
 
 export type EventDateLifecycle = 'upcoming' | 'in-progress' | 'ended' | 'invalid'
 
 type LifecycleDate = Pick<EventDate, 'dateFrom' | 'dateTo'>
 type CheckoutDate = Pick<EventDate, 'active' | 'capacity' | 'dateFrom' | 'dateTo' | 'remainingSeats'>
 type PublicOccurrence = CheckoutDate & Pick<EventDate, 'slug'>
-
-const PUBLIC_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
 export function catalogueDateFloor(now = new Date()): string {
   const year = now.getUTCFullYear()
@@ -42,7 +41,7 @@ export function canCheckoutEventDate(date: CheckoutDate, now = new Date()): bool
 
 /** Parent selection additionally requires a stable public occurrence path. */
 export function isBookableEventDate(date: PublicOccurrence, now = new Date()): boolean {
-  return typeof date.slug === 'string' && PUBLIC_SLUG.test(date.slug) &&
+  return isPublicOccurrenceSlug(date.slug) &&
     typeof date.remainingSeats === 'number' && canCheckoutEventDate(date, now)
 }
 

@@ -60,6 +60,15 @@ describe('offline canonical occurrence identity backfill', () => {
       semanticCollisionRecordCount: 2,
       canonicalActiveCollisionOwners: 1,
       unresolvedIdentityCount: 1,
+      quarantinedActiveCount: 0,
+      quarantinedInactiveCount: 1,
     })
+    expect(result.report.quarantinedIdentities).toEqual([{
+      id: 4,
+      active: false,
+      semanticSlug: 'kalymnos-2028-01-01-to-2028-01-08',
+      siblingIds: [3],
+      reason: 'semantic identity collision; sole active sibling owns canonical path',
+    }])
   })
 })

@@ -35,6 +35,14 @@ Editors disable it when an occurrence page is thin or substantially duplicates
 another page; disabled occurrences remain publicly renderable with `noindex` but
 are omitted from the sitemap.
 
+The canonical seed can contain historical records whose parent, location/context
+and date range do not establish a unique customer-facing identity. Until an editor
+can choose a meaningful qualifier or approve a data correction, those records use
+a stable provenance quarantine suffix (`legacy-record-{sourceId}`) and
+`indexable: false`. This suffix is an operational identity for lossless seeding,
+not an accepted public slug or evidence that the ambiguity is resolved. Active
+quarantined records remain reachable but are omitted from the sitemap.
+
 This supersedes only ADR-0010's implicit selection and fallback behaviour for
 public trip routing. Its layout, content ownership and live availability decisions
 remain accepted. ADR-0011's Date-over-Event editorial merge remains in force, now
@@ -54,7 +62,9 @@ Workstreams proposal for indexable evergreen parents and numeric query canonical
 
 CMS validation, migrations, public queries, metadata, links, sitemap and canonical
 seed must agree on the new identity. Missing/multiple locations and collisions
-require editorial resolution. Legacy live-site mappings can point directly to
+require editorial resolution. The offline backfill must report the quarantined
+record, its semantic collision siblings and active state so the outstanding set
+is actionable. Legacy live-site mappings can point directly to
 matching occurrences once verified; they remain a separate migration task.
 
 ## References

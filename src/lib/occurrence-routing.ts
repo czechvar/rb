@@ -3,6 +3,10 @@ import { slugify } from '@/fields/slug'
 const PUBLIC_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const RESERVED_OCCURRENCE_SLUGS = new Set(['dates', 'faq', 'logistics'])
 
+export function isPublicOccurrenceSlug(value: unknown): value is string {
+  return typeof value === 'string' && PUBLIC_SLUG.test(value) && !RESERVED_OCCURRENCE_SLUGS.has(value)
+}
+
 export function normalizeOccurrenceSlug(value: string): string {
   const slug = slugify(value)
   if (!slug || !PUBLIC_SLUG.test(slug)) throw new Error('Occurrence slug must contain letters or numbers.')
@@ -14,6 +18,7 @@ export function normalizePublicOccurrenceSlug(value: string): string {
   if (RESERVED_OCCURRENCE_SLUGS.has(slug)) {
     throw new Error(`Occurrence slug "${slug}" is reserved by a trip subroute.`)
   }
+  if (!isPublicOccurrenceSlug(slug)) throw new Error('Occurrence slug is not a valid public path segment.')
   return slug
 }
 

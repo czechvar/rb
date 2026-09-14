@@ -9,6 +9,7 @@ import { getPayloadClient } from '@/lib/payload'
 import type { ActionResult } from '@/components/forms/action-result'
 import { bookingSchema } from './schema'
 import { REFERRAL_COOKIE_NAME } from '@/lib/referral'
+import { canCheckoutEventDate } from '@/lib/event-date-visibility'
 
 function parseParticipants(formData: FormData) {
   const indices = new Set<number>()
@@ -94,9 +95,10 @@ export async function createBookingAction(
 
   const ed = await payload.findByID({ collection: 'event-dates', id: eventDateId, depth: 0 })
   const edObj = ed as {
-    active?: boolean; price: number; priceCzk?: number | null; vat: number; currency: 'EUR' | 'CZK'
+    active?: boolean; dateFrom: string; dateTo: string; capacity: number; remainingSeats?: number | null
+    price: number; priceCzk?: number | null; vat: number; currency: 'EUR' | 'CZK'
   }
-  if (!edObj.active) {
+  if (!canCheckoutEventDate(edObj)) {
     return { ok: false, formError: 'This date is no longer available.' }
   }
   const addresses = (user.addresses ?? []) as Array<Record<string, unknown>>
