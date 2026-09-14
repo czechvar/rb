@@ -147,6 +147,7 @@ async function resolveOccurrence(
     overrideAccess: true,
     select: {
       slug: true,
+      slugAliases: true,
       dateFrom: true,
       dateTo: true,
       locations: true,
@@ -173,6 +174,13 @@ function normalizedDate(value: unknown) {
 
 function normalizedRelationshipIDs(value: unknown) {
   return (Array.isArray(value) ? value : []).map(id).sort()
+}
+
+function normalizedSlugAliases(value: unknown) {
+  return (Array.isArray(value) ? value : [])
+    .map((entry) => entry && typeof entry === 'object' && 'slug' in entry ? String(entry.slug) : '')
+    .filter(Boolean)
+    .sort()
 }
 
 export function occurrenceMatchesReviewedFacts(
@@ -335,7 +343,12 @@ async function applyBackfill(payload: Payload, seed: CanonicalSeed) {
         tripVariant: sourceDate.tripVariant,
         publicDateKey: sourceDate.publicDateKey,
       }) as Row
-      if (isDeepStrictEqual(id(target.tripVariant), id(data.tripVariant)) && target.publicDateKey === data.publicDateKey) {
+      if (
+        isDeepStrictEqual(id(target.tripVariant), id(data.tripVariant)) &&
+        target.publicDateKey === data.publicDateKey &&
+        target.slug === data.slug &&
+        isDeepStrictEqual(normalizedSlugAliases(target.slugAliases), normalizedSlugAliases(data.slugAliases))
+      ) {
         totals.datesUnchanged += 1
         continue
       }
