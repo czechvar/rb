@@ -20,6 +20,7 @@ import { Locations } from './collections/Locations'
 import { Airports } from './collections/Airports'
 import { Partners } from './collections/Partners'
 import { Events } from './collections/Events'
+import { TripVariants } from './collections/TripVariants'
 import { EventDates } from './collections/EventDates'
 import { FAQs } from './collections/FAQs'
 import { Reviews } from './collections/Reviews'
@@ -73,6 +74,7 @@ export default buildConfig({
     Airports,
     Partners,
     Events,
+    TripVariants,
     EventDates,
     FAQs,
     Reviews,
@@ -149,6 +151,11 @@ export default buildConfig({
           enabled: mcpAuthoringAccess,
           description:
             'Core catalogue records for trips. Internal name is Event; public UI usually says Trip.',
+        },
+        'trip-variants': {
+          enabled: mcpAuthoringAccess,
+          description:
+            'Evergreen Event-at-Location records that own stable variant copy and group scheduled Event Dates.',
         },
         'event-dates': {
           enabled: mcpAuthoringAccess,

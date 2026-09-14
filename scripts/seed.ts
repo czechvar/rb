@@ -105,6 +105,8 @@ function relationForField(parentCollection: CollectionSlug, fieldName: string): 
   if (fieldName === 'events') return 'events'
   if (fieldName === 'eventDate') return 'event-dates'
   if (fieldName === 'eventDates') return 'event-dates'
+  if (fieldName === 'tripVariant') return 'trip-variants'
+  if (fieldName === 'tripVariants') return 'trip-variants'
   if (fieldName === 'location') return 'locations'
   if (fieldName === 'locations') return 'locations'
   if (fieldName === 'relatedLocations') return 'locations'
@@ -222,7 +224,20 @@ async function findExistingRow(
   row: Record<string, unknown>,
   options: { forceCreateWhenMissingID?: boolean; claimedIDs?: Set<string> } = {},
 ): Promise<Record<string, unknown> | undefined> {
-  if (typeof row.slug === 'string') {
+  if (collection === 'trip-variants' && row.event && typeof row.slug === 'string') {
+    const byParentAndSlug = await findOne(payload, collection, {
+      and: [
+        { event: { equals: row.event } },
+        { slug: { equals: row.slug } },
+      ],
+    })
+    if (byParentAndSlug) return byParentAndSlug
+    // Snapshot numeric IDs are not portable. A partially populated destination
+    // may already use this number for a different Event's variant.
+    return undefined
+  }
+
+  if (collection !== 'trip-variants' && typeof row.slug === 'string') {
     const bySlug = await findOne(payload, collection, { slug: { equals: row.slug } })
     if (bySlug) return bySlug
   }

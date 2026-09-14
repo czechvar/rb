@@ -4,6 +4,10 @@
 - Date: 2026-09-14
 - Owners: Engineering
 
+Superseded for canonical public identity by
+[ADR-0016](0016-trip-variants-and-dated-query-leaves.md). Exact occurrence
+selection, alias preservation, and booking-safety decisions remain applicable.
+
 ## Context
 
 Distinct Event Date editorial content currently shares a parent trip route with

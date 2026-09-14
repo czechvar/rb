@@ -32,6 +32,10 @@ export function deriveOccurrenceSlug(locationSlug: string, dateFrom: string): st
   return normalizePublicOccurrenceSlug(`${normalizeOccurrenceSlug(locationSlug)}-${utcCalendarDate(dateFrom)}`)
 }
 
+export function derivePublicDateKey(dateFrom: string, dateTo: string): string {
+  return `${utcCalendarDate(dateFrom)}-to-${utcCalendarDate(dateTo)}`
+}
+
 export function tripOccurrencePath(eventSlug: string, occurrenceSlug: string): string {
   const parent = normalizeOccurrenceSlug(eventSlug)
   const occurrence = normalizePublicOccurrenceSlug(occurrenceSlug)

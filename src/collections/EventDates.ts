@@ -18,6 +18,25 @@ export const EventDates: CollectionConfig = {
   fields: [
     { name: 'event', type: 'relationship', relationTo: 'events', required: true },
     {
+      name: 'tripVariant',
+      type: 'relationship',
+      relationTo: 'trip-variants',
+      index: true,
+      admin: {
+        description: 'Evergreen Event-at-Location content inherited by this occurrence. Optional during migration.',
+      },
+    },
+    {
+      name: 'publicDateKey',
+      type: 'text',
+      index: true,
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+        description: 'Stable dated-leaf key, derived as YYYY-MM-DD-to-YYYY-MM-DD when a Trip Variant is assigned.',
+      },
+    },
+    {
       name: 'slug',
       type: 'text',
       index: true,

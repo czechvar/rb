@@ -72,7 +72,8 @@ The canonical term for the catalogue concept — a course/trip idea and
 its marketing content. Instances: _"Kalymnos Autumn Camp"_,
 _"El Chorro Winter Intensive"_.
 
-An Event has many [[Event Date]]s (scheduled runs), belongs to one or
+An Event has many [[Trip Variant]]s, whose [[Event Date]]s are its scheduled
+runs. It belongs to one or
 more [[Type]]s (marketing product lines), and is delivered by one or
 more [[Guide]]s.
 
@@ -88,10 +89,20 @@ marketing prose all say "Trip". Internally the record is always Event
 Do not create a `Trip` record type. If a document mentions "Trip", it
 refers to an Event.
 
+## Trip Variant
+
+The durable presentation of an [[Event]] in one customer-facing location or
+route context. A Trip Variant owns the evergreen content shared by recurring
+departures at that place. Its location set may contain one place, several
+places for a touring trip, or an explicit non-location context such as a Europe
+tour.
+
+A Trip Variant has many [[Event Date]]s. It is not itself purchasable.
+
 ## Event Date
 
-The specific dated occurrence of an [[Event]] — a scheduled run with
-its own guides, locations, price, capacity, and airport pair. This is
+The specific dated occurrence of a [[Trip Variant]] and its parent [[Event]] —
+a scheduled run with its own guides, price, capacity, and airport pair. This is
 the **purchasable unit**: an Order line item points at an Event Date,
 not an Event.
 

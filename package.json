@@ -45,6 +45,8 @@
     "data-import:destinations-page": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-destinations-page-seed.ts",
     "data:review-occurrence-slugs": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/backfill-occurrence-slugs.ts",
     "data:backfill-occurrence-slugs": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/backfill-occurrence-slugs.ts --write",
+    "data:migrate-launch-trip-variants": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/canonical-seed/migrate-launch-trip-variants.ts",
+    "data:backfill-launch-trip-variants": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/canonical-seed/backfill-launch-trip-variants.ts",
     "data-import:trips-page": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-trips-page-seed.ts",
     "data-import:fetch-airports": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/fetch-airports-seed.ts",
     "data-import:airports": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-airports-seed.ts",

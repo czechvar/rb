@@ -2,7 +2,9 @@
 
 This is the single content bootstrap for freshly provisioned Rockbusters databases.
 The tracked snapshot includes the reviewed September 11 catalogue and all 26
-trip occurrence editorial overrides, including Kalymnos. The September 12 refresh
+trip occurrence editorial overrides, including Kalymnos. It also contains the
+31 reviewed launch Trip Variants, with 64 active future Event Dates assigned and
+25 reusable editorial payloads promoted additively. The September 12 refresh
 also includes all 53 local posts (50 published), 14 blog categories, and the Blog
 CMS Page with its selected Rodellar hero and index grid. It also includes the
 Team CMS Page with the full active-guide roster and shared content blocks, and
@@ -18,6 +20,8 @@ pnpm run seed:export
 pnpm run seed
 pnpm run seed:sandbox
 pnpm run seed:demo
+pnpm run data:migrate-launch-trip-variants
+pnpm run data:backfill-launch-trip-variants
 ```
 
 - `seed:export` snapshots the current `DATABASE_URL` into
@@ -27,6 +31,14 @@ pnpm run seed:demo
   seeds twice, checks exported content and relationships, then cleans up its database.
   It refuses to reset an existing database.
 - `seed:demo` is a historical fixture utility, not a catalogue bootstrap.
+- `data:migrate-launch-trip-variants` reports the deterministic launch migration;
+  append `-- --write` to update the snapshot after reviewing the counts.
+- `data:backfill-launch-trip-variants` performs an offline preflight by default.
+  Its `-- --apply` form targets an existing non-production database only after
+  resolving all Events, Locations, Guides and occurrences from stable slugs.
+  Apply accepts either an empty Trip Variant collection or an exactly equivalent
+  complete 31-row set. It verifies each occurrence's date range and normalized
+  Location set, then creates variants and attaches dates in one transaction.
 
 ## Import Order
 
@@ -36,9 +48,10 @@ The canonical seed imports base records before dependants:
 2. `difficulties`, `categories`, `programs`, `airports`, `guides`, `locations`,
    `partners`, `post-categories`, `posts`
 3. `events`
-4. `event-dates`
-5. `reviews`, `faqs`
-6. `pages`
+4. `trip-variants`
+5. `event-dates`
+6. `reviews`, `faqs`
+7. `pages`
 
 Numeric Payload IDs are not portable across empty databases, so the importer
 records old-to-new ID mappings and rewrites relationship fields while importing.
@@ -56,7 +69,8 @@ Neon host unless `--allow-production` is passed intentionally.
 
 The snapshot is persistent seed content. It includes every configured public CMS
 collection: pages, posts/taxonomy, media metadata, airports, locations, guides,
-partners, programs, categories, difficulties, trips, occurrences, FAQs and reviews.
+partners, programs, categories, difficulties, trips, Trip Variants, occurrences,
+FAQs and reviews.
 Accounts, orders, transactions, discounts, referrals and internal Payload state
 belong in full database backups, not this seed. R2/local media binaries need their
 own storage backup; metadata alone does not recreate image files.
@@ -71,6 +85,23 @@ can support future source refreshes. They are not implicitly executed by the see
 Their fixed IDs/receipts must not be reused against a freshly seeded database.
 
 See ADR-0012 for the content/operational-data boundary.
+
+## Launch Trip Variant dataset
+
+The launch migration is deliberately bounded to the 2026-09-14 snapshot: active
+Event Dates starting after that date under published Events. It creates 31
+Event-plus-exact-Location-set variants across 10 Events and assigns 64 dates.
+Historical dates remain unchanged and unassigned. Twenty-five variants copy the
+single audited rich `editorial` payload from their authoritative Event Date; the
+source payload and all `extraContent` and `logisticsOverrides` remain intact on
+the Event Date during this additive migration. Six variants without rich content
+inherit Event/Location content and remain `indexable: false`.
+
+Each assigned Event Date stores a `publicDateKey` in
+`YYYY-MM-DD-to-YYYY-MM-DD` form. This is required because ten Trip Variant/start
+date pairs contain two different date ranges. Canonical source IDs are remapped
+during import; Trip Variants are matched by mapped Event plus scoped slug, never
+by a globally unique slug assumption.
 
 Event Date slugs, aliases and indexing eligibility are stored in the snapshot.
 Run `pnpm exec tsx scripts/canonical-seed/backfill-occurrence-identities.ts` for

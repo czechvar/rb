@@ -57,7 +57,7 @@ const facts = (name: string): Field => ({
 })
 
 /** Reuse existing content fields without introducing shared database table names. */
-export function tripEditorialField(scope: 'event' | 'date', sourceFields: Field[]): Field {
+export function tripEditorialField(scope: 'event' | 'variant' | 'date', sourceFields: Field[]): Field {
   const tableNames = new Set<string>()
   const tableName = (path: string[]): string => {
     // Stable across added/reordered fields, short enough for PostgreSQL FK suffixes.
@@ -104,7 +104,11 @@ export function tripEditorialField(scope: 'event' | 'date', sourceFields: Field[
     label: 'Trip editorial copy',
     admin: {
       description:
-        'Optional copy overrides without replacing the page layout. Empty values inherit. Event Date copy applies only to that selected occurrence. Prices, capacity, guides and locations remain on their existing fields.',
+        scope === 'event'
+          ? 'Shared trip copy used by every variant and occurrence. Empty values inherit from the original Event fields.'
+          : scope === 'variant'
+            ? 'Reusable copy for this Event and Location combination. Empty values inherit from the parent Event.'
+            : 'Optional copy for this selected occurrence. Empty values inherit from its Trip Variant and parent Event. Prices, capacity and guides remain on Event Date.',
     },
     fields: [
       {

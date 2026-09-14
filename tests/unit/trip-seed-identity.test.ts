@@ -22,6 +22,51 @@ it('remaps coach and plural taxonomy relationships with independently chosen IDs
     editorial: { coachProfiles: [{ guide: 3001 }] },
   })
 })
+it('remaps Event Dates to destination Trip Variant IDs', () => {
+  const maps: SeedIDMap = new Map([['trip-variants', new Map([['651', 5001]])]])
+  expect(remapRelationships(maps, 'event-dates', { tripVariant: 651 })).toEqual({
+    tripVariant: 5001,
+  })
+})
+
+it('matches a Trip Variant by its mapped Event and scoped slug', async () => {
+  const target = { id: 102, event: 80, slug: 'kalymnos', title: 'Course — Kalymnos', locations: [28], indexable: false }
+  const wrongParent = { ...target, id: 101, event: 70 }
+  const payload = {
+    find: async ({ where }: { where?: Record<string, unknown> }) => {
+      if ('and' in (where ?? {})) return { docs: [target] }
+      if ('slug' in (where ?? {})) return { docs: [wrongParent] }
+      return { docs: [] }
+    },
+  } as unknown as Payload
+  const maps: SeedIDMap = new Map([['events', new Map([['8', 80]])]])
+  await expect(upsertRow(payload, 'trip-variants', {
+    id: 651, event: 8, slug: 'kalymnos', title: 'Course — Kalymnos', locations: [28], indexable: false,
+  }, maps)).resolves.toBe('skipped')
+  expect(maps.get('trip-variants')?.get('651')).toBe(102)
+})
+
+it('never reuses an unrelated Trip Variant with the same source numeric ID', async () => {
+  let created: Record<string, unknown> | undefined
+  const payload = {
+    find: async ({ where }: { where?: Record<string, unknown> }) => {
+      if ('and' in (where ?? {})) return { docs: [] }
+      if ('id' in (where ?? {})) return { docs: [{ id: 651, event: 70, slug: 'unrelated' }] }
+      return { docs: [] }
+    },
+    create: async ({ data }: { data: Record<string, unknown> }) => {
+      created = { ...data, id: 9001 }
+      return created
+    },
+  } as unknown as Payload
+  const maps: SeedIDMap = new Map([['events', new Map([['8', 80]])]])
+
+  await expect(upsertRow(payload, 'trip-variants', {
+    id: 651, event: 8, slug: 'kalymnos', title: 'Course — Kalymnos', locations: [], indexable: false,
+  }, maps)).resolves.toBe('created')
+  expect(created).toMatchObject({ event: 80, slug: 'kalymnos' })
+  expect(maps.get('trip-variants')?.get('651')).toBe(9001)
+})
 it('keeps identical scheduled occurrences distinct and reuses established mappings', async () => {
   const content = { event: 8, dateFrom: '2026-09-26', dateTo: '2026-10-10' }
   const rows = [

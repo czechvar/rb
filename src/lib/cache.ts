@@ -11,6 +11,7 @@ export const TAGS = {
   guides: 'guides',
   locations: 'locations',
   events: 'events',
+  tripVariants: 'trip-variants',
   eventDates: 'event-dates',
   faqs: 'faqs',
   media: 'media',

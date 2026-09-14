@@ -1,6 +1,6 @@
 import { ValidationError, type CollectionBeforeChangeHook, type FieldHook } from 'payload'
 import { sql } from 'drizzle-orm'
-import { deriveOccurrenceSlug, normalizeOccurrenceSlug, normalizePublicOccurrenceSlug } from '@/lib/occurrence-routing'
+import { deriveOccurrenceSlug, derivePublicDateKey, normalizeOccurrenceSlug, normalizePublicOccurrenceSlug } from '@/lib/occurrence-routing'
 
 type Relation = number | { id: number; slug?: string } | null | undefined
 type Alias = { slug?: string | null; id?: string | null }
@@ -24,6 +24,19 @@ async function lockParentOccurrenceIdentities(
   const db = transactionId && adapter.sessions[String(transactionId)]?.db
   if (!db) throw new Error('Occurrence identity validation requires an active database transaction.')
   await db.execute(sql`SELECT pg_advisory_xact_lock(42004, ${eventId})`)
+}
+
+async function lockTripVariantDateKeys(
+  req: Parameters<CollectionBeforeChangeHook>[0]['req'],
+  tripVariantId: number,
+): Promise<void> {
+  const transactionId = await req.transactionID
+  const adapter = req.payload.db as unknown as {
+    sessions: Record<string, { db: { execute: (query: unknown) => Promise<unknown> } }>
+  }
+  const db = transactionId && adapter.sessions[String(transactionId)]?.db
+  if (!db) throw new Error('Public date key validation requires an active database transaction.')
+  await db.execute(sql`SELECT pg_advisory_xact_lock(42006, ${tripVariantId})`)
 }
 
 export const deriveStoredOccurrenceSlug: FieldHook = async ({ value, data, originalDoc, req }) => {
@@ -71,6 +84,54 @@ export const protectOccurrenceIdentity: CollectionBeforeChangeHook = async ({
   const eventId = relationId(data.event as Relation) ?? relationId(originalDoc?.event as Relation)
   if (eventId == null) validation('event', 'Parent Event is required.')
   await lockParentOccurrenceIdentities(req, eventId)
+
+  const tripVariantValue = (Object.prototype.hasOwnProperty.call(data, 'tripVariant')
+    ? data.tripVariant
+    : originalDoc?.tripVariant) as Relation
+  const tripVariantId = relationId(tripVariantValue)
+  if (tripVariantId != null) {
+    await lockTripVariantDateKeys(req, tripVariantId)
+    const tripVariant = typeof tripVariantValue === 'object' && tripVariantValue && 'event' in tripVariantValue
+      ? tripVariantValue as unknown as { event: Relation }
+      : await req.payload.findByID({
+          collection: 'trip-variants',
+          id: tripVariantId,
+          depth: 0,
+          overrideAccess: true,
+          req,
+        })
+    if (relationId(tripVariant.event as Relation) !== eventId) {
+      validation('tripVariant', 'Trip Variant must belong to the same Event as this Event Date.')
+    }
+    const dateFrom = data.dateFrom ?? originalDoc?.dateFrom
+    const dateTo = data.dateTo ?? originalDoc?.dateTo
+    if (typeof dateFrom !== 'string' || typeof dateTo !== 'string') {
+      validation('publicDateKey', 'Valid start and end dates are required to derive the public date key.')
+    }
+    const publicDateKey = derivePublicDateKey(dateFrom, dateTo)
+    data.publicDateKey = publicDateKey
+    const dateKeyConflict = await req.payload.find({
+      collection: 'event-dates',
+      where: {
+        and: [
+          { tripVariant: { equals: tripVariantId } },
+          { publicDateKey: { equals: publicDateKey } },
+          ...(operation === 'update' && originalDoc?.id != null
+            ? [{ id: { not_equals: originalDoc.id } }]
+            : []),
+        ],
+      },
+      limit: 1,
+      depth: 0,
+      overrideAccess: true,
+      req,
+    })
+    if (dateKeyConflict.totalDocs > 0) {
+      validation('publicDateKey', 'This date range is already used by the selected Trip Variant.')
+    }
+  } else {
+    data.publicDateKey = null
+  }
 
   const previousEventId = relationId(originalDoc?.event as Relation)
   if (operation === 'update' && previousEventId != null && previousEventId !== eventId) {

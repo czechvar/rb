@@ -26,6 +26,7 @@ export const CANONICAL_SEED_COLLECTIONS: CanonicalSeedCollection[] = [
   { slug: 'post-categories', mode: 'payload' },
   { slug: 'posts', mode: 'payload' },
   { slug: 'events', mode: 'payload' },
+  { slug: 'trip-variants', mode: 'payload' },
   { slug: 'event-dates', mode: 'payload' },
   { slug: 'reviews', mode: 'payload' },
   { slug: 'faqs', mode: 'payload' },
