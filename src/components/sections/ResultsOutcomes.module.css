@@ -4,8 +4,6 @@
 }
 
 .section h2 {
-  font-size: 22px;
-  font-weight: bold;
   margin-bottom: 16px;
   padding-bottom: 10px;
   border-bottom: 2px solid var(--theme-color-ink);

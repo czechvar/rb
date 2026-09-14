@@ -242,7 +242,7 @@ export function DestinationSectionsBlock(
         <div className={styles.destinationSectionLayout}>
           <aside className={styles.destinationSectionNav}>
             {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
-            {heading ? <h2>{heading}</h2> : null}
+            {heading ? <h2 data-type="subheading">{heading}</h2> : null}
             <ol>
               {sections.map((section) => (
                 <li key={section.id ?? section.key}>
@@ -258,7 +258,7 @@ export function DestinationSectionsBlock(
                 id={destinationSectionId(section)}
                 className={styles.destinationEditorialPanel}
               >
-                <h3>{section.heading}</h3>
+                <h3 data-type="subheading">{section.heading}</h3>
                 {paragraphs(section.body).map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -378,7 +378,7 @@ export function DestinationCardGridBlock(
           {cards.map((card) => (
             <article key={card.key} className={styles.destinationDetailCard}>
               {card.meta ? <p className={styles.destinationDetailCardMeta}>{card.meta}</p> : null}
-              <h3>{card.href ? <a href={card.href}>{card.title}</a> : card.title}</h3>
+              <h3 data-type="subheading">{card.href ? <a href={card.href}>{card.title}</a> : card.title}</h3>
               {card.body ? <p>{card.body}</p> : null}
               {card.badges.length ? (
                 <ul className={styles.destinationBadgeList}>
@@ -418,7 +418,7 @@ export function DestinationSeasonBlock(
           {months.map((month) => (
             <article key={month.id ?? month.label} className={styles.destinationMonth}>
               <div className={styles.destinationMonthTopline}>
-                <h3>{month.label}</h3>
+                <h3 data-type="subheading">{month.label}</h3>
                 <span>{month.score}/5</span>
               </div>
               <div
@@ -471,7 +471,7 @@ export function DestinationLogisticsBlock(
             {cards.map((card) => (
               <article key={`${card.group}-${card.key}`} className={styles.destinationDetailCard}>
                 <p className={styles.destinationDetailCardMeta}>{card.group}</p>
-                <h3>{card.title}</h3>
+                <h3 data-type="subheading">{card.title}</h3>
                 {card.meta ? <p className={styles.destinationDetailCardSubMeta}>{card.meta}</p> : null}
                 {card.body ? <p>{card.body}</p> : null}
               </article>
@@ -500,7 +500,7 @@ export function DestinationLogisticsBlock(
                 variant === 'list' && singleGroup ? styles.destinationLogisticsGroupList : '',
               ].filter(Boolean).join(' ')}
             >
-              <h3>{group.heading}</h3>
+              <h3 data-type={variant === 'list' && singleGroup ? 'label' : 'subheading'}>{group.heading}</h3>
               <div className={styles.destinationLogisticsItems}>
                 {group.items.map((item) => (
                   <div key={item.key} className={styles.destinationLogisticsItem}>
@@ -553,7 +553,7 @@ export function DestinationSidebarBlock(
       {cta ? (
         <aside className={styles.destinationSidebarCta}>
           {cta.eyebrow ? <p data-eyebrow="section">{cta.eyebrow}</p> : null}
-          <h2>{cta.heading}</h2>
+          <h2 data-type="subheading">{cta.heading}</h2>
           {cta.body ? <p>{cta.body}</p> : null}
           <DestinationSidebarActions cta={cta} />
         </aside>
@@ -1132,7 +1132,7 @@ type SidebarLink = {
 function DestinationSidebarTable({ title, rows }: { title: string; rows: SidebarRow[] }) {
   return (
     <section className={styles.destinationSidebarWidget}>
-      <h2>{title}</h2>
+      <h2 data-type="label">{title}</h2>
       <dl>
         {rows.map((row) => (
           <div key={row.key} className={styles.destinationSidebarRow}>
@@ -1148,7 +1148,7 @@ function DestinationSidebarTable({ title, rows }: { title: string; rows: Sidebar
 function DestinationSidebarLinks({ title, links }: { title: string; links: SidebarLink[] }) {
   return (
     <section className={styles.destinationSidebarWidget}>
-      <h2>{title}</h2>
+      <h2 data-type="label">{title}</h2>
       <ul className={styles.destinationSidebarLinks}>
         {links.map((link) => (
           <li key={link.key}>

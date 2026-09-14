@@ -132,7 +132,7 @@ capability gated, and reduced motion disables movement.
 ## Shared hero sizing
 
 Hero statistics on a primary-color (Rockbusters red) panel use
-`--theme-color-ink` for the large values and full-opacity `--theme-color-paper`
+`--theme-color-ink` for the large values, uppercase casing and `--theme-weight-section` (900), and full-opacity `--theme-color-paper`
 for small labels and supporting text. Apply this consistently to generic CMS,
 blog, destination, and guide hero statistics; dark-panel statistics keep their
 existing color treatment.
@@ -146,3 +146,58 @@ All public hero variants consume `--theme-hero-min-height` and the shared respon
 - `scripts/check-theme-css.mjs`
 - `/home/czechspekk/Downloads/snowbusters-design-system.html`
 - Workstreams task `ee34ee48-02a4-4665-93a5-94d0a802b3e0`
+
+## Rockbusters typography feedback (14 September 2026)
+
+The 13 September homepage feedback uses Montserrat throughout Rockbusters.
+The user clarified that the font-size numbers labelled pt mean CSS px.
+All hero titles use H1 and the feedback's shared recipe: 96px desktop,
+weight 900, line height 0.9 (86.4px). Preserve the pre-existing responsive
+44px mobile hero size. H2 is 42px desktop / 32px mobile, weight 900,
+line height 0.9. There is no compact or detail-hero exception.
+
+H1–H4 typography belongs only to frontend styles.css and theme.css, including
+font family, size, weight, line height, tracking and casing. Component CSS
+owns layout, spacing, colour and decorative accents. A different visual role
+must be explicit in markup via data-type: section, card-lg, card, subheading
+or label. Stats use section for numbered values and stat for compact hero-bar
+facts. This keeps accessible heading levels independent of appearance.
+Use these roles for card titles, compact navigation/sidebar labels and form
+section headings; never recreate a component-local typography recipe.
+The theme CSS check runs the heading audit over direct selectors, imported
+heading classes, literal dynamic heading tags and inline style declarations.
+Runtime-computed class names and arbitrary inherited typography still require
+browser review.
+
+Legacy H1/H2 size and line-height aliases resolve to semantic tokens so
+there is no competing default scale. Rockbusters uses the variable Montserrat
+font; Snowbusters retains its separately loaded Bebas Neue and Inter fonts.
+
+Reference task: 9acb25b6-4b4f-458c-bb41-3c1e57044ab1.
+
+The remaining desktop type roles map to the same semantic scale: H3/large
+card 26px/800/1.0, H4/card 20px/800/1.05, H5/subheading 16px/700/1.2,
+body 16px/400/1.55, small 13px/1.45 and labels 11px/800/1.2.
+Linked image trip cards place their title, description and commercial footer
+on an opaque theme surface for contrast independent of image content. This
+presentation is shared by the homepage trip grid and calendar results;
+media-only galleries do not acquire a text panel.
+Destination country tiles follow the same photo-above, opaque-panel-below
+composition. Their country labels, title and link all sit on the dark surface;
+cards without a photo omit the image area and keep the same text treatment.
+
+Heading casing is explicit: H1–H6 and the shared section-title helper use
+uppercase CSS. Preserve this treatment across font changes; do not rely on
+a display font's uppercase-only glyphs or rewrite stored CMS copy.
+
+Hero-strip facts use the stat role, mapped to the large-card scale, so long
+dates and locations remain compact in Montserrat.
+
+Brand-colour CTA surfaces declare `data-surface="brand"`. Shared button styles
+in styles.css render primary actions in ink with light text and surface-3
+hover fill. Secondary actions use a transparent fill with ink text and border,
+turning ink with light text on hover. Both use a light offset focus outline. BlockAction exposes an
+explicit appearance marker independent of analytics. The same surface rule
+covers legacy button helpers; page modules must not recreate this palette.
+
+Header and footer share one content-width rule using the content cap and page gutter tokens. Their logos share `--theme-logo-height`; scrolling changes the header surface only, preserving logo size and horizontal alignment.

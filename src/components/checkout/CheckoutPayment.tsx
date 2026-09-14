@@ -108,7 +108,7 @@ export function CheckoutPayment({
       {active && remaining > 0 && !billingReady && <BillingForm checkoutId={checkoutId} />}
       {active && remaining > 0 && billingReady && (
         <section className={styles.panel}>
-          <h2>Payment</h2>
+          <h2 data-type="card-lg">Payment</h2>
           <p className={styles.muted}>
             Payments are confirmed from the provider. Returning to this page alone does not confirm
             payment.
@@ -258,7 +258,7 @@ function BillingForm({ checkoutId }: { checkoutId: number }) {
   const busy = useRef(false)
   return (
     <section className={styles.panel}>
-      <h2>Payer address</h2>
+      <h2 data-type="card-lg">Payer address</h2>
       <p className={styles.muted}>Complete your billing details before opening payment.</p>
       <form
         onSubmit={async (event) => {

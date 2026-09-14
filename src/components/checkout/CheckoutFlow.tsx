@@ -209,7 +209,7 @@ export function CheckoutFlow({
   if (!cart.items.length)
     return (
       <div className={styles.panel}>
-        <h2>Your cart is empty</h2>
+        <h2 data-type="card-lg">Your cart is empty</h2>
         {cart.storageError && (
           <p role="alert" className={styles.error}>
             Your browser could not save this cart. Enable local storage to add trips.
@@ -237,7 +237,7 @@ export function CheckoutFlow({
             <section className={styles.panel} key={item.eventDateId}>
               <div className={styles.row}>
                 <div>
-                  <h2>{priced?.title || 'Selected trip'}</h2>
+                  <h2 data-type="card-lg">{priced?.title || 'Selected trip'}</h2>
                   {priced && (
                     <p className={styles.muted}>
                       {date(priced.dateFrom)} – {date(priced.dateTo)}
@@ -322,7 +322,7 @@ export function CheckoutFlow({
         </div>
         {mode === 'checkout' && (
           <section className={styles.panel}>
-            <h2>
+            <h2 data-type="card-lg">
               {returning
                 ? 'Payer and billing details'
                 : !contact && journey === 'unknown'
@@ -404,7 +404,7 @@ export function CheckoutFlow({
         )}
       </div>
       <aside className={styles.panel} aria-label="Order summary">
-        <h2>Order summary</h2>
+        <h2 data-type="card-lg">Order summary</h2>
         {pricing && <p role="status">Checking current prices and availability…</p>}
         {quoteError && (
           <>

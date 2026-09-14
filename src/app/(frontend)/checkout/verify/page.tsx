@@ -22,7 +22,7 @@ export default async function VerifyPage({
     <MarketingShell>
       <main className={styles.main}>
         <div className={styles.panel}>
-          <h1 className={styles.heading}>Confirm your email</h1>
+          <h1 data-type="section" className={styles.heading}>Confirm your email</h1>
           <p className={styles.body}>
             Confirm below to reserve the trips in your checkout for staff review. Availability is
             checked again when you confirm.

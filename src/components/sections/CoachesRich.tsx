@@ -37,7 +37,7 @@ export function CoachesRich({
               ) : (
                 <div className={styles.avatarPlaceholder}>PHOTO</div>
               )}
-              <h3>{g.name}</h3>
+              <h3 data-type="subheading">{g.name}</h3>
               {g.content && (
                 <div className={styles.bio}>
                   <Lexical data={g.content} />

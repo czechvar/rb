@@ -15,9 +15,8 @@
   max-width: var(--theme-content-max);
   margin-inline: auto;
 }
+
 .heading {
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-section);
   margin: 0 0 24px;
 }
 .body {

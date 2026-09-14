@@ -54,7 +54,7 @@ export default async function CalendarPage() {
         ) : (
           [...groups.entries()].map(([month, rows]) => (
             <section key={month} className={styles.group}>
-              <h2 className={styles.groupHead}>{month}</h2>
+              <h2 data-type="subheading" className={styles.groupHead}>{month}</h2>
               <ul className={styles.list}>
                 {rows.map((d) => {
                   const event = (typeof d.event === 'object' ? d.event : null) as

@@ -45,18 +45,18 @@ export function EventDatesList({
           const soldOut = spots === 0 || (typeof d.capacity === 'number' && d.capacity <= 0)
           return (
             <li key={d.id} className={styles.card} data-selected={d.id === selectedId || undefined}>
-              <div className={styles.range}>
+              <div data-type="card" className={styles.range}>
                 {variant === 'rows' && eventSlug ? (
                   <Link href={`/trips/${eventSlug}?date=${d.id}#dates`} aria-current={d.id === selectedId ? 'true' : undefined}>
                     {fmtDate(d.dateFrom)} – {fmtDate(d.dateTo)}
-                    {d.id === selectedId && <span className={styles.selectedLabel}>Selected</span>}
+                    {d.id === selectedId && <span data-type="label" className={styles.selectedLabel}>Selected</span>}
                   </Link>
                 ) : <>{fmtDate(d.dateFrom)} – {fmtDate(d.dateTo)}</>}
               </div>
               <div className={styles.duration}>
                 {days} {variant === 'rows' ? 'calendar ' : ''}day{days === 1 ? '' : 's'}
               </div>
-              <div className={styles.price}>
+              <div data-type="card" className={styles.price}>
                 {d.currency} {d.price.toLocaleString()}
               </div>
               <div className={styles.priceNote}>per person</div>

@@ -33,7 +33,7 @@ export default async function ReviewPage() {
     <MarketingShell>
       <main className={styles.main}>
         <div className={styles.wide}>
-          <h1 className={styles.heading}>Review guest checkouts</h1>
+          <h1 data-type="section" className={styles.heading}>Review guest checkouts</h1>
           <p>
             <Link href="/checkout/operations">
               All reservations, balances and payment reconciliation

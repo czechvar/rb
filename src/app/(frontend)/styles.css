@@ -34,7 +34,7 @@ input,
 textarea,
 select {
   font-family: var(--theme-font-body);
-  font-size: 1.6rem;
+  font-size: var(--theme-text-body);
   font-weight: 400;
   line-height: var(--textLineHeight);
 }
@@ -43,39 +43,47 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
+  text-transform: uppercase;
   font-family: var(--theme-font-heading);
   font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
   color: var(--theme-color-ink);
 }
 
 h1 {
   margin-bottom: var(--h1MarginBottom);
-  font-size: var(--h1FontSize);
-  line-height: var(--h1LineHeight);
-  font-weight: 600;
+  font-size: var(--theme-text-hero);
+  line-height: var(--theme-line-hero);
+  font-weight: var(--theme-weight-hero);
   letter-spacing: -0.02em;
 }
 
 h2 {
+  font-weight: var(--theme-weight-section);
   margin-bottom: var(--h2MarginBottom);
-  font-size: var(--h2FontSize);
-  line-height: var(--h2LineHeight);
+  font-size: var(--theme-text-section);
+  line-height: var(--theme-line-section);
 }
 
 h3 {
+  font-weight: var(--theme-weight-card-lg);
   margin-bottom: var(--h3MarginBottom);
-  font-size: var(--h3FontSize);
-  line-height: var(--h3LineHeight);
+  font-size: var(--theme-text-card-lg);
+  line-height: var(--theme-line-card-lg);
 }
 
 h4 {
+  font-weight: var(--theme-weight-card);
   margin-bottom: var(--h4MarginBottom);
-  font-size: var(--h4FontSize);
-  line-height: var(--h4LineHeight);
+  font-size: var(--theme-text-card);
+  line-height: var(--theme-line-card);
 }
 
 h5 {
+  font-weight: var(--theme-weight-subheading);
   margin-bottom: var(--h5MarginBottom);
   font-size: var(--h5FontSize);
   line-height: var(--h5LineHeight);
@@ -160,9 +168,10 @@ ol {
 /* ===== Wireframe helper classes ============================== */
 
 .section-title {
+  text-transform: uppercase;
   font-family: var(--theme-font-display);
-  font-weight: 400;
-  line-height: 0.92;
+  font-weight: var(--theme-weight-section);
+  line-height: var(--theme-line-section);
   letter-spacing: -0.005em;
   color: var(--rb-section-title-color, var(--rb-white));
   font-size: var(--theme-text-section);
@@ -171,10 +180,11 @@ ol {
 .section-label,
 .eyebrow {
   font-family: var(--theme-font-body);
-  font-size: var(--fs-eyebrow);
+  font-size: var(--theme-text-label);
+  line-height: var(--theme-line-label);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: var(--theme-weight-label);
   color: var(--rb-eyebrow-color, var(--rb-white-60));
 }
 
@@ -240,5 +250,80 @@ ol {
   }
   @keyframes rbReveal {
     to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Heading level describes document structure; data-type declares a different
+   visual role. Keep typography here, never in a page or component module. */
+[data-type] {
+  font-family: var(--theme-font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+[data-type="section"] {
+  font-size: var(--theme-text-section);
+  font-weight: var(--theme-weight-section);
+  line-height: var(--theme-line-section);
+}
+[data-type="card-lg"] {
+  font-size: var(--theme-text-card-lg);
+  font-weight: var(--theme-weight-card-lg);
+  line-height: var(--theme-line-card-lg);
+}
+[data-type="card"] {
+  font-size: var(--theme-text-card);
+  font-weight: var(--theme-weight-card);
+  line-height: var(--theme-line-card);
+}
+[data-type="subheading"] {
+  font-size: var(--theme-text-subheading);
+  font-weight: var(--theme-weight-subheading);
+  line-height: var(--theme-line-subheading);
+}
+[data-type="label"] {
+  font-family: var(--theme-font-body);
+  font-size: var(--theme-text-label);
+  font-weight: var(--theme-weight-label);
+  line-height: var(--theme-line-label);
+  letter-spacing: 0.14em;
+}
+
+[data-type="stat"] {
+  font-size: var(--theme-text-stat);
+  font-weight: var(--theme-weight-section);
+  line-height: var(--theme-line-card-lg);
+}
+
+/* Primary and secondary actions retain their hierarchy on brand surfaces. */
+[data-surface="brand"] :is([data-button], .btn-primary, .btn-ghost, .btn-dark, .btn-outline-dark) {
+  color: var(--theme-color-paper);
+  transition: background-color var(--theme-motion-fast) ease, color var(--theme-motion-fast) ease, border-color var(--theme-motion-fast) ease;
+}
+[data-surface="brand"] :is([data-button="primary"], .btn-primary, .btn-dark) {
+  background: var(--theme-color-ink);
+  border-color: var(--theme-color-ink);
+}
+[data-surface="brand"] :is([data-button="primary"], .btn-primary, .btn-dark):hover {
+  background: var(--theme-color-surface-3);
+  color: var(--theme-color-paper);
+  border-color: var(--theme-color-ink);
+}
+[data-surface="brand"] :is([data-button="secondary"], .btn-ghost, .btn-outline-dark) {
+  background: transparent;
+  color: var(--theme-color-ink);
+  border-color: var(--theme-color-ink);
+}
+[data-surface="brand"] :is([data-button="secondary"], .btn-ghost, .btn-outline-dark):hover {
+  background: var(--theme-color-ink);
+  color: var(--theme-color-paper);
+  border-color: var(--theme-color-ink);
+}
+[data-surface="brand"] :is([data-button], .btn-primary, .btn-ghost, .btn-dark, .btn-outline-dark):focus-visible {
+  outline: 2px solid var(--theme-color-paper);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-surface="brand"] :is([data-button], .btn-primary, .btn-ghost, .btn-dark, .btn-outline-dark) {
+    transition: none;
   }
 }

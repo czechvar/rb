@@ -35,7 +35,7 @@ export function StatsBlock({ body, columns, eyebrow, heading, items, variant }: 
         <dl className={styles.statsGrid}>
           {items.map((item) => (
             <div key={item.id ?? `${item.value}-${item.label}`} className={styles.statItem}>
-              <dt>{item.value}</dt>
+              <dt data-type={variant === 'heroBar' ? 'stat' : 'section'}>{item.value}</dt>
               <dd>
                 <strong>{item.label}</strong>
                 {item.body ? <span>{item.body}</span> : null}

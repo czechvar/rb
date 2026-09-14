@@ -4,7 +4,8 @@
   color: var(--theme-color-paper);
 }
 .inner { max-width: var(--theme-content-max); margin-inline: auto; }
-.eyebrow, .cardLabel {
+
+.eyebrow {
   font-family: var(--theme-font-body);
   font-weight: 700;
   font-size: var(--theme-text-label);
@@ -13,7 +14,13 @@
   color: var(--theme-color-primary);
   margin: 0 0 14px;
 }
-.heading { color: inherit; font-family: var(--theme-font-heading); font-size: var(--theme-text-section); line-height: .98; margin: 0 0 24px; }
+
+.cardLabel {
+  color: var(--theme-color-primary);
+  margin: 0 0 14px;
+}
+
+.heading { color: inherit; margin: 0 0 24px; }
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--theme-color-paper-08); margin-top: 50px; }
 .card { padding: 44px 36px; background: var(--theme-color-surface-1); min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
 .cardLabel { margin: 0; }

@@ -47,15 +47,8 @@
   margin-bottom: 20px;
 }
 
-
 .title {
-  font-family: var(--theme-font-heading);
-  font-weight: 400;
-  font-size: clamp(72px, 11vw, 140px);
-  line-height: 0.88;
-  letter-spacing: 0.03em;
   color: var(--theme-color-paper);
-  text-transform: uppercase;
   margin-bottom: 30px;
 }
 

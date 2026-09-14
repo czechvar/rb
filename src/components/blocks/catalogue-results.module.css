@@ -119,10 +119,6 @@
 .monthHeading h3 {
   margin: 0;
   color: var(--theme-color-paper);
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-3xl);
-  font-weight: var(--theme-weight-card);
-  line-height: var(--theme-line-card-lg);
 }
 
 .monthHeading > span {
@@ -182,7 +178,7 @@
   .filter:nth-child(3n) { border-right: 1px solid var(--theme-color-border); }
   .filter:nth-child(2n) { border-right: 0; }
   .calendarGroups .monthGroup { margin-inline: 0; padding-inline: var(--theme-content-gutter); }
-  .monthHeading h3 { font-size: var(--theme-text-card-lg); }
+
   .trip { grid-template-columns: 1fr; gap: var(--theme-space-2); }
   .tripMeta br { display: none; }
 }

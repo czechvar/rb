@@ -62,7 +62,7 @@ export function WhoWeAre() {
         {PILLARS.map((p) => (
           <div key={p.num} className={`${styles.pillar} reveal`}>
             <div className={styles.pillarNum}>{p.num}</div>
-            <h3 className={styles.pillarTitle}>{p.title}</h3>
+            <h3 data-type="subheading" className={styles.pillarTitle}>{p.title}</h3>
             <p className={styles.pillarBody}>{p.body}</p>
           </div>
         ))}

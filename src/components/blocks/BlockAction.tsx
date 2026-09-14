@@ -28,6 +28,7 @@ type BlockActionProps = {
   href?: string | null
   label?: string | null
   className?: string
+  appearance?: 'primary' | 'secondary'
   analytics?: BlockActionAnalytics | null
   analyticsDefaults?: BlockActionAnalyticsDefaults
 }
@@ -36,6 +37,7 @@ export function BlockAction({
   href,
   label,
   className,
+  appearance,
   analytics,
   analyticsDefaults,
 }: BlockActionProps) {
@@ -94,7 +96,7 @@ export function BlockAction({
 
   if (safeHref.startsWith('/')) {
     return (
-      <Link href={safeHref} className={className} onClick={handleInternalClick}>
+      <Link href={safeHref} className={className} data-button={appearance} onClick={handleInternalClick}>
         {label}
       </Link>
     )
@@ -103,6 +105,7 @@ export function BlockAction({
     <a
       href={safeHref}
       className={className}
+      data-button={appearance}
       onClick={handleExternalClick}
       rel={safeHref.startsWith('https:') ? 'noreferrer' : undefined}
       target={safeHref.startsWith('https:') ? '_blank' : undefined}

@@ -22,13 +22,17 @@
   backdrop-filter: blur(12px);
 }
 
+.menuBar,
+.footerLinksInner {
+  width: min(var(--theme-content-max), calc(100% - 2 * var(--theme-content-gutter)));
+  margin-inline: auto;
+}
+
 .menuBar {
   display: grid;
   grid-template-columns: minmax(18rem, 1fr) auto minmax(18rem, 1fr);
   align-items: center;
-  width: 100%;
   height: var(--headerHeight);
-  padding: 0 max(var(--theme-content-gutter), calc((100% - var(--theme-content-max)) / 2));
   gap: clamp(1.6rem, 2vw, 3.2rem);
 }
 
@@ -40,8 +44,9 @@
   color: var(--theme-color-paper);
 }
 
-.brand img {
-  height: 3.2rem;
+.brand img,
+.footerBrand img {
+  height: var(--theme-logo-height);
   width: auto;
 }
 
@@ -236,13 +241,7 @@
 
 .footerLinks {
   background: var(--theme-color-canvas);
-  padding: 7.2rem var(--theme-content-gutter) 4rem;
-}
-
-.footerLinksInner {
-  width: 100%;
-  max-width: var(--theme-content-max);
-  margin: 0 auto;
+  padding: 7.2rem 0 4rem;
 }
 
 .footerGrid {
@@ -268,8 +267,6 @@
 }
 
 .footerBrand img {
-  height: 4.4rem;
-  width: auto;
   margin-bottom: 1.6rem;
 }
 
@@ -318,11 +315,7 @@
 }
 
 .footerCol h4 {
-  font-size: 1.1rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--theme-color-primary);
-  font-weight: 700;
   margin: 0 0 2rem 0;
 }
 
@@ -380,8 +373,10 @@
 .footerTagline {
   font-family: var(--theme-font-heading);
   font-size: 1.6rem;
+  font-weight: var(--theme-weight-label);
+  line-height: 1.4;
   letter-spacing: 0.14em;
-  color: var(--theme-color-paper-30);
+  color: var(--theme-color-paper);
   text-transform: uppercase;
 }
 

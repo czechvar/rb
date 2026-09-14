@@ -31,11 +31,6 @@
 .editorHeader h2,
 .exportPanel h3 {
   margin: 0;
-  font-family: var(--theme-font-heading);
-  font-size: 34px;
-  font-weight: 400;
-  line-height: 0.95;
-  text-transform: uppercase;
 }
 
 .editorHeader strong {
@@ -282,10 +277,6 @@
   background: var(--theme-color-surface-2);
 }
 
-.exportPanel h3 {
-  font-size: 24px;
-}
-
 .exportPanel textarea {
   min-height: 150px;
   resize: vertical;
@@ -322,10 +313,6 @@
   width: min(100%, var(--theme-content-article-max));
   padding-top: 48px;
   padding-bottom: 48px;
-}
-
-.previewCompact .sectionHeading h2 {
-  font-size: clamp(42px, 4.5vw, 56px);
 }
 
 .previewGallery .hero {
@@ -457,16 +444,11 @@
 .componentGrid h3,
 .tripMedia h2 {
   margin: 0;
-  font-family: var(--theme-font-heading);
-  font-weight: 400;
-  line-height: 0.9;
-  text-transform: uppercase;
 }
 
 .hero h1 {
   color: var(--theme-color-text);
   max-width: var(--theme-content-text-max);
-  font-size: clamp(72px, 9vw, 128px);
 }
 
 .eyebrow {
@@ -569,7 +551,6 @@
 
 .sectionHeading h2 {
   color: inherit;
-  font-size: clamp(56px, 6vw, 76px);
 }
 
 .sectionHeading p {
@@ -682,7 +663,6 @@
 
 .componentGrid h3 {
   color: inherit;
-  font-size: 28px;
 }
 
 .componentGrid p,
@@ -800,7 +780,6 @@
 
 .tripMedia h2 {
   color: var(--theme-color-text);
-  font-size: clamp(56px, 7vw, 92px);
 }
 
 .tripBody {
@@ -841,11 +820,6 @@
 
 .typeSpecimen h3 {
   margin: 0;
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-2xl);
-  font-weight: 400;
-  line-height: 1;
-  text-transform: uppercase;
 }
 
 .typeSpecimen p,
@@ -1063,11 +1037,6 @@
 .tokenAtlasHeader h3 {
   margin: 0;
   color: inherit;
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-2xl);
-  font-weight: 400;
-  line-height: 1;
-  text-transform: uppercase;
 }
 
 .tokenAtlasHeader span {

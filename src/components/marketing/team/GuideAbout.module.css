@@ -4,7 +4,8 @@
   display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 80px; align-items: start;
 }
 .label { color: var(--theme-color-primary); margin-bottom: 14px; }
-.heading { font-size: var(--theme-text-section); line-height: var(--theme-line-section); margin-bottom: 24px; text-transform: uppercase; }
+
+.heading { margin-bottom: 24px; }
 .accent { color: var(--theme-color-primary); }
 .bio { font-size: var(--theme-text-lg); line-height: 1.8; color: var(--theme-color-text-muted); max-width: var(--theme-content-text-max); }
 .bio :global(p + p) { margin-top: 18px; }

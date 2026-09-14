@@ -15,7 +15,7 @@ export function WeekVariants({
       <div className={styles.grid}>
         {variants.map((v, i) => (
           <div key={i} className={styles.card}>
-            <h3>{v.title}</h3>
+            <h3 data-type="subheading">{v.title}</h3>
             {v.bullets?.length ? (
               <ul>
                 {v.bullets.map((b, j) => (

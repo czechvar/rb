@@ -20,7 +20,7 @@ export function GuidePillars({ guide }: { guide: Guide }) {
           {pillars.map((p, i) => (
             <div key={p.id ?? p.title} className={`${styles.pillar} reveal`}>
               <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
-              <h3 className={styles.title}>{p.title}</h3>
+              <h3 data-type="subheading" className={styles.title}>{p.title}</h3>
               <p className={styles.body}>{p.body}</p>
             </div>
           ))}

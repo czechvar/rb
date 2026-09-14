@@ -99,10 +99,10 @@ describe('trip source content preservation', () => {
     const accommodation = { included: [{ text: 'Original included item.' }], notIncluded: [{ text: 'Original excluded item.' }] }
     const cards = renderToStaticMarkup(<EventAccommodationLogistics accommodation={accommodation} variant="cards" />)
     const defaultHtml = renderToStaticMarkup(<EventAccommodationLogistics accommodation={accommodation} />)
-    expect(cards).not.toContain('<h3>Accommodation</h3>')
+    expect(cards).not.toMatch(/<h3\b[^>]*>Accommodation<\/h3>/)
     expect(cards).toContain('Included in our price')
     expect(cards).toContain('Not included')
-    expect(defaultHtml).toContain('<h3>Accommodation</h3>')
+    expect(defaultHtml).toMatch(/<h3\b[^>]*>Accommodation<\/h3>/)
     for (const html of [cards, defaultHtml]) {
       expect(html.match(/Original included item\./g)).toHaveLength(1)
       expect(html.match(/Original excluded item\./g)).toHaveLength(1)

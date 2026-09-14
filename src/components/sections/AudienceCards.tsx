@@ -33,7 +33,7 @@ export function AudienceCards({
               className={`${styles.card} ${c.highlighted ? styles.highlighted : ''}`}
             >
               <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
-              <h3 className={styles.heading}>{c.heading}</h3>
+              <h3 data-type="card" className={styles.heading}>{c.heading}</h3>
               <p className={styles.body}>{c.body}</p>
             </div>
           ))}

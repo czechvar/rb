@@ -75,7 +75,11 @@
 }
 
 .top { padding-bottom: 0; }
-.content { margin-top: auto; }
+/* Keep catalogue copy readable independently of the image and hover overlay. */
+.content {
+  margin-top: auto;
+  background: var(--theme-color-surface-2);
+}
 
 .badge {
   display: inline-block;
@@ -107,12 +111,6 @@
 .title {
   margin: 0 0 10px;
   color: var(--theme-color-paper);
-  font-family: var(--theme-font-display);
-  font-size: var(--theme-trip-card-title-size);
-  font-weight: var(--theme-trip-card-title-weight);
-  line-height: 0.95;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
   overflow-wrap: anywhere;
 }
 
@@ -160,7 +158,7 @@
 
 @media (min-width: 901px) {
   .featured { grid-column: span 2; min-height: var(--theme-trip-card-featured-height); }
-  .featured .title { font-size: var(--theme-trip-card-featured-title-size); }
+
   .featured .description { font-size: var(--theme-trip-card-featured-copy-size); }
 }
 

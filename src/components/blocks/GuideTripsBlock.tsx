@@ -39,7 +39,7 @@ function GuideTripCard({ event }: { event: Event }) {
   return (
     <Link href={`/trips/${event.slug}`} className={styles.domainCard}>
       <p className={styles.cardMeta}>Trip</p>
-      <h3>{eventCatalogueTitle(event)}</h3>
+      <h3 data-type="subheading">{eventCatalogueTitle(event)}</h3>
       {description ? <p>{description}</p> : null}
       <span className={styles.cardLinkText}>View trip</span>
     </Link>

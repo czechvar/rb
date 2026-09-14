@@ -1,3 +1,4 @@
+import { ArrowRight } from '@/components/ui/ArrowRight'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Event, EventDate, Guide, Location, Post, Program } from '@/payload-types'
@@ -74,7 +75,7 @@ export function TripCard({
       </div>
       <div className={styles.tripContent}>
         {loc ? <p className={styles.cardMeta}>{loc}</p> : null}
-        <h3>{title}</h3>
+        <h3 data-type="subheading">{title}</h3>
         {description ? <p>{description}</p> : null}
         <div className={styles.tripFooter}>
           {price ? <span>{price}</span> : <span>Upcoming dates</span>}
@@ -89,7 +90,7 @@ export function ProgramCard({ program, className }: { program: Program; classNam
   return (
     <Link href={`/programs/${program.slug}`} className={className ?? styles.domainCard}>
       <p className={styles.cardMeta}>Program</p>
-      <h3>{program.name}</h3>
+      <h3 data-type="subheading">{program.name}</h3>
       {program.shortDescription ? <p>{program.shortDescription}</p> : null}
       <span className={styles.cardLinkText}>Explore program</span>
     </Link>
@@ -108,20 +109,30 @@ export function LocationCard({
   const place = [location.city, location.country].filter(Boolean).join(', ')
   const image = mediaUrl(location.mainPicture)
 
-  return (
-    <Link href={`/destinations/${location.slug}`} className={className ?? styles.domainCard}>
-      {(variant === 'countryTiles' || variant === 'mediaLed') && image ? (
-        <span className={styles.locationTileImage} aria-hidden="true">
-          <Image src={image} alt="" fill sizes="(max-width: 768px) 100vw, 25vw" />
-        </span>
-      ) : null}
-      {variant === 'countryTiles' && location.country ? (
+  const isTile = variant === 'countryTiles'
+  const content = (
+    <>
+      {isTile && location.country ? (
         <span className={styles.locationCountryMark}>{countryCode(location.country)}</span>
       ) : null}
       <p className={styles.cardMeta}>{place || 'Location'}</p>
-      <h3>{location.name}</h3>
+      <h3 data-type="subheading">{location.name}</h3>
       {location.country ? <p>{location.country}</p> : null}
       <span className={styles.cardLinkText}>Explore location</span>
+    </>
+  )
+
+  return (
+    <Link
+      href={`/destinations/${location.slug}`}
+      className={[className ?? styles.domainCard, isTile ? styles.locationTileCard : ''].filter(Boolean).join(' ')}
+    >
+      {(isTile || variant === 'mediaLed') && image ? (
+        <span className={isTile ? styles.locationCardPhoto : styles.locationTileImage} aria-hidden="true">
+          <Image src={image} alt="" fill sizes="(max-width: 768px) 100vw, 25vw" />
+        </span>
+      ) : null}
+      {isTile ? <div className={styles.locationCardContent}>{content}</div> : content}
     </Link>
   )
 }
@@ -144,9 +155,11 @@ export function GuideCard({
         </span>
       ) : null}
       {guide.role ? <p className={styles.cardMeta}>{guide.role}</p> : null}
-      <h3>{guide.name}</h3>
+      <h3 data-type="subheading">{guide.name}</h3>
       {guide.tagline ? <p>{guide.tagline}</p> : null}
-      <span className={styles.cardLinkText}>Meet guide</span>
+      <span className={`${styles.cardLinkText} ${styles.guideCardLink}`}>
+        Meet guide <ArrowRight />
+      </span>
     </Link>
   )
 }
@@ -155,7 +168,7 @@ export function PostCard({ post, className }: { post: Post; className?: string }
   return (
     <Link href={`/blog/${post.slug}`} className={className ?? styles.domainCard}>
       <p className={styles.cardMeta}>{formatPostDate(post.publishedAt)}</p>
-      <h3>{post.title}</h3>
+      <h3 data-type="subheading">{post.title}</h3>
       {post.excerpt ? <p>{post.excerpt}</p> : null}
       <span className={styles.cardLinkText}>Read post</span>
     </Link>
@@ -173,7 +186,7 @@ export function EventDateCard({
   return (
     <Link href={`/trips/${event.slug}`} className={className ?? styles.domainCard}>
       <p className={styles.cardMeta}>{formatDateRange(eventDate.dateFrom, eventDate.dateTo)}</p>
-      <h3>{event.title}</h3>
+      <h3 data-type="subheading">{event.title}</h3>
       <p>
         {eventDate.currency} {eventDate.price}
         {typeof eventDate.capacity === 'number' ? ` · ${eventDate.capacity} seats` : ''}

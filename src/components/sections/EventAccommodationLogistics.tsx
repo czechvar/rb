@@ -64,7 +64,7 @@ export function EventAccommodationLogistics({
           {hasAccommodation && (
             <div className={styles.col}>
               <div className={styles.box}>
-                <h3>Accommodation</h3>
+                <h3 data-type="card">Accommodation</h3>
                 {accommodation?.description && (
                   <Lexical data={accommodation.description} />
                 )}
@@ -78,7 +78,7 @@ export function EventAccommodationLogistics({
           {hasTransport && (
             <div className={styles.col}>
               <div className={styles.box}>
-                <h3>Getting There</h3>
+                <h3 data-type="card">Getting There</h3>
                 {transport?.description && <Lexical data={transport.description} />}
                 {transport?.airports?.length ? (
                   <ul className={styles.bullets}>

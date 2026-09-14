@@ -194,7 +194,10 @@ export default async function DesignSystemPage({ searchParams }: DesignSystemPag
           <div className={styles.coverageGrid}>
             <article className={styles.typeSpecimen}>
               <p data-eyebrow="section" className={styles.eyebrow}>Type scale</p>
-              <h3>Heading sample</h3>
+              <h3>H3 / large card</h3>
+              <h4>H4 / card</h4>
+              <h3 data-type="subheading">H3 with subheading role</h3>
+              <h3 data-type="label">H3 with label role</h3>
               <p>
                 Body copy uses the semantic body font and page text color. Technical labels use the
                 mono token for data-heavy surfaces.

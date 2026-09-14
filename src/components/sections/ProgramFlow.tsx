@@ -18,11 +18,11 @@ export function ProgramFlow({ flow }: { flow?: Program['flow'] }) {
 
       {mixAndMatchBlocks?.length ? (
         <>
-          <h3 className={styles.h3}>Key elements we mix and match</h3>
+          <h3 data-type="subheading" className={styles.h3}>Key elements we mix and match</h3>
           <ol className={styles.blocks}>
             {mixAndMatchBlocks.map((b, i) => (
               <li key={i} className={styles.block}>
-                <h4>
+                <h4 data-type="subheading">
                   {i + 1}. {b.title}
                 </h4>
                 {b.tagline && <p className={styles.tagline}>{b.tagline}</p>}
@@ -41,7 +41,7 @@ export function ProgramFlow({ flow }: { flow?: Program['flow'] }) {
 
       {tailoredToYou?.length ? (
         <>
-          <h3 className={styles.h3}>Tailored to you</h3>
+          <h3 data-type="subheading" className={styles.h3}>Tailored to you</h3>
           <ul className={styles.tailored}>
             {tailoredToYou.map((b, i) => (
               <li key={i}>{b.text}</li>
@@ -52,14 +52,14 @@ export function ProgramFlow({ flow }: { flow?: Program['flow'] }) {
 
       {focusTracks?.length ? (
         <>
-          <h3 className={styles.h3}>Example focus tracks</h3>
+          <h3 data-type="subheading" className={styles.h3}>Example focus tracks</h3>
           <div className={styles.tracks}>
             {focusTracks.map((t, i) => (
               <div
                 key={i}
                 className={`${styles.track} ${styles[`color-${t.colorTag ?? 'blue'}`]}`}
               >
-                <h4>{t.title}</h4>
+                <h4 data-type="subheading">{t.title}</h4>
                 {t.bullets?.length ? (
                   <ul>
                     {t.bullets.map((x, j) => (

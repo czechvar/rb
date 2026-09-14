@@ -23,16 +23,13 @@
   text-transform: uppercase;
   font-weight: 700;
 }
+
 .page h1 {
-  font-size: var(--theme-text-hero);
-  font-family: var(--theme-font-heading);
-  line-height: var(--theme-line-hero);
   margin: 16px 0 24px;
 }
+
 .page h2,
 .panel h2 {
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-card-lg);
   margin: 0 0 20px;
 }
 .lead,

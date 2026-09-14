@@ -1,3 +1,4 @@
+import { ArrowRight } from '@/components/ui/ArrowRight'
 import Link from 'next/link'
 import type { Guide, Page } from '@/payload-types'
 import type { BlockRenderContext } from './RenderBlocks'
@@ -33,9 +34,11 @@ function GuideProfileCard({ guide, compact }: { guide: Guide; compact: boolean }
       className={`${styles.guideProfileCard} ${compact ? styles.guideProfileCompact : ''}`}
     >
       <p className={styles.cardMeta}>{guide.role ?? 'Guide'}</p>
-      <h3>{guide.name}</h3>
+      <h3 data-type="section">{guide.name}</h3>
       {guide.tagline ? <p>{guide.tagline}</p> : null}
-      <span className={styles.cardLinkText}>Meet guide</span>
+      <span className={`${styles.cardLinkText} ${styles.guideCardLink}`}>
+        Meet guide <ArrowRight />
+      </span>
     </Link>
   )
 }

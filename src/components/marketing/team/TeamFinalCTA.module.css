@@ -9,14 +9,9 @@
   color: var(--theme-overlay-dark-medium);
 }
 
-
 .display {
-  font-family: var(--theme-font-heading);
-  font-size: clamp(60px, 9vw, 120px);
   color: var(--theme-color-ink);
-  line-height: 0.87;
   margin: 0 0 22px;
-  letter-spacing: 0.03em;
 }
 
 .body {

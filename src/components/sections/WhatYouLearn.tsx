@@ -38,7 +38,7 @@ export function WhatYouLearn({ data, headingVariant, heading = "What you'll lear
             <div key={box.num} className={styles.pillar}>
               <div className={styles.rule} />
               <span className={styles.num}>{box.num}</span>
-              <h3 className={styles.heading}>{box.heading}</h3>
+              <h3 data-type="card" className={styles.heading}>{box.heading}</h3>
               {box.bullets.length > 0 && (
                 <ul className={styles.bullets}>
                   {box.bullets.map((b, j) => (

@@ -20,13 +20,13 @@ export function ContactDetails({ eyebrow, heading, emailLabel, email, emailNote,
         <div className={styles.cards}>
           <div className={styles.card}>
             <span className={styles.icon} aria-hidden="true">✉</span>
-            <h3 className={styles.cardLabel}>{emailLabel || 'Email'}</h3>
+            <h3 data-type="label" className={styles.cardLabel}>{emailLabel || 'Email'}</h3>
             <a className={styles.contactLink} href={`mailto:${encodeURIComponent(email.trim())}`}>{email}</a>
             {emailNote && <p className={styles.note}>{emailNote}</p>}
           </div>
           <div className={styles.card}>
             <span className={styles.icon} aria-hidden="true">✆</span>
-            <h3 className={styles.cardLabel}>{phoneLabel || 'Phone & WhatsApp'}</h3>
+            <h3 data-type="label" className={styles.cardLabel}>{phoneLabel || 'Phone & WhatsApp'}</h3>
             {desks?.map((desk, index) => {
               const number = desk.phone.replace(/[^\d+]/g, '')
               const digits = desk.phone.replace(/\D/g, '')

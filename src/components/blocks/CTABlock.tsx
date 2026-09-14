@@ -28,7 +28,7 @@ export function CTABlock({
     .join(' ')
 
   return (
-    <section className={className}>
+    <section className={className} data-surface={variant === 'red' || variant === 'finalRed' ? 'brand' : undefined}>
       <div className={styles.sectionInner}>
         <div>
           {eyebrow ? <p data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</p> : null}
@@ -48,6 +48,7 @@ export function CTABlock({
               location: 'body_cta',
               pageSlug: analyticsContext?.pageSlug,
             }}
+            appearance="primary"
             className={styles.primaryButton}
           />
           <BlockAction
@@ -62,6 +63,7 @@ export function CTABlock({
               location: 'body_cta',
               pageSlug: analyticsContext?.pageSlug,
             }}
+            appearance="secondary"
             className={styles.secondaryButton}
           />
         </div>

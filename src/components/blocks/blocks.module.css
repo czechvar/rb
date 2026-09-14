@@ -12,10 +12,6 @@
 .cta h2 {
   margin: 0;
   color: inherit;
-  font-size: var(--theme-text-section);
-  font-weight: var(--theme-weight-section);
-  line-height: var(--theme-line-section);
-  letter-spacing: 0;
 }
 
 .eyebrow {
@@ -127,9 +123,6 @@
 
 .heroBrandEditorial h1 {
   max-width: var(--theme-content-lead-max);
-  font-size: var(--theme-text-hero);
-  font-weight: var(--theme-weight-hero);
-  line-height: var(--theme-line-hero);
 }
 
 .heroBrandEditorial h1 span {
@@ -208,9 +201,6 @@
 .ctaFinalRed h2 {
   margin-inline: auto;
   max-width: var(--theme-content-text-max);
-  font-size: var(--theme-text-hero);
-  font-weight: var(--theme-weight-hero);
-  line-height: var(--theme-line-hero);
 }
 
 .ctaFinalRed .lead {
@@ -391,10 +381,6 @@
   max-width: var(--theme-content-article-max);
   margin: 0;
   color: inherit;
-  font-size: var(--theme-text-hero);
-  font-weight: var(--theme-weight-hero);
-  line-height: var(--theme-line-hero);
-  text-transform: uppercase;
 }
 
 .destinationHeroBody {
@@ -427,6 +413,7 @@
 }
 
 .destinationHeroOverlayStat dt {
+  font-weight: var(--theme-weight-card-lg);
   margin: 0;
   color: var(--theme-color-paper);
   font-family: var(--theme-font-heading);
@@ -467,6 +454,8 @@
 }
 
 .destinationHeroStat dt {
+  font-weight: var(--theme-weight-section);
+  text-transform: uppercase;
   margin: 0;
   color: var(--theme-color-ink);
   font-family: var(--theme-font-heading);
@@ -693,9 +682,6 @@
 .destinationSectionNav h2 {
   margin: 0;
   color: inherit;
-  font-size: var(--theme-text-subheading);
-  line-height: var(--theme-line-subheading);
-  text-transform: uppercase;
 }
 
 .destinationSectionNav ol {
@@ -747,9 +733,6 @@
 .destinationEditorialPanelSolo h2 {
   margin: 0;
   color: inherit;
-  font-size: var(--theme-text-section);
-  line-height: var(--theme-line-section);
-  text-transform: uppercase;
 }
 
 .destinationEditorialPanel h3,
@@ -758,9 +741,6 @@
 .destinationLogisticsGroup h3 {
   margin: 0;
   color: inherit;
-  font-size: var(--theme-text-subheading);
-  line-height: var(--theme-line-subheading);
-  text-transform: uppercase;
 }
 
 .destinationEditorialPanel p,
@@ -909,8 +889,6 @@
 .destinationLogisticsGroupList h3 {
   padding: 24px;
   border-bottom: 1px solid var(--theme-color-paper-12);
-  font-size: var(--theme-text-label);
-  line-height: var(--theme-line-label);
 }
 
 .destinationLogisticsItems {
@@ -990,8 +968,7 @@
   padding: 22px;
 }
 
-.destinationSidebarCta > p:first-child,
-.destinationSidebarWidget h2 {
+.destinationSidebarCta > p:first-child {
   margin: 0;
   color: var(--theme-color-primary);
   font-size: var(--theme-text-label);
@@ -1001,12 +978,14 @@
   text-transform: uppercase;
 }
 
+.destinationSidebarWidget h2 {
+  margin: 0;
+  color: var(--theme-color-primary);
+}
+
 .destinationSidebarCta h2 {
   margin: 10px 0 0;
   color: inherit;
-  font-size: var(--theme-text-subheading);
-  line-height: var(--theme-line-subheading);
-  text-transform: uppercase;
 }
 
 .destinationSidebarCta > p:not(:first-child) {
@@ -1205,8 +1184,6 @@
 .sectionIntroLightSplit h2,
 .sectionIntroDarkSplit h2 {
   max-width: var(--theme-content-text-max);
-  font-size: var(--theme-text-section);
-  line-height: var(--theme-line-section);
 }
 
 .sectionIntroBody {
@@ -1312,10 +1289,6 @@
   background: var(--theme-color-surface-1);
 }
 
-.statsNumberedDark .statItem dt {
-  font-size: var(--theme-text-section);
-}
-
 .statsHeroBar {
   padding: 0;
   background: var(--theme-color-primary);
@@ -1349,9 +1322,6 @@
 .statsHeroBar .statItem dt {
   margin: 0;
   color: var(--theme-color-ink);
-  font-size: var(--theme-text-section);
-  line-height: 1;
-  letter-spacing: 0.04em;
 }
 
 .statsHeroBar .statItem dd {
@@ -1408,9 +1378,6 @@
 .statItem dt {
   margin: 0 0 8px;
   color: var(--theme-color-primary);
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-hero);
-  line-height: var(--theme-line-hero);
 }
 
 .statItem dd {
@@ -1469,10 +1436,6 @@
   color: var(--theme-color-paper);
 }
 
-.featuredCatalogueCard {
-  composes: domainCard;
-}
-
 .featuredCatalogueFeature {
   min-height: 360px;
   padding: 34px;
@@ -1480,8 +1443,6 @@
 
 .featuredCatalogueFeature h3 {
   max-width: var(--theme-content-text-max);
-  font-size: var(--theme-text-hero);
-  line-height: var(--theme-line-hero);
 }
 
 .featuredCatalogueCompact {
@@ -1556,29 +1517,11 @@
   opacity: 1;
 }
 
-.domainGridDarkCompact .sectionHeader h2,
-.featuredCatalogueMediaLedSection .sectionHeader h2,
-.tripGridEditorial .sectionHeader h2,
-.tripGridFeatureLead .sectionHeader h2,
-.locationTilesSection .sectionHeader h2,
-.guidePhotoSection .sectionHeader h2,
-.reviewGridSection .sectionHeader h2 {
-  font-size: var(--theme-text-hero);
-  line-height: var(--theme-line-hero);
-}
-
 .featuredCatalogueSection .lead,
 .partnerStripSection .lead,
 .faqSection .lead {
   max-width: var(--theme-content-text-max);
   margin-top: 24px;
-}
-
-.featuredCatalogueSection .sectionHeader h2,
-.partnerStripSection .sectionHeader h2,
-.faqSection .sectionHeader h2 {
-  font-size: var(--theme-text-section);
-  line-height: var(--theme-line-section);
 }
 
 .domainCard,
@@ -1594,16 +1537,14 @@
   text-decoration: none;
 }
 
+.featuredCatalogueCard {
+  composes: domainCard;
+}
+
 .domainCard h3,
 .reviewCard p {
   margin: 0;
   color: inherit;
-}
-
-.domainCard h3 {
-  font-size: var(--theme-text-subheading);
-  font-weight: var(--theme-weight-subheading);
-  line-height: var(--theme-line-subheading);
 }
 
 .domainCard p:not(.cardMeta),
@@ -1628,16 +1569,61 @@
   text-transform: uppercase;
 }
 
+.guideCardLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5em;
+}
+
+.guideCardLink svg {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+
 .locationTileGrid {
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 }
 
-.locationTilesSection .domainCard {
+.locationTileCard {
+  min-width: 0;
   min-height: 210px;
+  padding: 0;
   overflow: hidden;
-  border-color: var(--theme-color-ink-border-faint);
-  background: var(--theme-color-paper);
-  color: var(--theme-color-ink);
+  border-color: var(--theme-color-paper-08);
+  background: var(--theme-color-surface-2);
+  color: var(--theme-color-paper);
+}
+
+.locationCardPhoto {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  aspect-ratio: 4 / 3;
+}
+
+.locationCardPhoto img {
+  object-fit: cover;
+}
+
+.locationCardContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--theme-color-surface-2);
+  overflow-wrap: anywhere;
+}
+
+.locationCardContent p:not(.cardMeta) {
+  color: var(--theme-color-paper-60);
+  opacity: 1;
+}
+
+.locationTileCard:hover {
+  border-color: var(--theme-color-primary);
 }
 
 .guidePhotoSection .domainCard::after {
@@ -1695,12 +1681,6 @@
   border-color: var(--theme-color-paper-08);
   background: var(--theme-color-surface-1);
   color: var(--theme-color-paper);
-}
-
-.guidePhotoSection .domainCard h3 {
-  font-size: var(--theme-text-card-lg);
-  font-weight: var(--theme-weight-card);
-  line-height: var(--theme-line-card-lg);
 }
 
 .guidePhotoSection .domainCard:hover {
@@ -1802,8 +1782,6 @@
 .guideProfileCard h3 {
   margin: 8px 0;
   color: inherit;
-  font-size: var(--theme-text-section);
-  line-height: var(--theme-line-section);
 }
 
 .guideProfileCard p {
@@ -1885,9 +1863,6 @@
 .tripContent h3 {
   margin: 0 0 12px;
   color: inherit;
-  font-size: var(--theme-text-card-lg);
-  font-weight: var(--theme-weight-card);
-  line-height: var(--theme-line-card-lg);
 }
 
 .tripContent p {
@@ -2085,8 +2060,6 @@
 
 .destinationCountryIndex .sectionHeader h2 {
   max-width: var(--theme-content-article-max);
-  font-size: var(--theme-text-hero);
-  line-height: var(--theme-line-hero);
 }
 
 .destinationCountryIndex .lead {
@@ -2157,8 +2130,6 @@
 .destinationCountryHead h2 {
   margin: 0;
   color: var(--theme-color-paper);
-  font-size: var(--theme-text-section);
-  line-height: var(--theme-line-section);
 }
 
 .destinationCountryHead > span:last-child {
@@ -2284,25 +2255,6 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 1199px) {
-  .domainGridDarkCompact .sectionHeader h2,
-  .featuredCatalogueMediaLedSection .sectionHeader h2,
-  .tripGridEditorial .sectionHeader h2,
-  .tripGridFeatureLead .sectionHeader h2,
-  .locationTilesSection .sectionHeader h2,
-  .guidePhotoSection .sectionHeader h2,
-  .reviewGridSection .sectionHeader h2 {
-    font-size: var(--theme-text-hero);
-  }
-
-  .featuredCatalogueSection .sectionHeader h2,
-  .sectionIntroDarkSplit h2,
-  .partnerStripSection .sectionHeader h2,
-  .faqSection .sectionHeader h2 {
-    font-size: var(--theme-text-section);
-  }
-}
-
 @media (max-width: 767px) {
   .sectionInner {
     width: min(100% - 2 * var(--theme-content-gutter), var(--theme-content-max));
@@ -2310,27 +2262,6 @@
 
   .hero {
     min-height: var(--theme-hero-mobile-min-height);
-  }
-
-  .heroBrandEditorial h1 {
-    font-size: var(--theme-text-hero);
-  }
-
-  .domainGridDarkCompact .sectionHeader h2,
-  .featuredCatalogueMediaLedSection .sectionHeader h2,
-  .tripGridEditorial .sectionHeader h2,
-  .tripGridFeatureLead .sectionHeader h2,
-  .locationTilesSection .sectionHeader h2,
-  .guidePhotoSection .sectionHeader h2,
-  .reviewGridSection .sectionHeader h2 {
-    font-size: var(--theme-text-hero);
-  }
-
-  .featuredCatalogueSection .sectionHeader h2,
-  .sectionIntroDarkSplit h2,
-  .partnerStripSection .sectionHeader h2,
-  .faqSection .sectionHeader h2 {
-    font-size: var(--theme-text-section);
   }
 
   .heroInner {

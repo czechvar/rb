@@ -3,7 +3,7 @@ import styles from './FinalCTA.module.css'
 
 export function FinalCTA() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} data-surface="brand">
       <h2 className={styles.display}>
         YOUR NEXT LEVEL
         <br />

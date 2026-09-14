@@ -3,7 +3,7 @@ import styles from './TeamFinalCTA.module.css'
 
 export function TeamFinalCTA() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} data-surface="brand">
       <p className="section-label">Ready?</p>
       <h2 className={styles.display}>
         YOUR NEXT ROUTE

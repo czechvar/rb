@@ -58,7 +58,7 @@ export function ImageTripCard(props: ImageTripCardProps) {
         </div>
       </div>
       <div className={styles.content}>
-        <Heading className={styles.title}>{title}</Heading>
+        <Heading data-type={featured ? 'card-lg' : 'card'} className={styles.title}>{title}</Heading>
         {description ? <p className={styles.description}>{description}</p> : null}
         <div className={styles.footer}>
           <span className={styles.price}>{price || 'Upcoming dates'}</span>

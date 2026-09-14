@@ -57,10 +57,6 @@
 }
 
 .cardName {
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-card-lg);
-  font-weight: var(--theme-weight-card);
-  line-height: var(--theme-line-card-lg);
   color: var(--theme-color-paper);
   margin: 8px 0 0;
 }

@@ -40,13 +40,12 @@ export function Footer() {
               <p>
                 A community of climbing coaches and guides dedicated to maximum
                 progression on real rock across Europe&apos;s greatest crags.
-                Climb harder. Climb smarter.
               </p>
               <NewsletterForm />
             </div>
 
             <div className={styles.footerCol}>
-              <h4>Trips</h4>
+              <h4 data-type="label">Trips</h4>
               <ul>
                 {TRIPS.map((l) => (
                   <li key={l.label}>
@@ -57,7 +56,7 @@ export function Footer() {
             </div>
 
             <div className={styles.footerCol}>
-              <h4>Coaching</h4>
+              <h4 data-type="label">Coaching</h4>
               <ul>
                 {COACHING.map((l) => (
                   <li key={l.label}>
@@ -68,7 +67,7 @@ export function Footer() {
             </div>
 
             <div className={styles.footerCol}>
-              <h4>Company</h4>
+              <h4 data-type="label">Company</h4>
               <ul>
                 {COMPANY.map((l) => (
                   <li key={l.href}>
@@ -89,7 +88,9 @@ export function Footer() {
               </Link>
             </small>
             <span className={styles.footerTagline}>
-              Climb harder. Climb smarter.
+              CLIMB. HARD.<br />
+              EAT. SLEEP.<br />
+              CLIMB. AGAIN.
             </span>
           </div>
         </div>

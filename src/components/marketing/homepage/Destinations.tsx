@@ -31,7 +31,7 @@ export function Destinations() {
             className={`${styles.card} reveal`}
           >
             <div className={styles.flag}>{d.flag}</div>
-            <h3 className={styles.name}>{d.name}</h3>
+            <h3 data-type="subheading" className={styles.name}>{d.name}</h3>
             <p className={styles.crags}>{d.crags}</p>
           </Link>
         ))}

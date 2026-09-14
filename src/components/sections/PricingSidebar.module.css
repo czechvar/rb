@@ -102,7 +102,7 @@
 }
 
 .dark .priceBlock { padding: 1.9rem 2rem 1.4rem; }
-.dark .primaryPrice { font-family: var(--theme-font-heading); font-size: var(--theme-text-section); font-weight: 400; color: var(--theme-color-paper); }
+.dark .primaryPrice { font-family: var(--theme-font-heading); font-size: var(--theme-text-card-lg); font-weight: var(--theme-weight-card-lg); text-transform: uppercase; color: var(--theme-color-paper); }
 .dark .caption { font-size: var(--theme-text-small); color: var(--theme-color-paper-80); }
 .dark .divider { border-color: var(--theme-color-border); }
 .dark .rows { gap: 0; padding: 0.5rem 0; }

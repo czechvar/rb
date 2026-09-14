@@ -10,7 +10,7 @@ export function CurriculumPillars({ pillars }: { pillars?: Program['curriculumPi
         {pillars.map((p, i) => (
           <div key={i} className={styles.pillar}>
             {p.icon && <div className={styles.icon}>{p.icon}</div>}
-            <h3>{p.title}</h3>
+            <h3 data-type="subheading">{p.title}</h3>
             {p.bullets?.length ? (
               <ul>
                 {p.bullets.map((b, j) => (

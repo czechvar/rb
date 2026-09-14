@@ -4,6 +4,8 @@
 }
 .item { text-align: center; }
 .num {
+  font-weight: var(--theme-weight-section);
+  text-transform: uppercase;
   font-family: var(--theme-font-heading); font-size: 52px; color: var(--theme-color-ink);
   line-height: 1; display: block; letter-spacing: 0.03em;
 }

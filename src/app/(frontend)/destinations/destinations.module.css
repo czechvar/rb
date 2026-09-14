@@ -71,8 +71,6 @@
 
 .structuredSection h2 {
   margin: 0 0 10px;
-  font-size: clamp(32px, 8vw, 48px);
-  line-height: 0.95;
 }
 
 .structuredSection p {

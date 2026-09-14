@@ -75,7 +75,7 @@ export function FindYourTrip() {
         <div className={styles.groups}>
           {GROUPS.map((g) => (
             <div key={g.label} className={styles.group}>
-              <h3 className={styles.label}>{g.label}</h3>
+              <h3 data-type="label" className={styles.label}>{g.label}</h3>
               <ul className={styles.list}>
                 {g.links.map((l) => (
                   <li key={l.href + l.label}>

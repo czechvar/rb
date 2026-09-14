@@ -13,6 +13,8 @@
   text-align: center;
 }
 .stats dt {
+  font-weight: var(--theme-weight-section);
+  text-transform: uppercase;
   font-family: var(--theme-font-display);
   font-size: 52px;
   line-height: 1;
@@ -100,13 +102,10 @@
   text-transform: uppercase;
   margin: 0 0 14px;
 }
+
 .heading h2,
 .resultsHeading {
   color: var(--theme-color-paper);
-  font-family: var(--theme-font-display);
-  font-size: clamp(38px, 5.5vw, 64px);
-  line-height: 0.94;
-  letter-spacing: 0.03em;
   margin: 0 0 36px;
 }
 .intro {
@@ -185,10 +184,9 @@
   text-transform: uppercase;
   text-decoration: none;
 }
+
 .body h3 {
   margin: 0;
-  font: 22px/1.08 var(--theme-font-display);
-  letter-spacing: 0.02em;
   overflow-wrap: anywhere;
   color: var(--theme-color-paper);
 }
@@ -196,10 +194,7 @@
   color: inherit;
   text-decoration: none;
 }
-.featured h3 {
-  font-size: clamp(30px, 3.6vw, 44px);
-  line-height: 1.03;
-}
+
 .excerpt {
   margin: 0;
   color: var(--theme-color-paper-45);

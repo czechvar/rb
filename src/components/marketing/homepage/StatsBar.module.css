@@ -16,6 +16,8 @@
 }
 
 .num {
+  font-weight: var(--theme-weight-section);
+  text-transform: uppercase;
   font-family: var(--theme-font-heading);
   font-size: clamp(40px, 5vw, 64px);
   color: var(--theme-color-primary);

@@ -6,10 +6,6 @@
 }
 
 .display {
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-hero);
-  font-weight: var(--theme-weight-hero);
-  line-height: var(--theme-line-hero);
   color: var(--theme-color-paper);
   margin: 0 0 24px;
 }

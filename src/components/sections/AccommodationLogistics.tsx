@@ -36,13 +36,13 @@ export function AccommodationLogistics({
         <div className={styles.col}>
           {hasAccommodation && (
             <div className={styles.box}>
-              <h3>Accommodation</h3>
+              <h3 data-type="label">Accommodation</h3>
               {accommodation?.description && <Lexical data={accommodation.description} />}
             </div>
           )}
           {hasTransport && (
             <div className={styles.box}>
-              <h3>Getting there</h3>
+              <h3 data-type="label">Getting there</h3>
               {transport?.description && <Lexical data={transport.description} />}
               {transport?.airports?.length ? (
                 <ul className={styles.bullets}>
@@ -63,19 +63,19 @@ export function AccommodationLogistics({
         <div className={styles.col}>
           {accommodation?.included?.length ? (
             <div className={styles.box}>
-              <h3>Included in our price ✓</h3>
+              <h3 data-type="label">Included in our price ✓</h3>
               <BulletList items={accommodation.included} />
             </div>
           ) : null}
           {accommodation?.foodBeverages?.length ? (
             <div className={styles.box}>
-              <h3>Food &amp; beverages</h3>
+              <h3 data-type="label">Food &amp; beverages</h3>
               <BulletList items={accommodation.foodBeverages} />
             </div>
           ) : null}
           {accommodation?.notIncluded?.length ? (
             <div className={styles.box}>
-              <h3>Not included ✗</h3>
+              <h3 data-type="label">Not included ✗</h3>
               <BulletList items={accommodation.notIncluded} />
             </div>
           ) : null}

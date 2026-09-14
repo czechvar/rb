@@ -41,15 +41,13 @@ type HomepageData = {
 }
 
 export default async function HomePage() {
-  const [homePage, homepage] = await Promise.all([
-    getPublishedPageBySlug('home'),
-    getHomepageData(),
-  ])
+  const homePage = await getPublishedPageBySlug('home')
   const usesCmsLayout = Boolean(homePage?.layout?.length)
+  const homepage = usesCmsLayout ? null : await getHomepageData()
   const jsonLd = await homepageGraphJsonLd({
     page: homePage,
-    heroMedia: usesCmsLayout ? undefined : homepage.heroMedia,
-    featuredEvents: usesCmsLayout ? [] : homepage.events,
+    heroMedia: homepage?.heroMedia,
+    featuredEvents: homepage?.events ?? [],
   })
 
   return (
@@ -59,7 +57,7 @@ export default async function HomePage() {
       <main>
         {usesCmsLayout ? (
           <RenderBlocks blocks={homePage?.layout} context={{ page: homePage }} />
-        ) : (
+        ) : homepage ? (
           <>
             <Hero backgroundMedia={homepage.heroMedia} />
             <StatsBar />
@@ -75,7 +73,7 @@ export default async function HomePage() {
             <Partners partners={homepage.partners} />
             <FinalCTA />
           </>
-        )}
+        ) : null}
       </main>
       <Footer />
     </>

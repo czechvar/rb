@@ -43,14 +43,10 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
+
 .intro h1 {
   margin: 20px 0 24px;
   color: var(--theme-color-paper);
-  font-family: var(--theme-font-display);
-  font-size: clamp(42px, 4.5vw, var(--theme-text-hero));
-  line-height: 1;
-  font-weight: 400;
-  letter-spacing: 0;
   overflow-wrap: anywhere;
 }
 .lead {
@@ -115,15 +111,13 @@
 .prose :global(.payload-richtext) > * + * {
   margin-top: 24px;
 }
+
 .prose :is(h1, h2, h3, h4, h5, h6) {
   margin-top: 48px;
   margin-bottom: 20px;
   color: var(--theme-color-paper);
-  font-family: var(--theme-font-display);
-  line-height: 1.1;
 }
-.prose :is(h1, h2) { font-size: var(--theme-text-section); }
-.prose :is(h3, h4, h5, h6) { font-size: var(--theme-text-card-lg); }
+
 .prose :global(.payload-richtext) > :first-child { margin-top: 0; }
 .prose :is(ul, ol) { padding-left: 1.5em; }
 .prose li + li { margin-top: 8px; }

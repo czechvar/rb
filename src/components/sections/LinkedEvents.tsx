@@ -13,7 +13,7 @@ export function LinkedEvents({ events }: { events: Event[] }) {
           {events.map(e => (
             <li key={e.id} className={styles.item}>
               <Link href={`/trips/${e.slug}`}>
-                <h3>{e.title}</h3>
+                <h3 data-type="card">{e.title}</h3>
                 {e.shortDescription && <p>{e.shortDescription}</p>}
               </Link>
             </li>

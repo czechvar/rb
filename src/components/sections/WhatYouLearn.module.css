@@ -50,10 +50,6 @@
 }
 
 .heading {
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-card);
-  letter-spacing: 0.02em;
-  line-height: 1.05;
   color: var(--theme-color-paper);
   margin-bottom: 1rem;
 }

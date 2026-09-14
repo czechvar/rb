@@ -69,7 +69,7 @@ export default async function ProgramsIndex() {
                 <li key={ev.id} className={styles.card}>
                   <Link href={`/trips/${ev.slug}`} className={styles.cardLink}>
                     <div className={styles.cardHead}>
-                      <h2>{ev.title}</h2>
+                      <h2 data-type="card">{ev.title}</h2>
                       {loc && <span className={styles.cardLoc}>{loc}</span>}
                     </div>
                     {ev.shortDescription && (

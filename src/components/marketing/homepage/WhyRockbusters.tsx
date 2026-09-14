@@ -46,7 +46,7 @@ export function WhyRockbusters() {
         {CARDS.map((c) => (
           <div key={c.heading} className={`${styles.card} reveal`}>
             <p className={styles.cardTag}>{c.tag}</p>
-            <h3 className={styles.cardHeading}>{c.heading}</h3>
+            <h3 data-type="subheading" className={styles.cardHeading}>{c.heading}</h3>
             <p className={styles.cardBody}>{c.body}</p>
           </div>
         ))}

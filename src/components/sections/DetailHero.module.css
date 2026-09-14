@@ -48,11 +48,6 @@
 }
 
 .title {
-  font-family: var(--theme-font-heading);
-  font-size: var(--theme-text-hero);
-  line-height: 0.95;
-  letter-spacing: 0.01em;
-  font-weight: 400;
   color: var(--theme-color-paper);
   margin: 0 0 0.5rem;
   text-shadow: 0 2px 20px var(--theme-overlay-dark-medium);
@@ -145,7 +140,6 @@
 }
 
 .editorial .title {
-  font-size: var(--theme-text-hero);
   overflow-wrap: anywhere;
   text-wrap: balance;
 }
@@ -181,9 +175,6 @@
     row-gap: 0;
   }
 
-  .editorial .title {
-    font-size: var(--theme-text-hero);
-  }
 }
 
 .actions a { min-height: 44px; justify-content: center; }

@@ -1,7 +1,8 @@
 .section { background: var(--theme-color-ink); padding: 80px var(--theme-content-gutter); }
 .inner { max-width: var(--theme-content-max); margin: 0 auto; }
 .label { color: var(--theme-color-primary); margin-bottom: 14px; }
-.heading { font-size: var(--theme-text-section); line-height: var(--theme-line-section); margin-bottom: 24px; text-transform: uppercase; }
+
+.heading { margin-bottom: 24px; }
 .intro { font-size: 16px; line-height: 1.78; color: var(--theme-color-paper-60); max-width: var(--theme-content-lead-max); }
 .list {
   margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr);

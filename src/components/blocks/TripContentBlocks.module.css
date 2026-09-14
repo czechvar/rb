@@ -24,7 +24,8 @@
 .facts > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
 .eyebrow { color: var(--theme-color-primary); font-size: var(--fs-eyebrow); letter-spacing: .14em; text-transform: uppercase; margin-bottom: .75rem; }
-.remainingHeading { font-family: var(--theme-font-display); font-weight: 400; font-size: var(--theme-text-section); margin: 0 0 1.5rem; }
+
+.remainingHeading { margin: 0 0 1.5rem; }
 .overviewAction { margin-top: 2rem; }
 
 .dailySchedule { padding: 0; min-width: 0; }

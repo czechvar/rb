@@ -1,6 +1,7 @@
 .section { background: var(--theme-color-canvas); padding: 80px var(--theme-content-gutter); text-align: center; }
 .label { color: var(--theme-color-primary); justify-content: center; margin-bottom: 14px; }
-.heading { font-size: var(--theme-text-section); line-height: var(--theme-line-section); margin-bottom: 24px; text-transform: uppercase; }
+
+.heading { margin-bottom: 24px; }
 .card {
   background: var(--theme-color-ink); border: 1px solid var(--theme-color-paper-08);
   padding: 44px 40px; max-width: var(--theme-content-text-max); margin: 48px auto 0;

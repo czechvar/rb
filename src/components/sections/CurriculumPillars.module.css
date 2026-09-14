@@ -4,8 +4,6 @@
 }
 
 .section h2 {
-  font-size: 22px;
-  font-weight: bold;
   margin-bottom: 16px;
   padding-bottom: 10px;
   border-bottom: 2px solid var(--theme-color-ink);
@@ -31,14 +29,10 @@
 }
 
 .pillar h3 {
-  font-size: 14px;
-  font-family: var(--theme-font-technical);
-  letter-spacing: 1px;
   margin: 0 0 12px 0;
   padding-bottom: 8px;
   border-bottom: 2px solid var(--theme-color-detail-action);
   color: var(--theme-color-detail-action);
-  text-transform: uppercase;
 }
 
 .pillar ul {

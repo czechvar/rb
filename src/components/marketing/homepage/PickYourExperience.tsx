@@ -56,7 +56,7 @@ export function PickYourExperience() {
       <div className={styles.grid}>
         {CATEGORIES.map((c) => (
           <Link key={c.slug} href={"/trips"} className={`${styles.card} reveal`}>
-            <h3 className={styles.cardName}>{c.name}</h3>
+            <h3 data-type="subheading" className={styles.cardName}>{c.name}</h3>
             <p className={styles.cardTag}>{c.tag}</p>
             <span className={styles.cardArrow}>→</span>
           </Link>

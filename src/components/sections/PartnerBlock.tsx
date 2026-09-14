@@ -32,7 +32,7 @@ export function PartnerBlock({
       <div className={styles.panel}>
         <div className={styles.body}>
           {eyebrow && <div data-eyebrow="section" className={styles.eyebrow}>{eyebrow}</div>}
-          {headline && <h3>{headline}</h3>}
+          {headline && <h3 data-type="card">{headline}</h3>}
           {description && <p className={styles.desc}>{description}</p>}
           {benefits?.length ? (
             <ul className={styles.benefits}>
