@@ -7,7 +7,7 @@ export function GuideStatsBar({ stats }: { stats: Guide['stats'] }) {
     <div className={styles.bar}>
       {stats.map((s) => (
         <div key={s.id ?? s.label} className={styles.item}>
-          <span className={styles.num}>{s.value}</span>
+          <span className={styles.num} data-type="stat">{s.value}</span>
           <span className={styles.label}>{s.label}</span>
         </div>
       ))}

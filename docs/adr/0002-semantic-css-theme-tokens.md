@@ -190,8 +190,10 @@ Heading casing is explicit: H1–H6 and the shared section-title helper use
 uppercase CSS. Preserve this treatment across font changes; do not rely on
 a display font's uppercase-only glyphs or rewrite stored CMS copy.
 
-Hero-strip facts use the stat role, mapped to the large-card scale, so long
-dates and locations remain compact in Montserrat.
+Stats use the stat role, mapped to the shared H2/section scale (42px desktop,
+32px mobile in Rockbusters), including destination, blog, guide and CMS strips.
+They remain facts rather than semantic headings; component CSS owns layout and
+colour, while the shared role owns font, size, weight, casing and line height.
 
 Brand-colour CTA surfaces declare `data-surface="brand"`. Shared button styles
 in styles.css render primary actions in ink with light text and surface-3

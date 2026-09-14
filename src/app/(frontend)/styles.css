@@ -291,7 +291,7 @@ ol {
 [data-type="stat"] {
   font-size: var(--theme-text-stat);
   font-weight: var(--theme-weight-section);
-  line-height: var(--theme-line-card-lg);
+  line-height: var(--theme-line-section);
 }
 
 /* Primary and secondary actions retain their hierarchy on brand surfaces. */

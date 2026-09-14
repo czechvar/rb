@@ -12,7 +12,7 @@ export function StatsBar() {
     <div className={styles.bar}>
       {STATS.map((s) => (
         <div key={s.label} className={styles.item}>
-          <span className={styles.num}>{s.num}</span>
+          <span className={styles.num} data-type="stat">{s.num}</span>
           <span className={styles.label}>{s.label}</span>
         </div>
       ))}

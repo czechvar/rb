@@ -65,7 +65,7 @@ export const rockbustersTheme: ThemePreset = {
   '--theme-text-2xl': '26px',
   '--theme-text-3xl': '42px',
   '--theme-text-hero': '96px',
-  '--theme-text-stat': 'var(--theme-text-card-lg)',
+  '--theme-text-stat': 'var(--theme-text-section)',
   '--theme-text-section': '42px',
   '--theme-text-card-lg': '26px',
   '--theme-text-card': '20px',

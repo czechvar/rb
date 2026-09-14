@@ -74,7 +74,7 @@ export function BlogIndex({ posts, categories, featuredId, eyebrow, heading, int
       <dl className={styles.stats}>
         {stats.map((stat) => (
           <div key={stat.label}>
-            <dt>{stat.value}</dt>
+            <dt data-type="stat">{stat.value}</dt>
             <dd>{stat.label}</dd>
           </div>
         ))}

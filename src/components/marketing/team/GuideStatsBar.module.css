@@ -4,10 +4,8 @@
 }
 .item { text-align: center; }
 .num {
-  font-weight: var(--theme-weight-section);
-  text-transform: uppercase;
-  font-family: var(--theme-font-heading); font-size: 52px; color: var(--theme-color-ink);
-  line-height: 1; display: block; letter-spacing: 0.03em;
+  color: var(--theme-color-ink);
+  display: block;
 }
 .label {
   font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase;
@@ -15,5 +13,4 @@
 }
 @media (max-width: 600px) {
   .bar { padding: 24px 5%; gap: 24px; }
-  .num { font-size: 38px; }
 }

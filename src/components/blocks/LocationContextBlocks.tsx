@@ -164,7 +164,7 @@ export function DestinationHeroBlock(
           <dl className={styles.destinationHeroStats}>
             {stats.map((stat) => (
               <div key={stat.id ?? `${stat.value}-${stat.label}`} className={styles.destinationHeroStat}>
-                <dt>{stat.value}</dt>
+                <dt data-type="stat">{stat.value}</dt>
                 <dd>{stat.label}</dd>
               </div>
             ))}
