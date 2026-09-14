@@ -4,6 +4,10 @@
 - Date: 2026-09-11
 - Owners: Engineering
 
+Routing amendment: [ADR-0015](0015-occurrence-slug-routing.md) defines stable
+occurrence URLs and parent redirects. This ADR's editorial merge remains accepted;
+public occurrence resolution will no longer silently substitute another date.
+
 ## Context
 
 The 26 reference designs map to nine Events. Kalymnos and five other destination designs share Event8. Event-wide pilot copy therefore leaks into unrelated scheduled occurrences. Editors also cannot change automatic gallery/audience headings without replacing the complete layout. The user authorized implementation, delegated delivery and root decisions on a separate branch.

@@ -13,6 +13,7 @@ import {
   guideDetailGraphJsonLd,
   homepageGraphJsonLd,
   locationDetailGraphJsonLd,
+  occurrenceGraphJsonLd,
   postListItems,
   programDetailGraphJsonLd,
   richTextPlainText,
@@ -91,6 +92,7 @@ const event: Event = {
 const eventDate: EventDate = {
   id: 60,
   event,
+  slug: 'kalymnos-2026-10-12',
   dateFrom: '2026-10-12',
   dateTo: '2026-10-19',
   locations: [location],
@@ -245,6 +247,48 @@ describe('JSON-LD builders', () => {
     expect(serialized).not.toContain('"price":1290')
   })
 
+  it('builds one occurrence graph from the exact date and canonical URL', () => {
+    vi.stubEnv('NEXT_PUBLIC_SITE_URL', 'https://rockbusters.test')
+    const graph = occurrenceGraphJsonLd(event, eventDate)
+    const nodes = graph['@graph'] as Record<string, unknown>[]
+    const canonical = 'https://rockbusters.test/trips/kalymnos-autumn-camp/kalymnos-2026-10-12'
+
+    expect(nodes).toContainEqual(expect.objectContaining({
+      '@type': 'Event',
+      url: canonical,
+      startDate: '2026-10-12',
+      endDate: '2026-10-19',
+      location: [{ '@id': 'https://rockbusters.test/destinations/kalymnos#place' }],
+      performer: [{ '@id': 'https://rockbusters.test/team/jany#person' }],
+      offers: expect.objectContaining({
+        price: 1290,
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+      }),
+    }))
+    expect(nodes).toContainEqual(expect.objectContaining({
+      '@type': 'WebPage',
+      url: canonical,
+    }))
+    expect(JSON.stringify(graph)).not.toContain('/trips/kalymnos-autumn-camp#dates')
+  })
+
+  it.each([
+    ['past', { dateFrom: '2026-08-01', dateTo: '2026-08-08' }, 'https://schema.org/EventCompleted'],
+    ['in progress', { dateFrom: '2026-09-10', dateTo: '2026-09-20' }, 'https://schema.org/EventScheduled'],
+  ])('does not advertise a bookable offer for an %s occurrence', (_label, dates, status) => {
+    vi.stubEnv('NEXT_PUBLIC_SITE_URL', 'https://rockbusters.test')
+    const graph = occurrenceGraphJsonLd(
+      event,
+      { ...eventDate, ...dates },
+      new Date('2026-09-14T12:00:00.000Z'),
+    )
+    const occurrenceNode = (graph['@graph'] as Record<string, unknown>[])
+      .find((node) => node['@type'] === 'Event')
+    expect(occurrenceNode).toMatchObject({ eventStatus: status })
+    expect(occurrenceNode).not.toHaveProperty('offers')
+  })
+
   it('builds program, location, and guide detail graphs from plain objects', () => {
     vi.stubEnv('NEXT_PUBLIC_SITE_URL', 'https://rockbusters.test/')
 
@@ -360,14 +404,14 @@ describe('JSON-LD builders', () => {
     }))
     expect(calendarNodes).toContainEqual(expect.objectContaining({
       '@type': 'Event',
-      '@id': 'https://rockbusters.test/trips/kalymnos-autumn-camp#event-date-60',
-      url: 'https://rockbusters.test/trips/kalymnos-autumn-camp#dates',
+      '@id': 'https://rockbusters.test/trips/kalymnos-autumn-camp/kalymnos-2026-10-12#event-date-60',
+      url: 'https://rockbusters.test/trips/kalymnos-autumn-camp/kalymnos-2026-10-12',
       offers: expect.objectContaining({
         '@type': 'Offer',
-        '@id': 'https://rockbusters.test/trips/kalymnos-autumn-camp#event-date-60-offer',
+        '@id': 'https://rockbusters.test/trips/kalymnos-autumn-camp/kalymnos-2026-10-12#event-date-60-offer',
         url: 'https://rockbusters.test/book/60',
         price: 1290,
-        itemOffered: { '@id': 'https://rockbusters.test/trips/kalymnos-autumn-camp#event-date-60' },
+        itemOffered: { '@id': 'https://rockbusters.test/trips/kalymnos-autumn-camp/kalymnos-2026-10-12#event-date-60' },
       }),
     }))
     expect(cmsNodes).toContainEqual(expect.objectContaining({

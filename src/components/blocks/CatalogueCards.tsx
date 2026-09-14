@@ -4,6 +4,7 @@ import Link from 'next/link'
 import type { Event, EventDate, Guide, Location, Post, Program } from '@/payload-types'
 import { mediaAlt, mediaUrl } from '@/lib/media'
 import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
+import { tripOccurrencePath } from '@/lib/occurrence-routing'
 import styles from './blocks.module.css'
 import effects from '../effects/interaction.module.css'
 
@@ -183,8 +184,9 @@ export function EventDateCard({
   className?: string
 }) {
   const event = eventDate.event as Event
+  const href = eventDate.slug ? tripOccurrencePath(event.slug, eventDate.slug) : `/trips/${event.slug}`
   return (
-    <Link href={`/trips/${event.slug}`} className={className ?? styles.domainCard}>
+    <Link href={href} className={className ?? styles.domainCard}>
       <p className={styles.cardMeta}>{formatDateRange(eventDate.dateFrom, eventDate.dateTo)}</p>
       <h3 data-type="subheading">{event.title}</h3>
       <p>

@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it, vi } from 'vitest'
 import type { Event, EventDate, Guide, Location } from '@/payload-types'
 import { tripSummary } from '@/lib/trip-summary'
-import { resolveTripDetail } from '@/lib/trip-detail'
+import { resolveTripDetail, resolveTripDetailOccurrence } from '@/lib/trip-detail'
 import { DetailHero } from '@/components/sections/DetailHero'
 import { EventDatesList } from '@/components/sections/EventDatesList'
 import { BookingCTA } from '@/components/sections/BookingCTA'
@@ -19,7 +19,7 @@ vi.mock('next/image', () => ({
 
 const event = { id: 10, title: 'Original trip: original subtitle', slug: 'in-memory-only', shortDescription: 'Original description.' } as Event
 const date = (id: number, overrides: Partial<EventDate> = {}): EventDate => ({
-  id, event: 10, dateFrom: '2999-10-12T00:00:00.000Z', dateTo: '2999-10-19T00:00:00.000Z',
+  id, event: 10, slug: `venue-${id}`, dateFrom: '2999-10-12T00:00:00.000Z', dateTo: '2999-10-19T00:00:00.000Z',
   price: 1150, vat: 0, currency: 'EUR', capacity: 9, remainingSeats: 2, active: true,
   updatedAt: '', createdAt: '', ...overrides,
 })
@@ -29,12 +29,29 @@ function renderRows(items: EventDate[], selectedId?: number) {
 }
 
 describe('trip booking presentation', () => {
+  it('keeps exact started and ended occurrences visible while disabling checkout and naming their state', () => {
+    const now = new Date('2026-09-14T12:00:00.000Z')
+    const started = resolveTripDetailOccurrence(event, date(1, {
+      dateFrom: '2026-09-14T10:00:00.000Z', dateTo: '2026-09-15T10:00:00.000Z',
+    }), now)
+    const ended = resolveTripDetailOccurrence(event, date(2, {
+      dateFrom: '2026-09-10T10:00:00.000Z', dateTo: '2026-09-14T11:59:59.999Z',
+    }), now)
+
+    expect(started.selectedDate?.id).toBe(1)
+    expect(started.bookingHref).toBeNull()
+    expect(started.availabilityLabel).toBe('In progress')
+    expect(ended.selectedDate?.id).toBe(2)
+    expect(ended.bookingHref).toBeNull()
+    expect(ended.availabilityLabel).toBe('Past trip')
+  })
+
   it('shows actual remaining seats instead of capacity and preserves the selected date URL', () => {
     const html = renderRows([date(1), date(2, { remainingSeats: 1 })], 2)
     expect(html).toContain('2 spots available')
     expect(html).toContain('1 spot available')
     expect(html).not.toContain('9 spots available')
-    expect(html).toContain('href="/trips/in-memory-only?date=2#dates" aria-current="true"')
+    expect(html).toContain('href="/trips/in-memory-only/venue-2#dates" aria-current="true"')
     expect(html).toContain('href="/book/2"')
     expect(html).toContain('8 calendar days')
     expect(html.match(/data-selected="true"/g)).toHaveLength(1)
@@ -68,7 +85,7 @@ describe('trip booking presentation', () => {
       expect(html).not.toContain('/book/1')
       expect(html).not.toMatch(/Rodellar|Klemen|May 2026|950/)
       expect(html).not.toContain('href="#overview"')
-      expect(html).toContain('href="/trips/in-memory-only/dates"')
+      expect(html).toContain('href="#dates"')
       // One semantic title and one summary serve desktop and mobile; no duplicated hidden content.
       expect(html.match(/<h1 /g)).toHaveLength(1)
       expect(html.match(/<aside /g)).toHaveLength(1)
@@ -125,7 +142,7 @@ describe('trip booking presentation', () => {
   })
 
   it('retains default CTA routing while the image variant reuses only the existing photo', () => {
-    expect(renderToStaticMarkup(<BookingCTA event={event} />)).toContain('href="/trips/in-memory-only/dates"')
+    expect(renderToStaticMarkup(<BookingCTA event={event} />)).toContain('href="/trips/in-memory-only"')
     const withPhoto = { ...event, mainPicture: { id: 'photo-fixture', url: '/original-photo.jpg', alt: 'Original photo', createdAt: '', updatedAt: '' } } as Event
     expect(renderToStaticMarkup(<BookingCTA event={withPhoto} variant="image" />)).toContain('src="/original-photo.jpg"')
     expect(renderToStaticMarkup(<BookingCTA event={withPhoto} />)).not.toContain('<img')

@@ -26,7 +26,7 @@ export function BookingCTA({
     typeof event.mainPicture === 'object' && event.mainPicture ? event.mainPicture : null
   const href = trip
     ? (trip.bookingHref ?? 'mailto:info@rockbusters.net')
-    : `/trips/${event.slug}/dates`
+    : `/trips/${event.slug}`
   const label =
     trip && !trip.bookingHref
       ? 'Ask a Question →'

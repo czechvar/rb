@@ -12,6 +12,7 @@ describe('event-dates collection', () => {
     const doc = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: event.id,
         dateFrom: '2026-07-01T08:00:00.000Z',
         dateTo: '2026-07-05T16:00:00.000Z',

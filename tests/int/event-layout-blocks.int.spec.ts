@@ -81,6 +81,7 @@ describe('Event layout blocks', () => {
     const eventDate = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: event.id,
         dateFrom: '2028-04-10T00:00:00.000Z',
         dateTo: '2028-04-17T00:00:00.000Z',

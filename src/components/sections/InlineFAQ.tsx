@@ -3,8 +3,8 @@
  * Wireframe reference:
  *   docs/html/TRIP-COURSE/.../block_09_block_9.html (.faq-section)
  *
- * Renders up to 5 FAQs for the trip detail page with a link to the full
- * /trips/[slug]/faq sub-page. Wired into the trip page in Task 16.
+ * Renders up to 5 FAQs for the trip detail page with a link through the
+ * parent occurrence selector when no Event Date identity is available.
  *
  * Props:
  *   faqs — Faq[] already filtered + sorted by the caller (active, by position)
@@ -37,7 +37,7 @@ export function InlineFAQ({ faqs, slug }: InlineFAQProps) {
           ))}
         </div>
         <div className={styles.footer}>
-          <Link href={`/trips/${slug}/faq`} className="btn-ghost">
+          <Link href={`/trips/${slug}`} className="btn-ghost">
             All questions →
           </Link>
         </div>

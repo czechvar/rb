@@ -29,6 +29,7 @@ export async function verifyPayments(payload: Payload): Promise<void> {
       payload.create({
         collection: 'event-dates',
         data: {
+          slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
           event: event.id,
           dateFrom: '2030-06-15T00:00:00Z',
           dateTo: '2030-06-22T00:00:00Z',

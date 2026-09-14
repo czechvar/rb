@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Difficulty, Event, EventDate, Guide, Location, Media } from '@/payload-types'
 import { isUpcomingEventDate } from '@/lib/event-date-visibility'
+import { tripOccurrencePath } from '@/lib/occurrence-routing'
 import styles from './UpcomingTrips.module.css'
 
 type UpcomingTripsProps = { dates: EventDate[] }
@@ -84,7 +85,7 @@ export function UpcomingTrips({ dates }: UpcomingTripsProps) {
             return (
               <Link
                 key={d.id}
-                href={`/trips/${ev.slug}`}
+                href={d.slug ? tripOccurrencePath(ev.slug, d.slug) : `/trips/${ev.slug}`}
                 className={`${styles.card} reveal`}
               >
                 {photo && (

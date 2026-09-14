@@ -3,6 +3,14 @@ import fs from 'node:fs/promises'
 import { chromium } from '@playwright/test'
 const base = new URL('./', import.meta.url)
 const output = '.scratch/trip-editorial-rollout/qa'
+const canonicalSeed = JSON.parse(
+  await fs.readFile(new URL('../seed/canonical-payload-seed.json', base), 'utf8'),
+)
+const occurrenceSlugs = new Map(
+  canonicalSeed.collections
+    .find((collection) => collection.slug === 'event-dates')
+    .rows.map((row) => [String(row.id), row.slug]),
+)
 const manifests = (
   await Promise.all(
     ['standalone', 'rockroad', 'espana'].map(async (name) =>
@@ -47,6 +55,8 @@ try {
   for (const width of widths)
     for (const manifest of batch) {
       const id = manifest.target.eventDateId
+      const occurrenceSlug = occurrenceSlugs.get(String(id))
+      if (!occurrenceSlug) throw new Error(`Canonical occurrence slug missing for Event Date ${id}`)
       const page = await browser.newPage({ viewport: { width, height: 1000 } })
       let pageErrors = 0
       const errorKinds = []
@@ -87,7 +97,7 @@ try {
         const pathname =
           mode === 'fixture'
             ? `/editorial-qa/${id}`
-            : `/trips/${manifest.target.eventSlug}?date=${id}`
+            : `/trips/${manifest.target.eventSlug}/${occurrenceSlug}`
         const response = await page.goto(origin + pathname, {
           waitUntil: 'networkidle',
           timeout: 120000,

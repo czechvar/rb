@@ -20,6 +20,7 @@ async function seedEventDate(price = 200, priceCzk?: number) {
   const ed = await payload.create({
     collection: 'event-dates',
     data: {
+      slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
       event: event.id,
       dateFrom: '2027-01-01',
       dateTo: '2027-01-08',

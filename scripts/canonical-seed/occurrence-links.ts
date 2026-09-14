@@ -1,10 +1,36 @@
-/** Only internal trip selection URLs carry portable Event Date IDs. */
-export function remapOccurrenceHref(value: string, ids: Map<string, string | number>): string {
-  if (!/^\/trips\/[^?#]+\?/.test(value)) return value
-  return value.replace(/([?&]date=)(\d+)(?=&|#|$)/g, (match, prefix, id) => {
-    const mapped = ids.get(id)
-    return mapped === undefined ? match : `${prefix}${mapped}`
-  })
+import type { CanonicalSeed } from './shared'
+
+export type OccurrencePublicIdentity = { eventSlug: string; occurrenceSlug: string }
+export type OccurrenceIdentityMap = Map<string, OccurrencePublicIdentity>
+
+export function occurrenceIdentityMap(seed: CanonicalSeed): OccurrenceIdentityMap {
+  const events = new Map(
+    (seed.collections.find((entry) => entry.slug === 'events')?.rows ?? [])
+      .filter((row) => row.id != null && typeof row.slug === 'string')
+      .map((row) => [String(row.id), row.slug as string]),
+  )
+  return new Map(
+    (seed.collections.find((entry) => entry.slug === 'event-dates')?.rows ?? [])
+      .filter((row) => row.id != null && typeof row.slug === 'string' && events.has(String(row.event)))
+      .map((row) => [String(row.id), {
+        eventSlug: events.get(String(row.event))!,
+        occurrenceSlug: row.slug as string,
+      }]),
+  )
+}
+
+/** Replace a pre-launch numeric selector with its seed-portable public identity. */
+export function remapOccurrenceHref(value: string, identities: OccurrenceIdentityMap): string {
+  const match = value.match(/^\/trips\/([^/?#]+)(\?[^#]*)?(#.*)?$/)
+  if (!match) return value
+  const url = new URL(value, 'https://seed.invalid')
+  const sourceID = url.searchParams.get('date')
+  if (!sourceID || !/^\d+$/.test(sourceID)) return value
+  const identity = identities.get(sourceID)
+  if (!identity || identity.eventSlug !== match[1]) return value
+  url.searchParams.delete('date')
+  const query = url.searchParams.toString()
+  return `/trips/${identity.eventSlug}/${identity.occurrenceSlug}${query ? `?${query}` : ''}${url.hash}`
 }
 
 export function hasOccurrenceHref(value: unknown): boolean {

@@ -5,6 +5,12 @@ from bs4 import BeautifulSoup, NavigableString
 BASE=Path(__file__).parent
 ROOT=BASE.parents[2]
 SOURCE=Path('/home/czechspekk/Downloads/NEW ROCKBUSTERS WEBSITE - HTML /TRIP-COURSE/TRIPS-COURSES')
+canonical_seed=json.loads((ROOT/'scripts/data-import/seed/canonical-payload-seed.json').read_text())
+canonical_dates={str(r['id']):r for c in canonical_seed['collections'] if c['slug']=='event-dates' for r in c['rows']}
+def occurrence_path(event_slug,event_date_id):
+ row=canonical_dates.get(str(event_date_id))
+ if not row or not row.get('slug'):raise ValueError('Canonical occurrence slug is required')
+ return '/trips/'+event_slug+'/'+row['slug']
 def extract(source):
  """Extract text and semantic heading accents; never persist source CSS or imagery."""
  s=BeautifulSoup(source.read_text(),'html.parser')
@@ -62,7 +68,7 @@ for row in rows:
  for i,p in enumerate(r['pillars'],1):e['content']['whatYouLearn'][f'box{i}Heading']=p['heading'];e['content']['whatYouLearn'][f'box{i}Bullets']=p['bullets']
  e['companion']={'columns':[{'label':re.sub(r'\s*€[\d,]+','',h)} for h in r['comparison']['columns']],'rows':[{'cells':[{'text':n['label']},{'text':n['left']},{'text':n['right']}]} for n in r['comparison']['rows']]}
  # Companion navigation uses the audited local catalogue, never legacy order URLs.
- e['companion']['links']=[{'label':other['design'].replace('PROJECT ESPAÑA 2027 ',''),'href':'/trips/'+other['event_slug']+'?date='+other['selected_active_id'],'description':other['from']+' – '+other['to']} for other in rows if other['file'].startswith('PROJECT ESPANA/') and other['selected_active_id']!=row['selected_active_id']]
+ e['companion']['links']=[{'label':other['design'].replace('PROJECT ESPAÑA 2027 ',''),'href':occurrence_path(other['event_slug'],other['selected_active_id']),'description':other['from']+' – '+other['to']} for other in rows if other['file'].startswith('PROJECT ESPANA/') and other['selected_active_id']!=row['selected_active_id']]
  adaptations=[]
  for f in e['overviewFacts']:
   if f['label'] in ['Duration','Location','Coach','Coaches','Price']:f['value']={'Duration':'{durationDays} Days','Location':'{location}','Coach':'{coaches}','Coaches':'{coaches}','Price':'{price}'}[f['label']]

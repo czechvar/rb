@@ -55,3 +55,34 @@ it('lets a new database allocate numeric IDs', async () => {
   expect(written).not.toHaveProperty('id')
   expect(maps.get('event-dates')?.get('745')).toBe(10001)
 })
+
+it('keeps stored occurrence URLs identical across fresh and repeat imports', async () => {
+  let stored: Record<string, unknown> | undefined
+  const payload = {
+    find: async ({ where }: { where?: Record<string, { equals?: unknown }> }) => ({
+      docs: stored && (
+        where?.id?.equals === stored.id || where?.slug?.equals === stored.slug
+      ) ? [stored] : [],
+    }),
+    create: async ({ data }: { data: Record<string, unknown> }) => {
+      stored = { ...data, id: 9001 }
+      return stored
+    },
+    update: async ({ data }: { data: Record<string, unknown> }) => {
+      stored = { ...stored, ...data }
+      return stored
+    },
+  } as unknown as Payload
+  const row = {
+    id: 745, event: 8, slug: 'kalymnos-2026-09-26-to-2026-10-10',
+    slugAliases: [], indexable: true,
+  }
+  const freshMaps: SeedIDMap = new Map([['events', new Map([['8', 80]])]])
+  await expect(upsertRow(payload, 'event-dates', row, freshMaps, { forceCreateWhenMissingID: true })).resolves.toBe('created')
+  expect(stored).toMatchObject({ event: 80, slug: row.slug, indexable: true })
+
+  const repeatMaps: SeedIDMap = new Map([['events', new Map([['8', 80]])]])
+  await expect(upsertRow(payload, 'event-dates', row, repeatMaps)).resolves.toBe('skipped')
+  expect(repeatMaps.get('event-dates')?.get('745')).toBe(9001)
+  expect(stored?.slug).toBe(row.slug)
+})

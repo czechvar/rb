@@ -7,7 +7,7 @@
 import 'dotenv/config'
 import fs from 'node:fs/promises'
 import { isDeepStrictEqual } from 'node:util'
-import { hasOccurrenceHref, remapOccurrenceHref } from './canonical-seed/occurrence-links'
+import { hasOccurrenceHref, occurrenceIdentityMap, remapOccurrenceHref, type OccurrenceIdentityMap } from './canonical-seed/occurrence-links'
 import { pathToFileURL } from 'node:url'
 import { sql } from '@payloadcms/db-postgres'
 import { getPayload, type CollectionSlug, type Payload, type Where } from 'payload'
@@ -133,9 +133,10 @@ export function remapRelationships(
   parentCollection: CollectionSlug,
   value: unknown,
   fieldName?: string,
+  occurrenceIdentities: OccurrenceIdentityMap = new Map(),
 ): unknown {
   if (fieldName === 'href' && typeof value === 'string') {
-    return remapOccurrenceHref(value, maps.get('event-dates') ?? new Map())
+    return remapOccurrenceHref(value, occurrenceIdentities)
   }
   if ((fieldName === 'faqs' || fieldName === 'reviews') && Array.isArray(value) && value.every((entry) => typeof entry === 'number')) {
     return remapRelationValue(maps, fieldName, value)
@@ -146,14 +147,14 @@ export function remapRelationships(
   }
 
   if (Array.isArray(value)) {
-    return value.map((entry) => remapRelationships(maps, parentCollection, entry))
+    return value.map((entry) => remapRelationships(maps, parentCollection, entry, undefined, occurrenceIdentities))
   }
 
   if (value && typeof value === 'object') {
     return Object.fromEntries(
       Object.entries(value).map(([key, entry]) => [
         key,
-        remapRelationships(maps, parentCollection, entry, key),
+        remapRelationships(maps, parentCollection, entry, key, occurrenceIdentities),
       ]),
     )
   }
@@ -289,14 +290,14 @@ export async function upsertRow(
   collection: CollectionSlug,
   row: Record<string, unknown>,
   maps: SeedIDMap,
-  options: { forceCreateWhenMissingID?: boolean; deferLocationSelfRelations?: boolean } = {},
+  options: { forceCreateWhenMissingID?: boolean; deferLocationSelfRelations?: boolean; occurrenceIdentities?: OccurrenceIdentityMap } = {},
 ): Promise<'created' | 'updated' | 'skipped'> {
   const id = row.id
   if (id === null || id === undefined) return 'skipped'
 
   const data = deferLocationSelfRelations(
     collection,
-    pruneRemovedFields(collection, remapRelationships(maps, collection, row) as Record<string, unknown>),
+    pruneRemovedFields(collection, remapRelationships(maps, collection, row, undefined, options.occurrenceIdentities) as Record<string, unknown>),
     options.deferLocationSelfRelations === true,
   )
   const knownID = maps.get(collection)?.get(idKey(id))
@@ -414,7 +415,7 @@ async function importCollection(
   seed: CanonicalSeed,
   collection: CollectionSlug,
   maps: SeedIDMap,
-  options: { deferLocationSelfRelations?: boolean } = {},
+  options: { deferLocationSelfRelations?: boolean; occurrenceIdentities?: OccurrenceIdentityMap } = {},
 ): Promise<ImportTotals> {
   const totals: ImportTotals = { created: 0, updated: 0, skipped: 0 }
   const rows = collectionRows(seed, collection)
@@ -430,6 +431,7 @@ async function importCollection(
               forceCreateWhenMissingID:
                 collection === 'event-dates' && initialCount.totalDocs === 0,
               deferLocationSelfRelations: options.deferLocationSelfRelations,
+              occurrenceIdentities: options.occurrenceIdentities,
             })
       totals[result] += 1
     } catch (error) {
@@ -472,10 +474,12 @@ async function main() {
   config.logger = { options: { level: 'silent' } } as typeof config.logger
   const payload = await getPayload({ config })
   const maps: SeedIDMap = new Map()
+  const occurrenceIdentities = occurrenceIdentityMap(seed)
 
   for (const { slug } of CANONICAL_SEED_COLLECTIONS) {
     const totals = await importCollection(payload, seed, slug, maps, {
       deferLocationSelfRelations: slug === 'locations',
+      occurrenceIdentities,
     })
     console.log(
       [
@@ -491,7 +495,7 @@ async function main() {
   // URL selections can point forward to occurrences imported later in the snapshot.
   for (const collection of seed.collections) {
     for (const row of collection.rows.filter(hasOccurrenceHref)) {
-      await upsertRow(payload, collection.slug, row, maps)
+      await upsertRow(payload, collection.slug, row, maps, { occurrenceIdentities })
     }
   }
 

@@ -1,6 +1,6 @@
 import type { Event, EventDate, Guide, Location } from '@/payload-types'
 import { applyTripEditorial, resolveTripEditorial, type TripEditorial } from './trip-editorial'
-import { isUpcomingEventDate } from './event-date-visibility'
+import { canCheckoutEventDate, eventDateLifecycle, isUpcomingEventDate } from './event-date-visibility'
 
 type Sections = NonNullable<NonNullable<Event['tripDetail']>['sections']>
 type RichText = NonNullable<Event['content']>
@@ -140,12 +140,21 @@ function unavailable(date: EventDate): boolean {
   return date.capacity <= 0 || (date.remainingSeats != null && date.remainingSeats <= 0)
 }
 
-export function resolveTripDetail(event: Event, dates: EventDate[], selectedId?: number, now = new Date()): TripDetailView {
-  const upcoming = dates.filter(date => date.active === true &&
-    (typeof date.event === 'object' ? date.event.id : date.event) === event.id && isUpcomingEventDate(date, now) &&
-    Number.isFinite(Date.parse(date.dateTo)) && Date.parse(date.dateTo) >= Date.parse(date.dateFrom))
+export function resolveTripDetail(
+  event: Event,
+  dates: EventDate[],
+  selectedId?: number,
+  now = new Date(),
+  options: { exactSelection?: boolean } = {},
+): TripDetailView {
+  const valid = dates.filter(date => date.active === true &&
+    (typeof date.event === 'object' ? date.event.id : date.event) === event.id &&
+    Number.isFinite(Date.parse(date.dateFrom)) && Number.isFinite(Date.parse(date.dateTo)) &&
+    Date.parse(date.dateTo) >= Date.parse(date.dateFrom))
     .sort((a, b) => Date.parse(a.dateFrom) - Date.parse(b.dateFrom) || a.id - b.id)
-  const selectedDate = upcoming.find(date => date.id === selectedId) ??
+  const upcoming = valid.filter(date => isUpcomingEventDate(date, now))
+  const displayedDates = options.exactSelection ? valid : upcoming
+  const selectedDate = (options.exactSelection ? valid : upcoming).find(date => date.id === selectedId) ??
     upcoming.find(date => !unavailable(date)) ?? upcoming[0] ?? null
   const editorial = resolveTripEditorial(event.editorial, selectedDate?.editorial)
   event = applyTripEditorial(event, selectedDate)
@@ -153,6 +162,7 @@ export function resolveTripDetail(event: Event, dates: EventDate[], selectedId?:
   const locations = populated(selectedDate?.locations?.length ? selectedDate.locations : event.locations)
   const seats = selectedDate?.remainingSeats
   const soldOut = selectedDate ? unavailable(selectedDate) : false
+  const lifecycle = selectedDate ? eventDateLifecycle(selectedDate, now) : null
   const formatter = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
   const dateLabel = selectedDate ? formatter.formatRange(new Date(selectedDate.dateFrom), new Date(selectedDate.dateTo)) : null
   const calendarDays = selectedDate ? Math.round((Date.parse(selectedDate.dateTo.slice(0, 10)) - Date.parse(selectedDate.dateFrom.slice(0, 10))) / 86_400_000) + 1 : 0
@@ -160,7 +170,8 @@ export function resolveTripDetail(event: Event, dates: EventDate[], selectedId?:
   const priceLabel = selectedDate ? new Intl.NumberFormat('en-GB', {
     style: 'currency', currency: selectedDate.currency, maximumFractionDigits: 2,
   }).format(selectedDate.price) : null
-  const availabilityLabel = soldOut ? 'Sold out' : seats == null ? null : `${seats} ${seats === 1 ? 'spot' : 'spots'} available`
+  const availabilityLabel = lifecycle === 'ended' ? 'Past trip' : lifecycle === 'in-progress' ? 'In progress' :
+    soldOut ? 'Sold out' : seats == null ? null : `${seats} ${seats === 1 ? 'spot' : 'spots'} available`
   const overrides = selectedDate?.logisticsOverrides
   const logisticsOverrides: NonNullable<EventDate['logisticsOverrides']> = {}
   for (const key of ['accommodation', 'food', 'included', 'excluded', 'note'] as const) {
@@ -186,10 +197,14 @@ export function resolveTripDetail(event: Event, dates: EventDate[], selectedId?:
   if (selectedDate?.capacity && selectedDate.capacity > 0) facts.push({ label: 'Group size', value: `Maximum ${selectedDate.capacity}` })
   if (guides.length) facts.push({ label: 'Guides', value: guides.map(guide => guide.name).join(', ') })
   return {
-    event, editorial, dates: upcoming, selectedDate, guides, locations, facts, priceLabel, dateLabel, dateSpanLabel,
-    bookingHref: selectedDate && !soldOut ? `/book/${selectedDate.id}` : null,
+    event, editorial, dates: displayedDates, selectedDate, guides, locations, facts, priceLabel, dateLabel, dateSpanLabel,
+    bookingHref: selectedDate && canCheckoutEventDate(selectedDate, now) ? `/book/${selectedDate.id}` : null,
     availabilityLabel, accommodation, transport, logisticsOverrides, sections,
     remainingContent: remainingTripContent(event.content, sections),
     remainingAdditionalInfo: remainingTripAdditionalInfo(event, sections),
   }
+}
+
+export function resolveTripDetailOccurrence(event: Event, occurrence: EventDate, now = new Date()): TripDetailView {
+  return resolveTripDetail(event, [occurrence], occurrence.id, now, { exactSelection: true })
 }

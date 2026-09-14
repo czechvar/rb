@@ -25,6 +25,7 @@ async function seedOrderAndTransaction(orderState: 'pending' | 'confirmed' = 'pe
   const ed = await payload.create({
     collection: 'event-dates',
     data: {
+      slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
       event: event.id,
       dateFrom: '2027-05-01T00:00:00.000Z',
       dateTo: '2027-05-05T00:00:00.000Z',

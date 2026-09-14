@@ -1,5 +1,7 @@
 import type { Event, EventDate, Faq, Guide, Location, Media, Page, Post, Program } from '@/payload-types'
 import { mediaUrl as payloadMediaUrl } from '@/lib/media'
+import { tripOccurrencePath } from '@/lib/occurrence-routing'
+import { canCheckoutEventDate, eventDateLifecycle } from '@/lib/event-date-visibility'
 import {
   resolveFeaturedGuide,
   resolveFeaturedLocation,
@@ -326,6 +328,45 @@ export function eventDetailGraphJsonLd(event: Event) {
     ]),
     ...locations,
     ...guides,
+    trip,
+  ])
+}
+
+export function occurrenceGraphJsonLd(event: Event, occurrence: EventDate, now = new Date()) {
+  if (!occurrence.slug) throw new Error('A public occurrence slug is required for structured data.')
+  const path = tripOccurrencePath(event.slug, occurrence.slug)
+  const url = absoluteUrl(path)
+  const locations = docs(occurrence.locations).length ? docs(occurrence.locations) : docs(event.locations)
+  const guides = docs(occurrence.guides).length ? docs(occurrence.guides) : docs(event.coaches)
+  const baseOccurrenceNode = eventDateJsonLd(event, occurrence, url)
+  const { offers: _closedOffer, ...closedOccurrenceNode } = baseOccurrenceNode
+  const lifecycle = eventDateLifecycle(occurrence, now)
+  const occurrenceNode = {
+    ...(canCheckoutEventDate(occurrence, now) ? baseOccurrenceNode : closedOccurrenceNode),
+    url,
+    eventStatus: lifecycle === 'ended'
+      ? 'https://schema.org/EventCompleted'
+      : 'https://schema.org/EventScheduled',
+  }
+  const trip = eventTripJsonLd(event, [], path)
+
+  return graph([
+    organizationJsonLd(),
+    webPageJsonLd({
+      url,
+      name: `${event.seo?.title ?? event.title} — ${occurrence.dateFrom}`,
+      description: descriptionFor(event),
+      mainEntity: { '@id': occurrenceNode['@id'] },
+      image: absoluteMediaUrl(event.mainPicture),
+    }),
+    breadcrumbListJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'Trips', path: '/trips' },
+      { name: event.title, path },
+    ]),
+    ...uniqueById(locations.map((location) => locationPlaceJsonLd(location))),
+    ...uniqueById(guides.map((guide) => guidePersonJsonLd(guide))),
+    occurrenceNode,
     trip,
   ])
 }
@@ -688,8 +729,11 @@ function calendarEventDateJsonLd(date: EventDate): JsonLdObject | undefined {
   const event = isDoc(date.event) ? date.event : null
   if (!event) return undefined
 
-  const tripUrl = absoluteUrl(`/trips/${event.slug}`)
-  return eventDateJsonLd(event, date, tripUrl)
+  const tripUrl = absoluteUrl(date.slug
+    ? tripOccurrencePath(event.slug, date.slug)
+    : `/trips/${event.slug}`)
+  const node = eventDateJsonLd(event, date, tripUrl)
+  return date.slug ? { ...node, url: tripUrl } : node
 }
 
 function structuredDataEventDates(eventDates: EventDate[]): EventDate[] {

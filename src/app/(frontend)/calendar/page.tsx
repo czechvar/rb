@@ -4,6 +4,7 @@ import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { JsonLd } from '@/components/JsonLd'
 import { calendarGraphJsonLd } from '@/lib/jsonld'
 import type { Event, Location } from '@/payload-types'
+import { tripOccurrencePath } from '@/lib/occurrence-routing'
 import styles from './page.module.css'
 
 function fmtDate(value: string | null | undefined): string {
@@ -101,7 +102,7 @@ export default async function CalendarPage() {
                   return (
                     <li key={d.id} className={styles.row}>
                       {slug ? (
-                        <Link href={`/trips/${slug}#dates`} className={styles.rowLink}>
+                        <Link href={`${d.slug ? tripOccurrencePath(slug, d.slug) : `/trips/${slug}`}#dates`} className={styles.rowLink}>
                           {body}
                         </Link>
                       ) : (

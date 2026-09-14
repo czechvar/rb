@@ -2,6 +2,7 @@
 import fs from 'node:fs/promises'
 import { pathToFileURL } from 'node:url'
 import { remapRelationships, type SeedIDMap } from '../seed'
+import { occurrenceIdentityMap, remapOccurrenceHref, type OccurrenceIdentityMap } from './occurrence-links'
 import type { CollectionSlug } from 'payload'
 import { readCanonicalSeed, type CanonicalSeed } from './shared'
 
@@ -21,7 +22,7 @@ export function comparable(value: unknown): unknown {
 function verifyOccurrenceLinks(
   source: unknown,
   target: unknown,
-  ids: Map<string, string | number> | undefined,
+  identities: OccurrenceIdentityMap,
 ): number {
   if (!source || typeof source !== 'object') return 0
   let checked = 0
@@ -31,22 +32,18 @@ function verifyOccurrenceLinks(
     if (key === 'href' && typeof value === 'string' && /^\/trips\//.test(value)) {
       const expectedID = new URL(value, 'https://seed.invalid').searchParams.get('date')
       if (expectedID) {
-        const mapped = ids?.get(expectedID)
-        if (
-          mapped === undefined ||
-          typeof actual !== 'string' ||
-          new URL(actual, 'https://seed.invalid').searchParams.get('date') !== String(mapped)
-        ) {
+        if (typeof actual !== 'string' || actual !== remapOccurrenceHref(value, identities)) {
           throw new Error('Occurrence link mismatch: event-dates')
         }
         checked += 1
       }
-    } else checked += verifyOccurrenceLinks(value, actual, ids)
+    } else checked += verifyOccurrenceLinks(value, actual, identities)
   }
   return checked
 }
 
 export function verifySnapshots(source: CanonicalSeed, target: CanonicalSeed, maps: SeedIDMap) {
+  const occurrenceIdentities = occurrenceIdentityMap(source)
   let rows = 0
   let enrichedOccurrences = 0
   for (const collection of source.collections) {
@@ -62,8 +59,8 @@ export function verifySnapshots(source: CanonicalSeed, target: CanonicalSeed, ma
       seen.add(String(mappedID))
       const imported = actual.find((entry) => String(entry.id) === String(mappedID))
       if (!imported) throw new Error(`Missing mapped record: ${collection.slug}`)
-      verifyOccurrenceLinks(row, imported, maps.get('event-dates'))
-      const expected = remapRelationships(maps, collection.slug, row)
+      verifyOccurrenceLinks(row, imported, occurrenceIdentities)
+      const expected = remapRelationships(maps, collection.slug, row, undefined, occurrenceIdentities)
       if (JSON.stringify(comparable(expected)) !== JSON.stringify(comparable(imported))) {
         throw new Error(`Content mismatch: ${collection.slug}`)
       }

@@ -4,13 +4,18 @@ import type { Where } from 'payload'
 import { siteUrl } from '@/lib/url'
 
 type SitemapDoc = {
+  id?: number | string
   slug?: string | null
   updatedAt?: string | null
   category?: number | string | SitemapDoc | null
+  event?: number | string | SitemapDoc | null
+  active?: boolean | null
+  indexable?: boolean | null
+  state?: string | null
 }
 
 type SitemapCollection =
-  | 'events'
+  | 'event-dates'
   | 'locations'
   | 'guides'
   | 'programs'
@@ -25,11 +30,12 @@ type SitemapPayload = {
     limit: number
     depth: number
     pagination?: boolean
-  }): Promise<{ docs: SitemapDoc[] }>
+    page?: number
+  }): Promise<{ docs: SitemapDoc[]; hasNextPage?: boolean }>
 }
 
 const STATIC_PATHS = ['/', '/trips', '/programs', '/destinations', '/team', '/blog', '/calendar']
-const TRIP_SUBPATHS = ['', '/dates', '/faq', '/logistics']
+const PAGE_SIZE = 100
 
 function sitemapEntry(pathname: string, updatedAt?: string | null): MetadataRoute.Sitemap[number] {
   return {
@@ -74,67 +80,88 @@ function uniqueEntries(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
   })
 }
 
+async function findAll(
+  payload: SitemapPayload,
+  args: Omit<Parameters<SitemapPayload['find']>[0], 'limit' | 'page' | 'pagination'>,
+): Promise<SitemapDoc[]> {
+  const docs: SitemapDoc[] = []
+  let page = 1
+  while (true) {
+    const result = await payload.find({ ...args, limit: PAGE_SIZE, page, pagination: true })
+    docs.push(...result.docs)
+    if (!result.hasNextPage) return docs
+    page += 1
+  }
+}
+
+function latestTimestamp(...values: Array<string | null | undefined>): string | undefined {
+  const valid = values.filter((value): value is string => Boolean(value) && Number.isFinite(Date.parse(value!)))
+  return valid.sort((left, right) => Date.parse(right) - Date.parse(left))[0]
+}
+
+function entriesForOccurrences(docs: SitemapDoc[]): MetadataRoute.Sitemap {
+  return docs.flatMap((occurrence) => {
+    const event = typeof occurrence.event === 'object' && occurrence.event ? occurrence.event : null
+    if (
+      occurrence.active !== true || occurrence.indexable === false || !occurrence.slug ||
+      !event?.slug || event.state !== 'published'
+    ) return []
+    return [sitemapEntry(
+      `/trips/${event.slug}/${occurrence.slug}`,
+      latestTimestamp(occurrence.updatedAt, event.updatedAt),
+    )]
+  })
+}
+
 export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRoute.Sitemap> {
-  const [events, locations, guides, programs, posts, pages] = await Promise.all([
-    payload.find({
-      collection: 'events',
-      where: { state: { equals: 'published' } },
+  const [occurrences, locations, guides, programs, posts, pages] = await Promise.all([
+    findAll(payload, {
+      collection: 'event-dates',
+      where: { and: [{ active: { equals: true } }, { indexable: { not_equals: false } }] },
       sort: 'slug',
-      limit: 1000,
-      depth: 0,
-      pagination: false,
+      depth: 1,
     }),
-    payload.find({
+    findAll(payload, {
       collection: 'locations',
       where: { active: { equals: true } },
       sort: 'slug',
-      limit: 1000,
       depth: 0,
-      pagination: false,
     }),
-    payload.find({
+    findAll(payload, {
       collection: 'guides',
       where: { active: { equals: true } },
       sort: 'slug',
-      limit: 1000,
       depth: 0,
-      pagination: false,
     }),
-    payload.find({
+    findAll(payload, {
       collection: 'programs',
       where: { and: [{ state: { equals: 'published' } }, { active: { equals: true } }] },
       sort: 'slug',
-      limit: 1000,
       depth: 0,
-      pagination: false,
     }),
-    payload.find({
+    findAll(payload, {
       collection: 'posts',
       where: { state: { equals: 'published' } },
       sort: 'slug',
-      limit: 1000,
       depth: 1,
-      pagination: false,
     }),
-    payload.find({
+    findAll(payload, {
       collection: 'pages',
       where: { status: { equals: 'published' } },
       sort: 'slug',
-      limit: 1000,
       depth: 0,
-      pagination: false,
     }),
   ])
 
   return uniqueEntries([
     ...STATIC_PATHS.map((path) => sitemapEntry(path)),
-    ...entriesForDocs(events.docs, (slug) => TRIP_SUBPATHS.map((subpath) => `/trips/${slug}${subpath}`)),
-    ...entriesForDocs(locations.docs, (slug) => `/destinations/${slug}`),
-    ...entriesForDocs(guides.docs, (slug) => `/team/${slug}`),
-    ...entriesForDocs(programs.docs, (slug) => `/programs/${slug}`),
-    ...entriesForDocs(posts.docs, (slug) => `/blog/${slug}`),
-    ...entriesForPostCategories(posts.docs),
-    ...entriesForCmsPages(pages.docs),
+    ...entriesForOccurrences(occurrences),
+    ...entriesForDocs(locations, (slug) => `/destinations/${slug}`),
+    ...entriesForDocs(guides, (slug) => `/team/${slug}`),
+    ...entriesForDocs(programs, (slug) => `/programs/${slug}`),
+    ...entriesForDocs(posts, (slug) => `/blog/${slug}`),
+    ...entriesForPostCategories(posts),
+    ...entriesForCmsPages(pages),
   ])
 }
 

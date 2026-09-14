@@ -72,9 +72,16 @@ Their fixed IDs/receipts must not be reused against a freshly seeded database.
 
 See ADR-0012 for the content/operational-data boundary.
 
-Internal trip links with `?date=` are remapped after all occurrences have been
-imported, so related-option links continue selecting the intended occurrence even
-when the destination database allocates different IDs.
+Event Date slugs, aliases and indexing eligibility are stored in the snapshot.
+Run `pnpm exec tsx scripts/canonical-seed/backfill-occurrence-identities.ts` for
+an offline, read-only identity report. The `--rebuild --write` form updates the
+snapshot after reviewing its missing-location and collision report; it never
+writes to a database. Stored slugs survive destination database ID allocation.
+
+Internal trip links use `/trips/{eventSlug}/{occurrenceSlug}`. Import still
+recognizes a pre-launch `?date={sourceId}` link and resolves it from the snapshot's
+source occurrence identity, never from the destination database ID. The
+trip-editorial builders and QA fail when a required stored slug is absent.
 
 ## Contact source maintenance
 

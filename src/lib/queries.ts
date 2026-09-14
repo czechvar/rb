@@ -16,6 +16,7 @@ import type {
 import { catalogueDateFloor, upcomingEventDateWhere } from '@/lib/event-date-visibility'
 import { assignCatalogueImageVariants, catalogueImageCandidates, toCatalogueResult, type CatalogueResult } from '@/lib/catalogue-results'
 import { toBlogIndexPost } from '@/lib/blog-index'
+import { tripOccurrencePath } from '@/lib/occurrence-routing'
 
 // --- CMS pages ----------------------------------------------------------
 
@@ -318,6 +319,92 @@ export async function getTripDetailEventDates(eventId: number): Promise<EventDat
   // Payload field afterRead hooks run concurrently; remainingSeats may have
   // observed bookedSeats before its async hook completed. Derive it now.
   return docs.map(date => ({ ...date, remainingSeats: Math.max(0, date.capacity - (date.bookedSeats ?? 0)) }))
+}
+
+/**
+ * Load every active occurrence belonging to a parent, including past and sold-out
+ * dates. Parent routing derives the redirect from current time and live capacity,
+ * so this query deliberately bypasses the long-lived catalogue cache.
+ */
+export async function getPublicEventDatesForEvent(eventId: number): Promise<EventDate[]> {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'event-dates',
+    where: { and: [{ event: { equals: eventId } }, { active: { equals: true } }] },
+    sort: 'dateFrom',
+    limit: 1000,
+    depth: 2,
+    select: {
+      event: true, slug: true, slugAliases: true,
+      dateFrom: true, dateTo: true, price: true, currency: true,
+      capacity: true, active: true, guides: true, locations: true,
+      vat: true, updatedAt: true, createdAt: true,
+      airportFrom: true, airportTo: true, logisticsOverrides: true, editorial: true,
+      bookedSeats: true, remainingSeats: true,
+    },
+    populate: {
+      events: { title: true, slug: true },
+      guides: { name: true, slug: true, role: true, tagline: true, photo: true },
+      locations: { name: true, slug: true, country: true, mainPicture: true, gradeRange: true, destinationDetail: true },
+    },
+  })
+  return docs.map(date => ({
+    ...date,
+    remainingSeats: Math.max(0, date.capacity - (date.bookedSeats ?? 0)),
+  }))
+}
+
+export interface PublicOccurrenceResolution {
+  event: Event
+  occurrence: EventDate
+  canonicalPath: string
+  requestedAlias: boolean
+}
+
+/** Resolve an explicitly addressed public occurrence without upcoming-date fallback. */
+export async function getPublicOccurrenceBySlugs(
+  eventSlug: string,
+  occurrenceSlug: string,
+): Promise<PublicOccurrenceResolution | null> {
+  const payload = await getPayloadClient()
+  const eventResult = await payload.find({
+    collection: 'events',
+    where: { and: [{ slug: { equals: eventSlug } }, { state: { equals: 'published' } }] },
+    limit: 1,
+    depth: 2,
+  })
+  const event = eventResult.docs[0]
+  if (!event) return null
+
+  const occurrenceResult = await payload.find({
+    collection: 'event-dates',
+    where: {
+      and: [
+        { event: { equals: event.id } },
+        { active: { equals: true } },
+        {
+          or: [
+            { slug: { equals: occurrenceSlug } },
+            { 'slugAliases.slug': { equals: occurrenceSlug } },
+          ],
+        },
+      ],
+    },
+    limit: 1,
+    depth: 2,
+  })
+  const found = occurrenceResult.docs[0]
+  if (!found?.slug) return null
+  const occurrence = {
+    ...found,
+    remainingSeats: Math.max(0, found.capacity - (found.bookedSeats ?? 0)),
+  }
+  return {
+    event,
+    occurrence,
+    canonicalPath: tripOccurrencePath(event.slug, found.slug),
+    requestedAlias: found.slug !== occurrenceSlug,
+  }
 }
 
 // --- Programs ------------------------------------------------------------

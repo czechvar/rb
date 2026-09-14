@@ -190,6 +190,7 @@ describe('pages collection and CMS block bindings', () => {
     const date = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: published.id,
         dateFrom: '2030-09-12T00:00:00.000Z',
         dateTo: '2030-09-19T00:00:00.000Z',
@@ -236,6 +237,7 @@ describe('pages collection and CMS block bindings', () => {
     const currentDate = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: current.id,
         dateFrom: '2030-09-12T00:00:00.000Z',
         dateTo: '2030-09-19T00:00:00.000Z',
@@ -251,6 +253,7 @@ describe('pages collection and CMS block bindings', () => {
     const pastDate = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: past.id,
         dateFrom: '2020-08-12T00:00:00.000Z',
         dateTo: '2020-08-19T00:00:00.000Z',

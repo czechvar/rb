@@ -1,4 +1,6 @@
 import * as migration_20260913_150000_grouped_checkout from './20260913_150000_grouped_checkout';
+import * as migration_20260914_203000_occurrence_slugs from './20260914_203000_occurrence_slugs';
+import * as migration_20260914_204500_event_date_indexable from './20260914_204500_event_date_indexable';
 import * as migration_20260913_110000_contact_enquiry_notification from './20260913_110000_contact_enquiry_notification';
 import * as migration_20260913_090000_contact_enquiry_intake from './20260913_090000_contact_enquiry_intake';
 import * as migration_20260912_150000_contact_page_blocks from './20260912_150000_contact_page_blocks';
@@ -375,4 +377,6 @@ export const migrations = [
     name: '20260913_110000_contact_enquiry_notification',
   },
   { up: migration_20260913_150000_grouped_checkout.up, down: migration_20260913_150000_grouped_checkout.down, name: '20260913_150000_grouped_checkout' },
+  { up: migration_20260914_203000_occurrence_slugs.up, down: migration_20260914_203000_occurrence_slugs.down, name: '20260914_203000_occurrence_slugs' },
+  { up: migration_20260914_204500_event_date_indexable.up, down: migration_20260914_204500_event_date_indexable.down, name: '20260914_204500_event_date_indexable' },
 ];

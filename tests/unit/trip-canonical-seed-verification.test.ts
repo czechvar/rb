@@ -14,6 +14,9 @@ const source: CanonicalSeed = {
         {
           id: 745,
           event: 8,
+          slug: 'kalymnos-2026-09-26-to-2026-10-10',
+          slugAliases: [],
+          indexable: true,
           editorial: {
             hero: {
               title: [
@@ -60,18 +63,18 @@ describe('canonical seed read-back verification', () => {
     actual.collections[1].rows.push({ id: 3 })
     expect(() => verifySnapshots(source, actual, maps)).toThrow('Collection count mismatch')
   })
-  it('independently checks occurrence links against remapped date IDs', () => {
+  it('independently checks occurrence links against stored public identity', () => {
     const expected = structuredClone(source)
     expected.collections[0].rows[0].editorial = {
       companion: { options: [{ href: '/trips/course?date=745' }] },
     }
     const actual = target()
     actual.collections[0].rows[0].editorial = {
-      companion: { options: [{ href: '/trips/course?date=2' }] },
+      companion: { options: [{ href: '/trips/course/kalymnos-2026-09-26-to-2026-10-10' }] },
     }
     expect(verifySnapshots(expected, actual, maps).rows).toBe(2)
     actual.collections[0].rows[0].editorial = {
-      companion: { options: [{ href: '/trips/course?date=745' }] },
+      companion: { options: [{ href: '/trips/course?date=2' }] },
     }
     expect(() => verifySnapshots(expected, actual, maps)).toThrow('Occurrence link mismatch')
   })

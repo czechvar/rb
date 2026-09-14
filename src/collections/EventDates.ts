@@ -4,15 +4,39 @@ import { Events } from './Events'
 import { anyone, isAdmin } from '../access'
 import { revalidateOnChange } from './hooks/revalidate'
 import { TAGS } from '@/lib/cache'
+import { deriveStoredOccurrenceSlug, protectOccurrenceIdentity } from './hooks/occurrenceIdentity'
 
 export const EventDates: CollectionConfig = {
   slug: 'event-dates',
   labels: { singular: 'Event Date', plural: 'Event Dates' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'dateFrom', group: 'Catalogue' },
-  hooks: revalidateOnChange(TAGS.eventDates),
+  hooks: {
+    ...revalidateOnChange(TAGS.eventDates),
+    beforeChange: [protectOccurrenceIdentity],
+  },
   fields: [
     { name: 'event', type: 'relationship', relationTo: 'events', required: true },
+    {
+      name: 'slug',
+      type: 'text',
+      index: true,
+      admin: {
+        position: 'sidebar',
+        description: 'Stable public identity. Auto-generated once when exactly one Location is selected.',
+      },
+      hooks: { beforeValidate: [deriveStoredOccurrenceSlug] },
+    },
+    {
+      name: 'slugAliases',
+      type: 'array',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+        description: 'Previous public slugs retained for direct redirects.',
+      },
+      fields: [{ name: 'slug', type: 'text', required: true }],
+    },
     { name: 'dateFrom', type: 'date', required: true },
     { name: 'dateTo', type: 'date', required: true },
     {
@@ -82,6 +106,15 @@ export const EventDates: CollectionConfig = {
       ],
     },
     { name: 'active', type: 'checkbox', defaultValue: false },
+    {
+      name: 'indexable',
+      type: 'checkbox',
+      defaultValue: true,
+      admin: {
+        position: 'sidebar',
+        description: 'Include this public occurrence in search metadata and the sitemap. Turn off for thin or duplicate pages.',
+      },
+    },
     {
       name: 'bookedSeats',
       type: 'number',

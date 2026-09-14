@@ -7,13 +7,17 @@ import { revalidateOnChange } from './hooks/revalidate'
 import { eventLayoutBlocks } from '../blocks'
 import { TAGS } from '@/lib/cache'
 import { eventTaxonomyOptions } from '@/lib/taxonomy/event'
+import { freezePublishedEventSlug } from './hooks/occurrenceIdentity'
 
 export const Events: CollectionConfig = {
   slug: 'events',
   labels: { singular: 'Event', plural: 'Events' },
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
   admin: { useAsTitle: 'title', group: 'Catalogue' },
-  hooks: revalidateOnChange(TAGS.events),
+  hooks: {
+    ...revalidateOnChange(TAGS.events),
+    beforeChange: [freezePublishedEventSlug],
+  },
   fields: [
     // Identity / hero
     { name: 'title', type: 'text', required: true },

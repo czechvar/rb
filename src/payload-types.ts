@@ -4478,6 +4478,19 @@ export interface Post {
 export interface EventDate {
   id: number;
   event: number | Event;
+  /**
+   * Stable public identity. Auto-generated once when exactly one Location is selected.
+   */
+  slug?: string | null;
+  /**
+   * Previous public slugs retained for direct redirects.
+   */
+  slugAliases?:
+    | {
+        slug: string;
+        id?: string | null;
+      }[]
+    | null;
   dateFrom: string;
   dateTo: string;
   locations?: (number | Location)[] | null;
@@ -5045,6 +5058,10 @@ export interface EventDate {
     } | null;
   };
   active?: boolean | null;
+  /**
+   * Include this public occurrence in search metadata and the sitemap. Turn off for thin or duplicate pages.
+   */
+  indexable?: boolean | null;
   /**
    * Sum of participants in pending+confirmed+paid orders.
    */
@@ -9497,6 +9514,13 @@ export interface EventsSelect<T extends boolean = true> {
  */
 export interface EventDatesSelect<T extends boolean = true> {
   event?: T;
+  slug?: T;
+  slugAliases?:
+    | T
+    | {
+        slug?: T;
+        id?: T;
+      };
   dateFrom?: T;
   dateTo?: T;
   locations?: T;
@@ -9853,6 +9877,7 @@ export interface EventDatesSelect<T extends boolean = true> {
         note?: T;
       };
   active?: T;
+  indexable?: T;
   bookedSeats?: T;
   remainingSeats?: T;
   updatedAt?: T;

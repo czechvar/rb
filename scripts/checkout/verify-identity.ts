@@ -51,6 +51,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
     const date = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: event.id,
         dateFrom: '2030-08-01T00:00:00Z',
         dateTo: '2030-08-08T00:00:00Z',

@@ -8,6 +8,12 @@ SOURCE=Path('/home/czechspekk/Downloads/NEW ROCKBUSTERS WEBSITE - HTML /TRIP-COU
 mapping=list(csv.DictReader((ROOT/'docs/superpowers/plans/2026-09-11-trip-detail-customization-catalogue.csv').open()))
 snapshot=json.loads((ROOT/'.scratch/trip-design-inventory/current-guides.json').read_text())
 legacy={r['id']:r for r in json.loads((ROOT/'scripts/data-import/seed/legacy-event-dates.json').read_text())['rows']}
+canonical_seed=json.loads((ROOT/'scripts/data-import/seed/canonical-payload-seed.json').read_text())
+canonical_dates={str(r['id']):r for c in canonical_seed['collections'] if c['slug']=='event-dates' for r in c['rows']}
+def occurrence_path(event_slug,event_date_id):
+ row=canonical_dates.get(str(event_date_id))
+ if not row or not row.get('slug'):raise ValueError('Canonical occurrence slug is required')
+ return '/trips/'+event_slug+'/'+row['slug']
 def text(n):return n.get_text(' ',strip=True) if n else ''
 def one(sel,n):return text(n.select_one(sel)) if n else ''
 def parts(n):
@@ -42,7 +48,7 @@ def resolve_link(href):
  old=legacy.get(int(m[1]))
  if old:
   found=next((x for x in snapshot.values() if x['eventSlug']==old['eventSlug'] and x['date_from'][:10]==old['start'] and x['date_to'][:10]==old['end'] and x['active']),None)
-  if found:return '/trips/'+found['eventSlug']+'?date='+str(found['id'])
+  if found:return occurrence_path(found['eventSlug'],found['id'])
  return None
 refs=[];manifests=[]
 for match in mapping:

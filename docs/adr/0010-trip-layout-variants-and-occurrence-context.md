@@ -4,6 +4,10 @@
 - Date: 2026-09-10
 - Owners: Engineering
 
+Routing amendment: [ADR-0015](0015-occurrence-slug-routing.md) supersedes the
+automatic selection/fallback rule below for public trip routing. Other decisions
+in this ADR remain accepted. Implementation is tracked in the linked new plan.
+
 ## Context
 
 The source-preserving sections introduced by ADR-0009 need public rendering. Trip pages share components with existing pages and CMS layouts. Event Dates own commercial and occurrence-specific information; mixing their values with Event defaults produces contradictory booking summaries.

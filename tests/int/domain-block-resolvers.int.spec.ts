@@ -332,6 +332,7 @@ describe('domain grid block resolvers', () => {
     const activeDate = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: publishedEvent.id,
         dateFrom: '2026-08-26T00:00:00.000Z',
         dateTo: '2026-08-30T00:00:00.000Z',
@@ -347,6 +348,7 @@ describe('domain grid block resolvers', () => {
     const draftDate = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: draftEvent.id,
         dateFrom: '2026-08-27T00:00:00.000Z',
         dateTo: '2026-08-31T00:00:00.000Z',
@@ -386,6 +388,7 @@ describe('domain grid block resolvers', () => {
     const date = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: event.id,
         dateFrom: '2026-09-12T00:00:00.000Z',
         dateTo: '2026-09-19T00:00:00.000Z',
@@ -431,6 +434,7 @@ describe('domain grid block resolvers', () => {
       const date = await payload.create({
         collection: 'event-dates',
         data: {
+          slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
           event: draftEvent.id,
           dateFrom: `2028-01-0${index + 1}T00:00:00.000Z`,
           dateTo: `2028-01-0${index + 1}T12:00:00.000Z`,
@@ -448,6 +452,7 @@ describe('domain grid block resolvers', () => {
     const firstPublishedDate = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: publishedEvent.id,
         dateFrom: '2028-01-10T00:00:00.000Z',
         dateTo: '2028-01-17T00:00:00.000Z',
@@ -463,6 +468,7 @@ describe('domain grid block resolvers', () => {
     const secondPublishedDate = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: publishedEvent.id,
         dateFrom: '2028-01-18T00:00:00.000Z',
         dateTo: '2028-01-25T00:00:00.000Z',

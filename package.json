@@ -43,6 +43,8 @@
     "data-import:export-homepage": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/export-homepage-seed.ts",
     "data-import:homepage": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-homepage-seed.ts",
     "data-import:destinations-page": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-destinations-page-seed.ts",
+    "data:review-occurrence-slugs": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/backfill-occurrence-slugs.ts",
+    "data:backfill-occurrence-slugs": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/backfill-occurrence-slugs.ts --write",
     "data-import:trips-page": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-trips-page-seed.ts",
     "data-import:fetch-airports": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/fetch-airports-seed.ts",
     "data-import:airports": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/data-import/import-airports-seed.ts",

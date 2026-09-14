@@ -73,6 +73,7 @@ test.beforeAll(async () => {
   const matchingDate = await payload.create({
     collection: 'event-dates',
     data: {
+      slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
       event: matchingEventId,
       dateFrom: '2030-10-12T00:00:00.000Z',
       dateTo: '2030-10-18T00:00:00.000Z',
@@ -88,6 +89,7 @@ test.beforeAll(async () => {
   const otherDate = await payload.create({
     collection: 'event-dates',
     data: {
+      slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
       event: otherEventId,
       dateFrom: '2030-10-20T00:00:00.000Z',
       dateTo: '2030-10-26T00:00:00.000Z',

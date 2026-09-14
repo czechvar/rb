@@ -70,6 +70,7 @@ describe('upcoming catalogue results', () => {
     const upcoming = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: published.id,
         dateFrom: '2030-10-12T00:00:00.000Z',
         dateTo: '2030-10-18T00:00:00.000Z',
@@ -86,6 +87,7 @@ describe('upcoming catalogue results', () => {
     const inactive = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: published.id,
         dateFrom: '2030-11-12T00:00:00.000Z',
         dateTo: '2030-11-18T00:00:00.000Z',
@@ -100,6 +102,7 @@ describe('upcoming catalogue results', () => {
     const draftDate = await payload.create({
       collection: 'event-dates',
       data: {
+        slug: 'test-occurrence-' + Date.now() + '-' + Math.random().toString(36).slice(2),
         event: draft.id,
         dateFrom: '2030-12-12T00:00:00.000Z',
         dateTo: '2030-12-18T00:00:00.000Z',

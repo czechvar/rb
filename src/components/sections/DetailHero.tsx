@@ -167,7 +167,7 @@ export function DetailHero({
                 href={
                   editorial?.secondaryTarget === 'programme'
                     ? '#itinerary'
-                    : `/trips/${event.slug}/dates`
+                    : trip ? '#dates' : `/trips/${event.slug}`
                 }
                 className="btn-ghost"
               >
