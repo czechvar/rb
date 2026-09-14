@@ -1,10 +1,10 @@
 # Trip Variant data structure and seed migration
 
-Status: ready-for-human
+Status: complete
 Date: 2026-09-14
 Decision: [ADR-0016](../../adr/0016-trip-variants-and-dated-query-leaves.md)
-Implementation: schema and canonical dataset complete; existing-database apply
-and disposable migration verification intentionally not run
+Implementation: schema and canonical dataset complete; migrations and guarded
+backfill applied and read back on the configured non-production development database
 
 ## Scope
 
@@ -41,6 +41,8 @@ Launch scope is fixed to the canonical seed snapshot on 2026-09-14:
 - [x] Verify deterministic reruns, counts, referential integrity, and date-key collisions.
 - [x] Verify nested generated IDs do not create false content conflicts.
 - [x] Run typecheck and focused unit/integration tests without database writes.
+- [x] Apply the three tracked occurrence/variant migrations to local development.
+- [x] Backfill and read back 31 variants and 64 launch dates; verify a second apply is a no-op.
 
 ## Deferred
 

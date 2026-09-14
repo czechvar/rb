@@ -35,7 +35,10 @@ pnpm run data:backfill-launch-trip-variants
   append `-- --write` to update the snapshot after reviewing the counts.
 - `data:backfill-launch-trip-variants` performs an offline preflight by default.
   Its `-- --apply` form targets an existing non-production database only after
-  resolving all Events, Locations, Guides and occurrences from stable slugs.
+  resolving all Events, Locations, Guides and the 64 launch occurrences. Launch
+  occurrences are matched by Event and exact date range, then receive their
+  audited slug, Trip Variant relationship, and public date key in one transaction.
+  Historical occurrence identities remain outside this backfill.
   Apply accepts either an empty Trip Variant collection or an exactly equivalent
   complete 31-row set. It verifies each occurrence's date range and normalized
   Location set, then creates variants and attaches dates in one transaction.

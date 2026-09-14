@@ -1,7 +1,7 @@
 /** Guarded existing-database backfill using public identities, never snapshot IDs. */
 import { isDeepStrictEqual } from 'node:util'
 import { pathToFileURL } from 'node:url'
-import { getPayload, type CollectionSlug, type Payload } from 'payload'
+import { createLocalReq, getPayload, type CollectionSlug, type Payload, type PayloadRequest } from 'payload'
 import { remapRelationships, type SeedIDMap } from '../seed'
 import {
   assertNotProduction,
@@ -116,7 +116,7 @@ export function buildExistingDBBackfillPlan(input: CanonicalSeed): BackfillVaria
   })
 }
 
-type TransactionRequest = { transactionID: string | number }
+type TransactionRequest = PayloadRequest & { transactionID: string | number }
 
 async function findAll(payload: Payload, collection: CollectionSlug, req: TransactionRequest) {
   const result = await payload.find({ collection, depth: 0, limit: 1000, pagination: false, req })
@@ -134,12 +134,32 @@ function mapBySlug(source: Row[], target: Row[], collection: CollectionSlug, map
   maps.set(collection, mapped)
 }
 
-async function resolveOccurrence(payload: Payload, eventID: unknown, slug: string, req: TransactionRequest) {
+async function resolveOccurrence(
+  payload: Payload,
+  eventID: unknown,
+  occurrence: BackfillOccurrence,
+  req: TransactionRequest,
+) {
   const result = await payload.find({
     collection: 'event-dates',
     depth: 0,
     limit: 2,
-    where: { and: [{ event: { equals: eventID } }, { slug: { equals: slug } }] },
+    overrideAccess: true,
+    select: {
+      slug: true,
+      dateFrom: true,
+      dateTo: true,
+      locations: true,
+      tripVariant: true,
+      publicDateKey: true,
+    },
+    where: {
+      and: [
+        { event: { equals: eventID } },
+        { dateFrom: { equals: occurrence.dateFrom } },
+        { dateTo: { equals: occurrence.dateTo } },
+      ],
+    },
     req,
   })
   if (result.docs.length !== 1) throw new Error('Existing database precondition failed: occurrence identity')
@@ -164,6 +184,7 @@ export function occurrenceMatchesReviewedFacts(
     targetLocationSlugByID.get(locationID) ?? `missing-location-${locationID}`,
   ))
   return (
+    (actual.slug == null || actual.slug === expected.occurrenceSlug) &&
     normalizedDate(actual.dateFrom) === normalizedDate(expected.dateFrom) &&
     normalizedDate(actual.dateTo) === normalizedDate(expected.dateTo) &&
     isDeepStrictEqual(actualLocations, expected.locationSlugs)
@@ -184,6 +205,22 @@ function semantic(value: unknown, key?: string): unknown {
     return entries.length ? Object.fromEntries(entries) : undefined
   }
   return value
+}
+
+function safeErrorCategory(error: unknown) {
+  const name = error instanceof Error ? error.name : ''
+  const message = error instanceof Error ? error.message : ''
+  if (name === 'ValidationError') return 'validation'
+  if (/foreign key/i.test(message)) return 'foreign-key'
+  if (/duplicate key|unique constraint/i.test(message)) return 'unique'
+  if (/column .* does not exist/i.test(message)) return 'missing-column'
+  if (/relation .* does not exist/i.test(message)) return 'missing-relation'
+  if (/transaction/i.test(message)) return 'transaction'
+  if (/cannot read properties/i.test(message)) {
+    const property = /cannot read properties of (?:undefined|null) \(reading '([A-Za-z][A-Za-z0-9_]*)'\)/i.exec(message)?.[1]
+    return property ? `runtime-field-${property.toLowerCase()}` : 'runtime-property'
+  }
+  return 'unexpected'
 }
 
 function comparableVariant(row: Row) {
@@ -223,7 +260,9 @@ async function applyBackfill(payload: Payload, seed: CanonicalSeed) {
   const totals = { variantsCreated: 0, variantsUpdated: 0, variantsUnchanged: 0, datesUpdated: 0, datesUnchanged: 0 }
   const transactionID = await payload.db.beginTransaction()
   if (!transactionID) throw new Error('Existing database precondition failed: transaction')
-  const req = { transactionID } as TransactionRequest
+  const req = await createLocalReq({}, payload) as TransactionRequest
+  req.transactionID = transactionID
+  let operationStage = 'catalogue-read'
   try {
     const targetEvents = await findAll(payload, 'events', req)
     const targetLocations = await findAll(payload, 'locations', req)
@@ -233,12 +272,13 @@ async function applyBackfill(payload: Payload, seed: CanonicalSeed) {
     const targetLocationSlugByID = new Map(targetLocations.map((row) => [id(row.id), String(row.slug)]))
 
     // Resolve and verify all 64 occurrences before the first mutation.
+    operationStage = 'occurrence-read'
     const resolvedDates = new Map<string, Row>()
     for (const variant of plan) {
       const sourceEvent = sourceEvents.find((event) => event.slug === variant.eventSlug)!
       const targetEventID = maps.get('events')!.get(id(sourceEvent.id))
       for (const occurrence of variant.occurrences) {
-        const actual = await resolveOccurrence(payload, targetEventID, occurrence.occurrenceSlug, req)
+        const actual = await resolveOccurrence(payload, targetEventID, occurrence, req)
         if (!occurrenceMatchesReviewedFacts(occurrence, actual, targetLocationSlugByID)) {
           throw new Error('Existing database precondition failed: occurrence facts')
         }
@@ -254,6 +294,7 @@ async function applyBackfill(payload: Payload, seed: CanonicalSeed) {
       remapRelationships(maps, 'trip-variants', variant) as Row,
     )
     const existingVariants = await findAll(payload, 'trip-variants', req)
+    operationStage = 'variant-write'
     const destinationState = classifyExistingVariantSet(expectedVariants, existingVariants)
     if (destinationState === 'complete') {
       const existingByIdentity = new Map(existingVariants.map((row) => [`${id(row.event)}:${String(row.slug)}`, row]))
@@ -264,10 +305,12 @@ async function applyBackfill(payload: Payload, seed: CanonicalSeed) {
       })
     } else {
       for (let index = 0; index < sourceVariants.length; index += 1) {
+        operationStage = `variant-${String(sourceVariants[index].slug)}`
         const data = { ...expectedVariants[index] }
         delete data.id
         delete data.createdAt
         delete data.updatedAt
+        if (data.logisticsOverrides == null) delete data.logisticsOverrides
         const created = await payload.create({
           collection: 'trip-variants',
           // Seed rows are checked against the reviewed collection contract above.
@@ -283,9 +326,12 @@ async function applyBackfill(payload: Payload, seed: CanonicalSeed) {
     }
 
     for (const sourceDate of rows(seed, 'event-dates').filter((date) => date.tripVariant != null)) {
+      operationStage = 'occurrence-write'
       const sourceEvent = sourceEvents.find((event) => id(event.id) === id(sourceDate.event))!
       const target = resolvedDates.get(`${String(sourceEvent.slug)}:${String(sourceDate.slug)}`)!
       const data = remapRelationships(maps, 'event-dates', {
+        slug: sourceDate.slug,
+        slugAliases: sourceDate.slugAliases,
         tripVariant: sourceDate.tripVariant,
         publicDateKey: sourceDate.publicDateKey,
       }) as Row
@@ -302,7 +348,10 @@ async function applyBackfill(payload: Payload, seed: CanonicalSeed) {
     await payload.db.commitTransaction(transactionID)
   } catch (error) {
     await payload.db.rollbackTransaction(transactionID)
-    throw error
+    if (error instanceof Error && /^(Reviewed Trip Variant precondition failed|Existing database precondition failed): [a-z-]+$/.test(error.message)) {
+      throw error
+    }
+    throw new Error(`Existing database precondition failed: ${operationStage}-${safeErrorCategory(error)}`)
   }
   return totals
 }
