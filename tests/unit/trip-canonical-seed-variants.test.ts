@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import type { CanonicalSeed } from '../../scripts/canonical-seed/shared'
 import {
   migrateLaunchTripVariants,
+  normalizedPromotableValue,
   TRIP_VARIANT_LAUNCH_CUTOFF,
 } from '../../scripts/canonical-seed/migrate-launch-trip-variants'
 import {
@@ -42,6 +43,20 @@ describe('canonical launch Trip Variant migration', () => {
       inheritedVariants: 6,
       promotedEditorialPayloads: 25,
       sameStartDateCollisions: 10,
+      promotedExtraContent: 30,
+      extraContentWithoutValue: 1,
+      extraContentConflicts: 0,
+      promotedLogisticsOverrides: 14,
+      logisticsWithoutValue: 11,
+      logisticsConflicts: 6,
+      logisticsConflictVariants: [
+        'climbing-technique-mental-coaching/kyparissi',
+        'climbing-technique-mental-coaching/rodellar',
+        'sport-climbing/dolomites',
+        'sport-climbing/finale-ligure',
+        'sport-climbing/istria',
+        'sport-climbing/sella',
+      ],
     })
     expect(dates.filter(({ tripVariant }) => tripVariant != null)).toHaveLength(64)
     expect(dates.filter(({ tripVariant }) => tripVariant == null)).toHaveLength(725)
@@ -71,9 +86,13 @@ describe('canonical launch Trip Variant migration', () => {
     const inherited = variants.filter(({ indexable }) => indexable === false)
     expect(inherited).toHaveLength(6)
     expect(inherited.every(({ editorial }) => editorial == null)).toBe(true)
-    expect(variants.every(({ extraContent, logisticsOverrides }) =>
-      extraContent == null && logisticsOverrides == null,
-    )).toBe(true)
+    expect(variants.filter(({ extraContent }) => extraContent != null)).toHaveLength(30)
+    expect(variants.filter(({ logisticsOverrides }) => logisticsOverrides != null)).toHaveLength(14)
+    for (const identity of result.report.logisticsConflictVariants) {
+      const [eventSlug, variantSlug] = identity.split('/')
+      const event = input.collections.find(({ slug }) => slug === 'events')!.rows.find(({ slug }) => slug === eventSlug)!
+      expect(variants.find(({ event: id, slug }) => id === event.id && slug === variantSlug)?.logisticsOverrides).toBeNull()
+    }
   })
 
   it('is idempotent and keeps the occurrence start-to-end identity intact', () => {
@@ -154,6 +173,21 @@ describe('canonical launch Trip Variant migration', () => {
     )
     expect(() => classifyExistingVariantSet(expected, [expected[0], { ...expected[0], id: 9002 }])).toThrow(
       'Existing database precondition failed: variant set',
+    )
+  })
+
+  it('normalizes generated nested IDs before comparing promotable launch content', () => {
+    expect(normalizedPromotableValue({ id: 'one', root: { children: [{ id: 'child-a', text: 'Stay' }] } })).toEqual(
+      normalizedPromotableValue({ id: 'two', root: { children: [{ id: 'child-b', text: 'Stay' }] } }),
+    )
+  })
+
+  it('rejects duplicate Trip Variant and public date-key identities before live backfill', () => {
+    const duplicate = structuredClone(seed)
+    const dates = duplicate.collections.find(({ slug }) => slug === 'event-dates')!.rows
+    dates.find(({ id }) => id === 745)!.dateTo = dates.find(({ id }) => id === 651)!.dateTo
+    expect(() => buildExistingDBBackfillPlan(duplicate)).toThrow(
+      'Reviewed Trip Variant precondition failed: public identities',
     )
   })
 })

@@ -97,6 +97,13 @@ source payload and all `extraContent` and `logisticsOverrides` remain intact on
 the Event Date during this additive migration. Six variants without rich content
 inherit Event/Location content and remain `indexable: false`.
 
+Reusable legacy fields are compared only across the 64 assigned launch dates,
+after nested generated IDs are removed for comparison. Thirty variants promote
+one consensus `extraContent` value; one has none and none conflict. Fourteen
+variants promote one consensus logistics value; 11 have none and six conflict.
+The six conflicts remain null on Trip Variant. These promotions never remove or
+rewrite the original Event Date values, including historical archive overrides.
+
 Each assigned Event Date stores a `publicDateKey` in
 `YYYY-MM-DD-to-YYYY-MM-DD` form. This is required because ten Trip Variant/start
 date pairs contain two different date ranges. Canonical source IDs are remapped

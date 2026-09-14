@@ -39,6 +39,14 @@ dates. Promote the 25 authoritative editorial sources. Six variants without
 rich content inherit Event and Location content and remain outside the sitemap.
 Historical Event Dates remain archive data and are not normalized in this pass.
 
+For reusable legacy fields, promotion is based only on the 64 assigned launch
+dates. Compare values after removing nested generated IDs. Promote a field only
+when its assigned dates contain one meaningful normalized value: 30 variants
+promote `extraContent`, while one has none; 14 promote logistics, 11 have none,
+and six contain conflicts. Conflicting logistics remain null on Trip Variant.
+All original Event Date editorial, `extraContent`, and logistics values remain
+in place as occurrence overrides and archive provenance.
+
 ## Alternatives Considered
 
 - Keep Event Date as the public content owner: rejected because annual dates

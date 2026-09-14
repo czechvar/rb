@@ -33,7 +33,24 @@ const EXPECTED = {
   tripVariants: 31,
   indexableVariants: 25,
   inheritedVariants: 6,
+  promotedEditorialPayloads: 25,
+  sameStartDateCollisions: 10,
+  promotedExtraContent: 30,
+  extraContentWithoutValue: 1,
+  extraContentConflicts: 0,
+  promotedLogisticsOverrides: 14,
+  logisticsWithoutValue: 11,
+  logisticsConflicts: 6,
 } as const
+
+const EXPECTED_LOGISTICS_CONFLICTS = [
+  'climbing-technique-mental-coaching/kyparissi',
+  'climbing-technique-mental-coaching/rodellar',
+  'sport-climbing/dolomites',
+  'sport-climbing/finale-ligure',
+  'sport-climbing/istria',
+  'sport-climbing/sella',
+]
 
 function rows(seed: CanonicalSeed, slug: string) {
   return seed.collections.find((collection) => collection.slug === slug)?.rows ?? []
@@ -53,6 +70,14 @@ function assertReviewedDataset(seed: CanonicalSeed) {
     if (result.report[key as keyof typeof EXPECTED] !== expected) {
       throw new Error(`Reviewed Trip Variant precondition failed: ${key}`)
     }
+  }
+  if (!isDeepStrictEqual(result.report.logisticsConflictVariants, EXPECTED_LOGISTICS_CONFLICTS)) {
+    throw new Error('Reviewed Trip Variant precondition failed: logistics conflicts')
+  }
+  const assignedDates = rows(result.seed, 'event-dates').filter((date) => date.tripVariant != null)
+  const publicIdentities = assignedDates.map((date) => `${id(date.tripVariant)}:${String(date.publicDateKey)}`)
+  if (assignedDates.length !== EXPECTED.launchEventDates || new Set(publicIdentities).size !== EXPECTED.launchEventDates) {
+    throw new Error('Reviewed Trip Variant precondition failed: public identities')
   }
   return result.seed
 }
@@ -286,7 +311,12 @@ async function main() {
   const seed = await readCanonicalSeed(CANONICAL_SEED_FILE)
   const plan = buildExistingDBBackfillPlan(seed)
   if (!process.argv.includes('--apply')) {
-    console.log(JSON.stringify({ mode: 'review', ...EXPECTED, eventDates: plan.flatMap((entry) => entry.occurrences).length }))
+    console.log(JSON.stringify({
+      mode: 'review',
+      ...EXPECTED,
+      logisticsConflictVariants: EXPECTED_LOGISTICS_CONFLICTS,
+      eventDates: plan.flatMap((entry) => entry.occurrences).length,
+    }))
     return
   }
   await import('dotenv/config')

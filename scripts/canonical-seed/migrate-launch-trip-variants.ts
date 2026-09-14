@@ -19,6 +19,13 @@ export type TripVariantMigrationReport = {
   inheritedVariants: number
   promotedEditorialPayloads: number
   sameStartDateCollisions: number
+  promotedExtraContent: number
+  extraContentWithoutValue: number
+  extraContentConflicts: number
+  promotedLogisticsOverrides: number
+  logisticsWithoutValue: number
+  logisticsConflicts: number
+  logisticsConflictVariants: string[]
 }
 
 const EXPLICIT_SLUG_BY_EVENT_DATE: Record<string, string> = {
@@ -52,6 +59,35 @@ function isMeaningful(value: unknown, key?: string): boolean {
     return Object.entries(value as Row).some(([childKey, entry]) => isMeaningful(entry, childKey))
   }
   return true
+}
+
+export function normalizedPromotableValue(value: unknown, key?: string): unknown {
+  if (key === 'id' || value == null || value === '' || value === false) return undefined
+  if (Array.isArray(value)) {
+    const entries = value
+      .map((entry) => normalizedPromotableValue(entry))
+      .filter((entry) => entry !== undefined)
+    return entries.length ? entries : undefined
+  }
+  if (typeof value === 'object') {
+    const entries = Object.entries(value as Row)
+      .map(([childKey, entry]) => [childKey, normalizedPromotableValue(entry, childKey)] as const)
+      .filter(([, entry]) => entry !== undefined)
+      .sort(([a], [b]) => a.localeCompare(b))
+    return entries.length ? Object.fromEntries(entries) : undefined
+  }
+  return value
+}
+
+function consensus(group: Row[], field: 'extraContent' | 'logisticsOverrides') {
+  const values = new Map<string, unknown>()
+  for (const row of group) {
+    const normalized = normalizedPromotableValue(row[field])
+    if (normalized !== undefined) values.set(JSON.stringify(normalized), row[field])
+  }
+  if (values.size === 0) return { status: 'none' as const }
+  if (values.size > 1) return { status: 'conflict' as const }
+  return { status: 'promoted' as const, value: structuredClone([...values.values()][0]) }
 }
 
 function launchDate(row: Row, publishedEvents: Set<string>) {
@@ -109,6 +145,16 @@ export function migrateLaunchTripVariants(input: CanonicalSeed): {
     allDatesByVariant.set(key, [...(allDatesByVariant.get(key) ?? []), date])
   }
 
+  const promotionCounts = {
+    promotedExtraContent: 0,
+    extraContentWithoutValue: 0,
+    extraContentConflicts: 0,
+    promotedLogisticsOverrides: 0,
+    logisticsWithoutValue: 0,
+    logisticsConflicts: 0,
+  }
+  const logisticsConflictVariants: string[] = []
+
   const variantRows = [...groups.entries()].map(([key, group]) => {
     const sourceCandidates = (allDatesByVariant.get(key) ?? []).filter((date) =>
       isMeaningful(date.editorial),
@@ -128,6 +174,19 @@ export function migrateLaunchTripVariants(input: CanonicalSeed): {
       slug === 'spain-tour' ? 'Spain Tour' :
       locationRecords.map((location) => String(location.title ?? location.name ?? location.slug)).join(' + ')
     const source = sourceCandidates[0]
+    const extraContent = consensus(group, 'extraContent')
+    const logisticsOverrides = consensus(group, 'logisticsOverrides')
+    promotionCounts[
+      extraContent.status === 'promoted' ? 'promotedExtraContent' :
+      extraContent.status === 'none' ? 'extraContentWithoutValue' : 'extraContentConflicts'
+    ] += 1
+    promotionCounts[
+      logisticsOverrides.status === 'promoted' ? 'promotedLogisticsOverrides' :
+      logisticsOverrides.status === 'none' ? 'logisticsWithoutValue' : 'logisticsConflicts'
+    ] += 1
+    if (logisticsOverrides.status === 'conflict') {
+      logisticsConflictVariants.push(`${String(event.slug)}/${slug}`)
+    }
     const result: Row = {
       id: first.id,
       event: first.event,
@@ -137,8 +196,8 @@ export function migrateLaunchTripVariants(input: CanonicalSeed): {
       locations: first.locations,
       active: true,
       indexable: Boolean(source),
-      extraContent: null,
-      logisticsOverrides: null,
+      extraContent: extraContent.status === 'promoted' ? extraContent.value : null,
+      logisticsOverrides: logisticsOverrides.status === 'promoted' ? logisticsOverrides.value : null,
     }
     if (source) result.editorial = structuredClone(source.editorial)
     return result
@@ -193,6 +252,8 @@ export function migrateLaunchTripVariants(input: CanonicalSeed): {
       inheritedVariants: variantRows.length - indexableVariants,
       promotedEditorialPayloads: indexableVariants,
       sameStartDateCollisions: collisionCount,
+      ...promotionCounts,
+      logisticsConflictVariants: logisticsConflictVariants.sort(),
     }) as TripVariantMigrationReport,
   }
 }
