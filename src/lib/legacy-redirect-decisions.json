@@ -56,5 +56,34 @@
     "sport-climbing--2018-10-06-188": "sport-climbing-holidays",
     "trad-and-multipitch-climbing--2018-08-06-212": "trad-multipitch",
     "trad-and-multipitch-climbing--2019-04-27-207": "trad-multipitch"
-  }
+  },
+  "approvedLegacyEventPageRedirects": {
+    "adam-ondra-on-sight-red-point": "/trips/adam-ondra-on-sight-red-point",
+    "alpine-rock-climbing-in-chamonix": "/trips/big-wall-climbing-in-chamonix",
+    "beginners-climbing": "/trips/beginner-climbing-course",
+    "climbing-coaching-footwork-balance": "/trips/climbing-coaching-footwork-balance",
+    "climbing-coaching-on-sight-red-point": "/trips/climbing-coaching-on-sight-red-point",
+    "climbing-coaching-overhangs": "/trips/climbing-coaching-overhangs",
+    "hazel-findlay-mental-coaching": "/trips/hazel-findlay-mental-coaching",
+    "patxi-usobiaga-training": "/trips/patxi-usobiaga-training",
+    "sandstone-climbing": "/trips/sandstone-climbing",
+    "trad-and-multipitch-climbing": "/trips/multipitch-climbing-course"
+  },
+  "legacyTripBrowseIndexRedirects": [
+    "/event",
+    "/event-date"
+  ],
+  "legacyTripIndexFallbackPaths": [
+    "/event/klemen-becan-performance-coaching-privat",
+    "/event/rockbusters-climbing-express",
+    "/event/rockbusters-private-guiding",
+    "/event/rockbusters-summer-2018",
+    "/event/singing-rock-mobile-test-center",
+    "/partner",
+    "/private-guiding",
+    "/test-center"
+  ],
+  "samePathCmsPageSlugs": [
+    "terms-and-conditions"
+  ]
 }

@@ -55,8 +55,10 @@ describe('legacy redirect decisions', () => {
       expect(overview.get(source)).toEqual({ target: destination, action: 'temporary-category-redirect' })
     }
     for (const slug of ['singing-rock-mobile-test-center', 'rockbusters-summer-2018']) {
-      expect(rules.some(rule => rule.source === `/event/${slug}`)).toBe(false)
-      expect(overview.get(`/event/${slug}`)?.target).toBe('')
+      expect(decisions.approvedLegacyEventPageRedirects).not.toHaveProperty(slug)
+      expect(overview.get(`/event/${slug}`)).toEqual({
+        target: '/trips', action: 'approved-trips-fallback-redirect',
+      })
     }
   })
 
@@ -78,5 +80,36 @@ describe('legacy redirect decisions', () => {
       expect(rules.some(rule => rule.source === `/event-date/${slug}`)).toBe(false)
       expect(overview.get(`/event-date/${slug}`)?.action).toBe('redirect-candidate-needs-validation')
     }
+  })
+
+  it('keeps the ten approved old Event-page redirects aligned with the CSV', async () => {
+    const rules = await config.redirects?.() ?? []
+    const overview = redirectOverview()
+    expect(Object.keys(decisions.approvedLegacyEventPageRedirects)).toHaveLength(10)
+    for (const [slug, destination] of Object.entries(decisions.approvedLegacyEventPageRedirects)) {
+      const source = `/event/${slug}`
+      expect(rules.find(rule => rule.source === source)).toMatchObject({ destination, permanent: false })
+      expect(overview.get(source)).toEqual({ target: destination, action: 'approved-event-page-redirect' })
+    }
+  })
+
+  it('routes the old browse and fallback paths while retaining the CMS terms path', async () => {
+    const rules = await config.redirects?.() ?? []
+    const overview = redirectOverview()
+    expect(decisions.legacyTripBrowseIndexRedirects).toEqual(['/event', '/event-date'])
+    for (const source of decisions.legacyTripBrowseIndexRedirects) {
+      expect(rules.find(rule => rule.source === source)).toMatchObject({ destination: '/trips', permanent: true })
+      expect(overview.get(source)).toEqual({ target: '/trips', action: 'approved-browse-index-redirect' })
+    }
+    expect(decisions.legacyTripIndexFallbackPaths).toHaveLength(8)
+    for (const source of decisions.legacyTripIndexFallbackPaths) {
+      expect(rules.find(rule => rule.source === source)).toMatchObject({ destination: '/trips', permanent: false })
+      expect(overview.get(source)).toEqual({ target: '/trips', action: 'approved-trips-fallback-redirect' })
+    }
+    expect(decisions.samePathCmsPageSlugs).toEqual(['terms-and-conditions'])
+    expect(rules.some(rule => rule.source === '/terms-and-conditions')).toBe(false)
+    expect(overview.get('/terms-and-conditions')).toEqual({
+      target: '/terms-and-conditions', action: 'same-path-cms-production-pending',
+    })
   })
 })

@@ -34,6 +34,24 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Approved old Event pages keep their Event identity even when the target is not yet indexed.
+      ...Object.entries(legacyRedirectDecisions.approvedLegacyEventPageRedirects).map(([from, destination]) => ({
+        source: `/event/${from}`,
+        destination,
+        permanent: false,
+      })),
+      // Old browse indexes now lead to the trip catalogue.
+      ...legacyRedirectDecisions.legacyTripBrowseIndexRedirects.map((source) => ({
+        source,
+        destination: '/trips',
+        permanent: true,
+      })),
+      // Broader historical fallbacks stay temporary until the migrated host is checked.
+      ...legacyRedirectDecisions.legacyTripIndexFallbackPaths.map((source) => ({
+        source,
+        destination: '/trips',
+        permanent: false,
+      })),
       // Historical Event Dates without an equivalent Variant browse by their trip category.
       ...Object.entries(legacyRedirectDecisions.temporaryHistoricalDateCategoryRedirects).map(([from, category]) => ({
         source: `/event-date/${from}`,

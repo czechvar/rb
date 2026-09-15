@@ -2,12 +2,11 @@
 
 These are old sitemap URLs without a same-listed-path or identity-backed, sitemap-listed new target. Some have broader category or archive candidates that require review. A missing replacement here does not imply the content should be deleted.
 
-## `/event` — 23
+## `/event` — 22
 
-- `/event` — browse-index-successor-needs-review; candidate `/calendar`
 - `/event/adam-ondra-on-sight-red-point` — target-not-indexable-or-unverified; candidate `/trips/adam-ondra-on-sight-red-point`
 - `/event/adam-ondra-patxi-usobiaga-work-shop` — missing-target
-- `/event/alpine-rock-climbing-in-chamonix` — missing-target
+- `/event/alpine-rock-climbing-in-chamonix` — missing-target; candidate `/trips/big-wall-climbing-in-chamonix`
 - `/event/beginners-climbing` — target-not-indexable-or-unverified; candidate `/trips/beginner-climbing-course`
 - `/event/biomechanica-funcional` — missing-target
 - `/event/christmas-climbing-holiday` — missing-target
@@ -19,18 +18,17 @@ These are old sitemap URLs without a same-listed-path or identity-backed, sitema
 - `/event/deep-water-solo-sailing-mallorca` — missing-target
 - `/event/easter-climbing-in-sella` — missing-target
 - `/event/hazel-findlay-mental-coaching` — target-not-indexable-or-unverified; candidate `/trips/hazel-findlay-mental-coaching`
-- `/event/klemen-becan-performance-coaching-privat` — missing-target
+- `/event/klemen-becan-performance-coaching-privat` — approved-browse-fallback-not-equivalent; candidate `/trips`
 - `/event/patxi-usobiaga-training` — target-not-indexable-or-unverified; candidate `/trips/patxi-usobiaga-training`
-- `/event/rockbusters-climbing-express` — missing-target
-- `/event/rockbusters-private-guiding` — missing-target
-- `/event/rockbusters-summer-2018` — missing-target
+- `/event/rockbusters-climbing-express` — approved-browse-fallback-not-equivalent; candidate `/trips`
+- `/event/rockbusters-private-guiding` — approved-browse-fallback-not-equivalent; candidate `/trips`
+- `/event/rockbusters-summer-2018` — approved-browse-fallback-not-equivalent; candidate `/trips`
 - `/event/sandstone-climbing` — target-not-indexable-or-unverified; candidate `/trips/sandstone-climbing`
-- `/event/singing-rock-mobile-test-center` — missing-target
+- `/event/singing-rock-mobile-test-center` — approved-browse-fallback-not-equivalent; candidate `/trips`
 - `/event/trad-and-multipitch-climbing` — target-not-indexable-or-unverified; candidate `/trips/multipitch-climbing-course`
 
-## `/event-date` — 38
+## `/event-date` — 37
 
-- `/event-date` — browse-index-successor-needs-review; candidate `/calendar`
 - `/event-date/adam-ondra-patxi-usobiaga-work-shop--2018-03-10-132` — category-fallback-ready; candidate `/trips?category=performance-technique-camps`
 - `/event-date/adam-ondra-patxi-usobiaga-work-shop--2018-03-17-140` — category-fallback-ready; candidate `/trips?category=performance-technique-camps`
 - `/event-date/alpine-rock-climbing-in-chamonix--2018-07-28-201` — category-fallback-empty-category; candidate `/trips?category=trad-multipitch`
@@ -71,16 +69,16 @@ These are old sitemap URLs without a same-listed-path or identity-backed, sitema
 
 ## `/partner` — 1
 
-- `/partner` — no-reviewed-content-equivalent-target
+- `/partner` — approved-browse-fallback-not-equivalent; candidate `/trips`
 
 ## `/private-guiding` — 1
 
-- `/private-guiding` — no-reviewed-content-equivalent-target
+- `/private-guiding` — approved-browse-fallback-not-equivalent; candidate `/trips`
 
 ## `/terms-and-conditions` — 1
 
-- `/terms-and-conditions` — no-reviewed-content-equivalent-target
+- `/terms-and-conditions` — same-path-cms-page-not-yet-in-named-sitemap; candidate `/terms-and-conditions`
 
 ## `/test-center` — 1
 
-- `/test-center` — no-reviewed-content-equivalent-target
+- `/test-center` — approved-browse-fallback-not-equivalent; candidate `/trips`
