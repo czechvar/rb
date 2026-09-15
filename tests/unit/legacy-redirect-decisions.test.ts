@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import config from '../../next.config'
 import decisions from '@/lib/legacy-redirect-decisions.json'
+import { isIndexableContentOnlyParentTrip, isIndexableParentTrip } from '@/lib/parent-trip-layout'
 
 type OverviewRow = { target: string; action: string }
 
@@ -90,6 +91,35 @@ describe('legacy redirect decisions', () => {
       const source = `/event/${slug}`
       expect(rules.find(rule => rule.source === source)).toMatchObject({ destination, permanent: false })
       expect(overview.get(source)).toEqual({ target: destination, action: 'approved-event-page-redirect' })
+    }
+  })
+
+  it('backs each approved Event-page target with an indexable parent in the canonical seed', () => {
+    type SeedRow = {
+      id?: number; slug?: string; state?: string; content?: unknown;
+      active?: boolean; indexable?: boolean; event?: number; dateTo?: string;
+    }
+    const seed = JSON.parse(readFileSync('scripts/data-import/seed/canonical-payload-seed.json', 'utf8')) as {
+      collections: Array<{ slug: string; rows: SeedRow[] }>
+    }
+    const rows = (collection: string) => seed.collections.find(group => group.slug === collection)?.rows ?? []
+    const events = new Map(rows('events').map(event => [event.slug, event]))
+    const variants = rows('trip-variants')
+    const dates = rows('event-dates')
+    for (const destination of Object.values(decisions.approvedLegacyEventPageRedirects)) {
+      const slug = destination.replace('/trips/', '')
+      const event = events.get(slug)
+      expect(event?.state).toBe('published')
+      const ownVariants = variants.filter(variant => variant.event === event?.id && variant.active === true)
+      const currentDates = dates.filter(date => date.event === event?.id && date.active === true &&
+        (date.dateTo ?? '') >= '2026-09-15')
+      if (ownVariants.length) {
+        expect(isIndexableParentTrip(event?.content, ownVariants.map(variant => ({
+          active: variant.active === true, indexable: variant.indexable === true,
+        })), slug)).toBe(true)
+      } else {
+        expect(isIndexableContentOnlyParentTrip(event?.content, 0, currentDates.length, slug)).toBe(true)
+      }
     }
   })
 

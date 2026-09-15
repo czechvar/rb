@@ -1,6 +1,14 @@
 {
   "contentOnlyParentSlugs": [
-    "big-wall-climbing-in-chamonix"
+    "adam-ondra-on-sight-red-point",
+    "big-wall-climbing-in-chamonix",
+    "climbing-coaching-footwork-balance",
+    "climbing-coaching-on-sight-red-point",
+    "climbing-coaching-overhangs",
+    "hazel-findlay-mental-coaching",
+    "multipitch-climbing-course",
+    "patxi-usobiaga-training",
+    "sandstone-climbing"
   ],
   "missingTeamMemberSlugs": [
     "benjamin-brochard",
@@ -85,5 +93,10 @@
   ],
   "samePathCmsPageSlugs": [
     "terms-and-conditions"
+  ],
+  "approvedVariantHubParentSlugs": [
+    "beginner-climbing-course",
+    "bouldering-albarracin",
+    "climbing-technique-mental-coaching"
   ]
 }

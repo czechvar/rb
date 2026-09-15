@@ -10,7 +10,7 @@ ADR-0015 sends published Events without active Trip Variants to a departure sele
 
 ## Decision
 
-A published Event with no active Trip Variants, no current or in-progress Event Dates, at least 100 words of Event rich text, and an explicit Event-level approval renders `/trips/{eventSlug}` as a content-only parent. It is self-canonical, indexable, and included in the sitemap. Render the Event's date-safe blocks, identify that no upcoming dates are listed, and provide an enquiry path. Structured data describes the Event without a dated offer. Draft Events stay unavailable and outside the sitemap. For this migration, only `big-wall-climbing-in-chamonix` is approved. Additional approvals require an editorial check of current offer claims and an explicit addition to the [shared eligibility list](../../src/lib/legacy-redirect-decisions.json).
+A published Event with no active Trip Variants, no current or in-progress Event Dates, at least 100 words of Event rich text, and an explicit Event-level approval renders `/trips/{eventSlug}` as a content-only parent. It is self-canonical, indexable, and included in the sitemap. Render the Event's date-safe blocks, identify that no upcoming dates are listed, and provide an enquiry path. Structured data describes the Event without a dated offer. Draft Events stay unavailable and outside the sitemap. The migration approvals live in the [shared eligibility list](../../src/lib/legacy-redirect-decisions.json): Big Wall Chamonix plus eight later user-approved legacy Event-page targets. The seed audit found these eight published, substantive, and without current Dates or active Variants. Further approvals require an editorial check of current offer claims and an explicit addition to the list.
 
 Events with current Dates but no active Variants retain ADR-0015's selection and noindex fallback. Events with active Variants retain ADR-0017's hub eligibility rule. The numeric `?date={id}` compatibility redirect retains its exact Date behavior. Legacy redirects are configured separately after target review.
 
@@ -25,6 +25,7 @@ This supersedes ADR-0015's noindex fallback and ADR-0017's final no-Variant fall
 
 - Editors can publish and approve reviewed legacy Event content without creating a placeholder Variant or Date.
 - Route metadata and sitemap eligibility must use the same content and current-Date rules.
+- Before a production cutover, confirm that named-coach and current-offer claims in the approved legacy copy still describe the service being offered; approval does not create a scheduled Date or booking offer.
 - The imported draft Events still require review and publication before their old URLs can redirect to indexable parents.
 
 ## References

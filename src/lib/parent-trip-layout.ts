@@ -44,11 +44,8 @@ export function isIndexableParentTrip(
   return reviewed.length >= 2 || (active.length > 0 && !!eventSlug && approvedParentTripSlugs.has(eventSlug))
 }
 
-/** Launch SEO approvals for Event-level hubs; Variant pages keep their own settings. */
-const approvedParentTripSlugs = new Set([
-  'bouldering-albarracin',
-  'climbing-technique-mental-coaching',
-])
+/** Reviewed Event-level hub approvals; Variant pages keep their own settings. */
+const approvedParentTripSlugs = new Set(legacyRedirectDecisions.approvedVariantHubParentSlugs)
 
 /** Use registered trip blocks while keeping date-specific facts off the Event hub. */
 export function parentTripLayout(trip: TripDetailView) {
