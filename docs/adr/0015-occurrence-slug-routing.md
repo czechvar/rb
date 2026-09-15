@@ -7,6 +7,9 @@
 Superseded for canonical public identity by
 [ADR-0016](0016-trip-variants-and-dated-query-leaves.md). Exact occurrence
 selection, alias preservation, and booking-safety decisions remain applicable.
+Parent departure selection is superseded for Events with active Variants by
+[ADR-0017](0017-event-parent-trip-hubs.md); the fallback still applies to
+published Events without active Variants.
 
 ## Context
 

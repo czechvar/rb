@@ -4,6 +4,7 @@ import type { Where } from 'payload'
 import { siteUrl } from '@/lib/url'
 import { tripVariantPath } from '@/lib/occurrence-routing'
 import { eventDateLifecycle } from '@/lib/event-date-visibility'
+import { isIndexableParentTrip } from '@/lib/parent-trip-layout'
 
 type SitemapDoc = {
   id?: number | string
@@ -18,6 +19,7 @@ type SitemapDoc = {
   active?: boolean | null
   indexable?: boolean | null
   state?: string | null
+  content?: unknown
 }
 
 type SitemapCollection =
@@ -135,6 +137,23 @@ function entriesForVariants(docs: SitemapDoc[]): MetadataRoute.Sitemap {
   })
 }
 
+function entriesForParentTrips(variants: SitemapDoc[]): MetadataRoute.Sitemap {
+  const byEvent = new Map<string, SitemapDoc[]>()
+  for (const variant of variants) {
+    const event = typeof variant.event === 'object' && variant.event ? variant.event : null
+    if (!event?.slug || event.state !== 'published' || variant.active !== true || variant.indexable !== true) continue
+    byEvent.set(event.slug, [...(byEvent.get(event.slug) ?? []), variant])
+  }
+  return [...byEvent].flatMap(([slug, ownVariants]) => {
+    const event = ownVariants[0].event as SitemapDoc
+    if (!isIndexableParentTrip(event.content, ownVariants.map(variant => ({
+      active: variant.active === true, indexable: variant.indexable === true,
+    })))) return []
+    return [sitemapEntry(`/trips/${slug}`, latestTimestamp(event.updatedAt,
+      ...ownVariants.map(variant => variant.updatedAt)))]
+  })
+}
+
 export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRoute.Sitemap> {
   const [occurrences, variants, locations, guides, programs, posts, pages] = await Promise.all([
     findAll(payload, {
@@ -185,6 +204,7 @@ export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRou
     ...STATIC_PATHS.map((path) => sitemapEntry(path)),
     ...entriesForOccurrences(occurrences),
     ...entriesForVariants(variants),
+    ...entriesForParentTrips(variants),
     ...entriesForDocs(locations, (slug) => `/destinations/${slug}`),
     ...entriesForDocs(guides, (slug) => `/team/${slug}`),
     ...entriesForDocs(programs, (slug) => `/programs/${slug}`),

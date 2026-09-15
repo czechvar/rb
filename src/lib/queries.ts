@@ -280,6 +280,25 @@ export function getPublishedEventBySlug(slug: string) {
   })
 }
 
+/** Active presentations for a published Event's stable parent Trip page. */
+export function getActiveTripVariantsForEvent(eventId: number) {
+  return cachedQuery(
+    ['active-trip-variants-for-event', String(eventId)],
+    [TAGS.events, TAGS.tripVariants, TAGS.locations, TAGS.media],
+    async (): Promise<TripVariant[]> => {
+      const payload = await getPayloadClient()
+      const { docs } = await payload.find({
+        collection: 'trip-variants',
+        where: { and: [{ event: { equals: eventId } }, { active: { equals: true } }] },
+        sort: 'title',
+        limit: 100,
+        depth: 2,
+      })
+      return docs
+    },
+  )
+}
+
 export function getActiveEventDatesForEvent(eventId: number) {
   const dateFloor = catalogueDateFloor()
   return cachedQuery(['event-dates-for-event', String(eventId), dateFloor], [TAGS.eventDates, TAGS.tripVariants, TAGS.guides, TAGS.locations], async (): Promise<EventDate[]> => {
@@ -297,16 +316,25 @@ export function getActiveEventDatesForEvent(eventId: number) {
 
 // The trip page shares one occurrence read across its blocks. Capacity is live;
 // do not put this result in the long-lived catalogue cache.
-export async function getTripDetailEventDates(eventId: number): Promise<EventDate[]> {
+export async function getTripDetailEventDates(
+  eventId: number,
+  options: { includeInProgress?: boolean } = {},
+): Promise<EventDate[]> {
   const payload = await getPayloadClient()
   const { docs } = await payload.find({
     collection: 'event-dates',
-    where: { and: [{ event: { equals: eventId } }, { active: { equals: true } }, upcomingEventDateWhere()] },
+    where: { and: [
+      { event: { equals: eventId } }, { active: { equals: true } },
+      options.includeInProgress
+        ? { dateTo: { greater_than_equal: catalogueDateFloor() } }
+        : upcomingEventDateWhere(),
+    ] },
     sort: 'dateFrom',
-    limit: 100,
+    limit: options.includeInProgress ? 1000 : 100,
     depth: 2,
     select: {
-      event: true, dateFrom: true, dateTo: true, price: true, currency: true,
+      event: true, slug: true, tripVariant: true, publicDateKey: true,
+      dateFrom: true, dateTo: true, price: true, currency: true,
       capacity: true, active: true, guides: true, locations: true,
       vat: true, updatedAt: true, createdAt: true,
       airportFrom: true, airportTo: true, logisticsOverrides: true, editorial: true,

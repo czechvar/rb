@@ -58,6 +58,21 @@ afterEach(() => {
 })
 
 describe('buildSitemap', () => {
+  it('adds a stable Event hub only when it has its own copy and two reviewed Variants', async () => {
+    process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
+    const hubEvent = { ...publishedEvent, content: { root: { children: [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Shared trip overview.' }] },
+    ] } } }
+    const first = { ...indexableVariant, event: hubEvent }
+    const second = { ...indexableVariant, slug: 'rodellar', event: hubEvent }
+    const find = vi.fn(async ({ collection }: { collection: keyof typeof docsByCollection }) => ({
+      docs: collection === 'trip-variants' ? [first, second] : [...docsByCollection[collection]],
+      hasNextPage: false,
+    }))
+    const urls = (await buildSitemap({ find })).map(entry => entry.url)
+    expect(urls).toContain('https://rockbusters.net/trips/kalymnos-camp')
+  })
+
   it('publishes indexable evergreen variants and dated leaves without legacy archive URLs', async () => {
     process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
     const find = vi.fn(async ({ collection }: { collection: keyof typeof docsByCollection }) => ({

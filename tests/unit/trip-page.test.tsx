@@ -2,14 +2,14 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Event, TripVariant } from '@/payload-types'
-import TripPage, { metadata as parentMetadata } from '@/app/(frontend)/trips/[slug]/page'
+import TripPage, { generateMetadata as generateParentMetadata } from '@/app/(frontend)/trips/[slug]/page'
 import OccurrencePage, { generateMetadata as generateOccurrenceMetadata } from '@/app/(frontend)/trips/[slug]/[occurrenceSlug]/page'
 import TripDatesPage from '@/app/(frontend)/trips/[slug]/dates/page'
 import TripFaqPage from '@/app/(frontend)/trips/[slug]/faq/page'
 import TripLogisticsPage from '@/app/(frontend)/trips/[slug]/logistics/page'
 
 const mocks = vi.hoisted(() => ({
-  event: vi.fn(), dates: vi.fn(), occurrence: vi.fn(), variant: vi.fn(), variantDates: vi.fn(), blocks: vi.fn(),
+  event: vi.fn(), dates: vi.fn(), scheduleDates: vi.fn(), parentVariants: vi.fn(), occurrence: vi.fn(), variant: vi.fn(), variantDates: vi.fn(), blocks: vi.fn(),
   notFound: vi.fn(() => { throw new Error('NOT_FOUND') }),
   redirect: vi.fn((path: string) => { throw new Error(`TEMP_REDIRECT:${path}`) }),
   permanentRedirect: vi.fn((path: string) => { throw new Error(`REDIRECT:${path}`) }),
@@ -17,14 +17,21 @@ const mocks = vi.hoisted(() => ({
 vi.mock('@/lib/queries', () => ({
   getPublishedEventBySlug: mocks.event,
   getPublicEventDatesForEvent: mocks.dates,
+  getTripDetailEventDates: mocks.scheduleDates,
+  getActiveTripVariantsForEvent: mocks.parentVariants,
   getPublicOccurrenceBySlugs: mocks.occurrence,
   getPublicTripVariantBySlugs: mocks.variant,
   getPublicEventDatesForVariant: mocks.variantDates,
 }))
 vi.mock('next/navigation', () => ({ notFound: mocks.notFound, redirect: mocks.redirect, permanentRedirect: mocks.permanentRedirect }))
 vi.mock('@/components/marketing/MarketingShell', () => ({ MarketingShell: ({ children }: { children: React.ReactNode }) => <>{children}</> }))
-vi.mock('@/lib/jsonld', () => ({ occurrenceGraphJsonLd: () => ({}), variantGraphJsonLd: () => ({}) }))
+vi.mock('@/lib/jsonld', () => ({ occurrenceGraphJsonLd: () => ({}), variantGraphJsonLd: () => ({}), collectionPageGraphJsonLd: () => ({}) }))
+vi.mock('@/lib/url', () => ({ siteUrl: (path: string) => `https://example.test${path}` }))
 vi.mock('@/components/JsonLd', () => ({ JsonLd: () => null }))
+vi.mock('@/components/trip/ParentTripSections', () => ({
+  ParentTripSections: ({ variants, dates }: { variants: TripVariant[]; dates: { id: number }[] }) =>
+    <section data-parent-variants={variants.length} data-parent-dates={dates.length} />,
+}))
 vi.mock('@/components/blocks/RenderBlocks', () => ({
   RenderBlocks: (props: unknown) => { mocks.blocks(props); return <div data-rendered-blocks /> },
 }))
@@ -41,6 +48,8 @@ beforeEach(() => {
   vi.clearAllMocks()
   mocks.event.mockResolvedValue(event)
   mocks.dates.mockResolvedValue([])
+  mocks.scheduleDates.mockResolvedValue([])
+  mocks.parentVariants.mockResolvedValue([])
   mocks.variant.mockResolvedValue(null)
   mocks.variantDates.mockResolvedValue([])
 })
@@ -115,7 +124,7 @@ describe('trip parent route selection', () => {
     expect(html).toContain(`/trips/${event.slug}/past-date`)
     expect(html).toContain(`/trips/${event.slug}/sold-out`)
     expect(html).toContain('/contact')
-    expect(parentMetadata.robots).toEqual({ index: false, follow: true })
+    expect((await generateParentMetadata(props())).robots).toEqual({ index: false, follow: true })
     expect(mocks.redirect).not.toHaveBeenCalled()
   })
 
@@ -127,6 +136,62 @@ describe('trip parent route selection', () => {
     const html = renderToStaticMarkup(await TripPage(props()))
     expect(html).toContain('No bookable dates are available')
     expect(mocks.redirect).not.toHaveBeenCalled()
+  })
+})
+
+describe('parent Trip hub', () => {
+  const richContent = { root: { children: [{ type: 'paragraph', children: [{ type: 'text', text: 'Shared Event-level trip overview.' }] }] } }
+  const reviewed = (id: number, slug: string) => ({
+    id, event: event.id, title: slug, slug, active: true, indexable: true, locations: [],
+    createdAt: '', updatedAt: '',
+  }) as TripVariant
+
+  it('renders Event blocks and Variant/date choices without selecting a departure', async () => {
+    mocks.event.mockResolvedValue({ ...event, content: richContent })
+    mocks.parentVariants.mockResolvedValue([reviewed(1, 'ceuse'), reviewed(2, 'rodellar')])
+    mocks.scheduleDates.mockResolvedValue([{ id: 77, event: event.id, active: true, slug: 'ceuse-2999-10-12' }])
+    const html = renderToStaticMarkup(await TripPage(props()))
+    expect(html).toContain('data-parent-variants="2"')
+    expect(html).toContain('data-parent-dates="1"')
+    expect(mocks.redirect).not.toHaveBeenCalled()
+    expect(mocks.blocks).toHaveBeenCalledTimes(2)
+    await expect(generateParentMetadata(props())).resolves.toMatchObject({
+      alternates: { canonical: `/trips/${event.slug}` }, robots: { index: true, follow: true },
+    })
+  })
+
+  it('renders a single thin Variant hub but keeps the parent noindex', async () => {
+    mocks.event.mockResolvedValue({ ...event, content: richContent })
+    mocks.parentVariants.mockResolvedValue([{ ...reviewed(1, 'albarracin'), indexable: false }])
+    const html = renderToStaticMarkup(await TripPage(props()))
+    expect(html).toContain('data-parent-variants="1"')
+    expect((await generateParentMetadata(props())).robots).toEqual({ index: false, follow: true })
+  })
+
+  it('keeps evergreen authored blocks but leaves the parent date schedule to its renderer', async () => {
+    mocks.event.mockResolvedValue({
+      ...event, content: richContent,
+      layout: [
+        { blockType: 'tripHero' }, { blockType: 'tripDates' },
+        { blockType: 'calendar' }, { blockType: 'tripBookingCTA' }, { blockType: 'tripContent' },
+      ],
+    })
+    mocks.parentVariants.mockResolvedValue([reviewed(1, 'ceuse')])
+    renderToStaticMarkup(await TripPage(props()))
+    expect(mocks.blocks).toHaveBeenCalledTimes(1)
+    const blocks = (mocks.blocks.mock.calls[0][0] as { blocks: { blockType: string }[] }).blocks
+    expect(blocks.map(block => block.blockType)).toEqual(['tripHero', 'tripContent'])
+  })
+
+  it('uses the default Event composition when all authored blocks are date-specific', async () => {
+    mocks.event.mockResolvedValue({
+      ...event, content: richContent,
+      layout: [{ blockType: 'tripDates' }, { blockType: 'tripBookingCTA' }],
+    })
+    mocks.parentVariants.mockResolvedValue([reviewed(1, 'ceuse')])
+    renderToStaticMarkup(await TripPage(props()))
+    expect(mocks.blocks).toHaveBeenCalledTimes(2)
+    expect(mocks.blocks.mock.calls[0][0].blocks.some((block: { blockType: string }) => block.blockType === 'tripHero')).toBe(true)
   })
 })
 

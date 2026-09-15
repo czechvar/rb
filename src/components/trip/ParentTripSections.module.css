@@ -1,0 +1,122 @@
+.variants,
+.dates {
+  padding: var(--theme-section-pad);
+  color: var(--theme-color-paper);
+}
+
+.variants { background: var(--theme-color-canvas); }
+.dates { background: var(--theme-color-surface-1); scroll-margin-top: 7rem; }
+
+.inner {
+  width: min(var(--theme-content-max), calc(100% - 2 * var(--theme-content-gutter)));
+  margin-inline: auto;
+}
+
+.header { max-width: var(--theme-content-text-max); margin-bottom: 2.5rem; }
+.header p[data-eyebrow] {
+  margin: 0 0 0.8rem;
+  color: var(--theme-color-primary);
+  font-size: var(--theme-text-label);
+  font-weight: var(--theme-weight-card);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.header h2 { margin: 0; }
+.header > p:last-child { color: var(--theme-color-paper-80); line-height: var(--theme-line-body); }
+
+.variantGrid,
+.dateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.variantCard {
+  position: relative;
+  display: flex;
+  min-height: 20rem;
+  overflow: hidden;
+  color: var(--theme-color-paper);
+  background: var(--theme-color-surface-1);
+  border: 1px solid var(--theme-color-border);
+  text-decoration: none;
+  isolation: isolate;
+}
+.variantImage { object-fit: cover; transition: transform 350ms ease; }
+.variantCard:hover .variantImage { transform: scale(1.04); }
+.variantShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 5%, var(--theme-overlay-dark-strong) 100%);
+}
+.variantContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  width: 100%;
+  padding: 1.5rem;
+  gap: 0.7rem;
+}
+.variantMeta {
+  color: var(--theme-color-paper-80);
+  font-size: var(--theme-text-small);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.variantContent strong { font-size: var(--theme-text-card-lg); line-height: 1.12; }
+.variantFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--theme-color-paper-30);
+  color: var(--theme-color-paper-80);
+  font-size: var(--theme-text-small);
+}
+.variantFooter span:last-child { color: var(--theme-color-primary); font-size: 1.4em; }
+
+.month { margin-top: 2.5rem; }
+.month h3 {
+  margin: 0 0 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--theme-color-border);
+}
+.dateCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 14rem;
+  padding: 1.5rem;
+  border: 1px solid var(--theme-color-border);
+  background: var(--theme-color-ink);
+}
+.dateRange {
+  margin: 0 0 0.8rem;
+  color: var(--theme-color-primary);
+  font-weight: 700;
+}
+.dateCard h4 { margin: 0; line-height: 1.2; }
+.datePrice { margin: 1rem 0; }
+.datePrice span { color: var(--theme-color-paper-60); font-size: var(--theme-text-small); }
+.dateActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--theme-color-border);
+  font-size: var(--theme-text-small);
+}
+.dateActions a { color: var(--theme-color-paper); text-underline-offset: 0.3em; }
+.dateActions a:last-child { color: var(--theme-color-primary); }
+.empty { color: var(--theme-color-paper-80); }
+.variantCard:focus-visible,
+.dateActions a:focus-visible { outline: 2px solid var(--theme-color-primary); outline-offset: 4px; }
+
+@media (max-width: 700px) {
+  .variantCard { min-height: 17rem; }
+  .dateCard { min-height: 0; }
+}
