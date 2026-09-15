@@ -2076,7 +2076,7 @@
   content: '+';
   flex: none;
   color: var(--theme-color-primary);
-  font-size: var(--theme-text-subheading);
+  font-size: var(--theme-text-card);
   font-weight: 300;
   line-height: 1;
 }
@@ -2085,7 +2085,6 @@
 .faqTripItem summary:focus-visible { outline: 2px solid var(--theme-color-focus); outline-offset: 4px; }
 
 .faqTripAnswer {
-  max-width: var(--theme-content-text-max);
   padding: 0 0 var(--theme-space-5);
   color: var(--theme-color-paper-80);
   font-size: var(--theme-text-body);

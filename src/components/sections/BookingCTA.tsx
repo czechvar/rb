@@ -1,4 +1,3 @@
-import { checkoutEnabled } from '@/lib/checkout/feature'
 import { tripSummary, tripCommercialText } from '@/lib/trip-summary'
 import type { ReactNode } from 'react'
 import Link from 'next/link'
@@ -6,6 +5,22 @@ import Image from 'next/image'
 import type { TripDetailView } from '@/lib/trip-detail'
 import type { Event } from '@/payload-types'
 import styles from './BookingCTA.module.css'
+
+function bookingStats(trip: TripDetailView | undefined) {
+  const date = trip?.selectedDate
+  if (!date) return null
+  const days = Math.round(
+    (Date.parse(date.dateTo.slice(0, 10)) - Date.parse(date.dateFrom.slice(0, 10))) / 86_400_000,
+  )
+  const weeks = days > 0 && days % 7 === 0 ? days / 7 : null
+  return {
+    duration: weeks ? `${weeks} ${weeks === 1 ? 'week' : 'weeks'}` : `${days} ${days === 1 ? 'day' : 'days'}`,
+    price: new Intl.NumberFormat('en-GB', {
+      style: 'currency', currency: date.currency, minimumFractionDigits: 0, maximumFractionDigits: 2,
+    }).format(date.price),
+    capacity: date.capacity > 0 ? date.capacity : null,
+  }
+}
 
 export function BookingCTA({
   event,
@@ -29,10 +44,11 @@ export function BookingCTA({
     : `/trips/${event.slug}`
   const label =
     trip && !trip.bookingHref
-      ? 'Ask a Question →'
+      ? 'Contact us →'
       : (trip ? tripCommercialText(trip, trip.editorial?.booking?.primaryLabel) : undefined) ||
         'Book this trip →'
   const summary = trip ? tripSummary(trip) : null
+  const stats = bookingStats(trip)
   return (
     <section className={`${styles.cta} ${variant === 'image' ? styles.withImage : ''}`}>
       {variant === 'image' && mainPic?.url && (
@@ -46,30 +62,26 @@ export function BookingCTA({
         )}
         {heading && <h2 className={styles.heading}>{heading}</h2>}
         {body && <p className={styles.body}>{body}</p>}
-        {trip?.dateLabel && (
-          <p className={styles.details}>
-            {[trip.dateLabel, trip.priceLabel, trip.availabilityLabel].filter(Boolean).join(' · ')}
-          </p>
-        )}
         <div className={styles.actions}>
           <Link href={href} className={`btn-primary ${styles.button}`}>
             {label}
           </Link>
-          {checkoutEnabled() && trip?.selectedDate && trip.bookingHref && <Link href={`/cart?add=${trip.selectedDate.id}`} className={`btn-ghost ${styles.button}`}>Add to cart</Link>}
-          {variant === 'image' && trip?.bookingHref && (
-            <Link href="mailto:info@rockbusters.net" className={`btn-ghost ${styles.button}`}>
-              {trip?.editorial?.booking?.secondaryLabel || 'Ask a Question →'}
-            </Link>
+          {stats && (
+            <dl className={styles.stat}>
+              <dt>{stats.duration}</dt>
+              <dd>{stats.price}</dd>
+              {summary?.weeklyPrice && <dd className={styles.statNote}>1 week {summary.weeklyPrice}</dd>}
+            </dl>
+          )}
+          {stats?.capacity && (
+            <dl className={styles.stat}>
+              <dt>Group size</dt>
+              <dd>Max {stats.capacity}</dd>
+            </dl>
           )}
         </div>
-        {trip?.editorial?.booking && summary && (
-          <p className={styles.details}>
-            {summary.primaryPrice}
-            {summary.weeklyPrice && ` · 1 week ${summary.weeklyPrice}`}
-          </p>
-        )}
         {trip?.editorial?.booking?.support && (
-          <p className={styles.details}>{trip.editorial.booking.support}</p>
+          <p className={styles.support}>{trip.editorial.booking.support}</p>
         )}
       </div>
     </section>

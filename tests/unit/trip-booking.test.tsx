@@ -212,7 +212,7 @@ describe('trip booking presentation', () => {
     for (const variant of ['default', 'image'] as const) {
       const html = renderToStaticMarkup(<BookingCTA event={event} trip={trip} variant={variant} />)
       expect(html).toContain('href="/book/2"')
-      expect(html).toContain('€300.00')
+      expect(html).toContain('€300')
     }
   })
 
@@ -227,11 +227,18 @@ describe('trip booking presentation', () => {
   })
 
 
-  it('offers a secondary inquiry only beside a bookable image CTA and never duplicates an unavailable action', () => {
+  it('shows one action with price and group-size stats, retaining contact when unavailable', () => {
+    checkoutState.enabled = true
     const bookable = resolveTripDetail(event, [date(1)])
     const image = renderToStaticMarkup(<BookingCTA event={event} trip={bookable} variant="image" />)
-    expect(image.match(/href="mailto:info@rockbusters.net"/g)).toHaveLength(1)
+    expect(image).not.toContain('href="mailto:info@rockbusters.net"')
     expect(image.match(/href="\/book\/1"/g)).toHaveLength(1)
+    expect(image).toContain('>1 week</dt>')
+    expect(image).toContain('>€1,150</dd>')
+    expect(image).toContain('>Max 9</dd>')
+    expect(image).not.toContain('Add to cart')
+    expect(image).not.toContain('href="/cart?add=')
+    expect(image).not.toContain('Ask a Question')
     const defaultHtml = renderToStaticMarkup(<BookingCTA event={event} trip={bookable} />)
     expect(defaultHtml).not.toContain('mailto:')
     for (const dates of [[], [date(1, { remainingSeats: 0 })]]) {
