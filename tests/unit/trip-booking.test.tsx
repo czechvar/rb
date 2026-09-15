@@ -1,12 +1,18 @@
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { describe, expect, it, vi } from 'vitest'
-import type { Event, EventDate, Guide, Location } from '@/payload-types'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import type { Event, EventDate, Guide, Location, TripVariant } from '@/payload-types'
 import { tripSummary } from '@/lib/trip-summary'
 import { resolveTripDetail, resolveTripDetailOccurrence } from '@/lib/trip-detail'
 import { DetailHero } from '@/components/sections/DetailHero'
 import { EventDatesList } from '@/components/sections/EventDatesList'
 import { BookingCTA } from '@/components/sections/BookingCTA'
+import { TripDatesBlock } from '@/components/blocks/TripDatesBlock'
+
+const checkoutState = vi.hoisted(() => ({ enabled: false }))
+vi.mock('@/lib/checkout/feature', () => ({ checkoutEnabled: () => checkoutState.enabled }))
+vi.mock('@/lib/queries', () => ({ getActiveEventDatesForEvent: () => { throw new Error('Unexpected database query') } }))
+afterEach(() => { checkoutState.enabled = false })
 
 // Keep server rendering in memory: never import the capacity module or start Payload.
 vi.mock('@/components/trip/DateRowBookButton', () => ({
@@ -85,21 +91,80 @@ describe('trip booking presentation', () => {
     const upcoming = date(2, { slug: 'future-date' })
     const html = renderRows([past, upcoming], past.id)
 
-    expect(html).toContain('/trips/in-memory-only/past-date#dates')
+    expect(html).toContain('href="/trips/in-memory-only/past-date"')
     expect(html).not.toContain('href="/book/1"')
     expect(html).toContain('Past trip')
     expect(html).toContain('href="/book/2"')
+    expect(html).toContain('More info')
   })
 
-  it('shows actual remaining seats instead of capacity and preserves the selected date URL', () => {
+  it('shows schedule price and exact info without extra duration or seat copy', () => {
     const html = renderRows([date(1), date(2, { remainingSeats: 1 })], 2)
-    expect(html).toContain('2 spots available')
-    expect(html).toContain('1 spot available')
-    expect(html).not.toContain('9 spots available')
-    expect(html).toContain('href="/trips/in-memory-only/venue-2#dates" aria-current="true"')
+    expect(html).toContain('€1,150')
+    expect(html).not.toContain('spots available')
+    expect(html).not.toContain('calendar days')
+    expect(html).not.toContain('per person')
+    expect(html).toContain('href="/trips/in-memory-only/venue-2"')
+    expect(html).toContain('aria-current="page"')
     expect(html).toContain('href="/book/2"')
-    expect(html).toContain('8 calendar days')
     expect(html.match(/data-selected="true"/g)).toHaveLength(1)
+  })
+
+  it('selects the exact date from the row while keeping booking as a separate action', () => {
+    const html = renderRows([date(1)], 1)
+    expect(html).toContain('data-selectable="true"')
+    expect(html).toContain('aria-label="Select trip date, 12–19 Oct 2999"')
+    expect(html).toContain('href="/trips/in-memory-only/venue-1"')
+    expect(html).toContain('href="/book/1"')
+    expect(renderToStaticMarkup(<EventDatesList items={[date(1)]} variant="rows" />))
+      .not.toContain('data-selectable')
+  })
+
+  it('links a mixed-location schedule to each date’s own Variant and labels the location', () => {
+    const mallorca = { id: 1, slug: 'mallorca', title: 'Mallorca' } as TripVariant
+    const tarn = { id: 2, slug: 'gorges-du-tarn', title: 'Gorges du Tarn' } as TripVariant
+    const first = date(1, { tripVariant: mallorca, publicDateKey: '2999-10-12-to-2999-10-19' })
+    const second = date(2, { tripVariant: tarn, publicDateKey: '2999-11-12-to-2999-11-19' })
+    const html = renderRows([first, second], first.id)
+    expect(html).toContain('/trips/in-memory-only/mallorca?date=2999-10-12-to-2999-10-19')
+    expect(html).toContain('/trips/in-memory-only/gorges-du-tarn?date=2999-11-12-to-2999-11-19')
+    expect(html).toContain('Gorges du Tarn')
+    expect(html).toContain('Mallorca')
+  })
+
+  it('derives week labels only from matching real weekly and two-week dates', () => {
+    const kalymnos = { id: 3, name: 'Kalymnos', country: 'Greece' } as Location
+    const variant = { id: 4, slug: 'kalymnos', title: 'Kalymnos', locations: [kalymnos] } as TripVariant
+    const first = date(1, { tripVariant: variant, dateFrom: '2999-09-26T00:00:00.000Z', dateTo: '2999-10-03T00:00:00.000Z' })
+    const both = date(2, { tripVariant: variant, dateFrom: first.dateFrom, dateTo: '2999-10-10T00:00:00.000Z' })
+    const second = date(3, { tripVariant: variant, dateFrom: first.dateTo, dateTo: both.dateTo })
+    const html = renderRows([first, both, second])
+    expect(html).toContain('Kalymnos, Greece — Week 1')
+    expect(html).toContain('Kalymnos, Greece — Both weeks')
+    expect(html).toContain('Kalymnos, Greece — Week 2')
+    expect(html).toContain('>2wk</span>')
+    expect(html).toContain('26 Sep – 3 Oct 2999')
+    expect(renderRows([first])).not.toContain('Week 1')
+  })
+
+  it('uses the existing cart route for the design’s add-date action when checkout is enabled', () => {
+    checkoutState.enabled = true
+    const html = renderRows([date(1)])
+    expect(html).toContain('href="/cart?add=1"')
+    expect(html).toContain('Add this date')
+    expect(html).not.toContain('href="/book/1"')
+  })
+
+  it('uses travel heading only for a multi-variant date list and keeps authored intro', async () => {
+    const kalymnos = { id: 4, title: 'Kalymnos' } as TripVariant
+    const sella = { id: 5, title: 'Sella' } as TripVariant
+    const trip = resolveTripDetail(event, [
+      date(1, { tripVariant: kalymnos, editorial: { sections: [{ key: 'dates', intro: 'Source-backed travel intro.' }] } }),
+      date(2, { tripVariant: sella }),
+    ], 1)
+    const html = renderToStaticMarkup(await TripDatesBlock({ variant: 'rows', heading: 'Dates & Pricing' }, { event, trip }))
+    expect(html).toContain('This Course Travels')
+    expect(html).toContain('Source-backed travel intro.')
   })
 
   it('disables sold-out, unavailable and zero-capacity rows without advertising invented availability', () => {

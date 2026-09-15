@@ -13,7 +13,13 @@ export async function TripDatesBlock(
 ) {
   if (!isEvent(event)) return null
 
-  const copy = tripCopy(trip, 'dates', block, { heading: 'Dates & Pricing' })
+  const variants = new Set(trip?.dates.map(date =>
+    typeof date.tripVariant === 'object' && date.tripVariant !== null ? date.tripVariant.id : date.tripVariant,
+  ).filter(Boolean))
+  const defaultHeading = block.variant === 'rows' && variants.size > 1 ? 'This Course Travels' : 'Dates & Pricing'
+  // The CMS field starts at "Dates & Pricing"; treat that unedited value as a fallback.
+  const copyBlock = block.heading === 'Dates & Pricing' ? { ...block, heading: undefined } : block
+  const copy = tripCopy(trip, 'dates', copyBlock, { heading: defaultHeading })
   if (copy.hide) return null
   if (trip?.editorial?.datesMode === 'notice')
     return (
