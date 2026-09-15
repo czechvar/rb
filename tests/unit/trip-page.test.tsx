@@ -25,7 +25,7 @@ vi.mock('@/lib/queries', () => ({
 }))
 vi.mock('next/navigation', () => ({ notFound: mocks.notFound, redirect: mocks.redirect, permanentRedirect: mocks.permanentRedirect }))
 vi.mock('@/components/marketing/MarketingShell', () => ({ MarketingShell: ({ children }: { children: React.ReactNode }) => <>{children}</> }))
-vi.mock('@/lib/jsonld', () => ({ occurrenceGraphJsonLd: () => ({}), variantGraphJsonLd: () => ({}), collectionPageGraphJsonLd: () => ({}) }))
+vi.mock('@/lib/jsonld', () => ({ occurrenceGraphJsonLd: () => ({}), variantGraphJsonLd: () => ({}), collectionPageGraphJsonLd: () => ({}), eventDetailGraphJsonLd: () => ({}) }))
 vi.mock('@/lib/url', () => ({ siteUrl: (path: string) => `https://example.test${path}` }))
 vi.mock('@/components/JsonLd', () => ({ JsonLd: () => null }))
 vi.mock('@/components/trip/ParentTripSections', () => ({
@@ -201,6 +201,37 @@ describe('parent Trip hub', () => {
     renderToStaticMarkup(await TripPage(props()))
     expect(mocks.blocks).toHaveBeenCalledTimes(2)
     expect(mocks.blocks.mock.calls[0][0].blocks.some((block: { blockType: string }) => block.blockType === 'tripHero')).toBe(true)
+  })
+})
+
+describe('content-only Event parent', () => {
+  const richContent = { root: { children: [{ type: 'paragraph', children: [
+    { type: 'text', text: Array(110).fill('Evergreen').join(' ') },
+  ] }] } }
+
+  it('renders Event content without a date selector and marks the parent indexable', async () => {
+    mocks.event.mockResolvedValue({ ...event, slug: 'big-wall-climbing-in-chamonix', content: richContent })
+    const html = renderToStaticMarkup(await TripPage(props()))
+    expect(html).toContain('data-rendered-blocks')
+    expect(html).toContain('No upcoming dates are listed right now')
+    expect(html).not.toContain('data-parent-variants')
+    expect(mocks.redirect).not.toHaveBeenCalled()
+    expect((await generateParentMetadata(props())).robots).toEqual({ index: true, follow: true })
+  })
+
+  it('keeps a thin parent or a parent with a current Date on the noindex fallback', async () => {
+    mocks.event.mockResolvedValue({ ...event, slug: 'big-wall-climbing-in-chamonix', content: { root: { children: [{ type: 'text', text: 'Thin content' }] } } })
+    expect((await generateParentMetadata(props())).robots).toEqual({ index: false, follow: true })
+    mocks.event.mockResolvedValue({ ...event, slug: 'big-wall-climbing-in-chamonix', content: richContent })
+    mocks.scheduleDates.mockResolvedValue([{ id: 77 }])
+    expect((await generateParentMetadata(props())).robots).toEqual({ index: false, follow: true })
+  })
+
+  it('does not index a substantive but unapproved legacy Event', async () => {
+    mocks.event.mockResolvedValue({ ...event, slug: 'rockbusters-summer-2018', content: richContent })
+    const html = renderToStaticMarkup(await TripPage(props()))
+    expect(html).toContain('No bookable dates are available')
+    expect((await generateParentMetadata(props())).robots).toEqual({ index: false, follow: true })
   })
 })
 

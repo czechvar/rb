@@ -1,0 +1,102 @@
+{
+  "contentOnlyParentSlugs": [
+    "adam-ondra-on-sight-red-point",
+    "big-wall-climbing-in-chamonix",
+    "climbing-coaching-footwork-balance",
+    "climbing-coaching-on-sight-red-point",
+    "climbing-coaching-overhangs",
+    "hazel-findlay-mental-coaching",
+    "multipitch-climbing-course",
+    "patxi-usobiaga-training",
+    "sandstone-climbing"
+  ],
+  "missingTeamMemberSlugs": [
+    "benjamin-brochard",
+    "maribel-vara",
+    "michelle-o-loughlin",
+    "ritch-mayfield",
+    "will-sim"
+  ],
+  "temporaryEventCategoryRedirects": {
+    "climbing-weekends": "sport-climbing-holidays",
+    "christmas-climbing-holiday": "sport-climbing-holidays",
+    "easter-climbing-in-sella": "sport-climbing-holidays",
+    "biomechanica-funcional": "performance-technique-camps",
+    "adam-ondra-patxi-usobiaga-work-shop": "performance-technique-camps",
+    "daila-ojeda-climbing-work-shop": "performance-technique-camps",
+    "deep-water-solo-sailing-mallorca": "sport-climbing-holidays"
+  },
+  "temporaryHistoricalDateCategoryRedirects": {
+    "adam-ondra-patxi-usobiaga-work-shop--2018-03-10-132": "performance-technique-camps",
+    "adam-ondra-patxi-usobiaga-work-shop--2018-03-17-140": "performance-technique-camps",
+    "alpine-rock-climbing-in-chamonix--2018-07-28-201": "trad-multipitch",
+    "alpine-rock-climbing-in-chamonix--2018-08-25-202": "trad-multipitch",
+    "beginners-climbing--2018-07-07-167": "sport-climbing-courses",
+    "christmas-climbing-holiday--2018-12-22-184": "sport-climbing-holidays",
+    "christmas-climbing-holiday--2018-12-22-185": "sport-climbing-holidays",
+    "christmas-climbing-holiday--2018-12-29-186": "sport-climbing-holidays",
+    "climbing-trip-europe--2018-08-18-149": "expeditions",
+    "climbing-trip-europe--2018-08-25-160": "expeditions",
+    "climbing-trip-europe--2018-08-25-183": "expeditions",
+    "climbing-trip-europe--2018-09-01-161": "expeditions",
+    "climbing-trip-europe--2019-08-17-206": "expeditions",
+    "climbing-trip-spain--2018-03-31-133": "expeditions",
+    "climbing-trip-spain--2018-04-07-142": "expeditions",
+    "climbing-trip-spain--2019-03-30-195": "expeditions",
+    "climbing-trip-spain--2019-04-06-197": "expeditions",
+    "girls-climbing--2018-06-09-174": "sport-climbing-holidays",
+    "girls-climbing--2019-06-15-205": "sport-climbing-holidays",
+    "girls-climbing--2019-06-15-210": "sport-climbing-holidays",
+    "girls-climbing--2019-06-22-211": "sport-climbing-holidays",
+    "klemen-becan-performance-coaching-workshop--2018-07-10-213": "performance-technique-camps",
+    "klemen-becan-performance-coaching-workshop--2018-07-14-203": "performance-technique-camps",
+    "klemen-becan-performance-coaching-workshop--2018-11-17-187": "performance-technique-camps",
+    "klemen-becan-performance-coaching-workshop--2018-11-17-193": "performance-technique-camps",
+    "klemen-becan-performance-coaching-workshop--2018-11-24-194": "performance-technique-camps",
+    "klemen-becan-performance-coaching-workshop--2019-05-18-204": "performance-technique-camps",
+    "klemen-becan-performance-coaching-workshop--2019-05-25-209": "performance-technique-camps",
+    "sandstone-climbing--2018-06-23-178": "trad-multipitch",
+    "sandstone-climbing--2018-08-11-177": "trad-multipitch",
+    "sandstone-climbing--2018-09-15-180": "trad-multipitch",
+    "sport-climbing--2018-07-07-189": "sport-climbing-holidays",
+    "sport-climbing--2018-07-07-190": "sport-climbing-holidays",
+    "sport-climbing--2018-07-14-191": "sport-climbing-holidays",
+    "sport-climbing--2018-10-06-188": "sport-climbing-holidays",
+    "trad-and-multipitch-climbing--2018-08-06-212": "trad-multipitch",
+    "trad-and-multipitch-climbing--2019-04-27-207": "trad-multipitch"
+  },
+  "approvedLegacyEventPageRedirects": {
+    "adam-ondra-on-sight-red-point": "/trips/adam-ondra-on-sight-red-point",
+    "alpine-rock-climbing-in-chamonix": "/trips/big-wall-climbing-in-chamonix",
+    "beginners-climbing": "/trips/beginner-climbing-course",
+    "climbing-coaching-footwork-balance": "/trips/climbing-coaching-footwork-balance",
+    "climbing-coaching-on-sight-red-point": "/trips/climbing-coaching-on-sight-red-point",
+    "climbing-coaching-overhangs": "/trips/climbing-coaching-overhangs",
+    "hazel-findlay-mental-coaching": "/trips/hazel-findlay-mental-coaching",
+    "patxi-usobiaga-training": "/trips/patxi-usobiaga-training",
+    "sandstone-climbing": "/trips/sandstone-climbing",
+    "trad-and-multipitch-climbing": "/trips/multipitch-climbing-course"
+  },
+  "legacyTripBrowseIndexRedirects": [
+    "/event",
+    "/event-date"
+  ],
+  "legacyTripIndexFallbackPaths": [
+    "/event/klemen-becan-performance-coaching-privat",
+    "/event/rockbusters-climbing-express",
+    "/event/rockbusters-private-guiding",
+    "/event/rockbusters-summer-2018",
+    "/event/singing-rock-mobile-test-center",
+    "/partner",
+    "/private-guiding",
+    "/test-center"
+  ],
+  "samePathCmsPageSlugs": [
+    "terms-and-conditions"
+  ],
+  "approvedVariantHubParentSlugs": [
+    "beginner-climbing-course",
+    "bouldering-albarracin",
+    "climbing-technique-mental-coaching"
+  ]
+}

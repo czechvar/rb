@@ -4,6 +4,9 @@
 - Date: 2026-09-15
 - Owners: Engineering
 
+The no-Variant fallback is superseded for substantive published Events without
+current Dates by [ADR-0019](0019-content-only-event-parent-pages.md).
+
 ## Context
 
 ADR-0015 made `/trips/{eventSlug}` a noindex departure selector because Event-level content was not then ready for an evergreen parent. Published Events now have reusable rich text, structured sections, media, and active Trip Variants. Legacy `/event/*` pages with several locations need a stable destination that represents the Event rather than one changing departure.
@@ -12,7 +15,7 @@ ADR-0015 made `/trips/{eventSlug}` a noindex departure selector because Event-le
 
 For a published Event with active Trip Variants, render `/trips/{eventSlug}` as a stable parent Trip hub. Use Event-level content through the registered trip block renderer, show the active Variant choices, and list their upcoming/in-progress Event Dates by month. Filter date-specific blocks from default and authored Event layouts so the hub owns one schedule. The parent does not select one Date for its content or URL. The parent is self-canonical. It enters the sitemap and may be indexed when the Event has readable rich content and at least two active, reviewed/indexable Variants. A parent with one or only thin Variants remains reachable but noindex and outside the sitemap unless its Event hub is explicitly approved for indexing.
 
-For the Tier 1 legacy Event redirect programme, Bouldering Albarracin and Climbing Technique Mental Coaching are explicitly approved as Event-level parent hubs despite thin Variant pages. Their parents may be indexed when Event copy is readable and an active Variant exists. Their individual Variant pages retain separate editorial/indexability settings. This approval is scoped by Event slug in the shared parent metadata and sitemap eligibility helper.
+For the legacy Event redirect programme, Bouldering Albarracin, Climbing Technique Mental Coaching, and the Beginner Climbing Course are explicitly approved as Event-level parent hubs despite thin Variant pages. Their parents may be indexed when Event copy is readable and an active Variant exists. Their individual Variant pages retain separate editorial/indexability settings. This approval is scoped by Event slug in the [shared eligibility list](../../src/lib/legacy-redirect-decisions.json) used by parent metadata and sitemap generation.
 
 The Tier 1 future dated URLs under Albarracin, Kyparissi and Rodellar also have exact active Event Dates. After reviewing their inherited or Variant copy, approve those three Variant pages for indexing in the canonical launch migration and local catalogue. This makes their seven dated leaves eligible without changing Date ownership, pricing or booking identity.
 

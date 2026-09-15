@@ -8,9 +8,9 @@ import { JsonLd } from '@/components/JsonLd'
 import { ParentTripSections } from '@/components/trip/ParentTripSections'
 import { eventDateLifecycle, selectBookableOccurrence } from '@/lib/event-date-visibility'
 import { tripPublicDatePath, tripVariantPath } from '@/lib/occurrence-routing'
-import { collectionPageGraphJsonLd } from '@/lib/jsonld'
+import { collectionPageGraphJsonLd, eventDetailGraphJsonLd } from '@/lib/jsonld'
 import { siteUrl } from '@/lib/url'
-import { isIndexableParentTrip, parentSafeBlocks, parentTripLayout } from '@/lib/parent-trip-layout'
+import { isIndexableContentOnlyParentTrip, isIndexableParentTrip, parentSafeBlocks, parentTripLayout } from '@/lib/parent-trip-layout'
 import { resolveTripDetail } from '@/lib/trip-detail'
 import type { EventDate } from '@/payload-types'
 
@@ -24,7 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const event = await getPublishedEventBySlug(slug)
   if (!event) return { robots: { index: false, follow: true } }
   const variants = await getActiveTripVariantsForEvent(event.id)
-  const hub = variants.length > 0 && isIndexableParentTrip(event.content, variants, event.slug)
+  const currentDates = variants.length === 0 ? await getTripDetailEventDates(event.id, { includeInProgress: true }) : []
+  const hub = variants.length > 0
+    ? isIndexableParentTrip(event.content, variants, event.slug)
+    : isIndexableContentOnlyParentTrip(event.content, 0, currentDates.length, event.slug)
   return {
     title: event.seo?.title || `${event.title} — Rockbusters`,
     description: event.seo?.description || event.shortDescription || undefined,
@@ -63,7 +66,8 @@ export default async function TripPage({ params, searchParams }: Props) {
       ? getPublicEventDatesForEvent(event.id)
       : getTripDetailEventDates(event.id, { includeInProgress: true }),
   ])
-  const dates = !hasDateSelector && variants.length === 0
+  const contentOnly = !hasDateSelector && isIndexableContentOnlyParentTrip(event.content, variants.length, candidateDates.length, event.slug)
+  const dates = !hasDateSelector && variants.length === 0 && !contentOnly
     ? await getPublicEventDatesForEvent(event.id)
     : candidateDates
   if (hasDateSelector) {
@@ -75,6 +79,33 @@ export default async function TripPage({ params, searchParams }: Props) {
     const path = selected ? publicPath(event.slug, selected) : null
     if (!path) notFound()
     permanentRedirect(path)
+  }
+
+  if (contentOnly) {
+    const trip = resolveTripDetail(event, [])
+    const layout = parentTripLayout(trip)
+    const authoredBlocks = event.layout?.length ? parentSafeBlocks(event.layout) : null
+    const authoredLayout = authoredBlocks?.length ? authoredBlocks : null
+    return (
+      <MarketingShell>
+        <JsonLd data={eventDetailGraphJsonLd(event)} />
+        <main style={{ background: 'var(--theme-color-ink)', color: 'var(--theme-color-text)' }}>
+          {authoredLayout ? (
+            <RenderBlocks blocks={authoredLayout} context={{ event, trip }} />
+          ) : (
+            <>
+              <RenderBlocks blocks={layout.lead} context={{ event, trip }} />
+              <RenderBlocks blocks={layout.body} context={{ event, trip }} />
+            </>
+          )}
+          <section style={{ maxWidth: 'var(--theme-content-text-max)', margin: '0 auto', padding: '3rem var(--theme-page-gutter)' }}>
+            <h2>Plan this trip</h2>
+            <p>No upcoming dates are listed right now.</p>
+            <p><Link href="/contact" className="btn-primary">Enquire about this trip →</Link></p>
+          </section>
+        </main>
+      </MarketingShell>
+    )
   }
 
   if (variants.length > 0) {

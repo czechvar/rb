@@ -3,8 +3,8 @@ import type { Where } from 'payload'
 
 import { siteUrl } from '@/lib/url'
 import { tripVariantPath } from '@/lib/occurrence-routing'
-import { eventDateLifecycle } from '@/lib/event-date-visibility'
-import { isIndexableParentTrip } from '@/lib/parent-trip-layout'
+import { catalogueDateFloor, eventDateLifecycle } from '@/lib/event-date-visibility'
+import { isIndexableContentOnlyParentTrip, isIndexableParentTrip } from '@/lib/parent-trip-layout'
 
 type SitemapDoc = {
   id?: number | string
@@ -23,12 +23,14 @@ type SitemapDoc = {
 }
 
 type SitemapCollection =
+  | 'events'
   | 'event-dates'
   | 'trip-variants'
   | 'locations'
   | 'guides'
   | 'programs'
   | 'posts'
+  | 'post-categories'
   | 'pages'
 
 type SitemapPayload = {
@@ -44,6 +46,7 @@ type SitemapPayload = {
 }
 
 const STATIC_PATHS = ['/', '/trips', '/programs', '/destinations', '/team', '/blog', '/calendar']
+const LEGACY_BLOG_CATEGORY_SLUGS = ['bouldering', 'video']
 const PAGE_SIZE = 100
 
 function sitemapEntry(pathname: string, updatedAt?: string | null): MetadataRoute.Sitemap[number] {
@@ -71,13 +74,15 @@ function entriesForCmsPages(docs: SitemapDoc[]): MetadataRoute.Sitemap {
   )
 }
 
-function entriesForPostCategories(posts: SitemapDoc[]): MetadataRoute.Sitemap {
-  return uniqueEntries(
-    posts.flatMap((post) => {
-      if (!post.category || typeof post.category !== 'object' || !post.category.slug) return []
-      return [sitemapEntry(`/blog/category/${post.category.slug}`, post.category.updatedAt ?? post.updatedAt)]
-    }),
-  )
+function entriesForPostCategories(posts: SitemapDoc[], legacyCategories: SitemapDoc[]): MetadataRoute.Sitemap {
+  const categoriesWithPosts = posts.flatMap((post) => {
+    if (!post.category || typeof post.category !== 'object' || !post.category.slug) return []
+    return [sitemapEntry(`/blog/category/${post.category.slug}`, post.category.updatedAt ?? post.updatedAt)]
+  })
+  return uniqueEntries([
+    ...categoriesWithPosts,
+    ...entriesForDocs(legacyCategories, (slug) => `/blog/category/${slug}`),
+  ])
 }
 
 function uniqueEntries(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
@@ -154,13 +159,42 @@ function entriesForParentTrips(variants: SitemapDoc[]): MetadataRoute.Sitemap {
   })
 }
 
+function entriesForContentOnlyParentTrips(events: SitemapDoc[], variants: SitemapDoc[], currentDates: SitemapDoc[]): MetadataRoute.Sitemap {
+  const variantEvents = new Set(variants.flatMap(variant => {
+    const event = typeof variant.event === 'object' && variant.event ? variant.event : null
+    return variant.active === true && event?.id != null ? [String(event.id)] : []
+  }))
+  const datedEvents = new Set(currentDates.flatMap(date => {
+    const event = typeof date.event === 'object' && date.event ? date.event : null
+    return date.active === true && event?.id != null ? [String(event.id)] : []
+  }))
+  return events.flatMap(event => {
+    if (!event.slug || event.id == null || event.state !== 'published') return []
+    if (!isIndexableContentOnlyParentTrip(event.content,
+      Number(variantEvents.has(String(event.id))), Number(datedEvents.has(String(event.id))), event.slug)) return []
+    return [sitemapEntry(`/trips/${event.slug}`, event.updatedAt)]
+  })
+}
+
 export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRoute.Sitemap> {
-  const [occurrences, variants, locations, guides, programs, posts, pages] = await Promise.all([
+  const [events, occurrences, currentDates, variants, locations, guides, programs, posts, legacyCategories, pages] = await Promise.all([
+    findAll(payload, {
+      collection: 'events',
+      where: { state: { equals: 'published' } },
+      sort: 'slug',
+      depth: 0,
+    }),
     findAll(payload, {
       collection: 'event-dates',
       where: { and: [{ active: { equals: true } }, { indexable: { not_equals: false } }] },
       sort: 'slug',
       depth: 2,
+    }),
+    findAll(payload, {
+      collection: 'event-dates',
+      where: { and: [{ active: { equals: true } }, { dateTo: { greater_than_equal: catalogueDateFloor() } }] },
+      sort: 'dateTo',
+      depth: 1,
     }),
     findAll(payload, {
       collection: 'trip-variants',
@@ -194,6 +228,12 @@ export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRou
       depth: 1,
     }),
     findAll(payload, {
+      collection: 'post-categories',
+      where: { slug: { in: LEGACY_BLOG_CATEGORY_SLUGS } },
+      sort: 'slug',
+      depth: 0,
+    }),
+    findAll(payload, {
       collection: 'pages',
       where: { status: { equals: 'published' } },
       sort: 'slug',
@@ -206,11 +246,12 @@ export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRou
     ...entriesForOccurrences(occurrences),
     ...entriesForVariants(variants),
     ...entriesForParentTrips(variants),
+    ...entriesForContentOnlyParentTrips(events, variants, currentDates),
     ...entriesForDocs(locations, (slug) => `/destinations/${slug}`),
     ...entriesForDocs(guides, (slug) => `/team/${slug}`),
     ...entriesForDocs(programs, (slug) => `/programs/${slug}`),
     ...entriesForDocs(posts, (slug) => `/blog/${slug}`),
-    ...entriesForPostCategories(posts),
+    ...entriesForPostCategories(posts, legacyCategories),
     ...entriesForCmsPages(pages),
   ])
 }

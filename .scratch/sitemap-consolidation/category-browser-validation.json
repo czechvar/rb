@@ -1,0 +1,10 @@
+{
+  "checkedAtUtc": "2026-09-15T19:01:15Z",
+  "namedProduction": "https://rb-github.vercel.app",
+  "filters": {
+    "sport-climbing-holidays": { "http": 200, "selected": true, "resultCount": 47, "pageErrors": 0 },
+    "performance-technique-camps": { "http": 200, "selected": true, "resultCount": 8, "pageErrors": 0 },
+    "custom-trips": { "http": 200, "selected": true, "resultCount": 0, "pageErrors": 0 },
+    "private-coaching": { "http": 200, "selected": true, "resultCount": 0, "pageErrors": 0 }
+  }
+}

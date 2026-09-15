@@ -1,0 +1,151 @@
+classification,source,destination,reason
+category-fallback-ready,/event-date/beginners-climbing--2018-07-07-167,/trips?category=sport-climbing-courses,Exact canonical Date 151; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category sport-climbing-courses; 10 future category Dates
+ready-indexable-equivalent-variant,/event-date/beginners-climbing--2018-07-07-214,/trips/beginner-climbing-course/sella,Exact canonical Date 193; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/bouldering-albarracin--2018-04-07-154,/trips/bouldering-albarracin/albarracin,Exact canonical Date 138; same Event and exact Location set; reviewed Variant
+category-fallback-ready,/event-date/climbing-trip-europe--2018-08-18-149,/trips?category=expeditions,Exact canonical Date 134; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category expeditions; 17 future category Dates
+ready-indexable-equivalent-variant,/event-date/climbing-trip-europe--2018-08-18-159,/trips/europe-rock-climbing-trip/labske-udoli,Exact canonical Date 143; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/climbing-trip-europe--2018-09-08-162,/trips/europe-rock-climbing-trip/finale-ligure,Exact canonical Date 146; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/climbing-trip-europe--2018-09-15-163,/trips/europe-rock-climbing-trip/ceuse,Exact canonical Date 147; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/climbing-trip-europe--2018-09-22-164,/trips/europe-rock-climbing-trip/gorges-du-tarn,Exact canonical Date 148; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/climbing-trip-europe--2018-09-29-165,/trips/europe-rock-climbing-trip/margalef,Exact canonical Date 149; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/climbing-trip-europe--2018-10-06-166,/trips/europe-rock-climbing-trip/rodellar,Exact canonical Date 150; same Event and exact Location set; reviewed Variant
+category-fallback-ready,/event-date/climbing-trip-europe--2019-08-17-206,/trips?category=expeditions,Exact canonical Date 185; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category expeditions; 17 future category Dates
+category-fallback-ready,/event-date/climbing-trip-spain--2018-03-31-133,/trips?category=expeditions,Exact canonical Date 120; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category expeditions; 17 future category Dates
+category-fallback-ready,/event-date/climbing-trip-spain--2018-04-07-142,/trips?category=expeditions,Exact canonical Date 129; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category expeditions; 17 future category Dates
+ready-indexable-equivalent-variant,/event-date/climbing-trip-spain--2018-04-14-151,/trips/climbing-trip-spain/margalef,Exact canonical Date 135; same Event and exact Location set; reviewed Variant
+category-fallback-ready,/event-date/climbing-trip-spain--2019-03-30-195,/trips?category=expeditions,Exact canonical Date 174; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category expeditions; 17 future category Dates
+ready-indexable-equivalent-variant,/event-date/climbing-trip-spain--2019-03-30-196,/trips/climbing-trip-spain/sella,Exact canonical Date 175; same Event and exact Location set; reviewed Variant
+category-fallback-ready,/event-date/climbing-trip-spain--2019-04-06-197,/trips?category=expeditions,Exact canonical Date 176; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category expeditions; 17 future category Dates
+ready-indexable-equivalent-variant,/event-date/climbing-trip-spain--2019-04-13-198,/trips/climbing-trip-spain/margalef,Exact canonical Date 177; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/climbing-trip-spain--2019-04-20-199,/trips/climbing-trip-spain/siurana,Exact canonical Date 178; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/deep-water-solo-mallorca--2018-10-20-155,/trips/deep-water-solo-mallorca/mallorca,Exact canonical Date 139; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/deep-water-solo-mallorca--2018-10-20-175,/trips/deep-water-solo-mallorca/mallorca,Exact canonical Date 155; same Event and exact Location set; reviewed Variant
+ready-indexable-equivalent-variant,/event-date/deep-water-solo-mallorca--2018-10-27-176,/trips/deep-water-solo-mallorca/mallorca,Exact canonical Date 156; same Event and exact Location set; reviewed Variant
+category-fallback-ready,/event-date/girls-climbing--2018-06-09-174,/trips?category=sport-climbing-holidays,Exact canonical Date 154; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category sport-climbing-holidays; 47 future category Dates
+ready-indexable-equivalent-variant,/event-date/klemen-becan-performance-coaching-workshop--2018-05-19-182,/trips/climbing-technique-mental-coaching/rodellar,Exact canonical Date 162; same Event and exact Location set; reviewed Variant
+category-fallback-ready,/event-date/klemen-becan-performance-coaching-workshop--2018-07-10-213,/trips?category=performance-technique-camps,Exact canonical Date 192; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category performance-technique-camps; 8 future category Dates
+category-fallback-ready,/event-date/klemen-becan-performance-coaching-workshop--2018-11-17-187,/trips?category=performance-technique-camps,Exact canonical Date 166; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category performance-technique-camps; 8 future category Dates
+category-fallback-ready,/event-date/klemen-becan-performance-coaching-workshop--2018-11-17-193,/trips?category=performance-technique-camps,Exact canonical Date 172; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category performance-technique-camps; 8 future category Dates
+category-fallback-ready,/event-date/klemen-becan-performance-coaching-workshop--2018-11-24-194,/trips?category=performance-technique-camps,Exact canonical Date 173; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category performance-technique-camps; 8 future category Dates
+ready-indexable-equivalent-variant,/event-date/klemen-becan-performance-coaching-workshop--2019-05-18-208,/trips/climbing-technique-mental-coaching/rodellar,Exact canonical Date 187; same Event and exact Location set; reviewed Variant
+category-fallback-empty-category,/event-date/sandstone-climbing--2018-06-23-178,/trips?category=trad-multipitch,Exact canonical Date 158; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category trad-multipitch; 0 future category Dates
+category-fallback-empty-category,/event-date/sandstone-climbing--2018-08-11-177,/trips?category=trad-multipitch,Exact canonical Date 157; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category trad-multipitch; 0 future category Dates
+category-fallback-empty-category,/event-date/sandstone-climbing--2018-09-15-180,/trips?category=trad-multipitch,Exact canonical Date 160; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category trad-multipitch; 0 future category Dates
+category-fallback-ready,/event-date/sport-climbing--2018-07-07-189,/trips?category=sport-climbing-holidays,Exact canonical Date 168; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category sport-climbing-holidays; 47 future category Dates
+category-fallback-ready,/event-date/sport-climbing--2018-07-07-190,/trips?category=sport-climbing-holidays,Exact canonical Date 169; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category sport-climbing-holidays; 47 future category Dates
+category-fallback-ready,/event-date/sport-climbing--2018-07-14-191,/trips?category=sport-climbing-holidays,Exact canonical Date 170; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category sport-climbing-holidays; 47 future category Dates
+category-fallback-empty-category,/event-date/trad-and-multipitch-climbing--2018-08-06-212,/trips?category=trad-multipitch,Exact canonical Date 191; no unique current Variant with the same Location set; historical direct route currently 404 because local slug is missing; matching active Event category trad-multipitch; 0 future category Dates
+relevant-replacement,/event,/calendar,Legacy catalogue index maps to the current dated catalogue.
+relevant-replacement,/event-date,/calendar,Legacy catalogue index maps to the current dated catalogue.
+target-not-indexable-or-unverified,/event/adam-ondra-on-sight-red-point,/trips/adam-ondra-on-sight-red-point,Exact slug; no current Variant; 0 historical Dates; current parent is noindex
+ready-indexable-parent-hub,/event/bouldering-albarracin,/trips/bouldering-albarracin,"Exact slug; 1 active Variants (1 reviewed); Event copy; parent is an indexable, self-canonical choice page"
+target-not-indexable-or-unverified,/event/climbing-coaching-footwork-balance,/trips/climbing-coaching-footwork-balance,Exact slug; no current Variant; 4 historical Dates; current parent is noindex
+target-not-indexable-or-unverified,/event/climbing-coaching-on-sight-red-point,/trips/climbing-coaching-on-sight-red-point,Exact slug; no current Variant; 8 historical Dates; current parent is noindex
+target-not-indexable-or-unverified,/event/climbing-coaching-overhangs,/trips/climbing-coaching-overhangs,Exact slug; no current Variant; 1 historical Dates; current parent is noindex
+ready-indexable-parent-hub,/event/climbing-trip-spain,/trips/climbing-trip-spain,"Exact slug; 5 active Variants (5 reviewed); Event copy; parent is an indexable, self-canonical choice page"
+ready-indexable-variant,/event/deep-water-solo-mallorca,/trips/deep-water-solo-mallorca/mallorca,Exact slug; one reviewed current Variant
+target-not-indexable-or-unverified,/event/hazel-findlay-mental-coaching,/trips/hazel-findlay-mental-coaching,Exact slug; no current Variant; 1 historical Dates; current parent is noindex
+target-not-indexable-or-unverified,/event/patxi-usobiaga-training,/trips/patxi-usobiaga-training,Exact slug; no current Variant; 0 historical Dates; current parent is noindex
+target-not-indexable-or-unverified,/event/sandstone-climbing,/trips/sandstone-climbing,Exact slug; no current Variant; 34 historical Dates; current parent is noindex
+ready-indexable-parent-hub,/event/sport-climbing,/trips/sport-climbing,"Exact slug; 6 active Variants (6 reviewed); Event copy; parent is an indexable, self-canonical choice page"
+relevant-replacement,/location,/destinations,Legacy Location index maps to the current destination index.
+relevant-replacement,/location/albarracin,/destinations/albarracin,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/arco,/destinations/arco,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/cesky-raj,/destinations/cesky-raj,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/ceuse,/destinations/ceuse,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/chamonix,/destinations/chamonix,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/cuenca,/destinations/cuenca,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/durance-valley-hautes-alps,/destinations/durance-valley-hautes-alps,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/el-chorro,/destinations/el-chorro,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/etxauri,/destinations/etxauri,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/finale-ligure,/destinations/finale-ligure,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/frankenjura,/destinations/frankenjura,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/gorge-de-la-jonte,/destinations/gorge-de-la-jonte,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/gorges-du-tarn,/destinations/gorges-du-tarn,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/gorges-du-verdon,/destinations/gorges-du-verdon,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/gran-canaria,/destinations/gran-canaria,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/kalymnos,/destinations/kalymnos,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/labske-udoli,/destinations/labske-udoli,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/les-calanques-de-marseille,/destinations/les-calanques-de-marseille,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/mallorca,/destinations/mallorca,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/malta,/destinations/malta,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/margalef,/destinations/margalef,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/monobloc-reus-spain,/destinations/monobloc-reus-spain,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/montgrony,/destinations/montgrony,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/oliana,/destinations/oliana,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/riglos,/destinations/riglos,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/rodellar,/destinations/rodellar,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/sella,/destinations/sella,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/siurana,/destinations/siurana,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/terradets,/destinations/terradets,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/val-di-mello,/destinations/val-di-mello,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/valdegovia,/destinations/valdegovia,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/location/zillertal,/destinations/zillertal,Legacy Location slug matches the canonical Location slug.
+relevant-replacement,/team-member,/team,Legacy team index maps to the current team index.
+relevant-replacement,/team-member/adam-ondra-pro-climber,/team/adam-ondra-pro-climber,Legacy team-member slug matches a canonical Guide slug.
+team-index-fallback-ready,/team-member/benjamin-brochard,/team,Specific Guide detail URL absent from the new sitemap; user-approved /team fallback returns 200 and is self-canonical.
+relevant-replacement,/team-member/berengere-rapeneau,/team/berengere-rapeneau,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/daila-ojeda-pro-climber,/team/daila-ojeda-pro-climber,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/hazel-findlay,/team/hazel-findlay,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/jan-novotny,/team/jan-novotny,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/klemen-becan,/team/klemen-becan,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/laszlo-juhasz,/team/laszlo-juhasz,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/linda-synakova,/team/linda-synakova,Legacy team-member slug matches a canonical Guide slug.
+team-index-fallback-ready,/team-member/maribel-vara,/team,Specific Guide detail URL absent from the new sitemap; user-approved /team fallback returns 200 and is self-canonical.
+team-index-fallback-ready,/team-member/michelle-o-loughlin,/team,Specific Guide detail URL absent from the new sitemap; user-approved /team fallback returns 200 and is self-canonical.
+relevant-replacement,/team-member/pablo-ruiz-seco,/team/pablo-ruiz-seco,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/pablo-scorza-fyziotherapist-biomechanica-funcional,/team/pablo-scorza-fyziotherapist-biomechanica-funcional,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/patxi-usobiaga-pro-climber,/team/patxi-usobiaga-pro-climber,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/pavel-ryva,/team/pavel-ryva,Legacy team-member slug matches a canonical Guide slug.
+relevant-replacement,/team-member/petra-pivonkova,/team/petra-pivonkova,Legacy team-member slug matches a canonical Guide slug.
+team-index-fallback-ready,/team-member/ritch-mayfield,/team,Specific Guide detail URL absent from the new sitemap; user-approved /team fallback returns 200 and is self-canonical.
+team-index-fallback-ready,/team-member/will-sim,/team,Specific Guide detail URL absent from the new sitemap; user-approved /team fallback returns 200 and is self-canonical.
+same-path-existing-category,/blog/category/bouldering,/blog/category/bouldering,"Existing empty Post Category on local and named production; route 200, self-canonical, links to /blog. Same path requires no old-to-new path redirect."
+unresolved,/blog/category/climbing-destinations,/blog/category/climbing-destinations,Destination absent from offline route inventory: Legacy blog slug matches a canonical Post slug.
+unresolved,/blog/category/collaboration,/blog/category/collaboration,Destination absent from offline route inventory: Legacy blog slug matches a canonical Post slug.
+unresolved,/blog/category/guest-post,/blog/category/guest-post,Destination absent from offline route inventory: Legacy blog slug matches a canonical Post slug.
+unresolved,/blog/category/promo,/blog/category/promo,Destination absent from offline route inventory: Legacy blog slug matches a canonical Post slug.
+unresolved,/blog/category/sport-climbing,/blog/category/sport-climbing,Destination absent from offline route inventory: Legacy blog slug matches a canonical Post slug.
+unresolved,/blog/category/trad-climbing,/blog/category/trad-climbing,Destination absent from offline route inventory: Legacy blog slug matches a canonical Post slug.
+same-path-existing-category,/blog/category/video,/blog/category/video,"Existing empty Post Category on local and named production; route 200, self-canonical, links to /blog. Same path requires no old-to-new path redirect."
+unresolved,/contact,,No direct content identity or reviewed relevant replacement was found.
+category-fallback-ready,/event-date/adam-ondra-patxi-usobiaga-work-shop--2018-03-10-132,/trips?category=performance-technique-camps,Matched occurrence is not an active public route.; matching active Event category performance-technique-camps; 8 future category Dates; source Event unpublished
+category-fallback-ready,/event-date/adam-ondra-patxi-usobiaga-work-shop--2018-03-17-140,/trips?category=performance-technique-camps,Matched occurrence is not an active public route.; matching active Event category performance-technique-camps; 8 future category Dates; source Event unpublished
+category-fallback-empty-category,/event-date/alpine-rock-climbing-in-chamonix--2018-07-28-201,/trips?category=trad-multipitch,Matched occurrence is not an active public route.; matching active Event category trad-multipitch; 0 future category Dates
+category-fallback-empty-category,/event-date/alpine-rock-climbing-in-chamonix--2018-08-25-202,/trips?category=trad-multipitch,Matched occurrence is not an active public route.; matching active Event category trad-multipitch; 0 future category Dates
+category-fallback-ready,/event-date/christmas-climbing-holiday--2018-12-22-184,/trips?category=sport-climbing-holidays,Matched occurrence is not an active public route.; matching active Event category sport-climbing-holidays; 47 future category Dates; source Event unpublished
+category-fallback-ready,/event-date/christmas-climbing-holiday--2018-12-22-185,/trips?category=sport-climbing-holidays,Matched occurrence is not an active public route.; matching active Event category sport-climbing-holidays; 47 future category Dates; source Event unpublished
+category-fallback-ready,/event-date/christmas-climbing-holiday--2018-12-29-186,/trips?category=sport-climbing-holidays,Matched occurrence is not an active public route.; matching active Event category sport-climbing-holidays; 47 future category Dates; source Event unpublished
+category-fallback-ready,/event-date/climbing-trip-europe--2018-08-25-160,/trips?category=expeditions,No unique legacy occurrence identity reaches a stored canonical Event Date slug.; matching active Event category expeditions; 17 future category Dates
+category-fallback-ready,/event-date/climbing-trip-europe--2018-08-25-183,/trips?category=expeditions,No unique legacy occurrence identity reaches a stored canonical Event Date slug.; matching active Event category expeditions; 17 future category Dates
+category-fallback-ready,/event-date/climbing-trip-europe--2018-09-01-161,/trips?category=expeditions,Matched occurrence is not an active public route.; matching active Event category expeditions; 17 future category Dates
+category-fallback-ready,/event-date/girls-climbing--2019-06-15-205,/trips?category=sport-climbing-holidays,No unique legacy occurrence identity reaches a stored canonical Event Date slug.; matching active Event category sport-climbing-holidays; 47 future category Dates
+category-fallback-ready,/event-date/girls-climbing--2019-06-15-210,/trips?category=sport-climbing-holidays,No unique legacy occurrence identity reaches a stored canonical Event Date slug.; matching active Event category sport-climbing-holidays; 47 future category Dates
+category-fallback-ready,/event-date/girls-climbing--2019-06-22-211,/trips?category=sport-climbing-holidays,No unique legacy occurrence identity reaches a stored canonical Event Date slug.; matching active Event category sport-climbing-holidays; 47 future category Dates
+category-fallback-ready,/event-date/klemen-becan-performance-coaching-workshop--2018-07-14-203,/trips?category=performance-technique-camps,Matched occurrence is not an active public route.; matching active Event category performance-technique-camps; 8 future category Dates
+category-fallback-ready,/event-date/klemen-becan-performance-coaching-workshop--2019-05-18-204,/trips?category=performance-technique-camps,No unique legacy occurrence identity reaches a stored canonical Event Date slug.; matching active Event category performance-technique-camps; 8 future category Dates
+category-fallback-ready,/event-date/klemen-becan-performance-coaching-workshop--2019-05-25-209,/trips?category=performance-technique-camps,No unique legacy occurrence identity reaches a stored canonical Event Date slug.; matching active Event category performance-technique-camps; 8 future category Dates
+category-fallback-ready,/event-date/sport-climbing--2018-10-06-188,/trips?category=sport-climbing-holidays,Matched occurrence is not an active public route.; matching active Event category sport-climbing-holidays; 47 future category Dates
+category-fallback-empty-category,/event-date/trad-and-multipitch-climbing--2019-04-27-207,/trips?category=trad-multipitch,No unique legacy occurrence identity reaches a stored canonical Event Date slug.; matching active Event category trad-multipitch; 0 future category Dates
+missing-target,/event/adam-ondra-patxi-usobiaga-work-shop,,No exact published Event slug or unique parent inferred from an exact old Date identity
+missing-target,/event/alpine-rock-climbing-in-chamonix,,No exact published Event slug or unique parent inferred from an exact old Date identity
+target-not-indexable-or-unverified,/event/beginners-climbing,/trips/beginner-climbing-course,Old Date parent identity; 3 active Variants (1 reviewed); parent renders content and dates but remains noindex pending editorial review
+missing-target,/event/biomechanica-funcional,,No exact published Event slug or unique parent inferred from an exact old Date identity
+missing-target,/event/christmas-climbing-holiday,,No exact published Event slug or unique parent inferred from an exact old Date identity
+ready-indexable-parent-hub,/event/climbing-trip-europe,/trips/europe-rock-climbing-trip,"Old Date parent identity; 9 active Variants (9 reviewed); Event copy; parent is an indexable, self-canonical choice page"
+missing-target,/event/climbing-weekends,,No exact published Event slug or unique parent inferred from an exact old Date identity
+missing-target,/event/daila-ojeda-climbing-work-shop,,No exact published Event slug or unique parent inferred from an exact old Date identity
+missing-target,/event/deep-water-solo-sailing-mallorca,,No exact published Event slug or unique parent inferred from an exact old Date identity
+missing-target,/event/easter-climbing-in-sella,,No exact published Event slug or unique parent inferred from an exact old Date identity
+ready-indexable-variant,/event/girls-climbing,/trips/woman-climbing/cuenca,Old Date parent identity; one reviewed current Variant
+missing-target,/event/klemen-becan-performance-coaching-privat,,No exact published Event slug or unique parent inferred from an exact old Date identity
+ready-indexable-parent-hub,/event/klemen-becan-performance-coaching-workshop,/trips/climbing-technique-mental-coaching,"Old Date parent identity; 2 active Variants (2 reviewed); Event copy; parent is an indexable, self-canonical choice page"
+missing-target,/event/rockbusters-climbing-express,,No exact published Event slug or unique parent inferred from an exact old Date identity
+missing-target,/event/rockbusters-private-guiding,,No exact published Event slug or unique parent inferred from an exact old Date identity
+missing-target,/event/rockbusters-summer-2018,,No exact published Event slug or unique parent inferred from an exact old Date identity
+missing-target,/event/singing-rock-mobile-test-center,,No exact published Event slug or unique parent inferred from an exact old Date identity
+target-not-indexable-or-unverified,/event/trad-and-multipitch-climbing,/trips/multipitch-climbing-course,Old Date parent identity; no current Variant; 33 historical Dates; current parent is noindex
+unresolved,/partner,,No direct content identity or reviewed relevant replacement was found.
+unresolved,/private-guiding,,No direct content identity or reviewed relevant replacement was found.
+unresolved,/terms-and-conditions,,No direct content identity or reviewed relevant replacement was found.
+unresolved,/test-center,,No direct content identity or reviewed relevant replacement was found.

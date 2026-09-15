@@ -15,6 +15,7 @@ const indexableVariant = {
 }
 
 const docsByCollection = {
+  events: [],
   'event-dates': [
     {
       slug: 'kalymnos-2026-10-12', active: true, indexable: true,
@@ -43,6 +44,10 @@ const docsByCollection = {
   posts: [
     { slug: 'training-plan', updatedAt: '2026-01-07T03:04:05.000Z', category: { slug: 'training', updatedAt: '2026-01-08T03:04:05.000Z' } },
   ],
+  'post-categories': [
+    { slug: 'bouldering', updatedAt: '2026-01-09T03:04:05.000Z' },
+    { slug: 'video', updatedAt: '2026-01-10T03:04:05.000Z' },
+  ],
   pages: [
     { slug: 'contact', updatedAt: '2026-09-12T00:00:00.000Z' },
     { slug: 'about-us', updatedAt: '2026-01-09T03:04:05.000Z' },
@@ -58,6 +63,43 @@ afterEach(() => {
 })
 
 describe('buildSitemap', () => {
+  it('lists a substantive published Event with no current dates or active Variants', async () => {
+    process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
+    const content = { root: { children: [{ type: 'paragraph', children: [
+      { type: 'text', text: Array(110).fill('Evergreen').join(' ') },
+    ] }] } }
+    const published = { ...publishedEvent, id: 100, slug: 'big-wall-climbing-in-chamonix', content }
+    const draft = { ...published, id: 11, slug: 'draft-old-event', state: 'draft' }
+    const thin = { ...published, id: 12, slug: 'thin-event', content: { root: { children: [{ type: 'text', text: 'Short copy' }] } } }
+    const unapproved = { ...published, id: 13, slug: 'rockbusters-summer-2018' }
+    const find = vi.fn(async ({ collection, where }: { collection: keyof typeof docsByCollection; where?: unknown }) => ({
+      docs: collection === 'events' ? [published, draft, thin, unapproved]
+        : collection === 'event-dates' && JSON.stringify(where).includes('dateTo') ? []
+          : [...docsByCollection[collection]],
+      hasNextPage: false,
+    }))
+    const urls = (await buildSitemap({ find })).map(entry => entry.url)
+    expect(urls).toContain('https://rockbusters.net/trips/big-wall-climbing-in-chamonix')
+    expect(urls).not.toContain('https://rockbusters.net/trips/draft-old-event')
+    expect(urls).not.toContain('https://rockbusters.net/trips/thin-event')
+    expect(urls).not.toContain('https://rockbusters.net/trips/rockbusters-summer-2018')
+  })
+
+  it('keeps a parent with a current Date out of the content-only sitemap path', async () => {
+    process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
+    const event = { ...publishedEvent, id: 100, slug: 'big-wall-climbing-in-chamonix', content: { root: { children: [
+      { type: 'text', text: Array(110).fill('Evergreen').join(' ') },
+    ] } } }
+    const find = vi.fn(async ({ collection, where }: { collection: keyof typeof docsByCollection; where?: unknown }) => ({
+      docs: collection === 'events' ? [event]
+        : collection === 'event-dates' && JSON.stringify(where).includes('dateTo') ? [{ active: true, event }]
+          : [...docsByCollection[collection]],
+      hasNextPage: false,
+    }))
+    const urls = (await buildSitemap({ find })).map(entry => entry.url)
+    expect(urls).not.toContain('https://rockbusters.net/trips/big-wall-climbing-in-chamonix')
+  })
+
   it('adds a stable Event hub only when it has its own copy and two reviewed Variants', async () => {
     process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
     const hubEvent = { ...publishedEvent, content: { root: { children: [
@@ -114,7 +156,9 @@ describe('buildSitemap', () => {
       'https://rockbusters.net/', 'https://rockbusters.net/trips',
       'https://rockbusters.net/destinations/kalymnos', 'https://rockbusters.net/team/jany',
       'https://rockbusters.net/programs/performance-lab', 'https://rockbusters.net/blog/training-plan',
-      'https://rockbusters.net/blog/category/training', 'https://rockbusters.net/contact',
+      'https://rockbusters.net/blog/category/training',
+      'https://rockbusters.net/blog/category/bouldering', 'https://rockbusters.net/blog/category/video',
+      'https://rockbusters.net/contact',
       'https://rockbusters.net/about-us',
     ]))
   })
@@ -147,6 +191,10 @@ describe('buildSitemap', () => {
       pagination: true,
     }))
     expect(find).toHaveBeenCalledWith(expect.objectContaining({ collection: 'event-dates', page: 2 }))
+    expect(find).toHaveBeenCalledWith(expect.objectContaining({
+      collection: 'post-categories',
+      where: { slug: { in: ['bouldering', 'video'] } },
+    }))
     for (const collection of Object.keys(docsByCollection)) {
       expect(find).toHaveBeenCalledWith(expect.objectContaining({ collection, page: 1, pagination: true }))
     }

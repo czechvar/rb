@@ -2,6 +2,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from 'next'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import legacyRedirectDecisions from './src/lib/legacy-redirect-decisions.json'
 
 const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
@@ -32,22 +33,44 @@ const nextConfig: NextConfig = {
     ]
   },
   async redirects() {
-    // Old-site /team-member/* slugs that don't map 1:1 to the new clean slugs.
-    // Source of truth: the live-site inventory in
-    // docs/superpowers/specs/2026-06-11-team-pages-design.md.
-    const teamMemberMap: Record<string, string> = {
-      'daila-ojeda-pro-climber': 'daila-ojeda',
-      'adam-ondra-pro-climber': 'adam-ondra',
-      'patxi-usobiaga-pro-climber': 'patxi-usobiaga',
-      'pablo-scorza-fyziotherapist-biomechanica-funcional': 'pablo-scorza',
-    }
     return [
-      ...Object.entries(teamMemberMap).map(([from, to]) => ({
-        source: `/team-member/${from}`,
-        destination: `/team/${to}`,
+      // Approved old Event pages keep their Event identity even when the target is not yet indexed.
+      ...Object.entries(legacyRedirectDecisions.approvedLegacyEventPageRedirects).map(([from, destination]) => ({
+        source: `/event/${from}`,
+        destination,
+        permanent: false,
+      })),
+      // Old browse indexes now lead to the trip catalogue.
+      ...legacyRedirectDecisions.legacyTripBrowseIndexRedirects.map((source) => ({
+        source,
+        destination: '/trips',
         permanent: true,
       })),
-      // Generic rule MUST come after the explicit map.
+      // Broader historical fallbacks stay temporary until the migrated host is checked.
+      ...legacyRedirectDecisions.legacyTripIndexFallbackPaths.map((source) => ({
+        source,
+        destination: '/trips',
+        permanent: false,
+      })),
+      // Historical Event Dates without an equivalent Variant browse by their trip category.
+      ...Object.entries(legacyRedirectDecisions.temporaryHistoricalDateCategoryRedirects).map(([from, category]) => ({
+        source: `/event-date/${from}`,
+        destination: `/trips?category=${category}`,
+        permanent: false,
+      })),
+      // Draft legacy Events with a live, populated category listing.
+      ...Object.entries(legacyRedirectDecisions.temporaryEventCategoryRedirects).map(([from, category]) => ({
+        source: `/event/${from}`,
+        destination: `/trips?category=${category}`,
+        permanent: false,
+      })),
+      // Missing Guide records return to the team index instead of a 404 detail.
+      ...legacyRedirectDecisions.missingTeamMemberSlugs.map((slug) => ({
+        source: `/team-member/${slug}`,
+        destination: '/team',
+        permanent: true,
+      })),
+      // Existing Guides keep their old suffix slugs; generic rule comes last.
       { source: '/team-member/:slug', destination: '/team/:slug', permanent: true },
       { source: '/team-member', destination: '/team', permanent: true },
       // Old-site /location/* redirects to /destinations/*.
