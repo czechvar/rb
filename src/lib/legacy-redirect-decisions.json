@@ -1,0 +1,21 @@
+{
+  "contentOnlyParentSlugs": [
+    "big-wall-climbing-in-chamonix"
+  ],
+  "missingTeamMemberSlugs": [
+    "benjamin-brochard",
+    "maribel-vara",
+    "michelle-o-loughlin",
+    "ritch-mayfield",
+    "will-sim"
+  ],
+  "temporaryEventCategoryRedirects": {
+    "climbing-weekends": "sport-climbing-holidays",
+    "christmas-climbing-holiday": "sport-climbing-holidays",
+    "easter-climbing-in-sella": "sport-climbing-holidays",
+    "biomechanica-funcional": "performance-technique-camps",
+    "adam-ondra-patxi-usobiaga-work-shop": "performance-technique-camps",
+    "daila-ojeda-climbing-work-shop": "performance-technique-camps",
+    "deep-water-solo-sailing-mallorca": "sport-climbing-holidays"
+  }
+}

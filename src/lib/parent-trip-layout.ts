@@ -1,4 +1,5 @@
 import type { TripVariant } from '@/payload-types'
+import legacyRedirectDecisions from './legacy-redirect-decisions.json'
 import { defaultTripLayout } from './trip-layout'
 import type { TripDetailView } from './trip-detail'
 
@@ -19,9 +20,7 @@ function readableWordCount(value: unknown): number {
 }
 
 /** Only reviewed Event identities can stand alone without a current offer. */
-const approvedContentOnlyParentSlugs = new Set([
-  'big-wall-climbing-in-chamonix',
-])
+const approvedContentOnlyParentSlugs = new Set(legacyRedirectDecisions.contentOnlyParentSlugs)
 
 export function isIndexableContentOnlyParentTrip(
   eventContent: unknown,

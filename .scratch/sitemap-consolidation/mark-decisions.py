@@ -2,19 +2,15 @@
 """Record reviewed category/team fallback decisions in scratch overviews."""
 
 import csv
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 AUDIT = ROOT / ".scratch/legacy-expiry-audit/all-old-url-inventory.csv"
 OLDER = ROOT / ".scratch/sitemap-redirect-mapping.csv"
 BLOG_PATHS = {"/blog/category/bouldering", "/blog/category/video"}
-TEAM_PATHS = {
-    "/team-member/benjamin-brochard",
-    "/team-member/maribel-vara",
-    "/team-member/michelle-o-loughlin",
-    "/team-member/ritch-mayfield",
-    "/team-member/will-sim",
-}
+TEAM_PATHS = {f"/team-member/{slug}" for slug in json.loads(
+    (ROOT / "src/lib/legacy-redirect-decisions.json").read_text())["missingTeamMemberSlugs"]}
 
 
 def read_csv(path):
@@ -57,4 +53,4 @@ for row in rows:
         row["destination"] = "/team"
         row["reason"] = "Specific Guide detail URL absent from the new sitemap; user-approved /team fallback returns 200 and is self-canonical."
 write_csv(OLDER, fields, rows)
-print("marked=2-existing-blog-categories,5-team-index-fallbacks")
+print(f"marked={len(BLOG_PATHS)}-existing-blog-categories,{len(TEAM_PATHS)}-team-index-fallbacks")

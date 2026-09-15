@@ -22,8 +22,11 @@ OLDER_MAP = ROOT / ".scratch/sitemap-redirect-mapping.csv"
 CANONICAL_SEED = ROOT / "scripts/data-import/seed/canonical-payload-seed.json"
 EMPTY_TARGET_OPTIONS = ROOT / ".scratch/legacy-expiry-audit/empty-target-options.csv"
 CATEGORY_BROWSER_AUDIT = OUT / "category-browser-validation.json"
+REDIRECT_DECISIONS = ROOT / "src/lib/legacy-redirect-decisions.json"
 CONTENT_EVENT_ALIASES = {"alpine-rock-climbing-in-chamonix": "big-wall-climbing-in-chamonix"}
-APPROVED_CONTENT_ONLY_PARENT_SLUGS = {"big-wall-climbing-in-chamonix"}
+legacy_decisions = json.loads(REDIRECT_DECISIONS.read_text())
+APPROVED_CONTENT_ONLY_PARENT_SLUGS = set(legacy_decisions["contentOnlyParentSlugs"])
+MISSING_TEAM_PATHS = {f"/team-member/{slug}" for slug in legacy_decisions["missingTeamMemberSlugs"]}
 EXCLUDED_LEGACY_EVENT_SLUGS = {
     "singing-rock-mobile-test-center": "inactive equipment test-center campaign",
     "rockbusters-summer-2018": "obsolete Summer 2018 campaign",
@@ -80,6 +83,8 @@ seed_events = {row["slug"]: row for group in seed["collections"] if group["slug"
 category_fallbacks = {row["source"]: row["draftCategoryFallbackCandidate"]
                       for row in csv.DictReader(EMPTY_TARGET_OPTIONS.open(newline="")) if row["draftCategoryFallbackCandidate"]}
 category_browser_audit = json.loads(CATEGORY_BROWSER_AUDIT.read_text())
+for slug, category in legacy_decisions["temporaryEventCategoryRedirects"].items():
+    assert category_fallbacks.get(f"/event/{slug}") == f"/trips?category={category}", f"Category decision lacks matching legacy evidence: {slug}"
 
 assert len(old_urls) == len(old_keys), "Old sitemap has duplicate locs"
 assert len(new_urls) == len(new_keys), "New sitemap has duplicate locs"
@@ -92,6 +97,8 @@ for row in audit_rows:
     ready = tier1_by_old.get(old_key)
     older = older_by_old.get(old_key)
     candidate = ready["candidateTarget"] if ready else (row["tier1DateTargetCandidate"] or row["auditTargetCandidate"] or (older["destination"] if older else ""))
+    if old_key in MISSING_TEAM_PATHS:
+        candidate = "/team"
     clear_class = ""
     clear_target = ""
     if ready and key(ready["candidateTarget"]) in new_keys:
@@ -100,7 +107,7 @@ for row in audit_rows:
         clear_class, clear_target = "historical-equivalent-variant", candidate
     elif row["auditTargetStatus"] == "live-200-self-canonical-empty-category" and old_key in ("/blog/category/bouldering", "/blog/category/video"):
         clear_class, clear_target = "same-path-existing-empty-category", old_key
-    elif row["auditTargetStatus"] == "reviewed-team-index-fallback" and candidate == "/team" and candidate in new_keys:
+    elif old_key in MISSING_TEAM_PATHS and candidate in new_keys:
         clear_class, clear_target = "reviewed-team-index-fallback", candidate
     elif old_key in new_keys:
         clear_class, clear_target = "same-listed-path", old_key
@@ -127,7 +134,7 @@ for row in audit_rows:
         "candidateTarget": candidate,
         "candidateInNewSitemap": str(bool(candidate) and key(candidate) in new_keys).lower(),
         "mappingClass": "tier1-exact" if ready else (row["auditTargetStatus"] or "unreviewed"),
-        "candidateSource": "tier1-redirect-readiness.csv" if ready else ("all-old-url-inventory.csv" if row["tier1DateTargetCandidate"] or row["auditTargetCandidate"] else ("sitemap-redirect-mapping.csv" if older and older["destination"] else "")),
+        "candidateSource": "legacy-redirect-decisions.json" if old_key in MISSING_TEAM_PATHS else ("tier1-redirect-readiness.csv" if ready else ("all-old-url-inventory.csv" if row["tier1DateTargetCandidate"] or row["auditTargetCandidate"] else ("sitemap-redirect-mapping.csv" if older and older["destination"] else ""))),
         "clearReplacementClass": clear_class,
         "clearReplacementTarget": clear_target,
         "reasonWithoutClearReplacement": no_clear_reason,
@@ -154,8 +161,8 @@ for row in crosswalk:
                           else "needs-current-offer-review")
     category_fallback = ""
     if content_review == "needs-current-offer-review" and not target:
-        candidate = category_fallbacks.get(row["oldPath"], "")
-        category_slug = candidate.split("category=", 1)[1] if "category=" in candidate else ""
+        category_slug = legacy_decisions["temporaryEventCategoryRedirects"].get(content_event["slug"], "")
+        candidate = category_fallbacks.get(row["oldPath"], "") if category_slug else ""
         browser = category_browser_audit["filters"].get(category_slug, {})
         if browser.get("http") == 200 and browser.get("selected") is True and browser.get("resultCount", 0) > 0 and browser.get("pageErrors") == 0:
             target = category_fallback = candidate

@@ -2,6 +2,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from 'next'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import legacyRedirectDecisions from './src/lib/legacy-redirect-decisions.json'
 
 const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
@@ -32,38 +33,20 @@ const nextConfig: NextConfig = {
     ]
   },
   async redirects() {
-    // Old-site /team-member/* slugs that don't map 1:1 to the new clean slugs.
-    // Source of truth: the live-site inventory in
-    // docs/superpowers/specs/2026-06-11-team-pages-design.md.
-    const teamMemberMap: Record<string, string> = {
-      'daila-ojeda-pro-climber': 'daila-ojeda',
-      'adam-ondra-pro-climber': 'adam-ondra',
-      'patxi-usobiaga-pro-climber': 'patxi-usobiaga',
-      'pablo-scorza-fyziotherapist-biomechanica-funcional': 'pablo-scorza',
-    }
-    // Draft legacy Events with a live, populated category listing. Keep these
-    // temporary while their Event content and current offer are reviewed.
-    const legacyEventCategoryMap: Record<string, string> = {
-      'climbing-weekends': 'sport-climbing-holidays',
-      'christmas-climbing-holiday': 'sport-climbing-holidays',
-      'easter-climbing-in-sella': 'sport-climbing-holidays',
-      'biomechanica-funcional': 'performance-technique-camps',
-      'adam-ondra-patxi-usobiaga-work-shop': 'performance-technique-camps',
-      'daila-ojeda-climbing-work-shop': 'performance-technique-camps',
-      'deep-water-solo-sailing-mallorca': 'sport-climbing-holidays',
-    }
     return [
-      ...Object.entries(legacyEventCategoryMap).map(([from, category]) => ({
+      // Draft legacy Events with a live, populated category listing.
+      ...Object.entries(legacyRedirectDecisions.temporaryEventCategoryRedirects).map(([from, category]) => ({
         source: `/event/${from}`,
         destination: `/trips?category=${category}`,
         permanent: false,
       })),
-      ...Object.entries(teamMemberMap).map(([from, to]) => ({
-        source: `/team-member/${from}`,
-        destination: `/team/${to}`,
+      // Missing Guide records return to the team index instead of a 404 detail.
+      ...legacyRedirectDecisions.missingTeamMemberSlugs.map((slug) => ({
+        source: `/team-member/${slug}`,
+        destination: '/team',
         permanent: true,
       })),
-      // Generic rule MUST come after the explicit map.
+      // Existing Guides keep their old suffix slugs; generic rule comes last.
       { source: '/team-member/:slug', destination: '/team/:slug', permanent: true },
       { source: '/team-member', destination: '/team', permanent: true },
       // Old-site /location/* redirects to /destinations/*.
