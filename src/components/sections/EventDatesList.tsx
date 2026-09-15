@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 import type { EventDate } from '@/payload-types'
 import { DateRowBookButton } from '@/components/trip/DateRowBookButton'
-import { tripOccurrencePath } from '@/lib/occurrence-routing'
+import { tripPublicDatePath } from '@/lib/occurrence-routing'
 import { canCheckoutEventDate, eventDateLifecycle } from '@/lib/event-date-visibility'
 import styles from './EventDatesList.module.css'
 
@@ -54,7 +54,7 @@ export function EventDatesList({
             <li key={d.id} className={styles.card} data-selected={d.id === selectedId || undefined}>
               <div data-type="card" className={styles.range}>
                 {variant === 'rows' && eventSlug ? (
-                  <Link href={`${d.slug ? tripOccurrencePath(eventSlug, d.slug) : `/trips/${eventSlug}`}#dates`} aria-current={d.id === selectedId ? 'true' : undefined}>
+                  <Link href={`${tripPublicDatePath(eventSlug, d)}#dates`} aria-current={d.id === selectedId ? 'true' : undefined}>
                     {fmtDate(d.dateFrom)} – {fmtDate(d.dateTo)}
                     {d.id === selectedId && <span data-type="label" className={styles.selectedLabel}>Selected</span>}
                   </Link>

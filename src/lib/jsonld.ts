@@ -1,6 +1,6 @@
-import type { Event, EventDate, Faq, Guide, Location, Media, Page, Post, Program } from '@/payload-types'
+import type { Event, EventDate, Faq, Guide, Location, Media, Page, Post, Program, TripVariant } from '@/payload-types'
 import { mediaUrl as payloadMediaUrl } from '@/lib/media'
-import { tripOccurrencePath } from '@/lib/occurrence-routing'
+import { tripOccurrencePath, tripPublicDatePath, tripVariantPath } from '@/lib/occurrence-routing'
 import { canCheckoutEventDate, eventDateLifecycle } from '@/lib/event-date-visibility'
 import {
   resolveFeaturedGuide,
@@ -371,6 +371,52 @@ export function occurrenceGraphJsonLd(event: Event, occurrence: EventDate, now =
   ])
 }
 
+export function variantGraphJsonLd(event: Event, variant: TripVariant, occurrence?: EventDate, now = new Date()) {
+  const evergreenPath = tripVariantPath(event.slug, variant.slug)
+  const path = tripVariantPath(event.slug, variant.slug, occurrence?.publicDateKey)
+  const url = absoluteUrl(path)
+  const variantLocations = docs(variant.locations)
+  const locations = occurrence && docs(occurrence.locations).length
+    ? docs(occurrence.locations)
+    : variantLocations.length ? variantLocations : docs(event.locations)
+  const guides = occurrence && docs(occurrence.guides).length ? docs(occurrence.guides) : docs(event.coaches)
+  const trip = {
+    ...eventTripJsonLd(event, [], evergreenPath),
+    name: `${event.title} — ${variant.title}`,
+    location: locations.map((location) => ({ '@id': locationPlaceJsonLd(location)['@id'] })),
+  }
+  const baseDateNode = occurrence ? eventDateJsonLd(event, occurrence, url) : null
+  const { offers: _closedOffer, ...closedDateNode } = baseDateNode ?? {}
+  const lifecycle = occurrence ? eventDateLifecycle(occurrence, now) : null
+  const dateNode: JsonLdObject | null = occurrence ? {
+    ...(canCheckoutEventDate(occurrence, now) ? baseDateNode : closedDateNode),
+    url,
+    eventStatus: lifecycle === 'ended' ? 'https://schema.org/EventCompleted' : 'https://schema.org/EventScheduled',
+  } : null
+
+  return graph([
+    organizationJsonLd(),
+    webPageJsonLd({
+      url,
+      name: `${event.seo?.title ?? event.title} — ${variant.title}${occurrence ? ` — ${occurrence.dateFrom}` : ''}`,
+      description: richTextPlainText(variant.extraContent) ?? descriptionFor(event),
+      mainEntity: { '@id': occurrence ? dateNode?.['@id'] : trip['@id'] },
+      image: absoluteMediaUrl(event.mainPicture),
+    }),
+    breadcrumbListJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'Trips', path: '/trips' },
+      { name: event.title, path: `/trips/${event.slug}` },
+      { name: variant.title, path: evergreenPath },
+      ...(occurrence ? [{ name: occurrence.dateFrom, path }] : []),
+    ]),
+    ...uniqueById(locations.map((location) => locationPlaceJsonLd(location))),
+    ...uniqueById(guides.map((guide) => guidePersonJsonLd(guide))),
+    trip,
+    ...(dateNode ? [dateNode] : []),
+  ])
+}
+
 export function eventDatesGraphJsonLd(event: Event, eventDates: EventDate[]) {
   const url = absoluteUrl(`/trips/${event.slug}/dates`)
   const tripUrl = absoluteUrl(`/trips/${event.slug}`)
@@ -729,9 +775,7 @@ function calendarEventDateJsonLd(date: EventDate): JsonLdObject | undefined {
   const event = isDoc(date.event) ? date.event : null
   if (!event) return undefined
 
-  const tripUrl = absoluteUrl(date.slug
-    ? tripOccurrencePath(event.slug, date.slug)
-    : `/trips/${event.slug}`)
+  const tripUrl = absoluteUrl(tripPublicDatePath(event.slug, date))
   const node = eventDateJsonLd(event, date, tripUrl)
   return date.slug ? { ...node, url: tripUrl } : node
 }

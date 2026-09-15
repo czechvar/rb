@@ -98,6 +98,22 @@ describe('known occurrence discovery links', () => {
     expect(featured).toContain('href="/trips/kalymnos-camp/kalymnos-2999-10-12"')
   })
 
+  it('links migrated trip cards and grids directly to the dated Trip Variant leaf', async () => {
+    const migrated = {
+      ...occurrence,
+      tripVariant: { id: 51, event: event.id, slug: 'kalymnos', title: 'Kalymnos' },
+      publicDateKey: '2999-10-12-to-2999-10-19',
+    } as EventDate
+    const expected = '/trips/kalymnos-camp/kalymnos?date=2999-10-12-to-2999-10-19'
+    mocks.dates.mockResolvedValue([migrated])
+    expect(renderToStaticMarkup(<EventDateCard eventDate={migrated} />)).toContain(`href="${expected.replace('&', '&amp;')}"`)
+    expect(toCatalogueResult(migrated)?.href).toBe(expected)
+    expect(renderToStaticMarkup(await ProgramsIndex())).toContain(expected.replace('&', '&amp;'))
+    expect(renderToStaticMarkup(await TripGridBlock({
+      blockType: 'tripGrid', source: 'manual', events: [event], heading: 'Trips', limit: 3, variant: 'cards',
+    }))).toContain(expected.replace('&', '&amp;'))
+  })
+
   it('retains the parent selector when no occurrence identity is available', async () => {
     mocks.dates.mockResolvedValue([])
     const programs = renderToStaticMarkup(await ProgramsIndex())

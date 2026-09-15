@@ -1,10 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { EventDate } from '@/payload-types'
-import { getPublicEventDatesForEvent, getPublicOccurrenceBySlugs, getTripDetailEventDates } from '@/lib/queries'
+import { getPublicEventDatesForEvent, getPublicEventDatesForVariant, getPublicOccurrenceBySlugs, getPublicTripVariantBySlugs, getTripDetailEventDates } from '@/lib/queries'
 import {
   deriveOccurrenceSlug,
   normalizeOccurrenceSlug,
   tripOccurrencePath,
+  tripPublicDatePath,
+  tripVariantPath,
 } from '@/lib/occurrence-routing'
 
 const { find, cachedQuery } = vi.hoisted(() => ({ find: vi.fn(), cachedQuery: vi.fn() }))
@@ -75,6 +77,18 @@ describe('public occurrence identity', () => {
     )
   })
 
+  it('uses the stable variant segment and exact start-to-end key for migrated dates', () => {
+    const migrated = {
+      ...date(5, 8), slug: 'kalymnos-2999-10-12',
+      tripVariant: { slug: 'kalymnos' }, publicDateKey: '2999-10-12-to-2999-10-19',
+    } as EventDate
+    expect(tripVariantPath('europe-rock-trip', 'kalymnos')).toBe('/trips/europe-rock-trip/kalymnos')
+    expect(tripPublicDatePath('europe-rock-trip', migrated)).toBe(
+      '/trips/europe-rock-trip/kalymnos?date=2999-10-12-to-2999-10-19',
+    )
+    expect(tripPublicDatePath('europe-rock-trip', date(6, 8))).toBe('/trips/europe-rock-trip')
+  })
+
   it('rejects empty or malformed public path inputs', () => {
     expect(() => deriveOccurrenceSlug('', '2027-10-12T00:00:00.000Z')).toThrow()
     expect(() => deriveOccurrenceSlug('kalymnos', 'not-a-date')).toThrow()
@@ -120,5 +134,28 @@ describe('public occurrence resolver', () => {
     })
     find.mockResolvedValueOnce({ docs: [] })
     await expect(getPublicOccurrenceBySlugs('unknown', 'kalymnos-old')).resolves.toBeNull()
+  })
+})
+
+describe('public Trip Variant resolver', () => {
+  it('resolves an active variant only under its published Event and loads live own dates', async () => {
+    const event = { id: 10, slug: 'mallorca-trip', state: 'published' }
+    const variant = { id: 51, event: 10, slug: 'mallorca', active: true, indexable: true }
+    cachedQuery.mockImplementationOnce((_key, _tags, run) => run())
+    find.mockResolvedValueOnce({ docs: [event] }).mockResolvedValueOnce({ docs: [variant] })
+      .mockResolvedValueOnce({ docs: [{ ...date(734, 8, 3, 8), tripVariant: variant, publicDateKey: '2999-10-12-to-2999-10-19' }] })
+
+    await expect(getPublicTripVariantBySlugs(event.slug, variant.slug)).resolves.toEqual({
+      event, variant, requestedAlias: false,
+    })
+    const dates = await getPublicEventDatesForVariant(event.id, variant.id)
+    expect(dates[0]).toMatchObject({ tripVariant: variant, remainingSeats: 5 })
+    expect(find.mock.calls[1][0].where).toEqual({ and: [
+      { event: { equals: event.id } }, { active: { equals: true } },
+      { or: [{ slug: { equals: variant.slug } }, { 'slugAliases.slug': { equals: variant.slug } }] },
+    ] })
+    expect(find.mock.calls[2][0].where).toEqual({ and: [
+      { event: { equals: event.id } }, { tripVariant: { equals: variant.id } }, { active: { equals: true } },
+    ] })
   })
 })

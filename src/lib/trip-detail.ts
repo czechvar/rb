@@ -1,4 +1,4 @@
-import type { Event, EventDate, Guide, Location } from '@/payload-types'
+import type { Event, EventDate, Guide, Location, TripVariant } from '@/payload-types'
 import { applyTripEditorial, resolveTripEditorial, type TripEditorial } from './trip-editorial'
 import { canCheckoutEventDate, eventDateLifecycle, isUpcomingEventDate } from './event-date-visibility'
 
@@ -7,6 +7,7 @@ type RichText = NonNullable<Event['content']>
 
 export interface TripDetailView {
   event: Event
+  variant?: TripVariant
   editorial?: TripEditorial
   dates: EventDate[]
   selectedDate: EventDate | null
@@ -145,8 +146,9 @@ export function resolveTripDetail(
   dates: EventDate[],
   selectedId?: number,
   now = new Date(),
-  options: { exactSelection?: boolean } = {},
+  options: { exactSelection?: boolean; variant?: TripVariant; contentFromSelectedDate?: boolean } = {},
 ): TripDetailView {
+  const variant = options.variant
   const valid = dates.filter(date => date.active === true &&
     (typeof date.event === 'object' ? date.event.id : date.event) === event.id &&
     Number.isFinite(Date.parse(date.dateFrom)) && Number.isFinite(Date.parse(date.dateTo)) &&
@@ -156,10 +158,13 @@ export function resolveTripDetail(
   const displayedDates = options.exactSelection ? valid : upcoming
   const selectedDate = (options.exactSelection ? valid : upcoming).find(date => date.id === selectedId) ??
     upcoming.find(date => !unavailable(date)) ?? upcoming[0] ?? null
-  const editorial = resolveTripEditorial(event.editorial, selectedDate?.editorial)
-  event = applyTripEditorial(event, selectedDate)
+  // The evergreen page may autoselect a departure for booking without changing its stable copy.
+  const contentDate = variant && options.contentFromSelectedDate === false ? null : selectedDate
+  const inheritedEditorial = resolveTripEditorial(event.editorial, variant?.editorial)
+  const editorial = resolveTripEditorial(inheritedEditorial, contentDate?.editorial)
+  event = applyTripEditorial({ ...event, editorial: inheritedEditorial as Event['editorial'] }, contentDate)
   const guides = populated(selectedDate?.guides?.length ? selectedDate.guides : event.coaches)
-  const locations = populated(selectedDate?.locations?.length ? selectedDate.locations : event.locations)
+  const locations = populated(contentDate?.locations?.length ? contentDate.locations : variant?.locations?.length ? variant.locations : event.locations)
   const seats = selectedDate?.remainingSeats
   const soldOut = selectedDate ? unavailable(selectedDate) : false
   const lifecycle = selectedDate ? eventDateLifecycle(selectedDate, now) : null
@@ -172,10 +177,12 @@ export function resolveTripDetail(
   }).format(selectedDate.price) : null
   const availabilityLabel = lifecycle === 'ended' ? 'Past trip' : lifecycle === 'in-progress' ? 'In progress' :
     soldOut ? 'Sold out' : seats == null ? null : `${seats} ${seats === 1 ? 'spot' : 'spots'} available`
-  const overrides = selectedDate?.logisticsOverrides
+  const overrides = contentDate?.logisticsOverrides
+  const stableLogistics = variant?.logisticsOverrides
   const logisticsOverrides: NonNullable<EventDate['logisticsOverrides']> = {}
   for (const key of ['accommodation', 'food', 'included', 'excluded', 'note'] as const) {
     if (meaningful(overrides?.[key])) logisticsOverrides[key] = overrides[key]
+    else if (meaningful(stableLogistics?.[key])) logisticsOverrides[key] = stableLogistics[key]
   }
   const accommodation = {
     ...event.accommodation,
@@ -197,12 +204,30 @@ export function resolveTripDetail(
   if (selectedDate?.capacity && selectedDate.capacity > 0) facts.push({ label: 'Group size', value: `Maximum ${selectedDate.capacity}` })
   if (guides.length) facts.push({ label: 'Guides', value: guides.map(guide => guide.name).join(', ') })
   return {
-    event, editorial, dates: displayedDates, selectedDate, guides, locations, facts, priceLabel, dateLabel, dateSpanLabel,
+    event, variant, editorial, dates: displayedDates, selectedDate, guides, locations, facts, priceLabel, dateLabel, dateSpanLabel,
     bookingHref: selectedDate && canCheckoutEventDate(selectedDate, now) ? `/book/${selectedDate.id}` : null,
     availabilityLabel, accommodation, transport, logisticsOverrides, sections,
-    remainingContent: remainingTripContent(event.content, sections),
+    remainingContent: variant && meaningful(contentDate?.extraContent) ? contentDate.extraContent :
+      variant && meaningful(variant.extraContent) ? variant.extraContent : remainingTripContent(event.content, sections),
     remainingAdditionalInfo: remainingTripAdditionalInfo(event, sections),
   }
+}
+
+/** A variant owns the evergreen presentation; a dated leaf selects its exact Event Date. */
+export function resolveTripDetailVariant(
+  event: Event,
+  variant: TripVariant,
+  dates: EventDate[],
+  selectedOccurrence: EventDate | null = null,
+  now = new Date(),
+): TripDetailView {
+  const ownDates = dates.filter(date =>
+    (typeof date.tripVariant === 'object' && date.tripVariant !== null ? date.tripVariant.id : date.tripVariant) === variant.id)
+  return resolveTripDetail(event, ownDates, selectedOccurrence?.id, now, {
+    variant,
+    exactSelection: selectedOccurrence !== null,
+    contentFromSelectedDate: selectedOccurrence !== null,
+  })
 }
 
 export function resolveTripDetailOccurrence(

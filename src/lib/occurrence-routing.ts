@@ -1,4 +1,5 @@
 import { slugify } from '@/fields/slug'
+import type { EventDate } from '@/payload-types'
 
 const PUBLIC_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const RESERVED_OCCURRENCE_SLUGS = new Set(['dates', 'faq', 'logistics'])
@@ -40,4 +41,15 @@ export function tripOccurrencePath(eventSlug: string, occurrenceSlug: string): s
   const parent = normalizeOccurrenceSlug(eventSlug)
   const occurrence = normalizePublicOccurrenceSlug(occurrenceSlug)
   return `/trips/${parent}/${occurrence}`
+}
+
+export function tripVariantPath(eventSlug: string, variantSlug: string, dateKey?: string | null): string {
+  const path = `/trips/${normalizeOccurrenceSlug(eventSlug)}/${normalizePublicOccurrenceSlug(variantSlug)}`
+  return dateKey ? `${path}?date=${encodeURIComponent(dateKey)}` : path
+}
+
+export function tripPublicDatePath(eventSlug: string, date: EventDate): string {
+  const variant = typeof date.tripVariant === 'object' && date.tripVariant ? date.tripVariant : null
+  if (variant?.slug && date.publicDateKey) return tripVariantPath(eventSlug, variant.slug, date.publicDateKey)
+  return date.slug ? tripOccurrencePath(eventSlug, date.slug) : `/trips/${normalizeOccurrenceSlug(eventSlug)}`
 }

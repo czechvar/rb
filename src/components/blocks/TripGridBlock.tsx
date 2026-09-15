@@ -9,7 +9,7 @@ import imageCardStyles from '@/components/catalogue/ImageTripCard.module.css'
 import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
 import { mediaUrl } from '@/lib/media'
 import styles from './blocks.module.css'
-import { tripOccurrencePath } from '@/lib/occurrence-routing'
+import { tripPublicDatePath } from '@/lib/occurrence-routing'
 
 type TripGridBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'tripGrid' }>
 
@@ -66,7 +66,7 @@ export async function TripGridBlock(block: TripGridBlockProps, context: BlockRen
           {events.map((event, index) => {
             const eventDates = datesByEvent.get(event.id) ?? []
             const first = eventDates[0]
-            const href = first?.slug ? tripOccurrencePath(event.slug, first.slug) : `/trips/${event.slug}`
+            const href = first ? tripPublicDatePath(event.slug, first) : `/trips/${event.slug}`
             const price = formatPrice(lowestPrice(eventDates))
             if (block.variant === 'featureLead') {
               return (

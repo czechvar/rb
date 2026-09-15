@@ -3,7 +3,7 @@ import { notFound, permanentRedirect, redirect } from 'next/navigation'
 import { getPublishedEventBySlug, getPublicEventDatesForEvent } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { eventDateLifecycle, selectBookableOccurrence } from '@/lib/event-date-visibility'
-import { tripOccurrencePath } from '@/lib/occurrence-routing'
+import { tripPublicDatePath } from '@/lib/occurrence-routing'
 import type { EventDate } from '@/payload-types'
 
 type Props = {
@@ -16,7 +16,7 @@ export const metadata = { robots: { index: false, follow: true } }
 function publicPath(eventSlug: string, occurrence: EventDate): string | null {
   if (!occurrence.slug) return null
   try {
-    return tripOccurrencePath(eventSlug, occurrence.slug)
+    return tripPublicDatePath(eventSlug, occurrence)
   } catch {
     return null
   }

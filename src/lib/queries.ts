@@ -5,6 +5,7 @@ import type {
   Location,
   Event,
   EventDate,
+  TripVariant,
   Post,
   PostCategory,
   Review,
@@ -27,6 +28,7 @@ export function getPublishedPageBySlug(slug: string) {
       TAGS.pages,
       TAGS.events,
       TAGS.eventDates,
+      TAGS.tripVariants,
       TAGS.categories,
       TAGS.difficulties,
       TAGS.faqs,
@@ -280,7 +282,7 @@ export function getPublishedEventBySlug(slug: string) {
 
 export function getActiveEventDatesForEvent(eventId: number) {
   const dateFloor = catalogueDateFloor()
-  return cachedQuery(['event-dates-for-event', String(eventId), dateFloor], [TAGS.eventDates, TAGS.guides, TAGS.locations], async (): Promise<EventDate[]> => {
+  return cachedQuery(['event-dates-for-event', String(eventId), dateFloor], [TAGS.eventDates, TAGS.tripVariants, TAGS.guides, TAGS.locations], async (): Promise<EventDate[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'event-dates',
@@ -335,7 +337,7 @@ export async function getPublicEventDatesForEvent(eventId: number): Promise<Even
     limit: 1000,
     depth: 2,
     select: {
-      event: true, slug: true, slugAliases: true,
+      event: true, slug: true, slugAliases: true, tripVariant: true, publicDateKey: true, indexable: true,
       dateFrom: true, dateTo: true, price: true, currency: true,
       capacity: true, active: true, guides: true, locations: true,
       vat: true, updatedAt: true, createdAt: true,
@@ -347,6 +349,50 @@ export async function getPublicEventDatesForEvent(eventId: number): Promise<Even
       guides: { name: true, slug: true, role: true, tagline: true, photo: true },
       locations: { name: true, slug: true, country: true, mainPicture: true, gradeRange: true, destinationDetail: true },
     },
+  })
+  return docs.map(date => ({
+    ...date,
+    remainingSeats: Math.max(0, date.capacity - (date.bookedSeats ?? 0)),
+  }))
+}
+
+/** Resolve the evergreen Event/context record under its published parent. */
+export async function getPublicTripVariantBySlugs(
+  eventSlug: string,
+  variantSlug: string,
+): Promise<{ event: Event; variant: TripVariant; requestedAlias: boolean } | null> {
+  const event = await getPublishedEventBySlug(eventSlug)
+  if (!event) return null
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'trip-variants',
+    where: {
+      and: [
+        { event: { equals: event.id } },
+        { active: { equals: true } },
+        { or: [{ slug: { equals: variantSlug } }, { 'slugAliases.slug': { equals: variantSlug } }] },
+      ],
+    },
+    limit: 1,
+    depth: 2,
+  })
+  const variant = docs[0]
+  return variant ? { event, variant, requestedAlias: variant.slug !== variantSlug } : null
+}
+
+/** Capacity remains live; the selected occurrence must belong to this exact variant. */
+export async function getPublicEventDatesForVariant(eventId: number, variantId: number): Promise<EventDate[]> {
+  const payload = await getPayloadClient()
+  const { docs } = await payload.find({
+    collection: 'event-dates',
+    where: { and: [
+      { event: { equals: eventId } },
+      { tripVariant: { equals: variantId } },
+      { active: { equals: true } },
+    ] },
+    sort: 'dateFrom',
+    limit: 1000,
+    depth: 2,
   })
   return docs.map(date => ({
     ...date,
@@ -429,13 +475,13 @@ export function getPublishedEventsWithLocations() {
 export function getActiveEventDatesForEvents(eventIds: number[]) {
   if (eventIds.length === 0) return Promise.resolve<EventDate[]>([])
   const dateFloor = catalogueDateFloor()
-  return cachedQuery(['event-dates-for-events', eventIds.join(','), dateFloor], [TAGS.eventDates], async (): Promise<EventDate[]> => {
+  return cachedQuery(['event-dates-for-events', eventIds.join(','), dateFloor], [TAGS.eventDates, TAGS.tripVariants], async (): Promise<EventDate[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'event-dates',
       where: { and: [{ event: { in: eventIds } }, { active: { equals: true } }, upcomingEventDateWhere()] },
       sort: 'dateFrom',
-      depth: 0,
+      depth: 1,
       limit: 500,
     })
     return docs
@@ -464,7 +510,7 @@ export function getPublishedEventsForProgram(programId: number) {
 
 export function getActiveEventDates() {
   const dateFloor = catalogueDateFloor()
-  return cachedQuery(['active-event-dates', dateFloor], [TAGS.eventDates, TAGS.events, TAGS.locations], async (): Promise<EventDate[]> => {
+  return cachedQuery(['active-event-dates', dateFloor], [TAGS.eventDates, TAGS.tripVariants, TAGS.events, TAGS.locations], async (): Promise<EventDate[]> => {
     const payload = await getPayloadClient()
     const { docs } = await payload.find({
       collection: 'event-dates',

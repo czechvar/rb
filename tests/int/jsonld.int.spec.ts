@@ -14,6 +14,7 @@ import {
   homepageGraphJsonLd,
   locationDetailGraphJsonLd,
   occurrenceGraphJsonLd,
+  variantGraphJsonLd,
   postListItems,
   programDetailGraphJsonLd,
   richTextPlainText,
@@ -22,7 +23,7 @@ import {
   tripListItems,
   tripLogisticsGraphJsonLd,
 } from '@/lib/jsonld'
-import type { Event, EventDate, Faq, Guide, Location, Media, Page, Post, Program } from '@/payload-types'
+import type { Event, EventDate, Faq, Guide, Location, Media, Page, Post, Program, TripVariant } from '@/payload-types'
 
 const media: Media = {
   id: 'med_jsonld_test',
@@ -271,6 +272,25 @@ describe('JSON-LD builders', () => {
       url: canonical,
     }))
     expect(JSON.stringify(graph)).not.toContain('/trips/kalymnos-autumn-camp#dates')
+  })
+
+  it('links dated Event JSON-LD to one stable evergreen Trip Variant identity', () => {
+    vi.stubEnv('NEXT_PUBLIC_SITE_URL', 'https://rockbusters.test')
+    const variant = { id: 90, event: event.id, title: 'Kalymnos', slug: 'kalymnos', locations: [location] } as TripVariant
+    const date = { ...eventDate, tripVariant: variant, publicDateKey: '2026-10-12-to-2026-10-19' }
+    const graph = variantGraphJsonLd(event, variant, date, new Date('2026-01-01T00:00:00.000Z'))
+    const nodes = graph['@graph'] as Record<string, unknown>[]
+    const stable = 'https://rockbusters.test/trips/kalymnos-autumn-camp/kalymnos'
+    const leaf = `${stable}?date=2026-10-12-to-2026-10-19`
+    expect(nodes).toContainEqual(expect.objectContaining({
+      '@type': ['TouristTrip', 'Product'], '@id': `${stable}#trip`, url: stable,
+    }))
+    expect(nodes).toContainEqual(expect.objectContaining({
+      '@type': 'Event', url: leaf, startDate: '2026-10-12', endDate: '2026-10-19',
+      offers: expect.objectContaining({ price: 1290, priceCurrency: 'EUR' }),
+    }))
+    expect(nodes.filter((node) => node['@type'] === 'Event')).toHaveLength(1)
+    expect(variantGraphJsonLd(event, variant)['@graph']).not.toContainEqual(expect.objectContaining({ '@type': 'Event' }))
   })
 
   it.each([

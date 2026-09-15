@@ -1,7 +1,7 @@
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import type { Event } from '@/payload-types'
+import type { Event, TripVariant } from '@/payload-types'
 import TripPage, { metadata as parentMetadata } from '@/app/(frontend)/trips/[slug]/page'
 import OccurrencePage, { generateMetadata as generateOccurrenceMetadata } from '@/app/(frontend)/trips/[slug]/[occurrenceSlug]/page'
 import TripDatesPage from '@/app/(frontend)/trips/[slug]/dates/page'
@@ -9,7 +9,7 @@ import TripFaqPage from '@/app/(frontend)/trips/[slug]/faq/page'
 import TripLogisticsPage from '@/app/(frontend)/trips/[slug]/logistics/page'
 
 const mocks = vi.hoisted(() => ({
-  event: vi.fn(), dates: vi.fn(), occurrence: vi.fn(), blocks: vi.fn(),
+  event: vi.fn(), dates: vi.fn(), occurrence: vi.fn(), variant: vi.fn(), variantDates: vi.fn(), blocks: vi.fn(),
   notFound: vi.fn(() => { throw new Error('NOT_FOUND') }),
   redirect: vi.fn((path: string) => { throw new Error(`TEMP_REDIRECT:${path}`) }),
   permanentRedirect: vi.fn((path: string) => { throw new Error(`REDIRECT:${path}`) }),
@@ -18,10 +18,12 @@ vi.mock('@/lib/queries', () => ({
   getPublishedEventBySlug: mocks.event,
   getPublicEventDatesForEvent: mocks.dates,
   getPublicOccurrenceBySlugs: mocks.occurrence,
+  getPublicTripVariantBySlugs: mocks.variant,
+  getPublicEventDatesForVariant: mocks.variantDates,
 }))
 vi.mock('next/navigation', () => ({ notFound: mocks.notFound, redirect: mocks.redirect, permanentRedirect: mocks.permanentRedirect }))
 vi.mock('@/components/marketing/MarketingShell', () => ({ MarketingShell: ({ children }: { children: React.ReactNode }) => <>{children}</> }))
-vi.mock('@/lib/jsonld', () => ({ occurrenceGraphJsonLd: () => ({}) }))
+vi.mock('@/lib/jsonld', () => ({ occurrenceGraphJsonLd: () => ({}), variantGraphJsonLd: () => ({}) }))
 vi.mock('@/components/JsonLd', () => ({ JsonLd: () => null }))
 vi.mock('@/components/blocks/RenderBlocks', () => ({
   RenderBlocks: (props: unknown) => { mocks.blocks(props); return <div data-rendered-blocks /> },
@@ -39,6 +41,8 @@ beforeEach(() => {
   vi.clearAllMocks()
   mocks.event.mockResolvedValue(event)
   mocks.dates.mockResolvedValue([])
+  mocks.variant.mockResolvedValue(null)
+  mocks.variantDates.mockResolvedValue([])
 })
 
 describe('trip parent route selection', () => {
@@ -72,6 +76,18 @@ describe('trip parent route selection', () => {
   it('permanently redirects a valid numeric compatibility selector to the exact public occurrence', async () => {
     mocks.dates.mockResolvedValue([occurrence(77, { slug: 'kalymnos-2999-10-12' })])
     await expect(TripPage(props('77'))).rejects.toThrow(`REDIRECT:/trips/${event.slug}/kalymnos-2999-10-12`)
+  })
+
+  it('sends a migrated parent selection to the dated Trip Variant leaf', async () => {
+    const migrated = occurrence(734, {
+      slug: 'mallorca-2999-10-12-to-2999-10-19',
+      tripVariant: { id: 51, slug: 'mallorca' },
+      publicDateKey: '2999-10-12-to-2999-10-19',
+    })
+    mocks.dates.mockResolvedValue([migrated])
+    const path = `/trips/${event.slug}/mallorca?date=2999-10-12-to-2999-10-19`
+    await expect(TripPage(props())).rejects.toThrow(`TEMP_REDIRECT:${path}`)
+    await expect(TripPage(props('734'))).rejects.toThrow(`REDIRECT:${path}`)
   })
 
   it.each(['', 'x77', '-1', '1.5', '9007199254740992', ['77']])('404s malformed selector %j without falling back', async (selector) => {
@@ -197,6 +213,71 @@ describe('direct occurrence route', () => {
     await expect(OccurrencePage({
       params: Promise.resolve({ slug: 'wrong-parent', occurrenceSlug: occurrence.slug }),
     })).rejects.toThrow('NOT_FOUND')
+  })
+})
+
+describe('evergreen Trip Variant route', () => {
+  const variant = {
+    id: 51, event: event.id, title: 'Mallorca', slug: 'mallorca',
+    active: true, indexable: true, createdAt: '', updatedAt: '',
+  } as TripVariant
+  const oneWeek = {
+    id: 734, event: event.id, tripVariant: variant,
+    slug: 'mallorca-2999-10-12-to-2999-10-19',
+    publicDateKey: '2999-10-12-to-2999-10-19',
+    dateFrom: '2999-10-12T00:00:00.000Z',
+    dateTo: '2999-10-19T00:00:00.000Z',
+    price: 100, vat: 0, currency: 'EUR', capacity: 8, remainingSeats: 3,
+    active: true, createdAt: '', updatedAt: '',
+  }
+  const twoWeek = {
+    ...oneWeek,
+    id: 736, slug: 'mallorca-2999-10-12-to-2999-10-26',
+    publicDateKey: '2999-10-12-to-2999-10-26',
+    dateTo: '2999-10-26T00:00:00.000Z',
+  }
+  const route = (date?: string | string[]) => ({
+    params: Promise.resolve({ slug: event.slug, occurrenceSlug: variant.slug }),
+    searchParams: Promise.resolve(date === undefined ? {} : { date }),
+  })
+
+  beforeEach(() => {
+    mocks.variant.mockResolvedValue({ event, variant, requestedAlias: false })
+    mocks.variantDates.mockResolvedValue([oneWeek, twoWeek])
+  })
+
+  it('serves a self-canonical evergreen page and uses a live departure only for booking facts', async () => {
+    const meta = await generateOccurrenceMetadata(route())
+    expect(meta.alternates).toEqual({ canonical: `/trips/${event.slug}/mallorca` })
+    expect(meta.robots).toEqual({ index: true, follow: true })
+    renderToStaticMarkup(await OccurrencePage(route()))
+    const trip = mocks.blocks.mock.calls.at(-1)?.[0].context.trip
+    expect(trip.variant.id).toBe(variant.id)
+    expect(trip.selectedDate.id).toBe(oneWeek.id)
+  })
+
+  it('selects the exact date range when two departures share a start date', async () => {
+    const path = `/trips/${event.slug}/mallorca?date=2999-10-12-to-2999-10-26`
+    const meta = await generateOccurrenceMetadata(route(twoWeek.publicDateKey))
+    expect(meta.alternates).toEqual({ canonical: path })
+    renderToStaticMarkup(await OccurrencePage(route(twoWeek.publicDateKey)))
+    expect(mocks.blocks.mock.calls.at(-1)?.[0].context.trip.selectedDate.id).toBe(twoWeek.id)
+  })
+
+  it('404s unknown, malformed and repeated selectors without choosing a fallback', async () => {
+    for (const date of ['2999-10-12', '2999-10-12-to-2999-11-30', [oneWeek.publicDateKey]]) {
+      await expect(OccurrencePage(route(date))).rejects.toThrow('NOT_FOUND')
+    }
+  })
+
+  it('redirects a migrated occurrence slug to its dated variant leaf', async () => {
+    mocks.variant.mockResolvedValue(null)
+    mocks.occurrence.mockResolvedValue({ event, occurrence: oneWeek, requestedAlias: false })
+    await expect(OccurrencePage({
+      params: Promise.resolve({ slug: event.slug, occurrenceSlug: oneWeek.slug }),
+    })).rejects.toThrow(
+      `REDIRECT:/trips/${event.slug}/mallorca?date=${oneWeek.publicDateKey}`,
+    )
   })
 })
 

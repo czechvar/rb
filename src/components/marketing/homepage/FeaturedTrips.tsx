@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Event, EventDate, Location, Media } from '@/payload-types'
 import styles from './FeaturedTrips.module.css'
-import { tripOccurrencePath } from '@/lib/occurrence-routing'
+import { tripPublicDatePath } from '@/lib/occurrence-routing'
 
 type FeaturedTripsProps = {
   events: Event[]
@@ -47,7 +47,7 @@ export function FeaturedTrips({ events, datesByEvent }: FeaturedTripsProps) {
     const first = dates[0]
     const loc = locationLabel(ev.locations)
     const bgUrl = mediaUrl(ev.mainPicture)
-    const href = first?.slug ? tripOccurrencePath(ev.slug, first.slug) : `/trips/${ev.slug}`
+    const href = first ? tripPublicDatePath(ev.slug, first) : `/trips/${ev.slug}`
 
     return (
       <Link

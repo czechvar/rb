@@ -25,7 +25,7 @@ import {
 } from './CatalogueCards'
 import { formatPrice, lowestPrice } from './TripGridBlock'
 import styles from './blocks.module.css'
-import { tripOccurrencePath } from '@/lib/occurrence-routing'
+import { tripPublicDatePath } from '@/lib/occurrence-routing'
 
 type FeaturedBlock = {
   eyebrow?: string | null
@@ -73,7 +73,7 @@ export async function FeaturedTripBlock(
   const dates = await getActiveEventDatesForEvents([event.id])
   const price = formatPrice(lowestPrice(dates))
   const first = dates[0]
-  const href = first?.slug ? tripOccurrencePath(event.slug, first.slug) : `/trips/${event.slug}`
+  const href = first ? tripPublicDatePath(event.slug, first) : `/trips/${event.slug}`
   return (
     <FeaturedCardFrame block={block}>
       <TripCard event={event} href={href} price={price} className={featuredCardClassName(block.variant)} />

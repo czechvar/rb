@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import type { Where } from 'payload'
 
 import { siteUrl } from '@/lib/url'
+import { tripVariantPath } from '@/lib/occurrence-routing'
 
 type SitemapDoc = {
   id?: number | string
@@ -9,6 +10,8 @@ type SitemapDoc = {
   updatedAt?: string | null
   category?: number | string | SitemapDoc | null
   event?: number | string | SitemapDoc | null
+  tripVariant?: number | string | SitemapDoc | null
+  publicDateKey?: string | null
   active?: boolean | null
   indexable?: boolean | null
   state?: string | null
@@ -16,6 +19,7 @@ type SitemapDoc = {
 
 type SitemapCollection =
   | 'event-dates'
+  | 'trip-variants'
   | 'locations'
   | 'guides'
   | 'programs'
@@ -103,21 +107,40 @@ function entriesForOccurrences(docs: SitemapDoc[]): MetadataRoute.Sitemap {
   return docs.flatMap((occurrence) => {
     const event = typeof occurrence.event === 'object' && occurrence.event ? occurrence.event : null
     if (
-      occurrence.active !== true || occurrence.indexable === false || !occurrence.slug ||
+      occurrence.active !== true || occurrence.indexable === false ||
       !event?.slug || event.state !== 'published'
     ) return []
-    return [sitemapEntry(
-      `/trips/${event.slug}/${occurrence.slug}`,
-      latestTimestamp(occurrence.updatedAt, event.updatedAt),
-    )]
+    const variant = typeof occurrence.tripVariant === 'object' && occurrence.tripVariant ? occurrence.tripVariant : null
+    if (variant) {
+      if (!variant.slug || variant.active !== true || variant.indexable !== true || !occurrence.publicDateKey) return []
+      return [sitemapEntry(
+        tripVariantPath(event.slug, variant.slug, occurrence.publicDateKey),
+        latestTimestamp(occurrence.updatedAt, variant.updatedAt, event.updatedAt),
+      )]
+    }
+    return []
+  })
+}
+
+function entriesForVariants(docs: SitemapDoc[]): MetadataRoute.Sitemap {
+  return docs.flatMap((variant) => {
+    const event = typeof variant.event === 'object' && variant.event ? variant.event : null
+    if (!variant.slug || variant.active !== true || variant.indexable !== true || !event?.slug || event.state !== 'published') return []
+    return [sitemapEntry(tripVariantPath(event.slug, variant.slug), latestTimestamp(variant.updatedAt, event.updatedAt))]
   })
 }
 
 export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRoute.Sitemap> {
-  const [occurrences, locations, guides, programs, posts, pages] = await Promise.all([
+  const [occurrences, variants, locations, guides, programs, posts, pages] = await Promise.all([
     findAll(payload, {
       collection: 'event-dates',
       where: { and: [{ active: { equals: true } }, { indexable: { not_equals: false } }] },
+      sort: 'slug',
+      depth: 2,
+    }),
+    findAll(payload, {
+      collection: 'trip-variants',
+      where: { and: [{ active: { equals: true } }, { indexable: { equals: true } }] },
       sort: 'slug',
       depth: 1,
     }),
@@ -156,6 +179,7 @@ export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRou
   return uniqueEntries([
     ...STATIC_PATHS.map((path) => sitemapEntry(path)),
     ...entriesForOccurrences(occurrences),
+    ...entriesForVariants(variants),
     ...entriesForDocs(locations, (slug) => `/destinations/${slug}`),
     ...entriesForDocs(guides, (slug) => `/team/${slug}`),
     ...entriesForDocs(programs, (slug) => `/programs/${slug}`),

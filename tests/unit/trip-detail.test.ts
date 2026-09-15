@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import type { Airport, Difficulty, Event, EventDate, Guide, Location } from '../../src/payload-types'
-import { remainingTripAdditionalInfo, remainingTripContent, resolveTripDetail, resolveTripSections } from '../../src/lib/trip-detail'
+import type { Airport, Difficulty, Event, EventDate, Guide, Location, TripVariant } from '../../src/payload-types'
+import { remainingTripAdditionalInfo, remainingTripContent, resolveTripDetail, resolveTripDetailVariant, resolveTripSections } from '../../src/lib/trip-detail'
 
 // Pure in-memory fixtures: no Payload startup, environment loading or database writes.
 const paragraph = (text: string) => ({ type: 'paragraph', version: 1, children: [{ type: 'text', text, version: 1, format: 0 }] })
@@ -13,6 +13,54 @@ const event = (overrides: Partial<Event> = {}): Event => ({ id: 10, title: 'Sour
 const date = (id: number, overrides: Partial<EventDate> = {}): EventDate => ({
   id, event: 10, dateFrom: `2999-10-${String(id).padStart(2, '0')}T00:00:00.000Z`, dateTo: '2999-10-30T00:00:00.000Z',
   price: 1150, vat: 0, currency: 'EUR', capacity: 4, active: true, updatedAt: '', createdAt: '', ...overrides,
+})
+
+test('variant presentation merges Event, Trip Variant and exact Event Date without changing booking identity', () => {
+  const eventLocation = { id: 1, name: 'Parent location' } as Location
+  const variantLocation = { id: 2, name: 'Variant location' } as Location
+  const dateLocation = { id: 3, name: 'Exceptional date location' } as Location
+  const parentFood = rich(paragraph('Parent food'))
+  const stableFood = rich(paragraph('Stable variant food'))
+  const dateFood = rich(paragraph('Exceptional date food'))
+  const stableAccommodation = rich(paragraph('Stable accommodation'))
+  const parent = event({ locations: [eventLocation], accommodation: { cuisineHighlights: parentFood },
+    editorial: { hero: { description: 'Parent description', hashtag: '#parent' } } })
+  const variant = { id: 20, event: 10, title: 'Variant', slug: 'variant', locations: [variantLocation],
+    editorial: { hero: { description: 'Variant description' } },
+    extraContent: rich(paragraph('Stable additional information')),
+    logisticsOverrides: { accommodation: stableAccommodation, food: stableFood },
+  } as TripVariant
+  const first = date(1, { tripVariant: 20, publicDateKey: '2999-10-01-to-2999-10-30',
+    editorial: { hero: { description: 'First date-only description' } },
+    extraContent: rich(paragraph('First date-only additional information')),
+    logisticsOverrides: { food: rich(paragraph('First date-only food')) } })
+  const second = date(2, { tripVariant: 20, publicDateKey: '2999-10-02-to-2999-10-30',
+    locations: [dateLocation], editorial: { hero: { description: 'Date description' } },
+    extraContent: rich(paragraph('Exceptional additional information')),
+    logisticsOverrides: { food: dateFood }, price: 1800 })
+  const unrelated = date(3, { tripVariant: 21 })
+  const before = structuredClone({ parent, variant, first, second, unrelated })
+
+  const evergreen = resolveTripDetailVariant(parent, variant, [first, second, unrelated])
+  assert.deepEqual(evergreen.dates.map(item => item.id), [1, 2])
+  assert.equal(evergreen.selectedDate?.id, 1)
+  assert.equal(evergreen.editorial?.hero?.description, 'Variant description')
+  assert.equal(evergreen.editorial?.hero?.hashtag, '#parent')
+  assert.deepEqual(evergreen.locations, [variantLocation])
+  assert.deepEqual(evergreen.accommodation?.description, stableAccommodation)
+  assert.deepEqual(evergreen.accommodation?.cuisineHighlights, stableFood)
+  assert.deepEqual(evergreen.remainingContent, variant.extraContent)
+
+  const leaf = resolveTripDetailVariant(parent, variant, [first, second, unrelated], second)
+  assert.equal(leaf.selectedDate?.id, 2)
+  assert.equal(leaf.editorial?.hero?.description, 'Date description')
+  assert.deepEqual(leaf.locations, [dateLocation])
+  assert.deepEqual(leaf.accommodation?.description, stableAccommodation)
+  assert.deepEqual(leaf.accommodation?.cuisineHighlights, dateFood)
+  assert.deepEqual(leaf.remainingContent, second.extraContent)
+  assert.equal(leaf.priceLabel, '€1,800.00')
+  assert.equal(leaf.bookingHref, '/book/2')
+  assert.deepEqual({ parent, variant, first, second, unrelated }, before)
 })
 
 test('selects upcoming own active dates, skips known sold-out default and never mutates input order', () => {

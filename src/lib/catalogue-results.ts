@@ -1,5 +1,5 @@
 import type { Event, EventDate } from '@/payload-types'
-import { tripOccurrencePath } from '@/lib/occurrence-routing'
+import { tripPublicDatePath } from '@/lib/occurrence-routing'
 
 export const catalogueFacetKeys = ['category', 'difficulty', 'location', 'month', 'guide'] as const
 
@@ -40,7 +40,7 @@ export function toCatalogueResult(date: EventDate): CatalogueResult | null {
   return {
     id: date.id,
     eventId: event.id,
-    href: date.slug ? tripOccurrencePath(event.slug, date.slug) : `/trips/${event.slug}`,
+    href: tripPublicDatePath(event.slug, date),
     title: event.catalogueCard?.title || event.title,
     description: event.catalogueCard?.description || event.shortDescription,
     dateFrom: date.dateFrom,
