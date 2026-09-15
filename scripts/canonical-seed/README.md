@@ -97,8 +97,10 @@ Event-plus-exact-Location-set variants across 10 Events and assigns 64 dates.
 Historical dates remain unchanged and unassigned. Twenty-five variants copy the
 single audited rich `editorial` payload from their authoritative Event Date; the
 source payload and all `extraContent` and `logisticsOverrides` remain intact on
-the Event Date during this additive migration. Six variants without rich content
-inherit Event/Location content and remain `indexable: false`.
+the Event Date during this additive migration. Six variants without rich Date
+editorial inherit Event/Location content. Three Tier 1 destinations—Albarracin,
+Mental Coaching in Kyparissi, and Mental Coaching in Rodellar—are explicitly
+approved for indexing; the other three remain `indexable: false`.
 
 Reusable legacy fields are compared only across the 64 assigned launch dates,
 after nested generated IDs are removed for comparison. Thirty variants promote

@@ -34,6 +34,13 @@ const EXPLICIT_SLUG_BY_EVENT_DATE: Record<string, string> = {
   '747': 'spain-tour',
 }
 
+/** Tier 1 legacy Date destinations approved after Event/Variant content review. */
+const INDEXABLE_VARIANT_APPROVALS = new Set([
+  'bouldering-albarracin/albarracin',
+  'climbing-technique-mental-coaching/kyparissi',
+  'climbing-technique-mental-coaching/rodellar',
+])
+
 function rows(seed: CanonicalSeed, slug: string) {
   return seed.collections.find((collection) => collection.slug === slug)?.rows ?? []
 }
@@ -195,7 +202,7 @@ export function migrateLaunchTripVariants(input: CanonicalSeed): {
       slugAliases: [],
       locations: first.locations,
       active: true,
-      indexable: Boolean(source),
+      indexable: Boolean(source) || INDEXABLE_VARIANT_APPROVALS.has(`${String(event.slug)}/${slug}`),
       extraContent: extraContent.status === 'promoted' ? extraContent.value : null,
       logisticsOverrides: logisticsOverrides.status === 'promoted' ? logisticsOverrides.value : null,
     }
@@ -250,7 +257,7 @@ export function migrateLaunchTripVariants(input: CanonicalSeed): {
       tripVariants: variantRows.length,
       indexableVariants,
       inheritedVariants: variantRows.length - indexableVariants,
-      promotedEditorialPayloads: indexableVariants,
+      promotedEditorialPayloads: variantRows.filter((variant) => variant.editorial != null).length,
       sameStartDateCollisions: collisionCount,
       ...promotionCounts,
       logisticsConflictVariants: logisticsConflictVariants.sort(),

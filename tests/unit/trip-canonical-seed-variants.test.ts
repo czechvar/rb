@@ -39,8 +39,8 @@ describe('canonical launch Trip Variant migration', () => {
       launchEvents: 10,
       launchEventDates: 64,
       tripVariants: 31,
-      indexableVariants: 25,
-      inheritedVariants: 6,
+      indexableVariants: 28,
+      inheritedVariants: 3,
       promotedEditorialPayloads: 25,
       sameStartDateCollisions: 10,
       promotedExtraContent: 30,
@@ -81,10 +81,10 @@ describe('canonical launch Trip Variant migration', () => {
       input.collections.find(({ slug }) => slug === 'event-dates')!.rows.find(({ id }) => id === 745)!.editorial,
     )
     expect(variants.find(({ event, slug }) => event === 5 && slug === 'albarracin')).toMatchObject({
-      indexable: false,
+      indexable: true,
     })
     const inherited = variants.filter(({ indexable }) => indexable === false)
-    expect(inherited).toHaveLength(6)
+    expect(inherited).toHaveLength(3)
     expect(inherited.every(({ editorial }) => editorial == null)).toBe(true)
     expect(variants.filter(({ extraContent }) => extraContent != null)).toHaveLength(30)
     expect(variants.filter(({ logisticsOverrides }) => logisticsOverrides != null)).toHaveLength(14)

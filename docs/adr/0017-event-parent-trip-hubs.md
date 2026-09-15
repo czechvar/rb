@@ -14,6 +14,8 @@ For a published Event with active Trip Variants, render `/trips/{eventSlug}` as 
 
 For the Tier 1 legacy Event redirect programme, Bouldering Albarracin and Climbing Technique Mental Coaching are explicitly approved as Event-level parent hubs despite thin Variant pages. Their parents may be indexed when Event copy is readable and an active Variant exists. Their individual Variant pages retain separate editorial/indexability settings. This approval is scoped by Event slug in the shared parent metadata and sitemap eligibility helper.
 
+The Tier 1 future dated URLs under Albarracin, Kyparissi and Rodellar also have exact active Event Dates. After reviewing their inherited or Variant copy, approve those three Variant pages for indexing in the canonical launch migration and local catalogue. This makes their seven dated leaves eligible without changing Date ownership, pricing or booking identity.
+
 Keep the exact Variant and dated-query routes as the location and scheduled-selection identities. Keep the numeric `?date={id}` compatibility redirect on the parent. Published Events without active Variants retain ADR-0015's availability/selection fallback. Draft Events remain unavailable publicly and outside the sitemap. Legacy old-to-new redirects are reviewed and installed separately.
 
 This supersedes ADR-0015's parent redirect/noindex rule only for Events with active Variants. Its exact Date identity and booking rules remain accepted.
