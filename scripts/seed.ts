@@ -10,7 +10,7 @@ import { isDeepStrictEqual } from 'node:util'
 import { hasOccurrenceHref, occurrenceIdentityMap, remapOccurrenceHref, type OccurrenceIdentityMap } from './canonical-seed/occurrence-links'
 import { pathToFileURL } from 'node:url'
 import { sql } from '@payloadcms/db-postgres'
-import { getPayload, type CollectionSlug, type Payload, type Where } from 'payload'
+import { createLocalReq, getPayload, type CollectionSlug, type Payload, type PayloadRequest, type Where } from 'payload'
 import {
   assertNotProduction,
   CANONICAL_SEED_COLLECTIONS,
@@ -41,6 +41,11 @@ function collectionRows(seed: CanonicalSeed, slug: CollectionSlug) {
 }
 
 function pruneRemovedFields(collection: CollectionSlug, row: Record<string, unknown>) {
+  if (collection === 'trip-variants' && row.logisticsOverrides == null) {
+    const next = { ...row }
+    delete next.logisticsOverrides
+    return next
+  }
   if (collection !== 'locations') return row
   const next = { ...row }
   for (const field of REMOVED_LOCATION_FIELDS) delete next[field]
@@ -237,7 +242,19 @@ async function findExistingRow(
     return undefined
   }
 
-  if (collection !== 'trip-variants' && typeof row.slug === 'string') {
+  if (collection === 'event-dates' && row.event && typeof row.slug === 'string') {
+    // Historical occurrence slugs can be shared by different Events. Public
+    // identity and the occurrence hook are scoped to the parent Event.
+    const byParentAndSlug = await findOne(payload, collection, {
+      and: [
+        { event: { equals: row.event } },
+        { slug: { equals: row.slug } },
+      ],
+    })
+    if (byParentAndSlug && !options.claimedIDs?.has(idKey(byParentAndSlug.id))) return byParentAndSlug
+  }
+
+  if (collection !== 'trip-variants' && collection !== 'event-dates' && typeof row.slug === 'string') {
     const bySlug = await findOne(payload, collection, { slug: { equals: row.slug } })
     if (bySlug) return bySlug
   }
@@ -294,7 +311,8 @@ async function findExistingRow(
 
   if (row.id !== null && row.id !== undefined) {
     const byID = await findOne(payload, collection, { id: { equals: row.id } })
-    if (byID && !options.claimedIDs?.has(idKey(byID.id))) return byID
+    if (byID && !options.claimedIDs?.has(idKey(byID.id)) &&
+      (collection !== 'event-dates' || idKey(byID.event) === idKey(row.event))) return byID
   }
 
   return undefined
@@ -305,7 +323,7 @@ export async function upsertRow(
   collection: CollectionSlug,
   row: Record<string, unknown>,
   maps: SeedIDMap,
-  options: { forceCreateWhenMissingID?: boolean; deferLocationSelfRelations?: boolean; occurrenceIdentities?: OccurrenceIdentityMap } = {},
+  options: { forceCreateWhenMissingID?: boolean; deferLocationSelfRelations?: boolean; occurrenceIdentities?: OccurrenceIdentityMap; requireTransaction?: boolean } = {},
 ): Promise<'created' | 'updated' | 'skipped'> {
   const id = row.id
   if (id === null || id === undefined) return 'skipped'
@@ -315,6 +333,9 @@ export async function upsertRow(
     pruneRemovedFields(collection, remapRelationships(maps, collection, row, undefined, options.occurrenceIdentities) as Record<string, unknown>),
     options.deferLocationSelfRelations === true,
   )
+  if (collection === 'event-dates' && typeof data.event !== 'number') {
+    throw new Error('Canonical seed Event Date parent relation is not numeric')
+  }
   const knownID = maps.get(collection)?.get(idKey(id))
   const existing = knownID !== undefined
     ? await findOne(payload, collection, { id: { equals: knownID } })
@@ -339,27 +360,49 @@ export async function upsertRow(
   // Numeric IDs belong to the destination DB; keep source identity only in maps.
   const writeData = { ...data }
   delete writeData.id
-  if (exists) {
-    await payload.update({
+  const write = async (req?: PayloadRequest): Promise<'created' | 'updated'> => {
+    if (exists) {
+      await payload.update({
+        collection,
+        id: existingID as string | number,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        data: writeData as any,
+        depth: 0,
+        req,
+        context: { disableRevalidate: true },
+      })
+      return 'updated'
+    }
+
+    const created = await payload.create({
       collection,
-      id: existingID as string | number,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       data: writeData as any,
       depth: 0,
+      req,
       context: { disableRevalidate: true },
     })
-    return 'updated'
+    rememberID(maps, collection, id, (created as { id?: unknown }).id)
+    return 'created'
   }
-
-  const created = await payload.create({
-    collection,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    data: writeData as any,
-    depth: 0,
-    context: { disableRevalidate: true },
-  })
-  rememberID(maps, collection, id, (created as { id?: unknown }).id)
-  return 'created'
+  if (!options.requireTransaction) return write()
+  // The public identity hooks acquire advisory locks through the active
+  // Payload transaction; keep the transaction around the whole write.
+  const transactionID = await payload.db.beginTransaction()
+  if (!transactionID) throw new Error('Canonical seed transaction unavailable')
+  const req = await createLocalReq({}, payload)
+  req.transactionID = transactionID
+  try {
+    if (!payload.db.sessions?.[String(transactionID)]?.db) {
+      throw new Error('Canonical seed transaction session unavailable')
+    }
+    const result = await write(req)
+    await payload.db.commitTransaction(transactionID)
+    return result
+  } catch (error) {
+    await payload.db.rollbackTransaction(transactionID)
+    throw error
+  }
 }
 
 function dateValue(value: unknown): Date {
@@ -445,18 +488,51 @@ async function importCollection(
           : await upsertRow(payload, collection, row, maps, {
               forceCreateWhenMissingID:
                 collection === 'event-dates' && initialCount.totalDocs === 0,
+              requireTransaction: collection === 'trip-variants' || collection === 'event-dates',
               deferLocationSelfRelations: options.deferLocationSelfRelations,
               occurrenceIdentities: options.occurrenceIdentities,
             })
       totals[result] += 1
     } catch (error) {
-      const failure = error as { name?: string; data?: { errors?: { path?: string }[] }; cause?: { code?: string; constraint?: string } }
+      const failure = error as { name?: string; message?: string; data?: { errors?: { path?: string; message?: string }[] }; cause?: { code?: string; constraint?: string } }
+      const causeChain: Array<{ code?: string; constraint?: string; message?: string; cause?: unknown }> = []
+      let cause: unknown = error
+      for (let depth = 0; depth < 4 && cause && typeof cause === 'object'; depth += 1) {
+        const current = cause as { code?: string; constraint?: string; message?: string; cause?: unknown }
+        causeChain.push(current)
+        cause = current.cause
+      }
+      const messages = causeChain.map((item) => item.message ?? '')
+      const reason = messages.some((message) => message.includes('identity validation requires an active database transaction'))
+        ? 'missing-identity-transaction'
+        : messages.some((message) => /column .* does not exist/i.test(message))
+          ? 'missing-column'
+          : messages.some((message) => /relation .* does not exist/i.test(message))
+            ? 'missing-relation'
+            : messages.some((message) => /duplicate key/i.test(message))
+              ? 'duplicate-key'
+              : 'unclassified'
+      const sqlState = causeChain.map((item) => item.code).find((code) => /^[0-9A-Z]{5}$/.test(code ?? ''))
+      const safeErrorKind = ['Error', 'TypeError', 'ValidationError', 'ForbiddenError',
+        'APIError', 'DatabaseError'].includes(failure.name ?? '') ? failure.name : 'other'
+      const indicators = {
+        mentionsTransaction: messages.some((message) => /transaction/i.test(message)),
+        mentionsTypeError: messages.some((message) => /Cannot read properties|is not a function/i.test(message)),
+        mentionsRelation: messages.some((message) => /relation|relationship/i.test(message)),
+        mentionsValidation: messages.some((message) => /validat/i.test(message)),
+        mentionsSql: messages.some((message) => /sql|query|database/i.test(message)),
+      }
       console.error(JSON.stringify({
         seedRowFailed: true,
         collection,
         id: row.id,
         category: failure.name === 'ValidationError' ? 'validation' : 'database-or-hook',
+        safeErrorKind,
+        indicators,
+        reason,
+        sqlState,
         fields: failure.data?.errors?.map((entry) => entry.path).filter((field) => typeof field === 'string' && /^[a-zA-Z0-9_.\[\]-]+$/.test(field)) ?? [],
+        parentEventRequired: failure.data?.errors?.some((entry) => entry.message === 'Parent Event is required.') ?? false,
         constraint: /^[a-z0-9_]+$/.test(failure.cause?.constraint ?? '') ? failure.cause?.constraint : undefined,
         databaseCode: ['23503', '23505', '23502'].includes(failure.cause?.code ?? '') ? failure.cause?.code : undefined,
       }))
@@ -510,7 +586,10 @@ async function main() {
   // URL selections can point forward to occurrences imported later in the snapshot.
   for (const collection of seed.collections) {
     for (const row of collection.rows.filter(hasOccurrenceHref)) {
-      await upsertRow(payload, collection.slug, row, maps, { occurrenceIdentities })
+      await upsertRow(payload, collection.slug, row, maps, {
+        occurrenceIdentities,
+        requireTransaction: collection.slug === 'trip-variants' || collection.slug === 'event-dates',
+      })
     }
   }
 

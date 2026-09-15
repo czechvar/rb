@@ -91,4 +91,14 @@ describe('canonical seed read-back verification', () => {
       ]),
     )
   })
+  it('treats Payload empty groups as absent while retaining authored fields', () => {
+    const missing = { editorial: null, logisticsOverrides: null,
+      tripVariant: null, publicDateKey: null }
+    const serialized = { editorial: { hero: null, sections: [], packageNote: '' },
+      logisticsOverrides: { food: null, note: '' },
+      tripVariant: null, publicDateKey: null }
+    expect(comparable(missing)).toEqual(comparable(serialized))
+    expect(comparable({ editorial: { hero: { title: 'Authored' } } }))
+      .not.toEqual(comparable(missing))
+  })
 })

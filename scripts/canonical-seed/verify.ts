@@ -6,12 +6,22 @@ import { occurrenceIdentityMap, remapOccurrenceHref, type OccurrenceIdentityMap 
 import type { CollectionSlug } from 'payload'
 import { readCanonicalSeed, type CanonicalSeed } from './shared'
 
+function isEmptyGroup(value: unknown): boolean {
+  if (value == null || value === '') return true
+  if (Array.isArray(value)) return value.every(isEmptyGroup)
+  if (typeof value === 'object') return Object.values(value).every(isEmptyGroup)
+  return false
+}
+
 export function comparable(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(comparable)
   if (value && typeof value === 'object') {
     return Object.fromEntries(
       Object.entries(value)
-        .filter(([key]) => !['id', 'createdAt', 'updatedAt'].includes(key))
+        .filter(([key, entry]) =>
+          !['id', 'createdAt', 'updatedAt'].includes(key) &&
+          !(['logisticsOverrides', 'editorial'].includes(key) && isEmptyGroup(entry)) &&
+          !(['tripVariant', 'publicDateKey'].includes(key) && entry === null))
         .sort(([a], [b]) => a.localeCompare(b))
         .map(([key, entry]) => [key, comparable(entry)]),
     )

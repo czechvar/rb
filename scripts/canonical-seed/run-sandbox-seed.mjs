@@ -3,7 +3,9 @@
 import { spawn } from 'node:child_process'
 import { createRequire } from 'node:module'
 import { randomBytes } from 'node:crypto'
-import { mkdtemp, rm } from 'node:fs/promises'
+import { mkdtemp, rm, stat } from 'node:fs/promises'
+import { createWriteStream } from 'node:fs'
+import { pipeline } from 'node:stream/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -16,6 +18,9 @@ const fileArg = process.argv.slice(2).find((arg) => arg.startsWith('--file='))
 const seedFile = fileArg
   ? path.resolve(fileArg.slice(7))
   : path.join(root, 'scripts/data-import/seed/canonical-payload-seed.json')
+const dumpArg = process.argv.slice(2).find((arg) => arg.startsWith('--save-dump='))
+const dumpFile = dumpArg ? path.resolve(dumpArg.slice('--save-dump='.length)) : undefined
+const retainFailed = process.argv.includes('--retain-failed')
 // Only read configuration internally; children execute outside the repository's .env search path.
 dotenv.config({ path: path.join(root, '.env') })
 
@@ -34,6 +39,7 @@ async function main() {
   let created = false
   let connected = false
   let stage = 'connect'
+  let passed = false
   let activeChild
   let interrupted = false
   const interrupt = () => {
@@ -109,11 +115,28 @@ async function main() {
                     databaseCode: /^[A-Z0-9_]{1,20}$/.test(diagnostic.databaseCode)
                       ? diagnostic.databaseCode
                       : undefined,
+                    sqlState: /^[0-9A-Z]{5}$/.test(diagnostic.sqlState ?? '')
+                      ? diagnostic.sqlState : undefined,
+                    reason: [
+                      'missing-identity-transaction', 'missing-column',
+                      'missing-relation', 'duplicate-key', 'unclassified',
+                    ].includes(diagnostic.reason) ? diagnostic.reason : undefined,
+                    safeErrorKind: [
+                      'Error', 'TypeError', 'ValidationError', 'ForbiddenError',
+                      'APIError', 'DatabaseError', 'other',
+                    ].includes(diagnostic.safeErrorKind) ? diagnostic.safeErrorKind : undefined,
+                    indicators: diagnostic.indicators && typeof diagnostic.indicators === 'object'
+                      ? Object.fromEntries([
+                          'mentionsTransaction', 'mentionsTypeError',
+                          'mentionsRelation', 'mentionsValidation', 'mentionsSql',
+                        ].map((key) => [key, diagnostic.indicators[key] === true]))
+                      : undefined,
                     fields: Array.isArray(diagnostic.fields)
                       ? diagnostic.fields.filter(
                           (value) => typeof value === 'string' && /^[a-zA-Z0-9_.-]+$/.test(value),
                         )
                       : undefined,
+                    parentEventRequired: diagnostic.parentEventRequired === true,
                   }),
                 )
               }
@@ -151,6 +174,50 @@ async function main() {
       })
     })
   }
+  const saveDump = async () => {
+    if (!dumpFile) return
+    if (interrupted) throw new Error('interrupted')
+    stage = 'dump'
+    const db = new URL(target.href)
+    const pgEnv = {
+      ...process.env,
+      PGHOST: db.hostname,
+      PGPORT: db.port || '5432',
+      PGDATABASE: decodeURIComponent(db.pathname.slice(1)),
+      PGUSER: decodeURIComponent(db.username),
+      PGPASSWORD: decodeURIComponent(db.password),
+      PGSSLMODE: db.searchParams.get('sslmode') || 'disable',
+    }
+    const names = ['PGHOST', 'PGPORT', 'PGDATABASE', 'PGUSER', 'PGPASSWORD', 'PGSSLMODE']
+    const child = spawn('docker', [
+      'run', '--rm', '--network', 'host', ...names.flatMap((name) => ['--env', name]),
+      'postgres:17-alpine', 'pg_dump', '--format=custom', '--no-owner', '--no-privileges',
+    ], { env: pgEnv, stdio: ['ignore', 'pipe', 'pipe'] })
+    activeChild = child
+    child.stderr.resume()
+    const output = createWriteStream(dumpFile, { flags: 'wx', mode: 0o600 })
+    const childClosed = new Promise((resolve, reject) => {
+      child.on('error', () => reject(new Error('dump child')))
+      child.on('close', (code) => {
+        activeChild = undefined
+        if (code === 0) resolve()
+        else reject(new Error('dump child'))
+      })
+    })
+    await Promise.all([childClosed, pipeline(child.stdout, output)])
+    const bytes = (await stat(dumpFile)).size
+    if (bytes < 1000) throw new Error('dump size')
+    const check = spawn('docker', [
+      'run', '--rm', '-v', `${dumpFile}:/backup.dump:ro`,
+      'postgres:17-alpine', 'pg_restore', '--list', '/backup.dump',
+    ], { stdio: ['ignore', 'ignore', 'ignore'] })
+    await new Promise((resolve, reject) => {
+      check.on('error', () => reject(new Error('dump validation')))
+      check.on('close', (code) => code === 0 ? resolve() : reject(new Error('dump validation')))
+    })
+    console.log(JSON.stringify({ canonicalSeedDumpSaved: true, bytes,
+      archiveValidated: true, fileMode: '0600' }))
+  }
   try {
     await client.connect()
     connected = true
@@ -164,11 +231,13 @@ async function main() {
       await run(`export-${pass}`, 'scripts/canonical-seed/export.ts', [`--file=${actual}`])
       await run(`verify-${pass}`, 'scripts/canonical-seed/verify.ts', [seedFile, actual, receipt])
     }
+    await saveDump()
+    passed = true
   } catch {
     console.error(`canonical seed sandbox failed: stage=${stage}`)
     process.exitCode = 1
   } finally {
-    if (created) {
+    if (created && (passed || !retainFailed)) {
       try {
         await client.query(`DROP DATABASE "${database}" WITH (FORCE)`)
         console.log('canonical seed sandbox: temporary database cleaned')
@@ -177,8 +246,12 @@ async function main() {
         process.exitCode = 1
       }
     }
+    if (created && !passed && retainFailed) {
+      console.log(JSON.stringify({ temporaryDatabaseRetainedForDiagnosis: true,
+        generatedDatabaseName: database, temporaryFiles: directory }))
+    }
     if (connected) await client.end().catch(() => {})
-    await rm(directory, { recursive: true, force: true })
+    if (passed || !retainFailed) await rm(directory, { recursive: true, force: true })
     process.removeListener('SIGINT', interrupt)
     process.removeListener('SIGTERM', interrupt)
   }
