@@ -141,14 +141,14 @@ function entriesForParentTrips(variants: SitemapDoc[]): MetadataRoute.Sitemap {
   const byEvent = new Map<string, SitemapDoc[]>()
   for (const variant of variants) {
     const event = typeof variant.event === 'object' && variant.event ? variant.event : null
-    if (!event?.slug || event.state !== 'published' || variant.active !== true || variant.indexable !== true) continue
+    if (!event?.slug || event.state !== 'published' || variant.active !== true) continue
     byEvent.set(event.slug, [...(byEvent.get(event.slug) ?? []), variant])
   }
   return [...byEvent].flatMap(([slug, ownVariants]) => {
     const event = ownVariants[0].event as SitemapDoc
     if (!isIndexableParentTrip(event.content, ownVariants.map(variant => ({
       active: variant.active === true, indexable: variant.indexable === true,
-    })))) return []
+    })), slug)) return []
     return [sitemapEntry(`/trips/${slug}`, latestTimestamp(event.updatedAt,
       ...ownVariants.map(variant => variant.updatedAt)))]
   })
@@ -164,7 +164,8 @@ export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRou
     }),
     findAll(payload, {
       collection: 'trip-variants',
-      where: { and: [{ active: { equals: true } }, { indexable: { equals: true } }] },
+      // Parent hub approvals can index an Event while its Variants remain thin.
+      where: { active: { equals: true } },
       sort: 'slug',
       depth: 1,
     }),

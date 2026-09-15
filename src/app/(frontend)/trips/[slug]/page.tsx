@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const event = await getPublishedEventBySlug(slug)
   if (!event) return { robots: { index: false, follow: true } }
   const variants = await getActiveTripVariantsForEvent(event.id)
-  const hub = variants.length > 0 && isIndexableParentTrip(event.content, variants)
+  const hub = variants.length > 0 && isIndexableParentTrip(event.content, variants, event.slug)
   return {
     title: event.seo?.title || `${event.title} — Rockbusters`,
     description: event.seo?.description || event.shortDescription || undefined,

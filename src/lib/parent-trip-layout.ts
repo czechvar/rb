@@ -10,14 +10,23 @@ function hasReadableText(value: unknown): boolean {
   return hasReadableText(node.root) || hasReadableText(node.children)
 }
 
-/** A parent hub needs its own copy and at least two reviewed location choices. */
+/** A parent hub needs its own copy and either reviewed choices or launch approval. */
 export function isIndexableParentTrip(
   eventContent: unknown,
   variants: Array<Pick<TripVariant, 'active' | 'indexable'>>,
+  eventSlug?: string,
 ): boolean {
-  return hasReadableText(eventContent) && variants.filter(variant =>
-    variant.active === true && variant.indexable === true).length >= 2
+  if (!hasReadableText(eventContent)) return false
+  const active = variants.filter(variant => variant.active === true)
+  const reviewed = active.filter(variant => variant.indexable === true)
+  return reviewed.length >= 2 || (active.length > 0 && !!eventSlug && approvedParentTripSlugs.has(eventSlug))
 }
+
+/** Launch SEO approvals for Event-level hubs; Variant pages keep their own settings. */
+const approvedParentTripSlugs = new Set([
+  'bouldering-albarracin',
+  'climbing-technique-mental-coaching',
+])
 
 /** Use registered trip blocks while keeping date-specific facts off the Event hub. */
 export function parentTripLayout(trip: TripDetailView) {

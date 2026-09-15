@@ -73,6 +73,21 @@ describe('buildSitemap', () => {
     expect(urls).toContain('https://rockbusters.net/trips/kalymnos-camp')
   })
 
+  it('adds an approved Event hub while leaving its thin Variant out of the sitemap', async () => {
+    process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
+    const event = { ...publishedEvent, slug: 'bouldering-albarracin', content: { root: { children: [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Shared Albarracin overview.' }] },
+    ] } } }
+    const variant = { ...indexableVariant, slug: 'albarracin', indexable: false, event }
+    const find = vi.fn(async ({ collection }: { collection: keyof typeof docsByCollection }) => ({
+      docs: collection === 'trip-variants' ? [variant] : [...docsByCollection[collection]],
+      hasNextPage: false,
+    }))
+    const urls = (await buildSitemap({ find })).map(entry => entry.url)
+    expect(urls).toContain('https://rockbusters.net/trips/bouldering-albarracin')
+    expect(urls).not.toContain('https://rockbusters.net/trips/bouldering-albarracin/albarracin')
+  })
+
   it('publishes indexable evergreen variants and dated leaves without legacy archive URLs', async () => {
     process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
     const find = vi.fn(async ({ collection }: { collection: keyof typeof docsByCollection }) => ({

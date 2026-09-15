@@ -168,6 +168,15 @@ describe('parent Trip hub', () => {
     expect((await generateParentMetadata(props())).robots).toEqual({ index: false, follow: true })
   })
 
+  it('indexes an explicitly approved Event hub without changing its thin Variant page', async () => {
+    mocks.event.mockResolvedValue({ ...event, slug: 'bouldering-albarracin', content: richContent })
+    mocks.parentVariants.mockResolvedValue([{ ...reviewed(1, 'albarracin'), indexable: false }])
+    await expect(generateParentMetadata(props())).resolves.toMatchObject({
+      alternates: { canonical: '/trips/bouldering-albarracin' },
+      robots: { index: true, follow: true },
+    })
+  })
+
   it('keeps evergreen authored blocks but leaves the parent date schedule to its renderer', async () => {
     mocks.event.mockResolvedValue({
       ...event, content: richContent,
