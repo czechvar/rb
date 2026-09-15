@@ -92,7 +92,7 @@ export function Header({ checkoutEnabled = false }: { checkoutEnabled?: boolean 
               {userLabel}
             </Link>
             <Link
-              href="https://wa.me/420776805045"
+              href="https://wa.me/34678243573"
               className={styles.joinUs}
               data-testid="nav-cta-lets-talk"
             >
@@ -126,7 +126,7 @@ export function Header({ checkoutEnabled = false }: { checkoutEnabled?: boolean 
               {l.label}
             </Link>
           ))}
-          <Link href="https://wa.me/420776805045" onClick={() => setDrawerOpen(false)}>
+          <Link href="https://wa.me/34678243573" onClick={() => setDrawerOpen(false)}>
             LET&apos;S TALK
           </Link>
           {checkoutEnabled && <CartNav onClick={() => setDrawerOpen(false)} />}

@@ -43,6 +43,7 @@
 
 .cta:hover {
   background: var(--theme-color-primary-hover);
+  color: var(--theme-color-paper);
 }
 
 @media screen and (max-width: 600px) {

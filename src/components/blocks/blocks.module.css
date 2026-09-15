@@ -455,7 +455,6 @@
 
 .destinationHeroStat dt {
   margin: 0;
-  color: var(--theme-color-ink);
 }
 
 .destinationHeroStat dd {
@@ -1325,7 +1324,6 @@
 
 .statsHeroBar .statItem dt {
   margin: 0;
-  color: var(--theme-color-ink);
 }
 
 .statsHeroBar .statItem dd {
@@ -1379,7 +1377,7 @@
   background: var(--theme-color-paper-08);
 }
 
-.statItem dt {
+.statItem dt[data-type="section"] {
   margin: 0 0 8px;
   color: var(--theme-color-primary);
 }

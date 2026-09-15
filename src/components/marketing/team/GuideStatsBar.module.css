@@ -4,7 +4,6 @@
 }
 .item { text-align: center; }
 .num {
-  color: var(--theme-color-ink);
   display: block;
 }
 .label {

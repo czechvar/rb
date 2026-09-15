@@ -232,9 +232,9 @@ ol {
   transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 .btn-primary  { background: var(--theme-color-primary); color: var(--theme-color-paper); }
-.btn-primary:hover { background: var(--theme-color-primary-hover); }
+.btn-primary:hover { background: var(--theme-color-primary-hover); color: var(--theme-color-paper); }
 .btn-ghost    { background: transparent; color: var(--theme-color-paper); border-color: var(--theme-color-paper-30); }
-.btn-ghost:hover { border-color: var(--theme-color-paper); }
+.btn-ghost:hover { border-color: var(--theme-color-paper); color: var(--theme-color-paper); }
 .btn-dark     { background: var(--theme-color-ink); color: var(--theme-color-paper); }
 .btn-dark:hover { background: #000; color: var(--theme-color-paper); }
 .btn-outline-dark { background: transparent; color: var(--theme-color-ink); border-color: var(--theme-color-ink); }
@@ -290,8 +290,9 @@ ol {
 
 [data-type="stat"] {
   font-size: var(--theme-text-stat);
-  font-weight: var(--theme-weight-section);
+  font-weight: var(--theme-weight-stat);
   line-height: var(--theme-line-section);
+  color: var(--theme-color-white-paper);
 }
 
 /* Primary and secondary actions retain their hierarchy on brand surfaces. */
@@ -310,13 +311,13 @@ ol {
 }
 [data-surface="brand"] :is([data-button="secondary"], .btn-ghost, .btn-outline-dark) {
   background: transparent;
-  color: var(--theme-color-ink);
-  border-color: var(--theme-color-ink);
+  color: var(--theme-color-white-paper);
+  border-color: var(--theme-color-white-paper);
 }
 [data-surface="brand"] :is([data-button="secondary"], .btn-ghost, .btn-outline-dark):hover {
-  background: var(--theme-color-ink);
-  color: var(--theme-color-paper);
-  border-color: var(--theme-color-ink);
+  background: var(--theme-color-white-paper);
+  color: var(--theme-color-ink);
+  border-color: var(--theme-color-white-paper);
 }
 [data-surface="brand"] :is([data-button], .btn-primary, .btn-ghost, .btn-dark, .btn-outline-dark):focus-visible {
   outline: 2px solid var(--theme-color-paper);

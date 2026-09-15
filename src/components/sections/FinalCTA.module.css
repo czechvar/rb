@@ -42,6 +42,7 @@
 
 .primary:hover {
   background: var(--theme-color-detail-action-hover);
+  color: var(--theme-color-paper);
 }
 
 .secondary {
@@ -52,4 +53,5 @@
 
 .secondary:hover {
   border-color: var(--theme-color-paper-60);
+  color: var(--theme-color-paper);
 }

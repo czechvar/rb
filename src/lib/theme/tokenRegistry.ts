@@ -145,6 +145,7 @@ const typographyTokens = [
   '--theme-line-nav',
   '--theme-weight-hero',
   '--theme-weight-section',
+  '--theme-weight-stat',
   '--theme-weight-card-lg',
   '--theme-weight-card',
   '--theme-weight-subheading',

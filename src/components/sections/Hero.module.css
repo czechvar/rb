@@ -54,6 +54,7 @@
 
 .cta:hover {
   background: var(--theme-color-detail-action-hover);
+  color: var(--theme-color-paper);
 }
 
 @media (max-width: 800px) {

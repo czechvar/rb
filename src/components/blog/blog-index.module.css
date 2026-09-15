@@ -9,7 +9,6 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   background: var(--theme-color-primary);
-  color: var(--theme-color-ink);
   text-align: center;
 }
 

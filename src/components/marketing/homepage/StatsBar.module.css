@@ -15,10 +15,6 @@
   gap: 8px;
 }
 
-.num {
-  color: var(--theme-color-primary);
-}
-
 .label {
   font-family: var(--theme-font-body);
   font-size: 12px;

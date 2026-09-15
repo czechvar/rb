@@ -131,11 +131,11 @@ capability gated, and reduced motion disables movement.
 
 ## Shared hero sizing
 
-Hero statistics on a primary-color (Rockbusters red) panel use
-`--theme-color-ink` for the large values, uppercase casing and `--theme-weight-section` (900), and full-opacity `--theme-color-paper`
-for small labels and supporting text. Apply this consistently to generic CMS,
-blog, destination, and guide hero statistics; dark-panel statistics keep their
-existing color treatment.
+Compact hero statistics use the shared `data-type="stat"` role for large values:
+white text, uppercase casing, and `--theme-weight-stat` (500). Their labels and
+supporting text remain full-opacity light text on primary-color panels. Apply
+the same value treatment to generic CMS, blog, destination, guide, and homepage
+stat strips without component-level color or weight overrides.
 
 All public hero variants consume `--theme-hero-min-height` and the shared responsive `--theme-hero-mobile-min-height` from the theme contract. Do not add page-specific viewport-height or variant-height overrides. The initial values match the destination hero (760px desktop, 680px mobile). Trip booking summaries sit beside the hero on desktop and below it on mobile, so the summary does not increase mobile hero height. The summary sits above image overlays.
 
@@ -193,13 +193,18 @@ a display font's uppercase-only glyphs or rewrite stored CMS copy.
 Stats use the stat role, mapped to the shared H2/section scale (42px desktop,
 32px mobile in Rockbusters), including destination, blog, guide and CMS strips.
 They remain facts rather than semantic headings; component CSS owns layout and
-colour, while the shared role owns font, size, weight, casing and line height.
+label styling, while the shared role owns value font, size, weight, color, casing,
+and line height.
 
 Brand-colour CTA surfaces declare `data-surface="brand"`. Shared button styles
 in styles.css render primary actions in ink with light text and surface-3
-hover fill. Secondary actions use a transparent fill with ink text and border,
-turning ink with light text on hover. Both use a light offset focus outline. BlockAction exposes an
+hover fill. Secondary actions use a transparent fill with white text and border,
+turning white with ink text on hover. Both use a light offset focus outline. BlockAction exposes an
 explicit appearance marker independent of analytics. The same surface rule
 covers legacy button helpers; page modules must not recreate this palette.
+Filled and ghost button links keep their text color on hover while their
+background or border changes. The global text-link hover color must not override
+button labels; secondary outlined actions on brand surfaces retain their
+deliberate white-fill inversion.
 
 Header and footer share one content-width rule using the content cap and page gutter tokens. Their logos share `--theme-logo-height`; scrolling changes the header surface only, preserving logo size and horizontal alignment.
