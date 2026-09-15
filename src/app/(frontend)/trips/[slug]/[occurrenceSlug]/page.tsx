@@ -7,7 +7,6 @@ import { occurrenceGraphJsonLd, variantGraphJsonLd } from '@/lib/jsonld'
 import { eventDateLifecycle } from '@/lib/event-date-visibility'
 import {
   getPublicEventDatesForEvent,
-  getPublicEventDatesForVariant,
   getPublicOccurrenceBySlugs,
   getPublicTripVariantBySlugs,
 } from '@/lib/queries'
@@ -31,6 +30,20 @@ function selectedOccurrence(dates: EventDate[], date: string | string[] | undefi
   return matches[0]
 }
 
+function variantDates(dates: EventDate[], variantId: number): EventDate[] {
+  return dates.filter(date =>
+    (typeof date.tripVariant === 'object' && date.tripVariant !== null ? date.tripVariant.id : date.tripVariant) === variantId)
+}
+
+function parentSchedule(dates: EventDate[], selected: EventDate | null): EventDate[] {
+  return dates.filter(date => {
+    const variant = date.tripVariant
+    return date.active === true && typeof variant === 'object' && variant !== null &&
+      variant.active === true && Boolean(variant.slug && date.publicDateKey) &&
+      (date.id === selected?.id || ['upcoming', 'in-progress'].includes(eventDateLifecycle(date)))
+  })
+}
+
 function occurrenceDateLabel(dateFrom: string, dateTo: string): string {
   return new Intl.DateTimeFormat('en-GB', {
     day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC',
@@ -48,7 +61,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (variantResolution) {
     const { event, variant } = variantResolution
     const query = searchParams ? await searchParams : {}
-    const dates = await getPublicEventDatesForVariant(event.id, variant.id)
+    const dates = variantDates(await getPublicEventDatesForEvent(event.id), variant.id)
     const occurrence = selectedOccurrence(dates, query.date)
     const trip = resolveTripDetailVariant(event, variant, dates, occurrence)
     const context = variantContext(variant.title, occurrence)
@@ -90,10 +103,14 @@ export default async function VariantOrLegacyOccurrencePage({ params, searchPara
   if (variantResolution) {
     const { event, variant, requestedAlias } = variantResolution
     const query = searchParams ? await searchParams : {}
-    const dates = await getPublicEventDatesForVariant(event.id, variant.id)
+    const parentDates = await getPublicEventDatesForEvent(event.id)
+    const dates = variantDates(parentDates, variant.id)
     const occurrence = selectedOccurrence(dates, query.date)
     if (requestedAlias) permanentRedirect(tripVariantPath(event.slug, variant.slug, occurrence?.publicDateKey ?? undefined))
-    const trip = resolveTripDetailVariant(event, variant, dates, occurrence)
+    const trip = {
+      ...resolveTripDetailVariant(event, variant, dates, occurrence),
+      dates: parentSchedule(parentDates, occurrence),
+    }
     const hasCustomLayout = Boolean(event.layout?.length)
     return (
       <MarketingShell>

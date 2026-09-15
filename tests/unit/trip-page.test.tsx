@@ -317,7 +317,7 @@ describe('evergreen Trip Variant route', () => {
 
   beforeEach(() => {
     mocks.variant.mockResolvedValue({ event, variant, requestedAlias: false })
-    mocks.variantDates.mockResolvedValue([oneWeek, twoWeek])
+    mocks.dates.mockResolvedValue([oneWeek, twoWeek])
   })
 
   it('serves a self-canonical evergreen page and uses a live departure only for booking facts', async () => {
@@ -347,7 +347,7 @@ describe('evergreen Trip Variant route', () => {
       dateFrom: '2000-10-12T00:00:00.000Z',
       dateTo: '2000-10-19T00:00:00.000Z',
     }
-    mocks.variantDates.mockResolvedValue([past, oneWeek])
+    mocks.dates.mockResolvedValue([past, oneWeek])
     const path = `/trips/${event.slug}/mallorca?date=${past.publicDateKey}`
     const meta = await generateOccurrenceMetadata(route(past.publicDateKey))
     expect(meta.alternates).toEqual({ canonical: path })
@@ -362,6 +362,22 @@ describe('evergreen Trip Variant route', () => {
     for (const date of ['2999-10-12', '2999-10-12-to-2999-11-30', [oneWeek.publicDateKey]]) {
       await expect(OccurrencePage(route(date))).rejects.toThrow('NOT_FOUND')
     }
+  })
+
+  it('shows parent Trip dates across locations while keeping the selected occurrence on its own Variant', async () => {
+    const otherVariant = { ...variant, id: 52, title: 'Gorges du Tarn', slug: 'gorges-du-tarn' }
+    const otherDate = {
+      ...oneWeek, id: 737, tripVariant: otherVariant,
+      publicDateKey: '2999-11-12-to-2999-11-19',
+      dateFrom: '2999-11-12T00:00:00.000Z', dateTo: '2999-11-19T00:00:00.000Z',
+    }
+    mocks.dates.mockResolvedValue([oneWeek, twoWeek, otherDate])
+    renderToStaticMarkup(await OccurrencePage(route(twoWeek.publicDateKey)))
+    const trip = mocks.blocks.mock.calls.at(-1)?.[0].context.trip
+    expect(trip.selectedDate.id).toBe(twoWeek.id)
+    expect(trip.variant.id).toBe(variant.id)
+    expect(trip.dates.map((date: { id: number }) => date.id)).toEqual([oneWeek.id, twoWeek.id, otherDate.id])
+    await expect(OccurrencePage(route(otherDate.publicDateKey))).rejects.toThrow('NOT_FOUND')
   })
 
   it('redirects a migrated occurrence slug to its dated variant leaf', async () => {
