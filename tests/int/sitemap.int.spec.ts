@@ -115,7 +115,7 @@ describe('buildSitemap', () => {
       'https://rockbusters.net/destinations/kalymnos', 'https://rockbusters.net/team/jany',
       'https://rockbusters.net/programs/performance-lab', 'https://rockbusters.net/blog/training-plan',
       'https://rockbusters.net/blog/category/training', 'https://rockbusters.net/contact',
-      'https://rockbusters.net/cms-pages/about-us',
+      'https://rockbusters.net/about-us',
     ]))
   })
 

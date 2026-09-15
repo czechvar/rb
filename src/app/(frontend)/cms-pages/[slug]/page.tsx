@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Props) {
     title: page.seo?.title || `${page.title} - Rockbusters`,
     description: page.seo?.description || undefined,
     keywords: page.seo?.keywords || undefined,
+    alternates: { canonical: slug === 'home' ? '/' : `/${slug}` },
   }
 }
 
@@ -25,7 +26,7 @@ export default async function CMSPage({ params }: Props) {
   if (slug === 'contact') permanentRedirect('/contact')
   const page = await getPublishedPageBySlug(slug)
   if (!page) notFound()
-  const jsonLd = await genericCmsPageGraphJsonLd(page)
+  const jsonLd = await genericCmsPageGraphJsonLd(page, slug === 'home' ? '/' : `/${slug}`)
 
   return (
     <MarketingShell>

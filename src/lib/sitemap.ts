@@ -67,7 +67,7 @@ function entriesForDocs(
 function entriesForCmsPages(docs: SitemapDoc[]): MetadataRoute.Sitemap {
   return entriesForDocs(
     docs.filter((doc) => doc.slug !== 'home' && doc.slug !== 'trips'),
-    (slug) => slug === 'contact' ? '/contact' : `/cms-pages/${slug}`,
+    (slug) => `/${slug}`,
   )
 }
 

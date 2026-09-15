@@ -83,7 +83,7 @@ export function Footer() {
               © {new Date().getFullYear()} Rockbusters. All rights reserved.
               Proud member of 1% For The Planet.{' '}
               <span aria-hidden="true">·</span>{' '}
-              <Link href="/terms" className={styles.footerTermsLink}>
+              <Link href="/terms-and-conditions" className={styles.footerTermsLink}>
                 Terms &amp; Conditions
               </Link>
             </small>

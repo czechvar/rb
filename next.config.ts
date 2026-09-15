@@ -53,6 +53,7 @@ const nextConfig: NextConfig = {
       // Old-site /location/* redirects to /destinations/*.
       { source: '/location/:slug', destination: '/destinations/:slug', permanent: true },
       { source: '/location', destination: '/destinations', permanent: true },
+      { source: '/terms', destination: '/terms-and-conditions', permanent: true },
     ]
   },
   webpack: (webpackConfig) => {

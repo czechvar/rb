@@ -1227,6 +1227,16 @@
   color: inherit;
   font-size: var(--theme-text-lead);
   line-height: var(--theme-line-lead);
+  overflow-wrap: anywhere;
+}
+
+.richTextBody :where(h1, h2, h3, h4, h5, h6) {
+  color: var(--theme-color-paper);
+  margin-block-end: var(--theme-space-6);
+}
+
+.richTextBody :where(h1, h2, h3, h4, h5, h6):not(:first-child) {
+  margin-block-start: var(--theme-section-gap-sm);
 }
 
 .richTextBody :where(p, ul, ol) {

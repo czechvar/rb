@@ -1,0 +1,1236 @@
+{
+  "source": "https://rockbusters.net/terms-and-conditions/",
+  "language": "en",
+  "row": {
+    "title": "Terms and Conditions",
+    "slug": "terms-and-conditions",
+    "status": "published",
+    "seo": {
+      "title": "Terms and Conditions - Rockbusters",
+      "description": "General trade terms and conditions for Rockbusters services."
+    },
+    "structuredData": {
+      "schemaType": "WebPage"
+    },
+    "layout": [
+      {
+        "blockType": "hero",
+        "blockName": "Terms introduction",
+        "variant": "simple",
+        "eyebrow": "www.rockbusters.net",
+        "heading": "General Trade Terms and Conditions"
+      },
+      {
+        "blockType": "rich-text",
+        "blockName": "English terms",
+        "width": "standard",
+        "content": {
+          "root": {
+            "type": "root",
+            "version": 1,
+            "format": "",
+            "indent": 0,
+            "direction": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "www.rockbusters.net",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "1. Basic Regulations",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "These General Trade Terms and Conditions stipulate rights and duties between the Provider and further quoted services by the company Rockbusters Ltd., address: Klíšská 100/165, Klíše, 400 01, Ústí nad Labem, Identification Number (IN) 06675603 (\"Provider\") and the purchaser using the services of the Provider (\"Client\") in regard to providing services stated below.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Contractual relationship between the Provider and the Client (\"Contract\") is created by online purchase on website, by crediting a full payment or a deposit for services to the Provider's bank account.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "A Client or a Purchaser is any participant of the ordered services as well as the person who ordered or booked the services.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "By Services or Activities the Provider means providing sporting services in the field of rock climbing, skiing and snowboarding and services connected with these.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "2. Bookings and Reservations",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Client can book the services through the Provider's website, over the telephone, or in person. In case of booking, the Client must provide a valid reservation code or other information needed for the verification of the booking if required by the Provider or his staff.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "3. Payment",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Purchaser is obliged to pay for the services the amount listed on the price list, the up-to-date price list is published on the Provider's website or on the spot. The due date of the payment or the deposit is agreed on individually in the agreement or quoted at the Provider's website.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "4. Liability Waiver",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider is obliged to inform the Clients that the services are not suitable for kids until eight years of age, people with heart condition, people with epilepsy, people with high blood pressure, people with fear of heights and people with similar health conditions. Clients are participating at their own risk and responsibility. The Provider pledges to give the Clients specific training in technique, security, equipment and other conditions connected with provided services. The Provider is responsible for inspecting the equipment to be used.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider is not responsible for the equipment not provided to the Clients by himself. This includes the equipment the Clients borrowed elsewhere or their own equipment etc.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider has no liability in case the Client conceals or does not provide information about his/her health conditions and complications that could cause injury or death.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Wearing of the helmet is recommended during the whole time of the action (the outdoor activities) with no exception. Not complying with this recommendation is at the Client's own risk.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider has no liability for Clients that decide not to obey the instructions given by the Provider or his staff. The Provider has no liability for Clients acting in a dangerous or harmful way either to themselves or to the others.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider has no liability for private and independent activities not arranged and provided by the Provider. The Provider does not arrange health and travel insurance and has no liability for any medical and other expenses and problems arising from not suitable travel or climbing insurance.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider strongly recommends to arrange an insurance for climbers such as BMC and Alpenverein. (http://www.thebmc.co.uk/modules/insurance/policies.aspx, http://www.alpenverein.at/portal/service/mitgliedervorteile/0100_weltweit_versichert.php).",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Clients give up the possibility to press charges against the Provider, his staff, and other people acting in the Provider's name, regarding real or consequent damage of any sort, known or unknown, expected and unexpected, resulting from or connected in any way with the provided services and the Clients' participation in the services.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "All the claims and litigations arising from these trade terms and conditions and during the activities abide by the Czech legal system and will be arbitrated by Czech court with territorial jurisdiction.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider is not accountable in any way for the weather during the planned activity. In case of bad or not suitable weather, the Provider can cancel, post pone or re-plan the activity. In case the activity is cancelled, the Provider can claim the reimbursement of the expenditures spent while organizing the activity.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "5. Responsibilities of the Provider",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider is responsible for all the material and equipment he/she lends or provides to the Clients for the activity (excluding manufacturing defects).",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider is responsible for all the instructing provided by his guides/instructors during the whole action.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "In the case of an accident, the Provider provides an adequate assistance.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "6. Duty of Confidentiality",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "During the activity and in connection with it, business practises of the Provider, his know-how, etc. can be disclosed or revealed in any way to the Clients. The Clients agree and accept that any of such information is confidential and the Provider is the sole and exclusive owner of this intellectual property and protected information. Disclosing of this type of information to any third party (especially to a direct competition) is strictly forbidden and will be heard before the court.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Clients take into account that all the information and the know-how of the Provider are protected and that the Provider would be financially damaged if the protected information were disclosed to a third party.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "7. Personal Data",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Personal data will be used solely for the purposes of the performance of the concluded contract, including the booking of the services or their changes. Personal data will be processed for the needs of the performance of the contract.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Clients have right to access and correct their own personal data, as well as other legal rights lawfully connected with these data. The Clients also have right to withdraw from their consent for processing personal data in a written form at any time. Clients' personal data are kept in accordance with applicable laws and regulations of the Czech Republic, specifically with the Act about Personal Data and Protection (Act. no. 101/2000 Sb. as amended). All the data acquired from the Clients are used solely for internal use of the Provider and they are not disclosed to a third party. The Provider can send the Clients information about planned activities of the Provider (e.g. discounts, activities, services, etc.).",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "8. Prohibited Behaviour",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Aggressive behaviour and using drugs and alcohol is not tolerated during the activity. Persons under the influence of drugs or alcohol are not permitted to participate in the activities. The Provider reserves the right to ban participants from continuing or starting activities should above mentioned situation arise. The Provider can do so without monetary compensation to the Client.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "In case the Client damages the equipment, he/she is obliged to replace the Provider the damage incurred.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "9. Health Complications",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "In case of health complications the Provider has a first aid kit and if needed an emergency medical services can be called. If the Client doesn't feel good during the activity due to an asthma attack or fear of heights, he/she can ask the staff to terminate the activity. The Provider has the right to terminate the activity at any time he/she considers it appropriate. If the Client suffers from any above mentioned health conditions and participates in the activities regardless, the Provider is not liable for any health complications or financial loss arising from those.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "10. Return Policy",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider is responsible for the provided services to be of stipulated quality and to be carried out in accordance with the agreement, namely that the provided services correspond with the description of the services.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The complaints regarding the services provided may be submitted in the course of provision of such concerned services. The hidden defects must be claimed immediately after the Client learns about them. The defects must be claimed no later than six months after the services were provided.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "In case the services were improperly provided, the Client has right to a rectification free of charge. In case the rectification is not possible, the Client has right to an adequate discount of the services or to full refund.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The rights from improperly provided services do not appertain to the Client in case the Client was aware of the defects before the services were provided or if the Client caused the defect him/herself.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The return policy must be exercised immediately after detecting the defect.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The return policy can be exercised by email, in a written form or in person in the Provider's office.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The starting moment of exercising the return policy is the moment the Provider was informed about the occurrence of the defect and the right to liability for improperly provided services was put into effect.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Provider deals with the received complaints immediately, at the latest till thirty days from the day of the exercising of the complaint. The Provider will send the Client a written confirmation about the exercising and execution of the complaint.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "In case of a disputable complaint, the Provider will decide about its acceptance within three work days from the date of the exercising of the complaint.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "The Conditions for Termination of Contract and Refund",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "version": 1,
+                "tag": "ul",
+                "start": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1,
+                    "format": "",
+                    "indent": 0,
+                    "direction": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "version": 1,
+                        "text": "In case the contract is terminated more than a month before the starting date of the activity the Client will be fully refunded.",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": ""
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2,
+                    "format": "",
+                    "indent": 0,
+                    "direction": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "version": 1,
+                        "text": "In case the contract is terminated more than a week and less than a month before the starting date of the activity the Provider keeps 50% of the price.",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": ""
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3,
+                    "format": "",
+                    "indent": 0,
+                    "direction": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "version": 1,
+                        "text": "In case the contract is terminated less than a week before the starting date of the activity the Client is not eligible to any refund.",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": ""
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4,
+                    "format": "",
+                    "indent": 0,
+                    "direction": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "version": 1,
+                        "text": "In case of a sudden and unexpected incident (e.g. injury, sickness ) the payment can be transferred to another activity/action of the Provider that takes place within six months from the date of the initial activity/action.",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": ""
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 5,
+                    "format": "",
+                    "indent": 0,
+                    "direction": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "version": 1,
+                        "text": "No refunds are provided for camps purchased at a discount through a third party. Cancellations made 30 days in advance of a camp will be held as a credit to be used for any Rockbuster's camp for 6 months from the cancellation date.",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": ""
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "heading",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "11. Final Regulations",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ],
+                "tag": "h2"
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "By sending an order (i.e. proposal for conclusion of the contract) the Purchaser confirms that he/she is familiar with these trade terms and conditions and that he/she fully agrees with them in their entirety. The Purchaser is obliged to present the content of these trade terms and conditions to all the Clients participating in the activities.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "These trade terms and conditions form an integral part of the contract.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "People younger than fifteen years of age can participate only when accompanied by their legal representative.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "In case of resolving a dispute arising from this contractual relationship the consumer can appeal to CTIA (The Czech Trade Inspection Authority) in terms of extrajudicial resolution of disputes within one year. Further information can be obtained at www.coi.cz or on the address: Česká obchodní inspekce, Štěpánská 567/15, Praha 2, 120 00, phone number: +420296 366 360. Proceedings of CTIA abide by Act. n. 634/1992 Sb., on the Protection of Consumers.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "In case of conclusion of the contract online, the consumer can appeal with their claim and requests to Online Dispute Resolution Platform (ODR platform) in terms of extrajudicial resolution. The consumer can do so online at http://ec.europa.eu/consumers/odr/ . The contact place for resolving disputes online in the Czech Republic is the European Consumer Centre (ESC): www.evropskyspotrebitel.cz, email: esc@coi.cz. The email of the Provider in case of extrajudicial resolution of disputes is info@rockbusters.net.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "If the contract was concluded by the distant means of communication (either online or by phone) the consumer can withdraw from the contract within fourteen days of conclusion of the contract. Withdrawing from the contract is not possible after completing the participation of the activities.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "These trade terms and conditions and contract between the Provider and the Purchaser abide by the Czech laws and disputes arising from these will be arbitrated by Czech court with territorial jurisdiction.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "These trade terms and conditions are valid from 1 November 2017.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "version": 1,
+                "format": "",
+                "indent": 0,
+                "direction": null,
+                "children": [
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Rockbusters Ltd.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Klíšská 100/165",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Klíše",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "400 01 Ústí nad Labem",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "version": 1,
+                    "text": "Identification Number (IN) 06675603",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
