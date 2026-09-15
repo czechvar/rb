@@ -43,6 +43,10 @@ const docsByCollection = {
   posts: [
     { slug: 'training-plan', updatedAt: '2026-01-07T03:04:05.000Z', category: { slug: 'training', updatedAt: '2026-01-08T03:04:05.000Z' } },
   ],
+  'post-categories': [
+    { slug: 'bouldering', updatedAt: '2026-01-09T03:04:05.000Z' },
+    { slug: 'video', updatedAt: '2026-01-10T03:04:05.000Z' },
+  ],
   pages: [
     { slug: 'contact', updatedAt: '2026-09-12T00:00:00.000Z' },
     { slug: 'about-us', updatedAt: '2026-01-09T03:04:05.000Z' },
@@ -114,7 +118,9 @@ describe('buildSitemap', () => {
       'https://rockbusters.net/', 'https://rockbusters.net/trips',
       'https://rockbusters.net/destinations/kalymnos', 'https://rockbusters.net/team/jany',
       'https://rockbusters.net/programs/performance-lab', 'https://rockbusters.net/blog/training-plan',
-      'https://rockbusters.net/blog/category/training', 'https://rockbusters.net/contact',
+      'https://rockbusters.net/blog/category/training',
+      'https://rockbusters.net/blog/category/bouldering', 'https://rockbusters.net/blog/category/video',
+      'https://rockbusters.net/contact',
       'https://rockbusters.net/about-us',
     ]))
   })
@@ -147,6 +153,10 @@ describe('buildSitemap', () => {
       pagination: true,
     }))
     expect(find).toHaveBeenCalledWith(expect.objectContaining({ collection: 'event-dates', page: 2 }))
+    expect(find).toHaveBeenCalledWith(expect.objectContaining({
+      collection: 'post-categories',
+      where: { slug: { in: ['bouldering', 'video'] } },
+    }))
     for (const collection of Object.keys(docsByCollection)) {
       expect(find).toHaveBeenCalledWith(expect.objectContaining({ collection, page: 1, pagination: true }))
     }

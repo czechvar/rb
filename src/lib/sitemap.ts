@@ -29,6 +29,7 @@ type SitemapCollection =
   | 'guides'
   | 'programs'
   | 'posts'
+  | 'post-categories'
   | 'pages'
 
 type SitemapPayload = {
@@ -44,6 +45,7 @@ type SitemapPayload = {
 }
 
 const STATIC_PATHS = ['/', '/trips', '/programs', '/destinations', '/team', '/blog', '/calendar']
+const LEGACY_BLOG_CATEGORY_SLUGS = ['bouldering', 'video']
 const PAGE_SIZE = 100
 
 function sitemapEntry(pathname: string, updatedAt?: string | null): MetadataRoute.Sitemap[number] {
@@ -71,13 +73,15 @@ function entriesForCmsPages(docs: SitemapDoc[]): MetadataRoute.Sitemap {
   )
 }
 
-function entriesForPostCategories(posts: SitemapDoc[]): MetadataRoute.Sitemap {
-  return uniqueEntries(
-    posts.flatMap((post) => {
-      if (!post.category || typeof post.category !== 'object' || !post.category.slug) return []
-      return [sitemapEntry(`/blog/category/${post.category.slug}`, post.category.updatedAt ?? post.updatedAt)]
-    }),
-  )
+function entriesForPostCategories(posts: SitemapDoc[], legacyCategories: SitemapDoc[]): MetadataRoute.Sitemap {
+  const categoriesWithPosts = posts.flatMap((post) => {
+    if (!post.category || typeof post.category !== 'object' || !post.category.slug) return []
+    return [sitemapEntry(`/blog/category/${post.category.slug}`, post.category.updatedAt ?? post.updatedAt)]
+  })
+  return uniqueEntries([
+    ...categoriesWithPosts,
+    ...entriesForDocs(legacyCategories, (slug) => `/blog/category/${slug}`),
+  ])
 }
 
 function uniqueEntries(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
@@ -155,7 +159,7 @@ function entriesForParentTrips(variants: SitemapDoc[]): MetadataRoute.Sitemap {
 }
 
 export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRoute.Sitemap> {
-  const [occurrences, variants, locations, guides, programs, posts, pages] = await Promise.all([
+  const [occurrences, variants, locations, guides, programs, posts, legacyCategories, pages] = await Promise.all([
     findAll(payload, {
       collection: 'event-dates',
       where: { and: [{ active: { equals: true } }, { indexable: { not_equals: false } }] },
@@ -194,6 +198,12 @@ export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRou
       depth: 1,
     }),
     findAll(payload, {
+      collection: 'post-categories',
+      where: { slug: { in: LEGACY_BLOG_CATEGORY_SLUGS } },
+      sort: 'slug',
+      depth: 0,
+    }),
+    findAll(payload, {
       collection: 'pages',
       where: { status: { equals: 'published' } },
       sort: 'slug',
@@ -210,7 +220,7 @@ export async function buildSitemap(payload: SitemapPayload): Promise<MetadataRou
     ...entriesForDocs(guides, (slug) => `/team/${slug}`),
     ...entriesForDocs(programs, (slug) => `/programs/${slug}`),
     ...entriesForDocs(posts, (slug) => `/blog/${slug}`),
-    ...entriesForPostCategories(posts),
+    ...entriesForPostCategories(posts, legacyCategories),
     ...entriesForCmsPages(pages),
   ])
 }
