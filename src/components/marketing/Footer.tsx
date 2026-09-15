@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './marketing.module.css'
-import { NewsletterForm } from './NewsletterForm'
 
 const TRIPS = [
   { href: '/trips?category=expeditions', label: 'Climbing Road Trips & Expeditions' },
@@ -41,7 +40,6 @@ export function Footer() {
                 A community of climbing coaches and guides dedicated to maximum
                 progression on real rock across Europe&apos;s greatest crags.
               </p>
-              <NewsletterForm />
             </div>
 
             <div className={styles.footerCol}>

@@ -32,20 +32,13 @@
   width: min(var(--theme-content-max), calc(100% - 2 * var(--theme-content-gutter)));
   margin: auto;
   padding: 18px 0;
-  display: flex;
-  align-items: center;
-  gap: 24px;
 }
 .pills {
-  min-width: 0;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  padding-bottom: 5px;
 }
 .pills :is(button, a) {
-  flex: 0 0 auto;
   padding: 9px 16px;
   border: 1px solid var(--theme-color-border);
   color: var(--theme-color-paper-60);
@@ -53,7 +46,6 @@
   font: 600 11px var(--theme-font-body);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
 }
@@ -62,25 +54,6 @@
   color: var(--theme-color-ink);
   background: var(--theme-color-primary);
   border-color: var(--theme-color-primary);
-}
-.sort {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-.sort label {
-  color: var(--theme-color-primary);
-  font: 700 10px var(--theme-font-body);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-.sort select {
-  padding: 9px 12px;
-  color: var(--theme-color-paper);
-  border: 1px solid var(--theme-color-border);
-  background: var(--theme-color-surface-2);
-  font: 500 12px var(--theme-font-body);
 }
 .content {
   width: min(var(--theme-content-max), calc(100% - 2 * var(--theme-content-gutter)));
@@ -295,11 +268,6 @@
   }
   .filters {
     position: static;
-  }
-  .filterInner {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
   }
   .content {
     padding-top: 48px;
