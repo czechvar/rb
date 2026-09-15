@@ -93,6 +93,21 @@ it('restores the same dated selections after login and updates quantities withou
   expect(window.localStorage.getItem(CART_STORAGE_KEY)).not.toContain('visitor')
 })
 
+it('does not ask an authenticated customer to verify their email again', async () => {
+  mocks.reserve.mockResolvedValue({ ok: false, formError: 'Please retry.' })
+  render(
+    <CheckoutFlow
+      mode="checkout"
+      contact={{ name: 'Test Customer', email: 'customer@example.test', phone: '+420123456789' }}
+    />,
+  )
+  await screen.findByRole('heading', { name: 'Test climbing trip' })
+  expect(screen.queryByRole('button', { name: 'Send verification email' })).toBeNull()
+  fireEvent.submit(screen.getByRole('button', { name: 'Reserve checkout' }).closest('form')!)
+  await waitFor(() => expect(mocks.reserve).toHaveBeenCalledTimes(1))
+  expect(mocks.guest).not.toHaveBeenCalled()
+})
+
 it('preserves personal inputs after a guest error and retains the receipt key for an unchanged retry', async () => {
   mocks.guest
     .mockResolvedValueOnce({ ok: false, formError: 'Please retry.' })

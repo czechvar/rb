@@ -2,9 +2,15 @@
 
 import { cookies } from 'next/headers'
 import { getCurrentUser } from '@/lib/auth'
+import { getPayloadClient } from '@/lib/payload'
 import { checkoutEnabled } from '@/lib/checkout/feature'
 import { quoteCart } from '@/lib/checkout/quote'
-import { cancelCheckout, reserveCheckout, updateCheckoutBilling } from '@/lib/checkout/reservations'
+import {
+  cancelCheckout,
+  isReturningPurchaser,
+  reserveCheckout,
+  updateCheckoutBilling,
+} from '@/lib/checkout/reservations'
 import { beginCheckoutPayment } from '@/payments/checkout-payment-service'
 import { REFERRAL_COOKIE_NAME } from '@/lib/referral'
 import { addressSchema } from '@/app/(frontend)/account/addresses/schema'
@@ -57,22 +63,25 @@ export async function reserveCheckoutAction(
   try {
     const user = await getCurrentUser()
     if (!user) return { ok: false, formError: 'Please log in again before reserving your trips.' }
-    const address = addressSchema.safeParse(
-      Object.fromEntries(
-        [
-          'firstName',
-          'lastName',
-          'street',
-          'city',
-          'postalCode',
-          'country',
-          'companyName',
-          'ico',
-          'dic',
-        ].map((name) => [name, data.get(name) ?? '']),
-      ),
-    )
-    if (!address.success)
+    const returning = await isReturningPurchaser(await getPayloadClient(), user)
+    const address = returning
+      ? addressSchema.safeParse(
+          Object.fromEntries(
+            [
+              'firstName',
+              'lastName',
+              'street',
+              'city',
+              'postalCode',
+              'country',
+              'companyName',
+              'ico',
+              'dic',
+            ].map((name) => [name, data.get(name) ?? '']),
+          ),
+        )
+      : undefined
+    if (address && !address.success)
       return {
         ok: false,
         fieldErrors: Object.fromEntries(
@@ -88,7 +97,7 @@ export async function reserveCheckoutAction(
           phone: String(data.get('phone') ?? ''),
         },
         items: JSON.parse(String(data.get('items') ?? '[]')),
-        billingAddress: address.data,
+        billingAddress: address?.success ? address.data : undefined,
         discountCode: String(data.get('discountCode') ?? ''),
         referralCode: await referral(),
       },

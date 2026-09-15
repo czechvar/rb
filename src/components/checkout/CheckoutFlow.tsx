@@ -175,13 +175,13 @@ export function CheckoutFlow({
       }
       submissionKey.current ??= crypto.randomUUID()
       data.set('submissionKey', submissionKey.current)
-      const response = await (returning ? reserveCheckoutAction : createGuestCheckoutAction)(
+      const response = await (contact ? reserveCheckoutAction : createGuestCheckoutAction)(
         null,
         data,
       )
       setResult(response)
       if (response.ok && response.redirect) {
-        if (returning)
+        if (contact)
           cart.replace(
             readCart()
               .map((item) => ({
@@ -332,7 +332,9 @@ export function CheckoutFlow({
             <p className={styles.muted}>
               {returning
                 ? 'Reserve every date together, then choose full payment or the amount due now. Unpaid returning-customer reservations are held for 24 hours, subject to payment reconciliation.'
-                : 'Verify your email before we reserve your dates for review. We will invite you to set up your account and pay once approved.'}
+                : contact
+                  ? 'Reserve your dates for review. We will email you when your request is approved and ready for payment.'
+                  : 'Verify your email before we reserve your dates for review. We will invite you to set up your account and pay once approved.'}
             </p>
             {!contact && (
               <p>
@@ -393,9 +395,11 @@ export function CheckoutFlow({
                       ? 'Working…'
                       : returning
                         ? 'Reserve and continue to payment'
-                        : !contact && journey === 'unknown'
-                          ? 'Continue with email'
-                          : 'Send verification email'}
+                        : contact
+                          ? 'Reserve checkout'
+                          : journey === 'unknown'
+                            ? 'Continue with email'
+                            : 'Send verification email'}
                   </button>
                 )}
               </fieldset>
