@@ -80,6 +80,7 @@ export async function TripGridBlock(block: TripGridBlockProps, context: BlockRen
                   location={event.locations?.flatMap((item) => typeof item === 'object' ? [item.name] : [])[0]}
                   price={price}
                   featured={index === 0}
+                  titleType="card"
                 />
               )
             }

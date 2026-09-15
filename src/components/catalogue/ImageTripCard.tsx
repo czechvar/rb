@@ -13,6 +13,7 @@ type TripLinkProps = {
   price?: string | null
   featured?: boolean
   headingLevel?: 3 | 4
+  titleType?: 'card' | 'card-lg'
 }
 
 export type ImageTripCardProps = TripLinkProps | {
@@ -44,7 +45,7 @@ export function ImageTripCard(props: ImageTripCardProps) {
   )
   if (props.variant === 'photo') return <figure className={className}>{media}</figure>
 
-  const { href, title, description, category, location, schedule, price, headingLevel = 3 } = props
+  const { href, title, description, category, location, schedule, price, headingLevel = 3, titleType } = props
   const Heading = headingLevel === 4 ? 'h4' : 'h3'
   return (
     <a className={className} href={href}>
@@ -58,7 +59,7 @@ export function ImageTripCard(props: ImageTripCardProps) {
         </div>
       </div>
       <div className={styles.content}>
-        <Heading data-type={featured ? 'card-lg' : 'card'} className={styles.title}>{title}</Heading>
+        <Heading data-type={titleType ?? (featured ? 'card-lg' : 'card')} className={styles.title}>{title}</Heading>
         {description ? <p className={styles.description}>{description}</p> : null}
         <div className={styles.footer}>
           <span className={styles.price}>{price || 'Upcoming dates'}</span>
