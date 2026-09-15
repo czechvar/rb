@@ -11,8 +11,11 @@ Decision: [ADR-0016](../../adr/0016-trip-variants-and-dated-query-leaves.md)
 - `?date=YYYY-MM-DD-to-YYYY-MM-DD` selects exactly one active Event Date under
   that variant. An unknown, malformed, repeated, or wrong-variant key returns 404.
 - The dated page is self-canonical and exposes exactly one matching Event in
-  JSON-LD. The shared TouristTrip/Product identity stays on the evergreen URL.
-- An indexable variant and indexable date enter the sitemap. The six inherited
+  JSON-LD. That Event is linked to the shared TouristTrip/Product identity on
+  the evergreen URL, whose location remains stable across dates.
+- An indexable variant and upcoming or in-progress indexable date enter the
+  sitemap. Ended dates stay reachable and self-canonical but become noindex and
+  leave the sitemap. The six inherited
   thin variants remain noindex and outside the sitemap.
 - Migrated occurrence-slug URLs redirect permanently to their dated variant
   leaves. Event parent URLs stay noindex and redirect temporarily to an

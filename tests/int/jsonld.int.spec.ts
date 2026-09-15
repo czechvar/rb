@@ -277,19 +277,24 @@ describe('JSON-LD builders', () => {
   it('links dated Event JSON-LD to one stable evergreen Trip Variant identity', () => {
     vi.stubEnv('NEXT_PUBLIC_SITE_URL', 'https://rockbusters.test')
     const variant = { id: 90, event: event.id, title: 'Kalymnos', slug: 'kalymnos', locations: [location] } as TripVariant
-    const date = { ...eventDate, tripVariant: variant, publicDateKey: '2026-10-12-to-2026-10-19' }
+    const exceptionalLocation = { ...location, id: 21, name: 'Other venue', slug: 'other-venue' }
+    const date = { ...eventDate, locations: [exceptionalLocation], tripVariant: variant, publicDateKey: '2026-10-12-to-2026-10-19' }
     const graph = variantGraphJsonLd(event, variant, date, new Date('2026-01-01T00:00:00.000Z'))
     const nodes = graph['@graph'] as Record<string, unknown>[]
     const stable = 'https://rockbusters.test/trips/kalymnos-autumn-camp/kalymnos'
     const leaf = `${stable}?date=2026-10-12-to-2026-10-19`
+    const dateNode = nodes.find((node) => node['@type'] === 'Event')
     expect(nodes).toContainEqual(expect.objectContaining({
       '@type': ['TouristTrip', 'Product'], '@id': `${stable}#trip`, url: stable,
+      location: [{ '@id': 'https://rockbusters.test/destinations/kalymnos#place' }],
+      event: [{ '@id': dateNode?.['@id'] }],
     }))
     expect(nodes).toContainEqual(expect.objectContaining({
       '@type': 'Event', url: leaf, startDate: '2026-10-12', endDate: '2026-10-19',
       offers: expect.objectContaining({ price: 1290, priceCurrency: 'EUR' }),
     }))
     expect(nodes.filter((node) => node['@type'] === 'Event')).toHaveLength(1)
+    expect(dateNode?.location).toEqual([{ '@id': 'https://rockbusters.test/destinations/other-venue#place' }])
     expect(variantGraphJsonLd(event, variant)['@graph']).not.toContainEqual(expect.objectContaining({ '@type': 'Event' }))
   })
 

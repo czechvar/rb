@@ -3,6 +3,7 @@ import type { Where } from 'payload'
 
 import { siteUrl } from '@/lib/url'
 import { tripVariantPath } from '@/lib/occurrence-routing'
+import { eventDateLifecycle } from '@/lib/event-date-visibility'
 
 type SitemapDoc = {
   id?: number | string
@@ -12,6 +13,8 @@ type SitemapDoc = {
   event?: number | string | SitemapDoc | null
   tripVariant?: number | string | SitemapDoc | null
   publicDateKey?: string | null
+  dateFrom?: string | null
+  dateTo?: string | null
   active?: boolean | null
   indexable?: boolean | null
   state?: string | null
@@ -112,7 +115,9 @@ function entriesForOccurrences(docs: SitemapDoc[]): MetadataRoute.Sitemap {
     ) return []
     const variant = typeof occurrence.tripVariant === 'object' && occurrence.tripVariant ? occurrence.tripVariant : null
     if (variant) {
-      if (!variant.slug || variant.active !== true || variant.indexable !== true || !occurrence.publicDateKey) return []
+      if (!variant.slug || variant.active !== true || variant.indexable !== true || !occurrence.publicDateKey ||
+        !occurrence.dateFrom || !occurrence.dateTo ||
+        !['upcoming', 'in-progress'].includes(eventDateLifecycle({ dateFrom: occurrence.dateFrom, dateTo: occurrence.dateTo }))) return []
       return [sitemapEntry(
         tripVariantPath(event.slug, variant.slug, occurrence.publicDateKey),
         latestTimestamp(occurrence.updatedAt, variant.updatedAt, event.updatedAt),

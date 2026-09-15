@@ -376,15 +376,10 @@ export function variantGraphJsonLd(event: Event, variant: TripVariant, occurrenc
   const path = tripVariantPath(event.slug, variant.slug, occurrence?.publicDateKey)
   const url = absoluteUrl(path)
   const variantLocations = docs(variant.locations)
+  const stableLocations = variantLocations.length ? variantLocations : docs(event.locations)
   const locations = occurrence && docs(occurrence.locations).length
-    ? docs(occurrence.locations)
-    : variantLocations.length ? variantLocations : docs(event.locations)
+    ? [...stableLocations, ...docs(occurrence.locations)] : stableLocations
   const guides = occurrence && docs(occurrence.guides).length ? docs(occurrence.guides) : docs(event.coaches)
-  const trip = {
-    ...eventTripJsonLd(event, [], evergreenPath),
-    name: `${event.title} — ${variant.title}`,
-    location: locations.map((location) => ({ '@id': locationPlaceJsonLd(location)['@id'] })),
-  }
   const baseDateNode = occurrence ? eventDateJsonLd(event, occurrence, url) : null
   const { offers: _closedOffer, ...closedDateNode } = baseDateNode ?? {}
   const lifecycle = occurrence ? eventDateLifecycle(occurrence, now) : null
@@ -393,6 +388,12 @@ export function variantGraphJsonLd(event: Event, variant: TripVariant, occurrenc
     url,
     eventStatus: lifecycle === 'ended' ? 'https://schema.org/EventCompleted' : 'https://schema.org/EventScheduled',
   } : null
+  const trip = {
+    ...eventTripJsonLd(event, [], evergreenPath),
+    name: `${event.title} — ${variant.title}`,
+    location: stableLocations.map((location) => ({ '@id': locationPlaceJsonLd(location)['@id'] })),
+    ...(dateNode ? { event: [{ '@id': dateNode['@id'] }] } : {}),
+  }
 
   return graph([
     organizationJsonLd(),

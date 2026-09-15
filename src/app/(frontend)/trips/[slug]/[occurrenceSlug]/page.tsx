@@ -4,6 +4,7 @@ import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import { JsonLd } from '@/components/JsonLd'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { occurrenceGraphJsonLd, variantGraphJsonLd } from '@/lib/jsonld'
+import { eventDateLifecycle } from '@/lib/event-date-visibility'
 import {
   getPublicEventDatesForEvent,
   getPublicEventDatesForVariant,
@@ -52,11 +53,17 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     const trip = resolveTripDetailVariant(event, variant, dates, occurrence)
     const context = variantContext(variant.title, occurrence)
     const canonicalPath = tripVariantPath(event.slug, variant.slug, occurrence?.publicDateKey ?? undefined)
+    const lifecycle = occurrence ? eventDateLifecycle(occurrence) : null
     return {
       title: `${trip.event.seo?.title ?? trip.event.title} — ${context}`,
       description: [trip.event.shortDescription, context].filter(Boolean).join(' '),
       alternates: { canonical: canonicalPath },
-      robots: { index: variant.indexable === true && (occurrence?.indexable !== false), follow: true },
+      robots: {
+        index: variant.indexable === true && (!occurrence || (
+          occurrence.indexable !== false && (lifecycle === 'upcoming' || lifecycle === 'in-progress')
+        )),
+        follow: true,
+      },
     }
   }
 

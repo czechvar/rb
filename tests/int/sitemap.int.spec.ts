@@ -27,6 +27,12 @@ const docsByCollection = {
       dateFrom: '2020-10-12', dateTo: '2020-10-19',
       updatedAt: '2026-02-02T03:04:05.000Z', event: publishedEvent,
     },
+    {
+      slug: 'kalymnos-2020-10-12-to-2020-10-19', active: true, indexable: true,
+      dateFrom: '2020-10-12', dateTo: '2020-10-19',
+      updatedAt: '2026-02-02T03:04:05.000Z', event: publishedEvent,
+      tripVariant: indexableVariant, publicDateKey: '2020-10-12-to-2020-10-19',
+    },
     { slug: 'thin', active: true, indexable: false, event: publishedEvent },
     { slug: 'draft-parent', active: true, indexable: true, event: { ...publishedEvent, state: 'draft' } },
   ],
@@ -65,6 +71,7 @@ describe('buildSitemap', () => {
     expect(urls).toContain('https://rockbusters.net/trips/kalymnos-camp/kalymnos?date=2026-10-12-to-2026-10-19')
     expect(urls).not.toContain('https://rockbusters.net/trips/kalymnos-camp/kalymnos-2026-10-12')
     expect(urls).not.toContain('https://rockbusters.net/trips/kalymnos-camp/kalymnos-2020-10-12')
+    expect(urls).not.toContain('https://rockbusters.net/trips/kalymnos-camp/kalymnos?date=2020-10-12-to-2020-10-19')
     expect(urls).not.toContain('https://rockbusters.net/trips/kalymnos-camp')
     expect(urls).not.toContain('https://rockbusters.net/trips/kalymnos-camp/dates')
     expect(urls).not.toContain('https://rockbusters.net/trips/kalymnos-camp/faq')

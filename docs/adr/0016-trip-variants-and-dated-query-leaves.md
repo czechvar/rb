@@ -33,6 +33,9 @@ leaf selects exactly one occurrence with a stable start-to-end key, for example
 `?date=2026-09-26-to-2026-10-03`. An indexable dated leaf is self-canonical and
 may carry one matching Event JSON-LD item. The evergreen page remains
 self-canonical and accumulates long-term search value.
+Once an assigned date ends, its URL remains reachable and self-canonical for
+provenance but becomes noindex and leaves the sitemap. The dated Event JSON-LD
+links back to the stable trip identity without changing the trip's locations.
 
 For the first migration, create the 31 launch variants and attach the 64 future
 dates. Promote the 25 authoritative editorial sources. Six variants without

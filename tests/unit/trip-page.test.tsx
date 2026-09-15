@@ -264,6 +264,26 @@ describe('evergreen Trip Variant route', () => {
     expect(mocks.blocks.mock.calls.at(-1)?.[0].context.trip.selectedDate.id).toBe(twoWeek.id)
   })
 
+  it('keeps an ended dated leaf reachable and self-canonical but noindex', async () => {
+    const past = {
+      ...oneWeek,
+      id: 735,
+      slug: 'mallorca-2000-10-12-to-2000-10-19',
+      publicDateKey: '2000-10-12-to-2000-10-19',
+      dateFrom: '2000-10-12T00:00:00.000Z',
+      dateTo: '2000-10-19T00:00:00.000Z',
+    }
+    mocks.variantDates.mockResolvedValue([past, oneWeek])
+    const path = `/trips/${event.slug}/mallorca?date=${past.publicDateKey}`
+    const meta = await generateOccurrenceMetadata(route(past.publicDateKey))
+    expect(meta.alternates).toEqual({ canonical: path })
+    expect(meta.robots).toEqual({ index: false, follow: true })
+    renderToStaticMarkup(await OccurrencePage(route(past.publicDateKey)))
+    const trip = mocks.blocks.mock.calls.at(-1)?.[0].context.trip
+    expect(trip.selectedDate.id).toBe(past.id)
+    expect(trip.bookingHref).toBeNull()
+  })
+
   it('404s unknown, malformed and repeated selectors without choosing a fallback', async () => {
     for (const date of ['2999-10-12', '2999-10-12-to-2999-11-30', [oneWeek.publicDateKey]]) {
       await expect(OccurrencePage(route(date))).rejects.toThrow('NOT_FOUND')
