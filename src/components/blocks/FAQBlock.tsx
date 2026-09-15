@@ -31,12 +31,15 @@ export async function FAQBlock(block: FAQBlockProps, context: BlockRenderContext
         })
   const items = block.source === 'inline' ? inlineItems : collectionItems
   if (items.length === 0 && !preview?.length) return null
+  const tripAccordion = appliesToTrip && block.variant === 'singleColumn'
+  const displayedItems = preview?.length ? preview : items
 
   return (
     <section
       className={[
         styles.faqSection,
         block.variant === 'lightEditorial' ? styles.faqLightEditorial : '',
+        tripAccordion ? styles.faqTripAccordion : '',
       ]
         .filter(Boolean)
         .join(' ')}
@@ -51,27 +54,33 @@ export async function FAQBlock(block: FAQBlockProps, context: BlockRenderContext
           {copy.heading && <h2>{copy.heading}</h2>}
           {copy.intro && <p>{copy.intro}</p>}
         </div>
-        <dl
-          className={`${styles.faqList} ${block.variant === 'singleColumn' ? styles.faqSingle : ''}`}
-        >
-          {preview?.length
-            ? preview.map((item, index) => (
-                <div key={index} className={styles.faqItem}>
-                  <dt>{item.question}</dt>
-                  <dd>
-                    <p style={{ whiteSpace: 'pre-line' }}>{item.answer}</p>
-                  </dd>
+        {tripAccordion ? (
+          <div className={styles.faqTripList}>
+            {displayedItems.map((item, index) => (
+              <details key={'id' in item && item.id ? item.id : index} className={styles.faqTripItem}>
+                <summary>{item.question}</summary>
+                <div className={styles.faqTripAnswer}>
+                  {typeof item.answer === 'string'
+                    ? <p style={{ whiteSpace: 'pre-line' }}>{item.answer}</p>
+                    : <Lexical data={item.answer} />}
                 </div>
-              ))
-            : items.map((item, index) => (
-                <div key={'id' in item && item.id ? item.id : index} className={styles.faqItem}>
-                  <dt>{item.question}</dt>
-                  <dd>
-                    <Lexical data={item.answer} />
-                  </dd>
-                </div>
-              ))}
-        </dl>
+              </details>
+            ))}
+          </div>
+        ) : (
+          <dl className={`${styles.faqList} ${block.variant === 'singleColumn' ? styles.faqSingle : ''}`}>
+            {displayedItems.map((item, index) => (
+              <div key={'id' in item && item.id ? item.id : index} className={styles.faqItem}>
+                <dt>{item.question}</dt>
+                <dd>
+                  {typeof item.answer === 'string'
+                    ? <p style={{ whiteSpace: 'pre-line' }}>{item.answer}</p>
+                    : <Lexical data={item.answer} />}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </div>
     </section>
   )

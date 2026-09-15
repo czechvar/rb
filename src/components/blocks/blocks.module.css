@@ -2047,6 +2047,54 @@
   line-height: var(--theme-line-body);
 }
 
+.faqTripList {
+  width: 100%;
+}
+
+.faqTripItem {
+  border-bottom: 1px solid var(--theme-color-paper-12);
+}
+
+.faqTripItem summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--theme-space-5);
+  min-height: 56px;
+  padding: var(--theme-space-4) 0;
+  color: var(--theme-color-paper);
+  font-size: var(--theme-text-body);
+  font-weight: var(--theme-weight-subheading);
+  line-height: var(--theme-line-body);
+  list-style: none;
+  cursor: pointer;
+}
+
+.faqTripItem summary::-webkit-details-marker { display: none; }
+
+.faqTripItem summary::after {
+  content: '+';
+  flex: none;
+  color: var(--theme-color-primary);
+  font-size: var(--theme-text-subheading);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.faqTripItem[open] summary::after { content: '\2212'; }
+.faqTripItem summary:focus-visible { outline: 2px solid var(--theme-color-focus); outline-offset: 4px; }
+
+.faqTripAnswer {
+  max-width: var(--theme-content-text-max);
+  padding: 0 0 var(--theme-space-5);
+  color: var(--theme-color-paper-80);
+  font-size: var(--theme-text-body);
+  line-height: var(--theme-line-body);
+}
+
+.faqTripAnswer p { margin: 0 0 var(--theme-space-3); }
+.faqTripAnswer p:last-child { margin-bottom: 0; }
+
 .destinationCountryIndex {
   background: var(--theme-color-canvas);
   color: var(--theme-color-paper);

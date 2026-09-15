@@ -30,6 +30,9 @@ describe('occurrence editorial block boundaries', () => {
     const html = renderToStaticMarkup(await FAQBlock({ blockType: 'faq', heading: 'Questions', limit: 10, variant: 'singleColumn', source: 'byEvent' }, { event, trip }))
     expect(html).toContain('Before your trip')
     expect(html).toContain('Go climbing.')
+    expect(html).toContain('<details')
+    expect(html).toContain('<summary>What now?</summary>')
+    expect(html).not.toContain('open=""')
   })
 
   it('renders package-only copy with legacy included/excluded content exactly once', () => {
