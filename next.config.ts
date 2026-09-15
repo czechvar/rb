@@ -41,7 +41,23 @@ const nextConfig: NextConfig = {
       'patxi-usobiaga-pro-climber': 'patxi-usobiaga',
       'pablo-scorza-fyziotherapist-biomechanica-funcional': 'pablo-scorza',
     }
+    // Draft legacy Events with a live, populated category listing. Keep these
+    // temporary while their Event content and current offer are reviewed.
+    const legacyEventCategoryMap: Record<string, string> = {
+      'climbing-weekends': 'sport-climbing-holidays',
+      'christmas-climbing-holiday': 'sport-climbing-holidays',
+      'easter-climbing-in-sella': 'sport-climbing-holidays',
+      'biomechanica-funcional': 'performance-technique-camps',
+      'adam-ondra-patxi-usobiaga-work-shop': 'performance-technique-camps',
+      'daila-ojeda-climbing-work-shop': 'performance-technique-camps',
+      'deep-water-solo-sailing-mallorca': 'sport-climbing-holidays',
+    }
     return [
+      ...Object.entries(legacyEventCategoryMap).map(([from, category]) => ({
+        source: `/event/${from}`,
+        destination: `/trips?category=${category}`,
+        permanent: false,
+      })),
       ...Object.entries(teamMemberMap).map(([from, to]) => ({
         source: `/team-member/${from}`,
         destination: `/team/${to}`,

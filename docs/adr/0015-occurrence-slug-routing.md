@@ -10,6 +10,8 @@ selection, alias preservation, and booking-safety decisions remain applicable.
 Parent departure selection is superseded for Events with active Variants by
 [ADR-0017](0017-event-parent-trip-hubs.md); the fallback still applies to
 published Events without active Variants.
+Substantive published Events without current Dates or active Variants instead
+follow [ADR-0019](0019-content-only-event-parent-pages.md).
 
 ## Context
 

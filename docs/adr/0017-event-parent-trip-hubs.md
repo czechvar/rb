@@ -4,6 +4,9 @@
 - Date: 2026-09-15
 - Owners: Engineering
 
+The no-Variant fallback is superseded for substantive published Events without
+current Dates by [ADR-0019](0019-content-only-event-parent-pages.md).
+
 ## Context
 
 ADR-0015 made `/trips/{eventSlug}` a noindex departure selector because Event-level content was not then ready for an evergreen parent. Published Events now have reusable rich text, structured sections, media, and active Trip Variants. Legacy `/event/*` pages with several locations need a stable destination that represents the Event rather than one changing departure.

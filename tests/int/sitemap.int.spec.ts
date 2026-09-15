@@ -15,6 +15,7 @@ const indexableVariant = {
 }
 
 const docsByCollection = {
+  events: [],
   'event-dates': [
     {
       slug: 'kalymnos-2026-10-12', active: true, indexable: true,
@@ -62,6 +63,43 @@ afterEach(() => {
 })
 
 describe('buildSitemap', () => {
+  it('lists a substantive published Event with no current dates or active Variants', async () => {
+    process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
+    const content = { root: { children: [{ type: 'paragraph', children: [
+      { type: 'text', text: Array(110).fill('Evergreen').join(' ') },
+    ] }] } }
+    const published = { ...publishedEvent, id: 100, slug: 'big-wall-climbing-in-chamonix', content }
+    const draft = { ...published, id: 11, slug: 'draft-old-event', state: 'draft' }
+    const thin = { ...published, id: 12, slug: 'thin-event', content: { root: { children: [{ type: 'text', text: 'Short copy' }] } } }
+    const unapproved = { ...published, id: 13, slug: 'rockbusters-summer-2018' }
+    const find = vi.fn(async ({ collection, where }: { collection: keyof typeof docsByCollection; where?: unknown }) => ({
+      docs: collection === 'events' ? [published, draft, thin, unapproved]
+        : collection === 'event-dates' && JSON.stringify(where).includes('dateTo') ? []
+          : [...docsByCollection[collection]],
+      hasNextPage: false,
+    }))
+    const urls = (await buildSitemap({ find })).map(entry => entry.url)
+    expect(urls).toContain('https://rockbusters.net/trips/big-wall-climbing-in-chamonix')
+    expect(urls).not.toContain('https://rockbusters.net/trips/draft-old-event')
+    expect(urls).not.toContain('https://rockbusters.net/trips/thin-event')
+    expect(urls).not.toContain('https://rockbusters.net/trips/rockbusters-summer-2018')
+  })
+
+  it('keeps a parent with a current Date out of the content-only sitemap path', async () => {
+    process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
+    const event = { ...publishedEvent, id: 100, slug: 'big-wall-climbing-in-chamonix', content: { root: { children: [
+      { type: 'text', text: Array(110).fill('Evergreen').join(' ') },
+    ] } } }
+    const find = vi.fn(async ({ collection, where }: { collection: keyof typeof docsByCollection; where?: unknown }) => ({
+      docs: collection === 'events' ? [event]
+        : collection === 'event-dates' && JSON.stringify(where).includes('dateTo') ? [{ active: true, event }]
+          : [...docsByCollection[collection]],
+      hasNextPage: false,
+    }))
+    const urls = (await buildSitemap({ find })).map(entry => entry.url)
+    expect(urls).not.toContain('https://rockbusters.net/trips/big-wall-climbing-in-chamonix')
+  })
+
   it('adds a stable Event hub only when it has its own copy and two reviewed Variants', async () => {
     process.env.NEXT_PUBLIC_SITE_URL = 'https://rockbusters.net/'
     const hubEvent = { ...publishedEvent, content: { root: { children: [
