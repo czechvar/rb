@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Historical Event Dates without an equivalent Variant browse by their trip category.
+      ...Object.entries(legacyRedirectDecisions.temporaryHistoricalDateCategoryRedirects).map(([from, category]) => ({
+        source: `/event-date/${from}`,
+        destination: `/trips?category=${category}`,
+        permanent: false,
+      })),
       // Draft legacy Events with a live, populated category listing.
       ...Object.entries(legacyRedirectDecisions.temporaryEventCategoryRedirects).map(([from, category]) => ({
         source: `/event/${from}`,

@@ -27,6 +27,10 @@ CONTENT_EVENT_ALIASES = {"alpine-rock-climbing-in-chamonix": "big-wall-climbing-
 legacy_decisions = json.loads(REDIRECT_DECISIONS.read_text())
 APPROVED_CONTENT_ONLY_PARENT_SLUGS = set(legacy_decisions["contentOnlyParentSlugs"])
 MISSING_TEAM_PATHS = {f"/team-member/{slug}" for slug in legacy_decisions["missingTeamMemberSlugs"]}
+HISTORICAL_DATE_CATEGORY_TARGETS = {
+    f"/event-date/{slug}": f"/trips?category={category}"
+    for slug, category in legacy_decisions["temporaryHistoricalDateCategoryRedirects"].items()
+}
 EXCLUDED_LEGACY_EVENT_SLUGS = {
     "singing-rock-mobile-test-center": "inactive equipment test-center campaign",
     "rockbusters-summer-2018": "obsolete Summer 2018 campaign",
@@ -82,6 +86,13 @@ seed = json.loads(CANONICAL_SEED.read_text())
 seed_events = {row["slug"]: row for group in seed["collections"] if group["slug"] == "events" for row in group["rows"]}
 category_fallbacks = {row["source"]: row["draftCategoryFallbackCandidate"]
                       for row in csv.DictReader(EMPTY_TARGET_OPTIONS.open(newline="")) if row["draftCategoryFallbackCandidate"]}
+audited_date_fallbacks = {
+    key(row["oldUrl"]): row["auditTargetCandidate"]
+    for row in audit_rows
+    if row["inOldSitemap"] == "true" and key(row["oldUrl"]).startswith("/event-date/")
+    and row["auditTargetStatus"] in ("category-fallback-ready", "category-fallback-empty-category")
+}
+assert HISTORICAL_DATE_CATEGORY_TARGETS == audited_date_fallbacks, "Historical Date redirects must match the legacy category audit"
 category_browser_audit = json.loads(CATEGORY_BROWSER_AUDIT.read_text())
 for slug, category in legacy_decisions["temporaryEventCategoryRedirects"].items():
     assert category_fallbacks.get(f"/event/{slug}") == f"/trips?category={category}", f"Category decision lacks matching legacy evidence: {slug}"
@@ -99,6 +110,8 @@ for row in audit_rows:
     candidate = ready["candidateTarget"] if ready else (row["tier1DateTargetCandidate"] or row["auditTargetCandidate"] or (older["destination"] if older else ""))
     if old_key in MISSING_TEAM_PATHS:
         candidate = "/team"
+    if old_key in HISTORICAL_DATE_CATEGORY_TARGETS:
+        candidate = HISTORICAL_DATE_CATEGORY_TARGETS[old_key]
     clear_class = ""
     clear_target = ""
     if ready and key(ready["candidateTarget"]) in new_keys:
@@ -134,7 +147,7 @@ for row in audit_rows:
         "candidateTarget": candidate,
         "candidateInNewSitemap": str(bool(candidate) and key(candidate) in new_keys).lower(),
         "mappingClass": "tier1-exact" if ready else (row["auditTargetStatus"] or "unreviewed"),
-        "candidateSource": "legacy-redirect-decisions.json" if old_key in MISSING_TEAM_PATHS else ("tier1-redirect-readiness.csv" if ready else ("all-old-url-inventory.csv" if row["tier1DateTargetCandidate"] or row["auditTargetCandidate"] else ("sitemap-redirect-mapping.csv" if older and older["destination"] else ""))),
+        "candidateSource": "legacy-redirect-decisions.json" if old_key in MISSING_TEAM_PATHS or old_key in HISTORICAL_DATE_CATEGORY_TARGETS else ("tier1-redirect-readiness.csv" if ready else ("all-old-url-inventory.csv" if row["tier1DateTargetCandidate"] or row["auditTargetCandidate"] else ("sitemap-redirect-mapping.csv" if older and older["destination"] else ""))),
         "clearReplacementClass": clear_class,
         "clearReplacementTarget": clear_target,
         "reasonWithoutClearReplacement": no_clear_reason,
@@ -160,6 +173,7 @@ for row in crosswalk:
                           else "excluded-legacy-campaign" if content_event["slug"] in EXCLUDED_LEGACY_EVENT_SLUGS
                           else "needs-current-offer-review")
     category_fallback = ""
+    date_category_fallback = HISTORICAL_DATE_CATEGORY_TARGETS.get(row["oldPath"], "")
     if content_review == "needs-current-offer-review" and not target:
         category_slug = legacy_decisions["temporaryEventCategoryRedirects"].get(content_event["slug"], "")
         candidate = category_fallbacks.get(row["oldPath"], "") if category_slug else ""
@@ -174,6 +188,9 @@ for row in crosswalk:
         config = "yes"
     elif category_fallback:
         action = "temporary-category-redirect"
+        config = "yes"
+    elif date_category_fallback:
+        action = "temporary-date-category-redirect"
         config = "yes"
     elif row["mappingClass"] == "category-fallback-ready":
         action = "review-browse-fallback"
@@ -190,15 +207,15 @@ for row in crosswalk:
         "targetOnNamedProduction": "https://rb-github.vercel.app" + target if target and target.startswith("/") else "",
         "action": action,
         "needsRedirectConfiguration": config,
-        "mappingEvidence": "browser-verified-category-fallback" if category_fallback else row["clearReplacementClass"] or row["mappingClass"],
+        "mappingEvidence": "legacy-date-category-audit" if date_category_fallback else "browser-verified-category-fallback" if category_fallback else row["clearReplacementClass"] or row["mappingClass"],
         "contentSourceRecord": f"events/{content_event['slug']}" if content_event else "",
         "contentSourceSeedState": content_event.get("state", "") if content_event else "",
         "contentReviewStatus": content_review,
         "categoryTargetResultCount": category_browser_audit["filters"][category_fallback.split("category=", 1)[1]]["resultCount"] if category_fallback else "",
         "categoryTargetCheckedAtUtc": category_browser_audit["checkedAtUtc"] if category_fallback else "",
         "candidateInNewSitemap": str(bool(target) and key(target) in new_keys).lower(),
-        "validationStatus": "target-200-self-canonical" if row["clearReplacementClass"] in ("same-path-existing-empty-category", "reviewed-team-index-fallback") else ("path-listed-target-needs-content-check" if row["clearReplacementClass"] else "filter-200-nonempty-redirect-not-live" if category_fallback else "code-approved-production-pending" if content_review == "approved-content-only-parent" else "editorial-review-pending" if content_event else "decision-pending"),
-        "reviewNote": (EXCLUDED_LEGACY_EVENT_SLUGS[content_event["slug"]] if content_review == "excluded-legacy-campaign" else "temporary browsing fallback; not an equivalent Event page; revisit after editorial review" if category_fallback else "draft and hidden on old site; validate current offer and copy before a target or redirect is approved" if content_review == "needs-current-offer-review" else "approved content-only parent in code; validate indexability on named production") if content_event else row["reasonWithoutClearReplacement"],
+        "validationStatus": "target-200-self-canonical" if row["clearReplacementClass"] in ("same-path-existing-empty-category", "reviewed-team-index-fallback") else ("path-listed-target-needs-content-check" if row["clearReplacementClass"] else "date-category-empty-production-pending" if date_category_fallback and row["mappingClass"] == "category-fallback-empty-category" else "date-category-production-pending" if date_category_fallback else "filter-200-nonempty-redirect-not-live" if category_fallback else "code-approved-production-pending" if content_review == "approved-content-only-parent" else "editorial-review-pending" if content_event else "decision-pending"),
+        "reviewNote": (EXCLUDED_LEGACY_EVENT_SLUGS[content_event["slug"]] if content_review == "excluded-legacy-campaign" else "temporary browsing fallback; not an equivalent Event page; revisit after editorial review" if category_fallback else "draft and hidden on old site; validate current offer and copy before a target or redirect is approved" if content_review == "needs-current-offer-review" else "approved content-only parent in code; validate indexability on named production") if content_event else ("temporary category fallback; category currently has no active trips" if date_category_fallback and row["mappingClass"] == "category-fallback-empty-category" else "temporary category fallback for historical Date; not an equivalent occurrence" if date_category_fallback else row["reasonWithoutClearReplacement"]),
     })
 with (OUT / "legacy-redirect-overview.csv").open("w", newline="") as handle:
     writer = csv.DictWriter(handle, fieldnames=list(overview[0]), lineterminator="\n")
@@ -253,13 +270,13 @@ lines = [
     "",
     f"The existing Tier 1 sheet has **{len(tier1_rows)} exact candidates** (51 future Date URLs and seven Event URLs); **{ready_present}** candidate targets appear in the live new sitemap. These are target-presence checks, not proof that the old sources redirect or that every target serves equivalent content and a correct canonical.",
     "",
-    f"For the **165 URLs actually listed in the old sitemap**, **{165-len(not_clear)} have a clear replacement** using saved identity evidence, the same path/slug, or the user-approved category/team decision. The [remaining {len(not_clear)} URLs](old-urls-without-clear-replacement.csv) have no accepted identity target yet; seven of those now have a temporary category-browsing fallback in the redirect overview. Clear replacement counts: seven verified Tier 1 Event identities, 17 historical equivalent Variant targets, 22 original same-listed paths, 45 same-slug Location/Guide detail records (32 Locations, 13 Guides), two browse-index successors, two existing empty blog categories at their same path, and five missing Guide URLs approved for `/team`. The blog category pages and `/team` returned 200 with self canonicals on the named production site. Other individual content and HTTP checks remain open.",
+    f"For the **165 URLs actually listed in the old sitemap**, **{165-len(not_clear)} have a clear replacement** using saved identity evidence, the same path/slug, or the user-approved category/team decision. The [remaining {len(not_clear)} URLs](old-urls-without-clear-replacement.csv) have no accepted identity target yet; {actions['temporary-category-redirect']+actions['temporary-date-category-redirect']} of those now have a temporary category-browsing fallback in the redirect overview. Clear replacement counts: seven verified Tier 1 Event identities, 17 historical equivalent Variant targets, 22 original same-listed paths, 45 same-slug Location/Guide detail records (32 Locations, 13 Guides), two browse-index successors, two existing empty blog categories at their same path, and five missing Guide URLs approved for `/team`. The blog category pages and `/team` returned 200 with self canonicals on the named production site. Other individual content and HTTP checks remain open.",
     "",
-    f"The [single shareable redirect overview](legacy-redirect-overview.csv) covers all {len(overview)} old URLs: {actions['redirect-candidate-needs-validation']} path-changing redirect candidates (including the 51 future Date discoveries), {actions['temporary-category-redirect']} temporary Event-to-category redirects configured locally, {actions['retain-same-path']} same-path URLs requiring no path redirect, {actions['review-browse-fallback']} category-browsing fallbacks pending review, and {actions['target-decision-needed']} URLs needing a target decision. `needsRedirectConfiguration=yes` marks work that still needs deployment or external configuration and live verification; it does not claim a redirect is live.",
+    f"The [single shareable redirect overview](legacy-redirect-overview.csv) covers all {len(overview)} old URLs: {actions['redirect-candidate-needs-validation']} path-changing redirect candidates (including the 51 future Date discoveries), {actions['temporary-category-redirect']} temporary Event-to-category redirects, {actions['temporary-date-category-redirect']} temporary historical Date-to-category redirects, {actions['retain-same-path']} same-path URLs requiring no path redirect, and {actions['target-decision-needed']} URLs needing a target decision. `needsRedirectConfiguration=yes` marks work that still needs deployment or external configuration and live verification; it does not claim a redirect is live.",
     "",
     "No clear replacement by old family: " + ", ".join(f"`{family}` {count}" for family, count in sorted(not_clear_families.items())) + ".",
     "",
-    f"Of the 54 historical dated leaves listed in the old sitemap, the saved audit marks 17 content-equivalent Variant candidates whose URLs are in the new sitemap, 30 category-browsing fallback candidates, and seven empty-category cases requiring a decision. Category-filter query URLs are not sitemap entries by design, so their route and result content still need direct checks. For the 29 old Event detail pages, seven are in Tier 1; 13 have missing identity targets and nine have unverified or non-indexable targets. The remaining 82 old site URLs still need group-by-group redirect review, even though {len(unchanged)} retain the same listed path.",
+    f"Of the 54 historical dated leaves listed in the old sitemap, the saved audit marks 17 content-equivalent Variant candidates whose URLs are in the new sitemap and 37 temporary category-browsing redirects. Seven of those category filters currently have no active trips and need content review. Category-filter query URLs are not sitemap entries by design, so their route and result content still need direct checks. For the 29 old Event detail pages, seven are in Tier 1; 13 have missing identity targets and nine have unverified or non-indexable targets. The remaining 82 old site URLs still need group-by-group redirect review, even though {len(unchanged)} retain the same listed path.",
     "",
     f"The saved 15 September new sitemap snapshot had {len(new_saved)} entries. The live sitemap has {len(new_additions)} more entries: {dated_additions} dated selections and {len(new_additions)-dated_additions} page paths. New URLs since that snapshot: " + ", ".join(f"`{path}`" for path in new_additions) + f". The old sitemap is unchanged from the saved {len(old_urls)}-URL copy.",
     "",

@@ -59,4 +59,24 @@ describe('legacy redirect decisions', () => {
       expect(overview.get(`/event/${slug}`)?.target).toBe('')
     }
   })
+
+  it('routes historical Dates by audited trip category without replacing exact Variant candidates', async () => {
+    const rules = await config.redirects?.() ?? []
+    const overview = redirectOverview()
+    expect(Object.keys(decisions.temporaryHistoricalDateCategoryRedirects)).toHaveLength(37)
+    for (const [slug, category] of Object.entries(decisions.temporaryHistoricalDateCategoryRedirects)) {
+      const source = `/event-date/${slug}`
+      const destination = `/trips?category=${category}`
+      expect(rules.find(rule => rule.source === source)).toMatchObject({ destination, permanent: false })
+      expect(overview.get(source)).toEqual({ target: destination, action: 'temporary-date-category-redirect' })
+    }
+    expect(Object.values(decisions.temporaryHistoricalDateCategoryRedirects).filter(category => category === 'trad-multipitch')).toHaveLength(7)
+    for (const slug of [
+      'deep-water-solo-mallorca--2018-10-20-155',
+      'climbing-trip-europe--2018-08-18-159',
+    ]) {
+      expect(rules.some(rule => rule.source === `/event-date/${slug}`)).toBe(false)
+      expect(overview.get(`/event-date/${slug}`)?.action).toBe('redirect-candidate-needs-validation')
+    }
+  })
 })
