@@ -16,7 +16,9 @@ import {
 async function network() {
   return contactNetwork(await headers(), process.env.VERCEL === '1')
 }
-const error = (formError: string): ActionResult => ({ ok: false, formError })
+type ActionFailure = Extract<ActionResult, { ok: false }>
+export type CreateGuestCheckoutActionResult = { ok: true; checkoutId: number } | ActionFailure
+const error = (formError: string): ActionFailure => ({ ok: false, formError })
 
 export async function lookupCheckoutJourneyAction(
   email: string,
@@ -48,13 +50,13 @@ export async function checkoutInvitationKindAction(
 export async function createGuestCheckoutAction(
   _previous: ActionResult | null,
   data: FormData,
-): Promise<ActionResult> {
+): Promise<CreateGuestCheckoutActionResult> {
   if (data.get('website')) return error('Unable to start checkout. Please contact us directly.')
   try {
     const items = data.get('items')
     if (typeof items !== 'string' || items.length > 10000)
       return error('Check the trips in your cart.')
-    await createGuestCheckout(
+    const checkoutId = await createGuestCheckout(
       {
         submissionKey: data.get('submissionKey'),
         contact: { name: data.get('name'), email: data.get('email'), phone: data.get('phone') },
@@ -64,7 +66,7 @@ export async function createGuestCheckoutAction(
       },
       await network(),
     )
-    return { ok: true, redirect: '/checkout/check-email' }
+    return { ok: true, checkoutId }
   } catch {
     return error(
       'We could not send the verification email. Check your details and cart, then try again in ten minutes or contact us directly. No seats have been reserved.',
@@ -79,13 +81,13 @@ export async function verifyGuestCheckoutAction(
   try {
     await verifyGuestCheckout(
       Number(data.get('checkout')),
-      String(data.get('token') ?? ''),
+      String(data.get('code') || data.get('token') || ''),
       await network(),
     )
     return { ok: true }
   } catch {
     return error(
-      'This confirmation could not be completed. The link may have expired or availability may have changed. Please start a new checkout or contact us directly.',
+      'This confirmation could not be completed. The code may have expired or availability may have changed. Please restart checkout or contact us directly.',
     )
   }
 }

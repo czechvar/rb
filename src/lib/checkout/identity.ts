@@ -1,4 +1,4 @@
-import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
+import { createHash, createHmac, randomBytes, randomInt, timingSafeEqual } from 'node:crypto'
 import { sql } from 'drizzle-orm'
 import { z } from 'zod'
 import type { Payload, PayloadRequest } from 'payload'
@@ -14,7 +14,11 @@ import {
   lockSubmission,
   withCheckoutTransaction,
 } from './transaction'
-import { checkoutEmailAvailable, sendCheckoutLink } from './notifications'
+import {
+  checkoutEmailAvailable,
+  sendCheckoutInvitationLink,
+  sendCheckoutVerificationCode,
+} from './notifications'
 
 export const guestCheckoutSchema = z.object({
   submissionKey: z.string().uuid(),
@@ -42,6 +46,20 @@ export const guestCheckoutSchema = z.object({
 export function checkoutTokenHash(token: string): string {
   return createHash('sha256').update(token).digest('hex')
 }
+
+export function generateCheckoutVerificationCode(): string {
+  return randomInt(1_000_000).toString().padStart(6, '0')
+}
+
+export function checkoutVerificationCodeHash(code: string, secret: string): string {
+  if (!/^\d{6}$/.test(code) || !secret) throw new Error('Checkout is not available.')
+  return createHmac('sha256', secret).update(`checkout:verification-code:${code}`).digest('hex')
+}
+
+function verificationCodeHash(code: string): string {
+  return checkoutVerificationCodeHash(code, process.env.PAYLOAD_SECRET ?? '')
+}
+
 export function validCheckoutToken(
   token: string,
   hash: string | null | undefined,
@@ -167,8 +185,8 @@ export async function createGuestCheckout(raw: unknown, network: string): Promis
     throw new Error('Verification email is not configured. Please contact us directly.')
   const payload = await client()
   await rateIdentity(payload, network, input.contact.email)
-  const token = randomBytes(32).toString('base64url')
-  const verificationHash = checkoutTokenHash(token)
+  const code = generateCheckoutVerificationCode()
+  const verificationHash = verificationCodeHash(code)
   const requestDigest = createHash('sha256').update(JSON.stringify(input)).digest('hex')
   const checkout = await withCheckoutTransaction(payload, async (req) => {
     if ((await journeyForEmail(payload, input.contact.email, req)) === 'login')
@@ -206,7 +224,7 @@ export async function createGuestCheckout(raw: unknown, network: string): Promis
       discountCode: input.discountCode,
       referralCode: input.referralCode,
       verificationHash,
-      verificationExpiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+      verificationExpiresAt: new Date(Date.now() + 10 * 60 * 1000).toISOString(),
       notificationStatus: 'pending' as const,
     }
     return (existing
@@ -224,11 +242,9 @@ export async function createGuestCheckout(raw: unknown, network: string): Promis
           req,
         })) as unknown as Promise<CheckoutRecord>
   })
-  const status = await sendCheckoutLink(payload, {
-    id: checkout.id,
+  const status = await sendCheckoutVerificationCode(payload, {
     email: input.contact.email,
-    token,
-    kind: 'verify',
+    code,
   })
   await recordNotification(payload, checkout.id, verificationHash, 'verify', status)
   if (status !== 'sent')
@@ -240,14 +256,19 @@ export async function createGuestCheckout(raw: unknown, network: string): Promis
 
 export async function verifyGuestCheckout(
   id: number,
-  token: string,
+  credential: string,
   network: string,
 ): Promise<CheckoutRecord> {
   enabled()
-  if (!Number.isSafeInteger(id) || id <= 0 || !/^[A-Za-z0-9_-]{43}$/.test(token))
-    throw new Error('This confirmation link is invalid or expired.')
+  const isCode = /^\d{6}$/.test(credential)
+  const isLegacyToken = /^[A-Za-z0-9_-]{43}$/.test(credential)
+  if (!Number.isSafeInteger(id) || id <= 0 || (!isCode && !isLegacyToken))
+    throw new Error('This verification code is invalid or expired.')
   await rateIdentity(await client(), network, `verify:${id}`)
-  return activateGuestReservation(id, checkoutTokenHash(token))
+  return activateGuestReservation(
+    id,
+    isCode ? verificationCodeHash(credential) : checkoutTokenHash(credential),
+  )
 }
 
 export async function reviewGuestCheckout(
@@ -307,11 +328,10 @@ export async function reviewGuestCheckout(
     })
     return record
   })
-  const status = await sendCheckoutLink(payload, {
+  const status = await sendCheckoutInvitationLink(payload, {
     id,
     email: checkout.contact.email,
     token,
-    kind: 'invite',
   })
   await recordNotification(payload, id, invitationHash, 'invite', status)
   if (status !== 'sent')

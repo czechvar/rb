@@ -93,8 +93,9 @@ async function main() {
   )
   fixtureStage = 'quote'
   const quote = await quoteCart({ items: [{ eventDateId: eventDate.id, quantity: 1 }] })
-  fixtureStage = 'unverified'
-  const unverified = await withCheckoutTransaction(payload, (req) =>
+  // One-release compatibility fixture for verification links issued before inline OTP rollout.
+  fixtureStage = 'legacy-unverified'
+  const legacyUnverified = await withCheckoutTransaction(payload, (req) =>
     payload.create({
       collection: 'checkouts',
       req,
@@ -124,7 +125,7 @@ async function main() {
       fixtureReady: true,
       eventDateId: eventDate.id,
       checkoutId: checkout.id,
-      unverifiedId: unverified.id,
+      unverifiedId: legacyUnverified.id,
       userId: user.id,
     }),
   )

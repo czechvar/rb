@@ -3,18 +3,31 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useId, useRef, useState } from 'react'
-import type { CheckoutContact } from '@/lib/checkout/types'
+import type { CartItem, CheckoutContact } from '@/lib/checkout/types'
 import type { CheckoutDisplayQuote } from './presentation'
 import type { ActionResult } from '@/components/forms/action-result'
 import { quoteCartAction, reserveCheckoutAction } from '@/app/(frontend)/checkout/actions'
 import {
   createGuestCheckoutAction,
   lookupCheckoutJourneyAction,
+  verifyGuestCheckoutAction,
 } from '@/app/(frontend)/checkout/identity-actions'
 import { useCart } from './useCart'
 import { addCartItem, MAX_CART_QUANTITY, readCart } from './cart-storage'
 import { money, date } from './format'
 import styles from './checkout.module.css'
+
+function subtractSubmittedCart(submittedItems: CartItem[]) {
+  return readCart()
+    .map((item) => ({
+      ...item,
+      quantity:
+        item.quantity -
+        (submittedItems.find((reserved) => reserved.eventDateId === item.eventDateId)?.quantity ||
+          0),
+    }))
+    .filter((item) => item.quantity > 0)
+}
 
 export function CheckoutFlow({
   mode,
@@ -49,6 +62,12 @@ export function CheckoutFlow({
   const [journey, setJourney] = useState<'unknown' | 'login' | 'new'>(contact ? 'new' : 'unknown')
   const [pending, setPending] = useState(false)
   const [result, setResult] = useState<ActionResult>({ ok: false })
+  const [guestVerification, setGuestVerification] = useState<{
+    checkoutId: number
+    items: typeof cart.items
+  } | null>(null)
+  const [guestReserved, setGuestReserved] = useState(false)
+  const cartEditingLocked = pending || Boolean(guestVerification)
   const [values, setValues] = useState({
     name: contact?.name || '',
     email: contact?.email || '',
@@ -158,6 +177,31 @@ export function CheckoutFlow({
   }
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    if (guestVerification) {
+      if (submitting.current) return
+      submitting.current = true
+      const data = new FormData(event.currentTarget)
+      data.set('checkout', String(guestVerification.checkoutId))
+      setPending(true)
+      setResult({ ok: false })
+      try {
+        const response = await verifyGuestCheckoutAction(null, data)
+        setResult(response)
+        if (response.ok) {
+          cart.replace(subtractSubmittedCart(guestVerification.items))
+          setGuestReserved(true)
+        }
+      } catch {
+        setResult({
+          ok: false,
+          formError: 'Your request could not be completed. Your cart is saved; please try again.',
+        })
+      } finally {
+        setPending(false)
+        submitting.current = false
+      }
+      return
+    }
     if (submitting.current || !quote || pricing) return
     submitting.current = true
     const data = new FormData(event.currentTarget)
@@ -180,19 +224,12 @@ export function CheckoutFlow({
         data,
       )
       setResult(response)
+      if (response.ok && 'checkoutId' in response) {
+        setGuestVerification({ checkoutId: response.checkoutId, items: submittedItems })
+        return
+      }
       if (response.ok && response.redirect) {
-        if (contact)
-          cart.replace(
-            readCart()
-              .map((item) => ({
-                ...item,
-                quantity:
-                  item.quantity -
-                  (submittedItems.find((reserved) => reserved.eventDateId === item.eventDateId)
-                    ?.quantity || 0),
-              }))
-              .filter((item) => item.quantity > 0),
-          )
+        if (contact) cart.replace(subtractSubmittedCart(submittedItems))
         router.push(response.redirect)
       }
     } catch {
@@ -206,6 +243,19 @@ export function CheckoutFlow({
     }
   }
   if (!cart.ready) return <p role="status">Loading your cart…</p>
+  if (guestReserved)
+    return (
+      <div className={styles.panel} role="status">
+        <h2 data-type="card-lg">Your trips are reserved for review</h2>
+        <p className={styles.muted}>
+          We have received your request and will email you when it is approved and ready for
+          payment.
+        </p>
+        <Link className={styles.button} href="/trips">
+          Explore more trips
+        </Link>
+      </div>
+    )
   if (!cart.items.length)
     return (
       <div className={styles.panel}>
@@ -247,7 +297,7 @@ export function CheckoutFlow({
                 <button
                   className={styles.remove}
                   type="button"
-                  disabled={pending}
+                  disabled={cartEditingLocked}
                   onClick={() =>
                     cart.replace(cart.items.filter((row) => row.eventDateId !== item.eventDateId))
                   }
@@ -263,7 +313,7 @@ export function CheckoutFlow({
                     min={1}
                     max={MAX_CART_QUANTITY}
                     value={item.quantity}
-                    disabled={pending}
+                    disabled={cartEditingLocked}
                     onChange={(event) => {
                       const quantity = Number(event.target.value)
                       if (
@@ -309,14 +359,17 @@ export function CheckoutFlow({
                 value={discount}
                 maxLength={80}
                 onChange={(event) => setDiscount(event.target.value)}
-                disabled={pending}
+                disabled={cartEditingLocked}
               />
             </label>
             <div className={styles.actions}>
-              <button className={`${styles.button} ${styles.secondary}`} disabled={pending}>
+              <button
+                className={`${styles.button} ${styles.secondary}`}
+                disabled={cartEditingLocked}
+              >
                 Apply code
               </button>
-              <Link href="/trips">Add another trip</Link>
+              {!guestVerification && <Link href="/trips">Add another trip</Link>}
             </div>
           </form>
         </div>
@@ -349,7 +402,9 @@ export function CheckoutFlow({
                   {result.formError}
                 </p>
               )}
-              {result.ok && <p role="status">Your request was accepted. Opening the next step…</p>}
+              {result.ok && !guestVerification && (
+                <p role="status">Your request was accepted. Opening the next step…</p>
+              )}
               <fieldset className={styles.fields} disabled={pending}>
                 <div hidden aria-hidden="true">
                   <label>
@@ -357,14 +412,39 @@ export function CheckoutFlow({
                     <input name="website" autoComplete="off" tabIndex={-1} />
                   </label>
                 </div>
-                {field('email', 'Email', 'email')}
-                {(contact || journey === 'new') && (
+                {guestVerification ? (
                   <>
-                    {field('name', 'Full name')}
-                    {field('phone', 'Phone including country code', 'tel')}
+                    <p className={styles.notice} role="status">
+                      We emailed a six-digit verification code to {values.email}. Enter it below to
+                      reserve your selected trips.
+                    </p>
+                    <label className={styles.field} htmlFor={`${id}-code`}>
+                      Verification code
+                      <input
+                        id={`${id}-code`}
+                        name="code"
+                        type="text"
+                        inputMode="numeric"
+                        autoComplete="one-time-code"
+                        maxLength={6}
+                        pattern="[0-9]{6}"
+                        required
+                      />
+                    </label>
+                    <button className={styles.button}>Verify and reserve</button>
+                  </>
+                ) : (
+                  <>
+                    {field('email', 'Email', 'email')}
+                    {(contact || journey === 'new') && (
+                      <>
+                        {field('name', 'Full name')}
+                        {field('phone', 'Phone including country code', 'tel')}
+                      </>
+                    )}
                   </>
                 )}
-                {returning && (
+                {!guestVerification && returning && (
                   <>
                     <div className={styles.formRow}>
                       {field('firstName', 'Payer first name')}
@@ -378,7 +458,7 @@ export function CheckoutFlow({
                     {field('country', 'Country')}
                   </>
                 )}
-                {journey === 'login' && !contact ? (
+                {!guestVerification && journey === 'login' && !contact ? (
                   <p className={styles.notice}>
                     Welcome back.{' '}
                     <Link href="/login?from=%2Fcheckout">
@@ -386,7 +466,7 @@ export function CheckoutFlow({
                     </Link>
                     . Your selected trips will stay in your cart.
                   </p>
-                ) : (
+                ) : !guestVerification ? (
                   <button
                     className={styles.button}
                     disabled={!quote || pricing || pending || cart.storageError}
@@ -401,7 +481,7 @@ export function CheckoutFlow({
                             ? 'Continue with email'
                             : 'Send verification email'}
                   </button>
-                )}
+                ) : null}
               </fieldset>
             </form>
           </section>

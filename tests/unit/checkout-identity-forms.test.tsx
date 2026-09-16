@@ -29,7 +29,7 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 
-it('removes the fragment immediately and reserves only after deliberate submission', async () => {
+it('redeems a legacy verification-link fragment only after deliberate submission', async () => {
   window.history.replaceState(null, '', `/checkout/verify?checkout=7#token=${'a'.repeat(43)}`)
   render(<VerifyCheckoutForm id={7} />)
   expect(window.location.hash).toBe('')
@@ -37,6 +37,10 @@ it('removes the fragment immediately and reserves only after deliberate submissi
     expect((screen.getByRole('button') as HTMLButtonElement).disabled).toBe(false),
   )
   expect(verify).not.toHaveBeenCalled()
+  expect(
+    (screen.getByRole('button').closest('form')!.elements.namedItem('token') as HTMLInputElement)
+      .value,
+  ).toBe('a'.repeat(43))
   fireEvent.submit(screen.getByRole('button').closest('form')!)
   await waitFor(() =>
     expect(screen.getByRole('status').textContent).toContain('reserved for staff review'),

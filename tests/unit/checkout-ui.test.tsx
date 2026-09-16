@@ -9,6 +9,7 @@ const mocks = vi.hoisted(() => ({
   quote: vi.fn(),
   reserve: vi.fn(),
   guest: vi.fn(),
+  verifyGuest: vi.fn(),
   lookup: vi.fn(),
   pay: vi.fn(),
   cancel: vi.fn(),
@@ -30,6 +31,7 @@ vi.mock('@/app/(frontend)/checkout/actions', () => ({
 vi.mock('@/app/(frontend)/checkout/identity-actions', () => ({
   createGuestCheckoutAction: mocks.guest,
   lookupCheckoutJourneyAction: mocks.lookup,
+  verifyGuestCheckoutAction: mocks.verifyGuest,
 }))
 const item = {
   eventDateId: 123,
@@ -108,10 +110,10 @@ it('does not ask an authenticated customer to verify their email again', async (
   expect(mocks.guest).not.toHaveBeenCalled()
 })
 
-it('preserves personal inputs after a guest error and retains the receipt key for an unchanged retry', async () => {
+it('keeps a new guest on checkout and asks for the emailed six-digit code inline', async () => {
   mocks.guest
     .mockResolvedValueOnce({ ok: false, formError: 'Please retry.' })
-    .mockResolvedValueOnce({ ok: true, redirect: '/checkout/check-email' })
+    .mockResolvedValueOnce({ ok: true, checkoutId: 42 })
   render(<CheckoutFlow mode="checkout" />)
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
@@ -126,10 +128,82 @@ it('preserves personal inputs after a guest error and retains the receipt key fo
   expect((screen.getByLabelText('Full name') as HTMLInputElement).value).toBe('Test Visitor')
   const firstId = mocks.guest.mock.calls[0][1].get('submissionKey')
   fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
-  await waitFor(() => expect(mocks.push).toHaveBeenCalledWith('/checkout/check-email'))
+  const code = await screen.findByLabelText('Verification code')
+  expect(code.getAttribute('inputmode')).toBe('numeric')
+  expect(code.getAttribute('autocomplete')).toBe('one-time-code')
+  expect(code.getAttribute('maxlength')).toBe('6')
+  expect((screen.getByRole('button', { name: 'Remove' }) as HTMLButtonElement).disabled).toBe(true)
+  expect((screen.getByLabelText('Participants') as HTMLInputElement).disabled).toBe(true)
+  expect((screen.getByLabelText('Discount code (optional)') as HTMLInputElement).disabled).toBe(
+    true,
+  )
+  expect(screen.queryByRole('link', { name: 'Add another trip' })).toBeNull()
+  expect(screen.getByRole('button', { name: 'Verify and reserve' })).toBeTruthy()
+  expect(mocks.push).not.toHaveBeenCalled()
   expect(mocks.guest.mock.calls[1][1].get('submissionKey')).toBe(firstId)
   expect(mocks.reserve).not.toHaveBeenCalled()
+  expect(mocks.verifyGuest).not.toHaveBeenCalled()
   expect(JSON.parse(window.localStorage.getItem(CART_STORAGE_KEY)!)).toHaveLength(1)
+})
+
+it('keeps the submitted cart intact when guest code verification fails', async () => {
+  mocks.guest.mockResolvedValue({ ok: true, checkoutId: 42 })
+  mocks.verifyGuest.mockResolvedValue({ ok: false, formError: 'That code is invalid or expired.' })
+  render(<CheckoutFlow mode="checkout" />)
+  await screen.findByRole('heading', { name: 'Test climbing trip' })
+  fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
+  fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
+  await screen.findByLabelText('Full name')
+  fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
+  fireEvent.change(screen.getByLabelText('Phone including country code'), {
+    target: { value: '+420123456789' },
+  })
+  fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
+  const code = await screen.findByLabelText('Verification code')
+  fireEvent.change(code, { target: { value: '123456' } })
+  fireEvent.submit(screen.getByRole('button', { name: 'Verify and reserve' }).closest('form')!)
+  await screen.findByText('That code is invalid or expired.')
+  expect(mocks.verifyGuest).toHaveBeenCalledTimes(1)
+  expect(mocks.verifyGuest.mock.calls[0][1].get('checkout')).toBe('42')
+  expect(mocks.verifyGuest.mock.calls[0][1].get('code')).toBe('123456')
+  expect(JSON.parse(window.localStorage.getItem(CART_STORAGE_KEY)!)).toEqual([
+    { eventDateId: 123, quantity: 1 },
+  ])
+  expect(screen.getByLabelText('Verification code')).toBeTruthy()
+})
+
+it('clears only the submitted guest quantities after verification and keeps success visible', async () => {
+  mocks.guest.mockResolvedValue({ ok: true, checkoutId: 42 })
+  mocks.verifyGuest.mockResolvedValue({ ok: true })
+  render(<CheckoutFlow mode="checkout" />)
+  await screen.findByRole('heading', { name: 'Test climbing trip' })
+  fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
+  fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
+  await screen.findByLabelText('Full name')
+  fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
+  fireEvent.change(screen.getByLabelText('Phone including country code'), {
+    target: { value: '+420123456789' },
+  })
+  fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
+  const code = await screen.findByLabelText('Verification code')
+
+  window.localStorage.setItem(
+    CART_STORAGE_KEY,
+    JSON.stringify([
+      { eventDateId: 123, quantity: 2 },
+      { eventDateId: 456, quantity: 2 },
+    ]),
+  )
+  fireEvent.change(code, { target: { value: '123456' } })
+  fireEvent.submit(screen.getByRole('button', { name: 'Verify and reserve' }).closest('form')!)
+
+  expect(await screen.findByRole('heading', { name: 'Your trips are reserved for review' })).toBeTruthy()
+  expect(JSON.parse(window.localStorage.getItem(CART_STORAGE_KEY)!)).toEqual([
+    { eventDateId: 123, quantity: 1 },
+    { eventDateId: 456, quantity: 2 },
+  ])
+  expect(mocks.push).not.toHaveBeenCalled()
+  expect(screen.queryByText('Your cart is empty')).toBeNull()
 })
 
 it('does not submit while a server quote is unavailable', async () => {

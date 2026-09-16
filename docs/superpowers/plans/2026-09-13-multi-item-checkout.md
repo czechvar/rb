@@ -27,7 +27,7 @@ Contracts live in `src/lib/checkout/types.ts`. `quoteCart` owns authoritative el
 
 `createCheckoutPaymentService` is the injected test seam for provider behaviour. Production wrappers construct the real adapters. Initial payments cannot select only part of a basket; later balances can. Callback and polling retries compare allocations semantically across PostgreSQL JSONB round trips. Late payment against a released trip records the money and enters reconciliation without restoring seats.
 
-All public entrypoints enforce `CHECKOUT_ENABLED`; callbacks for existing transactions continue processing. Verification/invitation tokens use URL fragments, are removed after client capture, and are never sent to analytics or placed in login return URLs. Public registration cannot assign an admin role. Checkout financial mutations are private server operations.
+All public entrypoints enforce `CHECKOUT_ENABLED`; callbacks for existing transactions continue processing. Guest email verification happens inline with a six-digit, short-lived, single-use code stored only as a keyed hash; a successful verification POST performs the fresh availability check and reservation. The former verification-link routes remain for one release only to redeem already-issued links, but new verification emails do not use them. Account invitations continue to use URL-fragment tokens, which are removed after client capture and are never sent to analytics or placed in login return URLs. Public registration cannot assign an admin role. Checkout financial mutations are private server operations. Durable failed-attempt counters, resend limits and lockout fields are deferred to overall form hardening.
 
 ## Verification and release
 

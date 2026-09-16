@@ -7,7 +7,7 @@ import {
   verifyGuestCheckout,
   reviewGuestCheckout,
   acceptCheckoutInvitation,
-  checkoutTokenHash,
+  checkoutVerificationCodeHash,
   lookupCheckoutJourney,
 } from '../../src/lib/checkout/identity'
 import { isReturningPurchaser } from '../../src/lib/checkout/reservations'
@@ -29,7 +29,14 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       depth: 0,
       overrideAccess: true,
     })) as unknown as CheckoutRecord
-  const tokenFromLastMessage = () => {
+  const verificationCodeFromLastMessage = () => {
+    const text = messages.at(-1)?.text ?? ''
+    assert(!/https?:\/\//.test(text), 'verification-email-has-no-link')
+    const code = text.match(/\b\d{6}\b/)?.[0]
+    assert(Boolean(code), 'fixture-email-code-present')
+    return code!
+  }
+  const invitationTokenFromLastMessage = () => {
     const text = messages.at(-1)?.text ?? ''
     const match = text.match(/https?:\/\/[^\s]+/)
     assert(Boolean(match), 'fixture-email-link-present')
@@ -83,25 +90,31 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       { submissionKey: randomUUID(), contact, items: [{ eventDateId: date.id, quantity: 2 }] },
       'fixture-guest-network',
     )
-    const verificationToken = tokenFromLastMessage()
+    const verificationCode = verificationCodeFromLastMessage()
     assert.equal((await record(id)).state, 'unverified')
     assert(
-      (await record(id)).verificationHash === checkoutTokenHash(verificationToken),
-      'only-token-hash-persisted',
+      (await record(id)).verificationHash ===
+        checkoutVerificationCodeHash(verificationCode, process.env.PAYLOAD_SECRET ?? ''),
+      'only-keyed-code-hash-persisted',
     )
     assert.equal(
       (await payload.find({ collection: 'orders', where: { checkout: { equals: id } }, depth: 0 }))
         .totalDocs,
       0,
     )
-    passed('guest-email-sent-without-reserving-seats')
-    await verifyGuestCheckout(id, verificationToken, 'fixture-guest-network')
-    await assert.rejects(() => verifyGuestCheckout(id, verificationToken, 'fixture-guest-network'))
+    passed('guest-code-email-sent-without-reserving-seats')
+    await assert.rejects(() => verifyGuestCheckout(id, '12345', 'fixture-guest-network'))
+    const wrongCode = String((Number(verificationCode) + 1) % 1_000_000).padStart(6, '0')
+    await assert.rejects(() => verifyGuestCheckout(id, wrongCode, 'fixture-guest-network'))
+    assert.equal((await record(id)).state, 'unverified')
+    passed('malformed-and-wrong-codes-never-reserve-seats')
+    await verifyGuestCheckout(id, verificationCode, 'fixture-guest-network')
+    await assert.rejects(() => verifyGuestCheckout(id, verificationCode, 'fixture-guest-network'))
     assert.equal((await record(id)).verificationHash, null)
     assert.equal((await record(id)).state, 'awaitingReview')
-    passed('guest-confirmation-reserves-once-and-clears-token')
+    passed('valid-code-reserves-once-and-clears-code')
     await reviewGuestCheckout(id, staff, 'approve', '[Checkout identity test] Approved')
-    const invitationToken = tokenFromLastMessage()
+    const invitationToken = invitationTokenFromLastMessage()
     assert.equal((await record(id)).state, 'approved')
     const orders = await payload.find({
       collection: 'orders',
@@ -161,14 +174,18 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       },
       'fixture-existing-network',
     )
-    await verifyGuestCheckout(existingId, tokenFromLastMessage(), 'fixture-existing-network')
+    await verifyGuestCheckout(
+      existingId,
+      verificationCodeFromLastMessage(),
+      'fixture-existing-network',
+    )
     await reviewGuestCheckout(
       existingId,
       staff,
       'approve',
       '[Checkout identity test] Existing account',
     )
-    const existingToken = tokenFromLastMessage()
+    const existingToken = invitationTokenFromLastMessage()
     await assert.rejects(() =>
       acceptCheckoutInvitation(
         existingId,
@@ -272,7 +289,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       },
       'fixture-expiry-network',
     )
-    const expiredToken = tokenFromLastMessage()
+    const expiredCode = verificationCodeFromLastMessage()
     await withCheckoutTransaction(payload, (req) =>
       payload.update({
         collection: 'checkouts',
@@ -283,7 +300,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       }),
     )
     await assert.rejects(() =>
-      verifyGuestCheckout(expiredId, expiredToken, 'fixture-expiry-network'),
+      verifyGuestCheckout(expiredId, expiredCode, 'fixture-expiry-network'),
     )
     assert.equal((await record(expiredId)).state, 'unverified')
     passed('expired-verification-never-reserves-seats')

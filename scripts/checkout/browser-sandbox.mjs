@@ -94,7 +94,7 @@ function child(command, args, options = {}) {
               'legacy-order',
               'reservation',
               'quote',
-              'unverified',
+              'legacy-unverified',
             ].includes(parsed.fixtureStage)
           ) {
             report.fixtureFailureStage = parsed.fixtureStage
@@ -414,15 +414,15 @@ async function main() {
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth))
   await page.screenshot({ path: path.join(output, 'cart-390.png'), fullPage: true })
   passed('mobile-cart-no-overflow')
-  announce('token-get')
+  announce('legacy-verification-link-get')
   await navigate(`/checkout/verify?checkout=${fixture.unverifiedId}#token=${token}`)
   await page
     .getByRole('button', { name: 'Confirm email and reserve for review' })
     .waitFor({ timeout: 60000 })
-  announce('token-fragment-removal')
+  announce('legacy-verification-link-fragment-removal')
   await page.waitForFunction(() => !window.location.hash, { timeout: 30000 })
   assert(!page.url().includes('#'))
-  announce('token-get-database-unchanged')
+  announce('legacy-verification-link-get-database-unchanged')
   assert(
     (await inspection.query('SELECT state FROM checkouts WHERE id=$1', [fixture.unverifiedId]))
       .rows[0].state === 'unverified',
@@ -434,7 +434,25 @@ async function main() {
       ])
     ).rows[0].count === 0,
   )
-  passed('verification-get-strips-fragment-without-reserving-seats')
+  passed('legacy-verification-get-strips-fragment-without-reserving-seats')
+  announce('legacy-verification-link-post')
+  await page.getByRole('button', { name: 'Confirm email and reserve for review' }).click()
+  await page
+    .getByRole('status')
+    .filter({ hasText: /reserved for staff review/i })
+    .waitFor({ timeout: 60000 })
+  assert(
+    (await inspection.query('SELECT state FROM checkouts WHERE id=$1', [fixture.unverifiedId]))
+      .rows[0].state === 'awaitingReview',
+  )
+  assert(
+    (
+      await inspection.query('SELECT count(*)::int AS count FROM orders WHERE checkout_id=$1', [
+        fixture.unverifiedId,
+      ])
+    ).rows[0].count === 1,
+  )
+  passed('legacy-verification-link-reserves-once-during-compatibility-window')
   announce('login-and-owner')
   await page.setViewportSize({ width: 1440, height: 1000 })
   await navigate(`/account/checkouts/${fixture.checkoutId}`)
