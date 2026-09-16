@@ -11,6 +11,7 @@ const mocks = vi.hoisted(() => ({
   guest: vi.fn(),
   verifyGuest: vi.fn(),
   lookup: vi.fn(),
+  login: vi.fn(),
   pay: vi.fn(),
   cancel: vi.fn(),
   billing: vi.fn(),
@@ -30,6 +31,7 @@ vi.mock('@/app/(frontend)/checkout/actions', () => ({
 }))
 vi.mock('@/app/(frontend)/checkout/identity-actions', () => ({
   createGuestCheckoutAction: mocks.guest,
+  loginCheckoutAction: mocks.login,
   lookupCheckoutJourneyAction: mocks.lookup,
   verifyGuestCheckoutAction: mocks.verifyGuest,
 }))
@@ -347,21 +349,29 @@ it('reserves a returning purchaser basket once while pending and clears only sub
 
 it('asks for email first and routes any known account to login without collecting new-customer details', async () => {
   mocks.lookup.mockResolvedValueOnce({ ok: true, journey: 'login' })
+  mocks.login.mockResolvedValueOnce({ ok: true })
   render(<CheckoutFlow mode="checkout" />)
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   expect(screen.queryByLabelText('Full name')).toBeNull()
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'returning@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
-  const link = await screen.findByRole('link', { name: 'Sign in to continue to payment' })
-  expect(link.getAttribute('href')).toBe('/login?from=%2Fcheckout')
+  const password = await screen.findByLabelText('Password')
+  expect(screen.queryByRole('link', { name: 'Sign in to continue to payment' })).toBeNull()
   expect(screen.queryByLabelText('Full name')).toBeNull()
   expect(mocks.guest).not.toHaveBeenCalled()
   expect(mocks.reserve).not.toHaveBeenCalled()
   expect(JSON.parse(window.localStorage.getItem(CART_STORAGE_KEY)!)).toEqual([
     { eventDateId: 123, quantity: 1 },
   ])
-  fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'new@example.test' } })
-  expect(screen.getByRole('button', { name: 'Continue with email' })).toBeTruthy()
+  fireEvent.change(password, { target: { value: 'FixturePassword42!' } })
+  fireEvent.submit(screen.getByRole('button', { name: 'Sign in and continue' }).closest('form')!)
+  await waitFor(() => expect(mocks.login).toHaveBeenCalledTimes(1))
+  expect(mocks.login.mock.calls[0][1].get('email')).toBe('returning@example.test')
+  expect(mocks.login.mock.calls[0][1].get('password')).toBe('FixturePassword42!')
+  expect(mocks.refresh).toHaveBeenCalledTimes(1)
+  expect(JSON.parse(window.localStorage.getItem(CART_STORAGE_KEY)!)).toEqual([
+    { eventDateId: 123, quantity: 1 },
+  ])
 })
 
 it('prefills saved billing fields while preserving visitor edits after a failed reservation', async () => {

@@ -2,8 +2,8 @@
 
 import { headers } from 'next/headers'
 import type { ActionResult } from '@/components/forms/action-result'
-import { setPayloadSession } from '@/lib/auth-session'
 import { contactNetwork } from '@/lib/contact/intake'
+import { authenticateWithPassword } from '@/lib/password-login'
 import { checkoutRateLimitWindowLabel } from '@/lib/checkout/rate-limit'
 import {
   createGuestCheckout,
@@ -92,6 +92,19 @@ export async function verifyGuestCheckoutAction(
   }
 }
 
+export async function loginCheckoutAction(
+  _previous: ActionResult | null,
+  data: FormData,
+): Promise<ActionResult> {
+  const result = await authenticateWithPassword({
+    email: data.get('email'),
+    password: data.get('password'),
+  })
+  if (!result.ok && result.formError?.startsWith('verify_required:'))
+    return { ok: false, formError: 'Please verify your email address before signing in.' }
+  return result
+}
+
 export async function acceptCheckoutInvitationAction(
   _previous: ActionResult | null,
   data: FormData,
@@ -114,17 +127,8 @@ export async function acceptCheckoutInvitationAction(
       await network(),
     )
     if (accepted.created) {
-      try {
-        const { getPayloadClient } = await import('@/lib/payload')
-        const result = await (
-          await getPayloadClient()
-        ).login({
-          collection: 'users',
-          data: { email: accepted.email, password },
-        })
-        if (!result.token) throw new Error('Account session was not created.')
-        await setPayloadSession(result.token)
-      } catch {
+      const authenticated = await authenticateWithPassword({ email: accepted.email, password })
+      if (!authenticated.ok) {
         const paymentPath = `/account/checkouts/${id}#payment`
         return { ok: true, redirect: `/login?from=${encodeURIComponent(paymentPath)}` }
       }

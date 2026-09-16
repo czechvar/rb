@@ -29,6 +29,7 @@ vi.mock('@/lib/checkout/identity', () => ({
 import {
   acceptCheckoutInvitationAction,
   createGuestCheckoutAction,
+  loginCheckoutAction,
   verifyGuestCheckoutAction,
 } from '@/app/(frontend)/checkout/identity-actions'
 
@@ -84,6 +85,24 @@ describe('guest checkout identity actions', () => {
       redirect: '/login?from=%2Faccount%2Fcheckouts%2F27%23payment',
     })
     expect(mocks.setCookie).not.toHaveBeenCalled()
+  })
+
+  it('signs a known account in without leaving checkout', async () => {
+    mocks.login.mockResolvedValue({ token: 'fixture-session-token' })
+    const data = new FormData()
+    data.set('email', 'ada@example.test')
+    data.set('password', 'FixturePassword42!')
+
+    await expect(loginCheckoutAction(null, data)).resolves.toEqual({ ok: true })
+    expect(mocks.login).toHaveBeenCalledWith({
+      collection: 'users',
+      data: { email: 'ada@example.test', password: 'FixturePassword42!' },
+    })
+    expect(mocks.setCookie).toHaveBeenCalledWith(
+      'payload-token',
+      'fixture-session-token',
+      expect.objectContaining({ httpOnly: true, sameSite: 'lax', path: '/' }),
+    )
   })
 
   it('keeps a newly created guest checkout inline and returns only its identifier', async () => {

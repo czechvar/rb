@@ -2,54 +2,17 @@
 'use server'
 
 import { redirect } from 'next/navigation'
-import { setPayloadSession } from '@/lib/auth-session'
-import { getPayloadClient } from '@/lib/payload'
+import { authenticateWithPassword } from '@/lib/password-login'
 import { sanitizeRedirect } from '@/lib/redirect'
 import type { ActionResult } from '@/components/forms/action-result'
-import { loginSchema } from './schema'
 
 export async function loginAction(_prev: ActionResult, formData: FormData): Promise<ActionResult> {
-  const parsed = loginSchema.safeParse({
+  const authenticated = await authenticateWithPassword({
     email: formData.get('email'),
     password: formData.get('password'),
-    from: formData.get('from') ?? undefined,
   })
-  if (!parsed.success) {
-    return {
-      ok: false,
-      fieldErrors: Object.fromEntries(
-        parsed.error.issues.map((i) => [i.path[0] as string, i.message]),
-      ),
-    }
-  }
-  const { email, password, from } = parsed.data
-
-  const payload = await getPayloadClient()
-  try {
-    const result = await payload.login({
-      collection: 'users',
-      data: { email, password },
-    })
-    const token = result.token
-    if (!token) {
-      return { ok: false, formError: 'Login failed — no token returned.' }
-    }
-    await setPayloadSession(token)
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err)
-    if (/verify/i.test(msg) && /(account|email)/i.test(msg)) {
-      return { ok: false, formError: `verify_required:${email}` }
-    }
-    if (/locked/i.test(msg)) {
-      return {
-        ok: false,
-        formError:
-          'Account temporarily locked. Try again in ~10 minutes or reset your password.',
-      }
-    }
-    return { ok: false, formError: 'Invalid email or password.' }
-  }
-
-  const target = sanitizeRedirect(from) ?? '/account'
+  if (!authenticated.ok) return authenticated
+  const from = formData.get('from')
+  const target = sanitizeRedirect(typeof from === 'string' ? from : undefined) ?? '/account'
   redirect(target)
 }

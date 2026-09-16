@@ -9,6 +9,7 @@ import type { ActionResult } from '@/components/forms/action-result'
 import { quoteCartAction, reserveCheckoutAction } from '@/app/(frontend)/checkout/actions'
 import {
   createGuestCheckoutAction,
+  loginCheckoutAction,
   lookupCheckoutJourneyAction,
   verifyGuestCheckoutAction,
 } from '@/app/(frontend)/checkout/identity-actions'
@@ -61,6 +62,7 @@ export function CheckoutFlow({
   const [refresh, setRefresh] = useState(0)
   const [journey, setJourney] = useState<'unknown' | 'login' | 'new'>(contact ? 'new' : 'unknown')
   const [pending, setPending] = useState(false)
+  const [password, setPassword] = useState('')
   const [result, setResult] = useState<ActionResult>({ ok: false })
   const [guestVerification, setGuestVerification] = useState<{
     checkoutId: number
@@ -163,7 +165,10 @@ export function CheckoutFlow({
           }
           onChange={(event) => {
             submissionKey.current = null
-            if (name === 'email' && !contact) setJourney('unknown')
+            if (name === 'email' && !contact) {
+              setJourney('unknown')
+              setPassword('')
+            }
             setValues((current) => ({ ...current, [name]: event.target.value }))
           }}
         />
@@ -196,6 +201,26 @@ export function CheckoutFlow({
           ok: false,
           formError: 'Your request could not be completed. Your cart is saved; please try again.',
         })
+      } finally {
+        setPending(false)
+        submitting.current = false
+      }
+      return
+    }
+    if (!contact && journey === 'login') {
+      if (submitting.current) return
+      submitting.current = true
+      const data = new FormData(event.currentTarget)
+      setPending(true)
+      setResult({ ok: false })
+      try {
+        const response = await loginCheckoutAction(null, data)
+        setResult(response)
+        setPassword('')
+        if (response.ok) router.refresh()
+      } catch {
+        setResult({ ok: false, formError: 'Sign-in could not be completed. Please try again.' })
+        setPassword('')
       } finally {
         setPending(false)
         submitting.current = false
@@ -393,7 +418,7 @@ export function CheckoutFlow({
                   ? 'Reserve your dates for review. We will email you when your request is approved and ready for payment.'
                   : 'Verify your email before we reserve your dates for review. We will invite you to set up your account and pay once approved.'}
             </p>
-            {!contact && (
+            {!contact && journey !== 'login' && (
               <p>
                 Already have an account?{' '}
                 <Link href="/login?from=%2Fcheckout">Sign in with your password</Link>. Your cart
@@ -407,7 +432,11 @@ export function CheckoutFlow({
                 </p>
               )}
               {result.ok && !guestVerification && (
-                <p role="status">Your request was accepted. Opening the next step…</p>
+                <p role="status">
+                  {journey === 'login'
+                    ? 'Signed in. Continuing with your checkout…'
+                    : 'Your request was accepted. Opening the next step…'}
+                </p>
               )}
               <fieldset className={styles.fields} disabled={pending}>
                 <div hidden aria-hidden="true">
@@ -442,6 +471,30 @@ export function CheckoutFlow({
                 ) : (
                   <>
                     {field('email', 'Email', 'email')}
+                    {journey === 'login' && !contact && (
+                      <label className={styles.field} htmlFor={`${id}-password`}>
+                        Password
+                        <input
+                          id={`${id}-password`}
+                          name="password"
+                          type="password"
+                          value={password}
+                          required
+                          maxLength={128}
+                          autoComplete="current-password"
+                          aria-invalid={errors?.password ? true : undefined}
+                          aria-describedby={
+                            errors?.password ? `${id}-password-error` : undefined
+                          }
+                          onChange={(event) => setPassword(event.target.value)}
+                        />
+                        {errors?.password && (
+                          <span className={styles.error} id={`${id}-password-error`}>
+                            {errors.password}
+                          </span>
+                        )}
+                      </label>
+                    )}
                     {(contact || journey === 'new') && (
                       <>
                         {field('name', 'Full name')}
@@ -465,13 +518,18 @@ export function CheckoutFlow({
                   </>
                 )}
                 {!guestVerification && journey === 'login' && !contact ? (
-                  <p className={styles.notice}>
-                    We found an account for this email.{' '}
-                    <Link href="/login?from=%2Fcheckout">
-                      Sign in to continue to payment
-                    </Link>
-                    . Your selected trips will stay in your cart.
-                  </p>
+                  <>
+                    <button
+                      className={styles.button}
+                      disabled={pending || cart.storageError}
+                    >
+                      {pending ? 'Signing in…' : 'Sign in and continue'}
+                    </button>
+                    <p className={styles.notice}>
+                      <Link href="/forgot-password">Forgot your password?</Link> Your selected trips
+                      will stay in your cart.
+                    </p>
+                  </>
                 ) : !guestVerification ? (
                   <button
                     className={styles.button}
