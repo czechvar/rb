@@ -86,9 +86,22 @@ describe('checkout identity credentials', () => {
     expect(
       await sendCheckoutInvitationLink({ sendEmail } as unknown as Payload, {
         id: 7,
+        reference: 'RB-C-7',
         email: 'fixture@example.test',
         token: 'a'.repeat(43),
-        items: [{ balanceDueAt: '2099-01-01T00:00:00.000Z' }] as never,
+        items: [
+          {
+            eventDateId: 1,
+            quantity: 1,
+            title: 'Fixture trip',
+            location: 'Fixture location',
+            dateFrom: '2099-02-01T00:00:00.000Z',
+            dateTo: '2099-02-08T00:00:00.000Z',
+            currency: 'EUR',
+            totalMinor: 10000,
+            balanceDueAt: '2099-01-01T00:00:00.000Z',
+          },
+        ] as never,
       }),
     ).toBe('sent')
     const message = sendEmail.mock.calls[0][0]
@@ -98,6 +111,44 @@ describe('checkout identity credentials', () => {
     expect(link.hash.startsWith('#token=')).toBe(true)
     expect(message.html).toContain('Continue to account and payment')
     expect(message.html).toContain('25% deposit')
+  })
+  it('resolves locations for invitation snapshots created before location was stored', async () => {
+    emailMode.mockReturnValue('test')
+    const sendEmail = vi.fn().mockResolvedValue({ id: 'fixture' })
+    const find = vi.fn().mockResolvedValue({
+      docs: [{ id: 1, locations: [{ id: 3, name: 'El Chorro' }] }],
+    })
+    const status = await sendCheckoutInvitationLink(
+      { sendEmail, find } as unknown as Payload,
+      {
+        id: 7,
+        reference: 'RB-C-7',
+        email: 'fixture@example.test',
+        token: 'a'.repeat(43),
+        items: [
+          {
+            eventDateId: 1,
+            quantity: 2,
+            title: 'Winter climbing week',
+            dateFrom: '2099-02-01T00:00:00.000Z',
+            dateTo: '2099-02-08T00:00:00.000Z',
+            currency: 'EUR',
+            totalMinor: 20000,
+            balanceDueAt: '2099-01-01T00:00:00.000Z',
+          },
+        ] as never,
+      },
+    )
+
+    expect(status).toBe('sent')
+    expect(find).toHaveBeenCalledWith(
+      expect.objectContaining({
+        collection: 'event-dates',
+        where: { id: { in: [1] } },
+        depth: 1,
+      }),
+    )
+    expect(sendEmail.mock.calls[0][0].html).toContain('El Chorro')
   })
   it('never passes verification codes to the console adapter and reports provider failure', async () => {
     const sendEmail = vi.fn().mockRejectedValue(new Error('private-provider-diagnostic'))

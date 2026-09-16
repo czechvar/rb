@@ -83,9 +83,13 @@ export async function quoteCart(input: QuoteInput, req?: PayloadRequest): Promis
           : czkBase -
             discountedMinor(czkBase, discount?.discountPercent ?? referral?.discountPercent ?? 0)
     const balanceDueAt = balanceDeadline(ed.dateFrom)
+    const location = ed.locations
+      ?.flatMap((entry) => (typeof entry === 'object' && entry?.name ? [entry.name] : []))
+      .join(', ')
     items.push({
       ...selected,
       title: typeof ed.event === 'object' ? ed.event.title : 'Climbing trip',
+      location: location || undefined,
       dateFrom: ed.dateFrom,
       dateTo: ed.dateTo,
       currency: ed.currency,

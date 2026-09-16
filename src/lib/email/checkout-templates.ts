@@ -137,12 +137,16 @@ const paymentCopy: Record<CheckoutPaymentTiming, { html: string; text: string }>
 
 export function checkoutInvitationEmail(input: {
   url: string
+  reference: string
+  items: CheckoutItem[]
   paymentTiming: CheckoutPaymentTiming
 }): TransactionalEmail {
   const payment = paymentCopy[input.paymentTiming]
-  const text = `Your reservation is approved. Create your account or sign in to continue. ${payment.text}\n\nThe invitation link expires in 24 hours.\n\n${input.url}`
+  const summary = checkoutInvitationSummary(input.reference, input.items)
+  const text = `Your reservation is approved. Create your account or sign in to continue. ${payment.text}\n\n${summary.text}\n\nThe invitation link expires in 24 hours.\n\n${input.url}`
   const body = `<p style="margin:0 0 16px;font-family:${font};font-size:16px;line-height:1.65;color:${colors.muted};">Your reservation is approved. Create your account or sign in to continue.</p>
     <p style="margin:0;font-family:${font};font-size:16px;line-height:1.65;color:${colors.muted};">${payment.html}</p>
+    ${summary.html}
     <p style="margin:18px 0 0;font-family:${font};font-size:13px;line-height:1.65;color:${colors.muted};">This invitation link expires in 24 hours.</p>`
 
   return {
@@ -156,6 +160,61 @@ export function checkoutInvitationEmail(input: {
       action: { label: 'Continue to account and payment', href: input.url },
     }),
   }
+}
+
+function checkoutInvitationSummary(reference: string, items: CheckoutItem[]) {
+  const activeItems = items.filter((item) => !item.cancelledAt)
+  const currency = activeItems[0]?.currency || 'EUR'
+  const total = activeItems.reduce((sum, item) => sum + item.totalMinor, 0)
+  const textItems = activeItems.map(
+    (item, index) =>
+      `${activeItems.length > 1 ? `Trip ${index + 1}: ` : 'Trip: '}${item.title}\nLocation: ${item.location || 'To be confirmed'}\nDates: ${formatDateRange(item.dateFrom, item.dateTo)}\nParticipants: ${item.quantity}\nTrip total: ${formatMoney(item.totalMinor, item.currency)}`,
+  )
+  const htmlItems = activeItems
+    .map(
+      (item) => `<tr>
+        <td style="padding:16px 0;border-top:1px solid ${colors.border};font-family:${font};font-size:14px;line-height:1.6;color:${colors.muted};">
+          <strong style="display:block;font-size:16px;color:${colors.paper};">${escapeHtml(item.title)}</strong>
+          ${escapeHtml(item.location || 'To be confirmed')}<br>
+          ${escapeHtml(formatDateRange(item.dateFrom, item.dateTo))}<br>
+          ${item.quantity} ${item.quantity === 1 ? 'participant' : 'participants'} · ${escapeHtml(formatMoney(item.totalMinor, item.currency))}
+        </td>
+      </tr>`,
+    )
+    .join('')
+  return {
+    text: `Reservation details\nReference: ${reference}\n\n${textItems.join('\n\n')}\n\nReservation total: ${formatMoney(total, currency)}`,
+    html: `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin:28px 0 0;border-bottom:1px solid ${colors.border};">
+      <tr>
+        <td style="padding:0 0 12px;font-family:${font};font-size:11px;line-height:1.4;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:${colors.primary};">Reservation details</td>
+      </tr>
+      <tr>
+        <td style="padding:0 0 16px;font-family:${font};font-size:13px;line-height:1.5;color:${colors.muted};">Reference: <strong style="color:${colors.paper};">${escapeHtml(reference)}</strong></td>
+      </tr>
+      ${htmlItems}
+      <tr>
+        <td style="padding:16px 0;font-family:${font};font-size:16px;line-height:1.5;font-weight:800;color:${colors.paper};">Reservation total: ${escapeHtml(formatMoney(total, currency))}</td>
+      </tr>
+    </table>`,
+  }
+}
+
+function formatDateRange(from: string, to: string): string {
+  const format = new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  })
+  return `${format.format(new Date(from))} – ${format.format(new Date(to))}`
+}
+
+function formatMoney(minor: number, currency: CheckoutItem['currency']): string {
+  return new Intl.NumberFormat('en-GB', {
+    style: 'currency',
+    currency,
+    minimumFractionDigits: 2,
+  }).format(minor / 100)
 }
 
 export function checkoutPaymentTiming(

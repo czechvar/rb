@@ -22,6 +22,7 @@ export interface CheckoutItem extends CartItem {
   cancelledAt?: string
   cancellationReason?: string
   title: string
+  location?: string
   dateFrom: string
   dateTo: string
   currency: CheckoutCurrency

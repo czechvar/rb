@@ -35,16 +35,19 @@ export async function sendCheckoutVerificationCode(
 /** Invitation tokens stay in URL fragments and are never written to request logs. */
 export async function sendCheckoutInvitationLink(
   payload: Payload,
-  input: { id: number; email: string; token: string; items: CheckoutItem[] },
+  input: { id: number; reference: string; email: string; token: string; items: CheckoutItem[] },
 ): Promise<NotificationStatus> {
   if (!checkoutEmailAvailable()) return 'notConfigured'
   try {
     const url = siteUrl(
       `/checkout/invite?checkout=${input.id}#token=${encodeURIComponent(input.token)}`,
     )
+    const items = await resolveInvitationLocations(payload, input.items)
     const email = checkoutInvitationEmail({
       url,
-      paymentTiming: checkoutPaymentTiming(input.items),
+      reference: input.reference,
+      items,
+      paymentTiming: checkoutPaymentTiming(items),
     })
     await payload.sendEmail({
       to: input.email,
@@ -54,4 +57,32 @@ export async function sendCheckoutInvitationLink(
   } catch {
     return 'failed'
   }
+}
+
+async function resolveInvitationLocations(
+  payload: Payload,
+  items: CheckoutItem[],
+): Promise<CheckoutItem[]> {
+  const missingIds = items.filter((item) => !item.location).map((item) => item.eventDateId)
+  if (!missingIds.length) return items
+  const dates = await payload.find({
+    collection: 'event-dates',
+    where: { id: { in: missingIds } },
+    limit: missingIds.length,
+    pagination: false,
+    depth: 1,
+    overrideAccess: true,
+  })
+  const locations = new Map(
+    dates.docs.map((date) => [
+      date.id,
+      date.locations
+        ?.flatMap((entry) => (typeof entry === 'object' && entry?.name ? [entry.name] : []))
+        .join(', '),
+    ]),
+  )
+  return items.map((item) => ({
+    ...item,
+    location: item.location || locations.get(item.eventDateId) || 'To be confirmed',
+  }))
 }

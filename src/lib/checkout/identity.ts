@@ -335,6 +335,7 @@ export async function reviewGuestCheckout(
   })
   const status = await sendCheckoutInvitationLink(payload, {
     id,
+    reference: checkout.reference,
     email: checkout.contact.email,
     token,
     items: checkout.items,
