@@ -25,7 +25,7 @@ export function CheckoutOperationsNavLink() {
       cancelAnimationFrame(frame)
       navHost.remove()
     }
-  }, [])
+  }, [pathname])
 
   if (!host) return null
   const active = pathname.startsWith(href)
