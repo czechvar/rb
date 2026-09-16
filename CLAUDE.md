@@ -105,6 +105,7 @@ Required environment variables in the Vercel project settings:
 - `COMGATE_MERCHANT` — Comgate merchant ID (from the Comgate merchant portal).
 - `COMGATE_SECRET` — Comgate merchant secret, used both to sign requests and to verify inbound webhooks.
 - `COMGATE_TEST_MODE` — `true` routes through the Comgate sandbox; set to `false` only once the integration is verified against a live Comgate account. Defaults to `true` if unset.
+- `COMGATE_LANGUAGE` — ISO 639-1 language Comgate uses towards the payer (gateway UI and the payment emails it sends them). Defaults to `en`; Comgate's own fallback is `cs`, which is why omitting it produced Czech emails. Applies to newly created payments only — pending ones keep the language they were created with. Comgate's merchant-facing notification emails are **not** controlled by this; change those in the Comgate client portal.
 - `MUZAPAY_BASE_URL` — Benefit+ (MuzaPay) API base. Sandbox `https://api.gate.int.pay.muza.cz`, production `https://api.gate.pay.muza.cz`.
 - `MUZAPAY_ESHOP_ID` / `MUZAPAY_ESHOP_PASSWORD` — eshop credentials for the token endpoint (HTTP Basic).
 - `MUZAPAY_PRIVATE_KEY` — RSA private key used to sign every request, **base64-encoded PEM** (a multi-line PEM does not survive `.env` files or `vercel env pull`). A raw PEM is also accepted.
