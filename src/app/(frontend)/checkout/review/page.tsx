@@ -44,7 +44,8 @@ export default async function ReviewPage() {
             <section key={record.id} className={styles.review}>
               <h2>{record.reference}</h2>
               <p>
-                {record.contact.name} · {record.contact.email} · {record.contact.phone}
+                {record.contact.name} · {record.contact.email}
+                {record.contact.phone ? ` · ${record.contact.phone}` : ''}
               </p>
               <p>
                 Status: {record.state} · Email: {record.notificationStatus || 'pending'}

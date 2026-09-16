@@ -134,8 +134,12 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
               {checkout.contact.name}
               <br />
               {checkout.contact.email}
-              <br />
-              {checkout.contact.phone}
+              {checkout.contact.phone && (
+                <>
+                  <br />
+                  {checkout.contact.phone}
+                </>
+              )}
             </p>
           </section>
           <Link href="/account/checkouts">All reservations</Link>

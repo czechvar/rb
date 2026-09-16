@@ -119,8 +119,11 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
   await screen.findByLabelText('Full name')
+  expect(
+    (screen.getByLabelText('Phone including country code (optional)') as HTMLInputElement).required,
+  ).toBe(false)
   fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
-  fireEvent.change(screen.getByLabelText('Phone including country code'), {
+  fireEvent.change(screen.getByLabelText('Phone including country code (optional)'), {
     target: { value: '+420123456789' },
   })
   fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
@@ -129,6 +132,7 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
   const firstId = mocks.guest.mock.calls[0][1].get('submissionKey')
   fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
   const code = await screen.findByLabelText('Verification code')
+  expect(screen.getByText(/We emailed a six-digit verification code/).tagName).toBe('STRONG')
   expect(code.getAttribute('inputmode')).toBe('numeric')
   expect(code.getAttribute('autocomplete')).toBe('one-time-code')
   expect(code.getAttribute('maxlength')).toBe('6')
@@ -155,7 +159,7 @@ it('keeps the submitted cart intact when guest code verification fails', async (
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
   await screen.findByLabelText('Full name')
   fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
-  fireEvent.change(screen.getByLabelText('Phone including country code'), {
+  fireEvent.change(screen.getByLabelText('Phone including country code (optional)'), {
     target: { value: '+420123456789' },
   })
   fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
@@ -181,7 +185,7 @@ it('clears only the submitted guest quantities after verification and keeps succ
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
   await screen.findByLabelText('Full name')
   fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
-  fireEvent.change(screen.getByLabelText('Phone including country code'), {
+  fireEvent.change(screen.getByLabelText('Phone including country code (optional)'), {
     target: { value: '+420123456789' },
   })
   fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)

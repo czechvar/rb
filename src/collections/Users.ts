@@ -12,7 +12,7 @@ const icoRegex = /^\d{8}$/
 const dicRegex = /^CZ\d{8,10}$/
 
 const validatePhone: Validate<string | null | undefined, unknown, unknown, object> = (value) => {
-  if (!value) return 'Phone is required'
+  if (!value) return true
   if (!phoneRegex.test(String(value))) return 'Invalid phone number'
   return true
 }
@@ -75,7 +75,7 @@ export const Users: CollectionConfig = {
   },
   fields: [
     { name: 'name', type: 'text', required: true },
-    { name: 'phone', type: 'text', required: true, validate: validatePhone },
+    { name: 'phone', type: 'text', validate: validatePhone },
     {
       name: 'role',
       type: 'select',

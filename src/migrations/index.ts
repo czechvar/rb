@@ -1,4 +1,5 @@
 import * as migration_20260914_212015_trip_variants from './20260914_212015_trip_variants';
+import * as migration_20260916_120000_optional_checkout_phone from './20260916_120000_optional_checkout_phone';
 import * as migration_20260913_150000_grouped_checkout from './20260913_150000_grouped_checkout';
 import * as migration_20260914_203000_occurrence_slugs from './20260914_203000_occurrence_slugs';
 import * as migration_20260914_204500_event_date_indexable from './20260914_204500_event_date_indexable';
@@ -381,4 +382,5 @@ export const migrations = [
   { up: migration_20260914_203000_occurrence_slugs.up, down: migration_20260914_203000_occurrence_slugs.down, name: '20260914_203000_occurrence_slugs' },
   { up: migration_20260914_204500_event_date_indexable.up, down: migration_20260914_204500_event_date_indexable.down, name: '20260914_204500_event_date_indexable' },
   { up: migration_20260914_212015_trip_variants.up, down: migration_20260914_212015_trip_variants.down, name: '20260914_212015_trip_variants' },
+  { up: migration_20260916_120000_optional_checkout_phone.up, down: migration_20260916_120000_optional_checkout_phone.down, name: '20260916_120000_optional_checkout_phone' },
 ];

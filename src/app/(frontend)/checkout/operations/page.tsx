@@ -90,8 +90,13 @@ export default async function OperationsPage({
                 </p>
                 <p>
                   {record.contact.name} ·{' '}
-                  <a href={`mailto:${record.contact.email}`}>{record.contact.email}</a> ·{' '}
-                  <a href={`tel:${record.contact.phone}`}>{record.contact.phone}</a>
+                  <a href={`mailto:${record.contact.email}`}>{record.contact.email}</a>
+                  {record.contact.phone && (
+                    <>
+                      {' · '}
+                      <a href={`tel:${record.contact.phone}`}>{record.contact.phone}</a>
+                    </>
+                  )}
                 </p>
                 <p>
                   {record.items.map((item) => `${item.title} (${date(item.dateFrom)})`).join(' · ')}

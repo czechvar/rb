@@ -6,6 +6,10 @@ import {
   up as checkoutUp,
   down as checkoutDown,
 } from '../../src/migrations/20260913_150000_grouped_checkout'
+import {
+  down as optionalCheckoutPhoneDown,
+  up as optionalCheckoutPhoneUp,
+} from '../../src/migrations/20260916_120000_optional_checkout_phone'
 import { withCheckoutTransaction } from '../../src/lib/checkout/transaction'
 import { quoteCart } from '../../src/lib/checkout/quote'
 import {
@@ -32,8 +36,11 @@ async function main() {
   payload.sendEmail = async () => ({})
   const passed = (checkPassed: string) => console.log(JSON.stringify({ checkPassed }))
   try {
+    await optionalCheckoutPhoneDown({ db: payload.db.drizzle } as never)
+    await optionalCheckoutPhoneUp({ db: payload.db.drizzle } as never)
     await checkoutDown({ db: payload.db.drizzle } as never)
     await checkoutUp({ db: payload.db.drizzle } as never)
+    await optionalCheckoutPhoneUp({ db: payload.db.drizzle } as never)
     passed('empty-checkout-migration-down-up')
 
     assert(!CANONICAL_SEED_COLLECTIONS.some((item) => (item.slug as string) === 'checkouts'))
@@ -269,6 +276,8 @@ async function main() {
     await verifyIdentity(payload)
     stage = 'payment-checks'
     await verifyPayments(payload)
+    await assert.rejects(() => optionalCheckoutPhoneDown({ db: payload.db.drizzle } as never))
+    passed('optional-phone-rollback-refuses-missing-data')
     await assert.rejects(() => checkoutDown({ db: payload.db.drizzle } as never))
     passed('rollback-refuses-to-discard-operational-data')
     // No fixture may enter canonical records; entire disposable database is teardown.

@@ -16,7 +16,7 @@ export interface CartItem {
 export interface CheckoutContact {
   name: string
   email: string
-  phone: string
+  phone?: string | null
 }
 export interface CheckoutItem extends CartItem {
   cancelledAt?: string

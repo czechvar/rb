@@ -84,7 +84,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
     const contact = {
       name: '[Checkout identity test] Guest',
       email: 'checkout-identity-guest@example.invalid',
-      phone: '+420123456789',
+      phone: '',
     }
     const id = await createGuestCheckout(
       { submissionKey: randomUUID(), contact, items: [{ eventDateId: date.id, quantity: 2 }] },
@@ -142,6 +142,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
     assert.equal(users.totalDocs, 1)
     assert.equal(users.docs[0]._verified, true)
     assert.equal(users.docs[0].role, 'customer')
+    assert(!users.docs[0].phone)
     await assert.rejects(() =>
       acceptCheckoutInvitation(
         id,

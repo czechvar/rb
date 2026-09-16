@@ -99,6 +99,21 @@ describe('checkout identity credentials', () => {
     }
     expect(guestCheckoutSchema.safeParse(base).success).toBe(true)
     expect(
+      guestCheckoutSchema.safeParse({ ...base, contact: { ...base.contact, phone: '' } }).success,
+    ).toBe(true)
+    expect(
+      guestCheckoutSchema.safeParse({
+        ...base,
+        contact: { name: base.contact.name, email: base.contact.email },
+      }).success,
+    ).toBe(true)
+    expect(
+      guestCheckoutSchema.safeParse({ ...base, contact: { ...base.contact, phone: null } }).success,
+    ).toBe(true)
+    expect(
+      guestCheckoutSchema.safeParse({ ...base, contact: { ...base.contact, phone: 'bad' } }).success,
+    ).toBe(false)
+    expect(
       guestCheckoutSchema.safeParse({
         ...base,
         items: Array.from({ length: 21 }, () => ({ eventDateId: 1, quantity: 1 })),

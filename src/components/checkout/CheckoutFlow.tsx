@@ -415,8 +415,10 @@ export function CheckoutFlow({
                 {guestVerification ? (
                   <>
                     <p className={styles.notice} role="status">
-                      We emailed a six-digit verification code to {values.email}. Enter it below to
-                      reserve your selected trips.
+                      <strong>
+                        We emailed a six-digit verification code to {values.email}. Enter it below
+                        to reserve your selected trips.
+                      </strong>
                     </p>
                     <label className={styles.field} htmlFor={`${id}-code`}>
                       Verification code
@@ -439,7 +441,7 @@ export function CheckoutFlow({
                     {(contact || journey === 'new') && (
                       <>
                         {field('name', 'Full name')}
-                        {field('phone', 'Phone including country code', 'tel')}
+                        {field('phone', 'Phone including country code (optional)', 'tel', false)}
                       </>
                     )}
                   </>

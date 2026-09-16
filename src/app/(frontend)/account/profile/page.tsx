@@ -10,7 +10,7 @@ export default async function ProfilePage() {
     <>
       <h1>Profile</h1>
       <ProfileForm
-        initial={{ name: user.name, phone: user.phone, email: user.email }}
+        initial={{ name: user.name, phone: user.phone ?? '', email: user.email }}
         pendingEmail={user.pendingEmail ?? undefined}
       />
     </>

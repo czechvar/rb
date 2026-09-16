@@ -197,7 +197,7 @@ export interface Checkout {
   contact: {
     name: string;
     email: string;
-    phone: string;
+    phone?: string | null;
   };
   items:
     | {
@@ -243,7 +243,7 @@ export interface Checkout {
 export interface User {
   id: number;
   name: string;
-  phone: string;
+  phone?: string | null;
   role: 'customer' | 'admin';
   addresses?:
     | {

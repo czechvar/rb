@@ -22,10 +22,13 @@ const contactSchema = z.object({
     .email()
     .max(254)
     .transform((v) => v.toLowerCase()),
-  phone: z
-    .string()
-    .trim()
-    .regex(/^\+?[\d\s\-()]{6,20}$/),
+  phone: z.preprocess(
+    (value) => value ?? '',
+    z
+      .string()
+      .trim()
+      .refine((value) => !value || /^\+?[\d\s\-()]{6,20}$/.test(value)),
+  ),
 })
 const billingSchema = z.object({
   firstName: z.string().trim().min(1).max(120),
@@ -37,7 +40,8 @@ const billingSchema = z.object({
 })
 export function validateCheckoutContact(contact: CheckoutContact) {
   const result = contactSchema.safeParse(contact)
-  if (!result.success) throw new Error('Enter your name, a valid email and phone number.')
+  if (!result.success)
+    throw new Error('Enter your name and a valid email. If provided, enter a valid phone number.')
   return result.data
 }
 export function validateCheckoutBilling(value: unknown) {

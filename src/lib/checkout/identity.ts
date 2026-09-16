@@ -25,10 +25,13 @@ export const guestCheckoutSchema = z.object({
   contact: z.object({
     name: z.string().trim().min(1).max(120),
     email: z.string().trim().toLowerCase().email().max(254),
-    phone: z
-      .string()
-      .trim()
-      .regex(/^\+?[\d\s()-]{6,20}$/),
+    phone: z.preprocess(
+      (value) => value ?? '',
+      z
+        .string()
+        .trim()
+        .refine((value) => !value || /^\+?[\d\s()-]{6,20}$/.test(value)),
+    ),
   }),
   items: z
     .array(
@@ -413,7 +416,7 @@ export async function acceptCheckoutInvitation(
         data: {
           name: record.contact.name,
           email: record.contact.email,
-          phone: record.contact.phone,
+          ...(record.contact.phone ? { phone: record.contact.phone } : {}),
           role: 'customer',
           password,
           _verified: true,

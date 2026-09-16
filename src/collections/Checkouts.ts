@@ -57,7 +57,7 @@ export const Checkouts: CollectionConfig = {
       fields: [
         { name: 'name', type: 'text', required: true },
         { name: 'email', type: 'email', required: true },
-        { name: 'phone', type: 'text', required: true },
+        { name: 'phone', type: 'text' },
       ],
     },
     { name: 'items', type: 'json', required: true },

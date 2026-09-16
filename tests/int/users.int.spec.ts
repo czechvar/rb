@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { getTestPayload } from '../helpers/payload'
+import { registerSchema } from '../../src/app/(frontend)/(auth)/register/schema'
 
 describe('users collection', () => {
   // payload.create() via the Local API bypasses access control. These tests
@@ -37,18 +38,17 @@ describe('users collection', () => {
     expect(user.role).toBe('customer')
   })
 
-  it('requires phone and validates format', async () => {
+  it('allows an invited user without phone and validates supplied phone format', async () => {
     const payload = await getTestPayload()
-    await expect(
-      payload.create({
-        collection: 'users',
-        data: {
-          email: `p-${Date.now()}@example.com`,
-          password: 'password123',
-          name: 'No Phone',
-        } as never,
-      }),
-    ).rejects.toThrow()
+    const withoutPhone = await payload.create({
+      collection: 'users',
+      data: {
+        email: `p-${Date.now()}@example.com`,
+        password: 'password123',
+        name: 'No Phone',
+      } as never,
+    })
+    expect(withoutPhone.phone).toBeFalsy()
 
     await expect(
       payload.create({
@@ -72,6 +72,17 @@ describe('users collection', () => {
       } as never,
     })
     expect(ok.phone).toBe('+420 777 123 456')
+  })
+
+  it('keeps phone required for direct registration', () => {
+    expect(
+      registerSchema.safeParse({
+        name: 'Registration User',
+        email: 'registration@example.com',
+        password: 'password123',
+        passwordConfirm: 'password123',
+      }).success,
+    ).toBe(false)
   })
 
   it('creates user with _verified false (auth.verify is on)', async () => {
