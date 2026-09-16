@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Reviewed identity-equivalent replacements can move permanently.
+      ...Object.entries(legacyRedirectDecisions.approvedExactLegacyRedirects).map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      })),
       // Approved old Event pages keep their Event identity even when the target is not yet indexed.
       ...Object.entries(legacyRedirectDecisions.approvedLegacyEventPageRedirects).map(([from, destination]) => ({
         source: `/event/${from}`,

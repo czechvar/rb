@@ -15,7 +15,50 @@ function redirectOverview(): Map<string, OverviewRow> {
   }))
 }
 
+function redirectRequiredPaths() {
+  const csv = readFileSync('.scratch/sitemap-consolidation/legacy-redirect-overview.csv', 'utf8')
+  return new Set(csv.split(/\r?\n/).slice(1).filter(Boolean).flatMap(line => {
+    const fields = line.split(',', 8)
+    return fields[7] === 'yes' ? [fields[2]] : []
+  }))
+}
+
+function resolvedDestination(source: string, rule: { source: string; destination: string }) {
+  const actual = source.split('/')
+  const pattern = rule.source.split('/')
+  if (actual.length !== pattern.length) return null
+  const parameters: Record<string, string> = {}
+  for (let index = 0; index < pattern.length; index += 1) {
+    if (pattern[index].startsWith(':')) parameters[pattern[index].slice(1)] = actual[index]
+    else if (pattern[index] !== actual[index]) return null
+  }
+  return rule.destination.replace(/:([A-Za-z][A-Za-z0-9_]*)/g, (_, name) => parameters[name] ?? '')
+}
+
 describe('legacy redirect decisions', () => {
+  it('configures every redirect required by the shared inventory', async () => {
+    const rules = await config.redirects?.() ?? []
+    const overview = redirectOverview()
+    const required = redirectRequiredPaths()
+    for (const [source, row] of overview) {
+      if (!required.has(source)) continue
+      expect(
+        rules.some(rule => resolvedDestination(source, rule) === row.target),
+        `${source} should redirect to ${row.target}`,
+      ).toBe(true)
+    }
+  })
+
+  it('keeps all approved exact replacements permanent and aligned with the CSV', async () => {
+    const rules = await config.redirects?.() ?? []
+    const overview = redirectOverview()
+    expect(Object.keys(decisions.approvedExactLegacyRedirects)).toHaveLength(75)
+    for (const [source, destination] of Object.entries(decisions.approvedExactLegacyRedirects)) {
+      expect(rules.find(rule => rule.source === source)).toMatchObject({ destination, permanent: true })
+      expect(overview.get(source)).toEqual({ target: destination, action: 'approved-exact-redirect' })
+    }
+  })
+
   it('sends missing Guides to /team before the exact-slug rule', async () => {
     const rules = await config.redirects?.() ?? []
     const overview = redirectOverview()
@@ -63,7 +106,7 @@ describe('legacy redirect decisions', () => {
     }
   })
 
-  it('routes historical Dates by audited trip category without replacing exact Variant candidates', async () => {
+  it('routes historical Dates by audited category or exact Variant candidate', async () => {
     const rules = await config.redirects?.() ?? []
     const overview = redirectOverview()
     expect(Object.keys(decisions.temporaryHistoricalDateCategoryRedirects)).toHaveLength(37)
@@ -78,8 +121,9 @@ describe('legacy redirect decisions', () => {
       'deep-water-solo-mallorca--2018-10-20-155',
       'climbing-trip-europe--2018-08-18-159',
     ]) {
-      expect(rules.some(rule => rule.source === `/event-date/${slug}`)).toBe(false)
-      expect(overview.get(`/event-date/${slug}`)?.action).toBe('redirect-candidate-needs-validation')
+      const source = `/event-date/${slug}`
+      expect(rules.find(rule => rule.source === source)).toMatchObject({ permanent: true })
+      expect(overview.get(source)?.action).toBe('approved-exact-redirect')
     }
   })
 
