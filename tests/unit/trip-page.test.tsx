@@ -25,7 +25,13 @@ vi.mock('@/lib/queries', () => ({
 }))
 vi.mock('next/navigation', () => ({ notFound: mocks.notFound, redirect: mocks.redirect, permanentRedirect: mocks.permanentRedirect }))
 vi.mock('@/components/marketing/MarketingShell', () => ({ MarketingShell: ({ children }: { children: React.ReactNode }) => <>{children}</> }))
-vi.mock('@/lib/jsonld', () => ({ occurrenceGraphJsonLd: () => ({}), variantGraphJsonLd: () => ({}), collectionPageGraphJsonLd: () => ({}), eventDetailGraphJsonLd: () => ({}) }))
+vi.mock('@/lib/jsonld', () => ({
+  absoluteUrl: (path: string) => `https://rockbusters.net${path}`,
+  occurrenceGraphJsonLd: () => ({}),
+  variantGraphJsonLd: () => ({}),
+  collectionPageGraphJsonLd: () => ({}),
+  eventDetailGraphJsonLd: () => ({}),
+}))
 vi.mock('@/lib/url', () => ({ siteUrl: (path: string) => `https://example.test${path}` }))
 vi.mock('@/components/JsonLd', () => ({ JsonLd: () => null }))
 vi.mock('@/components/trip/ParentTripSections', () => ({
@@ -156,7 +162,7 @@ describe('parent Trip hub', () => {
     expect(mocks.redirect).not.toHaveBeenCalled()
     expect(mocks.blocks).toHaveBeenCalledTimes(2)
     await expect(generateParentMetadata(props())).resolves.toMatchObject({
-      alternates: { canonical: `/trips/${event.slug}` }, robots: { index: true, follow: true },
+      alternates: { canonical: `https://rockbusters.net/trips/${event.slug}` }, robots: { index: true, follow: true },
     })
   })
 
@@ -172,7 +178,7 @@ describe('parent Trip hub', () => {
     mocks.event.mockResolvedValue({ ...event, slug: 'bouldering-albarracin', content: richContent })
     mocks.parentVariants.mockResolvedValue([{ ...reviewed(1, 'albarracin'), indexable: false }])
     await expect(generateParentMetadata(props())).resolves.toMatchObject({
-      alternates: { canonical: '/trips/bouldering-albarracin' },
+      alternates: { canonical: 'https://rockbusters.net/trips/bouldering-albarracin' },
       robots: { index: true, follow: true },
     })
   })
@@ -301,7 +307,7 @@ describe('direct occurrence route', () => {
     })).resolves.toMatchObject({
       title: expect.stringContaining('Date-specific trip'),
       description: expect.stringContaining('Date-specific description.'),
-      alternates: { canonical: `/trips/${event.slug}/${occurrence.slug}` },
+      alternates: { canonical: `https://rockbusters.net/trips/${event.slug}/${occurrence.slug}` },
       robots: { index: false, follow: true },
     })
   })
@@ -353,7 +359,7 @@ describe('evergreen Trip Variant route', () => {
 
   it('serves a self-canonical evergreen page and uses a live departure only for booking facts', async () => {
     const meta = await generateOccurrenceMetadata(route())
-    expect(meta.alternates).toEqual({ canonical: `/trips/${event.slug}/mallorca` })
+    expect(meta.alternates).toEqual({ canonical: `https://rockbusters.net/trips/${event.slug}/mallorca` })
     expect(meta.robots).toEqual({ index: true, follow: true })
     renderToStaticMarkup(await OccurrencePage(route()))
     const trip = mocks.blocks.mock.calls.at(-1)?.[0].context.trip
@@ -364,7 +370,7 @@ describe('evergreen Trip Variant route', () => {
   it('selects the exact date range when two departures share a start date', async () => {
     const path = `/trips/${event.slug}/mallorca?date=2999-10-12-to-2999-10-26`
     const meta = await generateOccurrenceMetadata(route(twoWeek.publicDateKey))
-    expect(meta.alternates).toEqual({ canonical: path })
+    expect(meta.alternates).toEqual({ canonical: `https://rockbusters.net${path}` })
     renderToStaticMarkup(await OccurrencePage(route(twoWeek.publicDateKey)))
     expect(mocks.blocks.mock.calls.at(-1)?.[0].context.trip.selectedDate.id).toBe(twoWeek.id)
   })
@@ -381,7 +387,7 @@ describe('evergreen Trip Variant route', () => {
     mocks.dates.mockResolvedValue([past, oneWeek])
     const path = `/trips/${event.slug}/mallorca?date=${past.publicDateKey}`
     const meta = await generateOccurrenceMetadata(route(past.publicDateKey))
-    expect(meta.alternates).toEqual({ canonical: path })
+    expect(meta.alternates).toEqual({ canonical: `https://rockbusters.net${path}` })
     expect(meta.robots).toEqual({ index: false, follow: true })
     renderToStaticMarkup(await OccurrencePage(route(past.publicDateKey)))
     const trip = mocks.blocks.mock.calls.at(-1)?.[0].context.trip

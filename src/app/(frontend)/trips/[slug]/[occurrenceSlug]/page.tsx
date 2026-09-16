@@ -3,7 +3,7 @@ import { notFound, permanentRedirect } from 'next/navigation'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import { JsonLd } from '@/components/JsonLd'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
-import { occurrenceGraphJsonLd, variantGraphJsonLd } from '@/lib/jsonld'
+import { absoluteUrl, occurrenceGraphJsonLd, variantGraphJsonLd } from '@/lib/jsonld'
 import { eventDateLifecycle } from '@/lib/event-date-visibility'
 import {
   getPublicEventDatesForEvent,
@@ -70,7 +70,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     return {
       title: `${trip.event.seo?.title ?? trip.event.title} — ${context}`,
       description: [trip.event.shortDescription, context].filter(Boolean).join(' '),
-      alternates: { canonical: canonicalPath },
+      alternates: { canonical: absoluteUrl(canonicalPath) },
       robots: {
         index: variant.indexable === true && (!occurrence || (
           occurrence.indexable !== false && (lifecycle === 'upcoming' || lifecycle === 'in-progress')
@@ -85,14 +85,14 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const { event, occurrence, canonicalPath } = resolved
   if (occurrence.tripVariant && occurrence.publicDateKey) {
     const newPath = tripPublicDatePath(event.slug, occurrence)
-    return { alternates: { canonical: newPath }, robots: { index: false, follow: true } }
+    return { alternates: { canonical: absoluteUrl(newPath) }, robots: { index: false, follow: true } }
   }
   const trip = resolveTripDetailOccurrence(event, occurrence)
   const context = variantContext(trip.locations[0]?.name ?? '', occurrence)
   return {
     title: `${trip.event.seo?.title ?? trip.event.title} — ${context}`,
     description: [trip.event.shortDescription, context].filter(Boolean).join(' '),
-    alternates: { canonical: canonicalPath },
+    alternates: { canonical: absoluteUrl(canonicalPath) },
     robots: { index: false, follow: true },
   }
 }

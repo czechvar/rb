@@ -2,7 +2,7 @@ import { notFound, permanentRedirect } from 'next/navigation'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import { JsonLd } from '@/components/JsonLd'
-import { genericCmsPageGraphJsonLd } from '@/lib/jsonld'
+import { absoluteUrl, genericCmsPageGraphJsonLd } from '@/lib/jsonld'
 import { getPublishedPageBySlug } from '@/lib/queries'
 
 type Props = { params: Promise<{ slug: string }> }
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props) {
     title: page.seo?.title || `${page.title} - Rockbusters`,
     description: page.seo?.description || undefined,
     keywords: page.seo?.keywords || undefined,
-    alternates: { canonical: slug === 'home' ? '/' : `/${slug}` },
+    alternates: { canonical: absoluteUrl(slug === 'home' ? '/' : `/${slug}`) },
   }
 }
 

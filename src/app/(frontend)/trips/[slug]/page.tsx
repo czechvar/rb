@@ -8,7 +8,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { ParentTripSections } from '@/components/trip/ParentTripSections'
 import { eventDateLifecycle, selectBookableOccurrence } from '@/lib/event-date-visibility'
 import { tripPublicDatePath, tripVariantPath } from '@/lib/occurrence-routing'
-import { collectionPageGraphJsonLd, eventDetailGraphJsonLd } from '@/lib/jsonld'
+import { absoluteUrl, collectionPageGraphJsonLd, eventDetailGraphJsonLd } from '@/lib/jsonld'
 import { siteUrl } from '@/lib/url'
 import { isIndexableContentOnlyParentTrip, isIndexableParentTrip, parentSafeBlocks, parentTripLayout } from '@/lib/parent-trip-layout'
 import { resolveTripDetail } from '@/lib/trip-detail'
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: event.seo?.title || `${event.title} — Rockbusters`,
     description: event.seo?.description || event.shortDescription || undefined,
-    alternates: { canonical: `/trips/${event.slug}` },
+    alternates: { canonical: absoluteUrl(`/trips/${event.slug}`) },
     robots: { index: hub, follow: true },
   }
 }
