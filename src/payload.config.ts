@@ -57,6 +57,11 @@ const requireEnv = (name: string): string => {
 export default buildConfig({
   admin: {
     user: Users.slug,
+    components: {
+      afterNavLinks: [
+        '/components/admin/checkouts/CheckoutOperationsNavLink#CheckoutOperationsNavLink',
+      ],
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },

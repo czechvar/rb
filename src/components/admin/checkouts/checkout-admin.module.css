@@ -125,6 +125,10 @@
   cursor: wait;
 }
 
+.quickAction {
+  margin-top: 4px;
+}
+
 .form .danger {
   color: var(--theme-error-800);
   background: var(--theme-error-100);

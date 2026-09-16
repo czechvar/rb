@@ -8,6 +8,10 @@ export const operationFilters = [
   'reconciliation',
 ] as const
 export type OperationFilter = (typeof operationFilters)[number]
+export function canQuickApproveCheckout(record: CheckoutRecord): boolean {
+  return record.customerKind === 'new' && record.state === 'awaitingReview'
+}
+
 export function matchesOperationFilter(
   record: CheckoutRecord,
   filter: OperationFilter,

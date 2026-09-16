@@ -7,7 +7,13 @@ import { isAdminUser } from '@/access'
 import { checkoutStateLabel, date } from '@/components/checkout/format'
 import type { CheckoutRecord } from '@/lib/checkout/types'
 import type { User } from '@/payload-types'
-import { matchesOperationFilter, operationFilters, type OperationFilter } from './operations'
+import { CheckoutAdminApproveButton } from './CheckoutAdminForms'
+import {
+  canQuickApproveCheckout,
+  matchesOperationFilter,
+  operationFilters,
+  type OperationFilter,
+} from './operations'
 import styles from './checkout-admin.module.css'
 
 export async function CheckoutOperationsQueueView({
@@ -89,6 +95,7 @@ export async function CheckoutOperationsQueueView({
             </p>
             {record.notificationStatus && <p>Invitation email: {record.notificationStatus}</p>}
             {record.reconciliationReason && <p>{record.reconciliationReason}</p>}
+            {canQuickApproveCheckout(record) && <CheckoutAdminApproveButton id={record.id} />}
           </article>
         ))}
       </div>

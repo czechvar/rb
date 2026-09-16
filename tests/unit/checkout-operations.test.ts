@@ -1,5 +1,9 @@
 import { beforeEach, expect, it, vi } from 'vitest'
-import { matchesOperationFilter, refundMinor } from '@/components/admin/checkouts/operations'
+import {
+  canQuickApproveCheckout,
+  matchesOperationFilter,
+  refundMinor,
+} from '@/components/admin/checkouts/operations'
 import { adminCheckoutOperationAction } from '@/components/admin/checkouts/actions'
 import type { CheckoutRecord } from '@/lib/checkout/types'
 const mocks = vi.hoisted(() => ({
@@ -93,6 +97,13 @@ it('distinguishes unpaid, overdue balances and reconciliation using settled curr
   record.state = 'reconciliation'
   expect(matchesOperationFilter(record, 'reconciliation', 0)).toBe(true)
   expect(matchesOperationFilter(record, 'balance-due', Date.parse('2030-02-01'))).toBe(false)
+})
+
+it('offers quick approval only for new customers awaiting review', () => {
+  const record = { customerKind: 'new', state: 'awaitingReview' } as CheckoutRecord
+  expect(canQuickApproveCheckout(record)).toBe(true)
+  expect(canQuickApproveCheckout({ ...record, customerKind: 'returning' })).toBe(false)
+  expect(canQuickApproveCheckout({ ...record, state: 'approved' })).toBe(false)
 })
 
 it('cancels only selected trip IDs and requires a reason and selection', async () => {

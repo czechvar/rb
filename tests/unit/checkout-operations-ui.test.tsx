@@ -2,11 +2,15 @@
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import type { ActionResult } from '@/components/forms/action-result'
-import { CheckoutAdminOperationForm } from '@/components/admin/checkouts/CheckoutAdminForms'
-const mocks = vi.hoisted(() => ({ action: vi.fn() }))
-vi.mock('next/navigation', () => ({ useRouter: () => ({ refresh: vi.fn() }) }))
+import {
+  CheckoutAdminApproveButton,
+  CheckoutAdminOperationForm,
+} from '@/components/admin/checkouts/CheckoutAdminForms'
+const mocks = vi.hoisted(() => ({ action: vi.fn(), review: vi.fn(), refresh: vi.fn() }))
+vi.mock('next/navigation', () => ({ useRouter: () => ({ refresh: mocks.refresh }) }))
 vi.mock('@/components/admin/checkouts/actions', () => ({
   adminCheckoutOperationAction: mocks.action,
+  adminCheckoutReviewAction: mocks.review,
 }))
 afterEach(cleanup)
 it('locks a submitted financial operation and preserves receipt inputs after failure', async () => {
@@ -43,4 +47,17 @@ it('locks a submitted financial operation and preserves receipt inputs after fai
     'receipt-test-1',
   )
   expect(screen.getByRole('button').closest('fieldset')?.hasAttribute('disabled')).toBe(false)
+})
+
+it('approves and invites from the queue without opening checkout detail', async () => {
+  mocks.review.mockResolvedValue({ ok: true })
+  render(<CheckoutAdminApproveButton id={42} />)
+
+  fireEvent.submit(screen.getByRole('button', { name: 'Approve and invite' }).closest('form')!)
+
+  await waitFor(() => expect(mocks.review).toHaveBeenCalledTimes(1))
+  const data = mocks.review.mock.calls[0][1] as FormData
+  expect(data.get('checkout')).toBe('42')
+  expect(data.get('decision')).toBe('approve')
+  expect(mocks.refresh).toHaveBeenCalledOnce()
 })

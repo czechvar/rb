@@ -43,6 +43,29 @@ export function CheckoutAdminReviewForm({ id, approved }: { id: number; approved
   )
 }
 
+export function CheckoutAdminApproveButton({ id }: { id: number }) {
+  const router = useRouter()
+  const [state, action, pending] = useActionState(
+    async (previous: ActionResult, data: FormData) => {
+      const result = await adminCheckoutReviewAction(previous, data)
+      if (result.ok) router.refresh()
+      return result
+    },
+    INITIAL_ACTION_STATE,
+  )
+
+  return (
+    <form action={action} className={`${styles.form} ${styles.quickAction}`}>
+      <input type="hidden" name="checkout" value={id} />
+      <input type="hidden" name="decision" value="approve" />
+      <button type="submit" disabled={pending}>
+        {pending ? 'Approving…' : 'Approve and invite'}
+      </button>
+      <ActionMessage result={state} />
+    </form>
+  )
+}
+
 export function CheckoutAdminOperationForm({
   checkoutId,
   operation,
