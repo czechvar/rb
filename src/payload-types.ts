@@ -181,7 +181,7 @@ export interface PayloadMcpApiKeyAuthOperations {
   };
 }
 /**
- * Use the checkout review screen to approve, decline and reconcile reservations.
+ * Open a checkout and use its Operations tab to review and manage the reservation.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "checkouts".

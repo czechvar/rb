@@ -7,11 +7,9 @@ import { INITIAL_ACTION_STATE } from '@/components/forms/action-result'
 import {
   verifyGuestCheckoutAction,
   acceptCheckoutInvitationAction,
-  reviewGuestCheckoutAction,
   checkoutInvitationKindAction,
 } from './identity-actions'
 import forms from '@/components/forms/forms.module.css'
-import styles from './identity.module.css'
 
 function useLinkToken(kind: 'verify' | 'invite', id: number) {
   const [token, setToken] = useState('')
@@ -180,42 +178,6 @@ export function CheckoutInvitationForm({ id }: { id: number }) {
       <button className={forms.submit} disabled={pending}>
         {pending ? 'Saving…' : createAccount ? 'Create account' : 'Connect my account'}
       </button>
-    </form>
-  )
-}
-
-export function CheckoutReviewForm({ id, approved }: { id: number; approved: boolean }) {
-  const [state, action, pending] = useActionState(reviewGuestCheckoutAction, INITIAL_ACTION_STATE)
-  return (
-    <form action={action}>
-      <input type="hidden" name="checkout" value={id} />
-      {state.ok ? (
-        <FormBanner kind="success">
-          Review saved and invitation sent, or the checkout declined.
-        </FormBanner>
-      ) : state.formError ? (
-        <FormBanner kind="error">{state.formError}</FormBanner>
-      ) : null}
-      <div className={forms.field}>
-        <label className={forms.label} htmlFor={`note-${id}`}>
-          Staff note
-        </label>
-        <textarea
-          className={forms.input}
-          id={`note-${id}`}
-          name="note"
-          maxLength={2000}
-          disabled={pending}
-        />
-      </div>
-      <div className={styles.actions}>
-        <button className={forms.submit} name="decision" value="approve" disabled={pending}>
-          {approved ? 'Resend invitation' : 'Approve and invite'}
-        </button>
-        <button className={forms.submit} name="decision" value="decline" disabled={pending}>
-          Decline and release seats
-        </button>
-      </div>
     </form>
   )
 }

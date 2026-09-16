@@ -1,13 +1,11 @@
 'use server'
 
 import { headers } from 'next/headers'
-import { revalidatePath } from 'next/cache'
 import type { ActionResult } from '@/components/forms/action-result'
 import { contactNetwork } from '@/lib/contact/intake'
 import {
   createGuestCheckout,
   verifyGuestCheckout,
-  reviewGuestCheckout,
   acceptCheckoutInvitation,
   invitationKind,
   lookupCheckoutJourney,
@@ -119,29 +117,6 @@ export async function acceptCheckoutInvitationAction(
   } catch {
     return error(
       'This invitation could not be accepted. Check the link and account, or ask our team for a new invitation.',
-    )
-  }
-}
-
-export async function reviewGuestCheckoutAction(
-  _previous: ActionResult | null,
-  data: FormData,
-): Promise<ActionResult> {
-  try {
-    const { requireUser } = await import('@/lib/auth')
-    const decision = data.get('decision')
-    if (decision !== 'approve' && decision !== 'decline') return error('Choose approve or decline.')
-    await reviewGuestCheckout(
-      Number(data.get('checkout')),
-      await requireUser(),
-      decision,
-      String(data.get('note') ?? ''),
-    )
-    revalidatePath('/checkout/review')
-    return { ok: true }
-  } catch {
-    return error(
-      'The review could not be fully completed. Refresh the checkout status before retrying; an approval may have saved even if its invitation email failed.',
     )
   }
 }

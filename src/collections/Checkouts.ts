@@ -7,7 +7,26 @@ export const Checkouts: CollectionConfig = {
     group: 'Sales',
     useAsTitle: 'reference',
     defaultColumns: ['reference', 'state', 'customerKind', 'expiresAt', 'createdAt'],
-    description: 'Use the checkout review screen to approve, decline and reconcile reservations.',
+    description: 'Open a checkout and use its Operations tab to review and manage the reservation.',
+    components: {
+      beforeList: [
+        '/components/admin/checkouts/CheckoutOperationsQueueView#CheckoutOperationsListLink',
+      ],
+      views: {
+        operations: {
+          Component:
+            '/components/admin/checkouts/CheckoutOperationsQueueView#CheckoutOperationsQueueView',
+          path: '/operations',
+        },
+        edit: {
+          operations: {
+            Component: '/components/admin/checkouts/CheckoutOperationsView#CheckoutOperationsView',
+            path: '/operations',
+            tab: { href: '/operations', label: 'Operations', order: 200 },
+          },
+        },
+      },
+    },
   },
   access: {
     read: ({ req }) =>

@@ -11,7 +11,7 @@ Status: implemented, reviewed and locally verified; enablement gated.
 - Returning purchasers reuse/edit saved payer details and reserve atomically. Their unpaid holds expire after 24 hours only after payment reconciliation.
 - Initial payment covers every active trip's obligation: 25% deposit, or full payment when within 30 calendar days of departure. The remaining balance is due 30 days before each trip; individual balances can be paid separately.
 - Card and Benefit+ are supported. Benefit+ requires authored CZK prices for every active item. The first successful payment locks the method; no cross-method partial settlement or live currency conversion.
-- Staff manages review, unpaid reservations, due balances and reconciliation through `/checkout/operations`. Individual trips can be cancelled without releasing others. Provider refund receipts are recorded against their original transaction allocations; recording does not issue a provider refund.
+- Staff manages review, unpaid reservations, due balances and reconciliation from each Checkout's Operations tab in Payload Admin. Individual trips can be cancelled without releasing others. Provider refund receipts are recorded against their original transaction allocations; recording does not issue a provider refund.
 - No automatic charging, reminder campaign or participant-profile completion is included. Canonical content seeds exclude all operational checkout data.
 
 ## Implementation ownership and shared contracts

@@ -280,7 +280,6 @@ export async function reviewGuestCheckout(
   decision: 'approve' | 'decline',
   note: string,
 ): Promise<void> {
-  enabled()
   if (!isAdminUser(actor)) throw new Error('Staff access required.')
   if (!Number.isSafeInteger(id) || id <= 0 || note.length > 2000)
     throw new Error('Invalid review request.')

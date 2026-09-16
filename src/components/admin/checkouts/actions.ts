@@ -2,8 +2,8 @@
 
 import { revalidatePath } from 'next/cache'
 import { isAdminUser } from '@/access'
-import { getCurrentUser } from '@/lib/auth'
-import { checkoutEnabled } from '@/lib/checkout/feature'
+import { getCurrentUser, requireUser } from '@/lib/auth'
+import { reviewGuestCheckout } from '@/lib/checkout/identity'
 import { getPayloadClient } from '@/lib/payload'
 import type { ActionResult } from '@/components/forms/action-result'
 import type { PaymentAllocation } from '@/payments/checkout-ledger'
@@ -13,13 +13,48 @@ import {
   reconcileCheckoutExpiry,
   reconcileCheckoutPayment,
 } from '@/payments/checkout-payment-service'
-import { refundMinor } from './helpers'
+import { refundMinor } from './operations'
 
-export async function checkoutOperationAction(
+function revalidateCheckoutAdmin(checkoutId: number) {
+  revalidatePath('/admin/collections/checkouts')
+  revalidatePath('/admin/collections/checkouts/operations')
+  if (Number.isSafeInteger(checkoutId) && checkoutId > 0) {
+    revalidatePath(`/admin/collections/checkouts/${checkoutId}`)
+    revalidatePath(`/admin/collections/checkouts/${checkoutId}/operations`)
+    revalidatePath(`/account/checkouts/${checkoutId}`)
+  }
+}
+
+export async function adminCheckoutReviewAction(
   _previous: ActionResult,
   data: FormData,
 ): Promise<ActionResult> {
-  if (!checkoutEnabled()) return { ok: false, formError: 'Checkout is unavailable.' }
+  const checkoutId = Number(data.get('checkout'))
+  try {
+    const decision = data.get('decision')
+    if (decision !== 'approve' && decision !== 'decline')
+      return { ok: false, formError: 'Choose approve or decline.' }
+    await reviewGuestCheckout(
+      checkoutId,
+      await requireUser(),
+      decision,
+      String(data.get('note') ?? ''),
+    )
+    revalidateCheckoutAdmin(checkoutId)
+    return { ok: true }
+  } catch {
+    return {
+      ok: false,
+      formError:
+        'The review could not be fully completed. Refresh the checkout status before retrying; an approval may have saved even if its invitation email failed.',
+    }
+  }
+}
+
+export async function adminCheckoutOperationAction(
+  _previous: ActionResult,
+  data: FormData,
+): Promise<ActionResult> {
   const user = await getCurrentUser()
   if (!user || !isAdminUser(user)) return { ok: false, formError: 'Staff access is required.' }
   try {
@@ -85,10 +120,7 @@ export async function checkoutOperationAction(
         await recordCheckoutRefund(uuid, user, reference, allocations)
       }
     } else return { ok: false, formError: 'Choose a supported operation.' }
-    revalidatePath('/checkout/operations')
-    revalidatePath(`/checkout/operations/${checkoutId}`)
-    revalidatePath('/checkout/review')
-    revalidatePath(`/account/checkouts/${checkoutId}`)
+    revalidateCheckoutAdmin(checkoutId)
     return { ok: true }
   } catch {
     return {

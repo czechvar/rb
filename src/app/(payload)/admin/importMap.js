@@ -1,3 +1,6 @@
+import { CheckoutOperationsListLink as CheckoutOperationsListLink_0149dcd7a93c0c0ba0f6a5f3d63487a0 } from '../../../components/admin/checkouts/CheckoutOperationsQueueView'
+import { CheckoutOperationsView as CheckoutOperationsView_f6beb5aff38d2b8ada5b41b2674fbfe6 } from '../../../components/admin/checkouts/CheckoutOperationsView'
+import { CheckoutOperationsQueueView as CheckoutOperationsQueueView_0149dcd7a93c0c0ba0f6a5f3d63487a0 } from '../../../components/admin/checkouts/CheckoutOperationsQueueView'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -26,6 +29,9 @@ import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } f
 
 /** @type import('payload').ImportMap */
 export const importMap = {
+  "/components/admin/checkouts/CheckoutOperationsQueueView#CheckoutOperationsListLink": CheckoutOperationsListLink_0149dcd7a93c0c0ba0f6a5f3d63487a0,
+  "/components/admin/checkouts/CheckoutOperationsView#CheckoutOperationsView": CheckoutOperationsView_f6beb5aff38d2b8ada5b41b2674fbfe6,
+  "/components/admin/checkouts/CheckoutOperationsQueueView#CheckoutOperationsQueueView": CheckoutOperationsQueueView_0149dcd7a93c0c0ba0f6a5f3d63487a0,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,
