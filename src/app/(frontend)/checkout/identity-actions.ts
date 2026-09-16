@@ -4,6 +4,7 @@ import { headers } from 'next/headers'
 import type { ActionResult } from '@/components/forms/action-result'
 import { setPayloadSession } from '@/lib/auth-session'
 import { contactNetwork } from '@/lib/contact/intake'
+import { checkoutRateLimitWindowLabel } from '@/lib/checkout/rate-limit'
 import {
   createGuestCheckout,
   verifyGuestCheckout,
@@ -27,8 +28,7 @@ export async function lookupCheckoutJourneyAction(
   } catch {
     return {
       ok: false,
-      error:
-        'We could not check this email. Enter a valid address, or wait ten minutes before trying again.',
+      error: `We could not check this email. Enter a valid address, or wait ${checkoutRateLimitWindowLabel()} before trying again.`,
     }
   }
 }
@@ -69,7 +69,7 @@ export async function createGuestCheckoutAction(
     return { ok: true, checkoutId }
   } catch {
     return error(
-      'We could not send the verification email. Check your details and cart, then try again in ten minutes or contact us directly. No seats have been reserved.',
+      `We could not send the verification email. Check your details and cart, then try again in ${checkoutRateLimitWindowLabel()} or contact us directly. No seats have been reserved.`,
     )
   }
 }

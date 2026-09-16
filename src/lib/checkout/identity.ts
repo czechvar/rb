@@ -7,6 +7,7 @@ import { isAdminUser } from '@/access'
 import type { CheckoutRecord } from './types'
 import { checkoutEnabled } from './feature'
 import { quoteCart } from './quote'
+import { checkoutRateLimitConfig, checkoutRateLimitWindowLabel } from './rate-limit'
 import { activateGuestReservation, cancelCheckout, isReturningPurchaser } from './reservations'
 import {
   checkoutDatabase,
@@ -123,13 +124,14 @@ export async function lookupCheckoutJourney(
 async function rateIdentity(payload: Payload, network: string, identity: string): Promise<void> {
   const secret = process.env.PAYLOAD_SECRET
   if (!secret) throw new Error('Checkout is not available.')
+  const limits = checkoutRateLimitConfig()
   const hash = (value: string) =>
     createHmac('sha256', secret).update(`checkout:${value}`).digest('hex')
   const admitted = await withCheckoutTransaction(payload, async (req) => {
     const db = await checkoutDatabase(req)
     const keys = [
-      { key: hash(`network:${network}`), limit: 10 },
-      { key: hash(`identity:${identity}`), limit: 3 },
+      { key: hash(`network:${network}`), limit: limits.networkMax },
+      { key: hash(`identity:${identity}`), limit: limits.emailMax },
     ].sort((a, b) => a.key.localeCompare(b.key))
     const rows = sql.join(
       keys.map((value) => sql`(${value.key}::varchar, ${value.limit}::integer)`),
@@ -137,12 +139,12 @@ async function rateIdentity(payload: Payload, network: string, identity: string)
     )
     const result = (await db.execute(sql`
       WITH gate AS (
-        INSERT INTO contact_intake_rate_limits (key,count,expires_at) VALUES (${hash('global')},1,now()+interval '10 minutes')
-        ON CONFLICT (key) DO UPDATE SET count=CASE WHEN contact_intake_rate_limits.expires_at<=now() THEN 1 ELSE contact_intake_rate_limits.count+1 END, expires_at=CASE WHEN contact_intake_rate_limits.expires_at<=now() THEN now()+interval '10 minutes' ELSE contact_intake_rate_limits.expires_at END
-        WHERE contact_intake_rate_limits.expires_at<=now() OR contact_intake_rate_limits.count<100 RETURNING key
+        INSERT INTO contact_intake_rate_limits (key,count,expires_at) VALUES (${hash('global')},1,now()+(${limits.windowSeconds} * interval '1 second'))
+        ON CONFLICT (key) DO UPDATE SET count=CASE WHEN contact_intake_rate_limits.expires_at<=now() THEN 1 ELSE contact_intake_rate_limits.count+1 END, expires_at=CASE WHEN contact_intake_rate_limits.expires_at<=now() THEN now()+(${limits.windowSeconds} * interval '1 second') ELSE contact_intake_rate_limits.expires_at END
+        WHERE contact_intake_rate_limits.expires_at<=now() OR contact_intake_rate_limits.count<${limits.globalMax} RETURNING key
       ), requested(key,maximum) AS (VALUES ${rows}), admitted AS (
-        INSERT INTO contact_intake_rate_limits (key,count,expires_at) SELECT key,1,now()+interval '10 minutes' FROM requested WHERE EXISTS(SELECT 1 FROM gate) ORDER BY key
-        ON CONFLICT (key) DO UPDATE SET count=CASE WHEN contact_intake_rate_limits.expires_at<=now() THEN 1 ELSE contact_intake_rate_limits.count+1 END, expires_at=CASE WHEN contact_intake_rate_limits.expires_at<=now() THEN now()+interval '10 minutes' ELSE contact_intake_rate_limits.expires_at END
+        INSERT INTO contact_intake_rate_limits (key,count,expires_at) SELECT key,1,now()+(${limits.windowSeconds} * interval '1 second') FROM requested WHERE EXISTS(SELECT 1 FROM gate) ORDER BY key
+        ON CONFLICT (key) DO UPDATE SET count=CASE WHEN contact_intake_rate_limits.expires_at<=now() THEN 1 ELSE contact_intake_rate_limits.count+1 END, expires_at=CASE WHEN contact_intake_rate_limits.expires_at<=now() THEN now()+(${limits.windowSeconds} * interval '1 second') ELSE contact_intake_rate_limits.expires_at END
         WHERE contact_intake_rate_limits.expires_at<=now() OR contact_intake_rate_limits.count<(SELECT maximum FROM requested WHERE requested.key=contact_intake_rate_limits.key) RETURNING key
       ) SELECT ((SELECT count(*) FROM admitted)+(SELECT count(*) FROM gate))::integer AS admitted
     `)) as { rows?: Array<{ admitted?: number }> }
@@ -151,7 +153,10 @@ async function rateIdentity(payload: Payload, network: string, identity: string)
     )
     return result.rows?.[0]?.admitted === 3
   })
-  if (!admitted) throw new Error('Too many attempts. Please wait ten minutes before trying again.')
+  if (!admitted)
+    throw new Error(
+      `Too many attempts. Please wait ${checkoutRateLimitWindowLabel()} before trying again.`,
+    )
 }
 
 async function recordNotification(

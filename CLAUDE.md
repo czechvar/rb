@@ -150,6 +150,11 @@ because the application build succeeds. Existing single-order callbacks continue
 working when the flag is off. The current daily Vercel cron is insufficient for
 prompt 24-hour hold expiry; configure an authenticated scheduler to call
 `/api/payments/muzapay/reconcile` at least every ten minutes before enablement.
+Checkout identity throttling is configured with
+`CHECKOUT_RATE_LIMIT_EMAIL_MAX`, `CHECKOUT_RATE_LIMIT_NETWORK_MAX`,
+`CHECKOUT_RATE_LIMIT_GLOBAL_MAX`, and `CHECKOUT_RATE_LIMIT_WINDOW_SECONDS`.
+Development defaults to a one-minute, high-volume allowance; production defaults
+preserve the stricter ten-minute limits. Configure all four explicitly in Vercel.
 No browser or ordinary API caller may invoke reconciliation without `CRON_SECRET`.
 Use `pnpm test:checkout` for marked fixtures in a disposable localhost database;
 its teardown drops that database. Checkouts, transactions and verification tokens
