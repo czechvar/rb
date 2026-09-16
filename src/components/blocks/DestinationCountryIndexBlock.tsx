@@ -5,6 +5,7 @@ import type { Location, Page } from '@/payload-types'
 import { getPayloadClient } from '@/lib/payload'
 import { mediaAlt, mediaUrl } from '@/lib/media'
 import { BlockHeader } from './CatalogueCards'
+import { CountryFlag } from './CountryFlag'
 import styles from './blocks.module.css'
 
 type DestinationCountryIndexBlockProps = Extract<
@@ -15,29 +16,7 @@ type DestinationCountryIndexBlockProps = Extract<
 type CountryGroup = {
   country: string
   anchor: string
-  code: string | null
   locations: Location[]
-}
-
-const countryCodes: Record<string, string> = {
-  austria: 'at',
-  balkans: '',
-  croatia: 'hr',
-  'czech republic': 'cz',
-  czechia: 'cz',
-  elsewhere: '',
-  france: 'fr',
-  germany: 'de',
-  greece: 'gr',
-  italy: 'it',
-  malta: 'mt',
-  norway: 'no',
-  slovakia: 'sk',
-  slovenia: 'si',
-  spain: 'es',
-  sweden: 'se',
-  switzerland: 'ch',
-  turkey: 'tr',
 }
 
 export async function DestinationCountryIndexBlock({
@@ -60,7 +39,7 @@ export async function DestinationCountryIndexBlock({
         <nav className={styles.destinationJumpBar} aria-label="Destination countries">
           {groups.map((group) => (
             <a key={group.country} href={`#${group.anchor}`} className={styles.destinationJumpPill}>
-              <CountryFlag code={group.code} label={group.country} compact />
+              <CountryFlag country={group.country} label={group.country} size="compact" />
               <span>{group.country}</span>
             </a>
           ))}
@@ -70,7 +49,7 @@ export async function DestinationCountryIndexBlock({
         <section key={group.country} className={styles.destinationCountrySection} id={group.anchor}>
           <div className={styles.sectionInner}>
             <div className={styles.destinationCountryHead}>
-              <CountryFlag code={group.code} label={group.country} />
+              <CountryFlag country={group.country} label={group.country} />
               <h2>{group.country}</h2>
               <span>
                 {group.locations.length} {group.locations.length === 1 ? 'destination' : 'destinations'}
@@ -118,7 +97,6 @@ async function getCountryGroups(
     .map(([country, locations]) => ({
       country,
       anchor: countryAnchor(country),
-      code: countryCodes[country.toLowerCase()] ?? null,
       locations: locations.sort((a, b) => a.name.localeCompare(b.name)),
     }))
 }
@@ -152,34 +130,16 @@ function DestinationCard({
       ) : null}
       <span className={styles.destinationCardOverlay} aria-hidden="true" />
       <span className={styles.destinationCardFlag}>
-        <CountryFlag code={countryCodes[(location.country ?? '').toLowerCase()] ?? null} label={location.country ?? location.name} compact />
+        <CountryFlag
+          country={location.country}
+          label={location.country ?? location.name}
+          size="compact"
+        />
       </span>
       <strong>{location.name}</strong>
       {teaser ? <span className={styles.destinationCardTeaser}>{teaser}</span> : null}
       <span className={styles.destinationCardLink}>View destination</span>
     </Link>
-  )
-}
-
-function CountryFlag({
-  code,
-  compact,
-  label,
-}: {
-  code: string | null
-  compact?: boolean
-  label: string
-}) {
-  if (!code) return <span className={compact ? styles.flagFallbackCompact : styles.flagFallback} />
-
-  const width = compact ? 40 : 80
-  return (
-    <span
-      aria-label={`${label} flag`}
-      role="img"
-      className={compact ? styles.destinationFlagCompact : styles.destinationFlag}
-      style={{ backgroundImage: `url(https://flagcdn.com/w${width}/${code}.png)` }}
-    />
   )
 }
 

@@ -5,6 +5,7 @@ import type { Event, EventDate, Guide, Location, Post, Program } from '@/payload
 import { mediaAlt, mediaUrl } from '@/lib/media'
 import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
 import { tripPublicDatePath } from '@/lib/occurrence-routing'
+import { CountryFlag } from './CountryFlag'
 import styles from './blocks.module.css'
 import effects from '../effects/interaction.module.css'
 
@@ -115,9 +116,6 @@ export function LocationCard({
   const isTile = variant === 'countryTiles'
   const content = (
     <>
-      {isTile && location.country ? (
-        <span className={styles.locationCountryMark}>{countryCode(location.country)}</span>
-      ) : null}
       <p className={styles.cardMeta}>{place || 'Location'}</p>
       <h3 data-type="subheading">{location.name}</h3>
       {location.country ? <p>{location.country}</p> : null}
@@ -130,8 +128,16 @@ export function LocationCard({
       href={`/destinations/${location.slug}`}
       className={[className ?? styles.domainCard, isTile ? styles.locationTileCard : ''].filter(Boolean).join(' ')}
     >
-      {(isTile || variant === 'mediaLed') && image ? (
-        <span className={isTile ? styles.locationCardPhoto : styles.locationTileImage} aria-hidden="true">
+      {isTile ? (
+        <span className={styles.locationCardFlag}>
+          <CountryFlag
+            country={location.country}
+            label={location.country || location.name}
+            size="tile"
+          />
+        </span>
+      ) : variant === 'mediaLed' && image ? (
+        <span className={styles.locationTileImage} aria-hidden="true">
           <Image src={image} alt="" fill sizes="(max-width: 768px) 100vw, 25vw" />
         </span>
       ) : null}
@@ -203,10 +209,6 @@ export function EventDateCard({
 function locationLabel(locations: Event['locations']): string | null {
   const first = locations?.[0]
   return typeof first === 'object' && first ? (first as Location).name : null
-}
-
-function countryCode(country: string) {
-  return country.trim().slice(0, 2).toUpperCase()
 }
 
 function formatPostDate(value: string | null | undefined) {
