@@ -4,13 +4,12 @@
   align-items: flex-start;
   justify-content: center;
   padding: 48px 16px;
-  background: var(--color-surface, var(--theme-color-paper));
 }
 .card {
-  background: var(--theme-color-paper);
+  background: var(--theme-color-surface-1);
+  border: 1px solid var(--theme-color-border);
   border-radius: 8px;
   padding: 32px;
   width: 100%;
   max-width: var(--theme-content-form-max);
-  box-shadow: var(--theme-shadow-auth-card);
 }
