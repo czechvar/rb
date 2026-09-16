@@ -26,15 +26,18 @@ opener = urllib.request.build_opener(NoRedirect)
 
 def request(url, follow_redirects=False):
     active_opener = urllib.request.build_opener() if follow_redirects else opener
-    request = urllib.request.Request(url, headers={"User-Agent": "Rockbusters redirect audit"})
-    try:
-        with active_opener.open(request, timeout=20) as response:
-            response.read(1)
-            return response.status, response.headers.get("Location"), response.geturl()
-    except urllib.error.HTTPError as error:
-        return error.code, error.headers.get("Location"), error.geturl()
-    except (TimeoutError, urllib.error.URLError):
-        return 0, None, None
+    for attempt in range(2):
+        request = urllib.request.Request(url, headers={"User-Agent": "Rockbusters redirect audit"})
+        try:
+            with active_opener.open(request, timeout=30) as response:
+                response.read(1)
+                return response.status, response.headers.get("Location"), response.geturl()
+        except urllib.error.HTTPError as error:
+            return error.code, error.headers.get("Location"), error.geturl()
+        except (TimeoutError, urllib.error.URLError):
+            if attempt == 1:
+                return 0, None, None
+    return 0, None, None
 
 
 def path_and_query(url):
@@ -67,7 +70,7 @@ def main():
     with OVERVIEW.open(newline="") as handle:
         rows = list(csv.DictReader(handle))
     checked_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         validations = list(executor.map(audit, rows))
     for row, validation in zip(rows, validations):
         row["validationStatus"] = validation
