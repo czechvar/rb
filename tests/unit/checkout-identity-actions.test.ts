@@ -7,6 +7,7 @@ const mocks = vi.hoisted(() => ({
   currentUser: vi.fn(),
   login: vi.fn(),
   setCookie: vi.fn(),
+  checkoutEnabled: vi.fn(() => true),
 }))
 
 vi.mock('next/headers', () => ({
@@ -16,6 +17,7 @@ vi.mock('next/headers', () => ({
 vi.mock('next/cache', () => ({ revalidatePath: vi.fn() }))
 vi.mock('@/lib/contact/intake', () => ({ contactNetwork: () => 'test-network' }))
 vi.mock('@/lib/auth', () => ({ getCurrentUser: mocks.currentUser }))
+vi.mock('@/lib/checkout/feature', () => ({ checkoutEnabled: mocks.checkoutEnabled }))
 vi.mock('@/lib/payload', () => ({ getPayloadClient: async () => ({ login: mocks.login }) }))
 vi.mock('@/lib/checkout/identity', () => ({
   acceptCheckoutInvitation: mocks.accept,
@@ -34,7 +36,10 @@ import {
 } from '@/app/(frontend)/checkout/identity-actions'
 
 describe('guest checkout identity actions', () => {
-  beforeEach(() => vi.clearAllMocks())
+  beforeEach(() => {
+    vi.clearAllMocks()
+    mocks.checkoutEnabled.mockReturnValue(true)
+  })
 
   it('logs a new invited customer in and sends them directly to checkout payment', async () => {
     mocks.currentUser.mockResolvedValue(null)
@@ -103,6 +108,19 @@ describe('guest checkout identity actions', () => {
       'fixture-session-token',
       expect.objectContaining({ httpOnly: true, sameSite: 'lax', path: '/' }),
     )
+  })
+
+  it('does not authenticate through the checkout action while checkout is disabled', async () => {
+    mocks.checkoutEnabled.mockReturnValue(false)
+    const data = new FormData()
+    data.set('email', 'ada@example.test')
+    data.set('password', 'FixturePassword42!')
+
+    await expect(loginCheckoutAction(null, data)).resolves.toEqual({
+      ok: false,
+      formError: 'Checkout is currently unavailable.',
+    })
+    expect(mocks.login).not.toHaveBeenCalled()
   })
 
   it('keeps a newly created guest checkout inline and returns only its identifier', async () => {

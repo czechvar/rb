@@ -2,18 +2,15 @@
 
 import { cookies } from 'next/headers'
 import { getCurrentUser } from '@/lib/auth'
-import { getPayloadClient } from '@/lib/payload'
 import { checkoutEnabled } from '@/lib/checkout/feature'
 import { quoteCart } from '@/lib/checkout/quote'
 import {
   cancelCheckout,
-  isReturningPurchaser,
   reserveCheckout,
   updateCheckoutBilling,
 } from '@/lib/checkout/reservations'
 import { beginCheckoutPayment } from '@/payments/checkout-payment-service'
 import { REFERRAL_COOKIE_NAME } from '@/lib/referral'
-import { addressSchema } from '@/app/(frontend)/account/addresses/schema'
 import type { ActionResult } from '@/components/forms/action-result'
 import { checkoutDisplayItem, type CheckoutDisplayQuote } from '@/components/checkout/presentation'
 import type { QuoteInput } from '@/lib/checkout/types'
@@ -63,41 +60,29 @@ export async function reserveCheckoutAction(
   try {
     const user = await getCurrentUser()
     if (!user) return { ok: false, formError: 'Please log in again before reserving your trips.' }
-    const returning = await isReturningPurchaser(await getPayloadClient(), user)
-    const address = returning
-      ? addressSchema.safeParse(
-          Object.fromEntries(
-            [
-              'firstName',
-              'lastName',
-              'street',
-              'city',
-              'postalCode',
-              'country',
-              'companyName',
-              'ico',
-              'dic',
-            ].map((name) => [name, data.get(name) ?? '']),
-          ),
-        )
-      : undefined
-    if (address && !address.success)
-      return {
-        ok: false,
-        fieldErrors: Object.fromEntries(
-          address.error.issues.map((issue) => [String(issue.path[0]), issue.message]),
-        ),
-      }
+    const savedAddress = user.addresses?.find((entry) => entry.isDefault) || user.addresses?.[0]
     const checkout = await reserveCheckout(
       {
         submissionKey: String(data.get('submissionKey') ?? ''),
         contact: {
-          name: String(data.get('name') ?? ''),
+          name: user.name,
           email: user.email,
-          phone: String(data.get('phone') ?? ''),
+          phone: user.phone || '',
         },
         items: JSON.parse(String(data.get('items') ?? '[]')),
-        billingAddress: address?.success ? address.data : undefined,
+        billingAddress: savedAddress
+          ? {
+              firstName: savedAddress.firstName,
+              lastName: savedAddress.lastName,
+              street: savedAddress.street,
+              city: savedAddress.city,
+              postalCode: savedAddress.postalCode,
+              country: savedAddress.country,
+              companyName: savedAddress.company?.companyName || '',
+              ico: savedAddress.company?.ico || '',
+              dic: savedAddress.company?.dic || '',
+            }
+          : undefined,
         discountCode: String(data.get('discountCode') ?? ''),
         referralCode: await referral(),
       },

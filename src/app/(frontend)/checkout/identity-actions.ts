@@ -4,6 +4,7 @@ import { headers } from 'next/headers'
 import type { ActionResult } from '@/components/forms/action-result'
 import { contactNetwork } from '@/lib/contact/intake'
 import { authenticateWithPassword } from '@/lib/password-login'
+import { checkoutEnabled } from '@/lib/checkout/feature'
 import { checkoutRateLimitWindowLabel } from '@/lib/checkout/rate-limit'
 import {
   createGuestCheckout,
@@ -96,6 +97,7 @@ export async function loginCheckoutAction(
   _previous: ActionResult | null,
   data: FormData,
 ): Promise<ActionResult> {
+  if (!checkoutEnabled()) return error('Checkout is currently unavailable.')
   const result = await authenticateWithPassword({
     email: data.get('email'),
     password: data.get('password'),

@@ -6,7 +6,10 @@ import { checkoutEnabled } from '@/lib/checkout/feature'
 import { availableCheckoutMethods } from '@/payments/checkout-payment-service'
 import type { CheckoutRecord } from '@/lib/checkout/types'
 import { checkoutDisplayItem } from '@/components/checkout/presentation'
-import { CheckoutPayment } from '@/components/checkout/CheckoutPayment'
+import {
+  CheckoutPayment,
+  type BillingAddressValues,
+} from '@/components/checkout/CheckoutPayment'
 import { money, date } from '@/components/checkout/format'
 import styles from '@/components/checkout/checkout.module.css'
 export const metadata = { title: 'Your reservation — Rockbusters' }
@@ -52,6 +55,20 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
       : active && partlyPaid
         ? 'Payment received — balance outstanding'
         : states[checkout.state]
+  const billingAddress =
+    checkout.billingAddress &&
+    ['firstName', 'lastName', 'street', 'city', 'postalCode', 'country'].every(
+      (field) =>
+        typeof checkout.billingAddress?.[field] === 'string' &&
+        String(checkout.billingAddress[field]).trim(),
+    )
+      ? (Object.fromEntries(
+          ['firstName', 'lastName', 'street', 'city', 'postalCode', 'country'].map((field) => [
+            field,
+            String(checkout.billingAddress?.[field]),
+          ]),
+        ) as BillingAddressValues)
+      : undefined
   // Server request snapshot is serialized to the client so payment amounts hydrate consistently.
   // eslint-disable-next-line react-hooks/purity
   const asOf = Date.now()
@@ -152,14 +169,8 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
           items={activeItems.map(checkoutDisplayItem)}
           paymentMethod={checkout.paymentMethod}
           methods={availableCheckoutMethods()}
-          billingReady={
-            !!checkout.billingAddress &&
-            ['firstName', 'lastName', 'street', 'city', 'postalCode', 'country'].every(
-              (field) =>
-                typeof checkout.billingAddress?.[field] === 'string' &&
-                String(checkout.billingAddress[field]).trim(),
-            )
-          }
+          billingReady={!!billingAddress}
+          billingAddress={billingAddress}
         />
       </div>
     </div>

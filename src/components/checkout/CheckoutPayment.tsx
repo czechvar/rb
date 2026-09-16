@@ -20,8 +20,13 @@ type Props = {
   paymentMethod?: CheckoutMethod | null
   methods: { card: boolean; benefit: boolean }
   billingReady?: boolean
+  billingAddress?: BillingAddressValues
   asOf: number
 }
+export type BillingAddressValues = Record<
+  'firstName' | 'lastName' | 'street' | 'city' | 'postalCode' | 'country',
+  string
+>
 export function CheckoutPayment({
   checkoutId,
   state,
@@ -30,6 +35,7 @@ export function CheckoutPayment({
   paymentMethod,
   methods,
   billingReady = false,
+  billingAddress,
   asOf,
 }: Props) {
   const router = useRouter()
@@ -43,6 +49,7 @@ export function CheckoutPayment({
   )
   const [pending, setPending] = useState(false)
   const [error, setError] = useState('')
+  const [editingBilling, setEditingBilling] = useState(!billingReady)
   const busy = useRef(false)
   const paid =
     Boolean(paymentMethod) || items.some((item) => item.paidMinor > 0 || item.paidCzkMinor > 0)
@@ -107,7 +114,29 @@ export function CheckoutPayment({
           {error}
         </p>
       )}
-      {active && remaining > 0 && !billingReady && <BillingForm checkoutId={checkoutId} />}
+      {active && remaining > 0 && (!billingReady || editingBilling) && (
+        <BillingForm
+          checkoutId={checkoutId}
+          initialValues={billingAddress}
+          updating={billingReady}
+        />
+      )}
+      {active && remaining > 0 && billingReady && !editingBilling && (
+        <section className={styles.panel}>
+          <h2 data-type="card-lg">Payer address</h2>
+          {billingAddress && (
+            <p className={styles.muted}>
+              {billingAddress.firstName} {billingAddress.lastName}
+              <br />
+              {billingAddress.street}, {billingAddress.postalCode} {billingAddress.city},{' '}
+              {billingAddress.country}
+            </p>
+          )}
+          <button className={`btn-ghost ${styles.button}`} onClick={() => setEditingBilling(true)}>
+            Edit payer address
+          </button>
+        </section>
+      )}
       {active && remaining > 0 && billingReady && (
         <section className={styles.panel}>
           <h2 data-type="card-lg">Payment</h2>
@@ -210,7 +239,7 @@ export function CheckoutPayment({
                     .
                   </p>
                 )}
-                <button className={styles.button}>
+                <button className={`btn-primary ${styles.button}`}>
                   {pending ? 'Opening payment…' : 'Continue to secure payment'}
                 </button>
               </fieldset>
@@ -229,7 +258,7 @@ export function CheckoutPayment({
           <p className={styles.muted}>
             Cancelling releases the reservation. Any settled payment requires staff reconciliation.
           </p>
-          <button disabled={pending} className={`${styles.button} ${styles.secondary}`}>
+          <button disabled={pending} className={`btn-ghost ${styles.button}`}>
             Cancel reservation
           </button>
         </form>
@@ -244,16 +273,24 @@ export function CheckoutPayment({
   )
 }
 
-function BillingForm({ checkoutId }: { checkoutId: number }) {
+function BillingForm({
+  checkoutId,
+  initialValues,
+  updating = false,
+}: {
+  checkoutId: number
+  initialValues?: BillingAddressValues
+  updating?: boolean
+}) {
   const router = useRouter()
   const id = useId()
   const [values, setValues] = useState({
-    firstName: '',
-    lastName: '',
-    street: '',
-    city: '',
-    postalCode: '',
-    country: '',
+    firstName: initialValues?.firstName || '',
+    lastName: initialValues?.lastName || '',
+    street: initialValues?.street || '',
+    city: initialValues?.city || '',
+    postalCode: initialValues?.postalCode || '',
+    country: initialValues?.country || '',
   })
   const [pending, setPending] = useState(false)
   const [error, setError] = useState('')
@@ -313,7 +350,9 @@ function BillingForm({ checkoutId }: { checkoutId: number }) {
               />
             </label>
           ))}
-          <button className={styles.button}>{pending ? 'Saving…' : 'Save payer address'}</button>
+          <button className={`btn-primary ${styles.button}`}>
+            {pending ? 'Saving…' : updating ? 'Update payer address' : 'Save payer address'}
+          </button>
         </fieldset>
       </form>
     </section>

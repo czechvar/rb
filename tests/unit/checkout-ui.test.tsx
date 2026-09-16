@@ -88,7 +88,6 @@ it('restores the same dated selections after login and updates quantities withou
   render(
     <CheckoutFlow
       mode="checkout"
-      returning
       contact={{ name: 'Test Visitor', email: 'visitor@example.test', phone: '+420123456789' }}
     />,
   )
@@ -97,7 +96,7 @@ it('restores the same dated selections after login and updates quantities withou
   expect(window.localStorage.getItem(CART_STORAGE_KEY)).not.toContain('visitor')
 })
 
-it('does not ask an authenticated customer to verify their email again', async () => {
+it('routes an authenticated customer directly to reservation and payment', async () => {
   mocks.reserve.mockResolvedValue({ ok: false, formError: 'Please retry.' })
   render(
     <CheckoutFlow
@@ -106,8 +105,20 @@ it('does not ask an authenticated customer to verify their email again', async (
     />,
   )
   await screen.findByRole('heading', { name: 'Test climbing trip' })
+  expect(screen.getByRole('heading', { name: 'Welcome back, Test Customer' })).toBeTruthy()
   expect(screen.queryByRole('button', { name: 'Send verification email' })).toBeNull()
-  fireEvent.submit(screen.getByRole('button', { name: 'Reserve checkout' }).closest('form')!)
+  expect(screen.queryByRole('button', { name: 'Reserve checkout' })).toBeNull()
+  expect(screen.queryByLabelText('Email')).toBeNull()
+  expect(screen.queryByLabelText('Full name')).toBeNull()
+  expect(screen.queryByLabelText('Phone including country code (optional)')).toBeNull()
+  expect(
+    screen
+      .getByRole('button', { name: 'Reserve and continue to payment' })
+      .classList.contains('btn-primary'),
+  ).toBe(true)
+  fireEvent.submit(
+    screen.getByRole('button', { name: 'Reserve and continue to payment' }).closest('form')!,
+  )
   await waitFor(() => expect(mocks.reserve).toHaveBeenCalledTimes(1))
   expect(mocks.guest).not.toHaveBeenCalled()
 })
@@ -144,7 +155,9 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
     true,
   )
   expect(screen.queryByRole('link', { name: 'Add another trip' })).toBeNull()
-  expect(screen.getByRole('button', { name: 'Verify and reserve' })).toBeTruthy()
+  expect(
+    screen.getByRole('button', { name: 'Verify and reserve' }).classList.contains('btn-primary'),
+  ).toBe(true)
   expect(mocks.push).not.toHaveBeenCalled()
   expect(mocks.guest.mock.calls[1][1].get('submissionKey')).toBe(firstId)
   expect(mocks.reserve).not.toHaveBeenCalled()
@@ -235,12 +248,31 @@ it('keeps the original payment method after settlement and submits selected bala
       items={[{ ...item, paidMinor: 2500 }]}
       paymentMethod="muzapay"
       billingReady
+      billingAddress={{
+        firstName: 'Saved',
+        lastName: 'Customer',
+        street: 'Saved street 1',
+        city: 'Prague',
+        postalCode: '11000',
+        country: 'Czechia',
+      }}
       methods={{ card: true, benefit: true }}
     />,
   )
+  fireEvent.click(screen.getByRole('button', { name: 'Edit payer address' }))
+  expect((screen.getByLabelText('First name') as HTMLInputElement).value).toBe('Saved')
+  expect((screen.getByLabelText('Street and number') as HTMLInputElement).value).toBe(
+    'Saved street 1',
+  )
+  expect(screen.getByRole('button', { name: 'Update payer address' })).toBeTruthy()
   expect(screen.queryByRole('option', { name: 'Card — Comgate' })).toBeNull()
   expect(
     (screen.getByRole('radio', { name: /Pay selected trip balances/ }) as HTMLInputElement).checked,
+  ).toBe(true)
+  expect(
+    screen
+      .getByRole('button', { name: 'Continue to secure payment' })
+      .classList.contains('btn-primary'),
   ).toBe(true)
   await act(async () => {
     fireEvent.submit(
@@ -265,6 +297,9 @@ it('collects billing before an approved new customer can open payment and preser
     />,
   )
   expect(screen.queryByRole('button', { name: 'Continue to secure payment' })).toBeNull()
+  expect(
+    screen.getByRole('button', { name: 'Save payer address' }).classList.contains('btn-primary'),
+  ).toBe(true)
   fireEvent.change(screen.getByLabelText('First name'), { target: { value: 'Test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Save payer address' }).closest('form')!)
   await screen.findByText('Address unavailable.')
@@ -320,7 +355,6 @@ it('reserves a returning purchaser basket once while pending and clears only sub
   render(
     <CheckoutFlow
       mode="checkout"
-      returning
       contact={{ name: 'Test Visitor', email: 'visitor@example.test', phone: '+420123456789' }}
     />,
   )
@@ -374,34 +408,20 @@ it('asks for email first and routes any known account to login without collectin
   ])
 })
 
-it('prefills saved billing fields while preserving visitor edits after a failed reservation', async () => {
+it('does not ask an authenticated customer for saved billing details again', async () => {
   mocks.reserve.mockResolvedValue({ ok: false, formError: 'Please retry.' })
   render(
     <CheckoutFlow
       mode="checkout"
-      returning
       contact={{ name: 'Test Customer', email: 'customer@example.test', phone: '+420123456789' }}
-      initialBilling={{
-        firstName: 'Saved',
-        lastName: 'Customer',
-        street: 'Saved street 1',
-        city: 'Prague',
-        postalCode: '11000',
-        country: 'Czechia',
-      }}
     />,
   )
   await screen.findByRole('heading', { name: 'Test climbing trip' })
-  expect((screen.getByLabelText('Payer first name') as HTMLInputElement).value).toBe('Saved')
-  fireEvent.change(screen.getByLabelText('Street and number'), {
-    target: { value: 'Updated street 2' },
-  })
+  expect(screen.queryByLabelText('Payer first name')).toBeNull()
+  expect(screen.queryByLabelText('Street and number')).toBeNull()
   fireEvent.submit(
     screen.getByRole('button', { name: 'Reserve and continue to payment' }).closest('form')!,
   )
   await screen.findByText('Please retry.')
-  expect((screen.getByLabelText('Street and number') as HTMLInputElement).value).toBe(
-    'Updated street 2',
-  )
-  expect(window.localStorage.getItem(CART_STORAGE_KEY)).not.toContain('Updated street')
+  expect(mocks.reserve).toHaveBeenCalledTimes(1)
 })

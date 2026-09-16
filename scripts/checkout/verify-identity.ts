@@ -158,22 +158,15 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
     assert.equal(await isReturningPurchaser(payload, users.docs[0]), false)
     passed('guest-invitation-creates-verified-account-once-without-purchase-shortcut')
 
-    const existing = await payload.create({
-      collection: 'users',
-      disableVerificationEmail: true,
-      data: {
-        name: '[Checkout identity test] Existing',
-        email: 'checkout-identity-existing@example.invalid',
-        phone: '+420123456789',
-        password: 'OriginalFixturePassword42!',
-        role: 'customer',
-        _verified: true,
-      },
-    })
+    const existingContact = {
+      name: '[Checkout identity test] Existing',
+      email: 'checkout-identity-existing@example.invalid',
+      phone: '+420123456789',
+    }
     const existingId = await createGuestCheckout(
       {
         submissionKey: randomUUID(),
-        contact: { name: existing.name, email: existing.email, phone: existing.phone },
+        contact: existingContact,
         items: [{ eventDateId: date.id, quantity: 1 }],
       },
       'fixture-existing-network',
@@ -190,6 +183,16 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       '[Checkout identity test] Existing account',
     )
     const existingToken = invitationTokenFromLastMessage()
+    const existing = await payload.create({
+      collection: 'users',
+      disableVerificationEmail: true,
+      data: {
+        ...existingContact,
+        password: 'OriginalFixturePassword42!',
+        role: 'customer',
+        _verified: true,
+      },
+    })
     await assert.rejects(() =>
       acceptCheckoutInvitation(
         existingId,
@@ -221,7 +224,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       ),
       'new',
     )
-    assert.equal(await lookupCheckoutJourney(existing.email, 'fixture-lookup-network'), 'new')
+    assert.equal(await lookupCheckoutJourney(existing.email, 'fixture-lookup-network'), 'login')
     const buyer = await payload.create({
       collection: 'users',
       disableVerificationEmail: true,
@@ -282,7 +285,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       ).totalDocs,
       0,
     )
-    passed('email-first-distinguishes-purchasers-from-new-and-unused-accounts')
+    passed('email-first-routes-any-known-account-to-login')
     passed('returning-purchaser-cannot-bypass-login-through-guest-create')
 
     const expiredId = await createGuestCheckout(

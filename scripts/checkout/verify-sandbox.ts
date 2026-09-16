@@ -195,13 +195,13 @@ async function main() {
       },
       firstTimeUser,
     )
-    assert.equal(firstTimeCheckout.state, 'awaitingReview')
+    assert.equal(firstTimeCheckout.state, 'reserved')
     assert.equal(firstTimeCheckout.customerKind, 'new')
     assert(checkoutOwner(firstTimeCheckout, firstTimeUser))
     assert(firstTimeCheckout.billingAddress == null)
-    assert(firstTimeCheckout.expiresAt == null)
+    assert(firstTimeCheckout.expiresAt)
     assert(firstTimeCheckout.items.every((item) => item.orderId))
-    passed('authenticated-first-checkout-skips-email-verification')
+    passed('authenticated-checkout-continues-to-payment')
     const user = await payload.create({
       collection: 'users',
       disableVerificationEmail: true,

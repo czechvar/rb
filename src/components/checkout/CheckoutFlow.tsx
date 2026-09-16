@@ -34,16 +34,10 @@ export function CheckoutFlow({
   mode,
   add,
   contact,
-  returning = false,
-  initialBilling,
 }: {
   mode: 'cart' | 'checkout'
   add?: number
   contact?: CheckoutContact
-  returning?: boolean
-  initialBilling?: Partial<
-    Record<'firstName' | 'lastName' | 'street' | 'city' | 'postalCode' | 'country', string>
-  >
 }) {
   const cart = useCart()
   const router = useRouter()
@@ -74,12 +68,6 @@ export function CheckoutFlow({
     name: contact?.name || '',
     email: contact?.email || '',
     phone: contact?.phone || '',
-    firstName: initialBilling?.firstName || contact?.name.split(' ')[0] || '',
-    lastName: initialBilling?.lastName || contact?.name.split(' ').slice(1).join(' ') || '',
-    street: initialBilling?.street || '',
-    city: initialBilling?.city || '',
-    postalCode: initialBilling?.postalCode || '',
-    country: initialBilling?.country || '',
   })
   useEffect(() => {
     if (!add) added.current = null
@@ -143,13 +131,7 @@ export function CheckoutFlow({
               ? 254
               : name === 'phone'
                 ? 20
-                : name === 'street'
-                  ? 250
-                  : name === 'postalCode'
-                    ? 30
-                    : name === 'country'
-                      ? 100
-                      : 120
+                : 120
           }
           readOnly={name === 'email' && !!contact}
           aria-invalid={errors?.[name] ? true : undefined}
@@ -276,7 +258,7 @@ export function CheckoutFlow({
           We have received your request and will email you when it is approved and ready for
           payment.
         </p>
-        <Link className={styles.button} href="/trips">
+        <Link className={`btn-primary ${styles.button}`} href="/trips">
           Explore more trips
         </Link>
       </div>
@@ -293,7 +275,7 @@ export function CheckoutFlow({
         <p className={styles.muted}>
           Choose a dated trip to start planning your next days on the rock.
         </p>
-        <Link className={styles.button} href="/trips">
+        <Link className={`btn-primary ${styles.button}`} href="/trips">
           Explore trips
         </Link>
       </div>
@@ -389,7 +371,7 @@ export function CheckoutFlow({
             </label>
             <div className={styles.actions}>
               <button
-                className={`${styles.button} ${styles.secondary}`}
+                className={`btn-ghost ${styles.button}`}
                 disabled={cartEditingLocked}
               >
                 Apply code
@@ -401,8 +383,8 @@ export function CheckoutFlow({
         {mode === 'checkout' && (
           <section className={styles.panel}>
             <h2 data-type="card-lg">
-              {returning
-                ? 'Payer and billing details'
+              {contact
+                ? `Welcome back${contact.name ? `, ${contact.name}` : ''}`
                 : journey === 'login'
                   ? 'Sign in to continue'
                 : !contact && journey === 'unknown'
@@ -410,12 +392,10 @@ export function CheckoutFlow({
                   : 'Your details'}
             </h2>
             <p className={styles.muted}>
-              {returning
-                ? 'Reserve every date together, then choose full payment or the amount due now. Unpaid returning-customer reservations are held for 24 hours, subject to payment reconciliation.'
+              {contact
+                ? 'Reserve every date together, then choose full payment or the amount due now. Unpaid reservations are held for 24 hours, subject to payment reconciliation.'
                 : journey === 'login'
                   ? 'We found an account for this email. Sign in to continue with your reservation and payment.'
-                : contact
-                  ? 'Reserve your dates for review. We will email you when your request is approved and ready for payment.'
                   : 'Verify your email before we reserve your dates for review. We will invite you to set up your account and pay once approved.'}
             </p>
             {!contact && journey !== 'login' && (
@@ -431,7 +411,7 @@ export function CheckoutFlow({
                   {result.formError}
                 </p>
               )}
-              {result.ok && !guestVerification && (
+              {result.ok && !guestVerification && !contact && (
                 <p role="status">
                   {journey === 'login'
                     ? 'Signed in. Continuing with your checkout…'
@@ -466,11 +446,11 @@ export function CheckoutFlow({
                         required
                       />
                     </label>
-                    <button className={styles.button}>Verify and reserve</button>
+                    <button className={`btn-primary ${styles.button}`}>Verify and reserve</button>
                   </>
                 ) : (
                   <>
-                    {field('email', 'Email', 'email')}
+                    {!contact && field('email', 'Email', 'email')}
                     {journey === 'login' && !contact && (
                       <label className={styles.field} htmlFor={`${id}-password`}>
                         Password
@@ -495,7 +475,7 @@ export function CheckoutFlow({
                         )}
                       </label>
                     )}
-                    {(contact || journey === 'new') && (
+                    {!contact && journey === 'new' && (
                       <>
                         {field('name', 'Full name')}
                         {field('phone', 'Phone including country code (optional)', 'tel', false)}
@@ -503,24 +483,10 @@ export function CheckoutFlow({
                     )}
                   </>
                 )}
-                {!guestVerification && returning && (
-                  <>
-                    <div className={styles.formRow}>
-                      {field('firstName', 'Payer first name')}
-                      {field('lastName', 'Payer last name')}
-                    </div>
-                    {field('street', 'Street and number')}
-                    <div className={styles.formRow}>
-                      {field('city', 'City')}
-                      {field('postalCode', 'Postal code')}
-                    </div>
-                    {field('country', 'Country')}
-                  </>
-                )}
                 {!guestVerification && journey === 'login' && !contact ? (
                   <>
                     <button
-                      className={styles.button}
+                      className={`btn-primary ${styles.button}`}
                       disabled={pending || cart.storageError}
                     >
                       {pending ? 'Signing in…' : 'Sign in and continue'}
@@ -532,18 +498,16 @@ export function CheckoutFlow({
                   </>
                 ) : !guestVerification ? (
                   <button
-                    className={styles.button}
+                    className={`btn-primary ${styles.button}`}
                     disabled={!quote || pricing || pending || cart.storageError}
                   >
                     {pending
                       ? 'Working…'
-                      : returning
+                      : contact
                         ? 'Reserve and continue to payment'
-                        : contact
-                          ? 'Reserve checkout'
-                          : journey === 'unknown'
-                            ? 'Continue with email'
-                            : 'Send verification email'}
+                        : journey === 'unknown'
+                          ? 'Continue with email'
+                          : 'Send verification email'}
                   </button>
                 ) : null}
               </fieldset>
@@ -560,7 +524,7 @@ export function CheckoutFlow({
               {quoteError}
             </p>
             <button
-              className={`${styles.button} ${styles.secondary}`}
+              className={`btn-ghost ${styles.button}`}
               onClick={() => setRefresh((value) => value + 1)}
             >
               Check again
@@ -591,7 +555,7 @@ export function CheckoutFlow({
           when reserving.
         </p>
         {mode === 'cart' && (
-          <Link className={styles.button} href="/checkout">
+          <Link className={`btn-primary ${styles.button}`} href="/checkout">
             Continue to checkout
           </Link>
         )}

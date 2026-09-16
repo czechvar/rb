@@ -137,7 +137,7 @@ export async function reserveCheckout(
   if (!user._verified) throw new Error('Please verify your account before reserving your trips.')
   const returning = await isReturningPurchaser(payload, user)
   const contact = validateCheckoutContact({ ...input.contact, email: user.email }),
-    billingAddress = returning ? validateCheckoutBilling(input.billingAddress) : undefined
+    billingAddress = input.billingAddress ? validateCheckoutBilling(input.billingAddress) : undefined
   const selected = normalizeCart(input.items)
   const digest = createHash('sha256')
     .update(
@@ -180,16 +180,14 @@ export async function reserveCheckout(
         reference: `RB-C-${randomUUID()}`,
         submissionKey: input.submissionKey,
         requestDigest: digest,
-        state: returning ? 'reserved' : 'awaitingReview',
+        state: 'reserved',
         customerKind: returning ? 'returning' : 'new',
         user: user.id,
         contact,
         billingAddress,
         items: quote.items,
         currency: quote.currency,
-        expiresAt: returning
-          ? new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
-          : null,
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
         verifiedAt: new Date().toISOString(),
       } as never,
     })) as unknown as CheckoutRecord
