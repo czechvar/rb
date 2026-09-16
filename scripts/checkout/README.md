@@ -20,9 +20,9 @@ links, reservations and payments are deliberately excluded from the seed.
 
 - Apply `20260913_150000_grouped_checkout` before deploying code. Existing order
   and transaction records remain readable; older gateway callbacks stay supported.
-- Leave `CHECKOUT_ENABLED` unset until verified email/invitation delivery and both
-  gateway sandbox journeys pass. Tests use fake adapters and do not establish real
-  external delivery or settlement.
+- Grouped checkout is enabled by default. Set `CHECKOUT_ENABLED=false` only for an
+  emergency rollback to legacy booking. Tests use fake adapters and do not establish
+  real external email delivery or provider settlement.
 - Configure an authenticated ten-minute reconciliation schedule. The existing
   daily Vercel schedule cannot provide timely 24-hour unpaid-hold expiry.
 - Rehearse full/deposit/balance payment, payment cancellation, delayed confirmation

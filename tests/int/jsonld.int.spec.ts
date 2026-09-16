@@ -213,7 +213,7 @@ describe('JSON-LD builders', () => {
         price: 1290,
         priceCurrency: 'EUR',
         availability: 'https://schema.org/InStock',
-        url: 'https://rockbusters.test/book/60',
+        url: 'https://rockbusters.test/cart?add=60',
       }),
     ])
     expect(dateNode).toEqual(
@@ -434,7 +434,7 @@ describe('JSON-LD builders', () => {
       offers: expect.objectContaining({
         '@type': 'Offer',
         '@id': 'https://rockbusters.test/trips/kalymnos-autumn-camp/kalymnos-2026-10-12#event-date-60-offer',
-        url: 'https://rockbusters.test/book/60',
+        url: 'https://rockbusters.test/cart?add=60',
         price: 1290,
         itemOffered: { '@id': 'https://rockbusters.test/trips/kalymnos-autumn-camp/kalymnos-2026-10-12#event-date-60' },
       }),

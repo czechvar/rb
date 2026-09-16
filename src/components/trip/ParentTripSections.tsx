@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { EventDate, Location, TripVariant } from '@/payload-types'
+import { checkoutEntryHref } from '@/lib/checkout/feature'
 import { mediaUrl } from '@/lib/media'
 import { canCheckoutEventDate, eventDateLifecycle } from '@/lib/event-date-visibility'
 import { tripVariantPath } from '@/lib/occurrence-routing'
@@ -109,7 +110,7 @@ export function ParentTripSections({
                       <p className={styles.datePrice}>{price(date)} <span>per person</span></p>
                       <div className={styles.dateActions}>
                         <Link href={datePath}>View this date <span aria-hidden="true">→</span></Link>
-                        {canBook && <Link href={`/book/${date.id}`}>Book now</Link>}
+                        {canBook && <Link href={checkoutEntryHref(date.id)}>Book now</Link>}
                       </div>
                     </li>
                   )

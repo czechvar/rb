@@ -72,7 +72,7 @@ describe('occurrence editorial rendering', () => {
     expect(html).toContain('Plan the climbing day')
     expect(html).toContain('Which format?')
     expect(html).toContain('Coaching days')
-    expect(ctx.trip.bookingHref).toBe('/book/745')
+    expect(ctx.trip.bookingHref).toBe('/cart?add=745')
   })
   it('honours section hiding without deleting data and keeps custom layout headings authoritative', () => {
     const hidden = { ...kalymnos, editorial: { ...kalymnos.editorial, sections: [{ key: 'gallery' as const, visibility: 'hide' as const }, { key: 'audience' as const, visibility: 'hide' as const }] } }

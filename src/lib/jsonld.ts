@@ -2,6 +2,7 @@ import type { Event, EventDate, Faq, Guide, Location, Media, Page, Post, Program
 import { mediaUrl as payloadMediaUrl } from '@/lib/media'
 import { tripOccurrencePath, tripPublicDatePath, tripVariantPath } from '@/lib/occurrence-routing'
 import { canCheckoutEventDate, eventDateLifecycle } from '@/lib/event-date-visibility'
+import { checkoutEntryHref } from '@/lib/checkout/feature'
 import {
   resolveFeaturedGuide,
   resolveFeaturedLocation,
@@ -304,7 +305,7 @@ export function eventDateOfferJsonLd(event: Event, date: EventDate, tripUrl = ab
   return cleanJsonLd({
     '@type': 'Offer',
     '@id': `${eventDateId(tripUrl, date)}-offer`,
-    url: absoluteUrl(`/book/${date.id}`),
+    url: absoluteUrl(checkoutEntryHref(date.id)),
     price: date.price,
     priceCurrency: date.currency,
     availability: availabilityFor(date),

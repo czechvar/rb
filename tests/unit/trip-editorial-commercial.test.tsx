@@ -25,7 +25,7 @@ describe('authored commercial placeholders', () => {
       expect(html).not.toMatch(/\{(?:price|weeklyPrice|durationDays|capacity)\}/)
       expect(html).not.toContain('€1,890')
     }
-    expect(booking).toContain('href="/book/745"')
+    expect(booking).toContain('href="/cart?add=745"')
   })
   it('uses inquiry when no matching weekly date exists and never interprets ordinary prose as tokens', () => {
     const trip = resolveTripDetail(event, [occurrence(745, 14, 2200)], 745)

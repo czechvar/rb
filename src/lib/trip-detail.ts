@@ -1,4 +1,5 @@
 import type { Event, EventDate, Guide, Location, TripVariant } from '@/payload-types'
+import { checkoutEntryHref } from './checkout/feature'
 import { applyTripEditorial, resolveTripEditorial, type TripEditorial } from './trip-editorial'
 import { canCheckoutEventDate, eventDateLifecycle, isUpcomingEventDate } from './event-date-visibility'
 
@@ -205,7 +206,7 @@ export function resolveTripDetail(
   if (guides.length) facts.push({ label: 'Guides', value: guides.map(guide => guide.name).join(', ') })
   return {
     event, variant, editorial, dates: displayedDates, selectedDate, guides, locations, facts, priceLabel, dateLabel, dateSpanLabel,
-    bookingHref: selectedDate && canCheckoutEventDate(selectedDate, now) ? `/book/${selectedDate.id}` : null,
+    bookingHref: selectedDate && canCheckoutEventDate(selectedDate, now) ? checkoutEntryHref(selectedDate.id) : null,
     availabilityLabel, accommodation, transport, logisticsOverrides, sections,
     remainingContent: variant && meaningful(contentDate?.extraContent) ? contentDate.extraContent :
       variant && meaningful(variant.extraContent) ? variant.extraContent : remainingTripContent(event.content, sections),

@@ -143,12 +143,12 @@ Single-context: one `CONTEXT.md` plus accepted/proposed ADRs in `docs/adr/` at t
 
 ### Grouped checkout rollout
 
-`CHECKOUT_ENABLED=true` enables the multi-item cart and new reservation flow. Leave
-unset until the additive grouped-checkout migration, email delivery, both provider
-sandbox checks and frequent reconciliation have passed. Do not enable it merely
-because the application build succeeds. Existing single-order callbacks continue
-working when the flag is off. The current daily Vercel cron is insufficient for
-prompt 24-hour hold expiry; configure an authenticated scheduler to call
+The multi-item cart and new reservation flow are the default checkout strategy.
+Set `CHECKOUT_ENABLED=false` only as an emergency fallback to the legacy single-order
+flow; existing single-order callbacks continue working while it is off. Before
+removing that fallback, retain verification of email delivery, both provider sandbox
+journeys and frequent reconciliation. The current daily Vercel cron is insufficient
+for prompt 24-hour hold expiry; configure an authenticated scheduler to call
 `/api/payments/muzapay/reconcile` at least every ten minutes before enablement.
 Checkout identity throttling is configured with
 `CHECKOUT_RATE_LIMIT_EMAIL_MAX`, `CHECKOUT_RATE_LIMIT_NETWORK_MAX`,

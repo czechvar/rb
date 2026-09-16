@@ -10,7 +10,10 @@ import { BookingCTA } from '@/components/sections/BookingCTA'
 import { TripDatesBlock } from '@/components/blocks/TripDatesBlock'
 
 const checkoutState = vi.hoisted(() => ({ enabled: false }))
-vi.mock('@/lib/checkout/feature', () => ({ checkoutEnabled: () => checkoutState.enabled }))
+vi.mock('@/lib/checkout/feature', () => ({
+  checkoutEnabled: () => checkoutState.enabled,
+  checkoutEntryHref: (id: number) => checkoutState.enabled ? `/cart?add=${id}` : `/book/${id}`,
+}))
 vi.mock('@/lib/queries', () => ({ getActiveEventDatesForEvent: () => { throw new Error('Unexpected database query') } }))
 afterEach(() => { checkoutState.enabled = false })
 
@@ -232,12 +235,12 @@ describe('trip booking presentation', () => {
     const bookable = resolveTripDetail(event, [date(1)])
     const image = renderToStaticMarkup(<BookingCTA event={event} trip={bookable} variant="image" />)
     expect(image).not.toContain('href="mailto:info@rockbusters.net"')
-    expect(image.match(/href="\/book\/1"/g)).toHaveLength(1)
+    expect(image.match(/href="\/cart\?add=1"/g)).toHaveLength(1)
     expect(image).toContain('>1 week</dt>')
     expect(image).toContain('>€1,150</dd>')
     expect(image).toContain('>Max 9</dd>')
     expect(image).not.toContain('Add to cart')
-    expect(image).not.toContain('href="/cart?add=')
+    expect(image).not.toContain('href="/book/')
     expect(image).not.toContain('Ask a Question')
     const defaultHtml = renderToStaticMarkup(<BookingCTA event={event} trip={bookable} />)
     expect(defaultHtml).not.toContain('mailto:')

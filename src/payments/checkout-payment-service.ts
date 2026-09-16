@@ -4,6 +4,7 @@ import type { Payload, PayloadRequest } from 'payload'
 import { sql } from 'drizzle-orm'
 import { getPayloadClient } from '@/lib/payload'
 import { siteUrl } from '@/lib/url'
+import { checkoutEnabled } from '@/lib/checkout/feature'
 import type { CheckoutMethod, CheckoutRecord } from '@/lib/checkout/types'
 import { withCheckoutTransaction, lockCheckout, checkoutDatabase } from '@/lib/checkout/transaction'
 import { cancelCheckoutInTransaction, validateCheckoutBilling } from '@/lib/checkout/reservations'
@@ -61,7 +62,7 @@ export function createCheckoutPaymentService({
   payload,
   gateways,
   now = () => new Date(),
-  enabled = () => process.env.CHECKOUT_ENABLED === 'true',
+  enabled = checkoutEnabled,
 }: Dependencies) {
   const fetchCheckout = async (id: number, req: PayloadRequest) =>
     (await payload.findByID({

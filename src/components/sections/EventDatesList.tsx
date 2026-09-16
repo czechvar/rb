@@ -4,7 +4,7 @@ import type { EventDate, Location } from '@/payload-types'
 import { DateRowBookButton } from '@/components/trip/DateRowBookButton'
 import { tripPublicDatePath } from '@/lib/occurrence-routing'
 import { canCheckoutEventDate, eventDateLifecycle } from '@/lib/event-date-visibility'
-import { checkoutEnabled } from '@/lib/checkout/feature'
+import { checkoutEnabled, checkoutEntryHref } from '@/lib/checkout/feature'
 import styles from './EventDatesList.module.css'
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -116,7 +116,7 @@ function RowsCalendar({ items, eyebrow, heading, intro, selectedId, eventSlug }:
               <span className={styles.rowPrice}>{schedulePrice(date)}</span>
               <div className={styles.rowActions}>
                 {status ? <span className={styles.rowStatus}>{status}</span> :
-                  <Link href={useCart ? `/cart?add=${date.id}` : `/book/${date.id}`} className={styles.rowPrimary}>
+                  <Link href={checkoutEntryHref(date.id)} className={styles.rowPrimary}>
                     {useCart ? 'Add this date' : 'Book this date'}
                   </Link>}
                 {detailPath && <Link href={detailPath} className={styles.rowSecondary}
