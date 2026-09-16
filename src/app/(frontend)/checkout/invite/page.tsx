@@ -22,9 +22,12 @@ export default async function InvitePage({
     <MarketingShell>
       <main className={styles.main}>
         <div className={styles.panel}>
-          <h1 data-type="section" className={styles.heading}>Your checkout is approved</h1>
+          <h1 data-type="section" className={styles.heading}>
+            Your checkout is approved
+          </h1>
           <p className={styles.body}>
-            Set up your account or sign in to your existing account, then continue to payment.
+            Create your account or sign in. We will then take you directly to the amount due for
+            this reservation.
           </p>
           <CheckoutInvitationForm id={id} />
         </div>

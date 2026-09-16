@@ -41,7 +41,6 @@ export function CheckoutPayment({
         ? 'comgate-card'
         : 'muzapay'),
   )
-  const [purpose, setPurpose] = useState('full')
   const [pending, setPending] = useState(false)
   const [error, setError] = useState('')
   const busy = useRef(false)
@@ -74,6 +73,9 @@ export function CheckoutPayment({
   const benefitEligible = items.every(
     (item) => item.totalCzkMinor != null && item.depositCzkMinor != null,
   )
+  const [purpose, setPurpose] = useState<'full' | 'deposit' | 'balance'>(
+    paid ? 'balance' : initial > 0 && initial < remaining ? 'deposit' : 'full',
+  )
   const card = methods.card && (!paid || !paymentMethod || paymentMethod === 'comgate-card')
   const benefit =
     methods.benefit && benefitEligible && (!paid || !paymentMethod || paymentMethod === 'muzapay')
@@ -99,7 +101,7 @@ export function CheckoutPayment({
     }
   }
   return (
-    <div className={styles.stack}>
+    <div className={styles.stack} id="payment">
       {error && (
         <p role="alert" className={styles.error}>
           {error}

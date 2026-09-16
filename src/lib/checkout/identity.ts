@@ -334,6 +334,7 @@ export async function reviewGuestCheckout(
     id,
     email: checkout.contact.email,
     token,
+    items: checkout.items,
   })
   await recordNotification(payload, id, invitationHash, 'invite', status)
   if (status !== 'sent')
@@ -342,11 +343,15 @@ export async function reviewGuestCheckout(
     )
 }
 
+export type CheckoutInvitationState =
+  | { kind: 'create'; name: string; email: string }
+  | { kind: 'login' | 'continue' | 'invalid' }
+
 export async function invitationKind(
   id: number,
   token: string,
   actor: User | null,
-): Promise<'create' | 'login' | 'continue' | 'invalid'> {
+): Promise<CheckoutInvitationState> {
   enabled()
   const payload = await client()
   const record = (await payload.findByID({
@@ -359,7 +364,7 @@ export async function invitationKind(
     record.state !== 'approved' ||
     !validCheckoutToken(token, record.invitationHash, record.invitationExpiresAt)
   )
-    return 'invalid'
+    return { kind: 'invalid' }
   const existing = await payload.find({
     collection: 'users',
     where: { email: { equals: record.contact.email } },
@@ -367,21 +372,22 @@ export async function invitationKind(
     depth: 0,
     overrideAccess: true,
   })
-  if (!existing.docs[0]) return 'create'
-  return actor?.id === existing.docs[0].id ? 'continue' : 'login'
+  if (!existing.docs[0])
+    return { kind: 'create', name: record.contact.name, email: record.contact.email }
+  return { kind: actor?.id === existing.docs[0].id ? 'continue' : 'login' }
 }
 
 export async function acceptCheckoutInvitation(
   id: number,
   token: string,
-  password: string,
+  account: { name?: string; password?: string },
   actor: User | null,
   network: string,
-): Promise<void> {
+): Promise<{ created: boolean; email: string }> {
   enabled()
   const payload = await client()
   await rateIdentity(payload, network, `invite:${id}`)
-  await withCheckoutTransaction(payload, async (req) => {
+  return withCheckoutTransaction(payload, async (req) => {
     await lockCheckout(req, id)
     const record = (await payload.findByID({
       collection: 'checkouts',
@@ -405,15 +411,17 @@ export async function acceptCheckoutInvitation(
       req,
     })
     let user = users.docs[0]
+    let created = false
     if (user) {
       if (actor?.id !== user.id)
         throw new Error('Sign in to the existing account before accepting this invitation.')
     } else {
-      z.string().min(8).max(128).parse(password)
+      const name = z.string().trim().min(2).max(100).parse(account.name)
+      const password = z.string().min(8).max(128).parse(account.password)
       user = await payload.create({
         collection: 'users',
         data: {
-          name: record.contact.name,
+          name,
           email: record.contact.email,
           ...(record.contact.phone ? { phone: record.contact.phone } : {}),
           role: 'customer',
@@ -424,6 +432,7 @@ export async function acceptCheckoutInvitation(
         overrideAccess: true,
         req,
       })
+      created = true
     }
     for (const item of record.items)
       if (item.orderId)
@@ -441,5 +450,6 @@ export async function acceptCheckoutInvitation(
       overrideAccess: true,
       req,
     })
+    return { created, email: record.contact.email }
   })
 }

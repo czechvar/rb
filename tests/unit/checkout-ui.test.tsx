@@ -201,7 +201,9 @@ it('clears only the submitted guest quantities after verification and keeps succ
   fireEvent.change(code, { target: { value: '123456' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Verify and reserve' }).closest('form')!)
 
-  expect(await screen.findByRole('heading', { name: 'Your trips are reserved for review' })).toBeTruthy()
+  expect(
+    await screen.findByRole('heading', { name: 'Your trips are reserved for review' }),
+  ).toBeTruthy()
   expect(JSON.parse(window.localStorage.getItem(CART_STORAGE_KEY)!)).toEqual([
     { eventDateId: 123, quantity: 1 },
     { eventDateId: 456, quantity: 2 },
@@ -235,7 +237,9 @@ it('keeps the original payment method after settlement and submits selected bala
     />,
   )
   expect(screen.queryByRole('option', { name: 'Card — Comgate' })).toBeNull()
-  fireEvent.click(screen.getByRole('radio', { name: /Pay selected trip balances/ }))
+  expect(
+    (screen.getByRole('radio', { name: /Pay selected trip balances/ }) as HTMLInputElement).checked,
+  ).toBe(true)
   await act(async () => {
     fireEvent.submit(
       screen.getByRole('button', { name: 'Continue to secure payment' }).closest('form')!,
@@ -264,6 +268,27 @@ it('collects billing before an approved new customer can open payment and preser
   await screen.findByText('Address unavailable.')
   expect((screen.getByLabelText('First name') as HTMLInputElement).value).toBe('Test')
   expect(mocks.pay).not.toHaveBeenCalled()
+})
+
+it('anchors payment and defaults an approved checkout to the amount due now', () => {
+  render(
+    <CheckoutPayment
+      asOf={Date.parse('2026-01-01')}
+      checkoutId={1}
+      state="approved"
+      currency="EUR"
+      items={[item]}
+      billingReady
+      methods={{ card: true, benefit: true }}
+    />,
+  )
+  expect(document.querySelector('#payment')).toBeTruthy()
+  expect(
+    (screen.getByRole('radio', { name: /Pay the initial amount/ }) as HTMLInputElement).checked,
+  ).toBe(true)
+  expect(
+    (screen.getByRole('radio', { name: /Pay outstanding total/ }) as HTMLInputElement).checked,
+  ).toBe(false)
 })
 
 it('never calls an unpriced or unconfigured Benefit-only checkout paid in full', () => {

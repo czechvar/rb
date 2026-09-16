@@ -51,10 +51,13 @@ describe('checkout identity credentials', () => {
         code: '000042',
       }),
     ).toBe('sent')
-    const text = sendEmail.mock.calls[0][0].text as string
+    const message = sendEmail.mock.calls[0][0]
+    const text = message.text as string
     expect(text).toContain('000042')
     expect(text).not.toMatch(/https?:\/\//)
     expect(text).toContain('10 minutes')
+    expect(message.html).toContain('>000042<')
+    expect(message.subject).toBe('Your Rockbusters verification code')
   })
 
   it('keeps invitation tokens in link fragments', async () => {
@@ -65,12 +68,16 @@ describe('checkout identity credentials', () => {
         id: 7,
         email: 'fixture@example.test',
         token: 'a'.repeat(43),
+        items: [{ balanceDueAt: '2099-01-01T00:00:00.000Z' }] as never,
       }),
     ).toBe('sent')
-    const text = sendEmail.mock.calls[0][0].text as string
+    const message = sendEmail.mock.calls[0][0]
+    const text = message.text as string
     const link = new URL(text.match(/https:\/\/[^\s]+/)![0])
     expect(link.searchParams.has('token')).toBe(false)
     expect(link.hash.startsWith('#token=')).toBe(true)
+    expect(message.html).toContain('Continue to account and payment')
+    expect(message.html).toContain('25% deposit')
   })
   it('never passes verification codes to the console adapter and reports provider failure', async () => {
     const sendEmail = vi.fn().mockRejectedValue(new Error('private-provider-diagnostic'))
@@ -111,7 +118,8 @@ describe('checkout identity credentials', () => {
       guestCheckoutSchema.safeParse({ ...base, contact: { ...base.contact, phone: null } }).success,
     ).toBe(true)
     expect(
-      guestCheckoutSchema.safeParse({ ...base, contact: { ...base.contact, phone: 'bad' } }).success,
+      guestCheckoutSchema.safeParse({ ...base, contact: { ...base.contact, phone: 'bad' } })
+        .success,
     ).toBe(false)
     expect(
       guestCheckoutSchema.safeParse({

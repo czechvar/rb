@@ -1,8 +1,8 @@
 // src/app/(frontend)/(auth)/login/actions.ts
 'use server'
 
-import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { setPayloadSession } from '@/lib/auth-session'
 import { getPayloadClient } from '@/lib/payload'
 import { sanitizeRedirect } from '@/lib/redirect'
 import type { ActionResult } from '@/components/forms/action-result'
@@ -34,14 +34,7 @@ export async function loginAction(_prev: ActionResult, formData: FormData): Prom
     if (!token) {
       return { ok: false, formError: 'Login failed — no token returned.' }
     }
-    const c = await cookies()
-    c.set('payload-token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
-      maxAge: 60 * 60 * 24 * 30,
-    })
+    await setPayloadSession(token)
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err)
     if (/verify/i.test(msg) && /(account|email)/i.test(msg)) {

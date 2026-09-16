@@ -123,13 +123,15 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
     })
     assert(orders.docs.every((order) => order.state === 'confirmed'))
     passed('staff-approval-confirms-orders-and-sends-invitation')
-    await acceptCheckoutInvitation(
+    const accepted = await acceptCheckoutInvitation(
       id,
       invitationToken,
-      'FixturePassword42!',
+      { name: '[Checkout identity test] Edited account name', password: 'FixturePassword42!' },
       null,
       'fixture-invite-network',
     )
+    assert.equal(accepted.created, true)
+    assert.equal(accepted.email, contact.email)
     const attached = await record(id)
     assert(attached.user)
     assert.equal(attached.invitationHash, null)
@@ -140,6 +142,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       depth: 0,
     })
     assert.equal(users.totalDocs, 1)
+    assert.equal(users.docs[0].name, '[Checkout identity test] Edited account name')
     assert.equal(users.docs[0]._verified, true)
     assert.equal(users.docs[0].role, 'customer')
     assert(!users.docs[0].phone)
@@ -147,7 +150,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       acceptCheckoutInvitation(
         id,
         invitationToken,
-        'FixturePassword42!',
+        { name: contact.name, password: 'FixturePassword42!' },
         null,
         'fixture-invite-network',
       ),
@@ -191,7 +194,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       acceptCheckoutInvitation(
         existingId,
         existingToken,
-        'ChangedPassword42!',
+        { name: existing.name, password: 'ChangedPassword42!' },
         null,
         'fixture-existing-invite-network',
       ),
@@ -199,7 +202,7 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
     await acceptCheckoutInvitation(
       existingId,
       existingToken,
-      '',
+      {},
       existing,
       'fixture-existing-invite-network',
     )

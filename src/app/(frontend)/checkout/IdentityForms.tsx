@@ -2,6 +2,7 @@
 
 import { useActionState, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { FormBanner } from '@/components/forms/FormBanner'
 import { INITIAL_ACTION_STATE } from '@/components/forms/action-result'
 import {
@@ -83,49 +84,48 @@ export function VerifyCheckoutForm({ id }: { id: number }) {
 }
 
 export function CheckoutInvitationForm({ id }: { id: number }) {
+  const router = useRouter()
   const { token, clear } = useLinkToken('invite', id)
-  const [kind, setKind] = useState<'checking' | 'create' | 'login' | 'continue' | 'invalid'>(
-    'checking',
-  )
+  const [invitation, setInvitation] = useState<
+    | { kind: 'checking' | 'login' | 'continue' | 'invalid' }
+    | { kind: 'create'; name: string; email: string }
+  >({ kind: 'checking' })
   useEffect(() => {
     if (!token) return
     let active = true
     void checkoutInvitationKindAction(id, token)
       .then((result) => {
-        if (active) setKind(result)
+        if (active) setInvitation(result)
       })
       .catch(() => {
-        if (active) setKind('invalid')
+        if (active) setInvitation({ kind: 'invalid' })
       })
     return () => {
       active = false
     }
   }, [id, token])
-  const createAccount = kind === 'create'
+  const createAccount = invitation.kind === 'create'
   const [state, action, pending] = useActionState(
     acceptCheckoutInvitationAction,
     INITIAL_ACTION_STATE,
   )
   useEffect(() => {
-    if (state.ok) clear()
-  }, [state.ok, clear])
-  if (state.ok)
-    return (
-      <FormBanner kind="success">
-        Your checkout is connected to your account.{' '}
-        <Link href={state.redirect || '/account'}>Continue to your checkout</Link>
-      </FormBanner>
-    )
+    if (state.ok) {
+      clear()
+      if (state.redirect) router.replace(state.redirect)
+    }
+  }, [state, clear, router])
+  if (state.ok) return <FormBanner kind="success">Account ready. Taking you to payment…</FormBanner>
   if (!token) return <p>Open your invitation email in this tab to continue.</p>
-  if (kind === 'checking') return <p role="status">Checking your invitation…</p>
-  if (kind === 'invalid')
+  if (invitation.kind === 'checking') return <p role="status">Checking your invitation…</p>
+  if (invitation.kind === 'invalid')
     return (
       <p>
         This invitation has expired or was already used. Sign in to view your checkouts, or ask our
         team for a new invitation.
       </p>
     )
-  if (kind === 'login')
+  if (invitation.kind === 'login')
     return (
       <p>
         Sign in to your existing account, then return here to connect your checkout.{' '}
@@ -141,6 +141,35 @@ export function CheckoutInvitationForm({ id }: { id: number }) {
       {state.formError && <FormBanner kind="error">{state.formError}</FormBanner>}
       {createAccount && (
         <>
+          <div className={forms.field}>
+            <label className={forms.label} htmlFor="checkout-name">
+              Full name
+            </label>
+            <input
+              className={forms.input}
+              id="checkout-name"
+              name="name"
+              autoComplete="name"
+              required
+              minLength={2}
+              maxLength={100}
+              defaultValue={invitation.name}
+              disabled={pending}
+            />
+          </div>
+          <div className={forms.field}>
+            <label className={forms.label} htmlFor="checkout-email">
+              Email
+            </label>
+            <input
+              className={forms.input}
+              id="checkout-email"
+              type="email"
+              value={invitation.email}
+              readOnly
+              aria-readonly="true"
+            />
+          </div>
           <div className={forms.field}>
             <label className={forms.label} htmlFor="checkout-password">
               Choose a password
@@ -176,7 +205,7 @@ export function CheckoutInvitationForm({ id }: { id: number }) {
         </>
       )}
       <button className={forms.submit} disabled={pending}>
-        {pending ? 'Saving…' : createAccount ? 'Create account' : 'Connect my account'}
+        {pending ? 'Saving…' : createAccount ? 'Create account and continue' : 'Connect my account'}
       </button>
     </form>
   )

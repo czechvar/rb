@@ -1,7 +1,7 @@
 'use server'
 
-import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { setPayloadSession } from '@/lib/auth-session'
 import { getPayloadClient } from '@/lib/payload'
 import type { ActionResult } from '@/components/forms/action-result'
 import { resetSchema } from './schema'
@@ -42,14 +42,7 @@ export async function resetPasswordAction(
   }
 
   if (issuedToken) {
-    const c = await cookies()
-    c.set('payload-token', issuedToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
-      maxAge: 60 * 60 * 24 * 30,
-    })
+    await setPayloadSession(issuedToken)
   }
   redirect('/account?password-reset=1')
 }

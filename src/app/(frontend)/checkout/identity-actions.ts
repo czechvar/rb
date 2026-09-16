@@ -2,6 +2,7 @@
 
 import { headers } from 'next/headers'
 import type { ActionResult } from '@/components/forms/action-result'
+import { setPayloadSession } from '@/lib/auth-session'
 import { contactNetwork } from '@/lib/contact/intake'
 import {
   createGuestCheckout,
@@ -35,13 +36,14 @@ export async function lookupCheckoutJourneyAction(
 export async function checkoutInvitationKindAction(
   id: number,
   token: string,
-): Promise<'create' | 'login' | 'continue' | 'invalid'> {
+): Promise<import('@/lib/checkout/identity').CheckoutInvitationState> {
   try {
-    if (!Number.isSafeInteger(id) || id <= 0 || !/^[A-Za-z0-9_-]{43}$/.test(token)) return 'invalid'
+    if (!Number.isSafeInteger(id) || id <= 0 || !/^[A-Za-z0-9_-]{43}$/.test(token))
+      return { kind: 'invalid' }
     const { getCurrentUser } = await import('@/lib/auth')
     return await invitationKind(id, token, await getCurrentUser())
   } catch {
-    return 'invalid'
+    return { kind: 'invalid' }
   }
 }
 
@@ -97,22 +99,39 @@ export async function acceptCheckoutInvitationAction(
   try {
     const { getCurrentUser } = await import('@/lib/auth')
     const user = await getCurrentUser()
+    const name = String(data.get('name') ?? '').trim()
     const password = String(data.get('password') ?? '')
     if (password !== String(data.get('passwordConfirm') ?? ''))
       return error('Passwords do not match.')
     const id = Number(data.get('checkout'))
-    await acceptCheckoutInvitation(
+    if (!user && (name.length < 2 || name.length > 100))
+      return { ok: false, fieldErrors: { name: 'Enter your full name.' }, values: { name } }
+    const accepted = await acceptCheckoutInvitation(
       id,
       String(data.get('token') ?? ''),
-      password,
+      { name, password },
       user,
       await network(),
     )
+    if (accepted.created) {
+      try {
+        const { getPayloadClient } = await import('@/lib/payload')
+        const result = await (
+          await getPayloadClient()
+        ).login({
+          collection: 'users',
+          data: { email: accepted.email, password },
+        })
+        if (!result.token) throw new Error('Account session was not created.')
+        await setPayloadSession(result.token)
+      } catch {
+        const paymentPath = `/account/checkouts/${id}#payment`
+        return { ok: true, redirect: `/login?from=${encodeURIComponent(paymentPath)}` }
+      }
+    }
     return {
       ok: true,
-      redirect: user
-        ? `/account/checkouts/${id}`
-        : `/login?from=${encodeURIComponent(`/account/checkouts/${id}`)}`,
+      redirect: `/account/checkouts/${id}#payment`,
     }
   } catch {
     return error(
