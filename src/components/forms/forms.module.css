@@ -1,6 +1,6 @@
 /* src/components/forms/forms.module.css */
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-.label { font-weight: 600; font-size: 14px; color: var(--theme-color-ink); }
+.label { font-weight: 600; font-size: 14px; color: inherit; }
 .input {
   border: 1px solid var(--theme-color-border);
   border-radius: 6px;

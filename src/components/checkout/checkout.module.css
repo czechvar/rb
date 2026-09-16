@@ -1,11 +1,4 @@
-.page :is(h1, h2, h3, h4),
-.account :is(h1, h2, h3, h4),
-.panel :is(h1, h2, h3, h4) {
-  color: var(--theme-color-paper);
-}
 .page {
-  background: var(--theme-color-ink);
-  color: var(--theme-color-paper);
   min-height: 70vh;
   padding: calc(var(--headerTotalHeight) + 48px) var(--theme-content-gutter) 90px;
 }
@@ -53,8 +46,6 @@
   min-width: 0;
 }
 .panel {
-  color: var(--theme-color-paper);
-  background: var(--theme-color-ink);
   border: 1px solid var(--theme-color-border);
   padding: 28px;
   min-width: 0;
@@ -177,8 +168,6 @@
   outline-offset: 4px;
 }
 .account {
-  color: var(--theme-color-paper);
-  background: var(--theme-color-ink);
   padding: 28px;
 }
 @media (max-width: 900px) {

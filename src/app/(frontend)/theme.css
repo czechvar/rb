@@ -5,7 +5,7 @@
 :root,
 [data-theme='rockbusters'],
 .theme-rockbusters {
-  color-scheme: light;
+  color-scheme: dark;
 
   /* Brand */
   --theme-color-ink: #0d0d0d;
@@ -22,13 +22,13 @@
   --theme-color-white-paper-muted: #f7f5f0;
   --theme-color-white-paper-border: #dddddd;
   --theme-color-white-paper-divider: #eeeeee;
-  --theme-color-breadcrumb-bg: #f6f5f5;
-  --theme-color-breadcrumb-border: rgba(13, 13, 13, 0.08);
+  --theme-color-breadcrumb-bg: var(--theme-color-page-bg);
+  --theme-color-breadcrumb-border: var(--theme-color-border);
   --theme-color-text: #f0ede7;
   --theme-color-text-muted: rgba(240, 237, 231, 0.80);
   --theme-color-text-soft: rgba(240, 237, 231, 0.52);
-  --theme-color-page-bg: #f0ede7;
-  --theme-color-page-text: #515151;
+  --theme-color-page-bg: var(--theme-color-ink);
+  --theme-color-page-text: var(--theme-color-paper);
   --theme-color-primary: #e30713;
   --theme-color-primary-hover: #c0050f;
   --theme-color-accent: #e30713;
@@ -277,8 +277,8 @@
   --theme-color-white-paper-muted: #f7f5f0;
   --theme-color-white-paper-border: #dddddd;
   --theme-color-white-paper-divider: #eeeeee;
-  --theme-color-breadcrumb-bg: #f6f5f5;
-  --theme-color-breadcrumb-border: rgba(8, 11, 16, 0.08);
+  --theme-color-breadcrumb-bg: var(--theme-color-page-bg);
+  --theme-color-breadcrumb-border: var(--theme-color-border);
   --theme-color-text: #f4f7fa;
   --theme-color-text-muted: #b5c0ca;
   --theme-color-text-soft: #8795a3;

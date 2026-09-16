@@ -112,9 +112,9 @@ test.describe('account shell', () => {
     await expect(
       page.getByRole('navigation', { name: 'Breadcrumb' }).getByText('My account'),
     ).toBeVisible()
-    await expect(page.getByRole('navigation', { name: 'Breadcrumb' })).toHaveAttribute(
-      'data-tone',
-      'dark',
+    await expect(page.getByRole('navigation', { name: 'Breadcrumb' })).toHaveCSS(
+      'background-color',
+      'rgb(13, 13, 13)',
     )
     await expect(page.locator('[data-account-page]')).toHaveCSS(
       'background-color',

@@ -50,7 +50,7 @@ h6 {
   font-weight: 500;
   font-style: normal;
   letter-spacing: 0;
-  color: var(--theme-color-ink);
+  color: inherit;
 }
 
 h1 {

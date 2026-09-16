@@ -10,10 +10,7 @@ export default async function AccountLayout({ children }: { children: React.Reac
   const user = await getCurrentUser()
   if (!user) redirect('/login')
   return (
-    <MarketingShell
-      crumbs={[{ href: '/', label: 'Home' }, { label: 'My account' }]}
-      breadcrumbTone="dark"
-    >
+    <MarketingShell crumbs={[{ href: '/', label: 'Home' }, { label: 'My account' }]}>
       <div className={styles.accountPage} data-account-page>
         <div className={styles.shell}>
           <AccountSidebar email={user.email} checkoutEnabled={checkoutEnabled()} />

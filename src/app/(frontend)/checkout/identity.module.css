@@ -1,10 +1,5 @@
-.main :is(h1, h2, h3, h4) {
-  color: var(--theme-color-ink);
-}
 .main {
   padding: 140px var(--theme-content-gutter) 80px;
-  background: var(--theme-color-paper);
-  color: var(--theme-color-ink);
   min-height: 75vh;
 }
 .panel {
