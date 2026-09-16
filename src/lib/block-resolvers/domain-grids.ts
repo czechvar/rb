@@ -20,6 +20,7 @@ export type LocationGridResolverInput = {
   locations?: Array<number | Location> | null
   country?: string | null
   limit?: number | null
+  groupByCountry?: boolean
 }
 
 export type GuideGridResolverInput = {
@@ -116,7 +117,7 @@ export async function resolveFeaturedProgram(input: FeaturedProgramResolverInput
 
 export async function resolveLocationGridLocations(input: LocationGridResolverInput): Promise<Location[]> {
   const payload = await getPayloadClient()
-  const limit = boundedLimit(input.limit, 8, 24)
+  const limit = input.groupByCountry ? 200 : boundedLimit(input.limit, 8, 24)
   const source = input.source ?? 'featured'
 
   if (source === 'manual') {

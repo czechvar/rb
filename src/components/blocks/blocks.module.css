@@ -1586,7 +1586,7 @@
 }
 
 .locationTileGrid {
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .locationTileCard {
@@ -1621,6 +1621,10 @@
 .locationCardContent p:not(.cardMeta) {
   color: var(--theme-color-paper-60);
   opacity: 1;
+}
+
+.countryTileLocations {
+  line-height: var(--theme-line-body);
 }
 
 .locationTileCard:hover {

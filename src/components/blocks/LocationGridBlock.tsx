@@ -1,6 +1,11 @@
 import type { Page } from '@/payload-types'
 import { resolveLocationGridLocations } from '@/lib/block-resolvers/domain-grids'
-import { BlockHeader, LocationCard } from './CatalogueCards'
+import {
+  BlockHeader,
+  CountryLocationCard,
+  groupLocationsByCountry,
+  LocationCard,
+} from './CatalogueCards'
 import styles from './blocks.module.css'
 
 type LocationGridBlockProps = Extract<
@@ -18,17 +23,32 @@ export async function LocationGridBlock({
   source,
   variant,
 }: LocationGridBlockProps) {
-  const items = await resolveLocationGridLocations({ source, locations, country, limit })
+  const items = await resolveLocationGridLocations({
+    source,
+    locations,
+    country,
+    limit,
+    groupByCountry: variant === 'countryTiles',
+  })
   if (!items.length) return null
+  const countryGroups = variant === 'countryTiles' ? groupLocationsByCountry(items, limit) : []
 
   return (
     <section className={sectionClassName(variant)}>
       <div className={styles.sectionInner}>
         <BlockHeader eyebrow={eyebrow} heading={heading} intro={intro} />
         <div className={gridClassName(variant)}>
-          {items.map((location) => (
-            <LocationCard key={location.id} location={location} variant={variant} />
-          ))}
+          {variant === 'countryTiles'
+            ? countryGroups.map((group) => (
+                <CountryLocationCard
+                  key={group.country}
+                  country={group.country}
+                  locations={group.locations}
+                />
+              ))
+            : items.map((location) => (
+                <LocationCard key={location.id} location={location} variant={variant} />
+              ))}
         </div>
       </div>
     </section>

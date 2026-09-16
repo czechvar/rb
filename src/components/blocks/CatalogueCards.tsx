@@ -146,6 +146,73 @@ export function LocationCard({
   )
 }
 
+export function CountryLocationCard({
+  country,
+  locations,
+}: {
+  country: string
+  locations: Location[]
+}) {
+  const seenDestinations = new Set<string>()
+  const destinationNames = locations
+    .map((location) => location.name.trim())
+    .filter((name) => {
+      const key = name.toLocaleLowerCase('en')
+      if (seenDestinations.has(key)) return false
+      seenDestinations.add(key)
+      return true
+    })
+    .join(', ')
+  const anchor = country.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
+  return (
+    <Link
+      href={anchor ? `/destinations#${anchor}` : '/destinations'}
+      className={`${styles.domainCard} ${styles.locationTileCard}`}
+    >
+      <span className={styles.locationCardFlag}>
+        <CountryFlag
+          country={country === 'Beyond' ? null : country}
+          label={country}
+          size="tile"
+        />
+      </span>
+      <div className={styles.locationCardContent}>
+        <h3 data-type="subheading">{country}</h3>
+        <p className={styles.countryTileLocations}>{destinationNames}</p>
+        <span className={styles.cardLinkText}>Explore destinations</span>
+      </div>
+    </Link>
+  )
+}
+
+export function groupLocationsByCountry(locations: Location[], limit?: number | null) {
+  const groups = new Map<string, { country: string; locations: Location[] }>()
+  for (const location of locations) {
+    const country = location.country?.trim() || 'Beyond'
+    const key = country.toLocaleLowerCase('en')
+    const group = groups.get(key) ?? { country, locations: [] }
+    const locationKey = location.name.trim().toLocaleLowerCase('en')
+    const isDuplicate = group.locations.some(
+      (groupLocation) => groupLocation.name.trim().toLocaleLowerCase('en') === locationKey,
+    )
+    if (!isDuplicate) group.locations.push(location)
+    groups.set(key, group)
+  }
+
+  const countryLimit = Math.min(Math.max(limit ?? 8, 1), 24)
+  return [...groups.values()]
+    .sort((a, b) => {
+      if (a.country === 'Beyond') return 1
+      if (b.country === 'Beyond') return -1
+      if (a.locations.length !== b.locations.length) {
+        return b.locations.length - a.locations.length
+      }
+      return a.country.localeCompare(b.country)
+    })
+    .slice(0, countryLimit)
+}
+
 export function GuideCard({
   guide,
   variant,
