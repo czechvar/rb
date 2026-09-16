@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Header } from '@/components/marketing/Header'
 import { Footer } from '@/components/marketing/Footer'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
@@ -27,7 +28,11 @@ import { HomepageFAQ } from '@/components/marketing/homepage/HomepageFAQ'
 import { Partners } from '@/components/marketing/homepage/Partners'
 import { FinalCTA } from '@/components/marketing/homepage/FinalCTA'
 import { JsonLd } from '@/components/JsonLd'
-import { homepageGraphJsonLd } from '@/lib/jsonld'
+import { absoluteUrl, homepageGraphJsonLd } from '@/lib/jsonld'
+
+export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl('/') },
+}
 
 type HomepageData = {
   heroMedia: Media | null

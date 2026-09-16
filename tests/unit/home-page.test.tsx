@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import HomePage from '@/app/(frontend)/page'
+import HomePage, { metadata } from '@/app/(frontend)/page'
 
 const { pageQuery, fallbackQuery, graph } = vi.hoisted(() => ({
   pageQuery: vi.fn(),
@@ -17,7 +17,10 @@ vi.mock('@/lib/queries', () => ({
   getHomepageReviews: fallbackQuery,
   getProClimberGuides: fallbackQuery,
 }))
-vi.mock('@/lib/jsonld', () => ({ homepageGraphJsonLd: graph }))
+vi.mock('@/lib/jsonld', () => ({
+  absoluteUrl: (path: string) => `https://rockbusters.net${path}`,
+  homepageGraphJsonLd: graph,
+}))
 vi.mock('@/components/marketing/Header', () => ({ Header: () => null }))
 vi.mock('@/components/marketing/Footer', () => ({ Footer: () => null }))
 vi.mock('@/components/blocks/RenderBlocks', () => ({ RenderBlocks: () => null }))
@@ -25,6 +28,10 @@ vi.mock('@/components/blocks/RenderBlocks', () => ({ RenderBlocks: () => null })
 beforeEach(() => vi.clearAllMocks())
 
 describe('homepage data selection', () => {
+  it('uses an absolute homepage canonical', () => {
+    expect(metadata.alternates).toEqual({ canonical: 'https://rockbusters.net/' })
+  })
+
   it('does not load unused legacy catalogue data for a published CMS layout', async () => {
     const page = { id: 1, slug: 'home', layout: [{ blockType: 'hero' }] }
     pageQuery.mockResolvedValue(page)

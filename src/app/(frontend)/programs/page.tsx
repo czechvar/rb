@@ -1,11 +1,16 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getPublishedEventsWithLocations, getActiveEventDatesForEvents } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { JsonLd } from '@/components/JsonLd'
-import { collectionPageGraphJsonLd, tripListItems } from '@/lib/jsonld'
+import { absoluteUrl, collectionPageGraphJsonLd, tripListItems } from '@/lib/jsonld'
 import type { Event, EventDate, Location } from '@/payload-types'
 import { tripPublicDatePath } from '@/lib/occurrence-routing'
 import styles from './page.module.css'
+
+export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl('/programs') },
+}
 
 function fmtDate(value: string | null | undefined): string {
   if (!value) return ''

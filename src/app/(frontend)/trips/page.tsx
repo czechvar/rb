@@ -2,17 +2,23 @@ import { notFound } from 'next/navigation'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import { JsonLd } from '@/components/JsonLd'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
-import { genericCmsPageGraphJsonLd } from '@/lib/jsonld'
+import { absoluteUrl, genericCmsPageGraphJsonLd } from '@/lib/jsonld'
 import { getPublishedPageBySlug } from '@/lib/queries'
 
 export async function generateMetadata() {
   const page = await getPublishedPageBySlug('trips')
-  if (!page) return { title: 'Trips & Courses - Rockbusters' }
+  if (!page) {
+    return {
+      title: 'Trips & Courses - Rockbusters',
+      alternates: { canonical: absoluteUrl('/trips') },
+    }
+  }
 
   return {
     title: page.seo?.title || `${page.title} - Rockbusters`,
     description: page.seo?.description || undefined,
     keywords: page.seo?.keywords || undefined,
+    alternates: { canonical: absoluteUrl('/trips') },
   }
 }
 

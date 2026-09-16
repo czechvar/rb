@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { getActiveLocations, getPublishedPageBySlug } from '@/lib/queries'
 import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { JsonLd } from '@/components/JsonLd'
-import { collectionPageGraphJsonLd, locationListItems } from '@/lib/jsonld'
+import { absoluteUrl, collectionPageGraphJsonLd, locationListItems } from '@/lib/jsonld'
 import { mediaUrl, mediaAlt } from '@/lib/media'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import type { Location } from '@/payload-types'
@@ -15,6 +15,7 @@ export async function generateMetadata() {
     title: page?.seo?.title || 'Destinations - Rockbusters',
     description: page?.seo?.description || undefined,
     keywords: page?.seo?.keywords || undefined,
+    alternates: { canonical: absoluteUrl('/destinations') },
   }
 }
 

@@ -35,7 +35,11 @@ vi.mock('@/lib/block-resolvers/content-discovery', () => ({
   resolveFeaturedEventDate: vi.fn(),
   resolveFeaturedPost: vi.fn(),
 }))
-vi.mock('@/lib/jsonld', () => ({ collectionPageGraphJsonLd: () => ({}), tripListItems: () => [] }))
+vi.mock('@/lib/jsonld', () => ({
+  absoluteUrl: (path: string) => `https://rockbusters.net${path}`,
+  collectionPageGraphJsonLd: () => ({}),
+  tripListItems: () => [],
+}))
 vi.mock('@/components/JsonLd', () => ({ JsonLd: () => null }))
 vi.mock('@/components/marketing/MarketingShell', () => ({ MarketingShell: ({ children }: { children: React.ReactNode }) => <>{children}</> }))
 
