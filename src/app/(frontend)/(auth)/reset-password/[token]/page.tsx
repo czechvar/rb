@@ -11,7 +11,7 @@ export default async function ResetPasswordPage({
   const { token } = await params
   return (
     <>
-      <h1>Set a new password</h1>
+      <h1 data-type="section">Set a new password</h1>
       <ResetForm token={token} />
     </>
   )

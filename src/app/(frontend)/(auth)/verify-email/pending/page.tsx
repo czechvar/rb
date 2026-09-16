@@ -11,7 +11,7 @@ export default async function VerifyPendingPage({
   const { email } = await searchParams
   return (
     <>
-      <h1>Check your inbox</h1>
+      <h1 data-type="section">Check your inbox</h1>
       <p>
         We sent a verification link {email ? <>to <strong>{email}</strong></> : 'to your email address'}.
         Click it to activate your account.

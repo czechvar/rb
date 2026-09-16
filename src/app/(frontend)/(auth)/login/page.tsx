@@ -17,7 +17,7 @@ export default async function LoginPage({
   if (user) redirect(sanitizeRedirect(sp.from) ?? '/account')
   return (
     <>
-      <h1>Sign in</h1>
+      <h1 data-type="section">Sign in</h1>
       <LoginForm
         from={sp.from}
         verifiedFlash={sp.verified === '1'}

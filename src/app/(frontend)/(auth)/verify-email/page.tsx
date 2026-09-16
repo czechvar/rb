@@ -19,7 +19,7 @@ export default async function VerifyEmailPage({
   if (!token) {
     return (
       <>
-        <h1>Verification link invalid</h1>
+        <h1 data-type="section">Verification link invalid</h1>
         <p>No verification token in the URL. Request a new email:</p>
         <ResendForm />
       </>
@@ -37,7 +37,7 @@ export default async function VerifyEmailPage({
     console.error('[verify-email] failed for token:', token, err)
     return (
       <>
-        <h1>This link is no longer valid</h1>
+        <h1 data-type="section">This link is no longer valid</h1>
         <p>
           Verification links work only once. If you&apos;ve already verified, you can{' '}
           <a href="/login">sign in</a>. Otherwise request a new email:

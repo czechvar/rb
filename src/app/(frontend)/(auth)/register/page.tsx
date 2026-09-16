@@ -11,7 +11,7 @@ export default async function RegisterPage() {
 
   return (
     <>
-      <h1>Create account</h1>
+      <h1 data-type="section">Create account</h1>
       <RegisterForm />
     </>
   )
