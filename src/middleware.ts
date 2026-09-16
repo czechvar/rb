@@ -1,14 +1,11 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { sanitizeRedirect } from '@/lib/redirect'
 import { getPayloadClient } from '@/lib/payload'
 import {
   REFERRAL_COOKIE_MAX_AGE_SECONDS,
   REFERRAL_COOKIE_NAME,
   resolveReferralFromQuery,
 } from '@/lib/referral'
-
-const AUTH_PAGES = ['/login', '/register']
 
 export async function middleware(req: NextRequest): Promise<NextResponse> {
   // Referral proxy: capture ?ref=CODE and set cookie if valid, then strip from URL
@@ -51,11 +48,6 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
     url.pathname = '/login'
     url.searchParams.set('from', pathname + (req.nextUrl.search ?? ''))
     return NextResponse.redirect(url)
-  }
-
-  if (token && AUTH_PAGES.includes(pathname)) {
-    const target = sanitizeRedirect(req.nextUrl.searchParams.get('from')) ?? '/account'
-    return NextResponse.redirect(new URL(target, req.url))
   }
 
   return NextResponse.next()
