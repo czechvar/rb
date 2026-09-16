@@ -378,6 +378,8 @@ export function CheckoutFlow({
             <h2 data-type="card-lg">
               {returning
                 ? 'Payer and billing details'
+                : journey === 'login'
+                  ? 'Sign in to continue'
                 : !contact && journey === 'unknown'
                   ? 'Start with your email'
                   : 'Your details'}
@@ -385,14 +387,16 @@ export function CheckoutFlow({
             <p className={styles.muted}>
               {returning
                 ? 'Reserve every date together, then choose full payment or the amount due now. Unpaid returning-customer reservations are held for 24 hours, subject to payment reconciliation.'
+                : journey === 'login'
+                  ? 'We found an account for this email. Sign in to continue with your reservation and payment.'
                 : contact
                   ? 'Reserve your dates for review. We will email you when your request is approved and ready for payment.'
                   : 'Verify your email before we reserve your dates for review. We will invite you to set up your account and pay once approved.'}
             </p>
             {!contact && (
               <p>
-                Booked with us before?{' '}
-                <Link href="/login?from=%2Fcheckout">Log in with your password</Link>. Your cart
+                Already have an account?{' '}
+                <Link href="/login?from=%2Fcheckout">Sign in with your password</Link>. Your cart
                 stays here.
               </p>
             )}
@@ -462,9 +466,9 @@ export function CheckoutFlow({
                 )}
                 {!guestVerification && journey === 'login' && !contact ? (
                   <p className={styles.notice}>
-                    Welcome back.{' '}
+                    We found an account for this email.{' '}
                     <Link href="/login?from=%2Fcheckout">
-                      Log in with your password to continue
+                      Sign in to continue to payment
                     </Link>
                     . Your selected trips will stay in your cart.
                   </p>

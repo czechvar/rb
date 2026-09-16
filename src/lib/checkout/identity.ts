@@ -8,7 +8,7 @@ import type { CheckoutRecord } from './types'
 import { checkoutEnabled } from './feature'
 import { quoteCart } from './quote'
 import { checkoutRateLimitConfig, checkoutRateLimitWindowLabel } from './rate-limit'
-import { activateGuestReservation, cancelCheckout, isReturningPurchaser } from './reservations'
+import { activateGuestReservation, cancelCheckout } from './reservations'
 import {
   checkoutDatabase,
   lockCheckout,
@@ -90,7 +90,7 @@ async function client() {
   return getPayloadClient()
 }
 
-async function journeyForEmail(
+export async function checkoutJourneyForEmail(
   payload: Payload,
   email: string,
   req?: PayloadRequest,
@@ -103,9 +103,7 @@ async function journeyForEmail(
     overrideAccess: true,
     req,
   })
-  return found.docs[0] && (await isReturningPurchaser(payload, found.docs[0], req))
-    ? 'login'
-    : 'new'
+  return found.docs[0] ? 'login' : 'new'
 }
 
 /** Accepted email-first routing exposes only the journey, never account/profile details. */
@@ -117,7 +115,7 @@ export async function lookupCheckoutJourney(
   const normalized = z.string().trim().toLowerCase().email().max(254).parse(email)
   const payload = await client()
   await rateIdentity(payload, network, normalized)
-  return journeyForEmail(payload, normalized)
+  return checkoutJourneyForEmail(payload, normalized)
 }
 
 /** Separate committed limiter transaction: business rollback must not refund an abuse attempt. */
@@ -197,7 +195,7 @@ export async function createGuestCheckout(raw: unknown, network: string): Promis
   const verificationHash = verificationCodeHash(code)
   const requestDigest = createHash('sha256').update(JSON.stringify(input)).digest('hex')
   const checkout = await withCheckoutTransaction(payload, async (req) => {
-    if ((await journeyForEmail(payload, input.contact.email, req)) === 'login')
+    if ((await checkoutJourneyForEmail(payload, input.contact.email, req)) === 'login')
       throw new Error('Sign in to your existing purchaser account to continue.')
     await lockSubmission(req, input.submissionKey)
     const previous = await payload.find({

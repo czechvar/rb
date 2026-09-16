@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import type { Payload } from 'payload'
 import {
+  checkoutJourneyForEmail,
   checkoutTokenHash,
   checkoutVerificationCodeHash,
   generateCheckoutVerificationCode,
@@ -22,6 +23,25 @@ vi.mock('@/lib/email/adapter', () => ({ resolveEmailMode: emailMode }))
 vi.mock('@/lib/url', () => ({ siteUrl: (path: string) => `https://example.test${path}` }))
 
 describe('checkout identity credentials', () => {
+  it('routes every existing account to sign in even without purchase history', async () => {
+    const find = vi
+      .fn()
+      .mockResolvedValueOnce({ docs: [{ id: 42 }] })
+      .mockResolvedValueOnce({ docs: [] })
+    await expect(
+      checkoutJourneyForEmail({ find } as unknown as Payload, 'known@example.test'),
+    ).resolves.toBe('login')
+    await expect(
+      checkoutJourneyForEmail({ find } as unknown as Payload, 'new@example.test'),
+    ).resolves.toBe('new')
+    expect(find).toHaveBeenCalledWith(
+      expect.objectContaining({
+        collection: 'users',
+        where: { email: { equals: 'known@example.test' } },
+      }),
+    )
+  })
+
   it('creates six-digit verification codes with a secret-bound digest', () => {
     for (let index = 0; index < 50; index += 1)
       expect(generateCheckoutVerificationCode()).toMatch(/^\d{6}$/)

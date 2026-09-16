@@ -345,14 +345,14 @@ it('reserves a returning purchaser basket once while pending and clears only sub
   expect(mocks.guest).not.toHaveBeenCalled()
 })
 
-it('asks for email first and routes known purchasers to login without collecting new-customer details', async () => {
+it('asks for email first and routes any known account to login without collecting new-customer details', async () => {
   mocks.lookup.mockResolvedValueOnce({ ok: true, journey: 'login' })
   render(<CheckoutFlow mode="checkout" />)
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   expect(screen.queryByLabelText('Full name')).toBeNull()
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'returning@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
-  const link = await screen.findByRole('link', { name: 'Log in with your password to continue' })
+  const link = await screen.findByRole('link', { name: 'Sign in to continue to payment' })
   expect(link.getAttribute('href')).toBe('/login?from=%2Fcheckout')
   expect(screen.queryByLabelText('Full name')).toBeNull()
   expect(mocks.guest).not.toHaveBeenCalled()
