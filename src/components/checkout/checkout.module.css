@@ -54,7 +54,7 @@
 }
 .panel {
   color: var(--theme-color-paper);
-  background: var(--theme-color-surface-1);
+  background: var(--theme-color-ink);
   border: 1px solid var(--theme-color-border);
   padding: 28px;
   min-width: 0;
@@ -103,7 +103,7 @@
 .field input,
 .field select {
   border: 1px solid var(--theme-color-border);
-  background: var(--theme-color-surface-2);
+  background: var(--theme-color-ink);
   color: var(--theme-color-paper);
   padding: 12px;
   width: 100%;
@@ -111,34 +111,25 @@
   font: inherit;
   border-radius: 0;
 }
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--theme-color-paper);
+  caret-color: var(--theme-color-paper);
+  box-shadow: 0 0 0 1000px var(--theme-color-ink) inset;
+}
 .formRow {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 .button {
-  display: inline-block;
-  padding: 16px 24px;
-  background: var(--theme-color-primary);
-  color: var(--theme-color-ink) !important;
-  font-family: var(--theme-font-body);
-  font-size: var(--theme-text-small);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 0;
-  text-decoration: none;
-  cursor: pointer;
+  justify-content: center;
   text-align: center;
 }
 .button:disabled {
   opacity: 0.55;
   cursor: wait;
-}
-.secondary {
-  background: transparent;
-  color: var(--theme-color-paper) !important;
-  border: 1px solid var(--theme-color-border);
 }
 .remove {
   border: 0;

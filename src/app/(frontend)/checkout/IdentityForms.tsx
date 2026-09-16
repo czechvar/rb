@@ -76,7 +76,7 @@ export function VerifyCheckoutForm({ id }: { id: number }) {
       <input type="hidden" name="token" value={token} />
       {state.formError && <FormBanner kind="error">{state.formError}</FormBanner>}
       {!token && <p>Open the confirmation link from your email to continue.</p>}
-      <button className={forms.submit} disabled={pending || !token}>
+      <button className="btn-primary" disabled={pending || !token}>
         {pending ? 'Confirming…' : 'Confirm email and reserve for review'}
       </button>
     </form>
@@ -204,7 +204,7 @@ export function CheckoutInvitationForm({ id }: { id: number }) {
           </div>
         </>
       )}
-      <button className={forms.submit} disabled={pending}>
+      <button className="btn-primary" disabled={pending}>
         {pending ? 'Saving…' : createAccount ? 'Create account and continue' : 'Connect my account'}
       </button>
     </form>

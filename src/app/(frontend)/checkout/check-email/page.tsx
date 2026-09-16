@@ -23,7 +23,7 @@ export default function CheckEmailPage() {
             and payment.
           </p>
           <div className={styles.actions}>
-            <Link href="/cart" className={`${styles.button} ${styles.secondary}`}>
+            <Link href="/cart" className={`btn-ghost ${styles.button}`}>
               Back to your cart
             </Link>
             <Link href="/contact">Need help?</Link>

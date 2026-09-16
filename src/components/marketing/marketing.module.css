@@ -226,6 +226,20 @@
   text-decoration: underline;
 }
 
+.breadcrumbDark {
+  color: var(--theme-color-paper-60);
+  background: var(--theme-color-ink);
+  border-bottom-color: var(--theme-color-border);
+}
+
+.breadcrumbDark::before {
+  background: var(--theme-color-ink);
+}
+
+.breadcrumbDark a {
+  color: var(--theme-color-paper-60);
+}
+
 .breadcrumbSep {
   margin: 0 0.6rem;
   opacity: 0.5;

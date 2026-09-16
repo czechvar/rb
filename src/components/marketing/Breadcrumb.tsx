@@ -3,10 +3,14 @@ import styles from './marketing.module.css'
 
 export type Crumb = { href?: string; label: string }
 
-export function Breadcrumb({ items }: { items: Crumb[] }) {
+export function Breadcrumb({ items, tone = 'light' }: { items: Crumb[]; tone?: 'light' | 'dark' }) {
   if (!items?.length) return null
   return (
-    <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+    <nav
+      className={`${styles.breadcrumb} ${tone === 'dark' ? styles.breadcrumbDark : ''}`}
+      aria-label="Breadcrumb"
+      data-tone={tone}
+    >
       {items.map((c, i) => (
         <span key={i}>
           {c.href ? <Link href={c.href}>{c.label}</Link> : <span>{c.label}</span>}

@@ -36,6 +36,7 @@ it('redeems a legacy verification-link fragment only after deliberate submission
   window.history.replaceState(null, '', `/checkout/verify?checkout=7#token=${'a'.repeat(43)}`)
   render(<VerifyCheckoutForm id={7} />)
   expect(window.location.hash).toBe('')
+  expect(screen.getByRole('button').classList.contains('btn-primary')).toBe(true)
   await waitFor(() =>
     expect((screen.getByRole('button') as HTMLButtonElement).disabled).toBe(false),
   )
@@ -80,6 +81,11 @@ it('prefills the invited name, creates the account and redirects directly to pay
   expect(((await screen.findByLabelText('Full name')) as HTMLInputElement).value).toBe(
     'Ada Lovelace',
   )
+  expect(
+    screen
+      .getByRole('button', { name: 'Create account and continue' })
+      .classList.contains('btn-primary'),
+  ).toBe(true)
   expect((screen.getByLabelText('Email') as HTMLInputElement).value).toBe('ada@example.test')
   fireEvent.change(screen.getByLabelText('Choose a password'), {
     target: { value: 'FixturePassword42!' },
