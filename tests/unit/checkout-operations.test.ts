@@ -2,7 +2,9 @@ import { beforeEach, expect, it, vi } from 'vitest'
 import {
   canQuickApproveCheckout,
   matchesOperationFilter,
+  operationFilterWhere,
   refundMinor,
+  requiresItemFiltering,
 } from '@/components/admin/checkouts/operations'
 import { adminCheckoutOperationAction } from '@/components/admin/checkouts/actions'
 import type { CheckoutRecord } from '@/lib/checkout/types'
@@ -97,6 +99,18 @@ it('distinguishes unpaid, overdue balances and reconciliation using settled curr
   record.state = 'reconciliation'
   expect(matchesOperationFilter(record, 'reconciliation', 0)).toBe(true)
   expect(matchesOperationFilter(record, 'balance-due', Date.parse('2030-02-01'))).toBe(false)
+})
+
+it('pushes state-only queue filters into Payload and reserves item scans for JSON predicates', () => {
+  expect(operationFilterWhere('waiting-review')).toEqual({ state: { equals: 'awaitingReview' } })
+  expect(operationFilterWhere('reconciliation')).toEqual({
+    state: { equals: 'reconciliation' },
+  })
+  expect(operationFilterWhere('unpaid')).toEqual({ state: { in: ['reserved', 'approved'] } })
+  expect(operationFilterWhere('all')).toBeUndefined()
+  expect(requiresItemFiltering('unpaid')).toBe(true)
+  expect(requiresItemFiltering('balance-due')).toBe(true)
+  expect(requiresItemFiltering('waiting-review')).toBe(false)
 })
 
 it('offers quick approval only for new customers awaiting review', () => {

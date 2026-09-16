@@ -1,4 +1,5 @@
 import type { CheckoutRecord } from '@/lib/checkout/types'
+import type { Where } from 'payload'
 
 export const operationFilters = [
   'all',
@@ -8,6 +9,18 @@ export const operationFilters = [
   'reconciliation',
 ] as const
 export type OperationFilter = (typeof operationFilters)[number]
+
+export function requiresItemFiltering(filter: OperationFilter): boolean {
+  return filter === 'unpaid' || filter === 'balance-due'
+}
+
+export function operationFilterWhere(filter: OperationFilter): Where | undefined {
+  if (filter === 'waiting-review') return { state: { equals: 'awaitingReview' } }
+  if (filter === 'reconciliation') return { state: { equals: 'reconciliation' } }
+  if (requiresItemFiltering(filter)) return { state: { in: ['reserved', 'approved'] } }
+  return undefined
+}
+
 export function canQuickApproveCheckout(record: CheckoutRecord): boolean {
   return record.customerKind === 'new' && record.state === 'awaitingReview'
 }

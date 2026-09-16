@@ -11,7 +11,9 @@ import { CheckoutAdminApproveButton } from './CheckoutAdminForms'
 import {
   canQuickApproveCheckout,
   matchesOperationFilter,
+  operationFilterWhere,
   operationFilters,
+  requiresItemFiltering,
   type OperationFilter,
 } from './operations'
 import styles from './checkout-admin.module.css'
@@ -29,26 +31,58 @@ export async function CheckoutOperationsQueueView({
     : 'all'
   const requestedPage = Number(searchParams?.page || 1)
   const page = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1
-  const records: CheckoutRecord[] = []
-  let sourcePage = 1
-  while (true) {
+  const pageSize = 50
+  const where = operationFilterWhere(filter)
+  let visible: CheckoutRecord[] = []
+  let hasNextPage = false
+  let totalDocs: number | null = null
+
+  if (!requiresItemFiltering(filter)) {
     const result = await initPageResult.req.payload.find({
       collection: 'checkouts',
       sort: 'createdAt',
-      page: sourcePage,
-      limit: 100,
+      page,
+      limit: pageSize,
+      ...(where ? { where } : {}),
       depth: 0,
       overrideAccess: false,
       user: actor,
     })
-    records.push(...(result.docs as unknown as CheckoutRecord[]))
-    if (!result.hasNextPage) break
-    sourcePage++
+    visible = result.docs as unknown as CheckoutRecord[]
+    hasNextPage = result.hasNextPage
+    totalDocs = result.totalDocs
+  } else {
+    const matches: CheckoutRecord[] = []
+    let matchesToSkip = (page - 1) * pageSize
+    let sourcePage = 1
+    const now = new Date().getTime()
+    while (matches.length <= pageSize) {
+      const result = await initPageResult.req.payload.find({
+        collection: 'checkouts',
+        sort: 'createdAt',
+        page: sourcePage,
+        limit: 100,
+        where,
+        depth: 0,
+        overrideAccess: false,
+        user: actor,
+      })
+      for (const record of result.docs as unknown as CheckoutRecord[]) {
+        if (!matchesOperationFilter(record, filter, now)) continue
+        if (matchesToSkip > 0) {
+          matchesToSkip--
+          continue
+        }
+        matches.push(record)
+        if (matches.length > pageSize) break
+      }
+      if (matches.length > pageSize || !result.hasNextPage) break
+      sourcePage++
+    }
+    visible = matches.slice(0, pageSize)
+    hasNextPage = matches.length > pageSize
   }
-
   const now = new Date().getTime()
-  const matching = records.filter((record) => matchesOperationFilter(record, filter, now))
-  const visible = matching.slice((page - 1) * 50, page * 50)
 
   return (
     <Gutter className={styles.view}>
@@ -70,7 +104,10 @@ export async function CheckoutOperationsQueueView({
         ))}
       </nav>
 
-      <p>{matching.length} reservations · oldest first</p>
+      <p>
+        {totalDocs == null ? `${visible.length} reservations on this page` : `${totalDocs} reservations`}{' '}
+        · oldest first
+      </p>
       <div className={styles.queue}>
         {visible.map((record) => (
           <article className={styles.panel} key={record.id}>
@@ -106,7 +143,7 @@ export async function CheckoutOperationsQueueView({
             Previous
           </Link>
         )}
-        {page * 50 < matching.length && (
+        {hasNextPage && (
           <Link href={`/admin/collections/checkouts/operations?filter=${filter}&page=${page + 1}`}>
             Next
           </Link>
