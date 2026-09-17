@@ -399,12 +399,15 @@ it('collects billing before an approved new customer can open payment and preser
       currency="EUR"
       items={[item]}
       methods={{ card: true, benefit: true }}
+      contactName="Test Visitor"
     />,
   )
   expect(screen.queryByRole('button', { name: 'Continue to secure payment' })).toBeNull()
   expect(
     screen.getByRole('button', { name: 'Save payer address' }).classList.contains('btn-primary'),
   ).toBe(true)
+  expect((screen.getByLabelText('First name') as HTMLInputElement).value).toBe('Test')
+  expect((screen.getByLabelText('Last name') as HTMLInputElement).value).toBe('Visitor')
   const progress = screen.getByRole('list', { name: 'Checkout progress' })
   expect(within(progress).getByText('Account').closest('li')?.getAttribute('aria-current')).toBe(
     'step',

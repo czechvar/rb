@@ -21,6 +21,7 @@ type Props = {
   methods: { card: boolean; benefit: boolean }
   billingReady?: boolean
   billingAddress?: BillingAddressValues
+  contactName?: string
   asOf: number
 }
 export type BillingAddressValues = Record<
@@ -36,6 +37,7 @@ export function CheckoutPayment({
   methods,
   billingReady = false,
   billingAddress,
+  contactName,
   asOf,
 }: Props) {
   const router = useRouter()
@@ -114,7 +116,7 @@ export function CheckoutPayment({
         </p>
       )}
       {active && remaining > 0 && !billingReady && (
-        <BillingForm checkoutId={checkoutId} initialValues={billingAddress} />
+        <BillingForm checkoutId={checkoutId} initialValues={billingAddress} contactName={contactName} />
       )}
       {active && remaining > 0 && billingReady && (
         <section className={styles.panel}>
@@ -256,15 +258,18 @@ export function CheckoutPayment({
 function BillingForm({
   checkoutId,
   initialValues,
+  contactName,
 }: {
   checkoutId: number
   initialValues?: BillingAddressValues
+  contactName?: string
 }) {
   const router = useRouter()
   const id = useId()
+  const nameParts = splitContactName(contactName)
   const [values, setValues] = useState({
-    firstName: initialValues?.firstName || '',
-    lastName: initialValues?.lastName || '',
+    firstName: initialValues?.firstName || nameParts.firstName,
+    lastName: initialValues?.lastName || nameParts.lastName,
     street: initialValues?.street || '',
     city: initialValues?.city || '',
     postalCode: initialValues?.postalCode || '',
@@ -336,6 +341,14 @@ function BillingForm({
       </form>
     </section>
   )
+}
+
+function splitContactName(value?: string): { firstName: string; lastName: string } {
+  const parts = value?.trim().split(/\s+/).filter(Boolean) ?? []
+  return {
+    firstName: parts[0] ?? '',
+    lastName: parts.slice(1).join(' '),
+  }
 }
 
 function CheckoutProgress({ current }: { current: 1 | 2 }) {

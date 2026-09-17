@@ -110,6 +110,7 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
             methods={availableCheckoutMethods()}
             billingReady={!!billingAddress}
             billingAddress={billingAddress}
+            contactName={checkout.contact.name}
           />
           <p>
             <Link href="/account/checkouts">All reservations</Link>
