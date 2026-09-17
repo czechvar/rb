@@ -87,6 +87,8 @@ export function CheckoutPayment({
   const card = methods.card && (!paid || !paymentMethod || paymentMethod === 'comgate-card')
   const benefit =
     methods.benefit && benefitEligible && (!paid || !paymentMethod || paymentMethod === 'muzapay')
+  const multipleMethods = card && benefit
+  const methodLabel = method === 'muzapay' ? 'Benefit+' : 'Card — Comgate'
   const active = state === 'reserved' || state === 'approved'
   async function submit(event: React.FormEvent<HTMLFormElement>, cancel = false) {
     event.preventDefault()
@@ -116,7 +118,11 @@ export function CheckoutPayment({
         </p>
       )}
       {active && remaining > 0 && !billingReady && (
-        <BillingForm checkoutId={checkoutId} initialValues={billingAddress} contactName={contactName} />
+        <BillingForm
+          checkoutId={checkoutId}
+          initialValues={billingAddress}
+          contactName={contactName}
+        />
       )}
       {active && remaining > 0 && billingReady && (
         <section className={styles.panel}>
@@ -129,23 +135,31 @@ export function CheckoutPayment({
           {card || benefit ? (
             <form onSubmit={submit}>
               <fieldset className={styles.fields} disabled={pending}>
-                <label className={styles.field}>
-                  Payment method
-                  <select
-                    name="method"
-                    value={method}
-                    onChange={(event) => setMethod(event.target.value as CheckoutMethod)}
-                  >
-                    {card && <option value="comgate-card">Card — Comgate</option>}
-                    {benefit && <option value="muzapay">Benefit+</option>}
-                  </select>
-                </label>
+                {multipleMethods ? (
+                  <label className={styles.field}>
+                    Payment method
+                    <select
+                      name="method"
+                      value={method}
+                      onChange={(event) => setMethod(event.target.value as CheckoutMethod)}
+                    >
+                      {card && <option value="comgate-card">Card — Comgate</option>}
+                      {benefit && <option value="muzapay">Benefit+</option>}
+                    </select>
+                  </label>
+                ) : (
+                  <div className={`${styles.field} ${styles.methodSummary}`}>
+                    <span>Payment method</span>
+                    <strong>{methodLabel}</strong>
+                    <input type="hidden" name="method" value={method} />
+                  </div>
+                )}
                 {paid && (
                   <p className={styles.muted}>
                     Use the same payment method as your first settled payment.
                   </p>
                 )}
-                <label className={styles.choice}>
+                <label className={styles.choice} data-selected={purpose === 'full'}>
                   <input
                     type="radio"
                     name="purpose"
@@ -159,7 +173,7 @@ export function CheckoutPayment({
                   </span>
                 </label>
                 {!paid && initial > 0 && initial < remaining && (
-                  <label className={styles.choice}>
+                  <label className={styles.choice} data-selected={purpose === 'deposit'}>
                     <input
                       type="radio"
                       name="purpose"
@@ -177,7 +191,7 @@ export function CheckoutPayment({
                   </label>
                 )}
                 {paid && (
-                  <label className={styles.choice}>
+                  <label className={styles.choice} data-selected={purpose === 'balance'}>
                     <input
                       type="radio"
                       name="purpose"
@@ -222,7 +236,7 @@ export function CheckoutPayment({
                   </p>
                 )}
                 <button className={`btn-primary ${styles.button}`}>
-                  {pending ? 'Opening payment…' : 'Continue to secure payment'}
+                  {pending ? 'Opening payment…' : 'Continue to payment'}
                 </button>
               </fieldset>
             </form>
@@ -236,14 +250,18 @@ export function CheckoutPayment({
       )}
       {active && remaining <= 0 && <p className={styles.notice}>Your checkout is paid in full.</p>}
       {!paid && (state === 'reserved' || state === 'approved' || state === 'awaitingReview') && (
-        <form onSubmit={(event) => submit(event, true)}>
-          <p className={styles.muted}>
-            Cancelling releases the reservation. Any settled payment requires staff reconciliation.
-          </p>
-          <button disabled={pending} className={`btn-ghost ${styles.button}`}>
-            Cancel reservation
-          </button>
-        </form>
+        <details className={styles.dangerDetails}>
+          <summary>Cancel reservation</summary>
+          <form onSubmit={(event) => submit(event, true)}>
+            <p className={styles.muted}>
+              Cancelling releases the reservation. Any settled payment requires staff
+              reconciliation.
+            </p>
+            <button disabled={pending} className={`btn-ghost ${styles.button}`}>
+              Confirm cancellation
+            </button>
+          </form>
+        </details>
       )}
       {paid && (
         <p className={styles.muted}>
@@ -361,7 +379,7 @@ function CheckoutProgress({ current }: { current: 1 | 2 }) {
           aria-current={index === current ? 'step' : undefined}
           key={step}
         >
-          <span aria-hidden="true">{index + 1}</span>
+          <span aria-hidden="true">{index < current ? '✓' : index + 1}</span>
           {step}
         </li>
       ))}

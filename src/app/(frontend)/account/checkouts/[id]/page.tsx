@@ -7,6 +7,7 @@ import { availableCheckoutMethods } from '@/payments/checkout-payment-service'
 import type { CheckoutRecord } from '@/lib/checkout/types'
 import { checkoutDisplayItem } from '@/components/checkout/presentation'
 import { CheckoutPayment, type BillingAddressValues } from '@/components/checkout/CheckoutPayment'
+import { ReservationHeader } from '@/components/checkout/ReservationHeader'
 import { money, date } from '@/components/checkout/format'
 import styles from '@/components/checkout/checkout.module.css'
 export const metadata = { title: 'Your reservation — Rockbusters' }
@@ -52,6 +53,13 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
       : active && partlyPaid
         ? 'Payment received — balance outstanding'
         : states[checkout.state]
+  const headerTitle = fullyPaid
+    ? 'Reservation paid'
+    : checkout.state === 'cancelled'
+      ? 'Reservation cancelled'
+      : checkout.state === 'awaitingReview'
+        ? 'Reservation received'
+        : 'Payment pending'
   const billingAddress =
     checkout.billingAddress &&
     ['firstName', 'lastName', 'street', 'city', 'postalCode', 'country'].every(
@@ -87,17 +95,12 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
   )
   return (
     <div className={styles.account}>
-      <header className={styles.header}>
-        <p className={styles.eyebrow}>Your reservation</p>
-        <h1>{checkout.reference}</h1>
-        <p>{statusLabel}</p>
-        {checkout.expiresAt && (
-          <p>
-            Reservation deadline:{' '}
-            {new Date(checkout.expiresAt).toLocaleString('en-GB', { timeZone: 'UTC' })} UTC.
-          </p>
-        )}
-      </header>
+      <ReservationHeader
+        reference={checkout.reference}
+        title={headerTitle}
+        status={statusLabel}
+        expiresAt={checkout.expiresAt}
+      />
       <div className={styles.layout}>
         <div className={styles.stack}>
           <CheckoutPayment
@@ -117,6 +120,51 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
           </p>
         </div>
         <aside className={styles.sidebar} aria-label="Reservation summary">
+          <section className={`${styles.panel} ${styles.tripSummary}`}>
+            <div className={styles.tripSummaryHeading}>
+              <h2 data-type="card-lg">Your trip</h2>
+              <span className={styles.orderDetailCount}>
+                {activeItems.length} {activeItems.length === 1 ? 'trip' : 'trips'}
+              </span>
+            </div>
+            <div className={styles.tripSummaryContent}>
+              {activeItems.map((item) => (
+                <div className={styles.tripSummaryItem} key={item.eventDateId}>
+                  <p className={styles.tripSummaryItemTitle}>{item.title}</p>
+                  <p className={styles.muted}>
+                    {date(item.dateFrom)} – {date(item.dateTo)}
+                  </p>
+                  <p className={styles.muted}>
+                    {item.quantity} {item.quantity === 1 ? 'participant' : 'participants'}
+                    {item.location ? ` · ${item.location}` : ''}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+          <section className={styles.panel}>
+            <h2 data-type="card-lg">Order summary</h2>
+            <div className={`${styles.row} ${styles.total}`}>
+              <span>Total</span>
+              <span className={styles.totalAmount}>{money(totalMinor, displayCurrency)}</span>
+            </div>
+            <div className={styles.row}>
+              <span>Paid</span>
+              <strong>{money(paidMinor, displayCurrency)}</strong>
+            </div>
+            {refundedMinor > 0 && (
+              <div className={styles.row}>
+                <span>Refunded</span>
+                <strong>{money(refundedMinor, displayCurrency)}</strong>
+              </div>
+            )}
+            <div className={`${styles.row} ${styles.outstanding}`}>
+              <strong>Outstanding</strong>
+              <strong className={styles.outstandingAmount}>
+                {money(Math.max(0, totalMinor - paidMinor), displayCurrency)}
+              </strong>
+            </div>
+          </section>
           <details className={styles.orderDetails}>
             <summary>
               <span>Order details</span>
@@ -197,27 +245,6 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
               </div>
             </div>
           </details>
-          <section className={styles.panel}>
-            <h2 data-type="card-lg">Order summary</h2>
-            <div className={`${styles.row} ${styles.total}`}>
-              <span>Total</span>
-              <span>{money(totalMinor, displayCurrency)}</span>
-            </div>
-            <div className={styles.row}>
-              <span>Paid</span>
-              <strong>{money(paidMinor, displayCurrency)}</strong>
-            </div>
-            {refundedMinor > 0 && (
-              <div className={styles.row}>
-                <span>Refunded</span>
-                <strong>{money(refundedMinor, displayCurrency)}</strong>
-              </div>
-            )}
-            <div className={styles.row}>
-              <span>Outstanding</span>
-              <strong>{money(Math.max(0, totalMinor - paidMinor), displayCurrency)}</strong>
-            </div>
-          </section>
         </aside>
       </div>
     </div>

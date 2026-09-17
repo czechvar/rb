@@ -103,6 +103,9 @@ it('keeps checkout interactions primary and collapses order details above the su
   expect(disclosure.open).toBe(false)
   expect(disclosure.querySelector('h2')?.textContent).toBe('Test climbing trip')
   expect(disclosure.querySelector('input[type="number"]')).toBeTruthy()
+  expect(screen.getByText('Your trip')).toBeTruthy()
+  expect(screen.getByText('Due today')).toBeTruthy()
+  expect(document.activeElement).toBe(screen.getByLabelText('Email'))
   const summary = screen.getByRole('heading', { name: 'Order summary' })
   expect(
     disclosure.compareDocumentPosition(summary) & Node.DOCUMENT_POSITION_FOLLOWING,
@@ -124,7 +127,7 @@ it('verifies an unknown pay-now email before showing account details', async () 
 
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
-  await screen.findByRole('button', { name: 'Send verification code' })
+  const code = await screen.findByLabelText('Verification code')
   const progress = screen.getByRole('list', { name: 'Checkout progress' })
   expect(within(progress).getByText('Verify').closest('li')?.getAttribute('aria-current')).toBe(
     'step',
@@ -134,10 +137,6 @@ it('verifies an unknown pay-now email before showing account details', async () 
   expect(screen.queryByText(/Already have an account/)).toBeNull()
   expect(screen.queryByLabelText('Full name')).toBeNull()
 
-  fireEvent.submit(
-    (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
-  )
-  const code = await screen.findByLabelText('Verification code')
   fireEvent.change(code, { target: { value: '123456' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Verify email' }).closest('form')!)
 
@@ -146,21 +145,25 @@ it('verifies an unknown pay-now email before showing account details', async () 
     'step',
   )
   expect(screen.getByLabelText('Phone including country code')).toBeTruthy()
-  expect(screen.getByLabelText('Choose a password')).toBeTruthy()
+  expect(screen.getByLabelText('Create a password')).toBeTruthy()
   expect(screen.getByLabelText('Confirm password')).toBeTruthy()
   expect((screen.getByLabelText('Email') as HTMLInputElement).readOnly).toBe(true)
+  const showPassword = screen.getAllByRole('button', { name: 'Show' })[0]
+  fireEvent.click(showPassword)
+  expect((screen.getByLabelText('Create a password') as HTMLInputElement).type).toBe('text')
+  expect(showPassword.getAttribute('aria-pressed')).toBe('true')
   fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
   fireEvent.change(screen.getByLabelText('Phone including country code'), {
     target: { value: '+420123456789' },
   })
-  fireEvent.change(screen.getByLabelText('Choose a password'), {
+  fireEvent.change(screen.getByLabelText('Create a password'), {
     target: { value: 'FixturePassword42!' },
   })
   fireEvent.change(screen.getByLabelText('Confirm password'), {
     target: { value: 'FixturePassword42!' },
   })
   fireEvent.submit(
-    screen.getByRole('button', { name: 'Register and continue to payment' }).closest('form')!,
+    screen.getByRole('button', { name: 'Create account and continue' }).closest('form')!,
   )
 
   await waitFor(() => expect(mocks.push).toHaveBeenCalledWith('/account/checkouts/42#payment'))
@@ -238,9 +241,6 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
   expect(screen.queryByLabelText('Full name')).toBeNull()
-  fireEvent.submit(
-    (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
-  )
   await screen.findByRole('alert')
   const firstId = mocks.guest.mock.calls[0][1].get('submissionKey')
   fireEvent.submit(
@@ -248,6 +248,7 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
   )
   const code = await screen.findByLabelText('Verification code')
   expect(document.activeElement).toBe(code)
+  expect(screen.queryByRole('button', { name: 'Send verification code' })).toBeNull()
   expect(screen.getByText(/We emailed a six-digit verification code/).tagName).toBe('STRONG')
   expect(code.getAttribute('inputmode')).toBe('numeric')
   expect(code.getAttribute('autocomplete')).toBe('one-time-code')
@@ -278,9 +279,6 @@ it('keeps the submitted cart intact when guest code verification fails', async (
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
-  fireEvent.submit(
-    (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
-  )
   const code = await screen.findByLabelText('Verification code')
   fireEvent.change(code, { target: { value: '123456' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Verify email' }).closest('form')!)
@@ -302,9 +300,6 @@ it('clears only submitted quantities after a verified reserve-now request', asyn
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
-  fireEvent.submit(
-    (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
-  )
   const code = await screen.findByLabelText('Verification code')
   fireEvent.change(code, { target: { value: '123456' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Verify email' }).closest('form')!)
@@ -375,14 +370,10 @@ it('keeps saved payer details collapsed and submits selected balances with the o
     (screen.getByRole('radio', { name: /Pay selected trip balances/ }) as HTMLInputElement).checked,
   ).toBe(true)
   expect(
-    screen
-      .getByRole('button', { name: 'Continue to secure payment' })
-      .classList.contains('btn-primary'),
+    screen.getByRole('button', { name: 'Continue to payment' }).classList.contains('btn-primary'),
   ).toBe(true)
   await act(async () => {
-    fireEvent.submit(
-      screen.getByRole('button', { name: 'Continue to secure payment' }).closest('form')!,
-    )
+    fireEvent.submit(screen.getByRole('button', { name: 'Continue to payment' }).closest('form')!)
   })
   expect(mocks.pay.mock.calls[0][1].getAll('itemIds')).toEqual(['123'])
   expect(mocks.pay.mock.calls[0][1].get('method')).toBe('muzapay')
@@ -402,7 +393,7 @@ it('collects billing before an approved new customer can open payment and preser
       contactName="Test Visitor"
     />,
   )
-  expect(screen.queryByRole('button', { name: 'Continue to secure payment' })).toBeNull()
+  expect(screen.queryByRole('button', { name: 'Continue to payment' })).toBeNull()
   expect(
     screen.getByRole('button', { name: 'Save payer address' }).classList.contains('btn-primary'),
   ).toBe(true)
@@ -428,7 +419,7 @@ it('anchors payment and defaults an approved checkout to the amount due now', ()
       currency="EUR"
       items={[item]}
       billingReady
-      methods={{ card: true, benefit: true }}
+      methods={{ card: true, benefit: false }}
     />,
   )
   expect(document.querySelector('#payment')).toBeTruthy()
@@ -439,6 +430,7 @@ it('anchors payment and defaults an approved checkout to the amount due now', ()
   expect(
     (screen.getByRole('radio', { name: /Pay the initial amount/ }) as HTMLInputElement).checked,
   ).toBe(true)
+  expect(screen.queryByLabelText('Payment method')).toBeNull()
   expect(
     (screen.getByRole('radio', { name: /Pay outstanding total/ }) as HTMLInputElement).checked,
   ).toBe(false)

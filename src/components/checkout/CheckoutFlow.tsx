@@ -66,6 +66,8 @@ export function CheckoutFlow({
   const [pending, setPending] = useState(false)
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [passwordVisible, setPasswordVisible] = useState(false)
+  const [passwordConfirmVisible, setPasswordConfirmVisible] = useState(false)
   const [result, setResult] = useState<ActionResult>({ ok: false })
   const [guestVerification, setGuestVerification] = useState<{
     checkoutId: number
@@ -131,37 +133,51 @@ export function CheckoutFlow({
   }, [result])
   const errors = !result.ok ? result.fieldErrors : undefined
   function field(name: keyof typeof values, label: string, type = 'text', required = true) {
+    const verified = name === 'email' && Boolean(guestVerification?.verified)
+    const helperId =
+      name === 'email' && !contact && !guestVerification && journey === 'unknown'
+        ? `${id}-email-help`
+        : undefined
     return (
       <label className={styles.field} htmlFor={`${id}-${name}`}>
         {label}
-        <input
-          id={`${id}-${name}`}
-          name={name}
-          type={type}
-          value={values[name]}
-          required={required}
-          maxLength={name === 'email' ? 254 : name === 'phone' ? 20 : 120}
-          readOnly={name === 'email' && (!!contact || Boolean(guestVerification))}
-          aria-invalid={errors?.[name] ? true : undefined}
-          aria-describedby={errors?.[name] ? `${id}-${name}-error` : undefined}
-          autoComplete={
-            name === 'name'
-              ? 'name'
-              : name === 'email'
-                ? 'email'
-                : name === 'phone'
-                  ? 'tel'
-                  : undefined
-          }
-          onChange={(event) => {
-            submissionKey.current = null
-            if (name === 'email' && !contact) {
-              setJourney('unknown')
-              setPassword('')
+        <span className={verified ? styles.verifiedInput : undefined}>
+          <input
+            id={`${id}-${name}`}
+            name={name}
+            type={type}
+            value={values[name]}
+            required={required}
+            maxLength={name === 'email' ? 254 : name === 'phone' ? 20 : 120}
+            readOnly={name === 'email' && (!!contact || Boolean(guestVerification))}
+            autoFocus={name === 'email' && !contact && !guestVerification && journey === 'unknown'}
+            aria-invalid={errors?.[name] ? true : undefined}
+            aria-describedby={
+              [errors?.[name] ? `${id}-${name}-error` : '', helperId].filter(Boolean).join(' ') ||
+              undefined
             }
-            setValues((current) => ({ ...current, [name]: event.target.value }))
-          }}
-        />
+            autoComplete={
+              name === 'name'
+                ? 'name'
+                : name === 'email'
+                  ? 'email'
+                  : name === 'phone'
+                    ? 'tel'
+                    : undefined
+            }
+            onChange={(event) => {
+              submissionKey.current = null
+              if (name === 'email' && !contact) {
+                setJourney('unknown')
+                setPassword('')
+              }
+              setValues((current) => ({ ...current, [name]: event.target.value }))
+            }}
+          />
+          {verified && (
+            <span className={styles.verifiedBadge} role="status" aria-label="Verified" />
+          )}
+        </span>
         {errors?.[name] && (
           <span className={styles.error} id={`${id}-${name}-error`}>
             {errors[name]}
@@ -242,9 +258,12 @@ export function CheckoutFlow({
     try {
       if (!contact && journey !== 'new') {
         const response = await lookupCheckoutJourneyAction(values.email)
-        if (response.ok) setJourney(response.journey)
-        else setResult({ ok: false, formError: response.error })
-        return
+        if (!response.ok) {
+          setResult({ ok: false, formError: response.error })
+          return
+        }
+        setJourney(response.journey)
+        if (response.journey === 'login') return
       }
       submissionKey.current ??= crypto.randomUUID()
       data.set('submissionKey', submissionKey.current)
@@ -404,6 +423,42 @@ export function CheckoutFlow({
       </>
     )
   }
+  function renderTripSummary() {
+    return (
+      <section
+        className={`${styles.panel} ${styles.tripSummary}`}
+        aria-labelledby={`${id}-trip-title`}
+      >
+        <div className={styles.tripSummaryHeading}>
+          <h2 id={`${id}-trip-title`} data-type="card-lg">
+            Your trip
+          </h2>
+          <span className={styles.orderDetailCount}>
+            {cart.items.length} {cart.items.length === 1 ? 'trip' : 'trips'}
+          </span>
+        </div>
+        <div className={styles.tripSummaryContent}>
+          {cart.items.map((item) => {
+            const priced = quote?.items.find((row) => row.eventDateId === item.eventDateId)
+            return (
+              <div className={styles.tripSummaryItem} key={item.eventDateId}>
+                <p className={styles.tripSummaryItemTitle}>{priced?.title || 'Selected trip'}</p>
+                {priced && (
+                  <p className={styles.muted}>
+                    {date(priced.dateFrom)} – {date(priced.dateTo)}
+                  </p>
+                )}
+                <p className={styles.muted}>
+                  {item.quantity} {item.quantity === 1 ? 'participant' : 'participants'} · Guided
+                  trip
+                </p>
+              </div>
+            )
+          })}
+        </div>
+      </section>
+    )
+  }
   return (
     <div className={styles.layout}>
       <div className={styles.stack}>
@@ -429,7 +484,7 @@ export function CheckoutFlow({
                   aria-current={index === checkoutStep ? 'step' : undefined}
                   key={step}
                 >
-                  <span aria-hidden="true">{index + 1}</span>
+                  <span aria-hidden="true">{index < checkoutStep ? '✓' : index + 1}</span>
                   {step}
                 </li>
               ))}
@@ -457,10 +512,17 @@ export function CheckoutFlow({
                     : guestVerification
                       ? 'Enter the six-digit code from your email to continue.'
                       : journey === 'new'
-                        ? 'Send a six-digit code to confirm this email before adding your details.'
+                        ? pending
+                          ? 'Sending a six-digit code to confirm this email…'
+                          : 'Send a six-digit code to confirm this email before adding your details.'
                         : 'Enter your email to begin. We will check whether you already have an account.'}
             </p>
-            <form ref={formRef} onSubmit={submit} aria-busy={pending}>
+            <form
+              className={styles.checkoutForm}
+              ref={formRef}
+              onSubmit={submit}
+              aria-busy={pending}
+            >
               {!result.ok && result.formError && (
                 <p className={styles.error} role="alert">
                   {result.formError}
@@ -507,6 +569,11 @@ export function CheckoutFlow({
                 ) : (
                   <>
                     {!contact && field('email', 'Email', 'email')}
+                    {!contact && !guestVerification && journey === 'unknown' && (
+                      <p className={styles.helper} id={`${id}-email-help`}>
+                        We use your email to find your account or send a verification code.
+                      </p>
+                    )}
                     {journey === 'login' && !contact && (
                       <label className={styles.field} htmlFor={`${id}-password`}>
                         Password
@@ -531,45 +598,94 @@ export function CheckoutFlow({
                     )}
                     {!contact && guestVerification?.verified && (
                       <>
-                        {field('name', 'Full name')}
-                        {field(
-                          'phone',
-                          intent === 'pay'
-                            ? 'Phone including country code'
-                            : 'Phone including country code (optional)',
-                          'tel',
-                          intent === 'pay',
-                        )}
+                        <div className={styles.formRow}>
+                          {field('name', 'Full name')}
+                          <label className={styles.field} htmlFor={`${id}-phone`}>
+                            <span>Phone number{intent === 'reserve' ? ' (optional)' : ''}</span>
+                            <input
+                              id={`${id}-phone`}
+                              name="phone"
+                              type="tel"
+                              value={values.phone}
+                              required={intent === 'pay'}
+                              maxLength={20}
+                              placeholder="+34 600 000 000"
+                              autoComplete="tel"
+                              aria-label={
+                                intent === 'pay'
+                                  ? 'Phone including country code'
+                                  : 'Phone including country code (optional)'
+                              }
+                              aria-invalid={errors?.phone ? true : undefined}
+                              aria-describedby={errors?.phone ? `${id}-phone-error` : undefined}
+                              onChange={(event) => {
+                                submissionKey.current = null
+                                setValues((current) => ({ ...current, phone: event.target.value }))
+                              }}
+                            />
+                            {errors?.phone && (
+                              <span className={styles.error} id={`${id}-phone-error`}>
+                                {errors.phone}
+                              </span>
+                            )}
+                          </label>
+                        </div>
                         {intent === 'pay' && (
                           <>
-                            <label className={styles.field} htmlFor={`${id}-new-password`}>
-                              Choose a password
-                              <input
-                                id={`${id}-new-password`}
-                                name="password"
-                                type="password"
-                                value={password}
-                                required
-                                minLength={8}
-                                maxLength={128}
-                                autoComplete="new-password"
-                                onChange={(event) => setPassword(event.target.value)}
-                              />
-                            </label>
-                            <label className={styles.field} htmlFor={`${id}-password-confirm`}>
-                              Confirm password
-                              <input
-                                id={`${id}-password-confirm`}
-                                name="passwordConfirm"
-                                type="password"
-                                value={passwordConfirm}
-                                required
-                                minLength={8}
-                                maxLength={128}
-                                autoComplete="new-password"
-                                onChange={(event) => setPasswordConfirm(event.target.value)}
-                              />
-                            </label>
+                            <div className={styles.formRow}>
+                              <label className={styles.field} htmlFor={`${id}-new-password`}>
+                                Create a password
+                                <span className={styles.passwordInput}>
+                                  <input
+                                    id={`${id}-new-password`}
+                                    name="password"
+                                    type={passwordVisible ? 'text' : 'password'}
+                                    value={password}
+                                    required
+                                    minLength={8}
+                                    maxLength={128}
+                                    autoComplete="new-password"
+                                    onChange={(event) => setPassword(event.target.value)}
+                                  />
+                                  <button
+                                    type="button"
+                                    className={styles.passwordToggle}
+                                    aria-pressed={passwordVisible}
+                                    onClick={() => setPasswordVisible((visible) => !visible)}
+                                  >
+                                    {passwordVisible ? 'Hide' : 'Show'}
+                                  </button>
+                                </span>
+                              </label>
+                              <label className={styles.field} htmlFor={`${id}-password-confirm`}>
+                                Confirm password
+                                <span className={styles.passwordInput}>
+                                  <input
+                                    id={`${id}-password-confirm`}
+                                    name="passwordConfirm"
+                                    type={passwordConfirmVisible ? 'text' : 'password'}
+                                    value={passwordConfirm}
+                                    required
+                                    minLength={8}
+                                    maxLength={128}
+                                    autoComplete="new-password"
+                                    onChange={(event) => setPasswordConfirm(event.target.value)}
+                                  />
+                                  <button
+                                    type="button"
+                                    className={styles.passwordToggle}
+                                    aria-pressed={passwordConfirmVisible}
+                                    onClick={() => setPasswordConfirmVisible((visible) => !visible)}
+                                  >
+                                    {passwordConfirmVisible ? 'Hide' : 'Show'}
+                                  </button>
+                                </span>
+                              </label>
+                            </div>
+                            <p className={styles.helper}>
+                              Use at least 8 characters. You can use this account to manage future
+                              bookings.
+                            </p>
                           </>
                         )}
                         <input type="hidden" name="checkout" value={guestVerification.checkoutId} />
@@ -599,9 +715,13 @@ export function CheckoutFlow({
                     {pending
                       ? 'Working…'
                       : intent === 'pay'
-                        ? 'Register and continue to payment'
+                        ? 'Create account and continue'
                         : 'Reserve now'}
                   </button>
+                ) : journey === 'new' && pending ? (
+                  <p role="status" className={styles.notice}>
+                    Sending verification code…
+                  </p>
                 ) : !guestVerification ? (
                   <button
                     className={`btn-primary ${styles.button}`}
@@ -624,6 +744,7 @@ export function CheckoutFlow({
         )}
       </div>
       <aside className={styles.sidebar} aria-label="Order summary">
+        {mode === 'checkout' && renderTripSummary()}
         {mode === 'checkout' && (
           <details className={styles.orderDetails}>
             <summary>
@@ -655,24 +776,29 @@ export function CheckoutFlow({
             <>
               <div className={`${styles.row} ${styles.total}`}>
                 <span>Total</span>
-                <span>{money(quote.totalMinor, quote.currency)}</span>
+                <span className={styles.totalAmount}>
+                  {money(quote.totalMinor, quote.currency)}
+                </span>
               </div>
-              <div className={styles.row}>
-                <span>Initial payment after reservation</span>
-                <strong>{money(quote.initialMinor, quote.currency)}</strong>
+              <div className={`${styles.row} ${styles.due}`}>
+                <strong>{intent === 'pay' ? 'Due today' : 'Due after approval'}</strong>
+                <strong className={styles.dueAmount}>
+                  {money(quote.initialMinor, quote.currency)}
+                </strong>
               </div>
-              <p className={styles.muted}>
-                25% deposit where available. Departures within 30 days require full payment. Each
-                remaining balance is due 30 days before its trip.
+              <p className={styles.summaryCopy}>
+                Departures within 30 days require full payment. When available, deposits start at
+                25%; remaining balances are due 30 days before each trip.
               </p>
               {quote.benefitEligible && (
                 <p className={styles.muted}>This cart can be paid with Benefit+ in CZK.</p>
               )}
             </>
           )}
-          <p className={styles.muted}>
-            Adding trips to your cart does not hold places. Availability and prices are checked
-            again when reserving.
+          <p className={`${styles.muted} ${styles.summaryNote}`}>
+            {mode === 'checkout'
+              ? 'Your place is held for 24 hours after reservation. Prices and availability are confirmed before payment.'
+              : 'Adding trips to your cart does not hold places. Availability and prices are checked again when reserving.'}
           </p>
           {mode === 'cart' && (
             <div className={styles.checkoutActions}>
