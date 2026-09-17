@@ -3,7 +3,7 @@ import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testi
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { CheckoutFlow } from '@/components/checkout/CheckoutFlow'
 import { CheckoutPayment } from '@/components/checkout/CheckoutPayment'
-import { CART_STORAGE_KEY } from '@/components/checkout/cart-storage'
+import { CART_DISCOUNT_STORAGE_KEY, CART_STORAGE_KEY } from '@/components/checkout/cart-storage'
 
 const mocks = vi.hoisted(() => ({
   quote: vi.fn(),
@@ -95,24 +95,88 @@ it('offers pay-now and reserve-now intents from the cart', async () => {
   )
 })
 
-it('keeps checkout interactions primary and collapses order details above the summary', async () => {
+it('keeps checkout interactions primary with one trip summary and an edit-cart path', async () => {
   render(<CheckoutFlow mode="checkout" intent="pay" />)
   await screen.findByRole('heading', { name: 'Verify your email' })
 
-  const disclosure = screen.getByText('Order details').closest('details') as HTMLDetailsElement
-  expect(disclosure.open).toBe(false)
-  expect(disclosure.querySelector('h2')?.textContent).toBe('Test climbing trip')
-  expect(disclosure.querySelector('input[type="number"]')).toBeTruthy()
+  expect(screen.queryByText('Order details')).toBeNull()
+  expect(document.querySelector('details')).toBeNull()
+  expect(document.querySelector('input[type="number"]')).toBeNull()
   expect(screen.getByText('Your trip')).toBeTruthy()
+  const trip = await screen.findByRole('heading', { name: 'Test climbing trip' })
+  expect(trip.getAttribute('data-type')).toBe('card-lg')
+  expect(screen.getAllByRole('heading', { name: 'Test climbing trip' })).toHaveLength(1)
+  expect(screen.getByRole('link', { name: 'Edit cart' }).getAttribute('href')).toBe('/cart')
   expect(screen.getByText('Due today')).toBeTruthy()
   expect(document.activeElement).toBe(screen.getByLabelText('Email'))
-  const summary = screen.getByRole('heading', { name: 'Order summary' })
-  expect(
-    disclosure.compareDocumentPosition(summary) & Node.DOCUMENT_POSITION_FOLLOWING,
-  ).toBeTruthy()
-  expect(screen.getAllByRole('heading', { name: 'Test climbing trip', hidden: true })).toHaveLength(
-    1,
+})
+
+it('shows a single price when the amount due equals the total', async () => {
+  mocks.quote.mockResolvedValue({
+    ok: true,
+    quote: {
+      items: [{ ...item, depositMinor: 10000 }],
+      currency: 'EUR',
+      totalMinor: 10000,
+      initialMinor: 10000,
+      benefitEligible: true,
+    },
+  })
+  render(<CheckoutFlow mode="cart" />)
+  await screen.findByRole('heading', { name: 'Test climbing trip' })
+
+  expect(screen.getByText('Total')).toBeTruthy()
+  expect(screen.queryByText('Due today')).toBeNull()
+  expect(screen.queryByText('Trip total')).toBeNull()
+  expect(screen.getAllByText('€100.00')).toHaveLength(1)
+})
+
+it('drops a stored discount code the server rejects instead of blocking pricing', async () => {
+  window.localStorage.setItem(CART_DISCOUNT_STORAGE_KEY, 'EXPIRED')
+  mocks.quote.mockResolvedValueOnce({
+    ok: false,
+    error: 'That discount code is not valid right now, so it was removed.',
+    discountRejected: true,
+  })
+  render(<CheckoutFlow mode="checkout" intent="pay" />)
+
+  await screen.findByRole('heading', { name: 'Test climbing trip' })
+  expect(mocks.quote.mock.calls[0][0]).toMatchObject({ discountCode: 'EXPIRED' })
+  expect(mocks.quote).toHaveBeenLastCalledWith(expect.objectContaining({ discountCode: '' }))
+  expect(window.localStorage.getItem(CART_DISCOUNT_STORAGE_KEY)).toBeNull()
+  expect(screen.getByRole('alert').textContent).toContain('so it was removed')
+  expect(screen.getByText('Total')).toBeTruthy()
+})
+
+it('carries the discount code applied in the cart into checkout', async () => {
+  const view = render(<CheckoutFlow mode="cart" />)
+  await screen.findByRole('heading', { name: 'Test climbing trip' })
+  fireEvent.change(screen.getByLabelText('Discount code (optional)'), {
+    target: { value: ' CLIMB10 ' },
+  })
+  fireEvent.click(screen.getByRole('button', { name: 'Apply code' }))
+  await waitFor(() =>
+    expect(mocks.quote).toHaveBeenLastCalledWith(
+      expect.objectContaining({ discountCode: 'CLIMB10' }),
+    ),
   )
+  expect(window.localStorage.getItem(CART_DISCOUNT_STORAGE_KEY)).toBe('CLIMB10')
+  view.unmount()
+  mocks.quote.mockClear()
+  mocks.reserve.mockResolvedValue({ ok: true, redirect: '/account/checkouts/44#payment' })
+
+  render(
+    <CheckoutFlow
+      mode="checkout"
+      contact={{ name: 'Test Customer', email: 'customer@example.test', phone: '+420123456789' }}
+    />,
+  )
+  await screen.findByRole('heading', { name: 'Test climbing trip' })
+  expect(mocks.quote).toHaveBeenLastCalledWith(expect.objectContaining({ discountCode: 'CLIMB10' }))
+  fireEvent.submit(screen.getByRole('button', { name: 'Continue to payment' }).closest('form')!)
+  await waitFor(() => expect(mocks.reserve).toHaveBeenCalledTimes(1))
+  expect(mocks.reserve.mock.calls[0][1].get('discountCode')).toBe('CLIMB10')
+  await waitFor(() => expect(window.localStorage.getItem(CART_DISCOUNT_STORAGE_KEY)).toBeNull())
 })
 
 it('verifies an unknown pay-now email before showing account details', async () => {
@@ -205,7 +269,7 @@ it('restores the same dated selections after login and updates quantities withou
     />,
   )
   await screen.findByRole('heading', { name: 'Test climbing trip' })
-  expect((screen.getByLabelText('Participants') as HTMLInputElement).value).toBe('3')
+  expect(screen.getByText(/3 participants/)).toBeTruthy()
   expect(window.localStorage.getItem(CART_STORAGE_KEY)).not.toContain('visitor')
 })
 
@@ -236,6 +300,8 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
   mocks.guest
     .mockResolvedValueOnce({ ok: false, formError: 'Please retry.' })
     .mockResolvedValueOnce({ ok: true, checkoutId: 42 })
+    .mockResolvedValueOnce({ ok: false, formError: 'Too many attempts.' })
+    .mockResolvedValueOnce({ ok: true, checkoutId: 42 })
   render(<CheckoutFlow mode="checkout" />)
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
@@ -253,12 +319,21 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
   expect(code.getAttribute('inputmode')).toBe('numeric')
   expect(code.getAttribute('autocomplete')).toBe('one-time-code')
   expect(code.getAttribute('maxlength')).toBe('6')
-  expect((screen.getByRole('button', { name: 'Remove' }) as HTMLButtonElement).disabled).toBe(true)
-  expect((screen.getByLabelText('Participants') as HTMLInputElement).disabled).toBe(true)
-  expect((screen.getByLabelText('Discount code (optional)') as HTMLInputElement).disabled).toBe(
-    true,
-  )
-  expect(screen.queryByRole('link', { name: 'Add another trip' })).toBeNull()
+  // The submitted cart is locked while the code is pending.
+  expect(screen.queryByRole('link', { name: 'Edit cart' })).toBeNull()
+  expect(screen.getByText(/Check your spam folder/)).toBeTruthy()
+  // A rate-limited resend must leave the control in place so the customer can try again.
+  fireEvent.click(screen.getByRole('button', { name: 'click here to resend' }))
+  await screen.findByText(/We could not send a new code yet/)
+  expect(mocks.guest).toHaveBeenCalledTimes(3)
+  fireEvent.click(screen.getByRole('button', { name: 'click here to resend' }))
+  await screen.findByText(/We sent a new code/)
+  expect(mocks.guest).toHaveBeenCalledTimes(4)
+  expect(screen.getByRole('button', { name: 'click here to resend' })).toBeTruthy()
+  expect(mocks.guest.mock.calls[3][1].get('submissionKey')).toBe(firstId)
+  expect(mocks.guest.mock.calls[2][1].get('submissionKey')).toBe(firstId)
+  expect(mocks.guest.mock.calls[2][1].get('email')).toBe('visitor@example.test')
+  expect(mocks.guest.mock.calls[2][1].get('items')).toBe(mocks.guest.mock.calls[1][1].get('items'))
   expect(
     screen.getByRole('button', { name: 'Verify email' }).classList.contains('btn-primary'),
   ).toBe(true)
@@ -365,7 +440,7 @@ it('keeps saved payer details collapsed and submits selected balances with the o
   expect(screen.queryByRole('button', { name: 'Edit payer address' })).toBeNull()
   expect(screen.queryByRole('button', { name: 'Update payer address' })).toBeNull()
   expect(screen.queryByLabelText('First name')).toBeNull()
-  expect(screen.queryByRole('option', { name: 'Card — Comgate' })).toBeNull()
+  expect(screen.queryByRole('option', { name: /Comgate/ })).toBeNull()
   expect(
     (screen.getByRole('radio', { name: /Pay selected trip balances/ }) as HTMLInputElement).checked,
   ).toBe(true)
@@ -395,7 +470,7 @@ it('collects billing before an approved new customer can open payment and preser
   )
   expect(screen.queryByRole('button', { name: 'Continue to payment' })).toBeNull()
   expect(
-    screen.getByRole('button', { name: 'Save payer address' }).classList.contains('btn-primary'),
+    screen.getByRole('button', { name: 'Save details' }).classList.contains('btn-primary'),
   ).toBe(true)
   expect((screen.getByLabelText('First name') as HTMLInputElement).value).toBe('Test')
   expect((screen.getByLabelText('Last name') as HTMLInputElement).value).toBe('Visitor')
@@ -404,7 +479,7 @@ it('collects billing before an approved new customer can open payment and preser
     'step',
   )
   fireEvent.change(screen.getByLabelText('First name'), { target: { value: 'Test' } })
-  fireEvent.submit(screen.getByRole('button', { name: 'Save payer address' }).closest('form')!)
+  fireEvent.submit(screen.getByRole('button', { name: 'Save details' }).closest('form')!)
   await screen.findByText('Address unavailable.')
   expect((screen.getByLabelText('First name') as HTMLInputElement).value).toBe('Test')
   expect(mocks.pay).not.toHaveBeenCalled()

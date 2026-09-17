@@ -3,7 +3,7 @@
 import { cookies } from 'next/headers'
 import { getCurrentUser } from '@/lib/auth'
 import { checkoutEnabled } from '@/lib/checkout/feature'
-import { quoteCart } from '@/lib/checkout/quote'
+import { DiscountUnavailableError, quoteCart } from '@/lib/checkout/quote'
 import {
   cancelCheckout,
   reserveCheckout,
@@ -26,7 +26,10 @@ async function referral() {
 
 export async function quoteCartAction(
   input: QuoteInput,
-): Promise<{ ok: true; quote: CheckoutDisplayQuote } | { ok: false; error: string }> {
+): Promise<
+  | { ok: true; quote: CheckoutDisplayQuote }
+  | { ok: false; error: string; discountRejected?: boolean }
+> {
   if (!checkoutEnabled()) return { ok: false, error: 'Checkout is currently unavailable.' }
   try {
     const quote = await quoteCart({
@@ -44,7 +47,14 @@ export async function quoteCartAction(
         items: quote.items.map(checkoutDisplayItem),
       },
     }
-  } catch {
+  } catch (error) {
+    // The client drops a rejected code so a stale one cannot block pricing on every later visit.
+    if (error instanceof DiscountUnavailableError)
+      return {
+        ok: false,
+        error: 'That discount code is not valid right now, so it was removed.',
+        discountRejected: true,
+      }
     return {
       ok: false,
       error:
@@ -184,6 +194,6 @@ export async function saveCheckoutBillingAction(
     await updateCheckoutBilling(Number(data.get('checkoutId')), user, address)
     return { ok: true }
   } catch {
-    return { ok: false, formError: 'Complete your payer address and try again.' }
+    return { ok: false, formError: 'Complete your details and try again.' }
   }
 }

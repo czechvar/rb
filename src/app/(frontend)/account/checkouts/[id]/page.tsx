@@ -46,20 +46,32 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
         : item.paidMinor >= item.totalMinor,
     )
   const partlyPaid = activeItems.some((item) => item.paidMinor > 0 || item.paidCzkMinor > 0)
-  const active = checkout.state === 'reserved' || checkout.state === 'approved'
+  // Server request snapshot is serialized to the client so payment amounts hydrate consistently.
+  // eslint-disable-next-line react-hooks/purity
+  const asOf = Date.now()
+  // The expiry sweep runs daily, so a hold can lapse while the state still says reserved; payment is refused then.
+  const lapsed = Boolean(checkout.expiresAt) && new Date(checkout.expiresAt!).getTime() <= asOf
+  const state = lapsed ? 'expired' : checkout.state
+  const active = state === 'reserved' || state === 'approved'
   const statusLabel =
     active && fullyPaid
       ? 'Paid in full'
       : active && partlyPaid
         ? 'Payment received — balance outstanding'
-        : states[checkout.state]
+        : states[state]
   const headerTitle = fullyPaid
     ? 'Reservation paid'
-    : checkout.state === 'cancelled'
+    : state === 'cancelled'
       ? 'Reservation cancelled'
-      : checkout.state === 'awaitingReview'
+      : state === 'awaitingReview'
         ? 'Reservation received'
-        : 'Payment pending'
+        : state === 'expired'
+          ? 'Reservation expired'
+          : state === 'reconciliation'
+            ? 'Reservation under review'
+            : active
+              ? 'Upcoming trips'
+              : 'Your reservation'
   const billingAddress =
     checkout.billingAddress &&
     ['firstName', 'lastName', 'street', 'city', 'postalCode', 'country'].every(
@@ -74,9 +86,6 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
           ]),
         ) as BillingAddressValues)
       : undefined
-  // Server request snapshot is serialized to the client so payment amounts hydrate consistently.
-  // eslint-disable-next-line react-hooks/purity
-  const asOf = Date.now()
   const displayCurrency = checkout.paymentMethod === 'muzapay' ? 'CZK' : checkout.currency
   const totalMinor = activeItems.reduce(
     (sum, item) =>
@@ -93,20 +102,27 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
       sum + (checkout.paymentMethod === 'muzapay' ? item.refundedCzkMinor : item.refundedMinor),
     0,
   )
+  const itemBalanceMinor = (item: CheckoutRecord['items'][number]) =>
+    Math.max(
+      0,
+      checkout.paymentMethod === 'muzapay'
+        ? (item.totalCzkMinor || 0) - item.paidCzkMinor
+        : item.totalMinor - item.paidMinor,
+    )
   return (
     <div className={styles.account}>
       <ReservationHeader
         reference={checkout.reference}
         title={headerTitle}
         status={statusLabel}
-        expiresAt={checkout.expiresAt}
+        expiresAt={lapsed ? null : checkout.expiresAt}
       />
       <div className={styles.layout}>
         <div className={styles.stack}>
           <CheckoutPayment
             asOf={asOf}
             checkoutId={checkout.id}
-            state={checkout.state}
+            state={state}
             currency={checkout.currency}
             items={activeItems.map(checkoutDisplayItem)}
             paymentMethod={checkout.paymentMethod}
@@ -115,22 +131,30 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
             billingAddress={billingAddress}
             contactName={checkout.contact.name}
           />
-          <p>
-            <Link href="/account/checkouts">All reservations</Link>
-          </p>
+          {lapsed && (
+            <p className={styles.notice}>
+              This hold has ended, so payment can no longer be started here. Add the trip to your
+              cart again, or <Link href="/contact">contact us</Link> and we will help.
+            </p>
+          )}
+          <Link className={`btn-ghost ${styles.button}`} href="/account/checkouts">
+            All reservations
+          </Link>
         </div>
         <aside className={styles.sidebar} aria-label="Reservation summary">
           <section className={`${styles.panel} ${styles.tripSummary}`}>
             <div className={styles.tripSummaryHeading}>
               <h2 data-type="card-lg">Your trip</h2>
               <span className={styles.orderDetailCount}>
-                {activeItems.length} {activeItems.length === 1 ? 'trip' : 'trips'}
+                {checkout.items.length} {checkout.items.length === 1 ? 'trip' : 'trips'}
               </span>
             </div>
             <div className={styles.tripSummaryContent}>
-              {activeItems.map((item) => (
+              {checkout.items.map((item) => (
                 <div className={styles.tripSummaryItem} key={item.eventDateId}>
-                  <p className={styles.tripSummaryItemTitle}>{item.title}</p>
+                  <h3 className={styles.tripSummaryItemTitle} data-type="card-lg">
+                    {item.title}
+                  </h3>
                   <p className={styles.muted}>
                     {date(item.dateFrom)} – {date(item.dateTo)}
                   </p>
@@ -138,6 +162,20 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
                     {item.quantity} {item.quantity === 1 ? 'participant' : 'participants'}
                     {item.location ? ` · ${item.location}` : ''}
                   </p>
+                  {item.cancelledAt && (
+                    <p className={styles.muted}>Cancelled {date(item.cancelledAt)}</p>
+                  )}
+                  {!item.cancelledAt && paidMinor > 0 && itemBalanceMinor(item) > 0 && (
+                    <p className={styles.muted}>
+                      Balance {money(itemBalanceMinor(item), displayCurrency)} due{' '}
+                      {date(item.balanceDueAt)}
+                    </p>
+                  )}
+                  {item.orderId && (
+                    <p>
+                      <Link href={`/account/orders/${item.orderId}`}>View individual order</Link>
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -148,103 +186,27 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
               <span>Total</span>
               <span className={styles.totalAmount}>{money(totalMinor, displayCurrency)}</span>
             </div>
-            <div className={styles.row}>
-              <span>Paid</span>
-              <strong>{money(paidMinor, displayCurrency)}</strong>
-            </div>
+            {paidMinor > 0 && (
+              <div className={styles.row}>
+                <span>Paid</span>
+                <strong>{money(paidMinor, displayCurrency)}</strong>
+              </div>
+            )}
             {refundedMinor > 0 && (
               <div className={styles.row}>
                 <span>Refunded</span>
                 <strong>{money(refundedMinor, displayCurrency)}</strong>
               </div>
             )}
-            <div className={`${styles.row} ${styles.outstanding}`}>
-              <strong>Outstanding</strong>
-              <strong className={styles.outstandingAmount}>
-                {money(Math.max(0, totalMinor - paidMinor), displayCurrency)}
-              </strong>
-            </div>
-          </section>
-          <details className={styles.orderDetails}>
-            <summary>
-              <span>Order details</span>
-              <span className={styles.orderDetailCount}>
-                {checkout.items.length} {checkout.items.length === 1 ? 'trip' : 'trips'}
-              </span>
-            </summary>
-            <div className={styles.orderDetailsContent}>
-              {checkout.items.map((item) => (
-                <section className={`${styles.panel} ${styles.cartPanel}`} key={item.eventDateId}>
-                  <h2 data-type="card-lg">{item.title}</h2>
-                  {item.cancelledAt && <p>Cancelled {date(item.cancelledAt)}</p>}
-                  <p className={styles.muted}>
-                    {date(item.dateFrom)} – {date(item.dateTo)} · {item.quantity} participant(s)
-                  </p>
-                  <div className={styles.row}>
-                    <span>Total</span>
-                    <strong>
-                      {money(
-                        checkout.paymentMethod === 'muzapay'
-                          ? item.totalCzkMinor || 0
-                          : item.totalMinor,
-                        displayCurrency,
-                      )}
-                    </strong>
-                  </div>
-                  {!item.cancelledAt && (
-                    <p className={styles.muted}>
-                      Balance:{' '}
-                      {money(
-                        Math.max(
-                          0,
-                          checkout.paymentMethod === 'muzapay'
-                            ? (item.totalCzkMinor || 0) - item.paidCzkMinor
-                            : item.totalMinor - item.paidMinor,
-                        ),
-                        displayCurrency,
-                      )}
-                      . Due {date(item.balanceDueAt)}.
-                    </p>
-                  )}
-                  {item.orderId && (
-                    <Link href={`/account/orders/${item.orderId}`}>View individual order</Link>
-                  )}
-                </section>
-              ))}
-            </div>
-          </details>
-          <details className={styles.orderDetails}>
-            <summary>
-              <span>Payer details</span>
-              <span className={styles.orderDetailCount}>
-                {billingAddress ? 'Saved' : 'Required'}
-              </span>
-            </summary>
-            <div className={styles.orderDetailsContent}>
-              <div className={styles.detailCopy}>
-                <p>
-                  {checkout.contact.name}
-                  <br />
-                  {checkout.contact.email}
-                  {checkout.contact.phone && (
-                    <>
-                      <br />
-                      {checkout.contact.phone}
-                    </>
-                  )}
-                </p>
-                {billingAddress && (
-                  <p className={styles.muted}>
-                    {billingAddress.firstName} {billingAddress.lastName}
-                    <br />
-                    {billingAddress.street}
-                    <br />
-                    {billingAddress.postalCode} {billingAddress.city}, {billingAddress.country}
-                  </p>
-                )}
+            {paidMinor > 0 && (
+              <div className={`${styles.row} ${styles.outstanding}`}>
+                <strong>Outstanding</strong>
+                <strong className={styles.outstandingAmount}>
+                  {money(Math.max(0, totalMinor - paidMinor), displayCurrency)}
+                </strong>
               </div>
-            </div>
-          </details>
+            )}
+          </section>
         </aside>
       </div>
     </div>

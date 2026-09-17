@@ -21,6 +21,9 @@ export default async function CheckoutsPage() {
     user,
     overrideAccess: false,
   })
+  // Holds lapse before the daily expiry sweep flips the state, so compare against the request time too.
+  // eslint-disable-next-line react-hooks/purity
+  const now = Date.now()
   return (
     <div className={styles.account}>
       <h1>Your trip reservations</h1>
@@ -32,32 +35,43 @@ export default async function CheckoutsPage() {
         {!rows.docs.length && <p>No checkout reservations yet.</p>}
         {rows.docs.map((raw) => {
           const row = raw as unknown as CheckoutRecord
+          const czk = row.paymentMethod === 'muzapay'
+          const activeItems = row.items.filter((item) => !item.cancelledAt)
+          const totalMinor = activeItems.reduce(
+            (sum, item) => sum + (czk ? item.totalCzkMinor || 0 : item.totalMinor),
+            0,
+          )
+          const paidMinor = activeItems.reduce(
+            (sum, item) => sum + (czk ? item.paidCzkMinor : item.paidMinor),
+            0,
+          )
+          const payable =
+            (row.state === 'reserved' || row.state === 'approved') &&
+            totalMinor > paidMinor &&
+            (!row.expiresAt || new Date(row.expiresAt).getTime() > now)
           return (
-            <section key={row.id} className={styles.panel}>
-              <h2>
-                <Link href={`/account/checkouts/${row.id}`}>{row.reference}</Link>
-              </h2>
-              <p>
-                {row.items
-                  .map((item) => item.title + (item.cancelledAt ? ' (cancelled)' : ''))
-                  .join(' · ')}
-              </p>
-              <p>
-                {checkoutStateLabel(row.state)} ·{' '}
-                {money(
-                  row.items
-                    .filter((item) => !item.cancelledAt)
-                    .reduce(
-                      (sum, item) =>
-                        sum +
-                        (row.paymentMethod === 'muzapay'
-                          ? item.totalCzkMinor || 0
-                          : item.totalMinor),
-                      0,
-                    ),
-                  row.paymentMethod === 'muzapay' ? 'CZK' : row.currency,
-                )}
-              </p>
+            <section key={row.id} className={`${styles.panel} ${styles.reservationCard}`}>
+              <div>
+                <h2>
+                  <Link href={`/account/checkouts/${row.id}`}>{row.reference}</Link>
+                </h2>
+                <p>
+                  {row.items
+                    .map((item) => item.title + (item.cancelledAt ? ' (cancelled)' : ''))
+                    .join(' · ')}
+                </p>
+                <p>
+                  {checkoutStateLabel(row.state)} · {money(totalMinor, czk ? 'CZK' : row.currency)}
+                </p>
+              </div>
+              {payable && (
+                <Link
+                  className={`btn-primary ${styles.button}`}
+                  href={`/account/checkouts/${row.id}#payment`}
+                >
+                  Pay now
+                </Link>
+              )}
             </section>
           )
         })}
