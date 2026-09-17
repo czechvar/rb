@@ -123,8 +123,8 @@ describe('known occurrence discovery links', () => {
     const variantEvent = {
       ...event,
       title: 'European climbing road trip',
-      mainPicture: { id: 'hero', url: '/hero.jpg', alt: 'Hero', createdAt: '', updatedAt: '' },
-      gallery: [{ id: 'gallery', url: '/gallery.jpg', alt: 'Gallery', createdAt: '', updatedAt: '' }],
+      mainPicture: { id: 'hero', url: '/hero.jpg', alt: 'Hero', width: 1200, height: 800, createdAt: '', updatedAt: '' },
+      gallery: [{ id: 'gallery', url: '/gallery.jpg', alt: 'Gallery', width: 1200, height: 800, createdAt: '', updatedAt: '' }],
     } as Event
     const variantOccurrence = {
       ...occurrence,
@@ -156,6 +156,15 @@ describe('known occurrence discovery links', () => {
     expect(html).not.toContain('European climbing road trip')
     expect(html).toContain('/hero.jpg')
     expect(html).not.toContain('/gallery.jpg')
+
+    expect(toCatalogueResult(variantOccurrence)).toMatchObject({
+      title: 'ROCK & ROAD EUROPE: GORGES DU TARN',
+      titleParts: [
+        { text: 'ROCK & ROAD EUROPE: ' },
+        { text: 'GORGES DU TARN', accent: true },
+      ],
+      image: { url: '/hero.jpg', alt: 'Hero' },
+    })
   })
 
   it('falls back to the first event gallery image when the event hero image is missing', async () => {

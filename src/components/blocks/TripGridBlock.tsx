@@ -1,5 +1,4 @@
-import type { Event, EventDate, Page, TripVariant } from '@/payload-types'
-import type { ReactNode } from 'react'
+import type { EventDate, Page } from '@/payload-types'
 import Link from 'next/link'
 import { getActiveEventDatesForEvents } from '@/lib/queries'
 import { resolveTripGridEvents } from '@/lib/block-resolvers/trip-grid'
@@ -7,12 +6,11 @@ import type { BlockRenderContext } from './RenderBlocks'
 import { BlockHeader, TripCard } from './CatalogueCards'
 import { ImageTripCard } from '@/components/catalogue/ImageTripCard'
 import imageCardStyles from '@/components/catalogue/ImageTripCard.module.css'
-import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
-import { mediaAlt, mediaUrl } from '@/lib/media'
+import { eventCatalogueDescription } from '@/lib/event-catalogue-card'
 import styles from './blocks.module.css'
 import { tripPublicDatePath } from '@/lib/occurrence-routing'
-import { resolveTripDetail, resolveTripDetailVariant } from '@/lib/trip-detail'
 import { HeadingText } from '@/components/ui/EditorialHeading'
+import { resolveTripCardContent } from '@/lib/trip-card-content'
 
 type TripGridBlockProps = Extract<NonNullable<Page['layout']>[number], { blockType: 'tripGrid' }>
 
@@ -26,38 +24,6 @@ export function lowestPrice(dates: EventDate[]): EventDate | null {
 export function formatPrice(date: EventDate | null): string | null {
   if (!date) return null
   return `From ${date.currency} ${date.price.toLocaleString()}`
-}
-
-type TripGridCardContent = {
-  title: string | ReactNode
-  image: string | null
-  imageAlt: string
-}
-
-function tripGridCardContent(event: Event, date?: EventDate): TripGridCardContent {
-  const variant = date?.tripVariant && typeof date.tripVariant === 'object'
-    ? date.tripVariant as TripVariant
-    : null
-  const trip = date
-    ? variant
-      ? resolveTripDetailVariant(event, variant, [date], date)
-      : resolveTripDetail(event, [date], date.id)
-    : null
-  const resolvedEvent = trip?.event ?? event
-  const titleParts = trip?.editorial?.hero?.titleParts
-  const imageSource = mediaUrl(resolvedEvent.mainPicture)
-    ? resolvedEvent.mainPicture
-    : resolvedEvent.gallery?.[0]
-
-  return {
-    title: titleParts?.length
-      ? <HeadingText parts={titleParts} />
-      : trip
-        ? resolvedEvent.title
-        : eventCatalogueTitle(event),
-    image: mediaUrl(imageSource) ?? null,
-    imageAlt: mediaAlt(imageSource),
-  }
 }
 
 export async function TripGridBlock(block: TripGridBlockProps, context: BlockRenderContext = {}) {
@@ -103,15 +69,16 @@ export async function TripGridBlock(block: TripGridBlockProps, context: BlockRen
             const first = eventDates[0]
             const href = first ? tripPublicDatePath(event.slug, first) : `/trips/${event.slug}`
             const price = formatPrice(lowestPrice(eventDates))
-            const card = tripGridCardContent(event, first)
+            const card = resolveTripCardContent(event, first)
+            const title = card.titleParts ? <HeadingText parts={card.titleParts} fallback={card.title} /> : card.title
             if (block.variant === 'featureLead') {
               return (
                 <ImageTripCard
                   key={event.id}
                   href={href}
-                  title={card.title}
+                  title={title}
                   description={eventCatalogueDescription(event)}
-                  image={card.image}
+                  image={card.image?.url ?? null}
                   category={event.categories?.flatMap((item) => typeof item === 'object' ? [item.name] : [])[0]}
                   location={event.locations?.flatMap((item) => typeof item === 'object' ? [item.name] : [])[0]}
                   price={price}
@@ -126,9 +93,9 @@ export async function TripGridBlock(block: TripGridBlockProps, context: BlockRen
                 href={href}
                 key={event.id}
                 price={price}
-                title={card.title}
-                image={card.image}
-                imageAlt={card.imageAlt}
+                title={title}
+                image={card.image?.url ?? null}
+                imageAlt={card.image?.alt ?? ''}
               />
             )
           })}

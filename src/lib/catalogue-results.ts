@@ -1,5 +1,7 @@
-import type { Event, EventDate } from '@/payload-types'
+import type { EventDate } from '@/payload-types'
 import { tripPublicDatePath } from '@/lib/occurrence-routing'
+import { resolveTripCardContent, type TripCardImage } from '@/lib/trip-card-content'
+import type { HeadingPart } from '@/lib/trip-editorial'
 
 export const catalogueFacetKeys = ['category', 'difficulty', 'location', 'month', 'guide'] as const
 
@@ -18,6 +20,7 @@ export type CatalogueResult = {
   eventId: number
   href: string
   title: string
+  titleParts?: HeadingPart[] | null
   description?: string | null
   dateFrom: string
   dateTo: string
@@ -36,12 +39,14 @@ export type CatalogueFilters = Partial<Record<CatalogueFacetKey, string>>
 export function toCatalogueResult(date: EventDate): CatalogueResult | null {
   const event = typeof date.event === 'object' ? date.event : null
   if (!event?.slug || event.state !== 'published') return null
+  const card = resolveTripCardContent(event, date)
 
   return {
     id: date.id,
     eventId: event.id,
     href: tripPublicDatePath(event.slug, date),
-    title: event.catalogueCard?.title || event.title,
+    title: card.title,
+    titleParts: card.titleParts,
     description: event.catalogueCard?.description || event.shortDescription,
     dateFrom: date.dateFrom,
     dateTo: date.dateTo,
@@ -60,7 +65,7 @@ export function catalogueImageCandidates(date: EventDate): CatalogueImage[] {
   const event = typeof date.event === 'object' ? date.event : null
   if (!event) return []
 
-  return [...(event.gallery ?? []), event.mainPicture]
+  return resolveTripCardContent(event, date).imageCandidates
     .map(mediaOption)
     .filter((image): image is CatalogueImage => image !== null)
     .filter((image, index, images) => images.findIndex((candidate) => candidate.url === image.url) === index)
@@ -78,15 +83,13 @@ export function assignCatalogueImageVariants(
   })
 }
 
-function mediaOption(media: Event['mainPicture'] | NonNullable<Event['gallery']>[number]): CatalogueImage | null {
-  if (!media || typeof media !== 'object' || !media.url) return null
-
+function mediaOption(media: TripCardImage): CatalogueImage | null {
   const width = media.width ?? 0
   const height = media.height ?? 0
   const aspectRatio = height ? width / height : 1
   if (width < 960 || height < 640 || aspectRatio < 0.65 || aspectRatio > 2.8) return null
 
-  return { url: media.url, alt: media.alt || '' }
+  return { url: media.url, alt: media.alt }
 }
 
 export function isCatalogueFacetKey(value: string): value is CatalogueFacetKey {

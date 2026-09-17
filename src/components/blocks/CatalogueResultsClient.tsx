@@ -17,6 +17,7 @@ import {
   type CatalogueSort,
 } from '@/lib/catalogue-results'
 import styles from './catalogue-results.module.css'
+import { HeadingText } from '@/components/ui/EditorialHeading'
 
 type Props = {
   results: CatalogueResult[]
@@ -147,7 +148,7 @@ function CalendarTrip({ trip, featured }: { trip: CatalogueResult; featured: boo
   return (
     <ImageTripCard
       href={trip.href}
-      title={trip.title}
+      title={trip.titleParts?.length ? <HeadingText parts={trip.titleParts} fallback={trip.title} /> : trip.title}
       description={trip.description}
       image={trip.image?.url}
       category={trip.categories[0]?.label}
