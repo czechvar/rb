@@ -45,8 +45,101 @@
   gap: 24px;
   min-width: 0;
 }
+.sidebar {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.orderDetails {
+  border: 1px solid var(--theme-color-border);
+}
+.orderDetails > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 28px;
+  cursor: pointer;
+  font-family: var(--theme-font-heading);
+  font-size: var(--theme-text-card-lg);
+  list-style: none;
+}
+.orderDetails > summary::-webkit-details-marker {
+  display: none;
+}
+.orderDetails > summary::after {
+  content: '+';
+  color: var(--theme-color-primary);
+  font-family: var(--theme-font-body);
+}
+.orderDetails[open] > summary::after {
+  content: '−';
+}
+.orderDetailCount {
+  margin-left: auto;
+  color: var(--theme-color-paper-60);
+  font-family: var(--theme-font-body);
+  font-size: var(--theme-text-small);
+  font-weight: 400;
+}
+.orderDetailsContent {
+  display: grid;
+  gap: 20px;
+  padding: 0 28px 28px;
+  border-top: 1px solid var(--theme-color-border);
+}
+.orderDetailsContent .panel {
+  padding: 24px 0 0;
+  border: 0;
+}
+.orderDetailsContent .cartPanel + .cartPanel {
+  border-top: 1px solid var(--theme-color-border);
+}
 .primaryPanel {
   order: -1;
+}
+.progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 0 0 28px;
+  list-style: none;
+}
+.progressStep {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--theme-color-paper-60);
+  font-size: var(--theme-text-small);
+}
+.progressStep::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: var(--theme-color-border);
+}
+.progressStep:last-child::after {
+  display: none;
+}
+.progressStep > span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border: 1px solid var(--theme-color-border);
+  border-radius: 50%;
+}
+.progressStep[data-state='current'] {
+  color: var(--theme-color-paper);
+  font-weight: 700;
+}
+.progressStep[data-state='current'] > span,
+.progressStep[data-state='complete'] > span {
+  border-color: var(--theme-color-primary);
+  background: var(--theme-color-primary);
+  color: var(--theme-color-ink);
 }
 .checkoutActions {
   display: grid;
@@ -194,6 +287,12 @@
   .panel,
   .account {
     padding: 20px;
+  }
+  .orderDetails > summary {
+    padding: 20px;
+  }
+  .orderDetailsContent {
+    padding: 0 20px 20px;
   }
   .formRow {
     grid-template-columns: 1fr;

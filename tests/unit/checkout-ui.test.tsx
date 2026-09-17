@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { CheckoutFlow } from '@/components/checkout/CheckoutFlow'
 import { CheckoutPayment } from '@/components/checkout/CheckoutPayment'
@@ -95,6 +95,23 @@ it('offers pay-now and reserve-now intents from the cart', async () => {
   )
 })
 
+it('keeps checkout interactions primary and collapses order details above the summary', async () => {
+  render(<CheckoutFlow mode="checkout" intent="pay" />)
+  await screen.findByRole('heading', { name: 'Verify your email' })
+
+  const disclosure = screen.getByText('Order details').closest('details') as HTMLDetailsElement
+  expect(disclosure.open).toBe(false)
+  expect(disclosure.querySelector('h2')?.textContent).toBe('Test climbing trip')
+  expect(disclosure.querySelector('input[type="number"]')).toBeTruthy()
+  const summary = screen.getByRole('heading', { name: 'Order summary' })
+  expect(
+    disclosure.compareDocumentPosition(summary) & Node.DOCUMENT_POSITION_FOLLOWING,
+  ).toBeTruthy()
+  expect(screen.getAllByRole('heading', { name: 'Test climbing trip', hidden: true })).toHaveLength(
+    1,
+  )
+})
+
 it('verifies an unknown pay-now email before showing account details', async () => {
   mocks.guest.mockResolvedValue({ ok: true, checkoutId: 42 })
   mocks.validateGuest.mockResolvedValue({ ok: true })
@@ -108,6 +125,13 @@ it('verifies an unknown pay-now email before showing account details', async () 
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
   await screen.findByRole('button', { name: 'Send verification code' })
+  const progress = screen.getByRole('list', { name: 'Checkout progress' })
+  expect(within(progress).getByText('Verify').closest('li')?.getAttribute('aria-current')).toBe(
+    'step',
+  )
+  expect(within(progress).getByText('Account')).toBeTruthy()
+  expect(within(progress).getByText('Payment')).toBeTruthy()
+  expect(screen.queryByText(/Already have an account/)).toBeNull()
   expect(screen.queryByLabelText('Full name')).toBeNull()
 
   fireEvent.submit(
@@ -118,6 +142,9 @@ it('verifies an unknown pay-now email before showing account details', async () 
   fireEvent.submit(screen.getByRole('button', { name: 'Verify email' }).closest('form')!)
 
   expect(await screen.findByLabelText('Full name')).toBeTruthy()
+  expect(within(progress).getByText('Account').closest('li')?.getAttribute('aria-current')).toBe(
+    'step',
+  )
   expect(screen.getByLabelText('Phone including country code')).toBeTruthy()
   expect(screen.getByLabelText('Choose a password')).toBeTruthy()
   expect(screen.getByLabelText('Confirm password')).toBeTruthy()
@@ -136,9 +163,7 @@ it('verifies an unknown pay-now email before showing account details', async () 
     screen.getByRole('button', { name: 'Register and continue to payment' }).closest('form')!,
   )
 
-  await waitFor(() =>
-    expect(mocks.push).toHaveBeenCalledWith('/account/checkouts/42#payment'),
-  )
+  await waitFor(() => expect(mocks.push).toHaveBeenCalledWith('/account/checkouts/42#payment'))
   expect(mocks.completeGuestPayment).toHaveBeenCalledTimes(1)
   expect(window.localStorage.getItem(CART_STORAGE_KEY)).toBe('[]')
 })
@@ -197,13 +222,9 @@ it('routes an authenticated customer directly to reservation and payment', async
   expect(screen.queryByLabelText('Full name')).toBeNull()
   expect(screen.queryByLabelText('Phone including country code (optional)')).toBeNull()
   expect(
-    screen
-      .getByRole('button', { name: 'Continue to payment' })
-      .classList.contains('btn-primary'),
+    screen.getByRole('button', { name: 'Continue to payment' }).classList.contains('btn-primary'),
   ).toBe(true)
-  fireEvent.submit(
-    screen.getByRole('button', { name: 'Continue to payment' }).closest('form')!,
-  )
+  fireEvent.submit(screen.getByRole('button', { name: 'Continue to payment' }).closest('form')!)
   await waitFor(() => expect(mocks.reserve).toHaveBeenCalledTimes(1))
   expect(mocks.guest).not.toHaveBeenCalled()
 })
@@ -445,9 +466,7 @@ it('reserves a returning purchaser basket once while pending and clears only sub
     />,
   )
   await screen.findByRole('heading', { name: 'Test climbing trip' })
-  const form = screen
-    .getByRole('button', { name: 'Continue to payment' })
-    .closest('form')!
+  const form = screen.getByRole('button', { name: 'Continue to payment' }).closest('form')!
   fireEvent.submit(form)
   await waitFor(() => expect(mocks.reserve).toHaveBeenCalledTimes(1))
   fireEvent.submit(form)
@@ -505,9 +524,7 @@ it('does not ask an authenticated customer for saved billing details again', asy
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   expect(screen.queryByLabelText('Payer first name')).toBeNull()
   expect(screen.queryByLabelText('Street and number')).toBeNull()
-  fireEvent.submit(
-    screen.getByRole('button', { name: 'Continue to payment' }).closest('form')!,
-  )
+  fireEvent.submit(screen.getByRole('button', { name: 'Continue to payment' }).closest('form')!)
   await screen.findByText('Please retry.')
   expect(mocks.reserve).toHaveBeenCalledTimes(1)
 })
