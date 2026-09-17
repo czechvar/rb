@@ -7,6 +7,7 @@ const mocks = vi.hoisted(() => ({
   completeReservation: vi.fn(),
   completePayment: vi.fn(),
   accept: vi.fn(),
+  invitationAccount: vi.fn(),
   currentUser: vi.fn(),
   login: vi.fn(),
   setCookie: vi.fn(),
@@ -25,6 +26,7 @@ vi.mock('@/lib/payload', () => ({ getPayloadClient: async () => ({ login: mocks.
 vi.mock('@/lib/checkout/identity', () => ({
   PENDING_CHECKOUT_CONTACT_NAME: '[Pending checkout]',
   acceptCheckoutInvitation: mocks.accept,
+  checkoutInvitationAccount: mocks.invitationAccount,
   createGuestCheckout: mocks.create,
   invitationKind: vi.fn(),
   lookupCheckoutJourney: vi.fn(),
@@ -41,6 +43,7 @@ import {
   completeGuestReservationAction,
   createGuestCheckoutAction,
   loginCheckoutAction,
+  loginCheckoutInvitationAction,
   verifyGuestCheckoutAction,
   validateGuestCheckoutAction,
 } from '@/app/(frontend)/checkout/identity-actions'
@@ -117,6 +120,32 @@ describe('guest checkout identity actions', () => {
       'payload-token',
       'fixture-session-token',
       expect.objectContaining({ httpOnly: true, sameSite: 'lax', path: '/' }),
+    )
+  })
+
+  it('signs in an invited existing user, connects the checkout and continues to payment', async () => {
+    mocks.invitationAccount.mockResolvedValue({ userId: 42, email: 'ada@example.test' })
+    mocks.login.mockResolvedValue({ token: 'fixture-session-token' })
+    mocks.accept.mockResolvedValue({ created: false, email: 'ada@example.test' })
+    const data = new FormData()
+    data.set('checkout', '27')
+    data.set('token', 'a'.repeat(43))
+    data.set('password', 'FixturePassword42!')
+
+    await expect(loginCheckoutInvitationAction(null, data)).resolves.toEqual({
+      ok: true,
+      redirect: '/account/checkouts/27#payment',
+    })
+    expect(mocks.login).toHaveBeenCalledWith({
+      collection: 'users',
+      data: { email: 'ada@example.test', password: 'FixturePassword42!' },
+    })
+    expect(mocks.accept).toHaveBeenCalledWith(
+      27,
+      'a'.repeat(43),
+      {},
+      { id: 42 },
+      'test-network',
     )
   })
 
