@@ -95,6 +95,10 @@
 .orderDetailsContent .cartPanel + .cartPanel {
   border-top: 1px solid var(--theme-color-border);
 }
+.detailCopy {
+  padding-top: 24px;
+  line-height: 1.7;
+}
 .primaryPanel {
   order: -1;
 }
