@@ -66,7 +66,9 @@ vi.mock('next/link', () => ({
   default: ({ children, ...props }: React.ComponentProps<'a'>) => <a {...props}>{children}</a>,
 }))
 vi.mock('@/components/checkout/CheckoutPayment', () => ({
-  CheckoutPayment: () => <div data-checkout-payment="true">Payment action</div>,
+  CheckoutPayment: ({ state }: { state: string }) => (
+    <div data-checkout-payment={state}>Payment action</div>
+  ),
 }))
 
 import CheckoutDetailPage from '@/app/(frontend)/account/checkouts/[id]/page'
@@ -110,4 +112,27 @@ it('does not call a lapsed reservation an upcoming trip and keeps cancelled trip
   expect(html).not.toContain('Upcoming trips')
   expect(html).toContain('1 trip')
   expect(html).toContain('Cancelled 2 Jan 2030')
+})
+
+it('treats a lapsed hold the daily sweep has not expired yet as expired, not payable', async () => {
+  fixture.overrides = { state: 'reserved', expiresAt: '2020-01-01T00:00:00.000Z' }
+  const html = renderToStaticMarkup(
+    await CheckoutDetailPage({ params: Promise.resolve({ id: '42' }) }),
+  )
+
+  expect(html).toContain('Reservation expired')
+  expect(html).not.toContain('Upcoming trips')
+  expect(html).toContain('data-checkout-payment="expired"')
+  expect(html).toContain('This hold has ended')
+  expect(html).not.toContain('Held until')
+})
+
+it('names a reservation under staff reconciliation instead of repeating the eyebrow', async () => {
+  fixture.overrides = { state: 'reconciliation' }
+  const html = renderToStaticMarkup(
+    await CheckoutDetailPage({ params: Promise.resolve({ id: '42' }) }),
+  )
+
+  expect(html).toContain('Reservation under review')
+  expect(html).toContain('Staff are checking this reservation')
 })

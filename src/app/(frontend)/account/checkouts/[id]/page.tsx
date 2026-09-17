@@ -46,24 +46,32 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
         : item.paidMinor >= item.totalMinor,
     )
   const partlyPaid = activeItems.some((item) => item.paidMinor > 0 || item.paidCzkMinor > 0)
-  const active = checkout.state === 'reserved' || checkout.state === 'approved'
+  // Server request snapshot is serialized to the client so payment amounts hydrate consistently.
+  // eslint-disable-next-line react-hooks/purity
+  const asOf = Date.now()
+  // The expiry sweep runs daily, so a hold can lapse while the state still says reserved; payment is refused then.
+  const lapsed = Boolean(checkout.expiresAt) && new Date(checkout.expiresAt!).getTime() <= asOf
+  const state = lapsed ? 'expired' : checkout.state
+  const active = state === 'reserved' || state === 'approved'
   const statusLabel =
     active && fullyPaid
       ? 'Paid in full'
       : active && partlyPaid
         ? 'Payment received — balance outstanding'
-        : states[checkout.state]
+        : states[state]
   const headerTitle = fullyPaid
     ? 'Reservation paid'
-    : checkout.state === 'cancelled'
+    : state === 'cancelled'
       ? 'Reservation cancelled'
-      : checkout.state === 'awaitingReview'
+      : state === 'awaitingReview'
         ? 'Reservation received'
-        : checkout.state === 'expired'
+        : state === 'expired'
           ? 'Reservation expired'
-          : active
-            ? 'Upcoming trips'
-            : 'Your reservation'
+          : state === 'reconciliation'
+            ? 'Reservation under review'
+            : active
+              ? 'Upcoming trips'
+              : 'Your reservation'
   const billingAddress =
     checkout.billingAddress &&
     ['firstName', 'lastName', 'street', 'city', 'postalCode', 'country'].every(
@@ -78,9 +86,6 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
           ]),
         ) as BillingAddressValues)
       : undefined
-  // Server request snapshot is serialized to the client so payment amounts hydrate consistently.
-  // eslint-disable-next-line react-hooks/purity
-  const asOf = Date.now()
   const displayCurrency = checkout.paymentMethod === 'muzapay' ? 'CZK' : checkout.currency
   const totalMinor = activeItems.reduce(
     (sum, item) =>
@@ -110,14 +115,14 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
         reference={checkout.reference}
         title={headerTitle}
         status={statusLabel}
-        expiresAt={checkout.expiresAt}
+        expiresAt={lapsed ? null : checkout.expiresAt}
       />
       <div className={styles.layout}>
         <div className={styles.stack}>
           <CheckoutPayment
             asOf={asOf}
             checkoutId={checkout.id}
-            state={checkout.state}
+            state={state}
             currency={checkout.currency}
             items={activeItems.map(checkoutDisplayItem)}
             paymentMethod={checkout.paymentMethod}
@@ -126,6 +131,12 @@ export default async function CheckoutDetailPage({ params }: { params: Promise<{
             billingAddress={billingAddress}
             contactName={checkout.contact.name}
           />
+          {lapsed && (
+            <p className={styles.notice}>
+              This hold has ended, so payment can no longer be started here. Add the trip to your
+              cart again, or <Link href="/contact">contact us</Link> and we will help.
+            </p>
+          )}
           <Link className={`btn-ghost ${styles.button}`} href="/account/checkouts">
             All reservations
           </Link>

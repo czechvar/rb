@@ -115,7 +115,8 @@ export function CheckoutFlow({
         if (!response.ok && response.discountRejected && appliedDiscount) {
           // Clearing the code changes the quote key, so the cart re-prices without it.
           cart.applyDiscount('')
-          setDiscountDraft(appliedDiscount)
+          // Keep the rejected text visible unless the customer is already typing a correction.
+          setDiscountDraft((draft) => draft ?? appliedDiscount)
           setDiscountNotice(response.error)
           return
         }
