@@ -1,6 +1,7 @@
 import type { PayloadRequest } from 'payload'
 import { getPayloadClient } from '../payload'
 import { getRemainingCapacity } from '../capacity'
+import { tripPlainTitle } from '../trip-card-content'
 import type { CheckoutItem, CheckoutQuote, QuoteInput } from './types'
 import {
   balanceDeadline,
@@ -9,6 +10,14 @@ import {
   minorUnits,
   normalizeCart,
 } from './pricing'
+
+/** Lets callers tell a rejected discount code apart from an unavailable or sold-out selection. */
+export class DiscountUnavailableError extends Error {
+  constructor() {
+    super('This discount code is unavailable.')
+    this.name = 'DiscountUnavailableError'
+  }
+}
 
 export async function quoteCart(input: QuoteInput, req?: PayloadRequest): Promise<CheckoutQuote> {
   const cart = normalizeCart(input.items)
@@ -35,7 +44,7 @@ export async function quoteCart(input: QuoteInput, req?: PayloadRequest): Promis
       req,
     })
     discount = found.docs[0]
-    if (!discount) throw new Error('This discount code is unavailable.')
+    if (!discount) throw new DiscountUnavailableError()
   }
   if (input.referralCode) {
     const found = await payload.find({
@@ -88,7 +97,8 @@ export async function quoteCart(input: QuoteInput, req?: PayloadRequest): Promis
       .join(', ')
     items.push({
       ...selected,
-      title: typeof ed.event === 'object' ? ed.event.title : 'Climbing trip',
+      // Same Event → Trip Variant → Event Date title the trip card and hero show.
+      title: tripPlainTitle(ed.event, ed),
       location: location || undefined,
       dateFrom: ed.dateFrom,
       dateTo: ed.dateTo,

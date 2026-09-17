@@ -38,6 +38,12 @@ function imageCandidates(event: Event): TripCardImage[] {
     .filter((image, index, images) => images.findIndex((candidate) => candidate.url === image.url) === index)
 }
 
+/** Single-line trip name for snapshots that leave HTML: checkout items, orders, emails, payment labels. */
+export function tripPlainTitle(event: Event, date?: EventDate): string {
+  // headingText() joins break-before parts with a newline; collapse it for plain-text use.
+  return resolveTripCardContent(event, date).title.replace(/\s+/g, ' ').trim() || event.title
+}
+
 /** Resolves the card identity from the same Event → Trip Variant → Event Date editorial chain as the trip hero. */
 export function resolveTripCardContent(event: Event, date?: EventDate): TripCardContent {
   const variant = date?.tripVariant && typeof date.tripVariant === 'object'

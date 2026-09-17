@@ -59,8 +59,8 @@ export function CheckoutFlow({
     quote: CheckoutDisplayQuote | null
     error: string
   }>({ key: '', quote: null, error: '' })
-  const [discount, setDiscount] = useState('')
-  const [appliedDiscount, setAppliedDiscount] = useState('')
+  const [discountDraft, setDiscountDraft] = useState<string | null>(null)
+  const [discountNotice, setDiscountNotice] = useState('')
   const [refresh, setRefresh] = useState(0)
   const [journey, setJourney] = useState<'unknown' | 'login' | 'new'>(contact ? 'new' : 'unknown')
   const [pending, setPending] = useState(false)
@@ -72,10 +72,13 @@ export function CheckoutFlow({
   const [guestVerification, setGuestVerification] = useState<{
     checkoutId: number
     items: typeof cart.items
+    submissionKey: string
+    discountCode: string
     code?: string
     verified: boolean
   } | null>(null)
   const [guestReserved, setGuestReserved] = useState(false)
+  const [resend, setResend] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle')
   const cartEditingLocked = pending || Boolean(guestVerification)
   const checkoutStep = contact ? 2 : journey === 'login' || guestVerification?.verified ? 1 : 0
   const checkoutSteps =
@@ -93,6 +96,8 @@ export function CheckoutFlow({
       router.replace(mode === 'cart' ? '/cart' : '/checkout', { scroll: false })
     }
   }, [cart.ready, add, cart, router, mode])
+  const appliedDiscount = cart.discountCode
+  const discount = discountDraft ?? appliedDiscount
   const selections = JSON.stringify(cart.items)
   const quoteKey = JSON.stringify([selections, appliedDiscount, refresh])
   const quote = priced.key === quoteKey ? priced.quote : null
@@ -107,6 +112,13 @@ export function CheckoutFlow({
     quoteCartAction({ items: cart.items, discountCode: appliedDiscount })
       .then((response) => {
         if (!active) return
+        if (!response.ok && response.discountRejected && appliedDiscount) {
+          // Clearing the code changes the quote key, so the cart re-prices without it.
+          cart.applyDiscount('')
+          setDiscountDraft(appliedDiscount)
+          setDiscountNotice(response.error)
+          return
+        }
         setPriced({
           key: quoteKey,
           quote: response.ok ? response.quote : null,
@@ -186,6 +198,25 @@ export function CheckoutFlow({
       </label>
     )
   }
+  /** Re-submitting the same submission key reissues the code for the existing unverified checkout. */
+  async function resendCode() {
+    if (!guestVerification || guestVerification.verified || submitting.current) return
+    submitting.current = true
+    const data = new FormData()
+    data.set('email', values.email)
+    data.set('items', JSON.stringify(guestVerification.items))
+    data.set('discountCode', guestVerification.discountCode)
+    data.set('submissionKey', guestVerification.submissionKey)
+    setResend('sending')
+    try {
+      const response = await createGuestCheckoutAction(null, data)
+      setResend(response.ok ? 'sent' : 'failed')
+    } catch {
+      setResend('failed')
+    } finally {
+      submitting.current = false
+    }
+  }
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (guestVerification) {
@@ -212,6 +243,7 @@ export function CheckoutFlow({
             })
           } else {
             cart.replace(subtractSubmittedCart(guestVerification.items))
+            cart.applyDiscount('')
             if ('redirect' in response && response.redirect) router.push(response.redirect)
             else setGuestReserved(true)
           }
@@ -265,8 +297,8 @@ export function CheckoutFlow({
         setJourney(response.journey)
         if (response.journey === 'login') return
       }
-      submissionKey.current ??= crypto.randomUUID()
-      data.set('submissionKey', submissionKey.current)
+      const key = (submissionKey.current ??= crypto.randomUUID())
+      data.set('submissionKey', key)
       const response = await (
         contact
           ? intent === 'pay'
@@ -279,12 +311,17 @@ export function CheckoutFlow({
         setGuestVerification({
           checkoutId: response.checkoutId,
           items: submittedItems,
+          submissionKey: key,
+          discountCode: appliedDiscount,
           verified: false,
         })
         return
       }
       if (response.ok && response.redirect) {
-        if (contact) cart.replace(subtractSubmittedCart(submittedItems))
+        if (contact) {
+          cart.replace(subtractSubmittedCart(submittedItems))
+          cart.applyDiscount('')
+        }
         router.push(response.redirect)
       }
     } catch {
@@ -334,7 +371,7 @@ export function CheckoutFlow({
         {cart.items.map((item) => {
           const priced = quote?.items.find((row) => row.eventDateId === item.eventDateId)
           return (
-            <section className={`${styles.panel} ${styles.cartPanel}`} key={item.eventDateId}>
+            <section className={styles.panel} key={item.eventDateId}>
               <div className={styles.row}>
                 <div>
                   <h2 data-type="card-lg">{priced?.title || 'Selected trip'}</h2>
@@ -379,7 +416,7 @@ export function CheckoutFlow({
                     }}
                   />
                 </label>
-                {priced && (
+                {priced && cart.items.length > 1 && (
                   <div className={styles.row}>
                     <span>Trip total</span>
                     <strong>{money(priced.totalMinor, priced.currency)}</strong>
@@ -395,11 +432,13 @@ export function CheckoutFlow({
             </section>
           )
         })}
-        <div className={`${styles.panel} ${styles.cartPanel}`}>
+        <div className={styles.panel}>
           <form
             onSubmit={(event) => {
               event.preventDefault()
-              setAppliedDiscount(discount.trim())
+              cart.applyDiscount(discount)
+              setDiscountDraft(null)
+              setDiscountNotice('')
               setRefresh((value) => value + 1)
             }}
           >
@@ -408,7 +447,7 @@ export function CheckoutFlow({
               <input
                 value={discount}
                 maxLength={80}
-                onChange={(event) => setDiscount(event.target.value)}
+                onChange={(event) => setDiscountDraft(event.target.value)}
                 disabled={cartEditingLocked}
               />
             </label>
@@ -435,6 +474,12 @@ export function CheckoutFlow({
           </h2>
           <span className={styles.orderDetailCount}>
             {cart.items.length} {cart.items.length === 1 ? 'trip' : 'trips'}
+            {!cartEditingLocked && (
+              <>
+                {' · '}
+                <Link href="/cart">Edit cart</Link>
+              </>
+            )}
           </span>
         </div>
         <div className={styles.tripSummaryContent}>
@@ -442,7 +487,9 @@ export function CheckoutFlow({
             const priced = quote?.items.find((row) => row.eventDateId === item.eventDateId)
             return (
               <div className={styles.tripSummaryItem} key={item.eventDateId}>
-                <p className={styles.tripSummaryItemTitle}>{priced?.title || 'Selected trip'}</p>
+                <h3 className={styles.tripSummaryItemTitle} data-type="card-lg">
+                  {priced?.title || 'Selected trip'}
+                </h3>
                 {priced && (
                   <p className={styles.muted}>
                     {date(priced.dateFrom)} – {date(priced.dateTo)}
@@ -565,6 +612,25 @@ export function CheckoutFlow({
                       />
                     </label>
                     <button className={`btn-primary ${styles.button}`}>Verify email</button>
+                    <p className={styles.helper}>
+                      <span role="status">
+                        {resend === 'sent'
+                          ? 'We sent a new code. Only the newest code works. '
+                          : resend === 'failed'
+                            ? 'We could not send a new code yet. Please wait a few minutes and try again. '
+                            : ''}
+                      </span>
+                      Didn’t get the code? Check your spam folder or{' '}
+                      <button
+                        type="button"
+                        className={styles.inlineButton}
+                        disabled={resend === 'sending'}
+                        onClick={resendCode}
+                      >
+                        {resend === 'sending' ? 'sending a new code…' : 'click here to resend'}
+                      </button>
+                      .
+                    </p>
                   </>
                 ) : (
                   <>
@@ -745,20 +811,14 @@ export function CheckoutFlow({
       </div>
       <aside className={styles.sidebar} aria-label="Order summary">
         {mode === 'checkout' && renderTripSummary()}
-        {mode === 'checkout' && (
-          <details className={styles.orderDetails}>
-            <summary>
-              <span>Order details</span>
-              <span className={styles.orderDetailCount}>
-                {cart.items.length} {cart.items.length === 1 ? 'trip' : 'trips'}
-              </span>
-            </summary>
-            <div className={styles.orderDetailsContent}>{renderOrderDetails()}</div>
-          </details>
-        )}
         <section className={styles.panel}>
           <h2 data-type="card-lg">Order summary</h2>
           {pricing && <p role="status">Checking current prices and availability…</p>}
+          {discountNotice && (
+            <p className={styles.error} role="alert">
+              {discountNotice}
+            </p>
+          )}
           {quoteError && (
             <>
               <p className={styles.error} role="alert">
@@ -780,12 +840,14 @@ export function CheckoutFlow({
                   {money(quote.totalMinor, quote.currency)}
                 </span>
               </div>
-              <div className={`${styles.row} ${styles.due}`}>
-                <strong>{intent === 'pay' ? 'Due today' : 'Due after approval'}</strong>
-                <strong className={styles.dueAmount}>
-                  {money(quote.initialMinor, quote.currency)}
-                </strong>
-              </div>
+              {quote.initialMinor < quote.totalMinor && (
+                <div className={`${styles.row} ${styles.due}`}>
+                  <strong>{intent === 'pay' ? 'Due today' : 'Due after approval'}</strong>
+                  <strong className={styles.dueAmount}>
+                    {money(quote.initialMinor, quote.currency)}
+                  </strong>
+                </div>
+              )}
               <p className={styles.summaryCopy}>
                 Departures within 30 days require full payment. When available, deposits start at
                 25%; remaining balances are due 30 days before each trip.

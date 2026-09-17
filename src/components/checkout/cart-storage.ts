@@ -1,6 +1,7 @@
 import type { CartItem } from '@/lib/checkout/types'
 
 export const CART_STORAGE_KEY = 'rockbusters-cart-v1'
+export const CART_DISCOUNT_STORAGE_KEY = 'rockbusters-cart-discount-v1'
 export const CART_CHANGED_EVENT = 'rockbusters-cart-changed'
 export const MAX_CART_ITEMS = 50
 export const MAX_CART_QUANTITY = 100
@@ -50,4 +51,24 @@ export function writeCart(items: CartItem[]): boolean {
 export function addCartItem(items: CartItem[], eventDateId: number): CartItem[] {
   if (items.some((item) => item.eventDateId === eventDateId)) return items
   return parseCart(JSON.stringify([...items, { eventDateId, quantity: 1 }]))
+}
+
+/** The code the customer applied in the cart, carried into checkout. Validity is re-checked by every quote. */
+export function readCartDiscount(): string {
+  try {
+    return (window.localStorage.getItem(CART_DISCOUNT_STORAGE_KEY) || '').trim().slice(0, 80)
+  } catch {
+    return ''
+  }
+}
+export function writeCartDiscount(code: string): boolean {
+  try {
+    const value = code.trim().slice(0, 80)
+    if (value) window.localStorage.setItem(CART_DISCOUNT_STORAGE_KEY, value)
+    else window.localStorage.removeItem(CART_DISCOUNT_STORAGE_KEY)
+    window.dispatchEvent(new Event(CART_CHANGED_EVENT))
+    return true
+  } catch {
+    return false
+  }
 }
