@@ -1,6 +1,7 @@
 /** Shared checkout contract. Money is integer minor units; personal data stays server-side. */
 export type CheckoutCurrency = 'EUR' | 'CZK'
 export type CheckoutMethod = 'comgate-card' | 'muzapay'
+export type CheckoutIntent = 'pay' | 'reserve'
 export type CheckoutState =
   | 'unverified'
   | 'awaitingReview'

@@ -8,10 +8,14 @@ import { checkoutEnabled } from '@/lib/checkout/feature'
 import { checkoutRateLimitWindowLabel } from '@/lib/checkout/rate-limit'
 import {
   createGuestCheckout,
+  completeGuestPayment,
+  completeGuestReservation,
   verifyGuestCheckout,
   acceptCheckoutInvitation,
   invitationKind,
   lookupCheckoutJourney,
+  PENDING_CHECKOUT_CONTACT_NAME,
+  validateGuestCheckoutCredential,
 } from '@/lib/checkout/identity'
 
 async function network() {
@@ -60,7 +64,7 @@ export async function createGuestCheckoutAction(
     const checkoutId = await createGuestCheckout(
       {
         submissionKey: data.get('submissionKey'),
-        contact: { name: data.get('name'), email: data.get('email'), phone: data.get('phone') },
+        contact: { name: PENDING_CHECKOUT_CONTACT_NAME, email: data.get('email'), phone: '' },
         items: JSON.parse(items),
         discountCode: data.get('discountCode') || undefined,
         referralCode: data.get('referralCode') || undefined,
@@ -71,6 +75,78 @@ export async function createGuestCheckoutAction(
   } catch {
     return error(
       `We could not send the verification email. Check your details and cart, then try again in ${checkoutRateLimitWindowLabel()} or contact us directly. No seats have been reserved.`,
+    )
+  }
+}
+
+export async function validateGuestCheckoutAction(
+  _previous: ActionResult | null,
+  data: FormData,
+): Promise<ActionResult> {
+  try {
+    await validateGuestCheckoutCredential(
+      Number(data.get('checkout')),
+      String(data.get('code') ?? ''),
+      await network(),
+    )
+    return { ok: true }
+  } catch {
+    return error('That verification code is invalid or expired. Please try again.')
+  }
+}
+
+export async function completeGuestReservationAction(
+  _previous: ActionResult | null,
+  data: FormData,
+): Promise<ActionResult> {
+  try {
+    await completeGuestReservation(
+      Number(data.get('checkout')),
+      String(data.get('code') ?? ''),
+      {
+        name: String(data.get('name') ?? ''),
+        email: String(data.get('email') ?? ''),
+        phone: String(data.get('phone') ?? ''),
+      },
+      await network(),
+    )
+    return { ok: true }
+  } catch {
+    return error(
+      'We could not reserve the whole cart. Check your details and availability, then try again.',
+    )
+  }
+}
+
+export async function completeGuestPaymentAction(
+  _previous: ActionResult | null,
+  data: FormData,
+): Promise<ActionResult> {
+  const password = String(data.get('password') ?? '')
+  if (password !== String(data.get('passwordConfirm') ?? ''))
+    return error('Passwords do not match.')
+  try {
+    const id = Number(data.get('checkout'))
+    const email = String(data.get('email') ?? '')
+    await completeGuestPayment(
+      id,
+      String(data.get('code') ?? ''),
+      {
+        name: String(data.get('name') ?? ''),
+        email,
+        phone: String(data.get('phone') ?? ''),
+        password,
+      },
+      await network(),
+    )
+    const authenticated = await authenticateWithPassword({ email, password })
+    const paymentPath = `/account/checkouts/${id}#payment`
+    return authenticated.ok
+      ? { ok: true, redirect: paymentPath }
+      : { ok: true, redirect: `/login?from=${encodeURIComponent(paymentPath)}` }
+  } catch {
+    return error(
+      'We could not create your account and reserve the cart. Check your details and try again.',
     )
   }
 }

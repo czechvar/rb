@@ -9,10 +9,10 @@ export const metadata = { title: 'Checkout — Rockbusters', robots: { index: fa
 export default async function CheckoutPage({
   searchParams,
 }: {
-  searchParams: Promise<{ add?: string }>
+  searchParams: Promise<{ add?: string; intent?: string }>
 }) {
   if (!checkoutEnabled()) notFound()
-  const { add } = await searchParams
+  const { add, intent } = await searchParams
   const id = add && /^\d+$/.test(add) && Number.isSafeInteger(Number(add)) ? Number(add) : undefined
   const user = await getCurrentUser()
   return (
@@ -32,6 +32,7 @@ export default async function CheckoutPage({
           <CheckoutFlow
             mode="checkout"
             add={id}
+            intent={intent === 'reserve' ? 'reserve' : 'pay'}
             contact={
               user
                 ? { name: user.name || '', email: user.email, phone: user.phone || '' }

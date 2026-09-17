@@ -3,6 +3,9 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 const mocks = vi.hoisted(() => ({
   create: vi.fn(),
   verify: vi.fn(),
+  validate: vi.fn(),
+  completeReservation: vi.fn(),
+  completePayment: vi.fn(),
   accept: vi.fn(),
   currentUser: vi.fn(),
   login: vi.fn(),
@@ -20,19 +23,26 @@ vi.mock('@/lib/auth', () => ({ getCurrentUser: mocks.currentUser }))
 vi.mock('@/lib/checkout/feature', () => ({ checkoutEnabled: mocks.checkoutEnabled }))
 vi.mock('@/lib/payload', () => ({ getPayloadClient: async () => ({ login: mocks.login }) }))
 vi.mock('@/lib/checkout/identity', () => ({
+  PENDING_CHECKOUT_CONTACT_NAME: '[Pending checkout]',
   acceptCheckoutInvitation: mocks.accept,
   createGuestCheckout: mocks.create,
   invitationKind: vi.fn(),
   lookupCheckoutJourney: vi.fn(),
   reviewGuestCheckout: vi.fn(),
   verifyGuestCheckout: mocks.verify,
+  validateGuestCheckoutCredential: mocks.validate,
+  completeGuestReservation: mocks.completeReservation,
+  completeGuestPayment: mocks.completePayment,
 }))
 
 import {
   acceptCheckoutInvitationAction,
+  completeGuestPaymentAction,
+  completeGuestReservationAction,
   createGuestCheckoutAction,
   loginCheckoutAction,
   verifyGuestCheckoutAction,
+  validateGuestCheckoutAction,
 } from '@/app/(frontend)/checkout/identity-actions'
 
 describe('guest checkout identity actions', () => {
@@ -136,6 +146,16 @@ describe('guest checkout identity actions', () => {
       ok: true,
       checkoutId: 27,
     })
+    expect(mocks.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        contact: {
+          name: '[Pending checkout]',
+          email: 'fixture@example.test',
+          phone: '',
+        },
+      }),
+      'test-network',
+    )
   })
 
   it('verifies a guest checkout with its six-digit code', async () => {
@@ -145,6 +165,78 @@ describe('guest checkout identity actions', () => {
 
     await expect(verifyGuestCheckoutAction(null, data)).resolves.toEqual({ ok: true })
     expect(mocks.verify).toHaveBeenCalledWith(27, '000042', 'test-network')
+  })
+
+  it('validates the OTP before collecting customer details', async () => {
+    const data = new FormData()
+    data.set('checkout', '27')
+    data.set('code', '000042')
+
+    await expect(validateGuestCheckoutAction(null, data)).resolves.toEqual({ ok: true })
+    expect(mocks.validate).toHaveBeenCalledWith(27, '000042', 'test-network')
+    expect(mocks.completeReservation).not.toHaveBeenCalled()
+    expect(mocks.completePayment).not.toHaveBeenCalled()
+  })
+
+  it('completes a verified reservation with the locked email and contact details', async () => {
+    const data = new FormData()
+    data.set('checkout', '27')
+    data.set('code', '000042')
+    data.set('email', 'ada@example.test')
+    data.set('name', 'Ada Lovelace')
+    data.set('phone', '+420123456789')
+
+    await expect(completeGuestReservationAction(null, data)).resolves.toEqual({ ok: true })
+    expect(mocks.completeReservation).toHaveBeenCalledWith(
+      27,
+      '000042',
+      {
+        email: 'ada@example.test',
+        name: 'Ada Lovelace',
+        phone: '+420123456789',
+      },
+      'test-network',
+    )
+  })
+
+  it('creates and signs in a verified pay-now customer before payment', async () => {
+    mocks.login.mockResolvedValue({ token: 'fixture-session-token' })
+    const data = new FormData()
+    data.set('checkout', '27')
+    data.set('code', '000042')
+    data.set('email', 'ada@example.test')
+    data.set('name', 'Ada Lovelace')
+    data.set('phone', '+420123456789')
+    data.set('password', 'FixturePassword42!')
+    data.set('passwordConfirm', 'FixturePassword42!')
+
+    await expect(completeGuestPaymentAction(null, data)).resolves.toEqual({
+      ok: true,
+      redirect: '/account/checkouts/27#payment',
+    })
+    expect(mocks.completePayment).toHaveBeenCalledWith(
+      27,
+      '000042',
+      {
+        email: 'ada@example.test',
+        name: 'Ada Lovelace',
+        phone: '+420123456789',
+        password: 'FixturePassword42!',
+      },
+      'test-network',
+    )
+  })
+
+  it('rejects mismatched pay-now passwords before creating an account', async () => {
+    const data = new FormData()
+    data.set('password', 'FixturePassword42!')
+    data.set('passwordConfirm', 'DifferentPassword42!')
+
+    await expect(completeGuestPaymentAction(null, data)).resolves.toEqual({
+      ok: false,
+      formError: 'Passwords do not match.',
+    })
+    expect(mocks.completePayment).not.toHaveBeenCalled()
   })
 
   it('accepts an already-issued link token during the compatibility window', async () => {

@@ -113,10 +113,10 @@ it('pushes state-only queue filters into Payload and reserves item scans for JSO
   expect(requiresItemFiltering('waiting-review')).toBe(false)
 })
 
-it('offers quick approval only for new customers awaiting review', () => {
+it('offers quick approval for every checkout awaiting review', () => {
   const record = { customerKind: 'new', state: 'awaitingReview' } as CheckoutRecord
   expect(canQuickApproveCheckout(record)).toBe(true)
-  expect(canQuickApproveCheckout({ ...record, customerKind: 'returning' })).toBe(false)
+  expect(canQuickApproveCheckout({ ...record, customerKind: 'returning' })).toBe(true)
   expect(canQuickApproveCheckout({ ...record, state: 'approved' })).toBe(false)
 })
 

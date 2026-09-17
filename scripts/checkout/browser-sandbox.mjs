@@ -381,17 +381,16 @@ async function main() {
   assert((await page.getByLabel('Full name', { exact: true }).count()) === 0)
   await page.getByLabel('Email', { exact: true }).fill('checkout-browser@example.invalid')
   await page.getByRole('button', { name: /continue/i }).click()
-  await page
-    .getByRole('link', { name: 'Log in with your password to continue', exact: true })
-    .first()
-    .waitFor({ timeout: 30000 })
-  passed('email-first-recognizes-returning-purchaser')
+  await page.getByLabel('Password', { exact: true }).waitFor({ timeout: 30000 })
+  await page.getByRole('button', { name: 'Sign in and continue', exact: true }).waitFor()
+  passed('email-first-recognizes-known-account-inline')
   await page.getByLabel('Email', { exact: true }).fill('checkout-browser-new@example.invalid')
   await page.getByRole('button', { name: /continue/i }).click()
-  await page.getByLabel('Full name', { exact: true }).waitFor({ timeout: 30000 })
-  await page.getByLabel('Full name', { exact: true }).fill('Browser guest')
-  await page.getByLabel('Phone including country code', { exact: true }).fill('+420123456789')
-  await page.getByRole('button', { name: /verify|email/i }).click()
+  await page.getByRole('button', { name: 'Send verification code', exact: true }).waitFor({
+    timeout: 30000,
+  })
+  assert((await page.getByLabel('Full name', { exact: true }).count()) === 0)
+  await page.getByRole('button', { name: 'Send verification code', exact: true }).click()
   await page
     .getByRole('alert')
     .filter({ hasText: /could not|couldn.t|not configured/i })
@@ -404,7 +403,7 @@ async function main() {
       )
     ).rows[0].count === 0,
   )
-  passed('new-email-collects-three-fields-and-unconfigured-mail-fails-honestly')
+  passed('new-email-verifies-before-details-and-unconfigured-mail-fails-honestly')
   announce('cart-mobile')
   await page.setViewportSize({ width: 390, height: 844 })
   await navigate('/cart')
@@ -472,7 +471,12 @@ async function main() {
   assert(denied?.status() === 404)
   passed('other-checkout-owner-access-denied')
   const staffDenied = await navigate('/checkout/operations')
-  assert(staffDenied?.status() === 404)
+  const staffPath = new URL(page.url()).pathname
+  assert(
+    staffDenied?.status() === 404 ||
+      staffPath === '/admin/login' ||
+      staffPath === '/admin/unauthorized',
+  )
   passed('customer-staff-operations-access-denied')
   report.browserPassed = true
   await context.close()

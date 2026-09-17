@@ -73,7 +73,7 @@ export async function CheckoutOperationsView({ doc, initPageResult }: DocumentVi
         ))}
       </section>
 
-      {record.customerKind === 'new' && ['awaitingReview', 'approved'].includes(record.state) && (
+      {['awaitingReview', 'approved'].includes(record.state) && (
         <section className={styles.panel}>
           <h2>Customer approval</h2>
           <p>

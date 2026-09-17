@@ -22,7 +22,7 @@ export function operationFilterWhere(filter: OperationFilter): Where | undefined
 }
 
 export function canQuickApproveCheckout(record: CheckoutRecord): boolean {
-  return record.customerKind === 'new' && record.state === 'awaitingReview'
+  return record.state === 'awaitingReview'
 }
 
 export function matchesOperationFilter(

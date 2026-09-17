@@ -8,8 +8,12 @@ import { CART_STORAGE_KEY } from '@/components/checkout/cart-storage'
 const mocks = vi.hoisted(() => ({
   quote: vi.fn(),
   reserve: vi.fn(),
+  reserveReview: vi.fn(),
   guest: vi.fn(),
   verifyGuest: vi.fn(),
+  validateGuest: vi.fn(),
+  completeGuestReservation: vi.fn(),
+  completeGuestPayment: vi.fn(),
   lookup: vi.fn(),
   login: vi.fn(),
   pay: vi.fn(),
@@ -25,6 +29,7 @@ vi.mock('next/navigation', () => ({
 vi.mock('@/app/(frontend)/checkout/actions', () => ({
   quoteCartAction: mocks.quote,
   reserveCheckoutAction: mocks.reserve,
+  reserveCheckoutForReviewAction: mocks.reserveReview,
   payCheckoutAction: mocks.pay,
   cancelCheckoutAction: mocks.cancel,
   saveCheckoutBillingAction: mocks.billing,
@@ -34,6 +39,9 @@ vi.mock('@/app/(frontend)/checkout/identity-actions', () => ({
   loginCheckoutAction: mocks.login,
   lookupCheckoutJourneyAction: mocks.lookup,
   verifyGuestCheckoutAction: mocks.verifyGuest,
+  validateGuestCheckoutAction: mocks.validateGuest,
+  completeGuestReservationAction: mocks.completeGuestReservation,
+  completeGuestPaymentAction: mocks.completeGuestPayment,
 }))
 const item = {
   eventDateId: 123,
@@ -75,6 +83,83 @@ beforeEach(() => {
 })
 afterEach(cleanup)
 
+it('offers pay-now and reserve-now intents from the cart', async () => {
+  render(<CheckoutFlow mode="cart" />)
+  await screen.findByRole('heading', { name: 'Test climbing trip' })
+
+  expect(screen.getByRole('link', { name: 'Pay now' }).getAttribute('href')).toBe(
+    '/checkout?intent=pay',
+  )
+  expect(screen.getByRole('link', { name: 'Reserve now' }).getAttribute('href')).toBe(
+    '/checkout?intent=reserve',
+  )
+})
+
+it('verifies an unknown pay-now email before showing account details', async () => {
+  mocks.guest.mockResolvedValue({ ok: true, checkoutId: 42 })
+  mocks.validateGuest.mockResolvedValue({ ok: true })
+  mocks.completeGuestPayment.mockResolvedValue({
+    ok: true,
+    redirect: '/account/checkouts/42#payment',
+  })
+  render(<CheckoutFlow mode="checkout" intent="pay" />)
+  await screen.findByRole('heading', { name: 'Test climbing trip' })
+
+  fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
+  fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
+  await screen.findByRole('button', { name: 'Send verification code' })
+  expect(screen.queryByLabelText('Full name')).toBeNull()
+
+  fireEvent.submit(
+    (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
+  )
+  const code = await screen.findByLabelText('Verification code')
+  fireEvent.change(code, { target: { value: '123456' } })
+  fireEvent.submit(screen.getByRole('button', { name: 'Verify email' }).closest('form')!)
+
+  expect(await screen.findByLabelText('Full name')).toBeTruthy()
+  expect(screen.getByLabelText('Phone including country code')).toBeTruthy()
+  expect(screen.getByLabelText('Choose a password')).toBeTruthy()
+  expect(screen.getByLabelText('Confirm password')).toBeTruthy()
+  expect((screen.getByLabelText('Email') as HTMLInputElement).readOnly).toBe(true)
+  fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
+  fireEvent.change(screen.getByLabelText('Phone including country code'), {
+    target: { value: '+420123456789' },
+  })
+  fireEvent.change(screen.getByLabelText('Choose a password'), {
+    target: { value: 'FixturePassword42!' },
+  })
+  fireEvent.change(screen.getByLabelText('Confirm password'), {
+    target: { value: 'FixturePassword42!' },
+  })
+  fireEvent.submit(
+    screen.getByRole('button', { name: 'Register and continue to payment' }).closest('form')!,
+  )
+
+  await waitFor(() =>
+    expect(mocks.push).toHaveBeenCalledWith('/account/checkouts/42#payment'),
+  )
+  expect(mocks.completeGuestPayment).toHaveBeenCalledTimes(1)
+  expect(window.localStorage.getItem(CART_STORAGE_KEY)).toBe('[]')
+})
+
+it('sends an authenticated reserve-now customer to staff review', async () => {
+  mocks.reserveReview.mockResolvedValue({ ok: true, redirect: '/account/checkouts/43' })
+  render(
+    <CheckoutFlow
+      mode="checkout"
+      intent="reserve"
+      contact={{ name: 'Test Customer', email: 'customer@example.test', phone: '+420123456789' }}
+    />,
+  )
+  await screen.findByRole('heading', { name: 'Reserve now, Test Customer' })
+  fireEvent.submit(screen.getByRole('button', { name: 'Reserve now' }).closest('form')!)
+
+  await waitFor(() => expect(mocks.reserveReview).toHaveBeenCalledTimes(1))
+  expect(mocks.reserve).not.toHaveBeenCalled()
+  expect(mocks.push).toHaveBeenCalledWith('/account/checkouts/43')
+})
+
 it('restores the same dated selections after login and updates quantities without storing personal data', async () => {
   const view = render(<CheckoutFlow mode="cart" />)
   await screen.findByRole('heading', { name: 'Test climbing trip' })
@@ -105,7 +190,7 @@ it('routes an authenticated customer directly to reservation and payment', async
     />,
   )
   await screen.findByRole('heading', { name: 'Test climbing trip' })
-  expect(screen.getByRole('heading', { name: 'Welcome back, Test Customer' })).toBeTruthy()
+  expect(screen.getByRole('heading', { name: 'Pay now, Test Customer' })).toBeTruthy()
   expect(screen.queryByRole('button', { name: 'Send verification email' })).toBeNull()
   expect(screen.queryByRole('button', { name: 'Reserve checkout' })).toBeNull()
   expect(screen.queryByLabelText('Email')).toBeNull()
@@ -113,11 +198,11 @@ it('routes an authenticated customer directly to reservation and payment', async
   expect(screen.queryByLabelText('Phone including country code (optional)')).toBeNull()
   expect(
     screen
-      .getByRole('button', { name: 'Reserve and continue to payment' })
+      .getByRole('button', { name: 'Continue to payment' })
       .classList.contains('btn-primary'),
   ).toBe(true)
   fireEvent.submit(
-    screen.getByRole('button', { name: 'Reserve and continue to payment' }).closest('form')!,
+    screen.getByRole('button', { name: 'Continue to payment' }).closest('form')!,
   )
   await waitFor(() => expect(mocks.reserve).toHaveBeenCalledTimes(1))
   expect(mocks.guest).not.toHaveBeenCalled()
@@ -131,19 +216,15 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
-  await screen.findByLabelText('Full name')
-  expect(
-    (screen.getByLabelText('Phone including country code (optional)') as HTMLInputElement).required,
-  ).toBe(false)
-  fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
-  fireEvent.change(screen.getByLabelText('Phone including country code (optional)'), {
-    target: { value: '+420123456789' },
-  })
-  fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
+  expect(screen.queryByLabelText('Full name')).toBeNull()
+  fireEvent.submit(
+    (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
+  )
   await screen.findByRole('alert')
-  expect((screen.getByLabelText('Full name') as HTMLInputElement).value).toBe('Test Visitor')
   const firstId = mocks.guest.mock.calls[0][1].get('submissionKey')
-  fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
+  fireEvent.submit(
+    (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
+  )
   const code = await screen.findByLabelText('Verification code')
   expect(screen.getByText(/We emailed a six-digit verification code/).tagName).toBe('STRONG')
   expect(code.getAttribute('inputmode')).toBe('numeric')
@@ -156,7 +237,7 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
   )
   expect(screen.queryByRole('link', { name: 'Add another trip' })).toBeNull()
   expect(
-    screen.getByRole('button', { name: 'Verify and reserve' }).classList.contains('btn-primary'),
+    screen.getByRole('button', { name: 'Verify email' }).classList.contains('btn-primary'),
   ).toBe(true)
   expect(mocks.push).not.toHaveBeenCalled()
   expect(mocks.guest.mock.calls[1][1].get('submissionKey')).toBe(firstId)
@@ -167,44 +248,49 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
 
 it('keeps the submitted cart intact when guest code verification fails', async () => {
   mocks.guest.mockResolvedValue({ ok: true, checkoutId: 42 })
-  mocks.verifyGuest.mockResolvedValue({ ok: false, formError: 'That code is invalid or expired.' })
+  mocks.validateGuest.mockResolvedValue({
+    ok: false,
+    formError: 'That code is invalid or expired.',
+  })
   render(<CheckoutFlow mode="checkout" />)
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
-  await screen.findByLabelText('Full name')
-  fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
-  fireEvent.change(screen.getByLabelText('Phone including country code (optional)'), {
-    target: { value: '+420123456789' },
-  })
-  fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
+  fireEvent.submit(
+    (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
+  )
   const code = await screen.findByLabelText('Verification code')
   fireEvent.change(code, { target: { value: '123456' } })
-  fireEvent.submit(screen.getByRole('button', { name: 'Verify and reserve' }).closest('form')!)
+  fireEvent.submit(screen.getByRole('button', { name: 'Verify email' }).closest('form')!)
   await screen.findByText('That code is invalid or expired.')
-  expect(mocks.verifyGuest).toHaveBeenCalledTimes(1)
-  expect(mocks.verifyGuest.mock.calls[0][1].get('checkout')).toBe('42')
-  expect(mocks.verifyGuest.mock.calls[0][1].get('code')).toBe('123456')
+  expect(mocks.validateGuest).toHaveBeenCalledTimes(1)
+  expect(mocks.validateGuest.mock.calls[0][1].get('checkout')).toBe('42')
+  expect(mocks.validateGuest.mock.calls[0][1].get('code')).toBe('123456')
   expect(JSON.parse(window.localStorage.getItem(CART_STORAGE_KEY)!)).toEqual([
     { eventDateId: 123, quantity: 1 },
   ])
   expect(screen.getByLabelText('Verification code')).toBeTruthy()
 })
 
-it('clears only the submitted guest quantities after verification and keeps success visible', async () => {
+it('clears only submitted quantities after a verified reserve-now request', async () => {
   mocks.guest.mockResolvedValue({ ok: true, checkoutId: 42 })
-  mocks.verifyGuest.mockResolvedValue({ ok: true })
-  render(<CheckoutFlow mode="checkout" />)
+  mocks.validateGuest.mockResolvedValue({ ok: true })
+  mocks.completeGuestReservation.mockResolvedValue({ ok: true })
+  render(<CheckoutFlow mode="checkout" intent="reserve" />)
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'visitor@example.test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Continue with email' }).closest('form')!)
-  await screen.findByLabelText('Full name')
-  fireEvent.change(screen.getByLabelText('Full name'), { target: { value: 'Test Visitor' } })
+  fireEvent.submit(
+    (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
+  )
+  const code = await screen.findByLabelText('Verification code')
+  fireEvent.change(code, { target: { value: '123456' } })
+  fireEvent.submit(screen.getByRole('button', { name: 'Verify email' }).closest('form')!)
+  const name = await screen.findByLabelText('Full name')
+  fireEvent.change(name, { target: { value: 'Test Visitor' } })
   fireEvent.change(screen.getByLabelText('Phone including country code (optional)'), {
     target: { value: '+420123456789' },
   })
-  fireEvent.submit(screen.getByRole('button', { name: 'Send verification email' }).closest('form')!)
-  const code = await screen.findByLabelText('Verification code')
 
   window.localStorage.setItem(
     CART_STORAGE_KEY,
@@ -213,8 +299,7 @@ it('clears only the submitted guest quantities after verification and keeps succ
       { eventDateId: 456, quantity: 2 },
     ]),
   )
-  fireEvent.change(code, { target: { value: '123456' } })
-  fireEvent.submit(screen.getByRole('button', { name: 'Verify and reserve' }).closest('form')!)
+  fireEvent.submit(screen.getByRole('button', { name: 'Reserve now' }).closest('form')!)
 
   expect(
     await screen.findByRole('heading', { name: 'Your trips are reserved for review' }),
@@ -224,6 +309,7 @@ it('clears only the submitted guest quantities after verification and keeps succ
     { eventDateId: 456, quantity: 2 },
   ])
   expect(mocks.push).not.toHaveBeenCalled()
+  expect(mocks.completeGuestReservation).toHaveBeenCalledTimes(1)
   expect(screen.queryByText('Your cart is empty')).toBeNull()
 })
 
@@ -360,7 +446,7 @@ it('reserves a returning purchaser basket once while pending and clears only sub
   )
   await screen.findByRole('heading', { name: 'Test climbing trip' })
   const form = screen
-    .getByRole('button', { name: 'Reserve and continue to payment' })
+    .getByRole('button', { name: 'Continue to payment' })
     .closest('form')!
   fireEvent.submit(form)
   await waitFor(() => expect(mocks.reserve).toHaveBeenCalledTimes(1))
@@ -420,7 +506,7 @@ it('does not ask an authenticated customer for saved billing details again', asy
   expect(screen.queryByLabelText('Payer first name')).toBeNull()
   expect(screen.queryByLabelText('Street and number')).toBeNull()
   fireEvent.submit(
-    screen.getByRole('button', { name: 'Reserve and continue to payment' }).closest('form')!,
+    screen.getByRole('button', { name: 'Continue to payment' }).closest('form')!,
   )
   await screen.findByText('Please retry.')
   expect(mocks.reserve).toHaveBeenCalledTimes(1)

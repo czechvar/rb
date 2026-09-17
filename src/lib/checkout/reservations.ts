@@ -12,7 +12,13 @@ import {
   lockSubmission,
   withCheckoutTransaction,
 } from './transaction'
-import type { CartItem, CheckoutContact, CheckoutItem, CheckoutRecord } from './types'
+import type {
+  CartItem,
+  CheckoutContact,
+  CheckoutIntent,
+  CheckoutItem,
+  CheckoutRecord,
+} from './types'
 
 const contactSchema = z.object({
   name: z.string().trim().min(1).max(120),
@@ -120,16 +126,19 @@ async function writeBookings(
   }
   return output
 }
-export async function reserveCheckout(
-  input: {
-    submissionKey: string
-    contact: CheckoutContact
-    items: CartItem[]
-    billingAddress?: Record<string, unknown>
-    discountCode?: string
-    referralCode?: string
-  },
+type ReserveCheckoutInput = {
+  submissionKey: string
+  contact: CheckoutContact
+  items: CartItem[]
+  billingAddress?: Record<string, unknown>
+  discountCode?: string
+  referralCode?: string
+}
+
+async function reserveAuthenticatedCheckout(
+  input: ReserveCheckoutInput,
   user: User,
+  intent: CheckoutIntent,
 ): Promise<CheckoutRecord> {
   if (!z.string().uuid().safeParse(input.submissionKey).success)
     throw new Error('Invalid checkout request.')
@@ -148,6 +157,7 @@ export async function reserveCheckout(
         billingAddress,
         discountCode: input.discountCode ?? '',
         referralCode: input.referralCode ?? '',
+        intent,
       }),
     )
     .digest('hex')
@@ -180,14 +190,15 @@ export async function reserveCheckout(
         reference: `RB-C-${randomUUID()}`,
         submissionKey: input.submissionKey,
         requestDigest: digest,
-        state: 'reserved',
+        state: intent === 'reserve' ? 'awaitingReview' : 'reserved',
         customerKind: returning ? 'returning' : 'new',
         user: user.id,
         contact,
         billingAddress,
         items: quote.items,
         currency: quote.currency,
-        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+        expiresAt:
+          intent === 'reserve' ? null : new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
         verifiedAt: new Date().toISOString(),
       } as never,
     })) as unknown as CheckoutRecord
@@ -201,11 +212,28 @@ export async function reserveCheckout(
     })) as unknown as CheckoutRecord
   })
 }
+
+export async function reserveCheckout(
+  input: ReserveCheckoutInput,
+  user: User,
+): Promise<CheckoutRecord> {
+  return reserveAuthenticatedCheckout(input, user, 'pay')
+}
+
+export async function reserveCheckoutForReview(
+  input: ReserveCheckoutInput,
+  user: User,
+): Promise<CheckoutRecord> {
+  return reserveAuthenticatedCheckout(input, user, 'reserve')
+}
+
 export async function activateGuestReservation(
   checkoutId: number,
   verificationHash: string,
+  contactInput?: CheckoutContact,
 ): Promise<CheckoutRecord> {
   const payload = await getPayloadClient()
+  const contact = contactInput ? validateCheckoutContact(contactInput) : undefined
   return withCheckoutTransaction(payload, async (req) => {
     await lockCheckout(req, checkoutId)
     const checkout = (await payload.findByID({
@@ -225,6 +253,8 @@ export async function activateGuestReservation(
       new Date(checkout.verificationExpiresAt) <= new Date()
     )
       throw new Error('This verification link has expired or is invalid.')
+    if (contact && checkout.contact.email !== contact.email)
+      throw new Error('This verification code does not match the email address.')
     if (checkout.state !== 'unverified')
       throw new Error('This verification link has already been used.')
     const selected = normalizeCart(checkout.items)
@@ -248,12 +278,103 @@ export async function activateGuestReservation(
       overrideAccess: true,
       data: {
         state: 'awaitingReview',
+        ...(contact ? { contact } : {}),
         items,
         currency: quote.currency,
         verifiedAt: new Date().toISOString(),
         verificationHash: null,
         verificationExpiresAt: null,
         expiresAt: null,
+      } as never,
+    })) as unknown as CheckoutRecord
+  })
+}
+
+export async function activateGuestPaymentCheckout(
+  checkoutId: number,
+  verificationHash: string,
+  accountInput: CheckoutContact & { password: string },
+): Promise<CheckoutRecord> {
+  const payload = await getPayloadClient()
+  const contact = validateCheckoutContact(accountInput)
+  if (!contact.phone) throw new Error('Enter a valid phone number.')
+  const password = z.string().min(8).max(128).parse(accountInput.password)
+  return withCheckoutTransaction(payload, async (req) => {
+    await lockCheckout(req, checkoutId)
+    const checkout = (await payload.findByID({
+      collection: 'checkouts',
+      id: checkoutId,
+      depth: 0,
+      req,
+      overrideAccess: true,
+    })) as unknown as CheckoutRecord
+    const expected = Buffer.from(checkout.verificationHash ?? ''),
+      actual = Buffer.from(verificationHash)
+    if (
+      !expected.length ||
+      actual.length !== expected.length ||
+      !timingSafeEqual(expected, actual) ||
+      !checkout.verificationExpiresAt ||
+      new Date(checkout.verificationExpiresAt) <= new Date() ||
+      checkout.state !== 'unverified' ||
+      checkout.contact.email !== contact.email
+    )
+      throw new Error('This verification code is invalid or expired.')
+    await lockSubmission(req, `account:${contact.email}`)
+    const existing = await payload.find({
+      collection: 'users',
+      where: { email: { equals: contact.email } },
+      limit: 1,
+      depth: 0,
+      overrideAccess: true,
+      req,
+    })
+    if (existing.docs[0]) throw new Error('Sign in to the existing account to continue.')
+    const user = await payload.create({
+      collection: 'users',
+      data: {
+        name: contact.name,
+        email: contact.email,
+        phone: contact.phone,
+        role: 'customer',
+        password,
+        _verified: true,
+      },
+      disableVerificationEmail: true,
+      overrideAccess: true,
+      req,
+    })
+    const selected = normalizeCart(checkout.items)
+    await lockEventDates(
+      req,
+      selected.map((item) => item.eventDateId),
+    )
+    const quote = await quoteCart(
+      {
+        items: selected,
+        discountCode: checkout.discountCode ?? undefined,
+        referralCode: checkout.referralCode ?? undefined,
+      },
+      req,
+    )
+    const linked = { ...checkout, user: user.id, contact }
+    const items = await writeBookings(req, linked, quote.items)
+    return (await payload.update({
+      collection: 'checkouts',
+      id: checkout.id,
+      req,
+      overrideAccess: true,
+      data: {
+        state: 'reserved',
+        customerKind: 'new',
+        user: user.id,
+        contact,
+        items,
+        currency: quote.currency,
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+        verifiedAt: new Date().toISOString(),
+        verificationHash: null,
+        verificationExpiresAt: null,
       } as never,
     })) as unknown as CheckoutRecord
   })
