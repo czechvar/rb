@@ -1,10 +1,11 @@
 import Image from 'next/image'
+import type { ReactNode } from 'react'
 import styles from './ImageTripCard.module.css'
 
 type TripLinkProps = {
   variant?: 'trip'
   href: string
-  title: string
+  title: ReactNode
   description?: string | null
   image?: string | null
   category?: string | null

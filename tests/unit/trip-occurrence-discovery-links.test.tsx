@@ -42,6 +42,7 @@ vi.mock('@/lib/jsonld', () => ({
 }))
 vi.mock('@/components/JsonLd', () => ({ JsonLd: () => null }))
 vi.mock('@/components/marketing/MarketingShell', () => ({ MarketingShell: ({ children }: { children: React.ReactNode }) => <>{children}</> }))
+vi.mock('next/image', () => ({ default: ({ fill: _fill, ...props }: React.ComponentProps<'img'> & { fill?: boolean }) => React.createElement('img', props) }))
 
 const event = {
   id: 41,
@@ -116,6 +117,61 @@ describe('known occurrence discovery links', () => {
     expect(renderToStaticMarkup(await TripGridBlock({
       blockType: 'tripGrid', source: 'manual', events: [event], heading: 'Trips', limit: 3, variant: 'cards',
     }))).toContain(expected.replace('&', '&amp;'))
+  })
+
+  it('uses the selected variant hero title parts and prefers its hero image for grid cards', async () => {
+    const variantEvent = {
+      ...event,
+      title: 'European climbing road trip',
+      mainPicture: { id: 'hero', url: '/hero.jpg', alt: 'Hero', createdAt: '', updatedAt: '' },
+      gallery: [{ id: 'gallery', url: '/gallery.jpg', alt: 'Gallery', createdAt: '', updatedAt: '' }],
+    } as Event
+    const variantOccurrence = {
+      ...occurrence,
+      event: variantEvent,
+      tripVariant: {
+        id: 51,
+        event: variantEvent.id,
+        slug: 'gorges-du-tarn',
+        title: 'Gorges du Tarn',
+        editorial: {
+          hero: {
+            titleParts: [
+              { text: 'ROCK & ROAD EUROPE: ' },
+              { text: 'GORGES DU TARN', accent: true },
+            ],
+          },
+        },
+      },
+    } as EventDate
+    mocks.resolveTripGrid.mockResolvedValue([variantEvent])
+    mocks.dates.mockResolvedValue([variantOccurrence])
+
+    const html = renderToStaticMarkup(await TripGridBlock({
+      blockType: 'tripGrid', source: 'manual', events: [variantEvent], heading: 'Trips', limit: 3, variant: 'featureLead',
+    }))
+
+    expect(html).toContain('ROCK &amp; ROAD EUROPE: ')
+    expect(html).toContain('GORGES DU TARN')
+    expect(html).not.toContain('European climbing road trip')
+    expect(html).toContain('/hero.jpg')
+    expect(html).not.toContain('/gallery.jpg')
+  })
+
+  it('falls back to the first event gallery image when the event hero image is missing', async () => {
+    const galleryEvent = {
+      ...event,
+      mainPicture: null,
+      gallery: [{ id: 'gallery', url: '/gallery-fallback.jpg', alt: 'Gallery', createdAt: '', updatedAt: '' }],
+    } as Event
+    mocks.resolveTripGrid.mockResolvedValue([galleryEvent])
+    mocks.dates.mockResolvedValue([{ ...occurrence, event: galleryEvent }])
+
+    const html = renderToStaticMarkup(await TripGridBlock({
+      blockType: 'tripGrid', source: 'manual', events: [galleryEvent], heading: 'Trips', limit: 3, variant: 'featureLead',
+    }))
+
+    expect(html).toContain('/gallery-fallback.jpg')
   })
 
   it('retains the parent selector when no occurrence identity is available', async () => {

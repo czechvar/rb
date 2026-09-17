@@ -1,6 +1,7 @@
 import { ArrowRight } from '@/components/ui/ArrowRight'
 import Image from 'next/image'
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 import type { Event, EventDate, Guide, Location, Post, Program } from '@/payload-types'
 import { mediaAlt, mediaUrl } from '@/lib/media'
 import { eventCatalogueDescription, eventCatalogueTitle } from '@/lib/event-catalogue-card'
@@ -51,16 +52,22 @@ export function TripCard({
   event,
   href,
   price,
+  title,
+  image,
+  imageAlt,
   className,
 }: {
   event: Event
   href?: string
   price?: string | null
+  title?: ReactNode
+  image?: string | null
+  imageAlt?: string
   className?: string
 }) {
-  const img = mediaUrl(event.mainPicture)
+  const img = image ?? mediaUrl(event.mainPicture)
   const loc = locationLabel(event.locations)
-  const title = eventCatalogueTitle(event)
+  const cardTitle = title ?? eventCatalogueTitle(event)
   const description = eventCatalogueDescription(event)
   return (
     <Link
@@ -71,7 +78,7 @@ export function TripCard({
         {img ? (
           <Image
             src={img}
-            alt={mediaAlt(event.mainPicture)}
+            alt={imageAlt ?? mediaAlt(event.mainPicture)}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
           />
@@ -79,7 +86,7 @@ export function TripCard({
       </div>
       <div className={styles.tripContent}>
         {loc ? <p className={styles.cardMeta}>{loc}</p> : null}
-        <h3 data-type="subheading">{title}</h3>
+        <h3 data-type="subheading">{cardTitle}</h3>
         {description ? <p>{description}</p> : null}
         <div className={styles.tripFooter}>
           {price ? <span>{price}</span> : <span>Upcoming dates</span>}
