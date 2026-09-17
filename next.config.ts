@@ -19,18 +19,29 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
+    const headers = [
+      {
+        // Keep public catalogue and CMS pages at the edge for five minutes
+        // without changing browser caching. Personalized, transactional,
+        // admin, API, custom route, and metadata endpoints stay outside the
+        // Vercel edge policy.
+        source: '/((?!account(?:/|$)|book(?:/|$)|cart(?:/|$)|checkout(?:/|$)|login(?:/|$)|register(?:/|$)|forgot-password(?:/|$)|reset-password(?:/|$)|verify-email(?:/|$)|design-system(?:/|$)|api(?:/|$)|admin(?:/|$)|my-route(?:/|$)|_next(?:/|$)|sitemap\\.xml$|robots\\.txt$|favicon\\.ico$).*)',
+        headers: [{ key: 'Vercel-CDN-Cache-Control', value: 'public, s-maxage=300' }],
+      },
+    ]
+
     // See src/app/robots.ts: beta.rockbusters.net is a production deployment of
     // devel, so only an explicit flag can distinguish it from the live site.
     // Until SITE_INDEXABLE is set, every deployment is duplicate content
     // competing with rockbusters.net and must stay out of the index.
-    if (process.env.SITE_INDEXABLE === 'true') return []
-
-    return [
-      {
+    if (process.env.SITE_INDEXABLE !== 'true') {
+      headers.push({
         source: '/:path*',
         headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
-      },
-    ]
+      })
+    }
+
+    return headers
   },
   async redirects() {
     return [
