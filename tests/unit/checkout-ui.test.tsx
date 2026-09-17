@@ -247,6 +247,7 @@ it('keeps a new guest on checkout and asks for the emailed six-digit code inline
     (await screen.findByRole('button', { name: 'Send verification code' })).closest('form')!,
   )
   const code = await screen.findByLabelText('Verification code')
+  expect(document.activeElement).toBe(code)
   expect(screen.getByText(/We emailed a six-digit verification code/).tagName).toBe('STRONG')
   expect(code.getAttribute('inputmode')).toBe('numeric')
   expect(code.getAttribute('autocomplete')).toBe('one-time-code')
