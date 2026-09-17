@@ -3,6 +3,7 @@ import { beforeEach, expect, it, vi } from 'vitest'
 const mocks = vi.hoisted(() => ({
   currentUser: vi.fn(),
   reserve: vi.fn(),
+  reserveReview: vi.fn(),
 }))
 
 vi.mock('next/headers', () => ({ cookies: async () => ({ get: () => undefined }) }))
@@ -12,11 +13,15 @@ vi.mock('@/lib/checkout/quote', () => ({ quoteCart: vi.fn() }))
 vi.mock('@/lib/checkout/reservations', () => ({
   cancelCheckout: vi.fn(),
   reserveCheckout: mocks.reserve,
+  reserveCheckoutForReview: mocks.reserveReview,
   updateCheckoutBilling: vi.fn(),
 }))
 vi.mock('@/payments/checkout-payment-service', () => ({ beginCheckoutPayment: vi.fn() }))
 
-import { reserveCheckoutAction } from '@/app/(frontend)/checkout/actions'
+import {
+  reserveCheckoutAction,
+  reserveCheckoutForReviewAction,
+} from '@/app/(frontend)/checkout/actions'
 
 beforeEach(() => vi.clearAllMocks())
 
@@ -58,4 +63,26 @@ it('reuses a saved address for a signed-in customer without purchase history', a
     }),
     user,
   )
+})
+
+it('keeps an authenticated reserve-now checkout in staff review', async () => {
+  const user = {
+    id: 7,
+    name: 'Ada Lovelace',
+    email: 'ada@example.test',
+    phone: '+420123456789',
+    addresses: [],
+  }
+  mocks.currentUser.mockResolvedValue(user)
+  mocks.reserveReview.mockResolvedValue({ id: 43 })
+  const data = new FormData()
+  data.set('submissionKey', 'ecd1649c-42ca-47a9-99f6-b3f20d5a59f3')
+  data.set('items', JSON.stringify([{ eventDateId: 1, quantity: 1 }]))
+
+  await expect(reserveCheckoutForReviewAction(null, data)).resolves.toEqual({
+    ok: true,
+    redirect: '/account/checkouts/43',
+  })
+  expect(mocks.reserveReview).toHaveBeenCalledWith(expect.any(Object), user)
+  expect(mocks.reserve).not.toHaveBeenCalled()
 })

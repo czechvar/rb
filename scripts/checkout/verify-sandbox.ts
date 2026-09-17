@@ -16,6 +16,7 @@ import {
   activateGuestReservation,
   checkoutOwner,
   reserveCheckout,
+  reserveCheckoutForReview,
   cancelCheckout,
 } from '../../src/lib/checkout/reservations'
 import type { CheckoutRecord } from '../../src/lib/checkout/types'
@@ -248,6 +249,8 @@ async function main() {
     const reserves = await Promise.all([reserveCheckout(input, user), reserveCheckout(input, user)])
     assert.equal(reserves[0].id, reserves[1].id)
     passed('returning-checkout-retries-are-idempotent')
+    await assert.rejects(() => reserveCheckoutForReview(input, user))
+    passed('checkout-intent-cannot-change-on-idempotent-retry')
     await cancelCheckout(reserves[0].id, user)
     assert.equal(
       (

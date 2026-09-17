@@ -4,13 +4,19 @@ import { randomUUID } from 'node:crypto'
 import type { Payload } from 'payload'
 import {
   createGuestCheckout,
+  completeGuestPayment,
+  completeGuestReservation,
   verifyGuestCheckout,
   reviewGuestCheckout,
   acceptCheckoutInvitation,
   checkoutVerificationCodeHash,
   lookupCheckoutJourney,
+  invitationKind,
 } from '../../src/lib/checkout/identity'
-import { isReturningPurchaser } from '../../src/lib/checkout/reservations'
+import {
+  isReturningPurchaser,
+  reserveCheckoutForReview,
+} from '../../src/lib/checkout/reservations'
 import { withCheckoutTransaction } from '../../src/lib/checkout/transaction'
 import type { CheckoutRecord } from '../../src/lib/checkout/types'
 
@@ -225,6 +231,98 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       'new',
     )
     assert.equal(await lookupCheckoutJourney(existing.email, 'fixture-lookup-network'), 'login')
+
+    const payEmail = 'checkout-identity-pay-now@example.invalid'
+    const payId = await createGuestCheckout(
+      {
+        submissionKey: randomUUID(),
+        contact: { name: '[Pending checkout]', email: payEmail, phone: '' },
+        items: [{ eventDateId: date.id, quantity: 1 }],
+      },
+      'fixture-pay-now-network',
+    )
+    const payCode = verificationCodeFromLastMessage()
+    await completeGuestPayment(
+      payId,
+      payCode,
+      {
+        name: '[Checkout identity test] Pay now',
+        email: payEmail,
+        phone: '+420123456789',
+        password: 'FixturePassword42!',
+      },
+      'fixture-pay-now-network',
+    )
+    const paidNow = await record(payId)
+    assert.equal(paidNow.state, 'reserved')
+    assert(paidNow.user)
+    assert.equal(paidNow.verificationHash, null)
+    assert.equal(
+      (await payload.find({ collection: 'orders', where: { checkout: { equals: payId } } }))
+        .totalDocs,
+      1,
+    )
+    await assert.rejects(() =>
+      completeGuestPayment(
+        payId,
+        payCode,
+        {
+          name: '[Checkout identity test] Pay now',
+          email: payEmail,
+          phone: '+420123456789',
+          password: 'FixturePassword42!',
+        },
+        'fixture-pay-now-replay-network',
+      ),
+    )
+    passed('pay-now-verification-creates-account-and-reserves-once')
+
+    const reserveEmail = 'checkout-identity-reserve-now@example.invalid'
+    const reserveId = await createGuestCheckout(
+      {
+        submissionKey: randomUUID(),
+        contact: { name: '[Pending checkout]', email: reserveEmail, phone: '' },
+        items: [{ eventDateId: date.id, quantity: 1 }],
+      },
+      'fixture-reserve-now-network',
+    )
+    await completeGuestReservation(
+      reserveId,
+      verificationCodeFromLastMessage(),
+      {
+        name: '[Checkout identity test] Reserve now',
+        email: reserveEmail,
+        phone: '',
+      },
+      'fixture-reserve-now-network',
+    )
+    const reservedNow = await record(reserveId)
+    assert.equal(reservedNow.state, 'awaitingReview')
+    assert.equal(reservedNow.contact.name, '[Checkout identity test] Reserve now')
+    assert(!reservedNow.user)
+    passed('reserve-now-verification-collects-details-before-review')
+
+    const knownReview = await reserveCheckoutForReview(
+      {
+        submissionKey: randomUUID(),
+        contact: existingContact,
+        items: [{ eventDateId: date.id, quantity: 1 }],
+      },
+      existing,
+    )
+    assert.equal(knownReview.state, 'awaitingReview')
+    await reviewGuestCheckout(
+      knownReview.id,
+      staff,
+      'approve',
+      '[Checkout identity test] Known reserve now',
+    )
+    assert.deepEqual(
+      await invitationKind(knownReview.id, invitationTokenFromLastMessage(), null),
+      { kind: 'login' },
+    )
+    passed('known-reserve-now-approval-routes-to-login')
+
     const buyer = await payload.create({
       collection: 'users',
       disableVerificationEmail: true,

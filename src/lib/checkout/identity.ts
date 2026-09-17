@@ -8,7 +8,11 @@ import type { CheckoutRecord } from './types'
 import { checkoutEnabled } from './feature'
 import { quoteCart } from './quote'
 import { checkoutRateLimitConfig, checkoutRateLimitWindowLabel } from './rate-limit'
-import { activateGuestReservation, cancelCheckout } from './reservations'
+import {
+  activateGuestPaymentCheckout,
+  activateGuestReservation,
+  cancelCheckout,
+} from './reservations'
 import {
   checkoutDatabase,
   lockCheckout,
@@ -46,6 +50,8 @@ export const guestCheckoutSchema = z.object({
   discountCode: z.string().trim().max(100).optional(),
   referralCode: z.string().trim().max(100).optional(),
 })
+
+export const PENDING_CHECKOUT_CONTACT_NAME = '[Pending checkout]'
 
 export function checkoutTokenHash(token: string): string {
   return createHash('sha256').update(token).digest('hex')
@@ -265,16 +271,67 @@ export async function verifyGuestCheckout(
   credential: string,
   network: string,
 ): Promise<CheckoutRecord> {
+  const verificationHash = await validateGuestCheckoutCredential(id, credential, network)
+  return activateGuestReservation(id, verificationHash)
+}
+
+export async function validateGuestCheckoutCredential(
+  id: number,
+  credential: string,
+  network: string,
+): Promise<string> {
   enabled()
   const isCode = /^\d{6}$/.test(credential)
   const isLegacyToken = /^[A-Za-z0-9_-]{43}$/.test(credential)
   if (!Number.isSafeInteger(id) || id <= 0 || (!isCode && !isLegacyToken))
     throw new Error('This verification code is invalid or expired.')
-  await rateIdentity(await client(), network, `verify:${id}`)
-  return activateGuestReservation(
+  const payload = await client()
+  await rateIdentity(payload, network, `verify:${id}`)
+  const checkout = (await payload.findByID({
+    collection: 'checkouts',
     id,
-    isCode ? verificationCodeHash(credential) : checkoutTokenHash(credential),
+    depth: 0,
+    overrideAccess: true,
+  })) as unknown as CheckoutRecord
+  const verificationHash = isCode
+    ? verificationCodeHash(credential)
+    : checkoutTokenHash(credential)
+  const expected = Buffer.from(checkout.verificationHash ?? '')
+  const actual = Buffer.from(verificationHash)
+  if (
+    checkout.state !== 'unverified' ||
+    !expected.length ||
+    actual.length !== expected.length ||
+    !timingSafeEqual(expected, actual) ||
+    !checkout.verificationExpiresAt ||
+    new Date(checkout.verificationExpiresAt) <= new Date()
   )
+    throw new Error('This verification code is invalid or expired.')
+  return verificationHash
+}
+
+export async function completeGuestReservation(
+  id: number,
+  credential: string,
+  contact: { name: string; email: string; phone?: string },
+  network: string,
+): Promise<CheckoutRecord> {
+  const verificationHash = await validateGuestCheckoutCredential(id, credential, network)
+  return activateGuestReservation(id, verificationHash, {
+    name: contact.name,
+    email: contact.email,
+    phone: contact.phone ?? '',
+  })
+}
+
+export async function completeGuestPayment(
+  id: number,
+  credential: string,
+  account: { name: string; email: string; phone: string; password: string },
+  network: string,
+): Promise<CheckoutRecord> {
+  const verificationHash = await validateGuestCheckoutCredential(id, credential, network)
+  return activateGuestPaymentCheckout(id, verificationHash, account)
 }
 
 export async function reviewGuestCheckout(
@@ -302,7 +359,7 @@ export async function reviewGuestCheckout(
       overrideAccess: true,
       req,
     })) as unknown as CheckoutRecord
-    if (record.customerKind !== 'new' || !['awaitingReview', 'approved'].includes(record.state))
+    if (!['awaitingReview', 'approved'].includes(record.state))
       throw new Error('This checkout is not awaiting review.')
     if (record.state === 'awaitingReview') {
       for (const item of record.items)

@@ -6,12 +6,18 @@ import { useEffect, useId, useRef, useState } from 'react'
 import type { CartItem, CheckoutContact } from '@/lib/checkout/types'
 import type { CheckoutDisplayQuote } from './presentation'
 import type { ActionResult } from '@/components/forms/action-result'
-import { quoteCartAction, reserveCheckoutAction } from '@/app/(frontend)/checkout/actions'
 import {
+  quoteCartAction,
+  reserveCheckoutAction,
+  reserveCheckoutForReviewAction,
+} from '@/app/(frontend)/checkout/actions'
+import {
+  completeGuestPaymentAction,
+  completeGuestReservationAction,
   createGuestCheckoutAction,
   loginCheckoutAction,
   lookupCheckoutJourneyAction,
-  verifyGuestCheckoutAction,
+  validateGuestCheckoutAction,
 } from '@/app/(frontend)/checkout/identity-actions'
 import { useCart } from './useCart'
 import { addCartItem, MAX_CART_QUANTITY, readCart } from './cart-storage'
@@ -34,10 +40,12 @@ export function CheckoutFlow({
   mode,
   add,
   contact,
+  intent = 'pay',
 }: {
   mode: 'cart' | 'checkout'
   add?: number
   contact?: CheckoutContact
+  intent?: 'pay' | 'reserve'
 }) {
   const cart = useCart()
   const router = useRouter()
@@ -57,10 +65,13 @@ export function CheckoutFlow({
   const [journey, setJourney] = useState<'unknown' | 'login' | 'new'>(contact ? 'new' : 'unknown')
   const [pending, setPending] = useState(false)
   const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
   const [result, setResult] = useState<ActionResult>({ ok: false })
   const [guestVerification, setGuestVerification] = useState<{
     checkoutId: number
     items: typeof cart.items
+    code?: string
+    verified: boolean
   } | null>(null)
   const [guestReserved, setGuestReserved] = useState(false)
   const cartEditingLocked = pending || Boolean(guestVerification)
@@ -133,7 +144,7 @@ export function CheckoutFlow({
                 ? 20
                 : 120
           }
-          readOnly={name === 'email' && !!contact}
+          readOnly={name === 'email' && (!!contact || Boolean(guestVerification))}
           aria-invalid={errors?.[name] ? true : undefined}
           aria-describedby={errors?.[name] ? `${id}-${name}-error` : undefined}
           autoComplete={
@@ -172,11 +183,24 @@ export function CheckoutFlow({
       setPending(true)
       setResult({ ok: false })
       try {
-        const response = await verifyGuestCheckoutAction(null, data)
+        const response = guestVerification.verified
+          ? await (intent === 'pay'
+              ? completeGuestPaymentAction
+              : completeGuestReservationAction)(null, data)
+          : await validateGuestCheckoutAction(null, data)
         setResult(response)
         if (response.ok) {
-          cart.replace(subtractSubmittedCart(guestVerification.items))
-          setGuestReserved(true)
+          if (!guestVerification.verified) {
+            setGuestVerification({
+              ...guestVerification,
+              code: String(data.get('code') ?? ''),
+              verified: true,
+            })
+          } else {
+            cart.replace(subtractSubmittedCart(guestVerification.items))
+            if ('redirect' in response && response.redirect) router.push(response.redirect)
+            else setGuestReserved(true)
+          }
         }
       } catch {
         setResult({
@@ -226,13 +250,18 @@ export function CheckoutFlow({
       }
       submissionKey.current ??= crypto.randomUUID()
       data.set('submissionKey', submissionKey.current)
-      const response = await (contact ? reserveCheckoutAction : createGuestCheckoutAction)(
-        null,
-        data,
-      )
+      const response = await (contact
+        ? intent === 'pay'
+          ? reserveCheckoutAction
+          : reserveCheckoutForReviewAction
+        : createGuestCheckoutAction)(null, data)
       setResult(response)
       if (response.ok && 'checkoutId' in response) {
-        setGuestVerification({ checkoutId: response.checkoutId, items: submittedItems })
+        setGuestVerification({
+          checkoutId: response.checkoutId,
+          items: submittedItems,
+          verified: false,
+        })
         return
       }
       if (response.ok && response.redirect) {
@@ -291,7 +320,7 @@ export function CheckoutFlow({
         {cart.items.map((item) => {
           const priced = quote?.items.find((row) => row.eventDateId === item.eventDateId)
           return (
-            <section className={styles.panel} key={item.eventDateId}>
+            <section className={`${styles.panel} ${styles.cartPanel}`} key={item.eventDateId}>
               <div className={styles.row}>
                 <div>
                   <h2 data-type="card-lg">{priced?.title || 'Selected trip'}</h2>
@@ -352,7 +381,7 @@ export function CheckoutFlow({
             </section>
           )
         })}
-        <div className={styles.panel}>
+        <div className={`${styles.panel} ${styles.cartPanel}`}>
           <form
             onSubmit={(event) => {
               event.preventDefault()
@@ -381,10 +410,10 @@ export function CheckoutFlow({
           </form>
         </div>
         {mode === 'checkout' && (
-          <section className={styles.panel}>
+          <section className={`${styles.panel} ${styles.primaryPanel}`}>
             <h2 data-type="card-lg">
               {contact
-                ? `Welcome back${contact.name ? `, ${contact.name}` : ''}`
+                ? `${intent === 'pay' ? 'Pay now' : 'Reserve now'}${contact.name ? `, ${contact.name}` : ''}`
                 : journey === 'login'
                   ? 'Sign in to continue'
                 : !contact && journey === 'unknown'
@@ -395,13 +424,20 @@ export function CheckoutFlow({
               {contact
                 ? 'Reserve every date together, then choose full payment or the amount due now. Unpaid reservations are held for 24 hours, subject to payment reconciliation.'
                 : journey === 'login'
-                  ? 'We found an account for this email. Sign in to continue with your reservation and payment.'
-                  : 'Verify your email before we reserve your dates for review. We will invite you to set up your account and pay once approved.'}
+                  ? `We found an account for this email. Sign in to ${intent === 'pay' ? 'continue to payment' : 'reserve your trips for review'}.`
+                  : intent === 'pay'
+                    ? 'Verify your email, create your account, and continue directly to payment.'
+                    : 'Verify your email, then add your contact details and reserve your trips for review.'}
             </p>
             {!contact && journey !== 'login' && (
               <p>
                 Already have an account?{' '}
-                <Link href="/login?from=%2Fcheckout">Sign in with your password</Link>. Your cart
+                <Link
+                  href={`/login?from=${encodeURIComponent(`/checkout?intent=${intent}`)}`}
+                >
+                  Sign in with your password
+                </Link>
+                . Your cart
                 stays here.
               </p>
             )}
@@ -425,12 +461,12 @@ export function CheckoutFlow({
                     <input name="website" autoComplete="off" tabIndex={-1} />
                   </label>
                 </div>
-                {guestVerification ? (
+                {guestVerification && !guestVerification.verified ? (
                   <>
                     <p className={styles.notice} role="status">
                       <strong>
                         We emailed a six-digit verification code to {values.email}. Enter it below
-                        to reserve your selected trips.
+                        to continue.
                       </strong>
                     </p>
                     <label className={styles.field} htmlFor={`${id}-code`}>
@@ -446,7 +482,7 @@ export function CheckoutFlow({
                         required
                       />
                     </label>
-                    <button className={`btn-primary ${styles.button}`}>Verify and reserve</button>
+                    <button className={`btn-primary ${styles.button}`}>Verify email</button>
                   </>
                 ) : (
                   <>
@@ -475,10 +511,51 @@ export function CheckoutFlow({
                         )}
                       </label>
                     )}
-                    {!contact && journey === 'new' && (
+                    {!contact && guestVerification?.verified && (
                       <>
                         {field('name', 'Full name')}
-                        {field('phone', 'Phone including country code (optional)', 'tel', false)}
+                        {field(
+                          'phone',
+                          intent === 'pay'
+                            ? 'Phone including country code'
+                            : 'Phone including country code (optional)',
+                          'tel',
+                          intent === 'pay',
+                        )}
+                        {intent === 'pay' && (
+                          <>
+                            <label className={styles.field} htmlFor={`${id}-new-password`}>
+                              Choose a password
+                              <input
+                                id={`${id}-new-password`}
+                                name="password"
+                                type="password"
+                                value={password}
+                                required
+                                minLength={8}
+                                maxLength={128}
+                                autoComplete="new-password"
+                                onChange={(event) => setPassword(event.target.value)}
+                              />
+                            </label>
+                            <label className={styles.field} htmlFor={`${id}-password-confirm`}>
+                              Confirm password
+                              <input
+                                id={`${id}-password-confirm`}
+                                name="passwordConfirm"
+                                type="password"
+                                value={passwordConfirm}
+                                required
+                                minLength={8}
+                                maxLength={128}
+                                autoComplete="new-password"
+                                onChange={(event) => setPasswordConfirm(event.target.value)}
+                              />
+                            </label>
+                          </>
+                        )}
+                        <input type="hidden" name="checkout" value={guestVerification.checkoutId} />
+                        <input type="hidden" name="code" value={guestVerification.code} />
                       </>
                     )}
                   </>
@@ -496,6 +573,17 @@ export function CheckoutFlow({
                       will stay in your cart.
                     </p>
                   </>
+                ) : guestVerification?.verified ? (
+                  <button
+                    className={`btn-primary ${styles.button}`}
+                    disabled={pending || cart.storageError}
+                  >
+                    {pending
+                      ? 'Working…'
+                      : intent === 'pay'
+                        ? 'Register and continue to payment'
+                        : 'Reserve now'}
+                  </button>
                 ) : !guestVerification ? (
                   <button
                     className={`btn-primary ${styles.button}`}
@@ -504,10 +592,12 @@ export function CheckoutFlow({
                     {pending
                       ? 'Working…'
                       : contact
-                        ? 'Reserve and continue to payment'
+                        ? intent === 'pay'
+                          ? 'Continue to payment'
+                          : 'Reserve now'
                         : journey === 'unknown'
                           ? 'Continue with email'
-                          : 'Send verification email'}
+                          : 'Send verification code'}
                   </button>
                 ) : null}
               </fieldset>
@@ -555,9 +645,18 @@ export function CheckoutFlow({
           when reserving.
         </p>
         {mode === 'cart' && (
-          <Link className={`btn-primary ${styles.button}`} href="/checkout">
-            Continue to checkout
-          </Link>
+          <div className={styles.checkoutActions}>
+            <Link className={`btn-primary ${styles.button}`} href="/checkout?intent=pay">
+              Pay now
+            </Link>
+            <Link
+              className={`btn-ghost ${styles.button}`}
+              data-button="secondary"
+              href="/checkout?intent=reserve"
+            >
+              Reserve now
+            </Link>
+          </div>
         )}
       </aside>
     </div>

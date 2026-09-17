@@ -7,13 +7,14 @@ import { quoteCart } from '@/lib/checkout/quote'
 import {
   cancelCheckout,
   reserveCheckout,
+  reserveCheckoutForReview,
   updateCheckoutBilling,
 } from '@/lib/checkout/reservations'
 import { beginCheckoutPayment } from '@/payments/checkout-payment-service'
 import { REFERRAL_COOKIE_NAME } from '@/lib/referral'
 import type { ActionResult } from '@/components/forms/action-result'
 import { checkoutDisplayItem, type CheckoutDisplayQuote } from '@/components/checkout/presentation'
-import type { QuoteInput } from '@/lib/checkout/types'
+import type { CheckoutIntent, QuoteInput } from '@/lib/checkout/types'
 
 const unavailable = {
   ok: false as const,
@@ -52,16 +53,16 @@ export async function quoteCartAction(
   }
 }
 
-export async function reserveCheckoutAction(
-  _previous: ActionResult | null,
+async function reserveAction(
   data: FormData,
+  intent: CheckoutIntent,
 ): Promise<ActionResult> {
   if (!checkoutEnabled()) return unavailable
   try {
     const user = await getCurrentUser()
     if (!user) return { ok: false, formError: 'Please log in again before reserving your trips.' }
     const savedAddress = user.addresses?.find((entry) => entry.isDefault) || user.addresses?.[0]
-    const checkout = await reserveCheckout(
+    const checkout = await (intent === 'reserve' ? reserveCheckoutForReview : reserveCheckout)(
       {
         submissionKey: String(data.get('submissionKey') ?? ''),
         contact: {
@@ -96,6 +97,20 @@ export async function reserveCheckoutAction(
         'We could not reserve the whole cart. Check availability and your details, then try again.',
     }
   }
+}
+
+export async function reserveCheckoutAction(
+  _previous: ActionResult | null,
+  data: FormData,
+): Promise<ActionResult> {
+  return reserveAction(data, 'pay')
+}
+
+export async function reserveCheckoutForReviewAction(
+  _previous: ActionResult | null,
+  data: FormData,
+): Promise<ActionResult> {
+  return reserveAction(data, 'reserve')
 }
 
 export async function payCheckoutAction(
