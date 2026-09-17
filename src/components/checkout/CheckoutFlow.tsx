@@ -75,6 +75,9 @@ export function CheckoutFlow({
   } | null>(null)
   const [guestReserved, setGuestReserved] = useState(false)
   const cartEditingLocked = pending || Boolean(guestVerification)
+  const checkoutStep = contact ? 2 : journey === 'login' || guestVerification?.verified ? 1 : 0
+  const checkoutSteps =
+    intent === 'pay' ? ['Verify', 'Account', 'Payment'] : ['Verify', 'Details', 'Review']
   const [values, setValues] = useState({
     name: contact?.name || '',
     email: contact?.email || '',
@@ -137,13 +140,7 @@ export function CheckoutFlow({
           type={type}
           value={values[name]}
           required={required}
-          maxLength={
-            name === 'email'
-              ? 254
-              : name === 'phone'
-                ? 20
-                : 120
-          }
+          maxLength={name === 'email' ? 254 : name === 'phone' ? 20 : 120}
           readOnly={name === 'email' && (!!contact || Boolean(guestVerification))}
           aria-invalid={errors?.[name] ? true : undefined}
           aria-describedby={errors?.[name] ? `${id}-${name}-error` : undefined}
@@ -184,9 +181,10 @@ export function CheckoutFlow({
       setResult({ ok: false })
       try {
         const response = guestVerification.verified
-          ? await (intent === 'pay'
-              ? completeGuestPaymentAction
-              : completeGuestReservationAction)(null, data)
+          ? await (intent === 'pay' ? completeGuestPaymentAction : completeGuestReservationAction)(
+              null,
+              data,
+            )
           : await validateGuestCheckoutAction(null, data)
         setResult(response)
         if (response.ok) {
@@ -250,11 +248,13 @@ export function CheckoutFlow({
       }
       submissionKey.current ??= crypto.randomUUID()
       data.set('submissionKey', submissionKey.current)
-      const response = await (contact
-        ? intent === 'pay'
-          ? reserveCheckoutAction
-          : reserveCheckoutForReviewAction
-        : createGuestCheckoutAction)(null, data)
+      const response = await (
+        contact
+          ? intent === 'pay'
+            ? reserveCheckoutAction
+            : reserveCheckoutForReviewAction
+          : createGuestCheckoutAction
+      )(null, data)
       setResult(response)
       if (response.ok && 'checkoutId' in response) {
         setGuestVerification({
@@ -309,14 +309,9 @@ export function CheckoutFlow({
         </Link>
       </div>
     )
-  return (
-    <div className={styles.layout}>
-      <div className={styles.stack}>
-        {cart.storageError && (
-          <p className={styles.error} role="alert">
-            Your browser could not save this cart. Enable local storage before continuing.
-          </p>
-        )}
+  function renderOrderDetails() {
+    return (
+      <>
         {cart.items.map((item) => {
           const priced = quote?.items.find((row) => row.eventDateId === item.eventDateId)
           return (
@@ -399,48 +394,72 @@ export function CheckoutFlow({
               />
             </label>
             <div className={styles.actions}>
-              <button
-                className={`btn-ghost ${styles.button}`}
-                disabled={cartEditingLocked}
-              >
+              <button className={`btn-ghost ${styles.button}`} disabled={cartEditingLocked}>
                 Apply code
               </button>
               {!guestVerification && <Link href="/trips">Add another trip</Link>}
             </div>
           </form>
         </div>
+      </>
+    )
+  }
+  return (
+    <div className={styles.layout}>
+      <div className={styles.stack}>
+        {cart.storageError && (
+          <p className={styles.error} role="alert">
+            Your browser could not save this cart. Enable local storage before continuing.
+          </p>
+        )}
+        {mode === 'cart' && renderOrderDetails()}
         {mode === 'checkout' && (
           <section className={`${styles.panel} ${styles.primaryPanel}`}>
+            <ol className={styles.progress} aria-label="Checkout progress">
+              {checkoutSteps.map((step, index) => (
+                <li
+                  className={styles.progressStep}
+                  data-state={
+                    index < checkoutStep
+                      ? 'complete'
+                      : index === checkoutStep
+                        ? 'current'
+                        : 'upcoming'
+                  }
+                  aria-current={index === checkoutStep ? 'step' : undefined}
+                  key={step}
+                >
+                  <span aria-hidden="true">{index + 1}</span>
+                  {step}
+                </li>
+              ))}
+            </ol>
             <h2 data-type="card-lg">
               {contact
                 ? `${intent === 'pay' ? 'Pay now' : 'Reserve now'}${contact.name ? `, ${contact.name}` : ''}`
                 : journey === 'login'
                   ? 'Sign in to continue'
-                : !contact && journey === 'unknown'
-                  ? 'Start with your email'
-                  : 'Your details'}
+                  : guestVerification?.verified
+                    ? intent === 'pay'
+                      ? 'Create your account'
+                      : 'Your details'
+                    : 'Verify your email'}
             </h2>
             <p className={styles.muted}>
               {contact
                 ? 'Reserve every date together, then choose full payment or the amount due now. Unpaid reservations are held for 24 hours, subject to payment reconciliation.'
                 : journey === 'login'
                   ? `We found an account for this email. Sign in to ${intent === 'pay' ? 'continue to payment' : 'reserve your trips for review'}.`
-                  : intent === 'pay'
-                    ? 'Verify your email, create your account, and continue directly to payment.'
-                    : 'Verify your email, then add your contact details and reserve your trips for review.'}
+                  : guestVerification?.verified
+                    ? intent === 'pay'
+                      ? 'Add your details and choose a password, then continue directly to payment.'
+                      : 'Add your contact details, then send your reservation for review.'
+                    : guestVerification
+                      ? 'Enter the six-digit code from your email to continue.'
+                      : journey === 'new'
+                        ? 'Send a six-digit code to confirm this email before adding your details.'
+                        : 'Enter your email to begin. We will check whether you already have an account.'}
             </p>
-            {!contact && journey !== 'login' && (
-              <p>
-                Already have an account?{' '}
-                <Link
-                  href={`/login?from=${encodeURIComponent(`/checkout?intent=${intent}`)}`}
-                >
-                  Sign in with your password
-                </Link>
-                . Your cart
-                stays here.
-              </p>
-            )}
             <form ref={formRef} onSubmit={submit} aria-busy={pending}>
               {!result.ok && result.formError && (
                 <p className={styles.error} role="alert">
@@ -499,9 +518,7 @@ export function CheckoutFlow({
                           maxLength={128}
                           autoComplete="current-password"
                           aria-invalid={errors?.password ? true : undefined}
-                          aria-describedby={
-                            errors?.password ? `${id}-password-error` : undefined
-                          }
+                          aria-describedby={errors?.password ? `${id}-password-error` : undefined}
                           onChange={(event) => setPassword(event.target.value)}
                         />
                         {errors?.password && (
@@ -605,59 +622,72 @@ export function CheckoutFlow({
           </section>
         )}
       </div>
-      <aside className={styles.panel} aria-label="Order summary">
-        <h2 data-type="card-lg">Order summary</h2>
-        {pricing && <p role="status">Checking current prices and availability…</p>}
-        {quoteError && (
-          <>
-            <p className={styles.error} role="alert">
-              {quoteError}
-            </p>
-            <button
-              className={`btn-ghost ${styles.button}`}
-              onClick={() => setRefresh((value) => value + 1)}
-            >
-              Check again
-            </button>
-          </>
+      <aside className={styles.sidebar} aria-label="Order summary">
+        {mode === 'checkout' && (
+          <details className={styles.orderDetails}>
+            <summary>
+              <span>Order details</span>
+              <span className={styles.orderDetailCount}>
+                {cart.items.length} {cart.items.length === 1 ? 'trip' : 'trips'}
+              </span>
+            </summary>
+            <div className={styles.orderDetailsContent}>{renderOrderDetails()}</div>
+          </details>
         )}
-        {quote && (
-          <>
-            <div className={`${styles.row} ${styles.total}`}>
-              <span>Total</span>
-              <span>{money(quote.totalMinor, quote.currency)}</span>
+        <section className={styles.panel}>
+          <h2 data-type="card-lg">Order summary</h2>
+          {pricing && <p role="status">Checking current prices and availability…</p>}
+          {quoteError && (
+            <>
+              <p className={styles.error} role="alert">
+                {quoteError}
+              </p>
+              <button
+                className={`btn-ghost ${styles.button}`}
+                onClick={() => setRefresh((value) => value + 1)}
+              >
+                Check again
+              </button>
+            </>
+          )}
+          {quote && (
+            <>
+              <div className={`${styles.row} ${styles.total}`}>
+                <span>Total</span>
+                <span>{money(quote.totalMinor, quote.currency)}</span>
+              </div>
+              <div className={styles.row}>
+                <span>Initial payment after reservation</span>
+                <strong>{money(quote.initialMinor, quote.currency)}</strong>
+              </div>
+              <p className={styles.muted}>
+                25% deposit where available. Departures within 30 days require full payment. Each
+                remaining balance is due 30 days before its trip.
+              </p>
+              {quote.benefitEligible && (
+                <p className={styles.muted}>This cart can be paid with Benefit+ in CZK.</p>
+              )}
+            </>
+          )}
+          <p className={styles.muted}>
+            Adding trips to your cart does not hold places. Availability and prices are checked
+            again when reserving.
+          </p>
+          {mode === 'cart' && (
+            <div className={styles.checkoutActions}>
+              <Link className={`btn-primary ${styles.button}`} href="/checkout?intent=pay">
+                Pay now
+              </Link>
+              <Link
+                className={`btn-ghost ${styles.button}`}
+                data-button="secondary"
+                href="/checkout?intent=reserve"
+              >
+                Reserve now
+              </Link>
             </div>
-            <div className={styles.row}>
-              <span>Initial payment after reservation</span>
-              <strong>{money(quote.initialMinor, quote.currency)}</strong>
-            </div>
-            <p className={styles.muted}>
-              25% deposit where available. Departures within 30 days require full payment. Each
-              remaining balance is due 30 days before its trip.
-            </p>
-            {quote.benefitEligible && (
-              <p className={styles.muted}>This cart can be paid with Benefit+ in CZK.</p>
-            )}
-          </>
-        )}
-        <p className={styles.muted}>
-          Adding trips to your cart does not hold places. Availability and prices are checked again
-          when reserving.
-        </p>
-        {mode === 'cart' && (
-          <div className={styles.checkoutActions}>
-            <Link className={`btn-primary ${styles.button}`} href="/checkout?intent=pay">
-              Pay now
-            </Link>
-            <Link
-              className={`btn-ghost ${styles.button}`}
-              data-button="secondary"
-              href="/checkout?intent=reserve"
-            >
-              Reserve now
-            </Link>
-          </div>
-        )}
+          )}
+        </section>
       </aside>
     </div>
   )
