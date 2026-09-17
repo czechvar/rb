@@ -146,7 +146,9 @@ async function reserveAuthenticatedCheckout(
   if (!user._verified) throw new Error('Please verify your account before reserving your trips.')
   const returning = await isReturningPurchaser(payload, user)
   const contact = validateCheckoutContact({ ...input.contact, email: user.email }),
-    billingAddress = input.billingAddress ? validateCheckoutBilling(input.billingAddress) : undefined
+    billingAddress = input.billingAddress
+      ? validateCheckoutBilling(input.billingAddress)
+      : undefined
   const selected = normalizeCart(input.items)
   const digest = createHash('sha256')
     .update(
@@ -537,5 +539,40 @@ export async function updateCheckoutBilling(
           overrideAccess: true,
           data: { billingAddress },
         })
+    const account = await payload.findByID({
+      collection: 'users',
+      id: user.id,
+      depth: 0,
+      req,
+      overrideAccess: true,
+    })
+    const addresses = account.addresses ?? []
+    const alreadySaved = addresses.some(
+      (address) =>
+        address.firstName === billingAddress.firstName &&
+        address.lastName === billingAddress.lastName &&
+        address.street === billingAddress.street &&
+        address.city === billingAddress.city &&
+        address.postalCode === billingAddress.postalCode &&
+        address.country === billingAddress.country,
+    )
+    if (!alreadySaved)
+      await payload.update({
+        collection: 'users',
+        id: user.id,
+        depth: 0,
+        req,
+        overrideAccess: true,
+        data: {
+          addresses: [
+            ...addresses,
+            {
+              label: 'Billing',
+              isDefault: !addresses.some((address) => address.isDefault),
+              ...billingAddress,
+            },
+          ],
+        },
+      })
   })
 }

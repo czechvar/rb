@@ -345,7 +345,7 @@ it('does not submit while a server quote is unavailable', async () => {
   expect(mocks.guest).not.toHaveBeenCalled()
 })
 
-it('keeps the original payment method after settlement and submits selected balances', async () => {
+it('keeps saved payer details collapsed and submits selected balances with the original method', async () => {
   mocks.pay.mockResolvedValue({ ok: false, formError: 'Provider unavailable.' })
   render(
     <CheckoutPayment
@@ -367,12 +367,9 @@ it('keeps the original payment method after settlement and submits selected bala
       methods={{ card: true, benefit: true }}
     />,
   )
-  fireEvent.click(screen.getByRole('button', { name: 'Edit payer address' }))
-  expect((screen.getByLabelText('First name') as HTMLInputElement).value).toBe('Saved')
-  expect((screen.getByLabelText('Street and number') as HTMLInputElement).value).toBe(
-    'Saved street 1',
-  )
-  expect(screen.getByRole('button', { name: 'Update payer address' })).toBeTruthy()
+  expect(screen.queryByRole('button', { name: 'Edit payer address' })).toBeNull()
+  expect(screen.queryByRole('button', { name: 'Update payer address' })).toBeNull()
+  expect(screen.queryByLabelText('First name')).toBeNull()
   expect(screen.queryByRole('option', { name: 'Card — Comgate' })).toBeNull()
   expect(
     (screen.getByRole('radio', { name: /Pay selected trip balances/ }) as HTMLInputElement).checked,
@@ -408,6 +405,10 @@ it('collects billing before an approved new customer can open payment and preser
   expect(
     screen.getByRole('button', { name: 'Save payer address' }).classList.contains('btn-primary'),
   ).toBe(true)
+  const progress = screen.getByRole('list', { name: 'Checkout progress' })
+  expect(within(progress).getByText('Account').closest('li')?.getAttribute('aria-current')).toBe(
+    'step',
+  )
   fireEvent.change(screen.getByLabelText('First name'), { target: { value: 'Test' } })
   fireEvent.submit(screen.getByRole('button', { name: 'Save payer address' }).closest('form')!)
   await screen.findByText('Address unavailable.')
@@ -428,6 +429,10 @@ it('anchors payment and defaults an approved checkout to the amount due now', ()
     />,
   )
   expect(document.querySelector('#payment')).toBeTruthy()
+  const progress = screen.getByRole('list', { name: 'Checkout progress' })
+  expect(within(progress).getByText('Payment').closest('li')?.getAttribute('aria-current')).toBe(
+    'step',
+  )
   expect(
     (screen.getByRole('radio', { name: /Pay the initial amount/ }) as HTMLInputElement).checked,
   ).toBe(true)

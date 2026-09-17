@@ -17,6 +17,7 @@ import {
 import {
   isReturningPurchaser,
   reserveCheckoutForReview,
+  updateCheckoutBilling,
 } from '../../src/lib/checkout/reservations'
 import { withCheckoutTransaction } from '../../src/lib/checkout/transaction'
 import type { CheckoutRecord } from '../../src/lib/checkout/types'
@@ -319,15 +320,42 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       '[Checkout identity test] Known reserve now',
     )
     const knownReviewToken = invitationTokenFromLastMessage()
-    assert.deepEqual(
-      await invitationKind(knownReview.id, knownReviewToken, null),
-      { kind: 'login' },
-    )
+    assert.deepEqual(await invitationKind(knownReview.id, knownReviewToken, null), {
+      kind: 'login',
+    })
     assert.deepEqual(await checkoutInvitationAccount(knownReview.id, knownReviewToken), {
       userId: existing.id,
       email: existing.email,
     })
     passed('known-reserve-now-approval-routes-to-token-bound-login')
+
+    const savedBilling = {
+      firstName: '[Checkout identity test]',
+      lastName: 'Existing',
+      street: 'Saved street 1',
+      city: 'Prague',
+      postalCode: '11000',
+      country: 'Czechia',
+    }
+    await updateCheckoutBilling(knownReview.id, existing, savedBilling)
+    const existingWithBilling = await payload.findByID({
+      collection: 'users',
+      id: existing.id,
+      depth: 0,
+      overrideAccess: true,
+    })
+    assert.equal(existingWithBilling.addresses?.[0]?.firstName, savedBilling.firstName)
+    assert.equal(existingWithBilling.addresses?.[0]?.street, savedBilling.street)
+    assert.equal(existingWithBilling.addresses?.[0]?.isDefault, true)
+    await updateCheckoutBilling(knownReview.id, existingWithBilling, savedBilling)
+    const existingAfterBillingReplay = await payload.findByID({
+      collection: 'users',
+      id: existing.id,
+      depth: 0,
+      overrideAccess: true,
+    })
+    assert.equal(existingAfterBillingReplay.addresses?.length, 1)
+    passed('first-checkout-billing-address-is-saved-to-account')
 
     const buyer = await payload.create({
       collection: 'users',

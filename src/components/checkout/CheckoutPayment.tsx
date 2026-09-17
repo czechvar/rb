@@ -49,7 +49,6 @@ export function CheckoutPayment({
   )
   const [pending, setPending] = useState(false)
   const [error, setError] = useState('')
-  const [editingBilling, setEditingBilling] = useState(!billingReady)
   const busy = useRef(false)
   const paid =
     Boolean(paymentMethod) || items.some((item) => item.paidMinor > 0 || item.paidCzkMinor > 0)
@@ -114,31 +113,12 @@ export function CheckoutPayment({
           {error}
         </p>
       )}
-      {active && remaining > 0 && (!billingReady || editingBilling) && (
-        <BillingForm
-          checkoutId={checkoutId}
-          initialValues={billingAddress}
-          updating={billingReady}
-        />
-      )}
-      {active && remaining > 0 && billingReady && !editingBilling && (
-        <section className={styles.panel}>
-          <h2 data-type="card-lg">Payer address</h2>
-          {billingAddress && (
-            <p className={styles.muted}>
-              {billingAddress.firstName} {billingAddress.lastName}
-              <br />
-              {billingAddress.street}, {billingAddress.postalCode} {billingAddress.city},{' '}
-              {billingAddress.country}
-            </p>
-          )}
-          <button className={`btn-ghost ${styles.button}`} onClick={() => setEditingBilling(true)}>
-            Edit payer address
-          </button>
-        </section>
+      {active && remaining > 0 && !billingReady && (
+        <BillingForm checkoutId={checkoutId} initialValues={billingAddress} />
       )}
       {active && remaining > 0 && billingReady && (
         <section className={styles.panel}>
+          <CheckoutProgress current={2} />
           <h2 data-type="card-lg">Payment</h2>
           <p className={styles.muted}>
             Payments are confirmed from the provider. Returning to this page alone does not confirm
@@ -276,11 +256,9 @@ export function CheckoutPayment({
 function BillingForm({
   checkoutId,
   initialValues,
-  updating = false,
 }: {
   checkoutId: number
   initialValues?: BillingAddressValues
-  updating?: boolean
 }) {
   const router = useRouter()
   const id = useId()
@@ -297,6 +275,7 @@ function BillingForm({
   const busy = useRef(false)
   return (
     <section className={styles.panel}>
+      <CheckoutProgress current={1} />
       <h2 data-type="card-lg">Payer address</h2>
       <p className={styles.muted}>Complete your billing details before opening payment.</p>
       <form
@@ -351,10 +330,28 @@ function BillingForm({
             </label>
           ))}
           <button className={`btn-primary ${styles.button}`}>
-            {pending ? 'Saving…' : updating ? 'Update payer address' : 'Save payer address'}
+            {pending ? 'Saving…' : 'Save payer address'}
           </button>
         </fieldset>
       </form>
     </section>
+  )
+}
+
+function CheckoutProgress({ current }: { current: 1 | 2 }) {
+  return (
+    <ol className={styles.progress} aria-label="Checkout progress">
+      {['Verify', 'Account', 'Payment'].map((step, index) => (
+        <li
+          className={styles.progressStep}
+          data-state={index < current ? 'complete' : index === current ? 'current' : 'upcoming'}
+          aria-current={index === current ? 'step' : undefined}
+          key={step}
+        >
+          <span aria-hidden="true">{index + 1}</span>
+          {step}
+        </li>
+      ))}
+    </ol>
   )
 }
