@@ -438,11 +438,40 @@ export async function invitationKind(
   return { kind: actor?.id === existing.docs[0].id ? 'continue' : 'login' }
 }
 
+export async function checkoutInvitationAccount(
+  id: number,
+  token: string,
+): Promise<{ userId: number; email: string }> {
+  enabled()
+  const payload = await client()
+  const record = (await payload.findByID({
+    collection: 'checkouts',
+    id,
+    overrideAccess: true,
+    depth: 0,
+  })) as unknown as CheckoutRecord
+  if (
+    record.state !== 'approved' ||
+    !validCheckoutToken(token, record.invitationHash, record.invitationExpiresAt)
+  )
+    throw new Error('This invitation is invalid or expired.')
+  const existing = await payload.find({
+    collection: 'users',
+    where: { email: { equals: record.contact.email } },
+    limit: 1,
+    depth: 0,
+    overrideAccess: true,
+  })
+  const user = existing.docs[0]
+  if (!user) throw new Error('This invitation does not belong to an existing account.')
+  return { userId: user.id, email: user.email }
+}
+
 export async function acceptCheckoutInvitation(
   id: number,
   token: string,
   account: { name?: string; password?: string },
-  actor: User | null,
+  actor: Pick<User, 'id'> | null,
   network: string,
 ): Promise<{ created: boolean; email: string }> {
   enabled()

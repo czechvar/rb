@@ -12,6 +12,7 @@ import {
   completeGuestReservation,
   verifyGuestCheckout,
   acceptCheckoutInvitation,
+  checkoutInvitationAccount,
   invitationKind,
   lookupCheckoutJourney,
   PENDING_CHECKOUT_CONTACT_NAME,
@@ -181,6 +182,33 @@ export async function loginCheckoutAction(
   if (!result.ok && result.formError?.startsWith('verify_required:'))
     return { ok: false, formError: 'Please verify your email address before signing in.' }
   return result
+}
+
+export async function loginCheckoutInvitationAction(
+  _previous: ActionResult | null,
+  data: FormData,
+): Promise<ActionResult> {
+  if (!checkoutEnabled()) return error('Checkout is currently unavailable.')
+  try {
+    const id = Number(data.get('checkout'))
+    const token = String(data.get('token') ?? '')
+    const account = await checkoutInvitationAccount(id, token)
+    const authenticated = await authenticateWithPassword({
+      email: account.email,
+      password: data.get('password'),
+    })
+    if (!authenticated.ok) {
+      if (authenticated.formError?.startsWith('verify_required:'))
+        return error('Please verify your email address before signing in.')
+      return authenticated
+    }
+    await acceptCheckoutInvitation(id, token, {}, { id: account.userId }, await network())
+    return { ok: true, redirect: `/account/checkouts/${id}#payment` }
+  } catch {
+    return error(
+      'This invitation could not be accepted. Check your password and invitation, or ask our team for a new invitation.',
+    )
+  }
 }
 
 export async function acceptCheckoutInvitationAction(

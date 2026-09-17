@@ -1,7 +1,6 @@
 'use client'
 
 import { useActionState, useCallback, useEffect, useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { FormBanner } from '@/components/forms/FormBanner'
 import { INITIAL_ACTION_STATE } from '@/components/forms/action-result'
@@ -9,6 +8,7 @@ import {
   verifyGuestCheckoutAction,
   acceptCheckoutInvitationAction,
   checkoutInvitationKindAction,
+  loginCheckoutInvitationAction,
 } from './identity-actions'
 import forms from '@/components/forms/forms.module.css'
 
@@ -109,13 +109,19 @@ export function CheckoutInvitationForm({ id }: { id: number }) {
     acceptCheckoutInvitationAction,
     INITIAL_ACTION_STATE,
   )
+  const [loginState, loginAction, loginPending] = useActionState(
+    loginCheckoutInvitationAction,
+    INITIAL_ACTION_STATE,
+  )
   useEffect(() => {
-    if (state.ok) {
+    const result = state.ok ? state : loginState.ok ? loginState : null
+    if (result) {
       clear()
-      if (state.redirect) router.replace(state.redirect)
+      if (result.redirect) router.replace(result.redirect)
     }
-  }, [state, clear, router])
-  if (state.ok) return <FormBanner kind="success">Account ready. Taking you to payment…</FormBanner>
+  }, [state, loginState, clear, router])
+  if (state.ok || loginState.ok)
+    return <FormBanner kind="success">Account ready. Taking you to payment…</FormBanner>
   if (!token) return <p>Open your invitation email in this tab to continue.</p>
   if (invitation.kind === 'checking') return <p role="status">Checking your invitation…</p>
   if (invitation.kind === 'invalid')
@@ -127,12 +133,29 @@ export function CheckoutInvitationForm({ id }: { id: number }) {
     )
   if (invitation.kind === 'login')
     return (
-      <p>
-        Sign in to your existing account, then return here to connect your checkout.{' '}
-        <Link href={`/login?from=${encodeURIComponent(`/checkout/invite?checkout=${id}`)}`}>
-          Sign in
-        </Link>
-      </p>
+      <form action={loginAction}>
+        <input type="hidden" name="checkout" value={id} />
+        <input type="hidden" name="token" value={token} />
+        {loginState.formError && <FormBanner kind="error">{loginState.formError}</FormBanner>}
+        <div className={forms.field}>
+          <label className={forms.label} htmlFor="checkout-login-password">
+            Password
+          </label>
+          <input
+            className={forms.input}
+            id="checkout-login-password"
+            name="password"
+            type="password"
+            autoComplete="current-password"
+            required
+            maxLength={128}
+            disabled={loginPending}
+          />
+        </div>
+        <button className="btn-primary" disabled={loginPending}>
+          {loginPending ? 'Signing in…' : 'Sign in and continue to payment'}
+        </button>
+      </form>
     )
   return (
     <form action={action}>

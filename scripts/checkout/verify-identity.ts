@@ -12,6 +12,7 @@ import {
   checkoutVerificationCodeHash,
   lookupCheckoutJourney,
   invitationKind,
+  checkoutInvitationAccount,
 } from '../../src/lib/checkout/identity'
 import {
   isReturningPurchaser,
@@ -317,11 +318,16 @@ export async function verifyIdentity(payload: Payload): Promise<void> {
       'approve',
       '[Checkout identity test] Known reserve now',
     )
+    const knownReviewToken = invitationTokenFromLastMessage()
     assert.deepEqual(
-      await invitationKind(knownReview.id, invitationTokenFromLastMessage(), null),
+      await invitationKind(knownReview.id, knownReviewToken, null),
       { kind: 'login' },
     )
-    passed('known-reserve-now-approval-routes-to-login')
+    assert.deepEqual(await checkoutInvitationAccount(knownReview.id, knownReviewToken), {
+      userId: existing.id,
+      email: existing.email,
+    })
+    passed('known-reserve-now-approval-routes-to-token-bound-login')
 
     const buyer = await payload.create({
       collection: 'users',

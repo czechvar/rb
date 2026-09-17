@@ -3,10 +3,11 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { CheckoutInvitationForm, VerifyCheckoutForm } from '@/app/(frontend)/checkout/IdentityForms'
 
-const { verify, accept, kind, replace } = vi.hoisted(() => ({
+const { verify, accept, kind, loginInvitation, replace } = vi.hoisted(() => ({
   verify: vi.fn(),
   accept: vi.fn(),
   kind: vi.fn(),
+  loginInvitation: vi.fn(),
   replace: vi.fn(),
 }))
 vi.mock('next/navigation', () => ({ useRouter: () => ({ replace }) }))
@@ -15,12 +16,14 @@ vi.mock('@/app/(frontend)/checkout/identity-actions', () => ({
   acceptCheckoutInvitationAction: accept,
   reviewGuestCheckoutAction: vi.fn(),
   checkoutInvitationKindAction: kind,
+  loginCheckoutInvitationAction: loginInvitation,
 }))
 beforeEach(() => {
   sessionStorage.clear()
   verify.mockReset()
   accept.mockReset()
   kind.mockReset()
+  loginInvitation.mockReset()
   replace.mockReset()
   verify.mockResolvedValue({ ok: true })
   kind.mockResolvedValue({ kind: 'login' })
@@ -53,18 +56,27 @@ it('redeems a legacy verification-link fragment only after deliberate submission
   expect(sessionStorage.getItem('rb-checkout-verify-7')).toBeNull()
 })
 
-it('keeps invitation tokens out of the login return URL and survives same-tab login', async () => {
+it('shows an existing user an inline sign-in that continues to the checkout payment', async () => {
+  loginInvitation.mockResolvedValue({ ok: true, redirect: '/account/checkouts/8#payment' })
   window.history.replaceState(null, '', `/checkout/invite?checkout=8#token=${'b'.repeat(43)}`)
-  const first = render(<CheckoutInvitationForm id={8} />)
-  const login = await screen.findByRole('link', { name: 'Sign in' })
-  expect(login.getAttribute('href')).toBe('/login?from=%2Fcheckout%2Finvite%3Fcheckout%3D8')
+  render(<CheckoutInvitationForm id={8} />)
+
+  fireEvent.change(await screen.findByLabelText('Password'), {
+    target: { value: 'FixturePassword42!' },
+  })
+  const button = screen.getByRole('button', { name: 'Sign in and continue to payment' })
+  expect(screen.queryByRole('link', { name: 'Sign in' })).toBeNull()
   expect(window.location.hash).toBe('')
   expect(accept).not.toHaveBeenCalled()
-  first.unmount()
-  kind.mockResolvedValue({ kind: 'continue' })
-  render(<CheckoutInvitationForm id={8} />)
-  expect(await screen.findByRole('button', { name: 'Connect my account' })).toBeTruthy()
-  expect(accept).not.toHaveBeenCalled()
+  fireEvent.submit(button.closest('form')!)
+
+  await waitFor(() => expect(replace).toHaveBeenCalledWith('/account/checkouts/8#payment'))
+  expect(loginInvitation).toHaveBeenCalledTimes(1)
+  const submitted = loginInvitation.mock.calls[0][1] as FormData
+  expect(submitted.get('checkout')).toBe('8')
+  expect(submitted.get('token')).toBe('b'.repeat(43))
+  expect(submitted.get('password')).toBe('FixturePassword42!')
+  expect(sessionStorage.getItem('rb-checkout-invite-8')).toBeNull()
 })
 
 it('prefills the invited name, creates the account and redirects directly to payment', async () => {
