@@ -37,12 +37,26 @@ describe('safeRevalidateTag', () => {
     expect(revalidateTag).not.toHaveBeenCalled()
   })
 
-  it('swallows revalidateTag errors in production', () => {
+  it('logs and swallows revalidateTag errors in production', () => {
     vi.stubEnv('NODE_ENV', 'production')
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
     revalidateTag.mockImplementationOnce(() => {
       throw new Error('static generation store missing')
     })
-    expect(() => safeRevalidateTag(TAGS.events)).not.toThrow()
+    expect(() => safeRevalidateTag(TAGS.events, {
+      operation: 'afterChange',
+      payloadAPI: 'MCP',
+    })).not.toThrow()
+    expect(errorSpy).toHaveBeenCalledWith('[revalidate] revalidateTag failed', {
+      tag: 'events',
+      operation: 'afterChange',
+      payloadAPI: 'MCP',
+      error: {
+        name: 'Error',
+        message: 'static generation store missing',
+        stack: expect.any(String),
+      },
+    })
   })
 })
 

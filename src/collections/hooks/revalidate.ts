@@ -16,14 +16,14 @@ export function revalidateOnChange(tag: CacheTag): {
 } {
   return {
     afterChange: [
-      ({ doc }) => {
-        safeRevalidateTag(tag)
+      ({ doc, req }) => {
+        safeRevalidateTag(tag, { operation: 'afterChange', payloadAPI: req?.payloadAPI })
         return doc
       },
     ],
     afterDelete: [
-      ({ doc }) => {
-        safeRevalidateTag(tag)
+      ({ doc, req }) => {
+        safeRevalidateTag(tag, { operation: 'afterDelete', payloadAPI: req?.payloadAPI })
         return doc
       },
     ],

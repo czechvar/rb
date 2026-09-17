@@ -25,6 +25,11 @@ export const TAGS = {
 
 export type CacheTag = (typeof TAGS)[keyof typeof TAGS]
 
+export type RevalidateContext = {
+  operation?: 'afterChange' | 'afterDelete'
+  payloadAPI?: string
+}
+
 const isProd = (): boolean => process.env.NODE_ENV === 'production'
 
 /**
@@ -50,9 +55,9 @@ export function cachedQuery<T>(
 /**
  * revalidateTag that no-ops outside production and never throws. Payload hooks
  * fire from seed scripts and e2e/int fixtures (plain Node, no request scope)
- * where revalidateTag would throw; this swallows that.
+ * where revalidateTag would throw; this logs and swallows that.
  */
-export function safeRevalidateTag(tag: CacheTag): void {
+export function safeRevalidateTag(tag: CacheTag, context: RevalidateContext = {}): void {
   if (!isProd()) return
   try {
     // Next 16 requires a cache-life profile. `'max'` = cache forever, revalidate
@@ -60,6 +65,15 @@ export function safeRevalidateTag(tag: CacheTag): void {
     // we want. Per Next's own deprecation warning when called without a profile.
     revalidateTag(tag, 'max')
   } catch (err) {
-    console.warn(`[revalidate] revalidateTag(${tag}) failed:`, err)
+    const error = err instanceof Error
+      ? { name: err.name, message: err.message, stack: err.stack }
+      : { name: 'UnknownError', message: String(err), stack: undefined }
+
+    console.error('[revalidate] revalidateTag failed', {
+      tag,
+      operation: context.operation ?? 'unknown',
+      payloadAPI: context.payloadAPI ?? 'unknown',
+      error,
+    })
   }
 }
