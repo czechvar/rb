@@ -21,6 +21,7 @@ const gateway = () =>
     merchant: 'fixture-merchant',
     secret: 'fixture-secret',
     test: true,
+    language: 'en',
     backendBaseUrl: 'https://fixture.invalid',
     store: {
       findByUuid: async () => transaction,

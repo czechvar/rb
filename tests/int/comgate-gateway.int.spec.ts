@@ -51,6 +51,7 @@ function makeGateway(store: TransactionStore) {
     merchant: 'M123',
     secret: 's3cr3t',
     test: true,
+    language: 'en',
     backendBaseUrl: 'https://rockbusters.net',
     store,
   })
@@ -96,6 +97,8 @@ describe('ComgateGateway.begin', () => {
     expect(sent.get('refId')).toBe('uuid-1')
     expect(sent.get('prepareOnly')).toBe('true')
     expect(sent.get('test')).toBe('true')
+    // Without `lang` Comgate serves the payer Czech pages and emails.
+    expect(sent.get('lang')).toBe('en')
     expect(sent.get('returnUrl')).toBe(
       'https://rockbusters.net/api/payments/comgate/return?refId=uuid-1',
     )

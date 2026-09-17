@@ -27,6 +27,8 @@ export interface ComgateGatewayConfig {
   merchant: string
   secret: string
   test: boolean
+  /** ISO 639-1 language Comgate uses towards the payer (gateway UI + payment emails). */
+  language: string
   /** Public base URL of this Next.js app (both the webhook and the API live here). */
   backendBaseUrl: string
   store: TransactionStore
@@ -66,6 +68,7 @@ export class ComgateGateway implements PaymentGateway {
       refId: transaction.uuid,
       method: transaction.paymentMethod === 'comgate-card' ? 'CARD_ALL' : 'ALL',
       country: 'ALL',
+      lang: this.config.language,
       expirationTime: '1d',
       prepareOnly: 'true',
       test: this.config.test ? 'true' : 'false',

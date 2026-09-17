@@ -2,6 +2,7 @@ export interface ComgateEnvConfig {
   merchant: string
   secret: string
   test: boolean
+  language: string
 }
 
 /**
@@ -20,5 +21,13 @@ export function comgateConfigFromEnv(): ComgateEnvConfig {
   }
   // Defaults to sandbox (true) unless explicitly turned off — a missing/mistyped
   // value should never accidentally enable real charges.
-  return { merchant, secret, test: process.env.COMGATE_TEST_MODE !== 'false' }
+  return {
+    merchant,
+    secret,
+    test: process.env.COMGATE_TEST_MODE !== 'false',
+    // Comgate falls back to 'cs' when `lang` is omitted, which is what made the
+    // payment pages and payer emails Czech. The storefront is English, so default
+    // to 'en' and let the env var override it (mirrors MUZAPAY_LANGUAGE).
+    language: process.env.COMGATE_LANGUAGE || 'en',
+  }
 }
