@@ -1,6 +1,8 @@
 import React from 'react'
+import Link from 'next/link'
 import { deleteAddressAction, setDefaultAddressAction } from './actions'
-import styles from './addresses.module.css'
+import checkout from '@/components/checkout/checkout.module.css'
+import styles from '../account.module.css'
 import type { User } from '@/payload-types'
 
 type Address = NonNullable<User['addresses']>[number]
@@ -17,46 +19,49 @@ async function del(idx: number) {
 export function AddressCard({ idx, address }: { idx: number; address: Address }) {
   const setDefaultBound = setDefault.bind(null, idx)
   const delBound = del.bind(null, idx)
+  const company = address.company?.companyName
+    ? [
+        address.company.companyName,
+        address.company.ico && `IČO ${address.company.ico}`,
+        address.company.dic && `DIČ ${address.company.dic}`,
+      ]
+        .filter(Boolean)
+        .join(' · ')
+    : ''
+  const ghost = `btn-ghost ${checkout.button} ${styles.compactButton}`
   return (
-    <div className={styles.card}>
+    <section className={checkout.panel}>
       <div className={styles.cardHeader}>
-        <strong>{address.label ?? `Address ${idx + 1}`}</strong>
-        {address.isDefault && <span className={styles.badge}>Default</span>}
+        <h2 className={styles.cardTitle} data-type="card-lg">
+          {address.label || `Address ${idx + 1}`}
+        </h2>
+        {address.isDefault && <span className={checkout.statusBadge}>Default</span>}
       </div>
-      <div style={{ marginTop: 8, lineHeight: 1.5 }}>
+      <p className={styles.addressBody}>
         {address.firstName} {address.lastName}
         <br />
         {address.street}
         <br />
         {address.postalCode} {address.city}, {address.country}
-        {address.company?.companyName && (
-          <>
-            <br />
-            <em style={{ color: '#666' }}>
-              {address.company.companyName}
-              {address.company.ico && ` · IČO ${address.company.ico}`}
-              {address.company.dic && ` · DIČ ${address.company.dic}`}
-            </em>
-          </>
-        )}
-      </div>
-      <div className={styles.actions}>
-        <a className={styles.action} href={`/account/addresses/${idx}/edit`}>
+      </p>
+      {company && <p className={checkout.muted}>{company}</p>}
+      <div className={styles.cardActions}>
+        <Link className={ghost} href={`/account/addresses/${idx}/edit`}>
           Edit
-        </a>
+        </Link>
         {!address.isDefault && (
           <form action={setDefaultBound}>
-            <button type="submit" className={styles.action}>
+            <button type="submit" className={ghost}>
               Set as default
             </button>
           </form>
         )}
         <form action={delBound}>
-          <button type="submit" className={`${styles.action} ${styles.danger}`}>
+          <button type="submit" className={ghost}>
             Delete
           </button>
         </form>
       </div>
-    </div>
+    </section>
   )
 }

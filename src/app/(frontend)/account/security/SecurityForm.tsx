@@ -1,9 +1,9 @@
 'use client'
 import React, { useActionState, useEffect, useState } from 'react'
-import { FormField } from '@/components/forms/FormField'
 import { FormBanner } from '@/components/forms/FormBanner'
-import { SubmitButton } from '@/components/forms/SubmitButton'
 import { INITIAL_ACTION_STATE } from '@/components/forms/action-result'
+import checkout from '@/components/checkout/checkout.module.css'
+import { AccountField, AccountSubmit } from '../form-controls'
 import { changePasswordAction } from './actions'
 
 export function SecurityForm() {
@@ -30,42 +30,49 @@ export function SecurityForm() {
   const fieldErrors = !state.ok ? state.fieldErrors : undefined
 
   return (
-    <>
-      {state.ok && <FormBanner kind="success">Password updated.</FormBanner>}
-      <form action={formAction}>
-        <FormField
-          name="currentPassword"
-          label="Current password"
-          type="password"
-          required
-          autoComplete="current-password"
-          value={currentPassword}
-          onChange={(e) => setCurrentPassword(e.target.value)}
-          error={fieldErrors?.currentPassword}
-        />
-        <FormField
-          name="password"
-          label="New password"
-          type="password"
-          required
-          autoComplete="new-password"
-          helpText="At least 8 characters."
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          error={fieldErrors?.password}
-        />
-        <FormField
-          name="confirm"
-          label="Confirm new password"
-          type="password"
-          required
-          autoComplete="new-password"
-          value={confirm}
-          onChange={(e) => setConfirm(e.target.value)}
-          error={fieldErrors?.confirm}
-        />
-        <SubmitButton>Change password</SubmitButton>
-      </form>
-    </>
+    <div className={checkout.layout}>
+      <div className={checkout.stack}>
+        <section className={checkout.panel}>
+          <h2 data-type="card-lg">Change password</h2>
+          {state.ok && <FormBanner kind="success">Password updated.</FormBanner>}
+          <form action={formAction}>
+            <div className={checkout.fields}>
+              <AccountField
+                name="currentPassword"
+                label="Current password"
+                type="password"
+                required
+                autoComplete="current-password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                error={fieldErrors?.currentPassword}
+              />
+              <AccountField
+                name="password"
+                label="New password"
+                type="password"
+                required
+                autoComplete="new-password"
+                helpText="At least 8 characters."
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                error={fieldErrors?.password}
+              />
+              <AccountField
+                name="confirm"
+                label="Confirm new password"
+                type="password"
+                required
+                autoComplete="new-password"
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                error={fieldErrors?.confirm}
+              />
+              <AccountSubmit>Change password</AccountSubmit>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
   )
 }

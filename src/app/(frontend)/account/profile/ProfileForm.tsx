@@ -1,10 +1,10 @@
 'use client'
 import React, { useActionState, useState } from 'react'
-import { FormField } from '@/components/forms/FormField'
 import { FormBanner } from '@/components/forms/FormBanner'
-import { SubmitButton } from '@/components/forms/SubmitButton'
 import { INITIAL_ACTION_STATE } from '@/components/forms/action-result'
-import styles from '@/components/forms/forms.module.css'
+import checkout from '@/components/checkout/checkout.module.css'
+import { AccountField, AccountSubmit } from '../form-controls'
+import styles from '../account.module.css'
 import { updateProfileAction, cancelPendingEmailChangeAction } from './actions'
 
 interface Props {
@@ -18,86 +18,76 @@ export function ProfileForm({ initial, pendingEmail }: Props) {
   const [email, setEmail] = useState(echoed?.email ?? initial.email)
   const [currentPassword, setCurrentPassword] = useState('')
   const emailDirty = email !== initial.email
+  const fieldErrors = !state.ok ? state.fieldErrors : undefined
   return (
-    <>
-      {state.ok && <FormBanner kind="success">Profile updated.</FormBanner>}
-      {!state.ok && state.formError && <FormBanner kind="error">{state.formError}</FormBanner>}
-      {pendingEmail && (
-        <FormBanner kind="success">
-          We sent a confirmation link to <strong>{pendingEmail}</strong>. Until you click it, your
-          sign-in email stays as <strong>{initial.email}</strong>.
-        </FormBanner>
-      )}
-      {pendingEmail && (
-        <form action={cancelPendingEmailChangeAction} style={{ marginBottom: 16 }}>
-          <button
-            type="submit"
-            style={{
-              background: 'none',
-              border: 0,
-              color: '#c8102e',
-              cursor: 'pointer',
-              textDecoration: 'underline',
-              padding: 0,
-            }}
-          >
-            Cancel pending email change
-          </button>
-        </form>
-      )}
-      <form action={formAction}>
-        <FormField
-          name="name"
-          label="Name"
-          defaultValue={echoed?.name ?? initial.name}
-          required
-          error={!state.ok ? state.fieldErrors?.name : undefined}
-        />
-        <FormField
-          name="phone"
-          label="Phone"
-          defaultValue={echoed?.phone ?? initial.phone}
-          required
-          error={!state.ok ? state.fieldErrors?.phone : undefined}
-        />
-        <div className={styles.field}>
-          <label className={styles.label} htmlFor="field-email">
-            Email
-          </label>
-          <input
-            id="field-email"
-            name="email"
-            type="email"
-            className={styles.input}
-            value={email}
-            onChange={(e) => setEmail(e.currentTarget.value)}
-            autoComplete="email"
-            required
-            aria-invalid={!state.ok && state.fieldErrors?.email ? 'true' : undefined}
-            aria-describedby={
-              !state.ok && state.fieldErrors?.email ? 'field-email-error' : undefined
-            }
-          />
-          {!state.ok && state.fieldErrors?.email && (
-            <span id="field-email-error" role="alert" className={styles.error}>
-              {state.fieldErrors.email}
-            </span>
-          )}
-        </div>
-        {emailDirty && (
-          <FormField
-            name="currentPassword"
-            label="Current password"
-            type="password"
-            autoComplete="current-password"
-            helpText="Required to change your sign-in email."
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-            error={!state.ok ? state.fieldErrors?.currentPassword : undefined}
-          />
+    <div className={checkout.layout}>
+      <div className={checkout.stack}>
+        {pendingEmail && (
+          <div className={checkout.notice} role="status">
+            <p className={styles.noticeBody}>
+              We sent a confirmation link to <strong>{pendingEmail}</strong>. Until you click it,
+              your sign-in email stays as <strong>{initial.email}</strong>.
+            </p>
+            <form action={cancelPendingEmailChangeAction} className={checkout.actions}>
+              <button type="submit" className={`btn-ghost ${checkout.button}`}>
+                Cancel pending email change
+              </button>
+            </form>
+          </div>
         )}
-        <SubmitButton>Save changes</SubmitButton>
-      </form>
-    </>
+        <section className={checkout.panel}>
+          <h2 data-type="card-lg">Contact details</h2>
+          <p className={checkout.muted}>We use these to reach you about your trips.</p>
+          {state.ok && <FormBanner kind="success">Details saved.</FormBanner>}
+          {!state.ok && state.formError && <FormBanner kind="error">{state.formError}</FormBanner>}
+          <form action={formAction}>
+            <div className={checkout.fields}>
+              <div className={checkout.formRow}>
+                <AccountField
+                  name="name"
+                  label="Name"
+                  defaultValue={echoed?.name ?? initial.name}
+                  required
+                  autoComplete="name"
+                  error={fieldErrors?.name}
+                />
+                <AccountField
+                  name="phone"
+                  label="Phone"
+                  type="tel"
+                  defaultValue={echoed?.phone ?? initial.phone}
+                  required
+                  autoComplete="tel"
+                  error={fieldErrors?.phone}
+                />
+              </div>
+              <AccountField
+                name="email"
+                label="Email"
+                type="email"
+                required
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                error={fieldErrors?.email}
+              />
+              {emailDirty && (
+                <AccountField
+                  name="currentPassword"
+                  label="Current password"
+                  type="password"
+                  autoComplete="current-password"
+                  helpText="Required to change your sign-in email."
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  error={fieldErrors?.currentPassword}
+                />
+              )}
+              <AccountSubmit>Save details</AccountSubmit>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
   )
 }

@@ -1,10 +1,25 @@
 import React from 'react'
+import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
+import { checkoutEnabled } from '@/lib/checkout/feature'
+import type { Order } from '@/payload-types'
+import { ReservationHeader } from '@/components/checkout/ReservationHeader'
+import checkout from '@/components/checkout/checkout.module.css'
+import styles from '../../account.module.css'
+import {
+  ORDER_STATE_LABEL,
+  ORDER_TITLE,
+  orderDateRange,
+  orderMoney,
+  orderTripTitle,
+} from '../presentation'
 import { cancelMyOrderAction } from './actions'
 
-interface Props { params: Promise<{ id: string }> }
+interface Props {
+  params: Promise<{ id: string }>
+}
 
 export const metadata = { title: 'Order — Rockbusters' }
 
@@ -13,102 +28,163 @@ export default async function OrderDetailPage({ params }: Props) {
   const user = await getCurrentUser()
   if (!user) redirect('/login')
   const payload = await getPayloadClient()
-  let order
+  let o: Order
   try {
-    order = await payload.findByID({ collection: 'orders', id, depth: 1, user, overrideAccess: false })
+    // Depth 2 reaches the event date's trip variant, which carries the authored trip name.
+    o = await payload.findByID({
+      collection: 'orders',
+      id,
+      depth: 2,
+      user,
+      overrideAccess: false,
+    })
   } catch {
     notFound()
   }
-  const o = order as {
-    id: number; orderNumber: string; state: string; user: number | { id: number }
-    participants: Array<{ firstName: string; lastName: string; email: string; phone: string }>
-    billingAddress: Record<string, unknown>
-    unitPrice: number; totalPrice: number; currency: string; vat: number; participantCount: number
-    customerNote?: string
-    eventDate: { dateFrom: string; dateTo: string; event?: { title?: string } | number }
-    discountAmount?: number
-    discountCommission?: number
-    referralCommission?: number
-    discountCode?: number | { code: string; title: string } | null
-    referral?: number | { name: string } | null
-  }
-  const ownerId = typeof o.user === 'object' ? o.user.id : o.user
+  const ownerId = typeof o.user === 'object' && o.user ? o.user.id : o.user
   if (ownerId !== user.id) notFound()
 
-  const eventTitle = typeof o.eventDate.event === 'object' ? o.eventDate.event?.title ?? 'Trip' : 'Trip'
   const cancel = cancelMyOrderAction.bind(null, o.id)
+  // A grouped order is paid and cancelled from its reservation; the Orders hook rejects direct changes to it.
+  const reservationId = typeof o.checkout === 'object' && o.checkout ? o.checkout.id : o.checkout
+  const orderNumber = o.orderNumber ?? String(o.id)
+  const discount = o.discountAmount ?? 0
+  const discountSource =
+    typeof o.discountCode === 'object' && o.discountCode
+      ? o.discountCode.code
+      : typeof o.referral === 'object' && o.referral
+        ? o.referral.name
+        : ''
+  const billing = o.billingAddress
+  const billingLines = [
+    billing?.company?.companyName,
+    [billing?.firstName, billing?.lastName].filter(Boolean).join(' '),
+    billing?.street,
+    [billing?.postalCode, billing?.city].filter(Boolean).join(' '),
+    billing?.country,
+  ].filter(Boolean)
+  const companyIds = [
+    billing?.company?.ico && `IČO ${billing.company.ico}`,
+    billing?.company?.dic && `DIČ ${billing.company.dic}`,
+  ]
+    .filter(Boolean)
+    .join(' · ')
+  const participantLabel = `${o.participantCount} ${o.participantCount === 1 ? 'participant' : 'participants'}`
 
   return (
-    <>
-      <h1>Order {o.orderNumber}</h1>
-      <p><strong>Status:</strong> {o.state}</p>
-      <h2>{eventTitle}</h2>
-      <p>{new Date(o.eventDate.dateFrom).toLocaleDateString('en-GB')} – {new Date(o.eventDate.dateTo).toLocaleDateString('en-GB')}</p>
-
-      <h3>Participants ({o.participantCount})</h3>
-      <ul>
-        {o.participants.map((p, i) => (
-          <li key={i}>{p.firstName} {p.lastName} — {p.email} · {p.phone}</li>
-        ))}
-      </ul>
-
-      <h3>Billing address</h3>
-      <address style={{ whiteSpace: 'pre-line' }}>
-        {[
-          (o.billingAddress.company as Record<string, unknown> | undefined)?.companyName,
-          `${o.billingAddress.firstName} ${o.billingAddress.lastName}`,
-          o.billingAddress.street,
-          `${o.billingAddress.postalCode} ${o.billingAddress.city}`,
-          o.billingAddress.country,
-        ].filter(Boolean).join('\n')}
-      </address>
-
-      <h3>Price</h3>
-      {(o.discountAmount ?? 0) > 0 ? (
-        <>
-          <p>
-            Subtotal: {o.unitPrice} {o.currency} × {o.participantCount} = {o.totalPrice + (o.discountAmount ?? 0)} {o.currency}
-          </p>
-          <p style={{ color: '#206020' }}>
-            Discount: −{o.discountAmount} {o.currency}
-            {typeof o.discountCode === 'object' && o.discountCode
-              ? ` (${o.discountCode.code})`
-              : typeof o.referral === 'object' && o.referral
-                ? ` (${o.referral.name})`
-                : ''}
-          </p>
-          <p><strong>Total: {o.totalPrice} {o.currency}</strong></p>
-        </>
-      ) : (
-        <p>
-          {o.unitPrice} {o.currency} × {o.participantCount} = <strong>{o.totalPrice} {o.currency}</strong>
-        </p>
-      )}
-      <p><span style={{ color: '#666', fontSize: 13 }}>VAT {o.vat}% included.</span></p>
-
-      {o.customerNote && (
-        <>
-          <h3>Your note</h3>
-          <p style={{ whiteSpace: 'pre-line' }}>{o.customerNote}</p>
-        </>
-      )}
-
-      {o.state === 'pending' && (
-        <form action={cancel} style={{ marginTop: 24 }}>
-          <button type="submit" style={{ background: '#c8102e', color: '#fff', border: 0, padding: '10px 16px', borderRadius: 4, cursor: 'pointer' }}>
-            Cancel booking
-          </button>
-        </form>
-      )}
-      {o.state === 'confirmed' && (
-        <div style={{ background: '#f5f1ea', padding: 16, borderRadius: 6, marginTop: 24 }}>
-          <strong>Payment instructions</strong>
-          <p style={{ whiteSpace: 'pre-line', marginTop: 8 }}>
-            {process.env.BANK_TRANSFER_DETAILS ?? 'Bank transfer details will be shown here once configured.'}
-          </p>
-          <p>Variable symbol: <strong>{o.orderNumber}</strong></p>
+    <div className={checkout.account}>
+      <ReservationHeader
+        eyebrow="Your order"
+        referenceLabel="Order number"
+        reference={orderNumber}
+        title={ORDER_TITLE[o.state] ?? 'Your order'}
+        status={ORDER_STATE_LABEL[o.state] ?? o.state}
+      />
+      <div className={checkout.layout}>
+        <div className={checkout.stack}>
+          {o.state === 'confirmed' && !reservationId && (
+            <section className={checkout.panel}>
+              <h2 data-type="card-lg">Payment instructions</h2>
+              <p className={styles.preLine}>
+                {process.env.BANK_TRANSFER_DETAILS ??
+                  'Bank transfer details will be shown here once configured.'}
+              </p>
+              <p>
+                Variable symbol: <strong>{orderNumber}</strong>
+              </p>
+            </section>
+          )}
+          {!!o.participants?.length && (
+            <section className={checkout.panel}>
+              <h2 data-type="card-lg">Participants</h2>
+              <ul className={styles.plainList}>
+                {o.participants.map((p, i) => (
+                  <li key={p.id ?? i}>
+                    <span>{[p.firstName, p.lastName].filter(Boolean).join(' ')}</span>
+                    <span className={checkout.muted}>
+                      {[p.email, p.phone].filter(Boolean).join(' · ')}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+          {billingLines.length > 0 && (
+            <section className={checkout.panel}>
+              <h2 data-type="card-lg">Your details</h2>
+              <p className={styles.addressBody}>
+                {billingLines.map((line, i) => (
+                  <React.Fragment key={i}>
+                    {i > 0 && <br />}
+                    {line}
+                  </React.Fragment>
+                ))}
+              </p>
+              {companyIds && <p className={checkout.muted}>{companyIds}</p>}
+            </section>
+          )}
+          {o.customerNote && (
+            <section className={checkout.panel}>
+              <h2 data-type="card-lg">Your note</h2>
+              <p className={styles.preLine}>{o.customerNote}</p>
+            </section>
+          )}
+          {o.state === 'pending' && !reservationId && (
+            <form action={cancel} className={checkout.stack}>
+              <button type="submit" className={`btn-ghost ${checkout.button}`}>
+                Cancel booking
+              </button>
+            </form>
+          )}
+          {reservationId && checkoutEnabled() && (
+            <Link className={`btn-ghost ${checkout.button}`} href={`/account/checkouts/${reservationId}`}>
+              View reservation
+            </Link>
+          )}
+          <Link className={`btn-ghost ${checkout.button}`} href="/account/orders">
+            All orders
+          </Link>
         </div>
-      )}
-    </>
+        <aside className={checkout.sidebar} aria-label="Order summary">
+          <section className={`${checkout.panel} ${checkout.tripSummary}`}>
+            <div className={checkout.tripSummaryHeading}>
+              <h2 data-type="card-lg">Your trip</h2>
+            </div>
+            <div className={checkout.tripSummaryContent}>
+              <div className={checkout.tripSummaryItem}>
+                <h3 className={checkout.tripSummaryItemTitle} data-type="card-lg">
+                  {orderTripTitle(o)}
+                </h3>
+                <p className={checkout.muted}>{orderDateRange(o)}</p>
+                <p className={checkout.muted}>
+                  {participantLabel}
+                  {o.participantCount > 1 ? ` · ${orderMoney(o.unitPrice, o.currency)} per person` : ''}
+                </p>
+              </div>
+            </div>
+          </section>
+          <section className={checkout.panel}>
+            <h2 data-type="card-lg">Order summary</h2>
+            {discount > 0 && (
+              <>
+                <div className={checkout.row}>
+                  <span>Subtotal</span>
+                  <strong>{orderMoney(o.totalPrice + discount, o.currency)}</strong>
+                </div>
+                <div className={checkout.row}>
+                  <span>Discount{discountSource ? ` (${discountSource})` : ''}</span>
+                  <strong>−{orderMoney(discount, o.currency)}</strong>
+                </div>
+              </>
+            )}
+            <div className={`${checkout.row} ${checkout.total}`}>
+              <span>Total</span>
+              <span className={checkout.totalAmount}>{orderMoney(o.totalPrice, o.currency)}</span>
+            </div>
+            <p className={`${checkout.muted} ${checkout.summaryNote}`}>VAT {o.vat}% included.</p>
+          </section>
+        </aside>
+      </div>
+    </div>
   )
 }

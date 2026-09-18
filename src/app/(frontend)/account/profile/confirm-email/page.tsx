@@ -1,9 +1,28 @@
 import React from 'react'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { requireUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
+import checkout from '@/components/checkout/checkout.module.css'
+import { AccountPage } from '../../AccountPage'
+import styles from '../../account.module.css'
 
 export const metadata = { title: 'Confirm email — Rockbusters' }
+
+function Problem({ children }: { children: React.ReactNode }) {
+  return (
+    <AccountPage title="Confirm email">
+      <div className={checkout.notice}>
+        <p className={styles.noticeBody}>{children}</p>
+        <div className={checkout.actions}>
+          <Link className={`btn-ghost ${checkout.button}`} href="/account/profile">
+            Back to your details
+          </Link>
+        </div>
+      </div>
+    </AccountPage>
+  )
+}
 
 export default async function ConfirmEmailPage({
   searchParams,
@@ -13,7 +32,7 @@ export default async function ConfirmEmailPage({
   const { token } = await searchParams
   const user = await requireUser()
   if (!token) {
-    return <p>Missing token in URL.</p>
+    return <Problem>Missing token in URL.</Problem>
   }
   const payload = await getPayloadClient()
   const found = await payload.find({
@@ -25,16 +44,16 @@ export default async function ConfirmEmailPage({
   })
   const target = found.docs[0]
   if (!target) {
-    return <p>This link is invalid.</p>
+    return <Problem>This link is invalid.</Problem>
   }
   if (String(target.id) !== String(user.id)) {
-    return <p>This link does not belong to your account.</p>
+    return <Problem>This link does not belong to your account.</Problem>
   }
   const pendingEmail = target.pendingEmail
   const expiresAt = target.pendingEmailExpiresAt
   // eslint-disable-next-line react-hooks/purity -- server component, runs once per request; current-time expiry check is intended
   if (!pendingEmail || !expiresAt || Date.parse(expiresAt) < Date.now()) {
-    return <p>This link has expired.</p>
+    return <Problem>This link has expired.</Problem>
   }
   await payload.update({
     collection: 'users',

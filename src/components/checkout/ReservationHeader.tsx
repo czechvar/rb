@@ -8,11 +8,15 @@ export function ReservationHeader({
   title,
   status,
   expiresAt,
+  eyebrow = 'Your reservation',
+  referenceLabel = 'Reservation reference',
 }: {
   reference: string
   title: string
   status: string
   expiresAt?: string | null
+  eyebrow?: string
+  referenceLabel?: string
 }) {
   const [copied, setCopied] = useState(false)
   const hydrated = useSyncExternalStore(
@@ -41,9 +45,9 @@ export function ReservationHeader({
   return (
     <header className={styles.header}>
       <p className={styles.eyebrow} data-eyebrow="section">
-        Your reservation
+        {eyebrow}
       </p>
-      <h1>{title}</h1>
+      <h1 data-type="section">{title}</h1>
       <div className={styles.reservationMeta}>
         <span className={styles.statusBadge}>{status}</span>
         {expiresAt && (
@@ -51,13 +55,13 @@ export function ReservationHeader({
         )}
       </div>
       <div className={styles.referenceRow}>
-        <span className={styles.referenceLabel}>Reservation reference</span>
+        <span className={styles.referenceLabel}>{referenceLabel}</span>
         <code>{reference}</code>
         <button type="button" className={styles.copyButton} onClick={copyReference}>
           {copied ? 'Copied' : 'Copy'}
         </button>
         <span className={styles.srOnly} role="status" aria-live="polite">
-          {copied ? 'Reservation reference copied.' : ''}
+          {copied ? `${referenceLabel} copied.` : ''}
         </span>
       </div>
     </header>

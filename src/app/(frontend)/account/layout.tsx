@@ -14,7 +14,7 @@ export default async function AccountLayout({ children }: { children: React.Reac
       <div className={styles.accountPage} data-account-page>
         <div className={styles.shell}>
           <AccountSidebar email={user.email} checkoutEnabled={checkoutEnabled()} />
-          <div className={styles.content}>{children}</div>
+          <main className={styles.content}>{children}</main>
         </div>
       </div>
     </MarketingShell>

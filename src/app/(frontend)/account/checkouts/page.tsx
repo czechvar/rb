@@ -26,7 +26,7 @@ export default async function CheckoutsPage() {
   const now = Date.now()
   return (
     <div className={styles.account}>
-      <h1>Your trip reservations</h1>
+      <h1 data-type="section">Your trip reservations</h1>
       <p>
         <Link href="/cart">Open your cart</Link> ·{' '}
         <Link href="/account/orders">Individual orders</Link>
