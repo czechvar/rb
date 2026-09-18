@@ -163,6 +163,6 @@
   .readingLayout { padding-block: 48px; gap: 40px; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero { min-height: var(--theme-hero-mobile-min-height); }
 }

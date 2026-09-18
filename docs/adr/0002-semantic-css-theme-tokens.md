@@ -2,7 +2,7 @@
 
 - Status: Accepted
 - Date: 2026-08-25
-- Updated: 2026-09-10 (theme-owned maximum widths)
+- Updated: 2026-09-18 (viewport-height hero contract)
 - Owners: Engineering
 
 ## Context
@@ -137,7 +137,7 @@ supporting text remain full-opacity light text on primary-color panels. Apply
 the same value treatment to generic CMS, blog, destination, guide, and homepage
 stat strips without component-level color or weight overrides.
 
-All public hero variants consume `--theme-hero-min-height` and the shared responsive `--theme-hero-mobile-min-height` from the theme contract. Do not add page-specific viewport-height or variant-height overrides. The initial values match the destination hero (760px desktop, 680px mobile). Trip booking summaries sit beside the hero on desktop and below it on mobile, so the summary does not increase mobile hero height. The summary sits above image overlays.
+All public hero variants consume `--theme-hero-min-height` and the shared responsive `--theme-hero-mobile-min-height` from the theme contract. The default values are `100vh` for both desktop and mobile, matching the homepage reference. These remain minimum heights, so content-heavy heroes may grow beyond the viewport without clipping. Keep viewport behavior in the shared theme contract; do not add page-specific viewport-height or variant-height overrides. Trip booking summaries sit beside the hero on desktop and below it on mobile, so the summary does not increase mobile hero height. The summary sits above image overlays.
 
 ## References
 

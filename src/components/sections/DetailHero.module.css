@@ -103,7 +103,7 @@
 /* ── Mobile ──────────────────────────────────────────────── */
 @media screen and (max-width: 900px) {
   .hero {
-    min-height: var(--theme-hero-min-height);
+    min-height: var(--theme-hero-mobile-min-height);
     padding-top: 120px;
     padding-bottom: 4rem;
   }
@@ -205,10 +205,6 @@
   -webkit-line-clamp: 3;
   line-clamp: 3;
   overflow: hidden;
-}
-
-@media (max-width: 900px) {
-  .hero { min-height: var(--theme-hero-mobile-min-height); }
 }
 
 .heroFrame { position: relative; }

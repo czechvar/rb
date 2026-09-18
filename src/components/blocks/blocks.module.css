@@ -2309,10 +2309,6 @@
     width: min(100% - 2 * var(--theme-content-gutter), var(--theme-content-max));
   }
 
-  .hero {
-    min-height: var(--theme-hero-mobile-min-height);
-  }
-
   .heroInner {
     width: min(100% - 2 * var(--theme-content-gutter), var(--theme-content-max));
     padding: 130px 0 58px;
@@ -2370,10 +2366,6 @@
 
   .destinationCountryGrid {
     grid-template-columns: 1fr;
-  }
-
-  .destinationHero {
-    min-height: var(--theme-hero-mobile-min-height);
   }
 
   .destinationHeroInner {
