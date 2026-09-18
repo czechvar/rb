@@ -144,7 +144,9 @@ it('presents an order like a reservation: header, two columns, one total', async
   const html = await detail()
   expect(fixture.findByIdArgs).toMatchObject({ collection: 'orders', depth: 2, overrideAccess: false })
   expect(html).toContain('>Your order</p>')
-  expect(html).toContain('<h1>ROCK &amp; ROAD EUROPE: GORGES DU TARN</h1>')
+  // A short state title, like the reservation page; at display size a trip name runs to five lines.
+  expect(html).toContain('<h1>Booking received</h1>')
+  expect(html).toContain('data-type="card-lg">ROCK &amp; ROAD EUROPE: GORGES DU TARN</h3>')
   expect(html).toContain(`<span class="${checkout.statusBadge}">Pending</span>`)
   expect(html).toContain('Order number')
   expect(html).toContain('<code>RB-2030-000456</code>')
@@ -237,4 +239,16 @@ it('falls back to the order id when no order number was issued', async () => {
   const list = renderToStaticMarkup(await OrdersPage())
   expect(list).toContain('<p>1 Jun 2030 – 8 Jun 2030</p>')
   expect(list).toContain('>View order</a>')
+})
+
+it('titles the page by what happened to the booking', async () => {
+  for (const [state, title] of [
+    ['confirmed', 'Booking confirmed'],
+    ['paid', 'Booking paid'],
+    ['completed', 'Trip completed'],
+    ['cancelled', 'Booking cancelled'],
+  ]) {
+    fixture.overrides = { state }
+    expect(await detail()).toContain(`<h1>${title}</h1>`)
+  }
 })

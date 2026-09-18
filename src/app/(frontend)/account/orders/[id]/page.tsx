@@ -8,7 +8,13 @@ import type { Order } from '@/payload-types'
 import { ReservationHeader } from '@/components/checkout/ReservationHeader'
 import checkout from '@/components/checkout/checkout.module.css'
 import styles from '../../account.module.css'
-import { ORDER_STATE_LABEL, orderDateRange, orderMoney, orderTripTitle } from '../presentation'
+import {
+  ORDER_STATE_LABEL,
+  ORDER_TITLE,
+  orderDateRange,
+  orderMoney,
+  orderTripTitle,
+} from '../presentation'
 import { cancelMyOrderAction } from './actions'
 
 interface Props {
@@ -71,7 +77,7 @@ export default async function OrderDetailPage({ params }: Props) {
         eyebrow="Your order"
         referenceLabel="Order number"
         reference={orderNumber}
-        title={orderTripTitle(o)}
+        title={ORDER_TITLE[o.state] ?? 'Your order'}
         status={ORDER_STATE_LABEL[o.state] ?? o.state}
       />
       <div className={checkout.layout}>

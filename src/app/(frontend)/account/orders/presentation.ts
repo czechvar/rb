@@ -10,6 +10,18 @@ export const ORDER_STATE_LABEL: Record<Order['state'], string> = {
   cancelled: 'Cancelled',
 }
 
+/**
+ * Page title for an order. Short on purpose: the h1 is display size, where an authored trip name
+ * runs to five lines, so the name lives in "Your trip" as it does on the reservation page.
+ */
+export const ORDER_TITLE: Record<Order['state'], string> = {
+  pending: 'Booking received',
+  confirmed: 'Booking confirmed',
+  paid: 'Booking paid',
+  completed: 'Trip completed',
+  cancelled: 'Booking cancelled',
+}
+
 const populatedEventDate = (order: Pick<Order, 'eventDate'>) =>
   typeof order.eventDate === 'object' && order.eventDate ? order.eventDate : null
 
