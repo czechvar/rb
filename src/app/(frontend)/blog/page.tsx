@@ -11,6 +11,8 @@ import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import { PostCard } from './PostCard'
 import styles from './blog.module.css'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata() {
   const page = await getPublishedPageBySlug('blog')
   return {

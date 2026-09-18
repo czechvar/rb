@@ -5,6 +5,8 @@ import { MarketingShell } from '@/components/marketing/MarketingShell'
 import { absoluteUrl, genericCmsPageGraphJsonLd } from '@/lib/jsonld'
 import { getPublishedPageBySlug } from '@/lib/queries'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata() {
   const page = await getPublishedPageBySlug('trips')
   if (!page) {

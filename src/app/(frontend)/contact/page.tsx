@@ -5,6 +5,8 @@ import { JsonLd } from '@/components/JsonLd'
 import { absoluteUrl, genericCmsPageGraphJsonLd } from '@/lib/jsonld'
 import { getPublishedPageBySlug } from '@/lib/queries'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata() {
   const page = await getPublishedPageBySlug('contact')
   return {

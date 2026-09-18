@@ -9,6 +9,8 @@ import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import type { Location } from '@/payload-types'
 import styles from './destinations.module.css'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata() {
   const page = await getPublishedPageBySlug('destinations')
   return {

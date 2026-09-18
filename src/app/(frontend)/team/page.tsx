@@ -14,6 +14,8 @@ import { Testimonials } from '@/components/marketing/homepage/Testimonials'
 import { RenderBlocks } from '@/components/blocks/RenderBlocks'
 import type { Guide } from '@/payload-types'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata() {
   const page = await getPublishedPageBySlug('team')
   return {

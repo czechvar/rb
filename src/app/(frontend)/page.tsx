@@ -30,6 +30,8 @@ import { FinalCTA } from '@/components/marketing/homepage/FinalCTA'
 import { JsonLd } from '@/components/JsonLd'
 import { absoluteUrl, homepageGraphJsonLd } from '@/lib/jsonld'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl('/') },
 }
