@@ -1,7 +1,9 @@
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
+import { DestinationIntroStatsBlock, DestinationSidebarBlock } from '@/components/blocks/LocationContextBlocks'
 import { type BlockRenderContext, RenderBlocks } from '@/components/blocks/RenderBlocks'
+import type { Location } from '@/payload-types'
 
 type RenderBlocksInput = Parameters<typeof RenderBlocks>[0]
 
@@ -24,6 +26,51 @@ const richText = (text: string): any => ({
 })
 
 describe('RenderBlocks', () => {
+  it('renders canonical airport data instead of transport text', () => {
+    const location = {
+      id: 2036,
+      name: 'Maltatal',
+      slug: 'maltatal',
+      active: true,
+      country: 'Austria',
+      city: 'Maltatal',
+      rockTypes: ['granite'],
+      gradeRange: 'UIAA I–XII+',
+      airportRefs: [
+        {
+          id: 3877,
+          name: 'Klagenfurt Airport',
+          iata: 'KLU',
+          active: true,
+        },
+      ],
+      nearestAirports: [{ name: 'Klagenfurt Airport (KLU)' }],
+      destinationDetail: {
+        hero: { heading: 'Maltatal climbing guide' },
+        transportOptions: [{ label: 'Rental car', recommended: true }],
+      },
+    } as Location
+    const context = { location } as BlockRenderContext
+
+    const introMarkup = renderToStaticMarkup(
+      React.createElement(React.Fragment, null, DestinationIntroStatsBlock({}, context)),
+    )
+    const sidebarMarkup = renderToStaticMarkup(
+      React.createElement(
+        React.Fragment,
+        null,
+        DestinationSidebarBlock({ includeCta: false }, context),
+      ),
+    )
+
+    expect(introMarkup).toContain('<dt>Nearest airport</dt>')
+    expect(introMarkup).toContain('<dd>Klagenfurt Airport (KLU)</dd>')
+    expect(introMarkup).not.toContain('Rental car')
+    expect(sidebarMarkup).toContain('<dt>Airport</dt>')
+    expect(sidebarMarkup).toContain('<dd>Klagenfurt Airport (KLU)</dd>')
+    expect(sidebarMarkup).not.toContain('Rental car')
+  })
+
   it('renders nothing for an empty layout', async () => {
     await expect(RenderBlocks({ blocks: [] })).resolves.toBeNull()
     await expect(RenderBlocks({ blocks: null })).resolves.toBeNull()

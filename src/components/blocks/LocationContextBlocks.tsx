@@ -656,7 +656,7 @@ function destinationIntroStats(location: Location) {
   const heroStats = detail?.hero?.heroStats ?? []
   const problemCount = findHeroStatItem(heroStats, 'problem')
   const gradeRange = findHeroStatItem(heroStats, 'grade')
-  const airport = recommendedTransport(detail)
+  const airport = recommendedAirport(location)
   const rockType = formatTaxonomyList(location.rockTypes)
 
   const stats: Array<DestinationIntroStat | null> = [
@@ -1196,7 +1196,7 @@ function destinationQuickFacts(location: Location): SidebarRow[] {
     row('problems', 'Problems', findHeroStat(heroStats, 'problems')),
     row('grades', 'Grades', findHeroStat(heroStats, 'grade')),
     row('best-season', 'Best season', findHeroStat(heroStats, 'season') ?? bestSeasonFromMonths(detail)),
-    row('airport', 'Airport', recommendedTransport(detail)),
+    row('airport', 'Airport', recommendedAirport(location)),
     row('camping', 'Camping', campingStatus(detail)),
     row('crag-fee', 'Crag fee', climbingAccessCost(detail)),
   ].filter((item): item is SidebarRow => Boolean(item))
@@ -1297,10 +1297,18 @@ function formatMonthRange(labels: Map<number, string>, start: number, end: numbe
   return startLabel === endLabel || !endLabel ? startLabel : `${startLabel}-${endLabel}`
 }
 
-function recommendedTransport(detail: DestinationDetail | null | undefined) {
-  const item = detail?.transportOptions?.find((option) => option.recommended) ?? detail?.transportOptions?.at(0)
-  if (!item) return undefined
-  return [item.label, item.duration].filter(Boolean).join(' / ')
+function recommendedAirport(location: Location) {
+  const airport = location.airportRefs?.[0]
+  if (airport && typeof airport === 'object') {
+    return formatAirportName(airport.name, airport.iata)
+  }
+
+  return location.nearestAirports?.[0]?.name
+}
+
+function formatAirportName(name: string, iata?: string | null) {
+  if (!iata || name.includes(`(${iata})`)) return name
+  return `${name} (${iata})`
 }
 
 function campingStatus(detail: DestinationDetail | null | undefined) {
