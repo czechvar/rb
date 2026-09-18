@@ -24,6 +24,21 @@ through Payload's Local API (the same code path the admin uses), not raw SQL.
 
 ## Quick reference
 
+### Vercel deployment cleanup
+
+The cleanup script targets the Rockbusters project in the PRO Vercel team. It
+keeps the three newest deployments across production and preview environments.
+It is a dry run by default and skips deployments with active aliases when run.
+
+```bash
+pnpm vercel:cleanup-deployments
+pnpm vercel:cleanup-deployments --execute
+```
+
+Use `--keep N` to change the retention count, and add `--unsafe` only when an
+aliased deployment should also be removed deliberately. Vercel team permissions
+still control whether production deployments can be deleted.
+
 | Command | Script | Writes DB? | What it does |
 | --- | --- | --- | --- |
 | `pnpm seed` | `seed.ts` | ✅ upsert | Idempotent dev seed — content, categories, guides, locations, etc. Skips records that already exist; safe to re-run. |
