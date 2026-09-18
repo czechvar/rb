@@ -21,12 +21,15 @@ const nextConfig: NextConfig = {
   async headers() {
     const headers = [
       {
-        // Keep public catalogue and CMS pages at the edge for five minutes
-        // without changing browser caching. Personalized, transactional,
-        // admin, API, custom route, and metadata endpoints stay outside the
-        // Vercel edge policy.
+        // Keep public catalogue and CMS pages out of shared/browser caches
+        // while editorial content is being verified. Personalized,
+        // transactional, admin, API, custom route, and metadata endpoints
+        // stay outside this policy.
         source: '/((?!account(?:/|$)|book(?:/|$)|cart(?:/|$)|checkout(?:/|$)|login(?:/|$)|register(?:/|$)|forgot-password(?:/|$)|reset-password(?:/|$)|verify-email(?:/|$)|design-system(?:/|$)|api(?:/|$)|admin(?:/|$)|my-route(?:/|$)|_next(?:/|$)|sitemap\\.xml$|robots\\.txt$|favicon\\.ico$).*)',
-        headers: [{ key: 'Vercel-CDN-Cache-Control', value: 'public, s-maxage=300' }],
+        headers: [
+          { key: 'Vercel-CDN-Cache-Control', value: 'private, max-age=0, no-cache' },
+          { key: 'Cache-Control', value: 'private, max-age=0, no-cache' },
+        ],
       },
     ]
 
