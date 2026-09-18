@@ -1,6 +1,7 @@
 import React from 'react'
 import { notFound } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
+import { AccountPage } from '../../../AccountPage'
 import { AddressForm } from '../../AddressForm'
 import { updateAddressAction } from '../../actions'
 import type { ActionResult } from '@/components/forms/action-result'
@@ -25,9 +26,8 @@ export default async function EditAddressPage({
   }
 
   return (
-    <>
-      <h1>Edit address</h1>
-      <AddressForm initial={address} action={action} submitLabel="Save changes" />
-    </>
+    <AccountPage title="Edit address">
+      <AddressForm initial={address} action={action} submitLabel="Save details" />
+    </AccountPage>
   )
 }

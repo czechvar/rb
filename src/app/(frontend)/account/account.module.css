@@ -67,7 +67,8 @@
 .cardActions form {
   display: contents;
 }
-.compactButton {
+/* Two classes again: the global `.btn-ghost` padding has the same single-class weight. */
+.cardActions .compactButton {
   padding: 10px 18px;
 }
 .toggle {

@@ -8,7 +8,7 @@ import { ReservationHeader } from '@/components/checkout/ReservationHeader'
 
 it('AccountPage renders a one-line eyebrow, the H1, lead, actions and children in the checkout frame', () => {
   const html = renderToStaticMarkup(
-    <AccountPage title="Addresses" lead="Reusable billing addresses." actions={<a href="/x">Add</a>}>
+    <AccountPage title="Addresses" lead="Reusable billing addresses." actions={<button type="button">Add</button>}>
       <p>Body</p>
     </AccountPage>,
   )
@@ -16,7 +16,7 @@ it('AccountPage renders a one-line eyebrow, the H1, lead, actions and children i
   expect(html).toContain(`<p class="${checkout.eyebrow}" data-eyebrow="section">My account</p>`)
   expect(html).toContain('<h1>Addresses</h1>')
   expect(html).toContain(`<p class="${checkout.lead}">Reusable billing addresses.</p>`)
-  expect(html).toContain(`<div class="${checkout.actions}"><a href="/x">Add</a></div>`)
+  expect(html).toContain(`<div class="${checkout.actions}"><button type="button">Add</button></div>`)
   expect(html.indexOf('</header>')).toBeLessThan(html.indexOf('<p>Body</p>'))
 })
 
