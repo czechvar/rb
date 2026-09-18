@@ -4,6 +4,10 @@ import { anyone, isAdmin } from '../access'
 import { revalidateOnChange } from './hooks/revalidate'
 import { TAGS } from '@/lib/cache'
 
+export function generateMediaId(): string {
+  return `med_${randomUUID().replaceAll('-', '')}`
+}
+
 export const Media: CollectionConfig = {
   slug: 'media',
   access: { read: anyone, create: isAdmin, update: isAdmin, delete: isAdmin },
@@ -16,7 +20,9 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
-      defaultValue: () => `med_${randomUUID().replaceAll('-', '')}`,
+      hooks: {
+        beforeValidate: [({ value }) => value ?? generateMediaId()],
+      },
       admin: {
         hidden: true,
       },
