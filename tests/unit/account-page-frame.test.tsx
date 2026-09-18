@@ -14,7 +14,7 @@ it('AccountPage renders a one-line eyebrow, the H1, lead, actions and children i
   )
   expect(html.startsWith(`<div class="${checkout.account}"><header class="${checkout.header}">`)).toBe(true)
   expect(html).toContain(`<p class="${checkout.eyebrow}" data-eyebrow="section">My account</p>`)
-  expect(html).toContain('<h1>Addresses</h1>')
+  expect(html).toContain('<h1 data-type="section">Addresses</h1>')
   expect(html).toContain(`<p class="${checkout.lead}">Reusable billing addresses.</p>`)
   expect(html).toContain(`<div class="${checkout.actions}"><button type="button">Add</button></div>`)
   expect(html.indexOf('</header>')).toBeLessThan(html.indexOf('<p>Body</p>'))

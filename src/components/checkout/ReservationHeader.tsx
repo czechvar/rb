@@ -47,7 +47,7 @@ export function ReservationHeader({
       <p className={styles.eyebrow} data-eyebrow="section">
         {eyebrow}
       </p>
-      <h1>{title}</h1>
+      <h1 data-type="section">{title}</h1>
       <div className={styles.reservationMeta}>
         <span className={styles.statusBadge}>{status}</span>
         {expiresAt && (

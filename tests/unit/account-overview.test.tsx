@@ -48,7 +48,7 @@ beforeEach(() => {
 
 it('greets by first name and links every section from a panel with real counts', async () => {
   const html = await render()
-  expect(html).toContain('<h1>Welcome back, Test</h1>')
+  expect(html).toContain('<h1 data-type="section">Welcome back, Test</h1>')
   expect(html.split(`class="${checkout.panel} `).length - 1).toBe(4)
   expect(html).toContain('1 reservation')
   expect(html).not.toContain('1 reservations')
@@ -104,9 +104,9 @@ it('uses the singular for one of each', async () => {
 
 it('greets a one-word or padded name without a dangling comma', async () => {
   fixture.name = 'Madonna'
-  expect(await render()).toContain('<h1>Welcome back, Madonna</h1>')
+  expect(await render()).toContain('<h1 data-type="section">Welcome back, Madonna</h1>')
   fixture.name = '  Jan Novak'
-  expect(await render()).toContain('<h1>Welcome back, Jan</h1>')
+  expect(await render()).toContain('<h1 data-type="section">Welcome back, Jan</h1>')
   fixture.name = '   '
-  expect(await render()).toContain('<h1>Welcome back</h1>')
+  expect(await render()).toContain('<h1 data-type="section">Welcome back</h1>')
 })

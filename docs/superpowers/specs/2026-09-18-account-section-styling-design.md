@@ -31,7 +31,9 @@ Out of scope, by decision:
 Michal's notes were written against checkout screens. These are the ones that
 generalise to the rest of the account area:
 
-1. Eyebrow text stays on one line, above a large H1.
+1. Eyebrow text stays on one line, above the page H1. The H1 uses the `section` type role
+   (42px, 32px on mobile) on every account tab, reservations included: Jan found the
+   hero-size 96px H1 too big here. Cart and checkout keep the hero size Michal reviewed.
 2. Copy: "Your details" for the customer's own data, "Save details" for its button.
 3. Secondary and destructive actions are buttons — capitals, white text, centred, white
    outline (`btn-ghost`) — never bare text links.
@@ -74,7 +76,7 @@ Server component. Props: `title: string`, `eyebrow?: string` (default `"My accou
 `lead?: ReactNode`, `actions?: ReactNode`, `children`.
 
 Renders the checkout `account` padding wrapper, then a `header` holding the one-line
-eyebrow (`data-eyebrow="section"`), the `<h1>`, an optional `lead` paragraph and an
+eyebrow (`data-eyebrow="section"`), the `<h1 data-type="section">`, an optional `lead` paragraph and an
 optional actions row, then the children. Putting the wrapper here fixes today's
 misalignment, where Reservations is inset 28px and every other tab is not.
 

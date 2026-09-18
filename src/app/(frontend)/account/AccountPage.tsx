@@ -21,7 +21,8 @@ export function AccountPage({
         <p className={checkout.eyebrow} data-eyebrow="section">
           {eyebrow}
         </p>
-        <h1>{title}</h1>
+        {/* Section size: the hero-size h1 is for landing pages and overwhelms an account tab. */}
+        <h1 data-type="section">{title}</h1>
         {lead && <p className={checkout.lead}>{lead}</p>}
         {actions && <div className={checkout.actions}>{actions}</div>}
       </header>

@@ -53,7 +53,7 @@ const initial = { name: 'Test Customer', phone: '+420 600 000 000', email: 'test
 
 it('profile uses the checkout frame, "Your details" and "Save details"', async () => {
   const html = renderToStaticMarkup(await ProfilePage({ searchParams: Promise.resolve({}) }))
-  expect(html).toContain('<h1>Your details</h1>')
+  expect(html).toContain('<h1 data-type="section">Your details</h1>')
   expect(html).toContain('data-eyebrow="section">My account</p>')
   expect(html).toContain(`<section class="${checkout.panel}">`)
   expect(html).toContain('data-type="card-lg">Contact details</h2>')
@@ -83,7 +83,7 @@ it('a pending email change is a notice with an outline cancel button, not a text
 
 it('security puts the password form in a panel with the primary button', async () => {
   const html = renderToStaticMarkup(SecurityPage())
-  expect(html).toContain('<h1>Security</h1>')
+  expect(html).toContain('<h1 data-type="section">Security</h1>')
   expect(html).toContain('data-type="card-lg">Change password</h2>')
   // React's server renderer keeps the camelCase attribute name; HTML attribute names are case-insensitive.
   expect(html.toLowerCase()).toContain('autoComplete="new-password"'.toLowerCase())
@@ -94,7 +94,7 @@ it('security puts the password form in a panel with the primary button', async (
 
 it('confirm-email problems render in the frame with a way back', async () => {
   const html = renderToStaticMarkup(await ConfirmEmailPage({ searchParams: Promise.resolve({}) }))
-  expect(html).toContain('<h1>Confirm email</h1>')
+  expect(html).toContain('<h1 data-type="section">Confirm email</h1>')
   expect(html).toContain(`<div class="${checkout.notice}">`)
   expect(html).toContain('Missing token in URL.')
   expect(html).toMatch(/class="btn-ghost[^"]*" href="\/account\/profile"/)

@@ -101,7 +101,7 @@ beforeEach(() => {
 
 it('lists orders as reservation-style cards with the authored name, a badge and one price', async () => {
   const html = renderToStaticMarkup(await OrdersPage())
-  expect(html).toContain('<h1>Your orders</h1>')
+  expect(html).toContain('<h1 data-type="section">Your orders</h1>')
   expect(html).toContain(`<section class="${checkout.panel} ${checkout.reservationCard}">`)
   // Only this customer's orders, through access control, deep enough to reach the trip variant's name.
   expect(fixture.findArgs).toMatchObject({
@@ -145,7 +145,7 @@ it('presents an order like a reservation: header, two columns, one total', async
   expect(fixture.findByIdArgs).toMatchObject({ collection: 'orders', depth: 2, overrideAccess: false })
   expect(html).toContain('>Your order</p>')
   // A short state title, like the reservation page; at display size a trip name runs to five lines.
-  expect(html).toContain('<h1>Booking received</h1>')
+  expect(html).toContain('<h1 data-type="section">Booking received</h1>')
   expect(html).toContain('data-type="card-lg">ROCK &amp; ROAD EUROPE: GORGES DU TARN</h3>')
   expect(html).toContain(`<span class="${checkout.statusBadge}">Pending</span>`)
   expect(html).toContain('Order number')
@@ -249,6 +249,6 @@ it('titles the page by what happened to the booking', async () => {
     ['cancelled', 'Booking cancelled'],
   ]) {
     fixture.overrides = { state }
-    expect(await detail()).toContain(`<h1>${title}</h1>`)
+    expect(await detail()).toContain(`<h1 data-type="section">${title}</h1>`)
   }
 })

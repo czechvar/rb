@@ -61,7 +61,7 @@ beforeEach(() => {
 
 it('lists addresses as panels with a default badge and outline action buttons', async () => {
   const html = renderToStaticMarkup(await AddressesPage())
-  expect(html).toContain('<h1>Addresses</h1>')
+  expect(html).toContain('<h1 data-type="section">Addresses</h1>')
   expect(html).toMatch(/class="btn-ghost[^"]*" href="\/account\/addresses\/new">Add address<\/a>/)
   expect(html.split(`<section class="${checkout.panel}">`)).toHaveLength(3)
   expect(html).toContain('data-type="card-lg">Home</h2>')
@@ -86,7 +86,7 @@ it('invites the first address from a notice when none exist', async () => {
 
 it('the add form sits in an "Address details" panel with paired rows and checkout controls', () => {
   const html = renderToStaticMarkup(AddAddressPage())
-  expect(html).toContain('<h1>Add address</h1>')
+  expect(html).toContain('<h1 data-type="section">Add address</h1>')
   expect(html).toContain('data-type="card-lg">Address details</h2>')
   expect(html.split(`class="${checkout.formRow}"`).length - 1).toBe(2)
   expect(html).toContain(`class="btn-primary ${checkout.button}">Add address</button>`)
@@ -97,7 +97,7 @@ it('the add form sits in an "Address details" panel with paired rows and checkou
 
 it('the edit form prefills, shows company fields and saves with "Save address"', async () => {
   const html = renderToStaticMarkup(await EditAddressPage({ params: Promise.resolve({ idx: '1' }) }))
-  expect(html).toContain('<h1>Edit address</h1>')
+  expect(html).toContain('<h1 data-type="section">Edit address</h1>')
   expect(html).toContain('value="Work 2"')
   expect(html).toContain('value="Climb s.r.o."')
   expect(html.split(`class="${checkout.formRow}"`).length - 1).toBe(3)
