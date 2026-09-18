@@ -588,6 +588,10 @@ function isLocation(location: unknown): location is Location {
   return typeof location === 'object' && location !== null
 }
 
+function isActiveLocation(location: unknown): location is Location {
+  return isLocation(location) && location.active === true
+}
+
 function stringValue(value: unknown) {
   return typeof value === 'string' && value.trim() ? value.trim() : undefined
 }
@@ -886,7 +890,7 @@ function destinationCards(detail: DestinationDetail | null | undefined, source =
     case 'tripPromos':
       return (detail.tripPromos ?? []).map((item) => tripPromoCard(item))
     case 'relatedLocations':
-      return (detail.relatedLocations ?? []).filter(isLocation).map((item) => relatedLocationCard(item))
+      return (detail.relatedLocations ?? []).filter(isActiveLocation).map((item) => relatedLocationCard(item))
     case 'relatedDestinationCards':
       return (detail.relatedDestinationCards ?? []).map((item) => relatedDestinationCard(item))
     case 'audience':

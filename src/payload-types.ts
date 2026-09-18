@@ -2654,6 +2654,9 @@ export interface Location {
           id?: string | null;
         }[]
       | null;
+    /**
+     * Inactive related Locations may remain linked for editorial continuity; inactive targets are hidden on public destination pages.
+     */
     relatedLocations?: (number | Location)[] | null;
     /**
      * Fallback display cards for related destinations when matching Location records are not available yet.

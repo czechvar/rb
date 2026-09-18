@@ -114,6 +114,56 @@ describe('locations collection', () => {
     expect(doc.sourceReferences?.[0]?.sourceId).toBe('albarracin-topo')
   })
 
+  it('allows inactive locations as related destination references', async () => {
+    const payload = await getTestPayload()
+    let activeLocationId: number | undefined
+    let inactiveLocationId: number | undefined
+
+    try {
+      const activeLocation = await payload.create({
+        collection: 'locations',
+        data: {
+          name: `Active related parent ${Date.now()}`,
+          active: true,
+        } as never,
+      })
+      activeLocationId = activeLocation.id
+
+      const inactiveLocation = await payload.create({
+        collection: 'locations',
+        data: {
+          name: `Inactive related target ${Date.now()}`,
+          active: false,
+        } as never,
+      })
+      inactiveLocationId = inactiveLocation.id
+
+      const updated = (await payload.update({
+        collection: 'locations',
+        id: activeLocation.id,
+        data: {
+          destinationDetail: {
+            relatedLocations: [inactiveLocation.id],
+          },
+        } as never,
+      })) as Location
+
+      const relatedLocation = updated.destinationDetail?.relatedLocations?.[0]
+      expect(typeof relatedLocation).toBe('object')
+      expect(relatedLocation && typeof relatedLocation === 'object' ? relatedLocation.id : null).toBe(
+        inactiveLocation.id,
+      )
+      expect(relatedLocation && typeof relatedLocation === 'object' ? relatedLocation.active : null).toBe(false)
+    } finally {
+      const ids = [activeLocationId, inactiveLocationId].filter(
+        (id): id is number => typeof id === 'number',
+      )
+      if (ids.length) {
+        await payload.delete({ collection: 'locations', where: { id: { in: ids } } })
+      }
+    }
+  })
+
   it('allows partial imported destination records', async () => {
     const payload = await getTestPayload()
     const doc = (await payload.create({

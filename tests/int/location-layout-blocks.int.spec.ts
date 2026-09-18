@@ -91,6 +91,48 @@ describe('Location layout blocks', () => {
     expect(markup).toContain('openstreetmap.org')
   })
 
+  it('hides inactive related locations from destination cards', async () => {
+    const location = {
+      id: 9202,
+      name: 'POC Related Location Layout',
+      slug: 'poc-related-location-layout',
+      active: true,
+      destinationDetail: {
+        relatedLocations: [
+          {
+            id: 9203,
+            name: 'Visible Related Location',
+            slug: 'visible-related-location',
+            active: true,
+          },
+          {
+            id: 9204,
+            name: 'Hidden Related Location',
+            slug: 'hidden-related-location',
+            active: false,
+          },
+        ],
+      },
+    } as Location
+
+    const element = await RenderBlocks({
+      blocks: [
+        {
+          blockType: 'destinationCardGrid',
+          source: 'relatedLocations',
+          heading: 'Related destinations',
+        },
+      ] as RenderBlocksInput['blocks'],
+      context: { location } as BlockRenderContext,
+    })
+
+    const markup = renderToStaticMarkup(React.createElement(React.Fragment, null, element))
+    expect(markup).toContain('Visible Related Location')
+    expect(markup).toContain('/destinations/visible-related-location')
+    expect(markup).not.toContain('Hidden Related Location')
+    expect(markup).not.toContain('/destinations/hidden-related-location')
+  })
+
   it('uses the current Location context for byLocation trip blocks', async () => {
     const payload = await getTestPayload()
     const stamp = Date.now()

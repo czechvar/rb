@@ -299,7 +299,11 @@ function destinationDetailBlockGroups(loc: LocationDetailPageData): DestinationB
       blockType: 'destinationCardGrid',
       eyebrow: 'Other destinations',
       heading: 'Related destinations',
-      source: detail.relatedLocations?.length ? 'relatedLocations' : 'relatedDestinationCards',
+      source: detail.relatedLocations?.some(
+        (item) => typeof item === 'object' && item !== null && item.active === true,
+      )
+        ? 'relatedLocations'
+        : 'relatedDestinationCards',
       columns: '3',
     },
   ]

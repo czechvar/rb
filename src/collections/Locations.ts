@@ -402,7 +402,10 @@ export const Locations: CollectionConfig = {
           type: 'relationship',
           relationTo: 'locations',
           hasMany: true,
-          filterOptions: () => ({ active: { equals: true } }),
+          admin: {
+            description:
+              'Inactive related Locations may remain linked for editorial continuity; inactive targets are hidden on public destination pages.',
+          },
         },
         {
           name: 'relatedDestinationCards',
