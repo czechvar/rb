@@ -17,3 +17,99 @@
   text-align: left; cursor: pointer; color: var(--theme-color-primary); font-weight: 600; font-size: 15px;
 }
 .content { min-width: 0; }
+
+/* Account-only layout. Panels, fields and buttons come from the checkout stylesheet. */
+.panelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.linkPanel {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+.linkPanel p {
+  margin: 0;
+}
+.linkPanel .panelAction {
+  justify-self: start;
+  margin-top: 16px;
+}
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+/* Two classes so this outranks the checkout `.panel h2` margin whatever the stylesheet order. */
+.cardHeader .cardTitle {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.addressBody {
+  margin: 0;
+  font-style: normal;
+  line-height: 1.7;
+}
+.addressBody + p {
+  margin: 8px 0 0;
+  font-size: var(--theme-text-small);
+}
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.cardActions form {
+  display: contents;
+}
+.compactButton {
+  padding: 10px 18px;
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--theme-color-paper-80);
+  font-size: var(--theme-text-small);
+  cursor: pointer;
+}
+.toggle input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  accent-color: var(--theme-color-primary);
+}
+.companyBox {
+  display: grid;
+  gap: 18px;
+  border-top: 1px solid var(--theme-color-border);
+  padding-top: 18px;
+}
+.plainList {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.plainList li > span {
+  display: block;
+}
+.noticeBody {
+  margin: 0;
+}
+.preLine {
+  margin: 0;
+  white-space: pre-line;
+  line-height: 1.7;
+}
+@media (max-width: 900px) {
+  .panelGrid {
+    grid-template-columns: 1fr;
+  }
+}
