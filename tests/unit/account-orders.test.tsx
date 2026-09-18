@@ -51,21 +51,34 @@ const fixture = vi.hoisted(() => ({
   overrides: {} as Record<string, unknown>,
   docs: null as unknown[] | null,
   findByIdArgs: null as Record<string, unknown> | null,
+  findArgs: null as Record<string, unknown> | null,
+  reservationsOn: true,
 }))
+vi.mock('@/lib/checkout/feature', () => ({ checkoutEnabled: () => fixture.reservationsOn }))
 
 vi.mock('@/lib/auth', () => ({
   getCurrentUser: async () => ({ id: 9, name: 'Test Customer', email: 'test@example.test' }),
 }))
 vi.mock('@/lib/payload', () => ({
   getPayloadClient: async () => ({
-    find: async () => ({ docs: fixture.docs ?? [{ ...baseOrder, ...fixture.overrides }] }),
+    find: async (args: Record<string, unknown>) => {
+      fixture.findArgs = args
+      return { docs: fixture.docs ?? [{ ...baseOrder, ...fixture.overrides }] }
+    },
     findByID: async (args: Record<string, unknown>) => {
       fixture.findByIdArgs = args
       return { ...baseOrder, ...fixture.overrides }
     },
   }),
 }))
-vi.mock('next/navigation', () => ({ notFound: vi.fn(), redirect: vi.fn() }))
+vi.mock('next/navigation', () => ({
+  notFound: vi.fn(() => {
+    throw new Error('NOT_FOUND')
+  }),
+  redirect: vi.fn((path: string) => {
+    throw new Error(`REDIRECT:${path}`)
+  }),
+}))
 vi.mock('next/link', () => ({
   default: ({ children, ...props }: React.ComponentProps<'a'>) => <a {...props}>{children}</a>,
 }))
@@ -81,6 +94,8 @@ beforeEach(() => {
   fixture.overrides = {}
   fixture.docs = null
   fixture.findByIdArgs = null
+  fixture.findArgs = null
+  fixture.reservationsOn = true
   delete process.env.BANK_TRANSFER_DETAILS
 })
 
@@ -88,19 +103,34 @@ it('lists orders as reservation-style cards with the authored name, a badge and 
   const html = renderToStaticMarkup(await OrdersPage())
   expect(html).toContain('<h1>Your orders</h1>')
   expect(html).toContain(`<section class="${checkout.panel} ${checkout.reservationCard}">`)
-  expect(html).toContain('ROCK &amp; ROAD EUROPE: GORGES DU TARN')
+  // Only this customer's orders, through access control, deep enough to reach the trip variant's name.
+  expect(fixture.findArgs).toMatchObject({
+    collection: 'orders',
+    where: { user: { equals: 9 } },
+    depth: 2,
+    overrideAccess: false,
+  })
+  expect((fixture.findArgs?.user as { id: number }).id).toBe(9)
+  // A trip name is card-lg everywhere in the checkout; a bare h2 would render it at section size.
+  expect(html).toContain('<h2 data-type="card-lg">ROCK &amp; ROAD EUROPE: GORGES DU TARN</h2>')
   expect(html).not.toContain('Europe Climbing Trip')
   expect(html).toContain('1 Jun 2030 – 8 Jun 2030')
   expect(html).toContain('RB-2030-000456')
   expect(html).toContain(`<span class="${checkout.statusBadge}">Pending</span>`)
   expect(html.match(/€950\.00/g)).toHaveLength(1)
-  expect(html).toMatch(/class="btn-ghost[^"]*" href="\/account\/orders\/456">View order<\/a>/)
+  // One link per card, and its name says which order it opens.
+  expect(html.match(/href="\/account\/orders\/456"/g)).toHaveLength(1)
+  expect(html).toMatch(
+    new RegExp(
+      `class="btn-ghost[^"]*" href="/account/orders/456">View order<span class="${checkout.srOnly}"> RB-2030-000456</span></a>`,
+    ),
+  )
   expect(html).not.toContain('style=')
 })
 
 it('falls back to "Trip" when the event is not populated', async () => {
   fixture.overrides = { eventDate: { ...eventDate, event: 5 } }
-  expect(renderToStaticMarkup(await OrdersPage())).toContain('>Trip</a>')
+  expect(renderToStaticMarkup(await OrdersPage())).toContain('>Trip</h2>')
 })
 
 it('shows an empty-state notice that leads to the trips', async () => {
@@ -123,8 +153,8 @@ it('presents an order like a reservation: header, two columns, one total', async
   expect(html).toContain('data-type="card-lg">Your details</h2>')
   expect(html).toContain('data-type="card-lg">Your trip</h2>')
   expect(html).toContain('data-type="card-lg">Order summary</h2>')
-  expect(html).toContain('1 participant')
-  expect(html).toContain('VAT 21% included.')
+  expect(html).toContain('>1 participant</p>')
+  expect(html).toContain(`class="${checkout.muted} ${checkout.summaryNote}">VAT 21% included.</p>`)
   expect(html).not.toContain('Subtotal')
   expect(html).not.toContain('Discount')
   expect(html).not.toContain('per person')
@@ -167,4 +197,44 @@ it('adds subtotal and discount rows only when a discount applied, and a per-pers
   expect(html).toContain('2 participants · €950.00 per person')
   expect(html).toContain('data-type="card-lg">Your note</h2>')
   expect(html).toContain('Vegetarian')
+})
+
+it('only shows an order to its owner, whether the relation is an id or populated', async () => {
+  // Depth 2 populates the owner, which is the shape production returns.
+  fixture.overrides = { user: { id: 9, email: 'test@example.test' } }
+  expect(await detail()).toContain('Order number')
+  fixture.overrides = { user: { id: 10, email: 'other@example.test' } }
+  await expect(detail()).rejects.toThrow('NOT_FOUND')
+  fixture.overrides = { user: 10 }
+  await expect(detail()).rejects.toThrow('NOT_FOUND')
+})
+
+it('sends a grouped order to its reservation instead of offering actions the order cannot take', async () => {
+  // The Orders hook rejects direct changes to a grouped order, and it is paid from the reservation.
+  fixture.overrides = { checkout: { id: 42 }, participants: [], billingAddress: {} }
+  let html = await detail()
+  expect(html).not.toContain('Cancel booking')
+  expect(html).toMatch(/class="btn-ghost[^"]*" href="\/account\/checkouts\/42">View reservation<\/a>/)
+  // Grouped orders start without participants or a billing address: no heading-only panels.
+  expect(html).not.toContain('Participants')
+  expect(html).not.toContain('Your details')
+
+  process.env.BANK_TRANSFER_DETAILS = 'IBAN CZ00 0000'
+  fixture.overrides = { checkout: 42, state: 'confirmed' }
+  html = await detail()
+  expect(html).not.toContain('Payment instructions')
+  expect(html).toContain('href="/account/checkouts/42"')
+
+  fixture.reservationsOn = false
+  expect(await detail()).not.toContain('/account/checkouts/')
+})
+
+it('falls back to the order id when no order number was issued', async () => {
+  fixture.overrides = { orderNumber: null, state: 'confirmed' }
+  const html = await detail()
+  expect(html).toContain('<code>456</code>')
+  expect(html).toContain('Variable symbol: <strong>456</strong>')
+  const list = renderToStaticMarkup(await OrdersPage())
+  expect(list).toContain('<p>1 Jun 2030 – 8 Jun 2030</p>')
+  expect(list).toContain('>View order</a>')
 })

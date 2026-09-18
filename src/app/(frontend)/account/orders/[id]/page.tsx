@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 import { getPayloadClient } from '@/lib/payload'
+import { checkoutEnabled } from '@/lib/checkout/feature'
 import type { Order } from '@/payload-types'
 import { ReservationHeader } from '@/components/checkout/ReservationHeader'
 import checkout from '@/components/checkout/checkout.module.css'
@@ -24,13 +25,13 @@ export default async function OrderDetailPage({ params }: Props) {
   let o: Order
   try {
     // Depth 2 reaches the event date's trip variant, which carries the authored trip name.
-    o = (await payload.findByID({
+    o = await payload.findByID({
       collection: 'orders',
       id,
       depth: 2,
       user,
       overrideAccess: false,
-    })) as Order
+    })
   } catch {
     notFound()
   }
@@ -38,6 +39,8 @@ export default async function OrderDetailPage({ params }: Props) {
   if (ownerId !== user.id) notFound()
 
   const cancel = cancelMyOrderAction.bind(null, o.id)
+  // A grouped order is paid and cancelled from its reservation; the Orders hook rejects direct changes to it.
+  const reservationId = typeof o.checkout === 'object' && o.checkout ? o.checkout.id : o.checkout
   const orderNumber = o.orderNumber ?? String(o.id)
   const discount = o.discountAmount ?? 0
   const discountSource =
@@ -73,7 +76,7 @@ export default async function OrderDetailPage({ params }: Props) {
       />
       <div className={checkout.layout}>
         <div className={checkout.stack}>
-          {o.state === 'confirmed' && (
+          {o.state === 'confirmed' && !reservationId && (
             <section className={checkout.panel}>
               <h2 data-type="card-lg">Payment instructions</h2>
               <p className={styles.preLine}>
@@ -85,43 +88,52 @@ export default async function OrderDetailPage({ params }: Props) {
               </p>
             </section>
           )}
-          <section className={checkout.panel}>
-            <h2 data-type="card-lg">Participants</h2>
-            <ul className={styles.plainList}>
-              {(o.participants ?? []).map((p, i) => (
-                <li key={p.id ?? i}>
-                  <span>{[p.firstName, p.lastName].filter(Boolean).join(' ')}</span>
-                  <span className={checkout.muted}>
-                    {[p.email, p.phone].filter(Boolean).join(' · ')}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section className={checkout.panel}>
-            <h2 data-type="card-lg">Your details</h2>
-            <address className={styles.addressBody}>
-              {billingLines.map((line, i) => (
-                <React.Fragment key={i}>
-                  {i > 0 && <br />}
-                  {line}
-                </React.Fragment>
-              ))}
-            </address>
-            {companyIds && <p className={checkout.muted}>{companyIds}</p>}
-          </section>
+          {!!o.participants?.length && (
+            <section className={checkout.panel}>
+              <h2 data-type="card-lg">Participants</h2>
+              <ul className={styles.plainList}>
+                {o.participants.map((p, i) => (
+                  <li key={p.id ?? i}>
+                    <span>{[p.firstName, p.lastName].filter(Boolean).join(' ')}</span>
+                    <span className={checkout.muted}>
+                      {[p.email, p.phone].filter(Boolean).join(' · ')}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+          {billingLines.length > 0 && (
+            <section className={checkout.panel}>
+              <h2 data-type="card-lg">Your details</h2>
+              <p className={styles.addressBody}>
+                {billingLines.map((line, i) => (
+                  <React.Fragment key={i}>
+                    {i > 0 && <br />}
+                    {line}
+                  </React.Fragment>
+                ))}
+              </p>
+              {companyIds && <p className={checkout.muted}>{companyIds}</p>}
+            </section>
+          )}
           {o.customerNote && (
             <section className={checkout.panel}>
               <h2 data-type="card-lg">Your note</h2>
               <p className={styles.preLine}>{o.customerNote}</p>
             </section>
           )}
-          {o.state === 'pending' && (
+          {o.state === 'pending' && !reservationId && (
             <form action={cancel} className={checkout.stack}>
               <button type="submit" className={`btn-ghost ${checkout.button}`}>
                 Cancel booking
               </button>
             </form>
+          )}
+          {reservationId && checkoutEnabled() && (
+            <Link className={`btn-ghost ${checkout.button}`} href={`/account/checkouts/${reservationId}`}>
+              View reservation
+            </Link>
           )}
           <Link className={`btn-ghost ${checkout.button}`} href="/account/orders">
             All orders
@@ -163,7 +175,7 @@ export default async function OrderDetailPage({ params }: Props) {
               <span>Total</span>
               <span className={checkout.totalAmount}>{orderMoney(o.totalPrice, o.currency)}</span>
             </div>
-            <p className={checkout.summaryNote}>VAT {o.vat}% included.</p>
+            <p className={`${checkout.muted} ${checkout.summaryNote}`}>VAT {o.vat}% included.</p>
           </section>
         </aside>
       </div>

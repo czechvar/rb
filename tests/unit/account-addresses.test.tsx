@@ -12,7 +12,14 @@ vi.mock('@/lib/auth', () => ({
 vi.mock('next/link', () => ({
   default: ({ children, ...props }: React.ComponentProps<'a'>) => <a {...props}>{children}</a>,
 }))
-vi.mock('next/navigation', () => ({ notFound: vi.fn(), redirect: vi.fn() }))
+vi.mock('next/navigation', () => ({
+  notFound: vi.fn(() => {
+    throw new Error('NOT_FOUND')
+  }),
+  redirect: vi.fn((path: string) => {
+    throw new Error(`REDIRECT:${path}`)
+  }),
+}))
 vi.mock('@/app/(frontend)/account/addresses/actions', () => ({
   addAddressAction: vi.fn(),
   updateAddressAction: vi.fn(),
@@ -72,15 +79,15 @@ it('invites the first address from a notice when none exist', async () => {
   fixture.addresses = []
   const html = renderToStaticMarkup(await AddressesPage())
   expect(html).toContain(`<div class="${checkout.notice}">`)
-  expect(html).toMatch(/class="btn-primary[^"]*" href="\/account\/addresses\/new">Add your first address<\/a>/)
+  expect(html).toMatch(/class="btn-primary[^"]*" href="\/account\/addresses\/new">Add address<\/a>/)
   // The header action would duplicate the notice button.
   expect(html.match(/href="\/account\/addresses\/new"/g)).toHaveLength(1)
 })
 
-it('the add form sits in a "Your details" panel with paired rows and checkout controls', () => {
+it('the add form sits in an "Address details" panel with paired rows and checkout controls', () => {
   const html = renderToStaticMarkup(AddAddressPage())
   expect(html).toContain('<h1>Add address</h1>')
-  expect(html).toContain('data-type="card-lg">Your details</h2>')
+  expect(html).toContain('data-type="card-lg">Address details</h2>')
   expect(html.split(`class="${checkout.formRow}"`).length - 1).toBe(2)
   expect(html).toContain(`class="btn-primary ${checkout.button}">Add address</button>`)
   expect(html).toMatch(/class="btn-ghost[^"]*" href="\/account\/addresses">All addresses<\/a>/)
@@ -88,11 +95,17 @@ it('the add form sits in a "Your details" panel with paired rows and checkout co
   expect(html).not.toContain('style=')
 })
 
-it('the edit form prefills, shows company fields and saves with "Save details"', async () => {
+it('the edit form prefills, shows company fields and saves with "Save address"', async () => {
   const html = renderToStaticMarkup(await EditAddressPage({ params: Promise.resolve({ idx: '1' }) }))
   expect(html).toContain('<h1>Edit address</h1>')
   expect(html).toContain('value="Work 2"')
   expect(html).toContain('value="Climb s.r.o."')
   expect(html.split(`class="${checkout.formRow}"`).length - 1).toBe(3)
-  expect(html).toContain(`class="btn-primary ${checkout.button}">Save details</button>`)
+  expect(html).toContain(`class="btn-primary ${checkout.button}">Save address</button>`)
+})
+
+it('404s an edit link for an address that does not exist', async () => {
+  for (const idx of ['7', '-1', 'abc', '1.5']) {
+    await expect(EditAddressPage({ params: Promise.resolve({ idx }) })).rejects.toThrow('NOT_FOUND')
+  }
 })

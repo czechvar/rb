@@ -28,7 +28,7 @@ export default async function AddressesPage() {
           <p className={styles.noticeBody}>You haven&apos;t added an address yet.</p>
           <div className={checkout.actions}>
             <Link className={`btn-primary ${checkout.button}`} href="/account/addresses/new">
-              Add your first address
+              Add address
             </Link>
           </div>
         </div>

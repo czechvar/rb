@@ -37,13 +37,13 @@ export function AddressCard({ idx, address }: { idx: number; address: Address })
         </h2>
         {address.isDefault && <span className={checkout.statusBadge}>Default</span>}
       </div>
-      <address className={styles.addressBody}>
+      <p className={styles.addressBody}>
         {address.firstName} {address.lastName}
         <br />
         {address.street}
         <br />
         {address.postalCode} {address.city}, {address.country}
-      </address>
+      </p>
       {company && <p className={checkout.muted}>{company}</p>}
       <div className={styles.cardActions}>
         <Link className={ghost} href={`/account/addresses/${idx}/edit`}>

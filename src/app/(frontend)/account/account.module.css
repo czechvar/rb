@@ -41,6 +41,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  /* Room for the status badge, so cards with and without one start their body on the same line. */
+  min-height: 36px;
   margin-bottom: 16px;
 }
 /* Two classes so this outranks the checkout `.panel h2` margin whatever the stylesheet order. */

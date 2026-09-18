@@ -49,8 +49,14 @@ it('SubmitButton keeps its default class and accepts a replacement', () => {
 })
 
 it('AccountField and AccountSubmit carry the checkout look', () => {
-  const html = renderToStaticMarkup(<AccountField name="city" label="City" helpText="Help" />)
+  const html = renderToStaticMarkup(
+    <AccountField name="city" label="City" helpText="Help" error="Bad" />,
+  )
   expect(html).toContain(`<div class="${checkout.field}">`)
+  expect(html).toContain(
+    `<span id="field-city-error" role="alert" class="${checkout.error}">Bad</span>`,
+  )
+  expect(html).toContain('aria-describedby="field-city-help field-city-error"')
   expect(html).toContain(`class="${checkout.helper}"`)
   expect(html).not.toContain(forms.input)
   expect(renderToStaticMarkup(<AccountSubmit>Save details</AccountSubmit>)).toBe(

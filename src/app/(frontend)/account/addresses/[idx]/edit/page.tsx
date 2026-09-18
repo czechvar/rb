@@ -27,7 +27,7 @@ export default async function EditAddressPage({
 
   return (
     <AccountPage title="Edit address">
-      <AddressForm initial={address} action={action} submitLabel="Save details" />
+      <AddressForm initial={address} action={action} submitLabel="Save address" />
     </AccountPage>
   )
 }

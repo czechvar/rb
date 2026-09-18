@@ -92,7 +92,7 @@ test('user can cancel a pending order', async ({ page }) => {
   await page.waitForURL((url) => !url.pathname.startsWith('/login'))
 
   await page.goto(`${BASE}/account/orders`)
-  await page.getByRole('link', { name: /^View order$/i }).first().click()
+  await page.getByRole('link', { name: /^View order/i }).first().click()
   await page.getByRole('button', { name: /Cancel booking/i }).click()
   await expect(page.getByText('Cancelled', { exact: true }).first()).toBeVisible()
 })

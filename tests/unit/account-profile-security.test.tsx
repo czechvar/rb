@@ -1,7 +1,7 @@
 // tests/unit/account-profile-security.test.tsx
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { expect, it, vi } from 'vitest'
+import { beforeEach, expect, it, vi } from 'vitest'
 import checkout from '@/components/checkout/checkout.module.css'
 import forms from '@/components/forms/forms.module.css'
 
@@ -15,11 +15,24 @@ vi.mock('@/lib/auth', () => ({
   }),
   requireUser: async () => ({ id: 9 }),
 }))
-vi.mock('@/lib/payload', () => ({ getPayloadClient: async () => ({ find: async () => ({ docs: [] }) }) }))
+const fixture = vi.hoisted(() => ({ docs: [] as unknown[], update: null as unknown }))
+vi.mock('@/lib/payload', () => ({
+  getPayloadClient: async () => ({
+    find: async () => ({ docs: fixture.docs }),
+    update: (...args: unknown[]) => (fixture.update as (...a: unknown[]) => unknown)(...args),
+  }),
+}))
 vi.mock('next/link', () => ({
   default: ({ children, ...props }: React.ComponentProps<'a'>) => <a {...props}>{children}</a>,
 }))
-vi.mock('next/navigation', () => ({ redirect: vi.fn(), notFound: vi.fn() }))
+vi.mock('next/navigation', () => ({
+  notFound: vi.fn(() => {
+    throw new Error('NOT_FOUND')
+  }),
+  redirect: vi.fn((path: string) => {
+    throw new Error(`REDIRECT:${path}`)
+  }),
+}))
 vi.mock('@/app/(frontend)/account/profile/actions', () => ({
   updateProfileAction: vi.fn(),
   cancelPendingEmailChangeAction: vi.fn(),
@@ -31,6 +44,11 @@ import { ProfileForm } from '@/app/(frontend)/account/profile/ProfileForm'
 import SecurityPage from '@/app/(frontend)/account/security/page'
 import ConfirmEmailPage from '@/app/(frontend)/account/profile/confirm-email/page'
 
+beforeEach(() => {
+  fixture.docs = []
+  fixture.update = vi.fn()
+})
+
 const initial = { name: 'Test Customer', phone: '+420 600 000 000', email: 'test@example.test' }
 
 it('profile uses the checkout frame, "Your details" and "Save details"', async () => {
@@ -41,6 +59,7 @@ it('profile uses the checkout frame, "Your details" and "Save details"', async (
   expect(html).toContain('data-type="card-lg">Contact details</h2>')
   expect(html).toContain(`class="btn-primary ${checkout.button}">Save details</button>`)
   expect(html).toContain('value="test@example.test"')
+  expect(html).toMatch(/<label for="field-email">Email<\/label><input id="field-email"/)
   expect(html).not.toContain(forms.input)
   expect(html).not.toContain(forms.submit)
   expect(html).not.toContain('style=')
@@ -55,7 +74,8 @@ it('profile confirms a completed email change', async () => {
 
 it('a pending email change is a notice with an outline cancel button, not a text link', () => {
   const html = renderToStaticMarkup(<ProfileForm initial={initial} pendingEmail="new@example.test" />)
-  expect(html).toContain(`<div class="${checkout.notice}">`)
+  // Announced: after an email change this is the message that matters, not "Details saved."
+  expect(html).toContain(`<div class="${checkout.notice}" role="status">`)
   expect(html).toContain('new@example.test')
   expect(html).toContain(`class="btn-ghost ${checkout.button}">Cancel pending email change</button>`)
   expect(html).not.toContain('text-decoration')
@@ -78,4 +98,39 @@ it('confirm-email problems render in the frame with a way back', async () => {
   expect(html).toContain(`<div class="${checkout.notice}">`)
   expect(html).toContain('Missing token in URL.')
   expect(html).toMatch(/class="btn-ghost[^"]*" href="\/account\/profile"/)
+})
+
+const future = new Date(Date.now() + 60_000).toISOString()
+
+it('confirm-email explains each refusal and changes nothing', async () => {
+  const problem = async (docs: unknown[]) => {
+    fixture.docs = docs
+    return renderToStaticMarkup(
+      await ConfirmEmailPage({ searchParams: Promise.resolve({ token: 't' }) }),
+    )
+  }
+  expect(await problem([])).toContain('This link is invalid.')
+  expect(
+    await problem([{ id: 10, pendingEmail: 'n@example.test', pendingEmailExpiresAt: future }]),
+  ).toContain('This link does not belong to your account.')
+  expect(
+    await problem([
+      { id: 9, pendingEmail: 'n@example.test', pendingEmailExpiresAt: '2000-01-01T00:00:00.000Z' },
+    ]),
+  ).toContain('This link has expired.')
+  expect(fixture.update).not.toHaveBeenCalled()
+})
+
+it('confirm-email applies a valid link and lands on the page that confirms it', async () => {
+  fixture.docs = [{ id: 9, pendingEmail: 'n@example.test', pendingEmailExpiresAt: future }]
+  await expect(
+    ConfirmEmailPage({ searchParams: Promise.resolve({ token: 't' }) }),
+  ).rejects.toThrow('REDIRECT:/account/profile?email-changed=1')
+  expect(fixture.update).toHaveBeenCalledWith(
+    expect.objectContaining({
+      collection: 'users',
+      id: 9,
+      data: expect.objectContaining({ email: 'n@example.test', pendingEmail: null }),
+    }),
+  )
 })

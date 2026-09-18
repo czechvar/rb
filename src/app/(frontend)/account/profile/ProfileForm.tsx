@@ -18,12 +18,12 @@ export function ProfileForm({ initial, pendingEmail }: Props) {
   const [email, setEmail] = useState(echoed?.email ?? initial.email)
   const [currentPassword, setCurrentPassword] = useState('')
   const emailDirty = email !== initial.email
-  const emailError = !state.ok ? state.fieldErrors?.email : undefined
+  const fieldErrors = !state.ok ? state.fieldErrors : undefined
   return (
     <div className={checkout.layout}>
       <div className={checkout.stack}>
         {pendingEmail && (
-          <div className={checkout.notice}>
+          <div className={checkout.notice} role="status">
             <p className={styles.noticeBody}>
               We sent a confirmation link to <strong>{pendingEmail}</strong>. Until you click it,
               your sign-in email stays as <strong>{initial.email}</strong>.
@@ -49,7 +49,7 @@ export function ProfileForm({ initial, pendingEmail }: Props) {
                   defaultValue={echoed?.name ?? initial.name}
                   required
                   autoComplete="name"
-                  error={!state.ok ? state.fieldErrors?.name : undefined}
+                  error={fieldErrors?.name}
                 />
                 <AccountField
                   name="phone"
@@ -58,28 +58,19 @@ export function ProfileForm({ initial, pendingEmail }: Props) {
                   defaultValue={echoed?.phone ?? initial.phone}
                   required
                   autoComplete="tel"
-                  error={!state.ok ? state.fieldErrors?.phone : undefined}
+                  error={fieldErrors?.phone}
                 />
               </div>
-              <div className={checkout.field}>
-                <label htmlFor="field-email">Email</label>
-                <input
-                  id="field-email"
-                  name="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.currentTarget.value)}
-                  autoComplete="email"
-                  required
-                  aria-invalid={emailError ? 'true' : undefined}
-                  aria-describedby={emailError ? 'field-email-error' : undefined}
-                />
-                {emailError && (
-                  <span id="field-email-error" role="alert" className={checkout.error}>
-                    {emailError}
-                  </span>
-                )}
-              </div>
+              <AccountField
+                name="email"
+                label="Email"
+                type="email"
+                required
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                error={fieldErrors?.email}
+              />
               {emailDirty && (
                 <AccountField
                   name="currentPassword"
@@ -89,7 +80,7 @@ export function ProfileForm({ initial, pendingEmail }: Props) {
                   helpText="Required to change your sign-in email."
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
-                  error={!state.ok ? state.fieldErrors?.currentPassword : undefined}
+                  error={fieldErrors?.currentPassword}
                 />
               )}
               <AccountSubmit>Save details</AccountSubmit>

@@ -21,12 +21,12 @@ export function AddressForm({ initial, action, submitLabel }: Props) {
   const echoed = !state.ok ? state.values : undefined
   const initialCompanyName = echoed?.companyName ?? initial?.company?.companyName
   const [showCompany, setShowCompany] = useState(!!initialCompanyName)
-  const errors = !state.ok ? state.fieldErrors : undefined
+  const fieldErrors = !state.ok ? state.fieldErrors : undefined
   return (
     <div className={checkout.layout}>
       <div className={checkout.stack}>
         <section className={checkout.panel}>
-          <h2 data-type="card-lg">Your details</h2>
+          <h2 data-type="card-lg">Address details</h2>
           {!state.ok && state.formError && <FormBanner kind="error">{state.formError}</FormBanner>}
           <form action={formAction}>
             <div className={checkout.fields}>
@@ -43,7 +43,7 @@ export function AddressForm({ initial, action, submitLabel }: Props) {
                   required
                   autoComplete="given-name"
                   defaultValue={echoed?.firstName ?? initial?.firstName}
-                  error={errors?.firstName}
+                  error={fieldErrors?.firstName}
                 />
                 <AccountField
                   name="lastName"
@@ -51,7 +51,7 @@ export function AddressForm({ initial, action, submitLabel }: Props) {
                   required
                   autoComplete="family-name"
                   defaultValue={echoed?.lastName ?? initial?.lastName}
-                  error={errors?.lastName}
+                  error={fieldErrors?.lastName}
                 />
               </div>
               <AccountField
@@ -60,7 +60,7 @@ export function AddressForm({ initial, action, submitLabel }: Props) {
                 required
                 autoComplete="street-address"
                 defaultValue={echoed?.street ?? initial?.street}
-                error={errors?.street}
+                error={fieldErrors?.street}
               />
               <div className={checkout.formRow}>
                 <AccountField
@@ -68,14 +68,14 @@ export function AddressForm({ initial, action, submitLabel }: Props) {
                   label="Postal code"
                   required
                   defaultValue={echoed?.postalCode ?? initial?.postalCode}
-                  error={errors?.postalCode}
+                  error={fieldErrors?.postalCode}
                 />
                 <AccountField
                   name="city"
                   label="City"
                   required
                   defaultValue={echoed?.city ?? initial?.city}
-                  error={errors?.city}
+                  error={fieldErrors?.city}
                 />
               </div>
               <AccountField
@@ -83,7 +83,7 @@ export function AddressForm({ initial, action, submitLabel }: Props) {
                 label="Country"
                 required
                 defaultValue={echoed?.country ?? initial?.country ?? 'CZ'}
-                error={errors?.country}
+                error={fieldErrors?.country}
               />
               <label className={styles.toggle}>
                 <input
@@ -99,20 +99,20 @@ export function AddressForm({ initial, action, submitLabel }: Props) {
                     name="companyName"
                     label="Company name"
                     defaultValue={echoed?.companyName ?? initial?.company?.companyName ?? ''}
-                    error={errors?.companyName}
+                    error={fieldErrors?.companyName}
                   />
                   <div className={checkout.formRow}>
                     <AccountField
                       name="ico"
                       label="IČO"
                       defaultValue={echoed?.ico ?? initial?.company?.ico ?? ''}
-                      error={errors?.ico}
+                      error={fieldErrors?.ico}
                     />
                     <AccountField
                       name="dic"
                       label="DIČ (optional)"
                       defaultValue={echoed?.dic ?? initial?.company?.dic ?? ''}
-                      error={errors?.dic}
+                      error={fieldErrors?.dic}
                     />
                   </div>
                 </div>

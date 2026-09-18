@@ -52,9 +52,10 @@ duplicated into a second stylesheet.
 
 The shared form primitives gain opt-in overrides and nothing else:
 
-- `FormField` accepts `classNames?: { field?, label?, input?, help?, error? }`. Each key
-  replaces the matching default class. When `classNames.help` is given, the inline
-  `#666` help-text style is dropped so the class can colour it.
+- `FormField` accepts `classNames?: { field?, label?, input?, help?, error? }`. Passing it
+  replaces the default class set wholesale — a key left out means "no class", which is what
+  the checkout look needs for the label and input (`.field input` styles them). The inline
+  `#666` help-text style is dropped along with the defaults.
 - `SubmitButton` accepts `className?`, replacing the default `submit` class.
 
 With neither prop passed, both components produce byte-identical markup. Rejected
@@ -101,13 +102,13 @@ and deleted. All values come from theme tokens.
 
 | Page | Result |
 | --- | --- |
-| Overview | `AccountPage` titled "Welcome back, {first name}". A grid of link panels: Trip reservations (only when `checkoutEnabled()`), Orders, Your details, Addresses. Each shows a real count or summary and a `btn-ghost` link. Counts come from `payload.count` with `overrideAccess: false`. Success banners for `password-reset` and `email-changed` stay. |
+| Overview | `AccountPage` titled "Welcome back, {first name}". A grid of link panels: Trip reservations (only when `checkoutEnabled()`), Orders, Your details, Addresses. Each shows a real count or summary and a `btn-ghost` link. Counts come from `payload.count` with `overrideAccess: false`. The `password-reset` success banner stays; the unreachable `email-changed` one moves to Profile, where confirm-email actually redirects. |
 | Profile | Title "Your details". The form sits in a `panel` with checkout fields; submit reads "Save details". "Cancel pending email change" becomes a `btn-ghost` button. The `?email-changed=1` redirect target keeps working. |
 | Security | Title "Security", lead sentence kept. A "Change password" panel with checkout fields and `btn-primary`. |
-| Addresses | "Add address" is a `btn-ghost` in the header actions. Cards are square panels: label as a `card-lg` heading, "Default" as a `statusBadge`, company line in `muted`. Edit / Set as default / Delete are `btn-ghost` buttons. The empty state is a `notice` with a `btn-primary` "Add address". |
-| Address new / edit | `AccountPage` plus the form in a `panel`. First/last name and postal code/city share `formRow`s. Checkbox toggles use the account toggle row. |
-| Orders | Title "Your orders". Rows are `reservationCard` panels matching the reservations list: authored trip name via `tripPlainTitle`, dates, order number, status `statusBadge`, one price, and a `btn-ghost` "View order". Empty state is a `notice` with a `btn-primary` "Browse trips". |
-| Order detail | `ReservationHeader` (eyebrow "Your order", title = authored trip name, status badge, "Order number" reference row). Two-column `layout`. Left `stack`: Participants panel, Your details (billing address) panel, a "Payment instructions" panel first when confirmed, Your note panel when present, "Cancel booking" `btn-ghost` when pending, "All orders" `btn-ghost`. Right `sidebar`: "Your trip" (`tripSummary`: name, dates, participant count) and "Order summary" with a single Total row; Subtotal and Discount rows render only when a discount exists; the VAT line stays as `muted` small print. |
+| Addresses | "Add address" is a `btn-ghost` in the header actions. Cards are square panels: label as a `card-lg` heading, "Default" as a `statusBadge`, company line in `muted`. Edit / Set as default / Delete are `btn-ghost` buttons. The empty state is a `notice` with a `btn-primary` "Add address"; the header action is hidden then, so the page never shows the same button twice. |
+| Address new / edit | `AccountPage` plus the form in an "Address details" `panel`, saved with "Add address" / "Save address" ("Your details" is kept for the profile and for the billing block on an order). First/last name and postal code/city share `formRow`s. Checkbox toggles use the account toggle row. |
+| Orders | Title "Your orders". Rows are `reservationCard` panels matching the reservations list: authored trip name via `tripPlainTitle` as a `card-lg` heading (a bare `h2` is section size, fine for a short reference, too big for a trip name), dates, order number, status `statusBadge`, one price, and a `btn-ghost` "View order". Empty state is a `notice` with a `btn-primary` "Browse trips". |
+| Order detail | `ReservationHeader` (eyebrow "Your order", title = authored trip name, status badge, "Order number" reference row). Two-column `layout`. Left `stack`: Participants panel, Your details (billing address) panel, a "Payment instructions" panel first when confirmed, Your note panel when present, "Cancel booking" `btn-ghost` when pending, "All orders" `btn-ghost`. Right `sidebar`: "Your trip" (`tripSummary`: name, dates, participant count) and "Order summary" with a single Total row; Subtotal and Discount rows render only when a discount exists; the VAT line stays as `muted` small print. Participants and Your details render only when the order has them. A grouped-checkout order (created with no participants, and rejected by the Orders hook on any direct change) shows "View reservation" instead of "Cancel booking" and the bank-transfer instructions. |
 | confirm-email | The four error states render inside `AccountPage` as a `notice` with a `btn-ghost` back to Your details. The success path still redirects. |
 
 `tripPlainTitle(event, eventDate)` needs the event and the date's trip variant populated,
@@ -126,6 +127,10 @@ order totals are stored in major units, so they are converted at the call site.
 - No hex colours, no `border-radius` and no inline `style` objects remain under
   `src/app/(frontend)/account/` outside `checkouts/`.
 - Sidebar navigation is unchanged. It appears on Michal's board and drew no comment.
+- The account layout wraps page content in `<main>`, as cart and checkout do, so the page
+  `<header>` is not exposed as a second banner landmark.
+- Saved and billing addresses are paragraphs, not `<address>`: that element is for the
+  page's own contact information.
 
 ## Testing
 

@@ -38,7 +38,7 @@ function LinkPanel({
 export default async function AccountOverviewPage({
   searchParams,
 }: {
-  searchParams: Promise<{ ['password-reset']?: string; ['email-changed']?: string }>
+  searchParams: Promise<{ ['password-reset']?: string }>
 }) {
   const sp = await searchParams
   const user = (await getCurrentUser())!
@@ -50,16 +50,14 @@ export default async function AccountOverviewPage({
     reservationsOn ? payload.count({ collection: 'checkouts', ...mine }) : null,
   ])
   const addressCount = user.addresses?.length ?? 0
+  const firstName = user.name.trim().split(/\s+/)[0]
   return (
     <AccountPage
-      title={`Welcome back, ${user.name.split(' ')[0]}`}
+      title={firstName ? `Welcome back, ${firstName}` : 'Welcome back'}
       lead="Your trips, orders and details in one place."
     >
       {sp['password-reset'] === '1' && (
         <FormBanner kind="success">Password changed. You&apos;re signed in.</FormBanner>
-      )}
-      {sp['email-changed'] === '1' && (
-        <FormBanner kind="success">Your sign-in email has been updated.</FormBanner>
       )}
       <div className={styles.panelGrid}>
         {reservations && (
